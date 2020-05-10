@@ -106,37 +106,37 @@ pluck_unique(Acc, [Elem | List], Pick, Rest) :-
 
 %%%%%%%%%%%%%%%% SYNTACTIC %%%%%%%%%%%%%%%% 
 
-type_sf(a, + (_ & _)). 
-type_sf(a, - (_ | _)). 
-type_sf(a, - (_ => _)). 
-type_sf(a, + (_ <=> _)). 
-type_sf(b, - (_ & _)). 
-type_sf(b, + (_ | _)). 
-type_sf(b, + (_ => _)). 
-type_sf(b, - (_ <=> _)). 
-type_sf(c, + ! _). 
-type_sf(c, - ? _). 
-type_sf(d, - ! _). 
-type_sf(d, + ? _). 
-type_sf(s, + ~ _).
-type_sf(s, - ~ _).
+type_sf(a, (+ (_ & _))). 
+type_sf(a, (- (_ | _))). 
+type_sf(a, (- (_ => _))). 
+type_sf(a, (+ (_ <=> _))). 
+type_sf(b, (- (_ & _))). 
+type_sf(b, (+ (_ | _))). 
+type_sf(b, (+ (_ => _))). 
+type_sf(b, (- (_ <=> _))). 
+type_sf(c, (+ ! _)). 
+type_sf(c, (- ? _)). 
+type_sf(d, (- ! _)). 
+type_sf(d, (+ ? _)). 
+type_sf(s, (+ ~ _)).
+type_sf(s, (- ~ _)).
 type_hyp(TYP, (_, SF)) :- type_sf(TYP, SF).
 atomic_hyp((_, SF)) :- 
   signed_atom(SF).
 
-sf_form(+ FORM, FORM).
-sf_form(- FORM, FORM).
+sf_form((+ FORM), FORM).
+sf_form((- FORM), FORM).
 hyp_form((_, SF), FORM) :- 
   sf_form(SF, FORM).
 
 signed_atom(Satom) :- pos_atom(Satom).
 signed_atom(Satom) :- neg_atom(Satom).
-neg_atom(- ATOM) :- unsigned_atom(ATOM).
-pos_atom(+ ATOM) :- unsigned_atom(ATOM).
+neg_atom((- ATOM)) :- unsigned_atom(ATOM).
+pos_atom((+ ATOM)) :- unsigned_atom(ATOM).
 unsigned_atom(ATOM) :- \+ molecular(ATOM).
 
-complements(+ FORM, - FORM).
-complements(- FORM, + FORM).
+complements((+ FORM), (- FORM)).
+complements((- FORM), (+ FORM)).
 
 fof(_, _, _).
 fof(_, _, _, _).
@@ -197,8 +197,8 @@ bct('<=>').
 log_const($true).
 log_const($false).
 
-contradiction(- $true).
-contradiction(+ $false).
+contradiction((- $true)).
+contradiction((+ $false)).
 
 subst_form(_, _, FORM, FORM) :- log_const(FORM), !.
 

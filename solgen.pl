@@ -87,7 +87,7 @@ mv_concat(FILE, LIST) :-
 
 gen_sol(PROVER, TPTP) :- 
   string_concat(TEMP, ".tptp", TPTP),
-  string_concat("./p/", NAME, TEMP),
+  string_concat("../tptp/", NAME, TEMP),
   msg('Problem chosen = ~w', [NAME]),
   atomics_to_string(["./", PROVER, "s/", NAME, ".tstp"], TSTP),
   msg("Begin proof search with ~w", PROVER),
@@ -115,7 +115,7 @@ gen_sols(PROVER, NUM, PATHS) :-
   ).
 
 main([PROVER, NUM_ATOM]) :- 
-  rec_dir_files("./p/", PATHS), 
+  rec_dir_files("../tptp/", PATHS), 
   atom_number(NUM_ATOM, NUM),
   msg("Enter gen loop"),
   gen_sols(PROVER, NUM, PATHS), 
