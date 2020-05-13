@@ -1,7 +1,7 @@
 #!/usr/bin/env swipl
 
 :- initialization(main, main).
-:- use_module(library(shell)).
+% :- use_module(library(shell)).
 
 :- [basic].
 
@@ -119,20 +119,3 @@ main :-
   % msg("Enter bench loop"),
   % gen_loop(PROVER, NUM, PATHS), 
   % msg("Exit bench loop").
-
-maplist_try(_, []).
-maplist_try(GOAL, [ELEM | LIST]) :- 
-  call(GOAL, ELEM) -> 
-  maplist_try(GOAL, LIST)
-; 
-  maplist_try(GOAL, LIST).
-
-% maplist_cut(_, []).
-% maplist_cut(GOAL, [Elem | List]) :- 
-%   call(GOAL, Elem), !, 
-%   maplist_cut(GOAL, List). 
-% 
-% write_list([]).
-% write_list([Elem | List]) :- 
-%   format('~w\n', Elem),
-%   write_list(List).

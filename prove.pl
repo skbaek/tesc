@@ -10,11 +10,6 @@ pick_mate(HYPS_A, (HYPS_B, GOAL)) :-
   member(HYP_B, HYPS_B), 
   mate(HYP_A, HYP_B, GOAL).
 
-pick_mate_nu(HYPS_A, (HYPS_B, GOAL)) :- 
-  member(HYP_A, HYPS_A), 
-  member(HYP_B, HYPS_B), 
-  mate_nu(HYP_A, HYP_B, GOAL).
-
 pick_pivot(HYPS, HYP, GOAL, HYP_N, GOAL_N) :-
   many([b, c, s], ([HYP], GOAL), HGS),
   pluck(HGS, ([HYP_N], GOAL_N), REST), 
@@ -33,35 +28,10 @@ apply_aocs(ANTE, [AOC | AOCS], GOAL_I, CONS, GOAL_O) :-
 
 apply_aocs(HYP, [], GOAL, HYP, GOAL). 
 
-hyp_mgc((_, (+ FormA)), (_, (- FormB))) :- 
-  form_mgc(FormA, FormB).
-
-hyp_mgc((_, (- FormA)), (_, (+ FormB))) :- 
-  form_mgc(FormA, FormB).
-
-form_mgc(FormA, FormB) :- 
-  unifiable(FormA, FormB, Unif),
-  maplist(is_renaming, Unif).
-  
-form_mgc(TERM_A = TERM_B, FormB) :- 
-  unifiable((TERM_B = TERM_A), FormB, Unif),
-  maplist(is_renaming, Unif).
-
-is_renaming((X = Y)) :- 
-  var(X), 
-  \+ var(Y),
-  Y = @(NUM),
-  number(NUM).
-
 pmt_cla(PREM, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   many([b, c, s], ([PREM], GOAL_T), HGS), 
   maplist(pick_mate(HYPS), HGS).
-
-res_aux(HYPS, ([HYP], GOAL)) :- 
-  member(CMP, HYPS), 
-  hyp_mgc(CMP, HYP),
-  mate(CMP, HYP, GOAL).
 
 res(PYP0, PYP1, HYPS, GOAL) :- 
   fp(_, GOAL, NPVT, PPVT, GOAL_N, GOAL_P), 
@@ -96,19 +66,6 @@ eqr(PREM, CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   many([b, c, s], ([PREM], GOAL_T), HGS), !,
   maplist(eqr_aux(HYPS), HGS).
-
-eqr_nu_aux(_, ([HYP], GOAL)) :- 
-  HYP = (_, (- LHS = RHS)),
-  LHS == RHS,
-  eq_refl(HYP, GOAL).
-
-eqr_nu_aux(HYPS, HG) :- 
-  pick_mate_nu(HYPS, HG).
-
-eqr_nu(PREM, CONC, GOAL) :- 
-  many_nb([a, s], [CONC], GOAL, HYPS, GOAL_T), 
-  many([b, s], ([PREM], GOAL_T), HGS), !,
-  maplist(eqr_nu_aux(HYPS), HGS).
 
 dfu(DEFS, PREM, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T),
@@ -272,25 +229,15 @@ numss_dimacs(NUMSs, DIMACS) :-
   maplist(nums_dimacs, NUMSs, Strs),
   strings_concat_with("\n", [Str | Strs], DIMACS).
 
-line_rup(_, LINE, del(SID)) :-
-  split_string(LINE, " ", "", ["d", NUM_STR]),
-  number_string(SID, NUM_STR).
-
-line_rup(NAA, LINE, rup(SIDS, SID, CLA)) :- 
-  string_numbers(LINE, [SID | NUMS]),
-  append(CLA_NUMS, [0 | REST], NUMS), 
-  nums_cla(NAA, CLA_NUMS, CLA),
-  append(SIDS, [0], REST).
-  % maplist_cut(sat_get_cla(CTX), IDS, PREMS).
-
-find_new_unit_aux(SAs, SA) :- 
-  member(CMP, SAs), 
-  complements(CMP, SA).
-
-find_new_unit(CTXSAs, ClaSAs, SA) :- 
-  member(SA, ClaSAs), 
-  delete(ClaSAs, SA, Rest),
-  maplist_cut(find_new_unit_aux(CTXSAs), Rest).
+% line_rup(_, LINE, del(SID)) :-
+%   split_string(LINE, " ", "", ["d", NUM_STR]),
+%   number_string(SID, NUM_STR).
+% 
+% line_rup(NAA, LINE, rup(SIDS, SID, CLA)) :- 
+%   string_numbers(LINE, [SID | NUMS]),
+%   append(CLA_NUMS, [0 | REST], NUMS), 
+%   nums_cla(NAA, CLA_NUMS, CLA),
+%   append(SIDS, [0], REST).
 
 unit_propagate(PREM, (HYPS_I, GOAL_I), ([HYP | HYPS_I], GOAL_O)) :- 
   many([b, s], ([PREM], GOAL_I), HGS), 
@@ -395,10 +342,6 @@ add_mat((ID, SF), (FI, [(GD, ID, SF) | CTX], [(GD, MAT) | MATS]), (FO, CTX, MATS
 
 matrixify_all(HYPS, CTX, MATS) :- 
   foldl(add_mat, HYPS, (0, CTX, MATS), (_, [], [])).
-
-add_to_ctx(HYPS, (ID, GD), CTX_I, CTX_O) :- 
-  member((ID, SF), HYPS), 
-  put_assoc(ID, CTX_I, (GD, SF), CTX_O).
 
 startable(a(MAT_L, MAT_R)) :- 
   startable(MAT_L) ;

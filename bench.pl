@@ -9,8 +9,8 @@ bench(PRVR, SOL_PATH) :-
   atom_concat(NAME, '.tstp', TEMP1), 
   write(" ────────────────────────────────────────────────────────────────── "), 
   format("Bench problem : ~w\n", NAME),
-  atomic_list_concat(["./ttc.pl ", PRVR, " p/", NAME, ".tptp ", SOL_PATH, " temp.tesc"], CMD_C),
-  atomic_list_concat(["./ttv.pl p/", NAME, ".tptp temp.tesc"], CMD_V),
+  atomic_list_concat(["./ttc.pl ", PRVR, " ../tptp/", NAME, ".tptp ", SOL_PATH, " temp.tesc"], CMD_C),
+  atomic_list_concat(["./ttv.pl ../tptp/", NAME, ".tptp temp.tesc"], CMD_V),
   shell(CMD_C, _), nl,
   shell(CMD_V, _), nl, nl.
 

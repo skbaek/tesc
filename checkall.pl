@@ -10,7 +10,7 @@ check_proof(PRVR, TESC) :-
   atom_concat(NAME, '.tesc', TEMP1), 
   write(" ────────────────────────────────────────────────────────────────── "), 
   format("Verifying proof : ~w\n", NAME),
-  atomic_list_concat(["p/", NAME, ".tptp"], TPTP), 
+  atomic_list_concat(["../tptp/", NAME, ".tptp"], TPTP), 
   check(TPTP, TESC).
 
 % is_temp(NAME) :- atom_concat(_, ".temp", NAME).

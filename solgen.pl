@@ -1,7 +1,7 @@
 #!/usr/bin/env swipl
 
 :- initialization(main, main).
-:- use_module(library(shell)).
+% :- use_module(library(shell)).
 :- [solve, prove, check].
 
 path_cat_id(Path, Cat, ID) :- 

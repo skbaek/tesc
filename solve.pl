@@ -148,11 +148,6 @@ insert_dels([INST | INSTS_I], SEEN, INSTS_O) :-
     append([INST | DELS], INSTS_T, INSTS_O)
   ).
 
-thread([], X, X).
-thread([GOAL | GOALS], X, Z) :-
-  call(GOAL, X, Y), 
-  thread(GOALS, Y, Z).
-
 bind_par(IDX, CNT, IDX, #(CNT)).
 bind_par(IDX_A, _, IDX_B, @(IDX_B)) :- IDX_A \= IDX_B.
 
@@ -245,17 +240,6 @@ reduce_gaocs([INST | INSTS], SOL) :-
 axiomatic(TYPE) :- 
   member(TYPE, [lemma, axiom, hypothesis, conjecture, negated_conjecture]).
 
-mk_rw(ATOM, ~ FORM, ~ RW) :- !,
-  mk_rw(ATOM, FORM, RW).
-
-mk_rw(ATOM, (FORM_L | FORM_R), (RW_L | RW_R)) :- !,
-  mk_rw(ATOM, FORM_L, RW_L), 
-  mk_rw(ATOM, FORM_R, RW_R).
-
-mk_rw(ATOM, FORM, RW) :- 
-  syeq_atom(ATOM, FORM) -> RW = $true ; 
-  RW = FORM.
-
 mk_rw_form(LHS, RHS, ~ FORM, ~ RW) :- !,
   mk_rw_form(LHS, RHS, FORM, RW).
 
@@ -345,8 +329,6 @@ e_skm_term(SKM, NUM, TERM) :-
   range(desc, NUM, NUMS), 
   maplist_cut(mk('#'), NUMS, VARS), 
   TERM =.. [SKM | VARS].
-
-last_id([inf(_,  _, ID, _) | _], ID).
 
 pairs_insts(FI, [], FI, [], []).
 pairs_insts(FI_I, [(SKM, AOC) | PAIRS], FI_O, [t(FI_I) | IDS], [add([aoc, SKM], t(FI_I), AOC) | INSTS]) :- 
@@ -846,19 +828,7 @@ metis_rul_hint(simplify, res).
 metis_rul_hint(resolve, res).
 metis_rul_hint(conjunct, mscj).
 
-string_id(STR, ID) :- 
-  split_string(STR, ",(", " ", [LNG, ID_STR | _]), 
-  member(LNG, ["cnf", "fof"]),
-  atom_string(ID, ID_STR).
-
-sorted_ids(TSTP, IDS) :-
-  file_strings(TSTP, STRS),
-  maplist_try(string_id, STRS, IDS).
-
 tup_ctx((ID, _, FORM, _), CTX_I, CTX_O) :- 
-%   TYPE = conjecture -> 
-%   put_assoc(ID, CTX_I, + ~ FORM, CTX_O)
-% ;
   put_assoc(ID, CTX_I, + FORM, CTX_O).
 
 tups_ctx(TUPS, CTX) :- 

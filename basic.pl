@@ -1,3 +1,4 @@
+:- op(1200,  fy, $).  
 :- op(1200,  fy, +).   % Positive formula
 :- op(1200,  fy, -).   % Negative formula
 :- op(1130, xfy, <=>). % equivalence
@@ -16,33 +17,10 @@
 :- op(499,  xfy, \=).
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
-  
-syneq(X, Y) :- X == Y.
 
 random_pluck(LIST, ELEM, REST) :- 
   random_member(ELEM, LIST), 
   delete(LIST, ELEM, REST).
-
-random_plucks(NUM, LIST, ELEMS, REST) :- 
-  num_pred(NUM, PRED) -> 
-  ELEMS = [ELEM | TAIL], 
-  random_pluck(LIST, ELEM, TEMP),
-  random_plucks(PRED, TEMP, TAIL, REST) 
-; 
-  ELEMS = [],
-  REST = LIST.
-
-pick_left(([ELEM | LFT], RGT), ELEM, (LFT, RGT)).  
-pick_left(([HEAD | LFT], RGT), ELEM, REST) :- 
-  pick_left((LFT, [HEAD | RGT]), ELEM, REST).
-    
-pick_right((LFT, [ELEM | RGT]), ELEM, (LFT, RGT)).  
-pick_right((LFT, [HEAD | RGT]), ELEM, REST) :- 
-  pick_right(([HEAD | LFT], RGT), ELEM, REST).
-
-pick(BL, ELEM, REST) :- 
-  pick_left(BL, ELEM, REST) ;
-  pick_right(BL, ELEM, REST).
   
 timed_call(Time, GOAL, ALT_GOAL) :- 
   catch(
@@ -64,45 +42,6 @@ ground_all(TERM, EXP) :-
   term_variables(EXP, VARS),
   maplist_cut('='(TERM), VARS).
 
-pluck_assoc(KEY, ASC_I, VAL, ASC_O) :- 
-  gen_assoc(KEY, ASC_I, VAL), 
-  del_assoc(KEY, ASC_I, _, ASC_O).
-
-exclude_assoc(GOAL, ASC_I, ASC_O) :- 
-  assoc_to_list(ASC_I, LIST_I), 
-  exclude(GOAL, LIST_I, LIST_O), 
-  list_to_assoc(LIST_O, ASC_O).
-
-range_core(UB, UB, []) :- !.
-
-range_core(NUM, UB, [NUM | NUMS]) :- 
-  SUCC is NUM + 1, 
-  range_core(SUCC, UB, NUMS).
-
-% logical(SYMB) :- 
-%    member(SYMB, ['!', '?', '~', '|', '&', '=>', '<=>', '=', '+', '-', '@', '#', 'false', 'true']).
-% 
-% nlss(TERM, NLSS) :- 
-%   sub_term(NLSS, TERM),
-%   atom(NLSS), 
-%   \+ logical(NLSS).
-% 
-% nlsss(TERM, NLSSS) :- 
-%   findall(NLSS, nlss(TERM, NLSS), NLSSS).
-
-% range(LOW, HIGH, NUMS) :- 
-%   LOW =< HIGH, 
-%   range_core(LOW, HIGH, NUMS). 
-
-pluck_unique(List, Elem, Rest) :- 
-  pluck_unique([], List, Elem, Rest).
-
-pluck_unique(Acc, [Elem | List], Elem, Rest) :- 
-  \+ member_syn(Elem, Acc),
-  append(Acc, List, Rest).
-
-pluck_unique(Acc, [Elem | List], Pick, Rest) :- 
-  pluck_unique([Elem | Acc], List, Pick, Rest).
 
 %%%%%%%%%%%%%%%% SYNTACTIC %%%%%%%%%%%%%%%% 
 
@@ -194,8 +133,8 @@ bct('&').
 bct('=>').
 bct('<=>').
 
-log_const($true).
-log_const($false).
+log_const(($ true)).
+log_const(($ false)).
 
 contradiction((- $true)).
 contradiction((+ $false)).
@@ -481,12 +420,12 @@ fbpl(HYP, GOAL, HYP_L, HYP_R, HYP_LN, GOAL_L, GOAL_R) :-
   bp(HYP, GOAL_LN, HYP_LP, HYP_R, GOAL_LPN, GOAL_R), 
   mate(HYP_LP, HYP_LN, GOAL_LPN).
 
-fbpr(HYP, GOAL, HYP_L, HYP_RN, HYP_R, GOAL_L, GOAL_R) :- 
-  hyp_sf(HYP, SF), 
-  bb(SF, _, SF_R),
-  fps(SF_R, GOAL, HYP_RN, HYP_R, GOAL_RN, GOAL_R), 
-  bp(HYP, GOAL_RN, HYP_L, HYP_RP, GOAL_L, GOAL_RPN), 
-  mate(HYP_RP, HYP_RN, GOAL_RPN).
+% fbpr(HYP, GOAL, HYP_L, HYP_RN, HYP_R, GOAL_L, GOAL_R) :- 
+%   hyp_sf(HYP, SF), 
+%   bb(SF, _, SF_R),
+%   fps(SF_R, GOAL, HYP_RN, HYP_R, GOAL_RN, GOAL_R), 
+%   bp(HYP, GOAL_RN, HYP_L, HYP_RP, GOAL_L, GOAL_RPN), 
+%   mate(HYP_RP, HYP_RN, GOAL_RPN).
 
 fps(+ FORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P) :- 
   fp(FORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P).
@@ -536,30 +475,11 @@ cdp_lax(HYP_C, HYP_D, GOAL, HYP_N_C, HYP_N_D, GOAL_N) :-
   dp_lax(0, HYP_D, GOAL, CNT, HYP_N_D, GOAL_T), 
   cp_lax(CNT, HYP_C, GOAL_T, HYP_N_C, GOAL_N). 
   
-alwyas_fail(_, _) :- false.
-
 union([], []).
 
 union([List | Lists], Set) :- 
   union(Lists, TempSet),
   union(List, TempSet, Set).
-
-mark(NUM) :-
-  number_string(NUM, NUMStr),
-  strings_concat(["Tracing ", NUMStr, "\n"], Msg),
-  write(Msg).
-
-repeat(0, _).
-
-repeat(NUM, GOAL) :- 
-  0 < NUM, 
-  Pred is NUM - 1, 
-  call(GOAL),
-  repeat(Pred, GOAL).
-
-write_break(NUM, TERM) :-
-  write(TERM),
-  repeat(NUM, write("\n")).
 
 write_list(_, []).
 
@@ -594,34 +514,10 @@ where(Elem, [_ | List], NUM) :-
   where(Elem, List, Pred),
   NUM is Pred + 1.
 
-occurs(Elem, [_ | List]) :-
-  occurs(Elem, List).
-
-% Similar to member/2, but avoids instantion.
-occurs(ElemA, [ElemB | _]) :- 
-  ElemA == ElemB.
-
-occurs(Elem, [_ | List]) :-
-  occurs(Elem, List).
-
-write_list_file(Target, List) :-
-  open(Target, write, Stream),
-  write_list(Stream, List),
-  close(Stream).
-
 write_file(Target, TERM) :-
   open(Target, write, Stream),
   write(Stream, TERM),
   close(Stream).
-
-pick(GOAL, [Elem | Rem], Elem, Rem) :- 
-  call(GOAL, Elem), !.
-
-pick(GOAL, [ElemA | List], ElemB, [ElemA | Rem]) :- 
-  pick(GOAL, List, ElemB, Rem).
-
-find(GOAL, List, Elem) :- 
-  pick(GOAL, List, Elem, _).
 
 pluck_uniq(List, Elem, REST) :- 
   pluck_uniq([], List, Elem, REST).
@@ -645,60 +541,9 @@ pluck([Elem | Rem], Elem, Rem).
 pluck([ElemA | List], ElemB, [ElemA | Rem]) :- 
   pluck(List, ElemB, Rem).
 
-list_prod([ElemA | ListA], [ElemB | ListB], List, [(ElemA, ElemB) | Prod]) :-
-  list_prod([ElemA | ListA], ListB, List, Prod).
-
-list_prod([_ | ListA], [], List, Prod) :- 
-  list_prod(ListA, List, List, Prod).
-
-list_prod([], _, _, []).
-
-list_prod(ListA, ListB, Prod) :-
-  list_prod(ListA, ListB, ListB, Prod).
-
-first(GOAL, [Elem | _], Result) :-
-  call(GOAL, Elem, Result), !.
-
-first(GOAL, [_ | List], Result) :-
-  first(GOAL, List, Result).
-
-collect(_, [], []).
-
-collect(GOAL, [Elem | List], Results) :-
-  call(GOAL, Elem, Result) -> 
-  ( collect(GOAL, List, TempResults),
-    Results = [Result | TempResults] ) ; 
-  collect(GOAL, List, Results).
-
-any(GOAL, [Elem | _]) :-
-  call(GOAL, Elem).
-
-any(GOAL, [_ | List]) :-
-  any(GOAL, List).
-
-list_br_str(List, Str) :-
-  maplist(term_string, List, Strs), 
-  strings_concat_with("\n\n", Strs, Str).
-  
-list_str(List, Str) :-
-  maplist(term_string, List, Strs), 
-  strings_concat_with(", ", Strs, Str).
-
-last([Elem], Elem). 
-
-last([_ | List], Elem) :- last(List, Elem). 
-
 num_pred(NUM, Pred) :-
   0 < NUM,
   Pred is NUM - 1.
-
-unneg(~ Atom, Atom) :- !.
-unneg(Atom, Atom).
-
-write_file_punct(Filename, TERM) :- 
-  term_string(TERM, TermStr),
-  string_concat(TermStr, ".", Str),
-  write_file(Filename, Str).
 
 prob_id_hyp(PROB, ID, (ID, SF)) :- 
   get_assoc(ID, PROB, SF).
@@ -708,34 +553,8 @@ molecular(Exp) :-
     [ (! _), (? _), (~ _), 
       (_ | _), (_ & _), (_ => _), (_ <=> _) ]).
 
-is_osa((_, SA)) :-
-  satom(SA).
-
-satom(Satom) :-
-  patom(Satom).
-
-satom(Satom) :-
-  natom(Satom).
-
-natom(- Atom) :- 
-  uatom(Atom).
-
-patom(+ Atom) :- 
-  uatom(Atom).
-
 uatom(Atom) :-
   \+ molecular(Atom).
-
-ulit(~ Atom) :- 
-  uatom(Atom).
-
-ulit(Atom) :- 
-  Atom \= (~ _),
-  uatom(Atom).
-
-ucla(Lit | Cla) :- 
-  ulit(Lit),
-  ucla(Cla).
 
 cf_lits(CLA_L | CLA_R, LITS) :- !, 
   cf_lits(CLA_L, LITS_L), 
@@ -744,33 +563,15 @@ cf_lits(CLA_L | CLA_R, LITS) :- !,
   
 cf_lits(LIT, [LIT]). 
 
-cf_atoms(CF, ATOMS) :- 
-  cf_lits(CF, LITS),
-  maplist_cut(lit_atom, LITS, ATOMS). 
-
 lit_atom(LIT, ATOM) :- 
   LIT = (~ ATOM) -> true ;
   LIT = ATOM.
-
-eclose_lvs(BODY, FORM) :- 
-  term_variables(BODY, VARS), 
-  bind_lvs(0, VARS),
-  length(VARS, NUM), 
-  add_exs(NUM, BODY, FORM).
 
 close_lvs(BODY, FORM) :- 
   term_variables(BODY, VARS), 
   bind_lvs(0, VARS),
   length(VARS, NUM), 
   add_fas(NUM, BODY, FORM).
-
-close_ovs(BODY, FORM) :- 
-  ov_bound(BODY, NUM),
-  add_fas(NUM, BODY, FORM).
-
-trunc_pred(NUM, PRED) :- 
-  0 < NUM -> PRED is NUM - 1 ; 
-  PRED = 0.
 
 uct_break(FORM, '~', SUB) :-
   \+ var(FORM),
@@ -789,13 +590,6 @@ bct_break(FORM, BCT, FORM_A, FORM_B) :-
   FORM =.. [BCT, FORM_A, FORM_B],
   bct(BCT).
 
-max(NUM_A, NUM_B, MAX) :-
-  NUM_A < NUM_B -> MAX = NUM_B ; 
-  MAX = NUM_A.
-
-num_succ(NUM, SUCC) :-
-  SUCC is NUM + 1.
-
 positive(NUM) :- 0 < NUM.
 
 ovs(~ FORM, OVS) :- !, ovs(FORM, OVS).
@@ -813,85 +607,15 @@ ovs(FORM, OVS) :-
   findall(NUM, sub_term(#(NUM), FORM), TEMP), 
   sort(TEMP, OVS), !.
 
-uses_nth_ov(NUM, FORM) :- 
-  ovs(FORM, OVS), 
-  member(NUM, OVS).
-  
 minvar(FORM, MIN) :- 
   ovs(FORM, NUMS),
   min_list(NUMS, MIN).
 
-ov_bound(~ FORM, BND) :- !, ov_bound(FORM, BND).
-ov_bound(FORM, BND) :- 
-  qtf_break(FORM, _, SUB), !, 
-  ov_bound(SUB, TEMP),
-  trunc_pred(TEMP, BND).
-ov_bound(FORM, BND) :- 
-  bct_break(FORM, _, FORM_A, FORM_B), !, 
-  ov_bound(FORM_A, BND_A),
-  ov_bound(FORM_B, BND_B),
-  max(BND_A, BND_B, BND).
-ov_bound(FORM, BND) :- 
-  findall(NUM, sub_term(#(NUM), FORM), NUMS), 
-  maplist(num_succ, NUMS, SUCCS), 
-  max_list([0 | SUCCS], BND).
-  
-  
-
-  
-
-% ucla(Lit) :-
-%   Lit \= (_ | _), 
-%   ulit(Lit).
-% 
-% uqla(! Form) :- 
-%   uqla(Form).
-% 
-% uqla(Form) :- 
-%   Form \= ! _, 
-%   ucla(Form).
-% 
-% sqla(+ Form) :- 
-%   uqla(Form).
-% 
-% sqla(- Form) :- 
-%   uqla(Form).
-% 
-% atom_tptp(TPTP) :- 
-%   \+ member(TPTP, 
-%     [ (! _ : _), (? _ : _), (~ _), 
-%       (_ | _), (_ & _), (_ => _), (_ <=> _) ]).
-% 
 mono_body(0, Form, Form).
 
 mono_body(NUM, ! ! (#(1) = #(0) => Form), Cons) :- 
   num_pred(NUM, Pred),
   mono_body(Pred, Form, Cons).
-
-maplist_opt(_, [], []).
-maplist_opt(GOAL, [ELEM_I | LIST_I], LIST_O) :- 
-  call(GOAL, ELEM_I, RST), !, 
-  (
-    RST = some(ELEM_O) -> 
-    maplist_opt(GOAL, LIST_I, LIST_T), 
-    LIST_O = [ELEM_O | LIST_T] 
-  ; 
-    RST = none, 
-    maplist_opt(GOAL, LIST_I, LIST_O)
-  ).
-
-maplist_try(_, [], []).
-
-maplist_try(GOAL, [ELEM | LIST], RST) :- 
-  call(GOAL, ELEM, NEW_ELEM) -> 
-  (
-    maplist_try(GOAL, LIST, REST), 
-    RST = [NEW_ELEM | REST] 
-  ) ; 
-  (
-    % format('Rejected element : ~w\n', ELEM),
-    maplist_try(GOAL, LIST, RST)
-  ).
 
 maplist_cut(_, []).
 
@@ -997,25 +721,6 @@ mk_mono_rel(NUM, REL, MONO) :-
   mk_mono_imp(NUM, REL, IMP), 
   mk_mono(NUM, IMP, MONO).
 
-par_is_fresh(_, Var) :- 
-  var(Var).
-
-par_is_fresh(_, Exp) :- 
-  atomic(Exp).
-
-par_is_fresh(Par, Exp) :- 
-  \+ var(Exp), 
-  \+ atomic(Exp),
-  Exp = @(NUM),
-  NUM < Par.
-
-par_is_fresh(Par, Exp) :- 
-  \+ var(Exp), 
-  \+ atomic(Exp), 
-  Exp \= @(_),
-  Exp =.. [_ | Exps], 
-  maplist_cut(par_is_fresh(Par), Exps). 
-
 member_rev(Elem, [_ | List]) :-
   member_rev(Elem, List). 
 
@@ -1024,48 +729,6 @@ member_rev(Elem, [Elem | _]).
 member_syn(ElemA, List) :-
   member(ElemB, List),
   ElemA == ElemB.
-
-member_woc(ElemA, List) :-
-  member(ElemB, List),
-  unify_with_occurs_check(ElemA, ElemB).
-  
-mem(Elem, List) :-
-  member_syn(Elem, List) -> 
-  true ; 
-  member_woc(Elem, List).
-
-choose(List, Elem) :- 
-  member(Elem, List).
-
-choose_two([ElemA | List], ElemA, ElemB) :- 
-  choose(List, ElemB).
-
-choose_two([_ | List], ElemA, ElemB) :- 
-  choose_two(List, ElemA, ElemB).
-
-fresh_par(Var, _) :- 
-  var(Var),
-  write("Error : cannot compute fresh parameter for a logic variable\n"),
-  throw(unexpected_logic_variable).
-
-fresh_par(TERM, Succ) :- 
-  TERM = @(NUM),
-  Succ is NUM + 1.
-
-fresh_par(TERM, 0) :- 
-  TERM \= @(_),
-  atomic(TERM).
-
-fresh_par(Exp, Par) :- 
-  Exp \= @(_),
-  \+ atomic(Exp), 
-  Exp =.. [_ | Exps], 
-  maplist_cut(fresh_par, Exps, NUMs), 
-  max_list(NUMs, Par).
-
-no_new_par(FP, Exp) :- 
-  fresh_par(Exp, ExpFP),
-  ExpFP =< FP.
 
 mk_mono(0, Cons, Cons).
 
@@ -1094,18 +757,11 @@ form_funaris(FORM, FUNS) :-
   form_funaris(FORM_A, FUNS_A),
   form_funaris(FORM_B, FUNS_B),
   union(FUNS_A, FUNS_B, FUNS).
+
 form_funaris(FORM, FUNS) :-
   FORM =.. [_ | TERMS], 
   maplist_cut(term_funaris, TERMS, FUNSS),
   union(FUNSS, FUNS).
-
-sf_inv(+ FORM, - FORM).
-sf_inv(- FORM, + FORM).
-
-epmt(PREM, CONC, GOAL) :- 
-  many_nb([d], [CONC], GOAL, [HYP_A], GOAL_A), 
-  many_nb([c], [PREM], GOAL_A, [HYP_B], GOAL_B), 
-  parac((HYP_B, HYP_A, GOAL_B)).
   
 map_var(_, @(NUM), @(NUM)) :- !.
 map_var(GOAL, #(NUM), TERM) :- !, 
@@ -1243,57 +899,12 @@ inst_with_pars(NUM, ! FORM, CNT, BODY) :- !,
 
 inst_with_pars(NUM, FORM, NUM, FORM).
 
-add_exs(0, FORM, FORM). 
-add_exs(NUM, FORM_I, ? FORM_O) :-
-  num_pred(NUM, PRED), 
-  add_exs(PRED, FORM_I, FORM_O).
-
 add_fas(0, Form, Form). 
 add_fas(NUM, Form, ! NewForm) :-
   num_pred(NUM, Pred), 
   add_fas(Pred, Form, NewForm).
 
-insert(Elem, Set, NewSet) :- 
-  sort([Elem | Set], NewSet).
-
-first_syn([ElemA | List], ElemB, NUM) :- 
-  ElemA == ElemB -> 
-  NUM = 0 ; 
-  (
-    first_syn(List, ElemB, Pred),
-    NUM is Pred + 1
-  ).
-
-swap(GOAL, X, Y, Z) :- 
-  call(GOAL, Y, X, Z).
-
-remove_at(0, [_ | List], List). 
-
-remove_at(NUM, [Elem | List], [Elem | REST]) :- 
-  num_pred(NUM, Pred), 
-  remove_at(Pred, List, REST).
-
-remove_once_syn([ElemA | List], ElemB, List) :- 
-  ElemA == ElemB.
-
-remove_once_syn([ElemA | List], ElemB, [ElemA | REST]) :- 
-  ElemA \== ElemB,
-  remove_once_syn(List, ElemB, REST).
-
-remove_once(GOAL, [Elem | List], NewList) :- 
-  call(GOAL, Elem) -> 
-  NewList = List ; 
-  (
-    remove_once(GOAL, List, REST), 
-    NewList = [Elem | REST]
-  ).
-  
-% fid_hyp(CTX, FIDs, FID, (OS, SF)) :- 
-%   nth0(OS, FIDs, FID),
-%   nth0(OS, CTX, SF).
-
 fst((X, _), X).
-snd((_, Y), Y).
 
 range(desc, 0, []). 
 range(desc, NUM, [Pred | NUMs]) :- 
@@ -1343,36 +954,13 @@ file_strings(FILE, STRS) :-
   stream_strings(STRM, STRS), 
   close(STRM).
 
-read_lines_core(Stream, Lines) :-
-  read_line_to_codes(Stream, Line), 
-  (
-    Line = end_of_file -> 
-    Lines = [] ;
-    ( 
-      Lines = [Line | REST],
-      read_lines_core(Stream, REST)
-    )
-  ).
-
-read_lines(File, Lines) :-
-  open(File, read, Stream), 
-  read_lines_core(Stream, Lines), 
-  close(Stream).
-
 foldl_cut(_, [], V, V).
 foldl_cut(GOAL, [ELEM | LIST], V_I, V_O) :- 
   call(GOAL, ELEM, V_I, V_T), !, 
   foldl_cut(GOAL, LIST, V_T, V_O).
 
-string_split_with(Str, Sep, Fst, Snd) :- 
-  string_concat(Fst, REST, Str), 
-  string_concat(Sep, Snd, REST). 
-
 string_number(Str, NUM) :- 
   number_string(NUM, Str).
-
-invert_sf(+ FORM, - FORM).
-invert_sf(- FORM, + FORM).
    
 fof_form(_, $true, $true).
 fof_form(_, $false, $false).
@@ -1606,17 +1194,6 @@ has_exists(! FORM) :- has_exists(FORM).
 has_exists(FORM_A & FORM_B) :- has_exists(FORM_A) ; has_exists(FORM_B).
 has_exists(FORM_A | FORM_B) :- has_exists(FORM_A) ; has_exists(FORM_B).
 
-has_qtf(! _).
-has_qtf(? _).
-has_qtf(~ FORM) :- has_qtf(FORM).
-has_qtf(FORM) :- 
-  FORM =.. [BCT, FORM_A, FORM_B], 
-  bct(BCT), 
-  (has_qtf(FORM_A) ; has_qtf(FORM_B)).
-
-is_fa('!').
-is_ex('?').
-
 fnnf(FORM_A => FORM_B, NORM_A | NORM_B) :- !, 
   fnnf(~ FORM_A, NORM_A), 
   fnnf(FORM_B, NORM_B).
@@ -1668,85 +1245,10 @@ fnnf(~ (? FORM), NORM) :- !,
 
 fnnf(FORM, FORM). 
 
-split_while(_, [], [], []).
-split_while(GOAL, [ELEM | LIST], [ELEM | PFX], SFX) :- 
-  call(GOAL, ELEM), 
-  split_while(GOAL, LIST, PFX, SFX).
-split_while(GOAL, [ELEM | LIST], [], [ELEM | LIST]) :- \+ call(GOAL, ELEM).
-
-split_fas(QTFS, FAS, REST) :- split_while(is_fa, QTFS, FAS, REST).
-split_exs(QTFS, EXS, REST) :- split_while(is_ex, QTFS, EXS, REST).
-
-app_qtfs([], FORM, FORM).
-app_qtfs([QTF | QTFS], FORM_I, FORM_O) :- 
-  TEMP =.. [QTF, FORM_I],
-  app_qtfs(QTFS, TEMP, FORM_O).
-
-/*
-fnnf(QTFS, FORM_A & FORM_B, NORM) :- !, 
-  split_fas(QTFS, FAS, REST),
-  fnnf(FAS, FORM_A, NORM_A), 
-  fnnf(FAS, FORM_B, NORM_B),
-  app_qtfs(REST, NORM_A & NORM_B, NORM).
-
-fnnf(QTFS, FORM_A | FORM_B, NORM) :- !, 
-  split_exs(QTFS, EXS, REST),
-  fnnf(EXS, FORM_A, NORM_A), 
-  fnnf(EXS, FORM_B, NORM_B),
-  app_qtfs(REST, NORM_A | NORM_B, NORM).
-
-fnnf(QTFS, FORM_A => FORM_B, NORM) :- !, 
-  split_exs(QTFS, EXS, REST),
-  fnnf(EXS, ~ FORM_A, NORM_A), 
-  fnnf(EXS, FORM_B, NORM_B),
-  app_qtfs(REST, NORM_A | NORM_B, NORM).
-
-fnnf(QTFS, FORM_A <=> FORM_B, NORM) :- !, 
-  split_fas(QTFS, FAS, REST),
-  fnnf(FAS, FORM_A => FORM_B, NORM_A), 
-  fnnf(FAS, FORM_B => FORM_A, NORM_B),
-  app_qtfs(REST, NORM_A & NORM_B, NORM).
-
-fnnf(QTFS, ! FORM, NORM) :- !, fnnf(['!' | QTFS], FORM, NORM).
-fnnf(QTFS, ? FORM, NORM) :- !, fnnf(['?' | QTFS], FORM, NORM).
-
-fnnf(QTFS, ~ ~ FORM, NORM) :- !, fnnf(QTFS, FORM, NORM).
-
-fnnf(QTFS, ~ (FORM_A & FORM_B), NORM) :- !, 
-  split_exs(QTFS, EXS, REST),
-  fnnf(EXS, ~ FORM_A, NORM_A), 
-  fnnf(EXS, ~ FORM_B, NORM_B),
-  app_qtfs(REST, NORM_A | NORM_B, NORM).
-
-fnnf(QTFS, ~ (FORM_A | FORM_B), NORM) :- !, 
-  split_fas(QTFS, FAS, REST),
-  fnnf(FAS, ~ FORM_A, NORM_A), 
-  fnnf(FAS, ~ FORM_B, NORM_B),
-  app_qtfs(REST, NORM_A & NORM_B, NORM).
-
-fnnf(QTFS, ~ (FORM_A => FORM_B), NORM) :- !, 
-  split_fas(QTFS, FAS, REST),
-  fnnf(FAS, FORM_A, NORM_A), 
-  fnnf(FAS, ~ FORM_B, NORM_B),
-  app_qtfs(REST, NORM_A & NORM_B, NORM).
-
-fnnf(QTFS, ~ (FORM_A <=> FORM_B), NORM) :- !, 
-  split_fas(QTFS, FAS, REST),
-  fnnf(FAS, (~ FORM_A | ~ FORM_B), NORM_A), 
-  fnnf(FAS, (FORM_A | FORM_B), NORM_B),
-  app_qtfs(REST, NORM_A & NORM_B, NORM).
-
-fnnf(QTFS, ~ (! FORM), NORM) :- !, fnnf(['?' | QTFS], ~ FORM, NORM).
-fnnf(QTFS, ~ (? FORM), NORM) :- !, fnnf(['!' | QTFS], ~ FORM, NORM).
-
-fnnf(QTFS, FORM, NORM) :- app_qtfs(QTFS, FORM, NORM).
-*/
-
 dist_qtf_bct('!', '&').
 dist_qtf_bct('?', '|').
 
 dist_qtf(_, FORM, NORM) :- 
-  % \+ uses_nth_ov(0, FORM), !.
   fv_dec_form(FORM, NORM), !.
 
 dist_qtf(QTF, FORM, NORM) :- 
@@ -1796,7 +1298,7 @@ esimp_bct('<=>', $false, FORM, ~ FORM) :- !.
 esimp_bct('<=>', FORM_A, FORM_B, FORM) :- !, 
 (
   FORM_A == FORM_B -> 
-  FORM = $true 
+  FORM = ($true)
 ;
   FORM = (FORM_A <=> FORM_B) 
 ).
@@ -1808,7 +1310,7 @@ esimp_bct('<=>', FORM_A, FORM_B, FORM) :- !,
 esimp_bct('=>', FORM_A, FORM_B, FORM) :- !, 
 (
   FORM_A == FORM_B -> 
-  FORM = $true 
+   FORM = ($true)
 ;
   FORM = (FORM_A => FORM_B) 
 ).
@@ -1833,10 +1335,6 @@ esimp(FORM, NORM) :-
   esimp_qtf(QTF, TEMP, NORM).
 
 esimp(FORM, FORM).
-
-
-dne(~ ~ FORM, FORM) :- !.
-dne(FORM, FORM).
 
 distribute(! FORM, ! NORM) :- !, 
   distribute(FORM, NORM).
@@ -1901,21 +1399,6 @@ trim_consult(FILE) :-
   consult(TEMP),
   delete_file(TEMP).
 
-hyp_tuple((fof, ID, TYPE, TF)) :- 
-  fof(OID, TYPE, TF), 
-  atom_concat(p, OID, ID).
-
-hyp_tuple((cnf, ID, TYPE, TF)) :- 
-  cnf(OID, TYPE, TF),
-  atom_concat(p, OID, ID).
-
-tuple_hyp((LNG, ID, TYPE, TF), (ID, (+ FORM))) :- 
-  member(TYPE, [axiom, lemma, hypothesis, definition, negated_conjecture]),
-  tf_form(LNG, TF, FORM).
-
-tuple_hyp((LNG, ID, conjecture, TF), (ID, (- FORM))) :- 
-  tf_form(LNG, TF, FORM).
-
 tf_form(fof, TF, FORM) :-
   fof_form([], TF, FORM).
 
@@ -1945,14 +1428,6 @@ pose(TPTP, IDS, PROB) :-
   findall(HYP, hypothesis(HYP), HYPS), 
   maplist_cut(fst, HYPS, IDS),
   foldl(add_hyp, HYPS, EMP, PROB).
-
-break_unary_form(~ FORM, "~", FORM).
-break_unary_form(! FORM, "!", FORM).
-break_unary_form(? FORM, "?", FORM).
-break_binary_form(FORM_A & FORM_B, FORM_A, "&", FORM_B).
-break_binary_form(FORM_A | FORM_B, FORM_A, "|", FORM_B).
-break_binary_form(FORM_A => FORM_B, FORM_A, "=>", FORM_B).
-break_binary_form(FORM_A <=> FORM_B, FORM_A, "<=>", FORM_B).
 
 split_at(NUM, LIST, FST, SND) :- 
   split_at(NUM, [], LIST, FST, SND).
@@ -1994,10 +1469,10 @@ put_bytes_dot(STRM, BYTES) :-
   put_bytes(STRM, BYTES), 
   put_dot(STRM). 
 
-put_string(STRM, STR) :- 
-  string(STR), 
-  string_codes(STR, BYTES),
-  put_bytes_dot(STRM, BYTES).
+% put_string(STRM, STR) :- 
+%   string(STR), 
+%   string_codes(STR, BYTES),
+%   put_bytes_dot(STRM, BYTES).
 
 put_atom(STRM, ATOM) :- 
   atom(ATOM), 
@@ -2006,9 +1481,6 @@ put_atom(STRM, ATOM) :-
 
 put_atoms(STRM, ATOMS) :- 
   put_list(STRM, put_atom, ATOMS).
-
-put_strings(STRM, STRS) :- 
-  put_list(STRM, put_string, STRS).
 
 put_dir(STRM, l) :- 
   put_char(STRM, "<").
@@ -2020,9 +1492,6 @@ put_num(STRM, NUM) :-
   number(NUM),
   number_codes(NUM, BYTES),
   put_bytes_dot(STRM, BYTES).
-
-put_nums(STRM, NUMS) :- 
-  put_list(STRM, put_num, NUMS).
  
 % nums_id([NUM], NUM) :- !.
 % nums_id([NUM | NUMS], l(NUM, ID)) :- 
@@ -2379,9 +1848,6 @@ erient_stom(- (TERM_A = TERM_B), - (TERM_B = TERM_A)).
 erient_atom(ATOM, ATOM).
 erient_atom(LHS = RHS, RHS = LHS).
 
-unify_lit(~ ATOM_A, ~ ATOM_B) :- unify_atom(ATOM_A, ATOM_B).
-unify_lit(ATOM_A, ATOM_B) :- unify_atom(ATOM_A, ATOM_B).
-
 unify_atom(ATOM_A, ATOM_B) :- 
   erient_atom(ATOM_A, TEMP), 
   unify_with_occurs_check(TEMP, ATOM_B).
@@ -2426,8 +1892,6 @@ use_contra(HYP, GOAL) :-
 
 lc(+ $false).
 lc(- $true).
-lt(+ $true).
-lt(- $false).
 
 bool_not($false, $true) :- !.
 bool_not($true, $false) :- !.
@@ -2461,15 +1925,8 @@ bool_norm((FORM_L & FORM_R), NORM) :- !,
 
 bool_norm(FORM, FORM).
 
-contra(+ FORM) :- bool_norm(FORM, $false).
-contra(- FORM) :- bool_norm(FORM, $true).
 tauto(+ FORM)  :- bool_norm(FORM, $true).
 tauto(- FORM)  :- bool_norm(FORM, $false).
-
-syeq_sf(SF_A, SF_B) :-
-  sf_sign_form(SF_A, SIGN, FORM_A),
-  sf_sign_form(SF_B, SIGN, FORM_B), 
-  syeq_form(FORM_A, FORM_B).
 
 syeq_form(FORM_A, FORM_B) :- 
   uct_break(FORM_A, UCT, SUB_A), !,
@@ -2507,10 +1964,6 @@ syunion_lits([LIT | LITS_A], LITS_B, LITS) :-
   syunion_lits(LITS_A, LITS_B, TEMP), 
   syinsert_lit(LIT, TEMP, LITS).
 
-mate_nu(HYP0, HYP1, GOAL) :- 
-  orient_sign(HYP0, HYP1, OPF, ONF),
-  mate_pn_nu(OPF, ONF, GOAL).
-
 mate(HYP0, HYP1, GOAL) :- 
   orient_sign(HYP0, HYP1, OPF, ONF),
   mate_pn(OPF, ONF, GOAL).
@@ -2518,13 +1971,6 @@ mate(HYP0, HYP1, GOAL) :-
 mate_pn(PYP, NYP, GOAL) :- 
   erient_hyp(PYP, GOAL, PYP_N, GOAL_N), 
   xp(PYP_N, NYP, GOAL_N).
-
-mate_pn_nu(OPF, ONF, GOAL) :- 
-  erient_hyp(OPF, GOAL, N_OPF, N_GOAL), 
-  N_OPF = (_, (+ FORM_A)),
-  ONF = (_, (- FORM_B)),
-  unifiable(FORM_A, FORM_B, []), 
-  xp(N_OPF, ONF, N_GOAL).
 
 sf_sign_form(+ FORM, '+', FORM).
 sf_sign_form(- FORM, '-', FORM).
@@ -2720,9 +2166,6 @@ get_num(STRM, NUM) :-
   get_string(STRM, STR),
   number_string(NUM, STR).
 
-get_nums(STRM, NUMS) :- 
-  get_list(STRM, get_num, NUMS).
-
 get_dir(STRM, DIR) :- 
   get_char(STRM, CH),
   (
@@ -2771,10 +2214,6 @@ get_sf(STRM, SF) :-
   get_char(STRM, SIGN_CH),
   get_form(STRM, FORM),
   char_form_sf(SIGN_CH, FORM, SF).
-
-get_hyp(STRM, (ID, SF)) :- 
-  get_atom(STRM, ID), 
-  get_sf(STRM, SF). 
 
 get_id(STRM, ID) :- 
   get_char(STRM, CH),
@@ -2984,32 +2423,6 @@ ablx(match, ATOMS, HYPS, PATH, HYP, GOAL) :-
     ablx(match, ATOMS, HYPS, PATH, HYP_R, GOAL_R),
     ablx(block, ATOMS, HYPS, PATH, HYP_L, GOAL_L)
   ).
-
-
-/*
-iff_conv_0(HYP_A, HYP_B, GOAL) :- 
-  bp(HYP_A, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R), 
-  iff_conv_1(HYP_L, HYP_B, GOAL_L),
-  iff_conv_1(HYP_R, HYP_B, GOAL_R).
-
-iff_conv_1(HYP_A, HYP_B, GOAL) :- 
-  bp(HYP_B, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R), 
-  iff_conv_2(HYP_A, HYP_L, GOAL_L),
-  iff_conv_2(HYP_A, HYP_R, GOAL_R).
-
-iff_conv_2(HYP_A, HYP_B, GOAL) :- 
-  ap(HYP_B, l, GOAL, HYP_N, GOAL_N), 
-  mate(HYP_A, HYP_N, GOAL_N) ;
-  ap(HYP_B, r, GOAL, HYP_N, GOAL_N), 
-  mate(HYP_A, HYP_N, GOAL_N).
-
-iff_conv(HYP_A, HYP_B, GOAL) :- 
-  aap(HYP_B, GOAL, HYP_BL, HYP_BR, GOAL_T), 
-  ap(HYP_P, l, GOAL, HYP_L, GOAL_L), 
-  iff_conv_0(HYP_L, HYP_N, GOAL_L),
-  ap(HYP_P, r, GOAL, HYP_R, GOAL_R), 
-  iff_conv_0(HYP_R, HYP_N, GOAL_R).
-*/
 
 sign_flip('+', '-').
 sign_flip('-', '+').
@@ -3348,8 +2761,6 @@ parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
 %;
 %  bfc(H2G, H2G_N) -> bfm(H2G_N).
 
-trp_fp((_, _, (_, FP, _)), FP).
-
 bf_push(TRP) :- 
   para_m(TRP) -> true 
 ;
@@ -3519,49 +2930,6 @@ bf_dist_fa((PREM, CONC, GOAL)) :-
   bf_dist_fa(TRP_A),
   bf_dist_fa(TRP_B).
 
-% bf_push_fa((PREM, CONC, GOAL)) :- 
-%   aap(CONC, GOAL, HYP_L0, HYP_R0, GOAL_0), 
-%   dp(HYP_R0, GOAL_0, HYP_R1, GOAL_1), 
-%   cp(PREM, _, GOAL_1, PREM_T, GOAL_2), 
-%   bp(PREM_T, GOAL_2, PREM_L, PREM_R, GOAL_3, GOAL_4), 
-%   bf_dist_fa((PREM_L, HYP_L0, GOAL_3)), 
-%   bf_dist_fa((PREM_R, HYP_R1, GOAL_4)).
-
-
-%bf_push_fa((PREM, CONC, GOAL)) :- 
-%  aap(CONC, GOAL, HYP_L0, HYP_R0, GOAL_0), 
-%  dp(HYP_L0, GOAL_0, HYP_L1, GOAL_1), 
-%  cp(PREM, _, GOAL_1, PREM_T, GOAL_2), 
-%  bp(PREM_T, GOAL_2, PREM_L, PREM_R, GOAL_3, GOAL_4), 
-%  bf_dist_fa((PREM_L, HYP_L1, GOAL_3)),
-%  bf_dist_fa((PREM_R, HYP_R0, GOAL_4)).
-
-
-
-%  bfd(H2G, H2G_N) -> 
-%  trp_fp(H2G, FP),
-%  bf_push([FP | NUMS], H2G_N) 
-%;
-%  bf_ba(H2G, H2G_L, H2G_R),
-%  bf_push(NUMS, H2G_L), 
-%  bf_push(NUMS, H2G_R)
-%;
-%  bf__b(H2G, H2G_L, H2G_R),
-%  bf_push(NUMS, H2G_L), 
-%  bf_push(NUMS, H2G_R)
-%;
-%  bf_a_(H2G, H2G_N),
-%  bf_push(NUMS, H2G_N) 
-%;
-%  (
-%    pluck(NUMS, NUM, REST), 
-%    TERM = @(NUM)
-%  ;
-%    NUMS = REST,
-%    TERM = c    
-%  ),
-%  bfc_term(TERM, H2G, H2G_N),
-%  bf_push(REST, H2G_N).
 
 bfe(H2G) :- 
   para_m(H2G) -> true ;

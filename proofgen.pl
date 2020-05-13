@@ -10,7 +10,7 @@ bench(PRVR, NAME) :-
   % atom_concat(NAME, '.tstp', TEMP1), 
   write(" ────────────────────────────────────────────────────────────────── "), 
   format("Proving problem : ~w\n", NAME),
-  atomic_list_concat(["p/", NAME, ".tptp"], TPTP), 
+  atomic_list_concat(["../tptp/", NAME, ".tptp"], TPTP), 
   atomic_list_concat([PRVR, "s/", NAME, ".tstp"], TSTP), 
   atomic_list_concat([PRVR, "e/", NAME, ".tesc"], TESC), 
   % (
@@ -40,7 +40,8 @@ main([PRVR]) :-
   set_prolog_flag(stack_limit, 4_294_967_296),
   % atom_concat(PRVR, s, SOLS_PATH),
   % rec_dir_files(SOLS_PATH, SOL_PATHS),
-  names_from_e(PRVR, NAMES),
+  % names_from_e(PRVR, NAMES),
+  names_from_s(PRVR, NAMES),
   length(NAMES, NUM), 
   format("Proving ~w problems\n", NUM),
   maplist_count(bench(PRVR), 0, 0, NAMES, CNT, TTL), 
