@@ -1,4 +1,3 @@
-:- op(1200,  fy, $).  
 :- op(1200,  fy, +).   % Positive formula
 :- op(1200,  fy, -).   % Negative formula
 :- op(1130, xfy, <=>). % equivalence
@@ -2593,32 +2592,6 @@ paratf(H2G) :-
   paratf(H2G_L),  
   paratf(H2G_R).
 
-
-
-
-
-%%%%%%%%%%%%%%%% PARALLEL LAX DECOMPOSITION %%%%%%%%%%%%%%%%
-
-% parav_cd((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
-%   vac_qtf(HYP_A), 
-%   (
-%     cp(HYP_A, _, GOAL, HYP_AN, GOAL_N) ; 
-%     dp(HYP_A, GOAL, HYP_AN, GOAL_N)
-%   ).
-% 
-% parav_cd((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
-%   vac_qtf(HYP_B), 
-%   (
-%     cp(HYP_B, _, GOAL, HYP_BN, GOAL_N) ; 
-%     dp(HYP_B, GOAL, HYP_BN, GOAL_N)
-%   ).
-
-% paral_one((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
-%   sp(HYP_A, GOAL, HYP_AN, GOAL_N). 
-%   
-% paral_one((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
-%   sp(HYP_B, GOAL, HYP_BN, GOAL_N). 
-
 paral_cd((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_NB, GOAL_N)) :- 
   cdp_lax(HYP_A, HYP_B, GOAL, HYP_NA, HYP_NB, GOAL_N) ;
   cdp_lax(HYP_B, HYP_A, GOAL, HYP_NB, HYP_NA, GOAL_N).
@@ -2792,20 +2765,6 @@ bf_dist_ex(TRP) :-
   bf_d_(TRP, TRP_T), 
   bfm(TRP_T).
 
-% bf_push_ex((PREM, CONC, GOAL)) :- 
-%   PREM = (_, (+ ? FORM)), 
-%   fv_dec_form(FORM, _), !, 
-%   dp(PREM, GOAL, PREM_N, GOAL_N), 
-%   bf_push((PREM_N, CONC, GOAL_N)).
-
-% bf_dist_ex(TRP) :- 
-%   bf_d_(TRP, TRP_0), 
-%   bf_ba(TRP_0, TRP_L0, TRP_R0),
-%   bf__c(TRP_L0, TRP_L1), 
-%   bf_dist_ex(TRP_L1), 
-%   bf__c(TRP_R0, TRP_R1), 
-%   bf_dist_ex(TRP_R1).
-
 bf_dist_ex((PREM, CONC, GOAL)) :- 
   PREM = (_, (+ ? (FORM_A | FORM_B))), !, 
   fp((? FORM_A) | (? FORM_B), GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B), 
@@ -2820,13 +2779,6 @@ bf_dist_ex((PREM, CONC, GOAL)) :-
   bf_dist_ex(TRP_A),
   bf_dist_ex(TRP_B).
 
-% bf_dist_ex(TRP) :- 
-%   bf_d_(TRP, TRP0),
-%   bf_ab(TRP0, TRP_L0, TRP_R0), 
-%   bf_dist_ex(TRP_L0), 
-%   bf__c(TRP_R0, TRP_R1), 
-%   bf_dist_ex(TRP_R1).
-
 bf_dist_ex((PREM, CONC, GOAL)) :- 
   PREM = (_, (+ ? (FORM_A & FORM_B))), 
   fv_dec_form(FORM_A, _), !, 
@@ -2840,13 +2792,6 @@ bf_dist_ex((PREM, CONC, GOAL)) :-
   bf_ab((HYP_B, CONC, GOAL_B), TRP_A, TRP_B), 
   bf_dist_ex(TRP_A), 
   bf_dist_ex(TRP_B).
-
-% bf_dist_ex(TRP) :- 
-%   bf_d_(TRP, TRP0),
-%   bf_ab(TRP0, TRP_L0, TRP_R0), 
-%   bf__c(TRP_L0, TRP_L1), 
-%   bf_dist_ex(TRP_L1), 
-%   bf_dist_ex(TRP_R0).
   
 bf_dist_ex((PREM, CONC, GOAL)) :- 
   PREM = (_, (+ ? (FORM_A & FORM_B))), 
@@ -2868,23 +2813,6 @@ bf_dist_fa(TRP) :-
   bf_c_(c, TRP, TRP_T), 
   bfm(TRP_T).
 
-% bf_dist_fa(PREM, CONC, GOAL) :- 
-%   PREM = (_, (+ ! FORM)), 
-%   fv_dec_form(FORM, _), !, 
-%   cp(PREM, c, GOAL, PREM_N, GOAL_N), 
-%   mate(PREM_N, CONC, GOAL_N).
-
-%bf_dist_fa(TRP) :- 
-%  bf__b(TRP, TRP_L0, TRP_R0), 
-%  bf__d(TRP_L0, TRP_L1), 
-%  bf_c_(TRP_L1, TRP_L2), 
-%  bf_a_(l, TRP_L2, TRP_L3), 
-%  bf_dist_fa(TRP_L3), 
-%  bf__d(TRP_R0, TRP_R1), 
-%  bf_c_(TRP_R1, TRP_R2), 
-%  bf_a_(r, TRP_R2, TRP_R3), 
-%  bf_dist_fa(TRP_R3). 
-%
 bf_dist_fa((PREM, CONC, GOAL)) :- 
   PREM = (_, (+ ! (FORM_A & FORM_B))), !, 
   fp((! FORM_A) & (! FORM_B), GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B), 

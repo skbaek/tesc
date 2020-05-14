@@ -1,6 +1,4 @@
 :- [basic].
-% :- [check].
-:- [solve].
 
 get_context(PROB, PIDS, CTX) :- 
   maplist(prob_id_hyp(PROB), PIDS, CTX).
@@ -1110,12 +1108,3 @@ prove(STRM, _, PRVR, [inf(HINTS, PIDS, CID, FORM) | SOL], PROB) :-
 
 prove(STRM, LAST, _, [], _) :- 
   put_prf(STRM, t(- $false, [neg_false], x(0), x(LAST, x(0)))).
-
-prove(PRVR, TPTP, TSTP, TXTX) :- 
-  set_prolog_flag(stack_limit, 2_147_483_648),
-  style_check(-singleton),
-  pose(TPTP, PIDS, PROB),
-  solve(PRVR, PIDS, TSTP, SOL),
-  open(TXTX, write, STRM, [encoding(octet)]),
-  prove(STRM, none, PRVR, SOL, PROB),
-  close(STRM).
