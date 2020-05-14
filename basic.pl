@@ -2937,3 +2937,7 @@ names_from_e(PRVR, NAMES) :-
   atom_concat(PRVR, e, PATH),
   rec_dir_files(PATH, PATHS),
   maplist_cut(tesc_name(PRVR), PATHS, NAMES).
+
+abrv_prover(vampire, v).
+abrv_prover(e, e).
+
