@@ -1,0 +1,90 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for COM021+4
+% SZS output start Proof for COM021+4
+fof(f677,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f485,f672])).
+fof(f672,plain,(
+  ~spl36_39),
+  inference(avatar_contradiction_clause,[],[f671])).
+fof(f671,plain,(
+  $false | ~spl36_39),
+  inference(subsumption_resolution,[],[f282,f607])).
+fof(f607,plain,(
+  sdtmndtasgtdt0(xb,xR,xd) | ~spl36_39),
+  inference(forward_demodulation,[],[f272,f471])).
+fof(f471,plain,(
+  xd = xx | ~spl36_39),
+  inference(avatar_component_clause,[],[f469])).
+fof(f469,plain,(
+  spl36_39 <=> xd = xx),
+  introduced(avatar_definition,[new_symbols(naming,[spl36_39])])).
+fof(f272,plain,(
+  sdtmndtasgtdt0(xb,xR,xx)),
+  inference(cnf_transformation,[],[f137])).
+fof(f137,plain,(
+  sdtmndtasgtdt0(xd,xR,xx) & ((sdtmndtplgtdt0(xd,xR,xx) & ((sdtmndtplgtdt0(sK34,xR,xx) & aReductOfIn0(sK34,xd,xR) & aElement0(sK34)) | aReductOfIn0(xx,xd,xR))) | xd = xx) & sdtmndtasgtdt0(xb,xR,xx) & ((sdtmndtplgtdt0(xb,xR,xx) & ((sdtmndtplgtdt0(sK35,xR,xx) & aReductOfIn0(sK35,xb,xR) & aElement0(sK35)) | aReductOfIn0(xx,xb,xR))) | xb = xx) & aElement0(xx)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK34,sK35])],[f36,f136,f135])).
+fof(f135,plain,(
+  ? [X0] : (sdtmndtplgtdt0(X0,xR,xx) & aReductOfIn0(X0,xd,xR) & aElement0(X0)) => (sdtmndtplgtdt0(sK34,xR,xx) & aReductOfIn0(sK34,xd,xR) & aElement0(sK34))),
+  introduced(choice_axiom,[])).
+fof(f136,plain,(
+  ? [X1] : (sdtmndtplgtdt0(X1,xR,xx) & aReductOfIn0(X1,xb,xR) & aElement0(X1)) => (sdtmndtplgtdt0(sK35,xR,xx) & aReductOfIn0(sK35,xb,xR) & aElement0(sK35))),
+  introduced(choice_axiom,[])).
+fof(f36,plain,(
+  sdtmndtasgtdt0(xd,xR,xx) & ((sdtmndtplgtdt0(xd,xR,xx) & (? [X0] : (sdtmndtplgtdt0(X0,xR,xx) & aReductOfIn0(X0,xd,xR) & aElement0(X0)) | aReductOfIn0(xx,xd,xR))) | xd = xx) & sdtmndtasgtdt0(xb,xR,xx) & ((sdtmndtplgtdt0(xb,xR,xx) & (? [X1] : (sdtmndtplgtdt0(X1,xR,xx) & aReductOfIn0(X1,xb,xR) & aElement0(X1)) | aReductOfIn0(xx,xb,xR))) | xb = xx) & aElement0(xx)),
+  inference(rectify,[],[f24])).
+fof(f24,axiom,(
+  sdtmndtasgtdt0(xd,xR,xx) & ((sdtmndtplgtdt0(xd,xR,xx) & (? [X0] : (sdtmndtplgtdt0(X0,xR,xx) & aReductOfIn0(X0,xd,xR) & aElement0(X0)) | aReductOfIn0(xx,xd,xR))) | xd = xx) & sdtmndtasgtdt0(xb,xR,xx) & ((sdtmndtplgtdt0(xb,xR,xx) & (? [X0] : (sdtmndtplgtdt0(X0,xR,xx) & aReductOfIn0(X0,xb,xR) & aElement0(X0)) | aReductOfIn0(xx,xb,xR))) | xb = xx) & aElement0(xx)),
+  file('./p/COM021+4.tptp',unknown)).
+fof(f282,plain,(
+  ~sdtmndtasgtdt0(xb,xR,xd)),
+  inference(cnf_transformation,[],[f62])).
+fof(f62,plain,(
+  ~sdtmndtasgtdt0(xb,xR,xd) & ~sdtmndtplgtdt0(xb,xR,xd) & ! [X0] : (~sdtmndtplgtdt0(X0,xR,xd) | ~aReductOfIn0(X0,xb,xR) | ~aElement0(X0)) & ~aReductOfIn0(xd,xb,xR) & xb != xd),
+  inference(ennf_transformation,[],[f26])).
+fof(f26,negated_conjecture,(
+  ~(sdtmndtasgtdt0(xb,xR,xd) | sdtmndtplgtdt0(xb,xR,xd) | ? [X0] : (sdtmndtplgtdt0(X0,xR,xd) & aReductOfIn0(X0,xb,xR) & aElement0(X0)) | aReductOfIn0(xd,xb,xR) | xb = xd)),
+  inference(negated_conjecture,[],[f25])).
+fof(f25,conjecture,(
+  sdtmndtasgtdt0(xb,xR,xd) | sdtmndtplgtdt0(xb,xR,xd) | ? [X0] : (sdtmndtplgtdt0(X0,xR,xd) & aReductOfIn0(X0,xb,xR) & aElement0(X0)) | aReductOfIn0(xd,xb,xR) | xb = xd),
+  file('./p/COM021+4.tptp',unknown)).
+fof(f485,plain,(
+  spl36_39),
+  inference(avatar_split_clause,[],[f484,f469])).
+fof(f484,plain,(
+  xd = xx),
+  inference(subsumption_resolution,[],[f483,f265])).
+fof(f265,plain,(
+  ( ! [X0] : (~aReductOfIn0(X0,xd,xR)) )),
+  inference(cnf_transformation,[],[f134])).
+fof(f134,plain,(
+  aNormalFormOfIn0(xd,xw,xR) & ! [X0] : ~aReductOfIn0(X0,xd,xR) & sdtmndtasgtdt0(xw,xR,xd) & ((sdtmndtplgtdt0(xw,xR,xd) & ((sdtmndtplgtdt0(sK33,xR,xd) & aReductOfIn0(sK33,xw,xR) & aElement0(sK33)) | aReductOfIn0(xd,xw,xR))) | xw = xd) & aElement0(xd)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK33])],[f61,f133])).
+fof(f133,plain,(
+  ? [X1] : (sdtmndtplgtdt0(X1,xR,xd) & aReductOfIn0(X1,xw,xR) & aElement0(X1)) => (sdtmndtplgtdt0(sK33,xR,xd) & aReductOfIn0(sK33,xw,xR) & aElement0(sK33))),
+  introduced(choice_axiom,[])).
+fof(f61,plain,(
+  aNormalFormOfIn0(xd,xw,xR) & ! [X0] : ~aReductOfIn0(X0,xd,xR) & sdtmndtasgtdt0(xw,xR,xd) & ((sdtmndtplgtdt0(xw,xR,xd) & (? [X1] : (sdtmndtplgtdt0(X1,xR,xd) & aReductOfIn0(X1,xw,xR) & aElement0(X1)) | aReductOfIn0(xd,xw,xR))) | xw = xd) & aElement0(xd)),
+  inference(ennf_transformation,[],[f35])).
+fof(f35,plain,(
+  aNormalFormOfIn0(xd,xw,xR) & ~? [X0] : aReductOfIn0(X0,xd,xR) & sdtmndtasgtdt0(xw,xR,xd) & ((sdtmndtplgtdt0(xw,xR,xd) & (? [X1] : (sdtmndtplgtdt0(X1,xR,xd) & aReductOfIn0(X1,xw,xR) & aElement0(X1)) | aReductOfIn0(xd,xw,xR))) | xw = xd) & aElement0(xd)),
+  inference(rectify,[],[f23])).
+fof(f23,axiom,(
+  aNormalFormOfIn0(xd,xw,xR) & ~? [X0] : aReductOfIn0(X0,xd,xR) & sdtmndtasgtdt0(xw,xR,xd) & ((sdtmndtplgtdt0(xw,xR,xd) & (? [X0] : (sdtmndtplgtdt0(X0,xR,xd) & aReductOfIn0(X0,xw,xR) & aElement0(X0)) | aReductOfIn0(xd,xw,xR))) | xw = xd) & aElement0(xd)),
+  file('./p/COM021+4.tptp',unknown)).
+fof(f483,plain,(
+  aReductOfIn0(xx,xd,xR) | xd = xx),
+  inference(subsumption_resolution,[],[f274,f265])).
+fof(f274,plain,(
+  aReductOfIn0(sK34,xd,xR) | aReductOfIn0(xx,xd,xR) | xd = xx),
+  inference(cnf_transformation,[],[f137])).
+% SZS output end Proof for COM021+4
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5245
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

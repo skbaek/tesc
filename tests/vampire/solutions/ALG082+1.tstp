@@ -1,0 +1,441 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for ALG082+1
+% SZS output start Proof for ALG082+1
+fof(f2570,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f413,f434,f463,f617,f667,f797,f931,f995,f1227,f1329,f1366,f1723,f1743,f2046,f2170,f2206,f2250,f2388,f2435,f2475])).
+fof(f2475,plain,(
+  spl0_5 | ~spl0_30),
+  inference(avatar_split_clause,[],[f2465,f347,f242])).
+fof(f242,plain,(
+  spl0_5 <=> e14 = j(e24)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_5])])).
+fof(f347,plain,(
+  spl0_30 <=> e24 = h(e14)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_30])])).
+fof(f2465,plain,(
+  e14 = j(e24) | ~spl0_30),
+  inference(backward_demodulation,[],[f349,f174])).
+fof(f174,plain,(
+  e14 = j(h(e14))),
+  inference(cnf_transformation,[],[f9])).
+fof(f9,plain,(
+  e14 = j(h(e14)) & e13 = j(h(e13)) & e12 = j(h(e12)) & e11 = j(h(e11)) & e10 = j(h(e10)) & e24 = h(j(e24)) & e23 = h(j(e23)) & e22 = h(j(e22)) & e21 = h(j(e21)) & e20 = h(j(e20)) & j(op2(e24,e24)) = op1(j(e24),j(e24)) & j(op2(e24,e23)) = op1(j(e24),j(e23)) & j(op2(e24,e22)) = op1(j(e24),j(e22)) & j(op2(e24,e21)) = op1(j(e24),j(e21)) & j(op2(e24,e20)) = op1(j(e24),j(e20)) & j(op2(e23,e24)) = op1(j(e23),j(e24)) & j(op2(e23,e23)) = op1(j(e23),j(e23)) & j(op2(e23,e22)) = op1(j(e23),j(e22)) & j(op2(e23,e21)) = op1(j(e23),j(e21)) & j(op2(e23,e20)) = op1(j(e23),j(e20)) & j(op2(e22,e24)) = op1(j(e22),j(e24)) & j(op2(e22,e23)) = op1(j(e22),j(e23)) & j(op2(e22,e22)) = op1(j(e22),j(e22)) & j(op2(e22,e21)) = op1(j(e22),j(e21)) & j(op2(e22,e20)) = op1(j(e22),j(e20)) & j(op2(e21,e24)) = op1(j(e21),j(e24)) & j(op2(e21,e23)) = op1(j(e21),j(e23)) & j(op2(e21,e22)) = op1(j(e21),j(e22)) & j(op2(e21,e21)) = op1(j(e21),j(e21)) & j(op2(e21,e20)) = op1(j(e21),j(e20)) & j(op2(e20,e24)) = op1(j(e20),j(e24)) & j(op2(e20,e23)) = op1(j(e20),j(e23)) & j(op2(e20,e22)) = op1(j(e20),j(e22)) & j(op2(e20,e21)) = op1(j(e20),j(e21)) & j(op2(e20,e20)) = op1(j(e20),j(e20)) & h(op1(e14,e14)) = op2(h(e14),h(e14)) & h(op1(e14,e13)) = op2(h(e14),h(e13)) & h(op1(e14,e12)) = op2(h(e14),h(e12)) & h(op1(e14,e11)) = op2(h(e14),h(e11)) & h(op1(e14,e10)) = op2(h(e14),h(e10)) & h(op1(e13,e14)) = op2(h(e13),h(e14)) & h(op1(e13,e13)) = op2(h(e13),h(e13)) & h(op1(e13,e12)) = op2(h(e13),h(e12)) & h(op1(e13,e11)) = op2(h(e13),h(e11)) & h(op1(e13,e10)) = op2(h(e13),h(e10)) & h(op1(e12,e14)) = op2(h(e12),h(e14)) & h(op1(e12,e13)) = op2(h(e12),h(e13)) & h(op1(e12,e12)) = op2(h(e12),h(e12)) & h(op1(e12,e11)) = op2(h(e12),h(e11)) & h(op1(e12,e10)) = op2(h(e12),h(e10)) & h(op1(e11,e14)) = op2(h(e11),h(e14)) & h(op1(e11,e13)) = op2(h(e11),h(e13)) & h(op1(e11,e12)) = op2(h(e11),h(e12)) & h(op1(e11,e11)) = op2(h(e11),h(e11)) & h(op1(e11,e10)) = op2(h(e11),h(e10)) & h(op1(e10,e14)) = op2(h(e10),h(e14)) & h(op1(e10,e13)) = op2(h(e10),h(e13)) & h(op1(e10,e12)) = op2(h(e10),h(e12)) & h(op1(e10,e11)) = op2(h(e10),h(e11)) & h(op1(e10,e10)) = op2(h(e10),h(e10)) & (e14 = j(e24) | e13 = j(e24) | e12 = j(e24) | e11 = j(e24) | e10 = j(e24)) & (e14 = j(e23) | e13 = j(e23) | e12 = j(e23) | e11 = j(e23) | e10 = j(e23)) & (e14 = j(e22) | e13 = j(e22) | e12 = j(e22) | e11 = j(e22) | e10 = j(e22)) & (e14 = j(e21) | e13 = j(e21) | e12 = j(e21) | e11 = j(e21) | e10 = j(e21)) & (e14 = j(e20) | e13 = j(e20) | e12 = j(e20) | e11 = j(e20) | e10 = j(e20)) & (e24 = h(e14) | e23 = h(e14) | e22 = h(e14) | e21 = h(e14) | e20 = h(e14)) & (e24 = h(e13) | e23 = h(e13) | e22 = h(e13) | e21 = h(e13) | e20 = h(e13)) & (e24 = h(e12) | e23 = h(e12) | e22 = h(e12) | e21 = h(e12) | e20 = h(e12)) & (e24 = h(e11) | e23 = h(e11) | e22 = h(e11) | e21 = h(e11) | e20 = h(e11)) & (e24 = h(e10) | e23 = h(e10) | e22 = h(e10) | e21 = h(e10) | e20 = h(e10))),
+  inference(flattening,[],[f8])).
+fof(f8,plain,(
+  (e14 = j(h(e14)) & e13 = j(h(e13)) & e12 = j(h(e12)) & e11 = j(h(e11)) & e10 = j(h(e10)) & e24 = h(j(e24)) & e23 = h(j(e23)) & e22 = h(j(e22)) & e21 = h(j(e21)) & e20 = h(j(e20)) & j(op2(e24,e24)) = op1(j(e24),j(e24)) & j(op2(e24,e23)) = op1(j(e24),j(e23)) & j(op2(e24,e22)) = op1(j(e24),j(e22)) & j(op2(e24,e21)) = op1(j(e24),j(e21)) & j(op2(e24,e20)) = op1(j(e24),j(e20)) & j(op2(e23,e24)) = op1(j(e23),j(e24)) & j(op2(e23,e23)) = op1(j(e23),j(e23)) & j(op2(e23,e22)) = op1(j(e23),j(e22)) & j(op2(e23,e21)) = op1(j(e23),j(e21)) & j(op2(e23,e20)) = op1(j(e23),j(e20)) & j(op2(e22,e24)) = op1(j(e22),j(e24)) & j(op2(e22,e23)) = op1(j(e22),j(e23)) & j(op2(e22,e22)) = op1(j(e22),j(e22)) & j(op2(e22,e21)) = op1(j(e22),j(e21)) & j(op2(e22,e20)) = op1(j(e22),j(e20)) & j(op2(e21,e24)) = op1(j(e21),j(e24)) & j(op2(e21,e23)) = op1(j(e21),j(e23)) & j(op2(e21,e22)) = op1(j(e21),j(e22)) & j(op2(e21,e21)) = op1(j(e21),j(e21)) & j(op2(e21,e20)) = op1(j(e21),j(e20)) & j(op2(e20,e24)) = op1(j(e20),j(e24)) & j(op2(e20,e23)) = op1(j(e20),j(e23)) & j(op2(e20,e22)) = op1(j(e20),j(e22)) & j(op2(e20,e21)) = op1(j(e20),j(e21)) & j(op2(e20,e20)) = op1(j(e20),j(e20)) & h(op1(e14,e14)) = op2(h(e14),h(e14)) & h(op1(e14,e13)) = op2(h(e14),h(e13)) & h(op1(e14,e12)) = op2(h(e14),h(e12)) & h(op1(e14,e11)) = op2(h(e14),h(e11)) & h(op1(e14,e10)) = op2(h(e14),h(e10)) & h(op1(e13,e14)) = op2(h(e13),h(e14)) & h(op1(e13,e13)) = op2(h(e13),h(e13)) & h(op1(e13,e12)) = op2(h(e13),h(e12)) & h(op1(e13,e11)) = op2(h(e13),h(e11)) & h(op1(e13,e10)) = op2(h(e13),h(e10)) & h(op1(e12,e14)) = op2(h(e12),h(e14)) & h(op1(e12,e13)) = op2(h(e12),h(e13)) & h(op1(e12,e12)) = op2(h(e12),h(e12)) & h(op1(e12,e11)) = op2(h(e12),h(e11)) & h(op1(e12,e10)) = op2(h(e12),h(e10)) & h(op1(e11,e14)) = op2(h(e11),h(e14)) & h(op1(e11,e13)) = op2(h(e11),h(e13)) & h(op1(e11,e12)) = op2(h(e11),h(e12)) & h(op1(e11,e11)) = op2(h(e11),h(e11)) & h(op1(e11,e10)) = op2(h(e11),h(e10)) & h(op1(e10,e14)) = op2(h(e10),h(e14)) & h(op1(e10,e13)) = op2(h(e10),h(e13)) & h(op1(e10,e12)) = op2(h(e10),h(e12)) & h(op1(e10,e11)) = op2(h(e10),h(e11)) & h(op1(e10,e10)) = op2(h(e10),h(e10))) & ((e14 = j(e24) | e13 = j(e24) | e12 = j(e24) | e11 = j(e24) | e10 = j(e24)) & (e14 = j(e23) | e13 = j(e23) | e12 = j(e23) | e11 = j(e23) | e10 = j(e23)) & (e14 = j(e22) | e13 = j(e22) | e12 = j(e22) | e11 = j(e22) | e10 = j(e22)) & (e14 = j(e21) | e13 = j(e21) | e12 = j(e21) | e11 = j(e21) | e10 = j(e21)) & (e14 = j(e20) | e13 = j(e20) | e12 = j(e20) | e11 = j(e20) | e10 = j(e20)) & (e24 = h(e14) | e23 = h(e14) | e22 = h(e14) | e21 = h(e14) | e20 = h(e14)) & (e24 = h(e13) | e23 = h(e13) | e22 = h(e13) | e21 = h(e13) | e20 = h(e13)) & (e24 = h(e12) | e23 = h(e12) | e22 = h(e12) | e21 = h(e12) | e20 = h(e12)) & (e24 = h(e11) | e23 = h(e11) | e22 = h(e11) | e21 = h(e11) | e20 = h(e11)) & (e24 = h(e10) | e23 = h(e10) | e22 = h(e10) | e21 = h(e10) | e20 = h(e10)))),
+  inference(ennf_transformation,[],[f7])).
+fof(f7,negated_conjecture,(
+  ~(((e14 = j(e24) | e13 = j(e24) | e12 = j(e24) | e11 = j(e24) | e10 = j(e24)) & (e14 = j(e23) | e13 = j(e23) | e12 = j(e23) | e11 = j(e23) | e10 = j(e23)) & (e14 = j(e22) | e13 = j(e22) | e12 = j(e22) | e11 = j(e22) | e10 = j(e22)) & (e14 = j(e21) | e13 = j(e21) | e12 = j(e21) | e11 = j(e21) | e10 = j(e21)) & (e14 = j(e20) | e13 = j(e20) | e12 = j(e20) | e11 = j(e20) | e10 = j(e20)) & (e24 = h(e14) | e23 = h(e14) | e22 = h(e14) | e21 = h(e14) | e20 = h(e14)) & (e24 = h(e13) | e23 = h(e13) | e22 = h(e13) | e21 = h(e13) | e20 = h(e13)) & (e24 = h(e12) | e23 = h(e12) | e22 = h(e12) | e21 = h(e12) | e20 = h(e12)) & (e24 = h(e11) | e23 = h(e11) | e22 = h(e11) | e21 = h(e11) | e20 = h(e11)) & (e24 = h(e10) | e23 = h(e10) | e22 = h(e10) | e21 = h(e10) | e20 = h(e10))) => ~(e14 = j(h(e14)) & e13 = j(h(e13)) & e12 = j(h(e12)) & e11 = j(h(e11)) & e10 = j(h(e10)) & e24 = h(j(e24)) & e23 = h(j(e23)) & e22 = h(j(e22)) & e21 = h(j(e21)) & e20 = h(j(e20)) & j(op2(e24,e24)) = op1(j(e24),j(e24)) & j(op2(e24,e23)) = op1(j(e24),j(e23)) & j(op2(e24,e22)) = op1(j(e24),j(e22)) & j(op2(e24,e21)) = op1(j(e24),j(e21)) & j(op2(e24,e20)) = op1(j(e24),j(e20)) & j(op2(e23,e24)) = op1(j(e23),j(e24)) & j(op2(e23,e23)) = op1(j(e23),j(e23)) & j(op2(e23,e22)) = op1(j(e23),j(e22)) & j(op2(e23,e21)) = op1(j(e23),j(e21)) & j(op2(e23,e20)) = op1(j(e23),j(e20)) & j(op2(e22,e24)) = op1(j(e22),j(e24)) & j(op2(e22,e23)) = op1(j(e22),j(e23)) & j(op2(e22,e22)) = op1(j(e22),j(e22)) & j(op2(e22,e21)) = op1(j(e22),j(e21)) & j(op2(e22,e20)) = op1(j(e22),j(e20)) & j(op2(e21,e24)) = op1(j(e21),j(e24)) & j(op2(e21,e23)) = op1(j(e21),j(e23)) & j(op2(e21,e22)) = op1(j(e21),j(e22)) & j(op2(e21,e21)) = op1(j(e21),j(e21)) & j(op2(e21,e20)) = op1(j(e21),j(e20)) & j(op2(e20,e24)) = op1(j(e20),j(e24)) & j(op2(e20,e23)) = op1(j(e20),j(e23)) & j(op2(e20,e22)) = op1(j(e20),j(e22)) & j(op2(e20,e21)) = op1(j(e20),j(e21)) & j(op2(e20,e20)) = op1(j(e20),j(e20)) & h(op1(e14,e14)) = op2(h(e14),h(e14)) & h(op1(e14,e13)) = op2(h(e14),h(e13)) & h(op1(e14,e12)) = op2(h(e14),h(e12)) & h(op1(e14,e11)) = op2(h(e14),h(e11)) & h(op1(e14,e10)) = op2(h(e14),h(e10)) & h(op1(e13,e14)) = op2(h(e13),h(e14)) & h(op1(e13,e13)) = op2(h(e13),h(e13)) & h(op1(e13,e12)) = op2(h(e13),h(e12)) & h(op1(e13,e11)) = op2(h(e13),h(e11)) & h(op1(e13,e10)) = op2(h(e13),h(e10)) & h(op1(e12,e14)) = op2(h(e12),h(e14)) & h(op1(e12,e13)) = op2(h(e12),h(e13)) & h(op1(e12,e12)) = op2(h(e12),h(e12)) & h(op1(e12,e11)) = op2(h(e12),h(e11)) & h(op1(e12,e10)) = op2(h(e12),h(e10)) & h(op1(e11,e14)) = op2(h(e11),h(e14)) & h(op1(e11,e13)) = op2(h(e11),h(e13)) & h(op1(e11,e12)) = op2(h(e11),h(e12)) & h(op1(e11,e11)) = op2(h(e11),h(e11)) & h(op1(e11,e10)) = op2(h(e11),h(e10)) & h(op1(e10,e14)) = op2(h(e10),h(e14)) & h(op1(e10,e13)) = op2(h(e10),h(e13)) & h(op1(e10,e12)) = op2(h(e10),h(e12)) & h(op1(e10,e11)) = op2(h(e10),h(e11)) & h(op1(e10,e10)) = op2(h(e10),h(e10))))),
+  inference(negated_conjecture,[],[f6])).
+fof(f6,conjecture,(
+  ((e14 = j(e24) | e13 = j(e24) | e12 = j(e24) | e11 = j(e24) | e10 = j(e24)) & (e14 = j(e23) | e13 = j(e23) | e12 = j(e23) | e11 = j(e23) | e10 = j(e23)) & (e14 = j(e22) | e13 = j(e22) | e12 = j(e22) | e11 = j(e22) | e10 = j(e22)) & (e14 = j(e21) | e13 = j(e21) | e12 = j(e21) | e11 = j(e21) | e10 = j(e21)) & (e14 = j(e20) | e13 = j(e20) | e12 = j(e20) | e11 = j(e20) | e10 = j(e20)) & (e24 = h(e14) | e23 = h(e14) | e22 = h(e14) | e21 = h(e14) | e20 = h(e14)) & (e24 = h(e13) | e23 = h(e13) | e22 = h(e13) | e21 = h(e13) | e20 = h(e13)) & (e24 = h(e12) | e23 = h(e12) | e22 = h(e12) | e21 = h(e12) | e20 = h(e12)) & (e24 = h(e11) | e23 = h(e11) | e22 = h(e11) | e21 = h(e11) | e20 = h(e11)) & (e24 = h(e10) | e23 = h(e10) | e22 = h(e10) | e21 = h(e10) | e20 = h(e10))) => ~(e14 = j(h(e14)) & e13 = j(h(e13)) & e12 = j(h(e12)) & e11 = j(h(e11)) & e10 = j(h(e10)) & e24 = h(j(e24)) & e23 = h(j(e23)) & e22 = h(j(e22)) & e21 = h(j(e21)) & e20 = h(j(e20)) & j(op2(e24,e24)) = op1(j(e24),j(e24)) & j(op2(e24,e23)) = op1(j(e24),j(e23)) & j(op2(e24,e22)) = op1(j(e24),j(e22)) & j(op2(e24,e21)) = op1(j(e24),j(e21)) & j(op2(e24,e20)) = op1(j(e24),j(e20)) & j(op2(e23,e24)) = op1(j(e23),j(e24)) & j(op2(e23,e23)) = op1(j(e23),j(e23)) & j(op2(e23,e22)) = op1(j(e23),j(e22)) & j(op2(e23,e21)) = op1(j(e23),j(e21)) & j(op2(e23,e20)) = op1(j(e23),j(e20)) & j(op2(e22,e24)) = op1(j(e22),j(e24)) & j(op2(e22,e23)) = op1(j(e22),j(e23)) & j(op2(e22,e22)) = op1(j(e22),j(e22)) & j(op2(e22,e21)) = op1(j(e22),j(e21)) & j(op2(e22,e20)) = op1(j(e22),j(e20)) & j(op2(e21,e24)) = op1(j(e21),j(e24)) & j(op2(e21,e23)) = op1(j(e21),j(e23)) & j(op2(e21,e22)) = op1(j(e21),j(e22)) & j(op2(e21,e21)) = op1(j(e21),j(e21)) & j(op2(e21,e20)) = op1(j(e21),j(e20)) & j(op2(e20,e24)) = op1(j(e20),j(e24)) & j(op2(e20,e23)) = op1(j(e20),j(e23)) & j(op2(e20,e22)) = op1(j(e20),j(e22)) & j(op2(e20,e21)) = op1(j(e20),j(e21)) & j(op2(e20,e20)) = op1(j(e20),j(e20)) & h(op1(e14,e14)) = op2(h(e14),h(e14)) & h(op1(e14,e13)) = op2(h(e14),h(e13)) & h(op1(e14,e12)) = op2(h(e14),h(e12)) & h(op1(e14,e11)) = op2(h(e14),h(e11)) & h(op1(e14,e10)) = op2(h(e14),h(e10)) & h(op1(e13,e14)) = op2(h(e13),h(e14)) & h(op1(e13,e13)) = op2(h(e13),h(e13)) & h(op1(e13,e12)) = op2(h(e13),h(e12)) & h(op1(e13,e11)) = op2(h(e13),h(e11)) & h(op1(e13,e10)) = op2(h(e13),h(e10)) & h(op1(e12,e14)) = op2(h(e12),h(e14)) & h(op1(e12,e13)) = op2(h(e12),h(e13)) & h(op1(e12,e12)) = op2(h(e12),h(e12)) & h(op1(e12,e11)) = op2(h(e12),h(e11)) & h(op1(e12,e10)) = op2(h(e12),h(e10)) & h(op1(e11,e14)) = op2(h(e11),h(e14)) & h(op1(e11,e13)) = op2(h(e11),h(e13)) & h(op1(e11,e12)) = op2(h(e11),h(e12)) & h(op1(e11,e11)) = op2(h(e11),h(e11)) & h(op1(e11,e10)) = op2(h(e11),h(e10)) & h(op1(e10,e14)) = op2(h(e10),h(e14)) & h(op1(e10,e13)) = op2(h(e10),h(e13)) & h(op1(e10,e12)) = op2(h(e10),h(e12)) & h(op1(e10,e11)) = op2(h(e10),h(e11)) & h(op1(e10,e10)) = op2(h(e10),h(e10)))),
+  file('./p/ALG082+1.tptp',unknown)).
+fof(f349,plain,(
+  e24 = h(e14) | ~spl0_30),
+  inference(avatar_component_clause,[],[f347])).
+fof(f2435,plain,(
+  spl0_30 | ~spl0_42),
+  inference(avatar_split_clause,[],[f2434,f398,f347])).
+fof(f398,plain,(
+  spl0_42 <=> e21 = h(e11)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_42])])).
+fof(f2434,plain,(
+  e24 = h(e14) | ~spl0_42),
+  inference(forward_demodulation,[],[f2422,f86])).
+fof(f86,plain,(
+  e24 = op2(e21,e21)),
+  inference(cnf_transformation,[],[f5])).
+fof(f5,axiom,(
+  e20 = op2(e24,e24) & e22 = op2(e24,e23) & e21 = op2(e24,e22) & e23 = op2(e24,e21) & e24 = op2(e24,e20) & e21 = op2(e23,e24) & e24 = op2(e23,e23) & e20 = op2(e23,e22) & e22 = op2(e23,e21) & e23 = op2(e23,e20) & e23 = op2(e22,e24) & e21 = op2(e22,e23) & e24 = op2(e22,e22) & e20 = op2(e22,e21) & e22 = op2(e22,e20) & e22 = op2(e21,e24) & e20 = op2(e21,e23) & e23 = op2(e21,e22) & e24 = op2(e21,e21) & e21 = op2(e21,e20) & e24 = op2(e20,e24) & e23 = op2(e20,e23) & e22 = op2(e20,e22) & e21 = op2(e20,e21) & e20 = op2(e20,e20)),
+  file('./p/ALG082+1.tptp',unknown)).
+fof(f2422,plain,(
+  op2(e21,e21) = h(e14) | ~spl0_42),
+  inference(backward_demodulation,[],[f400,f218])).
+fof(f218,plain,(
+  h(e14) = op2(h(e11),h(e11))),
+  inference(forward_demodulation,[],[f121,f61])).
+fof(f61,plain,(
+  e14 = op1(e11,e11)),
+  inference(cnf_transformation,[],[f4])).
+fof(f4,axiom,(
+  e12 = op1(e14,e14) & e10 = op1(e14,e13) & e11 = op1(e14,e12) & e13 = op1(e14,e11) & e14 = op1(e14,e10) & e10 = op1(e13,e14) & e11 = op1(e13,e13) & e14 = op1(e13,e12) & e12 = op1(e13,e11) & e13 = op1(e13,e10) & e11 = op1(e12,e14) & e14 = op1(e12,e13) & e13 = op1(e12,e12) & e10 = op1(e12,e11) & e12 = op1(e12,e10) & e13 = op1(e11,e14) & e12 = op1(e11,e13) & e10 = op1(e11,e12) & e14 = op1(e11,e11) & e11 = op1(e11,e10) & e14 = op1(e10,e14) & e13 = op1(e10,e13) & e12 = op1(e10,e12) & e11 = op1(e10,e11) & e10 = op1(e10,e10)),
+  file('./p/ALG082+1.tptp',unknown)).
+fof(f121,plain,(
+  h(op1(e11,e11)) = op2(h(e11),h(e11))),
+  inference(cnf_transformation,[],[f9])).
+fof(f400,plain,(
+  e21 = h(e11) | ~spl0_42),
+  inference(avatar_component_clause,[],[f398])).
+fof(f2388,plain,(
+  spl0_5 | ~spl0_17),
+  inference(avatar_split_clause,[],[f2387,f293,f242])).
+fof(f293,plain,(
+  spl0_17 <=> e11 = j(e21)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_17])])).
+fof(f2387,plain,(
+  e14 = j(e24) | ~spl0_17),
+  inference(backward_demodulation,[],[f61,f2382])).
+fof(f2382,plain,(
+  op1(e11,e11) = j(e24) | ~spl0_17),
+  inference(forward_demodulation,[],[f193,f295])).
+fof(f295,plain,(
+  e11 = j(e21) | ~spl0_17),
+  inference(avatar_component_clause,[],[f293])).
+fof(f193,plain,(
+  j(e24) = op1(j(e21),j(e21))),
+  inference(forward_demodulation,[],[f146,f86])).
+fof(f146,plain,(
+  j(op2(e21,e21)) = op1(j(e21),j(e21))),
+  inference(cnf_transformation,[],[f9])).
+fof(f2250,plain,(
+  spl0_21 | ~spl0_46),
+  inference(avatar_split_clause,[],[f2232,f415,f310])).
+fof(f310,plain,(
+  spl0_21 <=> e10 = j(e20)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_21])])).
+fof(f415,plain,(
+  spl0_46 <=> e20 = h(e10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_46])])).
+fof(f2232,plain,(
+  e10 = j(e20) | ~spl0_46),
+  inference(backward_demodulation,[],[f417,f170])).
+fof(f170,plain,(
+  e10 = j(h(e10))),
+  inference(cnf_transformation,[],[f9])).
+fof(f417,plain,(
+  e20 = h(e10) | ~spl0_46),
+  inference(avatar_component_clause,[],[f415])).
+fof(f2206,plain,(
+  spl0_30 | ~spl0_44),
+  inference(avatar_split_clause,[],[f2205,f406,f347])).
+fof(f406,plain,(
+  spl0_44 <=> e23 = h(e11)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_44])])).
+fof(f2205,plain,(
+  e24 = h(e14) | ~spl0_44),
+  inference(backward_demodulation,[],[f98,f2014])).
+fof(f2014,plain,(
+  op2(e23,e23) = h(e14) | ~spl0_44),
+  inference(forward_demodulation,[],[f218,f408])).
+fof(f408,plain,(
+  e23 = h(e11) | ~spl0_44),
+  inference(avatar_component_clause,[],[f406])).
+fof(f98,plain,(
+  e24 = op2(e23,e23)),
+  inference(cnf_transformation,[],[f5])).
+fof(f2170,plain,(
+  ~spl0_5 | spl0_23),
+  inference(avatar_contradiction_clause,[],[f2169])).
+fof(f2169,plain,(
+  $false | (~spl0_5 | spl0_23)),
+  inference(subsumption_resolution,[],[f2168,f319])).
+fof(f319,plain,(
+  e12 != j(e20) | spl0_23),
+  inference(avatar_component_clause,[],[f318])).
+fof(f318,plain,(
+  spl0_23 <=> e12 = j(e20)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_23])])).
+fof(f2168,plain,(
+  e12 = j(e20) | ~spl0_5),
+  inference(forward_demodulation,[],[f2167,f79])).
+fof(f79,plain,(
+  e12 = op1(e14,e14)),
+  inference(cnf_transformation,[],[f4])).
+fof(f2167,plain,(
+  op1(e14,e14) = j(e20) | ~spl0_5),
+  inference(forward_demodulation,[],[f175,f244])).
+fof(f244,plain,(
+  e14 = j(e24) | ~spl0_5),
+  inference(avatar_component_clause,[],[f242])).
+fof(f175,plain,(
+  j(e20) = op1(j(e24),j(e24))),
+  inference(forward_demodulation,[],[f164,f104])).
+fof(f104,plain,(
+  e20 = op2(e24,e24)),
+  inference(cnf_transformation,[],[f5])).
+fof(f164,plain,(
+  j(op2(e24,e24)) = op1(j(e24),j(e24))),
+  inference(cnf_transformation,[],[f9])).
+fof(f2046,plain,(
+  spl0_6 | ~spl0_49),
+  inference(avatar_split_clause,[],[f2039,f427,f247])).
+fof(f247,plain,(
+  spl0_6 <=> e10 = j(e23)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_6])])).
+fof(f427,plain,(
+  spl0_49 <=> e23 = h(e10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_49])])).
+fof(f2039,plain,(
+  e10 = j(e23) | ~spl0_49),
+  inference(backward_demodulation,[],[f429,f170])).
+fof(f429,plain,(
+  e23 = h(e10) | ~spl0_49),
+  inference(avatar_component_clause,[],[f427])).
+fof(f1743,plain,(
+  spl0_2 | ~spl0_45),
+  inference(avatar_split_clause,[],[f1737,f410,f230])).
+fof(f230,plain,(
+  spl0_2 <=> e11 = j(e24)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f410,plain,(
+  spl0_45 <=> e24 = h(e11)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_45])])).
+fof(f1737,plain,(
+  e11 = j(e24) | ~spl0_45),
+  inference(backward_demodulation,[],[f412,f171])).
+fof(f171,plain,(
+  e11 = j(h(e11))),
+  inference(cnf_transformation,[],[f9])).
+fof(f412,plain,(
+  e24 = h(e11) | ~spl0_45),
+  inference(avatar_component_clause,[],[f410])).
+fof(f1723,plain,(
+  ~spl0_50),
+  inference(avatar_contradiction_clause,[],[f1722])).
+fof(f1722,plain,(
+  $false | ~spl0_50),
+  inference(subsumption_resolution,[],[f1721,f23])).
+fof(f23,plain,(
+  e20 != e24),
+  inference(cnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  e23 != e24 & e22 != e24 & e22 != e23 & e21 != e24 & e21 != e23 & e21 != e22 & e20 != e24 & e20 != e23 & e20 != e22 & e20 != e21),
+  file('./p/ALG082+1.tptp',unknown)).
+fof(f1721,plain,(
+  e20 = e24 | ~spl0_50),
+  inference(forward_demodulation,[],[f1713,f104])).
+fof(f1713,plain,(
+  e24 = op2(e24,e24) | ~spl0_50),
+  inference(backward_demodulation,[],[f433,f224])).
+fof(f224,plain,(
+  h(e10) = op2(h(e10),h(e10))),
+  inference(forward_demodulation,[],[f115,f55])).
+fof(f55,plain,(
+  e10 = op1(e10,e10)),
+  inference(cnf_transformation,[],[f4])).
+fof(f115,plain,(
+  h(op1(e10,e10)) = op2(h(e10),h(e10))),
+  inference(cnf_transformation,[],[f9])).
+fof(f433,plain,(
+  e24 = h(e10) | ~spl0_50),
+  inference(avatar_component_clause,[],[f431])).
+fof(f431,plain,(
+  spl0_50 <=> e24 = h(e10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_50])])).
+fof(f1366,plain,(
+  spl0_12 | ~spl0_43),
+  inference(avatar_split_clause,[],[f1234,f402,f272])).
+fof(f272,plain,(
+  spl0_12 <=> e11 = j(e22)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_12])])).
+fof(f402,plain,(
+  spl0_43 <=> e22 = h(e11)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_43])])).
+fof(f1234,plain,(
+  e11 = j(e22) | ~spl0_43),
+  inference(backward_demodulation,[],[f404,f171])).
+fof(f404,plain,(
+  e22 = h(e11) | ~spl0_43),
+  inference(avatar_component_clause,[],[f402])).
+fof(f1329,plain,(
+  ~spl0_22),
+  inference(avatar_contradiction_clause,[],[f1328])).
+fof(f1328,plain,(
+  $false | ~spl0_22),
+  inference(subsumption_resolution,[],[f1327,f16])).
+fof(f16,plain,(
+  e11 != e14),
+  inference(cnf_transformation,[],[f1])).
+fof(f1,axiom,(
+  e13 != e14 & e12 != e14 & e12 != e13 & e11 != e14 & e11 != e13 & e11 != e12 & e10 != e14 & e10 != e13 & e10 != e12 & e10 != e11),
+  file('./p/ALG082+1.tptp',unknown)).
+fof(f1327,plain,(
+  e11 = e14 | ~spl0_22),
+  inference(backward_demodulation,[],[f1315,f61])).
+fof(f1315,plain,(
+  e11 = op1(e11,e11) | ~spl0_22),
+  inference(backward_demodulation,[],[f316,f199])).
+fof(f199,plain,(
+  j(e20) = op1(j(e20),j(e20))),
+  inference(forward_demodulation,[],[f140,f80])).
+fof(f80,plain,(
+  e20 = op2(e20,e20)),
+  inference(cnf_transformation,[],[f5])).
+fof(f140,plain,(
+  j(op2(e20,e20)) = op1(j(e20),j(e20))),
+  inference(cnf_transformation,[],[f9])).
+fof(f316,plain,(
+  e11 = j(e20) | ~spl0_22),
+  inference(avatar_component_clause,[],[f314])).
+fof(f314,plain,(
+  spl0_22 <=> e11 = j(e20)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_22])])).
+fof(f1227,plain,(
+  ~spl0_48),
+  inference(avatar_contradiction_clause,[],[f1226])).
+fof(f1226,plain,(
+  $false | ~spl0_48),
+  inference(subsumption_resolution,[],[f1225,f28])).
+fof(f28,plain,(
+  e22 != e24),
+  inference(cnf_transformation,[],[f2])).
+fof(f1225,plain,(
+  e22 = e24 | ~spl0_48),
+  inference(backward_demodulation,[],[f1218,f92])).
+fof(f92,plain,(
+  e24 = op2(e22,e22)),
+  inference(cnf_transformation,[],[f5])).
+fof(f1218,plain,(
+  e22 = op2(e22,e22) | ~spl0_48),
+  inference(backward_demodulation,[],[f425,f224])).
+fof(f425,plain,(
+  e22 = h(e10) | ~spl0_48),
+  inference(avatar_component_clause,[],[f423])).
+fof(f423,plain,(
+  spl0_48 <=> e22 = h(e10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_48])])).
+fof(f995,plain,(
+  spl0_5 | ~spl0_12),
+  inference(avatar_split_clause,[],[f994,f272,f242])).
+fof(f994,plain,(
+  e14 = j(e24) | ~spl0_12),
+  inference(forward_demodulation,[],[f993,f61])).
+fof(f993,plain,(
+  op1(e11,e11) = j(e24) | ~spl0_12),
+  inference(forward_demodulation,[],[f187,f274])).
+fof(f274,plain,(
+  e11 = j(e22) | ~spl0_12),
+  inference(avatar_component_clause,[],[f272])).
+fof(f187,plain,(
+  j(e24) = op1(j(e22),j(e22))),
+  inference(forward_demodulation,[],[f152,f92])).
+fof(f152,plain,(
+  j(op2(e22,e22)) = op1(j(e22),j(e22))),
+  inference(cnf_transformation,[],[f9])).
+fof(f931,plain,(
+  ~spl0_47),
+  inference(avatar_contradiction_clause,[],[f930])).
+fof(f930,plain,(
+  $false | ~spl0_47),
+  inference(subsumption_resolution,[],[f929,f26])).
+fof(f26,plain,(
+  e21 != e24),
+  inference(cnf_transformation,[],[f2])).
+fof(f929,plain,(
+  e21 = e24 | ~spl0_47),
+  inference(backward_demodulation,[],[f884,f86])).
+fof(f884,plain,(
+  e21 = op2(e21,e21) | ~spl0_47),
+  inference(backward_demodulation,[],[f421,f224])).
+fof(f421,plain,(
+  e21 = h(e10) | ~spl0_47),
+  inference(avatar_component_clause,[],[f419])).
+fof(f419,plain,(
+  spl0_47 <=> e21 = h(e10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_47])])).
+fof(f797,plain,(
+  ~spl0_23),
+  inference(avatar_contradiction_clause,[],[f796])).
+fof(f796,plain,(
+  $false | ~spl0_23),
+  inference(subsumption_resolution,[],[f795,f17])).
+fof(f17,plain,(
+  e12 != e13),
+  inference(cnf_transformation,[],[f1])).
+fof(f795,plain,(
+  e12 = e13 | ~spl0_23),
+  inference(backward_demodulation,[],[f794,f67])).
+fof(f67,plain,(
+  e13 = op1(e12,e12)),
+  inference(cnf_transformation,[],[f4])).
+fof(f794,plain,(
+  e12 = op1(e12,e12) | ~spl0_23),
+  inference(forward_demodulation,[],[f199,f320])).
+fof(f320,plain,(
+  e12 = j(e20) | ~spl0_23),
+  inference(avatar_component_clause,[],[f318])).
+fof(f667,plain,(
+  spl0_17 | ~spl0_2 | ~spl0_6),
+  inference(avatar_split_clause,[],[f666,f247,f230,f293])).
+fof(f666,plain,(
+  e11 = j(e21) | (~spl0_2 | ~spl0_6)),
+  inference(forward_demodulation,[],[f665,f56])).
+fof(f56,plain,(
+  e11 = op1(e10,e11)),
+  inference(cnf_transformation,[],[f4])).
+fof(f665,plain,(
+  op1(e10,e11) = j(e21) | (~spl0_2 | ~spl0_6)),
+  inference(forward_demodulation,[],[f664,f249])).
+fof(f249,plain,(
+  e10 = j(e23) | ~spl0_6),
+  inference(avatar_component_clause,[],[f247])).
+fof(f664,plain,(
+  j(e21) = op1(j(e23),e11) | ~spl0_2),
+  inference(forward_demodulation,[],[f180,f232])).
+fof(f232,plain,(
+  e11 = j(e24) | ~spl0_2),
+  inference(avatar_component_clause,[],[f230])).
+fof(f180,plain,(
+  j(e21) = op1(j(e23),j(e24))),
+  inference(forward_demodulation,[],[f159,f99])).
+fof(f99,plain,(
+  e21 = op2(e23,e24)),
+  inference(cnf_transformation,[],[f5])).
+fof(f159,plain,(
+  j(op2(e23,e24)) = op1(j(e23),j(e24))),
+  inference(cnf_transformation,[],[f9])).
+fof(f617,plain,(
+  ~spl0_2 | ~spl0_21),
+  inference(avatar_contradiction_clause,[],[f616])).
+fof(f616,plain,(
+  $false | (~spl0_2 | ~spl0_21)),
+  inference(subsumption_resolution,[],[f615,f13])).
+fof(f13,plain,(
+  e10 != e14),
+  inference(cnf_transformation,[],[f1])).
+fof(f615,plain,(
+  e10 = e14 | (~spl0_2 | ~spl0_21)),
+  inference(backward_demodulation,[],[f614,f61])).
+fof(f614,plain,(
+  e10 = op1(e11,e11) | (~spl0_2 | ~spl0_21)),
+  inference(forward_demodulation,[],[f516,f232])).
+fof(f516,plain,(
+  e10 = op1(j(e24),j(e24)) | ~spl0_21),
+  inference(backward_demodulation,[],[f312,f175])).
+fof(f312,plain,(
+  e10 = j(e20) | ~spl0_21),
+  inference(avatar_component_clause,[],[f310])).
+fof(f463,plain,(
+  spl0_22 | ~spl0_41),
+  inference(avatar_split_clause,[],[f450,f394,f314])).
+fof(f394,plain,(
+  spl0_41 <=> e20 = h(e11)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_41])])).
+fof(f450,plain,(
+  e11 = j(e20) | ~spl0_41),
+  inference(backward_demodulation,[],[f396,f171])).
+fof(f396,plain,(
+  e20 = h(e11) | ~spl0_41),
+  inference(avatar_component_clause,[],[f394])).
+fof(f434,plain,(
+  spl0_46 | spl0_47 | spl0_48 | spl0_49 | spl0_50),
+  inference(avatar_split_clause,[],[f105,f431,f427,f423,f419,f415])).
+fof(f105,plain,(
+  e24 = h(e10) | e23 = h(e10) | e22 = h(e10) | e21 = h(e10) | e20 = h(e10)),
+  inference(cnf_transformation,[],[f9])).
+fof(f413,plain,(
+  spl0_41 | spl0_42 | spl0_43 | spl0_44 | spl0_45),
+  inference(avatar_split_clause,[],[f106,f410,f406,f402,f398,f394])).
+fof(f106,plain,(
+  e24 = h(e11) | e23 = h(e11) | e22 = h(e11) | e21 = h(e11) | e20 = h(e11)),
+  inference(cnf_transformation,[],[f9])).
+% SZS output end Proof for ALG082+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 6012
+% Time elapsed: 0.020 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,279 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for MGT011+1
+% SZS output start Proof for MGT011+1
+fof(f120,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f83,f104,f107,f111,f119])).
+fof(f119,plain,(
+  ~spl7_1),
+  inference(avatar_contradiction_clause,[],[f118])).
+fof(f118,plain,(
+  $false | ~spl7_1),
+  inference(subsumption_resolution,[],[f117,f42])).
+fof(f42,plain,(
+  organization(sK2,sK5)),
+  inference(cnf_transformation,[],[f34])).
+fof(f34,plain,(
+  greater(sK3,sK4) & greater(sK6,sK5) & size(sK2,sK4,sK6) & size(sK2,sK3,sK5) & reorganization_free(sK2,sK5,sK6) & organization(sK2,sK6) & organization(sK2,sK5)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2,sK3,sK4,sK5,sK6])],[f28,f33])).
+fof(f33,plain,(
+  ? [X0,X1,X2,X3,X4] : (greater(X1,X2) & greater(X4,X3) & size(X0,X2,X4) & size(X0,X1,X3) & reorganization_free(X0,X3,X4) & organization(X0,X4) & organization(X0,X3)) => (greater(sK3,sK4) & greater(sK6,sK5) & size(sK2,sK4,sK6) & size(sK2,sK3,sK5) & reorganization_free(sK2,sK5,sK6) & organization(sK2,sK6) & organization(sK2,sK5))),
+  introduced(choice_axiom,[])).
+fof(f28,plain,(
+  ? [X0,X1,X2,X3,X4] : (greater(X1,X2) & greater(X4,X3) & size(X0,X2,X4) & size(X0,X1,X3) & reorganization_free(X0,X3,X4) & organization(X0,X4) & organization(X0,X3))),
+  inference(flattening,[],[f27])).
+fof(f27,plain,(
+  ? [X0,X1,X2,X3,X4] : (greater(X1,X2) & (greater(X4,X3) & size(X0,X2,X4) & size(X0,X1,X3) & reorganization_free(X0,X3,X4) & organization(X0,X4) & organization(X0,X3)))),
+  inference(ennf_transformation,[],[f16])).
+fof(f16,plain,(
+  ~! [X0,X1,X2,X3,X4] : ((greater(X4,X3) & size(X0,X2,X4) & size(X0,X1,X3) & reorganization_free(X0,X3,X4) & organization(X0,X4) & organization(X0,X3)) => ~greater(X1,X2))),
+  inference(rectify,[],[f9])).
+fof(f9,negated_conjecture,(
+  ~! [X0,X9,X10,X5,X6] : ((greater(X6,X5) & size(X0,X10,X6) & size(X0,X9,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5)) => ~greater(X9,X10))),
+  inference(negated_conjecture,[],[f8])).
+fof(f8,conjecture,(
+  ! [X0,X9,X10,X5,X6] : ((greater(X6,X5) & size(X0,X10,X6) & size(X0,X9,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5)) => ~greater(X9,X10))),
+  file('./p/MGT011+1.tptp',unknown)).
+fof(f117,plain,(
+  ~organization(sK2,sK5) | ~spl7_1),
+  inference(resolution,[],[f113,f38])).
+fof(f38,plain,(
+  ( ! [X0,X1] : (class(X0,sK1(X0,X1),X1) | ~organization(X0,X1)) )),
+  inference(cnf_transformation,[],[f32])).
+fof(f32,plain,(
+  ! [X0,X1] : (class(X0,sK1(X0,X1),X1) | ~organization(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1])],[f20,f31])).
+fof(f31,plain,(
+  ! [X1,X0] : (? [X2] : class(X0,X2,X1) => class(X0,sK1(X0,X1),X1))),
+  introduced(choice_axiom,[])).
+fof(f20,plain,(
+  ! [X0,X1] : (? [X2] : class(X0,X2,X1) | ~organization(X0,X1))),
+  inference(ennf_transformation,[],[f12])).
+fof(f12,plain,(
+  ! [X0,X1] : (organization(X0,X1) => ? [X2] : class(X0,X2,X1))),
+  inference(rectify,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : (organization(X0,X1) => ? [X4] : class(X0,X4,X1))),
+  file('./p/MGT011+1.tptp',unknown)).
+fof(f113,plain,(
+  ~class(sK2,sK1(sK2,sK5),sK5) | ~spl7_1),
+  inference(resolution,[],[f79,f68])).
+fof(f68,plain,(
+  class(sK2,sK1(sK2,sK5),sK6)),
+  inference(subsumption_resolution,[],[f67,f43])).
+fof(f43,plain,(
+  organization(sK2,sK6)),
+  inference(cnf_transformation,[],[f34])).
+fof(f67,plain,(
+  class(sK2,sK1(sK2,sK5),sK6) | ~organization(sK2,sK6)),
+  inference(superposition,[],[f38,f62])).
+fof(f62,plain,(
+  sK1(sK2,sK5) = sK1(sK2,sK6)),
+  inference(subsumption_resolution,[],[f61,f43])).
+fof(f61,plain,(
+  sK1(sK2,sK5) = sK1(sK2,sK6) | ~organization(sK2,sK6)),
+  inference(resolution,[],[f56,f38])).
+fof(f56,plain,(
+  ( ! [X0] : (~class(sK2,X0,sK6) | sK1(sK2,sK5) = X0) )),
+  inference(subsumption_resolution,[],[f55,f42])).
+fof(f55,plain,(
+  ( ! [X0] : (~class(sK2,X0,sK6) | sK1(sK2,sK5) = X0 | ~organization(sK2,sK5)) )),
+  inference(resolution,[],[f54,f38])).
+fof(f54,plain,(
+  ( ! [X0,X1] : (~class(sK2,X1,sK5) | ~class(sK2,X0,sK6) | X0 = X1) )),
+  inference(subsumption_resolution,[],[f53,f42])).
+fof(f53,plain,(
+  ( ! [X0,X1] : (~class(sK2,X0,sK6) | ~class(sK2,X1,sK5) | X0 = X1 | ~organization(sK2,sK5)) )),
+  inference(subsumption_resolution,[],[f52,f43])).
+fof(f52,plain,(
+  ( ! [X0,X1] : (~class(sK2,X0,sK6) | ~class(sK2,X1,sK5) | X0 = X1 | ~organization(sK2,sK6) | ~organization(sK2,sK5)) )),
+  inference(resolution,[],[f39,f44])).
+fof(f44,plain,(
+  reorganization_free(sK2,sK5,sK6)),
+  inference(cnf_transformation,[],[f34])).
+fof(f39,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~reorganization_free(X0,X1,X2) | ~class(X0,X4,X2) | ~class(X0,X3,X1) | X3 = X4 | ~organization(X0,X2) | ~organization(X0,X1)) )),
+  inference(cnf_transformation,[],[f22])).
+fof(f22,plain,(
+  ! [X0,X1,X2,X3,X4] : (X3 = X4 | ~class(X0,X4,X2) | ~class(X0,X3,X1) | ~reorganization_free(X0,X1,X2) | ~organization(X0,X2) | ~organization(X0,X1))),
+  inference(flattening,[],[f21])).
+fof(f21,plain,(
+  ! [X0,X1,X2,X3,X4] : (X3 = X4 | (~class(X0,X4,X2) | ~class(X0,X3,X1) | ~reorganization_free(X0,X1,X2) | ~organization(X0,X2) | ~organization(X0,X1)))),
+  inference(ennf_transformation,[],[f13])).
+fof(f13,plain,(
+  ! [X0,X1,X2,X3,X4] : ((class(X0,X4,X2) & class(X0,X3,X1) & reorganization_free(X0,X1,X2) & organization(X0,X2) & organization(X0,X1)) => X3 = X4)),
+  inference(rectify,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X5,X6,X7,X8] : ((class(X0,X8,X6) & class(X0,X7,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5)) => X7 = X8)),
+  file('./p/MGT011+1.tptp',unknown)).
+fof(f79,plain,(
+  ( ! [X5] : (~class(sK2,X5,sK6) | ~class(sK2,X5,sK5)) ) | ~spl7_1),
+  inference(avatar_component_clause,[],[f78])).
+fof(f78,plain,(
+  spl7_1 <=> ! [X5] : (~class(sK2,X5,sK5) | ~class(sK2,X5,sK6))),
+  introduced(avatar_definition,[new_symbols(naming,[spl7_1])])).
+fof(f111,plain,(
+  spl7_4),
+  inference(avatar_contradiction_clause,[],[f110])).
+fof(f110,plain,(
+  $false | spl7_4),
+  inference(subsumption_resolution,[],[f109,f42])).
+fof(f109,plain,(
+  ~organization(sK2,sK5) | spl7_4),
+  inference(resolution,[],[f103,f35])).
+fof(f35,plain,(
+  ( ! [X0,X1] : (inertia(X0,sK0(X0,X1),X1) | ~organization(X0,X1)) )),
+  inference(cnf_transformation,[],[f30])).
+fof(f30,plain,(
+  ! [X0,X1] : (inertia(X0,sK0(X0,X1),X1) | ~organization(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f17,f29])).
+fof(f29,plain,(
+  ! [X1,X0] : (? [X2] : inertia(X0,X2,X1) => inertia(X0,sK0(X0,X1),X1))),
+  introduced(choice_axiom,[])).
+fof(f17,plain,(
+  ! [X0,X1] : (? [X2] : inertia(X0,X2,X1) | ~organization(X0,X1))),
+  inference(ennf_transformation,[],[f1])).
+fof(f1,axiom,(
+  ! [X0,X1] : (organization(X0,X1) => ? [X2] : inertia(X0,X2,X1))),
+  file('./p/MGT011+1.tptp',unknown)).
+fof(f103,plain,(
+  ~inertia(sK2,sK0(sK2,sK5),sK5) | spl7_4),
+  inference(avatar_component_clause,[],[f101])).
+fof(f101,plain,(
+  spl7_4 <=> inertia(sK2,sK0(sK2,sK5),sK5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl7_4])])).
+fof(f107,plain,(
+  spl7_3),
+  inference(avatar_contradiction_clause,[],[f106])).
+fof(f106,plain,(
+  $false | spl7_3),
+  inference(subsumption_resolution,[],[f105,f43])).
+fof(f105,plain,(
+  ~organization(sK2,sK6) | spl7_3),
+  inference(resolution,[],[f99,f35])).
+fof(f99,plain,(
+  ~inertia(sK2,sK0(sK2,sK6),sK6) | spl7_3),
+  inference(avatar_component_clause,[],[f97])).
+fof(f97,plain,(
+  spl7_3 <=> inertia(sK2,sK0(sK2,sK6),sK6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl7_3])])).
+fof(f104,plain,(
+  ~spl7_3 | ~spl7_4 | ~spl7_2),
+  inference(avatar_split_clause,[],[f95,f81,f101,f97])).
+fof(f81,plain,(
+  spl7_2 <=> ! [X3,X4] : (~inertia(sK2,X3,sK5) | greater(X3,X4) | ~inertia(sK2,X4,sK6))),
+  introduced(avatar_definition,[new_symbols(naming,[spl7_2])])).
+fof(f95,plain,(
+  ~inertia(sK2,sK0(sK2,sK5),sK5) | ~inertia(sK2,sK0(sK2,sK6),sK6) | ~spl7_2),
+  inference(resolution,[],[f90,f85])).
+fof(f85,plain,(
+  ( ! [X0] : (~greater(sK0(sK2,sK5),X0) | ~inertia(sK2,X0,sK6)) )),
+  inference(resolution,[],[f70,f37])).
+fof(f37,plain,(
+  ( ! [X0,X1] : (~greater(X1,X0) | ~greater(X0,X1)) )),
+  inference(cnf_transformation,[],[f19])).
+fof(f19,plain,(
+  ! [X0,X1] : (~greater(X1,X0) | ~greater(X0,X1))),
+  inference(ennf_transformation,[],[f11])).
+fof(f11,plain,(
+  ! [X0,X1] : ~(greater(X1,X0) & greater(X0,X1))),
+  inference(rectify,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X3] : ~(greater(X3,X0) & greater(X0,X3))),
+  file('./p/MGT011+1.tptp',unknown)).
+fof(f70,plain,(
+  ( ! [X0] : (greater(X0,sK0(sK2,sK5)) | ~inertia(sK2,X0,sK6)) )),
+  inference(subsumption_resolution,[],[f69,f42])).
+fof(f69,plain,(
+  ( ! [X0] : (~inertia(sK2,X0,sK6) | greater(X0,sK0(sK2,sK5)) | ~organization(sK2,sK5)) )),
+  inference(resolution,[],[f60,f35])).
+fof(f60,plain,(
+  ( ! [X0,X1] : (~inertia(sK2,X1,sK5) | ~inertia(sK2,X0,sK6) | greater(X0,X1)) )),
+  inference(subsumption_resolution,[],[f59,f42])).
+fof(f59,plain,(
+  ( ! [X0,X1] : (~inertia(sK2,X0,sK6) | ~inertia(sK2,X1,sK5) | greater(X0,X1) | ~organization(sK2,sK5)) )),
+  inference(subsumption_resolution,[],[f58,f43])).
+fof(f58,plain,(
+  ( ! [X0,X1] : (~inertia(sK2,X0,sK6) | ~inertia(sK2,X1,sK5) | greater(X0,X1) | ~organization(sK2,sK6) | ~organization(sK2,sK5)) )),
+  inference(subsumption_resolution,[],[f57,f47])).
+fof(f47,plain,(
+  greater(sK6,sK5)),
+  inference(cnf_transformation,[],[f34])).
+fof(f57,plain,(
+  ( ! [X0,X1] : (~greater(sK6,sK5) | ~inertia(sK2,X0,sK6) | ~inertia(sK2,X1,sK5) | greater(X0,X1) | ~organization(sK2,sK6) | ~organization(sK2,sK5)) )),
+  inference(resolution,[],[f41,f44])).
+fof(f41,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~reorganization_free(X0,X3,X4) | ~greater(X4,X3) | ~inertia(X0,X2,X4) | ~inertia(X0,X1,X3) | greater(X2,X1) | ~organization(X0,X4) | ~organization(X0,X3)) )),
+  inference(cnf_transformation,[],[f26])).
+fof(f26,plain,(
+  ! [X0,X1,X2,X3,X4] : (greater(X2,X1) | ~greater(X4,X3) | ~inertia(X0,X2,X4) | ~inertia(X0,X1,X3) | ~reorganization_free(X0,X3,X4) | ~organization(X0,X4) | ~organization(X0,X3))),
+  inference(flattening,[],[f25])).
+fof(f25,plain,(
+  ! [X0,X1,X2,X3,X4] : (greater(X2,X1) | (~greater(X4,X3) | ~inertia(X0,X2,X4) | ~inertia(X0,X1,X3) | ~reorganization_free(X0,X3,X4) | ~organization(X0,X4) | ~organization(X0,X3)))),
+  inference(ennf_transformation,[],[f15])).
+fof(f15,plain,(
+  ! [X0,X1,X2,X3,X4] : ((greater(X4,X3) & inertia(X0,X2,X4) & inertia(X0,X1,X3) & reorganization_free(X0,X3,X4) & organization(X0,X4) & organization(X0,X3)) => greater(X2,X1))),
+  inference(rectify,[],[f7])).
+fof(f7,axiom,(
+  ! [X0,X11,X12,X5,X6] : ((greater(X6,X5) & inertia(X0,X12,X6) & inertia(X0,X11,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5)) => greater(X12,X11))),
+  file('./p/MGT011+1.tptp',unknown)).
+fof(f90,plain,(
+  ( ! [X0] : (greater(X0,sK0(sK2,sK6)) | ~inertia(sK2,X0,sK5)) ) | ~spl7_2),
+  inference(subsumption_resolution,[],[f89,f43])).
+fof(f89,plain,(
+  ( ! [X0] : (greater(X0,sK0(sK2,sK6)) | ~inertia(sK2,X0,sK5) | ~organization(sK2,sK6)) ) | ~spl7_2),
+  inference(resolution,[],[f82,f35])).
+fof(f82,plain,(
+  ( ! [X4,X3] : (~inertia(sK2,X4,sK6) | greater(X3,X4) | ~inertia(sK2,X3,sK5)) ) | ~spl7_2),
+  inference(avatar_component_clause,[],[f81])).
+fof(f83,plain,(
+  spl7_1 | spl7_2),
+  inference(avatar_split_clause,[],[f76,f81,f78])).
+fof(f76,plain,(
+  ( ! [X4,X5,X3] : (~inertia(sK2,X3,sK5) | ~inertia(sK2,X4,sK6) | greater(X3,X4) | ~class(sK2,X5,sK5) | ~class(sK2,X5,sK6)) )),
+  inference(subsumption_resolution,[],[f75,f43])).
+fof(f75,plain,(
+  ( ! [X4,X5,X3] : (~inertia(sK2,X3,sK5) | ~inertia(sK2,X4,sK6) | greater(X3,X4) | ~class(sK2,X5,sK5) | ~class(sK2,X5,sK6) | ~organization(sK2,sK6)) )),
+  inference(subsumption_resolution,[],[f73,f48])).
+fof(f48,plain,(
+  greater(sK3,sK4)),
+  inference(cnf_transformation,[],[f34])).
+fof(f73,plain,(
+  ( ! [X4,X5,X3] : (~inertia(sK2,X3,sK5) | ~inertia(sK2,X4,sK6) | greater(X3,X4) | ~greater(sK3,sK4) | ~class(sK2,X5,sK5) | ~class(sK2,X5,sK6) | ~organization(sK2,sK6)) )),
+  inference(resolution,[],[f65,f46])).
+fof(f46,plain,(
+  size(sK2,sK4,sK6)),
+  inference(cnf_transformation,[],[f34])).
+fof(f65,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~size(X2,X0,X4) | ~inertia(sK2,X1,sK5) | ~inertia(X2,X3,X4) | greater(X1,X3) | ~greater(sK3,X0) | ~class(sK2,X5,sK5) | ~class(X2,X5,X4) | ~organization(X2,X4)) )),
+  inference(subsumption_resolution,[],[f63,f42])).
+fof(f63,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~greater(sK3,X0) | ~inertia(sK2,X1,sK5) | ~inertia(X2,X3,X4) | greater(X1,X3) | ~size(X2,X0,X4) | ~class(sK2,X5,sK5) | ~class(X2,X5,X4) | ~organization(sK2,sK5) | ~organization(X2,X4)) )),
+  inference(resolution,[],[f40,f45])).
+fof(f45,plain,(
+  size(sK2,sK3,sK5)),
+  inference(cnf_transformation,[],[f34])).
+fof(f40,plain,(
+  ( ! [X6,X4,X2,X0,X8,X7,X5,X3,X1] : (~size(X1,X4,X8) | ~greater(X4,X3) | ~inertia(X1,X6,X8) | ~inertia(X0,X5,X7) | greater(X6,X5) | ~size(X0,X3,X7) | ~class(X1,X2,X8) | ~class(X0,X2,X7) | ~organization(X1,X8) | ~organization(X0,X7)) )),
+  inference(cnf_transformation,[],[f24])).
+fof(f24,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8] : (greater(X6,X5) | ~greater(X4,X3) | ~inertia(X1,X6,X8) | ~inertia(X0,X5,X7) | ~size(X1,X4,X8) | ~size(X0,X3,X7) | ~class(X1,X2,X8) | ~class(X0,X2,X7) | ~organization(X1,X8) | ~organization(X0,X7))),
+  inference(flattening,[],[f23])).
+fof(f23,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8] : (greater(X6,X5) | (~greater(X4,X3) | ~inertia(X1,X6,X8) | ~inertia(X0,X5,X7) | ~size(X1,X4,X8) | ~size(X0,X3,X7) | ~class(X1,X2,X8) | ~class(X0,X2,X7) | ~organization(X1,X8) | ~organization(X0,X7)))),
+  inference(ennf_transformation,[],[f14])).
+fof(f14,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8] : ((greater(X4,X3) & inertia(X1,X6,X8) & inertia(X0,X5,X7) & size(X1,X4,X8) & size(X0,X3,X7) & class(X1,X2,X8) & class(X0,X2,X7) & organization(X1,X8) & organization(X0,X7)) => greater(X6,X5))),
+  inference(rectify,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X3,X4,X9,X10,X11,X12,X5,X6] : ((greater(X10,X9) & inertia(X3,X12,X6) & inertia(X0,X11,X5) & size(X3,X10,X6) & size(X0,X9,X5) & class(X3,X4,X6) & class(X0,X4,X5) & organization(X3,X6) & organization(X0,X5)) => greater(X12,X11))),
+  file('./p/MGT011+1.tptp',unknown)).
+% SZS output end Proof for MGT011+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,84 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SET825-2
+% SZS output start Proof for SET825-2
+fof(f33,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f18,f25,f32])).
+fof(f32,plain,(
+  ~spl0_1 | spl0_2),
+  inference(avatar_contradiction_clause,[],[f31])).
+fof(f31,plain,(
+  $false | (~spl0_1 | spl0_2)),
+  inference(subsumption_resolution,[],[f30,f16])).
+fof(f16,plain,(
+  ~c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | spl0_2),
+  inference(avatar_component_clause,[],[f15])).
+fof(f15,plain,(
+  spl0_2 <=> c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f30,plain,(
+  c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | ~spl0_1),
+  inference(subsumption_resolution,[],[f29,f1])).
+fof(f1,axiom,(
+  ( ! [X0,X1] : (c_in(c_Pair(X0,X0,X1,X1),c_Relation_OId,tc_prod(X1,X1))) )),
+  file('./p/SET825-2.tptp',unknown)).
+fof(f29,plain,(
+  ~c_in(c_Pair(c_0,c_0,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | ~spl0_1),
+  inference(subsumption_resolution,[],[f28,f1])).
+fof(f28,plain,(
+  ~c_in(c_Pair(c_Suc(v_x(c_Relation_OId)),c_Suc(v_x(c_Relation_OId)),tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | ~c_in(c_Pair(c_0,c_0,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | ~spl0_1),
+  inference(superposition,[],[f6,f13])).
+fof(f13,plain,(
+  v_x(c_Relation_OId) = v_xa(c_Relation_OId) | ~spl0_1),
+  inference(avatar_component_clause,[],[f11])).
+fof(f11,plain,(
+  spl0_1 <=> v_x(c_Relation_OId) = v_xa(c_Relation_OId)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f6,axiom,(
+  ( ! [X3] : (~c_in(c_Pair(c_Suc(v_x(X3)),c_Suc(v_xa(X3)),tc_nat,tc_nat),X3,tc_prod(tc_nat,tc_nat)) | ~c_in(c_Pair(c_0,c_0,tc_nat,tc_nat),X3,tc_prod(tc_nat,tc_nat)) | c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),X3,tc_prod(tc_nat,tc_nat))) )),
+  file('./p/SET825-2.tptp',unknown)).
+fof(f25,plain,(
+  ~spl0_2),
+  inference(avatar_contradiction_clause,[],[f24])).
+fof(f24,plain,(
+  $false | ~spl0_2),
+  inference(subsumption_resolution,[],[f23,f3])).
+fof(f3,axiom,(
+  v_Q(v_n)),
+  file('./p/SET825-2.tptp',unknown)).
+fof(f23,plain,(
+  ~v_Q(v_n) | ~spl0_2),
+  inference(backward_demodulation,[],[f19,f4])).
+fof(f4,axiom,(
+  ~v_Q(v_m)),
+  file('./p/SET825-2.tptp',unknown)).
+fof(f19,plain,(
+  v_n = v_m | ~spl0_2),
+  inference(resolution,[],[f17,f2])).
+fof(f2,axiom,(
+  ( ! [X2,X0,X1] : (~c_in(c_Pair(X0,X2,X1,X1),c_Relation_OId,tc_prod(X1,X1)) | X0 = X2) )),
+  file('./p/SET825-2.tptp',unknown)).
+fof(f17,plain,(
+  c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | ~spl0_2),
+  inference(avatar_component_clause,[],[f15])).
+fof(f18,plain,(
+  spl0_1 | spl0_2),
+  inference(avatar_split_clause,[],[f9,f15,f11])).
+fof(f9,plain,(
+  c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | v_x(c_Relation_OId) = v_xa(c_Relation_OId)),
+  inference(subsumption_resolution,[],[f8,f1])).
+fof(f8,plain,(
+  ~c_in(c_Pair(c_0,c_0,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),c_Relation_OId,tc_prod(tc_nat,tc_nat)) | v_x(c_Relation_OId) = v_xa(c_Relation_OId)),
+  inference(resolution,[],[f5,f2])).
+fof(f5,axiom,(
+  ( ! [X3] : (c_in(c_Pair(v_x(X3),v_xa(X3),tc_nat,tc_nat),X3,tc_prod(tc_nat,tc_nat)) | ~c_in(c_Pair(c_0,c_0,tc_nat,tc_nat),X3,tc_prod(tc_nat,tc_nat)) | c_in(c_Pair(v_n,v_m,tc_nat,tc_nat),X3,tc_prod(tc_nat,tc_nat))) )),
+  file('./p/SET825-2.tptp',unknown)).
+% SZS output end Proof for SET825-2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

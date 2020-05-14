@@ -1,0 +1,414 @@
+# Initializing proof state
+# Scanning for AC axioms
+# unordered_pair is commutative
+# set_intersection2 is commutative
+# AC handling enabled
+#
+#cnf(i_0_12, plain, (empty(esk2_0))).
+#
+#cnf(i_0_10, plain, (set_intersection2(X1,X1)=X1)).
+#
+#cnf(i_0_2, plain, (unordered_pair(X1,X2)=unordered_pair(X2,X1))).
+#
+#cnf(i_0_13, plain, (~empty(esk3_0))).
+#
+#cnf(i_0_3, plain, (set_intersection2(X1,X2)=set_intersection2(X2,X1))).
+#
+#cnf(i_0_11, plain, (set_intersection2(X2,singleton(X1))=singleton(X1)|~in(X1,X2))).
+#
+#cnf(i_0_7, plain, (in(X1,X3)|X3!=unordered_pair(X4,X2)|X1!=X2)).
+#
+#cnf(i_0_1, plain, (~in(X2,X1)|~in(X1,X2))).
+#
+#cnf(i_0_17, plain, (in(X1,unordered_pair(X2,X3))|X1!=X3)).
+#
+#cnf(i_0_27, plain, (in(X1,unordered_pair(X3,X2))|X1!=X3)).
+##
+#cnf(i_0_24, plain, (X1!=X3|~in(unordered_pair(X2,X3),X1))).
+###
+#cnf(i_0_18, plain, (in(X1,X2)|X2!=unordered_pair(X3,X1))).
+##
+#cnf(i_0_39, plain, (in(X1,unordered_pair(X2,X1)))).
+#
+#cnf(i_0_48, plain, (in(X1,unordered_pair(X1,X2)))).
+##
+#cnf(i_0_46, plain, (unordered_pair(X1,unordered_pair(X2,X3))!=X3)).
+#
+#cnf(i_0_44, plain, (in(X1,X2)|unordered_pair(X1,X3)!=X2)).
+###
+#cnf(i_0_50, plain, (unordered_pair(unordered_pair(X1,X2),X3)!=X2)).
+##
+#cnf(i_0_47, plain, (set_intersection2(singleton(X2),unordered_pair(X1,X2))=singleton(X2))).
+#
+#cnf(i_0_51, plain, (set_intersection2(singleton(X1),unordered_pair(X1,X2))=singleton(X1))).
+#
+#cnf(i_0_54, plain, (unordered_pair(X1,unordered_pair(X3,X2))!=X3)).
+###
+#cnf(i_0_8, plain, (in(X1,X3)|X3!=unordered_pair(X2,X4)|X1!=X2)).
+##########
+#cnf(i_0_26, plain, (set_intersection2(unordered_pair(X1,X2),singleton(X3))=singleton(X3)|X3!=X2)).
+#
+#cnf(i_0_31, plain, (set_intersection2(unordered_pair(X1,X2),singleton(X3))=singleton(X3)|X3!=X1)).
+#
+#cnf(i_0_85, plain, (set_intersection2(singleton(X3),unordered_pair(X1,X2))=singleton(X3)|X3!=X2)).
+#
+#cnf(i_0_65, plain, (unordered_pair(unordered_pair(X2,X1),X3)!=X2)).
+#####
+#cnf(i_0_89, plain, (set_intersection2(singleton(X3),unordered_pair(X1,X2))=singleton(X3)|X3!=X1)).
+################
+#cnf(i_0_43, plain, (set_intersection2(X1,singleton(X2))=singleton(X2)|X1!=unordered_pair(X3,X2))).
+#
+#cnf(i_0_62, plain, (set_intersection2(X1,singleton(X2))=singleton(X2)|unordered_pair(X2,X3)!=X1)).
+#
+#cnf(i_0_106, plain, (set_intersection2(singleton(X2),X1)=singleton(X2)|X1!=unordered_pair(X3,X2))).
+######
+#cnf(i_0_111, plain, (set_intersection2(singleton(X2),X1)=singleton(X2)|unordered_pair(X2,X3)!=X1)).
+################
+#cnf(i_0_9, plain, (X1=X4|X1=X3|X2!=unordered_pair(X3,X4)|~in(X1,X2))).
+#
+#cnf(i_0_133, plain, (X1=X2|X1=X3|~in(X1,unordered_pair(X3,X2)))).
+##
+#cnf(i_0_29, plain, (X1!=X2|~in(unordered_pair(X2,X3),X1))).
+##
+#cnf(i_0_130, plain, (X9=X10|X11!=unordered_pair(X10,X10)|~in(X9,X11))).
+#
+#cnf(i_0_382, plain, (X1=X2|~in(X1,unordered_pair(X2,X2)))).
+####
+#cnf(i_0_495, plain, (X1=X2|unordered_pair(X3,X1)!=unordered_pair(X2,X2))).
+##
+#cnf(i_0_498, plain, (X1=X2|unordered_pair(X1,X3)!=unordered_pair(X2,X2))).
+#####################
+#cnf(i_0_346, plain, (X1=X2|X1=X3|unordered_pair(X4,X1)!=unordered_pair(X3,X2))).
+#
+#cnf(i_0_349, plain, (X1=X2|X1=X3|unordered_pair(X1,X4)!=unordered_pair(X3,X2))).
+#
+#cnf(i_0_41, plain, (X2!=unordered_pair(X3,X1)|~in(X2,X1))).
+####
+#cnf(i_0_591, plain, (~in(unordered_pair(X1,X2),X2))).
+####
+#cnf(i_0_614, plain, (~in(unordered_pair(X2,X1),X2))).
+######
+#cnf(i_0_496, plain, (X1=X2|unordered_pair(X3,X4)!=unordered_pair(X2,X2)|X1!=X4)).
+###
+#cnf(i_0_497, plain, (X1=X2|unordered_pair(X3,X4)!=unordered_pair(X2,X2)|X1!=X3)).
+##
+#cnf(i_0_501, plain, (X1=X2|X3!=unordered_pair(X2,X2)|X3!=unordered_pair(X4,X1))).
+####
+#cnf(i_0_502, plain, (X1=X2|X3!=unordered_pair(X2,X2)|unordered_pair(X1,X4)!=X3)).
+#######################################
+#cnf(i_0_129, plain, (X5=X8|X7!=unordered_pair(X8,X6)|X6!=X8|~in(X5,X7))).
+#
+#cnf(i_0_1320, plain, (X1=X2|X3!=X2|~in(X1,unordered_pair(X2,X3)))).
+###
+#cnf(i_0_1515, plain, (X1=X2|X3!=X2|~in(X1,unordered_pair(X3,X2)))).
+##
+#cnf(i_0_60, plain, (unordered_pair(X1,X3)!=X2|~in(X2,X1))).
+#####
+#cnf(i_0_1475, plain, (X1=X2|unordered_pair(X3,X1)!=unordered_pair(X2,X4)|X4!=X2)).
+#
+#cnf(i_0_1478, plain, (X1=X2|unordered_pair(X1,X3)!=unordered_pair(X2,X4)|X4!=X2)).
+####
+#cnf(i_0_1544, plain, (X1=X2|unordered_pair(X3,X2)!=unordered_pair(X4,X1)|X3!=X2)).
+#
+#cnf(i_0_1545, plain, (X1=X2|unordered_pair(X1,X4)!=unordered_pair(X3,X2)|X3!=X2)).
+#######################
+#cnf(i_0_131, plain, (X12=X15|X14!=unordered_pair(X13,X15)|X13!=X15|~in(X12,X14))).
+##
+#cnf(i_0_40, plain, (X1!=unordered_pair(X4,unordered_pair(X3,X2))|X1!=X2)).
+########
+#cnf(i_0_59, plain, (unordered_pair(unordered_pair(X3,X2),X4)!=X1|X1!=X2)).
+########
+#cnf(i_0_380, plain, (X1!=unordered_pair(X4,unordered_pair(X2,X3))|X1!=X2)).
+######
+#cnf(i_0_472, plain, (in(X1,X3)|X4!=unordered_pair(X3,X3)|~in(unordered_pair(X1,X2),X4))).
+#
+#cnf(i_0_2052, plain, (in(X1,X2)|~in(unordered_pair(X1,X3),unordered_pair(X2,X2)))).
+#
+#cnf(i_0_381, plain, (unordered_pair(unordered_pair(X2,X3),X4)!=X1|X1!=X2)).
+######
+#cnf(i_0_2157, plain, (in(X1,X2)|~in(unordered_pair(X3,X1),unordered_pair(X2,X2)))).
+###########
+#cnf(i_0_2091, plain, (in(X1,X2)|unordered_pair(X3,unordered_pair(X1,X4))!=unordered_pair(X2,X2))).
+#
+#cnf(i_0_2094, plain, (in(X1,X2)|unordered_pair(unordered_pair(X1,X3),X4)!=unordered_pair(X2,X2))).
+####
+#cnf(i_0_2251, plain, (in(X1,X2)|unordered_pair(X2,X2)!=unordered_pair(X4,unordered_pair(X3,X1)))).
+#
+#cnf(i_0_2252, plain, (in(X1,X2)|unordered_pair(unordered_pair(X3,X1),X4)!=unordered_pair(X2,X2))).
+##################################
+#cnf(i_0_476, plain, (in(X1,X3)|X4!=unordered_pair(X3,X3)|~in(unordered_pair(X2,X1),X4))).
+################
+#cnf(i_0_639, plain, (empty(X1)|unordered_pair(X2,X3)!=unordered_pair(esk2_0,esk2_0)|X1!=X3)).
+#
+#cnf(i_0_2657, plain, (empty(X1)|X1!=esk2_0)).
+#
+#cnf(i_0_2658, plain, (empty(X1)|unordered_pair(X2,X1)!=unordered_pair(esk2_0,esk2_0))).
+#
+#cnf(i_0_2698, plain, (esk3_0!=esk2_0)).
+###
+#cnf(i_0_2737, plain, (empty(X1)|unordered_pair(X1,X2)!=unordered_pair(esk2_0,esk2_0))).
+########
+#cnf(i_0_799, plain, (empty(X1)|unordered_pair(X2,X3)!=unordered_pair(esk2_0,esk2_0)|X1!=X2)).
+#####
+#cnf(i_0_36, plain, (unordered_pair(X1,X2)!=X3|unordered_pair(X4,X3)!=X2)).
+############
+#cnf(i_0_37, plain, (unordered_pair(X1,X2)!=X3|unordered_pair(X4,X3)!=X1)).
+#
+#cnf(i_0_1476, plain, (X1=X2|unordered_pair(X3,X4)!=unordered_pair(X2,X5)|X5!=X2|X1!=X4)).
+####
+#cnf(i_0_1477, plain, (X1=X2|unordered_pair(X3,X4)!=unordered_pair(X2,X5)|X5!=X2|X1!=X3)).
+##
+#cnf(i_0_1481, plain, (X1=X2|X3!=unordered_pair(X2,X4)|X3!=unordered_pair(X5,X1)|X4!=X2)).
+####
+#cnf(i_0_1482, plain, (X1=X2|X3!=unordered_pair(X2,X4)|unordered_pair(X1,X5)!=X3|X4!=X2)).
+#####
+#cnf(i_0_376, plain, (unordered_pair(X1,X2)!=X3|unordered_pair(X3,X4)!=X1)).
+##
+#cnf(i_0_1542, plain, (X1=X2|unordered_pair(X3,X2)!=unordered_pair(X4,X5)|X3!=X2|X1!=X5)).
+###
+#cnf(i_0_1543, plain, (X1=X2|unordered_pair(X3,X2)!=unordered_pair(X4,X5)|X3!=X2|X1!=X4)).
+######
+#cnf(i_0_1909, plain, (X1=X2|X3!=unordered_pair(X4,X2)|X3!=unordered_pair(X5,X1)|X4!=X2)).
+####
+#cnf(i_0_1910, plain, (X1=X2|X3!=unordered_pair(X4,X2)|unordered_pair(X1,X5)!=X3|X4!=X2)).
+####################################################################
+#cnf(i_0_499, plain, (X1=X2|X3!=unordered_pair(X2,X2)|X3!=unordered_pair(X4,X5)|X1!=X5)).
+######
+#cnf(i_0_500, plain, (X1=X2|X3!=unordered_pair(X2,X2)|X3!=unordered_pair(X4,X5)|X1!=X4)).
+###
+#cnf(i_0_22, plain, (X1!=unordered_pair(X3,X4)|X2!=X4|~in(X1,X2))).
+##################
+#cnf(i_0_19, plain, (set_intersection2(X1,singleton(X2))=singleton(X2)|X1!=unordered_pair(X3,X4)|X2!=X4)).
+####
+#cnf(i_0_82, plain, (set_intersection2(X1,singleton(X2))=singleton(X2)|X1!=unordered_pair(X3,X4)|X2!=X3)).
+##
+#cnf(i_0_80, plain, (X2!=unordered_pair(X3,X4)|X1!=X3|~in(X2,X1))).
+##
+#cnf(i_0_6516, plain, (set_intersection2(singleton(X2),X1)=singleton(X2)|X1!=unordered_pair(X3,X4)|X2!=X4)).
+########
+#cnf(i_0_6600, plain, (set_intersection2(singleton(X2),X1)=singleton(X2)|X1!=unordered_pair(X3,X4)|X2!=X3)).
+###################
+#cnf(i_0_347, plain, (X1=X2|X1=X3|unordered_pair(X4,X5)!=unordered_pair(X3,X2)|X1!=X5)).
+########
+#cnf(i_0_348, plain, (X1=X2|X1=X3|unordered_pair(X4,X5)!=unordered_pair(X3,X2)|X1!=X4)).
+###
+#cnf(i_0_2263, plain, (unordered_pair(X3,unordered_pair(unordered_pair(X1,X2),X4))!=unordered_pair(X2,X2))).
+####
+#cnf(i_0_2264, plain, (unordered_pair(X3,unordered_pair(unordered_pair(X1,X2),X4))!=unordered_pair(X1,X1))).
+#
+#cnf(i_0_352, plain, (X1=X2|X1=X3|X4!=unordered_pair(X3,X2)|X4!=unordered_pair(X5,X1))).
+###
+#cnf(i_0_2344, plain, (unordered_pair(unordered_pair(unordered_pair(X1,X2),X3),X4)!=unordered_pair(X2,X2))).
+####
+#cnf(i_0_2345, plain, (unordered_pair(unordered_pair(unordered_pair(X1,X2),X3),X4)!=unordered_pair(X1,X1))).
+##
+#cnf(i_0_353, plain, (X1=X2|X1=X3|X4!=unordered_pair(X3,X2)|unordered_pair(X1,X5)!=X4)).
+##
+#cnf(i_0_2425, plain, (unordered_pair(X2,X2)!=unordered_pair(X3,unordered_pair(X4,unordered_pair(X1,X2))))).
+####
+#cnf(i_0_2426, plain, (unordered_pair(X1,X1)!=unordered_pair(X3,unordered_pair(X4,unordered_pair(X1,X2))))).
+####
+#cnf(i_0_2506, plain, (unordered_pair(unordered_pair(X3,unordered_pair(X1,X2)),X4)!=unordered_pair(X2,X2))).
+####
+#cnf(i_0_2507, plain, (unordered_pair(unordered_pair(X3,unordered_pair(X1,X2)),X4)!=unordered_pair(X1,X1))).
+#########################################
+#cnf(i_0_744, plain, (in(X1,X3)|unordered_pair(X4,X5)!=unordered_pair(X3,X3)|unordered_pair(X1,X2)!=X5)).
+####
+#cnf(i_0_750, plain, (in(X1,X3)|unordered_pair(X4,X5)!=unordered_pair(X3,X3)|unordered_pair(X2,X1)!=X5)).
+####
+#cnf(i_0_906, plain, (in(X1,X3)|unordered_pair(X4,X5)!=unordered_pair(X3,X3)|unordered_pair(X1,X2)!=X4)).
+####
+#cnf(i_0_912, plain, (in(X1,X3)|unordered_pair(X4,X5)!=unordered_pair(X3,X3)|unordered_pair(X2,X1)!=X4)).
+####
+#cnf(i_0_1074, plain, (in(X1,X3)|X4!=unordered_pair(X5,unordered_pair(X1,X2))|X4!=unordered_pair(X3,X3))).
+####
+#cnf(i_0_1080, plain, (in(X1,X3)|X4!=unordered_pair(X5,unordered_pair(X2,X1))|X4!=unordered_pair(X3,X3))).
+####
+#cnf(i_0_1250, plain, (in(X1,X3)|unordered_pair(unordered_pair(X1,X2),X5)!=X4|X4!=unordered_pair(X3,X3))).
+####
+#cnf(i_0_1256, plain, (in(X1,X3)|unordered_pair(unordered_pair(X2,X1),X5)!=X4|X4!=unordered_pair(X3,X3))).
+######################################################################################
+#cnf(i_0_459, plain, (X3=set_intersection2(X2,X1)|X4!=unordered_pair(X3,X3)|~in(set_intersection2(X1,X2),X4))).
+####
+#cnf(i_0_13400, plain, (X1=set_intersection2(X2,X3)|~in(set_intersection2(X3,X2),unordered_pair(X1,X1)))).
+######
+#cnf(i_0_13946, plain, (X1=set_intersection2(X2,X3)|set_intersection2(X3,X2)!=X1)).
+################
+#cnf(i_0_14051, plain, (in(X1,set_intersection2(X3,X4))|set_intersection2(X4,X3)!=unordered_pair(X1,X2))).
+###
+#cnf(i_0_14277, plain, (unordered_pair(unordered_pair(X1,set_intersection2(X2,X3)),X4)!=set_intersection2(X3,X2))).
+######
+#cnf(i_0_14064, plain, (in(X1,set_intersection2(X3,X4))|set_intersection2(X4,X3)!=unordered_pair(X2,X1))).
+##########
+#cnf(i_0_14278, plain, (unordered_pair(unordered_pair(set_intersection2(X1,X2),X3),X4)!=set_intersection2(X2,X1))).
+#######################
+#cnf(i_0_13719, plain, (X1=set_intersection2(X2,X3)|unordered_pair(X4,set_intersection2(X3,X2))!=unordered_pair(X1,X1))).
+#######
+#cnf(i_0_13722, plain, (X1=set_intersection2(X2,X3)|unordered_pair(set_intersection2(X3,X2),X4)!=unordered_pair(X1,X1))).
+##
+#cnf(i_0_14689, plain, (unordered_pair(X4,unordered_pair(X1,set_intersection2(X2,X3)))!=set_intersection2(X3,X2))).
+#######################
+#cnf(i_0_13997, plain, (set_intersection2(X3,X4)=set_intersection2(X2,X1)|set_intersection2(X4,X3)!=set_intersection2(X1,X2))).
+#
+#cnf(i_0_14695, plain, (unordered_pair(X4,unordered_pair(set_intersection2(X1,X2),X3))!=set_intersection2(X2,X1))).
+##################
+#cnf(i_0_14045, plain, (set_intersection2(X3,X4)=unordered_pair(X2,X1)|set_intersection2(X4,X3)!=unordered_pair(X1,X2))).
+#
+#cnf(i_0_16330, plain, (unordered_pair(X2,X3)=X1|X1!=unordered_pair(X3,X2))).
+########
+#cnf(i_0_16795, plain, (in(X1,X2)|X4!=unordered_pair(X3,X1)|X4!=X2)).
+#######
+#cnf(i_0_16868, plain, (in(X1,X2)|X4!=unordered_pair(X1,X3)|X4!=X2)).
+#########################
+#cnf(i_0_16595, plain, (in(X1,unordered_pair(X3,X4))|unordered_pair(X1,X2)!=unordered_pair(X4,X3))).
+##########
+#cnf(i_0_16609, plain, (in(X1,unordered_pair(X3,X4))|unordered_pair(X2,X1)!=unordered_pair(X4,X3))).
+#######
+#cnf(i_0_16813, plain, (X4!=unordered_pair(X2,X1)|X4!=X3|~in(X3,X1))).
+##################
+#cnf(i_0_16884, plain, (in(X1,X2)|X5!=unordered_pair(X4,X3)|X5!=X2|X1!=X4)).
+#####
+#cnf(i_0_16885, plain, (in(X1,X2)|X5!=unordered_pair(X4,X3)|X5!=X2|X1!=X3)).
+#####
+#cnf(i_0_16856, plain, (X4!=unordered_pair(X3,X2)|X4!=X1|~in(X1,X3))).
+#
+#cnf(i_0_17073, plain, (in(X1,X2)|X5!=unordered_pair(X1,X4)|X5!=X3|X3!=X2)).
+#####
+#cnf(i_0_17161, plain, (in(X1,X2)|X5!=unordered_pair(X4,X1)|X5!=X3|X3!=X2)).
+########################
+#cnf(i_0_16820, plain, (empty(X1)|X3!=unordered_pair(esk2_0,esk2_0)|X3!=unordered_pair(X2,X1))).
+####
+#cnf(i_0_16825, plain, (empty(X1)|X3!=unordered_pair(esk2_0,esk2_0)|X3!=unordered_pair(X1,X2))).
+################
+#cnf(i_0_16797, plain, (in(X1,X2)|X4!=unordered_pair(X3,X1)|~in(X4,unordered_pair(X2,X2)))).
+########
+#cnf(i_0_16873, plain, (in(X1,X2)|X4!=unordered_pair(X1,X3)|~in(X4,unordered_pair(X2,X2)))).
+##############################################################
+#cnf(i_0_17169, plain, (unordered_pair(unordered_pair(X1,unordered_pair(X2,X3)),X4)!=unordered_pair(X3,X2))).
+#
+#cnf(i_0_16589, plain, (unordered_pair(X3,X4)=unordered_pair(X2,X1)|unordered_pair(X1,X2)!=unordered_pair(X4,X3))).
+###
+#cnf(i_0_17170, plain, (unordered_pair(unordered_pair(unordered_pair(X1,X2),X3),X4)!=unordered_pair(X2,X1))).
+####
+#cnf(i_0_17378, plain, (unordered_pair(X4,unordered_pair(X1,unordered_pair(X2,X3)))!=unordered_pair(X3,X2))).
+####
+#cnf(i_0_17379, plain, (unordered_pair(X4,unordered_pair(unordered_pair(X1,X2),X3))!=unordered_pair(X2,X1))).
+##########
+#cnf(i_0_16904, plain, (X1=X2|X3!=unordered_pair(X2,X2)|X5!=unordered_pair(X1,X4)|X5!=X3)).
+#####
+#cnf(i_0_16911, plain, (X1=X2|X3!=unordered_pair(X2,X2)|X5!=unordered_pair(X4,X1)|X5!=X3)).
+##############################
+#cnf(i_0_13950, plain, (X4=singleton(X1)|set_intersection2(unordered_pair(X2,X3),singleton(X1))!=X4|X1!=X2)).
+##
+#cnf(i_0_13951, plain, (X4=singleton(X1)|set_intersection2(unordered_pair(X2,X3),singleton(X1))!=X4|X1!=X3)).
+###
+#cnf(i_0_13956, plain, (X4=singleton(X3)|set_intersection2(singleton(X3),unordered_pair(X1,X2))!=X4|X3!=X2)).
+###
+#cnf(i_0_13957, plain, (X4=singleton(X3)|set_intersection2(singleton(X3),unordered_pair(X1,X2))!=X4|X3!=X1)).
+########################
+#cnf(i_0_16796, plain, (set_intersection2(singleton(X1),X2)=singleton(X1)|X4!=unordered_pair(X3,X1)|X4!=X2)).
+######
+#cnf(i_0_16835, plain, (set_intersection2(X1,singleton(X2))=singleton(X2)|X4!=unordered_pair(X2,X3)|X4!=X1)).
+######
+#cnf(i_0_16858, plain, (set_intersection2(X1,singleton(X2))=singleton(X2)|X4!=unordered_pair(X3,X2)|X4!=X1)).
+#####
+#cnf(i_0_16869, plain, (set_intersection2(singleton(X1),X2)=singleton(X1)|X4!=unordered_pair(X1,X3)|X4!=X2)).
+############################
+#cnf(i_0_13952, plain, (X4=singleton(X1)|set_intersection2(X2,singleton(X1))!=X4|X2!=unordered_pair(X3,X1))).
+###
+#cnf(i_0_13953, plain, (X4=singleton(X1)|set_intersection2(X2,singleton(X1))!=X4|unordered_pair(X1,X3)!=X2)).
+##
+#cnf(i_0_13959, plain, (X4=singleton(X2)|set_intersection2(singleton(X2),X1)!=X4|X1!=unordered_pair(X3,X2))).
+###
+#cnf(i_0_13960, plain, (X4=singleton(X2)|set_intersection2(singleton(X2),X1)!=X4|unordered_pair(X2,X3)!=X1)).
+###
+#cnf(i_0_14165, plain, (X1=X2|set_intersection2(X4,X3)!=unordered_pair(X2,X2)|~in(X1,set_intersection2(X3,X4)))).
+##########
+#cnf(i_0_16715, plain, (X1=X2|unordered_pair(X2,X2)!=unordered_pair(X4,X3)|~in(X1,unordered_pair(X3,X4)))).
+#################################
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(d2_tarski, axiom, ![X1, X2, X3]:(X3=unordered_pair(X1,X2)<=>![X4]:(in(X4,X3)<=>(X4=X1|X4=X2))), file('./p/SET878+1.tptp', d2_tarski)).
+fof(commutativity_k2_tarski, axiom, ![X1, X2]:unordered_pair(X1,X2)=unordered_pair(X2,X1), file('./p/SET878+1.tptp', commutativity_k2_tarski)).
+fof(t19_zfmisc_1, conjecture, ![X1, X2]:set_intersection2(singleton(X1),unordered_pair(X1,X2))=singleton(X1), file('./p/SET878+1.tptp', t19_zfmisc_1)).
+fof(l32_zfmisc_1, axiom, ![X1, X2]:(in(X1,X2)=>set_intersection2(X2,singleton(X1))=singleton(X1)), file('./p/SET878+1.tptp', l32_zfmisc_1)).
+fof(commutativity_k3_xboole_0, axiom, ![X1, X2]:set_intersection2(X1,X2)=set_intersection2(X2,X1), file('./p/SET878+1.tptp', commutativity_k3_xboole_0)).
+fof(c_0_5, plain, ![X11, X12, X13, X14, X15, X16, X17, X18]:(((~in(X14,X13)|(X14=X11|X14=X12)|X13!=unordered_pair(X11,X12))&((X15!=X11|in(X15,X13)|X13!=unordered_pair(X11,X12))&(X15!=X12|in(X15,X13)|X13!=unordered_pair(X11,X12))))&(((esk1_3(X16,X17,X18)!=X16|~in(esk1_3(X16,X17,X18),X18)|X18=unordered_pair(X16,X17))&(esk1_3(X16,X17,X18)!=X17|~in(esk1_3(X16,X17,X18),X18)|X18=unordered_pair(X16,X17)))&(in(esk1_3(X16,X17,X18),X18)|(esk1_3(X16,X17,X18)=X16|esk1_3(X16,X17,X18)=X17)|X18=unordered_pair(X16,X17)))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[d2_tarski])])])])])])).
+cnf(c_0_6, plain, (in(X1,X3)|X1!=X2|X3!=unordered_pair(X4,X2)), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_7, plain, (in(X1,X2)|X2!=unordered_pair(X3,X1)), inference(er,[status(thm)],[c_0_6])).
+fof(c_0_8, plain, ![X7, X8]:unordered_pair(X7,X8)=unordered_pair(X8,X7), inference(variable_rename,[status(thm)],[commutativity_k2_tarski])).
+fof(c_0_9, negated_conjecture, ~(![X1, X2]:set_intersection2(singleton(X1),unordered_pair(X1,X2))=singleton(X1)), inference(assume_negation,[status(cth)],[t19_zfmisc_1])).
+fof(c_0_10, plain, ![X21, X22]:(~in(X21,X22)|set_intersection2(X22,singleton(X21))=singleton(X21)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[l32_zfmisc_1])])).
+cnf(c_0_11, plain, (in(X1,unordered_pair(X2,X1))), inference(er,[status(thm)],[c_0_7])).
+cnf(c_0_12, plain, (unordered_pair(X1,X2)=unordered_pair(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_8])).
+fof(c_0_13, plain, ![X9, X10]:set_intersection2(X9,X10)=set_intersection2(X10,X9), inference(variable_rename,[status(thm)],[commutativity_k3_xboole_0])).
+fof(c_0_14, negated_conjecture, set_intersection2(singleton(esk4_0),unordered_pair(esk4_0,esk5_0))!=singleton(esk4_0), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_9])])])).
+cnf(c_0_15, plain, (set_intersection2(X2,singleton(X1))=singleton(X1)|~in(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_16, plain, (in(X1,unordered_pair(X1,X2))), inference(pm,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_17, plain, (set_intersection2(X1,X2)=set_intersection2(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_13])).
+cnf(c_0_18, negated_conjecture, (set_intersection2(singleton(esk4_0),unordered_pair(esk4_0,esk5_0))!=singleton(esk4_0)), inference(split_conjunct,[status(thm)],[c_0_14])).
+cnf(c_0_19, plain, (set_intersection2(singleton(X1),unordered_pair(X1,X2))=singleton(X1)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_16]), c_0_17])).
+cnf(c_0_20, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_18, c_0_19])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 21
+# Proof object clause steps            : 10
+# Proof object formula steps           : 11
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 5
+# Proof object initial formulas used   : 5
+# Proof object generating inferences   : 4
+# Proof object simplifying inferences  : 3
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 9
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 14
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 14
+# Processed clauses                    : 1224
+# ...of these trivial                  : 11
+# ...subsumed                          : 1051
+# ...remaining for further processing  : 161
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 25835
+# ...of the previous two non-trivial   : 25697
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 25641
+# Factorizations                       : 20
+# Equation resolutions                 : 174
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 161
+#    Positive orientable unit clauses  : 6
+#    Positive unorientable unit clauses: 2
+#    Negative unit clauses             : 24
+#    Non-unit-clauses                  : 129
+# Current number of unprocessed clauses: 24487
+# ...number of literals in the above   : 120458
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 11547
+# Rec. Clause-clause subsumption calls : 9589
+# Non-unit clause-clause subsumptions  : 879
+# Unit Clause-clause subsumption calls : 108
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 6
+# BW rewrite match successes           : 2
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 152100

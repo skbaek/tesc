@@ -1,0 +1,39 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GEO207+1
+% SZS output start Proof for GEO207+1
+fof(f62,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f61,f46])).
+fof(f46,plain,(
+  ( ! [X0] : (~convergent_lines(X0,X0)) )),
+  inference(cnf_transformation,[],[f3])).
+fof(f3,axiom,(
+  ! [X0] : ~convergent_lines(X0,X0)),
+  file('./p/GEO207+1.tptp',unknown)).
+fof(f61,plain,(
+  convergent_lines(sK0,sK0)),
+  inference(cnf_transformation,[],[f43])).
+fof(f43,plain,(
+  convergent_lines(sK0,sK0)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f41,f42])).
+fof(f42,plain,(
+  ? [X0] : convergent_lines(X0,X0) => convergent_lines(sK0,sK0)),
+  introduced(choice_axiom,[])).
+fof(f41,plain,(
+  ? [X0] : convergent_lines(X0,X0)),
+  inference(ennf_transformation,[],[f19])).
+fof(f19,negated_conjecture,(
+  ~! [X0] : ~convergent_lines(X0,X0)),
+  inference(negated_conjecture,[],[f18])).
+fof(f18,conjecture,(
+  ! [X0] : ~convergent_lines(X0,X0)),
+  file('./p/GEO207+1.tptp',unknown)).
+% SZS output end Proof for GEO207+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

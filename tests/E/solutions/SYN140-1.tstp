@@ -1,0 +1,5470 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_370, plain, (s0(d))).
+#
+#cnf(i_0_374, plain, (s0(b))).
+#
+#cnf(i_0_382, plain, (r0(e))).
+#
+#cnf(i_0_738, negated_conjecture, (~m4(b,X1))).
+#
+#cnf(i_0_378, plain, (r0(b))).
+#
+#cnf(i_0_389, plain, (l0(a))).
+#
+#cnf(i_0_393, plain, (l0(c))).
+#
+#cnf(i_0_397, plain, (k0(e))).
+#
+#cnf(i_0_401, plain, (k0(b))).
+#
+#cnf(i_0_386, plain, (q0(X1,d))).
+#
+#cnf(i_0_383, plain, (p0(b,X1))).
+##
+#cnf(i_0_398, plain, (q0(d,b))).
+#
+#cnf(i_0_402, plain, (q0(d,c))).
+##
+#cnf(i_0_405, plain, (q0(a,b))).
+#
+#cnf(i_0_390, plain, (q0(b,e))).
+#
+#cnf(i_0_375, plain, (q0(b,b))).
+#
+#cnf(i_0_372, plain, (n0(d,e))).
+#
+#cnf(i_0_376, plain, (n0(d,b))).
+#
+#cnf(i_0_395, plain, (n0(d,c))).
+#
+#cnf(i_0_399, plain, (n0(e,e))).
+#
+#cnf(i_0_380, plain, (n0(e,b))).
+#
+#cnf(i_0_384, plain, (n0(a,b))).
+#
+#cnf(i_0_406, plain, (n0(b,a))).
+#
+#cnf(i_0_403, plain, (n0(c,d))).
+###
+#cnf(i_0_387, plain, (p0(c,b))).
+#
+#cnf(i_0_388, plain, (m0(X1,d,X2))).
+#
+#cnf(i_0_408, plain, (k1(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_739, plain, (k1(d))).
+#
+#cnf(i_0_740, plain, (k1(a))).
+#
+#cnf(i_0_741, plain, (k1(b))).
+##
+#cnf(i_0_743, plain, (k1(e))).
+#
+#cnf(i_0_744, plain, (k1(c))).
+###
+#cnf(i_0_625, plain, (l3(X1,X1)|~r2(X1))).
+#
+#cnf(i_0_532, plain, (s1(X1)|~p0(X1,X1))).
+#
+#cnf(i_0_747, plain, (s1(b))).
+#
+#cnf(i_0_711, plain, (m5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_721, plain, (n5(X1,X1)|~r4(X1))).
+#
+#cnf(i_0_731, plain, (q5(X1,X1)|~l4(X1))).
+#
+#cnf(i_0_735, plain, (r5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_381, plain, (m0(a,X1,a))).
+#
+#cnf(i_0_543, plain, (m2(b))).
+#
+#cnf(i_0_733, plain, (q5(X1,X1)|~m4(X1,X1))).
+#
+#cnf(i_0_732, plain, (q5(X1,X1)|~q4(X1,X1))).
+#
+#cnf(i_0_544, plain, (n2(X1)|~p1(X2,X3,X1))).
+#
+#cnf(i_0_439, plain, (m1(X1,X1,X1)|~s0(X1))).
+#
+#cnf(i_0_647, plain, (n3(X1)|~p2(X2,X3,X1))).
+#
+#cnf(i_0_684, plain, (l4(X1)|~p3(X2,X3,X1))).
+#
+#cnf(i_0_464, plain, (n1(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_475, plain, (p1(X1,X1,X1)|~k0(X1))).
+#
+#cnf(i_0_748, plain, (n2(X1)|~k0(X1))).
+#
+#cnf(i_0_504, plain, (q1(X1,X1,X1)|~s0(X1))).
+##
+#cnf(i_0_523, plain, (q1(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_566, plain, (p2(X1,X1,X1)|~k1(X1))).
+#
+#cnf(i_0_749, plain, (n3(X1)|~k1(X1))).
+#
+#cnf(i_0_619, plain, (k3(X1,X1,X1)|~m2(X1))).
+#
+#cnf(i_0_617, plain, (k3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_643, plain, (m3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_651, plain, (p3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_750, plain, (l4(X1)|~n2(X1))).
+#
+#cnf(i_0_751, plain, (l4(X1)|~k0(X1))).
+#
+#cnf(i_0_673, plain, (r3(X1,X1,X1)|~r2(X1))).
+#
+#cnf(i_0_671, plain, (r3(X1,X1,X1)|~s2(X1))).
+#
+#cnf(i_0_409, plain, (l1(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_716, plain, (n5(X1,X1)|~n4(X2,X1))).
+#
+#cnf(i_0_720, plain, (n5(X1,X1)|~q4(X2,X1))).
+#
+#cnf(i_0_595, plain, (r2(X1)|~r1(X1)|~l0(X1))).
+#
+#cnf(i_0_404, plain, (m0(d,e,c))).
+###
+#cnf(i_0_396, plain, (m0(e,b,c))).
+#
+#cnf(i_0_392, plain, (m0(a,e,e))).
+#
+#cnf(i_0_407, plain, (m0(b,a,a))).
+#
+#cnf(i_0_400, plain, (m0(b,b,e))).
+#
+#cnf(i_0_385, plain, (m0(c,b,a))).
+#
+#cnf(i_0_536, plain, (k2(X1,X1)|~q1(X2,X1,X1))).
+#
+#cnf(i_0_752, plain, (k2(X1,X1)|~s0(X1))).
+#
+#cnf(i_0_753, plain, (k2(X1,X1)|~r0(X1))).
+#
+#cnf(i_0_736, plain, (s5(X1)|~r4(X2)|~l4(X1))).
+#
+#cnf(i_0_476, plain, (p1(X1,X1,X2)|~p0(X2,X1))).
+#
+#cnf(i_0_754, plain, (n2(X1)|~p0(X1,X2))).
+#
+#cnf(i_0_755, plain, (n2(c))).
+#
+#cnf(i_0_756, plain, (n2(b))).
+#
+#cnf(i_0_757, plain, (l4(c))).
+#
+#cnf(i_0_758, plain, (l4(b))).
+#
+#cnf(i_0_502, plain, (q1(X1,X2,X2)|~p0(X2,X1))).
+#
+#cnf(i_0_759, plain, (k2(X1,X1)|~p0(X1,X2))).
+#
+#cnf(i_0_760, plain, (k2(b,b))).
+#
+#cnf(i_0_593, plain, (q2(X1,X1,X2)|~l1(X2,X1))).
+#
+#cnf(i_0_601, plain, (k3(X1,X1,X2)|~k2(X2,X1))).
+#
+#cnf(i_0_653, plain, (p3(X1,X1,X1)|~l2(X1,X1))).
+#
+#cnf(i_0_761, plain, (l4(X1)|~l2(X1,X1))).
+#
+#cnf(i_0_420, plain, (m1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_762, plain, (m1(d,d,d))).
+#
+#cnf(i_0_474, plain, (p1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_763, plain, (n2(X1)|~q0(X2,X1))).
+#
+#cnf(i_0_766, plain, (n2(e))).
+#
+#cnf(i_0_770, plain, (n2(d))).
+#
+#cnf(i_0_771, plain, (l4(e))).
+#
+#cnf(i_0_772, plain, (l4(d))).
+#
+#cnf(i_0_764, plain, (p1(d,d,d))).
+#
+#cnf(i_0_473, plain, (p1(X1,X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_774, plain, (n2(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_776, plain, (n2(a))).
+#
+#cnf(i_0_783, plain, (l4(a))).
+#
+#cnf(i_0_492, plain, (p1(X1,X1,X1)|~p0(X2,X1))).
+#
+#cnf(i_0_784, plain, (n2(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_786, plain, (n2(X1))).
+#
+#cnf(i_0_750, plain, (l4(X1))).
+#
+#cnf(i_0_731, plain, (q5(X1,X1))).
+#
+#cnf(i_0_651, plain, (p3(X1,X1,X1))).
+#
+#cnf(i_0_643, plain, (m3(X1,X1,X1))).
+#
+#cnf(i_0_617, plain, (k3(X1,X1,X1))).
+#
+#cnf(i_0_736, plain, (s5(X1)|~r4(X2))).
+#
+#cnf(i_0_500, plain, (q1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_787, plain, (k2(X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_789, plain, (k2(d,d))).
+#
+#cnf(i_0_788, plain, (q1(d,d,d))).
+#
+#cnf(i_0_507, plain, (q1(X1,X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_791, plain, (k2(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_582, plain, (p2(X1,X1,X1)|~l1(X2,X1))).
+#
+#cnf(i_0_792, plain, (n3(X1)|~l1(X2,X1))).
+#
+#cnf(i_0_793, plain, (n3(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_794, plain, (n3(d))).
+#
+#cnf(i_0_795, plain, (n3(a))).
+#
+#cnf(i_0_796, plain, (n3(b))).
+##
+#cnf(i_0_798, plain, (n3(e))).
+#
+#cnf(i_0_799, plain, (n3(c))).
+###
+#cnf(i_0_672, plain, (r3(X1,X1,X1)|~l2(X2,X1))).
+#
+#cnf(i_0_722, plain, (n5(X1,X1)|~k4(X1)|~s1(X1))).
+#
+#cnf(i_0_729, plain, (q5(X1,X2)|~s4(X1)|~m2(X2))).
+#
+#cnf(i_0_533, plain, (s1(X1)|~s1(X3)|~q0(X1,X2))).
+#
+#cnf(i_0_807, plain, (s1(X1)|~s1(X2))).
+#
+#cnf(i_0_809, plain, (s1(X1))).
+#
+#cnf(i_0_722, plain, (n5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_561, plain, (p2(X1,X1,X1)|~q1(X1,X1,X1))).
+#
+#cnf(i_0_811, plain, (p2(X1,X1,X1)|~s0(X1))).
+#
+#cnf(i_0_816, plain, (n3(X1)|~s0(X1))).
+#
+#cnf(i_0_812, plain, (p2(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_817, plain, (n3(X1)|~r0(X1))).
+#
+#cnf(i_0_810, plain, (p2(d,d,d))).
+#
+#cnf(i_0_815, plain, (p2(X1,X1,X1)|~p0(X1,X1))).
+#
+#cnf(i_0_819, plain, (n3(X1)|~p0(X1,X1))).
+#
+#cnf(i_0_813, plain, (p2(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_821, plain, (n3(X1)|~q0(X2,X1))).
+#
+#cnf(i_0_814, plain, (p2(X1,X1,X1)|~n0(X2,X1))).
+##
+#cnf(i_0_542, plain, (m2(X1)|~l1(X2,X3)|~s0(X1))).
+#
+#cnf(i_0_709, plain, (l5(X1)|~q4(X2,X2)|~k1(X1))).
+#
+#cnf(i_0_564, plain, (p2(X1,X1,X1)|~l1(X1,d))).
+#
+#cnf(i_0_831, plain, (n3(X1)|~l1(X1,d))).
+#
+#cnf(i_0_830, plain, (m2(X1)|~n0(X3,X2)|~s0(X1))).
+#
+#cnf(i_0_833, plain, (m2(X1)|~s0(X1))).
+#
+#cnf(i_0_588, plain, (q2(X1,X1,X1)|~p1(X1,X1,X1))).
+#
+#cnf(i_0_613, plain, (k3(X1,X2,X1)|~p2(X2,X1,X1))).
+##
+#cnf(i_0_694, plain, (p4(X1,X2,X1)|~k3(X1,X1,X2))).
+##
+#cnf(i_0_713, plain, (m5(X1,X1)|~s4(X2)|~r0(X1))).
+#
+#cnf(i_0_412, plain, (m1(X1,X2,X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_421, plain, (m1(X1,X1,X1)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_842, plain, (m1(X1,X1,X1))).
+###
+#cnf(i_0_517, plain, (q1(X1,X1,X1)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_846, plain, (q1(X1,X1,X1))).
+#
+#cnf(i_0_847, plain, (k2(X1,X1))).
+#
+#cnf(i_0_561, plain, (p2(X1,X1,X1))).
+#
+#cnf(i_0_848, plain, (n3(X1))).
+###
+#cnf(i_0_583, plain, (p2(X1,X2,X1)|~m1(X2,X1,X2))).
+#
+#cnf(i_0_849, plain, (p2(X1,X2,X1)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_674, plain, (r3(X1,X2,X1)|~p2(X1,X3,X2))).
+#
+#cnf(i_0_698, plain, (p4(X1,X1,X1)|~p3(X2,X2,X1))).
+#
+#cnf(i_0_851, plain, (r3(X1,X1,X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_853, plain, (r3(d,d,d))).
+#
+#cnf(i_0_852, plain, (r3(X1,X1,X1)|~m1(X2,X1,X2))).
+##
+#cnf(i_0_624, plain, (l3(X1,X1))).
+##
+#cnf(i_0_442, plain, (m1(X1,X2,X1)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_428, plain, (m1(X1,X2,X1)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_468, plain, (n1(X1,X1,X1)|~k0(X1)|~s0(X1))).
+###
+#cnf(i_0_443, plain, (n1(X1,X1,X2)|~m0(b,X2,X1))).
+#
+#cnf(i_0_856, plain, (p2(X1,X2,X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_858, plain, (p2(X1,X2,X1)|~k0(X1)|~l0(X2))).
+##
+#cnf(i_0_707, plain, (k5(X1)|~s4(X2)|~r3(X3,X1,X1))).
+#
+#cnf(i_0_861, plain, (k5(d)|~s4(X1))).
+#
+#cnf(i_0_862, plain, (k5(X1)|~s4(X2)|~r2(X1))).
+#
+#cnf(i_0_863, plain, (k5(X1)|~s4(X2)|~s2(X1))).
+#
+#cnf(i_0_864, plain, (k5(X1)|~s4(X2)|~l2(X3,X1))).
+#
+#cnf(i_0_479, plain, (p1(X1,X1,X1)|~s0(X2)|~s0(X1))).
+#
+#cnf(i_0_865, plain, (k5(X1)|~s4(X2)|~m1(X3,X1,X3))).
+#
+#cnf(i_0_871, plain, (k5(X1)|~s4(X2))).
+####
+#cnf(i_0_855, plain, (r3(X1,X1,X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_857, plain, (r3(X1,X1,X1)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_591, plain, (q2(X1,X1,X1)|~q1(X2,c,X1))).
+#
+#cnf(i_0_598, plain, (s2(d)|~r1(d))).
+#
+#cnf(i_0_597, plain, (s2(d))).
+#
+#cnf(i_0_622, plain, (l3(X1,X2)|~p2(X1,X2,X1)|~r0(X1))).
+#
+#cnf(i_0_710, plain, (m5(X1,X2)|~p4(X1,X3,X2)|~r0(X1))).
+#
+#cnf(i_0_875, plain, (l3(X1,X2)|~r0(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_880, plain, (l3(b,e))).
+#
+#cnf(i_0_882, plain, (l3(d,X1)|~r0(d))).
+#
+#cnf(i_0_876, plain, (l3(X1,X2)|~m1(X2,X1,X2)|~r0(X1))).
+#
+#cnf(i_0_879, plain, (m5(X1,X1)|~k3(X1,X1,X2)|~r0(X1))).
+#
+#cnf(i_0_887, plain, (m5(X1,X1)|~r0(X1))).
+####
+#cnf(i_0_436, plain, (m1(X1,X2,X1)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_450, plain, (n1(X1,X1,X1)|~k1(X1)|~p0(X1,X1))).
+###
+#cnf(i_0_725, plain, (p5(X1,X1,X2)|~s4(X2)|~l2(X1,X1))).
+##
+#cnf(i_0_891, plain, (p2(X1,X2,X1)|~p0(X2,X1)|~s0(X2))).
+####
+#cnf(i_0_691, plain, (n4(X1,X1)|~k4(X2))).
+#
+#cnf(i_0_895, plain, (n5(X1,X1)|~k4(X2))).
+#
+#cnf(i_0_548, plain, (p2(X1,a,X1)|~q1(X1,a,X1))).
+#
+#cnf(i_0_706, plain, (s4(X1)|~p3(X2,X3,X4)|~l1(X1,X3))).
+#
+#cnf(i_0_899, plain, (s4(X1)|~l1(X1,X2))).
+#
+#cnf(i_0_900, plain, (s4(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_901, plain, (s4(d))).
+#
+#cnf(i_0_909, plain, (k5(X1))).
+#
+#cnf(i_0_902, plain, (s4(a))).
+#
+#cnf(i_0_903, plain, (s4(b))).
+##
+#cnf(i_0_905, plain, (s4(e))).
+#
+#cnf(i_0_906, plain, (s4(c))).
+####
+#cnf(i_0_414, plain, (m1(X1,X2,X1)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_418, plain, (m1(X1,X1,X2)|~k0(X1)|~n0(X2,X2))).
+##
+#cnf(i_0_693, plain, (p4(X1,X1,X1)|~q3(X2,X3))).
+##
+#cnf(i_0_727, plain, (p5(X1,X2,X1)|~q4(X2,X3))).
+##
+#cnf(i_0_890, plain, (r3(X1,X1,X1)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_911, plain, (p2(X1,X2,X1)|~p0(X3,X1)|~r0(X2))).
+####
+#cnf(i_0_456, plain, (n1(c,c,c))).
+#
+#cnf(i_0_495, plain, (p1(a,a,a))).
+######
+#cnf(i_0_910, plain, (r3(X1,X1,X1)|~p0(X3,X1)|~r0(X2))).
+##
+#cnf(i_0_446, plain, (n1(X1,c,X1)|~m0(X2,X1,c))).
+#
+#cnf(i_0_918, plain, (n1(d,c,d))).
+#
+#cnf(i_0_874, plain, (l3(X1,X2)|~l0(X1)|~r0(X1)|~r0(X2))).
+#
+#cnf(i_0_877, plain, (l3(X1,X2)|~k0(X1)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_662, plain, (q3(X1,X2)|~q2(X3,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_921, plain, (q3(X1,X2)|~l1(X2,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_512, plain, (q1(X1,X1,X2)|~p0(X2,d)|~s0(X1))).
+#
+#cnf(i_0_663, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X1))).
+#
+#cnf(i_0_920, plain, (q3(X1,X1)|~p1(X1,X1,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_933, plain, (q3(X1,X1)|~k0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_932, plain, (q3(X1,X1)|~p0(X1,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_935, plain, (q3(X1,X1)|~n0(X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_936, plain, (q3(X1,X1)|~n0(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_937, plain, (q3(X1,X1)|~p0(X2,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_930, plain, (q3(a,a)|~n0(a,a))).
+#
+#cnf(i_0_931, plain, (q3(d,d)|~n0(d,d))).
+##
+#cnf(i_0_938, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(X2,X2))).
+#
+#cnf(i_0_470, plain, (p1(X1,X1,X2)|~k0(X2)|~n0(d,X1))).
+#
+#cnf(i_0_649, plain, (p3(X1,X2,X3)|~k3(X2,X3,X1)|~r2(X2))).
+#
+#cnf(i_0_948, plain, (p3(X1,X2,X2)|~r2(X2)|~k2(X1,X2))).
+#
+#cnf(i_0_638, plain, (m3(X1,X2,X1)|~r2(X1)|~k2(c,X2))).
+#
+#cnf(i_0_667, plain, (r3(X1,X2,X2)|~s2(X2)|~l2(c,X1))).
+#
+#cnf(i_0_642, plain, (m3(X1,X1,X2)|~k3(X1,X2,X1)|~r2(X2))).
+#
+#cnf(i_0_946, plain, (p3(X1,X1,X2)|~r2(X1)|~p2(X2,X1,X1))).
+##
+#cnf(i_0_422, plain, (m1(X1,X2,X2)|~l0(X3)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_688, plain, (n4(X1,X2)|~n4(X1,X1)|~p3(X1,X2,X2))).
+#
+#cnf(i_0_955, plain, (n4(X1,X2)|~k4(X3)|~p3(X1,X2,X2))).
+###
+#cnf(i_0_715, plain, (n5(X1,X1)|~n5(X2,X1)|~m0(X2,X1,X2))).
+#
+#cnf(i_0_959, plain, (n5(X1,X1)|~n5(a,X1))).
+###
+#cnf(i_0_960, plain, (n5(d,d)|~n5(X1,d))).
+#####
+#cnf(i_0_712, plain, (m5(X1,X1)|~s4(X1)|~m4(e,e))).
+#
+#cnf(i_0_451, plain, (n1(X1,X2,X1)|~p0(X2,X3)|~p0(X1,X1))).
+#
+#cnf(i_0_967, plain, (n1(X1,b,X1)|~p0(X1,X1))).
+#
+#cnf(i_0_465, plain, (n1(X1,X1,X1)|~l1(X2,X1)|~n0(X2,X1))).
+###
+#cnf(i_0_453, plain, (n1(X1,X1,X1)|~m1(X2,X3,X1)|~k0(X2))).
+#
+#cnf(i_0_973, plain, (n1(X1,X1,X1)|~k0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_493, plain, (p1(X1,X1,X1)|~l0(X1)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_977, plain, (p1(X1,X1,X1)|~l0(X1))).
+#
+#cnf(i_0_978, plain, (q3(X1,X1)|~l0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_979, plain, (p4(X1,X1,X1)|~l0(X2)|~n0(X2,X2))).
+###
+#cnf(i_0_584, plain, (q2(X1,X2,X2)|~p1(X1,X1,X1)|~k0(X2))).
+#
+#cnf(i_0_984, plain, (q2(X1,X2,X2)|~k0(X2)|~k0(X1))).
+#
+#cnf(i_0_989, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_982, plain, (q2(X1,X2,X2)|~k0(X2)|~p0(X1,X1))).
+#
+#cnf(i_0_986, plain, (q2(X1,X2,X2)|~k0(X2)|~q0(X3,X1))).
+#
+#cnf(i_0_994, plain, (q2(d,X1,X1)|~k0(X1))).
+#
+#cnf(i_0_995, plain, (q3(X1,X1)|~k0(X1)|~n0(d,X1))).
+#
+#cnf(i_0_987, plain, (q2(X1,X2,X2)|~k0(X2)|~n0(X3,X1))).
+#
+#cnf(i_0_988, plain, (q2(X1,X2,X2)|~k0(X2)|~p0(X3,X1))).
+#
+#cnf(i_0_586, plain, (q2(X1,X1,X1)|~n1(X1,X1,X2)|~k1(X2))).
+####
+#cnf(i_0_692, plain, (p4(X1,X1,X2)|~r3(X2,X1,X2)|~r0(X1))).
+#
+#cnf(i_0_1001, plain, (m5(X1,X2)|~r3(X2,X1,X2)|~r0(X1))).
+######
+#cnf(i_0_1014, plain, (m5(X1,X2)|~p2(X2,X3,X1)|~r0(X1))).
+#########
+#cnf(i_0_949, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X2))).
+#
+#cnf(i_0_972, plain, (n1(X1,X1,X1)|~k0(X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_996, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(d,X2))).
+#
+#cnf(i_0_1002, plain, (p4(X1,X1,X2)|~p2(X2,X3,X1)|~r0(X1))).
+##
+#cnf(i_0_1026, plain, (p4(X1,X1,X1)|~r0(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_1032, plain, (p4(d,d,d)|~r0(d))).
+##
+#cnf(i_0_1027, plain, (p4(X1,X1,X1)|~m1(X2,X1,X2)|~r0(X1))).
+###
+#cnf(i_0_686, plain, (m4(X1,X2)|~s3(a,X1)|~l2(X3,X2))).
+#
+#cnf(i_0_734, plain, (r5(X1,X2)|~s4(X1))).
+#
+#cnf(i_0_892, plain, (l3(X1,X2)|~p0(X2,X1)|~r0(X1)|~s0(X2))).
+###
+#cnf(i_0_499, plain, (q1(X1,X2,X1)|~p0(X4,X1)|~n0(X3,X2))).
+##
+#cnf(i_0_577, plain, (p2(X1,e,X1)|~n1(X1,e,e))).
+#
+#cnf(i_0_520, plain, (q1(X1,X1,X2)|~m1(X1,X2,X2)|~r0(X3))).
+#
+#cnf(i_0_922, plain, (p4(X1,X1,X1)|~l1(X3,X2)|~n0(X2,X2))).
+#
+#cnf(i_0_940, plain, (p4(X1,X1,X1)|~n0(X2,X2)|~q0(X3,X2))).
+#
+#cnf(i_0_1057, plain, (p4(X1,X1,X1)|~n0(d,d))).
+##
+#cnf(i_0_942, plain, (p4(X1,X1,X1)|~n0(X2,X2)|~n0(X3,X2))).
+#
+#cnf(i_0_943, plain, (p4(X1,X1,X1)|~p0(X3,X2)|~n0(X2,X2))).
+#
+#cnf(i_0_872, plain, (q2(c,c,c)|~p0(c,X1))).
+###
+#cnf(i_0_596, plain, (s2(X1)|~q2(b,X1,b))).
+#
+#cnf(i_0_1063, plain, (s2(b))).
+##########
+#cnf(i_0_445, plain, (n1(X1,X1,X1)|~n0(X1,X1)|~q0(a,X1))).
+##
+#cnf(i_0_526, plain, (q1(X1,b,b)|~s0(X1))).
+#
+#cnf(i_0_705, plain, (r4(X1)|~q3(X2,X3)|~p0(X4,X1))).
+#
+#cnf(i_0_1073, plain, (r4(X1)|~q3(X2,X3))).
+#
+#cnf(i_0_1083, plain, (s5(X1)|~q3(X3,X4))).
+#
+#cnf(i_0_1084, plain, (r4(X1)|~n0(a,a))).
+#
+#cnf(i_0_1085, plain, (r4(X1)|~n0(d,d))).
+#
+#cnf(i_0_1093, plain, (s5(X1)|~n0(a,a))).
+#
+#cnf(i_0_1094, plain, (s5(X1)|~n0(d,d))).
+###
+#cnf(i_0_1087, plain, (r4(X1)|~k0(X2)|~n0(X2,X2))).
+#
+#cnf(i_0_1105, plain, (r4(X1))).
+#
+#cnf(i_0_736, plain, (s5(X1))).
+#
+#cnf(i_0_721, plain, (n5(X1,X1))).
+#
+#cnf(i_0_957, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~k2(X1,X2))).
+##
+#cnf(i_0_934, plain, (q3(X1,X1)|~n0(X1,X1)|~s0(X2)|~s0(X1))).
+##
+#cnf(i_0_411, plain, (l1(X1,X1)|~l1(X2,X2)|~k1(X1)|~l0(X2))).
+#
+#cnf(i_0_1109, plain, (s4(X1)|~l1(X2,X2)|~k1(X1)|~l0(X2))).
+#
+#cnf(i_0_1112, plain, (s4(X1)|~k1(X1)|~l0(X2)|~n0(X3,X2))).
+#
+#cnf(i_0_1115, plain, (s4(X1)|~k1(X1))).
+#
+#cnf(i_0_703, plain, (q4(X1,X1)|~q4(X2,X3)|~r1(X1))).
+#
+#cnf(i_0_1123, plain, (p5(X1,X2,X1)|~q4(X3,X4)|~r1(X2))).
+#
+#cnf(i_0_1124, plain, (l5(X1)|~q4(X3,X4)|~r1(X2)|~k1(X1))).
+#
+#cnf(i_0_912, plain, (l3(X1,X2)|~p0(X3,X1)|~r0(X1)|~r0(X2))).
+###
+#cnf(i_0_452, plain, (n1(d,d,d))).
+##
+#cnf(i_0_990, plain, (q3(X1,X1)|~k0(X1)|~k0(X2)|~n0(X2,X1))).
+#
+#cnf(i_0_991, plain, (q3(X1,X1)|~k0(X1)|~l0(X2)|~n0(X2,X1))).
+####
+#cnf(i_0_1111, plain, (l1(X1,X1)|~k1(X1)|~l0(X2)|~n0(X3,X2))).
+###
+#cnf(i_0_969, plain, (n1(X1,X1,X1)|~k0(X1)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_985, plain, (q2(X1,X2,X2)|~k0(X2)|~s0(X3)|~s0(X1))).
+##
+#cnf(i_0_1025, plain, (p4(X1,X1,X1)|~l0(X1)|~r0(X1)|~r0(X2))).
+##
+#cnf(i_0_1028, plain, (p4(X1,X1,X1)|~k0(X1)|~l0(X2)|~r0(X1))).
+#######
+#cnf(i_0_919, plain, (q3(X1,X1)|~q1(X2,c,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_1139, plain, (q3(c,c)|~n0(c,c))).
+#
+#cnf(i_0_660, plain, (p3(b,c,b)|~k2(c,b))).
+#
+#cnf(i_0_665, plain, (q3(X1,X1)|~r2(X1)|~l2(X3,X3))).
+#
+#cnf(i_0_1143, plain, (p4(X1,X1,X1)|~r2(X2)|~l2(X3,X3))).
+######
+#cnf(i_0_585, plain, (q2(X1,X1,X1)|~n1(X2,X1,X3)|~q0(X2,X1))).
+###
+#cnf(i_0_1000, plain, (q2(X1,X1,X1)|~k1(X2)|~m0(b,X2,X1))).
+#
+#cnf(i_0_562, plain, (p2(X1,X2,X2)|~p2(e,X1,X2)|~k1(X3))).
+#
+#cnf(i_0_1162, plain, (p2(X1,e,e)|~k1(X2)|~l0(X1))).
+#
+#cnf(i_0_1168, plain, (m5(e,X1)|~k1(X2)|~l0(X1))).
+#
+#cnf(i_0_1158, plain, (r3(X1,X2,X1)|~p2(e,X1,X2)|~k1(X3))).
+##
+#cnf(i_0_490, plain, (p1(X1,b,X2)|~m1(X1,X2,b)|~k0(X2))).
+#
+#cnf(i_0_1176, plain, (p1(b,b,b))).
+#
+#cnf(i_0_1173, plain, (p1(b,b,X1)|~k0(X1))).
+#
+#cnf(i_0_1179, plain, (q3(b,b)|~n0(b,b))).
+#####
+#cnf(i_0_953, plain, (n4(X1,X2)|~n4(X1,X1)|~r2(X2)|~k2(X1,X2))).
+##
+#cnf(i_0_1041, plain, (l3(X1,e)|~n1(X1,e,e)|~r0(X1))).
+#
+#cnf(i_0_1177, plain, (p1(X1,b,X1)|~k0(X1)|~n0(b,b))).
+####
+#cnf(i_0_444, plain, (n1(X1,X2,X1)|~l0(X2)|~p0(X3,X1)|~r0(X1))).
+####
+#cnf(i_0_1030, plain, (p4(X1,X1,X1)|~p0(X2,X1)|~r0(X1)|~s0(X2))).
+###
+#cnf(i_0_1127, plain, (p4(X1,X1,X1)|~k0(X2)|~k0(X3)|~n0(X3,X2))).
+#
+#cnf(i_0_1128, plain, (p4(X1,X1,X1)|~k0(X2)|~l0(X3)|~n0(X3,X2))).
+#
+#cnf(i_0_489, plain, (p1(X1,X2,X3)|~p1(X3,X1,X4)|~m0(X3,X1,X4))).
+#
+#cnf(i_0_1206, plain, (p1(a,X1,a))).
+#
+#cnf(i_0_1218, plain, (p1(X1,X2,a))).
+#
+#cnf(i_0_1207, plain, (p1(d,X1,d))).
+#
+#cnf(i_0_1220, plain, (p1(X1,X2,X3)|~m0(X3,X1,a))).
+###
+#cnf(i_0_1222, plain, (p1(X1,X2,d)|~m0(d,X1,d))).
+##
+#cnf(i_0_1211, plain, (p1(X1,X2,X1)|~k0(X1)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_1216, plain, (p1(X1,X2,X1)|~l0(X1)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_1223, plain, (q3(X1,X1)|~m0(X1,X1,a)|~n0(X1,X1))).
+###
+#cnf(i_0_1209, plain, (p1(X1,X2,X1)|~p0(X3,X1)|~m0(X1,X1,X3))).
+#
+#cnf(i_0_1224, plain, (q2(X1,X2,X2)|~k0(X2)|~m0(X1,X1,a))).
+#
+#cnf(i_0_1213, plain, (p1(X1,X2,X1)|~m0(X1,X1,X1)|~q0(X3,X1))).
+#
+#cnf(i_0_1214, plain, (p1(X1,X2,X1)|~m0(X1,X1,X1)|~n0(X3,X1))).
+#
+#cnf(i_0_1215, plain, (p1(X1,X2,X1)|~p0(X3,X1)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_1204, plain, (p1(b,X1,b)|~m0(b,b,b))).
+##
+#cnf(i_0_695, plain, (p4(X1,X2,X2)|~p4(X3,X3,X4)|~r3(X2,X2,X1))).
+#
+#cnf(i_0_1278, plain, (p4(X1,X2,X2)|~r3(X2,X2,X1))).
+#
+#cnf(i_0_1279, plain, (m5(X1,X2)|~r3(X2,X2,X1)|~r0(X1))).
+#############
+#cnf(i_0_993, plain, (q3(X1,X1)|~k0(X1)|~n0(X2,X1)|~q0(X3,X2))).
+##
+#cnf(i_0_997, plain, (q3(X1,X1)|~k0(X1)|~n0(X2,X1)|~n0(X3,X2))).
+#
+#cnf(i_0_648, plain, (p3(X1,X2,X3)|~q2(X4,d,X1)|~k2(X2,X3))).
+#
+#cnf(i_0_1309, plain, (p3(d,X1,X2)|~k2(X1,X2))).
+#
+#cnf(i_0_1315, plain, (n4(d,X1)|~k4(X2))).
+#
+#cnf(i_0_1314, plain, (n4(d,X1)|~n4(d,d))).
+###
+#cnf(i_0_1297, plain, (n4(X1,X2)|~k4(X3)|~q2(X4,d,X1))).
+##
+#cnf(i_0_1334, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,d))).
+##
+#cnf(i_0_1313, plain, (p3(X1,X2,X3)|~k2(X2,X3)|~l1(X1,d))).
+##
+#cnf(i_0_1338, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X1,d))).
+######
+#cnf(i_0_1340, plain, (p4(X1,X1,X1)|~k2(X2,X1)|~l1(X2,d))).
+#
+#cnf(i_0_1296, plain, (n4(X1,X2)|~n4(X1,X1)|~q2(X3,d,X1))).
+#####
+#cnf(i_0_1149, plain, (q2(X1,X1,X1)|~m0(b,X2,X1)|~q0(X1,X1))).
+#
+#cnf(i_0_998, plain, (q3(X1,X1)|~k0(X1)|~p0(X3,X2)|~n0(X2,X1))).
+#########
+#cnf(i_0_1029, plain, (p4(X1,X1,X1)|~p0(X3,X1)|~r0(X1)|~r0(X2))).
+###
+#cnf(i_0_1107, plain, (p4(X1,X1,X1)|~n0(X2,X2)|~s0(X3)|~s0(X2))).
+####
+#cnf(i_0_664, plain, (q3(X1,X2)|~q3(X2,X1)|~s2(X1)|~n1(X3,X1,X2))).
+#
+#cnf(i_0_1376, plain, (q3(b,X1)|~q3(X1,b)|~p0(X1,X1))).
+#
+#cnf(i_0_1402, plain, (q3(b,b))).
+#######
+#cnf(i_0_999, plain, (q3(X1,X1)|~n1(X1,X1,X2)|~k1(X2)|~n0(X1,X1))).
+###
+#cnf(i_0_1413, plain, (q3(X1,X1)|~k1(X1)|~r0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_1421, plain, (q3(X1,X1)|~k1(X1)|~k0(X2)|~n0(X1,X1))).
+##
+#cnf(i_0_1423, plain, (p4(X1,X1,X1)|~k1(X2)|~r0(X2)|~n0(X2,X2))).
+#
+#cnf(i_0_1425, plain, (p4(X1,X1,X1)|~k1(X2)|~k0(X3)|~n0(X2,X2))).
+###
+#cnf(i_0_486, plain, (p1(X1,X1,X1)|~k1(X1))).
+#
+#cnf(i_0_1428, plain, (q3(X1,X1)|~k1(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_1429, plain, (q2(X1,X2,X2)|~k1(X1)|~k0(X2))).
+#
+#cnf(i_0_1432, plain, (p4(X1,X1,X1)|~k1(X2)|~n0(X2,X2))).
+#
+#cnf(i_0_1430, plain, (p1(X1,X2,X1)|~k1(X1)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_1437, plain, (q3(X1,X1)|~k1(X2)|~k0(X1)|~n0(X2,X1))).
+##
+#cnf(i_0_1443, plain, (p4(X1,X1,X1)|~k1(X3)|~k0(X2)|~n0(X3,X2))).
+#######
+#cnf(i_0_423, plain, (m1(X1,X2,X2)|~m1(X3,X4,X2)|~m1(X3,X2,X1))).
+#
+#cnf(i_0_1465, plain, (m1(X1,X2,X2)|~m1(X2,X2,X1))).
+#
+#cnf(i_0_1479, plain, (m1(X1,X2,X2)|~k0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_1486, plain, (p1(X1,b,b)|~n0(X1,X1))).
+#
+#cnf(i_0_1471, plain, (n1(X1,X1,X1)|~m1(X1,X1,X2)|~k0(X2))).
+#
+#cnf(i_0_1468, plain, (q1(X1,X1,X2)|~m1(X2,X2,X1)|~r0(X3))).
+#
+#cnf(i_0_1472, plain, (p1(X1,b,b)|~m1(b,b,X1))).
+##
+#cnf(i_0_1482, plain, (q1(X1,X1,X2)|~k0(X2)|~r0(X3)|~n0(X1,X1))).
+##
+#cnf(i_0_1485, plain, (n1(X1,X1,X1)|~k0(X2)|~k0(X1)|~n0(X2,X2))).
+##
+#cnf(i_0_1456, plain, (m1(X1,X2,X2)|~m1(X1,X3,X2)|~m0(X2,X2,X1))).
+####
+#cnf(i_0_466, plain, (n1(X1,X1,X2)|~m0(X3,X4,X4)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_1544, plain, (n1(X1,X1,X2)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_1551, plain, (n1(a,a,a))).
+##
+#cnf(i_0_1547, plain, (q2(X1,X1,X1)|~k1(X2)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_1560, plain, (q2(X1,X1,X1)|~k1(X2))).
+#
+#cnf(i_0_1565, plain, (q3(X1,X1)|~k1(X2)|~n0(X1,X1))).
+##
+#cnf(i_0_1567, plain, (p4(X1,X1,X1)|~k1(X3)|~n0(X2,X2))).
+##
+#cnf(i_0_1549, plain, (q2(X1,X1,X1)|~m0(X2,X3,X1)|~q0(X1,X1))).
+#
+#cnf(i_0_1575, plain, (q2(X1,X1,X1)|~q0(X1,X1))).
+#######
+#cnf(i_0_469, plain, (n1(X1,X1,X1)|~n1(X2,X1,X2)|~m0(X2,X2,X3))).
+#
+#cnf(i_0_1585, plain, (n1(X1,X1,X1)|~n1(d,X1,d))).
+##
+#cnf(i_0_1610, plain, (n1(b,b,b)|~p0(d,d))).
+#
+#cnf(i_0_1614, plain, (n1(X1,X1,X1)|~p0(d,d)|~p0(X1,X2))).
+##
+#cnf(i_0_1550, plain, (q3(X1,X2)|~q3(X2,X1)|~s2(X1)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_1644, plain, (q3(X1,X2)|~q3(X2,X1)|~s2(X1))).
+########
+#cnf(i_0_1653, plain, (q3(X1,X2)|~s2(X1)|~l1(X1,X2)|~n0(X2,X2))).
+#######
+#cnf(i_0_658, plain, (p3(X1,X2,X2)|~m3(X2,X3,X4)|~p2(X1,X2,X4))).
+#
+#cnf(i_0_1683, plain, (p3(X1,X2,X2)|~p2(X1,X2,X2))).
+#
+#cnf(i_0_1686, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X2))).
+#####
+#cnf(i_0_1685, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X2))).
+###
+#cnf(i_0_1687, plain, (n4(X1,e)|~k4(X2)|~k1(X3)|~l0(X1))).
+##
+#cnf(i_0_1678, plain, (p3(X1,X2,X2)|~m3(X2,X3,X1)|~m1(X2,X1,X2))).
+#
+#cnf(i_0_1695, plain, (n4(X1,e)|~n4(X1,X1)|~k1(X2)|~l0(X1))).
+##
+#cnf(i_0_678, plain, (r3(X1,X1,X1)|~r3(X2,X2,X2)|~p3(X2,X1,X3))).
+#
+#cnf(i_0_1729, plain, (r3(X1,X1,X1)|~k2(X1,X2))).
+###
+#cnf(i_0_1736, plain, (r3(X1,X1,X1)|~p3(d,X1,X2))).
+###
+#cnf(i_0_1740, plain, (r3(X1,X1,X1)|~p3(X2,X1,X3)|~r2(X2))).
+###
+#cnf(i_0_1741, plain, (r3(X1,X1,X1)|~p3(X2,X1,X3)|~s2(X2))).
+##
+#cnf(i_0_1767, plain, (r3(X1,X1,X1)|~r2(X2)|~p2(X2,X1,X1))).
+##
+#cnf(i_0_1777, plain, (r3(X1,X1,X1)|~s2(X2)|~p2(X2,X1,X1))).
+#
+#cnf(i_0_1743, plain, (r3(X1,X1,X1)|~p3(X2,X1,X3)|~l2(X4,X2))).
+####
+#cnf(i_0_1749, plain, (r3(X1,X1,X1)|~p3(X2,X1,X3)|~k2(X2,X4))).
+#
+#cnf(i_0_1802, plain, (r3(X1,X1,X1)|~p3(X2,X1,X3))).
+##
+#cnf(i_0_1817, plain, (r3(X1,X1,X1)|~p2(X2,X1,X1))).
+########
+#cnf(i_0_1822, plain, (r3(X1,X1,X1)|~p2(e,X2,X1)|~k1(X3))).
+#
+#cnf(i_0_1821, plain, (r3(e,e,e)|~k1(X2)|~l0(X1))).
+#
+#cnf(i_0_1830, plain, (m5(e,e)|~k1(X1)|~l0(X2))).
+###
+#cnf(i_0_697, plain, (p4(X1,X1,X1)|~p4(X1,X3,X1)|~m3(X2,X3,X1))).
+####
+#cnf(i_0_1040, plain, (p2(X1,a,X1)|~p0(X2,X1)|~n0(X3,a))).
+#
+#cnf(i_0_1137, plain, (p4(X1,X1,X1)|~q1(X3,c,X2)|~n0(X2,X2))).
+#
+#cnf(i_0_1298, plain, (p4(X1,X1,X1)|~q2(X3,d,X2)|~k2(X2,X1))).
+####
+#cnf(i_0_1470, plain, (m1(X1,X2,X2)|~m1(X3,X2,X1)|~m1(X2,X2,X3))).
+#####
+#cnf(i_0_1677, plain, (p3(X1,X2,X2)|~m3(X2,X3,X1)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_1815, plain, (r3(X1,X1,X1)|~m3(X1,X3,X4)|~p2(X2,X1,X4))).
+###
+#cnf(i_0_1862, plain, (p4(X1,X1,X1)|~m3(X3,X2,X1)|~k3(X1,X1,X2))).
+#
+#cnf(i_0_1948, plain, (p4(X1,X1,X1)|~m3(X2,X3,X1)|~k2(X3,X1))).
+###
+#cnf(i_0_1928, plain, (r3(X1,X1,X1)|~m3(X1,X3,X2)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_1940, plain, (r3(X1,X1,X1)|~m3(X1,X2,X3)|~m1(X1,X3,X1))).
+####
+#cnf(i_0_552, plain, (p2(e,X1,X2)|~p1(X1,X2,e))).
+#
+#cnf(i_0_1971, plain, (l3(e,X1)|~p1(X1,e,e))).
+#
+#cnf(i_0_1995, plain, (l3(e,X1)|~m0(e,X1,a))).
+#
+#cnf(i_0_1996, plain, (l3(e,d))).
+#
+#cnf(i_0_1975, plain, (r3(e,X1,e)|~p1(X2,X1,e))).
+#
+#cnf(i_0_1999, plain, (r3(e,X1,e)|~p0(e,X1))).
+#
+#cnf(i_0_2004, plain, (m5(e,e)|~p0(e,e))).
+#
+#cnf(i_0_2000, plain, (r3(e,X1,e)|~n0(d,X1))).
+#
+#cnf(i_0_2006, plain, (m5(e,e))).
+#
+#cnf(i_0_2003, plain, (m5(X1,e)|~p0(e,X1)|~r0(X1))).
+#
+#cnf(i_0_2005, plain, (m5(X1,e)|~r0(X1)|~n0(d,X1))).
+##
+#cnf(i_0_1974, plain, (m5(X1,e)|~p1(X2,X1,e)|~r0(X1))).
+#
+#cnf(i_0_2007, plain, (m5(b,e))).
+#####
+#cnf(i_0_1976, plain, (p2(X1,X2,X2)|~p1(X1,X2,e)|~k1(X3))).
+#
+#cnf(i_0_2035, plain, (r3(X1,X2,X1)|~p1(X1,X2,e)|~k1(X3))).
+#
+#cnf(i_0_1970, plain, (n4(e,X1)|~k4(X2)|~p1(X1,X1,e))).
+#
+#cnf(i_0_2040, plain, (n4(e,b)|~k4(X1))).
+###
+#cnf(i_0_2041, plain, (n4(e,X1)|~k4(X2)|~p0(e,X1))).
+#
+#cnf(i_0_2042, plain, (n4(e,X1)|~k4(X2)|~n0(d,X1))).
+###
+#cnf(i_0_1977, plain, (r3(X1,X1,X1)|~p1(X2,X1,e)|~k1(X3))).
+##
+#cnf(i_0_1972, plain, (q3(X1,X1)|~q3(e,X1)|~p1(X1,X1,e))).
+#
+#cnf(i_0_2068, plain, (q3(X1,X1)|~q3(e,X1)|~p0(e,X1))).
+#
+#cnf(i_0_2092, plain, (q3(e,e)|~p0(e,e))).
+###
+#cnf(i_0_2088, plain, (q3(X1,X1)|~l1(X1,e)|~p0(e,X1))).
+#
+#cnf(i_0_2069, plain, (q3(X1,X1)|~q3(e,X1)|~n0(d,X1))).
+#
+#cnf(i_0_2118, plain, (q3(e,e))).
+########
+#cnf(i_0_2114, plain, (q3(X1,X1)|~l1(X1,e)|~n0(d,X1))).
+#######
+#cnf(i_0_2002, plain, (r3(e,X1,e)|~m0(e,X2,a))).
+##
+#cnf(i_0_2058, plain, (n4(e,X1)|~k4(X2)|~m0(e,X1,a))).
+#
+#cnf(i_0_2144, plain, (n4(e,d)|~k4(X1))).
+###
+#cnf(i_0_2111, plain, (p4(X1,X1,X1)|~l1(X2,e)|~p0(e,X2))).
+##
+#cnf(i_0_2141, plain, (p4(X1,X1,X1)|~l1(X2,e)|~n0(d,X2))).
+#
+#cnf(i_0_2026, plain, (m5(X1,e)|~r0(X1)|~m0(e,X2,a))).
+#
+#cnf(i_0_2149, plain, (m5(X1,e)|~r0(X1))).
+##
+#cnf(i_0_1973, plain, (p4(X1,X1,e)|~p1(X2,X1,e)|~r0(X1))).
+##
+#cnf(i_0_2066, plain, (r3(X1,X1,X1)|~k1(X3)|~m0(e,X2,a))).
+####
+#cnf(i_0_410, plain, (l1(X1,X2)|~p0(X3,X1)|~r0(X4)|~m0(X2,X1,X3))).
+#
+#cnf(i_0_2161, plain, (l1(b,e)|~r0(X1))).
+#
+#cnf(i_0_2160, plain, (l1(X1,a)|~p0(a,X1)|~r0(X2))).
+#
+#cnf(i_0_2166, plain, (s4(X1)|~p0(a,X1)|~r0(X2))).
+#
+#cnf(i_0_2163, plain, (l1(d,X1)|~p0(X2,d)|~r0(X3))).
+#
+#cnf(i_0_2156, plain, (l1(b,c)|~p0(a,b)|~r0(X1))).
+#
+#cnf(i_0_2157, plain, (l1(b,b)|~p0(e,b)|~r0(X1))).
+#
+#cnf(i_0_2158, plain, (l1(a,b)|~p0(a,a)|~r0(X1))).
+#
+#cnf(i_0_2159, plain, (l1(e,a)|~p0(e,e)|~r0(X1))).
+#
+#cnf(i_0_2162, plain, (l1(e,d)|~p0(c,e)|~r0(X1))).
+##
+#cnf(i_0_2167, plain, (l1(X1,X1)|~k1(X1)|~p0(a,a)|~r0(X2))).
+##
+#cnf(i_0_538, plain, (l2(X1,X2)|~l2(X2,X2)|~n0(e,X2))).
+######
+#cnf(i_0_534, plain, (k2(X1,X2)|~k2(X4,X2)|~m1(X3,X2,X1)|~k1(X4))).
+#
+#cnf(i_0_2196, plain, (k2(X1,X2)|~m1(X3,X2,X1)|~k1(X2))).
+#
+#cnf(i_0_2201, plain, (k2(X1,X2)|~k1(X2)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_2212, plain, (k2(X1,d))).
+#
+#cnf(i_0_2210, plain, (k2(e,b))).
+#
+#cnf(i_0_2213, plain, (n4(X1,d)|~k4(X2)|~r2(d))).
+##
+#cnf(i_0_2197, plain, (k2(X1,X2)|~k1(X2)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_2198, plain, (k2(X1,X2)|~k1(X2)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_2214, plain, (n4(X1,d)|~n4(X1,X1)|~r2(d))).
+#####
+#cnf(i_0_2199, plain, (k2(X1,X2)|~k1(X2)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_2215, plain, (p4(d,d,d)|~l1(X1,d))).
+#
+#cnf(i_0_2200, plain, (k2(X1,X2)|~k1(X2)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_2203, plain, (k2(X1,X2)|~k1(X2)|~k0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_2224, plain, (r3(X1,X1,X1)|~k1(X2)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_2230, plain, (r3(X1,X1,X1)|~k1(X2)|~k0(X2)|~l0(X1))).
+##
+#cnf(i_0_2255, plain, (r3(X1,X1,X1)|~k1(X2)|~k0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_2241, plain, (r3(X1,X1,X1)|~k1(X2)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_2267, plain, (r3(b,b,b)|~k1(X1))).
+#
+#cnf(i_0_2268, plain, (m5(b,b)|~k1(X1))).
+##
+#cnf(i_0_2249, plain, (r3(X1,X1,X1)|~k1(X2)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_2272, plain, (r3(X1,X1,X1)|~k1(X2)|~r0(X1))).
+#####
+#cnf(i_0_2218, plain, (n4(e,b)|~n4(e,e)|~r2(b))).
+###
+#cnf(i_0_1157, plain, (m5(X1,X2)|~p2(e,X2,X1)|~k1(X3)|~r0(X1))).
+##
+#cnf(i_0_2285, plain, (m5(e,X1)|~k1(X2)|~l0(e)|~r0(X1))).
+#
+#cnf(i_0_2286, plain, (m5(e,X1)|~k1(X2)|~m0(e,e,X1))).
+####
+#cnf(i_0_2034, plain, (m5(X1,X2)|~p1(X2,X1,e)|~k1(X3)|~r0(X1))).
+######
+#cnf(i_0_2187, plain, (k2(X1,X2)|~k2(X3,X2)|~k1(X3)|~m0(X2,X2,X1))).
+####
+#cnf(i_0_2289, plain, (m5(e,X1)|~k1(X2)|~p0(X1,e)|~s0(X1))).
+#
+#cnf(i_0_497, plain, (p1(e,e,e))).
+##
+#cnf(i_0_2321, plain, (p1(e,X1,e)|~m0(e,e,e))).
+#
+#cnf(i_0_441, plain, (m1(X1,X2,X2)|~k1(X2)|~q0(X1,X1))).
+#
+#cnf(i_0_2339, plain, (p1(X1,b,b)|~q0(X1,X1))).
+#
+#cnf(i_0_2333, plain, (q1(X1,X1,X2)|~k1(X2)|~r0(X3)|~q0(X1,X1))).
+#
+#cnf(i_0_2338, plain, (n1(X1,X1,X1)|~k1(X1)|~k0(X2)|~q0(X2,X2))).
+#
+#cnf(i_0_516, plain, (q1(X1,X1,X2)|~k1(X1)|~p0(X3,X3)|~q0(X2,X1))).
+##
+#cnf(i_0_2085, plain, (q3(X1,X1)|~q3(e,X1)|~m0(e,X1,a))).
+#
+#cnf(i_0_2361, plain, (q3(d,d)|~q3(e,d))).
+####
+#cnf(i_0_506, plain, (q1(X1,X2,X2)|~q1(X2,X2,X3)|~k0(X3)|~l0(X1))).
+#
+#cnf(i_0_2368, plain, (q1(X1,b,b)|~l0(X1))).
+#
+#cnf(i_0_2370, plain, (q1(X1,X2,X2)|~k0(X2)|~l0(X1))).
+####
+#cnf(i_0_2379, plain, (q2(c,c,c)|~k0(c)|~l0(X1))).
+#
+#cnf(i_0_635, plain, (m3(X1,X2,X2)|~m3(X3,X1,X3)|~m2(X2))).
+#
+#cnf(i_0_2396, plain, (m3(X1,X2,X2)|~m2(X2))).
+#
+#cnf(i_0_2401, plain, (p4(X1,X1,X1)|~m2(X1))).
+###
+#cnf(i_0_2400, plain, (p3(X1,X2,X2)|~m2(X1)|~m1(X2,X1,X2))).
+#
+#cnf(i_0_2398, plain, (p3(X1,X2,X2)|~p2(X1,X2,X3)|~m2(X3))).
+##
+#cnf(i_0_2399, plain, (p3(X1,X2,X2)|~m2(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_2403, plain, (r3(X1,X1,X1)|~m2(X2)|~m1(X1,X2,X1))).
+#
+#cnf(i_0_2404, plain, (r3(X1,X1,X1)|~p2(X3,X1,X2)|~m2(X2))).
+#
+#cnf(i_0_2405, plain, (r3(X1,X1,X1)|~m2(X2)|~m0(X2,X2,X1))).
+#########
+#cnf(i_0_2409, plain, (p3(X1,X2,X2)|~m2(X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_2410, plain, (p3(X1,X2,X2)|~m2(X1)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_2439, plain, (r3(X1,X1,X1)|~m2(X2)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_2440, plain, (r3(X1,X1,X1)|~m2(X2)|~k0(X2)|~l0(X1))).
+#####
+#cnf(i_0_2468, plain, (r3(X1,X1,X1)|~l0(X2)|~r0(X1)|~s0(X2))).
+###
+#cnf(i_0_2471, plain, (r3(X1,X1,X1)|~k0(X2)|~l0(X1)|~s0(X2))).
+#
+#cnf(i_0_2446, plain, (r3(X1,X1,X1)|~m2(X2)|~p1(X1,X2,e))).
+###
+#cnf(i_0_2411, plain, (p3(X1,X2,X2)|~m2(X1)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_2423, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X4)|~m2(X4))).
+##
+#cnf(i_0_2435, plain, (n4(X1,X2)|~k4(X3)|~m2(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_2504, plain, (n4(b,e)|~k4(X1))).
+###
+#cnf(i_0_2487, plain, (r3(X1,X1,X1)|~m2(X2)|~m0(e,X1,a))).
+##
+#cnf(i_0_2500, plain, (n4(X1,X2)|~k4(X3)|~m2(X1)|~m1(X2,X1,X2))).
+##
+#cnf(i_0_2509, plain, (r3(X1,X1,X1)|~m0(e,X1,a)|~s0(X2))).
+####
+#cnf(i_0_2412, plain, (p3(X1,X2,X2)|~m2(X1)|~p0(X3,X1)|~r0(X2))).
+####
+#cnf(i_0_2441, plain, (r3(X1,X1,X1)|~m2(X2)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_2530, plain, (r3(b,b,b)|~m2(X1))).
+#
+#cnf(i_0_2531, plain, (m5(b,b)|~m2(X1))).
+##
+#cnf(i_0_2534, plain, (m5(b,b)|~s0(X1))).
+#
+#cnf(i_0_2533, plain, (r3(b,b,b)|~s0(X1))).
+###
+#cnf(i_0_2442, plain, (r3(X1,X1,X1)|~m2(X2)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_2539, plain, (r3(X1,X1,X1)|~m2(X2)|~r0(X1))).
+###
+#cnf(i_0_2542, plain, (r3(X1,X1,X1)|~r0(X1)|~s0(X2))).
+#######
+#cnf(i_0_2425, plain, (p3(e,X1,X1)|~m2(X2)|~p1(X1,X2,e))).
+#
+#cnf(i_0_2434, plain, (n4(X1,X2)|~n4(X1,X1)|~m2(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_2557, plain, (n4(b,e)|~n4(b,b))).
+##
+#cnf(i_0_2461, plain, (n4(X1,X2)|~k4(X3)|~m2(X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_2464, plain, (n4(X1,X2)|~k4(X3)|~m2(X1)|~k0(X1)|~l0(X2))).
+#########
+#cnf(i_0_2422, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X3)|~m2(X3))).
+####
+#cnf(i_0_2587, plain, (n4(X1,X2)|~n4(X1,X1)|~m2(X1)|~m1(X2,X1,X2))).
+###
+#cnf(i_0_484, plain, (p1(c,e,b)|~m0(b,c,e))).
+####
+#cnf(i_0_568, plain, (p2(d,b,b)|~p1(d,b,e))).
+#
+#cnf(i_0_2618, plain, (m5(b,d)|~p1(d,b,e))).
+#
+#cnf(i_0_2622, plain, (m5(b,d))).
+#
+#cnf(i_0_670, plain, (r3(X1,X1,X1)|~r3(X1,X1,X2)|~m0(d,X2,X1))).
+##########
+#cnf(i_0_1452, plain, (m1(X1,X2,X2)|~m1(X1,X3,X2)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_1453, plain, (m1(X1,X2,X2)|~m1(X1,X3,X2)|~k0(X2)|~l0(X1))).
+##
+#cnf(i_0_2712, plain, (p1(X1,b,b)|~m1(X1,X2,b)|~l0(X1))).
+####
+#cnf(i_0_2632, plain, (r3(e,e,e)|~m0(d,e,e))).
+###
+#cnf(i_0_1676, plain, (p3(X1,X2,X2)|~m3(X2,X3,X1)|~l0(X1)|~r0(X2))).
+##
+#cnf(i_0_1679, plain, (p3(X1,X2,X2)|~m3(X2,X3,X1)|~k0(X1)|~l0(X2))).
+######
+#cnf(i_0_1873, plain, (p4(X1,X1,X1)|~p0(c,X2)|~n0(c,c))).
+#
+#cnf(i_0_2556, plain, (p3(e,X1,X1)|~m2(X2)|~m0(e,X1,a))).
+####
+#cnf(i_0_2777, plain, (p3(e,X1,X1)|~m0(e,X1,a)|~s0(X2))).
+##
+#cnf(i_0_1938, plain, (r3(X1,X1,X1)|~m3(X1,X2,X3)|~l0(X3)|~r0(X1))).
+####
+#cnf(i_0_1941, plain, (r3(X1,X1,X1)|~m3(X1,X2,X3)|~k0(X3)|~l0(X1))).
+###############
+#cnf(i_0_1689, plain, (n4(X1,X2)|~k4(X3)|~p2(e,X1,X2)|~k1(X4))).
+####
+#cnf(i_0_2030, plain, (n4(X1,X2)|~k4(X3)|~p1(X1,X2,e)|~k1(X4))).
+##########
+#cnf(i_0_540, plain, (l2(X1,X1)|~p0(X2,X2)|~m0(X4,X3,X1))).
+#
+#cnf(i_0_2836, plain, (l2(X1,X1)|~p0(X2,X2))).
+#
+#cnf(i_0_2837, plain, (q3(X1,X1)|~r2(X1)|~p0(X3,X3))).
+#
+#cnf(i_0_2839, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(X4,X4))).
+##
+#cnf(i_0_2838, plain, (l2(X1,X2)|~p0(X3,X3)|~n0(e,X2))).
+##
+#cnf(i_0_2840, plain, (m4(X1,X2)|~s3(a,X1)|~p0(X3,X3))).
+##
+#cnf(i_0_2853, negated_conjecture, (~s3(a,b)|~p0(X2,X2))).
+#
+#cnf(i_0_2850, plain, (r3(X1,X1,X1)|~p0(X3,X3)|~n0(e,X1))).
+####
+#cnf(i_0_981, plain, (q3(X1,X1)|~p1(X2,X2,X2)|~k0(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_2859, plain, (q3(X1,X1)|~k0(X1)|~n0(b,X1))).
+##
+#cnf(i_0_2862, plain, (q3(X1,X1)|~k0(X1)|~n0(e,X1))).
+####
+#cnf(i_0_2887, plain, (q3(X1,X1)|~k0(X1)|~n0(a,X1))).
+#
+#cnf(i_0_2892, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(b,X2))).
+#
+#cnf(i_0_2897, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(e,X2))).
+#
+#cnf(i_0_2902, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(a,X2))).
+#################
+#cnf(i_0_556, plain, (p2(X1,X1,d)|~r1(a)|~m0(X2,X1,d))).
+#########
+#cnf(i_0_1141, plain, (q3(X1,X1)|~p0(X1,d)|~n0(X1,X1)|~s0(c))).
+####
+#cnf(i_0_608, plain, (k3(X1,X1,X2)|~m2(X4)|~m2(X3)|~p1(X2,X3,X1))).
+#
+#cnf(i_0_2942, plain, (k3(a,a,X1)|~m2(X2)|~m2(X3))).
+#
+#cnf(i_0_2945, plain, (k3(a,a,X1)|~m2(X2)|~s0(X3))).
+##
+#cnf(i_0_2948, plain, (k3(a,a,X1)|~s0(X3)|~s0(X2))).
+#
+#cnf(i_0_2930, plain, (k3(X1,X1,X2)|~m2(X3)|~m2(X2)|~p0(X1,X2))).
+#
+#cnf(i_0_2952, plain, (k3(X1,X1,X2)|~m2(X2)|~p0(X1,X2)|~s0(X3))).
+##
+#cnf(i_0_974, plain, (n1(X1,X1,X1)|~k0(X2)|~l0(X3)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_1212, plain, (p1(X1,X2,X1)|~m0(X1,X1,X1)|~s0(X3)|~s0(X1))).
+#
+#cnf(i_0_1293, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(X3,X2)|~q0(X4,X3))).
+##
+#cnf(i_0_1295, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(X3,X2)|~n0(X4,X3))).
+#
+#cnf(i_0_1369, plain, (p4(X1,X1,X1)|~k0(X2)|~p0(X3,X4)|~n0(X4,X2))).
+#####
+#cnf(i_0_2288, plain, (m5(e,X1)|~k1(X2)|~p0(X3,e)|~r0(X1))).
+##
+#cnf(i_0_2943, plain, (k3(X1,X1,X2)|~m2(X4)|~p1(X2,X4,X1)|~s0(X3))).
+###
+#cnf(i_0_447, plain, (n1(X1,e,e)|~k1(X1)|~m0(X1,X2,e))).
+#
+#cnf(i_0_3001, plain, (p2(X1,e,X1)|~k1(X1)|~m0(X1,X2,e))).
+#####
+#cnf(i_0_2153, plain, (p4(X1,X1,e)|~r0(X1)|~m0(e,X2,a))).
+##
+#cnf(i_0_457, plain, (n1(X1,X2,X1)|~l0(X1))).
+#
+#cnf(i_0_3018, plain, (n1(X1,X1,X1)|~l0(d))).
+#
+#cnf(i_0_3022, plain, (q2(X1,X1,X1)|~l0(X2)|~q0(X2,X1))).
+##
+#cnf(i_0_3032, plain, (q2(d,d,d)|~l0(X1))).
+##
+#cnf(i_0_3021, plain, (n1(X1,X1,X1)|~l0(X2)|~m0(X2,X2,X3))).
+#########
+#cnf(i_0_1532, plain, (m1(X1,X2,X2)|~k0(X1)|~m0(X2,X2,X1)|~n0(X2,X2))).
+##
+#cnf(i_0_1969, plain, (n4(e,X1)|~n4(e,e)|~p1(X1,X1,e))).
+#
+#cnf(i_0_3063, plain, (n4(e,b)|~n4(e,e))).
+#####
+#cnf(i_0_3066, plain, (n4(e,X1)|~n4(e,e)|~p0(e,X1))).
+###
+#cnf(i_0_3067, plain, (n4(e,X1)|~n4(e,e)|~n0(d,X1))).
+####
+#cnf(i_0_1994, plain, (l3(e,X1)|~p1(e,X1,X2)|~m0(e,X1,X2))).
+##
+#cnf(i_0_3106, plain, (l3(e,b)|~m0(e,b,b))).
+#
+#cnf(i_0_3000, plain, (l3(X1,e)|~k1(X1)|~r0(X1)|~m0(X1,X2,e))).
+#
+#cnf(i_0_3133, plain, (l3(a,e)|~r0(a))).
+#
+#cnf(i_0_3134, plain, (l3(X1,e)|~k1(X1)|~r0(X1))).
+#
+#cnf(i_0_590, plain, (q2(X1,c,X2)|~l2(X2,X1)|~k1(X2))).
+#
+#cnf(i_0_3135, plain, (s2(c)|~l2(b,b))).
+#
+#cnf(i_0_3137, plain, (s2(c)|~p0(X1,X1))).
+#
+#cnf(i_0_3139, plain, (s2(c))).
+#
+#cnf(i_0_1053, plain, (q1(X1,X1,X2)|~l0(X4)|~r0(X3)|~m0(X2,X2,X1))).
+####
+#cnf(i_0_1225, plain, (p1(X1,X2,X3)|~m0(X4,X3,a)|~m0(X3,X1,X4))).
+#
+#cnf(i_0_3162, plain, (p1(d,X1,X2)|~m0(X3,X2,a))).
+###
+#cnf(i_0_3163, plain, (p1(X1,X2,d)|~m0(d,X1,X3))).
+####
+#cnf(i_0_724, plain, (n5(d,X1)|~n4(X1,d)|~k3(d,X1,a))).
+##
+#cnf(i_0_2489, plain, (n4(X1,X2)|~k4(X3)|~m2(X1)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_2427, plain, (p3(X1,e,e)|~m2(X1)|~n1(X1,e,e))).
+############
+#cnf(i_0_1170, plain, (p4(X1,X1,X2)|~p2(e,X2,X1)|~k1(X3)|~r0(X1))).
+####
+#cnf(i_0_1881, plain, (p4(X1,X1,X1)|~k2(d,X1)|~k0(d)|~k0(X2))).
+#
+#cnf(i_0_2183, plain, (k2(X1,X2)|~k2(X3,X2)|~k1(X3)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_3237, plain, (k2(X1,b)|~l0(b)|~r0(X1))).
+##
+#cnf(i_0_1886, plain, (p4(X1,X1,X1)|~k2(d,X1)|~k0(d)|~l0(X2))).
+#
+#cnf(i_0_2184, plain, (k2(X1,X2)|~k2(X3,X2)|~k1(X3)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_3262, plain, (k2(X1,b)|~l0(X1))).
+###
+#cnf(i_0_3272, plain, (n4(X1,b)|~k4(X2)|~r2(b)|~l0(X1))).
+#
+#cnf(i_0_3273, plain, (n4(X1,b)|~n4(X1,X1)|~r2(b)|~l0(X1))).
+##
+#cnf(i_0_3274, plain, (p4(b,b,b)|~l1(X1,d)|~l0(X1))).
+#
+#cnf(i_0_3293, plain, (m5(b,b)|~l1(X1,d)|~l0(X1))).
+#
+#cnf(i_0_3296, plain, (m5(b,b)|~l0(d)|~n0(X1,d))).
+#
+#cnf(i_0_3297, plain, (m5(b,b)|~l1(X1,X1)|~l0(d)|~l0(X1))).
+#
+#cnf(i_0_1888, plain, (p4(X1,X1,X1)|~k2(d,X1)|~k1(X2)|~k0(d))).
+###
+#cnf(i_0_2356, plain, (q3(X1,X1)|~p0(X2,X2)|~n0(X1,X1)|~q0(X1,c))).
+#
+#cnf(i_0_2038, plain, (p4(X1,X1,X2)|~p1(X2,X1,e)|~k1(X3)|~r0(X1))).
+##
+#cnf(i_0_2460, plain, (n4(X1,X2)|~n4(X1,X1)|~m2(X1)|~l0(X1)|~r0(X2))).
+###
+#cnf(i_0_2463, plain, (n4(X1,X2)|~n4(X1,X1)|~m2(X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_3329, plain, (n4(e,X1)|~k4(X2)|~m2(e)|~l0(X1))).
+########
+#cnf(i_0_1142, plain, (q3(X1,X1)|~m1(c,X1,X1)|~r0(X2)|~n0(X1,X1))).
+#######
+#cnf(i_0_1497, plain, (q3(X1,X1)|~m1(X1,X1,c)|~r0(X2)|~n0(X1,X1))).
+#################
+#cnf(i_0_2491, plain, (n4(e,X1)|~k4(X2)|~m2(X3)|~p1(X1,X3,e))).
+#########
+#cnf(i_0_3275, plain, (k2(X1,b)|~m1(X3,b,X1)|~k1(X2)|~l0(X2))).
+##
+#cnf(i_0_3412, plain, (k2(X1,b)|~k1(X2)|~l0(X2)|~n0(X1,X1))).
+#####
+#cnf(i_0_3136, plain, (q3(c,X1)|~l2(X1,X2)|~k1(X1)|~n0(X2,c))).
+#
+#cnf(i_0_3432, plain, (p4(X1,X1,X1)|~l2(X2,X3)|~k1(X2)|~n0(X3,c))).
+##
+#cnf(i_0_3435, plain, (q3(c,X1)|~k1(X1)|~p0(X2,X2)|~n0(X1,c))).
+#
+#cnf(i_0_1134, plain, (q3(X1,X1)|~k0(X1)|~n0(X2,X1)|~s0(X3)|~s0(X2))).
+###
+#cnf(i_0_2502, plain, (n4(X1,X2)|~k4(X3)|~m2(X1)|~p0(X4,X1)|~r0(X2))).
+######
+#cnf(i_0_679, plain, (r3(X1,X2,X3)|~r3(X3,X1,X1)|~r2(X3)|~k2(X2,X3))).
+#
+#cnf(i_0_3479, plain, (r3(d,X1,d)|~r2(d))).
+##
+#cnf(i_0_3483, plain, (r3(X1,X2,X1)|~r2(X1)|~k2(X2,X1))).
+##
+#cnf(i_0_3523, plain, (m5(X1,d)|~r2(d)|~r0(X1))).
+##
+#cnf(i_0_3527, plain, (m5(X1,X2)|~r2(X2)|~k2(X1,X2)|~r0(X1))).
+##
+#cnf(i_0_3530, plain, (m5(e,b)|~r2(b))).
+#####
+#cnf(i_0_3528, plain, (p4(X1,X1,X2)|~r2(X2)|~k2(X1,X2)|~r0(X1))).
+##
+#cnf(i_0_3533, plain, (m5(X1,b)|~r2(b)|~l0(X1)|~r0(X1))).
+#
+#cnf(i_0_3541, plain, (m5(X1,X2)|~r2(X2)|~k1(X2)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_3532, plain, (m5(X1,b)|~r2(b)|~l0(b)|~r0(X1))).
+####
+#cnf(i_0_3543, plain, (p4(X1,X1,X1)|~m3(X2,X1,X1)|~r2(X1)|~r0(X1))).
+###
+#cnf(i_0_3539, plain, (m5(X1,X2)|~r2(X2)|~k1(X2)|~p0(X3,X2)|~r0(X1))).
+##
+#cnf(i_0_1454, plain, (m1(X1,X2,X2)|~m1(X1,X3,X2)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_1466, plain, (m1(X1,X2,X2)|~m1(X3,X2,X1)|~k0(X3)|~n0(X2,X2))).
+######
+#cnf(i_0_1681, plain, (p3(X1,X2,X2)|~m3(X2,X3,X1)|~p0(X2,X1)|~s0(X2))).
+########
+#cnf(i_0_1943, plain, (r3(X1,X1,X1)|~m3(X1,X2,X3)|~p0(X1,X3)|~s0(X1))).
+##
+#cnf(i_0_1954, plain, (p4(X1,X1,X1)|~k3(X2,X1,X2)|~r2(X1)|~k2(X2,X1))).
+#####
+#cnf(i_0_1160, plain, (p2(X1,e,e)|~k1(X2)|~l0(e)|~r0(X1))).
+####
+#cnf(i_0_1161, plain, (p2(X1,e,e)|~k1(X2)|~m0(e,e,X1))).
+####
+#cnf(i_0_1178, plain, (p1(X1,b,b)|~l0(X2)|~m0(b,b,X1))).
+####
+#cnf(i_0_1491, plain, (p1(b,X1,X2)|~m0(X2,b,b)|~n0(X2,X2))).
+###
+#cnf(i_0_3650, plain, (p4(X1,X1,X1)|~r2(X1)|~p2(X1,X2,X2)|~k2(X2,X1))).
+#
+#cnf(i_0_2348, plain, (p1(b,X1,X2)|~m0(X2,b,b)|~q0(X2,X2))).
+##
+#cnf(i_0_2940, plain, (k3(X1,X1,X2)|~m2(X3)|~m2(X4)|~m0(X1,X2,a))).
+#
+#cnf(i_0_2995, plain, (k3(X1,X1,X2)|~m2(X3)|~m0(X1,X2,a)|~s0(X4))).
+#
+#cnf(i_0_3298, plain, (m5(b,b)|~l0(d)|~l0(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_3181, plain, (p1(X1,X2,X3)|~m0(X3,X1,d)|~m0(d,X3,X4))).
+#####
+#cnf(i_0_3722, plain, (k3(X1,X1,X2)|~m0(X1,X2,a)|~s0(X4)|~s0(X3))).
+#
+#cnf(i_0_1674, plain, (n4(X1,X2)|~k4(X3)|~m3(X2,X4,X5)|~p2(X1,X2,X5))).
+####
+#cnf(i_0_1697, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(e,X1,X2)|~k1(X3))).
+###
+#cnf(i_0_1927, plain, (n4(X1,X2)|~k4(X3)|~m3(X2,X4,X1)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_2029, plain, (n4(X1,X2)|~n4(X1,X1)|~p1(X1,X2,e)|~k1(X3))).
+#############
+#cnf(i_0_3757, plain, (n4(X1,X2)|~k4(X3)|~m3(X2,X4,X1)|~m1(X2,X1,X2))).
+#########
+#cnf(i_0_1156, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(e,X2,X1)|~k1(X3))).
+##
+#cnf(i_0_2032, plain, (q3(X1,X1)|~q3(X2,X1)|~p1(X2,X1,e)|~k1(X3))).
+##
+#cnf(i_0_491, plain, (p1(X1,X1,X1)|~l1(X1,b)|~m0(b,X2,b))).
+#####
+#cnf(i_0_1148, plain, (q2(b,b,b)|~p0(X1,X1)|~q0(X1,b))).
+#
+#cnf(i_0_680, plain, (s3(X1,X2)|~s2(X1)|~q2(X3,X1,X3)|~m0(X3,X4,X2))).
+#
+#cnf(i_0_3913, plain, (s3(X1,X2)|~s2(X1)|~q2(X3,X1,X3))).
+#
+#cnf(i_0_3941, plain, (s3(d,X1)|~l0(X2))).
+#
+#cnf(i_0_3942, plain, (s3(d,X1)|~k0(d))).
+#
+#cnf(i_0_3945, plain, (s3(X1,X2)|~s2(X1)|~k0(X1))).
+#
+#cnf(i_0_3956, plain, (s3(X1,X2)|~s2(X1)|~k1(X3))).
+#
+#cnf(i_0_3938, plain, (s3(c,X1)|~p0(c,X2))).
+#
+#cnf(i_0_3963, negated_conjecture, (~s2(a)|~k1(X2)|~p0(X1,X1))).
+#
+#cnf(i_0_3957, plain, (s3(X1,X2)|~s2(X1)|~q0(X1,X1))).
+#
+#cnf(i_0_3959, plain, (s3(X1,X2)|~s2(X1)|~l1(X1,X1))).
+#
+#cnf(i_0_3973, plain, (s3(X1,X2)|~s2(X1)|~n0(X3,X1))).
+#
+#cnf(i_0_3966, negated_conjecture, (~s2(a)|~k1(X1))).
+#
+#cnf(i_0_3954, plain, (s3(X1,X2)|~s2(X1)|~p1(X1,X1,X1))).
+#
+#cnf(i_0_3982, plain, (s3(b,X1))).
+##
+#cnf(i_0_3960, negated_conjecture, (~s2(a)|~k0(a)|~p0(X1,X1))).
+#
+#cnf(i_0_3989, plain, (s3(d,X1))).
+###
+#cnf(i_0_4019, negated_conjecture, (~s2(a)|~k0(a))).
+##
+#cnf(i_0_3987, plain, (s3(e,X1)|~s2(e))).
+#
+#cnf(i_0_4018, plain, (s3(a,X1)|~s2(a))).
+#
+#cnf(i_0_4020, negated_conjecture, (~s2(a)|~p0(X1,X1))).
+###
+#cnf(i_0_4004, plain, (s3(X1,X2)|~s2(X1)|~l0(X1))).
+#
+#cnf(i_0_4023, negated_conjecture, (~s2(a))).
+###
+#cnf(i_0_3995, plain, (s3(X1,X2)|~s2(X1)|~p0(X1,X1))).
+##
+#cnf(i_0_4000, plain, (s3(X1,X2)|~s2(X1)|~q0(X3,X1))).
+##
+#cnf(i_0_4002, plain, (s3(X1,X2)|~s2(X1)|~p0(X3,X1))).
+##########
+#cnf(i_0_3939, plain, (s3(c,X1)|~k0(c)|~l0(X2))).
+#
+#cnf(i_0_3943, plain, (s3(c,X1)|~l2(X2,X2)|~k1(X2))).
+#
+#cnf(i_0_4038, plain, (s3(c,X1)|~k1(X2)|~p0(X3,X3))).
+####
+#cnf(i_0_3998, plain, (s3(X1,X2)|~s2(X1)|~s0(X3)|~s0(X1))).
+##
+#cnf(i_0_3953, plain, (s3(X1,X2)|~s2(X1)|~q1(X3,c,X1))).
+#
+#cnf(i_0_4045, plain, (s3(c,X1))).
+###
+#cnf(i_0_4014, plain, (s3(X1,X2)|~s2(X1)|~m0(X1,X1,a))).
+##################
+#cnf(i_0_4049, plain, (s3(X1,X2)|~s2(X1)|~p0(X1,d)|~s0(c))).
+#####
+#cnf(i_0_4050, plain, (s3(X1,X2)|~s2(X1)|~p0(X3,X3)|~q0(X1,c))).
+#########
+#cnf(i_0_4051, plain, (s3(X1,X2)|~s2(X1)|~m1(c,X1,X1)|~r0(X3))).
+#
+#cnf(i_0_4053, plain, (s3(X1,X2)|~s2(X1)|~m1(X1,X1,c)|~r0(X3))).
+#####
+#cnf(i_0_4013, plain, (s3(X1,X2)|~s2(X1)|~p1(X1,X1,X3)|~m0(X1,X1,X3))).
+#################
+#cnf(i_0_472, plain, (p1(X1,X1,X1)|~l1(X2,X2)|~p0(X1,X2)|~n0(X2,X2))).
+####
+#cnf(i_0_644, plain, (m3(X1,c,X1)|~q2(X1,c,c))).
+#
+#cnf(i_0_4194, plain, (m3(X1,c,X1)|~l2(c,X1))).
+##
+#cnf(i_0_4177, plain, (m3(d,c,d)|~k0(c))).
+#
+#cnf(i_0_4179, plain, (m3(X1,c,X1)|~k0(c)|~k0(X1))).
+#
+#cnf(i_0_4184, plain, (m3(X1,c,X1)|~k0(c)|~l0(X1))).
+#
+#cnf(i_0_4186, plain, (m3(X1,c,X1)|~k1(X1)|~k0(c))).
+######
+#cnf(i_0_4181, plain, (m3(X1,c,X1)|~k0(c)|~q0(X2,X1))).
+##
+#cnf(i_0_4182, plain, (m3(X1,c,X1)|~k0(c)|~n0(X2,X1))).
+#
+#cnf(i_0_4183, plain, (m3(X1,c,X1)|~k0(c)|~p0(X2,X1))).
+#####
+#cnf(i_0_4178, plain, (m3(X1,c,X1)|~p1(X1,X1,X1)|~k0(c))).
+##########
+#cnf(i_0_4185, plain, (m3(X1,c,X1)|~k0(c)|~m0(X1,X1,a))).
+##
+#cnf(i_0_4180, plain, (m3(X1,c,X1)|~k0(c)|~s0(X2)|~s0(X1))).
+###########
+#cnf(i_0_1241, plain, (q3(X1,X1)|~k0(X1)|~m0(X2,X2,a)|~n0(X2,X1))).
+#####
+#cnf(i_0_728, plain, (p5(b,b,b)|~p4(X1,X1,X2))).
+#
+#cnf(i_0_4374, plain, (p5(b,b,b))).
+###
+#cnf(i_0_478, plain, (p1(X1,X2,X1)|~p1(X2,X4,X1)|~l0(X3))).
+####
+#cnf(i_0_4414, plain, (p1(X1,X2,X1)|~l0(X3)|~p0(X1,X2))).
+#
+#cnf(i_0_4402, plain, (p1(X1,b,X1)|~k0(X1)|~l0(X2))).
+#####
+#cnf(i_0_4434, plain, (p1(X1,X2,X1)|~l0(X4)|~m0(X1,X2,a))).
+######
+#cnf(i_0_4411, plain, (p1(b,X1,b)|~l0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_4412, plain, (p1(b,X1,b)|~l0(X2)|~q0(X1,X1))).
+##
+#cnf(i_0_4382, plain, (s3(X1,X2)|~s2(X1)|~p1(X1,X3,X1)|~l0(X4))).
+#############
+#cnf(i_0_4409, plain, (p1(X1,d,X1)|~l0(X3)|~m0(X4,X1,a))).
+###
+#cnf(i_0_4447, plain, (p1(X1,X1,X1)|~l0(X3)|~l0(X4)|~p0(X1,X2))).
+###
+#cnf(i_0_4380, plain, (q3(X1,X1)|~p1(X1,X2,X1)|~l0(X3)|~n0(X1,X1))).
+############
+#cnf(i_0_4415, plain, (p1(X1,X2,X1)|~k0(X1)|~l0(X3)|~n0(d,X2))).
+#########
+#cnf(i_0_4381, plain, (q2(X1,X2,X2)|~p1(X1,X3,X1)|~k0(X2)|~l0(X4))).
+####
+#cnf(i_0_4709, plain, (q2(a,X1,X1)|~k0(X1)|~l0(X3))).
+#####
+#cnf(i_0_4710, plain, (m3(a,c,a)|~k0(c)|~l0(X1))).
+#########
+#cnf(i_0_4386, plain, (p1(X1,X1,X1)|~p1(X2,X4,X1)|~l0(X3)|~l0(X5))).
+##################
+#cnf(i_0_4461, plain, (l3(e,b)|~l0(X1)|~m0(e,b,e))).
+##########
+#cnf(i_0_2310, plain, (m5(X1,X2)|~k1(X3)|~r0(X1)|~m0(e,X2,a))).
+#
+#cnf(i_0_4795, plain, (m5(X1,d)|~k1(X2)|~r0(X1))).
+##
+#cnf(i_0_1591, plain, (n1(b,b,b)|~p0(X1,X1)|~m0(X1,X1,X2))).
+########
+#cnf(i_0_2944, plain, (p3(X1,a,a)|~r2(a)|~m2(X2)|~m2(X3))).
+##
+#cnf(i_0_4549, plain, (s3(X1,X2)|~s2(X1)|~l0(X4)|~l0(X5)|~p0(X1,X3))).
+######
+#cnf(i_0_2947, plain, (p3(X1,a,a)|~r2(a)|~m2(X2)|~s0(X3))).
+##
+#cnf(i_0_4446, plain, (p1(X1,X2,X3)|~l0(X4)|~p0(X3,X1)|~m0(X3,X1,X3))).
+#
+#cnf(i_0_4840, plain, (p1(d,X1,X2)|~l0(X3)|~p0(X2,d))).
+##
+#cnf(i_0_1201, plain, (q3(X1,X1)|~p1(X1,X1,X2)|~m0(X1,X1,X2)|~n0(X1,X1))).
+###################
+#cnf(i_0_2949, plain, (p3(X1,a,a)|~r2(a)|~s0(X2)|~s0(X3))).
+#
+#cnf(i_0_461, plain, (n1(X1,X2,X2)|~n1(X1,X2,X1)|~l1(X3,X1)|~l0(X3))).
+#
+#cnf(i_0_4933, plain, (n1(X1,X2,X2)|~l1(X3,X1)|~l0(X3)|~l0(X1))).
+#
+#cnf(i_0_4961, plain, (n1(X1,X2,X2)|~l0(X1)|~n0(X3,X1))).
+#
+#cnf(i_0_4967, plain, (p2(X1,e,X1)|~l0(X1)|~n0(X2,X1))).
+###
+#cnf(i_0_4966, plain, (l3(X1,e)|~l0(X1)|~r0(X1)|~n0(X2,X1))).
+###
+#cnf(i_0_4955, plain, (p2(X1,e,X1)|~l1(X2,X1)|~l0(X2)|~l0(X1))).
+##
+#cnf(i_0_4926, plain, (n1(d,c,c)|~l1(X1,d)|~l0(X1))).
+##
+#cnf(i_0_4968, plain, (p3(X1,e,e)|~m2(X1)|~l0(X1)|~n0(X2,X1))).
+###
+#cnf(i_0_4954, plain, (l3(X1,e)|~l1(X2,X1)|~l0(X2)|~l0(X1)|~r0(X1))).
+####
+#cnf(i_0_449, plain, (n1(X1,X1,X1)|~k0(X1)|~m0(X2,X3,X2)|~q0(X4,X3))).
+#
+#cnf(i_0_5028, plain, (n1(X1,X1,X1)|~k0(X1))).
+###
+#cnf(i_0_599, plain, (k3(X1,X2,X1)|~p2(X3,X2,X4)|~n0(X1,X4))).
+#
+#cnf(i_0_5048, plain, (k3(X1,X2,X1)|~n0(X1,X2))).
+#
+#cnf(i_0_5058, plain, (p3(X1,X1,X2)|~r2(X1)|~n0(X1,X2))).
+##
+#cnf(i_0_5063, plain, (p4(X1,X1,X1)|~r2(X2)|~n0(X2,X1))).
+###
+#cnf(i_0_5052, plain, (k3(X1,X2,X1)|~m0(X3,X3,X2)|~n0(X1,X3))).
+#
+#cnf(i_0_5053, plain, (k3(X1,X2,X1)|~m1(X2,X3,X2)|~n0(X1,X3))).
+###
+#cnf(i_0_5051, plain, (k3(X1,X2,X1)|~l0(X3)|~r0(X2)|~n0(X1,X3))).
+#
+#cnf(i_0_5054, plain, (k3(X1,X2,X1)|~k0(X3)|~l0(X2)|~n0(X1,X3))).
+###
+#cnf(i_0_5039, plain, (k3(X1,X2,X1)|~p1(X2,X3,e)|~n0(X1,X3))).
+###
+#cnf(i_0_5059, plain, (p4(X1,X1,X1)|~r2(X1)|~k2(X2,X1)|~n0(X2,X1))).
+####
+#cnf(i_0_5114, plain, (k3(X1,X2,X1)|~m0(e,X2,a)|~n0(X1,X3))).
+#
+#cnf(i_0_5055, plain, (k3(X1,X2,X1)|~p0(X4,X3)|~r0(X2)|~n0(X1,X3))).
+#
+#cnf(i_0_5056, plain, (k3(X1,X2,X1)|~p0(X2,X3)|~n0(X1,X3)|~s0(X2))).
+######
+#cnf(i_0_696, plain, (p4(X1,X1,X1)|~p4(X3,X4,X3)|~n0(X1,X2))).
+#
+#cnf(i_0_5188, plain, (p4(X1,X1,X1)|~m2(X2)|~n0(X1,X3))).
+#
+#cnf(i_0_5204, plain, (p4(X1,X1,X1)|~n0(X1,X3)|~s0(X2))).
+#
+#cnf(i_0_5141, plain, (p4(X1,X1,X1)|~r0(d)|~n0(X1,X2))).
+####
+#cnf(i_0_5142, plain, (p4(X1,X1,X1)|~l1(X3,d)|~n0(X1,X2))).
+#
+#cnf(i_0_5151, plain, (p4(X1,X1,X1)|~p3(X4,X4,X2)|~n0(X1,X3))).
+#
+#cnf(i_0_5220, plain, (p4(X1,X1,X1)|~n0(X1,X3))).
+###
+#cnf(i_0_1154, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(e,X1,X2)|~k1(X3))).
+#####
+#cnf(i_0_5123, plain, (p4(d,d,d)|~r2(d)|~n0(X1,d))).
+#
+#cnf(i_0_1455, plain, (m1(X1,X2,X2)|~m1(X1,X3,X2)|~p0(X4,X2)|~r0(X1))).
+#####
+#cnf(i_0_1484, plain, (m1(X1,X2,X2)|~m1(X3,X2,X1)|~k0(X2)|~n0(X3,X3))).
+####
+#cnf(i_0_5307, plain, (p1(X1,b,b)|~m1(X2,b,X1)|~n0(X2,X2))).
+###
+#cnf(i_0_1680, plain, (p3(X1,X2,X2)|~m3(X2,X3,X1)|~p0(X4,X1)|~r0(X2))).
+###
+#cnf(i_0_1205, plain, (p1(b,X1,b)|~k0(X2)|~m0(b,b,X2))).
+###
+#cnf(i_0_1866, plain, (l3(X1,a)|~p0(X2,X1)|~r0(X1)|~n0(X3,a))).
+####
+#cnf(i_0_1942, plain, (r3(X1,X1,X1)|~m3(X1,X2,X3)|~p0(X4,X3)|~r0(X1))).
+####
+#cnf(i_0_1953, plain, (p4(X1,X1,X1)|~r2(X1)|~k2(c,X2)|~k2(X2,X1))).
+#
+#cnf(i_0_5411, plain, (p4(d,d,d)|~r2(d)|~k2(c,X1))).
+##
+#cnf(i_0_2028, plain, (p4(X1,X1,X1)|~r2(X2)|~p1(X1,X2,e)|~k1(X3))).
+#
+#cnf(i_0_2337, plain, (m1(X1,X2,X2)|~m1(X3,X2,X1)|~k1(X2)|~q0(X3,X3))).
+##
+#cnf(i_0_5475, plain, (p1(X1,b,b)|~m1(X2,b,X1)|~q0(X2,X2))).
+###
+#cnf(i_0_1968, plain, (p4(e,e,e)|~r2(X1)|~p1(X1,X1,e))).
+#
+#cnf(i_0_5538, plain, (p4(e,e,e)|~r2(X1)|~p0(e,X1))).
+#
+#cnf(i_0_5539, plain, (p4(e,e,e)|~r2(X1)|~n0(d,X1))).
+###
+#cnf(i_0_2858, plain, (p4(X1,X1,X1)|~p1(X3,X3,X3)|~k0(X2)|~n0(X3,X2))).
+########
+#cnf(i_0_3440, plain, (p4(X1,X1,X1)|~k1(X2)|~p0(X3,X3)|~n0(X2,c))).
+#######
+#cnf(i_0_4960, plain, (n1(a,X1,X1)|~l0(X2)|~p0(a,X2)|~r0(X3))).
+##
+#cnf(i_0_5037, plain, (p3(X1,X1,X2)|~r2(X1)|~p2(X3,X2,X4)|~n0(X1,X4))).
+##
+#cnf(i_0_5044, plain, (k3(X1,e,X1)|~l0(X2)|~n0(X1,X2)|~n0(X3,X2))).
+##
+#cnf(i_0_5066, plain, (p3(X1,X1,X2)|~r2(X1)|~m0(X3,X3,X2)|~n0(X1,X3))).
+#
+#cnf(i_0_5068, plain, (p3(X1,X1,X2)|~r2(X1)|~m1(X2,X3,X2)|~n0(X1,X3))).
+######
+#cnf(i_0_5591, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X3,X1,X4)|~n0(X2,X4))).
+####
+#cnf(i_0_5616, plain, (p4(X1,X1,X1)|~r2(X2)|~m0(X3,X3,X1)|~n0(X2,X3))).
+##
+#cnf(i_0_5620, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X1,X3,X1)|~n0(X2,X3))).
+#####
+#cnf(i_0_1720, plain, (p3(X1,X2,X2)|~k3(X2,X1,X2)|~r2(X1)|~m1(X2,X1,X2))).
+#
+#cnf(i_0_5677, plain, (p3(X1,X2,X2)|~r2(X1)|~m1(X2,X1,X2)|~n0(X2,X1))).
+#
+#cnf(i_0_5698, plain, (p3(X1,X2,X2)|~r2(X1)|~m0(X1,X1,X2)|~n0(X2,X1))).
+#
+#cnf(i_0_5717, plain, (r3(X1,X1,X1)|~r2(X2)|~m0(X2,X2,X1)|~n0(X1,X2))).
+#
+#cnf(i_0_2697, plain, (m1(X1,X2,X2)|~k0(X1)|~l0(X2)|~r0(X1)|~n0(X2,X2))).
+###
+#cnf(i_0_2731, plain, (m1(X1,X2,X2)|~k0(X2)|~k0(X1)|~l0(X1)|~n0(X2,X2))).
+###
+#cnf(i_0_5694, plain, (p3(X1,X2,X2)|~r2(X1)|~l0(X1)|~r0(X2)|~n0(X2,X1))).
+#
+#cnf(i_0_5695, plain, (p3(X1,X2,X2)|~r2(X1)|~k0(X1)|~l0(X2)|~n0(X2,X1))).
+###
+#cnf(i_0_2824, plain, (n4(X1,X2)|~k4(X3)|~k1(X4)|~m0(e,X1,a))).
+#######
+#cnf(i_0_2760, plain, (n4(X1,X2)|~k4(X3)|~m3(X2,X4,X1)|~l0(X1)|~r0(X2))).
+####
+#cnf(i_0_2767, plain, (n4(X1,X2)|~k4(X3)|~m3(X2,X4,X1)|~k0(X1)|~l0(X2))).
+#####
+#cnf(i_0_3084, plain, (n4(e,X1)|~n4(e,e)|~m0(e,X1,a))).
+#
+#cnf(i_0_5851, plain, (n4(e,d)|~n4(e,e))).
+########
+#cnf(i_0_2185, plain, (k2(X1,X2)|~k2(X3,X2)|~k1(X3)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_5867, plain, (k2(X1,b)|~p0(X1,b)|~s0(X1))).
+##
+#cnf(i_0_2488, plain, (n4(X1,X2)|~n4(X1,X1)|~m2(X1)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_460, plain, (n1(a,X1,b)|~p0(a,b)|~p0(X1,d))).
+#######
+#cnf(i_0_488, plain, (p1(X1,X1,X1)|~m1(X2,X3,X1)|~l0(X5)|~q0(X3,X4))).
+#
+#cnf(i_0_5925, plain, (p1(X1,X1,X1)|~l0(X2)|~q0(X1,X3))).
+#
+#cnf(i_0_5949, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~q0(X1,X4))).
+#
+#cnf(i_0_5947, plain, (q3(X1,X1)|~l0(X2)|~n0(X1,X1)|~q0(X1,X3))).
+#
+#cnf(i_0_5948, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X3)|~q0(X1,X4))).
+###
+#cnf(i_0_5975, plain, (p4(X1,X1,X1)|~l0(X3)|~n0(X2,X2)|~q0(X2,X4))).
+##
+#cnf(i_0_5950, plain, (m3(X1,c,X1)|~k0(c)|~l0(X2)|~q0(X1,X3))).
+###
+#cnf(i_0_487, plain, (p1(X1,X1,X1)|~n1(X2,X4,X1)|~l0(X3)|~n0(X2,X2))).
+#########
+#cnf(i_0_641, plain, (m3(X1,e,e)|~p2(X1,e,e))).
+#
+#cnf(i_0_6050, plain, (p3(e,X1,X1)|~p2(X1,e,e)|~l0(X1))).
+#
+#cnf(i_0_6054, plain, (p4(e,e,e)|~p2(X1,e,e))).
+#
+#cnf(i_0_6071, plain, (p4(e,e,e)|~k1(X2)|~l0(X1))).
+##
+#cnf(i_0_6047, plain, (p3(X1,X2,X2)|~p2(X2,e,e)|~p2(X1,X2,e))).
+#
+#cnf(i_0_498, plain, (p1(X1,X1,X1)|~n1(X2,X1,X5)|~k1(X4)|~q0(X2,X3))).
+#
+#cnf(i_0_6105, plain, (p1(X1,X1,X1)|~k1(X3)|~l0(X2)|~q0(X2,X4))).
+#
+#cnf(i_0_6150, plain, (p1(X1,X1,X1)|~k1(X2)|~l0(X3))).
+###
+#cnf(i_0_6155, plain, (q2(X1,X2,X2)|~k1(X3)|~k0(X2)|~l0(X4))).
+##
+#cnf(i_0_6108, plain, (p1(X1,X1,X1)|~k1(X2)|~r0(X1)|~q0(X1,X3))).
+######
+#cnf(i_0_6157, plain, (m3(X1,c,X1)|~k1(X2)|~k0(c)|~l0(X3))).
+##
+#cnf(i_0_6159, plain, (p1(X1,X2,X1)|~k1(X3)|~l0(X4)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_6091, plain, (p1(c,c,c)|~k1(X1)|~q0(c,X2))).
+#
+#cnf(i_0_6097, plain, (p1(c,c,c)|~k1(X1)|~q0(d,X2))).
+####
+#cnf(i_0_6167, plain, (q3(X1,X1)|~k1(X3)|~k0(X1)|~l0(X4)|~n0(X2,X1))).
+###
+#cnf(i_0_1150, plain, (q2(X1,X1,X1)|~p0(X1,X3)|~p0(X2,X2)|~q0(X2,X1))).
+##
+#cnf(i_0_701, plain, (p4(c,c,X1)|~m3(X1,c,a))).
+#
+#cnf(i_0_6283, plain, (m5(c,X1)|~m3(X1,c,a)|~r0(c))).
+#
+#cnf(i_0_6285, plain, (m5(c,a)|~r2(a)|~r0(c))).
+#
+#cnf(i_0_6289, plain, (m5(c,a)|~k0(c)|~r0(c))).
+####
+#cnf(i_0_6296, plain, (m5(c,a)|~l2(c,a)|~r0(c))).
+######
+#cnf(i_0_2169, plain, (p4(X1,X1,X1)|~p0(X3,d)|~r0(X4)|~n0(X2,X2))).
+###
+#cnf(i_0_448, plain, (n1(e,e,X1)|~m1(b,X1,e))).
+#
+#cnf(i_0_6307, plain, (p1(X1,X1,X1)|~m1(b,X1,e)|~l0(X2))).
+#
+#cnf(i_0_6314, plain, (s3(X1,X2)|~s2(X1)|~m1(b,X1,e)|~l0(X3))).
+####
+#cnf(i_0_4162, plain, (p1(X1,X1,X1)|~p0(X1,X2)|~n0(X2,X2)|~n0(X3,X2))).
+#
+#cnf(i_0_4481, plain, (p1(X1,X1,X1)|~l0(X3)|~l0(X4)|~m0(X1,X2,a))).
+##
+#cnf(i_0_4561, plain, (p1(X1,X1,X1)|~l0(X2)|~l0(X3)|~m0(X4,X1,a))).
+####
+#cnf(i_0_5924, plain, (p1(X1,X1,X1)|~l0(X3)|~m0(X2,X2,X1)|~q0(X2,X4))).
+##
+#cnf(i_0_5952, plain, (p1(X1,X2,X1)|~l0(X3)|~m0(X1,X1,X1)|~q0(X1,X4))).
+##
+#cnf(i_0_6025, plain, (p1(X1,X1,X1)|~l0(X3)|~m0(X1,X4,X2)|~n0(X2,X2))).
+#
+#cnf(i_0_6512, plain, (p1(X1,X1,X1)|~l0(X2)|~n0(X3,X3))).
+#
+#cnf(i_0_6518, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~n0(X4,X4))).
+##
+#cnf(i_0_6516, plain, (q3(X1,X1)|~l0(X2)|~n0(X1,X1)|~n0(X3,X3))).
+#
+#cnf(i_0_6517, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X3)|~n0(X4,X4))).
+###
+#cnf(i_0_6544, plain, (p4(X1,X1,X1)|~l0(X3)|~n0(X2,X2)|~n0(X4,X4))).
+###
+#cnf(i_0_6519, plain, (m3(X1,c,X1)|~k0(c)|~l0(X2)|~n0(X3,X3))).
+##
+#cnf(i_0_6104, plain, (p1(X1,X1,X1)|~k1(X3)|~m0(X2,X5,X1)|~q0(X1,X4))).
+#
+#cnf(i_0_6593, plain, (p1(X1,X1,X1)|~k1(X2)|~q0(X1,X4))).
+###
+#cnf(i_0_6598, plain, (q2(X1,X2,X2)|~k1(X3)|~k0(X2)|~q0(X1,X4))).
+####
+#cnf(i_0_6600, plain, (m3(X1,c,X1)|~k1(X2)|~k0(c)|~q0(X1,X3))).
+#####
+#cnf(i_0_6521, plain, (p1(X1,X2,X1)|~l0(X3)|~m0(X1,X1,X1)|~n0(X4,X4))).
+#
+#cnf(i_0_5041, plain, (k3(X1,e,X1)|~n1(X2,e,e)|~n0(X1,X2))).
+##
+#cnf(i_0_6602, plain, (p1(X1,X2,X1)|~k1(X3)|~m0(X1,X1,X1)|~q0(X1,X4))).
+#
+#cnf(i_0_2090, plain, (q3(X1,X1)|~q3(X1,e)|~s2(e)|~p0(e,X1))).
+#
+#cnf(i_0_5097, plain, (k3(X1,d,X1)|~m0(X3,e,a)|~n0(X1,X2))).
+#
+#cnf(i_0_2116, plain, (q3(X1,X1)|~q3(X1,e)|~s2(e)|~n0(d,X1))).
+########
+#cnf(i_0_2950, plain, (p3(X1,X2,X2)|~r2(X2)|~m2(X3)|~m2(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_2953, plain, (p3(X1,X2,X2)|~r2(X2)|~m2(X1)|~p0(X2,X1)|~s0(X3))).
+##
+#cnf(i_0_554, plain, (p2(e,c,c)|~r1(d)|~l1(e,c))).
+#############
+#cnf(i_0_6313, plain, (q2(X1,X2,X2)|~m1(b,X1,e)|~k0(X2)|~l0(X3))).
+###
+#cnf(i_0_1391, plain, (q3(b,X1)|~l1(b,X1)|~p0(X1,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_531, plain, (r1(X1)|~q1(d,X2,d)|~q0(X1,X2))).
+#
+#cnf(i_0_6805, plain, (r1(X1))).
+#
+#cnf(i_0_595, plain, (r2(X1)|~l0(X1))).
+#
+#cnf(i_0_703, plain, (q4(X1,X1)|~q4(X2,X3))).
+##
+#cnf(i_0_1123, plain, (p5(X1,X2,X1)|~q4(X3,X4))).
+##
+#cnf(i_0_1124, plain, (l5(X1)|~q4(X2,X3)|~k1(X1))).
+##
+#cnf(i_0_6818, plain, (p4(X1,X1,X1)|~l2(X3,X3)|~l0(X2))).
+#
+#cnf(i_0_6819, plain, (p4(X1,X1,X1)|~l0(X2)|~p0(X3,X3))).
+#
+#cnf(i_0_556, plain, (p2(X1,X1,d)|~m0(X2,X1,d))).
+####
+#cnf(i_0_554, plain, (p2(e,c,c)|~l1(e,c))).
+##
+#cnf(i_0_6842, plain, (m5(d,X1)|~r0(d)|~m0(X2,X1,d))).
+##
+#cnf(i_0_6848, plain, (n4(e,c)|~k4(X1)|~l1(e,c))).
+##
+#cnf(i_0_6838, plain, (k3(X1,X2,X1)|~m0(X3,X2,d)|~n0(X1,d))).
+##
+#cnf(i_0_6841, plain, (p4(d,d,X1)|~r0(d)|~m0(X2,X1,d))).
+####
+#cnf(i_0_6847, plain, (n4(e,c)|~n4(e,e)|~l1(e,c))).
+####
+#cnf(i_0_6849, plain, (q3(c,c)|~q3(e,c)|~l1(e,c))).
+##
+#cnf(i_0_1926, plain, (n4(X1,X2)|~n4(X1,X1)|~m3(X2,X3,X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_1874, plain, (p4(X1,X1,X1)|~p0(X2,d)|~n0(X2,X2)|~s0(c))).
+##
+#cnf(i_0_1883, plain, (p4(X1,X1,X1)|~k2(d,X1)|~k0(d)|~q0(X3,X2))).
+#
+#cnf(i_0_6892, plain, (p4(X1,X1,X1)|~k2(d,X1)|~k0(d))).
+##########
+#cnf(i_0_3255, plain, (r3(X1,X1,X1)|~k2(X3,X2)|~k1(X3)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_6901, plain, (r3(X1,X1,X1)|~k1(X2)|~l0(X1)|~l0(X2))).
+##
+#cnf(i_0_6903, plain, (r3(X1,X1,X1)|~k1(X2)|~k0(d)|~l0(X1))).
+##########
+#cnf(i_0_4962, plain, (n1(X1,X2,X2)|~l1(X3,X3)|~k1(X1)|~l0(X1)|~l0(X3))).
+#
+#cnf(i_0_4963, plain, (n1(X1,X2,X2)|~k1(X1)|~l0(X1)|~l0(X3)|~n0(X4,X3))).
+#
+#cnf(i_0_5088, plain, (p3(X1,X1,X2)|~r2(X1)|~l0(X3)|~r0(X2)|~n0(X1,X3))).
+#
+#cnf(i_0_5090, plain, (p3(X1,X1,X2)|~r2(X1)|~k0(X3)|~l0(X2)|~n0(X1,X3))).
+##
+#cnf(i_0_5424, plain, (p4(X1,X1,X1)|~r2(X1)|~k2(X2,X1)|~k1(X2)|~k0(X2))).
+#######
+#cnf(i_0_5655, plain, (p4(X1,X1,X1)|~r2(X2)|~l0(X3)|~r0(X1)|~n0(X2,X3))).
+##
+#cnf(i_0_5658, plain, (p4(X1,X1,X1)|~r2(X2)|~k0(X3)|~l0(X1)|~n0(X2,X3))).
+###
+#cnf(i_0_5798, plain, (r3(X1,X1,X1)|~r2(X2)|~l0(X2)|~r0(X1)|~n0(X1,X2))).
+###
+#cnf(i_0_5801, plain, (r3(X1,X1,X1)|~r2(X2)|~k0(X2)|~l0(X1)|~n0(X1,X2))).
+####
+#cnf(i_0_1931, plain, (p3(X1,X2,X2)|~k3(X2,X1,X2)|~r2(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_454, plain, (n1(X1,d,X2)|~l1(X2,d)|~p0(X2,X2)|~r0(X1))).
+#
+#cnf(i_0_2493, plain, (n4(X1,e)|~k4(X2)|~m2(X1)|~n1(X1,e,e))).
+#######
+#cnf(i_0_1164, plain, (p2(X1,e,e)|~k1(X2)|~p0(X1,e)|~s0(X1))).
+##
+#cnf(i_0_3278, plain, (k2(X1,b)|~k1(X2)|~l0(X2)|~m0(b,b,X1))).
+##
+#cnf(i_0_1202, plain, (q2(X1,X2,X2)|~p1(X1,X1,X3)|~k0(X2)|~m0(X1,X1,X3))).
+#################
+#cnf(i_0_6060, plain, (n4(e,X1)|~k4(X2)|~p2(X1,e,e)|~l0(X1))).
+#####
+#cnf(i_0_7132, plain, (n4(e,X1)|~k4(X2)|~k1(X3)|~l0(X1))).
+##
+#cnf(i_0_1210, plain, (p1(X1,X2,X1)|~k0(X3)|~m0(X1,X1,X3)|~n0(d,X1))).
+#######
+#cnf(i_0_1949, plain, (p4(X1,X1,X1)|~k3(X1,X1,X2)|~r2(X1)|~k2(c,X2))).
+###
+#cnf(i_0_1967, plain, (r3(X1,X1,X1)|~k3(X1,X2,X1)|~r2(X2)|~m1(X1,X2,X1))).
+#
+#cnf(i_0_7195, plain, (r3(X1,X1,X1)|~r2(X2)|~m1(X1,X2,X1)|~n0(X1,X2))).
+###########
+#cnf(i_0_2186, plain, (k2(X1,X2)|~k2(X3,X2)|~k1(X3)|~p0(X4,X2)|~r0(X1))).
+#
+#cnf(i_0_7231, plain, (k2(X1,b)|~p0(X2,b)|~r0(X1))).
+##
+#cnf(i_0_7248, plain, (m5(X1,b)|~r2(b)|~p0(X2,b)|~r0(X1))).
+#
+#cnf(i_0_2189, plain, (k2(X1,X2)|~k2(X3,X2)|~k1(X3)|~k0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_7279, plain, (k2(X1,b)|~n0(X1,X1))).
+##
+#cnf(i_0_7303, plain, (r3(X1,X1,X1)|~k1(X2)|~l0(X1)|~n0(X2,X2))).
+###
+#cnf(i_0_7298, plain, (m5(X1,b)|~r2(b)|~r0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_7296, plain, (n4(X1,b)|~k4(X2)|~r2(b)|~n0(X1,X1))).
+####
+#cnf(i_0_7297, plain, (n4(X1,b)|~n4(X1,X1)|~r2(b)|~n0(X1,X1))).
+###
+#cnf(i_0_7299, plain, (p4(b,b,b)|~l1(X1,d)|~n0(X1,X1))).
+#
+#cnf(i_0_7338, plain, (m5(b,b)|~l1(X1,d)|~n0(X1,X1))).
+#
+#cnf(i_0_7339, plain, (m5(b,b)|~p0(c,e)|~r0(X1))).
+#
+#cnf(i_0_7341, plain, (m5(b,b)|~n0(d,d)|~n0(X1,d))).
+#
+#cnf(i_0_5094, plain, (k3(X1,b,X1)|~m0(e,b,b)|~n0(X1,X2))).
+#
+#cnf(i_0_7304, plain, (k2(X1,b)|~m1(X3,b,X1)|~k1(X2)|~n0(X2,X2))).
+###
+#cnf(i_0_5096, plain, (k3(X1,e,X1)|~m0(e,e,e)|~n0(X1,X2))).
+#
+#cnf(i_0_2525, plain, (n4(X1,X2)|~n4(X1,X1)|~m2(X1)|~p0(X3,X1)|~r0(X2))).
+###########
+#cnf(i_0_2377, plain, (q1(X1,X2,X2)|~k0(X3)|~l0(X1)|~r0(X4)|~n0(X2,X2))).
+########
+#cnf(i_0_2797, plain, (n4(X1,e)|~k4(X2)|~k1(X3)|~l0(e)|~r0(X1))).
+#####
+#cnf(i_0_5455, plain, (p4(X1,X1,X1)|~r2(X2)|~k1(X3)|~m0(e,X1,a))).
+#
+#cnf(i_0_6076, plain, (r3(X1,X1,X1)|~p2(X1,e,e)|~p2(X2,X1,e))).
+###
+#cnf(i_0_7413, plain, (p4(X1,X1,X1)|~k1(X3)|~l0(X2)|~m0(e,X1,a))).
+############
+#cnf(i_0_3448, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(X3,X2)|~s0(X4)|~s0(X3))).
+#
+#cnf(i_0_4983, plain, (n4(X1,e)|~k4(X2)|~m2(X1)|~l0(X1)|~n0(X3,X1))).
+##
+#cnf(i_0_5433, plain, (p4(d,d,d)|~r2(d)|~k1(X1)|~k0(X1))).
+##
+#cnf(i_0_5920, plain, (p1(X1,X1,X1)|~l0(X3)|~l0(X2)|~r0(X1)|~q0(X2,X4))).
+#
+#cnf(i_0_7466, plain, (p1(X1,X1,X1)|~l0(X2)|~l0(X3)|~r0(X1))).
+##
+#cnf(i_0_7472, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~l0(X4)|~r0(X1))).
+#
+#cnf(i_0_7470, plain, (q3(X1,X1)|~l0(X2)|~l0(X3)|~r0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_7471, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X3)|~l0(X4)|~r0(X1))).
+############
+#cnf(i_0_1673, plain, (n4(X1,X2)|~n4(X1,X1)|~m3(X2,X3,X4)|~p2(X1,X2,X4))).
+##########
+#cnf(i_0_2798, plain, (n4(X1,e)|~k4(X2)|~k1(X3)|~m0(e,e,X1))).
+#
+#cnf(i_0_3127, plain, (l3(e,X1)|~m0(X2,e,a)|~m0(e,X1,X2))).
+########
+#cnf(i_0_7524, plain, (n4(X1,X2)|~n4(X1,X1)|~m3(X2,X3,X1)|~m1(X2,X1,X2))).
+####
+#cnf(i_0_541, plain, (l2(X1,X1)|~m1(X3,X2,X2)|~p0(X2,X1)|~m0(X2,X1,X3))).
+#
+#cnf(i_0_7621, plain, (l2(X1,X1)|~p0(a,X1))).
+#
+#cnf(i_0_7647, plain, (q3(X1,X1)|~r2(X1)|~p0(a,X2))).
+#
+#cnf(i_0_7627, plain, (l2(X1,X1)|~p0(X2,X1)|~m0(X2,X1,X2))).
+##
+#cnf(i_0_7668, plain, (l2(d,d)|~p0(X1,d))).
+#
+#cnf(i_0_7649, plain, (p4(X1,X1,X1)|~l0(X3)|~p0(a,X2))).
+#
+#cnf(i_0_7648, plain, (l2(X1,X2)|~p0(a,X2)|~n0(e,X2))).
+##
+#cnf(i_0_7650, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(a,X3))).
+###
+#cnf(i_0_7651, plain, (m4(X1,X2)|~s3(a,X1)|~p0(a,X2))).
+##
+#cnf(i_0_7684, negated_conjecture, (~s3(a,b)|~p0(a,X1))).
+#####
+#cnf(i_0_7677, plain, (r3(X1,X1,X1)|~p0(a,X1)|~n0(e,X1))).
+########
+#cnf(i_0_7661, plain, (q3(X1,X1)|~r2(X1)|~p0(X3,X2)|~m0(X3,X2,X3))).
+##
+#cnf(i_0_7731, plain, (q3(X1,X1)|~r2(X1)|~p0(X2,d))).
+##
+#cnf(i_0_7738, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(X3,d))).
+#
+#cnf(i_0_7741, plain, (p4(X1,X1,X1)|~l0(X2)|~p0(X3,d))).
+#####
+#cnf(i_0_7669, plain, (l2(X1,d)|~p0(X2,d)|~n0(e,d))).
+########
+#cnf(i_0_7663, plain, (p4(X1,X1,X1)|~l0(X3)|~p0(X4,X2)|~m0(X4,X2,X4))).
+####
+#cnf(i_0_7664, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(X4,X3)|~m0(X4,X3,X4))).
+#######
+#cnf(i_0_7646, plain, (q3(c,X1)|~k1(X1)|~p0(a,X1)|~n0(X1,c))).
+#
+#cnf(i_0_7662, plain, (l2(X1,X2)|~p0(X3,X2)|~m0(X3,X2,X3)|~n0(e,X2))).
+##########
+#cnf(i_0_7652, plain, (p4(X1,X1,X1)|~k1(X2)|~p0(a,X2)|~n0(X2,c))).
+##
+#cnf(i_0_3540, plain, (m5(X1,X2)|~r2(X2)|~k1(X2)|~k0(X2)|~l0(X1)|~r0(X1))).
+####
+#cnf(i_0_4573, plain, (q3(X1,X1)|~l0(X2)|~l0(X3)|~p0(X1,X4)|~n0(X1,X1))).
+######
+#cnf(i_0_6312, plain, (q3(X1,X1)|~m1(b,X1,e)|~l0(X2)|~n0(X1,X1))).
+###
+#cnf(i_0_4988, plain, (r3(e,e,e)|~m2(X1)|~l0(X1)|~n0(X2,X1))).
+#####
+#cnf(i_0_7638, plain, (l2(X1,X1)|~m1(X3,X3,X2)|~p0(X3,X1)|~m0(X3,X1,X2))).
+####
+#cnf(i_0_7665, plain, (m4(X1,X2)|~s3(a,X1)|~p0(X3,X2)|~m0(X3,X2,X3))).
+##
+#cnf(i_0_7834, plain, (m4(X1,d)|~s3(a,X1)|~p0(X2,d))).
+#############
+#cnf(i_0_2357, plain, (p4(X1,X1,X1)|~p0(X3,X3)|~n0(X2,X2)|~q0(X2,c))).
+###
+#cnf(i_0_4433, plain, (p1(X1,X2,X1)|~p1(X1,X2,X5)|~l0(X4)|~m0(X1,X2,X5))).
+#########
+#cnf(i_0_5110, plain, (k3(X1,e,X1)|~l0(X3)|~p0(e,X2)|~n0(X1,X2))).
+###
+#cnf(i_0_3469, plain, (m5(X1,X2)|~r3(X1,X2,X2)|~r2(X1)|~k2(X2,X1)|~r0(X1))).
+#############################
+#cnf(i_0_726, plain, (p5(X1,X2,X2)|~p5(X1,X3,X1)|~m4(X3,X2)|~l2(X1,X3))).
+#
+#cnf(i_0_8064, plain, (p5(X1,X2,X2)|~s4(X1)|~m4(X1,X2)|~l2(X1,X1))).
+#
+#cnf(i_0_8071, plain, (p5(X1,X2,X2)|~s4(X1)|~m4(X1,X2)|~p0(X3,X3))).
+#
+#cnf(i_0_8074, plain, (p5(X1,X2,X2)|~s4(X1)|~m4(X1,X2)|~p0(a,X1))).
+##
+#cnf(i_0_8065, plain, (p5(X1,X2,X2)|~q4(X4,X5)|~m4(X3,X2)|~l2(X1,X3))).
+#
+#cnf(i_0_8083, plain, (p5(X1,X2,X2)|~q4(X3,X4)|~m4(X1,X2)|~p0(X5,X5))).
+###
+#cnf(i_0_8086, plain, (p5(X1,X2,X2)|~q4(X3,X4)|~m4(X1,X2)|~p0(a,X1))).
+##
+#cnf(i_0_4015, plain, (s3(X1,X2)|~s2(X1)|~m0(X3,X1,a)|~m0(X1,X1,X3))).
+######
+#cnf(i_0_4540, plain, (s3(X1,X2)|~s2(X1)|~p1(X3,X5,X1)|~l0(X4)|~l0(X6))).
+################
+#cnf(i_0_5960, plain, (q3(X1,X1)|~k0(X1)|~l0(X3)|~n0(X2,X1)|~q0(X2,X4))).
+########
+#cnf(i_0_6529, plain, (q3(X1,X1)|~k0(X1)|~l0(X3)|~n0(X2,X1)|~n0(X4,X4))).
+###
+#cnf(i_0_1595, plain, (n1(X1,X1,X1)|~p0(X1,X4)|~p0(X2,X2)|~m0(X2,X2,X3))).
+###
+#cnf(i_0_6610, plain, (q3(X1,X1)|~k1(X3)|~k0(X1)|~n0(X2,X1)|~q0(X2,X4))).
+###
+#cnf(i_0_1875, plain, (p4(X1,X1,X1)|~m1(c,X2,X2)|~r0(X3)|~n0(X2,X2))).
+#
+#cnf(i_0_1876, plain, (p4(X1,X1,X1)|~m1(X2,X2,c)|~r0(X3)|~n0(X2,X2))).
+######
+#cnf(i_0_4799, plain, (n4(X1,a)|~k4(X2)|~r2(a)|~m2(X3)|~m2(X4))).
+#
+#cnf(i_0_4808, plain, (n4(X1,a)|~k4(X2)|~r2(a)|~m2(X3)|~s0(X4))).
+#
+#cnf(i_0_4915, plain, (n4(X1,a)|~k4(X2)|~r2(a)|~s0(X3)|~s0(X4))).
+#
+#cnf(i_0_3295, plain, (m5(b,b)|~l0(d)|~p0(X1,d)|~r0(X2))).
+###########
+#cnf(i_0_2765, plain, (p3(X1,X2,X2)|~k3(X2,X1,X2)|~r2(X1)|~l0(X1)|~r0(X2))).
+##
+#cnf(i_0_2772, plain, (p3(X1,X2,X2)|~k3(X2,X1,X2)|~r2(X1)|~k0(X1)|~l0(X2))).
+##
+#cnf(i_0_7342, plain, (m5(b,b)|~l1(X1,X1)|~l0(X1)|~n0(d,d))).
+##
+#cnf(i_0_1230, plain, (p1(X1,X2,X3)|~k0(X3)|~m0(X3,X1,X3)|~m0(X3,X3,X3))).
+#
+#cnf(i_0_8366, plain, (p1(d,X1,X2)|~k0(X2)|~m0(X2,X2,X2))).
+##########
+#cnf(i_0_8393, plain, (k3(X1,d,X1)|~m0(e,e,e)|~n0(X1,X2))).
+###
+#cnf(i_0_1233, plain, (p1(X1,X2,X3)|~l0(X3)|~m0(X3,X1,X3)|~m0(X3,X3,X3))).
+#
+#cnf(i_0_8439, plain, (p1(d,X1,X2)|~l0(X2)|~m0(X2,X2,X2))).
+###########
+#cnf(i_0_1441, plain, (p1(X1,X2,X3)|~k1(X3)|~m0(X3,X1,X3)|~m0(X3,X3,X3))).
+#
+#cnf(i_0_8506, plain, (p1(d,X1,X2)|~k1(X2)|~m0(X2,X2,X2))).
+##############
+#cnf(i_0_1448, plain, (n1(X1,X1,X1)|~m1(X3,X4,X1)|~m1(X3,X1,X2)|~k0(X2))).
+#######
+#cnf(i_0_1684, plain, (p3(X1,X2,X2)|~k3(X2,X3,X2)|~r2(X3)|~p2(X1,X2,X3))).
+###
+#cnf(i_0_8617, plain, (p3(X1,X2,X2)|~r2(X3)|~p2(X1,X2,X3)|~n0(X2,X3))).
+##
+#cnf(i_0_8637, plain, (r3(X1,X1,X1)|~r2(X3)|~p2(X2,X1,X3)|~n0(X1,X3))).
+##########
+#cnf(i_0_8655, plain, (r3(X1,X1,X1)|~r2(X2)|~p1(X1,X2,e)|~n0(X1,X2))).
+###
+#cnf(i_0_1834, plain, (p4(X1,X1,X1)|~p4(X1,X2,X1)|~k3(X2,X1,X2)|~r2(X1))).
+#
+#cnf(i_0_8752, plain, (p4(X1,X1,X1)|~r2(X1)|~r0(X1))).
+##########################################
+#cnf(i_0_8725, plain, (p4(X1,X1,X1)|~p4(X1,X2,X1)|~r2(X1)|~n0(X2,X1))).
+############
+#cnf(i_0_8942, plain, (p4(X1,X1,X1)|~k3(X1,X1,X2)|~r2(X1)|~n0(X2,X1))).
+##########################
+#cnf(i_0_4383, plain, (m3(X1,c,X1)|~p1(X1,X2,X1)|~k0(c)|~l0(X3))).
+###############
+#cnf(i_0_1895, plain, (n1(X1,X1,X1)|~m1(X3,X1,X2)|~m1(X1,X1,X3)|~k0(X2))).
+#######
+#cnf(i_0_1945, plain, (r3(X1,X1,X1)|~k3(X1,X2,X1)|~r2(X2)|~p2(X3,X1,X2))).
+#####
+#cnf(i_0_1950, plain, (p4(X1,X1,X1)|~k3(X1,X1,X2)|~k3(X2,X1,X2)|~r2(X1))).
+###
+#cnf(i_0_1958, plain, (r3(X1,X1,X1)|~k3(X1,X2,X1)|~r2(X2)|~m0(X2,X2,X1))).
+###########
+#cnf(i_0_3579, plain, (m1(X1,X2,X2)|~k0(X1)|~p0(X1,X2)|~n0(X2,X2)|~s0(X1))).
+#####
+#cnf(i_0_4319, plain, (p4(X1,X1,X1)|~k0(X2)|~m0(X3,X3,a)|~n0(X3,X2))).
+#
+#cnf(i_0_4574, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X3)|~l0(X4)|~p0(X1,X5))).
+#
+#cnf(i_0_9221, plain, (q2(b,X1,X1)|~k0(X1)|~l0(X2)|~l0(X3))).
+#####
+#cnf(i_0_5092, plain, (p3(X1,X1,X2)|~r2(X1)|~p1(X2,X3,e)|~n0(X1,X3))).
+######
+#cnf(i_0_5644, plain, (p4(X1,X1,X1)|~r2(X2)|~p1(X1,X3,e)|~n0(X2,X3))).
+##
+#cnf(i_0_5696, plain, (p3(X1,X2,X2)|~r2(X1)|~p0(X2,X1)|~n0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_6168, plain, (p4(X1,X1,X1)|~k1(X4)|~k0(X3)|~l0(X5)|~n0(X2,X3))).
+######
+#cnf(i_0_7501, plain, (p4(X1,X1,X1)|~l0(X3)|~l0(X4)|~r0(X2)|~n0(X2,X2))).
+##########
+#cnf(i_0_8614, plain, (p3(X1,X2,X2)|~r2(X3)|~p2(X1,X2,X3)|~p2(X3,X2,X2))).
+########
+#cnf(i_0_8722, plain, (p4(X1,X1,X1)|~p4(X1,X2,X1)|~r2(X1)|~p2(X1,X2,X2))).
+#############################################################
+#cnf(i_0_9222, plain, (m3(b,c,b)|~k0(c)|~l0(X1)|~l0(X2))).
+########
+#cnf(i_0_1163, plain, (p2(X1,e,e)|~k1(X2)|~p0(X3,e)|~r0(X1))).
+####
+#cnf(i_0_2448, plain, (r3(e,e,e)|~m2(X1)|~n1(X1,e,e))).
+#
+#cnf(i_0_9120, plain, (p4(X1,X1,X1)|~k3(X1,X1,X2)|~r2(X1)|~p2(X1,X2,X2))).
+#######
+#cnf(i_0_4464, plain, (p1(b,X1,X2)|~k0(X2)|~l0(X3)|~m0(X2,b,X2))).
+####
+#cnf(i_0_4929, plain, (n1(X1,b,b)|~l1(X2,X1)|~l0(X2)|~p0(X1,X1))).
+########
+#cnf(i_0_5541, plain, (p4(e,e,e)|~r2(X1)|~m0(e,X1,a))).
+##########
+#cnf(i_0_2222, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~k1(X2)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_2228, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~k1(X2)|~k0(X2)|~l0(X1))).
+###
+#cnf(i_0_563, plain, (p2(X1,e,X2)|~q1(a,X2,X1)|~n1(e,X1,a))).
+#
+#cnf(i_0_9628, plain, (p2(b,e,b)|~n1(e,b,a))).
+#
+#cnf(i_0_9630, plain, (p2(a,e,a)|~n1(e,a,a))).
+#
+#cnf(i_0_9633, plain, (p2(X1,e,X1)|~n1(e,X1,a)|~k0(X1))).
+##
+#cnf(i_0_9644, plain, (p2(a,e,a)|~l0(e)|~n0(X1,e))).
+#
+#cnf(i_0_9647, plain, (l3(X1,e)|~n1(e,X1,a)|~k0(X1)|~r0(X1))).
+#
+#cnf(i_0_9631, plain, (p2(X1,e,X1)|~n1(e,X1,a)|~p0(X1,a))).
+#
+#cnf(i_0_514, plain, (q1(e,X1,X1))).
+#
+#cnf(i_0_9716, plain, (q1(X1,e,e)|~l0(X1))).
+###
+#cnf(i_0_6053, plain, (p3(e,X1,X1)|~p2(X1,e,e)|~m1(X1,e,X1))).
+####
+#cnf(i_0_573, plain, (p2(a,X1,d)|~m1(a,X1,d)|~n0(X1,d))).
+#
+#cnf(i_0_9745, plain, (p2(a,d,d)|~l0(X1)|~n0(d,d))).
+#
+#cnf(i_0_9755, plain, (p2(a,d,d)|~k0(a)|~n0(d,d))).
+#
+#cnf(i_0_9761, plain, (n4(a,d)|~k4(X1)|~l0(X2)|~n0(d,d))).
+#
+#cnf(i_0_2746, plain, (p1(X1,b,b)|~k0(X1)|~l0(X1)|~n0(b,b))).
+#####################
+#cnf(i_0_3635, plain, (n4(X1,X2)|~k4(X3)|~m3(X2,X4,X1)|~p0(X2,X1)|~s0(X2))).
+###
+#cnf(i_0_609, plain, (k3(X1,X1,X2)|~k3(X2,X5,X4)|~k2(X1,X4)|~q0(X3,X2))).
+#
+#cnf(i_0_9855, plain, (k3(X1,X1,X2)|~k2(X1,X2)|~q0(X3,X2))).
+#
+#cnf(i_0_9877, plain, (k3(X1,X1,d))).
+#
+#cnf(i_0_9878, plain, (p3(d,X1,X1)|~r2(X1))).
+#
+#cnf(i_0_9884, plain, (k3(X1,X1,X2)|~q0(X3,X2))).
+##
+#cnf(i_0_9892, plain, (p3(X1,X2,X2)|~r2(X2)|~q0(X3,X1))).
+###
+#cnf(i_0_9901, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~q0(X4,X1))).
+####
+#cnf(i_0_9898, plain, (p4(X1,X1,X1)|~m3(X2,X3,X1)|~q0(X4,X3))).
+#
+#cnf(i_0_9933, plain, (p4(X1,X1,X1)|~m3(X2,d,X1))).
+######
+#cnf(i_0_9900, plain, (n4(X1,X2)|~n4(X1,X1)|~r2(X2)|~q0(X3,X1))).
+######
+#cnf(i_0_9890, plain, (p4(X1,X1,X1)|~r2(X1)|~n0(X2,X1)|~q0(X3,X2))).
+#
+#cnf(i_0_9975, plain, (p4(X1,X1,X1)|~r2(X1)|~n0(d,X1))).
+##########
+#cnf(i_0_9888, plain, (p4(X1,X1,X1)|~k3(X2,X1,X2)|~r2(X1)|~q0(X3,X2))).
+#
+#cnf(i_0_9986, plain, (p4(X1,X1,X1)|~k3(d,X1,d)|~r2(X1))).
+#####
+#cnf(i_0_9889, plain, (p4(X1,X1,X1)|~r2(X1)|~k2(c,X2)|~q0(X3,X2))).
+#
+#cnf(i_0_10016, plain, (p4(X1,X1,X1)|~r2(X1))).
+################
+#cnf(i_0_1445, plain, (q1(X1,X1,X2)|~m1(X4,X5,X2)|~m1(X4,X2,X1)|~r0(X3))).
+####
+#cnf(i_0_1467, plain, (m1(X1,X2,X2)|~m1(X3,X2,X1)|~l0(X4)|~m0(X2,X2,X3))).
+####
+#cnf(i_0_1517, plain, (q1(X1,X1,X2)|~m1(X1,X4,X2)|~r0(X3)|~m0(X2,X2,X1))).
+###########
+#cnf(i_0_5716, plain, (n4(X1,X2)|~k4(X3)|~r2(X1)|~m0(X1,X1,X2)|~n0(X2,X1))).
+#######
+#cnf(i_0_8636, plain, (n4(X1,X2)|~k4(X3)|~r2(X4)|~p2(X1,X2,X4)|~n0(X2,X4))).
+####
+#cnf(i_0_10214, plain, (n4(X1,X2)|~k4(X3)|~r2(X1)|~m1(X2,X1,X2)|~n0(X2,X1))).
+#######
+#cnf(i_0_3817, plain, (n4(X1,X2)|~n4(X1,X1)|~k1(X3)|~m0(e,X1,a))).
+####
+#cnf(i_0_3893, plain, (q3(X1,X1)|~q3(X2,X1)|~k1(X3)|~m0(e,X2,a))).
+#
+#cnf(i_0_10259, plain, (q3(X1,X1)|~q3(d,X1)|~k1(X2))).
+#
+#cnf(i_0_10319, plain, (q3(X1,X1)|~q3(X1,d)|~k1(X2))).
+###
+#cnf(i_0_10363, plain, (q3(c,c)|~k1(X1)|~p0(X2,X2))).
+#####
+#cnf(i_0_10364, plain, (q3(c,c)|~k1(X1)|~p0(a,d))).
+##############
+#cnf(i_0_10317, plain, (q3(X1,X1)|~l1(X1,d)|~k1(X2)|~n0(d,d))).
+##########
+#cnf(i_0_2759, plain, (n4(X1,X2)|~n4(X1,X1)|~m3(X2,X3,X1)|~l0(X1)|~r0(X2))).
+###
+#cnf(i_0_2766, plain, (n4(X1,X2)|~n4(X1,X1)|~m3(X2,X3,X1)|~k0(X1)|~l0(X2))).
+##########
+#cnf(i_0_1891, plain, (q1(X1,X1,X2)|~m1(X4,X2,X1)|~m1(X2,X2,X4)|~r0(X3))).
+################
+#cnf(i_0_2931, plain, (k3(X1,X1,X2)|~m2(X3)|~m2(X2)|~k0(X1)|~n0(d,X2))).
+####
+#cnf(i_0_2985, plain, (k3(X1,X1,X2)|~m2(X2)|~k0(X1)|~n0(d,X2)|~s0(X3))).
+#######
+#cnf(i_0_3245, plain, (n4(X1,b)|~k4(X2)|~r2(b)|~l0(b)|~r0(X1))).
+####
+#cnf(i_0_3319, plain, (n4(b,X1)|~k4(X2)|~r2(b)|~l0(b)|~r0(X1))).
+###
+#cnf(i_0_3331, plain, (n4(b,X1)|~k4(X2)|~r2(b)|~l0(b)|~l0(X1))).
+#######
+#cnf(i_0_4385, plain, (p1(X1,X2,X3)|~p1(X1,X4,X3)|~l0(X5)|~m0(X3,X1,X3))).
+#
+#cnf(i_0_10626, plain, (p1(d,X1,X2)|~p1(d,X3,X2)|~l0(X4))).
+#
+#cnf(i_0_10789, plain, (p1(d,X1,X2)|~l0(X4))).
+##
+#cnf(i_0_10814, plain, (p1(X1,d,X1)|~l0(X3)|~l0(X4))).
+####
+#cnf(i_0_10834, plain, (k3(X1,d,X1)|~l0(X3)|~n0(X1,X2))).
+##
+#cnf(i_0_10816, plain, (p1(X1,X1,X1)|~l0(X3)|~l0(X4)|~l0(X5))).
+####
+#cnf(i_0_10820, plain, (p3(e,d,d)|~m2(X1)|~l0(X2))).
+#
+#cnf(i_0_10896, plain, (p3(e,d,d)|~l0(X2)|~s0(X1))).
+#############
+#cnf(i_0_10838, plain, (s3(X1,X2)|~s2(X1)|~l0(X4)|~l0(X5)|~l0(X6))).
+###########
+#cnf(i_0_10835, plain, (p3(X1,X1,d)|~r2(X1)|~l0(X3)|~n0(X1,X2))).
+##
+#cnf(i_0_10843, plain, (q3(X1,X1)|~l0(X2)|~l0(X3)|~l0(X4)|~n0(X1,X1))).
+###
+#cnf(i_0_10851, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X3)|~l0(X4)|~l0(X5))).
+##
+#cnf(i_0_10861, plain, (p3(d,X1,X1)|~r2(d)|~l0(X2)|~n0(X1,X3))).
+#########
+#cnf(i_0_10817, plain, (p4(d,d,d)|~r2(X1)|~k1(X2)|~l0(X3))).
+####
+#cnf(i_0_10931, plain, (p4(d,d,d)|~k1(X2)|~l0(X3)|~l0(X1))).
+################
+#cnf(i_0_10837, plain, (p4(d,d,d)|~r2(X1)|~l0(X3)|~n0(X1,X2))).
+############
+#cnf(i_0_3170, plain, (p3(e,d,d)|~m2(X1)|~m0(X2,e,a))).
+########
+#cnf(i_0_5111, plain, (k3(X1,e,X1)|~l0(X3)|~n0(d,X2)|~n0(X1,X2))).
+####
+#cnf(i_0_6067, plain, (p4(e,e,e)|~p2(e,X1,e)|~k1(X2))).
+####
+#cnf(i_0_6068, plain, (p4(e,e,e)|~p1(X1,e,e)|~k1(X2))).
+####
+#cnf(i_0_6070, plain, (p4(e,e,e)|~k1(X2)|~m0(e,e,X1))).
+###
+#cnf(i_0_10918, plain, (p4(X1,X1,X1)|~l0(X3)|~l0(X4)|~l0(X5)|~n0(X2,X2))).
+###########
+#cnf(i_0_3619, plain, (m1(X1,X2,X2)|~k0(X1)|~p0(X3,X2)|~r0(X1)|~n0(X2,X2))).
+####
+#cnf(i_0_5131, plain, (p3(X1,X1,X2)|~r2(X1)|~m0(e,X2,a)|~n0(X1,X3))).
+###########
+#cnf(i_0_5697, plain, (p3(X1,X2,X2)|~r2(X1)|~p0(X3,X1)|~r0(X2)|~n0(X2,X1))).
+##
+#cnf(i_0_7210, plain, (r3(X1,X1,X1)|~r2(X2)|~p0(X1,X2)|~n0(X1,X2)|~s0(X1))).
+##
+#cnf(i_0_7264, plain, (r3(X1,X1,X1)|~k2(X3,X2)|~k1(X3)|~k0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_11044, plain, (r3(X1,X1,X1)|~k1(X2)|~l0(X2)|~n0(X1,X1))).
+##
+#cnf(i_0_11048, plain, (r3(X1,X1,X1)|~k1(X2)|~k0(d)|~n0(X1,X1))).
+#
+#cnf(i_0_11047, plain, (r3(X1,X1,X1)|~k1(X2)|~n0(X1,X1)|~n0(X2,X2))).
+#######
+#cnf(i_0_10938, plain, (p3(e,d,d)|~m0(X2,e,a)|~s0(X1))).
+#
+#cnf(i_0_11043, plain, (r3(X1,X1,X1)|~k1(X2)|~l0(b)|~r0(X2)|~n0(X1,X1))).
+######
+#cnf(i_0_8705, plain, (r3(X1,X1,X1)|~r2(X2)|~m0(e,X1,a)|~n0(X1,X2))).
+####
+#cnf(i_0_9300, plain, (p4(X1,X1,X1)|~r2(X2)|~m0(e,X1,a)|~n0(X2,X3))).
+#
+#cnf(i_0_10956, plain, (p4(e,e,e)|~k1(X2)|~m0(e,X1,a))).
+###
+#cnf(i_0_3146, plain, (q3(X1,X1)|~m0(X2,X1,a)|~m0(X1,X1,X2)|~n0(X1,X1))).
+################
+#cnf(i_0_4003, plain, (s3(X1,X2)|~s2(X1)|~l1(X1,b)|~m0(b,X3,b))).
+#
+#cnf(i_0_11101, plain, (s3(X1,X2)|~s2(X1)|~l1(X1,b))).
+###############
+#cnf(i_0_2225, plain, (p4(X1,X1,X1)|~l1(X2,d)|~k1(X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_3299, plain, (m5(b,b)|~l0(d)|~p0(a,a)|~r0(X1))).
+#
+#cnf(i_0_2231, plain, (p4(X1,X1,X1)|~l1(X2,d)|~k1(X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_2372, plain, (q1(X1,X2,X2)|~k0(X3)|~l0(X1)|~p0(X3,d)|~s0(X2))).
+#########
+#cnf(i_0_2785, plain, (r3(X1,X1,X1)|~k3(X1,X2,X1)|~r2(X2)|~l0(X2)|~r0(X1))).
+######
+#cnf(i_0_2791, plain, (r3(X1,X1,X1)|~k3(X1,X2,X1)|~r2(X2)|~k0(X2)|~l0(X1))).
+#########
+#cnf(i_0_6902, plain, (r3(X1,X1,X1)|~k1(X2)|~l0(X1)|~p0(X2,b)|~s0(X2))).
+#
+#cnf(i_0_7764, plain, (r3(X1,X1,X1)|~p0(X3,X1)|~m0(X3,X1,X3)|~n0(e,X1))).
+#####################
+#cnf(i_0_9763, plain, (m5(d,a)|~l0(X1)|~r0(d)|~n0(d,d))).
+#
+#cnf(i_0_9767, plain, (n4(a,d)|~k4(X1)|~k0(a)|~n0(d,d))).
+####################
+#cnf(i_0_2580, plain, (n4(X1,e)|~n4(X1,X1)|~m2(X1)|~n1(X1,e,e))).
+##
+#cnf(i_0_3759, plain, (n4(X1,X2)|~k4(X3)|~m3(X2,X4,X1)|~p0(X5,X1)|~r0(X2))).
+####
+#cnf(i_0_4918, plain, (p2(X1,e,X1)|~n1(X1,e,X1)|~l1(X2,X1)|~l0(X2))).
+####
+#cnf(i_0_7309, plain, (k2(X1,b)|~k1(X2)|~m0(b,b,X1)|~n0(X2,X2))).
+#####
+#cnf(i_0_6923, plain, (p2(X1,e,X1)|~l1(X2,X2)|~k1(X1)|~l0(X1)|~l0(X2))).
+#
+#cnf(i_0_2171, plain, (l1(X1,X1)|~k1(X1)|~l0(d)|~p0(X2,d)|~r0(X3))).
+###
+#cnf(i_0_6936, plain, (p2(X1,e,X1)|~k1(X1)|~l0(X1)|~l0(X2)|~n0(X3,X2))).
+#
+#cnf(i_0_4150, plain, (s3(X1,X2)|~s2(X1)|~l1(X3,X3)|~p0(X1,X3)|~n0(X3,X3))).
+###########
+#cnf(i_0_7343, plain, (m5(b,b)|~l0(X1)|~n0(d,d)|~n0(X2,X1))).
+##
+#cnf(i_0_2801, plain, (n4(X1,e)|~k4(X2)|~k1(X3)|~p0(X1,e)|~s0(X1))).
+#########
+#cnf(i_0_6839, plain, (p3(X1,X1,X2)|~r2(X1)|~m0(X3,X2,d)|~n0(X1,d))).
+#################################
+#cnf(i_0_3687, plain, (p3(e,b,b)|~m2(X1)|~m0(e,b,b))).
+#########
+#cnf(i_0_3654, plain, (n4(X1,e)|~n4(X1,X1)|~k1(X2)|~l0(e)|~r0(X1))).
+###
+#cnf(i_0_4400, plain, (p1(b,c,b)|~l0(X1)|~m0(b,c,e))).
+################
+#cnf(i_0_8381, plain, (p3(e,d,d)|~m2(X1)|~m0(e,e,e))).
+#########
+#cnf(i_0_1197, plain, (q2(X1,X1,X1)|~l0(X1)|~p0(X3,X2)|~r0(X2)|~q0(X2,X1))).
+#
+#cnf(i_0_11407, plain, (q2(X1,X1,X1)|~l0(X1)|~r0(X2)|~q0(X2,X1))).
+#########
+#cnf(i_0_2165, plain, (p4(X1,X1,X1)|~p0(a,X2)|~r0(X3)|~n0(a,a))).
+#
+#cnf(i_0_11365, plain, (p3(e,b,b)|~m0(e,b,b)|~s0(X1))).
+##
+#cnf(i_0_2374, plain, (q1(X1,X2,X2)|~m1(X2,X3,X3)|~k0(X3)|~l0(X1)|~r0(X4))).
+#####
+#cnf(i_0_2375, plain, (q1(X1,X2,X2)|~m1(X3,X3,X2)|~k0(X3)|~l0(X1)|~r0(X4))).
+#####
+#cnf(i_0_11399, plain, (p3(e,d,d)|~m0(e,e,e)|~s0(X1))).
+#
+#cnf(i_0_2673, plain, (q1(X1,X1,X2)|~m1(X1,X4,X2)|~l0(X2)|~r0(X3)|~r0(X1))).
+#
+#cnf(i_0_2706, plain, (q1(X1,X1,X2)|~m1(X1,X4,X2)|~k0(X2)|~l0(X1)|~r0(X3))).
+##
+#cnf(i_0_1449, plain, (p1(X1,b,b)|~m1(X2,X3,b)|~m1(X2,b,X1))).
+##########
+#cnf(i_0_2925, plain, (p3(X1,X2,X2)|~r2(X2)|~m2(X3)|~m2(X4)|~p1(X1,X4,X2))).
+#####
+#cnf(i_0_2979, plain, (p3(X1,X2,X2)|~r2(X2)|~m2(X3)|~p1(X1,X3,X2)|~s0(X4))).
+#####
+#cnf(i_0_7473, plain, (m3(X1,c,X1)|~k0(c)|~l0(X2)|~l0(X3)|~r0(X1))).
+########
+#cnf(i_0_8638, plain, (p3(e,X1,X1)|~r2(X2)|~p1(X1,X2,e)|~n0(X1,X2))).
+##
+#cnf(i_0_4987, plain, (n4(X1,e)|~n4(X1,X1)|~m2(X1)|~l0(X1)|~n0(X2,X1))).
+####
+#cnf(i_0_5133, plain, (p3(X1,X1,X2)|~r2(X1)|~p0(X3,X4)|~r0(X2)|~n0(X1,X4))).
+#
+#cnf(i_0_5135, plain, (p3(X1,X1,X2)|~r2(X1)|~p0(X2,X3)|~n0(X1,X3)|~s0(X2))).
+#
+#cnf(i_0_9645, plain, (p2(a,e,a)|~l1(X1,X1)|~l0(e)|~l0(X1))).
+####
+#cnf(i_0_9646, plain, (p2(a,e,a)|~l0(e)|~l0(X1)|~n0(X2,X1))).
+#######
+#cnf(i_0_5659, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(X4,X3)|~r0(X1)|~n0(X2,X3))).
+##
+#cnf(i_0_5660, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(X1,X3)|~n0(X2,X3)|~s0(X1))).
+###
+#cnf(i_0_2001, plain, (r3(e,X1,e)|~p1(e,X2,X3)|~m0(e,X2,X3))).
+##
+#cnf(i_0_11814, plain, (r3(e,X1,e)|~k0(X2)|~m0(e,e,X2))).
+###
+#cnf(i_0_5856, plain, (r3(X1,X1,X1)|~k2(X3,X2)|~k1(X3)|~p0(X1,X2)|~s0(X1))).
+##
+#cnf(i_0_11860, plain, (r3(X1,X1,X1)|~k1(X2)|~p0(X1,d)|~s0(X1))).
+###
+#cnf(i_0_11856, plain, (r3(X1,X1,X1)|~k1(X2)|~l0(X2)|~p0(X1,b)|~s0(X1))).
+##
+#cnf(i_0_3013, plain, (p3(X1,e,e)|~m2(X1)|~k1(X1)|~m0(X1,X2,e))).
+##
+#cnf(i_0_7211, plain, (r3(X1,X1,X1)|~r2(X2)|~p0(X3,X2)|~r0(X1)|~n0(X1,X2))).
+########
+#cnf(i_0_7747, plain, (p4(X1,X1,X1)|~k1(X2)|~p0(X3,d)|~n0(e,d))).
+##############
+#cnf(i_0_7066, plain, (q2(b,X1,X1)|~k0(X1)|~k0(X2)|~m0(b,b,X2))).
+####################
+#cnf(i_0_1147, plain, (q2(c,c,c)|~m0(X2,X1,c)|~q0(X1,c))).
+#
+#cnf(i_0_11902, plain, (q2(c,c,c))).
+##
+#cnf(i_0_702, plain, (q4(X1,X2)|~m3(X4,X5,X4)|~k3(X3,X3,X1)|~q2(X4,X2,X1))).
+#
+#cnf(i_0_11942, plain, (q4(X1,X2)|~m3(X3,X4,X3)|~q2(X3,X2,X1))).
+#
+#cnf(i_0_12042, plain, (q4(X1,X2)|~q2(X3,X2,X1))).
+#
+#cnf(i_0_12045, plain, (q4(c,c))).
+#
+#cnf(i_0_12082, plain, (q4(X1,X1))).
+#
+#cnf(i_0_12084, plain, (p5(X1,X2,X1))).
+#
+#cnf(i_0_12083, plain, (l5(X1)|~k1(X1))).
+####
+#cnf(i_0_12080, plain, (q4(X1,X2)|~l1(X1,X2))).
+############
+#cnf(i_0_12052, plain, (q4(X1,c)|~l2(X1,X2)|~k1(X1))).
+#
+#cnf(i_0_12091, plain, (q4(d,c)|~p0(X1,d))).
+##
+#cnf(i_0_12098, plain, (q4(X1,c)|~k1(X1)|~p0(X2,X2))).
+#
+#cnf(i_0_12101, plain, (q4(X1,c)|~k1(X1)|~p0(a,X1))).
+###
+#cnf(i_0_12085, plain, (p5(X1,X2,X2)|~m4(X1,X2)|~p0(X4,X4))).
+####
+#cnf(i_0_12086, plain, (p5(X1,X2,X2)|~m4(X4,X2)|~l2(X1,X4))).
+###
+#cnf(i_0_12087, plain, (p5(X1,X2,X2)|~m4(X1,X2)|~p0(a,X1))).
+##########
+#cnf(i_0_12100, plain, (q4(X1,c)|~k1(X1)|~p0(X2,X1)|~m0(X2,X1,X2))).
+#####
+#cnf(i_0_12093, plain, (q4(X1,c)|~l2(X2,X2)|~k1(X1)|~n0(e,X2))).
+#######
+#cnf(i_0_12094, plain, (q4(X1,c)|~k1(X1)|~p0(a,X2)|~n0(e,X2))).
+#
+#cnf(i_0_12115, plain, (p5(X1,X2,X2)|~m4(X1,X2)|~p0(X3,X1)|~m0(X3,X1,X3))).
+#
+#cnf(i_0_12133, plain, (p5(d,X1,X1)|~m4(d,X1)|~p0(X2,d))).
+###
+#cnf(i_0_12108, plain, (p5(X1,X2,X2)|~m4(X3,X2)|~l2(X3,X3)|~n0(e,X3))).
+#
+#cnf(i_0_12110, plain, (p5(X1,X2,X2)|~m4(X3,X2)|~p0(X4,X4)|~n0(e,X3))).
+###
+#cnf(i_0_12117, plain, (p5(X1,X2,X2)|~s3(a,X3)|~l2(X1,X3)|~l2(X4,X2))).
+#####
+#cnf(i_0_12160, plain, (p5(X1,X2,X2)|~s3(a,X1)|~l2(X3,X2)|~p0(X4,X4))).
+#
+#cnf(i_0_12119, plain, (p5(X1,X2,X2)|~s3(a,X3)|~l2(X1,X3)|~p0(X4,X4))).
+#####
+#cnf(i_0_12203, plain, (p5(X1,X2,X2)|~s3(a,X1)|~p0(X3,X3)|~p0(X4,X4))).
+#
+#cnf(i_0_12109, plain, (p5(X1,X2,X2)|~m4(X3,X2)|~p0(a,X3)|~n0(e,X3))).
+###
+#cnf(i_0_12163, plain, (p5(X1,X2,X2)|~s3(a,X1)|~l2(X3,X2)|~p0(a,X1))).
+#
+#cnf(i_0_12206, plain, (p5(X1,X2,X2)|~s3(a,X1)|~p0(a,X1)|~p0(X3,X3))).
+#
+#cnf(i_0_12092, plain, (q4(X1,c)|~k1(X1)|~p0(X2,d)|~n0(e,d))).
+###
+#cnf(i_0_3178, plain, (l3(e,X1)|~m0(e,X1,d)|~m0(d,e,X2))).
+#
+#cnf(i_0_12245, plain, (l3(e,X1)|~m0(e,X1,d))).
+##
+#cnf(i_0_3667, plain, (n4(X1,e)|~n4(X1,X1)|~k1(X2)|~m0(e,e,X1))).
+######
+#cnf(i_0_5715, plain, (n4(X1,X2)|~n4(X1,X1)|~r2(X1)|~m0(X1,X1,X2)|~n0(X2,X1))).
+#######
+#cnf(i_0_4620, plain, (q3(X1,X1)|~p1(X2,X4,X1)|~l0(X3)|~l0(X5)|~n0(X1,X1))).
+##################
+#cnf(i_0_10365, plain, (q3(c,c)|~l2(d,X2)|~k1(X1)|~n0(X2,c))).
+#
+#cnf(i_0_12118, plain, (p5(X1,X2,X2)|~s3(a,X3)|~l2(X1,X3)|~p0(a,X2))).
+#####
+#cnf(i_0_12355, plain, (p5(X1,X2,X2)|~s3(a,X1)|~p0(a,X2)|~p0(X3,X3))).
+#
+#cnf(i_0_681, plain, (k4(c)|~q3(e,b))).
+#
+#cnf(i_0_12388, plain, (k4(c)|~l1(b,e))).
+#
+#cnf(i_0_12391, plain, (k4(c)|~r0(X1))).
+#
+#cnf(i_0_12390, plain, (k4(c)|~q3(b,e)|~s2(e))).
+##
+#cnf(i_0_11813, plain, (r3(e,X1,e)|~p0(X2,e)|~m0(e,e,X2))).
+#
+#cnf(i_0_3640, plain, (p3(X1,X2,X2)|~k3(X2,X1,X2)|~r2(X1)|~p0(X2,X1)|~s0(X2))).
+####
+#cnf(i_0_12389, plain, (k4(c)|~s2(e)|~l1(e,b)|~n0(b,b))).
+####
+#cnf(i_0_4016, plain, (s3(X1,X2)|~s2(X1)|~m0(X1,X1,d)|~m0(d,X1,X3))).
+##
+#cnf(i_0_4052, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~r0(X4)|~m0(X1,X1,c))).
+#
+#cnf(i_0_559, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~n1(X3,X2,X3)|~p0(X1,X2))).
+#
+#cnf(i_0_12503, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~p0(X1,X2)|~r0(X2))).
+#
+#cnf(i_0_12592, plain, (p2(X1,X2,X2)|~l0(X1)|~p0(X1,X2)|~r0(X2))).
+#
+#cnf(i_0_12616, plain, (m5(X1,X2)|~l0(X2)|~p0(X2,X1)|~r0(X1))).
+#
+#cnf(i_0_12620, plain, (r3(X1,X2,X1)|~l0(X1)|~p0(X1,X2)|~r0(X2))).
+###
+#cnf(i_0_12634, plain, (p4(X1,X1,X2)|~l0(X2)|~p0(X2,X1)|~r0(X1))).
+###
+#cnf(i_0_12557, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~p0(X2,X1)|~r0(X1))).
+####
+#cnf(i_0_12664, plain, (m5(X1,X2)|~p0(X2,X1)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_12661, plain, (m5(X1,X2)|~p0(X2,X1)|~r0(X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_12667, plain, (m5(e,b))).
+#
+#cnf(i_0_12669, plain, (m5(X1,d)|~p0(d,X1)|~r0(X1))).
+#
+#cnf(i_0_12662, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~p0(X2,X1)|~r0(X1))).
+#######
+#cnf(i_0_12604, plain, (n4(e,X1)|~k4(X2)|~l0(X1)|~p0(X1,e))).
+#
+#cnf(i_0_12596, plain, (p2(X1,X2,X2)|~p0(X1,X2)|~p0(X3,X1)|~r0(X2))).
+###
+#cnf(i_0_12732, plain, (r3(X1,X2,X1)|~p0(X1,X2)|~p0(X3,X1)|~r0(X2))).
+###
+#cnf(i_0_12746, plain, (p4(X1,X1,X2)|~p0(X2,X1)|~p0(X3,X2)|~r0(X1))).
+###
+#cnf(i_0_12663, plain, (m5(X1,X2)|~k0(X2)|~l0(X1)|~p0(X2,X1)|~r0(X1))).
+#
+#cnf(i_0_12605, plain, (p4(e,e,e)|~l0(X1)|~p0(X1,e))).
+###
+#cnf(i_0_12594, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~p0(X1,X2)|~r0(X2))).
+###
+#cnf(i_0_12561, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~p0(X1,X2)|~r0(X2))).
+####
+#cnf(i_0_12608, plain, (n4(X1,X2)|~k4(X3)|~l0(X1)|~p0(X1,X2)|~r0(X2))).
+#
+#cnf(i_0_12626, plain, (r3(e,e,e)|~l0(X1)|~p0(X1,e))).
+#
+#cnf(i_0_12643, plain, (m5(e,X1)|~n1(X1,e,e)|~p0(X1,e))).
+#
+#cnf(i_0_12647, plain, (m5(e,X1)|~l0(X1)|~p0(X1,e)|~n0(X2,X1))).
+##
+#cnf(i_0_12520, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~k0(X2)|~p0(X1,X2))).
+#
+#cnf(i_0_12868, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~k0(X2)|~p0(X1,X2))).
+###
+#cnf(i_0_12903, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~k0(X2)|~p0(X1,X2))).
+##
+#cnf(i_0_12593, plain, (p2(X1,X2,X2)|~p0(X1,X2)|~r0(X2)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_12963, plain, (r3(X1,X2,X1)|~p0(X1,X2)|~r0(X2)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_12782, plain, (p4(X1,X1,X2)|~p2(X2,X1,X2)|~p0(X2,X1)|~r0(X1))).
+####
+#cnf(i_0_12992, plain, (p4(X1,X1,X2)|~m1(X1,X2,X1)|~p0(X2,X1)|~r0(X1))).
+##
+#cnf(i_0_12863, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~k0(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_12902, plain, (p2(X1,X2,X2)|~k0(X2)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_13041, plain, (r3(X1,X2,X1)|~k0(X2)|~p0(X1,X2)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_12977, plain, (p4(X1,X1,X2)|~p0(X2,X1)|~r0(X1)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_12979, plain, (p4(X1,X1,X1)|~m3(X2,X1,X1)|~p0(X1,X1)|~r0(X1))).
+#####
+#cnf(i_0_13013, plain, (r3(X1,X1,X1)|~k0(X1)|~p0(X2,X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_13014, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~k0(X1)|~p0(X2,X1))).
+#####
+#cnf(i_0_12500, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l0(X3)|~p0(X1,X2))).
+#
+#cnf(i_0_13133, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l0(X3)|~p0(X1,X2))).
+#
+#cnf(i_0_13096, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l0(X3)|~p0(X1,X2))).
+######
+#cnf(i_0_13091, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l0(X3)|~p0(X2,X1))).
+#
+#cnf(i_0_13132, plain, (p2(X1,X2,X2)|~l0(X3)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_13214, plain, (r3(X1,X2,X1)|~l0(X3)|~p0(X1,X2)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_13185, plain, (r3(X1,X1,X1)|~l0(X3)|~p0(X2,X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_13186, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l0(X3)|~p0(X2,X1))).
+###
+#cnf(i_0_12595, plain, (p2(X1,X2,X2)|~k0(X1)|~l0(X2)|~p0(X1,X2)|~r0(X2))).
+######
+#cnf(i_0_12904, plain, (p2(X1,X2,X2)|~k0(X2)|~k0(X1)|~l0(X2)|~p0(X1,X2))).
+##
+#cnf(i_0_12909, plain, (r3(X1,X1,X1)|~k0(X1)|~p0(X1,X1)|~m0(d,X1,X1))).
+###
+#cnf(i_0_12993, plain, (p4(X1,X1,X2)|~k0(X2)|~l0(X1)|~p0(X2,X1)|~r0(X1))).
+##
+#cnf(i_0_13269, plain, (r3(X1,X2,X1)|~k0(X1)|~l0(X2)|~p0(X1,X2)|~r0(X2))).
+###
+#cnf(i_0_13303, plain, (r3(X1,X2,X1)|~k0(X2)|~k0(X1)|~l0(X2)|~p0(X1,X2))).
+####
+#cnf(i_0_12716, plain, (p4(e,e,e)|~p0(X1,e)|~p0(X2,X1))).
+#
+#cnf(i_0_13334, plain, (p4(e,e,e)|~p0(X1,e))).
+##
+#cnf(i_0_12607, plain, (n4(X1,X2)|~n4(X1,X1)|~l0(X1)|~p0(X1,X2)|~r0(X2))).
+##
+#cnf(i_0_12614, plain, (q3(X1,X1)|~q3(X2,X1)|~l0(X2)|~p0(X2,X1)|~r0(X1))).
+###
+#cnf(i_0_12738, plain, (r3(e,e,e)|~p0(X1,e)|~p0(X2,X1))).
+#
+#cnf(i_0_13454, plain, (r3(e,e,e)|~p0(X1,e))).
+##
+#cnf(i_0_13134, plain, (p2(X1,X2,X2)|~k0(X1)|~l0(X3)|~l0(X2)|~p0(X1,X2))).
+###
+#cnf(i_0_13165, plain, (r3(X1,X1,X1)|~l0(X2)|~p0(X1,X1)|~m0(d,X1,X1))).
+#
+#cnf(i_0_13484, plain, (r3(X1,X2,X1)|~k0(X1)|~l0(X3)|~l0(X2)|~p0(X1,X2))).
+##
+#cnf(i_0_12606, plain, (p4(X1,X1,X1)|~r2(X2)|~l0(X1)|~p0(X1,X2)|~r0(X2))).
+#########
+#cnf(i_0_12719, plain, (n4(X1,X2)|~k4(X3)|~p0(X1,X2)|~p0(X4,X1)|~r0(X2))).
+##
+#cnf(i_0_13507, plain, (p4(b,b,b)|~r2(X1)|~l0(b)|~r0(X1))).
+#
+#cnf(i_0_13541, plain, (m5(b,b)|~r2(X1)|~l0(b)|~r0(X1))).
+#
+#cnf(i_0_13543, plain, (m5(b,b)|~l0(b)|~l0(X1)|~r0(X1))).
+##
+#cnf(i_0_13542, plain, (p4(b,b,b)|~l0(b)|~l0(X1)|~r0(X1))).
+##
+#cnf(i_0_13187, plain, (r3(X1,X1,X1)|~k0(X2)|~l0(X3)|~l0(X1)|~p0(X2,X1))).
+######
+#cnf(i_0_12485, plain, (p2(X1,c,c)|~p2(X1,c,X1)|~p0(X1,c))).
+#
+#cnf(i_0_13587, plain, (p2(X1,c,c)|~k0(X1)|~p0(X1,c))).
+#
+#cnf(i_0_13595, plain, (n4(X1,c)|~k4(X2)|~k0(X1)|~p0(X1,c))).
+#
+#cnf(i_0_13605, plain, (m5(c,X1)|~k0(X1)|~p0(X1,c)|~r0(c))).
+#
+#cnf(i_0_13604, plain, (r3(c,c,c)|~k0(X1)|~p0(X1,c))).
+#
+#cnf(i_0_13594, plain, (n4(X1,c)|~n4(X1,X1)|~k0(X1)|~p0(X1,c))).
+#######
+#cnf(i_0_12488, plain, (p2(X1,a,a)|~p2(X1,a,X1)|~p0(X1,a))).
+#
+#cnf(i_0_13687, plain, (p2(X1,a,a)|~k0(X1)|~p0(X1,a))).
+#
+#cnf(i_0_13696, plain, (n4(X1,a)|~k4(X2)|~k0(X1)|~p0(X1,a))).
+#
+#cnf(i_0_13706, plain, (m5(a,X1)|~k0(X1)|~p0(X1,a)|~r0(a))).
+#
+#cnf(i_0_13705, plain, (r3(a,a,a)|~k0(X1)|~p0(X1,a))).
+#
+#cnf(i_0_13695, plain, (n4(X1,a)|~n4(X1,X1)|~k0(X1)|~p0(X1,a))).
+###########
+#cnf(i_0_12492, plain, (p2(X1,d,d)|~p2(X1,d,X1)|~p0(X1,d))).
+#
+#cnf(i_0_13794, plain, (p2(X1,d,d)|~p0(X1,d)|~p0(d,X1))).
+##
+#cnf(i_0_13801, plain, (n4(X1,d)|~k4(X2)|~p0(X1,d)|~p0(d,X1))).
+#####
+#cnf(i_0_13585, plain, (p2(X1,c,c)|~p0(X1,c)|~m0(X1,X1,c))).
+####
+#cnf(i_0_13685, plain, (p2(X1,a,a)|~p0(X1,a)|~m0(X1,X1,a))).
+##
+#cnf(i_0_12906, plain, (p2(X1,X2,X2)|~k0(X2)|~p0(X1,X2)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_13790, plain, (p2(X1,d,d)|~p0(X1,d)|~m0(X1,X1,d))).
+######
+#cnf(i_0_13923, plain, (r3(X1,X2,X1)|~k0(X2)|~p0(X1,X2)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_12644, plain, (m5(e,X1)|~k1(X1)|~p0(X1,e)|~m0(X1,X2,e))).
+#
+#cnf(i_0_13968, plain, (m5(e,a)|~p0(a,e))).
+#
+#cnf(i_0_13969, plain, (m5(e,X1)|~k1(X1)|~p0(X1,e))).
+##
+#cnf(i_0_12576, plain, (p2(X1,e,e)|~n1(X1,e,e)|~p0(X1,e))).
+##
+#cnf(i_0_12552, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~p0(X1,X2)|~r0(X2))).
+########
+#cnf(i_0_12859, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~k0(X2)|~p0(X1,X2))).
+####
+#cnf(i_0_12949, plain, (n4(X1,X2)|~k4(X3)|~p0(X1,X2)|~r0(X2)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_13027, plain, (n4(X1,X2)|~k4(X3)|~k0(X2)|~p0(X1,X2)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_12982, plain, (p4(e,e,X1)|~n1(X1,e,e)|~p0(X1,e))).
+########
+#cnf(i_0_13586, plain, (p2(X1,c,c)|~m1(c,X1,c)|~p0(X1,c))).
+########
+#cnf(i_0_13686, plain, (p2(X1,a,a)|~m1(a,X1,a)|~p0(X1,a))).
+#####
+#cnf(i_0_14038, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~p0(X1,X2)|~r0(X2))).
+######
+#cnf(i_0_14081, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~k0(X2)|~p0(X1,X2))).
+#####
+#cnf(i_0_13791, plain, (p2(X1,d,d)|~m1(d,X1,d)|~p0(X1,d))).
+####
+#cnf(i_0_13792, plain, (p2(X1,d,d)|~k0(X1)|~l0(d)|~p0(X1,d))).
+######
+#cnf(i_0_13136, plain, (p2(X1,X2,X2)|~l0(X3)|~p0(X1,X2)|~p0(X2,X1)|~s0(X2))).
+###########
+#cnf(i_0_14283, plain, (r3(X1,X2,X1)|~l0(X3)|~p0(X1,X2)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_13556, plain, (n4(X1,c)|~k4(X2)|~p2(X1,c,X1)|~p0(X1,c))).
+###
+#cnf(i_0_13656, plain, (n4(X1,a)|~k4(X2)|~p2(X1,a,X1)|~p0(X1,a))).
+#####
+#cnf(i_0_13761, plain, (n4(X1,d)|~k4(X2)|~p2(X1,d,X1)|~p0(X1,d))).
+########
+#cnf(i_0_13845, plain, (n4(X1,c)|~k4(X2)|~p0(X1,c)|~m0(X1,X1,c))).
+##
+#cnf(i_0_13873, plain, (n4(X1,a)|~k4(X2)|~p0(X1,a)|~m0(X1,X1,a))).
+####
+#cnf(i_0_13938, plain, (n4(X1,d)|~k4(X2)|~p0(X1,d)|~m0(X1,X1,d))).
+##########
+#cnf(i_0_13800, plain, (n4(X1,d)|~n4(X1,X1)|~p0(X1,d)|~p0(d,X1))).
+####
+#cnf(i_0_12539, plain, (p2(X1,X2,X2)|~n1(X3,X2,X3)|~m1(X2,X1,X2)|~p0(X1,X2))).
+##########
+#cnf(i_0_13087, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l0(X4)|~p0(X1,X2))).
+######
+#cnf(i_0_13199, plain, (n4(X1,X2)|~k4(X3)|~l0(X4)|~p0(X1,X2)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_14428, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~p0(X1,X2)|~m0(X2,X3,X2))).
+###
+#cnf(i_0_14494, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l0(X4)|~p0(X1,X2))).
+####
+#cnf(i_0_12475, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~n1(X3,X2,X3)|~p0(X1,X2))).
+########
+#cnf(i_0_14565, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~p0(X1,X2)|~m0(X2,X3,X2))).
+#
+#cnf(i_0_14598, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~p0(X1,X2))).
+###
+#cnf(i_0_14600, plain, (r3(X1,X1,X1)|~p0(X1,X1)|~m0(d,X1,X1))).
+###################################
+#cnf(i_0_12718, plain, (n4(X1,X2)|~n4(X1,X1)|~p0(X1,X2)|~p0(X3,X1)|~r0(X2))).
+##
+#cnf(i_0_12726, plain, (q3(X1,X1)|~q3(X2,X1)|~p0(X2,X1)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_12580, plain, (p2(X1,e,e)|~l0(X1)|~p0(X1,e)|~n0(X2,X1))).
+########
+#cnf(i_0_12986, plain, (p4(e,e,X1)|~l0(X1)|~p0(X1,e)|~n0(X2,X1))).
+####
+#cnf(i_0_13603, plain, (q3(c,c)|~q3(X1,c)|~k0(X1)|~p0(X1,c))).
+#
+#cnf(i_0_14789, plain, (q3(c,c)|~k0(c)|~p0(c,c))).
+####
+#cnf(i_0_13704, plain, (q3(a,a)|~q3(X1,a)|~k0(X1)|~p0(X1,a))).
+#
+#cnf(i_0_14862, plain, (q3(a,a)|~k0(a)|~p0(a,a))).
+######
+#cnf(i_0_12717, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(X1,X2)|~p0(X3,X1)|~r0(X2))).
+#######
+#cnf(i_0_13017, plain, (r3(X1,X1,X1)|~k0(X1)|~p0(X2,X1)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_14890, plain, (r3(b,b,b)|~p0(X1,b))).
+#
+#cnf(i_0_14894, plain, (m5(b,b)|~p0(X1,b))).
+######
+#cnf(i_0_12551, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X1)|~p0(X1,X2)|~r0(X2))).
+###
+#cnf(i_0_12645, plain, (m5(e,X1)|~l1(X2,X1)|~l0(X2)|~l0(X1)|~p0(X1,e))).
+####
+#cnf(i_0_12858, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X1)|~k0(X2)|~p0(X1,X2))).
+#
+#cnf(i_0_12948, plain, (n4(X1,X2)|~n4(X1,X1)|~p0(X1,X2)|~r0(X2)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_13026, plain, (n4(X1,X2)|~n4(X1,X1)|~k0(X2)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#####
+#cnf(i_0_14427, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~p0(X1,X2)|~m0(b,X2,X2))).
+######
+#cnf(i_0_4393, plain, (q3(X1,X1)|~p1(X2,X3,X2)|~k0(X1)|~l0(X4)|~n0(X2,X1))).
+########################
+#cnf(i_0_4550, plain, (s3(X1,X2)|~s2(X1)|~l0(X4)|~l0(X5)|~m0(X1,X3,a))).
+#
+#cnf(i_0_15130, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~l0(X4))).
+########
+#cnf(i_0_5909, plain, (s3(X1,X2)|~s2(X1)|~m1(X3,X4,X1)|~l0(X5)|~q0(X4,X6))).
+########
+#cnf(i_0_6364, plain, (s3(X1,X2)|~s2(X1)|~p0(X1,X3)|~n0(X3,X3)|~n0(X4,X3))).
+####
+#cnf(i_0_6438, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~m0(X4,X4,X1)|~q0(X4,X5))).
+#
+#cnf(i_0_15196, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~q0(d,X4))).
+#################
+#cnf(i_0_13560, plain, (r3(c,c,c)|~p2(X1,c,X1)|~p0(X1,c))).
+####
+#cnf(i_0_13660, plain, (r3(a,a,a)|~p2(X1,a,X1)|~p0(X1,a))).
+###
+#cnf(i_0_553, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~p1(X1,X3,X4)|~l1(X3,X4))).
+#
+#cnf(i_0_15326, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X3,a))).
+#
+#cnf(i_0_15443, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X3,a))).
+#
+#cnf(i_0_15391, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X3,a))).
+###
+#cnf(i_0_15386, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X3,a))).
+#
+#cnf(i_0_15442, plain, (p2(X1,X2,X2)|~l1(X3,a)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_15540, plain, (r3(X1,X2,X1)|~l1(X3,a)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_15498, plain, (r3(X1,X1,X1)|~l1(X3,a)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_15499, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X3,a))).
+###
+#cnf(i_0_15441, plain, (p2(X1,X2,X2)|~l1(X3,a)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_15608, plain, (m5(X1,X2)|~l1(X3,a)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_15625, plain, (m5(X1,X2)|~l0(X2)|~r0(X1)|~n0(X3,a))).
+#
+#cnf(i_0_15444, plain, (p2(X1,X2,X2)|~l1(X3,a)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_15476, plain, (r3(X1,X1,X1)|~l1(X2,a)|~m0(d,X1,X1))).
+#
+#cnf(i_0_15612, plain, (r3(X1,X2,X1)|~l1(X3,a)|~l0(X1)|~r0(X2))).
+###
+#cnf(i_0_15668, plain, (r3(X1,X2,X1)|~l1(X3,a)|~k0(X1)|~l0(X2))).
+##
+#cnf(i_0_15689, plain, (p4(X1,X1,X2)|~l1(X3,a)|~l0(X2)|~r0(X1))).
+##
+#cnf(i_0_15497, plain, (r3(X1,X1,X1)|~l1(X3,a)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_15500, plain, (r3(X1,X1,X1)|~l1(X3,a)|~k0(X2)|~l0(X1))).
+###
+#cnf(i_0_15584, plain, (n4(e,X1)|~k4(X2)|~l1(X3,a)|~l0(X1))).
+###
+#cnf(i_0_15585, plain, (p4(e,e,e)|~l1(X2,a)|~l0(X1))).
+#
+#cnf(i_0_15626, plain, (m5(X1,X2)|~l1(X3,X3)|~l0(X2)|~l0(X3)|~r0(X1))).
+#
+#cnf(i_0_15627, plain, (m5(X1,X2)|~l0(X2)|~l0(X3)|~r0(X1)|~n0(X4,X3))).
+##
+#cnf(i_0_15618, plain, (r3(e,e,e)|~l1(X2,a)|~l0(X1))).
+#
+#cnf(i_0_15387, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~l1(X3,a)|~r0(X1))).
+####
+#cnf(i_0_15795, plain, (m5(X1,X2)|~l1(X3,a)|~p0(X4,X2)|~r0(X1))).
+#
+#cnf(i_0_15800, plain, (m5(X1,X2)|~p0(X3,X2)|~r0(X1)|~n0(X4,a))).
+##
+#cnf(i_0_15274, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~k0(X1))).
+#
+#cnf(i_0_15879, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_15922, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_15917, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_15932, plain, (p2(X1,X2,X2)|~k0(X1)|~l0(X2)|~n0(X3,X1))).
+#
+#cnf(i_0_15948, plain, (r3(X1,X1,X1)|~k0(X2)|~l0(X1)|~n0(X3,X2))).
+##
+#cnf(i_0_15992, plain, (r3(X1,X2,X1)|~k0(X1)|~l0(X2)|~n0(X3,X1))).
+##
+#cnf(i_0_15824, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~k0(X1))).
+###
+#cnf(i_0_15918, plain, (m5(X1,X2)|~l1(X2,X2)|~k0(X2)|~l0(X1)|~r0(X1))).
+####
+#cnf(i_0_15988, plain, (m5(X1,X2)|~k0(X2)|~l0(X1)|~r0(X1)|~n0(X3,X2))).
+######
+#cnf(i_0_15536, plain, (m5(X1,X2)|~l1(X3,a)|~r0(X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_16029, plain, (m5(X1,d)|~l1(X2,a)|~r0(X1))).
+#
+#cnf(i_0_16033, plain, (m5(X1,d)|~r0(X1)|~n0(X2,a))).
+##
+#cnf(i_0_16034, plain, (m5(X1,d)|~l1(X2,X2)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_16035, plain, (m5(X1,d)|~l0(X2)|~r0(X1)|~n0(X3,X2))).
+##
+#cnf(i_0_16032, plain, (m5(X1,d)|~p0(X2,d)|~r0(X1)|~r0(X3))).
+#
+#cnf(i_0_16038, plain, (m5(X1,d)|~p0(a,X2)|~r0(X1)|~r0(X3))).
+#
+#cnf(i_0_16031, plain, (m5(X1,d)|~p0(e,e)|~r0(X1)|~r0(X2))).
+#####
+#cnf(i_0_15878, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~k0(X1))).
+####
+#cnf(i_0_16047, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~k0(X1)|~n0(X3,X1))).
+###
+#cnf(i_0_15793, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~l1(X3,a)|~r0(X1))).
+#####
+#cnf(i_0_15276, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~k1(X1))).
+#
+#cnf(i_0_16149, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~k1(X1))).
+###
+#cnf(i_0_16205, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~k1(X1))).
+#
+#cnf(i_0_16216, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~k1(X1)|~n0(X3,X1))).
+#
+#cnf(i_0_15898, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_15968, plain, (n4(X1,X2)|~k4(X3)|~k0(X1)|~l0(X2)|~n0(X4,X1))).
+#
+#cnf(i_0_15284, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_16422, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_16466, plain, (m5(X1,X2)|~l1(X2,X2)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_16488, plain, (m5(X1,X2)|~l0(X2)|~r0(X1)|~n0(X3,X2))).
+#
+#cnf(i_0_16470, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~l0(X1)|~r0(X2))).
+###
+#cnf(i_0_16465, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_16480, plain, (p2(X1,X2,X2)|~l0(X1)|~r0(X2)|~n0(X3,X1))).
+##
+#cnf(i_0_16497, plain, (p4(X1,X1,X2)|~l1(X2,X2)|~l0(X2)|~r0(X1))).
+##
+#cnf(i_0_16504, plain, (r3(X1,X1,X1)|~l0(X2)|~r0(X1)|~n0(X3,X2))).
+####
+#cnf(i_0_16550, plain, (r3(X1,X2,X1)|~l0(X1)|~r0(X2)|~n0(X3,X1))).
+###
+#cnf(i_0_16562, plain, (p4(X1,X1,X2)|~l0(X2)|~r0(X1)|~n0(X3,X2))).
+###
+#cnf(i_0_16438, plain, (n4(e,X1)|~k4(X2)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_16518, plain, (n4(e,X1)|~k4(X2)|~l0(X1)|~n0(X3,X1))).
+##
+#cnf(i_0_16439, plain, (p4(e,e,e)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_16476, plain, (r3(e,e,e)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_16519, plain, (p4(e,e,e)|~l0(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_16556, plain, (r3(e,e,e)|~l0(X1)|~n0(X2,X1))).
+####
+#cnf(i_0_16368, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~l0(X1))).
+######
+#cnf(i_0_16487, plain, (m5(X1,a)|~p0(a,a)|~r0(X1)|~r0(X2))).
+#
+#cnf(i_0_16424, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~l0(X1))).
+##
+#cnf(i_0_16647, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l0(X1)|~n0(X3,X1))).
+###
+#cnf(i_0_16444, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_16524, plain, (n4(X1,X2)|~k4(X3)|~l0(X1)|~r0(X2)|~n0(X4,X1))).
+#
+#cnf(i_0_15446, plain, (p2(X1,X2,X2)|~l1(X3,a)|~p0(X2,X1)|~s0(X2))).
+####
+#cnf(i_0_15819, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~k0(X2))).
+##
+#cnf(i_0_15877, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~k0(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_16894, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k0(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_16144, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~k1(X2))).
+#
+#cnf(i_0_16204, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~k1(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_16971, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k1(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_16363, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~l0(X2))).
+##
+#cnf(i_0_16423, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~l0(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_17048, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~l0(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_16822, plain, (r3(X1,X2,X1)|~l1(X3,a)|~p0(X2,X1)|~s0(X2))).
+#
+#cnf(i_0_16848, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~k0(X2)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_16925, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~k1(X2)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_17002, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~l0(X2)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_15382, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X4,a))).
+###
+#cnf(i_0_15758, plain, (m5(e,X1)|~n1(X1,e,e)|~l1(X2,a))).
+#
+#cnf(i_0_15518, plain, (n4(X1,X2)|~k4(X3)|~l1(X4,a)|~m0(X1,X1,X2))).
+#####
+#cnf(i_0_17139, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X4,a))).
+######
+#cnf(i_0_15445, plain, (p2(X1,X2,X2)|~l1(X3,a)|~p0(X4,X1)|~r0(X2))).
+#####
+#cnf(i_0_15501, plain, (r3(X1,X1,X1)|~l1(X3,a)|~p0(X4,X2)|~r0(X1))).
+#
+#cnf(i_0_17264, plain, (r3(X1,X1,X1)|~l1(X2,a)|~r0(X1))).
+####
+#cnf(i_0_17271, plain, (r3(X1,X1,X1)|~p0(a,X2)|~r0(X1)|~r0(X3))).
+###
+#cnf(i_0_15502, plain, (r3(X1,X1,X1)|~l1(X3,a)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_17282, plain, (r3(b,b,b)|~l1(X1,a))).
+#
+#cnf(i_0_17287, plain, (m5(b,b)|~l1(X1,a))).
+##
+#cnf(i_0_17292, plain, (m5(b,b)|~n0(X1,a))).
+#
+#cnf(i_0_17293, plain, (m5(b,b)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_17294, plain, (m5(b,b)|~l0(X1)|~n0(X2,X1))).
+##
+#cnf(i_0_17291, plain, (m5(b,b)|~p0(X1,d)|~r0(X2))).
+#
+#cnf(i_0_17297, plain, (m5(b,b)|~p0(a,X1)|~r0(X2))).
+##
+#cnf(i_0_17290, plain, (m5(b,b)|~p0(e,e)|~r0(X1))).
+###
+#cnf(i_0_17289, plain, (r3(b,b,b)|~p0(a,X1)|~r0(X2))).
+#####
+#cnf(i_0_15762, plain, (m5(e,X1)|~l1(X2,a)|~l0(X1)|~n0(X3,X1))).
+#
+#cnf(i_0_16082, plain, (p2(X1,X2,X2)|~k0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_17361, plain, (r3(X1,X2,X1)|~k0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_16251, plain, (p2(X1,X2,X2)|~k1(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_17419, plain, (r3(X1,X2,X1)|~k1(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_16682, plain, (p2(X1,X2,X2)|~l0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_17477, plain, (r3(X1,X2,X1)|~l0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+##
+#cnf(i_0_16849, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~k0(X2))).
+###
+#cnf(i_0_16926, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~k1(X2))).
+##
+#cnf(i_0_17003, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~l0(X2))).
+#####
+#cnf(i_0_17248, plain, (r3(X1,X2,X1)|~l1(X3,a)|~p0(X4,X1)|~r0(X2))).
+###
+#cnf(i_0_17313, plain, (m5(e,X1)|~l0(X1)|~n0(X3,a)|~n0(X2,X1))).
+#
+#cnf(i_0_17356, plain, (r3(X1,X1,X1)|~k0(X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+#
+#cnf(i_0_17414, plain, (r3(X1,X1,X1)|~k1(X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+#
+#cnf(i_0_17472, plain, (r3(X1,X1,X1)|~l0(X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+#
+#cnf(i_0_17498, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~k0(X2)|~n0(X3,X2))).
+##
+#cnf(i_0_17513, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~k1(X2)|~n0(X3,X2))).
+#
+#cnf(i_0_17528, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l0(X2)|~n0(X3,X2))).
+##
+#cnf(i_0_17542, plain, (p4(X1,X1,X2)|~l1(X3,a)|~p0(X4,X2)|~r0(X1))).
+#####
+#cnf(i_0_16014, plain, (r3(X1,X1,X1)|~l1(X1,X1)|~k0(X1)|~m0(d,X1,X1))).
+#
+#cnf(i_0_16211, plain, (r3(X1,X1,X1)|~l1(X1,X1)|~k1(X1)|~m0(d,X1,X1))).
+#
+#cnf(i_0_16642, plain, (r3(X1,X1,X1)|~l1(X1,X1)|~l0(X1)|~m0(d,X1,X1))).
+####
+#cnf(i_0_15897, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X1,X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_17611, plain, (n4(e,X1)|~k4(X2)|~l1(e,e)|~l0(X1))).
+##
+#cnf(i_0_17216, plain, (p4(e,e,e)|~l1(X2,a)|~p0(X3,X1))).
+#
+#cnf(i_0_17669, plain, (p4(e,e,e)|~l1(X1,a))).
+#
+#cnf(i_0_17673, plain, (p4(e,e,e)|~p0(a,X1)|~r0(X2))).
+#
+#cnf(i_0_16443, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X1,X1)|~l0(X1)|~r0(X2))).
+###
+#cnf(i_0_15664, plain, (m5(X1,X2)|~l1(X3,a)|~k0(X2)|~l0(X1)|~r0(X1))).
+##
+#cnf(i_0_17254, plain, (r3(e,e,e)|~l1(X2,a)|~p0(X3,X1))).
+#
+#cnf(i_0_17732, plain, (r3(e,e,e)|~l1(X1,a))).
+#
+#cnf(i_0_17739, plain, (r3(e,e,e)|~p0(a,X1)|~r0(X2))).
+##
+#cnf(i_0_15896, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X1,X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_17747, plain, (p4(X1,X1,X1)|~l1(X1,X1)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_16442, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X1,X1)|~l0(X1)|~r0(X2))).
+###
+#cnf(i_0_17721, plain, (m5(X1,X2)|~k0(X2)|~l0(X1)|~r0(X1)|~n0(X3,a))).
+#
+#cnf(i_0_17752, plain, (p4(X1,X1,X1)|~l1(X1,X1)|~l0(X1)|~l0(X2)|~r0(X2))).
+#
+#cnf(i_0_15381, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X1)|~l1(X3,a))).
+#
+#cnf(i_0_15517, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X3,a)|~m0(X1,X1,X2))).
+#######
+#cnf(i_0_15941, plain, (p4(X1,X1,X2)|~l1(X2,X2)|~k0(X2)|~l0(X1)|~r0(X1))).
+####
+#cnf(i_0_16011, plain, (p4(X1,X1,X2)|~k0(X2)|~l0(X1)|~r0(X1)|~n0(X3,X2))).
+###############################
+#cnf(i_0_15405, plain, (p2(e,X1,X1)|~p1(X1,e,e)|~l1(X2,a))).
+##
+#cnf(i_0_15590, plain, (n4(X1,X2)|~k4(X3)|~l1(X4,a)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_15624, plain, (m5(X1,X2)|~l0(X2)|~p0(X3,d)|~r0(X1)|~r0(X4))).
+#
+#cnf(i_0_15630, plain, (m5(X1,X2)|~l0(X2)|~p0(a,X3)|~r0(X1)|~r0(X4))).
+##
+#cnf(i_0_15646, plain, (n4(X1,X2)|~k4(X3)|~l1(X4,a)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_15801, plain, (m5(X1,X2)|~l1(X4,X4)|~l0(X4)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_15802, plain, (m5(X1,X2)|~l0(X4)|~p0(X3,X2)|~r0(X1)|~n0(X5,X4))).
+#
+#cnf(i_0_15916, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X2,X2)|~k0(X2)|~l0(X1))).
+####
+#cnf(i_0_15967, plain, (n4(X1,X2)|~n4(X1,X1)|~k0(X1)|~l0(X2)|~n0(X3,X1))).
+#
+#cnf(i_0_18052, plain, (n4(e,X1)|~k4(X3)|~l0(X1)|~n0(X2,e))).
+##
+#cnf(i_0_15986, plain, (q3(X1,X1)|~q3(X2,X1)|~k0(X2)|~l0(X1)|~n0(X3,X2))).
+###
+#cnf(i_0_16464, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X2,X2)|~l0(X2)|~r0(X1))).
+##
+#cnf(i_0_16523, plain, (n4(X1,X2)|~n4(X1,X1)|~l0(X1)|~r0(X2)|~n0(X3,X1))).
+##
+#cnf(i_0_16544, plain, (q3(X1,X1)|~q3(X2,X1)|~l0(X2)|~r0(X1)|~n0(X3,X2))).
+###
+#cnf(i_0_15966, plain, (p4(X1,X1,X1)|~r2(X2)|~k0(X1)|~l0(X2)|~n0(X3,X1))).
+#
+#cnf(i_0_18454, plain, (p4(X1,X1,X1)|~k0(X1)|~l0(X2)|~n0(X3,X1))).
+###
+#cnf(i_0_16522, plain, (p4(X1,X1,X1)|~r2(X2)|~l0(X1)|~r0(X2)|~n0(X3,X1))).
+#######
+#cnf(i_0_18459, plain, (p4(X1,X1,X1)|~l0(X1)|~l0(X2)|~r0(X2)|~n0(X3,X1))).
+#
+#cnf(i_0_15448, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~p0(a,X3)|~r0(X4))).
+#
+#cnf(i_0_17812, plain, (n4(X1,X2)|~n4(X1,X1)|~m1(X2,X1,X2)|~l1(X3,a))).
+###
+#cnf(i_0_15481, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~p0(a,X3)|~r0(X4))).
+###
+#cnf(i_0_15385, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X2)|~l1(X3,a))).
+#
+#cnf(i_0_18607, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~l1(X3,a))).
+#
+#cnf(i_0_15534, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X3,a)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_18650, plain, (q3(X1,X1)|~q3(d,X1)|~l1(X2,a))).
+#
+#cnf(i_0_18664, plain, (q3(X1,X1)|~q3(X1,d)|~l1(X2,a))).
+###
+#cnf(i_0_18723, plain, (q3(c,c)|~l1(X1,a)|~p0(X2,X2))).
+#####
+#cnf(i_0_18724, plain, (q3(c,c)|~l1(X1,a)|~p0(a,d))).
+########
+#cnf(i_0_18661, plain, (q3(X1,X1)|~q3(d,X1)|~p0(a,X2)|~r0(X3))).
+#
+#cnf(i_0_18722, plain, (q3(X1,X1)|~q3(X1,d)|~p0(a,X2)|~r0(X3))).
+##
+#cnf(i_0_18663, plain, (q3(X1,X1)|~l1(X2,a)|~l1(d,X1)|~n0(X1,X1))).
+##
+#cnf(i_0_15557, plain, (r3(X1,X2,X1)|~p0(a,X3)|~r0(X4)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_15272, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X3)|~p0(X3,X1))).
+#
+#cnf(i_0_19035, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X3)|~p0(X3,X1))).
+#
+#cnf(i_0_18967, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X3)|~p0(X3,X1))).
+###
+#cnf(i_0_19041, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~p0(X1,X1)|~n0(X3,X1))).
+###
+#cnf(i_0_15277, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~q0(X3,X1))).
+#
+#cnf(i_0_19123, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~q0(X3,X1))).
+###
+#cnf(i_0_19191, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~q0(X3,X1))).
+#
+#cnf(i_0_19203, plain, (p2(d,X1,X1)|~m1(X1,d,X1)|~l1(d,d))).
+#
+#cnf(i_0_19239, plain, (p2(d,X1,X1)|~l1(d,d))).
+#
+#cnf(i_0_19294, plain, (r3(d,X1,d)|~l1(d,d))).
+##
+#cnf(i_0_19291, plain, (m5(X1,d)|~l1(d,d)|~r0(X1))).
+#
+#cnf(i_0_19301, plain, (m5(X1,d)|~r0(X1)|~n0(X2,d))).
+###
+#cnf(i_0_19290, plain, (q3(X1,X1)|~q3(d,X1)|~l1(d,d))).
+#
+#cnf(i_0_19318, plain, (q3(X1,X1)|~q3(X1,d)|~l1(d,d))).
+######
+#cnf(i_0_19377, plain, (q3(c,c)|~l1(d,d)|~p0(X1,X1))).
+############
+#cnf(i_0_19378, plain, (q3(c,c)|~l1(d,d)|~p0(a,d))).
+########
+#cnf(i_0_19204, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~n0(X4,X1)|~q0(X3,X1))).
+#
+#cnf(i_0_19449, plain, (p2(d,X1,X1)|~m1(X1,d,X1)|~n0(X2,d))).
+#
+#cnf(i_0_19480, plain, (p2(d,X1,X1)|~n0(X2,d))).
+#
+#cnf(i_0_19535, plain, (r3(d,X1,d)|~n0(X2,d))).
+#####
+#cnf(i_0_19531, plain, (q3(X1,X1)|~q3(d,X1)|~n0(X2,d))).
+#
+#cnf(i_0_19553, plain, (q3(X1,X1)|~q3(X1,d)|~n0(X2,d))).
+####
+#cnf(i_0_19612, plain, (q3(c,c)|~p0(X2,X2)|~n0(X1,d))).
+#####
+#cnf(i_0_19505, plain, (p4(d,d,d)|~r2(X1)|~n0(X2,d))).
+#
+#cnf(i_0_19678, plain, (p4(d,d,d)|~l0(X1)|~n0(X2,d))).
+#####
+#cnf(i_0_19613, plain, (q3(c,c)|~p0(a,d)|~n0(X1,d))).
+########
+#cnf(i_0_19552, plain, (q3(X1,X1)|~l1(d,X1)|~n0(X2,d)|~n0(X1,X1))).
+###
+#cnf(i_0_19317, plain, (q3(X1,X1)|~l1(d,d)|~l1(d,X1)|~n0(X1,X1))).
+####
+#cnf(i_0_15820, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~l1(X2,X2)|~k0(X2)|~r0(X1))).
+######
+#cnf(i_0_19802, plain, (m5(X1,X2)|~l1(X2,X2)|~k0(X2)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_19808, plain, (m5(X1,X2)|~k0(X2)|~p0(X3,X2)|~r0(X1)|~n0(X4,X2))).
+##
+#cnf(i_0_15278, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~n0(X3,X1))).
+#
+#cnf(i_0_19831, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~n0(X3,X1))).
+###
+#cnf(i_0_19900, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~n0(X3,X1))).
+#
+#cnf(i_0_19911, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~n0(X3,X1)|~n0(X4,X1))).
+#
+#cnf(i_0_16145, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~l1(X2,X2)|~k1(X2)|~r0(X1))).
+######
+#cnf(i_0_19981, plain, (m5(e,X1)|~l1(X1,X1)|~k1(X1)|~m0(X1,X2,e))).
+#
+#cnf(i_0_20034, plain, (m5(e,X1)|~l1(X1,X1)|~k1(X1))).
+#
+#cnf(i_0_20043, plain, (m5(e,X1)|~k1(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_20041, plain, (m5(e,d)|~p0(X1,d)|~r0(X2))).
+#
+#cnf(i_0_20042, plain, (m5(e,a)|~p0(a,a)|~r0(X1))).
+#
+#cnf(i_0_20044, plain, (m5(e,X1)|~l1(X2,X2)|~k1(X1)|~l0(X2))).
+#
+#cnf(i_0_20045, plain, (m5(e,X1)|~k1(X1)|~l0(X2)|~n0(X3,X2))).
+##
+#cnf(i_0_20046, plain, (m5(e,X1)|~k1(X1)|~p0(a,a)|~r0(X2))).
+##
+#cnf(i_0_20029, plain, (m5(X1,X2)|~l1(X2,X2)|~k1(X2)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_20059, plain, (m5(X1,X2)|~k1(X2)|~p0(X3,X2)|~r0(X1)|~n0(X4,X2))).
+#
+#cnf(i_0_15279, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~p0(X3,X1))).
+#
+#cnf(i_0_20082, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~p0(X3,X1))).
+###
+#cnf(i_0_20151, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~p0(X3,X1))).
+#
+#cnf(i_0_20162, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~p0(X3,X1)|~n0(X4,X1))).
+#####
+#cnf(i_0_16890, plain, (m5(X1,X2)|~l1(X2,X2)|~k0(X2)|~r0(X1)|~m0(X2,X2,X1))).
+#####
+#cnf(i_0_16967, plain, (m5(X1,X2)|~l1(X2,X2)|~k1(X2)|~r0(X1)|~m0(X2,X2,X1))).
+##################
+#cnf(i_0_18962, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X2,X3)|~p0(X3,X2))).
+#
+#cnf(i_0_19034, plain, (p2(X1,X2,X2)|~l1(X1,X3)|~p0(X3,X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_20296, plain, (r3(X1,X2,X1)|~l1(X1,X3)|~p0(X3,X1)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_19118, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~q0(X3,X2))).
+#
+#cnf(i_0_20319, plain, (r3(X1,X1,X1)|~p2(d,X1,d)|~l1(d,d))).
+##
+#cnf(i_0_19190, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~m0(X1,X1,X2)|~q0(X3,X1))).
+##
+#cnf(i_0_20390, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~m0(X1,X1,X2)|~q0(X3,X1))).
+###
+#cnf(i_0_19826, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~n0(X3,X2))).
+#
+#cnf(i_0_19899, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_20478, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+##
+#cnf(i_0_20077, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~p0(X3,X2))).
+#
+#cnf(i_0_20150, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~p0(X3,X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_20564, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~p0(X3,X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_20241, plain, (r3(X1,X1,X1)|~l1(X2,X3)|~p0(X3,X2)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_20242, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X2,X3)|~p0(X3,X2))).
+###
+#cnf(i_0_20330, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~m0(X2,X2,X1)|~q0(X3,X2))).
+#
+#cnf(i_0_20607, plain, (r3(X1,X1,X1)|~l1(d,d))).
+#######
+#cnf(i_0_20423, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+###
+#cnf(i_0_20509, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~p0(X3,X2)|~m0(X2,X2,X1))).
+####
+#cnf(i_0_15380, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X1)|~l1(X3,a))).
+####
+#cnf(i_0_15479, plain, (p4(X1,X1,X2)|~p2(X2,X1,X2)|~l1(X3,a)|~r0(X1))).
+####
+#cnf(i_0_20647, plain, (p4(X1,X1,X2)|~m1(X1,X2,X1)|~l1(X3,a)|~r0(X1))).
+##
+#cnf(i_0_15516, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X3,a)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_20656, plain, (p4(d,d,d)|~r2(X1)|~l1(X2,a))).
+#
+#cnf(i_0_20661, plain, (p4(d,d,d)|~l1(X2,a)|~l0(X1))).
+######
+#cnf(i_0_15555, plain, (p4(X1,X1,X2)|~l1(X3,a)|~r0(X1)|~m0(X2,X2,X1))).
+#######
+#cnf(i_0_20629, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X2,X1,X2)|~l1(X3,a))).
+#
+#cnf(i_0_20633, plain, (p4(X1,X1,X1)|~m3(X2,X1,X1)|~l1(X3,a)|~r0(X1))).
+#####
+#cnf(i_0_16391, plain, (p2(X1,e,e)|~l1(X1,X1)|~l0(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_20717, plain, (m5(e,X1)|~l1(X1,X1)|~l0(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_20740, plain, (m5(e,X1)|~l0(X1)|~n0(X2,X1)|~n0(X3,X1))).
+##
+#cnf(i_0_20732, plain, (p2(X1,e,e)|~l0(X1)|~n0(X2,X1)|~n0(X3,X1))).
+##
+#cnf(i_0_15623, plain, (m5(X1,X2)|~l0(X2)|~p0(e,e)|~r0(X1)|~r0(X3))).
+##
+#cnf(i_0_15837, plain, (p2(e,X1,X1)|~p1(X1,e,e)|~l1(e,e))).
+##
+#cnf(i_0_15815, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X1,X1)|~k0(X1))).
+#####
+#cnf(i_0_16140, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X1,X1)|~k1(X1))).
+######
+#cnf(i_0_16359, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X1,X1)|~l0(X1))).
+#####
+#cnf(i_0_16868, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~k0(X1)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_16945, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~k1(X1)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_17022, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~l0(X1)|~m0(X1,X1,X2))).
+#######
+#cnf(i_0_15267, plain, (p2(d,X1,X1)|~p2(d,X1,d)|~l1(X2,d))).
+#
+#cnf(i_0_21113, plain, (p2(d,X1,X1)|~l1(X2,d))).
+#
+#cnf(i_0_21160, plain, (r3(d,X1,d)|~l1(X2,d))).
+#
+#cnf(i_0_21157, plain, (m5(X1,d)|~l1(X2,d)|~r0(X1))).
+#####
+#cnf(i_0_21156, plain, (q3(X1,X1)|~q3(d,X1)|~l1(X2,d))).
+#
+#cnf(i_0_21185, plain, (q3(X1,X1)|~q3(X1,d)|~l1(X2,d))).
+######
+#cnf(i_0_21246, plain, (q3(c,c)|~l1(X1,d)|~p0(X2,X2))).
+#######
+#cnf(i_0_21167, plain, (m5(X1,d)|~p0(c,e)|~r0(X1)|~r0(X2))).
+######
+#cnf(i_0_21247, plain, (q3(c,c)|~l1(X1,d)|~p0(a,d))).
+########
+#cnf(i_0_21184, plain, (q3(X1,X1)|~l1(X2,d)|~l1(d,X1)|~n0(X1,X1))).
+####
+#cnf(i_0_15401, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~p0(a,X3)|~r0(X4))).
+####
+#cnf(i_0_15487, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~p0(a,X3)|~r0(X4))).
+####
+#cnf(i_0_15550, plain, (p2(X1,X2,X2)|~p0(a,X3)|~r0(X4)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_15563, plain, (r3(X1,X1,X1)|~p0(a,X2)|~r0(X4)|~m0(X3,X3,X1))).
+###
+#cnf(i_0_17357, plain, (m5(X1,X2)|~k0(X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X3,X2))).
+####
+#cnf(i_0_17415, plain, (m5(X1,X2)|~k1(X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X3,X2))).
+#####
+#cnf(i_0_15569, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~p0(a,X3)|~r0(X4))).
+########
+#cnf(i_0_18786, plain, (q3(c,c)|~p0(a,X1)|~p0(X2,X2)|~r0(X3))).
+##############
+#cnf(i_0_19800, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~l1(X2,X2)|~k0(X2)|~r0(X1))).
+#########
+#cnf(i_0_20027, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~l1(X2,X2)|~k1(X2)|~r0(X1))).
+######
+#cnf(i_0_21558, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~k0(X2)|~r0(X1)|~n0(X3,X2))).
+#######
+#cnf(i_0_19454, plain, (p2(X1,X2,X2)|~m0(X1,X1,X2)|~n0(X3,X1)|~q0(X4,X1))).
+##
+#cnf(i_0_21700, plain, (r3(X1,X2,X1)|~m0(X1,X1,X2)|~n0(X3,X1)|~q0(X4,X1))).
+##
+#cnf(i_0_19946, plain, (p2(X1,X2,X2)|~m0(X1,X1,X2)|~n0(X3,X1)|~n0(X4,X1))).
+#
+#cnf(i_0_21772, plain, (r3(X1,X2,X1)|~m0(X1,X1,X2)|~n0(X3,X1)|~n0(X4,X1))).
+#
+#cnf(i_0_21589, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~k1(X2)|~r0(X1)|~n0(X3,X2))).
+######
+#cnf(i_0_20197, plain, (p2(X1,X2,X2)|~p0(X3,X1)|~m0(X1,X1,X2)|~n0(X4,X1))).
+#
+#cnf(i_0_21868, plain, (r3(X1,X2,X1)|~p0(X3,X1)|~m0(X1,X1,X2)|~n0(X4,X1))).
+###
+#cnf(i_0_20331, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~q0(X3,X2))).
+####
+#cnf(i_0_20424, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~n0(X3,X2))).
+####
+#cnf(i_0_20510, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~p0(X3,X2))).
+####
+#cnf(i_0_20585, plain, (r3(X1,X1,X1)|~p0(X2,d)|~p0(X3,d)|~r0(X4))).
+####
+#cnf(i_0_20592, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~p0(X2,X2)|~n0(X3,X2))).
+#
+#cnf(i_0_21944, plain, (r3(X1,X1,X1)|~p0(X2,X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+#####################
+#cnf(i_0_21695, plain, (r3(X1,X1,X1)|~m0(X2,X2,X1)|~n0(X3,X2)|~q0(X4,X2))).
+#
+#cnf(i_0_21955, plain, (r3(X1,X1,X1)|~n0(X2,d))).
+######
+#cnf(i_0_21767, plain, (r3(X1,X1,X1)|~m0(X2,X2,X1)|~n0(X3,X2)|~n0(X4,X2))).
+#
+#cnf(i_0_21863, plain, (r3(X1,X1,X1)|~p0(X3,X2)|~m0(X2,X2,X1)|~n0(X4,X2))).
+#
+#cnf(i_0_21890, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~n0(X4,X2)|~q0(X3,X2))).
+##
+#cnf(i_0_21905, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~n0(X3,X2)|~n0(X4,X2))).
+#
+#cnf(i_0_21920, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~p0(X3,X2)|~n0(X4,X2))).
+######
+#cnf(i_0_15881, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~k0(X1)|~p0(X2,X1)|~s0(X2))).
+#
+#cnf(i_0_22056, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k0(X1)|~p0(X2,X1)|~s0(X2))).
+####
+#cnf(i_0_16080, plain, (p2(X1,X2,X2)|~k0(X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+#
+#cnf(i_0_16208, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~k1(X1)|~p0(X2,X1)|~s0(X2))).
+#
+#cnf(i_0_22195, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k1(X1)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_16249, plain, (p2(X1,X2,X2)|~k1(X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+#
+#cnf(i_0_16427, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~l0(X1)|~p0(X2,X1)|~s0(X2))).
+#
+#cnf(i_0_22334, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~l0(X1)|~p0(X2,X1)|~s0(X2))).
+######
+#cnf(i_0_16680, plain, (p2(X1,X2,X2)|~l0(X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+#
+#cnf(i_0_19033, plain, (p2(X1,X2,X2)|~l1(X1,X3)|~l0(X1)|~p0(X3,X1)|~r0(X2))).
+#
+#cnf(i_0_22469, plain, (m5(X1,X2)|~l1(X2,X3)|~l0(X2)|~p0(X3,X2)|~r0(X1))).
+####
+#cnf(i_0_19036, plain, (p2(X1,X2,X2)|~l1(X1,X3)|~k0(X1)|~l0(X2)|~p0(X3,X1))).
+####
+#cnf(i_0_19073, plain, (r3(X1,X1,X1)|~l1(X1,X2)|~p0(X2,X1)|~m0(d,X1,X1))).
+##
+#cnf(i_0_19197, plain, (r3(X1,X1,X1)|~l1(X1,X1)|~m0(d,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_19906, plain, (r3(X1,X1,X1)|~l1(X1,X1)|~m0(d,X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_20157, plain, (r3(X1,X1,X1)|~l1(X1,X1)|~p0(X2,X1)|~m0(d,X1,X1))).
+##
+#cnf(i_0_20240, plain, (r3(X1,X1,X1)|~l1(X2,X3)|~l0(X2)|~p0(X3,X2)|~r0(X1))).
+###
+#cnf(i_0_20243, plain, (r3(X1,X1,X1)|~l1(X2,X3)|~k0(X2)|~l0(X1)|~p0(X3,X2))).
+#####
+#cnf(i_0_22131, plain, (r3(X1,X2,X1)|~k0(X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+##
+#cnf(i_0_22270, plain, (r3(X1,X2,X1)|~k1(X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+###
+#cnf(i_0_22409, plain, (r3(X1,X2,X1)|~l0(X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+###
+#cnf(i_0_22473, plain, (r3(X1,X2,X1)|~l1(X1,X3)|~l0(X1)|~p0(X3,X1)|~r0(X2))).
+#####
+#cnf(i_0_22556, plain, (r3(X1,X2,X1)|~l1(X1,X3)|~k0(X1)|~l0(X2)|~p0(X3,X1))).
+#######
+#cnf(i_0_22640, plain, (p4(X1,X1,X2)|~l1(X2,X3)|~l0(X2)|~p0(X3,X2)|~r0(X1))).
+##
+#cnf(i_0_15368, plain, (p2(X1,X2,X2)|~p1(X1,X3,X4)|~m1(X2,X1,X2)|~l1(X3,X4))).
+##########
+#cnf(i_0_15248, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~p1(X1,X3,X4)|~l1(X3,X4))).
+###########
+#cnf(i_0_15696, plain, (p4(X1,X1,X2)|~l1(X3,a)|~k0(X2)|~l0(X1)|~r0(X1))).
+####
+#cnf(i_0_15759, plain, (m5(e,X1)|~l1(X2,a)|~k1(X1)|~m0(X1,X3,e))).
+#
+#cnf(i_0_22836, plain, (m5(e,a)|~l1(X1,a))).
+#
+#cnf(i_0_22841, plain, (m5(e,a)|~n0(X1,a))).
+#
+#cnf(i_0_22842, plain, (m5(e,a)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_22837, plain, (m5(e,X1)|~l1(X2,a)|~k1(X1))).
+#
+#cnf(i_0_22857, plain, (m5(e,X1)|~k1(X1)|~n0(X2,a))).
+#
+#cnf(i_0_22843, plain, (m5(e,a)|~l0(X1)|~n0(X2,X1))).
+##
+#cnf(i_0_22840, plain, (m5(e,a)|~p0(X1,d)|~r0(X2))).
+#
+#cnf(i_0_22846, plain, (m5(e,a)|~p0(a,X1)|~r0(X2))).
+###
+#cnf(i_0_22839, plain, (m5(e,a)|~p0(e,e)|~r0(X1))).
+###
+#cnf(i_0_22856, plain, (m5(e,X1)|~k1(X1)|~p0(X2,d)|~r0(X3))).
+#
+#cnf(i_0_22862, plain, (m5(e,X1)|~k1(X1)|~p0(a,X2)|~r0(X3))).
+#
+#cnf(i_0_22855, plain, (m5(e,X1)|~k1(X1)|~p0(e,e)|~r0(X2))).
+#####
+#cnf(i_0_22847, plain, (m5(e,a)|~l0(b)|~p0(e,b)|~r0(X1))).
+###
+#cnf(i_0_17334, plain, (n4(X1,X2)|~k4(X3)|~k0(X1)|~m0(X1,X1,X2)|~n0(X4,X1))).
+####
+#cnf(i_0_17392, plain, (n4(X1,X2)|~k4(X3)|~k1(X1)|~m0(X1,X1,X2)|~n0(X4,X1))).
+####
+#cnf(i_0_17450, plain, (n4(X1,X2)|~k4(X3)|~l0(X1)|~m0(X1,X1,X2)|~n0(X4,X1))).
+####
+#cnf(i_0_19753, plain, (m5(e,X1)|~n1(X1,e,e)|~l1(X1,X1)|~k0(X1))).
+##
+#cnf(i_0_19760, plain, (m5(e,X1)|~n1(e,X1,a)|~l1(X1,X1)|~k0(X1))).
+##
+#cnf(i_0_20904, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X1,X1)|~k0(X1))).
+######
+#cnf(i_0_20975, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X1,X1)|~k1(X1))).
+####
+#cnf(i_0_21046, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X1,X1)|~l0(X1))).
+####
+#cnf(i_0_22872, plain, (m5(e,X1)|~n1(X1,e,e)|~k0(X1)|~n0(X2,X1))).
+##
+#cnf(i_0_22907, plain, (m5(e,X1)|~n1(e,X1,a)|~k0(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_22921, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~k0(X1)|~n0(X4,X1))).
+#####
+#cnf(i_0_22952, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~k1(X1)|~n0(X4,X1))).
+###
+#cnf(i_0_22983, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l0(X1)|~n0(X4,X1))).
+######
+#cnf(i_0_15411, plain, (p2(X1,e,e)|~n1(X1,e,e)|~l1(X2,a))).
+###
+#cnf(i_0_16796, plain, (n4(X1,X2)|~k4(X3)|~l1(X4,a)|~p0(X2,X1)|~s0(X2))).
+#
+#cnf(i_0_15893, plain, (p4(e,e,e)|~l1(X1,X1)|~k0(X1)|~l0(e))).
+#######
+#cnf(i_0_15589, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X3,a)|~l0(X1)|~r0(X2))).
+##
+#cnf(i_0_15606, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X3,a)|~l0(X2)|~r0(X1))).
+##
+#cnf(i_0_15645, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X3,a)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_15662, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X3,a)|~k0(X2)|~l0(X1))).
+######
+#cnf(i_0_15963, plain, (p4(e,e,e)|~k0(X1)|~l0(e)|~n0(X2,X1))).
+########
+#cnf(i_0_17858, plain, (r3(e,X1,e)|~p1(X1,e,e)|~l1(X2,a))).
+####
+#cnf(i_0_20637, plain, (p4(e,e,X1)|~n1(X1,e,e)|~l1(X2,a))).
+####
+#cnf(i_0_22428, plain, (n4(e,X1)|~k4(X2)|~l1(X1,X3)|~l0(X1)|~p0(X3,X1))).
+####
+#cnf(i_0_22429, plain, (p4(e,e,e)|~l1(X1,X2)|~l0(X1)|~p0(X2,X1))).
+####
+#cnf(i_0_22479, plain, (r3(e,e,e)|~l1(X1,X2)|~l0(X1)|~p0(X2,X1))).
+##
+#cnf(i_0_15588, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X3,a)|~l0(X1)|~r0(X2))).
+####
+#cnf(i_0_15622, plain, (p2(X1,X2,X2)|~l0(X1)|~p0(a,X3)|~r0(X2)|~r0(X4))).
+###
+#cnf(i_0_15644, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X3,a)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_23698, plain, (p4(X1,X1,X1)|~l1(X3,a)|~k0(X1)|~l0(X2))).
+####
+#cnf(i_0_15678, plain, (p2(X1,X2,X2)|~k0(X1)|~l0(X2)|~p0(a,X3)|~r0(X4))).
+#
+#cnf(i_0_15684, plain, (r3(X1,X1,X1)|~p0(a,X2)|~r0(X3)|~m0(d,X1,X1))).
+#
+#cnf(i_0_15691, plain, (r3(X1,X2,X1)|~l0(X1)|~p0(a,X3)|~r0(X2)|~r0(X4))).
+###
+#cnf(i_0_15698, plain, (r3(X1,X2,X1)|~k0(X1)|~l0(X2)|~p0(a,X3)|~r0(X4))).
+#
+#cnf(i_0_15701, plain, (p4(X1,X1,X2)|~l0(X2)|~p0(a,X3)|~r0(X1)|~r0(X4))).
+##
+#cnf(i_0_15880, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~k0(X1)|~p0(X3,X1)|~r0(X2))).
+###
+#cnf(i_0_23839, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k0(X1)|~p0(X3,X1)|~r0(X2))).
+####
+#cnf(i_0_16081, plain, (p2(X1,X2,X2)|~k0(X1)|~p0(X4,X1)|~r0(X2)|~n0(X3,X1))).
+##
+#cnf(i_0_16207, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~k1(X1)|~p0(X3,X1)|~r0(X2))).
+###
+#cnf(i_0_23978, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k1(X1)|~p0(X3,X1)|~r0(X2))).
+####
+#cnf(i_0_16250, plain, (p2(X1,X2,X2)|~k1(X1)|~p0(X4,X1)|~r0(X2)|~n0(X3,X1))).
+#####
+#cnf(i_0_16851, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~k0(X2)|~p0(X3,X2)|~r0(X1))).
+###
+#cnf(i_0_16852, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~k0(X2)|~p0(X1,X2)|~s0(X1))).
+####
+#cnf(i_0_17006, plain, (r3(X1,X1,X1)|~l1(X2,X2)|~l0(X2)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_17314, plain, (m5(e,X1)|~l1(X3,X3)|~l0(X1)|~l0(X3)|~n0(X2,X1))).
+##
+#cnf(i_0_17315, plain, (m5(e,X1)|~l0(X1)|~l0(X3)|~n0(X2,X1)|~n0(X4,X3))).
+#######
+#cnf(i_0_17567, plain, (r3(X1,X1,X1)|~k0(X2)|~p0(X1,X2)|~n0(X3,X2)|~s0(X1))).
+#
+#cnf(i_0_17568, plain, (r3(X1,X1,X1)|~k0(X2)|~p0(X4,X2)|~r0(X1)|~n0(X3,X2))).
+#####
+#cnf(i_0_17587, plain, (r3(X1,X1,X1)|~l0(X2)|~p0(X1,X2)|~n0(X3,X2)|~s0(X1))).
+##################################################################
+#cnf(i_0_22697, plain, (p2(d,X1,X1)|~m1(X1,d,X1)|~l1(X2,X3)|~l0(X4))).
+#
+#cnf(i_0_24127, plain, (p2(d,X1,X1)|~l1(X2,X3)|~l0(X4))).
+#
+#cnf(i_0_24194, plain, (p2(d,X1,X1)|~l0(X3)|~n0(X4,X2))).
+#
+#cnf(i_0_24190, plain, (r3(d,X1,d)|~l1(X2,X3)|~l0(X4))).
+#
+#cnf(i_0_24240, plain, (r3(d,X1,d)|~l0(X2)|~n0(X3,X4))).
+##
+#cnf(i_0_24187, plain, (m5(X1,d)|~l1(X2,X3)|~l0(X4)|~r0(X1))).
+#
+#cnf(i_0_24261, plain, (m5(X1,d)|~l0(X2)|~r0(X1)|~r0(X3))).
+#
+#cnf(i_0_24237, plain, (m5(X1,d)|~l0(X2)|~r0(X1)|~n0(X3,X4))).
+########
+#cnf(i_0_24186, plain, (q3(X1,X1)|~q3(d,X1)|~l1(X2,X3)|~l0(X4))).
+#
+#cnf(i_0_24236, plain, (q3(X1,X1)|~q3(d,X1)|~l0(X2)|~n0(X3,X4))).
+##
+#cnf(i_0_24292, plain, (q3(X1,X1)|~q3(X1,d)|~l1(X2,X3)|~l0(X4))).
+#
+#cnf(i_0_24359, plain, (q3(X1,X1)|~q3(X1,d)|~l0(X2)|~n0(X3,X4))).
+####
+#cnf(i_0_24192, plain, (p2(d,X1,X1)|~l0(X3)|~p0(X4,d)|~r0(X5))).
+####
+#cnf(i_0_24193, plain, (p2(d,X1,X1)|~l0(X3)|~p0(a,X2)|~r0(X4))).
+##
+#cnf(i_0_24431, plain, (q3(c,c)|~l1(X1,X2)|~l0(X3)|~p0(X4,X4))).
+#
+#cnf(i_0_24502, plain, (q3(c,c)|~l0(X1)|~p0(X4,X4)|~n0(X2,X3))).
+#########
+#cnf(i_0_24152, plain, (p4(d,d,d)|~r2(X1)|~l1(X2,X3)|~l0(X4))).
+##
+#cnf(i_0_24247, plain, (r3(d,X1,d)|~l0(X3)|~p0(X4,d)|~r0(X5))).
+#
+#cnf(i_0_24248, plain, (r3(d,X1,d)|~l0(X3)|~p0(a,X2)|~r0(X4))).
+#
+#cnf(i_0_24202, plain, (p4(d,d,d)|~r2(X1)|~l0(X2)|~n0(X3,X4))).
+####
+#cnf(i_0_24684, plain, (p4(d,d,d)|~l1(X2,X3)|~l0(X4)|~l0(X1))).
+#
+#cnf(i_0_24697, plain, (p4(d,d,d)|~l0(X2)|~l0(X1)|~n0(X3,X4))).
+#####
+#cnf(i_0_23630, plain, (p4(X1,X1,X1)|~l1(X3,a)|~l0(X1)|~l0(X2)|~r0(X2))).
+########
+#cnf(i_0_23858, plain, (p4(X1,X1,X2)|~l1(X2,X2)|~k0(X2)|~p0(X3,X2)|~r0(X1))).
+###
+#cnf(i_0_23914, plain, (r3(X1,X2,X1)|~k0(X1)|~p0(X3,X1)|~r0(X2)|~n0(X4,X1))).
+#####
+#cnf(i_0_23997, plain, (p4(X1,X1,X2)|~l1(X2,X2)|~k1(X2)|~p0(X3,X2)|~r0(X1))).
+###
+#cnf(i_0_24053, plain, (r3(X1,X2,X1)|~k1(X1)|~p0(X3,X1)|~r0(X2)|~n0(X4,X1))).
+########
+#cnf(i_0_24714, plain, (p4(X1,X1,X2)|~k0(X2)|~p0(X3,X2)|~r0(X1)|~n0(X4,X2))).
+####
+#cnf(i_0_24727, plain, (p4(X1,X1,X2)|~k1(X2)|~p0(X3,X2)|~r0(X1)|~n0(X4,X2))).
+####
+#cnf(i_0_15814, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~k0(X1))).
+##
+#cnf(i_0_16139, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~k1(X1))).
+##
+#cnf(i_0_16358, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~l0(X1))).
+##
+#cnf(i_0_16867, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X1,X1)|~k0(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_16944, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X1,X1)|~k1(X1)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_17021, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X1,X1)|~l0(X1)|~m0(X1,X1,X2))).
+#####
+#cnf(i_0_24432, plain, (q3(c,c)|~l1(X1,X2)|~l0(X3)|~p0(a,d))).
+####
+#cnf(i_0_24503, plain, (q3(c,c)|~l0(X1)|~p0(a,d)|~n0(X2,X3))).
+##########
+#cnf(i_0_13854, plain, (r3(c,c,c)|~p0(X1,c)|~m0(X1,X1,c))).
+####
+#cnf(i_0_13882, plain, (r3(a,a,a)|~p0(X1,a)|~m0(X1,X1,a))).
+#
+#cnf(i_0_15799, plain, (m5(X1,X2)|~p0(X4,d)|~p0(X3,X2)|~r0(X1)|~r0(X5))).
+#
+#cnf(i_0_15805, plain, (m5(X1,X2)|~p0(a,X3)|~p0(X4,X2)|~r0(X1)|~r0(X5))).
+#
+#cnf(i_0_17141, plain, (n4(X1,X2)|~k4(X3)|~l1(X4,a)|~p0(X5,X1)|~r0(X2))).
+#########
+#cnf(i_0_669, plain, (r3(X1,X1,X1)|~r3(X1,X2,X1)|~l2(X3,X2)|~p1(X2,X3,X1))).
+###
+#cnf(i_0_25130, plain, (r3(X1,X1,X1)|~r3(X1,X2,X1)|~l2(X2,X2)|~p0(X1,X2))).
+########
+#cnf(i_0_25445, plain, (r3(e,e,e)|~l2(X1,X1)|~p0(e,X1))).
+#
+#cnf(i_0_25676, plain, (r3(e,e,e)|~p0(e,X1)|~p0(X2,X2))).
+########
+#cnf(i_0_25679, plain, (r3(e,e,e)|~p0(e,X1)|~p0(a,X1))).
+#
+#cnf(i_0_25416, plain, (r3(X1,X1,X1)|~r3(X1,X2,X1)|~p0(X1,X2)|~p0(X3,X3))).
+###########
+#cnf(i_0_25602, plain, (r3(X1,X1,X1)|~p2(X1,X3,X2)|~l2(X2,X2)|~p0(X1,X2))).
+#########
+#cnf(i_0_25888, plain, (r3(X1,X1,X1)|~p2(X1,X4,X2)|~p0(X1,X2)|~p0(X3,X3))).
+################
+#cnf(i_0_25419, plain, (r3(X1,X1,X1)|~r3(X1,X2,X1)|~p0(a,X2)|~p0(X1,X2))).
+##########
+#cnf(i_0_25966, plain, (r3(X1,X1,X1)|~p2(X1,X2,X3)|~p0(a,X3)|~p0(X1,X3))).
+##########################
+#cnf(i_0_699, plain, (p4(X1,X1,X1)|~n4(X1,X3)|~k3(X2,X3,X3)|~p1(X3,X2,X1))).
+#
+#cnf(i_0_26488, plain, (p4(X1,X1,X1)|~n4(X1,X2)|~p0(X1,X2))).
+#
+#cnf(i_0_26499, plain, (p4(X1,X1,X1)|~n4(X1,X2)|~p1(X2,X2,X1))).
+##
+#cnf(i_0_26592, plain, (p4(a,a,a)|~n4(a,X1))).
+#####
+#cnf(i_0_26583, plain, (p4(X1,X1,X1)|~n4(X1,X2)|~m0(X1,X2,a))).
+####
+#cnf(i_0_26489, plain, (p4(X1,X1,X1)|~n4(X1,X2)|~k0(X1)|~n0(d,X2))).
+##
+#cnf(i_0_26527, plain, (p4(e,e,e)|~k4(X2)|~p0(e,X1))).
+#
+#cnf(i_0_26541, plain, (p4(d,d,d)|~k4(X2)|~p0(d,X1))).
+#
+#cnf(i_0_26639, plain, (p4(e,e,e)|~k4(X2)|~n0(d,X1))).
+#
+#cnf(i_0_26545, plain, (p4(X1,X1,X1)|~k4(X3)|~l1(X1,d)|~p0(X1,X2))).
+#
+#cnf(i_0_26598, plain, (p4(a,a,a)|~k4(X2)|~l1(a,d))).
+#
+#cnf(i_0_26697, plain, (p4(b,b,b)|~k4(X1)|~l1(b,d))).
+#
+#cnf(i_0_26701, plain, (m5(b,b)|~k4(X1)|~l1(b,d))).
+#
+#cnf(i_0_26544, plain, (p4(X1,X1,X1)|~n4(X1,X1)|~l1(X1,d)|~p0(X1,X2))).
+##
+#cnf(i_0_26561, plain, (p4(X1,X1,X1)|~k4(X3)|~l0(X1)|~p0(X1,X2)|~r0(X2))).
+######
+#cnf(i_0_26707, plain, (p4(b,b,b)|~k4(X1)|~l0(b)|~r0(X2))).
+#
+#cnf(i_0_26709, plain, (m5(b,b)|~k4(X1)|~l0(b)|~r0(X2))).
+#
+#cnf(i_0_26542, plain, (p4(X1,X1,X1)|~k4(X3)|~q2(X4,d,X1)|~p0(X1,X2))).
+#
+#cnf(i_0_26560, plain, (p4(X1,X1,X1)|~n4(X1,X1)|~l0(X1)|~p0(X1,X2)|~r0(X2))).
+##
+#cnf(i_0_26595, plain, (p4(a,a,a)|~k4(X2)|~q2(X3,d,a))).
+#
+#cnf(i_0_26582, plain, (p4(X1,X1,X1)|~n4(X1,X2)|~p1(X1,X2,X3)|~m0(X1,X2,X3))).
+##
+#cnf(i_0_26753, plain, (p4(X1,X1,X1)|~n4(X1,X1)|~p0(X2,X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_26712, plain, (p4(b,b,b)|~k4(X1)|~q2(X2,d,b))).
+#
+#cnf(i_0_26788, plain, (m5(b,b)|~k4(X1)|~q2(X2,d,b))).
+#####
+#cnf(i_0_1238, plain, (p1(X1,X2,X3)|~p0(X4,X3)|~m0(X3,X1,X3)|~m0(X3,X3,X4))).
+#
+#cnf(i_0_26846, plain, (p1(d,X1,X2)|~p0(X3,X2)|~m0(X2,X2,X3))).
+#########
+#cnf(i_0_26531, plain, (p4(e,e,e)|~n4(e,e)|~p0(e,X1))).
+####
+#cnf(i_0_26540, plain, (p4(d,d,d)|~n4(d,d)|~p0(d,X1))).
+#
+#cnf(i_0_3480, plain, (r3(X1,X2,X3)|~s2(X1)|~r2(X3)|~l2(c,X3)|~k2(X2,X3))).
+##
+#cnf(i_0_4798, plain, (n4(X1,a)|~n4(X1,X1)|~r2(a)|~m2(X2)|~m2(X3))).
+##
+#cnf(i_0_4807, plain, (n4(X1,a)|~n4(X1,X1)|~r2(a)|~m2(X2)|~s0(X3))).
+##
+#cnf(i_0_4914, plain, (n4(X1,a)|~n4(X1,X1)|~r2(a)|~s0(X2)|~s0(X3))).
+#####
+#cnf(i_0_26641, plain, (p4(e,e,e)|~n4(e,e)|~n0(d,X1))).
+####
+#cnf(i_0_26786, plain, (p4(d,d,d)|~n4(d,d)|~p0(X1,d))).
+####
+#cnf(i_0_26591, plain, (p4(d,d,d)|~n4(d,X1)|~m0(d,X1,X2))).
+#
+#cnf(i_0_27002, plain, (p4(d,d,d)|~n4(d,d))).
+##########
+#cnf(i_0_12358, plain, (p5(X1,X2,X2)|~s3(a,X1)|~p0(a,X2)|~p0(a,X1))).
+###
+#cnf(i_0_12470, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~n1(X3,X1,X3)|~p0(X2,X1))).
+###
+#cnf(i_0_12499, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~p0(X1,X2)|~m0(X2,X3,X2))).
+####
+#cnf(i_0_12538, plain, (p2(X1,X2,X2)|~n1(X3,X2,X3)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#########
+#cnf(i_0_27212, plain, (r3(X1,X2,X1)|~n1(X3,X2,X3)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#####
+#cnf(i_0_27279, plain, (r3(X1,X2,X1)|~p0(X1,X2)|~m0(X1,X1,X2)|~m0(X2,X3,X2))).
+#
+#cnf(i_0_27316, plain, (r3(X1,X2,X1)|~p0(X1,X2)|~m0(X1,X1,X2))).
+##########
+#cnf(i_0_14507, plain, (p2(X1,X2,X2)|~p0(X1,X2)|~m0(X2,X3,X2)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_15243, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~p1(X2,X3,X4)|~l1(X3,X4))).
+##
+#cnf(i_0_27417, plain, (r3(X1,X1,X1)|~p2(d,X1,d)|~l1(X2,d))).
+########
+#cnf(i_0_27421, plain, (r3(X1,X1,X1)|~p2(d,X1,d)|~l1(X2,X3)|~l0(X4))).
+#
+#cnf(i_0_27514, plain, (r3(X1,X1,X1)|~p2(d,X1,d)|~l0(X3)|~n0(X4,X2))).
+####
+#cnf(i_0_15367, plain, (p2(X1,X2,X2)|~p1(X1,X3,X4)|~l1(X3,X4)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_27609, plain, (p2(d,X1,X1)|~l1(X2,X3)|~m0(X4,X3,a))).
+#
+#cnf(i_0_27724, plain, (p2(d,X1,X1)|~l1(X2,X3))).
+#
+#cnf(i_0_27784, plain, (p2(d,X1,X1)|~n0(X3,X2))).
+#
+#cnf(i_0_27777, plain, (r3(d,X1,d)|~l1(X2,X3))).
+#
+#cnf(i_0_27834, plain, (r3(d,X1,d)|~n0(X2,X3))).
+##
+#cnf(i_0_27774, plain, (m5(X1,d)|~l1(X2,X3)|~r0(X1))).
+#
+#cnf(i_0_27866, plain, (m5(X1,d)|~r0(X1)|~r0(X2))).
+#
+#cnf(i_0_27831, plain, (m5(X1,d)|~r0(X1)|~n0(X2,X3))).
+########
+#cnf(i_0_27773, plain, (q3(X1,X1)|~q3(d,X1)|~l1(X2,X3))).
+#
+#cnf(i_0_27830, plain, (q3(X1,X1)|~q3(d,X1)|~n0(X2,X3))).
+##
+#cnf(i_0_27897, plain, (q3(X1,X1)|~q3(X1,d)|~l1(X2,X3))).
+#
+#cnf(i_0_27964, plain, (q3(X1,X1)|~q3(X1,d)|~n0(X2,X3))).
+#######
+#cnf(i_0_27782, plain, (p2(d,X1,X1)|~p0(X3,d)|~r0(X4))).
+##
+#cnf(i_0_27783, plain, (p2(d,X1,X1)|~p0(a,X2)|~r0(X3))).
+#
+#cnf(i_0_28036, plain, (q3(c,c)|~l1(X1,X2)|~p0(X3,X3))).
+#
+#cnf(i_0_28107, plain, (q3(c,c)|~p0(X3,X3)|~n0(X1,X2))).
+########
+#cnf(i_0_27735, plain, (p4(d,d,d)|~r2(X1)|~l1(X2,X3))).
+###
+#cnf(i_0_27848, plain, (r3(d,X1,d)|~p0(X3,d)|~r0(X4))).
+#
+#cnf(i_0_27792, plain, (p4(d,d,d)|~r2(X1)|~n0(X2,X3))).
+#
+#cnf(i_0_27849, plain, (r3(d,X1,d)|~p0(a,X2)|~r0(X3))).
+####
+#cnf(i_0_28303, plain, (p4(d,d,d)|~l1(X2,X3)|~l0(X1))).
+#
+#cnf(i_0_28315, plain, (p4(d,d,d)|~l0(X1)|~n0(X2,X3))).
+##########
+#cnf(i_0_28037, plain, (q3(c,c)|~l1(X1,X2)|~p0(a,d))).
+####
+#cnf(i_0_28108, plain, (q3(c,c)|~p0(a,d)|~n0(X1,X2))).
+#######################
+#cnf(i_0_27896, plain, (q3(X1,X1)|~l1(d,X1)|~l1(X2,X3)|~n0(X1,X1))).
+##
+#cnf(i_0_27963, plain, (q3(X1,X1)|~l1(d,X1)|~n0(X2,X3)|~n0(X1,X1))).
+####################
+#cnf(i_0_27888, plain, (q3(X1,X1)|~q3(d,X1)|~p0(X3,d)|~r0(X4))).
+##
+#cnf(i_0_28029, plain, (q3(X1,X1)|~q3(X1,d)|~p0(X3,d)|~r0(X4))).
+##############################
+#cnf(i_0_27895, plain, (q3(X1,X1)|~l1(X1,d)|~l1(X2,X3)|~n0(d,d))).
+#
+#cnf(i_0_27962, plain, (q3(X1,X1)|~l1(X1,d)|~n0(d,d)|~n0(X2,X3))).
+######
+#cnf(i_0_28277, plain, (q3(c,c)|~p0(X3,d)|~p0(X2,X2)|~r0(X4))).
+#######
+#cnf(i_0_27586, plain, (r3(X1,X2,X1)|~p1(X1,X3,X4)|~l1(X3,X4)|~m0(X1,X1,X2))).
+############################################
+#cnf(i_0_25342, plain, (r3(X1,X1,X1)|~p2(X1,X4,X2)|~l2(X3,X2)|~p1(X2,X3,X1))).
+##
+#cnf(i_0_28766, plain, (r3(a,a,a)|~p2(a,X1,X2)|~l2(X3,X2))).
+##
+#cnf(i_0_28862, plain, (r3(a,a,a)|~p2(a,X1,X2)|~p0(X3,X3))).
+#
+#cnf(i_0_29014, plain, (r3(a,a,a)|~p0(X2,X2)|~r0(X1))).
+####
+#cnf(i_0_28865, plain, (r3(a,a,a)|~p2(a,X1,X2)|~p0(a,X2))).
+#
+#cnf(i_0_29047, plain, (r3(a,a,a)|~p0(a,X1)|~r0(X1))).
+#####
+#cnf(i_0_26543, plain, (p4(X1,X1,X1)|~n4(X1,X1)|~q2(X3,d,X1)|~p0(X1,X2))).
+#######
+#cnf(i_0_27030, plain, (r3(X1,X1,X1)|~n1(X3,X1,X3)|~p0(X2,X1)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_27031, plain, (r3(X1,X1,X1)|~n1(X3,X1,X3)|~m1(X1,X2,X1)|~p0(X2,X1))).
+##
+#cnf(i_0_27048, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~p0(X2,X1)|~m0(X1,X3,X1))).
+######
+#cnf(i_0_27380, plain, (r3(X1,X1,X1)|~p0(X2,X1)|~m0(X1,X3,X1)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_27489, plain, (r3(X1,X1,X1)|~p1(X2,X3,X4)|~l1(X3,X4)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_29228, plain, (r3(X1,X1,X1)|~l1(X2,d))).
+###
+#cnf(i_0_29232, plain, (r3(X1,X1,X1)|~l1(X2,X3)|~l0(X4))).
+#
+#cnf(i_0_29318, plain, (r3(X1,X1,X1)|~l0(X3)|~n0(X4,X2))).
+######
+#cnf(i_0_29229, plain, (r3(X1,X1,X1)|~l1(X2,X3)|~m0(X4,X3,a))).
+#
+#cnf(i_0_29341, plain, (r3(X1,X1,X1)|~l1(X2,X3))).
+#
+#cnf(i_0_29360, plain, (r3(X1,X1,X1)|~n0(X3,X2))).
+#####
+#cnf(i_0_29358, plain, (r3(X1,X1,X1)|~p0(X3,d)|~r0(X4))).
+#
+#cnf(i_0_29359, plain, (r3(X1,X1,X1)|~p0(a,X2)|~r0(X3))).
+#################################
+#cnf(i_0_29196, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~p0(X2,X1)|~m0(X1,X3,X1))).
+##
+#cnf(i_0_2545, plain, (n4(e,X1)|~n4(e,e)|~m2(X2)|~p1(X1,X2,e))).
+########
+#cnf(i_0_13555, plain, (n4(X1,c)|~n4(X1,X1)|~p2(X1,c,X1)|~p0(X1,c))).
+###
+#cnf(i_0_13655, plain, (n4(X1,a)|~n4(X1,X1)|~p2(X1,a,X1)|~p0(X1,a))).
+####
+#cnf(i_0_13760, plain, (n4(X1,d)|~n4(X1,X1)|~p2(X1,d,X1)|~p0(X1,d))).
+####
+#cnf(i_0_13844, plain, (n4(X1,c)|~n4(X1,X1)|~p0(X1,c)|~m0(X1,X1,c))).
+####
+#cnf(i_0_13872, plain, (n4(X1,a)|~n4(X1,X1)|~p0(X1,a)|~m0(X1,X1,a))).
+####
+#cnf(i_0_13937, plain, (n4(X1,d)|~n4(X1,X1)|~p0(X1,d)|~m0(X1,X1,d))).
+######
+#cnf(i_0_10871, plain, (m3(X1,c,X1)|~k0(c)|~l0(X2)|~l0(X3)|~l0(X4))).
+#####
+#cnf(i_0_2174, plain, (l1(X1,X1)|~k1(X1)|~l0(b)|~p0(e,b)|~r0(X2))).
+####
+#cnf(i_0_2239, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~k1(X2)|~p0(X1,X2)|~s0(X1))).
+############################
+#cnf(i_0_13254, plain, (n4(X1,X2)|~k4(X3)|~k0(X1)|~l0(X2)|~p0(X1,X2)|~r0(X2))).
+##
+#cnf(i_0_13288, plain, (n4(X1,X2)|~k4(X3)|~k0(X2)|~k0(X1)|~l0(X2)|~p0(X1,X2))).
+###########################
+#cnf(i_0_511, plain, (q1(X1,X2,X1)|~l0(X1)|~p0(X4,X1)|~r0(X3)|~q0(X2,X2))).
+###
+#cnf(i_0_675, plain, (r3(X1,X1,X2)|~r3(X2,X4,X4)|~m3(X3,b,X1)|~m2(X2))).
+#
+#cnf(i_0_29935, plain, (r3(b,b,X1)|~r3(X1,X2,X2)|~m2(X1))).
+####
+#cnf(i_0_30120, plain, (m5(b,b)|~r3(b,X1,X1))).
+#
+#cnf(i_0_30304, plain, (m5(b,b))).
+#
+#cnf(i_0_30147, plain, (r3(b,b,e)|~m2(e))).
+#
+#cnf(i_0_30152, plain, (r3(b,b,d)|~m2(d))).
+##
+#cnf(i_0_30161, plain, (r3(b,b,X1)|~r2(X1)|~m2(X1))).
+##
+#cnf(i_0_30162, plain, (r3(b,b,X1)|~s2(X1)|~m2(X1))).
+#
+#cnf(i_0_30463, plain, (r3(b,b,b))).
+#
+#cnf(i_0_30472, plain, (r3(X1,X1,b)|~m3(X2,b,X1))).
+#
+#cnf(i_0_30493, plain, (m5(b,X1)|~m3(X2,b,X1))).
+####
+#cnf(i_0_30460, plain, (m5(X1,b)|~r2(X1)|~m2(X1)|~r0(X1))).
+#
+#cnf(i_0_30471, plain, (m5(X1,b)|~s2(X1)|~m2(X1)|~r0(X1))).
+#
+#cnf(i_0_30450, plain, (m5(d,b)|~m2(d)|~r0(d))).
+#
+#cnf(i_0_30496, plain, (m5(b,X1)|~r2(X1)|~k2(c,b))).
+#
+#cnf(i_0_30508, plain, (m5(b,X1)|~r2(X1))).
+###
+#cnf(i_0_30164, plain, (r3(b,b,X1)|~m2(X1)|~l2(X2,X1))).
+#
+#cnf(i_0_30172, plain, (r3(b,b,X1)|~m2(X1)|~k2(X1,X2))).
+#
+#cnf(i_0_30557, plain, (r3(b,b,X1)|~m2(X1))).
+#
+#cnf(i_0_30566, plain, (m5(X1,b)|~m2(X1)|~r0(X1))).
+#####
+#cnf(i_0_29960, plain, (r3(X1,X1,e)|~m3(X2,b,X1)|~m2(e))).
+##
+#cnf(i_0_30576, plain, (m5(e,X1)|~m3(X2,b,X1)|~m2(e))).
+#
+#cnf(i_0_29965, plain, (r3(X1,X1,d)|~m3(X2,b,X1)|~m2(d))).
+##
+#cnf(i_0_30588, plain, (r3(X1,X1,X1)|~m3(X2,b,X1)|~m2(d))).
+###
+#cnf(i_0_29974, plain, (r3(X1,X1,X2)|~m3(X3,b,X1)|~r2(X2)|~m2(X2))).
+##
+#cnf(i_0_29975, plain, (r3(X1,X1,X2)|~m3(X3,b,X1)|~s2(X2)|~m2(X2))).
+###
+#cnf(i_0_30490, plain, (r3(X1,X1,X1)|~m3(X2,b,X1)|~m0(d,b,X1))).
+#
+#cnf(i_0_30579, plain, (m5(e,X1)|~r2(X1)|~m2(e)|~k2(c,b))).
+#
+#cnf(i_0_30646, plain, (m5(e,X1)|~r2(X1)|~m2(e))).
+#
+#cnf(i_0_29977, plain, (r3(X1,X1,X2)|~m3(X3,b,X1)|~m2(X2)|~l2(X4,X2))).
+##
+#cnf(i_0_29985, plain, (r3(X1,X1,X2)|~m3(X3,b,X1)|~m2(X2)|~k2(X2,X4))).
+#
+#cnf(i_0_30694, plain, (r3(X1,X1,X2)|~m3(X3,b,X1)|~m2(X2))).
+###
+#cnf(i_0_30704, plain, (m5(X1,X2)|~m3(X3,b,X2)|~m2(X1)|~r0(X1))).
+#####
+#cnf(i_0_30706, plain, (m5(X1,X2)|~r2(X2)|~m2(X1)|~k2(c,b)|~r0(X1))).
+#
+#cnf(i_0_30718, plain, (m5(X1,X2)|~r2(X2)|~m2(X1)|~r0(X1))).
+######
+#cnf(i_0_2800, plain, (n4(X1,e)|~k4(X2)|~k1(X3)|~p0(X4,e)|~r0(X1))).
+##
+#cnf(i_0_3147, plain, (q2(X1,X2,X2)|~k0(X2)|~m0(X3,X1,a)|~m0(X1,X1,X3))).
+###
+#cnf(i_0_3693, plain, (m5(X1,b)|~k1(X2)|~r0(X1)|~m0(e,b,b))).
+###
+#cnf(i_0_4692, plain, (q2(X1,X2,X2)|~p1(X3,X5,X1)|~k0(X2)|~l0(X4)|~l0(X6))).
+#################
+#cnf(i_0_5922, plain, (p1(X1,X1,X1)|~l0(X3)|~p0(X1,X2)|~q0(X2,X4)|~s0(X1))).
+#
+#cnf(i_0_5923, plain, (p1(X1,X1,X1)|~l0(X3)|~p0(X5,X2)|~r0(X1)|~q0(X2,X4))).
+#
+#cnf(i_0_30924, plain, (p1(X1,X1,X1)|~l0(X2)|~r0(X1)|~q0(X3,X4))).
+#
+#cnf(i_0_30962, plain, (p1(X1,X1,X1)|~l0(X2)|~r0(X1))).
+##
+#cnf(i_0_30968, plain, (s3(X1,X2)|~s2(X1)|~l0(X3)|~r0(X1))).
+##
+#cnf(i_0_30966, plain, (q3(X1,X1)|~l0(X2)|~r0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_30967, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X3)|~r0(X1))).
+###
+#cnf(i_0_31037, plain, (p4(X1,X1,X1)|~l0(X3)|~r0(X2)|~n0(X2,X2))).
+###
+#cnf(i_0_30969, plain, (m3(X1,c,X1)|~k0(c)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_30973, plain, (p1(X1,X2,X1)|~l0(X3)|~r0(X1)|~m0(X1,X1,X1))).
+######
+#cnf(i_0_30990, plain, (q3(X1,X1)|~k0(X1)|~l0(X3)|~r0(X2)|~n0(X2,X1))).
+#######
+#cnf(i_0_30991, plain, (p4(X1,X1,X1)|~k0(X3)|~l0(X4)|~r0(X2)|~n0(X2,X3))).
+##################
+#cnf(i_0_5961, plain, (p4(X1,X1,X1)|~k0(X3)|~l0(X4)|~n0(X2,X3)|~q0(X2,X5))).
+##
+#cnf(i_0_677, plain, (r3(X1,b,X1)|~p2(b,X1,b)|~l2(X1,X1)|~r0(X1))).
+#
+#cnf(i_0_31162, plain, (m5(b,X1)|~p2(b,X1,b)|~l2(X1,X1)|~r0(X1))).
+#
+#cnf(i_0_31232, plain, (m5(b,X1)|~l2(X1,X1)|~l0(X1)|~r0(X1))).
+#
+#cnf(i_0_31241, plain, (m5(b,X1)|~l0(X1)|~p0(X2,X2)|~r0(X1))).
+#
+#cnf(i_0_31230, plain, (m5(b,X1)|~l2(X1,X1)|~l0(b)|~r0(X1))).
+#
+#cnf(i_0_31244, plain, (m5(b,X1)|~l0(X1)|~p0(a,X1)|~r0(X1))).
+#
+#cnf(i_0_31251, plain, (m5(b,X1)|~l0(b)|~p0(X2,X2)|~r0(X1))).
+#
+#cnf(i_0_31254, plain, (m5(b,X1)|~l0(b)|~p0(a,X1)|~r0(X1))).
+#
+#cnf(i_0_31233, plain, (m5(b,X1)|~l2(X1,X1)|~p0(X2,b)|~r0(X1))).
+#
+#cnf(i_0_31261, plain, (m5(b,X1)|~p0(X2,b)|~p0(X3,X3)|~r0(X1))).
+#
+#cnf(i_0_31264, plain, (m5(b,X1)|~p0(X2,b)|~p0(a,X1)|~r0(X1))).
+#
+#cnf(i_0_31169, plain, (m5(b,X1)|~p2(b,X1,b)|~p0(X2,X2)|~r0(X1))).
+####
+#cnf(i_0_31231, plain, (m5(b,X1)|~l2(X1,X1)|~r0(X1)|~m0(b,b,X1))).
+#
+#cnf(i_0_31323, plain, (m5(b,X1)|~p0(X2,X2)|~r0(X1)|~m0(b,b,X1))).
+###
+#cnf(i_0_31243, plain, (m5(b,X1)|~l0(X1)|~p0(X2,X1)|~r0(X1)|~m0(X2,X1,X2))).
+###
+#cnf(i_0_6530, plain, (p4(X1,X1,X1)|~k0(X3)|~l0(X4)|~n0(X2,X3)|~n0(X5,X5))).
+#
+#cnf(i_0_6611, plain, (p4(X1,X1,X1)|~k1(X4)|~k0(X3)|~n0(X2,X3)|~q0(X2,X5))).
+#
+#cnf(i_0_1521, plain, (p1(X1,b,b)|~m1(X1,X2,b)|~m0(b,b,X1))).
+####
+#cnf(i_0_1675, plain, (p3(X1,e,e)|~m3(e,X2,X1)|~n1(X1,e,e))).
+########
+#cnf(i_0_2426, plain, (p3(X1,a,a)|~m2(X1)|~p0(X2,X1)|~n0(X3,a))).
+####
+#cnf(i_0_2679, plain, (p1(X1,b,b)|~m1(X1,X2,b)|~l0(b)|~r0(X1))).
+####
+#cnf(i_0_4452, plain, (r3(e,e,e)|~m2(X1)|~l0(X2)|~p0(e,X1))).
+#########
+#cnf(i_0_11361, plain, (p4(X1,X1,X1)|~r2(X2)|~m0(X3,X1,d)|~n0(X2,d))).
+#####
+#cnf(i_0_13189, plain, (r3(X1,X1,X1)|~l0(X3)|~p0(X2,X1)|~p0(X1,X2)|~s0(X1))).
+##
+#cnf(i_0_5006, plain, (p2(a,e,a)|~l0(X1)|~p0(a,X1)|~r0(X2))).
+###
+#cnf(i_0_15730, plain, (n4(e,X1)|~k4(X2)|~l0(X1)|~p0(a,X3)|~r0(X4))).
+#
+#cnf(i_0_5042, plain, (k3(X1,e,X1)|~k1(X2)|~m0(X2,X3,e)|~n0(X1,X2))).
+#
+#cnf(i_0_31512, plain, (k3(X1,e,X1)|~k1(X2)|~n0(X1,X2))).
+#
+#cnf(i_0_31513, plain, (p3(X1,X1,e)|~r2(X1)|~k1(X2)|~n0(X1,X2))).
+#
+#cnf(i_0_31522, plain, (p4(e,e,e)|~r2(X1)|~k1(X2)|~n0(X1,X2))).
+##
+#cnf(i_0_20687, plain, (n4(X1,e)|~k4(X2)|~l1(X1,X1)|~l0(X1)|~n0(X3,X1))).
+##
+#cnf(i_0_20751, plain, (n4(X1,e)|~k4(X2)|~l0(X1)|~n0(X3,X1)|~n0(X4,X1))).
+#########
+#cnf(i_0_6051, plain, (p3(e,X1,X1)|~p2(X1,e,e)|~m0(e,e,X1))).
+##
+#cnf(i_0_26558, plain, (p4(X1,X1,X1)|~k4(X3)|~r2(X2)|~p0(X1,X2)|~q0(X4,X1))).
+#
+#cnf(i_0_26563, plain, (p4(X1,X1,X1)|~k4(X3)|~p0(X1,X2)|~p0(X4,X1)|~r0(X2))).
+#
+#cnf(i_0_6052, plain, (p3(e,X1,X1)|~p2(X1,e,e)|~l0(e)|~r0(X1))).
+#############
+#cnf(i_0_3848, plain, (n4(X1,X2)|~k4(X3)|~k3(X2,X1,X2)|~r2(X1)|~m1(X2,X1,X2))).
+#############
+#cnf(i_0_9687, plain, (l3(X1,e)|~n1(e,X1,a)|~p0(X1,a)|~r0(X1))).
+###
+#cnf(i_0_12650, plain, (m5(e,X1)|~n1(e,X1,a)|~k0(X1)|~p0(X1,e))).
+#
+#cnf(i_0_13086, plain, (n4(X1,X2)|~n4(X1,X1)|~p2(X1,X2,X1)|~l0(X3)|~p0(X1,X2))).
+#
+#cnf(i_0_13198, plain, (n4(X1,X2)|~n4(X1,X1)|~l0(X3)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#######
+#cnf(i_0_31172, plain, (m5(b,X1)|~p2(b,X1,b)|~p0(a,X1)|~r0(X1))).
+####
+#cnf(i_0_31335, plain, (m5(b,X1)|~p0(a,X1)|~r0(X1)|~m0(b,b,X1))).
+##
+#cnf(i_0_9769, plain, (m5(d,a)|~k0(a)|~r0(d)|~n0(d,d))).
+###
+#cnf(i_0_2223, plain, (n4(X1,X2)|~n4(X1,X1)|~r2(X2)|~k1(X2)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_2229, plain, (n4(X1,X2)|~n4(X1,X1)|~r2(X2)|~k1(X2)|~k0(X2)|~l0(X1))).
+#####
+#cnf(i_0_3536, plain, (m5(X1,X2)|~r2(X2)|~k2(X3,X2)|~k1(X3)|~l0(X2)|~r0(X1))).
+####
+#cnf(i_0_3538, plain, (m5(X1,X2)|~r2(X2)|~k1(X2)|~k0(X2)|~r0(X1)|~n0(X1,X1))).
+#########
+#cnf(i_0_11729, plain, (p3(e,d,d)|~r2(X1)|~l0(X2)|~n0(d,X1))).
+#########
+#cnf(i_0_17722, plain, (m5(X1,X2)|~l1(X3,X3)|~k0(X2)|~l0(X1)|~l0(X3)|~r0(X1))).
+#
+#cnf(i_0_17723, plain, (m5(X1,X2)|~k0(X2)|~l0(X1)|~l0(X3)|~r0(X1)|~n0(X4,X3))).
+##########
+#cnf(i_0_14884, plain, (p4(b,b,b)|~r2(X1)|~p0(X2,b)|~r0(X1))).
+###
+#cnf(i_0_3634, plain, (n4(X1,X2)|~n4(X1,X1)|~m3(X2,X3,X1)|~p0(X2,X1)|~s0(X2))).
+#####
+#cnf(i_0_15415, plain, (p2(X1,e,e)|~l1(X2,a)|~l0(X1)|~n0(X3,X1))).
+####
+#cnf(i_0_20641, plain, (p4(e,e,X1)|~l1(X2,a)|~l0(X1)|~n0(X3,X1))).
+###
+#cnf(i_0_8635, plain, (n4(X1,X2)|~n4(X1,X1)|~r2(X3)|~p2(X1,X2,X3)|~n0(X2,X3))).
+########
+#cnf(i_0_14937, plain, (n4(X1,X2)|~n4(X1,X1)|~m1(X2,X1,X2)|~p0(X1,X2)|~r0(X2))).
+######
+#cnf(i_0_14996, plain, (n4(X1,X2)|~n4(X1,X1)|~m1(X2,X1,X2)|~k0(X2)|~p0(X1,X2))).
+####
+#cnf(i_0_17333, plain, (n4(X1,X2)|~n4(X1,X1)|~k0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+##
+#cnf(i_0_17391, plain, (n4(X1,X2)|~n4(X1,X1)|~k1(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+###
+#cnf(i_0_17449, plain, (n4(X1,X2)|~n4(X1,X1)|~l0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_18963, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~l1(X2,X3)|~p0(X3,X2)|~r0(X1))).
+###
+#cnf(i_0_32411, plain, (m5(X1,X2)|~l1(X2,X3)|~p0(X3,X2)|~p0(X4,X2)|~r0(X1))).
+###
+#cnf(i_0_32422, plain, (m5(X1,X2)|~p0(X2,X2)|~p0(X3,X2)|~r0(X1)|~n0(X4,X2))).
+##
+#cnf(i_0_19119, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~l1(X2,X2)|~r0(X1)|~q0(X3,X2))).
+######
+#cnf(i_0_32522, plain, (m5(X1,X2)|~l1(X2,X2)|~p0(X4,X2)|~r0(X1)|~q0(X3,X2))).
+#
+#cnf(i_0_32529, plain, (m5(X1,X2)|~p0(X3,X2)|~r0(X1)|~n0(X5,X2)|~q0(X4,X2))).
+#####
+#cnf(i_0_19827, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~l1(X2,X2)|~r0(X1)|~n0(X3,X2))).
+####
+#cnf(i_0_32629, plain, (m5(X1,X2)|~l1(X2,X2)|~p0(X4,X2)|~r0(X1)|~n0(X3,X2))).
+##
+#cnf(i_0_32635, plain, (m5(X1,X2)|~p0(X3,X2)|~r0(X1)|~n0(X4,X2)|~n0(X5,X2))).
+##
+#cnf(i_0_20078, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~l1(X2,X2)|~p0(X3,X2)|~r0(X1))).
+####
+#cnf(i_0_32734, plain, (m5(X1,X2)|~l1(X2,X2)|~p0(X3,X2)|~p0(X4,X2)|~r0(X1))).
+##
+#cnf(i_0_32740, plain, (m5(X1,X2)|~p0(X3,X2)|~p0(X4,X2)|~r0(X1)|~n0(X5,X2))).
+##
+#cnf(i_0_20292, plain, (m5(X1,X2)|~l1(X2,X3)|~p0(X3,X2)|~r0(X1)|~m0(X2,X2,X1))).
+######
+#cnf(i_0_20386, plain, (m5(X1,X2)|~l1(X2,X2)|~r0(X1)|~m0(X2,X2,X1)|~q0(X3,X2))).
+######
+#cnf(i_0_20474, plain, (m5(X1,X2)|~l1(X2,X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X3,X2))).
+#
+#cnf(i_0_23795, plain, (p4(e,e,e)|~l1(X1,X1)|~k0(X1)|~p0(X2,X1))).
+#####
+#cnf(i_0_20560, plain, (m5(X1,X2)|~l1(X2,X2)|~p0(X3,X2)|~r0(X1)|~m0(X2,X2,X1))).
+###
+#cnf(i_0_23870, plain, (p4(e,e,e)|~k0(X1)|~p0(X2,X1)|~n0(X3,X1))).
+##
+#cnf(i_0_24830, plain, (n4(X1,X2)|~n4(X1,X1)|~m1(X2,X1,X2)|~l1(X1,X1)|~k0(X1))).
+####
+#cnf(i_0_24923, plain, (n4(X1,X2)|~n4(X1,X1)|~m1(X2,X1,X2)|~l1(X1,X1)|~k1(X1))).
+###
+#cnf(i_0_25016, plain, (n4(X1,X2)|~n4(X1,X1)|~m1(X2,X1,X2)|~l1(X1,X1)|~l0(X1))).
+###########
+#cnf(i_0_23934, plain, (p4(e,e,e)|~l1(X1,X1)|~k1(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_32179, plain, (n4(X1,X2)|~n4(X1,X1)|~r2(X1)|~m1(X2,X1,X2)|~n0(X2,X1))).
+####
+#cnf(i_0_32338, plain, (m5(e,X1)|~l1(X1,X2)|~l0(X1)|~p0(X2,X1)|~n0(X3,X1))).
+##
+#cnf(i_0_32409, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~l1(X2,X3)|~p0(X3,X2)|~r0(X1))).
+#####
+#cnf(i_0_24009, plain, (p4(e,e,e)|~k1(X1)|~p0(X2,X1)|~n0(X3,X1))).
+########
+#cnf(i_0_26614, plain, (p4(a,a,a)|~k4(X2)|~p0(a,X1)|~r0(X1))).
+#############
+#cnf(i_0_12555, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X2)|~p0(X2,X1)|~r0(X1))).
+###
+#cnf(i_0_33131, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~p0(X2,X1)|~r0(X1))).
+###
+#cnf(i_0_12862, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X2)|~k0(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_33264, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~k0(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_12957, plain, (q3(X1,X1)|~q3(X2,X1)|~p0(X2,X1)|~r0(X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_33308, plain, (q3(X1,X1)|~q3(d,X1)|~p0(d,X1)|~r0(X1))).
+#
+#cnf(i_0_33322, plain, (q3(X1,X1)|~q3(X1,d)|~p0(d,X1)|~r0(X1))).
+###
+#cnf(i_0_13035, plain, (q3(X1,X1)|~q3(X2,X1)|~k0(X1)|~p0(X2,X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_33464, plain, (q3(X1,X1)|~q3(d,X1)|~k0(X1)|~p0(d,X1))).
+#
+#cnf(i_0_33478, plain, (q3(X1,X1)|~q3(X1,d)|~k0(X1)|~p0(d,X1))).
+###
+#cnf(i_0_13388, plain, (q3(X1,X1)|~q3(X1,b)|~l0(b)|~p0(X1,X1)|~r0(X1))).
+#
+#cnf(i_0_31952, plain, (p4(b,b,b)|~l0(X1)|~p0(X2,b)|~r0(X1))).
+#
+#cnf(i_0_15818, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~k0(X2))).
+##
+#cnf(i_0_33796, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~k0(X2))).
+##
+#cnf(i_0_33801, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~k0(X2)|~n0(X3,X2))).
+##
+#cnf(i_0_16143, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~k1(X2))).
+##
+#cnf(i_0_33961, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~k1(X2))).
+#
+#cnf(i_0_33966, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~k1(X2)|~n0(X3,X2))).
+#
+#cnf(i_0_16362, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X2)|~l1(X2,X2)|~l0(X2))).
+##
+#cnf(i_0_34126, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~l1(X2,X2)|~l0(X2))).
+##
+#cnf(i_0_34131, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~l0(X2)|~n0(X3,X2))).
+##
+#cnf(i_0_16888, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X2,X2)|~k0(X2)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_16965, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X2,X2)|~k1(X2)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_17042, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X2,X2)|~l0(X2)|~m0(X2,X2,X1))).
+#######
+#cnf(i_0_9657, plain, (p3(X1,e,e)|~m2(X1)|~n1(e,X1,a)|~k0(X1))).
+########
+#cnf(i_0_20831, plain, (r3(e,X1,e)|~p1(X1,e,e)|~l1(e,e))).
+####
+#cnf(i_0_501, plain, (q1(b,e,e)|~s0(e))).
+########
+#cnf(i_0_690, plain, (n4(e,e)|~p3(b,e,a)|~l3(b,a))).
+########
+#cnf(i_0_719, plain, (n5(b,e)|~n4(b,e)|~r3(d,b,c))).
+##########
+#cnf(i_0_4964, plain, (n1(X1,X2,X2)|~k1(X1)|~l0(X1)|~p0(a,a)|~r0(X3))).
+#
+#cnf(i_0_5880, plain, (n4(X1,b)|~k4(X2)|~r2(b)|~p0(X1,b)|~s0(X1))).
+#
+#cnf(i_0_34286, plain, (n4(b,X1)|~k4(X2)|~r2(b)|~l0(X1))).
+########################
+#cnf(i_0_3108, plain, (l3(e,b)|~m0(e,b,e)|~n0(b,b))).
+#####
+#cnf(i_0_14229, plain, (n4(X1,d)|~k4(X2)|~k0(X1)|~l0(d)|~p0(X1,d))).
+######
+#cnf(i_0_16019, plain, (m5(X1,b)|~l0(X1)|~p0(e,b)|~r0(X1)|~r0(X2))).
+##
+#cnf(i_0_22780, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~s0(X3)|~s0(X1))).
+#############
+#cnf(i_0_28659, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~m0(X1,X1,X2)|~s0(X3)|~s0(X1))).
+#
+#cnf(i_0_30981, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~l0(X3)|~r0(X1))).
+###
+#cnf(i_0_30984, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~l0(X3)|~r0(X1)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_34287, plain, (n4(b,X1)|~k4(X2)|~r2(b)|~p0(X1,b)|~s0(X1))).
+########
+#cnf(i_0_2057, plain, (n4(e,X1)|~k4(X2)|~p1(e,X1,X3)|~m0(e,X1,X3))).
+#########
+#cnf(i_0_3011, plain, (n4(X1,e)|~k4(X2)|~m2(X1)|~k1(X1)|~m0(X1,X3,e))).
+##
+#cnf(i_0_34476, plain, (n4(a,e)|~k4(X1)|~m2(a))).
+#
+#cnf(i_0_34477, plain, (n4(X1,e)|~k4(X2)|~m2(X1)|~k1(X1))).
+#########
+#cnf(i_0_5385, plain, (p3(X1,X2,X2)|~k3(X2,X1,X2)|~r2(X1)|~p0(X3,X1)|~r0(X2))).
+#####
+#cnf(i_0_9744, plain, (p2(a,d,d)|~n0(d,d)|~q0(a,a))).
+########
+#cnf(i_0_26704, plain, (p4(b,b,b)|~n4(b,b)|~l1(b,d))).
+#
+#cnf(i_0_15760, plain, (m5(e,X1)|~l1(X2,a)|~l1(X3,X1)|~l0(X3)|~l0(X1))).
+###
+#cnf(i_0_1244, plain, (p1(X1,X2,X3)|~m0(X3,X1,X3)|~m0(X3,X3,X3)|~q0(X4,X3))).
+##
+#cnf(i_0_34634, plain, (p1(d,X1,X2)|~m0(X2,X2,X2)|~q0(X3,X2))).
+###############
+#cnf(i_0_16217, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X3,X3)|~k1(X1)|~l0(X3))).
+#
+#cnf(i_0_16218, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~k1(X1)|~l0(X3)|~n0(X4,X3))).
+##
+#cnf(i_0_1248, plain, (p1(X1,X2,X3)|~m0(X3,X1,X3)|~m0(X3,X3,X3)|~n0(X4,X3))).
+#
+#cnf(i_0_34802, plain, (p1(d,X1,X2)|~m0(X2,X2,X2)|~n0(X3,X2))).
+##############
+#cnf(i_0_34566, plain, (m5(e,X1)|~l1(X2,X1)|~l0(X2)|~l0(X1)|~n0(X3,a))).
+###
+#cnf(i_0_6776, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~m2(X4)|~m2(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_6780, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~m2(X1)|~p0(X2,X1)|~s0(X4))).
+#
+#cnf(i_0_1251, plain, (p1(X1,X2,X3)|~p0(X4,X3)|~m0(X3,X1,X3)|~m0(X3,X3,X3))).
+#
+#cnf(i_0_35044, plain, (p1(d,X1,X2)|~p0(X3,X2)|~m0(X2,X2,X2))).
+############
+#cnf(i_0_13469, plain, (n4(X1,X2)|~k4(X3)|~k0(X1)|~l0(X4)|~l0(X2)|~p0(X1,X2))).
+#######################
+#cnf(i_0_2805, plain, (n4(e,X1)|~k4(X2)|~k1(X3)|~m0(e,e,e))).
+###
+#cnf(i_0_3246, plain, (n4(X1,b)|~n4(X1,X1)|~r2(b)|~l0(b)|~r0(X1))).
+#########
+#cnf(i_0_3180, plain, (k3(d,d,X1)|~m2(X2)|~m2(X3)|~m0(d,X1,X4))).
+##
+#cnf(i_0_3431, plain, (q3(X1,c)|~s2(X1)|~l2(X1,X2)|~k1(X1)|~n0(X2,c))).
+##
+#cnf(i_0_3182, plain, (k3(d,d,X1)|~m2(X2)|~m0(d,X1,X4)|~s0(X3))).
+##
+#cnf(i_0_3442, plain, (q3(X1,c)|~s2(X1)|~k1(X1)|~p0(X2,X2)|~n0(X1,c))).
+######
+#cnf(i_0_3686, plain, (n4(b,X1)|~k4(X2)|~k1(X3)|~m0(e,b,b))).
+#
+#cnf(i_0_4435, plain, (p1(X1,X2,X1)|~l0(X4)|~m0(X5,X1,a)|~m0(X1,X2,X5))).
+###
+#cnf(i_0_4403, plain, (p1(X1,b,X1)|~l0(X3)|~m0(X1,b,b)|~n0(X1,X1))).
+####
+#cnf(i_0_4404, plain, (p1(X1,b,X1)|~l0(X3)|~m0(X1,b,b)|~q0(X1,X1))).
+##
+#cnf(i_0_7778, plain, (p4(X1,X1,X1)|~l0(X3)|~l0(X4)|~p0(X2,X5)|~n0(X2,X2))).
+#
+#cnf(i_0_35398, plain, (p4(X1,X1,X1)|~l0(X2)|~l0(X3)|~n0(b,b))).
+##
+#cnf(i_0_7781, plain, (p4(X1,X1,X1)|~m1(b,X2,e)|~l0(X3)|~n0(X2,X2))).
+###
+#cnf(i_0_4670, plain, (q2(b,X1,X1)|~k0(X1)|~l0(X3)|~m0(b,b,b))).
+########
+#cnf(i_0_4674, plain, (q2(e,X1,X1)|~k0(X1)|~l0(X3)|~m0(e,e,e))).
+##
+#cnf(i_0_10853, plain, (p1(X1,X2,X1)|~l0(X3)|~l0(X4)|~l0(X5)|~m0(X1,X1,X1))).
+##
+#cnf(i_0_5040, plain, (k3(X1,a,X1)|~p0(X3,X2)|~n0(X4,a)|~n0(X1,X2))).
+##
+#cnf(i_0_19038, plain, (p2(X1,X2,X2)|~l1(X1,X3)|~p0(X3,X1)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_5101, plain, (k3(X1,e,X1)|~p1(X2,X3,e)|~l0(X4)|~n0(X1,X2))).
+#
+#cnf(i_0_35594, plain, (k3(X1,e,X1)|~l0(X3)|~l0(X4)|~n0(X1,d))).
+#######
+#cnf(i_0_6315, plain, (m3(X1,c,X1)|~m1(b,X1,e)|~k0(c)|~l0(X2))).
+##
+#cnf(i_0_25129, plain, (r3(X1,X1,X1)|~r3(X1,d,X1)|~l2(X2,d)|~l0(X3))).
+#######
+#cnf(i_0_28733, plain, (r3(X1,X1,X1)|~p2(X1,X2,d)|~l2(X3,d)|~l0(X4))).
+##########
+#cnf(i_0_35557, plain, (r3(X1,X2,X1)|~l1(X1,X3)|~p0(X3,X1)|~p0(X2,X1)|~s0(X2))).
+###
+#cnf(i_0_4439, plain, (l3(e,X1)|~l0(X2)|~p0(e,X1)|~m0(e,X1,e))).
+#
+#cnf(i_0_4637, plain, (l3(e,X1)|~l0(X2)|~m0(e,X1,e)|~n0(d,X1))).
+###
+#cnf(i_0_14009, plain, (n4(X1,e)|~k4(X2)|~n1(X1,e,e)|~p0(X1,e))).
+########
+#cnf(i_0_14315, plain, (n4(X1,c)|~k4(X2)|~m1(c,X1,c)|~p0(X1,c))).
+#####
+#cnf(i_0_14337, plain, (n4(X1,a)|~k4(X2)|~m1(a,X1,a)|~p0(X1,a))).
+######
+#cnf(i_0_14360, plain, (n4(X1,d)|~k4(X2)|~m1(d,X1,d)|~p0(X1,d))).
+##########
+#cnf(i_0_2247, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~k1(X2)|~p0(X4,X2)|~r0(X1))).
+##
+#cnf(i_0_2253, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~k1(X2)|~k0(X2)|~n0(X1,X1))).
+#####
+#cnf(i_0_3898, plain, (q3(X1,X1)|~l1(X1,b)|~m0(b,X2,b)|~n0(X1,X1))).
+#
+#cnf(i_0_36119, plain, (q3(X1,X1)|~l1(X1,b)|~n0(X1,X1))).
+#
+#cnf(i_0_36152, plain, (p4(X1,X1,X1)|~l1(X2,b)|~n0(X2,X2))).
+##################
+#cnf(i_0_15798, plain, (m5(X1,X2)|~p0(e,e)|~p0(X3,X2)|~r0(X1)|~r0(X4))).
+##############################
+#cnf(i_0_25160, plain, (r3(a,a,a)|~r3(a,X1,a)|~l2(X2,X1))).
+################
+#cnf(i_0_26611, plain, (p4(a,a,a)|~k4(X2)|~r2(X1)|~q0(X3,a))).
+####
+#cnf(i_0_26618, plain, (p4(a,a,a)|~k4(X2)|~l1(X3,a)|~r0(X1))).
+#
+#cnf(i_0_3466, plain, (r3(X1,X2,X3)|~r3(X1,X3,X3)|~r2(X3)|~r2(X1)|~k2(X2,X3))).
+###################################
+#cnf(i_0_26628, plain, (p4(a,a,a)|~k4(X2)|~r0(X1)|~n0(X3,a))).
+###############
+#cnf(i_0_3647, plain, (r3(X1,X1,X1)|~k3(X1,X2,X1)|~r2(X2)|~p0(X1,X2)|~s0(X1))).
+##############
+#cnf(i_0_12498, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~p0(X1,X2)|~m0(b,X2,X2))).
+####
+#cnf(i_0_12540, plain, (p2(X1,X2,X2)|~n1(X3,X2,X3)|~k0(X1)|~l0(X2)|~p0(X1,X2))).
+########
+#cnf(i_0_36814, plain, (p2(X1,X2,X2)|~k0(X1)|~l0(X2)|~p0(X1,X2)|~n0(X3,X2))).
+#
+#cnf(i_0_36896, plain, (r3(X1,X2,X1)|~k0(X1)|~l0(X2)|~p0(X1,X2)|~n0(X3,X2))).
+###
+#cnf(i_0_12550, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X1)|~p0(X1,X2)|~r0(X2))).
+###
+#cnf(i_0_31580, plain, (p4(b,b,b)|~k4(X1)|~r2(X2)|~q0(X3,b))).
+####
+#cnf(i_0_31583, plain, (p4(b,b,b)|~k4(X1)|~p0(X3,b)|~r0(X2))).
+#
+#cnf(i_0_12857, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X1)|~k0(X2)|~p0(X1,X2))).
+####
+#cnf(i_0_12947, plain, (p4(X1,X1,X1)|~r2(X2)|~p0(X1,X2)|~r0(X2)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_36948, plain, (p4(d,d,d)|~r2(X1)|~p0(d,X1)|~r0(X1))).
+####
+#cnf(i_0_13025, plain, (p4(X1,X1,X1)|~r2(X2)|~k0(X2)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_36953, plain, (p4(d,d,d)|~r2(X1)|~k0(X1)|~p0(d,X1))).
+########
+#cnf(i_0_14504, plain, (p2(X1,X2,X2)|~k0(X1)|~l0(X2)|~p0(X1,X2)|~m0(X2,X3,X2))).
+###
+#cnf(i_0_15011, plain, (p2(X1,X2,X2)|~p0(X1,X2)|~m0(b,X2,X2)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_15366, plain, (p2(X1,X2,X2)|~p1(X1,X3,X4)|~l1(X3,X4)|~l0(X1)|~r0(X2))).
+######
+#cnf(i_0_37215, plain, (m5(X1,X2)|~p1(X2,X3,X4)|~l1(X3,X4)|~l0(X2)|~r0(X1))).
+##############
+#cnf(i_0_37382, plain, (m5(X1,X2)|~l1(X3,X2)|~l0(X2)|~r0(X1)|~m0(X2,X2,X2))).
+#
+#cnf(i_0_37416, plain, (m5(X1,a)|~l1(X2,a)|~r0(X1))).
+#
+#cnf(i_0_37421, plain, (m5(X1,a)|~r0(X1)|~n0(X2,a))).
+#
+#cnf(i_0_37422, plain, (m5(X1,a)|~l1(X2,X2)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_37423, plain, (m5(X1,a)|~l0(X2)|~r0(X1)|~n0(X3,X2))).
+##
+#cnf(i_0_37418, plain, (m5(X1,a)|~p0(a,X2)|~r0(X1)|~r0(X3))).
+#
+#cnf(i_0_37420, plain, (m5(X1,a)|~p0(X2,d)|~r0(X1)|~r0(X3))).
+##
+#cnf(i_0_37419, plain, (m5(X1,a)|~p0(e,e)|~r0(X1)|~r0(X2))).
+#######
+#cnf(i_0_37158, plain, (n4(e,X1)|~k4(X2)|~p1(X1,X3,X4)|~l1(X3,X4)|~l0(X1))).
+##############
+#cnf(i_0_15369, plain, (p2(X1,X2,X2)|~p1(X1,X3,X4)|~l1(X3,X4)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_37625, plain, (p2(b,X1,X1)|~l1(b,X2)|~k0(X2)|~l0(X1))).
+####
+#cnf(i_0_37766, plain, (r3(b,X1,b)|~l1(b,X2)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_37644, plain, (p2(X1,X2,X2)|~l1(b,X1)|~k0(X1)|~l0(X2)|~l0(X3))).
+#
+#cnf(i_0_37865, plain, (r3(X1,X2,X1)|~l1(b,X1)|~k0(X1)|~l0(X2)|~l0(X3))).
+##
+#cnf(i_0_37763, plain, (m5(X1,b)|~l1(b,X2)|~k0(X2)|~l0(X1)|~r0(X1))).
+#
+#cnf(i_0_37901, plain, (m5(X1,b)|~l0(X1)|~r0(X1)|~r0(X2))).
+#
+#cnf(i_0_37893, plain, (m5(X1,b)|~l0(X1)|~r0(X1)|~n0(X2,b))).
+#
+#cnf(i_0_37894, plain, (m5(X1,b)|~l1(X2,X2)|~l0(X1)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_37895, plain, (m5(X1,b)|~l0(X1)|~l0(X2)|~r0(X1)|~n0(X3,X2))).
+######
+#cnf(i_0_37715, plain, (n4(b,X1)|~k4(X2)|~l1(b,X3)|~k0(X3)|~l0(X1))).
+#####
+#cnf(i_0_15813, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~k0(X1))).
+#####
+#cnf(i_0_16017, plain, (p4(X1,X1,X2)|~p2(X2,X1,X2)|~l1(X2,X2)|~k0(X2)|~r0(X1))).
+#####
+#cnf(i_0_37954, plain, (p4(X1,X1,X2)|~m1(X1,X2,X1)|~l1(X2,X2)|~k0(X2)|~r0(X1))).
+##
+#cnf(i_0_37960, plain, (p4(X1,X1,X2)|~m1(X1,X2,X1)|~k0(X2)|~r0(X1)|~n0(X3,X2))).
+##
+#cnf(i_0_16138, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~k1(X1))).
+#
+#cnf(i_0_35268, plain, (k3(d,d,X1)|~m0(d,X1,X3)|~s0(X4)|~s0(X2))).
+####
+#cnf(i_0_36171, plain, (r3(a,a,a)|~r3(a,X1,a)|~p0(X2,X2))).
+########
+#cnf(i_0_38019, plain, (r3(a,a,a)|~k1(X2)|~l0(X2)|~p0(X1,X1))).
+#
+#cnf(i_0_38030, plain, (r3(a,a,a)|~k1(X2)|~k0(X2)|~p0(X1,X1))).
+#
+#cnf(i_0_38036, plain, (r3(a,a,a)|~m2(X2)|~k0(X2)|~p0(X1,X1))).
+#
+#cnf(i_0_38039, plain, (r3(a,a,a)|~k0(X2)|~p0(X1,X1)|~s0(X2))).
+######
+#cnf(i_0_38012, plain, (r3(a,a,a)|~k1(X2)|~k0(d)|~p0(X1,X1))).
+####
+#cnf(i_0_16214, plain, (p4(X1,X1,X2)|~p2(X2,X1,X2)|~l1(X2,X2)|~k1(X2)|~r0(X1))).
+####
+#cnf(i_0_38237, plain, (p4(X1,X1,X2)|~m1(X1,X2,X1)|~l1(X2,X2)|~k1(X2)|~r0(X1))).
+##
+#cnf(i_0_38243, plain, (p4(X1,X1,X2)|~m1(X1,X2,X1)|~k1(X2)|~r0(X1)|~n0(X3,X2))).
+##
+#cnf(i_0_16357, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~l0(X1))).
+########
+#cnf(i_0_16866, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X1,X1)|~k0(X1)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_36335, plain, (p4(a,a,a)|~k4(X1)|~l0(X2)|~q0(X3,a))).
+#
+#cnf(i_0_16908, plain, (p4(X1,X1,X2)|~l1(X2,X2)|~k0(X2)|~r0(X1)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_16943, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X1,X1)|~k1(X1)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_16985, plain, (p4(X1,X1,X2)|~l1(X2,X2)|~k1(X2)|~r0(X1)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_17020, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X1,X1)|~l0(X1)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_36934, plain, (p4(b,b,b)|~k4(X1)|~l0(X2)|~q0(X3,b))).
+#####################
+#cnf(i_0_36581, plain, (r3(X1,X1,X1)|~p2(X2,X1,X2)|~p0(X2,X1)|~m0(b,X1,X1))).
+##
+#cnf(i_0_36763, plain, (r3(X1,X2,X1)|~n1(X3,X2,X3)|~k0(X1)|~l0(X2)|~p0(X1,X2))).
+########
+#cnf(i_0_36928, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X2,X1,X2)|~p0(X1,X2)|~r0(X2))).
+####
+#cnf(i_0_36942, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X2,X1,X2)|~k0(X2)|~p0(X1,X2))).
+#
+#cnf(i_0_4982, plain, (p3(X1,e,e)|~m3(e,X2,X1)|~l0(X1)|~n0(X3,X1))).
+##
+#cnf(i_0_37034, plain, (r3(X1,X2,X1)|~k0(X1)|~l0(X2)|~p0(X1,X2)|~m0(X2,X3,X2))).
+#
+#cnf(i_0_38401, plain, (r3(X1,a,X1)|~k0(X1)|~p0(X1,a))).
+#
+#cnf(i_0_38402, plain, (r3(X1,X2,X1)|~k0(X1)|~l0(X2)|~p0(X1,X2))).
+####
+#cnf(i_0_38409, plain, (r3(X1,X1,X1)|~k0(X1)|~p0(X1,a)|~p0(X2,X2))).
+##
+#cnf(i_0_38407, plain, (r3(X1,X1,X1)|~l2(a,a)|~k0(X1)|~p0(X1,a))).
+##
+#cnf(i_0_38413, plain, (p4(a,a,X1)|~k0(X1)|~p0(X1,a)|~r0(a))).
+#########
+#cnf(i_0_37122, plain, (r3(X1,X1,X1)|~p0(X2,X1)|~m0(b,X1,X1)|~m0(X2,X2,X1))).
+##
+#cnf(i_0_37219, plain, (r3(X1,X2,X1)|~p1(X1,X3,X4)|~l1(X3,X4)|~l0(X1)|~r0(X2))).
+############
+#cnf(i_0_37324, plain, (m5(X1,b)|~l1(b,X2)|~k0(X2)|~l0(b)|~r0(X1))).
+#
+#cnf(i_0_38575, plain, (m5(X1,b)|~l0(b)|~r0(X1)|~r0(X2))).
+######
+#cnf(i_0_37611, plain, (r3(X1,X2,X1)|~p1(X1,X3,X4)|~l1(X3,X4)|~k0(X1)|~l0(X2))).
+#############
+#cnf(i_0_37937, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~k0(X1))).
+##
+#cnf(i_0_37941, plain, (p4(X1,X1,X1)|~m3(X2,X1,X1)|~l1(X1,X1)|~k0(X1)|~r0(X1))).
+########
+#cnf(i_0_37973, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~k1(X1))).
+#
+#cnf(i_0_38224, plain, (p4(X1,X1,X1)|~m3(X2,X1,X1)|~l1(X1,X1)|~k1(X1)|~r0(X1))).
+#######
+#cnf(i_0_38256, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~l0(X1))).
+####
+#cnf(i_0_38301, plain, (r3(X1,X1,X1)|~m1(X1,X2,X1)|~p0(X2,X1)|~m0(b,X1,X1))).
+###
+#cnf(i_0_11749, plain, (p3(e,X1,X1)|~r2(X2)|~m0(e,X1,a)|~n0(X1,X2))).
+#
+#cnf(i_0_38482, plain, (p4(X1,X1,X2)|~p1(X2,X3,X4)|~l1(X3,X4)|~l0(X2)|~r0(X1))).
+#####
+#cnf(i_0_38731, plain, (p4(X1,X1,d)|~l1(X2,d)|~l0(d)|~r0(X1))).
+############
+#cnf(i_0_3140, plain, (q3(X1,X1)|~l0(X2)|~r0(X3)|~m0(X1,X1,c)|~n0(X1,X1))).
+####
+#cnf(i_0_3725, plain, (q3(X1,X1)|~m0(X1,X1,d)|~m0(d,X1,X2)|~n0(X1,X1))).
+#############################
+#cnf(i_0_18958, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X1,X4)|~p0(X4,X1))).
+###
+#cnf(i_0_19114, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X1,X1)|~q0(X4,X1))).
+#####
+#cnf(i_0_19822, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X1,X1)|~n0(X4,X1))).
+##
+#cnf(i_0_20073, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~l1(X1,X1)|~p0(X4,X1))).
+##
+#cnf(i_0_20261, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X4)|~p0(X4,X1)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_20355, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~m0(X1,X1,X2)|~q0(X4,X1))).
+###
+#cnf(i_0_20443, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~m0(X1,X1,X2)|~n0(X4,X1))).
+###
+#cnf(i_0_20529, plain, (n4(X1,X2)|~k4(X3)|~l1(X1,X1)|~p0(X4,X1)|~m0(X1,X1,X2))).
+########
+#cnf(i_0_31732, plain, (n4(X1,X2)|~n4(X1,X1)|~m1(X2,X1,X2)|~l0(X3)|~p0(X1,X2))).
+####
+#cnf(i_0_32334, plain, (m5(e,X1)|~n1(X1,e,e)|~l1(X1,X2)|~p0(X2,X1))).
+##########
+#cnf(i_0_38916, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X1,X4)|~p0(X4,X1))).
+###########
+#cnf(i_0_4148, plain, (q3(X1,X1)|~l1(X2,X2)|~p0(X1,X2)|~n0(X1,X1)|~n0(X2,X2))).
+###
+#cnf(i_0_6268, plain, (q3(X1,X1)|~k1(X2)|~k0(X1)|~n0(c,X1)|~q0(d,X3))).
+########
+#cnf(i_0_13090, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X2)|~l0(X3)|~p0(X2,X1))).
+#
+#cnf(i_0_39560, plain, (q3(X1,X1)|~q3(X2,X1)|~m1(X1,X2,X1)|~l0(X3)|~p0(X2,X1))).
+#
+#cnf(i_0_13208, plain, (q3(X1,X1)|~q3(X2,X1)|~l0(X3)|~p0(X2,X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_39604, plain, (q3(X1,X1)|~q3(d,X1)|~l0(X2)|~p0(d,X1))).
+#
+#cnf(i_0_39620, plain, (q3(X1,X1)|~q3(X1,d)|~l0(X2)|~p0(d,X1))).
+###
+#cnf(i_0_39617, plain, (q3(c,c)|~l0(X1)|~p0(d,c)|~p0(X2,X2))).
+#################
+#cnf(i_0_2226, plain, (p4(X1,X1,X1)|~q2(X2,d,X3)|~k1(X1)|~l0(X1)|~r0(X3))).
+##
+#cnf(i_0_2232, plain, (p4(X1,X1,X1)|~q2(X2,d,X3)|~k1(X1)|~k0(X1)|~l0(X3))).
+########
+#cnf(i_0_3715, plain, (p3(X1,X2,X2)|~r2(X2)|~m2(X3)|~m2(X4)|~m0(X2,X1,a))).
+##
+#cnf(i_0_3720, plain, (p3(X1,X2,X2)|~r2(X2)|~m2(X3)|~m0(X2,X1,a)|~s0(X4))).
+#
+#cnf(i_0_3744, plain, (p3(X1,X2,X2)|~r2(X2)|~m0(X2,X1,a)|~s0(X3)|~s0(X4))).
+##################
+#cnf(i_0_31516, plain, (p3(e,X1,X1)|~r2(e)|~k1(X2)|~l0(X1)|~n0(X1,X2))).
+##
+#cnf(i_0_22798, plain, (r3(X1,X2,X1)|~p2(X1,X2,X1)|~l1(X1,X1)|~k1(X3)|~l0(X4))).
+##
+#cnf(i_0_33389, plain, (q3(c,c)|~p0(d,c)|~p0(X1,X1)|~r0(c))).
+###
+#cnf(i_0_28677, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~k1(X3)|~l0(X4)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_33545, plain, (q3(c,c)|~k0(c)|~p0(d,c)|~p0(X1,X1))).
+######################
+#cnf(i_0_3765, plain, (n4(X1,X2)|~k4(X3)|~k3(X2,X4,X2)|~r2(X4)|~p2(X1,X2,X4))).
+##############
+#cnf(i_0_4296, plain, (m3(X1,c,X1)|~p1(X1,X1,X2)|~k0(c)|~m0(X1,X1,X2))).
+################
+#cnf(i_0_4956, plain, (p3(X1,e,e)|~m2(X1)|~l1(X2,X1)|~l0(X2)|~l0(X1))).
+#######
+#cnf(i_0_3791, plain, (n4(X1,X2)|~k4(X3)|~k3(X2,X1,X2)|~r2(X1)|~m0(X1,X1,X2))).
+###############
+#cnf(i_0_5366, plain, (n4(X1,X2)|~n4(X1,X1)|~m3(X2,X3,X1)|~p0(X4,X1)|~r0(X2))).
+######
+#cnf(i_0_9333, plain, (p3(e,X1,X1)|~r2(X2)|~p2(X2,X1,X1)|~p1(X1,X2,e))).
+#
+#cnf(i_0_40259, plain, (p3(e,X1,X1)|~r2(X1)|~p1(X1,X1,e))).
+####
+#cnf(i_0_9319, plain, (n4(X1,X2)|~k4(X3)|~r2(X4)|~p2(X1,X2,X4)|~p2(X4,X2,X2))).
+########################
+#cnf(i_0_15748, plain, (m5(X1,X2)|~p2(X2,X1,X2)|~p0(a,X3)|~r0(X1)|~r0(X4))).
+######
+#cnf(i_0_15765, plain, (m5(e,X1)|~n1(e,X1,a)|~l1(X2,a)|~k0(X1))).
+##
+#cnf(i_0_16030, plain, (m5(X1,X2)|~p0(a,X3)|~r0(X1)|~r0(X4)|~m0(X2,X2,X1))).
+####
+#cnf(i_0_16104, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~p0(a,X3)|~r0(X1)|~r0(X4))).
+#######
+#cnf(i_0_22684, plain, (p2(b,X1,X1)|~m1(X1,b,X1)|~l1(b,X2)|~k0(X2))).
+#######
+#cnf(i_0_21696, plain, (m5(X1,X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X3,X2)|~q0(X4,X2))).
+######
+#cnf(i_0_21768, plain, (m5(X1,X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X3,X2)|~n0(X4,X2))).
+#####
+#cnf(i_0_21864, plain, (m5(X1,X2)|~p0(X3,X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X4,X2))).
+#####
+#cnf(i_0_22705, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~s0(X3)|~s0(X1))).
+###
+#cnf(i_0_30983, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~l0(X3)|~r0(X1))).
+###
+#cnf(i_0_32520, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~l1(X2,X2)|~r0(X1)|~q0(X3,X2))).
+########
+#cnf(i_0_32627, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~l1(X2,X2)|~r0(X1)|~n0(X3,X2))).
+######
+#cnf(i_0_32732, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~l1(X2,X2)|~p0(X3,X2)|~r0(X1))).
+#####
+#cnf(i_0_3778, plain, (n4(X1,e)|~n4(X1,X1)|~k1(X2)|~p0(X1,e)|~s0(X1))).
+###
+#cnf(i_0_32993, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~p0(X2,X2)|~r0(X1)|~n0(X3,X2))).
+#####
+#cnf(i_0_3899, plain, (q2(X1,X2,X2)|~l1(X1,b)|~k0(X2)|~m0(b,X3,b))).
+#
+#cnf(i_0_37499, plain, (n4(e,X1)|~k4(X2)|~l1(X3,X1)|~l0(X1)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_41028, plain, (n4(e,a)|~k4(X1)|~l1(X2,a))).
+#
+#cnf(i_0_41030, plain, (n4(e,a)|~k4(X1)|~p0(a,X2)|~r0(X3))).
+###################
+#cnf(i_0_40770, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~n0(X4,X1)|~s0(X3)|~s0(X1))).
+#
+#cnf(i_0_40802, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l0(X3)|~r0(X1)|~n0(X4,X1))).
+##
+#cnf(i_0_40835, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~r0(X1)|~n0(X4,X2)|~q0(X3,X2))).
+#####
+#cnf(i_0_40867, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~r0(X1)|~n0(X3,X2)|~n0(X4,X2))).
+####
+#cnf(i_0_40899, plain, (m5(X1,X2)|~m1(X1,X2,X1)|~p0(X3,X2)|~r0(X1)|~n0(X4,X2))).
+###########
+#cnf(i_0_3590, plain, (q3(X1,X1)|~m1(X3,X1,c)|~k0(X3)|~r0(X2)|~n0(X1,X1))).
+########
+#cnf(i_0_7630, plain, (l2(X1,X1)|~k1(X3)|~p0(X3,X1)|~m0(X3,X1,X2)|~q0(X2,X2))).
+#
+#cnf(i_0_41226, plain, (l2(b,b)|~q0(a,a))).
+#
+#cnf(i_0_41235, plain, (l2(X1,b)|~q0(a,a))).
+##
+#cnf(i_0_41227, plain, (l2(b,b)|~q0(e,e))).
+#
+#cnf(i_0_41255, plain, (l2(X1,b)|~q0(e,e))).
+##
+#cnf(i_0_41228, plain, (l2(a,a)|~q0(a,a))).
+#
+#cnf(i_0_41274, plain, (q4(a,c)|~q0(a,a))).
+#
+#cnf(i_0_41240, plain, (q4(X1,c)|~k1(X1)|~q0(a,a))).
+##
+#cnf(i_0_41260, plain, (q4(X1,c)|~k1(X1)|~q0(e,e))).
+###
+#cnf(i_0_41248, plain, (m4(X1,b)|~s3(a,X1)|~q0(a,a))).
+#####
+#cnf(i_0_41268, plain, (m4(X1,b)|~s3(a,X1)|~q0(e,e))).
+#####
+#cnf(i_0_41278, plain, (m5(b,a)|~r0(a)|~q0(a,a))).
+#
+#cnf(i_0_41275, plain, (l2(X1,a)|~n0(e,a)|~q0(a,a))).
+###
+#cnf(i_0_41231, plain, (l2(b,b)|~p0(e,b)|~q0(c,c))).
+#
+#cnf(i_0_41362, plain, (l2(X1,b)|~p0(e,b)|~q0(c,c))).
+##
+#cnf(i_0_41232, plain, (l2(e,e)|~p0(d,e)|~q0(c,c))).
+#
+#cnf(i_0_41382, plain, (l2(X1,e)|~p0(d,e)|~q0(c,c))).
+############
+#cnf(i_0_41367, plain, (q4(X1,c)|~k1(X1)|~p0(e,b)|~q0(c,c))).
+##
+#cnf(i_0_41387, plain, (q4(X1,c)|~k1(X1)|~p0(d,e)|~q0(c,c))).
+###
+#cnf(i_0_41253, plain, (p4(X1,X1,X1)|~k1(X2)|~n0(b,c)|~q0(a,a))).
+#
+#cnf(i_0_41273, plain, (p4(X1,X1,X1)|~k1(X2)|~n0(b,c)|~q0(e,e))).
+##########
+#cnf(i_0_7641, plain, (l2(X1,X1)|~k0(X3)|~p0(X3,X1)|~m0(X3,X1,X2)|~n0(X2,X2))).
+#
+#cnf(i_0_41431, plain, (l2(b,b))).
+#
+#cnf(i_0_41439, plain, (l2(X1,b))).
+#
+#cnf(i_0_41444, plain, (q4(X1,c)|~k1(X1))).
+#
+#cnf(i_0_41452, plain, (m4(X1,b)|~s3(a,X1))).
+#####
+#cnf(i_0_41432, plain, (l2(a,a)|~n0(a,a))).
+####
+#cnf(i_0_41457, plain, (p4(X1,X1,X1)|~k1(X2)|~n0(b,c))).
+##########
+#cnf(i_0_41455, plain, (r3(a,a,a)|~p2(a,X1,b))).
+##
+#cnf(i_0_41493, plain, (m5(b,a)|~r0(a)|~n0(a,a))).
+##
+#cnf(i_0_41451, plain, (r3(a,a,a)|~r3(a,b,a))).
+####
+#cnf(i_0_41454, plain, (p5(X1,b,b)|~s3(a,X1)|~p0(X3,X3))).
+#
+#cnf(i_0_41491, plain, (l2(X1,a)|~n0(e,a)|~n0(a,a))).
+###
+#cnf(i_0_41456, plain, (p5(X1,b,b)|~s3(a,X2)|~l2(X1,X2))).
+#######
+#cnf(i_0_41453, plain, (p5(X1,b,b)|~s3(a,X1)|~p0(a,X1))).
+##################################
+#cnf(i_0_16795, plain, (n4(X1,X2)|~n4(X1,X1)|~l1(X3,a)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_16816, plain, (q3(X1,X1)|~q3(X2,X1)|~l1(X3,a)|~p0(X1,X2)|~s0(X1))).
+###
+#cnf(i_0_17355, plain, (q3(X1,X1)|~q3(X2,X1)|~k0(X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+###
+#cnf(i_0_17413, plain, (q3(X1,X1)|~q3(X2,X1)|~k1(X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+##
+#cnf(i_0_17471, plain, (q3(X1,X1)|~q3(X2,X1)|~l0(X2)|~m0(X2,X2,X1)|~n0(X3,X2))).
+##################
+#cnf(i_0_14013, plain, (n4(X1,e)|~k4(X2)|~l0(X1)|~p0(X1,e)|~n0(X3,X1))).
+########
+#cnf(i_0_32985, plain, (m5(e,X1)|~l0(X1)|~p0(a,X1)|~r0(X3)|~n0(X2,X1))).
+#######################
+#cnf(i_0_35635, plain, (p3(X1,X1,e)|~r2(X1)|~l0(X2)|~l0(X3)|~n0(X1,d))).
+################
+#cnf(i_0_1896, plain, (p1(X1,b,b)|~m1(b,b,X2)|~m1(X2,b,X1))).
+############
+#cnf(i_0_2951, plain, (p4(X1,X1,X1)|~m3(X2,X3,X1)|~m2(X4)|~m2(X3)|~p0(X1,X3))).
+####
+#cnf(i_0_2954, plain, (p4(X1,X1,X1)|~m3(X2,X3,X1)|~m2(X3)|~p0(X1,X3)|~s0(X4))).
+####
+#cnf(i_0_3043, plain, (q1(X1,X1,X2)|~k0(X1)|~r0(X3)|~m0(X2,X2,X1)|~n0(X2,X2))).
+####
+#cnf(i_0_3247, plain, (p4(b,b,b)|~l1(X1,d)|~l0(b)|~r0(X1))).
+####
+#cnf(i_0_3552, plain, (q1(X1,X1,X2)|~m1(X1,X4,X2)|~p0(X1,X2)|~r0(X3)|~s0(X1))).
+####
+#cnf(i_0_4149, plain, (q2(X1,X2,X2)|~l1(X3,X3)|~k0(X2)|~p0(X1,X3)|~n0(X3,X3))).
+####
+#cnf(i_0_4410, plain, (p1(b,X1,b)|~l0(X2)|~l0(X3)|~m0(b,b,X1))).
+####
+#cnf(i_0_4498, plain, (p1(X1,X2,b)|~l0(X3)|~m0(b,X1,b)|~n0(X1,X1))).
+####
+#cnf(i_0_4506, plain, (p1(X1,X2,b)|~l0(X3)|~m0(b,X1,b)|~q0(X1,X1))).
+###
+#cnf(i_0_37345, plain, (m5(X1,X2)|~l1(b,b)|~l0(X2)|~r0(X1)|~q0(X2,X2))).
+#
+#cnf(i_0_42134, plain, (m5(X1,X2)|~l0(X2)|~r0(X1)|~n0(X3,b)|~q0(X2,X2))).
+##
+#cnf(i_0_37402, plain, (m5(X1,X2)|~l1(X3,X4)|~l0(X2)|~r0(X1)|~m0(X4,X2,a))).
+#
+#cnf(i_0_42142, plain, (m5(X1,a)|~l1(X2,b)|~r0(X1))).
+#
+#cnf(i_0_42155, plain, (m5(X1,a)|~r0(X1)|~n0(X2,b))).
+######
+#cnf(i_0_42152, plain, (m5(X1,a)|~p0(e,b)|~r0(X1)|~r0(X2))).
+###
+#cnf(i_0_42141, plain, (m5(X1,b)|~l1(X2,c)|~l0(b)|~r0(X1))).
+#
+#cnf(i_0_42163, plain, (m5(X1,b)|~l0(b)|~r0(X1)|~n0(X2,c))).
+####
+#cnf(i_0_37762, plain, (q3(X1,X1)|~q3(b,X1)|~l1(b,X2)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_42146, plain, (m5(X1,X2)|~l0(X2)|~r0(X1)|~m0(X3,X2,a)|~n0(X4,X3))).
+######
+#cnf(i_0_42205, plain, (q3(X1,X1)|~q3(X1,b)|~l1(b,X2)|~k0(X2)|~l0(X1))).
+#####
+#cnf(i_0_7246, plain, (n4(X1,b)|~k4(X2)|~r2(b)|~p0(X3,b)|~r0(X1))).
+######
+#cnf(i_0_9643, plain, (p2(a,e,a)|~l1(X1,e)|~l0(e)|~l0(X1))).
+#######
+#cnf(i_0_13085, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X1)|~l0(X3)|~p0(X1,X2))).
+####
+#cnf(i_0_13197, plain, (p4(X1,X1,X1)|~r2(X2)|~l0(X3)|~p0(X1,X2)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_42445, plain, (p4(d,d,d)|~r2(X1)|~l0(X2)|~p0(d,X1))).
+#####
+#cnf(i_0_15275, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~s0(X3)|~s0(X1))).
+########
+#cnf(i_0_16832, plain, (p2(X1,X2,X2)|~p0(a,X3)|~p0(X2,X1)|~r0(X4)|~s0(X2))).
+#
+#cnf(i_0_17070, plain, (r3(X1,X2,X1)|~p0(a,X3)|~p0(X2,X1)|~r0(X4)|~s0(X2))).
+#########
+#cnf(i_0_19037, plain, (p2(X1,X2,X2)|~l1(X1,X3)|~p0(X3,X1)|~p0(X4,X1)|~r0(X2))).
+###
+#cnf(i_0_19194, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~p0(X2,X1)|~q0(X3,X1)|~s0(X2))).
+##
+#cnf(i_0_42908, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~p0(X2,X1)|~q0(X3,X1)|~s0(X2))).
+##
+#cnf(i_0_19452, plain, (p2(X1,X2,X2)|~p0(X2,X1)|~n0(X3,X1)|~q0(X4,X1)|~s0(X2))).
+###
+#cnf(i_0_19903, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+#
+#cnf(i_0_43137, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~p0(X2,X1)|~n0(X3,X1)|~s0(X2))).
+###
+#cnf(i_0_19944, plain, (p2(X1,X2,X2)|~p0(X2,X1)|~n0(X3,X1)|~n0(X4,X1)|~s0(X2))).
+####
+#cnf(i_0_20154, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~p0(X3,X1)|~p0(X2,X1)|~s0(X2))).
+#
+#cnf(i_0_43363, plain, (r3(X1,X2,X1)|~l1(X1,X1)|~p0(X3,X1)|~p0(X2,X1)|~s0(X2))).
+###
+#cnf(i_0_20195, plain, (p2(X1,X2,X2)|~p0(X3,X1)|~p0(X2,X1)|~n0(X4,X1)|~s0(X2))).
+#
+#cnf(i_0_20686, plain, (n4(X1,e)|~n4(X1,X1)|~l1(X1,X1)|~l0(X1)|~n0(X2,X1))).
+#######################
+#cnf(i_0_26559, plain, (p4(X1,X1,X1)|~n4(X1,X1)|~r2(X2)|~p0(X1,X2)|~q0(X3,X1))).
+#
+#cnf(i_0_26562, plain, (p4(X1,X1,X1)|~n4(X1,X1)|~p0(X1,X2)|~p0(X3,X1)|~r0(X2))).
+#
+#cnf(i_0_27621, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~m0(X1,X1,X2)|~s0(X3)|~s0(X1))).
+##########
+#cnf(i_0_30980, plain, (p2(X1,X2,X2)|~p2(X1,X2,X1)|~l1(X1,X1)|~l0(X3)|~r0(X1))).
+###
+#cnf(i_0_30982, plain, (p2(X1,X2,X2)|~l1(X1,X1)|~l0(X3)|~r0(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_34288, plain, (n4(b,X1)|~k4(X3)|~r2(b)|~p0(X2,b)|~r0(X1))).
+######################
+#cnf(i_0_37159, plain, (p4(e,e,e)|~p1(X1,X2,X3)|~l1(X2,X3)|~l0(X1))).
+###
+#cnf(i_0_43962, plain, (p4(e,e,e)|~l1(X1,d)|~l0(d))).
+####
+#cnf(i_0_43966, plain, (p4(e,e,e)|~l1(X1,X2)|~l0(d)|~l0(X3))).
+#
+#cnf(i_0_44052, plain, (p4(e,e,e)|~l0(d)|~l0(X2)|~n0(X3,X1))).
+###############
+#cnf(i_0_42439, plain, (p4(X1,X1,X1)|~r2(X2)|~m1(X2,X1,X2)|~l0(X3)|~p0(X1,X2))).
+#######
+#cnf(i_0_42798, plain, (r3(X1,X2,X1)|~l1(X1,X3)|~p0(X3,X1)|~p0(X4,X1)|~r0(X2))).
+####
+#cnf(i_0_43033, plain, (r3(X1,X2,X1)|~p0(X2,X1)|~n0(X3,X1)|~q0(X4,X1)|~s0(X2))).
+###
+#cnf(i_0_43260, plain, (r3(X1,X2,X1)|~p0(X2,X1)|~n0(X3,X1)|~n0(X4,X1)|~s0(X2))).
+##
+#cnf(i_0_43486, plain, (r3(X1,X2,X1)|~p0(X3,X1)|~p0(X2,X1)|~n0(X4,X1)|~s0(X2))).
+##########
+#cnf(i_0_44078, plain, (p4(X1,X1,X2)|~l1(X2,X3)|~p0(X3,X2)|~p0(X4,X2)|~r0(X1))).
+###############
+#cnf(i_0_38735, plain, (p4(X1,X1,d)|~l1(X2,X3)|~l0(d)|~l0(X4)|~r0(X1))).
+##
+#cnf(i_0_459, plain, (n1(X1,X1,X1)|~k1(X1)|~p0(X3,X2)|~m0(X2,X2,X2)|~s0(X1))).
+#########
+#cnf(i_0_2065, plain, (r3(X1,X1,X1)|~p1(e,X2,X4)|~k1(X3)|~m0(e,X2,X4))).
+##
+#cnf(i_0_44180, plain, (r3(X1,X1,X1)|~k1(X3)|~k0(X2)|~m0(e,e,X2))).
+###
+#cnf(i_0_43952, plain, (p4(e,e,e)|~l1(b,X1)|~k0(X1)|~l0(b))).
+#
+#cnf(i_0_2242, plain, (p4(X1,X1,X1)|~l1(X2,d)|~k1(X1)|~p0(X2,X1)|~s0(X2))).
+#
+#cnf(i_0_2250, plain, (p4(X1,X1,X1)|~l1(X2,d)|~k1(X1)|~p0(X3,X1)|~r0(X2))).
+##
+#cnf(i_0_44138, plain, (p4(X1,X1,d)|~l0(d)|~l0(X3)|~r0(X1)|~n0(X4,X2))).
+###
+#cnf(i_0_2486, plain, (r3(X1,X1,X1)|~m2(X2)|~p1(e,X1,X3)|~m0(e,X1,X3))).
+#
+#cnf(i_0_417, plain, (m1(X1,X1,c)|~l1(c,c)|~p0(X2,X1)|~n0(X2,X2))).
+###
+#cnf(i_0_4436, plain, (p1(X1,X2,X1)|~l0(X4)|~m0(X1,X2,d)|~m0(d,X1,X5))).
+#
+#cnf(i_0_3015, plain, (r3(e,e,e)|~m2(X1)|~k1(X1)|~m0(X1,X2,e))).
+#
+#cnf(i_0_44466, plain, (r3(e,e,e)|~m2(X1)|~k1(X1))).
+#
+#cnf(i_0_44477, plain, (r3(e,e,e)|~k1(X1)|~s0(X1))).
+###############
+#cnf(i_0_5405, plain, (r3(X1,X1,X1)|~k3(X1,X2,X1)|~r2(X2)|~p0(X3,X2)|~r0(X1))).
+####
+#cnf(i_0_5474, plain, (n1(X1,X1,X1)|~m1(X3,X1,X2)|~k1(X1)|~k0(X2)|~q0(X3,X3))).
+#######
+#cnf(i_0_5043, plain, (k3(X1,e,X1)|~l1(X3,X2)|~l0(X3)|~l0(X2)|~n0(X1,X2))).
+####
+#cnf(i_0_5597, plain, (p3(X1,X1,e)|~r2(X1)|~l0(X2)|~n0(X1,X2)|~n0(X3,X2))).
+###
+#cnf(i_0_7396, plain, (p4(X1,X1,X1)|~k0(X3)|~l0(X2)|~r0(X4)|~n0(c,c))).
+##############################
+#cnf(i_0_16794, plain, (p4(X1,X1,X1)|~r2(X2)|~l1(X3,a)|~p0(X2,X1)|~s0(X2))).
+######
+#cnf(i_0_17332, plain, (p4(X1,X1,X1)|~r2(X2)|~k0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+####
+#cnf(i_0_17375, plain, (p4(X1,X1,X2)|~k0(X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X3,X2))).
+##
+#cnf(i_0_17390, plain, (p4(X1,X1,X1)|~r2(X2)|~k1(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+#####
+#cnf(i_0_17433, plain, (p4(X1,X1,X2)|~k1(X2)|~r0(X1)|~m0(X2,X2,X1)|~n0(X3,X2))).
+###
+#cnf(i_0_17448, plain, (p4(X1,X1,X1)|~r2(X2)|~l0(X1)|~m0(X1,X1,X2)|~n0(X3,X1))).
+##########
+#cnf(i_0_25151, plain, (r3(X1,X1,X1)|~r3(X1,X2,X1)|~l2(X3,X2)|~m0(X1,X2,a))).
+###
+#cnf(i_0_44615, plain, (r3(X1,X1,X1)|~r3(X1,b,X1)|~m0(X1,b,a))).
+#
+#cnf(i_0_44971, plain, (r3(X1,X1,X1)|~p0(X1,b)|~m0(X1,b,a))).
+##
+#cnf(i_0_44965, plain, (r3(X1,X1,X1)|~p2(X1,X2,b)|~m0(X1,b,a))).
+###
+#cnf(i_0_45048, plain, (r3(a,a,a)|~p0(a,b)|~p0(X1,X1))).
+######################################
+#cnf(i_0_27032, plain, (r3(X1,X1,X1)|~n1(X3,X1,X3)|~k0(X2)|~l0(X1)|~p0(X2,X1))).
+#####
+#cnf(i_0_28756, plain, (r3(X1,X1,X1)|~p2(X1,X2,X3)|~l2(X4,X3)|~m0(X1,X3,a))).
+######
+#cnf(i_0_29197, plain, (r3(X1,X1,X1)|~k0(X2)|~l0(X1)|~p0(X2,X1)|~m0(X1,X3,X1))).
+#########
+#cnf(i_0_34694, plain, (p2(X1,X2,X2)|~l1(X3,X3)|~k1(X1)|~l0(X3)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_45356, plain, (r3(X1,X2,X1)|~l1(X3,X3)|~k1(X1)|~l0(X3)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_45394, plain, (r3(X1,X2,X1)|~k1(X1)|~l0(X3)|~m0(X1,X1,X2)|~n0(X4,X3))).
+#
+#cnf(i_0_34720, plain, (p2(X1,X2,X2)|~k1(X1)|~l0(X3)|~m0(X1,X1,X2)|~n0(X4,X3))).
+######
+#cnf(i_0_37286, plain, (p2(X1,X2,X2)|~l1(X3,X1)|~l0(X1)|~r0(X2)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_45626, plain, (p2(a,X1,X1)|~p0(a,X2)|~r0(X1)|~r0(X3))).
+###
+#cnf(i_0_45693, plain, (r3(a,X1,a)|~p0(a,X2)|~r0(X1)|~r0(X3))).
+####
+#cnf(i_0_45633, plain, (n4(a,X1)|~k4(X2)|~p0(a,X3)|~r0(X1)|~r0(X4))).
+###
+#cnf(i_0_37682, plain, (p2(X1,X2,X2)|~l1(X3,X1)|~k0(X1)|~l0(X2)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_37966, plain, (p4(X1,X1,X1)|~m3(X2,X1,X1)|~k0(X1)|~r0(X1)|~n0(X3,X1))).
+###
+#cnf(i_0_38249, plain, (p4(X1,X1,X1)|~m3(X2,X1,X1)|~k1(X1)|~r0(X1)|~n0(X3,X1))).
+####
+#cnf(i_0_38532, plain, (r3(X1,X2,X1)|~l1(X3,X1)|~l0(X1)|~r0(X2)|~m0(X1,X1,X1))).
+####
+#cnf(i_0_38641, plain, (r3(X1,X2,X1)|~l1(X3,X1)|~k0(X1)|~l0(X2)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_38775, plain, (p4(X1,X1,X2)|~l1(X3,X2)|~l0(X2)|~r0(X1)|~m0(X2,X2,X2))).
+#
+#cnf(i_0_45901, plain, (p4(X1,X1,a)|~p0(a,X2)|~r0(X1)|~r0(X3))).
+###
+#cnf(i_0_44269, plain, (r3(X1,X1,X1)|~p1(e,X1,X3)|~m0(e,X1,X3)|~s0(X2))).
+######
+#cnf(i_0_44625, plain, (r3(X1,X1,X1)|~r3(X1,X2,X1)|~p0(X3,X3)|~m0(X1,X2,a))).
+################
+#cnf(i_0_45143, plain, (r3(X1,X1,X1)|~p2(X1,X2,X3)|~p0(X4,X4)|~m0(X1,X3,a))).
+########################
+#cnf(i_0_3123, plain, (l3(e,X1)|~m0(e,e,e)|~m0(e,X1,e))).
+#####
+#cnf(i_0_4389, plain, (n4(e,X1)|~k4(X2)|~p1(X1,X4,e)|~k1(X3)|~l0(X5))).
+###########
+#cnf(i_0_6056, plain, (n4(X1,X2)|~k4(X3)|~p2(X2,e,e)|~p2(X1,X2,e))).
+#########
+#cnf(i_0_46473, plain, (n4(X1,e)|~k4(X2)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_46476, plain, (n4(X1,e)|~k4(X2)|~l0(X1)|~n0(X3,X1))).
+##
+#cnf(i_0_46426, plain, (n4(X1,e)|~k4(X2)|~l0(X1)|~p0(X1,e))).
+##
+#cnf(i_0_46451, plain, (n4(X1,e)|~k4(X2)|~l1(X3,a)|~l0(X1))).
+#
+#cnf(i_0_46429, plain, (n4(X1,e)|~k4(X2)|~p0(X1,e)|~p0(X3,X1))).
+#
+#cnf(i_0_46454, plain, (n4(X1,e)|~k4(X2)|~l1(X3,a)|~p0(X4,X1))).
+#
+#cnf(i_0_46391, plain, (n4(a,e)|~k4(X1)|~p0(a,X2)|~r0(X3))).
+###########
+#cnf(i_0_46422, plain, (n4(X1,e)|~k4(X2)|~p2(X1,e,X1)|~p0(X1,e))).
+#######
+#cnf(i_0_46427, plain, (n4(X1,e)|~k4(X2)|~p0(X1,e)|~m0(X1,X1,e))).
+#############
+#cnf(i_0_46625, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,e)|~k1(X4)|~l0(X2))).
+######
+#cnf(i_0_46480, plain, (n4(X1,e)|~k4(X2)|~l1(X1,X3)|~l0(X1)|~p0(X3,X1))).
+###
+#cnf(i_0_46516, plain, (n4(X1,d)|~k4(X2)|~p2(X1,d,e)|~l1(X3,X4))).
+###
+#cnf(i_0_46519, plain, (n4(X1,d)|~k4(X2)|~p2(X1,d,e)|~n0(X3,X4))).
+#######
+#cnf(i_0_46457, plain, (n4(X1,e)|~k4(X2)|~l0(X1)|~p0(a,X3)|~r0(X4))).
+#
+#cnf(i_0_46462, plain, (n4(X1,e)|~k4(X2)|~l1(X1,X1)|~k0(X1)|~p0(X3,X1))).
+#
+#cnf(i_0_46466, plain, (n4(X1,e)|~k4(X2)|~k0(X1)|~p0(X3,X1)|~n0(X4,X1))).
+#
+#cnf(i_0_46468, plain, (n4(X1,e)|~k4(X2)|~k1(X1)|~p0(X3,X1)|~n0(X4,X1))).
+#
+#cnf(i_0_46471, plain, (n4(X1,e)|~k4(X2)|~l1(X1,X1)|~k1(X1)|~p0(X3,X1))).
+#####
+#cnf(i_0_46448, plain, (n4(X1,e)|~k4(X2)|~p1(X1,X3,X4)|~l1(X3,X4)|~l0(X1))).
+############
+#cnf(i_0_46428, plain, (n4(X1,e)|~k4(X2)|~k0(X1)|~l0(e)|~p0(X1,e))).
+####
+#cnf(i_0_46890, plain, (n4(X1,e)|~k4(X2)|~m1(e,X1,e)|~p0(X1,e))).
+################
+#cnf(i_0_46503, plain, (n4(X1,e)|~k4(X2)|~l1(X3,X1)|~l0(X1)|~m0(X1,X1,X1))).
+#
+#cnf(i_0_47396, plain, (n4(a,e)|~k4(X1)|~l1(X2,a))).
+####
+#cnf(i_0_46580, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,e)|~l1(X2,X2)|~l0(X2))).
+####
+#cnf(i_0_46583, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,e)|~l0(X2)|~n0(X4,X2))).
+###############
+#cnf(i_0_14433, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~k1(X2)|~p0(X1,X2)|~p0(X2,X2))).
+#
+#cnf(i_0_17086, plain, (n4(X1,X2)|~k4(X3)|~p2(X1,X2,X1)|~p0(a,X4)|~r0(X5))).
+###
+#cnf(i_0_17090, plain, (n4(e,X1)|~k4(X2)|~p1(X1,e,e)|~l1(X3,a))).
+############
+#cnf(i_0_17096, plain, (n4(X1,e)|~k4(X2)|~n1(X1,e,e)|~l1(X3,a))).
+######
+#cnf(i_0_17144, plain, (m5(e,X1)|~n1(X1,e,e)|~p0(a,X2)|~r0(X3))).
+##
+#cnf(i_0_17178, plain, (n4(X1,X2)|~k4(X3)|~p0(a,X4)|~r0(X5)|~m0(X1,X1,X2))).
+####
+#cnf(i_0_17179, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~p0(a,X4)|~r0(X5))).
+###
+#cnf(i_0_18866, plain, (q3(c,c)|~p0(a,d)|~p0(a,X1)|~r0(X2))).
+#####
+#cnf(i_0_21661, plain, (n4(X1,X2)|~k4(X3)|~m0(X1,X1,X2)|~n0(X4,X1)|~q0(X5,X1))).
+#####
+#cnf(i_0_21733, plain, (n4(X1,X2)|~k4(X3)|~m0(X1,X1,X2)|~n0(X4,X1)|~n0(X5,X1))).
+####
+#cnf(i_0_21829, plain, (n4(X1,X2)|~k4(X3)|~p0(X4,X1)|~m0(X1,X1,X2)|~n0(X5,X1))).
+####
+#cnf(i_0_22723, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X1,X1)|~k1(X3)|~l0(X4))).
+#
+#cnf(i_0_22747, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~l1(X3,X4)|~m0(X4,X1,a))).
+####
+#cnf(i_0_31253, plain, (m5(b,X1)|~l0(b)|~p0(X2,X1)|~r0(X1)|~m0(X2,X1,X2))).
+##
+#cnf(i_0_32445, plain, (m5(e,X1)|~n1(X1,e,e)|~l1(X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_48059, plain, (m5(e,d)|~n1(d,e,e)|~l1(d,d))).
+#
+#cnf(i_0_48104, plain, (m5(e,d)|~l1(d,d)|~m0(d,X1,e))).
+#
+#cnf(i_0_48105, plain, (m5(e,d)|~l1(d,d))).
+#
+#cnf(i_0_48106, plain, (m5(e,d)|~n0(X1,d))).
+#
+#cnf(i_0_48107, plain, (m5(e,d)|~l1(X1,X1)|~l0(X1))).
+#
+#cnf(i_0_48108, plain, (m5(e,d)|~l0(X1)|~n0(X2,X1))).
+###
+#cnf(i_0_48109, plain, (m5(e,d)|~p0(a,a)|~r0(X1))).
+#####
+#cnf(i_0_48111, plain, (m5(e,d)|~l0(b)|~p0(e,b)|~r0(X1))).
+####
+#cnf(i_0_32552, plain, (m5(e,X1)|~n1(X1,e,e)|~l1(X1,X1)|~n0(X2,X1))).
+##
+#cnf(i_0_32657, plain, (m5(e,X1)|~n1(X1,e,e)|~l1(X1,X1)|~p0(X2,X1))).
+########
+#cnf(i_0_39022, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X1,X1)|~q0(X4,X1))).
+####
+#cnf(i_0_39127, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X1,X1)|~n0(X4,X1))).
+####
+#cnf(i_0_39232, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~l1(X1,X1)|~p0(X4,X1))).
+####
+#cnf(i_0_39307, plain, (m5(e,X1)|~n1(X1,e,e)|~p0(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_39345, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~p0(X1,X1)|~n0(X4,X1))).
+############
+#cnf(i_0_47989, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~k1(X3)|~l0(X4)|~n0(X5,X1))).
+#
+#cnf(i_0_48024, plain, (p2(X1,X2,X2)|~m1(X2,X1,X2)|~m0(X3,X1,a)|~n0(X4,X3))).
+##
+#cnf(i_0_48060, plain, (m5(e,X1)|~n1(X1,e,e)|~n0(X3,X1)|~q0(X2,X1))).
+##
+#cnf(i_0_48122, plain, (m5(e,X1)|~n1(X1,e,e)|~n0(X2,X1)|~n0(X3,X1))).
+##
+#cnf(i_0_48161, plain, (m5(e,X1)|~n1(X1,e,e)|~p0(X2,X1)|~n0(X3,X1))).
+#
+#cnf(i_0_48201, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~n0(X5,X1)|~q0(X4,X1))).
+###
+#cnf(i_0_48234, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~n0(X4,X1)|~n0(X5,X1))).
+##
+#cnf(i_0_48267, plain, (n4(X1,X2)|~k4(X3)|~m1(X2,X1,X2)|~p0(X4,X1)|~n0(X5,X1))).
+######
+#cnf(i_0_4607, plain, (q3(X1,X1)|~l0(X2)|~l0(X3)|~m0(X4,X1,a)|~n0(X1,X1))).
+#
+#cnf(i_0_48611, plain, (q3(X1,X1)|~l0(X2)|~l0(X3)|~n0(X1,X1))).
+#
+#cnf(i_0_48650, plain, (p4(X1,X1,X1)|~l0(X3)|~l0(X4)|~n0(X2,X2))).
+####
+#cnf(i_0_5907, plain, (q3(X1,X1)|~m1(X2,X3,X1)|~l0(X4)|~n0(X1,X1)|~q0(X3,X5))).
+##
+#cnf(i_0_48672, plain, (q3(X1,X1)|~k0(X2)|~l0(X3)|~n0(X1,X1)|~q0(X2,X4))).
+#
+#cnf(i_0_48731, plain, (q3(X1,X1)|~k0(X2)|~l0(X3)|~n0(X1,X1))).
+#
+#cnf(i_0_48769, plain, (p4(X1,X1,X1)|~k0(X3)|~l0(X4)|~n0(X2,X2))).
+#####
+#cnf(i_0_26600, plain, (p4(a,a,a)|~k4(X2)|~r2(X1)|~k1(X1)|~k0(X1))).
+#####
+#cnf(i_0_6362, plain, (q3(X1,X1)|~p0(X1,X2)|~n0(X1,X1)|~n0(X2,X2)|~n0(X3,X2))).
+####
+#cnf(i_0_6436, plain, (q3(X1,X1)|~l0(X2)|~m0(X3,X3,X1)|~n0(X1,X1)|~q0(X3,X4))).
+#
+#cnf(i_0_48827, plain, (q3(X1,X1)|~l0(X2)|~n0(X1,X1)|~q0(d,X3))).
+#
+#cnf(i_0_48865, plain, (p4(X1,X1,X1)|~l0(X3)|~n0(X2,X2)|~q0(d,X4))).
+###########
+#cnf(i_0_589, plain, (q2(X1,X2,X1)|~q2(X2,X3,X1)|~p1(X1,X1,X3)|~n1(X2,X1,X3))).
+####
+#cnf(i_0_48882, plain, (q2(X1,X2,X1)|~q2(X2,X1,X1)|~n1(X2,X1,X1)|~k0(X1))).
+#
+#cnf(i_0_49003, plain, (q2(X1,d,X1)|~n1(d,X1,X1)|~k0(X1))).
+##
+#cnf(i_0_49042, plain, (q4(X1,d)|~n1(d,X1,X1)|~k0(X1))).
+#
+#cnf(i_0_49051, plain, (q4(e,d)|~m0(d,X1,e))).
+#
+#cnf(i_0_49085, plain, (q4(e,d))).
+##
+#cnf(i_0_49007, plain, (q2(X1,X2,X1)|~n1(X2,X1,X1)|~k0(X1)|~k0(X2))).
+#
+#cnf(i_0_49086, plain, (s2(X1)|~n1(X1,b,b)|~k0(X1))).
+#
+#cnf(i_0_49129, plain, (s2(X1)|~k0(X1)|~l0(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_49136, plain, (~k0(a))).
+#
+#cnf(i_0_49139, plain, (s2(e)|~l0(e))).
+##
+#cnf(i_0_49098, plain, (q2(X1,X1,X1)|~n1(X1,X1,X1)|~k0(X1))).
+######
+#cnf(i_0_49097, plain, (q4(X1,X2)|~n1(X2,X1,X1)|~k0(X1)|~k0(X2))).
+###
+#cnf(i_0_49128, plain, (s2(X1)|~l1(X2,X1)|~k0(X1)|~l0(X2)|~l0(X1))).
+#####
+#cnf(i_0_49012, plain, (q2(X1,X2,X1)|~n1(X2,X1,X1)|~k0(X1)|~l0(X2))).
+#
+#cnf(i_0_49212, plain, (s2(X1)|~n1(X1,b,b)|~l0(X1))).
+#
+#cnf(i_0_49255, plain, (s2(X1)|~l0(X1)|~n0(X2,X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(rule_126, axiom, (s1(X1)|~q0(X1,X2)|~s1(X3)), file('./p/SYN140-1.tptp', rule_126)).
+cnf(axiom_17, axiom, (q0(X1,d)), file('./p/SYN140-1.tptp', axiom_17)).
+cnf(rule_125, axiom, (s1(X1)|~p0(X1,X1)), file('./p/SYN140-1.tptp', rule_125)).
+cnf(axiom_14, axiom, (p0(b,X1)), file('./p/SYN140-1.tptp', axiom_14)).
+cnf(rule_133, axiom, (l2(X1,X1)|~p0(X2,X2)|~s1(X3)|~m0(X4,X3,X1)), file('./p/SYN140-1.tptp', rule_133)).
+cnf(rule_088, axiom, (p1(a,a,a)|~l0(a)), file('./p/SYN140-1.tptp', rule_088)).
+cnf(axiom_20, axiom, (l0(a)), file('./p/SYN140-1.tptp', axiom_20)).
+cnf(rule_086, axiom, (p1(X1,X1,X1)|~l0(X1)|~m0(X2,X3,X1)), file('./p/SYN140-1.tptp', rule_086)).
+cnf(axiom_19, axiom, (m0(X1,d,X2)), file('./p/SYN140-1.tptp', axiom_19)).
+cnf(rule_273, axiom, (s3(X1,X2)|~q2(X3,X1,X3)|~s2(X1)|~m0(X3,X4,X2)), file('./p/SYN140-1.tptp', rule_273)).
+cnf(rule_082, axiom, (p1(X1,X2,X3)|~m0(X3,X1,X4)|~p1(X3,X1,X4)), file('./p/SYN140-1.tptp', rule_082)).
+cnf(axiom_12, axiom, (m0(a,X1,a)), file('./p/SYN140-1.tptp', axiom_12)).
+cnf(rule_182, axiom, (q2(X1,X2,X1)|~p1(X1,X1,X3)|~n1(X2,X1,X3)|~q2(X2,X3,X1)), file('./p/SYN140-1.tptp', rule_182)).
+cnf(rule_068, axiom, (p1(X1,X1,X1)|~k0(X1)), file('./p/SYN140-1.tptp', rule_068)).
+cnf(rule_177, axiom, (q2(X1,X2,X2)|~k0(X2)|~p1(X1,X1,X1)), file('./p/SYN140-1.tptp', rule_177)).
+cnf(rule_050, axiom, (n1(X1,X2,X1)|~s0(b)|~l0(X1)|~p0(b,X2)), file('./p/SYN140-1.tptp', rule_050)).
+cnf(axiom_5, axiom, (s0(b)), file('./p/SYN140-1.tptp', axiom_5)).
+cnf(rule_279, axiom, (m4(X1,X2)|~l2(X3,X2)|~s3(a,X1)), file('./p/SYN140-1.tptp', rule_279)).
+cnf(rule_181, axiom, (q2(X1,X1,X1)|~p1(X1,X1,X1)), file('./p/SYN140-1.tptp', rule_181)).
+cnf(rule_189, axiom, (s2(X1)|~q2(b,X1,b)|~s1(b)), file('./p/SYN140-1.tptp', rule_189)).
+cnf(rule_054, axiom, (n1(X1,X2,X2)|~l0(X3)|~l1(X3,X1)|~n1(X1,X2,X1)), file('./p/SYN140-1.tptp', rule_054)).
+cnf(prove_this, negated_conjecture, (~m4(b,X1)), file('./p/SYN140-1.tptp', prove_this)).
+cnf(axiom_32, axiom, (k0(b)), file('./p/SYN140-1.tptp', axiom_32)).
+cnf(rule_002, axiom, (l1(X1,X1)|~n0(X2,X1)), file('./p/SYN140-1.tptp', rule_002)).
+cnf(axiom_37, axiom, (n0(b,a)), file('./p/SYN140-1.tptp', axiom_37)).
+cnf(c_0_25, axiom, (s1(X1)|~q0(X1,X2)|~s1(X3)), rule_126).
+cnf(c_0_26, axiom, (q0(X1,d)), axiom_17).
+cnf(c_0_27, axiom, (s1(X1)|~p0(X1,X1)), rule_125).
+cnf(c_0_28, axiom, (p0(b,X1)), axiom_14).
+cnf(c_0_29, plain, (s1(X1)|~s1(X2)), inference(pm,[status(thm)],[c_0_25, c_0_26])).
+cnf(c_0_30, plain, (s1(b)), inference(pm,[status(thm)],[c_0_27, c_0_28])).
+cnf(c_0_31, axiom, (l2(X1,X1)|~p0(X2,X2)|~s1(X3)|~m0(X4,X3,X1)), rule_133).
+cnf(c_0_32, plain, (s1(X1)), inference(pm,[status(thm)],[c_0_29, c_0_30])).
+cnf(c_0_33, axiom, (p1(a,a,a)|~l0(a)), rule_088).
+cnf(c_0_34, axiom, (l0(a)), axiom_20).
+cnf(c_0_35, axiom, (p1(X1,X1,X1)|~l0(X1)|~m0(X2,X3,X1)), rule_086).
+cnf(c_0_36, axiom, (m0(X1,d,X2)), axiom_19).
+cnf(c_0_37, plain, (l2(X1,X1)|~p0(X2,X2)|~m0(X3,X4,X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_31, c_0_32])])).
+cnf(c_0_38, axiom, (s3(X1,X2)|~q2(X3,X1,X3)|~s2(X1)|~m0(X3,X4,X2)), rule_273).
+cnf(c_0_39, axiom, (p1(X1,X2,X3)|~m0(X3,X1,X4)|~p1(X3,X1,X4)), rule_082).
+cnf(c_0_40, plain, (p1(a,a,a)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_33, c_0_34])])).
+cnf(c_0_41, axiom, (m0(a,X1,a)), axiom_12).
+cnf(c_0_42, axiom, (q2(X1,X2,X1)|~p1(X1,X1,X3)|~n1(X2,X1,X3)|~q2(X2,X3,X1)), rule_182).
+cnf(c_0_43, axiom, (p1(X1,X1,X1)|~k0(X1)), rule_068).
+cnf(c_0_44, axiom, (q2(X1,X2,X2)|~k0(X2)|~p1(X1,X1,X1)), rule_177).
+cnf(c_0_45, plain, (p1(X1,X1,X1)|~l0(X1)), inference(pm,[status(thm)],[c_0_35, c_0_36])).
+cnf(c_0_46, axiom, (n1(X1,X2,X1)|~s0(b)|~l0(X1)|~p0(b,X2)), rule_050).
+cnf(c_0_47, axiom, (s0(b)), axiom_5).
+cnf(c_0_48, axiom, (m4(X1,X2)|~l2(X3,X2)|~s3(a,X1)), rule_279).
+cnf(c_0_49, plain, (l2(X1,X1)|~p0(X2,X2)), inference(pm,[status(thm)],[c_0_37, c_0_36])).
+cnf(c_0_50, plain, (s3(X1,X2)|~s2(X1)|~q2(X3,X1,X3)), inference(pm,[status(thm)],[c_0_38, c_0_36])).
+cnf(c_0_51, axiom, (q2(X1,X1,X1)|~p1(X1,X1,X1)), rule_181).
+cnf(c_0_52, plain, (p1(a,X1,a)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_39, c_0_40]), c_0_41])])).
+cnf(c_0_53, axiom, (s2(X1)|~q2(b,X1,b)|~s1(b)), rule_189).
+cnf(c_0_54, plain, (q2(X1,X2,X1)|~q2(X2,X1,X1)|~n1(X2,X1,X1)|~k0(X1)), inference(pm,[status(thm)],[c_0_42, c_0_43])).
+cnf(c_0_55, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X1)), inference(pm,[status(thm)],[c_0_44, c_0_45])).
+cnf(c_0_56, axiom, (n1(X1,X2,X2)|~l0(X3)|~l1(X3,X1)|~n1(X1,X2,X1)), rule_054).
+cnf(c_0_57, plain, (n1(X1,X2,X1)|~l0(X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_46, c_0_47]), c_0_28])])).
+cnf(c_0_58, negated_conjecture, (~m4(b,X1)), prove_this).
+cnf(c_0_59, plain, (m4(X1,X2)|~s3(a,X1)|~p0(X3,X3)), inference(pm,[status(thm)],[c_0_48, c_0_49])).
+cnf(c_0_60, plain, (s3(X1,X2)|~s2(X1)|~p1(X1,X1,X1)), inference(pm,[status(thm)],[c_0_50, c_0_51])).
+cnf(c_0_61, plain, (p1(X1,X2,a)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_39, c_0_52]), c_0_41])])).
+cnf(c_0_62, plain, (s2(X1)|~q2(b,X1,b)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_53, c_0_32])])).
+cnf(c_0_63, plain, (q2(X1,X2,X1)|~n1(X2,X1,X1)|~k0(X1)|~l0(X2)), inference(pm,[status(thm)],[c_0_54, c_0_55])).
+cnf(c_0_64, axiom, (k0(b)), axiom_32).
+cnf(c_0_65, plain, (n1(X1,X2,X2)|~l1(X3,X1)|~l0(X3)|~l0(X1)), inference(pm,[status(thm)],[c_0_56, c_0_57])).
+cnf(c_0_66, axiom, (l1(X1,X1)|~n0(X2,X1)), rule_002).
+cnf(c_0_67, negated_conjecture, (~s3(a,b)|~p0(X1,X1)), inference(pm,[status(thm)],[c_0_58, c_0_59])).
+cnf(c_0_68, plain, (s3(a,X1)|~s2(a)), inference(pm,[status(thm)],[c_0_60, c_0_61])).
+cnf(c_0_69, plain, (s2(X1)|~n1(X1,b,b)|~l0(X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_62, c_0_63]), c_0_64])])).
+cnf(c_0_70, plain, (n1(X1,X2,X2)|~l0(X1)|~n0(X3,X1)), inference(pm,[status(thm)],[c_0_65, c_0_66])).
+cnf(c_0_71, negated_conjecture, (~s2(a)|~p0(X1,X1)), inference(pm,[status(thm)],[c_0_67, c_0_68])).
+cnf(c_0_72, plain, (s2(X1)|~l0(X1)|~n0(X2,X1)), inference(pm,[status(thm)],[c_0_69, c_0_70])).
+cnf(c_0_73, axiom, (n0(b,a)), axiom_37).
+cnf(c_0_74, negated_conjecture, (~s2(a)), inference(pm,[status(thm)],[c_0_71, c_0_28])).
+cnf(c_0_75, plain, ($false), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_72, c_0_73]), c_0_34])]), c_0_74]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 76
+# Proof object clause steps            : 51
+# Proof object formula steps           : 25
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 4
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 25
+# Proof object initial formulas used   : 25
+# Proof object generating inferences   : 22
+# Proof object simplifying inferences  : 18
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 369
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 369
+# Removed in clause preprocessing      : 7
+# Initial clauses in saturation        : 362
+# Processed clauses                    : 9155
+# ...of these trivial                  : 206
+# ...subsumed                          : 6286
+# ...remaining for further processing  : 2663
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 508
+# Backward-rewritten                   : 76
+# Generated clauses                    : 48530
+# ...of the previous two non-trivial   : 38173
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 48530
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 2079
+#    Positive orientable unit clauses  : 95
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 3
+#    Non-unit-clauses                  : 1981
+# Current number of unprocessed clauses: 28133
+# ...number of literals in the above   : 168576
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 584
+# Clause-clause subsumption calls (NU) : 820220
+# Rec. Clause-clause subsumption calls : 103513
+# Non-unit clause-clause subsumptions  : 6520
+# Unit Clause-clause subsumption calls : 3684
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 109
+# BW rewrite match successes           : 69
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 361399

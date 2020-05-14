@@ -1,0 +1,432 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for LCL509+1
+% SZS output start Proof for LCL509+1
+fof(f43879,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f105,f122,f130,f138,f146,f154,f162,f174,f175,f176,f177,f179,f180,f182,f43878])).
+fof(f43878,plain,(
+  ~spl2_2 | spl2_5 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16),
+  inference(avatar_contradiction_clause,[],[f43857])).
+fof(f43857,plain,(
+  $false | (~spl2_2 | spl2_5 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f43490,f117])).
+fof(f117,plain,(
+  ~is_a_theorem(implies(sK0,or(sK0,sK1))) | spl2_5),
+  inference(avatar_component_clause,[],[f115])).
+fof(f115,plain,(
+  spl2_5 <=> is_a_theorem(implies(sK0,or(sK0,sK1)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_5])])).
+fof(f43490,plain,(
+  ( ! [X12,X11] : (is_a_theorem(implies(X11,or(X11,X12)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f43475,f191])).
+fof(f191,plain,(
+  ( ! [X2,X3] : (implies(not(X2),X3) = or(X2,X3)) ) | (~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f153,f161])).
+fof(f161,plain,(
+  ( ! [X0,X1] : (implies(X0,X1) = not(and(X0,not(X1)))) ) | ~spl2_16),
+  inference(avatar_component_clause,[],[f160])).
+fof(f160,plain,(
+  spl2_16 <=> ! [X1,X0] : implies(X0,X1) = not(and(X0,not(X1)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_16])])).
+fof(f153,plain,(
+  ( ! [X0,X1] : (or(X0,X1) = not(and(not(X0),not(X1)))) ) | ~spl2_14),
+  inference(avatar_component_clause,[],[f152])).
+fof(f152,plain,(
+  spl2_14 <=> ! [X1,X0] : or(X0,X1) = not(and(not(X0),not(X1)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_14])])).
+fof(f43475,plain,(
+  ( ! [X12,X11] : (is_a_theorem(implies(X11,implies(not(X11),X12)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f41816,f1277])).
+fof(f1277,plain,(
+  ( ! [X2,X3] : (~is_a_theorem(or(X2,not(X3))) | is_a_theorem(implies(X3,X2))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f1232,f535])).
+fof(f535,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(not(and(X1,X2))) | ~is_a_theorem(or(X0,X1)) | is_a_theorem(implies(X2,X0))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f309,f200])).
+fof(f200,plain,(
+  ( ! [X2,X1] : (~is_a_theorem(or(X1,X2)) | ~is_a_theorem(not(X1)) | is_a_theorem(X2)) ) | (~spl2_2 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f104,f191])).
+fof(f104,plain,(
+  ( ! [X0,X1] : (~is_a_theorem(implies(X0,X1)) | ~is_a_theorem(X0) | is_a_theorem(X1)) ) | ~spl2_2),
+  inference(avatar_component_clause,[],[f103])).
+fof(f103,plain,(
+  spl2_2 <=> ! [X1,X0] : (is_a_theorem(X1) | ~is_a_theorem(X0) | ~is_a_theorem(implies(X0,X1)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_2])])).
+fof(f309,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(or(and(X2,X0),implies(X0,X1))) | ~is_a_theorem(or(X1,X2))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f305,f191])).
+fof(f305,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(or(and(X2,X0),implies(X0,X1))) | ~is_a_theorem(implies(not(X1),X2))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f210,f161])).
+fof(f210,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(or(and(X1,X2),not(and(X2,X0)))) | ~is_a_theorem(implies(X0,X1))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f196,f104])).
+fof(f196,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(implies(X0,X1),or(and(X1,X2),not(and(X2,X0)))))) ) | (~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(backward_demodulation,[],[f191,f145])).
+fof(f145,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(implies(X0,X1),implies(not(and(X1,X2)),not(and(X2,X0)))))) ) | ~spl2_12),
+  inference(avatar_component_clause,[],[f144])).
+fof(f144,plain,(
+  spl2_12 <=> ! [X1,X0,X2] : is_a_theorem(implies(implies(X0,X1),implies(not(and(X1,X2)),not(and(X2,X0)))))),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_12])])).
+fof(f1232,plain,(
+  ( ! [X0] : (is_a_theorem(not(and(not(X0),X0)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f1118,f129])).
+fof(f129,plain,(
+  ( ! [X0] : (is_a_theorem(implies(X0,and(X0,X0)))) ) | ~spl2_8),
+  inference(avatar_component_clause,[],[f128])).
+fof(f128,plain,(
+  spl2_8 <=> ! [X0] : is_a_theorem(implies(X0,and(X0,X0)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_8])])).
+fof(f1118,plain,(
+  ( ! [X54,X56,X55] : (~is_a_theorem(implies(X54,and(X55,X56))) | is_a_theorem(not(and(not(X55),X54)))) ) | (~spl2_2 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f779,f137])).
+fof(f137,plain,(
+  ( ! [X0,X1] : (is_a_theorem(implies(and(X0,X1),X0))) ) | ~spl2_10),
+  inference(avatar_component_clause,[],[f136])).
+fof(f136,plain,(
+  spl2_10 <=> ! [X1,X0] : is_a_theorem(implies(and(X0,X1),X0))),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_10])])).
+fof(f779,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(implies(X1,X2)) | ~is_a_theorem(implies(X0,X1)) | is_a_theorem(not(and(not(X2),X0)))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f307,f104])).
+fof(f307,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(implies(X0,X1),not(and(not(X1),X2)))) | ~is_a_theorem(implies(X2,X0))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f210,f194])).
+fof(f194,plain,(
+  ( ! [X2,X0,X1] : (or(and(X0,not(X1)),X2) = implies(implies(X0,X1),X2)) ) | (~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f187,f161])).
+fof(f187,plain,(
+  ( ! [X2,X0,X1] : (or(and(X0,not(X1)),X2) = not(and(implies(X0,X1),not(X2)))) ) | (~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f153,f161])).
+fof(f41816,plain,(
+  ( ! [X4,X5] : (is_a_theorem(or(implies(X4,X5),X4))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f22036,f13680])).
+fof(f13680,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(or(X0,or(implies(X0,X1),X2)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f8633,f161])).
+fof(f8633,plain,(
+  ( ! [X14,X15,X16] : (is_a_theorem(or(X14,or(not(and(X14,X15)),X16)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f8340,f1242])).
+fof(f1242,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(or(X0,and(X1,X2))) | is_a_theorem(or(X1,X0))) ) | (~spl2_2 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f1241,f191])).
+fof(f1241,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(not(X1),X0)) | ~is_a_theorem(or(X0,and(X1,X2)))) ) | (~spl2_2 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f1238,f161])).
+fof(f1238,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(or(X0,and(X1,X2))) | is_a_theorem(not(and(not(X1),not(X0))))) ) | (~spl2_2 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f1118,f191])).
+fof(f8340,plain,(
+  ( ! [X0,X1] : (is_a_theorem(or(or(not(X0),X1),X0))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f7975,f153])).
+fof(f7975,plain,(
+  ( ! [X0,X1] : (is_a_theorem(not(and(not(or(X0,X1)),X0)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f7822,f1276])).
+fof(f1276,plain,(
+  ( ! [X0,X1] : (~is_a_theorem(implies(X0,not(X1))) | is_a_theorem(not(and(X1,X0)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f1232,f302])).
+fof(f302,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(not(and(X1,X2))) | ~is_a_theorem(implies(X0,X1)) | is_a_theorem(not(and(X2,X0)))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f210,f200])).
+fof(f7822,plain,(
+  ( ! [X8,X7] : (is_a_theorem(implies(X7,not(not(or(X7,X8)))))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f7812,f191])).
+fof(f7812,plain,(
+  ( ! [X8,X7] : (is_a_theorem(implies(X7,not(not(implies(not(X7),X8)))))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f7426,f1277])).
+fof(f7426,plain,(
+  ( ! [X83,X84] : (is_a_theorem(or(not(not(implies(X83,X84))),X83))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f2410,f1721])).
+fof(f1721,plain,(
+  ( ! [X11] : (is_a_theorem(implies(X11,not(not(X11))))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f1277,f1283])).
+fof(f1283,plain,(
+  ( ! [X0] : (is_a_theorem(or(not(X0),X0))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f1232,f153])).
+fof(f2410,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(implies(implies(X0,X1),X2)) | is_a_theorem(or(X2,X0))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f2294,f499])).
+fof(f499,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(or(X0,X1)) | ~is_a_theorem(implies(X1,X2)) | is_a_theorem(or(X2,X0))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f243,f104])).
+fof(f243,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(implies(X1,X2),or(X2,X0))) | ~is_a_theorem(or(X0,X1))) ) | (~spl2_2 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f219,f104])).
+fof(f219,plain,(
+  ( ! [X4,X5,X3] : (is_a_theorem(implies(or(X4,X5),implies(implies(X5,X3),or(X3,X4))))) ) | (~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f218,f191])).
+fof(f218,plain,(
+  ( ! [X4,X5,X3] : (is_a_theorem(implies(implies(not(X4),X5),implies(implies(X5,X3),or(X3,X4))))) ) | (~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f215,f194])).
+fof(f215,plain,(
+  ( ! [X4,X5,X3] : (is_a_theorem(implies(implies(not(X4),X5),or(and(X5,not(X3)),or(X3,X4))))) ) | (~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f196,f153])).
+fof(f2294,plain,(
+  ( ! [X0,X1] : (is_a_theorem(or(X0,implies(X0,X1)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f1242,f1285])).
+fof(f1285,plain,(
+  ( ! [X2,X3] : (is_a_theorem(or(implies(X2,X3),and(X2,not(X3))))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f1232,f189])).
+fof(f189,plain,(
+  ( ! [X2,X0,X1] : (or(X2,and(X0,not(X1))) = not(and(not(X2),implies(X0,X1)))) ) | (~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f153,f161])).
+fof(f22036,plain,(
+  ( ! [X0,X1] : (~is_a_theorem(or(X0,or(X1,X0))) | is_a_theorem(or(X1,X0))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f7413,f17674])).
+fof(f17674,plain,(
+  ( ! [X0] : (~is_a_theorem(or(X0,X0)) | is_a_theorem(X0)) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f16928,f1157])).
+fof(f1157,plain,(
+  ( ! [X0,X1] : (is_a_theorem(or(and(X0,X0),X1)) | ~is_a_theorem(or(X1,X0))) ) | (~spl2_2 | ~spl2_8 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f1153,f191])).
+fof(f1153,plain,(
+  ( ! [X0,X1] : (is_a_theorem(or(and(X0,X0),X1)) | ~is_a_theorem(implies(not(X1),X0))) ) | (~spl2_2 | ~spl2_8 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f1103,f153])).
+fof(f1103,plain,(
+  ( ! [X0,X1] : (is_a_theorem(not(and(not(and(X1,X1)),X0))) | ~is_a_theorem(implies(X0,X1))) ) | (~spl2_2 | ~spl2_8 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f779,f129])).
+fof(f16928,plain,(
+  ( ! [X0] : (~is_a_theorem(or(and(X0,X0),X0)) | is_a_theorem(X0)) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f2491,f1157])).
+fof(f2491,plain,(
+  ( ! [X6,X5] : (~is_a_theorem(or(and(X5,X6),and(X5,X6))) | is_a_theorem(X5)) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f2295,f732])).
+fof(f732,plain,(
+  ( ! [X0,X1] : (~is_a_theorem(or(X0,not(X1))) | ~is_a_theorem(or(X1,X1)) | is_a_theorem(X0)) ) | (~spl2_2 | ~spl2_8 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f700,f104])).
+fof(f700,plain,(
+  ( ! [X0,X1] : (is_a_theorem(implies(or(X1,X1),X0)) | ~is_a_theorem(or(X0,not(X1)))) ) | (~spl2_2 | ~spl2_8 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f535,f201])).
+fof(f201,plain,(
+  ( ! [X0] : (is_a_theorem(not(and(not(X0),or(X0,X0))))) ) | (~spl2_8 | ~spl2_14 | ~spl2_16)),
+  inference(forward_demodulation,[],[f199,f190])).
+fof(f190,plain,(
+  ( ! [X4,X5,X3] : (or(X5,and(not(X3),not(X4))) = not(and(not(X5),or(X3,X4)))) ) | ~spl2_14),
+  inference(superposition,[],[f153,f153])).
+fof(f199,plain,(
+  ( ! [X0] : (is_a_theorem(or(X0,and(not(X0),not(X0))))) ) | (~spl2_8 | ~spl2_14 | ~spl2_16)),
+  inference(superposition,[],[f129,f191])).
+fof(f2295,plain,(
+  ( ! [X2,X3] : (is_a_theorem(or(X2,not(and(X2,X3))))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f1242,f1283])).
+fof(f7413,plain,(
+  ( ! [X43,X44,X42] : (is_a_theorem(or(or(X42,X43),X44)) | ~is_a_theorem(or(X43,X44))) ) | (~spl2_2 | ~spl2_8 | ~spl2_10 | ~spl2_12 | ~spl2_14 | ~spl2_16)),
+  inference(resolution,[],[f2410,f243])).
+fof(f182,plain,(
+  ~spl2_6),
+  inference(avatar_split_clause,[],[f97,f119])).
+fof(f119,plain,(
+  spl2_6 <=> or_1),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_6])])).
+fof(f97,plain,(
+  ~or_1),
+  inference(cnf_transformation,[],[f56])).
+fof(f56,plain,(
+  ~or_1),
+  inference(flattening,[],[f44])).
+fof(f44,negated_conjecture,(
+  ~or_1),
+  inference(negated_conjecture,[],[f43])).
+fof(f43,conjecture,(
+  or_1),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f180,plain,(
+  spl2_15),
+  inference(avatar_split_clause,[],[f95,f156])).
+fof(f156,plain,(
+  spl2_15 <=> op_implies_and),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_15])])).
+fof(f95,plain,(
+  op_implies_and),
+  inference(cnf_transformation,[],[f41])).
+fof(f41,axiom,(
+  op_implies_and),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f179,plain,(
+  spl2_13),
+  inference(avatar_split_clause,[],[f94,f148])).
+fof(f148,plain,(
+  spl2_13 <=> op_or),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_13])])).
+fof(f94,plain,(
+  op_or),
+  inference(cnf_transformation,[],[f40])).
+fof(f40,axiom,(
+  op_or),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f177,plain,(
+  spl2_11),
+  inference(avatar_split_clause,[],[f92,f140])).
+fof(f140,plain,(
+  spl2_11 <=> kn3),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_11])])).
+fof(f92,plain,(
+  kn3),
+  inference(cnf_transformation,[],[f38])).
+fof(f38,axiom,(
+  kn3),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f176,plain,(
+  spl2_9),
+  inference(avatar_split_clause,[],[f91,f132])).
+fof(f132,plain,(
+  spl2_9 <=> kn2),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_9])])).
+fof(f91,plain,(
+  kn2),
+  inference(cnf_transformation,[],[f37])).
+fof(f37,axiom,(
+  kn2),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f175,plain,(
+  spl2_7),
+  inference(avatar_split_clause,[],[f90,f124])).
+fof(f124,plain,(
+  spl2_7 <=> kn1),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_7])])).
+fof(f90,plain,(
+  kn1),
+  inference(cnf_transformation,[],[f36])).
+fof(f36,axiom,(
+  kn1),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f174,plain,(
+  spl2_1),
+  inference(avatar_split_clause,[],[f89,f99])).
+fof(f99,plain,(
+  spl2_1 <=> modus_ponens),
+  introduced(avatar_definition,[new_symbols(naming,[spl2_1])])).
+fof(f89,plain,(
+  modus_ponens),
+  inference(cnf_transformation,[],[f35])).
+fof(f35,axiom,(
+  modus_ponens),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f162,plain,(
+  ~spl2_15 | spl2_16),
+  inference(avatar_split_clause,[],[f84,f160,f156])).
+fof(f84,plain,(
+  ( ! [X0,X1] : (implies(X0,X1) = not(and(X0,not(X1))) | ~op_implies_and) )),
+  inference(cnf_transformation,[],[f73])).
+fof(f73,plain,(
+  ! [X0,X1] : implies(X0,X1) = not(and(X0,not(X1))) | ~op_implies_and),
+  inference(ennf_transformation,[],[f29])).
+fof(f29,axiom,(
+  op_implies_and => ! [X0,X1] : implies(X0,X1) = not(and(X0,not(X1)))),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f154,plain,(
+  ~spl2_13 | spl2_14),
+  inference(avatar_split_clause,[],[f83,f152,f148])).
+fof(f83,plain,(
+  ( ! [X0,X1] : (or(X0,X1) = not(and(not(X0),not(X1))) | ~op_or) )),
+  inference(cnf_transformation,[],[f72])).
+fof(f72,plain,(
+  ! [X0,X1] : or(X0,X1) = not(and(not(X0),not(X1))) | ~op_or),
+  inference(ennf_transformation,[],[f27])).
+fof(f27,axiom,(
+  op_or => ! [X0,X1] : or(X0,X1) = not(and(not(X0),not(X1)))),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f146,plain,(
+  ~spl2_11 | spl2_12),
+  inference(avatar_split_clause,[],[f82,f144,f140])).
+fof(f82,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(implies(X0,X1),implies(not(and(X1,X2)),not(and(X2,X0))))) | ~kn3) )),
+  inference(cnf_transformation,[],[f71])).
+fof(f71,plain,(
+  ! [X0,X1,X2] : is_a_theorem(implies(implies(X0,X1),implies(not(and(X1,X2)),not(and(X2,X0))))) | ~kn3),
+  inference(ennf_transformation,[],[f57])).
+fof(f57,plain,(
+  kn3 => ! [X0,X1,X2] : is_a_theorem(implies(implies(X0,X1),implies(not(and(X1,X2)),not(and(X2,X0)))))),
+  inference(unused_predicate_definition_removal,[],[f47])).
+fof(f47,plain,(
+  kn3 <=> ! [X0,X1,X2] : is_a_theorem(implies(implies(X0,X1),implies(not(and(X1,X2)),not(and(X2,X0)))))),
+  inference(rectify,[],[f18])).
+fof(f18,axiom,(
+  kn3 <=> ! [X3,X4,X5] : is_a_theorem(implies(implies(X3,X4),implies(not(and(X4,X5)),not(and(X5,X3)))))),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f138,plain,(
+  ~spl2_9 | spl2_10),
+  inference(avatar_split_clause,[],[f81,f136,f132])).
+fof(f81,plain,(
+  ( ! [X0,X1] : (is_a_theorem(implies(and(X0,X1),X0)) | ~kn2) )),
+  inference(cnf_transformation,[],[f70])).
+fof(f70,plain,(
+  ! [X0,X1] : is_a_theorem(implies(and(X0,X1),X0)) | ~kn2),
+  inference(ennf_transformation,[],[f58])).
+fof(f58,plain,(
+  kn2 => ! [X0,X1] : is_a_theorem(implies(and(X0,X1),X0))),
+  inference(unused_predicate_definition_removal,[],[f46])).
+fof(f46,plain,(
+  kn2 <=> ! [X0,X1] : is_a_theorem(implies(and(X0,X1),X0))),
+  inference(rectify,[],[f17])).
+fof(f17,axiom,(
+  kn2 <=> ! [X3,X4] : is_a_theorem(implies(and(X3,X4),X3))),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f130,plain,(
+  ~spl2_7 | spl2_8),
+  inference(avatar_split_clause,[],[f80,f128,f124])).
+fof(f80,plain,(
+  ( ! [X0] : (is_a_theorem(implies(X0,and(X0,X0))) | ~kn1) )),
+  inference(cnf_transformation,[],[f69])).
+fof(f69,plain,(
+  ! [X0] : is_a_theorem(implies(X0,and(X0,X0))) | ~kn1),
+  inference(ennf_transformation,[],[f59])).
+fof(f59,plain,(
+  kn1 => ! [X0] : is_a_theorem(implies(X0,and(X0,X0)))),
+  inference(unused_predicate_definition_removal,[],[f45])).
+fof(f45,plain,(
+  kn1 <=> ! [X0] : is_a_theorem(implies(X0,and(X0,X0)))),
+  inference(rectify,[],[f16])).
+fof(f16,axiom,(
+  kn1 <=> ! [X3] : is_a_theorem(implies(X3,and(X3,X3)))),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f122,plain,(
+  ~spl2_5 | spl2_6),
+  inference(avatar_split_clause,[],[f79,f119,f115])).
+fof(f79,plain,(
+  or_1 | ~is_a_theorem(implies(sK0,or(sK0,sK1)))),
+  inference(cnf_transformation,[],[f76])).
+fof(f76,plain,(
+  or_1 | ~is_a_theorem(implies(sK0,or(sK0,sK1)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1])],[f68,f75])).
+fof(f75,plain,(
+  ? [X0,X1] : ~is_a_theorem(implies(X0,or(X0,X1))) => ~is_a_theorem(implies(sK0,or(sK0,sK1)))),
+  introduced(choice_axiom,[])).
+fof(f68,plain,(
+  or_1 | ? [X0,X1] : ~is_a_theorem(implies(X0,or(X0,X1)))),
+  inference(ennf_transformation,[],[f60])).
+fof(f60,plain,(
+  ! [X0,X1] : is_a_theorem(implies(X0,or(X0,X1))) => or_1),
+  inference(unused_predicate_definition_removal,[],[f10])).
+fof(f10,axiom,(
+  or_1 <=> ! [X0,X1] : is_a_theorem(implies(X0,or(X0,X1)))),
+  file('./p/LCL509+1.tptp',unknown)).
+fof(f105,plain,(
+  ~spl2_1 | spl2_2),
+  inference(avatar_split_clause,[],[f77,f103,f99])).
+fof(f77,plain,(
+  ( ! [X0,X1] : (is_a_theorem(X1) | ~is_a_theorem(implies(X0,X1)) | ~is_a_theorem(X0) | ~modus_ponens) )),
+  inference(cnf_transformation,[],[f66])).
+fof(f66,plain,(
+  ! [X0,X1] : (is_a_theorem(X1) | ~is_a_theorem(implies(X0,X1)) | ~is_a_theorem(X0)) | ~modus_ponens),
+  inference(flattening,[],[f65])).
+fof(f65,plain,(
+  ! [X0,X1] : (is_a_theorem(X1) | (~is_a_theorem(implies(X0,X1)) | ~is_a_theorem(X0))) | ~modus_ponens),
+  inference(ennf_transformation,[],[f62])).
+fof(f62,plain,(
+  modus_ponens => ! [X0,X1] : ((is_a_theorem(implies(X0,X1)) & is_a_theorem(X0)) => is_a_theorem(X1))),
+  inference(unused_predicate_definition_removal,[],[f1])).
+fof(f1,axiom,(
+  modus_ponens <=> ! [X0,X1] : ((is_a_theorem(implies(X0,X1)) & is_a_theorem(X0)) => is_a_theorem(X1))),
+  file('./p/LCL509+1.tptp',unknown)).
+% SZS output end Proof for LCL509+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 53986
+% Time elapsed: 0.741 s
+% ------------------------------
+% ------------------------------

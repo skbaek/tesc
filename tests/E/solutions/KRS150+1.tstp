@@ -1,0 +1,381 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_32, plain, (cTOP(iV16560))).
+#
+#cnf(i_0_33, plain, (cTEST(iV16560))).
+#
+#cnf(i_0_16, plain, (cC14(X1)|~cC16(X1))).
+#
+#cnf(i_0_1, plain, (~cowlNothing(X1))).
+#
+#cnf(i_0_18, plain, (cC16(X1)|~cC18(X1))).
+#
+#cnf(i_0_19, plain, (cTOP(X1)|~cC18(X1))).
+#
+#cnf(i_0_30, plain, (cTOP(X1)|~cTEST(X1))).
+#
+#cnf(i_0_41, plain, (~cC10(iV16562))).
+#
+#cnf(i_0_15, plain, (cC8(X1)|~cC16(X1))).
+#
+#cnf(i_0_31, plain, (cC18(X1)|~cTEST(X1))).
+##
+#cnf(i_0_42, plain, (~cC2(iV16562))).
+#
+#cnf(i_0_48, plain, (cC16(X1)|~cTEST(X1))).
+#
+#cnf(i_0_50, plain, (cC14(X1)|~cTEST(X1))).
+#
+#cnf(i_0_3, plain, (xsd_integer(X1)|xsd_string(X1))).
+#
+#cnf(i_0_40, plain, (~cC2(iV16561))).
+#
+#cnf(i_0_35, plain, (rR1(iV16560,iV16562))).
+#
+#cnf(i_0_36, plain, (rR1(iV16560,iV16561))).
+#
+#cnf(i_0_44, plain, (cC2(X1)|~rR1(iV16562,X1))).
+#
+#cnf(i_0_37, plain, (~cC4(iV16561))).
+#
+#cnf(i_0_39, plain, (cC2(X1)|~rR1(iV16561,X1))).
+#
+#cnf(i_0_12, plain, (cC12(esk2_1(X1))|~cC14(X1))).
+#
+#cnf(i_0_27, plain, (cC6(esk4_1(X1))|~cC8(X1))).
+#
+#cnf(i_0_4, plain, (~xsd_integer(X1)|~xsd_string(X1))).
+#
+#cnf(i_0_14, plain, (cC16(X1)|~cC8(X1)|~cC14(X1))).
+#
+#cnf(i_0_29, plain, (cTEST(X1)|~cTOP(X1)|~cC18(X1))).
+#
+#cnf(i_0_17, plain, (cC18(X1)|~cTOP(X1)|~cC16(X1))).
+#
+#cnf(i_0_9, plain, (~cC12(X1)|~cC10(X1))).
+#
+#cnf(i_0_56, plain, (cTEST(X1)|~cTOP(X1)|~cC16(X1))).
+#
+#cnf(i_0_8, plain, (cC12(X1)|cC2(X1)|cC10(X1))).
+#
+#cnf(i_0_23, plain, (cC6(X1)|cC4(X1)|cC2(X1))).
+#
+#cnf(i_0_10, plain, (~cC12(X1)|~cC2(X1))).
+#
+#cnf(i_0_7, plain, (rR1(X1,esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_13, plain, (rR1(X1,esk2_1(X1))|~cC14(X1))).
+#
+#cnf(i_0_22, plain, (rR1(X1,esk3_1(X1))|~cC4(X1))).
+#
+#cnf(i_0_25, plain, (~cC6(X1)|~cC2(X1))).
+#
+#cnf(i_0_28, plain, (rR1(X1,esk4_1(X1))|~cC8(X1))).
+#
+#cnf(i_0_11, plain, (cC14(X1)|~cC12(X2)|~rR1(X1,X2))).
+#
+#cnf(i_0_72, plain, (cC14(iV16560)|~cC12(iV16561))).
+#
+#cnf(i_0_24, plain, (~cC6(X1)|~cC4(X1))).
+#
+#cnf(i_0_73, plain, (cC14(iV16560)|~cC12(iV16562))).
+#
+#cnf(i_0_26, plain, (cC8(X1)|~cC6(X2)|~rR1(X1,X2))).
+#
+#cnf(i_0_80, plain, (cC8(iV16560)|~cC6(iV16561))).
+#
+#cnf(i_0_6, plain, (~cC2(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_81, plain, (cC8(iV16560)|~cC6(iV16562))).
+#
+#cnf(i_0_5, plain, (cC2(X2)|cC10(X1)|~rR1(X1,X2))).
+#
+#cnf(i_0_88, plain, (cC10(iV16560))).
+#
+#cnf(i_0_21, plain, (~cC4(X1)|~cC2(esk3_1(X1)))).
+##
+#cnf(i_0_20, plain, (cC4(X1)|cC2(X2)|~rR1(X1,X2))).
+#
+#cnf(i_0_94, plain, (cC4(iV16560))).
+#
+#cnf(i_0_57, plain, (~cC14(X1)|~cC10(esk2_1(X1)))).
+##
+#cnf(i_0_62, plain, (cC2(esk1_1(iV16561))|~cC10(iV16561))).
+##
+#cnf(i_0_100, plain, (~cC10(iV16561))).
+#
+#cnf(i_0_64, plain, (cC2(esk2_1(iV16561))|~cC14(iV16561))).
+#
+#cnf(i_0_65, plain, (cC2(esk2_1(iV16562))|~cC14(iV16562))).
+##
+#cnf(i_0_60, plain, (~cC14(X1)|~cC2(esk2_1(X1)))).
+#
+#cnf(i_0_67, plain, (cC2(esk3_1(iV16562))|~cC4(iV16562))).
+#
+#cnf(i_0_70, plain, (cC2(esk4_1(iV16561))|~cC8(iV16561))).
+#
+#cnf(i_0_71, plain, (cC2(esk4_1(iV16562))|~cC8(iV16562))).
+#
+#cnf(i_0_101, plain, (~cC14(iV16561))).
+#
+#cnf(i_0_74, plain, (cC14(X1)|~cC8(X1)|~cC12(esk4_1(X1)))).
+#
+#cnf(i_0_75, plain, (cC14(X1)|~cC4(X1)|~cC12(esk3_1(X1)))).
+#
+#cnf(i_0_77, plain, (cC14(X1)|~cC12(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_102, plain, (~cC14(iV16562))).
+#
+#cnf(i_0_83, plain, (cC8(X1)|~cC6(esk3_1(X1))|~cC4(X1))).
+#
+#cnf(i_0_84, plain, (cC8(X1)|~cC6(esk2_1(X1))|~cC14(X1))).
+#
+#cnf(i_0_85, plain, (cC8(X1)|~cC6(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_103, plain, (~cC4(iV16562))).
+#
+#cnf(i_0_90, plain, (cC2(esk4_1(X1))|cC10(X1)|~cC8(X1))).
+#
+#cnf(i_0_91, plain, (cC2(esk3_1(X1))|cC10(X1)|~cC4(X1))).
+#
+#cnf(i_0_112, plain, (cC10(X1)|~cC4(X1))).
+#
+#cnf(i_0_104, plain, (~cTEST(iV16561))).
+#
+#cnf(i_0_92, plain, (cC2(esk2_1(X1))|cC10(X1)|~cC14(X1))).
+#
+#cnf(i_0_114, plain, (cC10(X1)|~cC14(X1))).
+#
+#cnf(i_0_117, plain, (cC10(X1)|~cTEST(X1))).
+#
+#cnf(i_0_108, plain, (~cTEST(iV16562))).
+#
+#cnf(i_0_96, plain, (cC4(X1)|cC2(esk4_1(X1))|~cC8(X1))).
+#
+#cnf(i_0_98, plain, (cC4(X1)|cC2(esk2_1(X1))|~cC14(X1))).
+#
+#cnf(i_0_121, plain, (cC4(X1)|~cC14(X1))).
+##
+#cnf(i_0_124, plain, (cC4(X1)|~cTEST(X1))).
+##
+#cnf(i_0_99, plain, (cC4(X1)|cC2(esk1_1(X1))|~cC10(X1))).
+##
+#cnf(i_0_128, plain, (cC4(X1)|~cC10(X1))).
+#
+#cnf(i_0_86, plain, (cC16(iV16560)|~cC6(iV16561)|~cC14(iV16560))).
+#
+#cnf(i_0_87, plain, (cC16(iV16560)|~cC6(iV16562)|~cC14(iV16560))).
+##
+#cnf(i_0_105, plain, (cC14(X1)|cC2(esk4_1(X1))|cC10(esk4_1(X1))|~cC8(X1))).
+#
+#cnf(i_0_106, plain, (cC14(X1)|cC2(esk3_1(X1))|cC10(esk3_1(X1))|~cC4(X1))).
+#
+#cnf(i_0_136, plain, (cC14(X1)|cC10(esk3_1(X1))|~cC4(X1))).
+##
+#cnf(i_0_107, plain, (cC14(X1)|cC2(esk1_1(X1))|cC10(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_137, plain, (cC14(X1)|cC10(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_109, plain, (cC4(esk3_1(X1))|cC8(X1)|cC2(esk3_1(X1))|~cC4(X1))).
+##
+#cnf(i_0_110, plain, (cC4(esk2_1(X1))|cC8(X1)|cC2(esk2_1(X1))|~cC14(X1))).
+#
+#cnf(i_0_111, plain, (cC4(esk1_1(X1))|cC8(X1)|cC2(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_138, plain, (cC8(X1)|cC2(esk3_1(X1))|cC10(esk3_1(X1))|~cC4(X1))).
+##
+#cnf(i_0_141, plain, (cC8(X1)|cC10(esk3_1(X1))|~cC4(X1))).
+#
+#cnf(i_0_139, plain, (cC8(X1)|cC2(esk2_1(X1))|cC10(esk2_1(X1))|~cC14(X1))).
+#
+#cnf(i_0_142, plain, (cC8(X1)|cC10(esk2_1(X1))|~cC14(X1))).
+#
+#cnf(i_0_68, plain, (~cC8(X1)|~cC2(esk4_1(X1)))).
+#
+#cnf(i_0_146, plain, (cC10(X1)|~cC8(X1))).
+#
+#cnf(i_0_147, plain, (cC4(X1)|~cC8(X1))).
+#
+#cnf(i_0_151, plain, (cC10(X1)|~cC16(X1))).
+#
+#cnf(i_0_144, plain, (~cC8(iV16561))).
+#
+#cnf(i_0_154, plain, (cC4(X1)|~cC16(X1))).
+#
+#cnf(i_0_143, plain, (cC8(X1)|~cC14(X1))).
+##
+#cnf(i_0_145, plain, (~cC8(iV16562))).
+####
+#cnf(i_0_158, plain, (~cC16(iV16561))).
+#
+#cnf(i_0_163, plain, (cC16(X1)|~cC14(X1))).
+####
+#cnf(i_0_171, plain, (cTEST(X1)|~cTOP(X1)|~cC14(X1))).
+#
+#cnf(i_0_148, plain, (cC14(X1)|cC10(esk4_1(X1))|~cC8(X1))).
+#
+#cnf(i_0_140, plain, (cC8(X1)|cC2(esk1_1(X1))|cC10(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_166, plain, (~cC16(iV16562))).
+#
+#cnf(i_0_177, plain, (cC8(X1)|cC10(esk1_1(X1))|~cC10(X1))).
+#
+#cnf(i_0_45, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC8(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0))).
+#
+#cnf(i_0_180, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0))).
+##
+#cnf(i_0_184, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0))).
+#
+#cnf(i_0_186, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0))).
+#
+#cnf(i_0_188, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC12(iV16562)|~xsd_integer(esk6_0))).
+##
+#cnf(i_0_191, negated_conjecture, (xsd_string(esk6_0)|~cC12(iV16562)|~xsd_integer(esk6_0))).
+#
+#cnf(i_0_192, negated_conjecture, (xsd_string(esk6_0)|~xsd_integer(esk6_0))).
+#
+#cnf(i_0_193, negated_conjecture, (xsd_string(esk6_0))).
+##
+#cnf(i_0_46, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC8(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562))).
+#
+#cnf(i_0_194, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562))).
+#
+#cnf(i_0_198, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562))).
+##
+#cnf(i_0_200, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC14(iV16560)|~cC12(iV16562))).
+#
+#cnf(i_0_202, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC12(iV16562))).
+#
+#cnf(i_0_205, negated_conjecture, (xsd_integer(esk6_0)|~cC12(iV16562))).
+##
+#cnf(i_0_206, negated_conjecture, (xsd_integer(esk6_0))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(the_axiom, conjecture, ((((((((((![X1]:(cowlThing(X1)&~(cowlNothing(X1)))&![X1]:(xsd_string(X1)<=>~(xsd_integer(X1))))&cC18(iV16560))&cC16(iV16560))&cowlThing(iV16560))&cC14(iV16560))&cC8(iV16560))&cowlThing(iV16561))&cC6(iV16561))&cowlThing(iV16562))&cC12(iV16562)), file('./p/KRS150+1.tptp', the_axiom)).
+fof(axiom_0, axiom, ![X1]:(cowlThing(X1)&~(cowlNothing(X1))), file('./p/KRS150+1.tptp', axiom_0)).
+fof(axiom_5, axiom, ![X1]:(cC16(X1)<=>(cC14(X1)&cC8(X1))), file('./p/KRS150+1.tptp', axiom_5)).
+fof(axiom_10, axiom, ![X1]:(cTEST(X1)<=>(cC18(X1)&cTOP(X1))), file('./p/KRS150+1.tptp', axiom_10)).
+fof(axiom_6, axiom, ![X1]:(cC18(X1)<=>(cTOP(X1)&cC16(X1))), file('./p/KRS150+1.tptp', axiom_6)).
+fof(axiom_12, axiom, cTEST(iV16560), file('./p/KRS150+1.tptp', axiom_12)).
+fof(axiom_8, axiom, ![X1]:(cC6(X1)<=>(~(cC2(X1))&~(cC4(X1)))), file('./p/KRS150+1.tptp', axiom_8)).
+fof(axiom_16, axiom, ~(cC4(iV16561)), file('./p/KRS150+1.tptp', axiom_16)).
+fof(axiom_19, axiom, ~(cC2(iV16561)), file('./p/KRS150+1.tptp', axiom_19)).
+fof(axiom_3, axiom, ![X1]:(cC12(X1)<=>(~(cC2(X1))&~(cC10(X1)))), file('./p/KRS150+1.tptp', axiom_3)).
+fof(axiom_21, axiom, ~(cC2(iV16562)), file('./p/KRS150+1.tptp', axiom_21)).
+fof(axiom_20, axiom, ~(cC10(iV16562)), file('./p/KRS150+1.tptp', axiom_20)).
+fof(axiom_1, axiom, ![X1]:(xsd_string(X1)<=>~(xsd_integer(X1))), file('./p/KRS150+1.tptp', axiom_1)).
+fof(c_0_13, negated_conjecture, ~(((((((((((![X1]:(cowlThing(X1)&~(cowlNothing(X1)))&![X1]:(xsd_string(X1)<=>~(xsd_integer(X1))))&cC18(iV16560))&cC16(iV16560))&cowlThing(iV16560))&cC14(iV16560))&cC8(iV16560))&cowlThing(iV16561))&cC6(iV16561))&cowlThing(iV16562))&cC12(iV16562))), inference(assume_negation,[status(cth)],[the_axiom])).
+fof(c_0_14, negated_conjecture, ((~xsd_string(esk6_0)|xsd_integer(esk6_0)|(~cowlThing(esk5_0)|cowlNothing(esk5_0))|~cC18(iV16560)|~cC16(iV16560)|~cowlThing(iV16560)|~cC14(iV16560)|~cC8(iV16560)|~cowlThing(iV16561)|~cC6(iV16561)|~cowlThing(iV16562)|~cC12(iV16562))&(xsd_string(esk6_0)|~xsd_integer(esk6_0)|(~cowlThing(esk5_0)|cowlNothing(esk5_0))|~cC18(iV16560)|~cC16(iV16560)|~cowlThing(iV16560)|~cC14(iV16560)|~cC8(iV16560)|~cowlThing(iV16561)|~cC6(iV16561)|~cowlThing(iV16562)|~cC12(iV16562))), inference(distribute,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[c_0_13])])])])])).
+fof(c_0_15, plain, ![X3]:(cowlThing(X3)&~cowlNothing(X3)), inference(variable_rename,[status(thm)],[inference(fof_simplification,[status(thm)],[axiom_0])])).
+cnf(c_0_16, negated_conjecture, (xsd_string(esk6_0)|cowlNothing(esk5_0)|~xsd_integer(esk6_0)|~cowlThing(esk5_0)|~cC18(iV16560)|~cC16(iV16560)|~cowlThing(iV16560)|~cC14(iV16560)|~cC8(iV16560)|~cowlThing(iV16561)|~cC6(iV16561)|~cowlThing(iV16562)|~cC12(iV16562)), inference(split_conjunct,[status(thm)],[c_0_14])).
+cnf(c_0_17, plain, (cowlThing(X1)), inference(split_conjunct,[status(thm)],[c_0_15])).
+cnf(c_0_18, negated_conjecture, (cowlNothing(esk5_0)|xsd_string(esk6_0)|~xsd_integer(esk6_0)|~cC12(iV16562)|~cC14(iV16560)|~cC16(iV16560)|~cC8(iV16560)|~cC18(iV16560)|~cC6(iV16561)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_16, c_0_17]), c_0_17]), c_0_17]), c_0_17])])).
+cnf(c_0_19, plain, (~cowlNothing(X1)), inference(split_conjunct,[status(thm)],[c_0_15])).
+fof(c_0_20, plain, ![X14]:(((cC14(X14)|~cC16(X14))&(cC8(X14)|~cC16(X14)))&(~cC14(X14)|~cC8(X14)|cC16(X14))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[axiom_5])])])).
+cnf(c_0_21, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC8(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0)), inference(sr,[status(thm)],[c_0_18, c_0_19])).
+cnf(c_0_22, plain, (cC8(X1)|~cC16(X1)), inference(split_conjunct,[status(thm)],[c_0_20])).
+fof(c_0_23, plain, ![X25]:(((cC18(X25)|~cTEST(X25))&(cTOP(X25)|~cTEST(X25)))&(~cC18(X25)|~cTOP(X25)|cTEST(X25))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[axiom_10])])])).
+fof(c_0_24, plain, ![X15]:(((cTOP(X15)|~cC18(X15))&(cC16(X15)|~cC18(X15)))&(~cTOP(X15)|~cC16(X15)|cC18(X15))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[axiom_6])])])).
+cnf(c_0_25, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0)), inference(pm,[status(thm)],[c_0_21, c_0_22])).
+cnf(c_0_26, plain, (cC18(X1)|~cTEST(X1)), inference(split_conjunct,[status(thm)],[c_0_23])).
+cnf(c_0_27, plain, (cTEST(iV16560)), inference(split_conjunct,[status(thm)],[axiom_12])).
+cnf(c_0_28, plain, (cC16(X1)|~cC18(X1)), inference(split_conjunct,[status(thm)],[c_0_24])).
+cnf(c_0_29, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_25, c_0_26]), c_0_27])])).
+cnf(c_0_30, plain, (cC16(X1)|~cTEST(X1)), inference(pm,[status(thm)],[c_0_28, c_0_26])).
+cnf(c_0_31, plain, (cC14(X1)|~cC16(X1)), inference(split_conjunct,[status(thm)],[c_0_20])).
+cnf(c_0_32, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC14(iV16560)|~cC12(iV16562)|~xsd_integer(esk6_0)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_29, c_0_30]), c_0_27])])).
+cnf(c_0_33, plain, (cC14(X1)|~cTEST(X1)), inference(pm,[status(thm)],[c_0_31, c_0_30])).
+fof(c_0_34, plain, ![X20]:(((~cC2(X20)|~cC6(X20))&(~cC4(X20)|~cC6(X20)))&(cC2(X20)|cC4(X20)|cC6(X20))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[axiom_8])])])])).
+fof(c_0_35, plain, ~cC4(iV16561), inference(fof_simplification,[status(thm)],[axiom_16])).
+fof(c_0_36, plain, ~cC2(iV16561), inference(fof_simplification,[status(thm)],[axiom_19])).
+cnf(c_0_37, negated_conjecture, (xsd_string(esk6_0)|~cC6(iV16561)|~cC12(iV16562)|~xsd_integer(esk6_0)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_32, c_0_33]), c_0_27])])).
+cnf(c_0_38, plain, (cC2(X1)|cC4(X1)|cC6(X1)), inference(split_conjunct,[status(thm)],[c_0_34])).
+cnf(c_0_39, plain, (~cC4(iV16561)), inference(split_conjunct,[status(thm)],[c_0_35])).
+cnf(c_0_40, plain, (~cC2(iV16561)), inference(split_conjunct,[status(thm)],[c_0_36])).
+fof(c_0_41, plain, ![X9]:(((~cC2(X9)|~cC12(X9))&(~cC10(X9)|~cC12(X9)))&(cC2(X9)|cC10(X9)|cC12(X9))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[axiom_3])])])])).
+fof(c_0_42, plain, ~cC2(iV16562), inference(fof_simplification,[status(thm)],[axiom_21])).
+fof(c_0_43, plain, ~cC10(iV16562), inference(fof_simplification,[status(thm)],[axiom_20])).
+cnf(c_0_44, negated_conjecture, (xsd_string(esk6_0)|~cC12(iV16562)|~xsd_integer(esk6_0)), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_37, c_0_38]), c_0_39]), c_0_40])).
+cnf(c_0_45, plain, (cC2(X1)|cC10(X1)|cC12(X1)), inference(split_conjunct,[status(thm)],[c_0_41])).
+cnf(c_0_46, plain, (~cC2(iV16562)), inference(split_conjunct,[status(thm)],[c_0_42])).
+cnf(c_0_47, plain, (~cC10(iV16562)), inference(split_conjunct,[status(thm)],[c_0_43])).
+fof(c_0_48, plain, ![X4]:((~xsd_string(X4)|~xsd_integer(X4))&(xsd_integer(X4)|xsd_string(X4))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[axiom_1])])])).
+cnf(c_0_49, negated_conjecture, (xsd_integer(esk6_0)|cowlNothing(esk5_0)|~xsd_string(esk6_0)|~cowlThing(esk5_0)|~cC18(iV16560)|~cC16(iV16560)|~cowlThing(iV16560)|~cC14(iV16560)|~cC8(iV16560)|~cowlThing(iV16561)|~cC6(iV16561)|~cowlThing(iV16562)|~cC12(iV16562)), inference(split_conjunct,[status(thm)],[c_0_14])).
+cnf(c_0_50, negated_conjecture, (xsd_string(esk6_0)|~xsd_integer(esk6_0)), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_44, c_0_45]), c_0_46]), c_0_47])).
+cnf(c_0_51, plain, (xsd_integer(X1)|xsd_string(X1)), inference(split_conjunct,[status(thm)],[c_0_48])).
+cnf(c_0_52, negated_conjecture, (cowlNothing(esk5_0)|xsd_integer(esk6_0)|~xsd_string(esk6_0)|~cC12(iV16562)|~cC14(iV16560)|~cC16(iV16560)|~cC8(iV16560)|~cC18(iV16560)|~cC6(iV16561)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_49, c_0_17]), c_0_17]), c_0_17]), c_0_17])])).
+cnf(c_0_53, negated_conjecture, (xsd_string(esk6_0)), inference(pm,[status(thm)],[c_0_50, c_0_51])).
+cnf(c_0_54, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC8(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_52, c_0_53])]), c_0_19])).
+cnf(c_0_55, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC18(iV16560)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)), inference(pm,[status(thm)],[c_0_54, c_0_22])).
+cnf(c_0_56, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC16(iV16560)|~cC14(iV16560)|~cC12(iV16562)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_55, c_0_26]), c_0_27])])).
+cnf(c_0_57, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC14(iV16560)|~cC12(iV16562)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_56, c_0_30]), c_0_27])])).
+cnf(c_0_58, negated_conjecture, (xsd_integer(esk6_0)|~cC6(iV16561)|~cC12(iV16562)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_57, c_0_33]), c_0_27])])).
+cnf(c_0_59, negated_conjecture, (xsd_integer(esk6_0)|~cC12(iV16562)), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_58, c_0_38]), c_0_39]), c_0_40])).
+cnf(c_0_60, plain, (~xsd_string(X1)|~xsd_integer(X1)), inference(split_conjunct,[status(thm)],[c_0_48])).
+cnf(c_0_61, negated_conjecture, (xsd_integer(esk6_0)), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_59, c_0_45]), c_0_46]), c_0_47])).
+cnf(c_0_62, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_60, c_0_61]), c_0_53])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 63
+# Proof object clause steps            : 37
+# Proof object formula steps           : 26
+# Proof object conjectures             : 23
+# Proof object clause conjectures      : 20
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 17
+# Proof object initial formulas used   : 13
+# Proof object generating inferences   : 16
+# Proof object simplifying inferences  : 36
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 25
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 46
+# Removed in clause preprocessing      : 4
+# Initial clauses in saturation        : 42
+# Processed clauses                    : 149
+# ...of these trivial                  : 2
+# ...subsumed                          : 22
+# ...remaining for further processing  : 125
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 29
+# Backward-rewritten                   : 2
+# Generated clauses                    : 161
+# ...of the previous two non-trivial   : 123
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 161
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 94
+#    Positive orientable unit clauses  : 8
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 15
+#    Non-unit-clauses                  : 71
+# Current number of unprocessed clauses: 9
+# ...number of literals in the above   : 39
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 32
+# Clause-clause subsumption calls (NU) : 1161
+# Rec. Clause-clause subsumption calls : 796
+# Non-unit clause-clause subsumptions  : 37
+# Unit Clause-clause subsumption calls : 253
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 2
+# BW rewrite match successes           : 2
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 3418

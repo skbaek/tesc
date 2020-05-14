@@ -1,0 +1,72 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SYN256-1
+% SZS output start Proof for SYN256-1
+fof(f1627,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f522,f1419,f1454,f1626])).
+fof(f1626,plain,(
+  ~spl0_34 | spl0_79),
+  inference(avatar_contradiction_clause,[],[f1625])).
+fof(f1625,plain,(
+  $false | (~spl0_34 | spl0_79)),
+  inference(subsumption_resolution,[],[f1624,f722])).
+fof(f722,plain,(
+  ~n2(c) | spl0_79),
+  inference(avatar_component_clause,[],[f721])).
+fof(f721,plain,(
+  spl0_79 <=> n2(c)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_79])])).
+fof(f1624,plain,(
+  n2(c) | ~spl0_34),
+  inference(resolution,[],[f1620,f24])).
+fof(f24,axiom,(
+  l0(c)),
+  file('./p/SYN256-1.tptp',unknown)).
+fof(f1620,plain,(
+  ( ! [X0] : (~l0(X0) | n2(X0)) ) | ~spl0_34),
+  inference(resolution,[],[f521,f175])).
+fof(f175,axiom,(
+  ( ! [X6,X10,X11] : (~p1(X11,X6,X10) | n2(X10)) )),
+  file('./p/SYN256-1.tptp',unknown)).
+fof(f521,plain,(
+  ( ! [X10] : (p1(X10,X10,X10) | ~l0(X10)) ) | ~spl0_34),
+  inference(avatar_component_clause,[],[f520])).
+fof(f520,plain,(
+  spl0_34 <=> ! [X10] : (~l0(X10) | p1(X10,X10,X10))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_34])])).
+fof(f1454,plain,(
+  ~spl0_33),
+  inference(avatar_contradiction_clause,[],[f1453])).
+fof(f1453,plain,(
+  $false | ~spl0_33),
+  inference(resolution,[],[f518,f19])).
+fof(f19,axiom,(
+  ( ! [X0,X1] : (m0(X0,d,X1)) )),
+  file('./p/SYN256-1.tptp',unknown)).
+fof(f518,plain,(
+  ( ! [X6,X11] : (~m0(X11,X6,b)) ) | ~spl0_33),
+  inference(avatar_component_clause,[],[f517])).
+fof(f517,plain,(
+  spl0_33 <=> ! [X11,X6] : ~m0(X11,X6,b)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_33])])).
+fof(f1419,plain,(
+  ~spl0_79),
+  inference(avatar_split_clause,[],[f369,f721])).
+fof(f369,axiom,(
+  ~n2(c)),
+  file('./p/SYN256-1.tptp',unknown)).
+fof(f522,plain,(
+  spl0_33 | spl0_34),
+  inference(avatar_split_clause,[],[f102,f520,f517])).
+fof(f102,axiom,(
+  ( ! [X6,X10,X11] : (~l0(X10) | ~m0(X11,X6,b) | p1(X10,X10,X10)) )),
+  file('./p/SYN256-1.tptp',unknown)).
+% SZS output end Proof for SYN256-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5884
+% Time elapsed: 0.007 s
+% ------------------------------
+% ------------------------------

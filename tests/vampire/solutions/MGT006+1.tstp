@@ -1,0 +1,258 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for MGT006+1
+% SZS output start Proof for MGT006+1
+fof(f205,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f44,f72,f74,f79,f111,f140,f157,f172,f204])).
+fof(f204,plain,(
+  spl8_1 | ~spl8_17),
+  inference(avatar_contradiction_clause,[],[f203])).
+fof(f203,plain,(
+  $false | (spl8_1 | ~spl8_17)),
+  inference(subsumption_resolution,[],[f202,f39])).
+fof(f39,plain,(
+  ~greater(sK3,sK2) | spl8_1),
+  inference(avatar_component_clause,[],[f37])).
+fof(f37,plain,(
+  spl8_1 <=> greater(sK3,sK2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_1])])).
+fof(f202,plain,(
+  greater(sK3,sK2) | ~spl8_17),
+  inference(resolution,[],[f201,f31])).
+fof(f31,plain,(
+  reliability(sK1,sK3,sK7)),
+  inference(cnf_transformation,[],[f21])).
+fof(f21,plain,(
+  (~greater(sK5,sK4) | ~greater(sK3,sK2)) & greater(sK7,sK6) & accountability(sK1,sK5,sK7) & accountability(sK1,sK4,sK6) & reliability(sK1,sK3,sK7) & reliability(sK1,sK2,sK6) & reorganization_free(sK1,sK6,sK7) & organization(sK1,sK7) & organization(sK1,sK6)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1,sK2,sK3,sK4,sK5,sK6,sK7])],[f15,f20])).
+fof(f20,plain,(
+  ? [X0,X1,X2,X3,X4,X5,X6] : ((~greater(X4,X3) | ~greater(X2,X1)) & greater(X6,X5) & accountability(X0,X4,X6) & accountability(X0,X3,X5) & reliability(X0,X2,X6) & reliability(X0,X1,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5)) => ((~greater(sK5,sK4) | ~greater(sK3,sK2)) & greater(sK7,sK6) & accountability(sK1,sK5,sK7) & accountability(sK1,sK4,sK6) & reliability(sK1,sK3,sK7) & reliability(sK1,sK2,sK6) & reorganization_free(sK1,sK6,sK7) & organization(sK1,sK7) & organization(sK1,sK6))),
+  introduced(choice_axiom,[])).
+fof(f15,plain,(
+  ? [X0,X1,X2,X3,X4,X5,X6] : ((~greater(X4,X3) | ~greater(X2,X1)) & greater(X6,X5) & accountability(X0,X4,X6) & accountability(X0,X3,X5) & reliability(X0,X2,X6) & reliability(X0,X1,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5))),
+  inference(flattening,[],[f14])).
+fof(f14,plain,(
+  ? [X0,X1,X2,X3,X4,X5,X6] : ((~greater(X4,X3) | ~greater(X2,X1)) & (greater(X6,X5) & accountability(X0,X4,X6) & accountability(X0,X3,X5) & reliability(X0,X2,X6) & reliability(X0,X1,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5)))),
+  inference(ennf_transformation,[],[f8])).
+fof(f8,plain,(
+  ~! [X0,X1,X2,X3,X4,X5,X6] : ((greater(X6,X5) & accountability(X0,X4,X6) & accountability(X0,X3,X5) & reliability(X0,X2,X6) & reliability(X0,X1,X5) & reorganization_free(X0,X5,X6) & organization(X0,X6) & organization(X0,X5)) => (greater(X4,X3) & greater(X2,X1)))),
+  inference(rectify,[],[f5])).
+fof(f5,negated_conjecture,(
+  ~! [X0,X6,X7,X8,X9,X4,X5] : ((greater(X5,X4) & accountability(X0,X9,X5) & accountability(X0,X8,X4) & reliability(X0,X7,X5) & reliability(X0,X6,X4) & reorganization_free(X0,X4,X5) & organization(X0,X5) & organization(X0,X4)) => (greater(X9,X8) & greater(X7,X6)))),
+  inference(negated_conjecture,[],[f4])).
+fof(f4,conjecture,(
+  ! [X0,X6,X7,X8,X9,X4,X5] : ((greater(X5,X4) & accountability(X0,X9,X5) & accountability(X0,X8,X4) & reliability(X0,X7,X5) & reliability(X0,X6,X4) & reorganization_free(X0,X4,X5) & organization(X0,X5) & organization(X0,X4)) => (greater(X9,X8) & greater(X7,X6)))),
+  file('./p/MGT006+1.tptp',unknown)).
+fof(f201,plain,(
+  ( ! [X0] : (~reliability(sK1,X0,sK7) | greater(X0,sK2)) ) | ~spl8_17),
+  inference(resolution,[],[f139,f30])).
+fof(f30,plain,(
+  reliability(sK1,sK2,sK6)),
+  inference(cnf_transformation,[],[f21])).
+fof(f139,plain,(
+  ( ! [X2,X3] : (~reliability(sK1,X3,sK6) | greater(X2,X3) | ~reliability(sK1,X2,sK7)) ) | ~spl8_17),
+  inference(avatar_component_clause,[],[f138])).
+fof(f138,plain,(
+  spl8_17 <=> ! [X3,X2] : (greater(X2,X3) | ~reliability(sK1,X3,sK6) | ~reliability(sK1,X2,sK7))),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_17])])).
+fof(f172,plain,(
+  ~spl8_12),
+  inference(avatar_contradiction_clause,[],[f171])).
+fof(f171,plain,(
+  $false | ~spl8_12),
+  inference(subsumption_resolution,[],[f170,f27])).
+fof(f27,plain,(
+  organization(sK1,sK6)),
+  inference(cnf_transformation,[],[f21])).
+fof(f170,plain,(
+  ~organization(sK1,sK6) | ~spl8_12),
+  inference(resolution,[],[f110,f22])).
+fof(f22,plain,(
+  ( ! [X0,X1] : (reproducibility(X0,sK0(X0,X1),X1) | ~organization(X0,X1)) )),
+  inference(cnf_transformation,[],[f17])).
+fof(f17,plain,(
+  ! [X0,X1] : (reproducibility(X0,sK0(X0,X1),X1) | ~organization(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f9,f16])).
+fof(f16,plain,(
+  ! [X1,X0] : (? [X2] : reproducibility(X0,X2,X1) => reproducibility(X0,sK0(X0,X1),X1))),
+  introduced(choice_axiom,[])).
+fof(f9,plain,(
+  ! [X0,X1] : (? [X2] : reproducibility(X0,X2,X1) | ~organization(X0,X1))),
+  inference(ennf_transformation,[],[f1])).
+fof(f1,axiom,(
+  ! [X0,X1] : (organization(X0,X1) => ? [X2] : reproducibility(X0,X2,X1))),
+  file('./p/MGT006+1.tptp',unknown)).
+fof(f110,plain,(
+  ( ! [X2] : (~reproducibility(sK1,X2,sK6)) ) | ~spl8_12),
+  inference(avatar_component_clause,[],[f109])).
+fof(f109,plain,(
+  spl8_12 <=> ! [X2] : ~reproducibility(sK1,X2,sK6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_12])])).
+fof(f157,plain,(
+  ~spl8_11),
+  inference(avatar_contradiction_clause,[],[f156])).
+fof(f156,plain,(
+  $false | ~spl8_11),
+  inference(subsumption_resolution,[],[f155,f28])).
+fof(f28,plain,(
+  organization(sK1,sK7)),
+  inference(cnf_transformation,[],[f21])).
+fof(f155,plain,(
+  ~organization(sK1,sK7) | ~spl8_11),
+  inference(resolution,[],[f107,f22])).
+fof(f107,plain,(
+  ( ! [X1] : (~reproducibility(sK1,X1,sK7)) ) | ~spl8_11),
+  inference(avatar_component_clause,[],[f106])).
+fof(f106,plain,(
+  spl8_11 <=> ! [X1] : ~reproducibility(sK1,X1,sK7)),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_11])])).
+fof(f140,plain,(
+  spl8_17 | spl8_12 | spl8_11),
+  inference(avatar_split_clause,[],[f136,f106,f109,f138])).
+fof(f136,plain,(
+  ( ! [X2,X0,X3,X1] : (~reproducibility(sK1,X0,sK7) | ~reproducibility(sK1,X1,sK6) | greater(X2,X3) | ~reliability(sK1,X2,sK7) | ~reliability(sK1,X3,sK6)) )),
+  inference(subsumption_resolution,[],[f135,f48])).
+fof(f48,plain,(
+  ( ! [X0,X1] : (~reproducibility(sK1,X1,sK6) | ~reproducibility(sK1,X0,sK7) | greater(X0,X1)) )),
+  inference(subsumption_resolution,[],[f47,f27])).
+fof(f47,plain,(
+  ( ! [X0,X1] : (~reproducibility(sK1,X0,sK7) | ~reproducibility(sK1,X1,sK6) | greater(X0,X1) | ~organization(sK1,sK6)) )),
+  inference(subsumption_resolution,[],[f46,f28])).
+fof(f46,plain,(
+  ( ! [X0,X1] : (~reproducibility(sK1,X0,sK7) | ~reproducibility(sK1,X1,sK6) | greater(X0,X1) | ~organization(sK1,sK7) | ~organization(sK1,sK6)) )),
+  inference(subsumption_resolution,[],[f45,f34])).
+fof(f34,plain,(
+  greater(sK7,sK6)),
+  inference(cnf_transformation,[],[f21])).
+fof(f45,plain,(
+  ( ! [X0,X1] : (~greater(sK7,sK6) | ~reproducibility(sK1,X0,sK7) | ~reproducibility(sK1,X1,sK6) | greater(X0,X1) | ~organization(sK1,sK7) | ~organization(sK1,sK6)) )),
+  inference(resolution,[],[f26,f29])).
+fof(f29,plain,(
+  reorganization_free(sK1,sK6,sK7)),
+  inference(cnf_transformation,[],[f21])).
+fof(f26,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~reorganization_free(X0,X3,X4) | ~greater(X4,X3) | ~reproducibility(X0,X2,X4) | ~reproducibility(X0,X1,X3) | greater(X2,X1) | ~organization(X0,X4) | ~organization(X0,X3)) )),
+  inference(cnf_transformation,[],[f13])).
+fof(f13,plain,(
+  ! [X0,X1,X2,X3,X4] : (greater(X2,X1) | ~greater(X4,X3) | ~reproducibility(X0,X2,X4) | ~reproducibility(X0,X1,X3) | ~reorganization_free(X0,X3,X4) | ~organization(X0,X4) | ~organization(X0,X3))),
+  inference(flattening,[],[f12])).
+fof(f12,plain,(
+  ! [X0,X1,X2,X3,X4] : (greater(X2,X1) | (~greater(X4,X3) | ~reproducibility(X0,X2,X4) | ~reproducibility(X0,X1,X3) | ~reorganization_free(X0,X3,X4) | ~organization(X0,X4) | ~organization(X0,X3)))),
+  inference(ennf_transformation,[],[f7])).
+fof(f7,plain,(
+  ! [X0,X1,X2,X3,X4] : ((greater(X4,X3) & reproducibility(X0,X2,X4) & reproducibility(X0,X1,X3) & reorganization_free(X0,X3,X4) & organization(X0,X4) & organization(X0,X3)) => greater(X2,X1))),
+  inference(rectify,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X10,X11,X4,X5] : ((greater(X5,X4) & reproducibility(X0,X11,X5) & reproducibility(X0,X10,X4) & reorganization_free(X0,X4,X5) & organization(X0,X5) & organization(X0,X4)) => greater(X11,X10))),
+  file('./p/MGT006+1.tptp',unknown)).
+fof(f135,plain,(
+  ( ! [X2,X0,X3,X1] : (~reproducibility(sK1,X0,sK7) | ~reproducibility(sK1,X1,sK6) | greater(X2,X3) | ~greater(X0,X1) | ~reliability(sK1,X2,sK7) | ~reliability(sK1,X3,sK6)) )),
+  inference(subsumption_resolution,[],[f133,f27])).
+fof(f133,plain,(
+  ( ! [X2,X0,X3,X1] : (~reproducibility(sK1,X0,sK7) | ~reproducibility(sK1,X1,sK6) | greater(X2,X3) | ~greater(X0,X1) | ~reliability(sK1,X2,sK7) | ~reliability(sK1,X3,sK6) | ~organization(sK1,sK6)) )),
+  inference(resolution,[],[f52,f32])).
+fof(f32,plain,(
+  accountability(sK1,sK4,sK6)),
+  inference(cnf_transformation,[],[f21])).
+fof(f52,plain,(
+  ( ! [X12,X10,X8,X7,X13,X11,X9] : (~accountability(X9,X13,X10) | ~reproducibility(sK1,X7,sK7) | ~reproducibility(X9,X8,X10) | greater(X11,X12) | ~greater(X7,X8) | ~reliability(sK1,X11,sK7) | ~reliability(X9,X12,X10) | ~organization(X9,X10)) )),
+  inference(subsumption_resolution,[],[f50,f28])).
+fof(f50,plain,(
+  ( ! [X12,X10,X8,X7,X13,X11,X9] : (~greater(X7,X8) | ~reproducibility(sK1,X7,sK7) | ~reproducibility(X9,X8,X10) | greater(X11,X12) | ~accountability(X9,X13,X10) | ~reliability(sK1,X11,sK7) | ~reliability(X9,X12,X10) | ~organization(sK1,sK7) | ~organization(X9,X10)) )),
+  inference(resolution,[],[f23,f33])).
+fof(f33,plain,(
+  accountability(sK1,sK5,sK7)),
+  inference(cnf_transformation,[],[f21])).
+fof(f23,plain,(
+  ( ! [X6,X4,X2,X0,X8,X7,X5,X3,X1,X9] : (~accountability(X1,X7,X3) | ~greater(X9,X8) | ~reproducibility(X1,X9,X3) | ~reproducibility(X0,X8,X2) | greater(X5,X4) | ~accountability(X0,X6,X2) | ~reliability(X1,X5,X3) | ~reliability(X0,X4,X2) | ~organization(X1,X3) | ~organization(X0,X2)) )),
+  inference(cnf_transformation,[],[f19])).
+fof(f19,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8,X9] : (((greater(X9,X8) | ~greater(X7,X6) | ~greater(X5,X4)) & ((greater(X7,X6) & greater(X5,X4)) | ~greater(X9,X8))) | ~reproducibility(X1,X9,X3) | ~reproducibility(X0,X8,X2) | ~accountability(X1,X7,X3) | ~accountability(X0,X6,X2) | ~reliability(X1,X5,X3) | ~reliability(X0,X4,X2) | ~organization(X1,X3) | ~organization(X0,X2))),
+  inference(flattening,[],[f18])).
+fof(f18,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8,X9] : (((greater(X9,X8) | (~greater(X7,X6) | ~greater(X5,X4))) & ((greater(X7,X6) & greater(X5,X4)) | ~greater(X9,X8))) | ~reproducibility(X1,X9,X3) | ~reproducibility(X0,X8,X2) | ~accountability(X1,X7,X3) | ~accountability(X0,X6,X2) | ~reliability(X1,X5,X3) | ~reliability(X0,X4,X2) | ~organization(X1,X3) | ~organization(X0,X2))),
+  inference(nnf_transformation,[],[f11])).
+fof(f11,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8,X9] : ((greater(X9,X8) <=> (greater(X7,X6) & greater(X5,X4))) | ~reproducibility(X1,X9,X3) | ~reproducibility(X0,X8,X2) | ~accountability(X1,X7,X3) | ~accountability(X0,X6,X2) | ~reliability(X1,X5,X3) | ~reliability(X0,X4,X2) | ~organization(X1,X3) | ~organization(X0,X2))),
+  inference(flattening,[],[f10])).
+fof(f10,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8,X9] : ((greater(X9,X8) <=> (greater(X7,X6) & greater(X5,X4))) | (~reproducibility(X1,X9,X3) | ~reproducibility(X0,X8,X2) | ~accountability(X1,X7,X3) | ~accountability(X0,X6,X2) | ~reliability(X1,X5,X3) | ~reliability(X0,X4,X2) | ~organization(X1,X3) | ~organization(X0,X2)))),
+  inference(ennf_transformation,[],[f6])).
+fof(f6,plain,(
+  ! [X0,X1,X2,X3,X4,X5,X6,X7,X8,X9] : ((reproducibility(X1,X9,X3) & reproducibility(X0,X8,X2) & accountability(X1,X7,X3) & accountability(X0,X6,X2) & reliability(X1,X5,X3) & reliability(X0,X4,X2) & organization(X1,X3) & organization(X0,X2)) => (greater(X9,X8) <=> (greater(X7,X6) & greater(X5,X4))))),
+  inference(rectify,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X3,X4,X5,X6,X7,X8,X9,X10,X11] : ((reproducibility(X3,X11,X5) & reproducibility(X0,X10,X4) & accountability(X3,X9,X5) & accountability(X0,X8,X4) & reliability(X3,X7,X5) & reliability(X0,X6,X4) & organization(X3,X5) & organization(X0,X4)) => (greater(X11,X10) <=> (greater(X9,X8) & greater(X7,X6))))),
+  file('./p/MGT006+1.tptp',unknown)).
+fof(f111,plain,(
+  spl8_11 | spl8_12 | spl8_2 | spl8_3 | ~spl8_6),
+  inference(avatar_split_clause,[],[f104,f70,f59,f41,f109,f106])).
+fof(f41,plain,(
+  spl8_2 <=> greater(sK5,sK4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_2])])).
+fof(f59,plain,(
+  spl8_3 <=> ! [X5] : ~reliability(sK1,X5,sK6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_3])])).
+fof(f70,plain,(
+  spl8_6 <=> ! [X9,X11,X13,X7,X8,X10] : (~greater(X7,X8) | ~organization(X9,X10) | ~reliability(X9,X13,X10) | ~accountability(X9,X11,X10) | greater(sK5,X11) | ~reproducibility(X9,X8,X10) | ~reproducibility(sK1,X7,sK7))),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_6])])).
+fof(f104,plain,(
+  ( ! [X2,X0,X1] : (~reliability(sK1,X0,sK6) | greater(sK5,sK4) | ~reproducibility(sK1,X2,sK6) | ~reproducibility(sK1,X1,sK7)) ) | ~spl8_6),
+  inference(subsumption_resolution,[],[f103,f48])).
+fof(f103,plain,(
+  ( ! [X2,X0,X1] : (~reliability(sK1,X0,sK6) | ~greater(X1,X2) | greater(sK5,sK4) | ~reproducibility(sK1,X2,sK6) | ~reproducibility(sK1,X1,sK7)) ) | ~spl8_6),
+  inference(subsumption_resolution,[],[f101,f27])).
+fof(f101,plain,(
+  ( ! [X2,X0,X1] : (~organization(sK1,sK6) | ~reliability(sK1,X0,sK6) | ~greater(X1,X2) | greater(sK5,sK4) | ~reproducibility(sK1,X2,sK6) | ~reproducibility(sK1,X1,sK7)) ) | ~spl8_6),
+  inference(resolution,[],[f71,f32])).
+fof(f71,plain,(
+  ( ! [X10,X8,X7,X13,X11,X9] : (~accountability(X9,X11,X10) | ~organization(X9,X10) | ~reliability(X9,X13,X10) | ~greater(X7,X8) | greater(sK5,X11) | ~reproducibility(X9,X8,X10) | ~reproducibility(sK1,X7,sK7)) ) | ~spl8_6),
+  inference(avatar_component_clause,[],[f70])).
+fof(f79,plain,(
+  ~spl8_5),
+  inference(avatar_contradiction_clause,[],[f78])).
+fof(f78,plain,(
+  $false | ~spl8_5),
+  inference(resolution,[],[f68,f31])).
+fof(f68,plain,(
+  ( ! [X12] : (~reliability(sK1,X12,sK7)) ) | ~spl8_5),
+  inference(avatar_component_clause,[],[f67])).
+fof(f67,plain,(
+  spl8_5 <=> ! [X12] : ~reliability(sK1,X12,sK7)),
+  introduced(avatar_definition,[new_symbols(naming,[spl8_5])])).
+fof(f74,plain,(
+  ~spl8_3),
+  inference(avatar_contradiction_clause,[],[f73])).
+fof(f73,plain,(
+  $false | ~spl8_3),
+  inference(resolution,[],[f60,f30])).
+fof(f60,plain,(
+  ( ! [X5] : (~reliability(sK1,X5,sK6)) ) | ~spl8_3),
+  inference(avatar_component_clause,[],[f59])).
+fof(f72,plain,(
+  spl8_5 | spl8_6),
+  inference(avatar_split_clause,[],[f65,f70,f67])).
+fof(f65,plain,(
+  ( ! [X12,X10,X8,X7,X13,X11,X9] : (~greater(X7,X8) | ~reproducibility(sK1,X7,sK7) | ~reproducibility(X9,X8,X10) | greater(sK5,X11) | ~accountability(X9,X11,X10) | ~reliability(sK1,X12,sK7) | ~reliability(X9,X13,X10) | ~organization(X9,X10)) )),
+  inference(subsumption_resolution,[],[f56,f28])).
+fof(f56,plain,(
+  ( ! [X12,X10,X8,X7,X13,X11,X9] : (~greater(X7,X8) | ~reproducibility(sK1,X7,sK7) | ~reproducibility(X9,X8,X10) | greater(sK5,X11) | ~accountability(X9,X11,X10) | ~reliability(sK1,X12,sK7) | ~reliability(X9,X13,X10) | ~organization(sK1,sK7) | ~organization(X9,X10)) )),
+  inference(resolution,[],[f24,f33])).
+fof(f24,plain,(
+  ( ! [X6,X4,X2,X0,X8,X7,X5,X3,X1,X9] : (~accountability(X1,X7,X3) | ~greater(X9,X8) | ~reproducibility(X1,X9,X3) | ~reproducibility(X0,X8,X2) | greater(X7,X6) | ~accountability(X0,X6,X2) | ~reliability(X1,X5,X3) | ~reliability(X0,X4,X2) | ~organization(X1,X3) | ~organization(X0,X2)) )),
+  inference(cnf_transformation,[],[f19])).
+fof(f44,plain,(
+  ~spl8_1 | ~spl8_2),
+  inference(avatar_split_clause,[],[f35,f41,f37])).
+fof(f35,plain,(
+  ~greater(sK5,sK4) | ~greater(sK3,sK2)),
+  inference(cnf_transformation,[],[f21])).
+% SZS output end Proof for MGT006+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.002 s
+% ------------------------------
+% ------------------------------

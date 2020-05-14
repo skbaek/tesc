@@ -1,0 +1,72 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SET676+3
+% SZS output start Proof for SET676+3
+fof(f145,plain,(
+  $false),
+  inference(resolution,[],[f142,f119])).
+fof(f119,plain,(
+  ~ilf_type(cross_product(sK11,sK11),identity_relation_of_type(sK11))),
+  inference(cnf_transformation,[],[f78])).
+fof(f78,plain,(
+  ~ilf_type(cross_product(sK11,sK11),identity_relation_of_type(sK11)) & ilf_type(sK11,set_type)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK11])],[f46,f77])).
+fof(f77,plain,(
+  ? [X0] : (~ilf_type(cross_product(X0,X0),identity_relation_of_type(X0)) & ilf_type(X0,set_type)) => (~ilf_type(cross_product(sK11,sK11),identity_relation_of_type(sK11)) & ilf_type(sK11,set_type))),
+  introduced(choice_axiom,[])).
+fof(f46,plain,(
+  ? [X0] : (~ilf_type(cross_product(X0,X0),identity_relation_of_type(X0)) & ilf_type(X0,set_type))),
+  inference(ennf_transformation,[],[f21])).
+fof(f21,negated_conjecture,(
+  ~! [X0] : (ilf_type(X0,set_type) => ilf_type(cross_product(X0,X0),identity_relation_of_type(X0)))),
+  inference(negated_conjecture,[],[f20])).
+fof(f20,conjecture,(
+  ! [X0] : (ilf_type(X0,set_type) => ilf_type(cross_product(X0,X0),identity_relation_of_type(X0)))),
+  file('./p/SET676+3.tptp',unknown)).
+fof(f142,plain,(
+  ( ! [X0] : (ilf_type(cross_product(X0,X0),identity_relation_of_type(X0))) )),
+  inference(subsumption_resolution,[],[f141,f117])).
+fof(f117,plain,(
+  ( ! [X0] : (ilf_type(X0,set_type)) )),
+  inference(cnf_transformation,[],[f19])).
+fof(f19,axiom,(
+  ! [X0] : ilf_type(X0,set_type)),
+  file('./p/SET676+3.tptp',unknown)).
+fof(f141,plain,(
+  ( ! [X0] : (ilf_type(cross_product(X0,X0),identity_relation_of_type(X0)) | ~ilf_type(X0,set_type)) )),
+  inference(subsumption_resolution,[],[f140,f117])).
+fof(f140,plain,(
+  ( ! [X0] : (ilf_type(cross_product(X0,X0),identity_relation_of_type(X0)) | ~ilf_type(cross_product(X0,X0),set_type) | ~ilf_type(X0,set_type)) )),
+  inference(duplicate_literal_removal,[],[f135])).
+fof(f135,plain,(
+  ( ! [X0] : (ilf_type(cross_product(X0,X0),identity_relation_of_type(X0)) | ~ilf_type(cross_product(X0,X0),set_type) | ~ilf_type(X0,set_type) | ~ilf_type(X0,set_type) | ~ilf_type(X0,set_type)) )),
+  inference(resolution,[],[f88,f79])).
+fof(f79,plain,(
+  ( ! [X0,X1] : (ilf_type(cross_product(X0,X1),relation_type(X0,X1)) | ~ilf_type(X1,set_type) | ~ilf_type(X0,set_type)) )),
+  inference(cnf_transformation,[],[f23])).
+fof(f23,plain,(
+  ! [X0] : (! [X1] : (ilf_type(cross_product(X0,X1),relation_type(X0,X1)) | ~ilf_type(X1,set_type)) | ~ilf_type(X0,set_type))),
+  inference(ennf_transformation,[],[f1])).
+fof(f1,axiom,(
+  ! [X0] : (ilf_type(X0,set_type) => ! [X1] : (ilf_type(X1,set_type) => ilf_type(cross_product(X0,X1),relation_type(X0,X1))))),
+  file('./p/SET676+3.tptp',unknown)).
+fof(f88,plain,(
+  ( ! [X0,X1] : (~ilf_type(X1,relation_type(X0,X0)) | ilf_type(X1,identity_relation_of_type(X0)) | ~ilf_type(X1,set_type) | ~ilf_type(X0,set_type)) )),
+  inference(cnf_transformation,[],[f52])).
+fof(f52,plain,(
+  ! [X0] : (! [X1] : (((ilf_type(X1,identity_relation_of_type(X0)) | ~ilf_type(X1,relation_type(X0,X0))) & (ilf_type(X1,relation_type(X0,X0)) | ~ilf_type(X1,identity_relation_of_type(X0)))) | ~ilf_type(X1,set_type)) | ~ilf_type(X0,set_type))),
+  inference(nnf_transformation,[],[f26])).
+fof(f26,plain,(
+  ! [X0] : (! [X1] : ((ilf_type(X1,identity_relation_of_type(X0)) <=> ilf_type(X1,relation_type(X0,X0))) | ~ilf_type(X1,set_type)) | ~ilf_type(X0,set_type))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0] : (ilf_type(X0,set_type) => ! [X1] : (ilf_type(X1,set_type) => (ilf_type(X1,identity_relation_of_type(X0)) <=> ilf_type(X1,relation_type(X0,X0)))))),
+  file('./p/SET676+3.tptp',unknown)).
+% SZS output end Proof for SET676+3
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

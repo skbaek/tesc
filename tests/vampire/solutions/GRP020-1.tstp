@@ -1,0 +1,36 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP020-1
+% SZS output start Proof for GRP020-1
+fof(f50,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f47])).
+fof(f47,plain,(
+  identity != identity),
+  inference(superposition,[],[f9,f38])).
+fof(f38,plain,(
+  ( ! [X0] : (identity = multiply(inverse(X0),X0)) )),
+  inference(resolution,[],[f12,f5])).
+fof(f5,axiom,(
+  ( ! [X0,X1] : (product(X0,X1,multiply(X0,X1))) )),
+  file('./p/GRP020-1.tptp',unknown)).
+fof(f12,plain,(
+  ( ! [X4,X5] : (~product(inverse(X5),X5,X4) | identity = X4) )),
+  inference(resolution,[],[f6,f3])).
+fof(f3,axiom,(
+  ( ! [X0] : (product(inverse(X0),X0,identity)) )),
+  file('./p/GRP020-1.tptp',unknown)).
+fof(f6,axiom,(
+  ( ! [X2,X0,X3,X1] : (~product(X0,X1,X3) | X2 = X3 | ~product(X0,X1,X2)) )),
+  file('./p/GRP020-1.tptp',unknown)).
+fof(f9,axiom,(
+  identity != multiply(inverse(a),a)),
+  file('./p/GRP020-1.tptp',unknown)).
+% SZS output end Proof for GRP020-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

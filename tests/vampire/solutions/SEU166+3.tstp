@@ -1,0 +1,252 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SEU166+3
+% SZS output start Proof for SEU166+3
+fof(f1827,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f75,f343,f490,f1521,f1826])).
+fof(f1826,plain,(
+  spl11_2 | ~spl11_17),
+  inference(avatar_contradiction_clause,[],[f1825])).
+fof(f1825,plain,(
+  $false | (spl11_2 | ~spl11_17)),
+  inference(subsumption_resolution,[],[f1813,f74])).
+fof(f74,plain,(
+  ~subset(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)) | spl11_2),
+  inference(avatar_component_clause,[],[f72])).
+fof(f72,plain,(
+  spl11_2 <=> subset(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_2])])).
+fof(f1813,plain,(
+  subset(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)) | (spl11_2 | ~spl11_17)),
+  inference(resolution,[],[f1778,f44])).
+fof(f44,plain,(
+  ( ! [X0,X1] : (~in(sK5(X0,X1),X1) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f25])).
+fof(f25,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | (~in(sK5(X0,X1),X1) & in(sK5(X0,X1),X0))) & (! [X3] : (in(X3,X1) | ~in(X3,X0)) | ~subset(X0,X1)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK5])],[f23,f24])).
+fof(f24,plain,(
+  ! [X1,X0] : (? [X2] : (~in(X2,X1) & in(X2,X0)) => (~in(sK5(X0,X1),X1) & in(sK5(X0,X1),X0)))),
+  introduced(choice_axiom,[])).
+fof(f23,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | ? [X2] : (~in(X2,X1) & in(X2,X0))) & (! [X3] : (in(X3,X1) | ~in(X3,X0)) | ~subset(X0,X1)))),
+  inference(rectify,[],[f22])).
+fof(f22,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | ? [X2] : (~in(X2,X1) & in(X2,X0))) & (! [X2] : (in(X2,X1) | ~in(X2,X0)) | ~subset(X0,X1)))),
+  inference(nnf_transformation,[],[f14])).
+fof(f14,plain,(
+  ! [X0,X1] : (subset(X0,X1) <=> ! [X2] : (in(X2,X1) | ~in(X2,X0)))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : (subset(X0,X1) <=> ! [X2] : (in(X2,X0) => in(X2,X1)))),
+  file('./p/SEU166+3.tptp',unknown)).
+fof(f1778,plain,(
+  in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(sK10,sK9)) | (spl11_2 | ~spl11_17)),
+  inference(subsumption_resolution,[],[f1777,f1482])).
+fof(f1482,plain,(
+  in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(sK10,sK8)) | ~spl11_17),
+  inference(avatar_component_clause,[],[f1481])).
+fof(f1481,plain,(
+  spl11_17 <=> in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(sK10,sK8))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_17])])).
+fof(f1777,plain,(
+  in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(sK10,sK9)) | ~in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(sK10,sK8)) | (spl11_2 | ~spl11_17)),
+  inference(resolution,[],[f1655,f61])).
+fof(f61,plain,(
+  ( ! [X0,X8,X1] : (in(sK3(X0,X1,X8),X0) | ~in(X8,cartesian_product2(X0,X1))) )),
+  inference(equality_resolution,[],[f34])).
+fof(f34,plain,(
+  ( ! [X2,X0,X8,X1] : (in(sK3(X0,X1,X8),X0) | ~in(X8,X2) | cartesian_product2(X0,X1) != X2) )),
+  inference(cnf_transformation,[],[f21])).
+fof(f21,plain,(
+  ! [X0,X1,X2] : ((cartesian_product2(X0,X1) = X2 | ((! [X4,X5] : (ordered_pair(X4,X5) != sK0(X0,X1,X2) | ~in(X5,X1) | ~in(X4,X0)) | ~in(sK0(X0,X1,X2),X2)) & ((sK0(X0,X1,X2) = ordered_pair(sK1(X0,X1,X2),sK2(X0,X1,X2)) & in(sK2(X0,X1,X2),X1) & in(sK1(X0,X1,X2),X0)) | in(sK0(X0,X1,X2),X2)))) & (! [X8] : ((in(X8,X2) | ! [X9,X10] : (ordered_pair(X9,X10) != X8 | ~in(X10,X1) | ~in(X9,X0))) & ((ordered_pair(sK3(X0,X1,X8),sK4(X0,X1,X8)) = X8 & in(sK4(X0,X1,X8),X1) & in(sK3(X0,X1,X8),X0)) | ~in(X8,X2))) | cartesian_product2(X0,X1) != X2))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2,sK3,sK4])],[f17,f20,f19,f18])).
+fof(f18,plain,(
+  ! [X2,X1,X0] : (? [X3] : ((! [X4,X5] : (ordered_pair(X4,X5) != X3 | ~in(X5,X1) | ~in(X4,X0)) | ~in(X3,X2)) & (? [X6,X7] : (ordered_pair(X6,X7) = X3 & in(X7,X1) & in(X6,X0)) | in(X3,X2))) => ((! [X5,X4] : (ordered_pair(X4,X5) != sK0(X0,X1,X2) | ~in(X5,X1) | ~in(X4,X0)) | ~in(sK0(X0,X1,X2),X2)) & (? [X7,X6] : (ordered_pair(X6,X7) = sK0(X0,X1,X2) & in(X7,X1) & in(X6,X0)) | in(sK0(X0,X1,X2),X2))))),
+  introduced(choice_axiom,[])).
+fof(f19,plain,(
+  ! [X2,X1,X0] : (? [X7,X6] : (ordered_pair(X6,X7) = sK0(X0,X1,X2) & in(X7,X1) & in(X6,X0)) => (sK0(X0,X1,X2) = ordered_pair(sK1(X0,X1,X2),sK2(X0,X1,X2)) & in(sK2(X0,X1,X2),X1) & in(sK1(X0,X1,X2),X0)))),
+  introduced(choice_axiom,[])).
+fof(f20,plain,(
+  ! [X8,X1,X0] : (? [X11,X12] : (ordered_pair(X11,X12) = X8 & in(X12,X1) & in(X11,X0)) => (ordered_pair(sK3(X0,X1,X8),sK4(X0,X1,X8)) = X8 & in(sK4(X0,X1,X8),X1) & in(sK3(X0,X1,X8),X0)))),
+  introduced(choice_axiom,[])).
+fof(f17,plain,(
+  ! [X0,X1,X2] : ((cartesian_product2(X0,X1) = X2 | ? [X3] : ((! [X4,X5] : (ordered_pair(X4,X5) != X3 | ~in(X5,X1) | ~in(X4,X0)) | ~in(X3,X2)) & (? [X6,X7] : (ordered_pair(X6,X7) = X3 & in(X7,X1) & in(X6,X0)) | in(X3,X2)))) & (! [X8] : ((in(X8,X2) | ! [X9,X10] : (ordered_pair(X9,X10) != X8 | ~in(X10,X1) | ~in(X9,X0))) & (? [X11,X12] : (ordered_pair(X11,X12) = X8 & in(X12,X1) & in(X11,X0)) | ~in(X8,X2))) | cartesian_product2(X0,X1) != X2))),
+  inference(rectify,[],[f16])).
+fof(f16,plain,(
+  ! [X0,X1,X2] : ((cartesian_product2(X0,X1) = X2 | ? [X3] : ((! [X4,X5] : (ordered_pair(X4,X5) != X3 | ~in(X5,X1) | ~in(X4,X0)) | ~in(X3,X2)) & (? [X4,X5] : (ordered_pair(X4,X5) = X3 & in(X5,X1) & in(X4,X0)) | in(X3,X2)))) & (! [X3] : ((in(X3,X2) | ! [X4,X5] : (ordered_pair(X4,X5) != X3 | ~in(X5,X1) | ~in(X4,X0))) & (? [X4,X5] : (ordered_pair(X4,X5) = X3 & in(X5,X1) & in(X4,X0)) | ~in(X3,X2))) | cartesian_product2(X0,X1) != X2))),
+  inference(nnf_transformation,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1,X2] : (cartesian_product2(X0,X1) = X2 <=> ! [X3] : (in(X3,X2) <=> ? [X4,X5] : (ordered_pair(X4,X5) = X3 & in(X5,X1) & in(X4,X0))))),
+  file('./p/SEU166+3.tptp',unknown)).
+fof(f1655,plain,(
+  ( ! [X1] : (~in(sK3(sK10,sK8,sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9))),X1) | in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(X1,sK9))) ) | (spl11_2 | ~spl11_17)),
+  inference(subsumption_resolution,[],[f1653,f1482])).
+fof(f1653,plain,(
+  ( ! [X1] : (in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(X1,sK9)) | ~in(sK3(sK10,sK8,sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9))),X1) | ~in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(sK10,sK8))) ) | spl11_2),
+  inference(resolution,[],[f707,f87])).
+fof(f87,plain,(
+  ( ! [X4,X3] : (in(sK4(X4,sK8,X3),sK9) | ~in(X3,cartesian_product2(X4,sK8))) )),
+  inference(resolution,[],[f60,f83])).
+fof(f83,plain,(
+  ( ! [X0] : (~in(X0,sK8) | in(X0,sK9)) )),
+  inference(resolution,[],[f42,f50])).
+fof(f50,plain,(
+  subset(sK8,sK9)),
+  inference(cnf_transformation,[],[f31])).
+fof(f31,plain,(
+  (~subset(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)) | ~subset(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))) & subset(sK8,sK9)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK8,sK9,sK10])],[f15,f30])).
+fof(f30,plain,(
+  ? [X0,X1,X2] : ((~subset(cartesian_product2(X2,X0),cartesian_product2(X2,X1)) | ~subset(cartesian_product2(X0,X2),cartesian_product2(X1,X2))) & subset(X0,X1)) => ((~subset(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)) | ~subset(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))) & subset(sK8,sK9))),
+  introduced(choice_axiom,[])).
+fof(f15,plain,(
+  ? [X0,X1,X2] : ((~subset(cartesian_product2(X2,X0),cartesian_product2(X2,X1)) | ~subset(cartesian_product2(X0,X2),cartesian_product2(X1,X2))) & subset(X0,X1))),
+  inference(ennf_transformation,[],[f11])).
+fof(f11,negated_conjecture,(
+  ~! [X0,X1,X2] : (subset(X0,X1) => (subset(cartesian_product2(X2,X0),cartesian_product2(X2,X1)) & subset(cartesian_product2(X0,X2),cartesian_product2(X1,X2))))),
+  inference(negated_conjecture,[],[f10])).
+fof(f10,conjecture,(
+  ! [X0,X1,X2] : (subset(X0,X1) => (subset(cartesian_product2(X2,X0),cartesian_product2(X2,X1)) & subset(cartesian_product2(X0,X2),cartesian_product2(X1,X2))))),
+  file('./p/SEU166+3.tptp',unknown)).
+fof(f42,plain,(
+  ( ! [X0,X3,X1] : (~subset(X0,X1) | ~in(X3,X0) | in(X3,X1)) )),
+  inference(cnf_transformation,[],[f25])).
+fof(f60,plain,(
+  ( ! [X0,X8,X1] : (in(sK4(X0,X1,X8),X1) | ~in(X8,cartesian_product2(X0,X1))) )),
+  inference(equality_resolution,[],[f35])).
+fof(f35,plain,(
+  ( ! [X2,X0,X8,X1] : (in(sK4(X0,X1,X8),X1) | ~in(X8,X2) | cartesian_product2(X0,X1) != X2) )),
+  inference(cnf_transformation,[],[f21])).
+fof(f707,plain,(
+  ( ! [X6,X5] : (~in(sK4(sK10,sK8,sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9))),X6) | in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(X5,X6)) | ~in(sK3(sK10,sK8,sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9))),X5)) ) | spl11_2),
+  inference(superposition,[],[f64,f492])).
+fof(f492,plain,(
+  sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)) = unordered_pair(singleton(sK3(sK10,sK8,sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)))),unordered_pair(sK3(sK10,sK8,sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9))),sK4(sK10,sK8,sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9))))) | spl11_2),
+  inference(resolution,[],[f74,f111])).
+fof(f111,plain,(
+  ( ! [X30,X28,X29] : (subset(cartesian_product2(X28,X29),X30) | sK5(cartesian_product2(X28,X29),X30) = unordered_pair(singleton(sK3(X28,X29,sK5(cartesian_product2(X28,X29),X30))),unordered_pair(sK3(X28,X29,sK5(cartesian_product2(X28,X29),X30)),sK4(X28,X29,sK5(cartesian_product2(X28,X29),X30))))) )),
+  inference(resolution,[],[f65,f43])).
+fof(f43,plain,(
+  ( ! [X0,X1] : (in(sK5(X0,X1),X0) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f25])).
+fof(f65,plain,(
+  ( ! [X0,X8,X1] : (~in(X8,cartesian_product2(X0,X1)) | unordered_pair(singleton(sK3(X0,X1,X8)),unordered_pair(sK3(X0,X1,X8),sK4(X0,X1,X8))) = X8) )),
+  inference(forward_demodulation,[],[f59,f33])).
+fof(f33,plain,(
+  ( ! [X0,X1] : (unordered_pair(X0,X1) = unordered_pair(X1,X0)) )),
+  inference(cnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1] : unordered_pair(X0,X1) = unordered_pair(X1,X0)),
+  file('./p/SEU166+3.tptp',unknown)).
+fof(f59,plain,(
+  ( ! [X0,X8,X1] : (unordered_pair(unordered_pair(sK3(X0,X1,X8),sK4(X0,X1,X8)),singleton(sK3(X0,X1,X8))) = X8 | ~in(X8,cartesian_product2(X0,X1))) )),
+  inference(equality_resolution,[],[f55])).
+fof(f55,plain,(
+  ( ! [X2,X0,X8,X1] : (unordered_pair(unordered_pair(sK3(X0,X1,X8),sK4(X0,X1,X8)),singleton(sK3(X0,X1,X8))) = X8 | ~in(X8,X2) | cartesian_product2(X0,X1) != X2) )),
+  inference(definition_unfolding,[],[f36,f45])).
+fof(f45,plain,(
+  ( ! [X0,X1] : (ordered_pair(X0,X1) = unordered_pair(unordered_pair(X0,X1),singleton(X0))) )),
+  inference(cnf_transformation,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X1] : ordered_pair(X0,X1) = unordered_pair(unordered_pair(X0,X1),singleton(X0))),
+  file('./p/SEU166+3.tptp',unknown)).
+fof(f36,plain,(
+  ( ! [X2,X0,X8,X1] : (ordered_pair(sK3(X0,X1,X8),sK4(X0,X1,X8)) = X8 | ~in(X8,X2) | cartesian_product2(X0,X1) != X2) )),
+  inference(cnf_transformation,[],[f21])).
+fof(f64,plain,(
+  ( ! [X0,X10,X1,X9] : (in(unordered_pair(singleton(X9),unordered_pair(X9,X10)),cartesian_product2(X0,X1)) | ~in(X10,X1) | ~in(X9,X0)) )),
+  inference(forward_demodulation,[],[f58,f33])).
+fof(f58,plain,(
+  ( ! [X0,X10,X1,X9] : (in(unordered_pair(unordered_pair(X9,X10),singleton(X9)),cartesian_product2(X0,X1)) | ~in(X10,X1) | ~in(X9,X0)) )),
+  inference(equality_resolution,[],[f57])).
+fof(f57,plain,(
+  ( ! [X2,X0,X10,X1,X9] : (in(unordered_pair(unordered_pair(X9,X10),singleton(X9)),X2) | ~in(X10,X1) | ~in(X9,X0) | cartesian_product2(X0,X1) != X2) )),
+  inference(equality_resolution,[],[f54])).
+fof(f54,plain,(
+  ( ! [X2,X0,X10,X8,X1,X9] : (in(X8,X2) | unordered_pair(unordered_pair(X9,X10),singleton(X9)) != X8 | ~in(X10,X1) | ~in(X9,X0) | cartesian_product2(X0,X1) != X2) )),
+  inference(definition_unfolding,[],[f37,f45])).
+fof(f37,plain,(
+  ( ! [X2,X0,X10,X8,X1,X9] : (in(X8,X2) | ordered_pair(X9,X10) != X8 | ~in(X10,X1) | ~in(X9,X0) | cartesian_product2(X0,X1) != X2) )),
+  inference(cnf_transformation,[],[f21])).
+fof(f1521,plain,(
+  spl11_2 | spl11_17),
+  inference(avatar_contradiction_clause,[],[f1520])).
+fof(f1520,plain,(
+  $false | (spl11_2 | spl11_17)),
+  inference(subsumption_resolution,[],[f1519,f74])).
+fof(f1519,plain,(
+  subset(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)) | spl11_17),
+  inference(resolution,[],[f1483,f43])).
+fof(f1483,plain,(
+  ~in(sK5(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)),cartesian_product2(sK10,sK8)) | spl11_17),
+  inference(avatar_component_clause,[],[f1481])).
+fof(f490,plain,(
+  spl11_1 | ~spl11_3),
+  inference(avatar_contradiction_clause,[],[f489])).
+fof(f489,plain,(
+  $false | (spl11_1 | ~spl11_3)),
+  inference(subsumption_resolution,[],[f481,f70])).
+fof(f70,plain,(
+  ~subset(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)) | spl11_1),
+  inference(avatar_component_clause,[],[f68])).
+fof(f68,plain,(
+  spl11_1 <=> subset(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_1])])).
+fof(f481,plain,(
+  subset(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)) | (spl11_1 | ~spl11_3)),
+  inference(resolution,[],[f449,f44])).
+fof(f449,plain,(
+  in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(sK9,sK10)) | (spl11_1 | ~spl11_3)),
+  inference(subsumption_resolution,[],[f448,f335])).
+fof(f335,plain,(
+  in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(sK8,sK10)) | ~spl11_3),
+  inference(avatar_component_clause,[],[f334])).
+fof(f334,plain,(
+  spl11_3 <=> in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(sK8,sK10))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_3])])).
+fof(f448,plain,(
+  in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(sK9,sK10)) | ~in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(sK8,sK10)) | (spl11_1 | ~spl11_3)),
+  inference(resolution,[],[f419,f89])).
+fof(f89,plain,(
+  ( ! [X4,X3] : (in(sK3(sK8,X4,X3),sK9) | ~in(X3,cartesian_product2(sK8,X4))) )),
+  inference(resolution,[],[f61,f83])).
+fof(f419,plain,(
+  ( ! [X0] : (~in(sK3(sK8,sK10,sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))),X0) | in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(X0,sK10))) ) | (spl11_1 | ~spl11_3)),
+  inference(subsumption_resolution,[],[f418,f335])).
+fof(f418,plain,(
+  ( ! [X0] : (in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(X0,sK10)) | ~in(sK3(sK8,sK10,sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))),X0) | ~in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(sK8,sK10))) ) | spl11_1),
+  inference(resolution,[],[f244,f60])).
+fof(f244,plain,(
+  ( ! [X6,X5] : (~in(sK4(sK8,sK10,sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))),X6) | in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(X5,X6)) | ~in(sK3(sK8,sK10,sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))),X5)) ) | spl11_1),
+  inference(superposition,[],[f64,f136])).
+fof(f136,plain,(
+  sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)) = unordered_pair(singleton(sK3(sK8,sK10,sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)))),unordered_pair(sK3(sK8,sK10,sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))),sK4(sK8,sK10,sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))))) | spl11_1),
+  inference(resolution,[],[f111,f70])).
+fof(f343,plain,(
+  spl11_1 | spl11_3),
+  inference(avatar_contradiction_clause,[],[f342])).
+fof(f342,plain,(
+  $false | (spl11_1 | spl11_3)),
+  inference(subsumption_resolution,[],[f341,f70])).
+fof(f341,plain,(
+  subset(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)) | spl11_3),
+  inference(resolution,[],[f336,f43])).
+fof(f336,plain,(
+  ~in(sK5(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10)),cartesian_product2(sK8,sK10)) | spl11_3),
+  inference(avatar_component_clause,[],[f334])).
+fof(f75,plain,(
+  ~spl11_1 | ~spl11_2),
+  inference(avatar_split_clause,[],[f51,f72,f68])).
+fof(f51,plain,(
+  ~subset(cartesian_product2(sK10,sK8),cartesian_product2(sK10,sK9)) | ~subset(cartesian_product2(sK8,sK10),cartesian_product2(sK9,sK10))),
+  inference(cnf_transformation,[],[f31])).
+% SZS output end Proof for SEU166+3
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 15095
+% Time elapsed: 0.148 s
+% ------------------------------
+% ------------------------------

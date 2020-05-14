@@ -1,0 +1,1721 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_6, plain, (implies(truth,X1)=X1)).
+#
+#cnf(i_0_8, plain, (implies(implies(X1,X2),X2)=implies(implies(X2,X1),X1))).
+#
+#cnf(i_0_11, plain, (implies(X1,X1)=implies(implies(X1,truth),truth))).
+#
+#cnf(i_0_10, negated_conjecture, (implies(implies(implies(a,b),implies(b,a)),implies(b,a))!=truth)).
+##
+#cnf(i_0_9, plain, (implies(implies(not(X1),not(X2)),implies(X2,X1))=truth)).
+#
+#cnf(i_0_26, plain, (implies(implies(not(X1),not(truth)),X1)=truth)).
+#
+#cnf(i_0_7, plain, (implies(implies(X1,X2),implies(implies(X2,X3),implies(X1,X3)))=truth)).
+#
+#cnf(i_0_45, plain, (implies(X1,implies(implies(X1,X2),X2))=truth)).
+#
+#cnf(i_0_65, plain, (implies(X1,X1)=truth)).
+##
+#cnf(i_0_11, plain, (implies(implies(X1,truth),truth)=truth)).
+#
+#cnf(i_0_102, plain, (implies(X1,truth)=truth)).
+#
+#cnf(i_0_113, plain, (implies(X2,implies(X1,X2))=truth)).
+#####
+#cnf(i_0_120, plain, (implies(implies(implies(X2,X1),X1),X1)=implies(X2,X1))).
+##
+#cnf(i_0_157, plain, (implies(implies(implies(X2,X1),X1),X2)=implies(X1,X2))).
+###
+#cnf(i_0_121, plain, (implies(implies(implies(X2,X1),X3),implies(X1,X3))=truth)).
+#
+#cnf(i_0_229, plain, (implies(not(truth),X1)=truth)).
+#
+#cnf(i_0_227, plain, (implies(not(X2),implies(X2,X1))=truth)).
+#
+#cnf(i_0_224, plain, (implies(X2,implies(X3,implies(X1,X2)))=truth)).
+#
+#cnf(i_0_234, plain, (implies(implies(X1,not(truth)),not(truth))=X1)).
+#
+#cnf(i_0_332, plain, (not(not(truth))=truth)).
+#
+#cnf(i_0_325, plain, (implies(not(implies(X1,not(truth))),X1)=truth)).
+#
+#cnf(i_0_365, plain, (implies(X1,implies(not(X1),not(truth)))=truth)).
+#
+#cnf(i_0_378, plain, (implies(not(X1),not(truth))=X1)).
+#
+#cnf(i_0_397, plain, (implies(X1,not(truth))=not(X1))).
+#
+#cnf(i_0_234, plain, (not(not(X1))=X1)).
+###############
+#cnf(i_0_442, plain, (implies(X1,implies(not(X1),X2))=truth)).
+#
+#cnf(i_0_425, plain, (implies(not(implies(X1,X2)),not(X2))=truth)).
+##
+#cnf(i_0_488, plain, (implies(not(implies(X1,not(X2))),X2)=truth)).
+#
+#cnf(i_0_445, plain, (implies(X2,implies(not(implies(X1,X2)),X3))=truth)).
+##
+#cnf(i_0_123, plain, (implies(implies(X1,X2),implies(X1,implies(X3,X2)))=truth)).
+#
+#cnf(i_0_644, plain, (implies(not(X1),implies(X3,implies(X1,X2)))=truth)).
+#
+#cnf(i_0_656, plain, (implies(X1,implies(X3,implies(not(X1),X2)))=truth)).
+##
+#cnf(i_0_223, plain, (implies(X2,implies(implies(implies(X1,X2),X3),X3))=truth)).
+#
+#cnf(i_0_228, plain, (implies(X2,implies(implies(X2,X3),implies(X1,X3)))=truth)).
+##
+#cnf(i_0_275, plain, (implies(X2,implies(X3,implies(X4,implies(X1,X2))))=truth)).
+#
+#cnf(i_0_300, plain, (implies(X1,implies(X2,implies(implies(X1,X3),X3)))=truth)).
+##############
+#cnf(i_0_433, plain, (implies(implies(X1,X2),implies(not(X2),not(X1)))=truth)).
+#
+#cnf(i_0_1187, plain, (implies(not(implies(X1,X2)),X1)=truth)).
+#
+#cnf(i_0_1144, plain, (implies(not(X2),not(X1))=implies(X1,X2))).
+#
+#cnf(i_0_10, negated_conjecture, (implies(not(implies(b,a)),not(implies(implies(a,b),implies(b,a))))!=truth)).
+#
+#cnf(i_0_1334, plain, (implies(not(X1),X2)=implies(not(X2),X1))).
+#
+#cnf(i_0_1335, plain, (implies(X1,not(X2))=implies(X2,not(X1)))).
+########
+#cnf(i_0_441, plain, (implies(implies(X1,not(X2)),implies(X2,not(X1)))=truth)).
+#
+#cnf(i_0_443, plain, (implies(implies(not(X1),X2),implies(not(X2),X1))=truth)).
+####
+#cnf(i_0_45, plain, (implies(X1,implies(not(X2),not(implies(X1,X2))))=truth)).
+#
+#cnf(i_0_1321, plain, (implies(not(X1),implies(not(implies(X1,X2)),X3))=truth)).
+#
+#cnf(i_0_1337, plain, (implies(X1,implies(not(implies(not(X1),X3)),X2))=truth)).
+######
+#cnf(i_0_1592, plain, (implies(not(X1),implies(X2,not(implies(X2,X1))))=truth)).
+#
+#cnf(i_0_1606, plain, (implies(X1,implies(X2,not(implies(X2,not(X1)))))=truth)).
+##
+#cnf(i_0_1618, plain, (implies(X1,implies(X2,not(implies(X1,not(X2)))))=truth)).
+########
+#cnf(i_0_249, plain, (implies(not(implies(not(X1),X3)),not(implies(implies(X1,X2),X3)))=truth)).
+#
+#cnf(i_0_255, plain, (implies(implies(X1,not(X2)),implies(X1,implies(X2,X3)))=truth)).
+#
+#cnf(i_0_449, plain, (implies(not(implies(X1,X3)),not(implies(implies(not(X1),X2),X3)))=truth)).
+#
+#cnf(i_0_455, plain, (implies(implies(X1,X2),implies(X1,implies(not(X2),X3)))=truth)).
+#
+#cnf(i_0_657, plain, (implies(X1,implies(X4,implies(not(implies(X2,X1)),X3)))=truth)).
+#
+#cnf(i_0_666, plain, (implies(not(X1),implies(X4,implies(X2,implies(X1,X3))))=truth)).
+#
+#cnf(i_0_735, plain, (implies(X1,implies(X4,implies(X2,implies(not(X1),X3))))=truth)).
+#####
+#cnf(i_0_1324, plain, (implies(X1,implies(implies(X1,not(X2)),implies(X2,X3)))=truth)).
+##
+#cnf(i_0_1338, plain, (implies(X1,implies(not(implies(X3,implies(X4,X1))),X2))=truth)).
+###
+#cnf(i_0_1357, plain, (implies(X1,implies(implies(X1,X2),implies(not(X2),X3)))=truth)).
+#########
+#cnf(i_0_2130, plain, (implies(implies(X2,X1),implies(not(X1),implies(X2,X3)))=truth)).
+#
+#cnf(i_0_3379, plain, (implies(not(implies(X2,X1)),implies(X1,X3))=truth)).
+#
+#cnf(i_0_3389, plain, (implies(not(implies(X2,X3)),implies(X1,X2))=truth)).
+######
+#cnf(i_0_3348, plain, (implies(not(implies(X1,X2)),implies(not(X1),X3))=truth)).
+#
+#cnf(i_0_3365, plain, (implies(not(implies(not(X1),X2)),implies(X1,X3))=truth)).
+#
+#cnf(i_0_3449, plain, (implies(not(implies(X1,not(X2))),implies(X3,X2))=truth)).
+#
+#cnf(i_0_3469, plain, (implies(not(implies(X1,X2)),implies(X3,not(X2)))=truth)).
+###########################
+#cnf(i_0_2135, plain, (implies(implies(X2,not(X1)),implies(X1,implies(X2,X3)))=truth)).
+##########
+#cnf(i_0_2889, plain, (implies(not(X1),implies(implies(X2,X1),implies(X2,X3)))=truth)).
+###
+#cnf(i_0_2895, plain, (implies(X1,implies(implies(X2,not(X1)),implies(X2,X3)))=truth)).
+#######
+#cnf(i_0_3316, plain, (implies(implies(X1,X2),implies(not(implies(X1,X3)),X2))=truth)).
+###
+#cnf(i_0_3374, plain, (implies(not(implies(X2,implies(X3,X1))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_3384, plain, (implies(not(implies(X1,X2)),implies(X4,implies(X2,X3)))=truth)).
+##
+#cnf(i_0_3534, plain, (implies(not(implies(X1,X2)),implies(X4,implies(X3,X1)))=truth)).
+#############
+#cnf(i_0_5209, plain, (implies(not(implies(X3,implies(X2,X4))),implies(X1,X2))=truth)).
+######
+#cnf(i_0_278, plain, (implies(not(implies(X1,X4)),not(implies(implies(X2,implies(X3,X1)),X4)))=truth)).
+#
+#cnf(i_0_284, plain, (implies(implies(X1,X2),implies(X1,implies(X3,implies(X4,X2))))=truth)).
+#
+#cnf(i_0_588, plain, (implies(implies(X1,X2),implies(X4,implies(X1,implies(X3,X2))))=truth)).
+#
+#cnf(i_0_873, plain, (implies(X1,implies(X4,implies(implies(X1,X2),implies(X3,X2))))=truth)).
+###
+#cnf(i_0_961, plain, (implies(X1,implies(X5,implies(X2,implies(X3,implies(X4,X1)))))=truth)).
+######################
+#cnf(i_0_6161, plain, (implies(X1,implies(implies(implies(X2,X1),X3),implies(X4,X3)))=truth)).
+#####
+#cnf(i_0_647, plain, (implies(implies(not(X1),not(X2)),implies(X3,implies(X2,X1)))=truth)).
+##
+#cnf(i_0_1147, plain, (implies(implies(X1,X2),implies(X3,implies(not(X2),not(X1))))=truth)).
+#####
+#cnf(i_0_300, plain, (implies(X1,implies(X2,implies(not(X3),not(implies(X1,X3)))))=truth)).
+#
+#cnf(i_0_223, plain, (implies(X1,implies(not(X3),not(implies(implies(X2,X1),X3))))=truth)).
+#
+#cnf(i_0_121, plain, (implies(not(implies(X2,X3)),not(implies(implies(X1,X2),X3)))=truth)).
+#
+#cnf(i_0_1286, plain, (implies(X1,implies(not(implies(X3,X2)),not(implies(X1,X2))))=truth)).
+##
+#cnf(i_0_1290, plain, (implies(implies(X1,X2),implies(not(implies(X3,X2)),not(X1)))=truth)).
+##
+#cnf(i_0_1296, plain, (implies(implies(not(X2),not(X1)),implies(X1,implies(X3,X2)))=truth)).
+#
+#cnf(i_0_9650, plain, (implies(implies(implies(X3,X1),X2),implies(X4,implies(X1,X2)))=truth)).
+#
+#cnf(i_0_1298, plain, (implies(X1,implies(implies(not(X2),not(X1)),implies(X3,X2)))=truth)).
+####
+#cnf(i_0_1311, plain, (implies(implies(X2,X1),implies(not(X1),implies(X3,not(X2))))=truth)).
+#
+#cnf(i_0_1313, plain, (implies(not(X1),implies(implies(X2,X1),implies(X3,not(X2))))=truth)).
+#
+#cnf(i_0_1339, plain, (implies(implies(not(X1),X2),implies(not(implies(X3,X2)),X1))=truth)).
+#
+#cnf(i_0_1345, plain, (implies(implies(not(X2),X1),implies(not(X1),implies(X3,X2)))=truth)).
+#
+#cnf(i_0_1347, plain, (implies(not(X1),implies(implies(not(X2),X1),implies(X3,X2)))=truth)).
+####
+#cnf(i_0_1411, plain, (implies(implies(X2,not(X1)),implies(X1,implies(X3,not(X2))))=truth)).
+#
+#cnf(i_0_1413, plain, (implies(X1,implies(implies(X2,not(X1)),implies(X3,not(X2))))=truth)).
+#########
+#cnf(i_0_1459, plain, (implies(implies(X1,not(X2)),implies(X3,implies(X2,not(X1))))=truth)).
+##
+#cnf(i_0_1503, plain, (implies(implies(not(X1),X2),implies(X3,implies(not(X2),X1)))=truth)).
+####
+#cnf(i_0_1621, plain, (implies(not(X1),implies(X4,implies(not(implies(X1,X2)),X3)))=truth)).
+##
+#cnf(i_0_1708, plain, (implies(X1,implies(X4,implies(not(implies(not(X1),X2)),X3)))=truth)).
+##
+#cnf(i_0_1773, plain, (implies(not(X1),implies(X3,implies(X2,not(implies(X2,X1)))))=truth)).
+##
+#cnf(i_0_1845, plain, (implies(X1,implies(X3,implies(X2,not(implies(X2,not(X1))))))=truth)).
+##
+#cnf(i_0_1890, plain, (implies(X1,implies(X3,implies(X2,not(implies(X1,not(X2))))))=truth)).
+###
+#cnf(i_0_1996, plain, (implies(not(X1),implies(not(implies(X2,implies(X1,X3))),X4))=truth)).
+#####
+#cnf(i_0_2210, plain, (implies(X1,implies(not(implies(X2,implies(not(X1),X3))),X4))=truth)).
+###
+#cnf(i_0_2372, plain, (implies(X1,implies(not(implies(not(implies(X2,X1)),X3)),X4))=truth)).
+##########################
+#cnf(i_0_3346, plain, (implies(not(implies(X2,implies(X1,X3))),implies(not(X1),X4))=truth)).
+#
+#cnf(i_0_3366, plain, (implies(not(implies(not(implies(X2,X1)),X3)),implies(X1,X4))=truth)).
+#
+#cnf(i_0_3375, plain, (implies(not(implies(X2,implies(not(X1),X3))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_3387, plain, (implies(not(implies(X1,X2)),implies(not(implies(X2,X3)),X4))=truth)).
+##
+#cnf(i_0_3393, plain, (implies(not(implies(X2,X3)),implies(not(implies(X1,X2)),X4))=truth)).
+####
+#cnf(i_0_3688, plain, (implies(not(implies(X1,X2)),implies(X4,implies(not(X1),X3)))=truth)).
+##
+#cnf(i_0_3837, plain, (implies(not(implies(not(X1),X2)),implies(X4,implies(X1,X3)))=truth)).
+##
+#cnf(i_0_3990, plain, (implies(not(implies(X1,not(X2))),implies(X4,implies(X3,X2)))=truth)).
+##
+#cnf(i_0_4120, plain, (implies(not(implies(X1,X2)),implies(X4,implies(X3,not(X2))))=truth)).
+################
+#cnf(i_0_4826, plain, (implies(implies(not(X1),X2),implies(not(implies(X3,X1)),X2))=truth)).
+#
+#cnf(i_0_4854, plain, (implies(implies(X1,X2),implies(not(implies(X3,not(X1))),X2))=truth)).
+##
+#cnf(i_0_4922, plain, (implies(not(implies(not(implies(X1,X2)),X4)),implies(X3,X1))=truth)).
+#####
+#cnf(i_0_5053, plain, (implies(not(implies(X1,implies(X2,not(X3)))),implies(X4,X3))=truth)).
+#
+#cnf(i_0_5082, plain, (implies(not(implies(X1,implies(X2,X3))),implies(X4,not(X3)))=truth)).
+######################################################
+#cnf(i_0_8551, plain, (implies(X1,implies(X2,not(implies(X2,not(implies(X3,X1))))))=truth)).
+###
+#cnf(i_0_8563, plain, (implies(X1,implies(X2,not(implies(implies(X3,X1),not(X2)))))=truth)).
+#################################################
+#cnf(i_0_10440, plain, (implies(not(implies(X2,not(implies(X2,X1)))),implies(X3,X1))=truth)).
+#######################################################################################################
+#cnf(i_0_18986, plain, (implies(not(implies(X3,X1)),implies(X2,not(implies(X2,X1))))=truth)).
+#################
+#cnf(i_0_540, plain, (implies(not(implies(X1,X4)),not(implies(implies(not(implies(X2,X1)),X3),X4)))=truth)).
+#
+#cnf(i_0_547, plain, (implies(implies(X1,X2),implies(X1,implies(not(implies(X3,X2)),X4)))=truth)).
+#
+#cnf(i_0_664, plain, (implies(not(implies(not(X1),X4)),not(implies(implies(X2,implies(X1,X3)),X4)))=truth)).
+#
+#cnf(i_0_672, plain, (implies(implies(X1,not(X2)),implies(X1,implies(X3,implies(X2,X4))))=truth)).
+#
+#cnf(i_0_733, plain, (implies(not(implies(X1,X4)),not(implies(implies(X2,implies(not(X1),X3)),X4)))=truth)).
+#
+#cnf(i_0_741, plain, (implies(implies(X1,X2),implies(X1,implies(X3,implies(not(X2),X4))))=truth)).
+#######
+#cnf(i_0_1998, plain, (implies(not(X1),implies(implies(implies(X1,X2),X3),implies(X4,X3)))=truth)).
+#
+#cnf(i_0_2003, plain, (implies(not(X1),implies(X2,implies(X3,implies(X4,implies(X1,X5)))))=truth)).
+#
+#cnf(i_0_2041, plain, (implies(implies(X1,not(X2)),implies(X4,implies(X1,implies(X2,X3))))=truth)).
+##
+#cnf(i_0_2212, plain, (implies(X1,implies(implies(implies(not(X1),X2),X3),implies(X4,X3)))=truth)).
+#
+#cnf(i_0_2217, plain, (implies(X1,implies(X2,implies(X3,implies(X4,implies(not(X1),X5)))))=truth)).
+#
+#cnf(i_0_2264, plain, (implies(implies(X1,X2),implies(X4,implies(X1,implies(not(X2),X3))))=truth)).
+##
+#cnf(i_0_2365, plain, (implies(implies(X1,X2),implies(not(implies(X1,implies(X3,X2))),X4))=truth)).
+#
+#cnf(i_0_2374, plain, (implies(X1,implies(not(implies(implies(X1,X2),implies(X3,X2))),X4))=truth)).
+#
+#cnf(i_0_2379, plain, (implies(X1,implies(not(implies(X2,implies(X3,implies(X4,X1)))),X5))=truth)).
+#
+#cnf(i_0_2400, plain, (implies(X1,implies(X5,implies(X2,implies(not(implies(X3,X1)),X4))))=truth)).
+######
+#cnf(i_0_2815, plain, (implies(X1,implies(X4,implies(implies(X1,not(X2)),implies(X2,X3))))=truth)).
+##
+#cnf(i_0_2936, plain, (implies(X1,implies(X5,implies(not(implies(X2,implies(X3,X1))),X4)))=truth)).
+##
+#cnf(i_0_3099, plain, (implies(X1,implies(X4,implies(implies(X1,X2),implies(not(X2),X3))))=truth)).
+#####
+#cnf(i_0_3226, plain, (implies(implies(X1,X2),implies(X4,implies(not(X2),implies(X1,X3))))=truth)).
+##
+#cnf(i_0_3358, plain, (implies(not(implies(X1,implies(X3,X2))),implies(implies(X1,X2),X4))=truth)).
+#
+#cnf(i_0_3369, plain, (implies(not(implies(implies(X1,X2),implies(X3,X2))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_3376, plain, (implies(not(implies(X2,implies(X3,implies(X4,X1)))),implies(X1,X5))=truth)).
+#
+#cnf(i_0_3383, plain, (implies(implies(implies(X2,X3),X4),implies(not(implies(X1,X2)),X4))=truth)).
+#
+#cnf(i_0_3395, plain, (implies(implies(X1,not(implies(X2,X3))),implies(X1,implies(X3,X4)))=truth)).
+#
+#cnf(i_0_3533, plain, (implies(implies(implies(X3,X1),X4),implies(not(implies(X1,X2)),X4))=truth)).
+#
+#cnf(i_0_3546, plain, (implies(implies(X1,not(implies(X2,X3))),implies(X1,implies(X4,X2)))=truth)).
+#
+#cnf(i_0_4250, plain, (implies(implies(X1,not(X2)),implies(X4,implies(X2,implies(X1,X3))))=truth)).
+##
+#cnf(i_0_4410, plain, (implies(not(X1),implies(X4,implies(implies(X2,X1),implies(X2,X3))))=truth)).
+#####
+#cnf(i_0_4624, plain, (implies(X1,implies(X4,implies(implies(X2,not(X1)),implies(X2,X3))))=truth)).
+##
+#cnf(i_0_4761, plain, (implies(implies(X1,X2),implies(X4,implies(not(implies(X1,X3)),X2)))=truth)).
+##
+#cnf(i_0_4942, plain, (implies(not(implies(implies(X1,X2),X4)),implies(X1,implies(X3,X2)))=truth)).
+#
+#cnf(i_0_4953, plain, (implies(not(implies(X1,X4)),implies(implies(X1,X2),implies(X3,X2)))=truth)).
+#
+#cnf(i_0_4961, plain, (implies(not(implies(X1,X5)),implies(X2,implies(X3,implies(X4,X1))))=truth)).
+#
+#cnf(i_0_4969, plain, (implies(not(implies(X1,implies(X2,X3))),implies(X5,implies(X3,X4)))=truth)).
+##
+#cnf(i_0_5204, plain, (implies(not(implies(X1,X2)),implies(X5,implies(X3,implies(X2,X4))))=truth)).
+####
+#cnf(i_0_5692, plain, (implies(not(implies(X1,implies(X2,X3))),implies(X5,implies(X4,X2)))=truth)).
+######################################
+#cnf(i_0_7536, plain, (implies(X1,implies(implies(implies(X2,X1),not(X3)),implies(X3,X4)))=truth)).
+#
+#cnf(i_0_7554, plain, (implies(X1,implies(implies(implies(X2,X1),X3),implies(not(X3),X4)))=truth)).
+###########################
+#cnf(i_0_8562, plain, (implies(X1,implies(implies(X2,not(implies(X3,X1))),implies(X2,X4)))=truth)).
+###
+#cnf(i_0_8601, plain, (implies(not(implies(X1,X2)),implies(implies(implies(X3,X1),X2),X4))=truth)).
+##
+#cnf(i_0_8609, plain, (implies(implies(implies(X3,X1),X2),implies(not(implies(X1,X2)),X4))=truth)).
+##############################
+#cnf(i_0_9337, plain, (implies(not(implies(X5,implies(X3,implies(X2,X4)))),implies(X1,X2))=truth)).
+################
+#cnf(i_0_9651, plain, (implies(implies(implies(X1,X3),X2),implies(X4,implies(not(X1),X2)))=truth)).
+#
+#cnf(i_0_9652, plain, (implies(implies(implies(not(X1),X3),X2),implies(X4,implies(X1,X2)))=truth)).
+##############
+#cnf(i_0_10439, plain, (implies(not(implies(implies(X2,X1),implies(X2,X3))),implies(X4,X1))=truth)).
+####################################################
+#cnf(i_0_18984, plain, (implies(not(implies(X4,X1)),implies(implies(X2,X1),implies(X2,X3)))=truth)).
+##########################################################
+#cnf(i_0_24228, plain, (implies(implies(X2,X1),implies(not(X1),implies(X3,implies(X2,X4))))=truth)).
+###
+#cnf(i_0_24238, plain, (implies(implies(X2,not(X1)),implies(X1,implies(X3,implies(X2,X4))))=truth)).
+#################################################################
+#cnf(i_0_36381, plain, (implies(implies(implies(X1,X2),not(X3)),implies(X3,implies(X4,X1)))=truth)).
+##
+#cnf(i_0_36424, plain, (implies(implies(implies(X1,X2),X3),implies(not(X3),implies(X4,X1)))=truth)).
+#######
+#cnf(i_0_37309, plain, (implies(implies(implies(X2,X3),X1),implies(not(X1),implies(X3,X4)))=truth)).
+###
+#cnf(i_0_37320, plain, (implies(implies(implies(X2,X3),not(X1)),implies(X1,implies(X3,X4)))=truth)).
+##############################################
+#cnf(i_0_51180, plain, (implies(implies(implies(X1,X2),not(X3)),implies(X4,implies(X3,X1)))=truth)).
+##
+#cnf(i_0_51227, plain, (implies(implies(implies(X1,X2),X3),implies(X4,implies(not(X3),X1)))=truth)).
+##############
+#cnf(i_0_54785, plain, (implies(implies(X1,X2),implies(not(implies(X3,implies(X1,X4))),X2))=truth)).
+########
+#cnf(i_0_59826, plain, (implies(implies(X3,not(implies(X1,X2))),implies(X4,implies(X3,X1)))=truth)).
+#####
+#cnf(i_0_586, plain, (implies(not(implies(implies(X1,X2),X4)),not(implies(implies(X1,implies(X3,X2)),X4)))=truth)).
+#
+#cnf(i_0_63141, plain, (implies(implies(X1,X2),implies(not(implies(X3,X2)),implies(X1,X4)))=truth)).
+#
+#cnf(i_0_63145, plain, (implies(implies(X1,X2),implies(not(implies(X1,X3)),implies(X4,X2)))=truth)).
+####
+#cnf(i_0_594, plain, (implies(implies(X1,implies(X2,X3)),implies(X1,implies(X2,implies(X4,X3))))=truth)).
+#
+#cnf(i_0_66424, plain, (implies(X1,implies(implies(X1,X2),implies(X4,implies(X3,X2))))=truth)).
+#
+#cnf(i_0_66348, plain, (implies(not(X1),implies(X2,implies(X3,not(implies(X2,X1)))))=truth)).
+#
+#cnf(i_0_67996, plain, (implies(not(X1),implies(X2,implies(implies(X2,X1),X3)))=truth)).
+###
+#cnf(i_0_68447, plain, (implies(X1,implies(not(X2),implies(implies(X1,X2),X3)))=truth)).
+#
+#cnf(i_0_68560, plain, (implies(X1,implies(X2,implies(implies(X1,not(X2)),X3)))=truth)).
+##
+#cnf(i_0_68797, plain, (implies(X1,implies(X2,implies(implies(X2,not(X1)),X3)))=truth)).
+#######
+#cnf(i_0_66413, plain, (implies(X1,implies(not(X2),implies(X3,not(implies(X1,X2)))))=truth)).
+#
+#cnf(i_0_66435, plain, (implies(X1,implies(X2,implies(X3,not(implies(X1,not(X2))))))=truth)).
+#
+#cnf(i_0_66436, plain, (implies(X1,implies(X2,implies(X3,not(implies(X2,not(X1))))))=truth)).
+####################
+#cnf(i_0_66347, plain, (implies(not(X1),implies(implies(X2,X1),implies(X4,implies(X2,X3))))=truth)).
+#
+#cnf(i_0_66427, plain, (implies(X1,implies(implies(X1,not(X2)),implies(X4,implies(X2,X3))))=truth)).
+#
+#cnf(i_0_66428, plain, (implies(X1,implies(implies(X1,X2),implies(X4,implies(not(X2),X3))))=truth)).
+#
+#cnf(i_0_66431, plain, (implies(X1,implies(implies(X2,not(X1)),implies(X4,implies(X2,X3))))=truth)).
+####
+#cnf(i_0_67042, plain, (implies(X1,implies(implies(X1,X2),implies(not(implies(X4,X2)),X3)))=truth)).
+##
+#cnf(i_0_68049, plain, (implies(not(X1),implies(X4,implies(X2,implies(implies(X2,X1),X3))))=truth)).
+##
+#cnf(i_0_68054, plain, (implies(not(implies(X2,implies(implies(X2,X1),X3))),implies(X4,X1))=truth)).
+##
+#cnf(i_0_68089, plain, (implies(not(implies(X4,X1)),implies(X2,implies(implies(X2,X1),X3)))=truth)).
+#######
+#cnf(i_0_68291, plain, (implies(not(X1),implies(X2,implies(X4,implies(implies(X2,X1),X3))))=truth)).
+#####
+#cnf(i_0_68896, plain, (implies(X1,implies(not(X2),implies(implies(implies(X3,X1),X2),X4)))=truth)).
+##
+#cnf(i_0_68917, plain, (implies(X1,implies(X4,implies(not(X2),implies(implies(X1,X2),X3))))=truth)).
+#######
+#cnf(i_0_69137, plain, (implies(X1,implies(not(X2),implies(X4,implies(implies(X1,X2),X3))))=truth)).
+#
+#cnf(i_0_69677, plain, (implies(X1,implies(X2,implies(implies(implies(X3,X1),not(X2)),X4)))=truth)).
+##
+#cnf(i_0_69698, plain, (implies(X1,implies(X4,implies(X2,implies(implies(X1,not(X2)),X3))))=truth)).
+#######
+#cnf(i_0_69942, plain, (implies(X1,implies(X2,implies(X4,implies(implies(X1,not(X2)),X3))))=truth)).
+#####
+#cnf(i_0_70326, plain, (implies(X1,implies(X2,implies(implies(X2,not(implies(X3,X1))),X4)))=truth)).
+##
+#cnf(i_0_70347, plain, (implies(X1,implies(X4,implies(X2,implies(implies(X2,not(X1)),X3))))=truth)).
+#######
+#cnf(i_0_70592, plain, (implies(X1,implies(X2,implies(X4,implies(implies(X2,not(X1)),X3))))=truth)).
+###########################################
+#cnf(i_0_649, plain, (implies(implies(X1,X2),implies(X4,implies(implies(X2,X3),implies(X1,X3))))=truth)).
+#
+#cnf(i_0_871, plain, (implies(not(implies(X1,X4)),not(implies(implies(implies(X1,X2),implies(X3,X2)),X4)))=truth)).
+#
+#cnf(i_0_91539, plain, (implies(X1,implies(not(implies(X2,X3)),implies(implies(X1,X3),X4)))=truth)).
+#
+#cnf(i_0_91545, plain, (implies(X1,implies(not(implies(implies(X1,X2),X3)),implies(X4,X2)))=truth)).
+####
+#cnf(i_0_880, plain, (implies(implies(X1,X2),implies(X1,implies(implies(X2,X3),implies(X4,X3))))=truth)).
+##
+#cnf(i_0_959, plain, (implies(not(implies(X1,X5)),not(implies(implies(X2,implies(X3,implies(X4,X1))),X5)))=truth)).
+#
+#cnf(i_0_968, plain, (implies(implies(X1,X2),implies(X1,implies(X3,implies(X4,implies(X5,X2)))))=truth)).
+###
+#cnf(i_0_1994, plain, (implies(not(X1),implies(not(X2),not(implies(implies(X1,X3),X2))))=truth)).
+#
+#cnf(i_0_1997, plain, (implies(not(X1),implies(not(implies(not(implies(X1,X2)),X3)),X4))=truth)).
+#
+#cnf(i_0_1999, plain, (implies(not(X1),implies(X2,not(implies(implies(X1,X3),not(X2)))))=truth)).
+#
+#cnf(i_0_2000, plain, (implies(not(X1),implies(X2,not(implies(X2,not(implies(X1,X3))))))=truth)).
+##
+#cnf(i_0_2016, plain, (implies(not(implies(X2,X1)),not(implies(implies(X1,X3),not(X2))))=truth)).
+##
+#cnf(i_0_2030, plain, (implies(not(implies(not(X2),X1)),not(implies(implies(X1,X3),X2)))=truth)).
+####
+#cnf(i_0_2102, plain, (implies(implies(not(X1),not(X2)),implies(not(implies(X2,X3)),X1))=truth)).
+##
+#cnf(i_0_2115, plain, (implies(implies(X1,not(X2)),implies(not(implies(X2,X3)),not(X1)))=truth)).
+####
+#cnf(i_0_2208, plain, (implies(X1,implies(not(X2),not(implies(implies(not(X1),X3),X2))))=truth)).
+#
+#cnf(i_0_2211, plain, (implies(X1,implies(not(implies(not(implies(not(X1),X2)),X3)),X4))=truth)).
+#
+#cnf(i_0_2213, plain, (implies(X1,implies(X2,not(implies(implies(not(X1),X3),not(X2)))))=truth)).
+#
+#cnf(i_0_2214, plain, (implies(X1,implies(X2,not(implies(X2,not(implies(not(X1),X3))))))=truth)).
+####
+#cnf(i_0_2324, plain, (implies(implies(not(X1),X2),implies(not(implies(not(X2),X3)),X1))=truth)).
+##
+#cnf(i_0_2337, plain, (implies(implies(X1,X2),implies(not(implies(not(X2),X3)),not(X1)))=truth)).
+##
+#cnf(i_0_2353, plain, (implies(not(X1),implies(not(implies(X2,not(implies(X2,X1)))),X3))=truth)).
+###
+#cnf(i_0_2359, plain, (implies(implies(not(X1),not(X2)),implies(not(implies(X2,X1)),X3))=truth)).
+#
+#cnf(i_0_2360, plain, (implies(implies(not(X1),X2),implies(not(implies(not(X2),X1)),X3))=truth)).
+#
+#cnf(i_0_2361, plain, (implies(implies(X1,not(X2)),implies(not(implies(X2,not(X1))),X3))=truth)).
+#
+#cnf(i_0_2363, plain, (implies(implies(X1,X2),implies(not(implies(not(X2),not(X1))),X3))=truth)).
+#
+#cnf(i_0_2370, plain, (implies(X1,implies(not(implies(not(X2),not(implies(X1,X2)))),X3))=truth)).
+##
+#cnf(i_0_2375, plain, (implies(X1,implies(not(implies(X2,not(implies(X1,not(X2))))),X3))=truth)).
+#
+#cnf(i_0_2376, plain, (implies(X1,implies(not(implies(X2,not(implies(X2,not(X1))))),X3))=truth)).
+##########
+#cnf(i_0_2900, plain, (implies(X1,implies(not(implies(X2,X3)),not(implies(X1,not(X2)))))=truth)).
+##################
+#cnf(i_0_3209, plain, (implies(X1,implies(not(implies(not(X2),X3)),not(implies(X1,X2))))=truth)).
+####
+#cnf(i_0_3344, plain, (implies(not(implies(not(implies(X1,X2)),X3)),implies(not(X1),X4))=truth)).
+#
+#cnf(i_0_3345, plain, (implies(not(implies(X2,not(implies(X2,X1)))),implies(not(X1),X3))=truth)).
+#
+#cnf(i_0_3352, plain, (implies(not(implies(X2,X1)),implies(implies(not(X1),not(X2)),X3))=truth)).
+#
+#cnf(i_0_3353, plain, (implies(not(implies(not(X2),X1)),implies(implies(not(X1),X2),X3))=truth)).
+#
+#cnf(i_0_3354, plain, (implies(not(implies(X2,not(X1))),implies(implies(X1,not(X2)),X3))=truth)).
+#
+#cnf(i_0_3356, plain, (implies(not(implies(not(X2),not(X1))),implies(implies(X1,X2),X3))=truth)).
+#
+#cnf(i_0_3364, plain, (implies(not(implies(not(X2),not(implies(X1,X2)))),implies(X1,X3))=truth)).
+#
+#cnf(i_0_3367, plain, (implies(not(implies(not(implies(not(X1),X2)),X3)),implies(X1,X4))=truth)).
+#
+#cnf(i_0_3372, plain, (implies(not(implies(X2,not(implies(X1,not(X2))))),implies(X1,X3))=truth)).
+#
+#cnf(i_0_3373, plain, (implies(not(implies(X2,not(implies(X2,not(X1))))),implies(X1,X3))=truth)).
+#
+#cnf(i_0_3691, plain, (implies(not(implies(X1,X2)),implies(not(implies(not(X1),X3)),X4))=truth)).
+##
+#cnf(i_0_3697, plain, (implies(not(implies(not(X1),X3)),implies(not(implies(X1,X2)),X4))=truth)).
+####
+#cnf(i_0_3993, plain, (implies(not(implies(X1,not(X2))),implies(not(implies(X3,X2)),X4))=truth)).
+##
+#cnf(i_0_3999, plain, (implies(not(implies(X3,X2)),implies(not(implies(X1,not(X2))),X4))=truth)).
+#########################
+#cnf(i_0_4578, plain, (implies(not(X1),implies(not(implies(X2,X3)),not(implies(X2,X1))))=truth)).
+####
+#cnf(i_0_4739, plain, (implies(X1,implies(not(implies(X2,X3)),not(implies(X2,not(X1)))))=truth)).
+######
+#cnf(i_0_4920, plain, (implies(not(implies(not(implies(X1,X2)),X4)),implies(X3,not(X2)))=truth)).
+#
+#cnf(i_0_4921, plain, (implies(not(implies(not(implies(X1,not(X2))),X4)),implies(X3,X2))=truth)).
+###
+#cnf(i_0_4927, plain, (implies(not(implies(not(X1),X3)),implies(X2,not(implies(X2,X1))))=truth)).
+#########
+#cnf(i_0_4948, plain, (implies(not(implies(X1,X3)),implies(not(X2),not(implies(X1,X2))))=truth)).
+##
+#cnf(i_0_4957, plain, (implies(not(implies(X1,X3)),implies(X2,not(implies(X1,not(X2)))))=truth)).
+#
+#cnf(i_0_4958, plain, (implies(not(implies(X1,X3)),implies(X2,not(implies(X2,not(X1)))))=truth)).
+##############################
+#cnf(i_0_6142, plain, (implies(X1,implies(implies(implies(X2,implies(X3,X1)),X4),implies(X5,X4)))=truth)).
+#
+#cnf(i_0_6150, plain, (implies(X1,implies(X2,implies(X3,implies(X4,implies(X5,implies(X6,X1))))))=truth)).
+#
+#cnf(i_0_6222, plain, (implies(implies(X1,X2),implies(X5,implies(X1,implies(X3,implies(X4,X2)))))=truth)).
+##
+#cnf(i_0_6488, plain, (implies(implies(X1,X2),implies(X4,implies(X5,implies(X1,implies(X3,X2)))))=truth)).
+#
+#cnf(i_0_6499, plain, (implies(X1,implies(X4,implies(X5,implies(implies(X1,X2),implies(X3,X2)))))=truth)).
+#############
+#cnf(i_0_7448, plain, (implies(X1,implies(X5,implies(implies(implies(X2,X1),X3),implies(X4,X3))))=truth)).
+###########################################
+#cnf(i_0_9653, plain, (implies(implies(implies(X3,implies(X4,X1)),X2),implies(X5,implies(X1,X2)))=truth)).
+#
+#cnf(i_0_9657, plain, (implies(implies(implies(X1,X2),X3),implies(X5,implies(X4,implies(X2,X3))))=truth)).
+###################################################################################################################
+#cnf(i_0_38351, plain, (implies(not(implies(X1,X2)),not(implies(X1,not(implies(X2,X3)))))=truth)).
+##########
+#cnf(i_0_63135, plain, (implies(implies(implies(X1,X2),X3),implies(X4,implies(X2,implies(X5,X3))))=truth)).
+#
+#cnf(i_0_152772, plain, (implies(implies(implies(X1,X2),X3),implies(X2,implies(X4,X3)))=truth)).
+#
+#cnf(i_0_153802, plain, (implies(implies(implies(X1,X2),not(X3)),implies(X2,implies(X3,X4)))=truth)).
+#
+#cnf(i_0_153888, plain, (implies(implies(implies(X1,X2),X3),implies(X2,implies(not(X3),X4)))=truth)).
+##
+#cnf(i_0_154302, plain, (implies(implies(implies(X2,X1),X3),implies(not(X2),implies(X4,X3)))=truth)).
+#
+#cnf(i_0_154388, plain, (implies(implies(implies(not(X2),X1),X3),implies(X2,implies(X4,X3)))=truth)).
+###
+#cnf(i_0_155992, plain, (implies(implies(X3,not(implies(X1,X2))),implies(X2,implies(X3,X4)))=truth)).
+######
+#cnf(i_0_158136, plain, (implies(implies(implies(X1,X2),X3),implies(not(implies(X4,X3)),X1))=truth)).
+#####
+#cnf(i_0_63148, plain, (implies(implies(X1,X2),implies(implies(implies(X3,X2),X4),implies(X1,X4)))=truth)).
+#####
+#cnf(i_0_66399, plain, (implies(implies(X1,X2),implies(implies(X2,X3),implies(X4,implies(X1,X3))))=truth)).
+###
+#cnf(i_0_66425, plain, (implies(X1,implies(implies(implies(X2,X1),X3),implies(X5,implies(X4,X3))))=truth)).
+#####
+#cnf(i_0_66572, plain, (implies(X1,implies(X5,implies(implies(X1,X2),implies(X3,implies(X4,X2)))))=truth)).
+#######
+#cnf(i_0_66789, plain, (implies(X1,implies(implies(X1,X2),implies(X5,implies(X3,implies(X4,X2)))))=truth)).
+###########################################
+#cnf(i_0_91548, plain, (implies(X1,implies(implies(implies(X2,X3),X4),implies(implies(X1,X3),X4)))=truth)).
+#
+#cnf(i_0_172758, plain, (implies(X1,implies(implies(X2,X3),implies(implies(X1,X2),X3)))=truth)).
+#
+#cnf(i_0_174222, plain, (implies(X1,implies(implies(X1,not(implies(X2,X3))),implies(X4,X2)))=truth)).
+#
+#cnf(i_0_174226, plain, (implies(X1,implies(implies(X1,not(implies(X2,X3))),implies(X3,X4)))=truth)).
+#
+#cnf(i_0_176701, plain, (implies(X1,implies(X3,not(implies(X1,not(implies(X2,X3))))))=truth)).
+#
+#cnf(i_0_178149, plain, (implies(not(X1),implies(X2,not(implies(implies(X3,X2),X1))))=truth)).
+###
+#cnf(i_0_178166, plain, (implies(X1,implies(X2,not(implies(implies(X3,X2),not(X1)))))=truth)).
+####
+#cnf(i_0_175716, plain, (implies(not(X1),implies(implies(implies(X2,X3),X1),implies(X4,X2)))=truth)).
+###
+#cnf(i_0_175733, plain, (implies(X1,implies(implies(implies(X2,X3),not(X1)),implies(X4,X2)))=truth)).
+###
+#cnf(i_0_177068, plain, (implies(not(X1),implies(implies(implies(X2,X3),X1),implies(X3,X4)))=truth)).
+###
+#cnf(i_0_177085, plain, (implies(X1,implies(implies(implies(X2,X3),not(X1)),implies(X3,X4)))=truth)).
+##############################################################################################################################################################################################################################
+#cnf(i_0_153610, plain, (implies(implies(implies(X1,X2),X3),implies(X2,implies(X5,implies(X4,X3))))=truth)).
+#####
+#cnf(i_0_172999, plain, (implies(X1,implies(implies(X1,X3),implies(implies(X3,X4),implies(X2,X4))))=truth)).
+#
+#cnf(i_0_173218, plain, (implies(X1,implies(implies(X2,X3),implies(implies(implies(X4,X1),X2),X3)))=truth)).
+##
+#cnf(i_0_173251, plain, (implies(X1,implies(X4,implies(implies(X2,X3),implies(implies(X1,X2),X3))))=truth)).
+#######
+#cnf(i_0_173593, plain, (implies(X1,implies(implies(X2,X3),implies(X4,implies(implies(X1,X2),X3))))=truth)).
+#
+#cnf(i_0_174335, plain, (implies(X1,implies(implies(X1,implies(X2,X3)),implies(X2,implies(X4,X3))))=truth)).
+##
+#cnf(i_0_175350, plain, (implies(X1,implies(not(X2),not(implies(X1,not(implies(X2,X3))))))=truth)).
+##
+#cnf(i_0_177972, plain, (implies(X1,implies(X2,not(implies(X1,not(implies(not(X2),X3))))))=truth)).
+##
+#cnf(i_0_178780, plain, (implies(not(X1),implies(not(X2),not(implies(implies(X2,X3),X1))))=truth)).
+#
+#cnf(i_0_178866, plain, (implies(not(X1),implies(X2,not(implies(implies(not(X2),X3),X1))))=truth)).
+###
+#cnf(i_0_179924, plain, (implies(X1,implies(not(X2),not(implies(implies(X2,X3),not(X1)))))=truth)).
+#
+#cnf(i_0_180011, plain, (implies(X1,implies(X2,not(implies(implies(not(X2),X3),not(X1)))))=truth)).
+#####################
+#cnf(i_0_120, plain, (implies(not(X2),not(implies(not(X2),not(implies(X1,X2)))))=implies(X1,X2))).
+#
+#cnf(i_0_202975, plain, (implies(X1,not(implies(X1,not(implies(X1,X2)))))=implies(not(X2),not(X1)))).
+###
+#cnf(i_0_203256, plain, (implies(X1,not(implies(X1,not(implies(X2,not(X1))))))=implies(X2,not(X1)))).
+####
+#cnf(i_0_157, plain, (implies(not(X1),not(implies(not(X2),not(implies(X1,X2)))))=implies(X2,X1))).
+#
+#cnf(i_0_205599, plain, (implies(X1,not(implies(X2,not(implies(X2,X1)))))=implies(not(X2),not(X1)))).
+#
+#cnf(i_0_47, plain, (implies(implies(X1,implies(not(X2),not(X3))),implies(X1,implies(X3,X2)))=truth)).
+#
+#cnf(i_0_57, plain, (implies(implies(implies(X2,X1),X3),implies(implies(not(X1),not(X2)),X3))=truth)).
+#
+#cnf(i_0_1145, plain, (implies(implies(implies(not(X2),not(X1)),X3),implies(implies(X1,X2),X3))=truth)).
+#
+#cnf(i_0_1155, plain, (implies(implies(X1,implies(X2,X3)),implies(X1,implies(not(X3),not(X2))))=truth)).
+##
+#cnf(i_0_1285, plain, (implies(implies(X1,X2),implies(not(implies(X1,X3)),not(implies(X2,X3))))=truth)).
+#
+#cnf(i_0_1295, plain, (implies(implies(not(X2),not(X1)),implies(implies(X2,X3),implies(X1,X3)))=truth)).
+#
+#cnf(i_0_215043, plain, (implies(implies(implies(X1,X2),X4),implies(implies(implies(X3,X1),X2),X4))=truth)).
+#
+#cnf(i_0_216839, plain, (implies(implies(implies(X5,implies(X1,X2)),X3),implies(X2,implies(X4,X3)))=truth)).
+#
+#cnf(i_0_216875, plain, (implies(implies(implies(X4,X1),X2),implies(implies(X2,X3),implies(X1,X3)))=truth)).
+#
+#cnf(i_0_1300, plain, (implies(implies(X1,X2),implies(implies(not(X3),not(X2)),implies(X1,X3)))=truth)).
+#
+#cnf(i_0_1301, plain, (implies(implies(X1,X2),implies(implies(X2,X3),implies(not(X3),not(X1))))=truth)).
+#
+#cnf(i_0_1310, plain, (implies(implies(X2,X1),implies(implies(not(X2),X3),implies(not(X1),X3)))=truth)).
+#
+#cnf(i_0_1315, plain, (implies(implies(X1,not(X2)),implies(implies(X3,X2),implies(X1,not(X3))))=truth)).
+#
+#cnf(i_0_1316, plain, (implies(implies(not(X1),X2),implies(implies(X2,not(X3)),implies(X3,X1)))=truth)).
+#
+#cnf(i_0_1344, plain, (implies(implies(not(X2),X1),implies(implies(X2,X3),implies(not(X1),X3)))=truth)).
+#
+#cnf(i_0_1349, plain, (implies(implies(X1,not(X2)),implies(implies(not(X3),X2),implies(X1,X3)))=truth)).
+#
+#cnf(i_0_1350, plain, (implies(implies(not(X1),X2),implies(implies(X2,X3),implies(not(X3),X1)))=truth)).
+####
+#cnf(i_0_1410, plain, (implies(implies(X2,not(X1)),implies(implies(not(X2),X3),implies(X1,X3)))=truth)).
+#
+#cnf(i_0_1415, plain, (implies(implies(X1,X2),implies(implies(X3,not(X2)),implies(X1,not(X3))))=truth)).
+#
+#cnf(i_0_1416, plain, (implies(implies(X1,X2),implies(implies(X2,not(X3)),implies(X3,not(X1))))=truth)).
+####
+#cnf(i_0_1458, plain, (implies(implies(implies(X2,not(X1)),X3),implies(implies(X1,not(X2)),X3))=truth)).
+#
+#cnf(i_0_1463, plain, (implies(implies(X1,implies(X2,not(X3))),implies(X1,implies(X3,not(X2))))=truth)).
+#
+#cnf(i_0_1502, plain, (implies(implies(implies(not(X2),X1),X3),implies(implies(not(X1),X2),X3))=truth)).
+#
+#cnf(i_0_1507, plain, (implies(implies(X1,implies(not(X2),X3)),implies(X1,implies(not(X3),X2)))=truth)).
+#
+#cnf(i_0_1577, plain, (implies(implies(X1,X2),implies(X1,implies(not(X3),not(implies(X2,X3)))))=truth)).
+#
+#cnf(i_0_1627, plain, (implies(implies(X1,not(X2)),implies(X1,implies(not(implies(X2,X3)),X4)))=truth)).
+#
+#cnf(i_0_1714, plain, (implies(implies(X1,X2),implies(X1,implies(not(implies(not(X2),X3)),X4)))=truth)).
+#
+#cnf(i_0_1779, plain, (implies(implies(X1,not(X2)),implies(X1,implies(X3,not(implies(X3,X2)))))=truth)).
+#
+#cnf(i_0_1851, plain, (implies(implies(X1,X2),implies(X1,implies(X3,not(implies(X3,not(X2))))))=truth)).
+#
+#cnf(i_0_1896, plain, (implies(implies(X1,X2),implies(X1,implies(X3,not(implies(X2,not(X3))))))=truth)).
+#
+#cnf(i_0_2132, plain, (implies(not(implies(not(X1),X2)),implies(implies(implies(X1,X3),X2),X4))=truth)).
+#
+#cnf(i_0_2161, plain, (implies(not(implies(X1,X2)),implies(implies(implies(not(X1),X3),X2),X4))=truth)).
+#
+#cnf(i_0_2267, plain, (implies(implies(X1,X2),implies(not(implies(X1,implies(not(X2),X3))),X4))=truth)).
+###
+#cnf(i_0_2362, plain, (implies(implies(X1,not(X2)),implies(not(implies(X1,implies(X2,X3))),X4))=truth)).
+#
+#cnf(i_0_2396, plain, (implies(X1,implies(X2,implies(not(implies(X3,implies(not(X1),X4))),X5)))=truth)).
+#
+#cnf(i_0_2397, plain, (implies(not(X1),implies(X2,implies(not(implies(X3,implies(X1,X4))),X5)))=truth)).
+#
+#cnf(i_0_2403, plain, (implies(X1,implies(not(implies(X2,implies(not(implies(X3,X1)),X4))),X5))=truth)).
+#
+#cnf(i_0_2524, plain, (implies(not(X1),implies(not(implies(X2,implies(X3,implies(X1,X4)))),X5))=truth)).
+#
+#cnf(i_0_2672, plain, (implies(X1,implies(X2,implies(X3,implies(not(implies(not(X1),X4)),X5))))=truth)).
+#
+#cnf(i_0_2673, plain, (implies(not(X1),implies(X2,implies(X3,implies(not(implies(X1,X4)),X5))))=truth)).
+#
+#cnf(i_0_2679, plain, (implies(X1,implies(not(implies(X2,implies(X3,implies(not(X1),X4)))),X5))=truth)).
+#
+#cnf(i_0_2809, plain, (implies(X1,implies(implies(implies(not(X1),X2),not(X3)),implies(X3,X4)))=truth)).
+#
+#cnf(i_0_2810, plain, (implies(not(X1),implies(implies(implies(X1,X2),not(X3)),implies(X3,X4)))=truth)).
+#
+#cnf(i_0_2818, plain, (implies(X1,implies(not(implies(implies(X1,not(X2)),implies(X2,X3))),X4))=truth)).
+#####
+#cnf(i_0_2939, plain, (implies(X1,implies(not(implies(not(implies(X2,implies(X3,X1))),X4)),X5))=truth)).
+#
+#cnf(i_0_3093, plain, (implies(X1,implies(implies(implies(not(X1),X2),X3),implies(not(X3),X4)))=truth)).
+#
+#cnf(i_0_3094, plain, (implies(not(X1),implies(implies(implies(X1,X2),X3),implies(not(X3),X4)))=truth)).
+#
+#cnf(i_0_3102, plain, (implies(X1,implies(not(implies(implies(X1,X2),implies(not(X2),X3))),X4))=truth)).
+###########
+#cnf(i_0_3229, plain, (implies(implies(X1,X2),implies(not(implies(not(X2),implies(X1,X3))),X4))=truth)).
+##
+#cnf(i_0_3235, plain, (implies(not(implies(not(X2),implies(X1,X3))),implies(implies(X1,X2),X4))=truth)).
+#
+#cnf(i_0_3341, plain, (implies(implies(implies(X1,X3),X2),implies(not(implies(not(X1),X2)),X4))=truth)).
+#
+#cnf(i_0_3342, plain, (implies(implies(implies(not(X1),X3),X2),implies(not(implies(X1,X2)),X4))=truth)).
+#
+#cnf(i_0_3347, plain, (implies(not(implies(X2,implies(X3,implies(X1,X4)))),implies(not(X1),X5))=truth)).
+#
+#cnf(i_0_3355, plain, (implies(not(implies(X1,implies(X2,X3))),implies(implies(X1,not(X2)),X4))=truth)).
+#
+#cnf(i_0_3359, plain, (implies(not(implies(X1,implies(not(X2),X3))),implies(implies(X1,X2),X4))=truth)).
+#
+#cnf(i_0_3368, plain, (implies(not(implies(not(implies(X2,implies(X3,X1))),X4)),implies(X1,X5))=truth)).
+#
+#cnf(i_0_3370, plain, (implies(not(implies(implies(X1,not(X2)),implies(X2,X3))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_3371, plain, (implies(not(implies(implies(X1,X2),implies(not(X2),X3))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_3377, plain, (implies(not(implies(X2,implies(not(implies(X3,X1)),X4))),implies(X1,X5))=truth)).
+#
+#cnf(i_0_3378, plain, (implies(not(implies(X2,implies(X3,implies(not(X1),X4)))),implies(X1,X5))=truth)).
+#
+#cnf(i_0_3687, plain, (implies(implies(implies(not(X1),X3),X4),implies(not(implies(X1,X2)),X4))=truth)).
+#
+#cnf(i_0_3701, plain, (implies(implies(X1,not(implies(X2,X3))),implies(X1,implies(not(X2),X4)))=truth)).
+#
+#cnf(i_0_3836, plain, (implies(implies(implies(X1,X3),X4),implies(not(implies(not(X1),X2)),X4))=truth)).
+#
+#cnf(i_0_3850, plain, (implies(implies(X1,not(implies(not(X2),X3))),implies(X1,implies(X2,X4)))=truth)).
+#
+#cnf(i_0_3989, plain, (implies(implies(implies(X3,X2),X4),implies(not(implies(X1,not(X2))),X4))=truth)).
+#
+#cnf(i_0_4003, plain, (implies(implies(X1,not(implies(X2,not(X3)))),implies(X1,implies(X4,X3)))=truth)).
+#
+#cnf(i_0_4119, plain, (implies(implies(implies(X3,not(X2)),X4),implies(not(implies(X1,X2)),X4))=truth)).
+#
+#cnf(i_0_4134, plain, (implies(implies(X1,not(implies(X2,X3))),implies(X1,implies(X4,not(X3))))=truth)).
+#
+#cnf(i_0_4253, plain, (implies(implies(X1,not(X2)),implies(not(implies(X2,implies(X1,X3))),X4))=truth)).
+##
+#cnf(i_0_4259, plain, (implies(not(implies(X2,implies(X1,X3))),implies(implies(X1,not(X2)),X4))=truth)).
+###
+#cnf(i_0_4413, plain, (implies(not(X1),implies(not(implies(implies(X2,X1),implies(X2,X3))),X4))=truth)).
+##
+#cnf(i_0_4419, plain, (implies(not(implies(implies(X2,X1),implies(X2,X3))),implies(not(X1),X4))=truth)).
+##############
+#cnf(i_0_4618, plain, (implies(X1,implies(implies(X2,not(implies(not(X1),X3))),implies(X2,X4)))=truth)).
+#
+#cnf(i_0_4619, plain, (implies(not(X1),implies(implies(X2,not(implies(X1,X3))),implies(X2,X4)))=truth)).
+#
+#cnf(i_0_4627, plain, (implies(X1,implies(not(implies(implies(X2,not(X1)),implies(X2,X3))),X4))=truth)).
+##
+#cnf(i_0_4633, plain, (implies(not(implies(implies(X2,not(X1)),implies(X2,X3))),implies(X1,X4))=truth)).
+####
+#cnf(i_0_4764, plain, (implies(implies(X1,X2),implies(not(implies(not(implies(X1,X3)),X2)),X4))=truth)).
+##
+#cnf(i_0_4770, plain, (implies(not(implies(not(implies(X1,X3)),X2)),implies(implies(X1,X2),X4))=truth)).
+#
+#cnf(i_0_4772, plain, (implies(not(implies(implies(X1,X2),X4)),implies(not(implies(X1,X3)),X2))=truth)).
+##
+#cnf(i_0_4926, plain, (implies(not(implies(not(X1),X4)),implies(implies(X2,X1),implies(X2,X3)))=truth)).
+#
+#cnf(i_0_4929, plain, (implies(not(implies(not(X1),X5)),implies(X2,implies(X3,implies(X1,X4))))=truth)).
+#
+#cnf(i_0_4937, plain, (implies(not(implies(implies(X1,not(X2)),X4)),implies(X1,implies(X2,X3)))=truth)).
+#
+#cnf(i_0_4938, plain, (implies(not(implies(implies(X1,not(X2)),X4)),implies(X2,implies(X1,X3)))=truth)).
+#
+#cnf(i_0_4940, plain, (implies(not(implies(implies(X1,X2),X4)),implies(not(X2),implies(X1,X3)))=truth)).
+#
+#cnf(i_0_4943, plain, (implies(not(implies(implies(X1,X2),X4)),implies(X1,implies(not(X2),X3)))=truth)).
+#
+#cnf(i_0_4952, plain, (implies(not(implies(X1,X5)),implies(not(implies(X2,implies(X3,X1))),X4))=truth)).
+#
+#cnf(i_0_4954, plain, (implies(not(implies(X1,X4)),implies(implies(X1,not(X2)),implies(X2,X3)))=truth)).
+#
+#cnf(i_0_4955, plain, (implies(not(implies(X1,X4)),implies(implies(X1,X2),implies(not(X2),X3)))=truth)).
+#
+#cnf(i_0_4956, plain, (implies(not(implies(X1,X4)),implies(implies(X2,not(X1)),implies(X2,X3)))=truth)).
+#
+#cnf(i_0_4962, plain, (implies(not(implies(X1,X5)),implies(X2,implies(not(implies(X3,X1)),X4)))=truth)).
+#
+#cnf(i_0_4963, plain, (implies(not(implies(X1,X5)),implies(X2,implies(X3,implies(not(X1),X4))))=truth)).
+#
+#cnf(i_0_4972, plain, (implies(not(implies(X1,implies(X2,X3))),implies(not(implies(X3,X4)),X5))=truth)).
+#####
+#cnf(i_0_5207, plain, (implies(not(implies(X1,X2)),implies(not(implies(X3,implies(X2,X4))),X5))=truth)).
+##
+#cnf(i_0_5213, plain, (implies(not(implies(X3,implies(X2,X4))),implies(not(implies(X1,X2)),X5))=truth)).
+#
+#cnf(i_0_5215, plain, (implies(not(implies(not(implies(X1,X2)),X5)),implies(X3,implies(X2,X4)))=truth)).
+#####
+#cnf(i_0_5456, plain, (implies(not(implies(not(implies(X1,X2)),X5)),implies(X3,implies(X4,X1)))=truth)).
+#####
+#cnf(i_0_5703, plain, (implies(not(implies(not(implies(X1,implies(X2,X3))),X5)),implies(X4,X2))=truth)).
+##
+#cnf(i_0_6137, plain, (implies(X1,implies(not(X2),not(implies(implies(X3,implies(X4,X1)),X2))))=truth)).
+##
+#cnf(i_0_6146, plain, (implies(X1,implies(X2,not(implies(implies(X3,implies(X4,X1)),not(X2)))))=truth)).
+#
+#cnf(i_0_6147, plain, (implies(X1,implies(X2,not(implies(X2,not(implies(X3,implies(X4,X1)))))))=truth)).
+#####
+#cnf(i_0_6414, plain, (implies(implies(not(X1),X2),implies(not(implies(X3,implies(X4,X2))),X1))=truth)).
+##
+#cnf(i_0_6440, plain, (implies(implies(X1,X2),implies(not(implies(X3,implies(X4,X2))),not(X1)))=truth)).
+#
+#cnf(i_0_6459, plain, (implies(implies(X2,X1),implies(not(X1),implies(X3,implies(X4,not(X2)))))=truth)).
+##
+#cnf(i_0_6461, plain, (implies(not(implies(X1,X2)),implies(X4,implies(X5,implies(X3,not(X2)))))=truth)).
+#
+#cnf(i_0_6464, plain, (implies(not(implies(X1,not(X2))),implies(X4,implies(X5,implies(X3,X2))))=truth)).
+###
+#cnf(i_0_6472, plain, (implies(not(X1),implies(X3,implies(X4,implies(X2,not(implies(X2,X1))))))=truth)).
+#
+#cnf(i_0_6477, plain, (implies(implies(not(X2),X1),implies(not(X1),implies(X3,implies(X4,X2))))=truth)).
+##
+#cnf(i_0_6479, plain, (implies(implies(not(X1),not(X2)),implies(X3,implies(X4,implies(X2,X1))))=truth)).
+#
+#cnf(i_0_6480, plain, (implies(implies(not(X1),X2),implies(X3,implies(X4,implies(not(X2),X1))))=truth)).
+#
+#cnf(i_0_6481, plain, (implies(implies(X1,not(X2)),implies(X3,implies(X4,implies(X2,not(X1)))))=truth)).
+#
+#cnf(i_0_6484, plain, (implies(implies(X1,X2),implies(X3,implies(X4,implies(not(X2),not(X1)))))=truth)).
+#
+#cnf(i_0_6492, plain, (implies(implies(X2,not(X1)),implies(X1,implies(X3,implies(X4,not(X2)))))=truth)).
+##
+#cnf(i_0_6494, plain, (implies(X1,implies(X3,implies(X4,implies(not(X2),not(implies(X1,X2))))))=truth)).
+##
+#cnf(i_0_6503, plain, (implies(X1,implies(X3,implies(X4,implies(X2,not(implies(X1,not(X2)))))))=truth)).
+#
+#cnf(i_0_6504, plain, (implies(X1,implies(X3,implies(X4,implies(X2,not(implies(X2,not(X1)))))))=truth)).
+#
+#cnf(i_0_6512, plain, (implies(implies(not(X2),not(X1)),implies(X1,implies(X3,implies(X4,X2))))=truth)).
+####
+#cnf(i_0_6662, plain, (implies(implies(not(X1),X2),implies(X3,implies(not(implies(X4,X2)),X1)))=truth)).
+##
+#cnf(i_0_6693, plain, (implies(implies(X1,X2),implies(X3,implies(not(implies(X4,X2)),not(X1))))=truth)).
+##
+#cnf(i_0_6759, plain, (implies(implies(X2,X1),implies(X3,implies(not(X1),implies(X4,not(X2)))))=truth)).
+#######
+#cnf(i_0_6777, plain, (implies(implies(not(X2),X1),implies(X3,implies(not(X1),implies(X4,X2))))=truth)).
+######
+#cnf(i_0_6793, plain, (implies(implies(X2,not(X1)),implies(X3,implies(X1,implies(X4,not(X2)))))=truth)).
+######
+#cnf(i_0_6813, plain, (implies(implies(not(X2),not(X1)),implies(X3,implies(X1,implies(X4,X2))))=truth)).
+####
+#cnf(i_0_6988, plain, (implies(not(X1),implies(X2,implies(implies(X3,X1),implies(X4,not(X3)))))=truth)).
+#######
+#cnf(i_0_7006, plain, (implies(not(X1),implies(X2,implies(implies(not(X3),X1),implies(X4,X3))))=truth)).
+######
+#cnf(i_0_7023, plain, (implies(X1,implies(X2,implies(implies(X3,not(X1)),implies(X4,not(X3)))))=truth)).
+######
+#cnf(i_0_7043, plain, (implies(X1,implies(X2,implies(implies(not(X3),not(X1)),implies(X4,X3))))=truth)).
+#
+#cnf(i_0_7045, plain, (implies(X1,implies(X2,implies(not(implies(X4,X3)),not(implies(X1,X3)))))=truth)).
+##############
+#cnf(i_0_7658, plain, (implies(X1,implies(implies(X3,not(implies(X2,X1))),implies(X4,not(X3))))=truth)).
+##
+#cnf(i_0_7660, plain, (implies(X1,implies(X4,implies(not(X3),not(implies(implies(X2,X1),X3)))))=truth)).
+#
+#cnf(i_0_7663, plain, (implies(X1,implies(X5,implies(not(implies(not(implies(X2,X1)),X3)),X4)))=truth)).
+#
+#cnf(i_0_7669, plain, (implies(X1,implies(X4,implies(X3,not(implies(implies(X2,X1),not(X3))))))=truth)).
+#
+#cnf(i_0_7670, plain, (implies(X1,implies(X4,implies(X3,not(implies(X3,not(implies(X2,X1)))))))=truth)).
+#
+#cnf(i_0_7680, plain, (implies(X1,implies(implies(not(X3),not(implies(X2,X1))),implies(X4,X3)))=truth)).
+#
+#cnf(i_0_7695, plain, (implies(X1,implies(not(implies(X4,X3)),not(implies(implies(X2,X1),X3))))=truth)).
+###############
+#cnf(i_0_8595, plain, (implies(not(implies(X1,X2)),implies(X4,not(implies(implies(X3,X1),X2))))=truth)).
+################################
+#cnf(i_0_9665, plain, (implies(not(implies(X4,implies(X2,X3))),not(implies(implies(X1,X2),X3)))=truth)).
+###
+#cnf(i_0_9776, plain, (implies(implies(implies(X1,not(X2)),not(X3)),implies(X4,implies(X3,X2)))=truth)).
+#
+#cnf(i_0_9794, plain, (implies(implies(implies(X1,not(X2)),X3),implies(X4,implies(not(X3),X2)))=truth)).
+##
+#cnf(i_0_9815, plain, (implies(implies(implies(X1,X2),not(X3)),implies(X4,implies(X3,not(X2))))=truth)).
+##
+#cnf(i_0_9841, plain, (implies(implies(implies(X1,X2),X3),implies(X4,implies(not(X3),not(X2))))=truth)).
+#####
+#cnf(i_0_9977, plain, (implies(implies(X3,not(implies(X1,X2))),implies(X4,implies(X2,not(X3))))=truth)).
+#####
+#cnf(i_0_10003, plain, (implies(implies(not(X3),not(implies(X1,X2))),implies(X4,implies(X2,X3)))=truth)).
+#############
+#cnf(i_0_10460, plain, (implies(not(implies(X1,implies(X3,X2))),implies(X4,not(implies(X1,X2))))=truth)).
+#
+#cnf(i_0_10476, plain, (implies(not(implies(implies(X1,X2),implies(X3,X2))),implies(X4,not(X1)))=truth)).
+#
+#cnf(i_0_10486, plain, (implies(not(implies(X2,implies(X3,implies(X4,X1)))),implies(X5,not(X1)))=truth)).
+###
+#cnf(i_0_10502, plain, (implies(not(implies(implies(X2,X1),implies(X3,not(X2)))),implies(X4,X1))=truth)).
+#####################
+#cnf(i_0_11284, plain, (implies(not(implies(implies(not(X1),X2),implies(X3,X2))),implies(X4,X1))=truth)).
+#
+#cnf(i_0_11286, plain, (implies(not(implies(implies(not(X2),X1),implies(X3,X2))),implies(X4,X1))=truth)).
+#
+#cnf(i_0_11294, plain, (implies(not(implies(X2,implies(X3,implies(X4,not(X1))))),implies(X5,X1))=truth)).
+###########################################
+#cnf(i_0_12476, plain, (implies(not(implies(X2,implies(not(implies(X1,X3)),X4))),implies(X5,X1))=truth)).
+####################
+#cnf(i_0_13155, plain, (implies(not(implies(X2,implies(X3,not(implies(X3,X1))))),implies(X4,X1))=truth)).
+#############################################################
+#cnf(i_0_14970, plain, (implies(not(implies(X5,implies(not(X2),X4))),implies(X1,implies(X2,X3)))=truth)).
+#
+#cnf(i_0_14971, plain, (implies(not(implies(X1,implies(X2,X3))),implies(X5,implies(not(X2),X4)))=truth)).
+#######################################
+#cnf(i_0_16202, plain, (implies(not(implies(X1,X2)),implies(X5,implies(not(implies(X2,X3)),X4)))=truth)).
+################################################
+#cnf(i_0_17923, plain, (implies(not(implies(X3,implies(X4,X2))),implies(X5,implies(X1,not(X2))))=truth)).
+#############
+#cnf(i_0_18301, plain, (implies(not(implies(X3,implies(X4,not(X2)))),implies(X5,implies(X1,X2)))=truth)).
+##########
+#cnf(i_0_18632, plain, (implies(implies(not(X1),X2),implies(X4,implies(not(implies(X3,X1)),X2)))=truth)).
+######
+#cnf(i_0_18978, plain, (implies(not(implies(X4,X1)),implies(implies(not(X1),X2),implies(X3,X2)))=truth)).
+#
+#cnf(i_0_18980, plain, (implies(not(implies(X4,X1)),implies(implies(not(X2),X1),implies(X3,X2)))=truth)).
+#
+#cnf(i_0_18983, plain, (implies(not(implies(X4,X1)),implies(implies(X2,X1),implies(X3,not(X2))))=truth)).
+###
+#cnf(i_0_18997, plain, (implies(not(implies(X4,X1)),implies(X2,implies(X3,not(implies(X3,X1)))))=truth)).
+################
+#cnf(i_0_19041, plain, (implies(implies(X1,X2),implies(X4,implies(not(implies(X3,not(X1))),X2)))=truth)).
+####################
+#cnf(i_0_19346, plain, (implies(not(implies(X4,not(implies(X1,X2)))),implies(X1,implies(X3,X2)))=truth)).
+#
+#cnf(i_0_19364, plain, (implies(not(implies(X4,not(X1))),implies(implies(X1,X2),implies(X3,X2)))=truth)).
+#######################################################
+#cnf(i_0_21272, plain, (implies(not(implies(X4,implies(X3,X2))),implies(X1,not(implies(X1,X2))))=truth)).
+#
+#cnf(i_0_21273, plain, (implies(not(implies(X1,not(implies(X1,X2)))),implies(X4,implies(X3,X2)))=truth)).
+################################################################################################################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_54642, plain, (implies(implies(X1,X2),implies(not(X2),implies(not(implies(X1,X4)),X3)))=truth)).
+##########
+#cnf(i_0_55498, plain, (implies(implies(X1,not(X2)),implies(X2,implies(not(implies(X1,X4)),X3)))=truth)).
+##
+#cnf(i_0_56110, plain, (implies(implies(implies(not(X1),X2),not(X3)),implies(X3,implies(X1,X4)))=truth)).
+#
+#cnf(i_0_56163, plain, (implies(implies(implies(X1,X2),not(X3)),implies(X3,implies(not(X1),X4)))=truth)).
+##
+#cnf(i_0_56413, plain, (implies(implies(implies(X2,X1),not(X3)),implies(X3,implies(X4,not(X1))))=truth)).
+#
+#cnf(i_0_56514, plain, (implies(implies(implies(X2,not(X1)),not(X3)),implies(X3,implies(X4,X1)))=truth)).
+##
+#cnf(i_0_56891, plain, (implies(implies(implies(not(X1),X2),X3),implies(not(X3),implies(X1,X4)))=truth)).
+#
+#cnf(i_0_56944, plain, (implies(implies(implies(X1,X2),X3),implies(not(X3),implies(not(X1),X4)))=truth)).
+##
+#cnf(i_0_57149, plain, (implies(implies(implies(X2,X1),X3),implies(not(X3),implies(X4,not(X1))))=truth)).
+#
+#cnf(i_0_57251, plain, (implies(implies(implies(X2,not(X1)),X3),implies(not(X3),implies(X4,X1)))=truth)).
+################################
+#cnf(i_0_59516, plain, (implies(implies(implies(X1,X2),not(X3)),implies(not(implies(X3,X1)),X4))=truth)).
+#####
+#cnf(i_0_60279, plain, (implies(implies(implies(X1,X2),X3),implies(not(implies(not(X3),X1)),X4))=truth)).
+##########
+#cnf(i_0_61027, plain, (implies(implies(not(X1),X2),implies(not(implies(X3,implies(X4,X1))),X2))=truth)).
+#
+#cnf(i_0_61134, plain, (implies(implies(X1,X2),implies(not(implies(X3,implies(X4,not(X1)))),X2))=truth)).
+##
+#cnf(i_0_61184, plain, (implies(implies(X1,X2),implies(not(implies(not(implies(X1,X4)),X3)),X2))=truth)).
+##########
+#cnf(i_0_62112, plain, (implies(implies(X1,not(implies(X2,X3))),implies(not(implies(X1,X2)),X4))=truth)).
+##
+#cnf(i_0_62270, plain, (implies(implies(X1,not(implies(X3,X2))),implies(X4,implies(X1,not(X2))))=truth)).
+#
+#cnf(i_0_62378, plain, (implies(implies(X1,not(implies(X3,not(X2)))),implies(X4,implies(X1,X2)))=truth)).
+##
+#cnf(i_0_63125, plain, (implies(implies(not(X1),X2),implies(not(implies(X3,X2)),implies(X4,X1)))=truth)).
+##
+#cnf(i_0_63128, plain, (implies(implies(not(X1),X2),implies(not(implies(X3,X1)),implies(X4,X2)))=truth)).
+###
+#cnf(i_0_63142, plain, (implies(implies(X1,X2),implies(not(implies(X3,X2)),implies(X4,not(X1))))=truth)).
+#
+#cnf(i_0_63146, plain, (implies(implies(X1,X2),implies(not(implies(X3,not(X1))),implies(X4,X2)))=truth)).
+#####
+#cnf(i_0_63950, plain, (implies(implies(X1,not(X2)),implies(not(implies(X2,X3)),implies(X1,X4)))=truth)).
+#
+#cnf(i_0_64003, plain, (implies(implies(X1,X2),implies(not(implies(not(X2),X3)),implies(X1,X4)))=truth)).
+#######
+#cnf(i_0_64725, plain, (implies(implies(X1,not(X2)),implies(not(implies(X1,X3)),implies(X2,X4)))=truth)).
+#
+#cnf(i_0_64778, plain, (implies(implies(X1,X2),implies(not(implies(X1,X3)),implies(not(X2),X4)))=truth)).
+###########
+#cnf(i_0_66315, plain, (implies(not(implies(X1,X2)),implies(X3,implies(X4,not(implies(X3,X2)))))=truth)).
+########
+#cnf(i_0_66344, plain, (implies(not(X1),implies(implies(X2,X1),implies(X4,implies(X3,not(X2)))))=truth)).
+#
+#cnf(i_0_66345, plain, (implies(not(X1),implies(implies(not(X2),X1),implies(X4,implies(X3,X2))))=truth)).
+###############
+#cnf(i_0_66414, plain, (implies(X1,implies(not(X2),implies(X4,not(implies(implies(X3,X1),X2)))))=truth)).
+#
+#cnf(i_0_66415, plain, (implies(X1,implies(not(implies(X2,X3)),implies(X4,not(implies(X1,X3)))))=truth)).
+#
+#cnf(i_0_66426, plain, (implies(X1,implies(implies(not(X2),not(X1)),implies(X4,implies(X3,X2))))=truth)).
+#
+#cnf(i_0_66429, plain, (implies(X1,implies(implies(X2,not(X1)),implies(X4,implies(X3,not(X2)))))=truth)).
+#
+#cnf(i_0_66437, plain, (implies(X1,implies(X2,implies(X4,not(implies(implies(X3,X1),not(X2))))))=truth)).
+#
+#cnf(i_0_66438, plain, (implies(X1,implies(X2,implies(X4,not(implies(X2,not(implies(X3,X1)))))))=truth)).
+#############################
+#cnf(i_0_67366, plain, (implies(X1,implies(not(implies(X3,implies(X4,X2))),not(implies(X1,X2))))=truth)).
+#
+#cnf(i_0_67432, plain, (implies(not(X1),implies(X4,implies(X2,implies(X3,not(implies(X2,X1))))))=truth)).
+##
+#cnf(i_0_67437, plain, (implies(not(implies(X2,implies(X3,not(implies(X2,X1))))),implies(X4,X1))=truth)).
+#########
+#cnf(i_0_67675, plain, (implies(not(X1),implies(X2,implies(X4,implies(X3,not(implies(X2,X1))))))=truth)).
+#####
+#cnf(i_0_68057, plain, (implies(not(X1),implies(not(implies(X2,implies(implies(X2,X1),X3))),X4))=truth)).
+##
+#cnf(i_0_68072, plain, (implies(not(implies(X2,implies(implies(X2,X1),X3))),implies(not(X1),X4))=truth)).
+#
+#cnf(i_0_68079, plain, (implies(not(implies(not(X1),X4)),implies(X2,implies(implies(X2,X1),X3)))=truth)).
+######################
+#cnf(i_0_68874, plain, (implies(X1,implies(not(X2),implies(implies(implies(not(X1),X3),X2),X4)))=truth)).
+#
+#cnf(i_0_68899, plain, (implies(not(X1),implies(not(X2),implies(implies(implies(X1,X3),X2),X4)))=truth)).
+#
+#cnf(i_0_68925, plain, (implies(X1,implies(not(implies(not(X2),implies(implies(X1,X2),X3))),X4))=truth)).
+##
+#cnf(i_0_68940, plain, (implies(not(implies(not(X2),implies(implies(X1,X2),X3))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_68947, plain, (implies(not(implies(X1,X4)),implies(not(X2),implies(implies(X1,X2),X3)))=truth)).
+########################
+#cnf(i_0_69654, plain, (implies(X1,implies(X2,implies(implies(implies(not(X1),X3),not(X2)),X4)))=truth)).
+#
+#cnf(i_0_69680, plain, (implies(not(X1),implies(X2,implies(implies(implies(X1,X3),not(X2)),X4)))=truth)).
+#
+#cnf(i_0_69706, plain, (implies(X1,implies(not(implies(X2,implies(implies(X1,not(X2)),X3))),X4))=truth)).
+##
+#cnf(i_0_69721, plain, (implies(not(implies(X2,implies(implies(X1,not(X2)),X3))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_69728, plain, (implies(not(implies(X1,X4)),implies(X2,implies(implies(X1,not(X2)),X3)))=truth)).
+######
+#cnf(i_0_70302, plain, (implies(X1,implies(X2,implies(implies(X2,not(implies(not(X1),X3))),X4)))=truth)).
+#
+#cnf(i_0_70329, plain, (implies(not(X1),implies(X2,implies(implies(X2,not(implies(X1,X3))),X4)))=truth)).
+#
+#cnf(i_0_70355, plain, (implies(X1,implies(not(implies(X2,implies(implies(X2,not(X1)),X3))),X4))=truth)).
+##
+#cnf(i_0_70370, plain, (implies(not(implies(X2,implies(implies(X2,not(X1)),X3))),implies(X1,X4))=truth)).
+#
+#cnf(i_0_70377, plain, (implies(not(implies(X1,X4)),implies(X2,implies(implies(X2,not(X1)),X3)))=truth)).
+########
+#cnf(i_0_70995, plain, (implies(X1,implies(X4,implies(not(X2),implies(X3,not(implies(X1,X2))))))=truth)).
+#######
+#cnf(i_0_71216, plain, (implies(X1,implies(not(X2),implies(X4,implies(X3,not(implies(X1,X2))))))=truth)).
+###
+#cnf(i_0_71658, plain, (implies(X1,implies(X4,implies(X2,implies(X3,not(implies(X1,not(X2)))))))=truth)).
+#######
+#cnf(i_0_71907, plain, (implies(X1,implies(X2,implies(X4,implies(X3,not(implies(X1,not(X2)))))))=truth)).
+#######
+#cnf(i_0_72174, plain, (implies(X1,implies(X4,implies(X2,implies(X3,not(implies(X2,not(X1)))))))=truth)).
+#######
+#cnf(i_0_72423, plain, (implies(X1,implies(X2,implies(X4,implies(X3,not(implies(X2,not(X1)))))))=truth)).
+####
+#cnf(i_0_73135, plain, (implies(not(X1),implies(implies(X2,X1),implies(not(implies(X2,X4)),X3)))=truth)).
+#######
+#cnf(i_0_74169, plain, (implies(X1,implies(implies(X1,not(X2)),implies(not(implies(X2,X4)),X3)))=truth)).
+##
+#cnf(i_0_74988, plain, (implies(X1,implies(implies(X1,X2),implies(not(implies(not(X2),X4)),X3)))=truth)).
+##########
+#cnf(i_0_76005, plain, (implies(X1,implies(implies(X2,not(X1)),implies(not(implies(X2,X4)),X3)))=truth)).
+#########################################
+#cnf(i_0_80952, plain, (implies(not(X1),implies(X2,implies(not(implies(implies(X2,X1),X4)),X3)))=truth)).
+#############################
+#cnf(i_0_83905, plain, (implies(X1,implies(not(X2),implies(not(implies(implies(X1,X2),X4)),X3)))=truth)).
+#############
+#cnf(i_0_86521, plain, (implies(X1,implies(X2,implies(not(implies(implies(X1,not(X2)),X4)),X3)))=truth)).
+#############
+#cnf(i_0_89225, plain, (implies(X1,implies(X2,implies(not(implies(implies(X2,not(X1)),X4)),X3)))=truth)).
+####
+#cnf(i_0_91546, plain, (implies(X1,implies(not(implies(X2,not(implies(X1,X3)))),implies(X4,X3)))=truth)).
+#########
+#cnf(i_0_92592, plain, (implies(X1,implies(not(implies(X3,X2)),implies(implies(X1,not(X3)),X4)))=truth)).
+#
+#cnf(i_0_92652, plain, (implies(X1,implies(not(implies(not(X3),X2)),implies(implies(X1,X3),X4)))=truth)).
+##
+#cnf(i_0_93386, plain, (implies(X1,implies(not(implies(implies(X1,not(X2)),X3)),implies(X2,X4)))=truth)).
+#
+#cnf(i_0_93446, plain, (implies(X1,implies(not(implies(implies(X1,X2),X3)),implies(not(X2),X4)))=truth)).
+##############
+#cnf(i_0_100864, plain, (implies(not(implies(X1,X2)),implies(implies(implies(X2,X3),not(X1)),X4))=truth)).
+############
+#cnf(i_0_101675, plain, (implies(not(implies(not(X1),X2)),implies(implies(implies(X2,X3),X1),X4))=truth)).
+########################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_150559, plain, (implies(not(implies(X1,X2)),implies(implies(X1,not(implies(X2,X3))),X4))=truth)).
+##############################
+#cnf(i_0_153269, plain, (implies(not(implies(X2,implies(X4,X3))),not(implies(implies(X1,X2),X3)))=truth)).
+######
+#cnf(i_0_154049, plain, (implies(implies(implies(X1,not(X2)),X3),implies(not(implies(X4,X3)),X2))=truth)).
+##
+#cnf(i_0_154207, plain, (implies(implies(implies(X1,X2),X3),implies(not(implies(X4,X3)),not(X2)))=truth)).
+####
+#cnf(i_0_154549, plain, (implies(implies(X3,not(implies(X1,X2))),implies(X2,implies(X4,not(X3))))=truth)).
+######
+#cnf(i_0_154632, plain, (implies(implies(not(X3),not(implies(X1,X2))),implies(X2,implies(X4,X3)))=truth)).
+#
+#cnf(i_0_155745, plain, (implies(implies(implies(X2,X1),not(X3)),implies(not(X2),implies(X3,X4)))=truth)).
+#
+#cnf(i_0_155831, plain, (implies(implies(implies(not(X2),X1),not(X3)),implies(X2,implies(X3,X4)))=truth)).
+##
+#cnf(i_0_156937, plain, (implies(implies(implies(X2,X1),X3),implies(not(X2),implies(not(X3),X4)))=truth)).
+#
+#cnf(i_0_157023, plain, (implies(implies(implies(not(X2),X1),X3),implies(X2,implies(not(X3),X4)))=truth)).
+###################################
+#cnf(i_0_161175, plain, (implies(implies(X1,not(implies(X3,X2))),implies(not(X3),implies(X1,X4)))=truth)).
+#
+#cnf(i_0_161261, plain, (implies(implies(X1,not(implies(not(X3),X2))),implies(X3,implies(X1,X4)))=truth)).
+##
+#cnf(i_0_162011, plain, (implies(implies(implies(X1,X2),not(X3)),implies(not(implies(X3,X4)),X1))=truth)).
+#
+#cnf(i_0_162097, plain, (implies(implies(implies(X1,X2),X3),implies(not(implies(not(X3),X4)),X1))=truth)).
+###########################
+#cnf(i_0_173740, plain, (implies(not(X1),implies(implies(not(X2),X3),implies(implies(X2,X1),X3)))=truth)).
+#
+#cnf(i_0_173826, plain, (implies(not(X1),implies(implies(X2,X3),implies(implies(not(X2),X1),X3)))=truth)).
+##
+#cnf(i_0_173910, plain, (implies(X1,implies(implies(not(X2),X3),implies(implies(X2,not(X1)),X3)))=truth)).
+###
+#cnf(i_0_173997, plain, (implies(X1,implies(implies(X2,X3),implies(implies(not(X2),not(X1)),X3)))=truth)).
+#
+#cnf(i_0_174000, plain, (implies(X1,implies(implies(X2,not(X3)),implies(X3,not(implies(X1,X2)))))=truth)).
+##
+#cnf(i_0_174087, plain, (implies(X1,implies(implies(X2,X3),implies(not(X3),not(implies(X1,X2)))))=truth)).
+#
+#cnf(i_0_174182, plain, (implies(X1,implies(implies(X3,X2),implies(implies(X1,not(X2)),not(X3))))=truth)).
+#
+#cnf(i_0_174185, plain, (implies(X1,implies(implies(X1,not(implies(X2,X3))),implies(not(X2),X4)))=truth)).
+#
+#cnf(i_0_174202, plain, (implies(X1,implies(implies(X1,not(implies(X2,X3))),implies(X4,not(X3))))=truth)).
+#
+#cnf(i_0_174221, plain, (implies(X1,implies(implies(X1,not(implies(X2,not(X3)))),implies(X4,X3)))=truth)).
+#
+#cnf(i_0_174223, plain, (implies(X1,implies(implies(X1,not(implies(not(X2),X3))),implies(X2,X4)))=truth)).
+##
+#cnf(i_0_174253, plain, (implies(X1,implies(implies(X1,not(X2)),implies(X3,not(implies(X3,X2)))))=truth)).
+#
+#cnf(i_0_174268, plain, (implies(X1,implies(implies(not(X3),X2),implies(implies(X1,not(X2)),X3)))=truth)).
+##
+#cnf(i_0_174352, plain, (implies(X1,implies(implies(X3,not(X2)),implies(implies(X1,X2),not(X3))))=truth)).
+##
+#cnf(i_0_174354, plain, (implies(X1,implies(implies(X1,X2),implies(not(X3),not(implies(X2,X3)))))=truth)).
+##
+#cnf(i_0_174399, plain, (implies(X1,implies(implies(X1,X2),implies(X3,not(implies(X2,not(X3))))))=truth)).
+#
+#cnf(i_0_174400, plain, (implies(X1,implies(implies(X1,X2),implies(X3,not(implies(X3,not(X2))))))=truth)).
+#
+#cnf(i_0_174439, plain, (implies(X1,implies(implies(not(X3),not(X2)),implies(implies(X1,X2),X3)))=truth)).
+################
+#cnf(i_0_177371, plain, (implies(X1,implies(X2,not(implies(implies(X3,X1),not(implies(X4,X2))))))=truth)).
+##
+#cnf(i_0_177404, plain, (implies(X1,implies(X4,implies(X2,not(implies(X1,not(implies(X3,X2)))))))=truth)).
+#######
+#cnf(i_0_177788, plain, (implies(X1,implies(X2,implies(X4,not(implies(X1,not(implies(X3,X2)))))))=truth)).
+#
+#cnf(i_0_786193, plain, (implies(X1,implies(X2,implies(implies(X1,not(implies(X4,X2))),X3)))=truth)).
+###
+#cnf(i_0_788493, plain, (implies(not(X1),implies(X2,implies(implies(implies(X3,X2),X1),X4)))=truth)).
+###
+#cnf(i_0_788514, plain, (implies(X1,implies(X2,implies(implies(implies(X3,X2),not(X1)),X4)))=truth)).
+####
+#cnf(i_0_178174, plain, (implies(not(X1),implies(X4,implies(X2,not(implies(implies(X3,X2),X1)))))=truth)).
+##
+#cnf(i_0_178179, plain, (implies(not(implies(X2,not(implies(implies(X3,X2),X1)))),implies(X4,X1))=truth)).
+##
+#cnf(i_0_178228, plain, (implies(not(implies(X4,X1)),implies(X2,not(implies(implies(X3,X2),X1))))=truth)).
+#######
+#cnf(i_0_178560, plain, (implies(not(X1),implies(X2,implies(X4,not(implies(implies(X3,X2),X1)))))=truth)).
+#########################
+#cnf(i_0_179405, plain, (implies(X1,implies(X2,not(implies(implies(X3,X2),not(implies(X4,X1))))))=truth)).
+###
+#cnf(i_0_179439, plain, (implies(X1,implies(X4,implies(X2,not(implies(implies(X3,X2),not(X1))))))=truth)).
+#######
+#cnf(i_0_179826, plain, (implies(X1,implies(X2,implies(X4,not(implies(implies(X3,X2),not(X1))))))=truth)).
+#
+#cnf(i_0_180824, plain, (implies(not(X1),implies(implies(implies(not(X2),X3),X1),implies(X2,X4)))=truth)).
+#
+#cnf(i_0_180911, plain, (implies(not(X1),implies(implies(implies(X2,X3),X1),implies(not(X2),X4)))=truth)).
+##
+#cnf(i_0_181102, plain, (implies(not(X1),implies(implies(implies(X3,X2),X1),implies(X4,not(X2))))=truth)).
+#
+#cnf(i_0_181273, plain, (implies(not(X1),implies(implies(implies(X3,not(X2)),X1),implies(X4,X2)))=truth)).
+###########
+#cnf(i_0_182350, plain, (implies(X1,implies(implies(implies(not(X2),X3),not(X1)),implies(X2,X4)))=truth)).
+#
+#cnf(i_0_182438, plain, (implies(X1,implies(implies(implies(X2,X3),not(X1)),implies(not(X2),X4)))=truth)).
+##
+#cnf(i_0_182630, plain, (implies(X1,implies(implies(implies(X3,X2),not(X1)),implies(X4,not(X2))))=truth)).
+#
+#cnf(i_0_182802, plain, (implies(X1,implies(implies(implies(X3,not(X2)),not(X1)),implies(X4,X2)))=truth)).
+########################################################################################################################################################################################################################################################################################################
+#cnf(i_0_214362, plain, (implies(implies(not(X1),X2),implies(implies(X1,not(X3)),implies(X3,X2)))=truth)).
+#
+#cnf(i_0_835172, plain, (implies(implies(X1,X2),implies(implies(X3,X1),implies(X3,X2)))=truth)).
+###
+#cnf(i_0_835842, plain, (implies(implies(X1,X2),implies(X4,implies(implies(X3,X1),implies(X3,X2))))=truth)).
+#######
+#cnf(i_0_836585, plain, (implies(implies(X1,X2),implies(implies(X3,X1),implies(X4,implies(X3,X2))))=truth)).
+##
+#cnf(i_0_836854, plain, (implies(X1,implies(implies(X2,implies(X1,X3)),implies(X2,implies(X4,X3))))=truth)).
+#
+#cnf(i_0_836908, plain, (implies(implies(X1,X2),implies(implies(X3,X1),implies(X3,implies(X4,X2))))=truth)).
+#
+#cnf(i_0_836954, plain, (implies(implies(implies(X4,X1),X2),implies(implies(X3,X1),implies(X3,X2)))=truth)).
+#
+#cnf(i_0_850331, plain, (implies(implies(X1,X2),implies(X3,implies(X4,implies(implies(X3,X1),X2))))=truth)).
+#
+#cnf(i_0_860531, plain, (implies(implies(X1,X2),implies(X3,implies(implies(X3,X1),X2)))=truth)).
+#
+#cnf(i_0_861598, plain, (implies(implies(X1,X2),implies(X4,implies(X3,implies(implies(X3,X1),X2))))=truth)).
+#######
+#cnf(i_0_862692, plain, (implies(X1,implies(X2,implies(implies(X2,implies(X1,X3)),implies(X4,X3))))=truth)).
+#
+#cnf(i_0_862746, plain, (implies(implies(X1,X2),implies(X3,implies(implies(X3,X1),implies(X4,X2))))=truth)).
+#
+#cnf(i_0_862792, plain, (implies(implies(implies(X4,X1),X2),implies(X3,implies(implies(X3,X1),X2)))=truth)).
+#
+#cnf(i_0_214453, plain, (implies(implies(not(X1),X2),implies(implies(X1,X3),implies(not(X3),X2)))=truth)).
+##
+#cnf(i_0_214666, plain, (implies(implies(X1,not(X2)),implies(implies(X3,X1),implies(X2,not(X3))))=truth)).
+######
+#cnf(i_0_214740, plain, (implies(implies(X1,not(X2)),implies(X2,implies(X3,not(implies(X3,X1)))))=truth)).
+#
+#cnf(i_0_214757, plain, (implies(implies(X1,not(X2)),implies(implies(not(X3),X1),implies(X2,X3)))=truth)).
+####################
+#cnf(i_0_221292, plain, (implies(implies(X2,X1),implies(implies(not(X3),X2),implies(not(X1),X3)))=truth)).
+####
+#cnf(i_0_221435, plain, (implies(implies(not(X1),X2),implies(implies(X3,not(X2)),implies(X3,X1)))=truth)).
+#
+#cnf(i_0_221623, plain, (implies(implies(X1,X2),implies(implies(X3,not(X2)),implies(X3,not(X1))))=truth)).
+#######
+#cnf(i_0_222660, plain, (implies(implies(X2,X1),implies(implies(not(X2),X3),implies(not(X3),X1)))=truth)).
+###
+#cnf(i_0_222836, plain, (implies(implies(X1,not(X2)),implies(implies(X3,X2),implies(X3,not(X1))))=truth)).
+############
+#cnf(i_0_224112, plain, (implies(implies(X1,X2),implies(implies(not(X1),not(X3)),implies(X3,X2)))=truth)).
+#######
+#cnf(i_0_224330, plain, (implies(implies(X1,X2),implies(implies(X3,X1),implies(not(X2),not(X3))))=truth)).
+###
+#cnf(i_0_224389, plain, (implies(implies(X1,X2),implies(not(X2),implies(X3,not(implies(X3,X1)))))=truth)).
+#################
+#cnf(i_0_224671, plain, (implies(implies(X1,X3),implies(not(implies(X2,not(implies(X2,X1)))),X3))=truth)).
+#######
+#cnf(i_0_225531, plain, (implies(implies(not(X1),not(X2)),implies(implies(X3,X2),implies(X3,X1)))=truth)).
+#################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_685306, plain, (implies(not(X1),implies(not(implies(X2,X3)),implies(implies(X2,X1),X4)))=truth)).
+###
+#cnf(i_0_685326, plain, (implies(X1,implies(not(implies(X2,X3)),implies(implies(X2,not(X1)),X4)))=truth)).
+###############
+#cnf(i_0_691264, plain, (implies(not(X1),implies(not(implies(implies(X2,X1),X3)),implies(X2,X4)))=truth)).
+###
+#cnf(i_0_691284, plain, (implies(X1,implies(not(implies(implies(X2,not(X1)),X3)),implies(X2,X4)))=truth)).
+##################################################
+#cnf(i_0_726914, plain, (implies(implies(X1,not(implies(X2,X3))),implies(not(implies(X1,X4)),X2))=truth)).
+###################
+#cnf(i_0_739130, plain, (implies(not(X1),implies(implies(X3,X2),implies(implies(X2,X1),not(X3))))=truth)).
+##
+#cnf(i_0_739221, plain, (implies(not(X1),implies(implies(X2,X1),implies(X3,not(implies(X3,X2)))))=truth)).
+#
+#cnf(i_0_739290, plain, (implies(not(X1),implies(implies(not(X3),X2),implies(implies(X2,X1),X3)))=truth)).
+####################
+#cnf(i_0_743819, plain, (implies(X1,implies(implies(X3,X2),implies(implies(X2,not(X1)),not(X3))))=truth)).
+##
+#cnf(i_0_743910, plain, (implies(X1,implies(implies(X2,not(X1)),implies(X3,not(implies(X3,X2)))))=truth)).
+#
+#cnf(i_0_743979, plain, (implies(X1,implies(implies(not(X3),X2),implies(implies(X2,not(X1)),X3)))=truth)).
+##################
+#cnf(i_0_748594, plain, (implies(X1,implies(implies(X3,X2),implies(X3,not(implies(X1,not(X2))))))=truth)).
+###
+#cnf(i_0_748615, plain, (implies(X1,implies(implies(X3,not(X2)),implies(X3,not(implies(X1,X2)))))=truth)).
+#####################
+#cnf(i_0_753249, plain, (implies(X1,implies(X2,not(implies(X1,not(implies(X3,implies(X4,X2)))))))=truth)).
+########################################################################################
+#cnf(i_0_787931, plain, (implies(X1,implies(not(X2),implies(implies(X1,not(implies(X2,X3))),X4)))=truth)).
+#
+#cnf(i_0_788116, plain, (implies(X1,implies(X2,implies(implies(X1,not(implies(not(X2),X3))),X4)))=truth)).
+##
+#cnf(i_0_790513, plain, (implies(not(X1),implies(not(X2),implies(implies(implies(X2,X3),X1),X4)))=truth)).
+#
+#cnf(i_0_790698, plain, (implies(not(X1),implies(X2,implies(implies(implies(not(X2),X3),X1),X4)))=truth)).
+#####
+#cnf(i_0_793635, plain, (implies(X1,implies(not(X2),implies(implies(implies(X2,X3),not(X1)),X4)))=truth)).
+#
+#cnf(i_0_793821, plain, (implies(X1,implies(X2,implies(implies(implies(not(X2),X3),not(X1)),X4)))=truth)).
+#############################
+#cnf(i_0_836584, plain, (implies(implies(X1,X2),implies(not(implies(X3,X2)),not(implies(X3,X1))))=truth)).
+######################
+#cnf(i_0_848493, plain, (implies(X1,implies(not(implies(X2,X3)),not(implies(X2,implies(X1,X3)))))=truth)).
+#
+#cnf(i_0_976888, plain, (implies(implies(X1,X2),implies(implies(implies(X3,X4),X1),implies(X4,X2)))=truth)).
+#
+#cnf(i_0_977004, plain, (implies(implies(X1,X2),implies(implies(X2,X3),implies(X1,implies(X4,X3))))=truth)).
+#
+#cnf(i_0_977032, plain, (implies(X1,implies(implies(X2,X3),implies(implies(X1,X2),implies(X4,X3))))=truth)).
+#
+#cnf(i_0_977119, plain, (implies(implies(X1,X2),implies(X3,implies(implies(implies(X4,X3),X1),X2)))=truth)).
+#
+#cnf(i_0_977153, plain, (implies(implies(X1,implies(X2,X3)),implies(X2,implies(X1,implies(X4,X3))))=truth)).
+#
+#cnf(i_0_995676, plain, (implies(implies(X1,implies(X2,X3)),implies(X2,implies(X1,X3)))=truth)).
+#
+#cnf(i_0_977233, plain, (implies(X1,implies(X2,implies(implies(X1,implies(X2,X3)),implies(X4,X3))))=truth)).
+#
+#cnf(i_0_998350, plain, (implies(implies(X1,implies(X2,X3)),implies(X4,implies(X2,implies(X1,X3))))=truth)).
+#########
+#cnf(i_0_999261, plain, (implies(implies(X1,implies(X2,X3)),implies(X2,implies(X4,implies(X1,X3))))=truth)).
+##
+#cnf(i_0_999286, plain, (implies(X2,implies(implies(X1,implies(X2,X3)),implies(X4,implies(X1,X3))))=truth)).
+#######
+#cnf(i_0_862664, plain, (implies(implies(X2,X1),implies(X3,implies(implies(X3,not(X1)),not(X2))))=truth)).
+#
+#cnf(i_0_862669, plain, (implies(implies(not(X2),X1),implies(X3,implies(implies(X3,not(X1)),X2)))=truth)).
+#
+#cnf(i_0_862710, plain, (implies(implies(X2,not(X1)),implies(X3,implies(implies(X3,X1),not(X2))))=truth)).
+#
+#cnf(i_0_862750, plain, (implies(implies(not(X2),not(X1)),implies(X3,implies(implies(X3,X1),X2)))=truth)).
+#
+#cnf(i_0_862932, plain, (implies(implies(not(X1),X2),implies(not(X3),implies(implies(X1,X3),X2)))=truth)).
+#
+#cnf(i_0_863126, plain, (implies(implies(X1,X2),implies(not(X3),implies(implies(not(X1),X3),X2)))=truth)).
+##
+#cnf(i_0_863328, plain, (implies(implies(not(X1),X2),implies(X3,implies(implies(X1,not(X3)),X2)))=truth)).
+##
+#cnf(i_0_863517, plain, (implies(implies(X1,X2),implies(X3,implies(implies(not(X1),not(X3)),X2)))=truth)).
+#
+#cnf(i_0_863523, plain, (implies(implies(X1,not(X2)),implies(X3,implies(X2,not(implies(X3,X1)))))=truth)).
+##
+#cnf(i_0_863712, plain, (implies(implies(X1,X2),implies(X3,implies(not(X2),not(implies(X3,X1)))))=truth)).
+#######
+#cnf(i_0_870463, plain, (implies(X1,implies(X2,implies(not(X3),not(implies(X2,implies(X1,X3))))))=truth)).
+#######################################
+#cnf(i_0_932335, plain, (implies(not(X1),implies(implies(X2,X3),implies(X2,not(implies(X3,X1)))))=truth)).
+###
+#cnf(i_0_932903, plain, (implies(not(X1),implies(X2,not(implies(implies(X3,implies(X4,X2)),X1))))=truth)).
+########
+#cnf(i_0_940186, plain, (implies(X1,implies(implies(X2,X3),implies(X2,not(implies(X3,not(X1))))))=truth)).
+###
+#cnf(i_0_940757, plain, (implies(X1,implies(X2,not(implies(implies(X3,implies(X4,X2)),not(X1)))))=truth)).
+######################################
+#cnf(i_0_975772, plain, (implies(not(implies(X1,X2)),implies(X3,not(implies(X1,implies(X3,X2)))))=truth)).
+###
+#cnf(i_0_976786, plain, (implies(implies(X1,X2),implies(not(X3),implies(implies(X2,X3),not(X1))))=truth)).
+#
+#cnf(i_0_976787, plain, (implies(implies(not(X1),X2),implies(not(X3),implies(implies(X2,X3),X1)))=truth)).
+#
+#cnf(i_0_976961, plain, (implies(not(implies(X1,X2)),implies(implies(X1,X3),not(implies(X3,X2))))=truth)).
+#
+#cnf(i_0_976965, plain, (implies(not(implies(X1,X2)),implies(implies(X3,X2),not(implies(X1,X3))))=truth)).
+#########
+#cnf(i_0_977148, plain, (implies(implies(X1,X2),implies(X3,implies(implies(X2,not(X3)),not(X1))))=truth)).
+#
+#cnf(i_0_977149, plain, (implies(implies(X1,X2),implies(X3,implies(X1,not(implies(X3,not(X2))))))=truth)).
+##
+#cnf(i_0_977151, plain, (implies(implies(not(X1),X2),implies(X3,implies(implies(X2,not(X3)),X1)))=truth)).
+#
+#cnf(i_0_977152, plain, (implies(implies(X1,not(X2)),implies(X3,implies(X1,not(implies(X3,X2)))))=truth)).
+##
+#cnf(i_0_999179, plain, (implies(implies(X1,implies(not(X2),X3)),implies(not(implies(X1,X3)),X2))=truth)).
+#
+#cnf(i_0_999260, plain, (implies(implies(X1,implies(X2,X3)),implies(not(implies(X1,X3)),not(X2)))=truth)).
+#
+#cnf(i_0_999481, plain, (implies(implies(not(implies(X2,X3)),X1),implies(X2,implies(not(X1),X3)))=truth)).
+#
+#cnf(i_0_999517, plain, (implies(implies(not(implies(X2,X3)),not(X1)),implies(X2,implies(X1,X3)))=truth)).
+#
+#cnf(i_0_999707, plain, (implies(implies(not(X1),implies(X2,not(X3))),implies(X2,implies(X3,X1)))=truth)).
+#
+#cnf(i_0_999908, plain, (implies(implies(not(X1),implies(X2,X3)),implies(X2,implies(not(X3),X1)))=truth)).
+##
+#cnf(i_0_1000134, plain, (implies(implies(X1,implies(X2,not(X3))),implies(X2,implies(X3,not(X1))))=truth)).
+##
+#cnf(i_0_1000338, plain, (implies(implies(X1,implies(X2,X3)),implies(X2,implies(not(X3),not(X1))))=truth)).
+####
+#cnf(i_0_1000982, plain, (implies(implies(X1,implies(X3,X2)),implies(not(X2),implies(X1,not(X3))))=truth)).
+#
+#cnf(i_0_1001183, plain, (implies(implies(X1,implies(not(X3),X2)),implies(not(X2),implies(X1,X3)))=truth)).
+##
+#cnf(i_0_1001409, plain, (implies(implies(X1,implies(X3,not(X2))),implies(X2,implies(X1,not(X3))))=truth)).
+##
+#cnf(i_0_1001613, plain, (implies(implies(X1,implies(not(X3),not(X2))),implies(X2,implies(X1,X3)))=truth)).
+#########################
+#cnf(i_0_1004445, plain, (implies(X1,implies(X2,implies(not(X3),not(implies(X1,implies(X2,X3))))))=truth)).
+######################################################################################
+#cnf(i_0_1048212, plain, (implies(not(X1),implies(X2,implies(X3,not(implies(X2,implies(X3,X1))))))=truth)).
+#
+#cnf(i_0_1048652, plain, (implies(X1,implies(X2,implies(X3,not(implies(X2,implies(X3,not(X1)))))))=truth)).
+#############
+#cnf(i_0_1049500, plain, (implies(X1,implies(X2,implies(X3,not(implies(X2,implies(X1,not(X3)))))))=truth)).
+#
+#cnf(i_0_1050461, plain, (implies(implies(X2,X3),implies(not(X1),implies(X2,not(implies(X3,X1)))))=truth)).
+######
+#cnf(i_0_1057120, plain, (implies(implies(X2,X3),implies(X1,implies(X2,not(implies(X3,not(X1))))))=truth)).
+#############################################
+#cnf(i_0_1089895, plain, (implies(implies(X1,implies(X3,X2)),implies(not(implies(X1,not(X3))),X2))=truth)).
+##
+#cnf(i_0_1090104, plain, (implies(implies(X1,implies(not(X3),X2)),implies(not(implies(X1,X3)),X2))=truth)).
+###########
+#cnf(i_0_1095638, plain, (implies(implies(not(implies(X1,not(X2))),X3),implies(X1,implies(X2,X3)))=truth)).
+##
+#cnf(i_0_1095847, plain, (implies(implies(not(implies(X1,X2)),X3),implies(X1,implies(not(X2),X3)))=truth)).
+####
+#cnf(i_0_1097382, plain, (implies(X1,implies(not(X2),implies(X3,not(implies(X3,implies(X1,X2))))))=truth)).
+##
+#cnf(i_0_1097575, plain, (implies(X1,implies(not(X2),implies(implies(X1,X3),not(implies(X3,X2)))))=truth)).
+#
+#cnf(i_0_1097576, plain, (implies(X1,implies(not(X2),implies(implies(X3,X2),not(implies(X1,X3)))))=truth)).
+#
+#cnf(i_0_1097616, plain, (implies(X1,implies(not(X2),implies(X3,not(implies(X1,implies(X3,X2))))))=truth)).
+#######
+#cnf(i_0_1103892, plain, (implies(implies(not(X1),implies(X3,X2)),implies(not(X2),implies(X3,X1)))=truth)).
+###
+#cnf(i_0_1103913, plain, (implies(implies(not(X1),implies(X3,not(X2))),implies(X2,implies(X3,X1)))=truth)).
+####################
+#cnf(i_0_1109159, plain, (implies(implies(X1,implies(X3,X2)),implies(not(X2),implies(X3,not(X1))))=truth)).
+###
+#cnf(i_0_1109180, plain, (implies(implies(X1,implies(X3,not(X2))),implies(X2,implies(X3,not(X1))))=truth)).
+###########################
+#cnf(i_0_1114870, plain, (implies(not(implies(implies(X1,X3),X2)),implies(implies(not(X1),X2),X3))=truth)).
+#
+#cnf(i_0_1114871, plain, (implies(not(implies(implies(X2,X3),X1)),implies(implies(not(X1),X2),X3))=truth)).
+#
+#cnf(i_0_1115031, plain, (implies(not(implies(implies(not(X1),X3),X2)),implies(implies(X1,X2),X3))=truth)).
+#
+#cnf(i_0_1115032, plain, (implies(not(implies(implies(X2,X3),not(X1))),implies(implies(X1,X2),X3))=truth)).
+#
+#cnf(i_0_1115087, plain, (implies(not(implies(implies(X3,X1),X2)),implies(implies(X1,X2),not(X3)))=truth)).
+#
+#cnf(i_0_1115182, plain, (implies(not(implies(X1,not(implies(X2,X3)))),implies(implies(X1,X2),X3))=truth)).
+##############
+#cnf(i_0_1118563, plain, (implies(not(implies(implies(not(X3),X1),X2)),implies(implies(X1,X2),X3))=truth)).
+######################
+#cnf(i_0_1125992, plain, (implies(X1,implies(X2,implies(X3,not(implies(X1,implies(X3,not(X2)))))))=truth)).
+##
+#cnf(i_0_1126869, plain, (implies(X1,implies(X2,implies(X3,not(implies(X1,implies(X2,not(X3)))))))=truth)).
+#######################################
+#cnf(i_0_1141327, plain, (implies(implies(not(X1),implies(X2,X3)),implies(not(implies(X2,X1)),X3))=truth)).
+###
+#cnf(i_0_1141348, plain, (implies(implies(X1,implies(X2,X3)),implies(not(implies(X2,not(X1))),X3))=truth)).
+#########################
+#cnf(i_0_1149507, plain, (implies(implies(not(implies(X2,X1)),X3),implies(not(X1),implies(X2,X3)))=truth)).
+###
+#cnf(i_0_1149528, plain, (implies(implies(not(implies(X2,not(X1))),X3),implies(X1,implies(X2,X3)))=truth)).
+###
+#cnf(i_0_1149665, plain, (implies(X1,implies(X2,implies(X3,not(implies(X3,implies(X1,not(X2)))))))=truth)).
+##
+#cnf(i_0_1149854, plain, (implies(X1,implies(X2,implies(implies(X1,X3),not(implies(X3,not(X2))))))=truth)).
+#
+#cnf(i_0_1149855, plain, (implies(X1,implies(X2,implies(implies(X3,not(X2)),not(implies(X1,X3)))))=truth)).
+##########
+#cnf(i_0_1155036, plain, (implies(not(X2),implies(X1,implies(X3,not(implies(X3,implies(X1,X2))))))=truth)).
+#########
+#cnf(i_0_1155801, plain, (implies(X1,implies(X2,implies(X3,not(implies(X3,implies(X2,not(X1)))))))=truth)).
+######
+#cnf(i_0_1158335, plain, (implies(not(X2),implies(X1,implies(implies(X1,X3),not(implies(X3,X2)))))=truth)).
+########
+#cnf(i_0_1158621, plain, (implies(X1,implies(X2,implies(implies(X1,not(X3)),not(implies(X2,X3)))))=truth)).
+#
+#cnf(i_0_1159091, plain, (implies(X1,implies(X2,implies(implies(X1,X3),not(implies(X2,not(X3))))))=truth)).
+######
+#cnf(i_0_1161604, plain, (implies(not(X2),implies(X1,implies(implies(X3,X2),not(implies(X1,X3)))))=truth)).
+########
+#cnf(i_0_1162594, plain, (implies(X1,implies(X2,implies(implies(X2,X3),not(implies(X1,not(X3))))))=truth)).
+#
+#cnf(i_0_1163064, plain, (implies(X1,implies(X2,implies(implies(X2,not(X3)),not(implies(X1,X3)))))=truth)).
+#######################################################################################################################
+#cnf(i_0_1208958, plain, (implies(implies(not(implies(X2,X3)),X1),implies(not(implies(X2,X1)),X3))=truth)).
+#########################
+#cnf(i_0_1221903, plain, (implies(X2,implies(X1,implies(implies(X1,X3),not(implies(X3,not(X2))))))=truth)).
+#
+#cnf(i_0_1221904, plain, (implies(X2,implies(X1,implies(implies(X3,not(X2)),not(implies(X1,X3)))))=truth)).
+##############################################################################################
+#cnf(i_0_8, plain, (implies(not(X2),not(implies(X1,X2)))=implies(not(X1),not(implies(X2,X1))))).
+#
+#cnf(i_0_10, negated_conjecture, (implies(not(implies(a,b)),not(implies(implies(b,a),implies(a,b))))!=truth)).
+#############
+#cnf(i_0_1265866, plain, (implies(X2,implies(X1,X3))=implies(X1,implies(X2,X3)))).
+###
+#cnf(i_0_10, negated_conjecture, (implies(not(implies(a,b)),not(implies(a,implies(not(b),not(implies(b,a))))))!=truth)).
+#
+#cnf(i_0_1267053, plain, (implies(not(implies(X2,X3)),X1)=implies(X2,implies(not(X1),X3)))).
+###
+#cnf(i_0_10, negated_conjecture, (implies(a,implies(not(b),not(implies(a,implies(not(b),not(implies(b,a)))))))!=truth)).
+########
+#cnf(i_0_1270612, plain, (implies(X2,implies(X3,X1))=implies(not(X1),implies(X2,not(X3))))).
+#####
+#cnf(i_0_1270761, plain, (implies(X2,implies(not(X3),X1))=implies(not(X1),implies(X2,X3)))).
+#######
+#cnf(i_0_1270904, plain, (implies(X2,implies(X3,not(X1)))=implies(X1,implies(X2,not(X3))))).
+#########
+#cnf(i_0_1271101, plain, (implies(X2,implies(not(X3),not(X1)))=implies(X1,implies(X2,X3)))).
+##########################
+#cnf(i_0_1273616, plain, (implies(not(X2),implies(X3,not(X1)))=implies(X1,implies(X3,X2)))).
+#############
+#cnf(i_0_1273911, plain, (implies(not(X3),implies(X2,X1))=implies(not(X1),implies(X2,X3)))).
+##############################################
+#cnf(i_0_1276255, plain, (implies(X2,implies(X3,not(X1)))=implies(X1,implies(X3,not(X2))))).
+#######################################################################################################################################
+#cnf(i_0_1267944, plain, (implies(X1,implies(X3,implies(X2,X4)))=implies(X2,implies(X1,implies(X3,X4))))).
+##############
+#cnf(i_0_1277853, plain, (implies(X4,implies(X2,implies(X1,X3)))=implies(X1,implies(X2,implies(X4,X3))))).
+##################################################
+#cnf(i_0_1262258, plain, (implies(implies(X2,X1),not(implies(not(X2),not(implies(X1,X2)))))=not(X1))).
+######
+#cnf(i_0_1265487, plain, (implies(implies(X2,X1),not(implies(not(X1),not(implies(X2,X1)))))=not(X1))).
+#######
+#cnf(i_0_1265960, plain, (implies(implies(not(X2),not(X1)),not(implies(X1,not(implies(X1,X2)))))=X1)).
+#
+#cnf(i_0_1287125, plain, (implies(implies(X2,X1),not(implies(X2,not(implies(X2,X1)))))=X2)).
+############
+#cnf(i_0_1265961, plain, (implies(implies(X2,not(X1)),not(implies(X1,not(implies(X2,not(X1))))))=X1)).
+##
+#cnf(i_0_1265962, plain, (implies(implies(not(X2),not(X1)),not(implies(X2,not(implies(X2,X1)))))=X1)).
+###
+#cnf(i_0_1288916, plain, (implies(implies(X2,X1),not(implies(X1,not(implies(X1,X2)))))=X2)).
+################
+#cnf(i_0_1288964, plain, (implies(X1,not(implies(X1,X2)))=implies(X2,not(implies(X2,X1))))).
+######################
+#cnf(i_0_1271753, plain, (implies(X1,not(implies(X1,not(implies(X2,implies(X1,X3))))))=implies(X2,implies(X1,X3)))).
+##################
+#cnf(i_0_1285597, plain, (implies(implies(X2,X1),not(implies(X1,not(implies(not(X2),not(X1))))))=X2)).
+######
+#cnf(i_0_1291521, plain, (implies(X1,not(implies(X2,not(implies(not(X1),not(X2))))))=implies(X1,X2))).
+############
+#cnf(i_0_1286229, plain, (implies(implies(X1,not(X2)),not(implies(X2,not(implies(X2,not(X1))))))=X2)).
+########
+#cnf(i_0_1286368, plain, (implies(implies(X2,X1),not(implies(X2,not(implies(not(X1),not(X2))))))=X2)).
+#################
+#cnf(i_0_1286442, plain, (implies(implies(X2,not(X1)),not(implies(X2,not(implies(X1,not(X2))))))=X2)).
+#################################################
+#cnf(i_0_205882, plain, (implies(not(X1),not(implies(X2,not(implies(X1,not(X2))))))=implies(not(X2),X1))).
+##
+#cnf(i_0_205884, plain, (implies(X1,not(implies(not(X2),not(implies(not(X1),X2)))))=implies(X2,not(X1)))).
+######
+#cnf(i_0_1265488, plain, (implies(X2,not(implies(X2,X1)))=implies(X1,not(implies(not(X2),not(X1)))))).
+##################################################################
+#cnf(i_0_1287177, plain, (implies(implies(X1,X2),implies(implies(X1,not(implies(X1,X2))),X3))=implies(not(X3),X1))).
+############################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_1296662, plain, (implies(X1,implies(implies(X1,not(implies(X1,X2))),X3))=implies(not(X3),implies(X1,X2)))).
+######################
+#cnf(i_0_1298077, plain, (implies(X1,implies(implies(X2,not(implies(X2,X1))),X3))=implies(not(X3),implies(X1,X2)))).
+######
+#cnf(i_0_1299260, plain, (implies(not(X2),implies(X1,not(implies(X2,X1))))=implies(X1,X2))).
+#####
+#cnf(i_0_1299308, plain, (implies(X2,implies(not(X1),not(implies(X1,X2))))=implies(X2,X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(wajsberg_2, axiom, (implies(implies(X1,X2),implies(implies(X2,X3),implies(X1,X3)))=truth), file('./p/LCL109-2.tptp', wajsberg_2)).
+cnf(wajsberg_1, axiom, (implies(truth,X1)=X1), file('./p/LCL109-2.tptp', wajsberg_1)).
+cnf(wajsberg_3, axiom, (implies(implies(X1,X2),X2)=implies(implies(X2,X1),X1)), file('./p/LCL109-2.tptp', wajsberg_3)).
+cnf(wajsberg_4, axiom, (implies(implies(not(X1),not(X2)),implies(X2,X1))=truth), file('./p/LCL109-2.tptp', wajsberg_4)).
+cnf(prove_wajsberg_mv_4, negated_conjecture, (implies(implies(implies(a,b),implies(b,a)),implies(b,a))!=truth), file('./p/LCL109-2.tptp', prove_wajsberg_mv_4)).
+cnf(c_0_5, axiom, (implies(implies(X1,X2),implies(implies(X2,X3),implies(X1,X3)))=truth), wajsberg_2).
+cnf(c_0_6, axiom, (implies(truth,X1)=X1), wajsberg_1).
+cnf(c_0_7, axiom, (implies(implies(X1,X2),X2)=implies(implies(X2,X1),X1)), wajsberg_3).
+cnf(c_0_8, plain, (implies(X1,implies(implies(X1,X2),X2))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_6]), c_0_6])).
+cnf(c_0_9, plain, (implies(X1,X1)=implies(implies(X1,truth),truth)), inference(pm,[status(thm)],[c_0_7, c_0_6])).
+cnf(c_0_10, plain, (implies(X1,X1)=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_6, c_0_8]), c_0_6])).
+cnf(c_0_11, plain, (implies(implies(X1,truth),truth)=truth), inference(rw,[status(thm)],[c_0_9, c_0_10])).
+cnf(c_0_12, plain, (implies(X1,truth)=truth), inference(pm,[status(thm)],[c_0_8, c_0_11])).
+cnf(c_0_13, plain, (implies(X1,implies(X2,X1))=truth), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_12]), c_0_6]), c_0_6])).
+cnf(c_0_14, axiom, (implies(implies(not(X1),not(X2)),implies(X2,X1))=truth), wajsberg_4).
+cnf(c_0_15, plain, (implies(implies(implies(X1,X2),X3),implies(X2,X3))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_13]), c_0_6])).
+cnf(c_0_16, plain, (implies(implies(not(X1),not(truth)),X1)=truth), inference(pm,[status(thm)],[c_0_14, c_0_6])).
+cnf(c_0_17, plain, (implies(not(truth),X1)=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_16]), c_0_6])).
+cnf(c_0_18, plain, (implies(not(X1),implies(X1,X2))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_14]), c_0_6])).
+cnf(c_0_19, plain, (implies(implies(X1,not(truth)),not(truth))=X1), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_7, c_0_17]), c_0_6])).
+cnf(c_0_20, plain, (implies(not(implies(X1,not(truth))),X1)=truth), inference(pm,[status(thm)],[c_0_18, c_0_19])).
+cnf(c_0_21, plain, (implies(X1,implies(not(X1),not(truth)))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_14, c_0_20]), c_0_6])).
+cnf(c_0_22, plain, (implies(not(X1),not(truth))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_7, c_0_21]), c_0_6]), c_0_16]), c_0_6])).
+cnf(c_0_23, plain, (implies(X1,not(truth))=not(X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_7, c_0_22]), c_0_17]), c_0_6])).
+cnf(c_0_24, plain, (implies(implies(X1,X2),implies(not(X2),not(X1)))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_23]), c_0_23])).
+cnf(c_0_25, plain, (implies(not(X1),not(X2))=implies(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_7, c_0_24]), c_0_6]), c_0_14]), c_0_6])).
+cnf(c_0_26, plain, (implies(implies(not(X1),not(X2)),implies(implies(X1,X3),implies(X2,X3)))=truth), inference(pm,[status(thm)],[c_0_5, c_0_25])).
+cnf(c_0_27, plain, (not(not(X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_19, c_0_23]), c_0_23])).
+cnf(c_0_28, plain, (implies(X1,implies(implies(X1,X2),implies(X3,X2)))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_5]), c_0_6])).
+cnf(c_0_29, plain, (implies(implies(not(X1),X2),implies(implies(X1,not(X3)),implies(X3,X2)))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_26, c_0_25]), c_0_27])).
+cnf(c_0_30, plain, (implies(not(X1),X2)=implies(not(X2),X1)), inference(pm,[status(thm)],[c_0_25, c_0_27])).
+cnf(c_0_31, plain, (implies(not(implies(X1,X2)),not(implies(implies(implies(X1,X3),implies(X4,X3)),X2)))=truth), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_28]), c_0_6]), c_0_25])).
+cnf(c_0_32, plain, (implies(implies(X1,X2),implies(implies(X3,X1),implies(X3,X2)))=truth), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_29, c_0_30]), c_0_27]), c_0_27])).
+cnf(c_0_33, plain, (implies(X1,implies(implies(X2,implies(X1,X3)),implies(X2,implies(X4,X3))))=truth), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_31, c_0_32]), c_0_23]), c_0_27])).
+cnf(c_0_34, plain, (implies(X1,implies(not(implies(X2,X3)),not(implies(X2,implies(X1,X3)))))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_33, c_0_6]), c_0_25])).
+cnf(c_0_35, plain, (implies(implies(implies(X1,X2),X2),X2)=implies(X1,X2)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_7, c_0_13]), c_0_6])).
+cnf(c_0_36, plain, (implies(implies(X1,implies(X2,X3)),implies(X2,implies(X1,implies(X4,X3))))=truth), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_34, c_0_33]), c_0_23]), c_0_27])).
+cnf(c_0_37, plain, (implies(not(X1),not(implies(not(X1),not(implies(X2,X1)))))=implies(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_35, c_0_25]), c_0_25])).
+cnf(c_0_38, plain, (implies(implies(implies(X1,X2),X2),X1)=implies(X2,X1)), inference(pm,[status(thm)],[c_0_35, c_0_7])).
+cnf(c_0_39, plain, (implies(not(X1),not(implies(X2,X1)))=implies(not(X2),not(implies(X1,X2)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_7, c_0_25]), c_0_25])).
+cnf(c_0_40, plain, (implies(implies(X1,implies(X2,X3)),implies(X2,implies(X1,X3)))=truth), inference(pm,[status(thm)],[c_0_36, c_0_6])).
+cnf(c_0_41, plain, (implies(X1,not(implies(X1,not(implies(X1,X2)))))=implies(not(X2),not(X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_37, c_0_25]), c_0_27]), c_0_27])).
+cnf(c_0_42, plain, (implies(X1,not(X2))=implies(X2,not(X1))), inference(pm,[status(thm)],[c_0_25, c_0_27])).
+cnf(c_0_43, plain, (implies(not(X1),not(implies(not(X2),not(implies(X1,X2)))))=implies(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_38, c_0_25]), c_0_25])).
+cnf(c_0_44, plain, (implies(X1,implies(not(X2),not(implies(X1,X2))))=truth), inference(rw,[status(thm)],[c_0_8, c_0_25])).
+cnf(c_0_45, plain, (implies(X1,implies(X2,X3))=implies(X2,implies(X1,X3))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_39, c_0_40]), c_0_23]), c_0_27]), c_0_40]), c_0_23]), c_0_27])).
+cnf(c_0_46, plain, (implies(implies(not(X1),not(X2)),not(implies(X2,not(implies(X2,X1)))))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_39, c_0_41]), c_0_27]), c_0_42]), c_0_30]), c_0_18]), c_0_23]), c_0_27])).
+cnf(c_0_47, plain, (implies(X1,not(implies(X2,not(implies(X2,X1)))))=implies(not(X2),not(X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_43, c_0_25]), c_0_27]), c_0_27])).
+cnf(c_0_48, plain, (implies(not(X1),implies(X2,not(implies(X2,X1))))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_44, c_0_25]), c_0_27])).
+cnf(c_0_49, plain, (implies(X1,implies(not(X2),X3))=implies(not(X3),implies(X1,X2))), inference(pm,[status(thm)],[c_0_45, c_0_30])).
+cnf(c_0_50, plain, (implies(implies(X1,X2),not(implies(X1,not(implies(X1,X2)))))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_46, c_0_25]), c_0_27]), c_0_27])).
+cnf(c_0_51, plain, (implies(not(implies(X1,X2)),not(X2))=truth), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_23]), c_0_23])).
+cnf(c_0_52, plain, (implies(implies(not(X1),not(X2)),not(implies(X1,not(implies(X1,X2)))))=X2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_39, c_0_47]), c_0_27]), c_0_42]), c_0_30]), c_0_48]), c_0_23]), c_0_27])).
+cnf(c_0_53, negated_conjecture, (implies(implies(implies(a,b),implies(b,a)),implies(b,a))!=truth), prove_wajsberg_mv_4).
+cnf(c_0_54, plain, (implies(implies(X1,X2),implies(implies(X1,not(implies(X1,X2))),X3))=implies(not(X3),X1)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_49, c_0_50]), c_0_27])).
+cnf(c_0_55, plain, (implies(implies(X1,X2),not(implies(not(X1),not(implies(X2,X1)))))=not(X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_39, c_0_39]), c_0_27]), c_0_27]), c_0_51]), c_0_23])).
+cnf(c_0_56, plain, (implies(implies(X1,X2),not(implies(X2,not(implies(X2,X1)))))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_52, c_0_25]), c_0_27]), c_0_27])).
+cnf(c_0_57, plain, (implies(not(implies(X1,X2)),X3)=implies(X1,implies(not(X3),X2))), inference(pm,[status(thm)],[c_0_30, c_0_45])).
+cnf(c_0_58, plain, (implies(X1,implies(X2,X3))=implies(not(X3),implies(X1,not(X2)))), inference(pm,[status(thm)],[c_0_45, c_0_25])).
+cnf(c_0_59, plain, (implies(X1,implies(not(X1),X2))=truth), inference(pm,[status(thm)],[c_0_18, c_0_27])).
+cnf(c_0_60, negated_conjecture, (implies(not(implies(b,a)),not(implies(implies(a,b),implies(b,a))))!=truth), inference(rw,[status(thm)],[c_0_53, c_0_25])).
+cnf(c_0_61, plain, (implies(X1,implies(implies(X1,not(implies(X1,X2))),X3))=implies(not(X3),implies(X1,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_54, c_0_50]), c_0_50]), c_0_42])).
+cnf(c_0_62, plain, (implies(X1,not(implies(X1,X2)))=implies(X2,not(implies(X2,X1)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_55, c_0_56]), c_0_57]), c_0_25]), c_0_58]), c_0_42]), c_0_59]), c_0_23]), c_0_27]), c_0_27])).
+cnf(c_0_63, negated_conjecture, (implies(not(implies(a,b)),not(implies(implies(b,a),implies(a,b))))!=truth), inference(rw,[status(thm)],[c_0_60, c_0_39])).
+cnf(c_0_64, plain, (implies(X1,implies(implies(X2,not(implies(X2,X1))),X3))=implies(not(X3),implies(X1,X2))), inference(pm,[status(thm)],[c_0_61, c_0_62])).
+cnf(c_0_65, plain, (implies(implies(X1,X2),not(implies(X2,not(implies(not(X1),not(X2))))))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_55, c_0_25]), c_0_27]), c_0_27])).
+cnf(c_0_66, negated_conjecture, (implies(not(implies(a,b)),not(implies(a,implies(not(b),not(implies(b,a))))))!=truth), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_63, c_0_45]), c_0_25])).
+cnf(c_0_67, plain, (implies(not(X1),implies(X2,not(implies(X1,X2))))=implies(X2,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_64, c_0_65]), c_0_27]), c_0_18]), c_0_23]), c_0_27]), c_0_27]), c_0_58]), c_0_42])).
+cnf(c_0_68, negated_conjecture, (implies(a,implies(not(b),not(implies(a,implies(not(b),not(implies(b,a)))))))!=truth), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_66, c_0_57]), c_0_27]), c_0_25])).
+cnf(c_0_69, plain, (implies(X1,implies(not(X2),not(implies(X2,X1))))=implies(X1,X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_41, c_0_67]), c_0_37]), c_0_27]), c_0_57])).
+cnf(c_0_70, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_68, c_0_69]), c_0_39]), c_0_59])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 71
+# Proof object clause steps            : 66
+# Proof object formula steps           : 5
+# Proof object conjectures             : 7
+# Proof object clause conjectures      : 6
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 5
+# Proof object initial formulas used   : 5
+# Proof object generating inferences   : 50
+# Proof object simplifying inferences  : 105
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 5
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 5
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 5
+# Processed clauses                    : 7927
+# ...of these trivial                  : 6293
+# ...subsumed                          : 843
+# ...remaining for further processing  : 791
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 576
+# Generated clauses                    : 1300449
+# ...of the previous two non-trivial   : 326227
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 1300449
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 215
+#    Positive orientable unit clauses  : 199
+#    Positive unorientable unit clauses: 16
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 0
+# Current number of unprocessed clauses: 318059
+# ...number of literals in the above   : 318059
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 576
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 1692
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 54412
+# BW rewrite match successes           : 5970
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 13752547

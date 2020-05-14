@@ -1,0 +1,132 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GEO077-4
+% SZS output start Proof for GEO077-4
+fof(f3835,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f3834,f32])).
+fof(f32,axiom,(
+  point(point1)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3834,plain,(
+  ~point(point1)),
+  inference(subsumption_resolution,[],[f3833,f33])).
+fof(f33,axiom,(
+  point(point2)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3833,plain,(
+  ~point(point2) | ~point(point1)),
+  inference(subsumption_resolution,[],[f3832,f34])).
+fof(f34,axiom,(
+  point(point3)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3832,plain,(
+  ~point(point3) | ~point(point2) | ~point(point1)),
+  inference(subsumption_resolution,[],[f3831,f39])).
+fof(f39,axiom,(
+  point1 != point2),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3831,plain,(
+  point1 = point2 | ~point(point3) | ~point(point2) | ~point(point1)),
+  inference(subsumption_resolution,[],[f3830,f40])).
+fof(f40,axiom,(
+  point1 != point3),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3830,plain,(
+  point1 = point3 | point1 = point2 | ~point(point3) | ~point(point2) | ~point(point1)),
+  inference(subsumption_resolution,[],[f3829,f41])).
+fof(f41,axiom,(
+  point2 != point3),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3829,plain,(
+  point2 = point3 | point1 = point3 | point1 = point2 | ~point(point3) | ~point(point2) | ~point(point1)),
+  inference(subsumption_resolution,[],[f3828,f42])).
+fof(f42,axiom,(
+  collinear(point1,point2,point3)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3828,plain,(
+  ~collinear(point1,point2,point3) | point2 = point3 | point1 = point3 | point1 = point2 | ~point(point3) | ~point(point2) | ~point(point1)),
+  inference(subsumption_resolution,[],[f3816,f38])).
+fof(f38,axiom,(
+  ~on(point3,a_line)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3816,plain,(
+  on(point3,a_line) | ~collinear(point1,point2,point3) | point2 = point3 | point1 = point3 | point1 = point2 | ~point(point3) | ~point(point2) | ~point(point1)),
+  inference(superposition,[],[f29,f3709])).
+fof(f3709,plain,(
+  a_line = line_through_3_points(point1,point2,point3)),
+  inference(subsumption_resolution,[],[f3708,f35])).
+fof(f35,axiom,(
+  line(a_line)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3708,plain,(
+  a_line = line_through_3_points(point1,point2,point3) | ~line(a_line)),
+  inference(subsumption_resolution,[],[f3698,f36])).
+fof(f36,axiom,(
+  on(point1,a_line)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3698,plain,(
+  a_line = line_through_3_points(point1,point2,point3) | ~on(point1,a_line) | ~line(a_line)),
+  inference(resolution,[],[f3634,f37])).
+fof(f37,axiom,(
+  on(point2,a_line)),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f3634,plain,(
+  ( ! [X34] : (~on(point2,X34) | line_through_3_points(point1,point2,point3) = X34 | ~on(point1,X34) | ~line(X34)) )),
+  inference(subsumption_resolution,[],[f3633,f34])).
+fof(f3633,plain,(
+  ( ! [X34] : (~line(X34) | line_through_3_points(point1,point2,point3) = X34 | ~on(point1,X34) | ~on(point2,X34) | ~point(point3)) )),
+  inference(subsumption_resolution,[],[f3632,f40])).
+fof(f3632,plain,(
+  ( ! [X34] : (~line(X34) | line_through_3_points(point1,point2,point3) = X34 | ~on(point1,X34) | ~on(point2,X34) | point1 = point3 | ~point(point3)) )),
+  inference(subsumption_resolution,[],[f3631,f41])).
+fof(f3631,plain,(
+  ( ! [X34] : (~line(X34) | line_through_3_points(point1,point2,point3) = X34 | ~on(point1,X34) | ~on(point2,X34) | point2 = point3 | point1 = point3 | ~point(point3)) )),
+  inference(subsumption_resolution,[],[f3630,f32])).
+fof(f3630,plain,(
+  ( ! [X34] : (~line(X34) | line_through_3_points(point1,point2,point3) = X34 | ~on(point1,X34) | ~on(point2,X34) | ~point(point1) | point2 = point3 | point1 = point3 | ~point(point3)) )),
+  inference(subsumption_resolution,[],[f3629,f39])).
+fof(f3629,plain,(
+  ( ! [X34] : (~line(X34) | line_through_3_points(point1,point2,point3) = X34 | ~on(point1,X34) | point1 = point2 | ~on(point2,X34) | ~point(point1) | point2 = point3 | point1 = point3 | ~point(point3)) )),
+  inference(subsumption_resolution,[],[f3602,f33])).
+fof(f3602,plain,(
+  ( ! [X34] : (~point(point2) | ~line(X34) | line_through_3_points(point1,point2,point3) = X34 | ~on(point1,X34) | point1 = point2 | ~on(point2,X34) | ~point(point1) | point2 = point3 | point1 = point3 | ~point(point3)) )),
+  inference(resolution,[],[f1004,f42])).
+fof(f1004,plain,(
+  ( ! [X6,X4,X7,X5] : (~collinear(X4,X5,X7) | ~point(X5) | ~line(X6) | line_through_3_points(X4,X5,X7) = X6 | ~on(X4,X6) | X4 = X5 | ~on(X5,X6) | ~point(X4) | X5 = X7 | X4 = X7 | ~point(X7)) )),
+  inference(duplicate_literal_removal,[],[f995])).
+fof(f995,plain,(
+  ( ! [X6,X4,X7,X5] : (~point(X4) | ~point(X5) | ~line(X6) | line_through_3_points(X4,X5,X7) = X6 | ~on(X4,X6) | X4 = X5 | ~on(X5,X6) | ~collinear(X4,X5,X7) | X5 = X7 | X4 = X7 | X4 = X5 | ~point(X7) | ~point(X5) | ~collinear(X4,X5,X7) | X5 = X7 | X4 = X7 | X4 = X5 | ~point(X7) | ~point(X5) | ~point(X4)) )),
+  inference(resolution,[],[f75,f28])).
+fof(f28,axiom,(
+  ( ! [X6,X7,X5] : (on(X6,line_through_3_points(X5,X6,X7)) | ~collinear(X5,X6,X7) | X6 = X7 | X5 = X7 | X5 = X6 | ~point(X7) | ~point(X6) | ~point(X5)) )),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f75,plain,(
+  ( ! [X45,X43,X46,X44,X42] : (~on(X44,line_through_3_points(X43,X45,X46)) | ~point(X43) | ~point(X44) | ~line(X42) | line_through_3_points(X43,X45,X46) = X42 | ~on(X43,X42) | X43 = X44 | ~on(X44,X42) | ~collinear(X43,X45,X46) | X45 = X46 | X43 = X46 | X43 = X45 | ~point(X46) | ~point(X45)) )),
+  inference(subsumption_resolution,[],[f60,f30])).
+fof(f30,axiom,(
+  ( ! [X6,X7,X5] : (line(line_through_3_points(X5,X6,X7)) | ~collinear(X5,X6,X7) | X6 = X7 | X5 = X7 | X5 = X6 | ~point(X7) | ~point(X6) | ~point(X5)) )),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f60,plain,(
+  ( ! [X45,X43,X46,X44,X42] : (~line(X42) | ~point(X43) | ~point(X44) | ~line(line_through_3_points(X43,X45,X46)) | ~on(X44,line_through_3_points(X43,X45,X46)) | line_through_3_points(X43,X45,X46) = X42 | ~on(X43,X42) | X43 = X44 | ~on(X44,X42) | ~collinear(X43,X45,X46) | X45 = X46 | X43 = X46 | X43 = X45 | ~point(X46) | ~point(X45)) )),
+  inference(duplicate_literal_removal,[],[f53])).
+fof(f53,plain,(
+  ( ! [X45,X43,X46,X44,X42] : (~line(X42) | ~point(X43) | ~point(X44) | ~line(line_through_3_points(X43,X45,X46)) | ~on(X44,line_through_3_points(X43,X45,X46)) | line_through_3_points(X43,X45,X46) = X42 | ~on(X43,X42) | X43 = X44 | ~on(X44,X42) | ~collinear(X43,X45,X46) | X45 = X46 | X43 = X46 | X43 = X45 | ~point(X46) | ~point(X45) | ~point(X43)) )),
+  inference(resolution,[],[f4,f27])).
+fof(f27,axiom,(
+  ( ! [X6,X7,X5] : (on(X5,line_through_3_points(X5,X6,X7)) | ~collinear(X5,X6,X7) | X6 = X7 | X5 = X7 | X5 = X6 | ~point(X7) | ~point(X6) | ~point(X5)) )),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X2,X0,X3,X1] : (~on(X1,X3) | ~line(X2) | ~point(X1) | ~point(X0) | ~line(X3) | ~on(X0,X3) | X2 = X3 | ~on(X1,X2) | X0 = X1 | ~on(X0,X2)) )),
+  file('./p/GEO077-4.tptp',unknown)).
+fof(f29,axiom,(
+  ( ! [X6,X7,X5] : (on(X7,line_through_3_points(X5,X6,X7)) | ~collinear(X5,X6,X7) | X6 = X7 | X5 = X7 | X5 = X6 | ~point(X7) | ~point(X6) | ~point(X5)) )),
+  file('./p/GEO077-4.tptp',unknown)).
+% SZS output end Proof for GEO077-4
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 8571
+% Time elapsed: 0.176 s
+% ------------------------------
+% ------------------------------

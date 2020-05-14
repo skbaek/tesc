@@ -1,0 +1,48 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP159-1
+% SZS output start Proof for GRP159-1
+fof(f120,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f119])).
+fof(f119,plain,(
+  multiply(c,b) != multiply(c,b)),
+  inference(forward_demodulation,[],[f106,f39])).
+fof(f39,plain,(
+  b = least_upper_bound(a,b)),
+  inference(superposition,[],[f27,f5])).
+fof(f5,axiom,(
+  ( ! [X0,X1] : (least_upper_bound(X0,X1) = least_upper_bound(X1,X0)) )),
+  file('./p/GRP159-1.tptp',unknown)).
+fof(f27,plain,(
+  b = least_upper_bound(b,a)),
+  inference(superposition,[],[f20,f16])).
+fof(f16,axiom,(
+  a = greatest_lower_bound(a,b)),
+  file('./p/GRP159-1.tptp',unknown)).
+fof(f20,plain,(
+  ( ! [X2,X1] : (least_upper_bound(X1,greatest_lower_bound(X2,X1)) = X1) )),
+  inference(superposition,[],[f10,f4])).
+fof(f4,axiom,(
+  ( ! [X0,X1] : (greatest_lower_bound(X0,X1) = greatest_lower_bound(X1,X0)) )),
+  file('./p/GRP159-1.tptp',unknown)).
+fof(f10,axiom,(
+  ( ! [X0,X1] : (least_upper_bound(X0,greatest_lower_bound(X0,X1)) = X0) )),
+  file('./p/GRP159-1.tptp',unknown)).
+fof(f106,plain,(
+  multiply(c,b) != multiply(c,least_upper_bound(a,b))),
+  inference(superposition,[],[f17,f12])).
+fof(f12,axiom,(
+  ( ! [X2,X0,X1] : (multiply(X0,least_upper_bound(X1,X2)) = least_upper_bound(multiply(X0,X1),multiply(X0,X2))) )),
+  file('./p/GRP159-1.tptp',unknown)).
+fof(f17,axiom,(
+  multiply(c,b) != least_upper_bound(multiply(c,a),multiply(c,b))),
+  file('./p/GRP159-1.tptp',unknown)).
+% SZS output end Proof for GRP159-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

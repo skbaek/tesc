@@ -1,0 +1,327 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GEO274+1
+% SZS output start Proof for GEO274+1
+fof(f60394,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f1770,f58302,f59545])).
+fof(f59545,plain,(
+  ~spl49_11 | spl49_12),
+  inference(avatar_contradiction_clause,[],[f59544])).
+fof(f59544,plain,(
+  $false | (~spl49_11 | spl49_12)),
+  inference(subsumption_resolution,[],[f59543,f1765])).
+fof(f1765,plain,(
+  vd684 != vf(vd1089,vd1086) | spl49_12),
+  inference(avatar_component_clause,[],[f1763])).
+fof(f1763,plain,(
+  spl49_12 <=> vd684 = vf(vd1089,vd1086)),
+  introduced(avatar_definition,[new_symbols(naming,[spl49_12])])).
+fof(f59543,plain,(
+  vd684 = vf(vd1089,vd1086) | ~spl49_11),
+  inference(forward_demodulation,[],[f58424,f2032])).
+fof(f2032,plain,(
+  vd684 = sK5(vd1089,vd1089)),
+  inference(forward_demodulation,[],[f2007,f1541])).
+fof(f1541,plain,(
+  vd684 = vf(vd1089,vd1089)),
+  inference(resolution,[],[f1485,f549])).
+fof(f549,plain,(
+  rpoint(vd1089)),
+  inference(cnf_transformation,[],[f6])).
+fof(f6,axiom,(
+  rpoint(vd1089)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f1485,plain,(
+  ( ! [X3] : (~rpoint(X3) | vd684 = vf(X3,X3)) )),
+  inference(duplicate_literal_removal,[],[f807])).
+fof(f807,plain,(
+  ( ! [X3] : (vd684 = vf(X3,X3) | ~rpoint(X3) | ~rpoint(X3)) )),
+  inference(equality_resolution,[],[f806])).
+fof(f806,plain,(
+  ( ! [X2,X3] : (vd684 = vf(X2,X2) | ~rpoint(X2) | ~rpoint(X3) | X2 != X3) )),
+  inference(equality_resolution,[],[f805])).
+fof(f805,plain,(
+  ( ! [X2,X3,X1] : (vd684 = vf(X1,X1) | ~rpoint(X2) | X1 != X2 | ~rpoint(X3) | X1 != X3) )),
+  inference(equality_resolution,[],[f792])).
+fof(f792,plain,(
+  ( ! [X2,X0,X3,X1] : (vd684 = vf(X0,X1) | X0 != X1 | ~rpoint(X2) | X0 != X2 | ~rpoint(X3) | X1 != X3) )),
+  inference(definition_unfolding,[],[f557,f607])).
+fof(f607,plain,(
+  v0 = vd684),
+  inference(cnf_transformation,[],[f35])).
+fof(f35,axiom,(
+  v0 = vd684),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f557,plain,(
+  ( ! [X2,X0,X3,X1] : (v0 = vf(X0,X1) | X0 != X1 | ~rpoint(X2) | X0 != X2 | ~rpoint(X3) | X1 != X3) )),
+  inference(cnf_transformation,[],[f429])).
+fof(f429,plain,(
+  ! [X0,X1] : (((v0 = vf(X0,X1) | X0 != X1) & (X0 = X1 | v0 != vf(X0,X1))) | ! [X2] : (~rpoint(X2) | X0 != X2) | ! [X3] : (~rpoint(X3) | X1 != X3))),
+  inference(nnf_transformation,[],[f232])).
+fof(f232,plain,(
+  ! [X0,X1] : ((v0 = vf(X0,X1) <=> X0 = X1) | ! [X2] : (~rpoint(X2) | X0 != X2) | ! [X3] : (~rpoint(X3) | X1 != X3))),
+  inference(flattening,[],[f231])).
+fof(f231,plain,(
+  ! [X0,X1] : ((v0 = vf(X0,X1) <=> X0 = X1) | (! [X2] : (~rpoint(X2) | X0 != X2) | ! [X3] : (~rpoint(X3) | X1 != X3)))),
+  inference(ennf_transformation,[],[f121])).
+fof(f121,plain,(
+  ! [X0,X1] : ((? [X2] : (rpoint(X2) & X0 = X2) & ? [X3] : (rpoint(X3) & X1 = X3)) => (v0 = vf(X0,X1) <=> X0 = X1))),
+  inference(rectify,[],[f12])).
+fof(f12,axiom,(
+  ! [X6,X7] : ((? [X9] : (rpoint(X9) & X6 = X9) & ? [X8] : (rpoint(X8) & X7 = X8)) => (vf(X6,X7) = v0 <=> X6 = X7))),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f2007,plain,(
+  vf(vd1089,vd1089) = sK5(vd1089,vd1089)),
+  inference(resolution,[],[f1595,f549])).
+fof(f1595,plain,(
+  ( ! [X0] : (~rpoint(X0) | vf(X0,vd1089) = sK5(X0,vd1089)) )),
+  inference(resolution,[],[f825,f549])).
+fof(f825,plain,(
+  ( ! [X4,X3] : (~rpoint(X4) | ~rpoint(X3) | vf(X3,X4) = sK5(X3,X4)) )),
+  inference(equality_resolution,[],[f824])).
+fof(f824,plain,(
+  ( ! [X4,X3,X1] : (sK5(X3,X1) = vf(X3,X1) | ~rpoint(X3) | ~rpoint(X4) | X1 != X4) )),
+  inference(equality_resolution,[],[f568])).
+fof(f568,plain,(
+  ( ! [X4,X0,X3,X1] : (vf(X0,X1) = sK5(X0,X1) | ~rpoint(X3) | X0 != X3 | ~rpoint(X4) | X1 != X4) )),
+  inference(cnf_transformation,[],[f437])).
+fof(f437,plain,(
+  ! [X0,X1] : ((rreal(sK5(X0,X1)) & vf(X0,X1) = sK5(X0,X1)) | ! [X3] : (~rpoint(X3) | X0 != X3) | ! [X4] : (~rpoint(X4) | X1 != X4))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK5])],[f435,f436])).
+fof(f436,plain,(
+  ! [X1,X0] : (? [X2] : (rreal(X2) & vf(X0,X1) = X2) => (rreal(sK5(X0,X1)) & vf(X0,X1) = sK5(X0,X1)))),
+  introduced(choice_axiom,[])).
+fof(f435,plain,(
+  ! [X0,X1] : (? [X2] : (rreal(X2) & vf(X0,X1) = X2) | ! [X3] : (~rpoint(X3) | X0 != X3) | ! [X4] : (~rpoint(X4) | X1 != X4))),
+  inference(rectify,[],[f242])).
+fof(f242,plain,(
+  ! [X0,X1] : (? [X4] : (rreal(X4) & vf(X0,X1) = X4) | ! [X2] : (~rpoint(X2) | X0 != X2) | ! [X3] : (~rpoint(X3) | X1 != X3))),
+  inference(flattening,[],[f241])).
+fof(f241,plain,(
+  ! [X0,X1] : (? [X4] : (rreal(X4) & vf(X0,X1) = X4) | (! [X2] : (~rpoint(X2) | X0 != X2) | ! [X3] : (~rpoint(X3) | X1 != X3)))),
+  inference(ennf_transformation,[],[f128])).
+fof(f128,plain,(
+  ! [X0,X1] : ((? [X2] : (rpoint(X2) & X0 = X2) & ? [X3] : (rpoint(X3) & X1 = X3)) => ? [X4] : (rreal(X4) & vf(X0,X1) = X4))),
+  inference(rectify,[],[f21])).
+fof(f21,axiom,(
+  ! [X24,X25] : ((? [X27] : (rpoint(X27) & X24 = X27) & ? [X26] : (rpoint(X26) & X25 = X26)) => ? [X28] : (rreal(X28) & vf(X24,X25) = X28))),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f58424,plain,(
+  vf(vd1089,vd1086) = sK5(vd1089,vd1089) | ~spl49_11),
+  inference(backward_demodulation,[],[f1761,f2390])).
+fof(f2390,plain,(
+  vf(vd1089,vd1086) = sK5(vd1089,sK2)),
+  inference(forward_demodulation,[],[f2361,f790])).
+fof(f790,plain,(
+  vf(vd1089,sK2) = vf(vd1089,vd1086)),
+  inference(definition_unfolding,[],[f548,f553,f550])).
+fof(f550,plain,(
+  vd1085 = vd1086),
+  inference(cnf_transformation,[],[f7])).
+fof(f7,axiom,(
+  vd1085 = vd1086),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f553,plain,(
+  vd1080 = sK2),
+  inference(cnf_transformation,[],[f428])).
+fof(f428,plain,(
+  rpoint(sK2) & vd1080 = sK2),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2])],[f119,f427])).
+fof(f427,plain,(
+  ? [X0] : (rpoint(X0) & vd1080 = X0) => (rpoint(sK2) & vd1080 = sK2)),
+  introduced(choice_axiom,[])).
+fof(f119,plain,(
+  ? [X0] : (rpoint(X0) & vd1080 = X0)),
+  inference(rectify,[],[f10])).
+fof(f10,axiom,(
+  ? [X1] : (rpoint(X1) & vd1080 = X1)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f548,plain,(
+  vf(vd1089,vd1080) = vf(vd1089,vd1085)),
+  inference(cnf_transformation,[],[f5])).
+fof(f5,axiom,(
+  vf(vd1089,vd1080) = vf(vd1089,vd1085)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f2361,plain,(
+  vf(vd1089,sK2) = sK5(vd1089,sK2)),
+  inference(resolution,[],[f1598,f549])).
+fof(f1598,plain,(
+  ( ! [X3] : (~rpoint(X3) | vf(X3,sK2) = sK5(X3,sK2)) )),
+  inference(resolution,[],[f825,f554])).
+fof(f554,plain,(
+  rpoint(sK2)),
+  inference(cnf_transformation,[],[f428])).
+fof(f1761,plain,(
+  vd1089 = sK2 | ~spl49_11),
+  inference(avatar_component_clause,[],[f1759])).
+fof(f1759,plain,(
+  spl49_11 <=> vd1089 = sK2),
+  introduced(avatar_definition,[new_symbols(naming,[spl49_11])])).
+fof(f58302,plain,(
+  spl49_11),
+  inference(avatar_split_clause,[],[f58301,f1759])).
+fof(f58301,plain,(
+  vd1089 = sK2),
+  inference(subsumption_resolution,[],[f58286,f554])).
+fof(f58286,plain,(
+  vd1089 = sK2 | ~rpoint(sK2)),
+  inference(subsumption_resolution,[],[f58246,f788])).
+fof(f788,plain,(
+  ron(sK2,vd1092)),
+  inference(definition_unfolding,[],[f545,f553])).
+fof(f545,plain,(
+  ron(vd1080,vd1092)),
+  inference(cnf_transformation,[],[f3])).
+fof(f3,axiom,(
+  rline(vd1092) & ron(vd1080,vd1092) & ron(vd1089,vd1092)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f58246,plain,(
+  ~ron(sK2,vd1092) | vd1089 = sK2 | ~rpoint(sK2)),
+  inference(resolution,[],[f787,f32533])).
+fof(f32533,plain,(
+  ( ! [X4] : (~ron(X4,sK1) | ~ron(X4,vd1092) | vd1089 = X4 | ~rpoint(X4)) )),
+  inference(subsumption_resolution,[],[f32532,f543])).
+fof(f543,plain,(
+  vd1092 != sK1),
+  inference(cnf_transformation,[],[f426])).
+fof(f426,plain,(
+  vd1092 != sK1 & rline(sK1) & ron(vd1080,sK1) & ron(vd1089,sK1)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1])],[f228,f425])).
+fof(f425,plain,(
+  ? [X0] : (vd1092 != X0 & rline(X0) & ron(vd1080,X0) & ron(vd1089,X0)) => (vd1092 != sK1 & rline(sK1) & ron(vd1080,sK1) & ron(vd1089,sK1))),
+  introduced(choice_axiom,[])).
+fof(f228,plain,(
+  ? [X0] : (vd1092 != X0 & rline(X0) & ron(vd1080,X0) & ron(vd1089,X0))),
+  inference(flattening,[],[f227])).
+fof(f227,plain,(
+  ? [X0] : (vd1092 != X0 & (rline(X0) & ron(vd1080,X0) & ron(vd1089,X0)))),
+  inference(ennf_transformation,[],[f2])).
+fof(f2,negated_conjecture,(
+  ~! [X0] : ((rline(X0) & ron(vd1080,X0) & ron(vd1089,X0)) => vd1092 = X0)),
+  inference(negated_conjecture,[],[f1])).
+fof(f1,conjecture,(
+  ! [X0] : ((rline(X0) & ron(vd1080,X0) & ron(vd1089,X0)) => vd1092 = X0)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f32532,plain,(
+  ( ! [X4] : (vd1089 = X4 | ~ron(X4,vd1092) | ~ron(X4,sK1) | ~rpoint(X4) | vd1092 = sK1) )),
+  inference(subsumption_resolution,[],[f32522,f546])).
+fof(f546,plain,(
+  rline(vd1092)),
+  inference(cnf_transformation,[],[f3])).
+fof(f32522,plain,(
+  ( ! [X4] : (vd1089 = X4 | ~rline(vd1092) | ~ron(X4,vd1092) | ~ron(X4,sK1) | ~rpoint(X4) | vd1092 = sK1) )),
+  inference(resolution,[],[f3696,f544])).
+fof(f544,plain,(
+  ron(vd1089,vd1092)),
+  inference(cnf_transformation,[],[f3])).
+fof(f3696,plain,(
+  ( ! [X85,X84] : (~ron(vd1089,X85) | vd1089 = X84 | ~rline(X85) | ~ron(X84,X85) | ~ron(X84,sK1) | ~rpoint(X84) | sK1 = X85) )),
+  inference(subsumption_resolution,[],[f3695,f542])).
+fof(f542,plain,(
+  rline(sK1)),
+  inference(cnf_transformation,[],[f426])).
+fof(f3695,plain,(
+  ( ! [X85,X84] : (~rpoint(X84) | vd1089 = X84 | ~rline(X85) | ~rline(sK1) | ~ron(X84,X85) | ~ron(X84,sK1) | ~ron(vd1089,X85) | sK1 = X85) )),
+  inference(subsumption_resolution,[],[f3655,f549])).
+fof(f3655,plain,(
+  ( ! [X85,X84] : (~rpoint(X84) | ~rpoint(vd1089) | vd1089 = X84 | ~rline(X85) | ~rline(sK1) | ~ron(X84,X85) | ~ron(X84,sK1) | ~ron(vd1089,X85) | sK1 = X85) )),
+  inference(resolution,[],[f1077,f540])).
+fof(f540,plain,(
+  ron(vd1089,sK1)),
+  inference(cnf_transformation,[],[f426])).
+fof(f1077,plain,(
+  ( ! [X6,X4,X7,X5] : (~ron(X5,X7) | ~rpoint(X4) | ~rpoint(X5) | X4 = X5 | ~rline(X6) | ~rline(X7) | ~ron(X4,X6) | ~ron(X4,X7) | ~ron(X5,X6) | X6 = X7) )),
+  inference(equality_resolution,[],[f1076])).
+fof(f1076,plain,(
+  ( ! [X6,X4,X7,X5,X3] : (X3 = X6 | ~rpoint(X4) | ~rpoint(X5) | X4 = X5 | ~rline(X6) | ~rline(X7) | X3 != X7 | ~ron(X4,X6) | ~ron(X4,X3) | ~ron(X5,X6) | ~ron(X5,X3)) )),
+  inference(equality_resolution,[],[f1075])).
+fof(f1075,plain,(
+  ( ! [X6,X4,X2,X7,X5,X3] : (X2 = X3 | ~rpoint(X4) | ~rpoint(X5) | X4 = X5 | ~rline(X6) | X2 != X6 | ~rline(X7) | X3 != X7 | ~ron(X4,X2) | ~ron(X4,X3) | ~ron(X5,X2) | ~ron(X5,X3)) )),
+  inference(equality_resolution,[],[f1074])).
+fof(f1074,plain,(
+  ( ! [X6,X4,X2,X7,X5,X3,X1] : (X2 = X3 | ~rpoint(X4) | ~rpoint(X5) | X1 != X5 | X1 = X4 | ~rline(X6) | X2 != X6 | ~rline(X7) | X3 != X7 | ~ron(X4,X2) | ~ron(X4,X3) | ~ron(X1,X2) | ~ron(X1,X3)) )),
+  inference(equality_resolution,[],[f649])).
+fof(f649,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (X2 = X3 | ~rpoint(X4) | X0 != X4 | ~rpoint(X5) | X1 != X5 | X0 = X1 | ~rline(X6) | X2 != X6 | ~rline(X7) | X3 != X7 | ~ron(X0,X2) | ~ron(X0,X3) | ~ron(X1,X2) | ~ron(X1,X3)) )),
+  inference(cnf_transformation,[],[f329])).
+fof(f329,plain,(
+  ! [X0,X1,X2,X3] : (X2 = X3 | ! [X4] : (~rpoint(X4) | X0 != X4) | ! [X5] : (~rpoint(X5) | X1 != X5) | X0 = X1 | ! [X6] : (~rline(X6) | X2 != X6) | ! [X7] : (~rline(X7) | X3 != X7) | ~ron(X0,X2) | ~ron(X0,X3) | ~ron(X1,X2) | ~ron(X1,X3))),
+  inference(flattening,[],[f328])).
+fof(f328,plain,(
+  ! [X0,X1,X2,X3] : (X2 = X3 | (! [X4] : (~rpoint(X4) | X0 != X4) | ! [X5] : (~rpoint(X5) | X1 != X5) | X0 = X1 | ! [X6] : (~rline(X6) | X2 != X6) | ! [X7] : (~rline(X7) | X3 != X7) | ~ron(X0,X2) | ~ron(X0,X3) | ~ron(X1,X2) | ~ron(X1,X3)))),
+  inference(ennf_transformation,[],[f172])).
+fof(f172,plain,(
+  ! [X0,X1,X2,X3] : ((? [X4] : (rpoint(X4) & X0 = X4) & ? [X5] : (rpoint(X5) & X1 = X5) & X0 != X1 & ? [X6] : (rline(X6) & X2 = X6) & ? [X7] : (rline(X7) & X3 = X7) & ron(X0,X2) & ron(X0,X3) & ron(X1,X2) & ron(X1,X3)) => X2 = X3)),
+  inference(rectify,[],[f67])).
+fof(f67,axiom,(
+  ! [X368,X369,X370,X371] : ((? [X375] : (rpoint(X375) & X368 = X375) & ? [X374] : (rpoint(X374) & X369 = X374) & X368 != X369 & ? [X373] : (rline(X373) & X370 = X373) & ? [X372] : (rline(X372) & X371 = X372) & ron(X368,X370) & ron(X368,X371) & ron(X369,X370) & ron(X369,X371)) => X370 = X371)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f787,plain,(
+  ron(sK2,sK1)),
+  inference(definition_unfolding,[],[f541,f553])).
+fof(f541,plain,(
+  ron(vd1080,sK1)),
+  inference(cnf_transformation,[],[f426])).
+fof(f1770,plain,(
+  ~spl49_12),
+  inference(avatar_split_clause,[],[f1769,f1763])).
+fof(f1769,plain,(
+  vd684 != vf(vd1089,vd1086)),
+  inference(subsumption_resolution,[],[f1768,f554])).
+fof(f1768,plain,(
+  vd684 != vf(vd1089,vd1086) | ~rpoint(sK2)),
+  inference(subsumption_resolution,[],[f1767,f552])).
+fof(f552,plain,(
+  rpoint(vd1086)),
+  inference(cnf_transformation,[],[f9])).
+fof(f9,axiom,(
+  rpoint(vd1086)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f1767,plain,(
+  vd684 != vf(vd1089,vd1086) | ~rpoint(vd1086) | ~rpoint(sK2)),
+  inference(subsumption_resolution,[],[f1753,f791])).
+fof(f791,plain,(
+  vd1086 != sK2),
+  inference(definition_unfolding,[],[f551,f553,f550])).
+fof(f551,plain,(
+  vd1080 != vd1085),
+  inference(cnf_transformation,[],[f8])).
+fof(f8,axiom,(
+  vd1080 != vd1085),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f1753,plain,(
+  vd684 != vf(vd1089,vd1086) | vd1086 = sK2 | ~rpoint(vd1086) | ~rpoint(sK2)),
+  inference(superposition,[],[f809,f1486])).
+fof(f1486,plain,(
+  vf(vd1086,sK2) = vf(vd1089,vd1086)),
+  inference(backward_demodulation,[],[f790,f789])).
+fof(f789,plain,(
+  vf(vd1089,sK2) = vf(vd1086,sK2)),
+  inference(definition_unfolding,[],[f547,f553,f550,f553])).
+fof(f547,plain,(
+  vf(vd1089,vd1080) = vf(vd1085,vd1080)),
+  inference(cnf_transformation,[],[f4])).
+fof(f4,axiom,(
+  vf(vd1089,vd1080) = vf(vd1085,vd1080)),
+  file('./p/GEO274+1.tptp',unknown)).
+fof(f809,plain,(
+  ( ! [X2,X3] : (vf(X2,X3) != vd684 | X2 = X3 | ~rpoint(X2) | ~rpoint(X3)) )),
+  inference(equality_resolution,[],[f808])).
+fof(f808,plain,(
+  ( ! [X2,X3,X1] : (X1 = X2 | vd684 != vf(X2,X1) | ~rpoint(X2) | ~rpoint(X3) | X1 != X3) )),
+  inference(equality_resolution,[],[f793])).
+fof(f793,plain,(
+  ( ! [X2,X0,X3,X1] : (X0 = X1 | vd684 != vf(X0,X1) | ~rpoint(X2) | X0 != X2 | ~rpoint(X3) | X1 != X3) )),
+  inference(definition_unfolding,[],[f556,f607])).
+fof(f556,plain,(
+  ( ! [X2,X0,X3,X1] : (X0 = X1 | v0 != vf(X0,X1) | ~rpoint(X2) | X0 != X2 | ~rpoint(X3) | X1 != X3) )),
+  inference(cnf_transformation,[],[f429])).
+% SZS output end Proof for GEO274+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 49892
+% Time elapsed: 1.957 s
+% ------------------------------
+% ------------------------------

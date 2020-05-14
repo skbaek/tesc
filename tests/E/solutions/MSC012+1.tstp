@@ -1,0 +1,167 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_5, plain, (less(X1,esk2_1(X1)))).
+#
+#cnf(i_0_2, plain, (p(esk1_1(X1))|p(X1))).
+#
+#cnf(i_0_3, plain, (less(X1,esk1_1(X1))|p(X1))).
+#
+#cnf(i_0_6, negated_conjecture, (~goal)).
+#
+#cnf(i_0_1, plain, (~less(X1,X2)|~p(X2)|~p(X1))).
+#
+#cnf(i_0_4, plain, (less(X1,X3)|~less(X2,X3)|~less(X1,X2))).
+#
+#cnf(i_0_12, plain, (less(X1,X2)|~less(esk2_1(X1),X2))).
+#
+#cnf(i_0_7, plain, (~p(esk2_1(X1))|~p(X1))).
+#
+#cnf(i_0_16, plain, (less(X1,esk2_1(esk2_1(X1))))).
+#
+#cnf(i_0_14, plain, (less(X1,esk2_1(X2))|~less(X1,X2))).
+#
+#cnf(i_0_19, plain, (less(X1,esk2_1(esk2_1(esk2_1(X1)))))).
+#
+#cnf(i_0_20, plain, (~p(esk2_1(esk2_1(X1)))|~p(X1))).
+#
+#cnf(i_0_21, plain, (less(X1,X2)|~less(esk2_1(esk2_1(X1)),X2))).
+#
+#cnf(i_0_23, plain, (less(X1,esk2_1(X2))|~less(esk2_1(X1),X2))).
+#
+#cnf(i_0_22, plain, (less(X1,esk2_1(esk2_1(X2)))|~less(X1,X2))).
+#
+#cnf(i_0_24, plain, (~less(X1,X2)|~p(esk2_1(X2))|~p(X1))).
+#
+#cnf(i_0_13, plain, (less(X1,X2)|p(X1)|~less(esk1_1(X1),X2))).
+#
+#cnf(i_0_59, plain, (less(X1,esk2_1(esk1_1(X1)))|p(X1))).
+#
+#cnf(i_0_27, plain, (less(X1,esk2_1(esk2_1(esk2_1(esk2_1(X1))))))).
+####
+#cnf(i_0_15, plain, (less(X1,esk1_1(X2))|p(X2)|~less(X1,X2))).
+#
+#cnf(i_0_28, plain, (~p(esk2_1(esk2_1(esk2_1(X1))))|~p(X1))).
+#
+#cnf(i_0_17, plain, (less(X1,esk1_1(esk2_1(X1)))|p(esk2_1(X1)))).
+#
+#cnf(i_0_29, plain, (less(X1,X2)|~less(esk2_1(esk2_1(esk2_1(X1))),X2))).
+#
+#cnf(i_0_34, plain, (less(X1,esk2_1(X2))|~less(esk2_1(esk2_1(X1)),X2))).
+##
+#cnf(i_0_56, plain, (less(X1,esk2_1(esk2_1(esk1_1(X1))))|p(X1))).
+#
+#cnf(i_0_40, plain, (less(X1,esk2_1(esk2_1(X2)))|~less(esk2_1(X1),X2))).
+##
+#cnf(i_0_9, plain, (~less(X3,X2)|~less(X1,X3)|~p(X2)|~p(X1))).
+#
+#cnf(i_0_83, plain, (p(X2)|~less(X1,X2)|~p(esk1_1(X2))|~p(X1))).
+##
+#cnf(i_0_18, plain, (less(X1,X2)|~less(esk2_1(X1),X3)|~less(X3,X2))).
+#
+#cnf(i_0_144, plain, (~less(esk2_1(X1),X2)|~p(X2)|~p(X1))).
+######
+#cnf(i_0_25, plain, (less(X1,X2)|~less(esk2_1(X3),X2)|~less(X1,X3))).
+#####
+#cnf(i_0_26, plain, (less(X1,esk2_1(X2))|~less(X1,X3)|~less(X3,X2))).
+#####
+#cnf(i_0_225, plain, (~less(esk2_1(X1),X2)|~p(esk2_1(X2))|~p(X1))).
+#
+#cnf(i_0_30, plain, (less(X1,esk2_1(esk2_1(esk2_1(X2))))|~less(X1,X2))).
+####
+#cnf(i_0_91, plain, (p(esk2_1(X1))|~p(esk1_1(esk2_1(X1)))|~p(X1))).
+#
+#cnf(i_0_364, plain, (p(esk2_1(X1))|~p(X1))).
+##
+#cnf(i_0_367, plain, (~p(X1))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(goal_to_be_proved, conjecture, goal, file('./p/MSC012+1.tptp', goal_to_be_proved)).
+fof(transitive_less, axiom, ![X1, X2, X3]:((less(X1,X2)&less(X2,X3))=>less(X1,X3)), file('./p/MSC012+1.tptp', transitive_less)).
+fof(serial_less, axiom, ![X1]:?[X2]:less(X1,X2), file('./p/MSC012+1.tptp', serial_less)).
+fof(left_to_right, axiom, ![X1, X2]:(((p(X1)&less(X1,X2))&p(X2))=>goal), file('./p/MSC012+1.tptp', left_to_right)).
+fof(right_to_left, axiom, ![X1]:(p(X1)|?[X2]:(less(X1,X2)&p(X2))), file('./p/MSC012+1.tptp', right_to_left)).
+fof(c_0_5, negated_conjecture, ~(goal), inference(assume_negation,[status(cth)],[goal_to_be_proved])).
+fof(c_0_6, plain, ![X8, X9, X10]:(~less(X8,X9)|~less(X9,X10)|less(X8,X10)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[transitive_less])])).
+fof(c_0_7, plain, ![X11]:less(X11,esk2_1(X11)), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[serial_less])])).
+fof(c_0_8, plain, ![X4, X5]:(~p(X4)|~less(X4,X5)|~p(X5)|goal), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[left_to_right])])).
+fof(c_0_9, negated_conjecture, ~goal, inference(fof_simplification,[status(thm)],[c_0_5])).
+cnf(c_0_10, plain, (less(X1,X3)|~less(X1,X2)|~less(X2,X3)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_11, plain, (less(X1,esk2_1(X1))), inference(split_conjunct,[status(thm)],[c_0_7])).
+fof(c_0_12, plain, ![X6]:((less(X6,esk1_1(X6))|p(X6))&(p(esk1_1(X6))|p(X6))), inference(distribute,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[right_to_left])])])).
+cnf(c_0_13, plain, (goal|~p(X1)|~less(X1,X2)|~p(X2)), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_14, negated_conjecture, (~goal), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_15, plain, (less(X1,X2)|~less(esk2_1(X1),X2)), inference(pm,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_16, plain, (less(X1,esk1_1(X1))|p(X1)), inference(split_conjunct,[status(thm)],[c_0_12])).
+cnf(c_0_17, plain, (~less(X1,X2)|~p(X2)|~p(X1)), inference(sr,[status(thm)],[c_0_13, c_0_14])).
+cnf(c_0_18, plain, (less(X1,esk1_1(esk2_1(X1)))|p(esk2_1(X1))), inference(pm,[status(thm)],[c_0_15, c_0_16])).
+cnf(c_0_19, plain, (p(esk2_1(X1))|~p(esk1_1(esk2_1(X1)))|~p(X1)), inference(pm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_20, plain, (p(esk1_1(X1))|p(X1)), inference(split_conjunct,[status(thm)],[c_0_12])).
+cnf(c_0_21, plain, (~p(esk2_1(X1))|~p(X1)), inference(pm,[status(thm)],[c_0_17, c_0_11])).
+cnf(c_0_22, plain, (p(esk2_1(X1))|~p(X1)), inference(pm,[status(thm)],[c_0_19, c_0_20])).
+cnf(c_0_23, plain, (~p(X1)), inference(pm,[status(thm)],[c_0_21, c_0_22])).
+cnf(c_0_24, plain, ($false), inference(sr,[status(thm)],[inference(sr,[status(thm)],[c_0_20, c_0_23]), c_0_23]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 25
+# Proof object clause steps            : 14
+# Proof object formula steps           : 11
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 1
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 6
+# Proof object initial formulas used   : 5
+# Proof object generating inferences   : 6
+# Proof object simplifying inferences  : 3
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 5
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 6
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 6
+# Processed clauses                    : 60
+# ...of these trivial                  : 2
+# ...subsumed                          : 21
+# ...remaining for further processing  : 37
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 1
+# Backward-rewritten                   : 0
+# Generated clauses                    : 368
+# ...of the previous two non-trivial   : 346
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 363
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 31
+#    Positive orientable unit clauses  : 4
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 2
+#    Non-unit-clauses                  : 25
+# Current number of unprocessed clauses: 292
+# ...number of literals in the above   : 903
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 6
+# Clause-clause subsumption calls (NU) : 219
+# Rec. Clause-clause subsumption calls : 153
+# Non-unit clause-clause subsumptions  : 22
+# Unit Clause-clause subsumption calls : 10
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 4
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 3259

@@ -1,0 +1,36 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for ROB010-1
+% SZS output start Proof for ROB010-1
+fof(f53,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f52,f6])).
+fof(f6,plain,(
+  a != negate(add(c,negate(add(a,b))))),
+  inference(forward_demodulation,[],[f5,f1])).
+fof(f1,axiom,(
+  ( ! [X0,X1] : (add(X0,X1) = add(X1,X0)) )),
+  file('./p/ROB010-1.tptp',unknown)).
+fof(f5,axiom,(
+  a != negate(add(c,negate(add(b,a))))),
+  file('./p/ROB010-1.tptp',unknown)).
+fof(f52,plain,(
+  a = negate(add(c,negate(add(a,b))))),
+  inference(forward_demodulation,[],[f44,f1])).
+fof(f44,plain,(
+  a = negate(add(negate(add(a,b)),c))),
+  inference(superposition,[],[f3,f4])).
+fof(f4,axiom,(
+  negate(add(a,negate(b))) = c),
+  file('./p/ROB010-1.tptp',unknown)).
+fof(f3,axiom,(
+  ( ! [X0,X1] : (negate(add(negate(add(X0,X1)),negate(add(X0,negate(X1))))) = X0) )),
+  file('./p/ROB010-1.tptp',unknown)).
+% SZS output end Proof for ROB010-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

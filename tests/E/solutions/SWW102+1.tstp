@@ -1,0 +1,492 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_8, plain, (d(false))).
+#
+#cnf(i_0_9, plain, (d(true))).
+#
+#cnf(i_0_7, plain, (d(err))).
+#
+#cnf(i_0_6, plain, (true!=false)).
+#
+#cnf(i_0_91, plain, (false=false1)).
+#
+#cnf(i_0_8, plain, (d(false1))).
+#
+#cnf(i_0_2, plain, (bool(X1)|X1!=false1)).
+#
+#cnf(i_0_4, plain, (err!=false1)).
+#
+#cnf(i_0_1, plain, (bool(X1)|X1!=true)).
+#
+#cnf(i_0_96, plain, (not1(false1)=true)).
+#
+#cnf(i_0_97, plain, (not1(true)=false1)).
+#
+#cnf(i_0_5, plain, (err!=true)).
+#
+#cnf(i_0_61, plain, (lazy_impl(false1,X1)=true)).
+#
+#cnf(i_0_71, plain, (lazy_and1(false1,X1)=false1)).
+#
+#cnf(i_0_53, plain, (bool(X1)|prop(X1)!=true)).
+#
+#cnf(i_0_6, plain, (true!=false1)).
+#
+#cnf(i_0_52, plain, (prop(X1)=true|~bool(X1))).
+#
+#cnf(i_0_54, plain, (prop(X1)=false1|bool(X1))).
+#
+#cnf(i_0_12, plain, (forallprefers(X1,X2)|d(X1)|~d(X2))).
+#
+#cnf(i_0_55, plain, (prop(X1)!=false1|~bool(X1))).
+#
+#cnf(i_0_31, plain, (existsprefers(X1,X2)|d(X1)|~d(X2))).
+#
+#cnf(i_0_100, plain, (prop(X1)=true|X1!=false1)).
+#
+#cnf(i_0_101, plain, (prop(X1)=true|X1!=true)).
+#
+#cnf(i_0_104, plain, (prop(X1)!=false1|X1!=false1)).
+#
+#cnf(i_0_59, plain, (impl(true,X1)=X1|~bool(X1))).
+#
+#cnf(i_0_49, plain, (lazy_impl(true,X1)=X1|~d(X1))).
+#
+#cnf(i_0_66, plain, (and1(true,X1)=X1|~bool(X1))).
+##
+#cnf(i_0_79, plain, (or1(false1,X1)=X1|~bool(X1))).
+#
+#cnf(i_0_72, plain, (lazy_and1(true,X1)=lazy_impl(true,X1))).
+#
+#cnf(i_0_58, plain, (impl(false1,X1)=true|~bool(X1))).
+#
+#cnf(i_0_105, plain, (prop(X1)!=false1|X1!=true)).
+#
+#cnf(i_0_65, plain, (and1(false1,X1)=false1|~bool(X1))).
+#
+#cnf(i_0_78, plain, (or1(true,X1)=true|~bool(X1))).
+#
+#cnf(i_0_18, plain, (X1=false1|d(X2)|~forallprefers(X1,X2))).
+##
+#cnf(i_0_36, plain, (X1=false1|d(X1)|~existsprefers(X2,X1))).
+#
+#cnf(i_0_37, plain, (X1=true|d(X2)|~existsprefers(X1,X2))).
+#
+#cnf(i_0_17, plain, (X1=true|d(X1)|~forallprefers(X2,X1))).
+#
+#cnf(i_0_99, negated_conjecture, (impl(esk8_0,false2)!=not1(esk8_0))).
+#
+#cnf(i_0_50, plain, (lazy_impl(true,X1)=err|d(X1))).
+#
+#cnf(i_0_3, plain, (X1=false1|X1=true|~bool(X1))).
+#
+#cnf(i_0_103, plain, (prop(X1)=true|prop(X1)=false1)).
+#
+#cnf(i_0_107, plain, (prop(X1)!=false1|prop(X1)!=true)).
+##
+#cnf(i_0_95, plain, (lazy_impl(true,X1)=not1(X1)|bool(X1))).
+#
+#cnf(i_0_128, plain, (not1(X1)=X1|bool(X1)|~d(X1))).
+##
+#cnf(i_0_127, plain, (not1(X1)=err|d(X1)|bool(X1))).
+#
+#cnf(i_0_10, plain, (forallprefers(X1,X2)|X2!=true|X1!=false1)).
+#
+#cnf(i_0_29, plain, (existsprefers(X1,X2)|X2!=false1|X1!=true)).
+##
+#cnf(i_0_56, plain, (impl(X1,X2)=lazy_impl(true,X1)|bool(X1))).
+#
+#cnf(i_0_63, plain, (and1(X1,X2)=lazy_impl(true,X1)|bool(X1))).
+#
+#cnf(i_0_70, plain, (lazy_and1(X1,X2)=lazy_impl(true,X1)|bool(X1))).
+#
+#cnf(i_0_83, plain, (~existsprefers(apply(X1,X2),apply(X1,esk4_1(X1))))).
+#
+#cnf(i_0_76, plain, (or1(X1,X2)=lazy_impl(true,X1)|bool(X1))).
+#
+#cnf(i_0_131, plain, (not1(X1)=X1|prop(X1)!=false1|~d(X1))).
+#
+#cnf(i_0_144, plain, (lazy_impl(true,false1)=false1|bool(false1))).
+##
+#cnf(i_0_154, plain, (bool(false1))).
+#
+#cnf(i_0_155, plain, (prop(false1)=true)).
+#
+#cnf(i_0_42, plain, (X1=false1|~existsprefers(X2,X1)|~d(X2)|~bool(X2))).
+##
+#cnf(i_0_24, plain, (X1=false1|~forallprefers(X1,X2)|~d(X1)|~bool(X1))).
+#
+#cnf(i_0_23, plain, (X1=true|~forallprefers(X2,X1)|~d(X2)|~bool(X2))).
+#
+#cnf(i_0_43, plain, (X1=true|~existsprefers(X1,X2)|~d(X1)|~bool(X1))).
+##
+#cnf(i_0_130, plain, (prop(X1)=true|not1(X1)=X1|~d(X1))).
+####
+#cnf(i_0_139, negated_conjecture, (bool(esk8_0)|lazy_impl(true,esk8_0)!=not1(esk8_0))).
+#
+#cnf(i_0_175, negated_conjecture, (bool(esk8_0))).
+#
+#cnf(i_0_177, negated_conjecture, (prop(esk8_0)=true)).
+##
+#cnf(i_0_176, negated_conjecture, (esk8_0=false1|esk8_0=true)).
+#
+#cnf(i_0_185, negated_conjecture, (esk8_0=false1|bool(true))).
+###
+#cnf(i_0_188, negated_conjecture, (esk8_0=false1|prop(true)!=false1)).
+####
+#cnf(i_0_186, negated_conjecture, (prop(true)=true|esk8_0=false1)).
+########
+#cnf(i_0_22, plain, (X1=false1|bool(X2)|~forallprefers(X1,X2)|~d(X1))).
+#
+#cnf(i_0_40, plain, (X1=false1|bool(X1)|~existsprefers(X2,X1)|~d(X2))).
+######
+#cnf(i_0_146, plain, (apply(X1,esk4_1(X1))!=false1|apply(X1,X2)!=true)).
+#
+#cnf(i_0_41, plain, (X1=true|bool(X2)|~existsprefers(X1,X2)|~d(X1))).
+#
+#cnf(i_0_21, plain, (X1=true|bool(X1)|~forallprefers(X2,X1)|~d(X2))).
+##
+#cnf(i_0_93, plain, (~forallprefers(lazy_impl(prop(X1),X1),lazy_impl(prop(esk7_0),esk7_0)))).
+####
+#cnf(i_0_210, negated_conjecture, (~forallprefers(lazy_impl(true,esk8_0),lazy_impl(prop(esk7_0),esk7_0)))).
+####
+#cnf(i_0_225, negated_conjecture, (~forallprefers(esk8_0,lazy_impl(prop(esk7_0),esk7_0))|~d(esk8_0))).
+####
+#cnf(i_0_211, plain, (~forallprefers(lazy_impl(true,false1),lazy_impl(prop(esk7_0),esk7_0)))).
+###
+#cnf(i_0_120, plain, (X1=false1|X1=true|prop(X1)!=true)).
+#
+#cnf(i_0_241, plain, (~forallprefers(false1,lazy_impl(prop(esk7_0),esk7_0)))).
+##
+#cnf(i_0_134, plain, (not1(X1)=err|d(X1)|prop(X1)!=false1)).
+#
+#cnf(i_0_60, plain, (lazy_impl(X1,X2)=lazy_impl(true,X1)|bool(X1))).
+#
+#cnf(i_0_254, plain, (lazy_impl(prop(esk7_0),esk7_0)!=true)).
+#
+#cnf(i_0_267, plain, (lazy_impl(X1,X2)=not1(X1)|bool(X1))).
+#
+#cnf(i_0_296, plain, (d(X1)|bool(true))).
+#
+#cnf(i_0_302, plain, (d(X1)|prop(true)!=false1)).
+#
+#cnf(i_0_282, plain, (lazy_impl(true,esk7_0)!=true|esk7_0!=false1)).
+###
+#cnf(i_0_301, plain, (prop(true)=true|d(X1))).
+#
+#cnf(i_0_311, plain, (esk7_0!=true|esk7_0!=false1|~d(esk7_0))).
+####
+#cnf(i_0_283, plain, (lazy_impl(true,esk7_0)!=true|esk7_0!=true)).
+##
+#cnf(i_0_297, plain, (false1=X1|bool(true)|~d(X1))).
+#
+#cnf(i_0_329, plain, (false1=X1|bool(true))).
+#
+#cnf(i_0_324, plain, (esk7_0!=true|~d(esk7_0))).
+#
+#cnf(i_0_346, plain, (bool(true))).
+#
+#cnf(i_0_391, plain, (prop(true)=true)).
+#####
+#cnf(i_0_266, plain, (lazy_impl(X1,X2)=X1|bool(X1)|~d(X1))).
+########
+#cnf(i_0_268, plain, (lazy_impl(X1,X3)=lazy_impl(X1,X2)|bool(X1))).
+#####
+#cnf(i_0_251, plain, (esk7_0!=false1|~forallprefers(false1,lazy_impl(true,esk7_0)))).
+#######
+#cnf(i_0_265, plain, (lazy_impl(X1,X2)=err|d(X1)|bool(X1))).
+#
+#cnf(i_0_465, plain, (esk7_0!=false1|~forallprefers(false1,esk7_0)|~d(esk7_0))).
+#######
+#cnf(i_0_464, plain, (d(esk7_0)|esk7_0!=false1|~forallprefers(false1,err))).
+#
+#cnf(i_0_252, plain, (esk7_0!=true|~forallprefers(false1,lazy_impl(true,esk7_0)))).
+##
+#cnf(i_0_500, plain, (d(esk7_0)|esk7_0!=true|~forallprefers(false1,err))).
+##########
+#cnf(i_0_393, plain, (~forallprefers(lazy_impl(true,true),lazy_impl(prop(esk7_0),esk7_0)))).
+#
+#cnf(i_0_292, plain, (bool(prop(esk7_0))|not1(prop(esk7_0))!=true)).
+#
+#cnf(i_0_147, plain, (d(apply(X1,X2))|~d(apply(X1,esk4_1(X1))))).
+#
+#cnf(i_0_184, negated_conjecture, (esk8_0=false1|impl(true,false2)!=not1(esk8_0))).
+#
+#cnf(i_0_524, plain, (~forallprefers(true,lazy_impl(prop(esk7_0),esk7_0)))).
+###
+#cnf(i_0_537, negated_conjecture, (esk8_0=false1|not1(esk8_0)!=false2|~bool(false2))).
+#
+#cnf(i_0_539, plain, (esk7_0!=false1|~forallprefers(true,lazy_impl(true,esk7_0)))).
+#
+#cnf(i_0_562, plain, (d(esk7_0)|esk7_0!=false1|~forallprefers(true,err))).
+#
+#cnf(i_0_119, plain, (prop(X1)=false1|X1=false1|X1=true)).
+##
+#cnf(i_0_563, plain, (esk7_0!=false1|~forallprefers(true,esk7_0)|~d(esk7_0))).
+#
+#cnf(i_0_575, plain, (esk7_0=false1|esk7_0=true)).
+#
+#cnf(i_0_610, plain, (esk7_0=false1|esk7_0!=true)).
+#
+#cnf(i_0_618, plain, (esk7_0=false1)).
+###
+#cnf(i_0_133, plain, (prop(X1)=true|not1(X1)=err|d(X1))).
+##
+#cnf(i_0_563, plain, (~forallprefers(true,false1))).
+######
+#cnf(i_0_57, plain, (impl(X1,X2)=lazy_impl(true,X2)|bool(X2)|~bool(X1))).
+#
+#cnf(i_0_628, negated_conjecture, (bool(false2)|lazy_impl(true,false2)!=not1(esk8_0))).
+#
+#cnf(i_0_465, plain, (~forallprefers(false1,false1))).
+#
+#cnf(i_0_641, negated_conjecture, (bool(false2)|not1(esk8_0)!=not1(false2))).
+#
+#cnf(i_0_640, negated_conjecture, (bool(false2)|not1(esk8_0)!=false2|~d(false2))).
+#
+#cnf(i_0_639, negated_conjecture, (d(false2)|bool(false2)|not1(esk8_0)!=err)).
+##
+#cnf(i_0_645, negated_conjecture, (prop(false2)=true|not1(esk8_0)!=not1(false2))).
+#
+#cnf(i_0_651, negated_conjecture, (esk8_0=false1|not1(esk8_0)!=false2|~d(false2))).
+#
+#cnf(i_0_64, plain, (and1(X1,X2)=lazy_impl(true,X2)|bool(X2)|~bool(X1))).
+#
+#cnf(i_0_282, plain, (lazy_impl(true,false1)!=true)).
+#
+#cnf(i_0_77, plain, (or1(X1,X2)=lazy_impl(true,X2)|bool(X2)|~bool(X1))).
+##
+#cnf(i_0_550, negated_conjecture, (esk8_0=false1|not1(esk8_0)!=false2|false2!=false1)).
+##
+#cnf(i_0_678, negated_conjecture, (esk8_0=false1|false2!=false1)).
+##
+#cnf(i_0_551, negated_conjecture, (esk8_0=false1|not1(esk8_0)!=false2|false2!=true)).
+####
+#cnf(i_0_11, plain, (forallprefers(X1,X2)|bool(X1)|~d(X2)|~d(X1)|~bool(X2))).
+#
+#cnf(i_0_524, plain, (~forallprefers(true,lazy_impl(true,false1)))).
+#
+#cnf(i_0_30, plain, (existsprefers(X1,X2)|bool(X1)|~d(X2)|~d(X1)|~bool(X2))).
+#
+#cnf(i_0_48, plain, (lazy_impl(true,X1)=err|lazy_impl(true,X1)=X1)).
+#
+#cnf(i_0_712, plain, (lazy_impl(true,X2)=X2|err!=X2)).
+##
+#cnf(i_0_746, plain, (not1(X1)=X1|bool(X1)|err!=X1)).
+#
+#cnf(i_0_713, plain, (lazy_impl(true,X3)=err|X3!=err)).
+#
+#cnf(i_0_762, plain, (not1(X1)=err|bool(X1)|X1!=err)).
+##
+#cnf(i_0_748, plain, (lazy_impl(X1,X2)=X1|bool(X1)|err!=X1)).
+######
+#cnf(i_0_764, plain, (lazy_impl(X1,X2)=err|bool(X1)|X1!=err)).
+#####
+#cnf(i_0_241, plain, (~forallprefers(false1,lazy_impl(true,false1)))).
+#
+#cnf(i_0_752, plain, (not1(X1)=X1|prop(X1)!=false1|err!=X1)).
+##
+#cnf(i_0_730, plain, (lazy_impl(true,false1)=false1|~forallprefers(true,err))).
+##
+#cnf(i_0_812, plain, (lazy_impl(true,false1)=false1|~forallprefers(false1,err))).
+##
+#cnf(i_0_742, negated_conjecture, (bool(false2)|not1(esk8_0)!=false2|false2!=err)).
+##
+#cnf(i_0_758, negated_conjecture, (bool(false2)|not1(esk8_0)!=err|false2!=err)).
+##
+#cnf(i_0_751, plain, (prop(X1)=true|not1(X1)=X1|err!=X1)).
+####
+#cnf(i_0_769, plain, (not1(X1)=err|prop(X1)!=false1|X1!=err)).
+###
+#cnf(i_0_838, negated_conjecture, (esk8_0=false1|not1(esk8_0)!=false2|false2!=err)).
+#######
+#cnf(i_0_768, plain, (prop(X1)=true|not1(X1)=err|X1!=err)).
+####
+#cnf(i_0_94, plain, (lazy_impl(true,lazy_impl(true,false1))=false2)).
+#
+#cnf(i_0_895, plain, (lazy_impl(true,false1)=false2)).
+#
+#cnf(i_0_909, plain, (false2=false1)).
+##
+#cnf(i_0_678, negated_conjecture, (esk8_0=false1)).
+##
+#cnf(i_0_895, plain, (lazy_impl(true,false1)=false1)).
+#########
+#cnf(i_0_99, negated_conjecture, (impl(false1,false1)!=true)).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(lazy_and1_axiom2, axiom, ![X4]:lazy_and1(false,X4)=false, file('./p/SWW102+1.tptp', lazy_and1_axiom2)).
+fof(lazy_and1_axiom1, axiom, ![X3, X4]:(~(bool(X3))=>lazy_and1(X3,X4)=phi(X3)), file('./p/SWW102+1.tptp', lazy_and1_axiom1)).
+fof(lazy_impl_axiom3, axiom, ![X4]:lazy_impl(true,X4)=phi(X4), file('./p/SWW102+1.tptp', lazy_impl_axiom3)).
+fof(not1_axiom1, axiom, ![X3]:(~(bool(X3))=>not1(X3)=phi(X3)), file('./p/SWW102+1.tptp', not1_axiom1)).
+fof(def_false1, axiom, false1=false, file('./p/SWW102+1.tptp', def_false1)).
+fof(not1_axiom2, axiom, not1(false)=true, file('./p/SWW102+1.tptp', not1_axiom2)).
+fof(distinct_false_true_err, axiom, ((true!=false&true!=err)&false!=err), file('./p/SWW102+1.tptp', distinct_false_true_err)).
+fof(def_false2, axiom, ?[X5]:(false2=phi(f7(X5))&~(?[X10]:forallprefers(f7(X10),f7(X5)))), file('./p/SWW102+1.tptp', def_false2)).
+fof(def_f7, axiom, ![X5]:f7(X5)=lazy_impl(prop(X5),X5), file('./p/SWW102+1.tptp', def_f7)).
+fof(prop_true, axiom, ![X1]:(prop(X1)=true<=>bool(X1)), file('./p/SWW102+1.tptp', prop_true)).
+fof(def_phi, axiom, ![X1]:((d(X1)&phi(X1)=X1)|(~(d(X1))&phi(X1)=err)), file('./p/SWW102+1.tptp', def_phi)).
+fof(not1_not2, conjecture, ![X5]:not1(X5)=not2(X5), file('./p/SWW102+1.tptp', not1_not2)).
+fof(false_true_err_in_d, axiom, ((d(true)&d(false))&d(err)), file('./p/SWW102+1.tptp', false_true_err_in_d)).
+fof(def_forallprefers, axiom, ![X1, X2]:(forallprefers(X1,X2)<=>((~(d(X1))&d(X2))|(((d(X1)&d(X2))&~(bool(X1)))&bool(X2))|(X1=false&X2=true))), file('./p/SWW102+1.tptp', def_forallprefers)).
+fof(def_not2, axiom, ![X5]:not2(X5)=impl(X5,false2), file('./p/SWW102+1.tptp', def_not2)).
+fof(impl_axiom1, axiom, ![X3, X4]:(~(bool(X3))=>impl(X3,X4)=phi(X3)), file('./p/SWW102+1.tptp', impl_axiom1)).
+fof(def_bool, axiom, ![X1]:(bool(X1)<=>(X1=false|X1=true)), file('./p/SWW102+1.tptp', def_bool)).
+fof(prop_false, axiom, ![X1]:(prop(X1)=false<=>~(bool(X1))), file('./p/SWW102+1.tptp', prop_false)).
+fof(lazy_impl_axiom2, axiom, ![X4]:lazy_impl(false,X4)=true, file('./p/SWW102+1.tptp', lazy_impl_axiom2)).
+fof(impl_axiom4, axiom, ![X4]:(bool(X4)=>impl(true,X4)=X4), file('./p/SWW102+1.tptp', impl_axiom4)).
+fof(not1_axiom3, axiom, not1(true)=false, file('./p/SWW102+1.tptp', not1_axiom3)).
+fof(impl_axiom3, axiom, ![X4]:(bool(X4)=>impl(false,X4)=true), file('./p/SWW102+1.tptp', impl_axiom3)).
+fof(c_0_22, plain, ![X44]:lazy_and1(false,X44)=false, inference(variable_rename,[status(thm)],[lazy_and1_axiom2])).
+fof(c_0_23, plain, ![X42, X43]:(bool(X42)|lazy_and1(X42,X43)=phi(X42)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[lazy_and1_axiom1])])])).
+fof(c_0_24, plain, ![X28]:lazy_impl(true,X28)=phi(X28), inference(variable_rename,[status(thm)],[lazy_impl_axiom3])).
+fof(c_0_25, plain, ![X84]:(bool(X84)|not1(X84)=phi(X84)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[not1_axiom1])])])).
+cnf(c_0_26, plain, (lazy_and1(false,X1)=false), inference(split_conjunct,[status(thm)],[c_0_22])).
+cnf(c_0_27, plain, (false1=false), inference(split_conjunct,[status(thm)],[def_false1])).
+cnf(c_0_28, plain, (bool(X1)|lazy_and1(X1,X2)=phi(X1)), inference(split_conjunct,[status(thm)],[c_0_23])).
+cnf(c_0_29, plain, (lazy_impl(true,X1)=phi(X1)), inference(split_conjunct,[status(thm)],[c_0_24])).
+cnf(c_0_30, plain, (bool(X1)|not1(X1)=phi(X1)), inference(split_conjunct,[status(thm)],[c_0_25])).
+cnf(c_0_31, plain, (lazy_and1(false1,X1)=false1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_26, c_0_27]), c_0_27])).
+cnf(c_0_32, plain, (lazy_and1(X1,X2)=lazy_impl(true,X1)|bool(X1)), inference(rw,[status(thm)],[c_0_28, c_0_29])).
+cnf(c_0_33, plain, (not1(false)=true), inference(split_conjunct,[status(thm)],[not1_axiom2])).
+cnf(c_0_34, plain, (true!=false), inference(split_conjunct,[status(thm)],[distinct_false_true_err])).
+fof(c_0_35, plain, ![X83]:(false2=phi(f7(esk7_0))&~forallprefers(f7(X83),f7(esk7_0))), inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[def_false2])])])])).
+fof(c_0_36, plain, ![X81]:f7(X81)=lazy_impl(prop(X81),X81), inference(variable_rename,[status(thm)],[def_f7])).
+fof(c_0_37, plain, ![X17]:((prop(X17)!=true|bool(X17))&(~bool(X17)|prop(X17)=true)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[prop_true])])).
+cnf(c_0_38, plain, (not1(X1)=lazy_impl(true,X1)|bool(X1)), inference(rw,[status(thm)],[c_0_30, c_0_29])).
+cnf(c_0_39, plain, (lazy_impl(true,false1)=false1|bool(false1)), inference(pm,[status(thm)],[c_0_31, c_0_32])).
+cnf(c_0_40, plain, (not1(false1)=true), inference(rw,[status(thm)],[c_0_33, c_0_27])).
+cnf(c_0_41, plain, (true!=false1), inference(rw,[status(thm)],[c_0_34, c_0_27])).
+cnf(c_0_42, plain, (~forallprefers(f7(X1),f7(esk7_0))), inference(split_conjunct,[status(thm)],[c_0_35])).
+cnf(c_0_43, plain, (f7(X1)=lazy_impl(prop(X1),X1)), inference(split_conjunct,[status(thm)],[c_0_36])).
+cnf(c_0_44, plain, (prop(X1)=true|~bool(X1)), inference(split_conjunct,[status(thm)],[c_0_37])).
+cnf(c_0_45, plain, (bool(false1)), inference(sr,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_38, c_0_39]), c_0_40]), c_0_41])).
+fof(c_0_46, plain, ![X16]:(((~d(X16)|d(X16))&(phi(X16)=err|d(X16)))&((~d(X16)|phi(X16)=X16)&(phi(X16)=err|phi(X16)=X16))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_simplification,[status(thm)],[def_phi])])])).
+fof(c_0_47, negated_conjecture, ~(![X5]:not1(X5)=not2(X5)), inference(assume_negation,[status(cth)],[not1_not2])).
+cnf(c_0_48, plain, (~forallprefers(lazy_impl(prop(X1),X1),lazy_impl(prop(esk7_0),esk7_0))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_42, c_0_43]), c_0_43])).
+cnf(c_0_49, plain, (prop(false1)=true), inference(pm,[status(thm)],[c_0_44, c_0_45])).
+cnf(c_0_50, plain, (phi(X1)=X1|~d(X1)), inference(split_conjunct,[status(thm)],[c_0_46])).
+cnf(c_0_51, plain, (d(false)), inference(split_conjunct,[status(thm)],[false_true_err_in_d])).
+fof(c_0_52, plain, ![X12, X13]:(((((((X12=false|(d(X12)|~d(X12))|~forallprefers(X12,X13))&(X13=true|(d(X12)|~d(X12))|~forallprefers(X12,X13)))&((X12=false|(d(X13)|~d(X12))|~forallprefers(X12,X13))&(X13=true|(d(X13)|~d(X12))|~forallprefers(X12,X13))))&((X12=false|(~bool(X12)|~d(X12))|~forallprefers(X12,X13))&(X13=true|(~bool(X12)|~d(X12))|~forallprefers(X12,X13))))&((X12=false|(bool(X13)|~d(X12))|~forallprefers(X12,X13))&(X13=true|(bool(X13)|~d(X12))|~forallprefers(X12,X13))))&(((((X12=false|(d(X12)|d(X13))|~forallprefers(X12,X13))&(X13=true|(d(X12)|d(X13))|~forallprefers(X12,X13)))&((X12=false|(d(X13)|d(X13))|~forallprefers(X12,X13))&(X13=true|(d(X13)|d(X13))|~forallprefers(X12,X13))))&((X12=false|(~bool(X12)|d(X13))|~forallprefers(X12,X13))&(X13=true|(~bool(X12)|d(X13))|~forallprefers(X12,X13))))&((X12=false|(bool(X13)|d(X13))|~forallprefers(X12,X13))&(X13=true|(bool(X13)|d(X13))|~forallprefers(X12,X13)))))&(((d(X12)|~d(X13)|forallprefers(X12,X13))&(~d(X12)|~d(X13)|bool(X12)|~bool(X13)|forallprefers(X12,X13)))&(X12!=false|X13!=true|forallprefers(X12,X13)))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[def_forallprefers])])])])).
+fof(c_0_53, negated_conjecture, not1(esk8_0)!=not2(esk8_0), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_47])])])).
+fof(c_0_54, plain, ![X85]:not2(X85)=impl(X85,false2), inference(variable_rename,[status(thm)],[def_not2])).
+fof(c_0_55, plain, ![X19, X20]:(bool(X19)|impl(X19,X20)=phi(X19)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[impl_axiom1])])])).
+cnf(c_0_56, plain, (~forallprefers(lazy_impl(true,false1),lazy_impl(prop(esk7_0),esk7_0))), inference(pm,[status(thm)],[c_0_48, c_0_49])).
+cnf(c_0_57, plain, (lazy_impl(true,X1)=X1|~d(X1)), inference(rw,[status(thm)],[c_0_50, c_0_29])).
+cnf(c_0_58, plain, (d(false1)), inference(rw,[status(thm)],[c_0_51, c_0_27])).
+cnf(c_0_59, plain, (forallprefers(X1,X2)|X1!=false|X2!=true), inference(split_conjunct,[status(thm)],[c_0_52])).
+fof(c_0_60, plain, ![X11]:((~bool(X11)|(X11=false|X11=true))&((X11!=false|bool(X11))&(X11!=true|bool(X11)))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[def_bool])])])).
+fof(c_0_61, plain, ![X18]:((prop(X18)!=false|~bool(X18))&(bool(X18)|prop(X18)=false)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[prop_false])])])).
+cnf(c_0_62, negated_conjecture, (not1(esk8_0)!=not2(esk8_0)), inference(split_conjunct,[status(thm)],[c_0_53])).
+cnf(c_0_63, plain, (not2(X1)=impl(X1,false2)), inference(split_conjunct,[status(thm)],[c_0_54])).
+cnf(c_0_64, plain, (bool(X1)|impl(X1,X2)=phi(X1)), inference(split_conjunct,[status(thm)],[c_0_55])).
+cnf(c_0_65, plain, (~forallprefers(false1,lazy_impl(prop(esk7_0),esk7_0))), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_56, c_0_57]), c_0_58])])).
+cnf(c_0_66, plain, (forallprefers(X1,X2)|X2!=true|X1!=false1), inference(rw,[status(thm)],[c_0_59, c_0_27])).
+cnf(c_0_67, plain, (bool(X1)|X1!=true), inference(split_conjunct,[status(thm)],[c_0_60])).
+cnf(c_0_68, plain, (X1=false|X1=true|~bool(X1)), inference(split_conjunct,[status(thm)],[c_0_60])).
+cnf(c_0_69, plain, (bool(X1)|prop(X1)=false), inference(split_conjunct,[status(thm)],[c_0_61])).
+fof(c_0_70, plain, ![X27]:lazy_impl(false,X27)=true, inference(variable_rename,[status(thm)],[lazy_impl_axiom2])).
+cnf(c_0_71, negated_conjecture, (impl(esk8_0,false2)!=not1(esk8_0)), inference(rw,[status(thm)],[c_0_62, c_0_63])).
+cnf(c_0_72, plain, (impl(X1,X2)=lazy_impl(true,X1)|bool(X1)), inference(rw,[status(thm)],[c_0_64, c_0_29])).
+cnf(c_0_73, plain, (lazy_impl(prop(esk7_0),esk7_0)!=true), inference(pm,[status(thm)],[c_0_65, c_0_66])).
+cnf(c_0_74, plain, (prop(X1)=true|X1!=true), inference(pm,[status(thm)],[c_0_44, c_0_67])).
+cnf(c_0_75, plain, (X1=false1|X1=true|~bool(X1)), inference(rw,[status(thm)],[c_0_68, c_0_27])).
+cnf(c_0_76, plain, (prop(X1)=false1|bool(X1)), inference(rw,[status(thm)],[c_0_69, c_0_27])).
+cnf(c_0_77, plain, (lazy_impl(false,X1)=true), inference(split_conjunct,[status(thm)],[c_0_70])).
+cnf(c_0_78, negated_conjecture, (bool(esk8_0)|lazy_impl(true,esk8_0)!=not1(esk8_0)), inference(pm,[status(thm)],[c_0_71, c_0_72])).
+cnf(c_0_79, plain, (lazy_impl(true,esk7_0)!=true|esk7_0!=true), inference(pm,[status(thm)],[c_0_73, c_0_74])).
+cnf(c_0_80, plain, (prop(X1)=false1|X1=false1|X1=true), inference(pm,[status(thm)],[c_0_75, c_0_76])).
+cnf(c_0_81, plain, (lazy_impl(false1,X1)=true), inference(rw,[status(thm)],[c_0_77, c_0_27])).
+cnf(c_0_82, negated_conjecture, (bool(esk8_0)), inference(pm,[status(thm)],[c_0_78, c_0_38])).
+cnf(c_0_83, plain, (esk7_0!=true|~d(esk7_0)), inference(pm,[status(thm)],[c_0_79, c_0_57])).
+cnf(c_0_84, plain, (esk7_0=false1|esk7_0=true), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_73, c_0_80]), c_0_81])])).
+cnf(c_0_85, plain, (d(true)), inference(split_conjunct,[status(thm)],[false_true_err_in_d])).
+cnf(c_0_86, negated_conjecture, (esk8_0=false1|esk8_0=true), inference(pm,[status(thm)],[c_0_75, c_0_82])).
+fof(c_0_87, plain, ![X24]:(~bool(X24)|impl(true,X24)=X24), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[impl_axiom4])])).
+cnf(c_0_88, plain, (false2=phi(f7(esk7_0))), inference(split_conjunct,[status(thm)],[c_0_35])).
+cnf(c_0_89, plain, (esk7_0=false1|esk7_0!=true), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_83, c_0_84]), c_0_85])])).
+cnf(c_0_90, negated_conjecture, (esk8_0=false1|impl(true,false2)!=not1(esk8_0)), inference(pm,[status(thm)],[c_0_71, c_0_86])).
+cnf(c_0_91, plain, (impl(true,X1)=X1|~bool(X1)), inference(split_conjunct,[status(thm)],[c_0_87])).
+cnf(c_0_92, plain, (bool(X1)|X1!=false), inference(split_conjunct,[status(thm)],[c_0_60])).
+cnf(c_0_93, plain, (false2=lazy_impl(true,lazy_impl(prop(esk7_0),esk7_0))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_88, c_0_29]), c_0_43])).
+cnf(c_0_94, plain, (esk7_0=false1), inference(pm,[status(thm)],[c_0_89, c_0_84])).
+cnf(c_0_95, negated_conjecture, (esk8_0=false1|not1(esk8_0)!=false2|~bool(false2)), inference(pm,[status(thm)],[c_0_90, c_0_91])).
+cnf(c_0_96, plain, (bool(X1)|X1!=false1), inference(rw,[status(thm)],[c_0_92, c_0_27])).
+cnf(c_0_97, plain, (not1(true)=false), inference(split_conjunct,[status(thm)],[not1_axiom3])).
+cnf(c_0_98, plain, (lazy_impl(true,lazy_impl(true,false1))=false2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_93, c_0_94]), c_0_49]), c_0_94])).
+cnf(c_0_99, negated_conjecture, (esk8_0=false1|not1(esk8_0)!=false2|false2!=false1), inference(pm,[status(thm)],[c_0_95, c_0_96])).
+cnf(c_0_100, plain, (not1(true)=false1), inference(rw,[status(thm)],[c_0_97, c_0_27])).
+cnf(c_0_101, plain, (lazy_impl(true,false1)=false2), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_98, c_0_57]), c_0_58])])).
+cnf(c_0_102, negated_conjecture, (esk8_0=false1|false2!=false1), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_99, c_0_86]), c_0_100])])).
+cnf(c_0_103, plain, (false2=false1), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_57, c_0_101]), c_0_58])])).
+fof(c_0_104, plain, ![X23]:(~bool(X23)|impl(false,X23)=true), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[impl_axiom3])])).
+cnf(c_0_105, negated_conjecture, (esk8_0=false1), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_102, c_0_103])])).
+cnf(c_0_106, plain, (impl(false,X1)=true|~bool(X1)), inference(split_conjunct,[status(thm)],[c_0_104])).
+cnf(c_0_107, negated_conjecture, (impl(false1,false1)!=true), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_71, c_0_103]), c_0_105]), c_0_105]), c_0_40])).
+cnf(c_0_108, plain, (impl(false1,X1)=true|~bool(X1)), inference(rw,[status(thm)],[c_0_106, c_0_27])).
+cnf(c_0_109, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_107, c_0_108]), c_0_45])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 110
+# Proof object clause steps            : 70
+# Proof object formula steps           : 40
+# Proof object conjectures             : 15
+# Proof object clause conjectures      : 12
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 26
+# Proof object initial formulas used   : 22
+# Proof object generating inferences   : 23
+# Proof object simplifying inferences  : 46
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 45
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 99
+# Removed in clause preprocessing      : 19
+# Initial clauses in saturation        : 80
+# Processed clauses                    : 300
+# ...of these trivial                  : 11
+# ...subsumed                          : 132
+# ...remaining for further processing  : 157
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 8
+# Backward-rewritten                   : 52
+# Generated clauses                    : 830
+# ...of the previous two non-trivial   : 560
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 825
+# Factorizations                       : 5
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 97
+#    Positive orientable unit clauses  : 17
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 7
+#    Non-unit-clauses                  : 73
+# Current number of unprocessed clauses: 253
+# ...number of literals in the above   : 730
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 74
+# Clause-clause subsumption calls (NU) : 732
+# Rec. Clause-clause subsumption calls : 581
+# Non-unit clause-clause subsumptions  : 70
+# Unit Clause-clause subsumption calls : 170
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 9
+# BW rewrite match successes           : 9
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 7929

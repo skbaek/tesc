@@ -1,0 +1,265 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_45, plain, (aSet0(szNzAzT0))).
+#
+#cnf(i_0_146, hypothesis, (aSet0(xT))).
+#
+#cnf(i_0_151, hypothesis, (aSet0(xS))).
+#
+#cnf(i_0_4136, hypothesis, (sz00!=xK)).
+#
+#cnf(i_0_4234, hypothesis, (aSet0(xO))).
+##
+#cnf(i_0_4251, hypothesis, (aSet0(xQ))).
+##
+#cnf(i_0_8, plain, (isFinite0(slcrc0))).
+#
+#cnf(i_0_145, hypothesis, (isFinite0(xT))).
+#
+#cnf(i_0_44, plain, (isCountable0(szNzAzT0))).
+#
+#cnf(i_0_4252, hypothesis, (slcrc0!=xQ)).
+#
+#cnf(i_0_148, hypothesis, (isCountable0(xS))).
+#
+#cnf(i_0_4235, hypothesis, (isCountable0(xO))).
+#
+#cnf(i_0_166, hypothesis, (aFunction0(xc))).
+#
+#cnf(i_0_4256, negated_conjecture, (~aElementOf0(esk41_0,szNzAzT0))).
+#
+#cnf(i_0_4175, hypothesis, (aFunction0(xN))).
+#
+#cnf(i_0_4190, hypothesis, (aFunction0(xC))).
+#
+#cnf(i_0_4208, hypothesis, (aFunction0(xe))).
+#
+#cnf(i_0_4255, negated_conjecture, (~aSubsetOf0(xQ,szNzAzT0))).
+#
+#cnf(i_0_4214, hypothesis, (aFunction0(xd))).
+#
+#cnf(i_0_46, plain, (aElementOf0(sz00,szNzAzT0))).
+#
+#cnf(i_0_147, hypothesis, (aElementOf0(xK,szNzAzT0))).
+#
+#cnf(i_0_6, plain, (X2!=slcrc0|~aElementOf0(X1,X2))).
+#
+#cnf(i_0_4139, hypothesis, (aElementOf0(xk,szNzAzT0))).
+#
+#cnf(i_0_4253, hypothesis, (aElementOf0(esk40_0,xQ))).
+#
+#cnf(i_0_4257, negated_conjecture, (aElementOf0(esk41_0,xQ))).
+#
+#cnf(i_0_4888, hypothesis, (szNzAzT0!=slcrc0)).
+#
+#cnf(i_0_149, hypothesis, (aSubsetOf0(xS,szNzAzT0))).
+#
+#cnf(i_0_4245, hypothesis, (aSubsetOf0(xO,xS))).
+#
+#cnf(i_0_4249, hypothesis, (aSubsetOf0(xQ,xO))).
+##
+#cnf(i_0_17, plain, (aSubsetOf0(X1,X1)|~aSet0(X1))).
+#
+#cnf(i_0_7, plain, (aSet0(X1)|X1!=slcrc0)).
+#
+#cnf(i_0_4138, hypothesis, (szszuzczcdt0(xk)=xK)).
+##
+#cnf(i_0_4248, hypothesis, (sbrdtbr0(xQ)=xK)).
+#
+#cnf(i_0_92, plain, (slbdtrb0(sz00)=slcrc0)).
+#
+#cnf(i_0_4174, hypothesis, (szDzozmdt0(xN)=szNzAzT0)).
+##
+#cnf(i_0_4189, hypothesis, (szDzozmdt0(xC)=szNzAzT0)).
+#
+#cnf(i_0_4207, hypothesis, (szDzozmdt0(xe)=szNzAzT0)).
+#
+#cnf(i_0_4213, hypothesis, (szDzozmdt0(xd)=szNzAzT0)).
+##
+#cnf(i_0_4187, hypothesis, (epred1_1(X1)|~aElementOf0(X1,szNzAzT0))).
+#
+#cnf(i_0_4893, hypothesis, (epred1_1(xk))).
+#
+#cnf(i_0_4894, hypothesis, (epred1_1(xK))).
+#
+#cnf(i_0_10, plain, (~isCountable0(X1)|~isFinite0(X1)|~aSet0(X1))).
+#
+#cnf(i_0_4895, hypothesis, (epred1_1(sz00))).
+#
+#cnf(i_0_4188, hypothesis, (epred2_1(X1)|~aElementOf0(X1,szNzAzT0))).
+#
+#cnf(i_0_4899, hypothesis, (epred2_1(xk))).
+#
+#cnf(i_0_4896, hypothesis, (~isFinite0(xO))).
+#
+#cnf(i_0_4900, hypothesis, (epred2_1(xK))).
+#
+#cnf(i_0_4901, hypothesis, (epred2_1(sz00))).
+#
+#cnf(i_0_4197, hypothesis, (epred3_1(X1)|~aElementOf0(X1,szNzAzT0))).
+#
+#cnf(i_0_4897, hypothesis, (~isFinite0(xS))).
+#
+#cnf(i_0_4902, hypothesis, (epred3_1(xk))).
+#
+#cnf(i_0_4903, hypothesis, (epred3_1(xK))).
+#
+#cnf(i_0_4904, hypothesis, (epred3_1(sz00))).
+#
+#cnf(i_0_4898, plain, (~isFinite0(szNzAzT0))).
+#
+#cnf(i_0_4198, hypothesis, (epred4_1(X1)|~aElementOf0(X1,szNzAzT0))).
+#
+#cnf(i_0_4905, hypothesis, (epred4_1(xk))).
+#
+#cnf(i_0_4906, hypothesis, (epred4_1(xK))).
+#
+#cnf(i_0_52, plain, (szszuzczcdt0(X1)!=X1|~aElementOf0(X1,szNzAzT0))).
+#
+#cnf(i_0_4907, hypothesis, (epred4_1(sz00))).
+#
+#cnf(i_0_116, plain, (aSet0(szDzozmdt0(X1))|~aFunction0(X1))).
+#
+#cnf(i_0_4879, plain, (aSet0(esk48_1(X1))|~epred4_1(X1))).
+#
+#cnf(i_0_4908, hypothesis, (xk!=xK)).
+#
+#cnf(i_0_65, plain, (aElement0(sbrdtbr0(X1))|~aSet0(X1))).
+#
+#cnf(i_0_4915, hypothesis, (aElement0(xK))).
+#
+#cnf(i_0_4876, plain, (isCountable0(esk48_1(X1))|~epred4_1(X1))).
+#
+#cnf(i_0_4909, hypothesis, (szszuzczcdt0(xK)!=xK)).
+#
+#cnf(i_0_4225, hypothesis, (aElementOf0(szDzizrdt0(xd),xT))).
+#
+#cnf(i_0_59, plain, (sdtlseqdt0(X1,X1)|~aElementOf0(X1,szNzAzT0))).
+#
+#cnf(i_0_4173, hypothesis, (sdtlpdtrp0(xN,sz00)=xS)).
+#
+#cnf(i_0_4917, hypothesis, (xT!=slcrc0)).
+#
+#cnf(i_0_15, plain, (aSet0(X1)|~aSubsetOf0(X1,X2)|~aSet0(X2))).
+#
+#cnf(i_0_3, plain, (aElement0(X2)|~aElementOf0(X2,X1)|~aSet0(X1))).
+#
+#cnf(i_0_4922, negated_conjecture, (aElement0(esk41_0))).
+#
+#cnf(i_0_4910, plain, (szszuzczcdt0(sz00)!=sz00)).
+#
+#cnf(i_0_4923, hypothesis, (aElement0(esk40_0))).
+#
+#cnf(i_0_4924, hypothesis, (aElement0(xk))).
+#
+#cnf(i_0_4927, plain, (aElement0(sz00))).
+#
+#cnf(i_0_11, plain, (X1!=slcrc0|~isCountable0(X1)|~aSet0(X1))).
+#
+#cnf(i_0_4926, hypothesis, (aElement0(szDzizrdt0(xd)))).
+#
+#cnf(i_0_165, hypothesis, (aSet0(X1)|~aElementOf0(X1,szDzozmdt0(xc)))).
+#
+#cnf(i_0_150, hypothesis, (aElementOf0(X1,szNzAzT0)|~aElementOf0(X1,xS))).
+#
+#cnf(i_0_4929, hypothesis, (xO!=slcrc0)).
+#
+#cnf(i_0_4246, hypothesis, (aElementOf0(X1,xS)|~aElementOf0(X1,xO))).
+#
+#cnf(i_0_91, plain, (isFinite0(slbdtrb0(X1))|~aElementOf0(X1,szNzAzT0))).
+#
+#cnf(i_0_4250, hypothesis, (aElementOf0(X1,xO)|~aElementOf0(X1,xQ))).
+#
+#cnf(i_0_4930, hypothesis, (xS!=slcrc0)).
+#
+#cnf(i_0_4934, hypothesis, (aElement0(X1)|~aElementOf0(X1,xQ))).
+##
+#cnf(i_0_54, plain, (sdtlseqdt0(sz00,X1)|~aElementOf0(X1,szNzAzT0))).
+##
+#cnf(i_0_4935, hypothesis, (aElementOf0(X1,xS)|~aElementOf0(X1,xQ))).
+##
+#cnf(i_0_4940, hypothesis, (aElementOf0(X1,szNzAzT0)|~aElementOf0(X1,xQ))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(m__4998, hypothesis, (![X1]:(aElementOf0(X1,xO)=>aElementOf0(X1,xS))&aSubsetOf0(xO,xS)), file('./p/NUM606+3.tptp', m__4998)).
+fof(m__5078, hypothesis, ((((aSet0(xQ)&![X1]:(aElementOf0(X1,xQ)=>aElementOf0(X1,xO)))&aSubsetOf0(xQ,xO))&sbrdtbr0(xQ)=xK)&aElementOf0(xQ,slbdtsldtrb0(xO,xK))), file('./p/NUM606+3.tptp', m__5078)).
+fof(m__, conjecture, (![X1]:(aElementOf0(X1,xQ)=>aElementOf0(X1,szNzAzT0))|aSubsetOf0(xQ,szNzAzT0)), file('./p/NUM606+3.tptp', m__)).
+fof(m__3435, hypothesis, (((aSet0(xS)&![X1]:(aElementOf0(X1,xS)=>aElementOf0(X1,szNzAzT0)))&aSubsetOf0(xS,szNzAzT0))&isCountable0(xS)), file('./p/NUM606+3.tptp', m__3435)).
+fof(c_0_4, hypothesis, ![X245]:((~aElementOf0(X245,xO)|aElementOf0(X245,xS))&aSubsetOf0(xO,xS)), inference(shift_quantors,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[m__4998])])])).
+fof(c_0_5, hypothesis, ![X246]:((((aSet0(xQ)&(~aElementOf0(X246,xQ)|aElementOf0(X246,xO)))&aSubsetOf0(xQ,xO))&sbrdtbr0(xQ)=xK)&aElementOf0(xQ,slbdtsldtrb0(xO,xK))), inference(shift_quantors,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[m__5078])])])).
+fof(c_0_6, negated_conjecture, ~((![X1]:(aElementOf0(X1,xQ)=>aElementOf0(X1,szNzAzT0))|aSubsetOf0(xQ,szNzAzT0))), inference(assume_negation,[status(cth)],[m__])).
+fof(c_0_7, hypothesis, ![X169]:(((aSet0(xS)&(~aElementOf0(X169,xS)|aElementOf0(X169,szNzAzT0)))&aSubsetOf0(xS,szNzAzT0))&isCountable0(xS)), inference(shift_quantors,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[m__3435])])])).
+cnf(c_0_8, hypothesis, (aElementOf0(X1,xS)|~aElementOf0(X1,xO)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_9, hypothesis, (aElementOf0(X1,xO)|~aElementOf0(X1,xQ)), inference(split_conjunct,[status(thm)],[c_0_5])).
+fof(c_0_10, negated_conjecture, ((aElementOf0(esk41_0,xQ)&~aElementOf0(esk41_0,szNzAzT0))&~aSubsetOf0(xQ,szNzAzT0)), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_6])])])).
+cnf(c_0_11, hypothesis, (aElementOf0(X1,szNzAzT0)|~aElementOf0(X1,xS)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_12, hypothesis, (aElementOf0(X1,xS)|~aElementOf0(X1,xQ)), inference(pm,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_13, negated_conjecture, (~aElementOf0(esk41_0,szNzAzT0)), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_14, hypothesis, (aElementOf0(X1,szNzAzT0)|~aElementOf0(X1,xQ)), inference(pm,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_15, negated_conjecture, (aElementOf0(esk41_0,xQ)), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_16, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_13, c_0_14]), c_0_15])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 17
+# Proof object clause steps            : 8
+# Proof object formula steps           : 9
+# Proof object conjectures             : 6
+# Proof object clause conjectures      : 3
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 5
+# Proof object initial formulas used   : 4
+# Proof object generating inferences   : 3
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 101
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 4887
+# Removed in clause preprocessing      : 7
+# Initial clauses in saturation        : 4880
+# Processed clauses                    : 99
+# ...of these trivial                  : 1
+# ...subsumed                          : 8
+# ...remaining for further processing  : 90
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 61
+# ...of the previous two non-trivial   : 41
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 61
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 90
+#    Positive orientable unit clauses  : 50
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 14
+#    Non-unit-clauses                  : 26
+# Current number of unprocessed clauses: 4822
+# ...number of literals in the above   : 55905
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 53
+# Rec. Clause-clause subsumption calls : 43
+# Non-unit clause-clause subsumptions  : 2
+# Unit Clause-clause subsumption calls : 88
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 0
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 380549

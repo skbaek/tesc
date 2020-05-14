@@ -1,0 +1,57 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SWV366+1
+% SZS output start Proof for SWV366+1
+fof(f504,plain,(
+  $false),
+  inference(equality_resolution,[],[f325])).
+fof(f325,plain,(
+  ( ! [X0,X1] : (insert_pq(i(triple(sK2,sK1,sK4)),sK6) != insert_pq(i(triple(X0,sK1,X1)),sK6)) )),
+  inference(superposition,[],[f208,f195])).
+fof(f195,plain,(
+  ( ! [X10,X8,X7,X9] : (i(triple(X7,sK1,X9)) = i(triple(X8,sK1,X10))) )),
+  inference(cnf_transformation,[],[f129])).
+fof(f129,plain,(
+  i(triple(sK2,insert_slb(sK1,pair(sK6,sK7)),sK4)) != i(triple(sK3,insert_slb(sK1,pair(sK6,sK7)),sK5)) & ! [X7,X8,X9,X10] : i(triple(X7,sK1,X9)) = i(triple(X8,sK1,X10))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1,sK2,sK3,sK4,sK5,sK6,sK7])],[f126,f128,f127])).
+fof(f127,plain,(
+  ? [X0] : (? [X1,X2,X3,X4,X5,X6] : i(triple(X1,insert_slb(X0,pair(X5,X6)),X3)) != i(triple(X2,insert_slb(X0,pair(X5,X6)),X4)) & ! [X7,X8,X9,X10] : i(triple(X7,X0,X9)) = i(triple(X8,X0,X10))) => (? [X6,X5,X4,X3,X2,X1] : i(triple(X1,insert_slb(sK1,pair(X5,X6)),X3)) != i(triple(X2,insert_slb(sK1,pair(X5,X6)),X4)) & ! [X10,X9,X8,X7] : i(triple(X7,sK1,X9)) = i(triple(X8,sK1,X10)))),
+  introduced(choice_axiom,[])).
+fof(f128,plain,(
+  ? [X6,X5,X4,X3,X2,X1] : i(triple(X1,insert_slb(sK1,pair(X5,X6)),X3)) != i(triple(X2,insert_slb(sK1,pair(X5,X6)),X4)) => i(triple(sK2,insert_slb(sK1,pair(sK6,sK7)),sK4)) != i(triple(sK3,insert_slb(sK1,pair(sK6,sK7)),sK5))),
+  introduced(choice_axiom,[])).
+fof(f126,plain,(
+  ? [X0] : (? [X1,X2,X3,X4,X5,X6] : i(triple(X1,insert_slb(X0,pair(X5,X6)),X3)) != i(triple(X2,insert_slb(X0,pair(X5,X6)),X4)) & ! [X7,X8,X9,X10] : i(triple(X7,X0,X9)) = i(triple(X8,X0,X10)))),
+  inference(rectify,[],[f115])).
+fof(f115,plain,(
+  ? [X0] : (? [X5,X6,X7,X8,X9,X10] : i(triple(X5,insert_slb(X0,pair(X9,X10)),X7)) != i(triple(X6,insert_slb(X0,pair(X9,X10)),X8)) & ! [X1,X2,X3,X4] : i(triple(X1,X0,X3)) = i(triple(X2,X0,X4)))),
+  inference(ennf_transformation,[],[f64])).
+fof(f64,negated_conjecture,(
+  ~! [X0] : (! [X1,X2,X3,X4] : i(triple(X1,X0,X3)) = i(triple(X2,X0,X4)) => ! [X5,X6,X7,X8,X9,X10] : i(triple(X5,insert_slb(X0,pair(X9,X10)),X7)) = i(triple(X6,insert_slb(X0,pair(X9,X10)),X8)))),
+  inference(negated_conjecture,[],[f63])).
+fof(f63,conjecture,(
+  ! [X0] : (! [X1,X2,X3,X4] : i(triple(X1,X0,X3)) = i(triple(X2,X0,X4)) => ! [X5,X6,X7,X8,X9,X10] : i(triple(X5,insert_slb(X0,pair(X9,X10)),X7)) = i(triple(X6,insert_slb(X0,pair(X9,X10)),X8)))),
+  file('./p/SWV366+1.tptp',unknown)).
+fof(f208,plain,(
+  insert_pq(i(triple(sK3,sK1,sK5)),sK6) != insert_pq(i(triple(sK2,sK1,sK4)),sK6)),
+  inference(forward_demodulation,[],[f207,f194])).
+fof(f194,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (i(triple(X0,insert_slb(X1,pair(X3,X4)),X2)) = insert_pq(i(triple(X0,X1,X2)),X3)) )),
+  inference(cnf_transformation,[],[f55])).
+fof(f55,axiom,(
+  ! [X0,X1,X2,X3,X4] : i(triple(X0,insert_slb(X1,pair(X3,X4)),X2)) = insert_pq(i(triple(X0,X1,X2)),X3)),
+  file('./p/SWV366+1.tptp',unknown)).
+fof(f207,plain,(
+  i(triple(sK2,insert_slb(sK1,pair(sK6,sK7)),sK4)) != insert_pq(i(triple(sK3,sK1,sK5)),sK6)),
+  inference(forward_demodulation,[],[f196,f194])).
+fof(f196,plain,(
+  i(triple(sK2,insert_slb(sK1,pair(sK6,sK7)),sK4)) != i(triple(sK3,insert_slb(sK1,pair(sK6,sK7)),sK5))),
+  inference(cnf_transformation,[],[f129])).
+% SZS output end Proof for SWV366+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5373
+% Time elapsed: 0.012 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,1131 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for CAT029+1
+% SZS output start Proof for CAT029+1
+fof(f1272706,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f357,f1354,f1401,f1414,f27842,f27975,f28282,f28393,f1272703])).
+fof(f1272703,plain,(
+  spl18_7 | ~spl18_32 | ~spl18_33 | ~spl18_34 | ~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522),
+  inference(avatar_contradiction_clause,[],[f1272702])).
+fof(f1272702,plain,(
+  $false | (spl18_7 | ~spl18_32 | ~spl18_33 | ~spl18_34 | ~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f1272701,f3934])).
+fof(f3934,plain,(
+  k1_funct_1(k13_funct_3(sK3,sK4),sK7) != k13_cat_2(sK1,sK2,k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7)) | (~spl18_32 | ~spl18_33 | ~spl18_34)),
+  inference(backward_demodulation,[],[f3916,f3914])).
+fof(f3914,plain,(
+  k1_funct_1(k13_funct_3(sK3,sK4),sK7) != k13_cat_2(sK1,sK2,k1_funct_1(sK3,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7)) | (~spl18_32 | ~spl18_33 | ~spl18_34)),
+  inference(backward_demodulation,[],[f3896,f3890])).
+fof(f3890,plain,(
+  k13_cat_2(sK1,sK2,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7)) != k1_funct_1(k13_funct_3(sK3,sK4),sK7) | (~spl18_32 | ~spl18_33 | ~spl18_34)),
+  inference(backward_demodulation,[],[f3889,f1415])).
+fof(f1415,plain,(
+  k13_cat_2(sK1,sK2,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7)) != k8_funct_2(u2_cat_1(sK0),u2_cat_1(k11_cat_2(sK1,sK2)),k13_funct_3(sK3,sK4),sK7) | ~spl18_34),
+  inference(backward_demodulation,[],[f1353,f584])).
+fof(f584,plain,(
+  k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k13_funct_3(sK3,sK4),sK5,sK6,sK7) != k13_cat_2(sK1,sK2,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7))),
+  inference(backward_demodulation,[],[f583,f581])).
+fof(f581,plain,(
+  k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k13_funct_3(sK3,sK4),sK5,sK6,sK7) != k13_cat_2(sK1,sK2,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7))),
+  inference(backward_demodulation,[],[f580,f525])).
+fof(f525,plain,(
+  k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,sK6,sK7),k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7)) != k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k13_funct_3(sK3,sK4),sK5,sK6,sK7)),
+  inference(backward_demodulation,[],[f524,f164])).
+fof(f164,plain,(
+  k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),sK5,sK6,sK7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,sK6,sK7),k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7))),
+  inference(cnf_transformation,[],[f130])).
+fof(f130,plain,(
+  (((((((k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),sK5,sK6,sK7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,sK6,sK7),k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7)) & m1_cat_1(sK7,sK0,sK5,sK6)) & k1_xboole_0 != k6_cat_1(sK0,sK5,sK6) & m1_subset_1(sK6,u1_cat_1(sK0))) & m1_subset_1(sK5,u1_cat_1(sK0))) & m2_cat_1(sK4,sK0,sK2)) & m2_cat_1(sK3,sK0,sK1)) & l1_cat_1(sK2) & v2_cat_1(sK2)) & l1_cat_1(sK1) & v2_cat_1(sK1)) & l1_cat_1(sK0) & v2_cat_1(sK0)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2,sK3,sK4,sK5,sK6,sK7])],[f65,f129,f128,f127,f126,f125,f124,f123,f122])).
+fof(f122,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(X0,k11_cat_2(X1,X2),k10_isocat_2(X0,X1,X2,X3,X4),X5,X6,X7) != k13_cat_2(X1,X2,k3_nattra_1(X0,X1,X3,X5,X6,X7),k3_nattra_1(X0,X2,X4,X5,X6,X7)) & m1_cat_1(X7,X0,X5,X6)) & k6_cat_1(X0,X5,X6) != k1_xboole_0 & m1_subset_1(X6,u1_cat_1(X0))) & m1_subset_1(X5,u1_cat_1(X0))) & m2_cat_1(X4,X0,X2)) & m2_cat_1(X3,X0,X1)) & l1_cat_1(X2) & v2_cat_1(X2)) & l1_cat_1(X1) & v2_cat_1(X1)) & l1_cat_1(X0) & v2_cat_1(X0)) => (? [X1] : (? [X2] : (? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(X1,X2),k10_isocat_2(sK0,X1,X2,X3,X4),X5,X6,X7) != k13_cat_2(X1,X2,k3_nattra_1(sK0,X1,X3,X5,X6,X7),k3_nattra_1(sK0,X2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,X2)) & m2_cat_1(X3,sK0,X1)) & l1_cat_1(X2) & v2_cat_1(X2)) & l1_cat_1(X1) & v2_cat_1(X1)) & l1_cat_1(sK0) & v2_cat_1(sK0))),
+  introduced(choice_axiom,[])).
+fof(f123,plain,(
+  ? [X1] : (? [X2] : (? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(X1,X2),k10_isocat_2(sK0,X1,X2,X3,X4),X5,X6,X7) != k13_cat_2(X1,X2,k3_nattra_1(sK0,X1,X3,X5,X6,X7),k3_nattra_1(sK0,X2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,X2)) & m2_cat_1(X3,sK0,X1)) & l1_cat_1(X2) & v2_cat_1(X2)) & l1_cat_1(X1) & v2_cat_1(X1)) => (? [X2] : (? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,X2),k10_isocat_2(sK0,sK1,X2,X3,X4),X5,X6,X7) != k13_cat_2(sK1,X2,k3_nattra_1(sK0,sK1,X3,X5,X6,X7),k3_nattra_1(sK0,X2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,X2)) & m2_cat_1(X3,sK0,sK1)) & l1_cat_1(X2) & v2_cat_1(X2)) & l1_cat_1(sK1) & v2_cat_1(sK1))),
+  introduced(choice_axiom,[])).
+fof(f124,plain,(
+  ? [X2] : (? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,X2),k10_isocat_2(sK0,sK1,X2,X3,X4),X5,X6,X7) != k13_cat_2(sK1,X2,k3_nattra_1(sK0,sK1,X3,X5,X6,X7),k3_nattra_1(sK0,X2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,X2)) & m2_cat_1(X3,sK0,sK1)) & l1_cat_1(X2) & v2_cat_1(X2)) => (? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,X3,X4),X5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,X3,X5,X6,X7),k3_nattra_1(sK0,sK2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,sK2)) & m2_cat_1(X3,sK0,sK1)) & l1_cat_1(sK2) & v2_cat_1(sK2))),
+  introduced(choice_axiom,[])).
+fof(f125,plain,(
+  ? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,X3,X4),X5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,X3,X5,X6,X7),k3_nattra_1(sK0,sK2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,sK2)) & m2_cat_1(X3,sK0,sK1)) => (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,X4),X5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,X5,X6,X7),k3_nattra_1(sK0,sK2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,sK2)) & m2_cat_1(sK3,sK0,sK1))),
+  introduced(choice_axiom,[])).
+fof(f126,plain,(
+  ? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,X4),X5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,X5,X6,X7),k3_nattra_1(sK0,sK2,X4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(X4,sK0,sK2)) => (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),X5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,X5,X6,X7),k3_nattra_1(sK0,sK2,sK4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) & m2_cat_1(sK4,sK0,sK2))),
+  introduced(choice_axiom,[])).
+fof(f127,plain,(
+  ? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),X5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,X5,X6,X7),k3_nattra_1(sK0,sK2,sK4,X5,X6,X7)) & m1_cat_1(X7,sK0,X5,X6)) & k1_xboole_0 != k6_cat_1(sK0,X5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(X5,u1_cat_1(sK0))) => (? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),sK5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,X6,X7),k3_nattra_1(sK0,sK2,sK4,sK5,X6,X7)) & m1_cat_1(X7,sK0,sK5,X6)) & k1_xboole_0 != k6_cat_1(sK0,sK5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) & m1_subset_1(sK5,u1_cat_1(sK0)))),
+  introduced(choice_axiom,[])).
+fof(f128,plain,(
+  ? [X6] : (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),sK5,X6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,X6,X7),k3_nattra_1(sK0,sK2,sK4,sK5,X6,X7)) & m1_cat_1(X7,sK0,sK5,X6)) & k1_xboole_0 != k6_cat_1(sK0,sK5,X6) & m1_subset_1(X6,u1_cat_1(sK0))) => (? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),sK5,sK6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,sK6,X7),k3_nattra_1(sK0,sK2,sK4,sK5,sK6,X7)) & m1_cat_1(X7,sK0,sK5,sK6)) & k1_xboole_0 != k6_cat_1(sK0,sK5,sK6) & m1_subset_1(sK6,u1_cat_1(sK0)))),
+  introduced(choice_axiom,[])).
+fof(f129,plain,(
+  ? [X7] : (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),sK5,sK6,X7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,sK6,X7),k3_nattra_1(sK0,sK2,sK4,sK5,sK6,X7)) & m1_cat_1(X7,sK0,sK5,sK6)) => (k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k10_isocat_2(sK0,sK1,sK2,sK3,sK4),sK5,sK6,sK7) != k13_cat_2(sK1,sK2,k3_nattra_1(sK0,sK1,sK3,sK5,sK6,sK7),k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7)) & m1_cat_1(sK7,sK0,sK5,sK6))),
+  introduced(choice_axiom,[])).
+fof(f65,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (? [X4] : (? [X5] : (? [X6] : (? [X7] : (k3_nattra_1(X0,k11_cat_2(X1,X2),k10_isocat_2(X0,X1,X2,X3,X4),X5,X6,X7) != k13_cat_2(X1,X2,k3_nattra_1(X0,X1,X3,X5,X6,X7),k3_nattra_1(X0,X2,X4,X5,X6,X7)) & m1_cat_1(X7,X0,X5,X6)) & k6_cat_1(X0,X5,X6) != k1_xboole_0 & m1_subset_1(X6,u1_cat_1(X0))) & m1_subset_1(X5,u1_cat_1(X0))) & m2_cat_1(X4,X0,X2)) & m2_cat_1(X3,X0,X1)) & l1_cat_1(X2) & v2_cat_1(X2)) & l1_cat_1(X1) & v2_cat_1(X1)) & l1_cat_1(X0) & v2_cat_1(X0))),
+  inference(flattening,[],[f64])).
+fof(f64,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (? [X4] : (? [X5] : (? [X6] : ((? [X7] : (k3_nattra_1(X0,k11_cat_2(X1,X2),k10_isocat_2(X0,X1,X2,X3,X4),X5,X6,X7) != k13_cat_2(X1,X2,k3_nattra_1(X0,X1,X3,X5,X6,X7),k3_nattra_1(X0,X2,X4,X5,X6,X7)) & m1_cat_1(X7,X0,X5,X6)) & k6_cat_1(X0,X5,X6) != k1_xboole_0) & m1_subset_1(X6,u1_cat_1(X0))) & m1_subset_1(X5,u1_cat_1(X0))) & m2_cat_1(X4,X0,X2)) & m2_cat_1(X3,X0,X1)) & (l1_cat_1(X2) & v2_cat_1(X2))) & (l1_cat_1(X1) & v2_cat_1(X1))) & (l1_cat_1(X0) & v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f2])).
+fof(f2,negated_conjecture,(
+  ~! [X0] : ((l1_cat_1(X0) & v2_cat_1(X0)) => ! [X1] : ((l1_cat_1(X1) & v2_cat_1(X1)) => ! [X2] : ((l1_cat_1(X2) & v2_cat_1(X2)) => ! [X3] : (m2_cat_1(X3,X0,X1) => ! [X4] : (m2_cat_1(X4,X0,X2) => ! [X5] : (m1_subset_1(X5,u1_cat_1(X0)) => ! [X6] : (m1_subset_1(X6,u1_cat_1(X0)) => (k6_cat_1(X0,X5,X6) != k1_xboole_0 => ! [X7] : (m1_cat_1(X7,X0,X5,X6) => k3_nattra_1(X0,k11_cat_2(X1,X2),k10_isocat_2(X0,X1,X2,X3,X4),X5,X6,X7) = k13_cat_2(X1,X2,k3_nattra_1(X0,X1,X3,X5,X6,X7),k3_nattra_1(X0,X2,X4,X5,X6,X7)))))))))))),
+  inference(negated_conjecture,[],[f1])).
+fof(f1,conjecture,(
+  ! [X0] : ((l1_cat_1(X0) & v2_cat_1(X0)) => ! [X1] : ((l1_cat_1(X1) & v2_cat_1(X1)) => ! [X2] : ((l1_cat_1(X2) & v2_cat_1(X2)) => ! [X3] : (m2_cat_1(X3,X0,X1) => ! [X4] : (m2_cat_1(X4,X0,X2) => ! [X5] : (m1_subset_1(X5,u1_cat_1(X0)) => ! [X6] : (m1_subset_1(X6,u1_cat_1(X0)) => (k6_cat_1(X0,X5,X6) != k1_xboole_0 => ! [X7] : (m1_cat_1(X7,X0,X5,X6) => k3_nattra_1(X0,k11_cat_2(X1,X2),k10_isocat_2(X0,X1,X2,X3,X4),X5,X6,X7) = k13_cat_2(X1,X2,k3_nattra_1(X0,X1,X3,X5,X6,X7),k3_nattra_1(X0,X2,X4,X5,X6,X7)))))))))))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f524,plain,(
+  k10_isocat_2(sK0,sK1,sK2,sK3,sK4) = k13_funct_3(sK3,sK4)),
+  inference(subsumption_resolution,[],[f523,f154])).
+fof(f154,plain,(
+  v2_cat_1(sK1)),
+  inference(cnf_transformation,[],[f130])).
+fof(f523,plain,(
+  k10_isocat_2(sK0,sK1,sK2,sK3,sK4) = k13_funct_3(sK3,sK4) | ~v2_cat_1(sK1)),
+  inference(subsumption_resolution,[],[f518,f155])).
+fof(f155,plain,(
+  l1_cat_1(sK1)),
+  inference(cnf_transformation,[],[f130])).
+fof(f518,plain,(
+  k10_isocat_2(sK0,sK1,sK2,sK3,sK4) = k13_funct_3(sK3,sK4) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1)),
+  inference(resolution,[],[f389,f158])).
+fof(f158,plain,(
+  m2_cat_1(sK3,sK0,sK1)),
+  inference(cnf_transformation,[],[f130])).
+fof(f389,plain,(
+  ( ! [X2,X3] : (~m2_cat_1(X3,sK0,X2) | k10_isocat_2(sK0,X2,sK2,X3,sK4) = k13_funct_3(X3,sK4) | ~l1_cat_1(X2) | ~v2_cat_1(X2)) )),
+  inference(subsumption_resolution,[],[f388,f152])).
+fof(f152,plain,(
+  v2_cat_1(sK0)),
+  inference(cnf_transformation,[],[f130])).
+fof(f388,plain,(
+  ( ! [X2,X3] : (k10_isocat_2(sK0,X2,sK2,X3,sK4) = k13_funct_3(X3,sK4) | ~m2_cat_1(X3,sK0,X2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~v2_cat_1(sK0)) )),
+  inference(subsumption_resolution,[],[f387,f153])).
+fof(f153,plain,(
+  l1_cat_1(sK0)),
+  inference(cnf_transformation,[],[f130])).
+fof(f387,plain,(
+  ( ! [X2,X3] : (k10_isocat_2(sK0,X2,sK2,X3,sK4) = k13_funct_3(X3,sK4) | ~m2_cat_1(X3,sK0,X2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)) )),
+  inference(subsumption_resolution,[],[f386,f156])).
+fof(f156,plain,(
+  v2_cat_1(sK2)),
+  inference(cnf_transformation,[],[f130])).
+fof(f386,plain,(
+  ( ! [X2,X3] : (k10_isocat_2(sK0,X2,sK2,X3,sK4) = k13_funct_3(X3,sK4) | ~m2_cat_1(X3,sK0,X2) | ~v2_cat_1(sK2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)) )),
+  inference(subsumption_resolution,[],[f379,f157])).
+fof(f157,plain,(
+  l1_cat_1(sK2)),
+  inference(cnf_transformation,[],[f130])).
+fof(f379,plain,(
+  ( ! [X2,X3] : (k10_isocat_2(sK0,X2,sK2,X3,sK4) = k13_funct_3(X3,sK4) | ~m2_cat_1(X3,sK0,X2) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)) )),
+  inference(resolution,[],[f207,f159])).
+fof(f159,plain,(
+  m2_cat_1(sK4,sK0,sK2)),
+  inference(cnf_transformation,[],[f130])).
+fof(f207,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~m2_cat_1(X4,X0,X2) | k10_isocat_2(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f103])).
+fof(f103,plain,(
+  ! [X0,X1,X2,X3,X4] : (k10_isocat_2(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4) | ~m2_cat_1(X4,X0,X2) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f102])).
+fof(f102,plain,(
+  ! [X0,X1,X2,X3,X4] : (k10_isocat_2(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4) | (~m2_cat_1(X4,X0,X2) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f47])).
+fof(f47,axiom,(
+  ! [X0,X1,X2,X3,X4] : ((m2_cat_1(X4,X0,X2) & m2_cat_1(X3,X0,X1) & l1_cat_1(X2) & v2_cat_1(X2) & l1_cat_1(X1) & v2_cat_1(X1) & l1_cat_1(X0) & v2_cat_1(X0)) => k10_isocat_2(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f580,plain,(
+  k3_nattra_1(sK0,sK1,sK3,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7)),
+  inference(subsumption_resolution,[],[f579,f154])).
+fof(f579,plain,(
+  k3_nattra_1(sK0,sK1,sK3,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7) | ~v2_cat_1(sK1)),
+  inference(subsumption_resolution,[],[f574,f155])).
+fof(f574,plain,(
+  k3_nattra_1(sK0,sK1,sK3,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1)),
+  inference(resolution,[],[f426,f158])).
+fof(f426,plain,(
+  ( ! [X0,X1] : (~m2_cat_1(X1,sK0,X0) | k3_nattra_1(sK0,X0,X1,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(X0),X1,sK7) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(subsumption_resolution,[],[f425,f152])).
+fof(f425,plain,(
+  ( ! [X0,X1] : (k3_nattra_1(sK0,X0,X1,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(X0),X1,sK7) | ~m2_cat_1(X1,sK0,X0) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~v2_cat_1(sK0)) )),
+  inference(subsumption_resolution,[],[f424,f153])).
+fof(f424,plain,(
+  ( ! [X0,X1] : (k3_nattra_1(sK0,X0,X1,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(X0),X1,sK7) | ~m2_cat_1(X1,sK0,X0) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)) )),
+  inference(subsumption_resolution,[],[f423,f160])).
+fof(f160,plain,(
+  m1_subset_1(sK5,u1_cat_1(sK0))),
+  inference(cnf_transformation,[],[f130])).
+fof(f423,plain,(
+  ( ! [X0,X1] : (k3_nattra_1(sK0,X0,X1,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(X0),X1,sK7) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(X1,sK0,X0) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)) )),
+  inference(subsumption_resolution,[],[f422,f161])).
+fof(f161,plain,(
+  m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(cnf_transformation,[],[f130])).
+fof(f422,plain,(
+  ( ! [X0,X1] : (k3_nattra_1(sK0,X0,X1,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(X0),X1,sK7) | ~m1_subset_1(sK6,u1_cat_1(sK0)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(X1,sK0,X0) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)) )),
+  inference(subsumption_resolution,[],[f417,f162])).
+fof(f162,plain,(
+  k1_xboole_0 != k6_cat_1(sK0,sK5,sK6)),
+  inference(cnf_transformation,[],[f130])).
+fof(f417,plain,(
+  ( ! [X0,X1] : (k3_nattra_1(sK0,X0,X1,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(X0),X1,sK7) | k1_xboole_0 = k6_cat_1(sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(X1,sK0,X0) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)) )),
+  inference(resolution,[],[f168,f163])).
+fof(f163,plain,(
+  m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(cnf_transformation,[],[f130])).
+fof(f168,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~m1_cat_1(X5,X0,X3,X4) | k3_nattra_1(X0,X1,X2,X3,X4,X5) = k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X2,X5) | k1_xboole_0 = k6_cat_1(X0,X3,X4) | ~m1_subset_1(X4,u1_cat_1(X0)) | ~m1_subset_1(X3,u1_cat_1(X0)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f69])).
+fof(f69,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (! [X3] : (! [X4] : (! [X5] : (k3_nattra_1(X0,X1,X2,X3,X4,X5) = k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X2,X5) | ~m1_cat_1(X5,X0,X3,X4)) | k1_xboole_0 = k6_cat_1(X0,X3,X4) | ~m1_subset_1(X4,u1_cat_1(X0))) | ~m1_subset_1(X3,u1_cat_1(X0))) | ~m2_cat_1(X2,X0,X1)) | ~l1_cat_1(X1) | ~v2_cat_1(X1)) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f68])).
+fof(f68,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (! [X3] : (! [X4] : ((! [X5] : (k3_nattra_1(X0,X1,X2,X3,X4,X5) = k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X2,X5) | ~m1_cat_1(X5,X0,X3,X4)) | k1_xboole_0 = k6_cat_1(X0,X3,X4)) | ~m1_subset_1(X4,u1_cat_1(X0))) | ~m1_subset_1(X3,u1_cat_1(X0))) | ~m2_cat_1(X2,X0,X1)) | (~l1_cat_1(X1) | ~v2_cat_1(X1))) | (~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f6])).
+fof(f6,axiom,(
+  ! [X0] : ((l1_cat_1(X0) & v2_cat_1(X0)) => ! [X1] : ((l1_cat_1(X1) & v2_cat_1(X1)) => ! [X2] : (m2_cat_1(X2,X0,X1) => ! [X3] : (m1_subset_1(X3,u1_cat_1(X0)) => ! [X4] : (m1_subset_1(X4,u1_cat_1(X0)) => (k1_xboole_0 != k6_cat_1(X0,X3,X4) => ! [X5] : (m1_cat_1(X5,X0,X3,X4) => k3_nattra_1(X0,X1,X2,X3,X4,X5) = k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X2,X5))))))))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f583,plain,(
+  k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7)),
+  inference(subsumption_resolution,[],[f582,f156])).
+fof(f582,plain,(
+  k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7) | ~v2_cat_1(sK2)),
+  inference(subsumption_resolution,[],[f575,f157])).
+fof(f575,plain,(
+  k3_nattra_1(sK0,sK2,sK4,sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2)),
+  inference(resolution,[],[f426,f159])).
+fof(f1353,plain,(
+  k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k13_funct_3(sK3,sK4),sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(k11_cat_2(sK1,sK2)),k13_funct_3(sK3,sK4),sK7) | ~spl18_34),
+  inference(avatar_component_clause,[],[f1351])).
+fof(f1351,plain,(
+  spl18_34 <=> k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k13_funct_3(sK3,sK4),sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(k11_cat_2(sK1,sK2)),k13_funct_3(sK3,sK4),sK7)),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_34])])).
+fof(f3889,plain,(
+  k8_funct_2(u2_cat_1(sK0),u2_cat_1(k11_cat_2(sK1,sK2)),k13_funct_3(sK3,sK4),sK7) = k1_funct_1(k13_funct_3(sK3,sK4),sK7) | (~spl18_32 | ~spl18_33)),
+  inference(subsumption_resolution,[],[f3888,f1348])).
+fof(f1348,plain,(
+  l1_cat_1(k11_cat_2(sK1,sK2)) | ~spl18_33),
+  inference(avatar_component_clause,[],[f1347])).
+fof(f1347,plain,(
+  spl18_33 <=> l1_cat_1(k11_cat_2(sK1,sK2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_33])])).
+fof(f3888,plain,(
+  ~l1_cat_1(k11_cat_2(sK1,sK2)) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(k11_cat_2(sK1,sK2)),k13_funct_3(sK3,sK4),sK7) = k1_funct_1(k13_funct_3(sK3,sK4),sK7) | ~spl18_32),
+  inference(subsumption_resolution,[],[f3872,f1344])).
+fof(f1344,plain,(
+  v2_cat_1(k11_cat_2(sK1,sK2)) | ~spl18_32),
+  inference(avatar_component_clause,[],[f1343])).
+fof(f1343,plain,(
+  spl18_32 <=> v2_cat_1(k11_cat_2(sK1,sK2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_32])])).
+fof(f3872,plain,(
+  ~v2_cat_1(k11_cat_2(sK1,sK2)) | ~l1_cat_1(k11_cat_2(sK1,sK2)) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(k11_cat_2(sK1,sK2)),k13_funct_3(sK3,sK4),sK7) = k1_funct_1(k13_funct_3(sK3,sK4),sK7)),
+  inference(resolution,[],[f1445,f941])).
+fof(f941,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2))),
+  inference(subsumption_resolution,[],[f940,f152])).
+fof(f940,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f939,f153])).
+fof(f939,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f938,f154])).
+fof(f938,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f937,f155])).
+fof(f937,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f936,f156])).
+fof(f936,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f935,f157])).
+fof(f935,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f934,f158])).
+fof(f934,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f925,f159])).
+fof(f925,plain,(
+  m2_cat_1(k13_funct_3(sK3,sK4),sK0,k11_cat_2(sK1,sK2)) | ~m2_cat_1(sK4,sK0,sK2) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(superposition,[],[f170,f524])).
+fof(f170,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (m2_cat_1(k10_isocat_2(X0,X1,X2,X3,X4),X0,k11_cat_2(X1,X2)) | ~m2_cat_1(X4,X0,X2) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f71])).
+fof(f71,plain,(
+  ! [X0,X1,X2,X3,X4] : (m2_cat_1(k10_isocat_2(X0,X1,X2,X3,X4),X0,k11_cat_2(X1,X2)) | ~m2_cat_1(X4,X0,X2) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f70])).
+fof(f70,plain,(
+  ! [X0,X1,X2,X3,X4] : (m2_cat_1(k10_isocat_2(X0,X1,X2,X3,X4),X0,k11_cat_2(X1,X2)) | (~m2_cat_1(X4,X0,X2) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f8])).
+fof(f8,axiom,(
+  ! [X0,X1,X2,X3,X4] : ((m2_cat_1(X4,X0,X2) & m2_cat_1(X3,X0,X1) & l1_cat_1(X2) & v2_cat_1(X2) & l1_cat_1(X1) & v2_cat_1(X1) & l1_cat_1(X0) & v2_cat_1(X0)) => m2_cat_1(k10_isocat_2(X0,X1,X2,X3,X4),X0,k11_cat_2(X1,X2)))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f1445,plain,(
+  ( ! [X14,X15] : (~m2_cat_1(X15,sK0,X14) | ~v2_cat_1(X14) | ~l1_cat_1(X14) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(X14),X15,sK7) = k1_funct_1(X15,sK7)) )),
+  inference(subsumption_resolution,[],[f1444,f152])).
+fof(f1444,plain,(
+  ( ! [X14,X15] : (~v2_cat_1(X14) | ~v2_cat_1(sK0) | ~m2_cat_1(X15,sK0,X14) | ~l1_cat_1(X14) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(X14),X15,sK7) = k1_funct_1(X15,sK7)) )),
+  inference(subsumption_resolution,[],[f1430,f153])).
+fof(f1430,plain,(
+  ( ! [X14,X15] : (~v2_cat_1(X14) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(X15,sK0,X14) | ~l1_cat_1(X14) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(X14),X15,sK7) = k1_funct_1(X15,sK7)) )),
+  inference(resolution,[],[f566,f338])).
+fof(f338,plain,(
+  m1_subset_1(sK7,u2_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f337,f153])).
+fof(f337,plain,(
+  m1_subset_1(sK7,u2_cat_1(sK0)) | ~l1_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f336,f160])).
+fof(f336,plain,(
+  m1_subset_1(sK7,u2_cat_1(sK0)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~l1_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f333,f161])).
+fof(f333,plain,(
+  m1_subset_1(sK7,u2_cat_1(sK0)) | ~m1_subset_1(sK6,u1_cat_1(sK0)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~l1_cat_1(sK0)),
+  inference(resolution,[],[f183,f163])).
+fof(f183,plain,(
+  ( ! [X2,X0,X3,X1] : (~m1_cat_1(X3,X0,X1,X2) | m1_subset_1(X3,u2_cat_1(X0)) | ~m1_subset_1(X2,u1_cat_1(X0)) | ~m1_subset_1(X1,u1_cat_1(X0)) | ~l1_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f89])).
+fof(f89,plain,(
+  ! [X0,X1,X2] : (! [X3] : (m1_subset_1(X3,u2_cat_1(X0)) | ~m1_cat_1(X3,X0,X1,X2)) | ~m1_subset_1(X2,u1_cat_1(X0)) | ~m1_subset_1(X1,u1_cat_1(X0)) | ~l1_cat_1(X0))),
+  inference(flattening,[],[f88])).
+fof(f88,plain,(
+  ! [X0,X1,X2] : (! [X3] : (m1_subset_1(X3,u2_cat_1(X0)) | ~m1_cat_1(X3,X0,X1,X2)) | (~m1_subset_1(X2,u1_cat_1(X0)) | ~m1_subset_1(X1,u1_cat_1(X0)) | ~l1_cat_1(X0)))),
+  inference(ennf_transformation,[],[f25])).
+fof(f25,axiom,(
+  ! [X0,X1,X2] : ((m1_subset_1(X2,u1_cat_1(X0)) & m1_subset_1(X1,u1_cat_1(X0)) & l1_cat_1(X0)) => ! [X3] : (m1_cat_1(X3,X0,X1,X2) => m1_subset_1(X3,u2_cat_1(X0))))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f566,plain,(
+  ( ! [X6,X8,X7,X5] : (~m1_subset_1(X8,u2_cat_1(X6)) | ~v2_cat_1(X5) | ~l1_cat_1(X6) | ~v2_cat_1(X6) | ~m2_cat_1(X7,X6,X5) | ~l1_cat_1(X5) | k8_funct_2(u2_cat_1(X6),u2_cat_1(X5),X7,X8) = k1_funct_1(X7,X8)) )),
+  inference(subsumption_resolution,[],[f565,f189])).
+fof(f189,plain,(
+  ( ! [X0] : (~v1_xboole_0(u2_cat_1(X0)) | ~l1_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f94])).
+fof(f94,plain,(
+  ! [X0] : (~v1_xboole_0(u2_cat_1(X0)) | ~l1_cat_1(X0))),
+  inference(ennf_transformation,[],[f31])).
+fof(f31,axiom,(
+  ! [X0] : (l1_cat_1(X0) => ~v1_xboole_0(u2_cat_1(X0)))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f565,plain,(
+  ( ! [X6,X8,X7,X5] : (~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X6) | ~v2_cat_1(X6) | ~m2_cat_1(X7,X6,X5) | ~m1_subset_1(X8,u2_cat_1(X6)) | k8_funct_2(u2_cat_1(X6),u2_cat_1(X5),X7,X8) = k1_funct_1(X7,X8) | v1_xboole_0(u2_cat_1(X6))) )),
+  inference(subsumption_resolution,[],[f564,f185])).
+fof(f185,plain,(
+  ( ! [X2,X0,X1] : (v1_funct_2(X2,u2_cat_1(X0),u2_cat_1(X1)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f91])).
+fof(f91,plain,(
+  ! [X0,X1] : (! [X2] : ((m2_relset_1(X2,u2_cat_1(X0),u2_cat_1(X1)) & v1_funct_2(X2,u2_cat_1(X0),u2_cat_1(X1)) & v1_funct_1(X2)) | ~m2_cat_1(X2,X0,X1)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f90])).
+fof(f90,plain,(
+  ! [X0,X1] : (! [X2] : ((m2_relset_1(X2,u2_cat_1(X0),u2_cat_1(X1)) & v1_funct_2(X2,u2_cat_1(X0),u2_cat_1(X1)) & v1_funct_1(X2)) | ~m2_cat_1(X2,X0,X1)) | (~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f28])).
+fof(f28,axiom,(
+  ! [X0,X1] : ((l1_cat_1(X1) & v2_cat_1(X1) & l1_cat_1(X0) & v2_cat_1(X0)) => ! [X2] : (m2_cat_1(X2,X0,X1) => (m2_relset_1(X2,u2_cat_1(X0),u2_cat_1(X1)) & v1_funct_2(X2,u2_cat_1(X0),u2_cat_1(X1)) & v1_funct_1(X2))))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f564,plain,(
+  ( ! [X6,X8,X7,X5] : (~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X6) | ~v2_cat_1(X6) | ~m2_cat_1(X7,X6,X5) | ~m1_subset_1(X8,u2_cat_1(X6)) | k8_funct_2(u2_cat_1(X6),u2_cat_1(X5),X7,X8) = k1_funct_1(X7,X8) | ~v1_funct_2(X7,u2_cat_1(X6),u2_cat_1(X5)) | v1_xboole_0(u2_cat_1(X6))) )),
+  inference(subsumption_resolution,[],[f559,f184])).
+fof(f184,plain,(
+  ( ! [X2,X0,X1] : (~m2_cat_1(X2,X0,X1) | v1_funct_1(X2) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f91])).
+fof(f559,plain,(
+  ( ! [X6,X8,X7,X5] : (~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X6) | ~v2_cat_1(X6) | ~m2_cat_1(X7,X6,X5) | ~m1_subset_1(X8,u2_cat_1(X6)) | k8_funct_2(u2_cat_1(X6),u2_cat_1(X5),X7,X8) = k1_funct_1(X7,X8) | ~v1_funct_2(X7,u2_cat_1(X6),u2_cat_1(X5)) | ~v1_funct_1(X7) | v1_xboole_0(u2_cat_1(X6))) )),
+  inference(resolution,[],[f332,f210])).
+fof(f210,plain,(
+  ( ! [X2,X0,X3,X1] : (~m1_relset_1(X2,X0,X1) | ~m1_subset_1(X3,X0) | k8_funct_2(X0,X1,X2,X3) = k1_funct_1(X2,X3) | ~v1_funct_2(X2,X0,X1) | ~v1_funct_1(X2) | v1_xboole_0(X0)) )),
+  inference(cnf_transformation,[],[f109])).
+fof(f109,plain,(
+  ! [X0,X1,X2,X3] : (k8_funct_2(X0,X1,X2,X3) = k1_funct_1(X2,X3) | ~m1_subset_1(X3,X0) | ~m1_relset_1(X2,X0,X1) | ~v1_funct_2(X2,X0,X1) | ~v1_funct_1(X2) | v1_xboole_0(X0))),
+  inference(flattening,[],[f108])).
+fof(f108,plain,(
+  ! [X0,X1,X2,X3] : (k8_funct_2(X0,X1,X2,X3) = k1_funct_1(X2,X3) | (~m1_subset_1(X3,X0) | ~m1_relset_1(X2,X0,X1) | ~v1_funct_2(X2,X0,X1) | ~v1_funct_1(X2) | v1_xboole_0(X0)))),
+  inference(ennf_transformation,[],[f50])).
+fof(f50,axiom,(
+  ! [X0,X1,X2,X3] : ((m1_subset_1(X3,X0) & m1_relset_1(X2,X0,X1) & v1_funct_2(X2,X0,X1) & v1_funct_1(X2) & ~v1_xboole_0(X0)) => k8_funct_2(X0,X1,X2,X3) = k1_funct_1(X2,X3))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f332,plain,(
+  ( ! [X4,X5,X3] : (m1_relset_1(X3,u2_cat_1(X4),u2_cat_1(X5)) | ~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X4) | ~v2_cat_1(X4) | ~m2_cat_1(X3,X4,X5)) )),
+  inference(resolution,[],[f186,f211])).
+fof(f211,plain,(
+  ( ! [X2,X0,X1] : (~m2_relset_1(X2,X0,X1) | m1_relset_1(X2,X0,X1)) )),
+  inference(cnf_transformation,[],[f151])).
+fof(f151,plain,(
+  ! [X0,X1,X2] : ((m2_relset_1(X2,X0,X1) | ~m1_relset_1(X2,X0,X1)) & (m1_relset_1(X2,X0,X1) | ~m2_relset_1(X2,X0,X1)))),
+  inference(nnf_transformation,[],[f51])).
+fof(f51,axiom,(
+  ! [X0,X1,X2] : (m2_relset_1(X2,X0,X1) <=> m1_relset_1(X2,X0,X1))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f186,plain,(
+  ( ! [X2,X0,X1] : (m2_relset_1(X2,u2_cat_1(X0),u2_cat_1(X1)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f91])).
+fof(f3896,plain,(
+  k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7) = k1_funct_1(sK3,sK7)),
+  inference(subsumption_resolution,[],[f3895,f155])).
+fof(f3895,plain,(
+  ~l1_cat_1(sK1) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7) = k1_funct_1(sK3,sK7)),
+  inference(subsumption_resolution,[],[f3874,f154])).
+fof(f3874,plain,(
+  ~v2_cat_1(sK1) | ~l1_cat_1(sK1) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7) = k1_funct_1(sK3,sK7)),
+  inference(resolution,[],[f1445,f158])).
+fof(f3916,plain,(
+  k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7) = k1_funct_1(sK4,sK7)),
+  inference(subsumption_resolution,[],[f3915,f157])).
+fof(f3915,plain,(
+  ~l1_cat_1(sK2) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7) = k1_funct_1(sK4,sK7)),
+  inference(subsumption_resolution,[],[f3875,f156])).
+fof(f3875,plain,(
+  ~v2_cat_1(sK2) | ~l1_cat_1(sK2) | k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7) = k1_funct_1(sK4,sK7)),
+  inference(resolution,[],[f1445,f159])).
+fof(f1272701,plain,(
+  k1_funct_1(k13_funct_3(sK3,sK4),sK7) = k13_cat_2(sK1,sK2,k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7)) | (spl18_7 | ~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(backward_demodulation,[],[f1272662,f152194])).
+fof(f152194,plain,(
+  k13_cat_2(sK1,sK2,k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7)) = k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k13_funct_3(sK3,sK4),sK7)),
+  inference(forward_demodulation,[],[f152193,f37240])).
+fof(f37240,plain,(
+  k13_cat_2(sK1,sK2,k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7)) = k2_tarski(k1_tarski(k1_funct_1(sK3,sK7)),k2_tarski(k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7)))),
+  inference(subsumption_resolution,[],[f37239,f154])).
+fof(f37239,plain,(
+  k13_cat_2(sK1,sK2,k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7)) = k2_tarski(k1_tarski(k1_funct_1(sK3,sK7)),k2_tarski(k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7))) | ~v2_cat_1(sK1)),
+  inference(subsumption_resolution,[],[f37185,f155])).
+fof(f37185,plain,(
+  k13_cat_2(sK1,sK2,k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7)) = k2_tarski(k1_tarski(k1_funct_1(sK3,sK7)),k2_tarski(k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7))) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1)),
+  inference(resolution,[],[f3925,f3898])).
+fof(f3898,plain,(
+  m1_subset_1(k1_funct_1(sK3,sK7),u2_cat_1(sK1))),
+  inference(backward_demodulation,[],[f3896,f1066])).
+fof(f1066,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1))),
+  inference(subsumption_resolution,[],[f1065,f163])).
+fof(f1065,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1064,f152])).
+fof(f1064,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1063,f153])).
+fof(f1063,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1062,f154])).
+fof(f1062,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1061,f155])).
+fof(f1061,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1060,f158])).
+fof(f1060,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1059,f160])).
+fof(f1059,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1057,f161])).
+fof(f1057,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m1_subset_1(sK6,u1_cat_1(sK0)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(superposition,[],[f415,f580])).
+fof(f415,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (m1_subset_1(k3_nattra_1(X1,X5,X4,X2,X3,X0),u2_cat_1(X5)) | ~m1_subset_1(X3,u1_cat_1(X1)) | ~m1_subset_1(X2,u1_cat_1(X1)) | ~m2_cat_1(X4,X1,X5) | ~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m1_cat_1(X0,X1,X2,X3)) )),
+  inference(subsumption_resolution,[],[f414,f173])).
+fof(f173,plain,(
+  ( ! [X2,X0,X3,X1] : (m1_subset_1(k13_cat_1(X0,X1,X2,X3),u1_cat_1(X1)) | ~m1_subset_1(X3,u1_cat_1(X0)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f75])).
+fof(f75,plain,(
+  ! [X0,X1,X2,X3] : (m1_subset_1(k13_cat_1(X0,X1,X2,X3),u1_cat_1(X1)) | ~m1_subset_1(X3,u1_cat_1(X0)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f74])).
+fof(f74,plain,(
+  ! [X0,X1,X2,X3] : (m1_subset_1(k13_cat_1(X0,X1,X2,X3),u1_cat_1(X1)) | (~m1_subset_1(X3,u1_cat_1(X0)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f10])).
+fof(f10,axiom,(
+  ! [X0,X1,X2,X3] : ((m1_subset_1(X3,u1_cat_1(X0)) & m2_cat_1(X2,X0,X1) & l1_cat_1(X1) & v2_cat_1(X1) & l1_cat_1(X0) & v2_cat_1(X0)) => m1_subset_1(k13_cat_1(X0,X1,X2,X3),u1_cat_1(X1)))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f414,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~m1_cat_1(X0,X1,X2,X3) | ~m1_subset_1(X3,u1_cat_1(X1)) | ~m1_subset_1(X2,u1_cat_1(X1)) | ~m2_cat_1(X4,X1,X5) | ~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | m1_subset_1(k3_nattra_1(X1,X5,X4,X2,X3,X0),u2_cat_1(X5)) | ~m1_subset_1(k13_cat_1(X1,X5,X4,X2),u1_cat_1(X5))) )),
+  inference(subsumption_resolution,[],[f413,f173])).
+fof(f413,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~m1_cat_1(X0,X1,X2,X3) | ~m1_subset_1(X3,u1_cat_1(X1)) | ~m1_subset_1(X2,u1_cat_1(X1)) | ~m2_cat_1(X4,X1,X5) | ~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | m1_subset_1(k3_nattra_1(X1,X5,X4,X2,X3,X0),u2_cat_1(X5)) | ~m1_subset_1(k13_cat_1(X1,X5,X4,X3),u1_cat_1(X5)) | ~m1_subset_1(k13_cat_1(X1,X5,X4,X2),u1_cat_1(X5))) )),
+  inference(duplicate_literal_removal,[],[f412])).
+fof(f412,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~m1_cat_1(X0,X1,X2,X3) | ~m1_subset_1(X3,u1_cat_1(X1)) | ~m1_subset_1(X2,u1_cat_1(X1)) | ~m2_cat_1(X4,X1,X5) | ~l1_cat_1(X5) | ~v2_cat_1(X5) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | m1_subset_1(k3_nattra_1(X1,X5,X4,X2,X3,X0),u2_cat_1(X5)) | ~m1_subset_1(k13_cat_1(X1,X5,X4,X3),u1_cat_1(X5)) | ~m1_subset_1(k13_cat_1(X1,X5,X4,X2),u1_cat_1(X5)) | ~l1_cat_1(X5)) )),
+  inference(resolution,[],[f180,f183])).
+fof(f180,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (m1_cat_1(k3_nattra_1(X0,X1,X2,X3,X4,X5),X1,k13_cat_1(X0,X1,X2,X3),k13_cat_1(X0,X1,X2,X4)) | ~m1_cat_1(X5,X0,X3,X4) | ~m1_subset_1(X4,u1_cat_1(X0)) | ~m1_subset_1(X3,u1_cat_1(X0)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f83])).
+fof(f83,plain,(
+  ! [X0,X1,X2,X3,X4,X5] : (m1_cat_1(k3_nattra_1(X0,X1,X2,X3,X4,X5),X1,k13_cat_1(X0,X1,X2,X3),k13_cat_1(X0,X1,X2,X4)) | ~m1_cat_1(X5,X0,X3,X4) | ~m1_subset_1(X4,u1_cat_1(X0)) | ~m1_subset_1(X3,u1_cat_1(X0)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f82])).
+fof(f82,plain,(
+  ! [X0,X1,X2,X3,X4,X5] : (m1_cat_1(k3_nattra_1(X0,X1,X2,X3,X4,X5),X1,k13_cat_1(X0,X1,X2,X3),k13_cat_1(X0,X1,X2,X4)) | (~m1_cat_1(X5,X0,X3,X4) | ~m1_subset_1(X4,u1_cat_1(X0)) | ~m1_subset_1(X3,u1_cat_1(X0)) | ~m2_cat_1(X2,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f20])).
+fof(f20,axiom,(
+  ! [X0,X1,X2,X3,X4,X5] : ((m1_cat_1(X5,X0,X3,X4) & m1_subset_1(X4,u1_cat_1(X0)) & m1_subset_1(X3,u1_cat_1(X0)) & m2_cat_1(X2,X0,X1) & l1_cat_1(X1) & v2_cat_1(X1) & l1_cat_1(X0) & v2_cat_1(X0)) => m1_cat_1(k3_nattra_1(X0,X1,X2,X3,X4,X5),X1,k13_cat_1(X0,X1,X2,X3),k13_cat_1(X0,X1,X2,X4)))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f3925,plain,(
+  ( ! [X8,X7] : (~m1_subset_1(X8,u2_cat_1(X7)) | k13_cat_2(X7,sK2,X8,k1_funct_1(sK4,sK7)) = k2_tarski(k1_tarski(X8),k2_tarski(X8,k1_funct_1(sK4,sK7))) | ~l1_cat_1(X7) | ~v2_cat_1(X7)) )),
+  inference(backward_demodulation,[],[f3916,f1743])).
+fof(f1743,plain,(
+  ( ! [X8,X7] : (k13_cat_2(X7,sK2,X8,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7)) = k2_tarski(k1_tarski(X8),k2_tarski(X8,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7))) | ~m1_subset_1(X8,u2_cat_1(X7)) | ~l1_cat_1(X7) | ~v2_cat_1(X7)) )),
+  inference(subsumption_resolution,[],[f1742,f156])).
+fof(f1742,plain,(
+  ( ! [X8,X7] : (k13_cat_2(X7,sK2,X8,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7)) = k2_tarski(k1_tarski(X8),k2_tarski(X8,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7))) | ~m1_subset_1(X8,u2_cat_1(X7)) | ~v2_cat_1(sK2) | ~l1_cat_1(X7) | ~v2_cat_1(X7)) )),
+  inference(subsumption_resolution,[],[f1731,f157])).
+fof(f1731,plain,(
+  ( ! [X8,X7] : (k13_cat_2(X7,sK2,X8,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7)) = k2_tarski(k1_tarski(X8),k2_tarski(X8,k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7))) | ~m1_subset_1(X8,u2_cat_1(X7)) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(X7) | ~v2_cat_1(X7)) )),
+  inference(resolution,[],[f1084,f225])).
+fof(f225,plain,(
+  ( ! [X2,X0,X3,X1] : (~m1_subset_1(X3,u2_cat_1(X1)) | k13_cat_2(X0,X1,X2,X3) = k2_tarski(k1_tarski(X2),k2_tarski(X2,X3)) | ~m1_subset_1(X2,u2_cat_1(X0)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(forward_demodulation,[],[f223,f167])).
+fof(f167,plain,(
+  ( ! [X0,X1] : (k2_tarski(X0,X1) = k2_tarski(X1,X0)) )),
+  inference(cnf_transformation,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X1] : k2_tarski(X0,X1) = k2_tarski(X1,X0)),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f223,plain,(
+  ( ! [X2,X0,X3,X1] : (k13_cat_2(X0,X1,X2,X3) = k2_tarski(k2_tarski(X2,X3),k1_tarski(X2)) | ~m1_subset_1(X3,u2_cat_1(X1)) | ~m1_subset_1(X2,u2_cat_1(X0)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(definition_unfolding,[],[f208,f169])).
+fof(f169,plain,(
+  ( ! [X0,X1] : (k4_tarski(X0,X1) = k2_tarski(k2_tarski(X0,X1),k1_tarski(X0))) )),
+  inference(cnf_transformation,[],[f7])).
+fof(f7,axiom,(
+  ! [X0,X1] : k4_tarski(X0,X1) = k2_tarski(k2_tarski(X0,X1),k1_tarski(X0))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f208,plain,(
+  ( ! [X2,X0,X3,X1] : (k13_cat_2(X0,X1,X2,X3) = k4_tarski(X2,X3) | ~m1_subset_1(X3,u2_cat_1(X1)) | ~m1_subset_1(X2,u2_cat_1(X0)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f105])).
+fof(f105,plain,(
+  ! [X0,X1,X2,X3] : (k13_cat_2(X0,X1,X2,X3) = k4_tarski(X2,X3) | ~m1_subset_1(X3,u2_cat_1(X1)) | ~m1_subset_1(X2,u2_cat_1(X0)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f104])).
+fof(f104,plain,(
+  ! [X0,X1,X2,X3] : (k13_cat_2(X0,X1,X2,X3) = k4_tarski(X2,X3) | (~m1_subset_1(X3,u2_cat_1(X1)) | ~m1_subset_1(X2,u2_cat_1(X0)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f48])).
+fof(f48,axiom,(
+  ! [X0,X1,X2,X3] : ((m1_subset_1(X3,u2_cat_1(X1)) & m1_subset_1(X2,u2_cat_1(X0)) & l1_cat_1(X1) & v2_cat_1(X1) & l1_cat_1(X0) & v2_cat_1(X0)) => k13_cat_2(X0,X1,X2,X3) = k4_tarski(X2,X3))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f1084,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2))),
+  inference(subsumption_resolution,[],[f1083,f163])).
+fof(f1083,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1082,f152])).
+fof(f1082,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1081,f153])).
+fof(f1081,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1080,f156])).
+fof(f1080,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1079,f157])).
+fof(f1079,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1078,f159])).
+fof(f1078,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m2_cat_1(sK4,sK0,sK2) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1077,f160])).
+fof(f1077,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(sK4,sK0,sK2) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(subsumption_resolution,[],[f1075,f161])).
+fof(f1075,plain,(
+  m1_subset_1(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m1_subset_1(sK6,u1_cat_1(sK0)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(sK4,sK0,sK2) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6)),
+  inference(superposition,[],[f415,f583])).
+fof(f152193,plain,(
+  k2_tarski(k1_tarski(k1_funct_1(sK3,sK7)),k2_tarski(k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7))) = k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k13_funct_3(sK3,sK4),sK7)),
+  inference(forward_demodulation,[],[f152192,f32478])).
+fof(f32478,plain,(
+  k13_funct_3(sK3,sK4) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4)),
+  inference(subsumption_resolution,[],[f32477,f156])).
+fof(f32477,plain,(
+  k13_funct_3(sK3,sK4) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4) | ~v2_cat_1(sK2)),
+  inference(subsumption_resolution,[],[f32436,f157])).
+fof(f32436,plain,(
+  k13_funct_3(sK3,sK4) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2)),
+  inference(resolution,[],[f5830,f159])).
+fof(f5830,plain,(
+  ( ! [X8,X9] : (~m2_cat_1(X8,sK0,X9) | k13_funct_3(sK3,X8) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(X9),sK3,X8) | ~l1_cat_1(X9) | ~v2_cat_1(X9)) )),
+  inference(subsumption_resolution,[],[f5829,f154])).
+fof(f5829,plain,(
+  ( ! [X8,X9] : (~m2_cat_1(X8,sK0,X9) | k13_funct_3(sK3,X8) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(X9),sK3,X8) | ~l1_cat_1(X9) | ~v2_cat_1(sK1) | ~v2_cat_1(X9)) )),
+  inference(subsumption_resolution,[],[f5828,f155])).
+fof(f5828,plain,(
+  ( ! [X8,X9] : (~m2_cat_1(X8,sK0,X9) | k13_funct_3(sK3,X8) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(X9),sK3,X8) | ~l1_cat_1(X9) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~v2_cat_1(X9)) )),
+  inference(subsumption_resolution,[],[f5827,f152])).
+fof(f5827,plain,(
+  ( ! [X8,X9] : (~v2_cat_1(sK0) | ~m2_cat_1(X8,sK0,X9) | k13_funct_3(sK3,X8) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(X9),sK3,X8) | ~l1_cat_1(X9) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~v2_cat_1(X9)) )),
+  inference(subsumption_resolution,[],[f5801,f153])).
+fof(f5801,plain,(
+  ( ! [X8,X9] : (~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(X8,sK0,X9) | k13_funct_3(sK3,X8) = k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(X9),sK3,X8) | ~l1_cat_1(X9) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~v2_cat_1(X9)) )),
+  inference(resolution,[],[f1993,f158])).
+fof(f1993,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~m2_cat_1(X4,X1,X3) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k13_funct_3(X4,X2) = k14_funct_3(u2_cat_1(X1),u2_cat_1(X3),u2_cat_1(X0),X4,X2) | ~l1_cat_1(X0) | ~l1_cat_1(X3) | ~v2_cat_1(X3) | ~v2_cat_1(X0)) )),
+  inference(subsumption_resolution,[],[f1992,f189])).
+fof(f1992,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k13_funct_3(X4,X2) = k14_funct_3(u2_cat_1(X1),u2_cat_1(X3),u2_cat_1(X0),X4,X2) | ~l1_cat_1(X0) | v1_xboole_0(u2_cat_1(X3)) | ~l1_cat_1(X3) | ~v2_cat_1(X3) | ~m2_cat_1(X4,X1,X3)) )),
+  inference(subsumption_resolution,[],[f1991,f185])).
+fof(f1991,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k13_funct_3(X4,X2) = k14_funct_3(u2_cat_1(X1),u2_cat_1(X3),u2_cat_1(X0),X4,X2) | ~l1_cat_1(X0) | ~v1_funct_2(X4,u2_cat_1(X1),u2_cat_1(X3)) | v1_xboole_0(u2_cat_1(X3)) | ~l1_cat_1(X3) | ~v2_cat_1(X3) | ~m2_cat_1(X4,X1,X3)) )),
+  inference(subsumption_resolution,[],[f1990,f184])).
+fof(f1990,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k13_funct_3(X4,X2) = k14_funct_3(u2_cat_1(X1),u2_cat_1(X3),u2_cat_1(X0),X4,X2) | ~l1_cat_1(X0) | ~v1_funct_2(X4,u2_cat_1(X1),u2_cat_1(X3)) | ~v1_funct_1(X4) | v1_xboole_0(u2_cat_1(X3)) | ~l1_cat_1(X3) | ~v2_cat_1(X3) | ~m2_cat_1(X4,X1,X3)) )),
+  inference(duplicate_literal_removal,[],[f1986])).
+fof(f1986,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k13_funct_3(X4,X2) = k14_funct_3(u2_cat_1(X1),u2_cat_1(X3),u2_cat_1(X0),X4,X2) | ~l1_cat_1(X0) | ~v1_funct_2(X4,u2_cat_1(X1),u2_cat_1(X3)) | ~v1_funct_1(X4) | v1_xboole_0(u2_cat_1(X3)) | ~l1_cat_1(X3) | ~v2_cat_1(X3) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X4,X1,X3)) )),
+  inference(resolution,[],[f563,f332])).
+fof(f563,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~m1_relset_1(X4,u2_cat_1(X1),X3) | ~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k14_funct_3(u2_cat_1(X1),X3,u2_cat_1(X0),X4,X2) = k13_funct_3(X4,X2) | ~l1_cat_1(X0) | ~v1_funct_2(X4,u2_cat_1(X1),X3) | ~v1_funct_1(X4) | v1_xboole_0(X3)) )),
+  inference(subsumption_resolution,[],[f562,f189])).
+fof(f562,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~l1_cat_1(X0) | ~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k14_funct_3(u2_cat_1(X1),X3,u2_cat_1(X0),X4,X2) = k13_funct_3(X4,X2) | ~m1_relset_1(X4,u2_cat_1(X1),X3) | ~v1_funct_2(X4,u2_cat_1(X1),X3) | ~v1_funct_1(X4) | v1_xboole_0(u2_cat_1(X0)) | v1_xboole_0(X3)) )),
+  inference(subsumption_resolution,[],[f561,f185])).
+fof(f561,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~l1_cat_1(X0) | ~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k14_funct_3(u2_cat_1(X1),X3,u2_cat_1(X0),X4,X2) = k13_funct_3(X4,X2) | ~v1_funct_2(X2,u2_cat_1(X1),u2_cat_1(X0)) | ~m1_relset_1(X4,u2_cat_1(X1),X3) | ~v1_funct_2(X4,u2_cat_1(X1),X3) | ~v1_funct_1(X4) | v1_xboole_0(u2_cat_1(X0)) | v1_xboole_0(X3)) )),
+  inference(subsumption_resolution,[],[f558,f184])).
+fof(f558,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~l1_cat_1(X0) | ~v2_cat_1(X0) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~m2_cat_1(X2,X1,X0) | k14_funct_3(u2_cat_1(X1),X3,u2_cat_1(X0),X4,X2) = k13_funct_3(X4,X2) | ~v1_funct_2(X2,u2_cat_1(X1),u2_cat_1(X0)) | ~v1_funct_1(X2) | ~m1_relset_1(X4,u2_cat_1(X1),X3) | ~v1_funct_2(X4,u2_cat_1(X1),X3) | ~v1_funct_1(X4) | v1_xboole_0(u2_cat_1(X0)) | v1_xboole_0(X3)) )),
+  inference(resolution,[],[f332,f209])).
+fof(f209,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~m1_relset_1(X4,X0,X2) | k14_funct_3(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m1_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1)) )),
+  inference(cnf_transformation,[],[f107])).
+fof(f107,plain,(
+  ! [X0,X1,X2,X3,X4] : (k14_funct_3(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4) | ~m1_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m1_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1))),
+  inference(flattening,[],[f106])).
+fof(f106,plain,(
+  ! [X0,X1,X2,X3,X4] : (k14_funct_3(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4) | (~m1_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m1_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1)))),
+  inference(ennf_transformation,[],[f49])).
+fof(f49,axiom,(
+  ! [X0,X1,X2,X3,X4] : ((m1_relset_1(X4,X0,X2) & v1_funct_2(X4,X0,X2) & v1_funct_1(X4) & m1_relset_1(X3,X0,X1) & v1_funct_2(X3,X0,X1) & v1_funct_1(X3) & ~v1_xboole_0(X2) & ~v1_xboole_0(X1)) => k14_funct_3(X0,X1,X2,X3,X4) = k13_funct_3(X3,X4))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f152192,plain,(
+  k2_tarski(k1_tarski(k1_funct_1(sK3,sK7)),k2_tarski(k1_funct_1(sK3,sK7),k1_funct_1(sK4,sK7))) = k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4),sK7)),
+  inference(forward_demodulation,[],[f152191,f167])).
+fof(f152191,plain,(
+  k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4),sK7) = k2_tarski(k1_tarski(k1_funct_1(sK3,sK7)),k2_tarski(k1_funct_1(sK4,sK7),k1_funct_1(sK3,sK7)))),
+  inference(forward_demodulation,[],[f152190,f3896])).
+fof(f152190,plain,(
+  k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7)),k2_tarski(k1_funct_1(sK4,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7)))),
+  inference(subsumption_resolution,[],[f152189,f154])).
+fof(f152189,plain,(
+  k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7)),k2_tarski(k1_funct_1(sK4,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7))) | ~v2_cat_1(sK1)),
+  inference(subsumption_resolution,[],[f152096,f155])).
+fof(f152096,plain,(
+  k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(sK1),u2_cat_1(sK2),sK3,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7)),k2_tarski(k1_funct_1(sK4,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7))) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1)),
+  inference(resolution,[],[f13334,f158])).
+fof(f13334,plain,(
+  ( ! [X35,X34] : (~m2_cat_1(X35,sK0,X34) | k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X34),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X34),u2_cat_1(sK2),X35,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7)),k2_tarski(k1_funct_1(sK4,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7))) | ~l1_cat_1(X34) | ~v2_cat_1(X34)) )),
+  inference(forward_demodulation,[],[f13333,f167])).
+fof(f13333,plain,(
+  ( ! [X35,X34] : (k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X34),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X34),u2_cat_1(sK2),X35,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7)),k2_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7),k1_funct_1(sK4,sK7))) | ~m2_cat_1(X35,sK0,X34) | ~l1_cat_1(X34) | ~v2_cat_1(X34)) )),
+  inference(forward_demodulation,[],[f13332,f3916])).
+fof(f13332,plain,(
+  ( ! [X35,X34] : (k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X34),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X34),u2_cat_1(sK2),X35,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7)),k2_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7))) | ~m2_cat_1(X35,sK0,X34) | ~l1_cat_1(X34) | ~v2_cat_1(X34)) )),
+  inference(subsumption_resolution,[],[f13331,f156])).
+fof(f13331,plain,(
+  ( ! [X35,X34] : (k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X34),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X34),u2_cat_1(sK2),X35,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7)),k2_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7))) | ~v2_cat_1(sK2) | ~m2_cat_1(X35,sK0,X34) | ~l1_cat_1(X34) | ~v2_cat_1(X34)) )),
+  inference(subsumption_resolution,[],[f13256,f157])).
+fof(f13256,plain,(
+  ( ! [X35,X34] : (k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X34),u2_cat_1(sK2)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X34),u2_cat_1(sK2),X35,sK4),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7)),k2_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X34),X35,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7))) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~m2_cat_1(X35,sK0,X34) | ~l1_cat_1(X34) | ~v2_cat_1(X34)) )),
+  inference(resolution,[],[f2863,f159])).
+fof(f2863,plain,(
+  ( ! [X39,X37,X38,X36] : (~m2_cat_1(X39,sK0,X37) | k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X36),u2_cat_1(X37)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X36),u2_cat_1(X37),X38,X39),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X36),X38,sK7)),k2_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X36),X38,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(X37),X39,sK7))) | ~l1_cat_1(X37) | ~v2_cat_1(X37) | ~m2_cat_1(X38,sK0,X36) | ~l1_cat_1(X36) | ~v2_cat_1(X36)) )),
+  inference(subsumption_resolution,[],[f2862,f152])).
+fof(f2862,plain,(
+  ( ! [X39,X37,X38,X36] : (k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X36),u2_cat_1(X37)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X36),u2_cat_1(X37),X38,X39),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X36),X38,sK7)),k2_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X36),X38,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(X37),X39,sK7))) | ~m2_cat_1(X39,sK0,X37) | ~l1_cat_1(X37) | ~v2_cat_1(X37) | ~v2_cat_1(sK0) | ~m2_cat_1(X38,sK0,X36) | ~l1_cat_1(X36) | ~v2_cat_1(X36)) )),
+  inference(subsumption_resolution,[],[f2839,f153])).
+fof(f2839,plain,(
+  ( ! [X39,X37,X38,X36] : (k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(X36),u2_cat_1(X37)),k14_funct_3(u2_cat_1(sK0),u2_cat_1(X36),u2_cat_1(X37),X38,X39),sK7) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X36),X38,sK7)),k2_tarski(k8_funct_2(u2_cat_1(sK0),u2_cat_1(X36),X38,sK7),k8_funct_2(u2_cat_1(sK0),u2_cat_1(X37),X39,sK7))) | ~m2_cat_1(X39,sK0,X37) | ~l1_cat_1(X37) | ~v2_cat_1(X37) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(X38,sK0,X36) | ~l1_cat_1(X36) | ~v2_cat_1(X36)) )),
+  inference(resolution,[],[f853,f338])).
+fof(f853,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~m1_subset_1(X5,u2_cat_1(X0)) | k8_funct_2(u2_cat_1(X0),k2_zfmisc_1(u2_cat_1(X1),u2_cat_1(X2)),k14_funct_3(u2_cat_1(X0),u2_cat_1(X1),u2_cat_1(X2),X3,X4),X5) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5)),k2_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5),k8_funct_2(u2_cat_1(X0),u2_cat_1(X2),X4,X5))) | ~m2_cat_1(X4,X0,X2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1)) )),
+  inference(subsumption_resolution,[],[f852,f189])).
+fof(f852,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (k8_funct_2(u2_cat_1(X0),k2_zfmisc_1(u2_cat_1(X1),u2_cat_1(X2)),k14_funct_3(u2_cat_1(X0),u2_cat_1(X1),u2_cat_1(X2),X3,X4),X5) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5)),k2_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5),k8_funct_2(u2_cat_1(X0),u2_cat_1(X2),X4,X5))) | ~m1_subset_1(X5,u2_cat_1(X0)) | v1_xboole_0(u2_cat_1(X1)) | ~m2_cat_1(X4,X0,X2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1)) )),
+  inference(subsumption_resolution,[],[f851,f185])).
+fof(f851,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (k8_funct_2(u2_cat_1(X0),k2_zfmisc_1(u2_cat_1(X1),u2_cat_1(X2)),k14_funct_3(u2_cat_1(X0),u2_cat_1(X1),u2_cat_1(X2),X3,X4),X5) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5)),k2_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5),k8_funct_2(u2_cat_1(X0),u2_cat_1(X2),X4,X5))) | ~m1_subset_1(X5,u2_cat_1(X0)) | ~v1_funct_2(X3,u2_cat_1(X0),u2_cat_1(X1)) | v1_xboole_0(u2_cat_1(X1)) | ~m2_cat_1(X4,X0,X2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1)) )),
+  inference(subsumption_resolution,[],[f850,f184])).
+fof(f850,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (k8_funct_2(u2_cat_1(X0),k2_zfmisc_1(u2_cat_1(X1),u2_cat_1(X2)),k14_funct_3(u2_cat_1(X0),u2_cat_1(X1),u2_cat_1(X2),X3,X4),X5) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5)),k2_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5),k8_funct_2(u2_cat_1(X0),u2_cat_1(X2),X4,X5))) | ~m1_subset_1(X5,u2_cat_1(X0)) | ~v1_funct_2(X3,u2_cat_1(X0),u2_cat_1(X1)) | ~v1_funct_1(X3) | v1_xboole_0(u2_cat_1(X1)) | ~m2_cat_1(X4,X0,X2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1)) )),
+  inference(duplicate_literal_removal,[],[f846])).
+fof(f846,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (k8_funct_2(u2_cat_1(X0),k2_zfmisc_1(u2_cat_1(X1),u2_cat_1(X2)),k14_funct_3(u2_cat_1(X0),u2_cat_1(X1),u2_cat_1(X2),X3,X4),X5) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5)),k2_tarski(k8_funct_2(u2_cat_1(X0),u2_cat_1(X1),X3,X5),k8_funct_2(u2_cat_1(X0),u2_cat_1(X2),X4,X5))) | ~m1_subset_1(X5,u2_cat_1(X0)) | ~v1_funct_2(X3,u2_cat_1(X0),u2_cat_1(X1)) | ~v1_funct_1(X3) | v1_xboole_0(u2_cat_1(X1)) | ~m2_cat_1(X4,X0,X2) | ~l1_cat_1(X2) | ~v2_cat_1(X2) | ~l1_cat_1(X0) | ~v2_cat_1(X0) | ~m2_cat_1(X3,X0,X1) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(resolution,[],[f441,f186])).
+fof(f441,plain,(
+  ( ! [X23,X21,X19,X22,X20,X18] : (~m2_relset_1(X22,u2_cat_1(X19),X20) | k8_funct_2(u2_cat_1(X19),k2_zfmisc_1(X20,u2_cat_1(X21)),k14_funct_3(u2_cat_1(X19),X20,u2_cat_1(X21),X22,X23),X18) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18)),k2_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18),k8_funct_2(u2_cat_1(X19),u2_cat_1(X21),X23,X18))) | ~m1_subset_1(X18,u2_cat_1(X19)) | ~v1_funct_2(X22,u2_cat_1(X19),X20) | ~v1_funct_1(X22) | v1_xboole_0(X20) | ~m2_cat_1(X23,X19,X21) | ~l1_cat_1(X21) | ~v2_cat_1(X21) | ~l1_cat_1(X19) | ~v2_cat_1(X19)) )),
+  inference(subsumption_resolution,[],[f440,f189])).
+fof(f440,plain,(
+  ( ! [X23,X21,X19,X22,X20,X18] : (~m1_subset_1(X18,u2_cat_1(X19)) | k8_funct_2(u2_cat_1(X19),k2_zfmisc_1(X20,u2_cat_1(X21)),k14_funct_3(u2_cat_1(X19),X20,u2_cat_1(X21),X22,X23),X18) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18)),k2_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18),k8_funct_2(u2_cat_1(X19),u2_cat_1(X21),X23,X18))) | ~m2_relset_1(X22,u2_cat_1(X19),X20) | ~v1_funct_2(X22,u2_cat_1(X19),X20) | ~v1_funct_1(X22) | v1_xboole_0(X20) | v1_xboole_0(u2_cat_1(X19)) | ~m2_cat_1(X23,X19,X21) | ~l1_cat_1(X21) | ~v2_cat_1(X21) | ~l1_cat_1(X19) | ~v2_cat_1(X19)) )),
+  inference(subsumption_resolution,[],[f439,f189])).
+fof(f439,plain,(
+  ( ! [X23,X21,X19,X22,X20,X18] : (~m1_subset_1(X18,u2_cat_1(X19)) | k8_funct_2(u2_cat_1(X19),k2_zfmisc_1(X20,u2_cat_1(X21)),k14_funct_3(u2_cat_1(X19),X20,u2_cat_1(X21),X22,X23),X18) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18)),k2_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18),k8_funct_2(u2_cat_1(X19),u2_cat_1(X21),X23,X18))) | ~m2_relset_1(X22,u2_cat_1(X19),X20) | ~v1_funct_2(X22,u2_cat_1(X19),X20) | ~v1_funct_1(X22) | v1_xboole_0(u2_cat_1(X21)) | v1_xboole_0(X20) | v1_xboole_0(u2_cat_1(X19)) | ~m2_cat_1(X23,X19,X21) | ~l1_cat_1(X21) | ~v2_cat_1(X21) | ~l1_cat_1(X19) | ~v2_cat_1(X19)) )),
+  inference(subsumption_resolution,[],[f438,f185])).
+fof(f438,plain,(
+  ( ! [X23,X21,X19,X22,X20,X18] : (~m1_subset_1(X18,u2_cat_1(X19)) | k8_funct_2(u2_cat_1(X19),k2_zfmisc_1(X20,u2_cat_1(X21)),k14_funct_3(u2_cat_1(X19),X20,u2_cat_1(X21),X22,X23),X18) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18)),k2_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18),k8_funct_2(u2_cat_1(X19),u2_cat_1(X21),X23,X18))) | ~v1_funct_2(X23,u2_cat_1(X19),u2_cat_1(X21)) | ~m2_relset_1(X22,u2_cat_1(X19),X20) | ~v1_funct_2(X22,u2_cat_1(X19),X20) | ~v1_funct_1(X22) | v1_xboole_0(u2_cat_1(X21)) | v1_xboole_0(X20) | v1_xboole_0(u2_cat_1(X19)) | ~m2_cat_1(X23,X19,X21) | ~l1_cat_1(X21) | ~v2_cat_1(X21) | ~l1_cat_1(X19) | ~v2_cat_1(X19)) )),
+  inference(subsumption_resolution,[],[f434,f184])).
+fof(f434,plain,(
+  ( ! [X23,X21,X19,X22,X20,X18] : (~m1_subset_1(X18,u2_cat_1(X19)) | k8_funct_2(u2_cat_1(X19),k2_zfmisc_1(X20,u2_cat_1(X21)),k14_funct_3(u2_cat_1(X19),X20,u2_cat_1(X21),X22,X23),X18) = k2_tarski(k1_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18)),k2_tarski(k8_funct_2(u2_cat_1(X19),X20,X22,X18),k8_funct_2(u2_cat_1(X19),u2_cat_1(X21),X23,X18))) | ~v1_funct_2(X23,u2_cat_1(X19),u2_cat_1(X21)) | ~v1_funct_1(X23) | ~m2_relset_1(X22,u2_cat_1(X19),X20) | ~v1_funct_2(X22,u2_cat_1(X19),X20) | ~v1_funct_1(X22) | v1_xboole_0(u2_cat_1(X21)) | v1_xboole_0(X20) | v1_xboole_0(u2_cat_1(X19)) | ~m2_cat_1(X23,X19,X21) | ~l1_cat_1(X21) | ~v2_cat_1(X21) | ~l1_cat_1(X19) | ~v2_cat_1(X19)) )),
+  inference(resolution,[],[f226,f186])).
+fof(f226,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~m2_relset_1(X4,X0,X2) | ~m1_subset_1(X5,X0) | k8_funct_2(X0,k2_zfmisc_1(X1,X2),k14_funct_3(X0,X1,X2,X3,X4),X5) = k2_tarski(k1_tarski(k8_funct_2(X0,X1,X3,X5)),k2_tarski(k8_funct_2(X0,X1,X3,X5),k8_funct_2(X0,X2,X4,X5))) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m2_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1) | v1_xboole_0(X0)) )),
+  inference(forward_demodulation,[],[f224,f167])).
+fof(f224,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (k8_funct_2(X0,k2_zfmisc_1(X1,X2),k14_funct_3(X0,X1,X2,X3,X4),X5) = k2_tarski(k2_tarski(k8_funct_2(X0,X1,X3,X5),k8_funct_2(X0,X2,X4,X5)),k1_tarski(k8_funct_2(X0,X1,X3,X5))) | ~m1_subset_1(X5,X0) | ~m2_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m2_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1) | v1_xboole_0(X0)) )),
+  inference(definition_unfolding,[],[f220,f169])).
+fof(f220,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (k8_funct_2(X0,k2_zfmisc_1(X1,X2),k14_funct_3(X0,X1,X2,X3,X4),X5) = k4_tarski(k8_funct_2(X0,X1,X3,X5),k8_funct_2(X0,X2,X4,X5)) | ~m1_subset_1(X5,X0) | ~m2_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m2_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1) | v1_xboole_0(X0)) )),
+  inference(cnf_transformation,[],[f119])).
+fof(f119,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (! [X3] : (! [X4] : (! [X5] : (k8_funct_2(X0,k2_zfmisc_1(X1,X2),k14_funct_3(X0,X1,X2,X3,X4),X5) = k4_tarski(k8_funct_2(X0,X1,X3,X5),k8_funct_2(X0,X2,X4,X5)) | ~m1_subset_1(X5,X0)) | ~m2_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4)) | ~m2_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3)) | v1_xboole_0(X2)) | v1_xboole_0(X1)) | v1_xboole_0(X0))),
+  inference(flattening,[],[f118])).
+fof(f118,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (! [X3] : (! [X4] : (! [X5] : (k8_funct_2(X0,k2_zfmisc_1(X1,X2),k14_funct_3(X0,X1,X2,X3,X4),X5) = k4_tarski(k8_funct_2(X0,X1,X3,X5),k8_funct_2(X0,X2,X4,X5)) | ~m1_subset_1(X5,X0)) | (~m2_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4))) | (~m2_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3))) | v1_xboole_0(X2)) | v1_xboole_0(X1)) | v1_xboole_0(X0))),
+  inference(ennf_transformation,[],[f59])).
+fof(f59,axiom,(
+  ! [X0] : (~v1_xboole_0(X0) => ! [X1] : (~v1_xboole_0(X1) => ! [X2] : (~v1_xboole_0(X2) => ! [X3] : ((m2_relset_1(X3,X0,X1) & v1_funct_2(X3,X0,X1) & v1_funct_1(X3)) => ! [X4] : ((m2_relset_1(X4,X0,X2) & v1_funct_2(X4,X0,X2) & v1_funct_1(X4)) => ! [X5] : (m1_subset_1(X5,X0) => k8_funct_2(X0,k2_zfmisc_1(X1,X2),k14_funct_3(X0,X1,X2,X3,X4),X5) = k4_tarski(k8_funct_2(X0,X1,X3,X5),k8_funct_2(X0,X2,X4,X5))))))))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f1272662,plain,(
+  k1_funct_1(k13_funct_3(sK3,sK4),sK7) = k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k13_funct_3(sK3,sK4),sK7) | (spl18_7 | ~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(resolution,[],[f103622,f338])).
+fof(f103622,plain,(
+  ( ! [X56] : (~m1_subset_1(X56,u2_cat_1(sK0)) | k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k13_funct_3(sK3,sK4),X56) = k1_funct_1(k13_funct_3(sK3,sK4),X56)) ) | (spl18_7 | ~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f103621,f346])).
+fof(f346,plain,(
+  ~v1_xboole_0(u2_cat_1(sK0)) | spl18_7),
+  inference(avatar_component_clause,[],[f345])).
+fof(f345,plain,(
+  spl18_7 <=> v1_xboole_0(u2_cat_1(sK0))),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_7])])).
+fof(f103621,plain,(
+  ( ! [X56] : (~m1_subset_1(X56,u2_cat_1(sK0)) | k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k13_funct_3(sK3,sK4),X56) = k1_funct_1(k13_funct_3(sK3,sK4),X56) | v1_xboole_0(u2_cat_1(sK0))) ) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f103620,f933])).
+fof(f933,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4))),
+  inference(subsumption_resolution,[],[f932,f159])).
+fof(f932,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(subsumption_resolution,[],[f931,f152])).
+fof(f931,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(subsumption_resolution,[],[f930,f153])).
+fof(f930,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(subsumption_resolution,[],[f929,f154])).
+fof(f929,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(subsumption_resolution,[],[f928,f155])).
+fof(f928,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(subsumption_resolution,[],[f927,f156])).
+fof(f927,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(subsumption_resolution,[],[f926,f157])).
+fof(f926,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(subsumption_resolution,[],[f924,f158])).
+fof(f924,plain,(
+  v1_funct_1(k13_funct_3(sK3,sK4)) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2)),
+  inference(superposition,[],[f398,f524])).
+fof(f398,plain,(
+  ( ! [X10,X8,X7,X11,X9] : (v1_funct_1(k10_isocat_2(X8,X11,X9,X10,X7)) | ~m2_cat_1(X10,X8,X11) | ~l1_cat_1(X9) | ~v2_cat_1(X9) | ~l1_cat_1(X11) | ~v2_cat_1(X11) | ~l1_cat_1(X8) | ~v2_cat_1(X8) | ~m2_cat_1(X7,X8,X9)) )),
+  inference(subsumption_resolution,[],[f397,f171])).
+fof(f171,plain,(
+  ( ! [X0,X1] : (v2_cat_1(k11_cat_2(X0,X1)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f73])).
+fof(f73,plain,(
+  ! [X0,X1] : ((l1_cat_1(k11_cat_2(X0,X1)) & v2_cat_1(k11_cat_2(X0,X1))) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0))),
+  inference(flattening,[],[f72])).
+fof(f72,plain,(
+  ! [X0,X1] : ((l1_cat_1(k11_cat_2(X0,X1)) & v2_cat_1(k11_cat_2(X0,X1))) | (~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)))),
+  inference(ennf_transformation,[],[f9])).
+fof(f9,axiom,(
+  ! [X0,X1] : ((l1_cat_1(X1) & v2_cat_1(X1) & l1_cat_1(X0) & v2_cat_1(X0)) => (l1_cat_1(k11_cat_2(X0,X1)) & v2_cat_1(k11_cat_2(X0,X1))))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f397,plain,(
+  ( ! [X10,X8,X7,X11,X9] : (~m2_cat_1(X7,X8,X9) | ~m2_cat_1(X10,X8,X11) | ~l1_cat_1(X9) | ~v2_cat_1(X9) | ~l1_cat_1(X11) | ~v2_cat_1(X11) | ~l1_cat_1(X8) | ~v2_cat_1(X8) | v1_funct_1(k10_isocat_2(X8,X11,X9,X10,X7)) | ~v2_cat_1(k11_cat_2(X11,X9))) )),
+  inference(subsumption_resolution,[],[f393,f172])).
+fof(f172,plain,(
+  ( ! [X0,X1] : (l1_cat_1(k11_cat_2(X0,X1)) | ~l1_cat_1(X1) | ~v2_cat_1(X1) | ~l1_cat_1(X0) | ~v2_cat_1(X0)) )),
+  inference(cnf_transformation,[],[f73])).
+fof(f393,plain,(
+  ( ! [X10,X8,X7,X11,X9] : (~m2_cat_1(X7,X8,X9) | ~m2_cat_1(X10,X8,X11) | ~l1_cat_1(X9) | ~v2_cat_1(X9) | ~l1_cat_1(X11) | ~v2_cat_1(X11) | ~l1_cat_1(X8) | ~v2_cat_1(X8) | v1_funct_1(k10_isocat_2(X8,X11,X9,X10,X7)) | ~l1_cat_1(k11_cat_2(X11,X9)) | ~v2_cat_1(k11_cat_2(X11,X9))) )),
+  inference(duplicate_literal_removal,[],[f392])).
+fof(f392,plain,(
+  ( ! [X10,X8,X7,X11,X9] : (~m2_cat_1(X7,X8,X9) | ~m2_cat_1(X10,X8,X11) | ~l1_cat_1(X9) | ~v2_cat_1(X9) | ~l1_cat_1(X11) | ~v2_cat_1(X11) | ~l1_cat_1(X8) | ~v2_cat_1(X8) | v1_funct_1(k10_isocat_2(X8,X11,X9,X10,X7)) | ~l1_cat_1(k11_cat_2(X11,X9)) | ~v2_cat_1(k11_cat_2(X11,X9)) | ~l1_cat_1(X8) | ~v2_cat_1(X8)) )),
+  inference(resolution,[],[f170,f184])).
+fof(f103620,plain,(
+  ( ! [X56] : (~m1_subset_1(X56,u2_cat_1(sK0)) | k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k13_funct_3(sK3,sK4),X56) = k1_funct_1(k13_funct_3(sK3,sK4),X56) | ~v1_funct_1(k13_funct_3(sK3,sK4)) | v1_xboole_0(u2_cat_1(sK0))) ) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f103554,f73695])).
+fof(f73695,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73694,f2552])).
+fof(f2552,plain,(
+  ~v1_xboole_0(u2_cat_1(sK1))),
+  inference(resolution,[],[f1647,f221])).
+fof(f221,plain,(
+  ( ! [X0,X1] : (~r2_hidden(X0,X1) | ~v1_xboole_0(X1)) )),
+  inference(cnf_transformation,[],[f120])).
+fof(f120,plain,(
+  ! [X0,X1] : (~v1_xboole_0(X1) | ~r2_hidden(X0,X1))),
+  inference(ennf_transformation,[],[f60])).
+fof(f60,axiom,(
+  ! [X0,X1] : ~(v1_xboole_0(X1) & r2_hidden(X0,X1))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f1647,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1))),
+  inference(subsumption_resolution,[],[f1646,f161])).
+fof(f1646,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1645,f163])).
+fof(f1645,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1644,f152])).
+fof(f1644,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1643,f153])).
+fof(f1643,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1642,f154])).
+fof(f1642,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1641,f155])).
+fof(f1641,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1640,f158])).
+fof(f1640,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1638,f160])).
+fof(f1638,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK1),sK3,sK7),u2_cat_1(sK1)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(superposition,[],[f711,f580])).
+fof(f711,plain,(
+  ( ! [X19,X17,X15,X20,X18,X16] : (r2_hidden(k3_nattra_1(X16,X19,X18,X17,X15,X20),u2_cat_1(X19)) | ~m1_subset_1(X17,u1_cat_1(X16)) | ~m2_cat_1(X18,X16,X19) | ~l1_cat_1(X19) | ~v2_cat_1(X19) | ~l1_cat_1(X16) | ~v2_cat_1(X16) | ~m1_cat_1(X20,X16,X17,X15) | ~m1_subset_1(X15,u1_cat_1(X16))) )),
+  inference(subsumption_resolution,[],[f708,f189])).
+fof(f708,plain,(
+  ( ! [X19,X17,X15,X20,X18,X16] : (~m1_subset_1(X15,u1_cat_1(X16)) | ~m1_subset_1(X17,u1_cat_1(X16)) | ~m2_cat_1(X18,X16,X19) | ~l1_cat_1(X19) | ~v2_cat_1(X19) | ~l1_cat_1(X16) | ~v2_cat_1(X16) | ~m1_cat_1(X20,X16,X17,X15) | v1_xboole_0(u2_cat_1(X19)) | r2_hidden(k3_nattra_1(X16,X19,X18,X17,X15,X20),u2_cat_1(X19))) )),
+  inference(resolution,[],[f415,f215])).
+fof(f215,plain,(
+  ( ! [X0,X1] : (~m1_subset_1(X0,X1) | v1_xboole_0(X1) | r2_hidden(X0,X1)) )),
+  inference(cnf_transformation,[],[f112])).
+fof(f112,plain,(
+  ! [X0,X1] : (r2_hidden(X0,X1) | v1_xboole_0(X1) | ~m1_subset_1(X0,X1))),
+  inference(flattening,[],[f111])).
+fof(f111,plain,(
+  ! [X0,X1] : ((r2_hidden(X0,X1) | v1_xboole_0(X1)) | ~m1_subset_1(X0,X1))),
+  inference(ennf_transformation,[],[f54])).
+fof(f54,axiom,(
+  ! [X0,X1] : (m1_subset_1(X0,X1) => (r2_hidden(X0,X1) | v1_xboole_0(X1)))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f73694,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | v1_xboole_0(u2_cat_1(sK1)) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73693,f2686])).
+fof(f2686,plain,(
+  ~v1_xboole_0(u2_cat_1(sK2))),
+  inference(resolution,[],[f1655,f221])).
+fof(f1655,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2))),
+  inference(subsumption_resolution,[],[f1654,f161])).
+fof(f1654,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1653,f163])).
+fof(f1653,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1652,f152])).
+fof(f1652,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1651,f153])).
+fof(f1651,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1650,f156])).
+fof(f1650,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1649,f157])).
+fof(f1649,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1648,f159])).
+fof(f1648,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m2_cat_1(sK4,sK0,sK2) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(subsumption_resolution,[],[f1639,f160])).
+fof(f1639,plain,(
+  r2_hidden(k8_funct_2(u2_cat_1(sK0),u2_cat_1(sK2),sK4,sK7),u2_cat_1(sK2)) | ~m1_subset_1(sK5,u1_cat_1(sK0)) | ~m2_cat_1(sK4,sK0,sK2) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m1_cat_1(sK7,sK0,sK5,sK6) | ~m1_subset_1(sK6,u1_cat_1(sK0))),
+  inference(superposition,[],[f711,f583])).
+fof(f73693,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73692,f318])).
+fof(f318,plain,(
+  v1_funct_1(sK3)),
+  inference(subsumption_resolution,[],[f317,f152])).
+fof(f317,plain,(
+  v1_funct_1(sK3) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f316,f153])).
+fof(f316,plain,(
+  v1_funct_1(sK3) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f315,f154])).
+fof(f315,plain,(
+  v1_funct_1(sK3) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f313,f155])).
+fof(f313,plain,(
+  v1_funct_1(sK3) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(resolution,[],[f184,f158])).
+fof(f73692,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73691,f27812])).
+fof(f27812,plain,(
+  v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~spl18_517),
+  inference(avatar_component_clause,[],[f27811])).
+fof(f27811,plain,(
+  spl18_517 <=> v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1))),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_517])])).
+fof(f73691,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | (~spl18_516 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73690,f27808])).
+fof(f27808,plain,(
+  m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~spl18_516),
+  inference(avatar_component_clause,[],[f27807])).
+fof(f27807,plain,(
+  spl18_516 <=> m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1))),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_516])])).
+fof(f73690,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | (~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73689,f322])).
+fof(f322,plain,(
+  v1_funct_1(sK4)),
+  inference(subsumption_resolution,[],[f321,f152])).
+fof(f321,plain,(
+  v1_funct_1(sK4) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f320,f153])).
+fof(f320,plain,(
+  v1_funct_1(sK4) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f319,f156])).
+fof(f319,plain,(
+  v1_funct_1(sK4) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(subsumption_resolution,[],[f314,f157])).
+fof(f314,plain,(
+  v1_funct_1(sK4) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0)),
+  inference(resolution,[],[f184,f159])).
+fof(f73689,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_1(sK4) | ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | (~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73688,f27856])).
+fof(f27856,plain,(
+  v1_funct_2(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~spl18_522),
+  inference(avatar_component_clause,[],[f27855])).
+fof(f27855,plain,(
+  spl18_522 <=> v1_funct_2(sK4,u2_cat_1(sK0),u2_cat_1(sK2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_522])])).
+fof(f73688,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_2(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~v1_funct_1(sK4) | ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | ~spl18_521),
+  inference(subsumption_resolution,[],[f73679,f27852])).
+fof(f27852,plain,(
+  m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~spl18_521),
+  inference(avatar_component_clause,[],[f27851])).
+fof(f27851,plain,(
+  spl18_521 <=> m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl18_521])])).
+fof(f73679,plain,(
+  v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~v1_funct_2(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~v1_funct_1(sK4) | ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1))),
+  inference(superposition,[],[f178,f32478])).
+fof(f178,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (v1_funct_2(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) | ~m1_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m1_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1)) )),
+  inference(cnf_transformation,[],[f81])).
+fof(f81,plain,(
+  ! [X0,X1,X2,X3,X4] : ((m2_relset_1(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) & v1_funct_2(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) & v1_funct_1(k14_funct_3(X0,X1,X2,X3,X4))) | ~m1_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m1_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1))),
+  inference(flattening,[],[f80])).
+fof(f80,plain,(
+  ! [X0,X1,X2,X3,X4] : ((m2_relset_1(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) & v1_funct_2(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) & v1_funct_1(k14_funct_3(X0,X1,X2,X3,X4))) | (~m1_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m1_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1)))),
+  inference(ennf_transformation,[],[f13])).
+fof(f13,axiom,(
+  ! [X0,X1,X2,X3,X4] : ((m1_relset_1(X4,X0,X2) & v1_funct_2(X4,X0,X2) & v1_funct_1(X4) & m1_relset_1(X3,X0,X1) & v1_funct_2(X3,X0,X1) & v1_funct_1(X3) & ~v1_xboole_0(X2) & ~v1_xboole_0(X1)) => (m2_relset_1(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) & v1_funct_2(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) & v1_funct_1(k14_funct_3(X0,X1,X2,X3,X4))))),
+  file('./p/CAT029+1.tptp',unknown)).
+fof(f103554,plain,(
+  ( ! [X56] : (~m1_subset_1(X56,u2_cat_1(sK0)) | k8_funct_2(u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2)),k13_funct_3(sK3,sK4),X56) = k1_funct_1(k13_funct_3(sK3,sK4),X56) | ~v1_funct_2(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_1(k13_funct_3(sK3,sK4)) | v1_xboole_0(u2_cat_1(sK0))) ) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(resolution,[],[f73711,f210])).
+fof(f73711,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | (~spl18_516 | ~spl18_517 | ~spl18_521 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73710,f27852])).
+fof(f73710,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | (~spl18_516 | ~spl18_517 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73709,f2552])).
+fof(f73709,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | v1_xboole_0(u2_cat_1(sK1)) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | (~spl18_516 | ~spl18_517 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73708,f2686])).
+fof(f73708,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | (~spl18_516 | ~spl18_517 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73707,f318])).
+fof(f73707,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | (~spl18_516 | ~spl18_517 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73706,f27812])).
+fof(f73706,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | (~spl18_516 | ~spl18_522)),
+  inference(subsumption_resolution,[],[f73705,f27808])).
+fof(f73705,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~spl18_522),
+  inference(subsumption_resolution,[],[f73704,f322])).
+fof(f73704,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_1(sK4) | ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~spl18_522),
+  inference(subsumption_resolution,[],[f73682,f27856])).
+fof(f73682,plain,(
+  m1_relset_1(k13_funct_3(sK3,sK4),u2_cat_1(sK0),k2_zfmisc_1(u2_cat_1(sK1),u2_cat_1(sK2))) | ~v1_funct_2(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | ~v1_funct_1(sK4) | ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | ~v1_funct_1(sK3) | v1_xboole_0(u2_cat_1(sK2)) | v1_xboole_0(u2_cat_1(sK1)) | ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2))),
+  inference(superposition,[],[f411,f32478])).
+fof(f411,plain,(
+  ( ! [X6,X8,X7,X5,X9] : (m1_relset_1(k14_funct_3(X6,X9,X7,X8,X5),X6,k2_zfmisc_1(X9,X7)) | ~v1_funct_2(X5,X6,X7) | ~v1_funct_1(X5) | ~m1_relset_1(X8,X6,X9) | ~v1_funct_2(X8,X6,X9) | ~v1_funct_1(X8) | v1_xboole_0(X7) | v1_xboole_0(X9) | ~m1_relset_1(X5,X6,X7)) )),
+  inference(resolution,[],[f179,f211])).
+fof(f179,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (m2_relset_1(k14_funct_3(X0,X1,X2,X3,X4),X0,k2_zfmisc_1(X1,X2)) | ~m1_relset_1(X4,X0,X2) | ~v1_funct_2(X4,X0,X2) | ~v1_funct_1(X4) | ~m1_relset_1(X3,X0,X1) | ~v1_funct_2(X3,X0,X1) | ~v1_funct_1(X3) | v1_xboole_0(X2) | v1_xboole_0(X1)) )),
+  inference(cnf_transformation,[],[f81])).
+fof(f28393,plain,(
+  spl18_522),
+  inference(avatar_contradiction_clause,[],[f28392])).
+fof(f28392,plain,(
+  $false | spl18_522),
+  inference(subsumption_resolution,[],[f28391,f152])).
+fof(f28391,plain,(
+  ~v2_cat_1(sK0) | spl18_522),
+  inference(subsumption_resolution,[],[f28390,f153])).
+fof(f28390,plain,(
+  ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_522),
+  inference(subsumption_resolution,[],[f28389,f156])).
+fof(f28389,plain,(
+  ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_522),
+  inference(subsumption_resolution,[],[f28388,f157])).
+fof(f28388,plain,(
+  ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_522),
+  inference(subsumption_resolution,[],[f28387,f159])).
+fof(f28387,plain,(
+  ~m2_cat_1(sK4,sK0,sK2) | ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_522),
+  inference(resolution,[],[f27857,f185])).
+fof(f27857,plain,(
+  ~v1_funct_2(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | spl18_522),
+  inference(avatar_component_clause,[],[f27855])).
+fof(f28282,plain,(
+  spl18_521),
+  inference(avatar_contradiction_clause,[],[f28281])).
+fof(f28281,plain,(
+  $false | spl18_521),
+  inference(subsumption_resolution,[],[f28280,f159])).
+fof(f28280,plain,(
+  ~m2_cat_1(sK4,sK0,sK2) | spl18_521),
+  inference(subsumption_resolution,[],[f28279,f152])).
+fof(f28279,plain,(
+  ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2) | spl18_521),
+  inference(subsumption_resolution,[],[f28278,f153])).
+fof(f28278,plain,(
+  ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2) | spl18_521),
+  inference(subsumption_resolution,[],[f28277,f156])).
+fof(f28277,plain,(
+  ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2) | spl18_521),
+  inference(subsumption_resolution,[],[f28276,f157])).
+fof(f28276,plain,(
+  ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK4,sK0,sK2) | spl18_521),
+  inference(resolution,[],[f27853,f332])).
+fof(f27853,plain,(
+  ~m1_relset_1(sK4,u2_cat_1(sK0),u2_cat_1(sK2)) | spl18_521),
+  inference(avatar_component_clause,[],[f27851])).
+fof(f27975,plain,(
+  spl18_517),
+  inference(avatar_contradiction_clause,[],[f27974])).
+fof(f27974,plain,(
+  $false | spl18_517),
+  inference(subsumption_resolution,[],[f27973,f152])).
+fof(f27973,plain,(
+  ~v2_cat_1(sK0) | spl18_517),
+  inference(subsumption_resolution,[],[f27972,f153])).
+fof(f27972,plain,(
+  ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_517),
+  inference(subsumption_resolution,[],[f27971,f154])).
+fof(f27971,plain,(
+  ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_517),
+  inference(subsumption_resolution,[],[f27970,f155])).
+fof(f27970,plain,(
+  ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_517),
+  inference(subsumption_resolution,[],[f27969,f158])).
+fof(f27969,plain,(
+  ~m2_cat_1(sK3,sK0,sK1) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | spl18_517),
+  inference(resolution,[],[f27813,f185])).
+fof(f27813,plain,(
+  ~v1_funct_2(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | spl18_517),
+  inference(avatar_component_clause,[],[f27811])).
+fof(f27842,plain,(
+  spl18_516),
+  inference(avatar_contradiction_clause,[],[f27841])).
+fof(f27841,plain,(
+  $false | spl18_516),
+  inference(subsumption_resolution,[],[f27840,f158])).
+fof(f27840,plain,(
+  ~m2_cat_1(sK3,sK0,sK1) | spl18_516),
+  inference(subsumption_resolution,[],[f27839,f152])).
+fof(f27839,plain,(
+  ~v2_cat_1(sK0) | ~m2_cat_1(sK3,sK0,sK1) | spl18_516),
+  inference(subsumption_resolution,[],[f27838,f153])).
+fof(f27838,plain,(
+  ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK3,sK0,sK1) | spl18_516),
+  inference(subsumption_resolution,[],[f27837,f154])).
+fof(f27837,plain,(
+  ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK3,sK0,sK1) | spl18_516),
+  inference(subsumption_resolution,[],[f27836,f155])).
+fof(f27836,plain,(
+  ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | ~l1_cat_1(sK0) | ~v2_cat_1(sK0) | ~m2_cat_1(sK3,sK0,sK1) | spl18_516),
+  inference(resolution,[],[f27809,f332])).
+fof(f27809,plain,(
+  ~m1_relset_1(sK3,u2_cat_1(sK0),u2_cat_1(sK1)) | spl18_516),
+  inference(avatar_component_clause,[],[f27807])).
+fof(f1414,plain,(
+  spl18_33),
+  inference(avatar_contradiction_clause,[],[f1413])).
+fof(f1413,plain,(
+  $false | spl18_33),
+  inference(subsumption_resolution,[],[f1412,f154])).
+fof(f1412,plain,(
+  ~v2_cat_1(sK1) | spl18_33),
+  inference(subsumption_resolution,[],[f1411,f155])).
+fof(f1411,plain,(
+  ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | spl18_33),
+  inference(subsumption_resolution,[],[f1410,f156])).
+fof(f1410,plain,(
+  ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | spl18_33),
+  inference(subsumption_resolution,[],[f1409,f157])).
+fof(f1409,plain,(
+  ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | spl18_33),
+  inference(resolution,[],[f1349,f172])).
+fof(f1349,plain,(
+  ~l1_cat_1(k11_cat_2(sK1,sK2)) | spl18_33),
+  inference(avatar_component_clause,[],[f1347])).
+fof(f1401,plain,(
+  spl18_32),
+  inference(avatar_contradiction_clause,[],[f1400])).
+fof(f1400,plain,(
+  $false | spl18_32),
+  inference(subsumption_resolution,[],[f1399,f154])).
+fof(f1399,plain,(
+  ~v2_cat_1(sK1) | spl18_32),
+  inference(subsumption_resolution,[],[f1398,f155])).
+fof(f1398,plain,(
+  ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | spl18_32),
+  inference(subsumption_resolution,[],[f1397,f156])).
+fof(f1397,plain,(
+  ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | spl18_32),
+  inference(subsumption_resolution,[],[f1396,f157])).
+fof(f1396,plain,(
+  ~l1_cat_1(sK2) | ~v2_cat_1(sK2) | ~l1_cat_1(sK1) | ~v2_cat_1(sK1) | spl18_32),
+  inference(resolution,[],[f1345,f171])).
+fof(f1345,plain,(
+  ~v2_cat_1(k11_cat_2(sK1,sK2)) | spl18_32),
+  inference(avatar_component_clause,[],[f1343])).
+fof(f1354,plain,(
+  ~spl18_32 | ~spl18_33 | spl18_34),
+  inference(avatar_split_clause,[],[f1333,f1351,f1347,f1343])).
+fof(f1333,plain,(
+  k3_nattra_1(sK0,k11_cat_2(sK1,sK2),k13_funct_3(sK3,sK4),sK5,sK6,sK7) = k8_funct_2(u2_cat_1(sK0),u2_cat_1(k11_cat_2(sK1,sK2)),k13_funct_3(sK3,sK4),sK7) | ~l1_cat_1(k11_cat_2(sK1,sK2)) | ~v2_cat_1(k11_cat_2(sK1,sK2))),
+  inference(resolution,[],[f941,f426])).
+fof(f357,plain,(
+  ~spl18_7),
+  inference(avatar_contradiction_clause,[],[f356])).
+fof(f356,plain,(
+  $false | ~spl18_7),
+  inference(subsumption_resolution,[],[f353,f153])).
+fof(f353,plain,(
+  ~l1_cat_1(sK0) | ~spl18_7),
+  inference(resolution,[],[f347,f189])).
+fof(f347,plain,(
+  v1_xboole_0(u2_cat_1(sK0)) | ~spl18_7),
+  inference(avatar_component_clause,[],[f345])).
+% SZS output end Proof for CAT029+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 1117977
+% Time elapsed: 33.785 s
+% ------------------------------
+% ------------------------------

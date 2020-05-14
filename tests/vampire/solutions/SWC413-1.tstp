@@ -1,0 +1,330 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SWC413-1
+% SZS output start Proof for SWC413-1
+fof(f3522,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f307,f312,f317,f322,f327,f352,f357,f362,f367,f372,f389,f390,f391,f392,f393,f394,f395,f396,f397,f398,f399,f400,f401,f402,f403,f404,f405,f406,f407,f408,f1692,f3509])).
+fof(f3509,plain,(
+  ~spl0_3 | ~spl0_13 | ~spl0_14 | ~spl0_15 | ~spl0_16 | ~spl0_17),
+  inference(avatar_contradiction_clause,[],[f3508])).
+fof(f3508,plain,(
+  $false | (~spl0_3 | ~spl0_13 | ~spl0_14 | ~spl0_15 | ~spl0_16 | ~spl0_17)),
+  inference(subsumption_resolution,[],[f3507,f371])).
+fof(f371,plain,(
+  sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10) | ~spl0_17),
+  inference(avatar_component_clause,[],[f369])).
+fof(f369,plain,(
+  spl0_17 <=> sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_17])])).
+fof(f3507,plain,(
+  sk3 != app(app(cons(sk9,nil),cons(sk8,nil)),sk10) | (~spl0_3 | ~spl0_13 | ~spl0_14 | ~spl0_15 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f3506,f361])).
+fof(f361,plain,(
+  ssList(sk10) | ~spl0_15),
+  inference(avatar_component_clause,[],[f359])).
+fof(f359,plain,(
+  spl0_15 <=> ssList(sk10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_15])])).
+fof(f3506,plain,(
+  ~ssList(sk10) | sk3 != app(app(cons(sk9,nil),cons(sk8,nil)),sk10) | (~spl0_3 | ~spl0_13 | ~spl0_14 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f3505,f356])).
+fof(f356,plain,(
+  ssItem(sk9) | ~spl0_14),
+  inference(avatar_component_clause,[],[f354])).
+fof(f354,plain,(
+  spl0_14 <=> ssItem(sk9)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_14])])).
+fof(f3505,plain,(
+  ~ssItem(sk9) | ~ssList(sk10) | sk3 != app(app(cons(sk9,nil),cons(sk8,nil)),sk10) | (~spl0_3 | ~spl0_13 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f3504,f351])).
+fof(f351,plain,(
+  ssItem(sk8) | ~spl0_13),
+  inference(avatar_component_clause,[],[f349])).
+fof(f349,plain,(
+  spl0_13 <=> ssItem(sk8)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_13])])).
+fof(f3504,plain,(
+  ~ssItem(sk8) | ~ssItem(sk9) | ~ssList(sk10) | sk3 != app(app(cons(sk9,nil),cons(sk8,nil)),sk10) | (~spl0_3 | ~spl0_16)),
+  inference(trivial_inequality_removal,[],[f3502])).
+fof(f3502,plain,(
+  sk4 != sk4 | ~ssItem(sk8) | ~ssItem(sk9) | ~ssList(sk10) | sk3 != app(app(cons(sk9,nil),cons(sk8,nil)),sk10) | (~spl0_3 | ~spl0_16)),
+  inference(superposition,[],[f303,f366])).
+fof(f366,plain,(
+  sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10) | ~spl0_16),
+  inference(avatar_component_clause,[],[f364])).
+fof(f364,plain,(
+  spl0_16 <=> sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_16])])).
+fof(f303,plain,(
+  ( ! [X6,X8,X7] : (sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssItem(X6) | ~ssItem(X7) | ~ssList(X8) | sk3 != app(app(cons(X7,nil),cons(X6,nil)),X8)) ) | ~spl0_3),
+  inference(avatar_component_clause,[],[f302])).
+fof(f302,plain,(
+  spl0_3 <=> ! [X7,X8,X6] : (sk3 != app(app(cons(X7,nil),cons(X6,nil)),X8) | ~ssItem(X6) | ~ssItem(X7) | ~ssList(X8) | sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_3])])).
+fof(f1692,plain,(
+  ~spl0_7 | ~spl0_4 | ~spl0_5 | ~spl0_6 | ~spl0_8),
+  inference(avatar_split_clause,[],[f1689,f324,f314,f309,f305,f319])).
+fof(f319,plain,(
+  spl0_7 <=> ssList(sk13)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_7])])).
+fof(f305,plain,(
+  spl0_4 <=> ! [X9,X11,X10] : (sk4 != app(app(cons(X9,nil),cons(X10,nil)),X11) | ~ssItem(X9) | ~ssItem(X10) | ~ssList(X11))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_4])])).
+fof(f309,plain,(
+  spl0_5 <=> ssItem(sk11)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_5])])).
+fof(f314,plain,(
+  spl0_6 <=> ssItem(sk12)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_6])])).
+fof(f324,plain,(
+  spl0_8 <=> sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_8])])).
+fof(f1689,plain,(
+  ~ssList(sk13) | (~spl0_4 | ~spl0_5 | ~spl0_6 | ~spl0_8)),
+  inference(subsumption_resolution,[],[f1688,f316])).
+fof(f316,plain,(
+  ssItem(sk12) | ~spl0_6),
+  inference(avatar_component_clause,[],[f314])).
+fof(f1688,plain,(
+  ~ssItem(sk12) | ~ssList(sk13) | (~spl0_4 | ~spl0_5 | ~spl0_8)),
+  inference(subsumption_resolution,[],[f1687,f311])).
+fof(f311,plain,(
+  ssItem(sk11) | ~spl0_5),
+  inference(avatar_component_clause,[],[f309])).
+fof(f1687,plain,(
+  ~ssItem(sk11) | ~ssItem(sk12) | ~ssList(sk13) | (~spl0_4 | ~spl0_8)),
+  inference(trivial_inequality_removal,[],[f1686])).
+fof(f1686,plain,(
+  sk4 != sk4 | ~ssItem(sk11) | ~ssItem(sk12) | ~ssList(sk13) | (~spl0_4 | ~spl0_8)),
+  inference(superposition,[],[f306,f326])).
+fof(f326,plain,(
+  sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | ~spl0_8),
+  inference(avatar_component_clause,[],[f324])).
+fof(f306,plain,(
+  ( ! [X10,X11,X9] : (sk4 != app(app(cons(X9,nil),cons(X10,nil)),X11) | ~ssItem(X9) | ~ssItem(X10) | ~ssList(X11)) ) | ~spl0_4),
+  inference(avatar_component_clause,[],[f305])).
+fof(f408,plain,(
+  spl0_17 | spl0_8),
+  inference(avatar_split_clause,[],[f261,f324,f369])).
+fof(f261,plain,(
+  sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10)),
+  inference(definition_unfolding,[],[f241,f190])).
+fof(f190,axiom,(
+  sk2 = sk4),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f241,axiom,(
+  sk2 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f407,plain,(
+  spl0_16 | spl0_8),
+  inference(avatar_split_clause,[],[f260,f324,f364])).
+fof(f260,plain,(
+  sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10)),
+  inference(definition_unfolding,[],[f240,f190])).
+fof(f240,axiom,(
+  sk2 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f406,plain,(
+  spl0_15 | spl0_8),
+  inference(avatar_split_clause,[],[f259,f324,f359])).
+fof(f259,plain,(
+  sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | ssList(sk10)),
+  inference(definition_unfolding,[],[f239,f190])).
+fof(f239,axiom,(
+  sk2 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | ssList(sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f405,plain,(
+  spl0_17 | spl0_7),
+  inference(avatar_split_clause,[],[f238,f319,f369])).
+fof(f238,axiom,(
+  ssList(sk13) | sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f404,plain,(
+  spl0_16 | spl0_7),
+  inference(avatar_split_clause,[],[f237,f319,f364])).
+fof(f237,axiom,(
+  ssList(sk13) | sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f403,plain,(
+  spl0_15 | spl0_7),
+  inference(avatar_split_clause,[],[f236,f319,f359])).
+fof(f236,axiom,(
+  ssList(sk13) | ssList(sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f402,plain,(
+  spl0_14 | spl0_8),
+  inference(avatar_split_clause,[],[f258,f324,f354])).
+fof(f258,plain,(
+  sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | ssItem(sk9)),
+  inference(definition_unfolding,[],[f235,f190])).
+fof(f235,axiom,(
+  sk2 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | ssItem(sk9)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f401,plain,(
+  spl0_14 | spl0_7),
+  inference(avatar_split_clause,[],[f234,f319,f354])).
+fof(f234,axiom,(
+  ssList(sk13) | ssItem(sk9)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f400,plain,(
+  spl0_17 | spl0_6),
+  inference(avatar_split_clause,[],[f233,f314,f369])).
+fof(f233,axiom,(
+  ssItem(sk12) | sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f399,plain,(
+  spl0_16 | spl0_6),
+  inference(avatar_split_clause,[],[f232,f314,f364])).
+fof(f232,axiom,(
+  ssItem(sk12) | sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f398,plain,(
+  spl0_15 | spl0_6),
+  inference(avatar_split_clause,[],[f231,f314,f359])).
+fof(f231,axiom,(
+  ssItem(sk12) | ssList(sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f397,plain,(
+  spl0_14 | spl0_6),
+  inference(avatar_split_clause,[],[f230,f314,f354])).
+fof(f230,axiom,(
+  ssItem(sk12) | ssItem(sk9)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f396,plain,(
+  spl0_13 | spl0_8),
+  inference(avatar_split_clause,[],[f257,f324,f349])).
+fof(f257,plain,(
+  sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | ssItem(sk8)),
+  inference(definition_unfolding,[],[f229,f190])).
+fof(f229,axiom,(
+  sk2 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | ssItem(sk8)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f395,plain,(
+  spl0_13 | spl0_7),
+  inference(avatar_split_clause,[],[f228,f319,f349])).
+fof(f228,axiom,(
+  ssList(sk13) | ssItem(sk8)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f394,plain,(
+  spl0_13 | spl0_6),
+  inference(avatar_split_clause,[],[f227,f314,f349])).
+fof(f227,axiom,(
+  ssItem(sk12) | ssItem(sk8)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f393,plain,(
+  spl0_17 | spl0_5),
+  inference(avatar_split_clause,[],[f226,f309,f369])).
+fof(f226,axiom,(
+  ssItem(sk11) | sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f392,plain,(
+  spl0_16 | spl0_5),
+  inference(avatar_split_clause,[],[f225,f309,f364])).
+fof(f225,axiom,(
+  ssItem(sk11) | sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f391,plain,(
+  spl0_15 | spl0_5),
+  inference(avatar_split_clause,[],[f224,f309,f359])).
+fof(f224,axiom,(
+  ssItem(sk11) | ssList(sk10)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f390,plain,(
+  spl0_14 | spl0_5),
+  inference(avatar_split_clause,[],[f223,f309,f354])).
+fof(f223,axiom,(
+  ssItem(sk11) | ssItem(sk9)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f389,plain,(
+  spl0_13 | spl0_5),
+  inference(avatar_split_clause,[],[f222,f309,f349])).
+fof(f222,axiom,(
+  ssItem(sk11) | ssItem(sk8)),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f372,plain,(
+  spl0_17 | spl0_4),
+  inference(avatar_split_clause,[],[f205,f305,f369])).
+fof(f205,axiom,(
+  ( ! [X6,X8,X7] : (sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6) | sk3 = app(app(cons(sk9,nil),cons(sk8,nil)),sk10)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f367,plain,(
+  spl0_16 | spl0_4),
+  inference(avatar_split_clause,[],[f204,f305,f364])).
+fof(f204,axiom,(
+  ( ! [X6,X8,X7] : (sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6) | sk4 = app(app(cons(sk8,nil),cons(sk9,nil)),sk10)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f362,plain,(
+  spl0_15 | spl0_4),
+  inference(avatar_split_clause,[],[f203,f305,f359])).
+fof(f203,axiom,(
+  ( ! [X6,X8,X7] : (sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6) | ssList(sk10)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f357,plain,(
+  spl0_14 | spl0_4),
+  inference(avatar_split_clause,[],[f202,f305,f354])).
+fof(f202,axiom,(
+  ( ! [X6,X8,X7] : (sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6) | ssItem(sk9)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f352,plain,(
+  spl0_13 | spl0_4),
+  inference(avatar_split_clause,[],[f201,f305,f349])).
+fof(f201,axiom,(
+  ( ! [X6,X8,X7] : (sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6) | ssItem(sk8)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f327,plain,(
+  spl0_3 | spl0_8),
+  inference(avatar_split_clause,[],[f248,f324,f302])).
+fof(f248,plain,(
+  ( ! [X6,X8,X7] : (sk4 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | sk3 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  inference(definition_unfolding,[],[f196,f190,f191,f190])).
+fof(f191,axiom,(
+  sk1 = sk3),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f196,axiom,(
+  ( ! [X6,X8,X7] : (sk2 = app(app(cons(sk11,nil),cons(sk12,nil)),sk13) | sk1 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk2 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f322,plain,(
+  spl0_3 | spl0_7),
+  inference(avatar_split_clause,[],[f247,f319,f302])).
+fof(f247,plain,(
+  ( ! [X6,X8,X7] : (ssList(sk13) | sk3 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  inference(definition_unfolding,[],[f195,f191,f190])).
+fof(f195,axiom,(
+  ( ! [X6,X8,X7] : (ssList(sk13) | sk1 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk2 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f317,plain,(
+  spl0_3 | spl0_6),
+  inference(avatar_split_clause,[],[f246,f314,f302])).
+fof(f246,plain,(
+  ( ! [X6,X8,X7] : (ssItem(sk12) | sk3 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  inference(definition_unfolding,[],[f194,f191,f190])).
+fof(f194,axiom,(
+  ( ! [X6,X8,X7] : (ssItem(sk12) | sk1 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk2 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f312,plain,(
+  spl0_3 | spl0_5),
+  inference(avatar_split_clause,[],[f245,f309,f302])).
+fof(f245,plain,(
+  ( ! [X6,X8,X7] : (ssItem(sk11) | sk3 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  inference(definition_unfolding,[],[f193,f191,f190])).
+fof(f193,axiom,(
+  ( ! [X6,X8,X7] : (ssItem(sk11) | sk1 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk2 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+fof(f307,plain,(
+  spl0_3 | spl0_4),
+  inference(avatar_split_clause,[],[f244,f305,f302])).
+fof(f244,plain,(
+  ( ! [X6,X10,X8,X7,X11,X9] : (sk4 != app(app(cons(X9,nil),cons(X10,nil)),X11) | ~ssList(X11) | ~ssItem(X10) | ~ssItem(X9) | sk3 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk4 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  inference(definition_unfolding,[],[f192,f191,f190])).
+fof(f192,axiom,(
+  ( ! [X6,X10,X8,X7,X11,X9] : (sk4 != app(app(cons(X9,nil),cons(X10,nil)),X11) | ~ssList(X11) | ~ssItem(X10) | ~ssItem(X9) | sk1 != app(app(cons(X7,nil),cons(X6,nil)),X8) | sk2 != app(app(cons(X6,nil),cons(X7,nil)),X8) | ~ssList(X8) | ~ssItem(X7) | ~ssItem(X6)) )),
+  file('./p/SWC413-1.tptp',unknown)).
+% SZS output end Proof for SWC413-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 7803
+% Time elapsed: 0.030 s
+% ------------------------------
+% ------------------------------

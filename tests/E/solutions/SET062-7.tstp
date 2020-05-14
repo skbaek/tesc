@@ -1,0 +1,152 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_154, plain, (inductive(omega))).
+#
+#cnf(i_0_173, plain, (function(choice))).
+#
+#cnf(i_0_200, plain, (subclass(X1,X1))).
+#
+#cnf(i_0_207, plain, (~member(X1,null_class))).
+#
+#cnf(i_0_108, plain, (subclass(X1,universal_class))).
+#
+#cnf(i_0_175, plain, (function(X1)|~one_to_one(X1))).
+#
+#cnf(i_0_182, plain, (function(X1)|~operation(X1))).
+#
+#cnf(i_0_208, negated_conjecture, (~subclass(null_class,x))).
+#
+#cnf(i_0_156, plain, (member(omega,universal_class))).
+#
+#cnf(i_0_110, plain, (subclass(X2,X1)|X1!=X2)).
+##
+#cnf(i_0_209, negated_conjecture, (x!=null_class)).
+#
+#cnf(i_0_186, plain, (function(X1)|~compatible(X1,X2,X3))).
+#
+#cnf(i_0_191, plain, (operation(X3)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_190, plain, (operation(X2)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_206, plain, (~member(X1,intersection(complement(X2),X2)))).
+#
+#cnf(i_0_155, plain, (subclass(omega,X1)|~inductive(X1))).
+#
+#cnf(i_0_151, plain, (member(null_class,X1)|~inductive(X1))).
+#
+#cnf(i_0_115, plain, (member(unordered_pair(X1,X2),universal_class))).
+#
+#cnf(i_0_210, plain, (~inductive(null_class))).
+#
+#cnf(i_0_192, plain, (compatible(X1,X2,X3)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_170, plain, (X1=null_class|member(regular(X1),X1))).
+#
+#cnf(i_0_212, plain, (intersection(complement(X1),X1)=null_class)).
+##
+#cnf(i_0_122, plain, (subclass(element_relation,cross_product(universal_class,universal_class)))).
+#
+#cnf(i_0_148, plain, (subclass(successor_relation,cross_product(universal_class,universal_class)))).
+#
+#cnf(i_0_126, plain, (member(X1,X3)|~member(X1,intersection(X2,X3)))).
+#
+#cnf(i_0_128, plain, (~member(X1,complement(X2))|~member(X1,X2))).
+##
+#cnf(i_0_125, plain, (member(X1,X2)|~member(X1,intersection(X2,X3)))).
+#
+#cnf(i_0_107, plain, (subclass(X1,X2)|~member(not_subclass_element(X1,X2),X2))).
+#
+#cnf(i_0_217, plain, (~inductive(complement(X1))|~member(null_class,X1))).
+#
+#cnf(i_0_215, plain, (member(null_class,X1)|~inductive(intersection(X2,X1)))).
+##
+#cnf(i_0_220, plain, (member(null_class,X1)|~inductive(intersection(X1,X2)))).
+#
+#cnf(i_0_134, plain, (intersection(X1,cross_product(unordered_pair(X2,X2),universal_class))!=null_class|~member(X2,domain_of(X1)))).
+##
+#cnf(i_0_111, plain, (X1=X2|~subclass(X2,X1)|~subclass(X1,X2))).
+#
+#cnf(i_0_225, plain, (X1=universal_class|~subclass(universal_class,X1))).
+#
+#cnf(i_0_223, plain, (~member(X1,domain_of(complement(cross_product(unordered_pair(X1,X1),universal_class)))))).
+###
+#cnf(i_0_106, plain, (member(not_subclass_element(X1,X2),X1)|subclass(X1,X2))).
+#
+#cnf(i_0_231, plain, (~inductive(domain_of(complement(cross_product(unordered_pair(null_class,null_class),universal_class)))))).
+#
+#cnf(i_0_232, plain, (subclass(null_class,X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(existence_of_null_class, axiom, (~member(X1,null_class)), file('./p/SET062-7.tptp', existence_of_null_class)).
+cnf(not_subclass_members1, axiom, (member(not_subclass_element(X1,X2),X1)|subclass(X1,X2)), file('./p/SET062-7.tptp', not_subclass_members1)).
+cnf(prove_null_class_is_subclass_1, negated_conjecture, (~subclass(null_class,x)), file('./p/SET062-7.tptp', prove_null_class_is_subclass_1)).
+cnf(c_0_3, axiom, (~member(X1,null_class)), existence_of_null_class).
+cnf(c_0_4, axiom, (member(not_subclass_element(X1,X2),X1)|subclass(X1,X2)), not_subclass_members1).
+cnf(c_0_5, negated_conjecture, (~subclass(null_class,x)), prove_null_class_is_subclass_1).
+cnf(c_0_6, plain, (subclass(null_class,X1)), inference(pm,[status(thm)],[c_0_3, c_0_4])).
+cnf(c_0_7, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_5, c_0_6])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 8
+# Proof object clause steps            : 5
+# Proof object formula steps           : 3
+# Proof object conjectures             : 3
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 3
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 1
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 104
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 104
+# Removed in clause preprocessing      : 15
+# Initial clauses in saturation        : 89
+# Processed clauses                    : 45
+# ...of these trivial                  : 0
+# ...subsumed                          : 7
+# ...remaining for further processing  : 38
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 2
+# Generated clauses                    : 30
+# ...of the previous two non-trivial   : 25
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 30
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 36
+#    Positive orientable unit clauses  : 10
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 5
+#    Non-unit-clauses                  : 21
+# Current number of unprocessed clauses: 68
+# ...number of literals in the above   : 163
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 17
+# Clause-clause subsumption calls (NU) : 41
+# Rec. Clause-clause subsumption calls : 34
+# Non-unit clause-clause subsumptions  : 2
+# Unit Clause-clause subsumption calls : 17
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 2
+# BW rewrite match successes           : 2
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 4556

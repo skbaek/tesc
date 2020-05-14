@@ -1,0 +1,2800 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_21, plain, (model(X1,esk11_0))).
+#
+#cnf(i_0_38, negated_conjecture, (isa(esk29_0,esk30_0))).
+#
+#cnf(i_0_37, negated_conjecture, (isa(esk30_0,esk31_0))).
+#
+#cnf(i_0_24, plain, (~model(X1,esk15_0))).
+#
+#cnf(i_0_23, plain, (model(esk13_0,esk12_0))).
+#
+#cnf(i_0_27, plain, (model(esk18_0,esk16_0))).
+#
+#cnf(i_0_26, plain, (model(esk18_0,esk17_0))).
+#
+#cnf(i_0_36, negated_conjecture, (~isa(esk29_0,esk31_0))).
+#
+#cnf(i_0_32, plain, (model(esk22_0,esk20_0))).
+#
+#cnf(i_0_29, plain, (model(esk23_0,esk21_0))).
+#
+#cnf(i_0_35, plain, (model(esk25_0,esk26_0))).
+#
+#cnf(i_0_22, plain, (~model(esk14_0,esk12_0))).
+#
+#cnf(i_0_33, plain, (model(esk28_0,esk27_0))).
+#
+#cnf(i_0_31, plain, (model(X1,esk21_0)|~model(X1,esk20_0))).
+#
+#cnf(i_0_17, plain, (model(X1,not(X2))|model(X1,X2))).
+#
+#cnf(i_0_30, plain, (~model(esk23_0,esk20_0))).
+##
+#cnf(i_0_3, plain, (mighta(X3,X4)|~status(X1,X2,X4)|~status(X1,X2,X3))).
+#
+#cnf(i_0_4, plain, (status(X3,X4,X2)|~isa(X1,X2)|~status(X3,X4,X1))).
+#
+#cnf(i_0_28, plain, (~model(esk24_0,esk21_0))).
+#
+#cnf(i_0_9, plain, (nota(X3,X4)|status(X1,X2,X4)|~status(X1,X2,X3))).
+#
+#cnf(i_0_13, plain, (status(X1,X2,X4)|status(X1,X2,X3)|~xora(X3,X4))).
+#
+#cnf(i_0_48, plain, (status(X5,X6,X7)|~xora(X7,X7))).
+#
+#cnf(i_0_34, plain, (~model(esk25_0,esk27_0))).
+##
+#cnf(i_0_59, plain, (mighta(X1,X2)|~xora(X1,X1)|~status(X3,X4,X2))).
+#
+#cnf(i_0_65, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X2,X2))).
+#
+#cnf(i_0_42, plain, (~model(esk24_0,esk20_0))).
+#
+#cnf(i_0_60, plain, (mighta(X1,X2)|~xora(X2,X2)|~status(X3,X4,X1))).
+##
+#cnf(i_0_61, plain, (status(X1,X2,X3)|~xora(X4,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_18, plain, (~model(X1,not(X2))|~model(X1,X2))).
+#
+#cnf(i_0_58, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_5, plain, (isa(X1,X2)|~status(esk3_2(X1,X2),esk4_2(X1,X2),X2))).
+#
+#cnf(i_0_89, plain, (isa(X1,X2)|~xora(X2,X2))).
+##
+#cnf(i_0_90, plain, (isa(X1,X2)|~xora(X3,X3)|~isa(X3,X2))).
+##
+#cnf(i_0_86, plain, (nota(X3,X2)|isa(X1,X2)|~xora(X3,X3))).
+#
+#cnf(i_0_25, plain, (~model(esk19_0,esk16_0)|~model(esk19_0,esk17_0))).
+###
+#cnf(i_0_1, plain, (status(esk1_2(X1,X2),esk2_2(X1,X2),X2)|~mighta(X1,X2))).
+#
+#cnf(i_0_10, plain, (~nevera(X1,X2)|~status(X3,X4,X2)|~status(X3,X4,X1))).
+#
+#cnf(i_0_103, plain, (mighta(X1,X2)|~xora(X2,X2)|~mighta(X3,X1))).
+#
+#cnf(i_0_105, plain, (mighta(X1,X2)|~xora(X1,X1)|~mighta(X3,X2))).
+#
+#cnf(i_0_2, plain, (status(esk1_2(X1,X2),esk2_2(X1,X2),X1)|~mighta(X1,X2))).
+#
+#cnf(i_0_112, plain, (~xora(X1,X1)|~nevera(X1,X2)|~status(X3,X4,X2))).
+#
+#cnf(i_0_138, plain, (mighta(X1,X2)|~xora(X2,X2)|~mighta(X1,X3))).
+#
+#cnf(i_0_141, plain, (mighta(X1,X2)|~xora(X1,X1)|~mighta(X2,X3))).
+#
+#cnf(i_0_8, plain, (status(esk5_2(X1,X2),esk6_2(X1,X2),X1)|~nota(X1,X2))).
+#
+#cnf(i_0_143, plain, (~xora(X1,X1)|~nevera(X1,X2)|~mighta(X3,X2))).
+#
+#cnf(i_0_175, plain, (mighta(X1,X2)|~xora(X2,X2)|~nota(X1,X3))).
+#
+#cnf(i_0_178, plain, (mighta(X1,X2)|~xora(X1,X1)|~nota(X2,X3))).
+#
+#cnf(i_0_6, plain, (isa(X1,X2)|status(esk3_2(X1,X2),esk4_2(X1,X2),X1))).
+#
+#cnf(i_0_144, plain, (~xora(X1,X1)|~nevera(X1,X2)|~mighta(X2,X3))).
+#
+#cnf(i_0_214, plain, (isa(X1,X1))).
+#
+#cnf(i_0_212, plain, (isa(X2,X3)|~xora(X1,X1)|~nevera(X1,X2))).
+#
+#cnf(i_0_208, plain, (isa(X1,X3)|mighta(X1,X2)|~xora(X2,X2))).
+#
+#cnf(i_0_149, plain, (~xora(X1,X1)|~xora(X2,X2)|~nevera(X1,X2))).
+#
+#cnf(i_0_211, plain, (isa(X2,X3)|mighta(X1,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_11, plain, (nevera(X1,X2)|status(esk7_2(X1,X2),esk8_2(X1,X2),X2))).
+#
+#cnf(i_0_254, plain, (nevera(X3,X2)|~xora(X1,X1)|~nevera(X1,X2))).
+#
+#cnf(i_0_179, plain, (~xora(X1,X1)|~nevera(X1,X2)|~nota(X2,X3))).
+#
+#cnf(i_0_250, plain, (nevera(X3,X1)|mighta(X1,X2)|~xora(X2,X2))).
+#
+#cnf(i_0_253, plain, (nevera(X3,X2)|mighta(X1,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_12, plain, (nevera(X1,X2)|status(esk7_2(X1,X2),esk8_2(X1,X2),X1))).
+#
+#cnf(i_0_120, plain, (~xora(X2,X2)|~nevera(X1,X2)|~status(X3,X4,X1))).
+#
+#cnf(i_0_302, plain, (nevera(X2,X3)|~xora(X1,X1)|~nevera(X1,X2))).
+#
+#cnf(i_0_304, plain, (nevera(X3,X2)|~xora(X1,X1)|~nevera(X2,X1))).
+#
+#cnf(i_0_305, plain, (nevera(X2,X3)|~xora(X1,X1)|~nevera(X2,X1))).
+#
+#cnf(i_0_306, plain, (~xora(X1,X1)|~nevera(X2,X1)|~nota(X2,X3))).
+#
+#cnf(i_0_307, plain, (isa(X2,X3)|~xora(X1,X1)|~nevera(X2,X1))).
+#
+#cnf(i_0_298, plain, (nevera(X1,X3)|mighta(X1,X2)|~xora(X2,X2))).
+#
+#cnf(i_0_301, plain, (nevera(X2,X3)|mighta(X1,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_308, plain, (~xora(X1,X1)|~nevera(X2,X1)|~mighta(X3,X2))).
+#
+#cnf(i_0_74, plain, (mighta(X1,X2)|~xora(X2,X2)|~xora(X5,X5)|~isa(X5,X1))).
+#
+#cnf(i_0_76, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X5,X5)|~isa(X5,X2))).
+##
+#cnf(i_0_309, plain, (~xora(X1,X1)|~nevera(X2,X1)|~mighta(X2,X3))).
+########
+#cnf(i_0_14, plain, (~xora(X3,X4)|~status(X1,X2,X4)|~status(X1,X2,X3))).
+#
+#cnf(i_0_146, plain, (nota(X5,X2)|~xora(X1,X1)|~xora(X5,X5)|~nevera(X1,X2))).
+###
+#cnf(i_0_511, plain, (~xora(X1,X2)|~xora(X1,X1)|~status(X3,X4,X2))).
+#
+#cnf(i_0_539, plain, (nevera(X3,X2)|~xora(X1,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_540, plain, (nevera(X2,X3)|~xora(X1,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_542, plain, (isa(X2,X3)|~xora(X1,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_541, plain, (~xora(X1,X2)|~xora(X1,X1)|~nota(X2,X3))).
+####
+#cnf(i_0_543, plain, (~xora(X1,X2)|~xora(X1,X1)|~mighta(X3,X2))).
+####
+#cnf(i_0_544, plain, (~xora(X1,X2)|~xora(X1,X1)|~mighta(X2,X3))).
+####
+#cnf(i_0_549, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X2,X2))).
+####
+#cnf(i_0_524, plain, (~xora(X1,X2)|~xora(X2,X2)|~status(X3,X4,X1))).
+#
+#cnf(i_0_631, plain, (nevera(X3,X1)|~xora(X1,X2)|~xora(X2,X2))).
+#
+#cnf(i_0_632, plain, (nevera(X1,X3)|~xora(X1,X2)|~xora(X2,X2))).
+#
+#cnf(i_0_634, plain, (isa(X1,X3)|~xora(X1,X2)|~xora(X2,X2))).
+#
+#cnf(i_0_633, plain, (~xora(X1,X2)|~xora(X2,X2)|~nota(X1,X3))).
+####
+#cnf(i_0_635, plain, (~xora(X1,X2)|~xora(X2,X2)|~mighta(X3,X1))).
+####
+#cnf(i_0_636, plain, (~xora(X1,X2)|~xora(X2,X2)|~mighta(X1,X3))).
+########
+#cnf(i_0_7, plain, (~nota(X1,X2)|~status(esk5_2(X1,X2),esk6_2(X1,X2),X2))).
+#
+#cnf(i_0_724, plain, (nota(X3,X2)|~xora(X3,X3)|~nota(X1,X2))).
+###
+#cnf(i_0_730, plain, (~nota(X1,X1))).
+####
+#cnf(i_0_727, plain, (~xora(X2,X2)|~nota(X1,X2))).
+####
+#cnf(i_0_728, plain, (~xora(X3,X3)|~nota(X1,X2)|~isa(X3,X2))).
+############
+#cnf(i_0_150, plain, (~xora(X1,X1)|~xora(X5,X5)|~nevera(X1,X2)|~isa(X5,X2))).
+###
+#cnf(i_0_311, plain, (nota(X5,X2)|~xora(X1,X1)|~xora(X5,X5)|~nevera(X2,X1))).
+#########################################################################
+#cnf(i_0_315, plain, (~xora(X1,X1)|~xora(X5,X5)|~nevera(X2,X1)|~isa(X5,X2))).
+###########
+#cnf(i_0_546, plain, (nota(X5,X2)|~xora(X1,X2)|~xora(X1,X1)|~xora(X5,X5))).
+####################################
+#cnf(i_0_638, plain, (nota(X5,X1)|~xora(X1,X2)|~xora(X2,X2)|~xora(X5,X5))).
+##############################################
+#cnf(i_0_81, plain, (nota(X5,X1)|mighta(X1,X2)|~xora(X2,X2)|~xora(X5,X5))).
+##
+#cnf(i_0_83, plain, (nota(X5,X2)|mighta(X1,X2)|~xora(X1,X1)|~xora(X5,X5))).
+#############################################################
+#cnf(i_0_550, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X5,X5)|~isa(X5,X2))).
+##############
+#cnf(i_0_64, plain, (mighta(X1,X2)|~xora(X1,X1)|~isa(X5,X2)|~status(X3,X4,X5))).
+###
+#cnf(i_0_908, plain, (mighta(X1,X2)|~xora(X1,X1)|~nota(X3,X4)|~isa(X3,X2))).
+##
+#cnf(i_0_910, plain, (mighta(X1,X2)|~xora(X1,X1)|~isa(X3,X2)|~mighta(X4,X3))).
+###
+#cnf(i_0_911, plain, (mighta(X1,X2)|~xora(X1,X1)|~isa(X3,X2)|~mighta(X3,X4))).
+########
+#cnf(i_0_906, plain, (nevera(X4,X3)|mighta(X1,X2)|~xora(X1,X1)|~isa(X3,X2))).
+###
+#cnf(i_0_907, plain, (nevera(X3,X4)|mighta(X1,X2)|~xora(X1,X1)|~isa(X3,X2))).
+##
+#cnf(i_0_909, plain, (isa(X3,X4)|mighta(X1,X2)|~xora(X1,X1)|~isa(X3,X2))).
+#######
+#cnf(i_0_69, plain, (mighta(X1,X2)|~xora(X2,X2)|~isa(X5,X1)|~status(X3,X4,X5))).
+###
+#cnf(i_0_1197, plain, (mighta(X1,X2)|~xora(X2,X2)|~nota(X3,X4)|~isa(X3,X1))).
+##
+#cnf(i_0_1199, plain, (mighta(X1,X2)|~xora(X2,X2)|~isa(X3,X1)|~mighta(X4,X3))).
+###
+#cnf(i_0_1200, plain, (mighta(X1,X2)|~xora(X2,X2)|~isa(X3,X1)|~mighta(X3,X4))).
+########
+#cnf(i_0_1195, plain, (nevera(X4,X3)|mighta(X1,X2)|~xora(X2,X2)|~isa(X3,X1))).
+###
+#cnf(i_0_1196, plain, (nevera(X3,X4)|mighta(X1,X2)|~xora(X2,X2)|~isa(X3,X1))).
+##
+#cnf(i_0_1198, plain, (isa(X3,X4)|mighta(X1,X2)|~xora(X2,X2)|~isa(X3,X1))).
+#######
+#cnf(i_0_73, plain, (mighta(X1,X2)|~xora(X5,X5)|~isa(X5,X1)|~status(X3,X4,X2))).
+#
+#cnf(i_0_1528, plain, (mighta(X1,X2)|~xora(X3,X3)|~nota(X2,X4)|~isa(X3,X1))).
+##
+#cnf(i_0_1530, plain, (mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X1)|~mighta(X4,X2))).
+#
+#cnf(i_0_1531, plain, (mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X1)|~mighta(X2,X4))).
+#######
+#cnf(i_0_1526, plain, (nevera(X4,X2)|mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X1))).
+#
+#cnf(i_0_1527, plain, (nevera(X2,X4)|mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X1))).
+#
+#cnf(i_0_1529, plain, (isa(X2,X4)|mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X1))).
+######
+#cnf(i_0_75, plain, (mighta(X1,X2)|~xora(X5,X5)|~isa(X5,X2)|~status(X3,X4,X1))).
+#
+#cnf(i_0_1894, plain, (mighta(X1,X2)|~xora(X3,X3)|~nota(X1,X4)|~isa(X3,X2))).
+#
+#cnf(i_0_1896, plain, (mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X2)|~mighta(X4,X1))).
+##
+#cnf(i_0_1897, plain, (mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X2)|~mighta(X1,X4))).
+######
+#cnf(i_0_1892, plain, (nevera(X4,X1)|mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X2))).
+##
+#cnf(i_0_1893, plain, (nevera(X1,X4)|mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X2))).
+#
+#cnf(i_0_1895, plain, (isa(X1,X4)|mighta(X1,X2)|~xora(X3,X3)|~isa(X3,X2))).
+#####
+#cnf(i_0_109, plain, (nota(X5,X1)|~xora(X5,X5)|~nevera(X1,X2)|~status(X3,X4,X2))).
+##
+#cnf(i_0_2295, plain, (nota(X1,X2)|~xora(X1,X1)|~nevera(X2,X3)|~nota(X3,X4))).
+#
+#cnf(i_0_2297, plain, (nota(X1,X2)|~xora(X1,X1)|~nevera(X2,X3)|~mighta(X4,X3))).
+#
+#cnf(i_0_2298, plain, (nota(X1,X2)|~xora(X1,X1)|~nevera(X2,X3)|~mighta(X3,X4))).
+###
+#cnf(i_0_2293, plain, (nevera(X4,X3)|nota(X1,X2)|~xora(X1,X1)|~nevera(X2,X3))).
+##
+#cnf(i_0_642, plain, (~xora(X1,X2)|~xora(X2,X2)|~xora(X5,X5)|~isa(X5,X1))).
+#
+#cnf(i_0_2294, plain, (nevera(X3,X4)|nota(X1,X2)|~xora(X1,X1)|~nevera(X2,X3))).
+##
+#cnf(i_0_2296, plain, (nota(X1,X2)|isa(X3,X4)|~xora(X1,X1)|~nevera(X2,X3))).
+###
+#cnf(i_0_117, plain, (nota(X5,X2)|~xora(X5,X5)|~nevera(X1,X2)|~status(X3,X4,X1))).
+#
+#cnf(i_0_2758, plain, (nota(X1,X2)|~xora(X1,X1)|~nevera(X3,X2)|~nota(X3,X4))).
+##
+#cnf(i_0_2760, plain, (nota(X1,X2)|~xora(X1,X1)|~nevera(X3,X2)|~mighta(X4,X3))).
+#
+#cnf(i_0_2761, plain, (nota(X1,X2)|~xora(X1,X1)|~nevera(X3,X2)|~mighta(X3,X4))).
+###
+#cnf(i_0_2756, plain, (nevera(X4,X3)|nota(X1,X2)|~xora(X1,X1)|~nevera(X3,X2))).
+##
+#cnf(i_0_2757, plain, (nevera(X3,X4)|nota(X1,X2)|~xora(X1,X1)|~nevera(X3,X2))).
+###
+#cnf(i_0_2759, plain, (nota(X1,X2)|isa(X3,X4)|~xora(X1,X1)|~nevera(X3,X2))).
+########
+#cnf(i_0_145, plain, (nota(X5,X2)|~xora(X1,X1)|~nevera(X1,X2)|~status(X3,X4,X5))).
+#
+#cnf(i_0_3251, plain, (nota(X1,X2)|~xora(X3,X3)|~nevera(X3,X2)|~nota(X1,X4))).
+##
+#cnf(i_0_3253, plain, (nota(X1,X2)|~xora(X3,X3)|~nevera(X3,X2)|~mighta(X4,X1))).
+#
+#cnf(i_0_3254, plain, (nota(X1,X2)|~xora(X3,X3)|~nevera(X3,X2)|~mighta(X1,X4))).
+###
+#cnf(i_0_3249, plain, (nevera(X4,X1)|nota(X1,X2)|~xora(X3,X3)|~nevera(X3,X2))).
+####
+#cnf(i_0_3250, plain, (nevera(X1,X4)|nota(X1,X2)|~xora(X3,X3)|~nevera(X3,X2))).
+####
+#cnf(i_0_3252, plain, (nota(X1,X2)|isa(X1,X4)|~xora(X3,X3)|~nevera(X3,X2))).
+############
+#cnf(i_0_310, plain, (nota(X5,X2)|~xora(X1,X1)|~nevera(X2,X1)|~status(X3,X4,X5))).
+#
+#cnf(i_0_3792, plain, (nota(X1,X2)|~xora(X3,X3)|~nevera(X2,X3)|~nota(X1,X4))).
+#
+#cnf(i_0_3794, plain, (nota(X1,X2)|~xora(X3,X3)|~nevera(X2,X3)|~mighta(X4,X1))).
+##
+#cnf(i_0_3795, plain, (nota(X1,X2)|~xora(X3,X3)|~nevera(X2,X3)|~mighta(X1,X4))).
+##
+#cnf(i_0_3790, plain, (nevera(X4,X1)|nota(X1,X2)|~xora(X3,X3)|~nevera(X2,X3))).
+####
+#cnf(i_0_3791, plain, (nevera(X1,X4)|nota(X1,X2)|~xora(X3,X3)|~nevera(X2,X3))).
+####
+#cnf(i_0_3793, plain, (nota(X1,X2)|isa(X1,X4)|~xora(X3,X3)|~nevera(X2,X3))).
+############
+#cnf(i_0_508, plain, (nota(X5,X1)|~xora(X1,X2)|~xora(X5,X5)|~status(X3,X4,X2))).
+##
+#cnf(i_0_4374, plain, (nota(X1,X2)|~xora(X2,X3)|~xora(X1,X1)|~nota(X3,X4))).
+#
+#cnf(i_0_4376, plain, (nota(X1,X2)|~xora(X2,X3)|~xora(X1,X1)|~mighta(X4,X3))).
+#
+#cnf(i_0_4377, plain, (nota(X1,X2)|~xora(X2,X3)|~xora(X1,X1)|~mighta(X3,X4))).
+###
+#cnf(i_0_4372, plain, (nevera(X4,X3)|nota(X1,X2)|~xora(X2,X3)|~xora(X1,X1))).
+###
+#cnf(i_0_4373, plain, (nevera(X3,X4)|nota(X1,X2)|~xora(X2,X3)|~xora(X1,X1))).
+##
+#cnf(i_0_4375, plain, (nota(X1,X2)|isa(X3,X4)|~xora(X2,X3)|~xora(X1,X1))).
+###
+#cnf(i_0_521, plain, (nota(X5,X2)|~xora(X1,X2)|~xora(X5,X5)|~status(X3,X4,X1))).
+#
+#cnf(i_0_4782, plain, (nota(X1,X2)|~xora(X3,X2)|~xora(X1,X1)|~nota(X3,X4))).
+##
+#cnf(i_0_4784, plain, (nota(X1,X2)|~xora(X3,X2)|~xora(X1,X1)|~mighta(X4,X3))).
+#
+#cnf(i_0_4785, plain, (nota(X1,X2)|~xora(X3,X2)|~xora(X1,X1)|~mighta(X3,X4))).
+###
+#cnf(i_0_4780, plain, (nevera(X4,X3)|nota(X1,X2)|~xora(X3,X2)|~xora(X1,X1))).
+##
+#cnf(i_0_4781, plain, (nevera(X3,X4)|nota(X1,X2)|~xora(X3,X2)|~xora(X1,X1))).
+###
+#cnf(i_0_4783, plain, (nota(X1,X2)|isa(X3,X4)|~xora(X3,X2)|~xora(X1,X1))).
+###
+#cnf(i_0_545, plain, (nota(X5,X2)|~xora(X1,X2)|~xora(X1,X1)|~status(X3,X4,X5))).
+#
+#cnf(i_0_5205, plain, (nota(X1,X2)|~xora(X3,X2)|~xora(X3,X3)|~nota(X1,X4))).
+#
+#cnf(i_0_5207, plain, (nota(X1,X2)|~xora(X3,X2)|~xora(X3,X3)|~mighta(X4,X1))).
+##
+#cnf(i_0_5208, plain, (nota(X1,X2)|~xora(X3,X2)|~xora(X3,X3)|~mighta(X1,X4))).
+##
+#cnf(i_0_5203, plain, (nevera(X4,X1)|nota(X1,X2)|~xora(X3,X2)|~xora(X3,X3))).
+####
+#cnf(i_0_5204, plain, (nevera(X1,X4)|nota(X1,X2)|~xora(X3,X2)|~xora(X3,X3))).
+####
+#cnf(i_0_5206, plain, (nota(X1,X2)|isa(X1,X4)|~xora(X3,X2)|~xora(X3,X3))).
+####
+#cnf(i_0_637, plain, (nota(X5,X1)|~xora(X1,X2)|~xora(X2,X2)|~status(X3,X4,X5))).
+##
+#cnf(i_0_5648, plain, (nota(X1,X2)|~xora(X2,X3)|~xora(X3,X3)|~nota(X1,X4))).
+#
+#cnf(i_0_5650, plain, (nota(X1,X2)|~xora(X2,X3)|~xora(X3,X3)|~mighta(X4,X1))).
+#
+#cnf(i_0_5651, plain, (nota(X1,X2)|~xora(X2,X3)|~xora(X3,X3)|~mighta(X1,X4))).
+###
+#cnf(i_0_5646, plain, (nevera(X4,X1)|nota(X1,X2)|~xora(X2,X3)|~xora(X3,X3))).
+####
+#cnf(i_0_5647, plain, (nevera(X1,X4)|nota(X1,X2)|~xora(X2,X3)|~xora(X3,X3))).
+####
+#cnf(i_0_5649, plain, (nota(X1,X2)|isa(X1,X4)|~xora(X2,X3)|~xora(X3,X3))).
+#########
+#cnf(i_0_77, plain, (status(X1,X2,X3)|~xora(X5,X5)|~isa(X4,X3)|~isa(X5,X4))).
+###
+#cnf(i_0_6082, plain, (isa(X1,X2)|~xora(X3,X3)|~isa(X4,X2)|~isa(X3,X4))).
+#######
+#cnf(i_0_147, plain, (status(X3,X4,X5)|~xora(X1,X1)|~xora(X5,X2)|~nevera(X1,X2))).
+#
+#cnf(i_0_6238, plain, (isa(X1,X2)|~xora(X3,X3)|~xora(X2,X4)|~nevera(X3,X4))).
+#
+#cnf(i_0_151, plain, (status(X3,X4,X5)|~xora(X1,X1)|~xora(X2,X5)|~nevera(X1,X2))).
+##
+#cnf(i_0_6380, plain, (isa(X1,X2)|~xora(X3,X3)|~xora(X4,X2)|~nevera(X3,X4))).
+####
+#cnf(i_0_312, plain, (status(X3,X4,X5)|~xora(X1,X1)|~xora(X5,X2)|~nevera(X2,X1))).
+#
+#cnf(i_0_6522, plain, (isa(X1,X2)|~xora(X3,X3)|~xora(X2,X4)|~nevera(X4,X3))).
+#
+#cnf(i_0_316, plain, (status(X3,X4,X5)|~xora(X1,X1)|~xora(X2,X5)|~nevera(X2,X1))).
+##
+#cnf(i_0_6664, plain, (isa(X1,X2)|~xora(X3,X3)|~xora(X4,X2)|~nevera(X4,X3))).
+####
+#cnf(i_0_547, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X1,X1)|~xora(X5,X2))).
+#
+#cnf(i_0_6806, plain, (isa(X1,X2)|~xora(X3,X4)|~xora(X3,X3)|~xora(X2,X4))).
+#
+#cnf(i_0_551, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X1,X1)|~xora(X2,X5))).
+##
+#cnf(i_0_6876, plain, (isa(X1,X2)|~xora(X3,X4)|~xora(X3,X3)|~xora(X4,X2))).
+####
+#cnf(i_0_639, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X2,X2)|~xora(X5,X1))).
+#
+#cnf(i_0_6946, plain, (isa(X1,X2)|~xora(X3,X4)|~xora(X4,X4)|~xora(X2,X3))).
+#
+#cnf(i_0_643, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X2,X2)|~xora(X1,X5))).
+##
+#cnf(i_0_7016, plain, (isa(X1,X2)|~xora(X3,X4)|~xora(X4,X4)|~xora(X3,X2))).
+########
+#cnf(i_0_62, plain, (nota(X5,X2)|mighta(X1,X2)|~xora(X1,X1)|~status(X3,X4,X5))).
+##
+#cnf(i_0_7145, plain, (nota(X1,X2)|mighta(X3,X2)|~xora(X3,X3)|~nota(X1,X4))).
+####
+#cnf(i_0_7147, plain, (nota(X1,X2)|mighta(X3,X2)|~xora(X3,X3)|~mighta(X4,X1))).
+####
+#cnf(i_0_7148, plain, (nota(X1,X2)|mighta(X3,X2)|~xora(X3,X3)|~mighta(X1,X4))).
+######
+#cnf(i_0_7143, plain, (nevera(X4,X1)|nota(X1,X2)|mighta(X3,X2)|~xora(X3,X3))).
+####
+#cnf(i_0_7144, plain, (nevera(X1,X4)|nota(X1,X2)|mighta(X3,X2)|~xora(X3,X3))).
+####
+#cnf(i_0_7146, plain, (nota(X1,X2)|isa(X1,X4)|mighta(X3,X2)|~xora(X3,X3))).
+#####
+#cnf(i_0_67, plain, (nota(X5,X1)|mighta(X1,X2)|~xora(X2,X2)|~status(X3,X4,X5))).
+###
+#cnf(i_0_7913, plain, (nota(X1,X2)|mighta(X2,X3)|~xora(X3,X3)|~nota(X1,X4))).
+####
+#cnf(i_0_7915, plain, (nota(X1,X2)|mighta(X2,X3)|~xora(X3,X3)|~mighta(X4,X1))).
+####
+#cnf(i_0_7916, plain, (nota(X1,X2)|mighta(X2,X3)|~xora(X3,X3)|~mighta(X1,X4))).
+#####
+#cnf(i_0_7911, plain, (nevera(X4,X1)|nota(X1,X2)|mighta(X2,X3)|~xora(X3,X3))).
+####
+#cnf(i_0_7912, plain, (nevera(X1,X4)|nota(X1,X2)|mighta(X2,X3)|~xora(X3,X3))).
+####
+#cnf(i_0_7914, plain, (nota(X1,X2)|isa(X1,X4)|mighta(X2,X3)|~xora(X3,X3))).
+#####
+#cnf(i_0_80, plain, (nota(X5,X1)|mighta(X1,X2)|~xora(X5,X5)|~status(X3,X4,X2))).
+##
+#cnf(i_0_8722, plain, (nota(X1,X2)|mighta(X2,X3)|~xora(X1,X1)|~nota(X3,X4))).
+##
+#cnf(i_0_8724, plain, (nota(X1,X2)|mighta(X2,X3)|~xora(X1,X1)|~mighta(X4,X3))).
+###
+#cnf(i_0_8725, plain, (nota(X1,X2)|mighta(X2,X3)|~xora(X1,X1)|~mighta(X3,X4))).
+####
+#cnf(i_0_8720, plain, (nevera(X4,X3)|nota(X1,X2)|mighta(X2,X3)|~xora(X1,X1))).
+###
+#cnf(i_0_8721, plain, (nevera(X3,X4)|nota(X1,X2)|mighta(X2,X3)|~xora(X1,X1))).
+##
+#cnf(i_0_8723, plain, (nota(X1,X2)|isa(X3,X4)|mighta(X2,X3)|~xora(X1,X1))).
+####
+#cnf(i_0_82, plain, (nota(X5,X2)|mighta(X1,X2)|~xora(X5,X5)|~status(X3,X4,X1))).
+##
+#cnf(i_0_9567, plain, (nota(X1,X2)|mighta(X3,X2)|~xora(X1,X1)|~nota(X3,X4))).
+##
+#cnf(i_0_9569, plain, (nota(X1,X2)|mighta(X3,X2)|~xora(X1,X1)|~mighta(X4,X3))).
+###
+#cnf(i_0_9570, plain, (nota(X1,X2)|mighta(X3,X2)|~xora(X1,X1)|~mighta(X3,X4))).
+####
+#cnf(i_0_9565, plain, (nevera(X4,X3)|nota(X1,X2)|mighta(X3,X2)|~xora(X1,X1))).
+###
+#cnf(i_0_9566, plain, (nevera(X3,X4)|nota(X1,X2)|mighta(X3,X2)|~xora(X1,X1))).
+##
+#cnf(i_0_9568, plain, (nota(X1,X2)|isa(X3,X4)|mighta(X3,X2)|~xora(X1,X1))).
+####
+#cnf(i_0_63, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X1,X1)|~xora(X5,X2))).
+##
+#cnf(i_0_10383, plain, (mighta(X3,X4)|~xora(X3,X3)|~xora(X2,X4)|~nota(X1,X2))).
+#
+#cnf(i_0_10384, plain, (isa(X1,X2)|mighta(X3,X4)|~xora(X3,X3)|~xora(X2,X4))).
+#
+#cnf(i_0_66, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X1,X1)|~xora(X2,X5))).
+##
+#cnf(i_0_10683, plain, (mighta(X3,X4)|~xora(X3,X3)|~xora(X4,X2)|~nota(X1,X2))).
+#
+#cnf(i_0_10684, plain, (isa(X1,X2)|mighta(X3,X4)|~xora(X3,X3)|~xora(X4,X2))).
+#
+#cnf(i_0_68, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X2,X2)|~xora(X5,X1))).
+##
+#cnf(i_0_10983, plain, (mighta(X3,X4)|~xora(X4,X4)|~xora(X2,X3)|~nota(X1,X2))).
+#
+#cnf(i_0_10984, plain, (isa(X1,X2)|mighta(X3,X4)|~xora(X4,X4)|~xora(X2,X3))).
+#
+#cnf(i_0_71, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X2,X2)|~xora(X1,X5))).
+##
+#cnf(i_0_11283, plain, (mighta(X3,X4)|~xora(X4,X4)|~xora(X3,X2)|~nota(X1,X2))).
+#
+#cnf(i_0_11284, plain, (isa(X1,X2)|mighta(X3,X4)|~xora(X4,X4)|~xora(X3,X2))).
+#
+#cnf(i_0_72, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X5,X5)|~isa(X5,X1))).
+###
+#cnf(i_0_11583, plain, (nota(X3,X2)|~xora(X4,X4)|~nota(X1,X2)|~isa(X4,X3))).
+###
+#cnf(i_0_11584, plain, (nota(X3,X2)|isa(X1,X2)|~xora(X4,X4)|~isa(X4,X3))).
+######
+#cnf(i_0_84, plain, (nota(X5,X4)|status(X1,X2,X3)|~xora(X5,X5)|~isa(X4,X3))).
+###
+#cnf(i_0_11961, plain, (nota(X3,X4)|~xora(X3,X3)|~nota(X1,X2)|~isa(X4,X2))).
+####
+#cnf(i_0_11962, plain, (nota(X3,X4)|isa(X1,X2)|~xora(X3,X3)|~isa(X4,X2))).
+#################
+#cnf(i_0_79, plain, (nota(X1,X2)|nota(X5,X1)|status(X3,X4,X2)|~xora(X5,X5))).
+###
+#cnf(i_0_12351, plain, (nota(X3,X2)|nota(X4,X3)|~xora(X4,X4)|~nota(X1,X2))).
+##
+#cnf(i_0_6081, plain, (~xora(X3,X3)|~nota(X1,X2)|~isa(X4,X2)|~isa(X3,X4))).
+###
+#cnf(i_0_12352, plain, (nota(X3,X2)|nota(X4,X3)|isa(X1,X2)|~xora(X4,X4))).
+#####
+#cnf(i_0_6237, plain, (~xora(X3,X3)|~xora(X2,X4)|~nevera(X3,X4)|~nota(X1,X2))).
+###
+#cnf(i_0_39, plain, (mighta(X1,X2)|~isa(X5,X1)|~status(X3,X4,X2)|~status(X3,X4,X5))).
+#
+#cnf(i_0_6379, plain, (~xora(X3,X3)|~xora(X4,X2)|~nevera(X3,X4)|~nota(X1,X2))).
+####
+#cnf(i_0_6521, plain, (~xora(X3,X3)|~xora(X2,X4)|~nevera(X4,X3)|~nota(X1,X2))).
+#
+#cnf(i_0_40, plain, (mighta(X1,X2)|~isa(X5,X2)|~status(X3,X4,X1)|~status(X3,X4,X5))).
+###
+#cnf(i_0_6663, plain, (~xora(X3,X3)|~xora(X4,X2)|~nevera(X4,X3)|~nota(X1,X2))).
+##
+#cnf(i_0_108, plain, (nota(X5,X1)|~nevera(X1,X2)|~status(X3,X4,X2)|~status(X3,X4,X5))).
+####
+#cnf(i_0_116, plain, (nota(X5,X2)|~nevera(X1,X2)|~status(X3,X4,X1)|~status(X3,X4,X5))).
+######
+#cnf(i_0_6805, plain, (~xora(X3,X4)|~xora(X3,X3)|~xora(X2,X4)|~nota(X1,X2))).
+####
+#cnf(i_0_6875, plain, (~xora(X3,X4)|~xora(X3,X3)|~xora(X4,X2)|~nota(X1,X2))).
+####
+#cnf(i_0_6945, plain, (~xora(X3,X4)|~xora(X4,X4)|~xora(X2,X3)|~nota(X1,X2))).
+#
+#cnf(i_0_507, plain, (nota(X5,X1)|~xora(X1,X2)|~status(X3,X4,X2)|~status(X3,X4,X5))).
+####
+#cnf(i_0_520, plain, (nota(X5,X2)|~xora(X1,X2)|~status(X3,X4,X1)|~status(X3,X4,X5))).
+######
+#cnf(i_0_41, plain, (status(X1,X2,X3)|~isa(X4,X3)|~isa(X5,X4)|~status(X1,X2,X5))).
+#
+#cnf(i_0_7015, plain, (~xora(X3,X4)|~xora(X4,X4)|~xora(X3,X2)|~nota(X1,X2))).
+######
+#cnf(i_0_110, plain, (status(X3,X4,X5)|~xora(X5,X1)|~nevera(X1,X2)|~status(X3,X4,X2))).
+###
+#cnf(i_0_114, plain, (status(X3,X4,X5)|~xora(X1,X5)|~nevera(X1,X2)|~status(X3,X4,X2))).
+##
+#cnf(i_0_118, plain, (status(X3,X4,X5)|~xora(X5,X2)|~nevera(X1,X2)|~status(X3,X4,X1))).
+###
+#cnf(i_0_122, plain, (status(X3,X4,X5)|~xora(X2,X5)|~nevera(X1,X2)|~status(X3,X4,X1))).
+######
+#cnf(i_0_113, plain, (~xora(X5,X5)|~nevera(X1,X2)|~isa(X5,X1)|~status(X3,X4,X2))).
+#
+#cnf(i_0_15365, plain, (nevera(X4,X3)|~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X2))).
+#
+#cnf(i_0_15366, plain, (nevera(X3,X4)|~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X2))).
+#
+#cnf(i_0_15368, plain, (isa(X3,X4)|~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X2))).
+#
+#cnf(i_0_15367, plain, (~xora(X1,X1)|~nevera(X2,X3)|~nota(X3,X4)|~isa(X1,X2))).
+####
+#cnf(i_0_15369, plain, (~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X2)|~mighta(X4,X3))).
+##
+#cnf(i_0_509, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X5,X1)|~status(X3,X4,X2))).
+##
+#cnf(i_0_15370, plain, (~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X2)|~mighta(X3,X4))).
+#
+#cnf(i_0_513, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X1,X5)|~status(X3,X4,X2))).
+##
+#cnf(i_0_522, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X5,X2)|~status(X3,X4,X1))).
+###
+#cnf(i_0_526, plain, (status(X3,X4,X5)|~xora(X1,X2)|~xora(X2,X5)|~status(X3,X4,X1))).
+############
+#cnf(i_0_88, plain, (isa(X1,X2)|~isa(X3,X2)|~status(esk3_2(X1,X2),esk4_2(X1,X2),X3))).
+##
+#cnf(i_0_121, plain, (~xora(X5,X5)|~nevera(X1,X2)|~isa(X5,X2)|~status(X3,X4,X1))).
+##
+#cnf(i_0_16876, plain, (nevera(X4,X2)|~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X3))).
+#
+#cnf(i_0_16877, plain, (nevera(X2,X4)|~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X3))).
+#
+#cnf(i_0_16878, plain, (~xora(X1,X1)|~nevera(X2,X3)|~nota(X2,X4)|~isa(X1,X3))).
+#
+#cnf(i_0_16879, plain, (isa(X2,X4)|~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X3))).
+###
+#cnf(i_0_16880, plain, (~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X3)|~mighta(X4,X2))).
+###
+#cnf(i_0_102, plain, (mighta(X1,X2)|~mighta(X3,X1)|~status(esk1_2(X3,X1),esk2_2(X3,X1),X2))).
+#
+#cnf(i_0_16881, plain, (~xora(X1,X1)|~nevera(X2,X3)|~isa(X1,X3)|~mighta(X2,X4))).
+#
+#cnf(i_0_17899, plain, (mighta(X1,X1)|~mighta(X2,X1))).
+#
+#cnf(i_0_17900, plain, (mighta(X1,X2)|~mighta(X2,X1))).
+###
+#cnf(i_0_18269, plain, (mighta(X1,X1)|~mighta(X1,X2))).
+#########
+#cnf(i_0_18138, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X1,X1))).
+#
+#cnf(i_0_18147, plain, (mighta(X1,X1)|~xora(X1,X1)|~mighta(X3,X2))).
+###
+#cnf(i_0_18151, plain, (mighta(X1,X1)|~xora(X1,X1)|~nota(X2,X3))).
+####################
+#cnf(i_0_18152, plain, (mighta(X1,X1)|~xora(X2,X2)|~nota(X1,X3))).
+#
+#cnf(i_0_18202, plain, (isa(X2,X3)|mighta(X1,X1)|~xora(X1,X1))).
+##
+#cnf(i_0_18203, plain, (nevera(X2,X3)|mighta(X1,X1)|~xora(X1,X1))).
+##################################
+#cnf(i_0_18181, plain, (isa(X1,X3)|mighta(X1,X1)|~xora(X2,X2))).
+##
+#cnf(i_0_18182, plain, (nevera(X1,X3)|mighta(X1,X1)|~xora(X2,X2))).
+#
+#cnf(i_0_18188, plain, (nevera(X3,X1)|mighta(X1,X1)|~xora(X2,X2))).
+#########################
+#cnf(i_0_18135, plain, (mighta(X1,X1)|~xora(X1,X1)|~status(X3,X4,X2))).
+############
+#cnf(i_0_18134, plain, (mighta(X1,X1)|~xora(X2,X2)|~status(X3,X4,X1))).
+###################
+#cnf(i_0_18131, plain, (mighta(X1,X1)|~status(X3,X4,X1)|~status(X3,X4,X2))).
+##############################################################
+#cnf(i_0_148, plain, (~xora(X1,X1)|~nevera(X1,X2)|~isa(X5,X2)|~status(X3,X4,X5))).
+########
+#cnf(i_0_19660, plain, (~xora(X1,X1)|~nevera(X1,X2)|~nota(X3,X4)|~isa(X3,X2))).
+########
+#cnf(i_0_19662, plain, (~xora(X1,X1)|~nevera(X1,X2)|~isa(X3,X2)|~mighta(X4,X3))).
+########
+#cnf(i_0_19663, plain, (~xora(X1,X1)|~nevera(X1,X2)|~isa(X3,X2)|~mighta(X3,X4))).
+###########
+#cnf(i_0_18146, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X3,X3)|~isa(X3,X1))).
+###
+#cnf(i_0_18153, plain, (mighta(X1,X1)|~xora(X2,X2)|~isa(X3,X1)|~mighta(X3,X4))).
+###
+#cnf(i_0_18154, plain, (mighta(X1,X1)|~xora(X2,X2)|~isa(X3,X1)|~mighta(X4,X3))).
+##
+#cnf(i_0_18155, plain, (mighta(X1,X1)|~xora(X2,X2)|~nota(X3,X4)|~isa(X3,X1))).
+#######
+#cnf(i_0_18162, plain, (mighta(X1,X1)|~xora(X3,X3)|~nota(X2,X4)|~isa(X3,X1))).
+###
+#cnf(i_0_18163, plain, (mighta(X1,X1)|~xora(X3,X3)|~isa(X3,X1)|~mighta(X4,X2))).
+####
+#cnf(i_0_18165, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X3,X1)|~nota(X4,X3))).
+#
+#cnf(i_0_18166, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X1,X3)|~nota(X4,X3))).
+##################################
+#cnf(i_0_313, plain, (~xora(X1,X1)|~nevera(X2,X1)|~isa(X5,X2)|~status(X3,X4,X5))).
+########
+#cnf(i_0_21857, plain, (~xora(X1,X1)|~nevera(X2,X1)|~nota(X3,X4)|~isa(X3,X2))).
+########
+#cnf(i_0_21859, plain, (~xora(X1,X1)|~nevera(X2,X1)|~isa(X3,X2)|~mighta(X4,X3))).
+########
+#cnf(i_0_21860, plain, (~xora(X1,X1)|~nevera(X2,X1)|~isa(X3,X2)|~mighta(X3,X4))).
+############################################################################################
+#cnf(i_0_512, plain, (~xora(X1,X2)|~xora(X5,X5)|~isa(X5,X1)|~status(X3,X4,X2))).
+####
+#cnf(i_0_22607, plain, (~xora(X1,X2)|~xora(X3,X3)|~nota(X2,X4)|~isa(X3,X1))).
+####
+#cnf(i_0_22609, plain, (~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X1)|~mighta(X4,X2))).
+####
+#cnf(i_0_22610, plain, (~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X1)|~mighta(X2,X4))).
+############################################
+#cnf(i_0_525, plain, (~xora(X1,X2)|~xora(X5,X5)|~isa(X5,X2)|~status(X3,X4,X1))).
+####
+#cnf(i_0_23149, plain, (~xora(X1,X2)|~xora(X3,X3)|~nota(X1,X4)|~isa(X3,X2))).
+#
+#cnf(i_0_19658, plain, (nevera(X4,X3)|~xora(X1,X1)|~nevera(X1,X2)|~isa(X3,X2))).
+##
+#cnf(i_0_19659, plain, (nevera(X3,X4)|~xora(X1,X1)|~nevera(X1,X2)|~isa(X3,X2))).
+#
+#cnf(i_0_23151, plain, (~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X2)|~mighta(X4,X1))).
+##
+#cnf(i_0_19661, plain, (isa(X3,X4)|~xora(X1,X1)|~nevera(X1,X2)|~isa(X3,X2))).
+##
+#cnf(i_0_23152, plain, (~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X2)|~mighta(X1,X4))).
+############################################
+#cnf(i_0_548, plain, (~xora(X1,X2)|~xora(X1,X1)|~isa(X5,X2)|~status(X3,X4,X5))).
+#
+#cnf(i_0_21855, plain, (nevera(X4,X3)|~xora(X1,X1)|~nevera(X2,X1)|~isa(X3,X2))).
+##
+#cnf(i_0_21856, plain, (nevera(X3,X4)|~xora(X1,X1)|~nevera(X2,X1)|~isa(X3,X2))).
+###
+#cnf(i_0_21858, plain, (isa(X3,X4)|~xora(X1,X1)|~nevera(X2,X1)|~isa(X3,X2))).
+##
+#cnf(i_0_24257, plain, (~xora(X1,X2)|~xora(X1,X1)|~nota(X3,X4)|~isa(X3,X2))).
+#
+#cnf(i_0_22605, plain, (nevera(X4,X2)|~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X1))).
+#
+#cnf(i_0_22606, plain, (nevera(X2,X4)|~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X1))).
+#
+#cnf(i_0_22608, plain, (isa(X2,X4)|~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X1))).
+##
+#cnf(i_0_23147, plain, (nevera(X4,X1)|~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X2))).
+#
+#cnf(i_0_23148, plain, (nevera(X1,X4)|~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X2))).
+#
+#cnf(i_0_23150, plain, (isa(X1,X4)|~xora(X1,X2)|~xora(X3,X3)|~isa(X3,X2))).
+#
+#cnf(i_0_24259, plain, (~xora(X1,X2)|~xora(X1,X1)|~isa(X3,X2)|~mighta(X4,X3))).
+#####
+#cnf(i_0_24255, plain, (nevera(X4,X3)|~xora(X1,X2)|~xora(X1,X1)|~isa(X3,X2))).
+##
+#cnf(i_0_24256, plain, (nevera(X3,X4)|~xora(X1,X2)|~xora(X1,X1)|~isa(X3,X2))).
+#
+#cnf(i_0_24260, plain, (~xora(X1,X2)|~xora(X1,X1)|~isa(X3,X2)|~mighta(X3,X4))).
+##
+#cnf(i_0_24258, plain, (isa(X3,X4)|~xora(X1,X2)|~xora(X1,X1)|~isa(X3,X2))).
+###############################
+#cnf(i_0_18169, plain, (isa(X3,X4)|mighta(X1,X1)|~xora(X2,X2)|~isa(X3,X1))).
+##
+#cnf(i_0_18170, plain, (nevera(X3,X4)|mighta(X1,X1)|~xora(X2,X2)|~isa(X3,X1))).
+###
+#cnf(i_0_18171, plain, (nevera(X3,X4)|mighta(X1,X1)|~xora(X2,X2)|~isa(X4,X1))).
+###
+#cnf(i_0_18175, plain, (isa(X3,X4)|mighta(X1,X1)|~xora(X2,X2)|~xora(X4,X1))).
+####
+#cnf(i_0_18178, plain, (isa(X3,X4)|mighta(X1,X1)|~xora(X2,X2)|~xora(X1,X4))).
+####
+#cnf(i_0_18187, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X2,X2)|~xora(X3,X3))).
+####
+#cnf(i_0_18190, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X2,X2)|~nota(X3,X4))).
+####
+#cnf(i_0_18191, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X2,X2)|~mighta(X4,X3))).
+####
+#cnf(i_0_18192, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X2,X2)|~mighta(X3,X4))).
+####
+#cnf(i_0_18193, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X3,X3)|~nota(X2,X4))).
+##
+#cnf(i_0_18195, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X3,X3)|~mighta(X4,X2))).
+####
+#cnf(i_0_18204, plain, (nevera(X2,X3)|mighta(X1,X1)|~xora(X4,X4)|~isa(X4,X1))).
+###
+#cnf(i_0_18205, plain, (isa(X2,X3)|mighta(X1,X1)|~xora(X4,X4)|~isa(X4,X1))).
+######
+#cnf(i_0_640, plain, (~xora(X1,X2)|~xora(X2,X2)|~isa(X5,X1)|~status(X3,X4,X5))).
+#
+#cnf(i_0_29462, plain, (nevera(X4,X3)|~xora(X1,X2)|~xora(X2,X2)|~isa(X3,X1))).
+##
+#cnf(i_0_29463, plain, (nevera(X3,X4)|~xora(X1,X2)|~xora(X2,X2)|~isa(X3,X1))).
+###
+#cnf(i_0_29465, plain, (isa(X3,X4)|~xora(X1,X2)|~xora(X2,X2)|~isa(X3,X1))).
+##
+#cnf(i_0_29464, plain, (~xora(X1,X2)|~xora(X2,X2)|~nota(X3,X4)|~isa(X3,X1))).
+########
+#cnf(i_0_29466, plain, (~xora(X1,X2)|~xora(X2,X2)|~isa(X3,X1)|~mighta(X4,X3))).
+########
+#cnf(i_0_29467, plain, (~xora(X1,X2)|~xora(X2,X2)|~isa(X3,X1)|~mighta(X3,X4))).
+################################################################################################################################################################################
+#cnf(i_0_111, plain, (~nevera(X1,X2)|~isa(X5,X1)|~status(X3,X4,X2)|~status(X3,X4,X5))).
+###########
+#cnf(i_0_18194, plain, (nota(X3,X1)|isa(X2,X4)|mighta(X1,X1)|~xora(X3,X3))).
+###
+#cnf(i_0_18197, plain, (nevera(X3,X4)|nota(X4,X1)|mighta(X1,X1)|~xora(X2,X2))).
+##
+#cnf(i_0_119, plain, (~nevera(X1,X2)|~isa(X5,X2)|~status(X3,X4,X1)|~status(X3,X4,X5))).
+##
+#cnf(i_0_18198, plain, (nevera(X3,X4)|nota(X3,X1)|mighta(X1,X1)|~xora(X2,X2))).
+#####
+#cnf(i_0_18200, plain, (nota(X3,X1)|isa(X3,X4)|mighta(X1,X1)|~xora(X2,X2))).
+#######
+#cnf(i_0_18218, plain, (nevera(X2,X3)|nota(X4,X1)|mighta(X1,X1)|~xora(X4,X4))).
+##################################
+#cnf(i_0_510, plain, (~xora(X1,X2)|~isa(X5,X1)|~status(X3,X4,X2)|~status(X3,X4,X5))).
+################
+#cnf(i_0_523, plain, (~xora(X1,X2)|~isa(X5,X2)|~status(X3,X4,X1)|~status(X3,X4,X5))).
+##
+#cnf(i_0_18137, plain, (mighta(X1,X1)|~xora(X2,X2)|~isa(X3,X1)|~status(X4,X5,X3))).
+#############
+#cnf(i_0_18145, plain, (mighta(X1,X1)|~xora(X3,X3)|~isa(X3,X1)|~status(X4,X5,X2))).
+##############################################
+#cnf(i_0_18140, plain, (mighta(X1,X1)|status(X3,X4,X5)|~xora(X1,X1)|~xora(X5,X2))).
+####
+#cnf(i_0_18142, plain, (mighta(X1,X1)|status(X3,X4,X5)|~xora(X1,X1)|~xora(X2,X5))).
+##############
+#cnf(i_0_18185, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X2,X2)|~status(X4,X5,X3))).
+##############
+#cnf(i_0_18186, plain, (nota(X3,X1)|mighta(X1,X1)|~xora(X3,X3)|~status(X4,X5,X2))).
+###################
+#cnf(i_0_107, plain, (~nevera(X1,X2)|~mighta(X3,X1)|~status(esk1_2(X3,X1),esk2_2(X3,X1),X2))).
+####
+#cnf(i_0_33240, plain, (~nevera(X1,X2)|~mighta(X2,X1))).
+####
+#cnf(i_0_33279, plain, (~nevera(X1,X2)|~mighta(X1,X2))).
+#####
+#cnf(i_0_33346, plain, (isa(X1,X2)|~xora(X3,X3)|~nevera(X1,X1))).
+#
+#cnf(i_0_33347, plain, (nevera(X1,X2)|~xora(X3,X3)|~nevera(X1,X1))).
+#
+#cnf(i_0_33362, plain, (nevera(X2,X1)|~xora(X3,X3)|~nevera(X1,X1))).
+#
+#cnf(i_0_33239, plain, (~nevera(X1,X1)|~mighta(X2,X1))).
+##
+#cnf(i_0_34091, plain, (isa(X2,X3)|~xora(X1,X1)|~nevera(X1,X1))).
+#
+#cnf(i_0_34092, plain, (nevera(X2,X3)|~xora(X1,X1)|~nevera(X1,X1))).
+#####
+#cnf(i_0_33348, plain, (~nevera(X1,X1)|~mighta(X1,X2))).
+####################################
+#cnf(i_0_34026, plain, (~xora(X2,X2)|~xora(X1,X1)|~nevera(X1,X1))).
+####
+#cnf(i_0_34035, plain, (~xora(X1,X1)|~nevera(X1,X1)|~mighta(X3,X2))).
+########
+#cnf(i_0_34039, plain, (~xora(X1,X1)|~nevera(X1,X1)|~nota(X2,X3))).
+########################################################################
+#cnf(i_0_33338, plain, (~xora(X2,X2)|~nevera(X1,X1)|~nota(X1,X3))).
+#########################
+#cnf(i_0_33349, plain, (isa(X2,X3)|~xora(X4,X4)|~nevera(X1,X1)|~isa(X2,X1))).
+##
+#cnf(i_0_33350, plain, (nevera(X2,X3)|~xora(X4,X4)|~nevera(X1,X1)|~isa(X2,X1))).
+###
+#cnf(i_0_33351, plain, (nevera(X2,X3)|~xora(X4,X4)|~nevera(X1,X1)|~isa(X3,X1))).
+###
+#cnf(i_0_33352, plain, (isa(X2,X3)|~xora(X4,X4)|~xora(X3,X1)|~nevera(X1,X1))).
+#
+#cnf(i_0_33353, plain, (isa(X2,X3)|~xora(X4,X4)|~xora(X1,X3)|~nevera(X1,X1))).
+#
+#cnf(i_0_33356, plain, (nevera(X2,X3)|~xora(X4,X4)|~nevera(X1,X1)|~isa(X4,X1))).
+###
+#cnf(i_0_33357, plain, (isa(X2,X3)|~xora(X4,X4)|~nevera(X1,X1)|~isa(X4,X1))).
+###
+#cnf(i_0_33361, plain, (nota(X2,X1)|~xora(X3,X3)|~xora(X2,X2)|~nevera(X1,X1))).
+#
+#cnf(i_0_33363, plain, (nota(X2,X1)|~xora(X3,X3)|~nevera(X1,X1)|~nota(X2,X4))).
+#
+#cnf(i_0_33364, plain, (nota(X2,X1)|~xora(X3,X3)|~nevera(X1,X1)|~mighta(X4,X2))).
+##
+#cnf(i_0_33365, plain, (nota(X2,X1)|~xora(X3,X3)|~nevera(X1,X1)|~mighta(X2,X4))).
+#
+#cnf(i_0_33366, plain, (nota(X2,X1)|~xora(X2,X2)|~nevera(X1,X1)|~nota(X3,X4))).
+#
+#cnf(i_0_33368, plain, (nota(X2,X1)|~xora(X2,X2)|~nevera(X1,X1)|~mighta(X3,X4))).
+#################################################################################################
+#cnf(i_0_34023, plain, (~xora(X1,X1)|~nevera(X1,X1)|~status(X3,X4,X2))).
+################################
+#cnf(i_0_33334, plain, (~xora(X2,X2)|~nevera(X1,X1)|~status(X3,X4,X1))).
+####################################################
+#cnf(i_0_33333, plain, (~nevera(X1,X1)|~status(X2,X3,X1)|~status(X2,X3,X4))).
+#########################################################################################################################################
+#cnf(i_0_33354, plain, (nevera(X2,X3)|nota(X3,X1)|~xora(X4,X4)|~nevera(X1,X1))).
+######
+#cnf(i_0_33355, plain, (nevera(X2,X3)|nota(X2,X1)|~xora(X4,X4)|~nevera(X1,X1))).
+#######
+#cnf(i_0_33358, plain, (nevera(X2,X3)|nota(X4,X1)|~xora(X4,X4)|~nevera(X1,X1))).
+#####
+#cnf(i_0_33367, plain, (nota(X2,X1)|isa(X3,X4)|~xora(X2,X2)|~nevera(X1,X1))).
+###
+#cnf(i_0_33369, plain, (nota(X2,X1)|isa(X2,X3)|~xora(X4,X4)|~nevera(X1,X1))).
+####################################################################################################################
+#cnf(i_0_34028, plain, (status(X3,X4,X5)|~xora(X1,X1)|~xora(X5,X2)|~nevera(X1,X1))).
+###
+#cnf(i_0_34030, plain, (status(X3,X4,X5)|~xora(X1,X1)|~xora(X2,X5)|~nevera(X1,X1))).
+#################
+#cnf(i_0_33359, plain, (nota(X2,X1)|~xora(X3,X3)|~nevera(X1,X1)|~status(X4,X5,X2))).
+###########
+#cnf(i_0_33360, plain, (nota(X2,X1)|~xora(X2,X2)|~nevera(X1,X1)|~status(X3,X4,X5))).
+#######
+#cnf(i_0_33337, plain, (~xora(X2,X2)|~xora(X3,X3)|~nevera(X1,X1)|~isa(X3,X1))).
+########
+#cnf(i_0_33339, plain, (~xora(X2,X2)|~nevera(X1,X1)|~isa(X3,X1)|~mighta(X3,X4))).
+########
+#cnf(i_0_33340, plain, (~xora(X2,X2)|~nevera(X1,X1)|~isa(X3,X1)|~mighta(X4,X3))).
+########
+#cnf(i_0_33341, plain, (~xora(X2,X2)|~nevera(X1,X1)|~nota(X3,X4)|~isa(X3,X1))).
+########
+#cnf(i_0_33342, plain, (~xora(X2,X2)|~nevera(X1,X1)|~nota(X3,X4)|~isa(X2,X1))).
+########
+#cnf(i_0_33343, plain, (~xora(X2,X2)|~nevera(X1,X1)|~isa(X2,X1)|~mighta(X3,X4))).
+#####
+#cnf(i_0_34024, plain, (status(X3,X4,X5)|~xora(X2,X2)|~xora(X5,X1)|~nevera(X1,X1))).
+##
+#cnf(i_0_34027, plain, (status(X3,X4,X5)|~xora(X2,X2)|~xora(X1,X5)|~nevera(X1,X1))).
+#
+#cnf(i_0_33344, plain, (~xora(X2,X2)|~xora(X3,X1)|~nevera(X1,X1)|~nota(X4,X3))).
+####
+#cnf(i_0_33345, plain, (~xora(X2,X2)|~xora(X1,X3)|~nevera(X1,X1)|~nota(X4,X3))).
+###############
+#cnf(i_0_18136, plain, (mighta(X1,X1)|status(X3,X4,X5)|~xora(X2,X2)|~xora(X5,X1))).
+##########
+#cnf(i_0_18139, plain, (mighta(X1,X1)|status(X3,X4,X5)|~xora(X2,X2)|~xora(X1,X5))).
+#####################################
+#cnf(i_0_18133, plain, (mighta(X1,X1)|~isa(X3,X1)|~status(X4,X5,X2)|~status(X4,X5,X3))).
+#######################
+#cnf(i_0_38333, plain, (nota(X5,X1)|~nevera(X1,X1)|~status(X2,X3,X4)|~status(X2,X3,X5))).
+##################
+#cnf(i_0_38296, plain, (status(X2,X3,X5)|~xora(X5,X4)|~nevera(X1,X1)|~status(X2,X3,X1))).
+###
+#cnf(i_0_38318, plain, (status(X2,X3,X5)|~xora(X4,X5)|~nevera(X1,X1)|~status(X2,X3,X1))).
+###
+#cnf(i_0_38336, plain, (status(X2,X3,X5)|~xora(X5,X1)|~nevera(X1,X1)|~status(X2,X3,X4))).
+##
+#cnf(i_0_38358, plain, (status(X2,X3,X5)|~xora(X1,X5)|~nevera(X1,X1)|~status(X2,X3,X4))).
+###
+#cnf(i_0_104, plain, (mighta(X1,X2)|~mighta(X3,X2)|~status(esk1_2(X3,X2),esk2_2(X3,X2),X1))).
+#######
+#cnf(i_0_136, plain, (mighta(X1,X2)|~mighta(X1,X3)|~status(esk1_2(X1,X3),esk2_2(X1,X3),X2))).
+######
+#cnf(i_0_139, plain, (mighta(X1,X2)|~mighta(X2,X3)|~status(esk1_2(X2,X3),esk2_2(X2,X3),X1))).
+########
+#cnf(i_0_173, plain, (mighta(X1,X2)|~nota(X1,X3)|~status(esk5_2(X1,X3),esk6_2(X1,X3),X2))).
+##
+#cnf(i_0_44329, plain, (mighta(X1,X1)|~nota(X1,X2))).
+###
+#cnf(i_0_44331, plain, (~nevera(X1,X1)|~nota(X1,X2))).
+#####################
+#cnf(i_0_44550, plain, (status(X3,X4,X2)|~xora(X1,X1)|~nevera(X1,X1))).
+##
+#cnf(i_0_44413, plain, (mighta(X1,X1)|status(X3,X4,X2)|~xora(X1,X1))).
+####
+#cnf(i_0_44548, plain, (status(X3,X4,X2)|~nevera(X1,X1)|~status(X3,X4,X1))).
+###
+#cnf(i_0_44411, plain, (mighta(X1,X1)|status(X3,X4,X2)|~status(X3,X4,X1))).
+################################################################################################################################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_44549, plain, (status(X3,X4,X2)|~xora(X5,X5)|~nevera(X1,X1)|~isa(X5,X1))).
+####################
+#cnf(i_0_44412, plain, (mighta(X1,X1)|status(X3,X4,X2)|~xora(X5,X5)|~isa(X5,X1))).
+############
+#cnf(i_0_44553, plain, (nota(X3,X1)|status(X4,X5,X2)|~xora(X3,X3)|~nevera(X1,X1))).
+####################
+#cnf(i_0_44416, plain, (nota(X3,X1)|mighta(X1,X1)|status(X4,X5,X2)|~xora(X3,X3))).
+#########################################
+#cnf(i_0_45062, plain, (status(X1,X2,X3)|~nevera(X4,X4)|~isa(X5,X4)|~status(X1,X2,X5))).
+############################
+#cnf(i_0_176, plain, (mighta(X1,X2)|~nota(X2,X3)|~status(esk5_2(X2,X3),esk6_2(X2,X3),X1))).
+##########
+#cnf(i_0_207, plain, (isa(X1,X3)|~nevera(X1,X2)|~status(esk3_2(X1,X3),esk4_2(X1,X3),X2))).
+#
+#cnf(i_0_46745, plain, (isa(X1,X2)|~nevera(X1,X1))).
+#######################################################################################################################################################################################################################################
+#cnf(i_0_210, plain, (isa(X2,X3)|~nevera(X1,X2)|~status(esk3_2(X2,X3),esk4_2(X2,X3),X1))).
+#########
+#cnf(i_0_249, plain, (nevera(X3,X1)|~nevera(X1,X2)|~status(esk7_2(X3,X1),esk8_2(X3,X1),X2))).
+#
+#cnf(i_0_47057, plain, (nevera(X1,X2)|~nevera(X2,X2))).
+##
+#cnf(i_0_47058, plain, (nevera(X1,X2)|~nevera(X2,X1))).
+#
+#cnf(i_0_47403, plain, (nevera(X1,X2)|~nevera(X1,X1))).
+##############################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_33335, plain, (~xora(X2,X2)|~nevera(X1,X1)|~isa(X3,X1)|~status(X4,X5,X3))).
+########################
+#cnf(i_0_33336, plain, (~xora(X2,X2)|~nevera(X1,X1)|~isa(X2,X1)|~status(X3,X4,X5))).
+##############
+#cnf(i_0_252, plain, (nevera(X3,X2)|~nevera(X1,X2)|~status(esk7_2(X3,X2),esk8_2(X3,X2),X1))).
+#########
+#cnf(i_0_297, plain, (nevera(X1,X3)|~nevera(X1,X2)|~status(esk7_2(X1,X3),esk8_2(X1,X3),X2))).
+##########
+#cnf(i_0_300, plain, (nevera(X2,X3)|~nevera(X1,X2)|~status(esk7_2(X2,X3),esk8_2(X2,X3),X1))).
+##########
+#cnf(i_0_501, plain, (nevera(X3,X1)|~xora(X1,X2)|~status(esk7_2(X3,X1),esk8_2(X3,X1),X2))).
+##
+#cnf(i_0_48154, plain, (nevera(X1,X2)|~xora(X2,X1))).
+#
+#cnf(i_0_48153, plain, (nevera(X1,X2)|~xora(X2,X2))).
+#
+#cnf(i_0_48203, plain, (nevera(X1,X2)|~xora(X3,X3))).
+#
+#cnf(i_0_48329, plain, (~xora(X3,X3)|~mighta(X2,X1))).
+##
+#cnf(i_0_48333, plain, (isa(X1,X2)|~xora(X3,X3))).
+#####
+#cnf(i_0_48453, plain, (status(X1,X2,X3)|~xora(X4,X4)|~xora(X5,X5))).
+#
+#cnf(i_0_48332, plain, (~xora(X3,X3)|~nota(X1,X2))).
+###
+#cnf(i_0_48341, plain, (status(X1,X2,X3)|~xora(X5,X5)|~status(X1,X2,X4))).
+############
+#cnf(i_0_48278, plain, (nota(X1,X2)|~xora(X3,X3)|~xora(X1,X1)|~xora(X4,X4))).
+#####
+#cnf(i_0_48259, plain, (~xora(X1,X1)|~xora(X2,X2)|~xora(X3,X3))).
+############
+#cnf(i_0_48254, plain, (~xora(X1,X1)|~xora(X5,X5)|~status(X3,X4,X2))).
+########################################
+#cnf(i_0_48252, plain, (~xora(X5,X5)|~status(X3,X4,X2)|~status(X3,X4,X1))).
+##########################################################################################################################################
+#cnf(i_0_502, plain, (nevera(X1,X3)|~xora(X1,X2)|~status(esk7_2(X1,X3),esk8_2(X1,X3),X2))).
+#
+#cnf(i_0_49041, plain, (nevera(X1,X2)|~xora(X1,X2))).
+###########
+#cnf(i_0_504, plain, (isa(X1,X3)|~xora(X1,X2)|~status(esk3_2(X1,X3),esk4_2(X1,X3),X2))).
+###########
+#cnf(i_0_514, plain, (nevera(X3,X2)|~xora(X1,X2)|~status(esk7_2(X3,X2),esk8_2(X3,X2),X1))).
+############
+#cnf(i_0_515, plain, (nevera(X2,X3)|~xora(X1,X2)|~status(esk7_2(X2,X3),esk8_2(X2,X3),X1))).
+############
+#cnf(i_0_517, plain, (isa(X2,X3)|~xora(X1,X2)|~status(esk3_2(X2,X3),esk4_2(X2,X3),X1))).
+##########
+#cnf(i_0_723, plain, (nota(X3,X2)|~nota(X1,X2)|~status(esk5_2(X1,X2),esk6_2(X1,X2),X3))).
+##################
+#cnf(i_0_44, plain, (nota(X5,X1)|mighta(X1,X2)|~status(X3,X4,X2)|~status(X3,X4,X5))).
+##############
+#cnf(i_0_45, plain, (nota(X5,X2)|mighta(X1,X2)|~status(X3,X4,X1)|~status(X3,X4,X5))).
+################
+#cnf(i_0_19626, plain, (nota(X5,X1)|mighta(X1,X1)|~status(X2,X3,X4)|~status(X2,X3,X5))).
+####################################
+#cnf(i_0_46, plain, (nota(X5,X4)|status(X1,X2,X3)|~isa(X4,X3)|~status(X1,X2,X5))).
+########
+#cnf(i_0_47, plain, (nota(X1,X2)|status(X3,X4,X2)|~isa(X5,X1)|~status(X3,X4,X5))).
+########
+#cnf(i_0_51, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X1,X5)|~status(X3,X4,X2))).
+##########
+#cnf(i_0_52, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X2,X5)|~status(X3,X4,X1))).
+#########
+#cnf(i_0_55, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X5,X1)|~status(X3,X4,X2))).
+#########
+#cnf(i_0_56, plain, (mighta(X1,X2)|status(X3,X4,X5)|~xora(X5,X2)|~status(X3,X4,X1))).
+############
+#cnf(i_0_19629, plain, (mighta(X1,X1)|status(X2,X3,X5)|~xora(X5,X1)|~status(X2,X3,X4))).
+##########
+#cnf(i_0_19651, plain, (mighta(X1,X1)|status(X2,X3,X5)|~xora(X1,X5)|~status(X2,X3,X4))).
+##########
+#cnf(i_0_45058, plain, (nota(X5,X4)|status(X1,X2,X3)|~nevera(X4,X4)|~status(X1,X2,X5))).
+##########
+#cnf(i_0_45361, plain, (mighta(X1,X1)|status(X2,X3,X4)|~isa(X5,X1)|~status(X2,X3,X5))).
+#########################################################
+#cnf(i_0_53, plain, (status(X1,X2,X3)|status(X1,X2,X5)|~xora(X4,X5)|~isa(X4,X3))).
+#
+#cnf(i_0_51638, plain, (status(X6,X7,X8)|~xora(X9,X8)|~isa(X9,X8))).
+#
+#cnf(i_0_51921, plain, (~xora(X3,X2)|~nota(X1,X2)|~isa(X3,X2))).
+#
+#cnf(i_0_51925, plain, (isa(X1,X2)|~xora(X3,X2)|~isa(X3,X2))).
+###
+#cnf(i_0_52042, plain, (~xora(X1,X1)|~xora(X5,X4)|~nevera(X1,X1)|~isa(X5,X4))).
+#
+#cnf(i_0_52040, plain, (mighta(X1,X1)|~xora(X1,X1)|~xora(X5,X4)|~isa(X5,X4))).
+#
+#cnf(i_0_51913, plain, (nevera(X1,X2)|~xora(X1,X3)|~xora(X4,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51914, plain, (nevera(X1,X2)|~xora(X2,X3)|~xora(X4,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51932, plain, (~xora(X4,X2)|~nevera(X1,X2)|~isa(X4,X2)|~mighta(X3,X1))).
+#
+#cnf(i_0_51915, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X2,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51916, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X3,X2)|~isa(X4,X3))).
+#
+#cnf(i_0_51917, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X1,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51944, plain, (~xora(X1,X2)|~xora(X2,X2)|~xora(X5,X1)|~isa(X5,X1))).
+#
+#cnf(i_0_51918, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X3,X1)|~isa(X4,X3))).
+#
+#cnf(i_0_51919, plain, (nevera(X1,X2)|~xora(X3,X2)|~xora(X4,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51920, plain, (nevera(X1,X2)|~xora(X3,X1)|~xora(X4,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51955, plain, (~xora(X1,X1)|~xora(X5,X2)|~nevera(X1,X2)|~isa(X5,X2))).
+#
+#cnf(i_0_51922, plain, (mighta(X1,X2)|~xora(X4,X2)|~nota(X1,X3)|~isa(X4,X2))).
+#
+#cnf(i_0_51923, plain, (mighta(X1,X2)|~xora(X4,X1)|~nota(X2,X3)|~isa(X4,X1))).
+#
+#cnf(i_0_51924, plain, (nota(X1,X2)|~xora(X4,X1)|~nota(X3,X2)|~isa(X4,X1))).
+##
+#cnf(i_0_51926, plain, (isa(X1,X2)|~xora(X4,X3)|~isa(X3,X2)|~isa(X4,X3))).
+##
+#cnf(i_0_51927, plain, (isa(X1,X2)|~xora(X1,X3)|~xora(X4,X3)|~isa(X4,X3))).
+##
+#cnf(i_0_51928, plain, (isa(X1,X2)|~xora(X4,X3)|~nevera(X1,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51929, plain, (isa(X1,X2)|~xora(X4,X3)|~nevera(X3,X1)|~isa(X4,X3))).
+#
+#cnf(i_0_51930, plain, (isa(X1,X2)|~xora(X3,X1)|~xora(X4,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_51956, plain, (~xora(X1,X1)|~xora(X5,X2)|~nevera(X2,X1)|~isa(X5,X2))).
+#
+#cnf(i_0_51931, plain, (mighta(X1,X2)|~xora(X4,X2)|~isa(X4,X2)|~mighta(X3,X1))).
+#
+#cnf(i_0_51933, plain, (mighta(X1,X2)|~xora(X4,X1)|~isa(X4,X1)|~mighta(X3,X2))).
+#
+#cnf(i_0_51934, plain, (mighta(X1,X2)|~xora(X4,X2)|~isa(X4,X2)|~mighta(X1,X3))).
+##
+#cnf(i_0_51935, plain, (mighta(X1,X2)|~xora(X4,X1)|~isa(X4,X1)|~mighta(X2,X3))).
+#
+#cnf(i_0_51943, plain, (mighta(X1,X2)|~xora(X2,X2)|~xora(X5,X1)|~isa(X5,X1))).
+###
+#cnf(i_0_51945, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X5,X1)|~isa(X5,X1))).
+#
+#cnf(i_0_51954, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X5,X2)|~isa(X5,X2))).
+######
+#cnf(i_0_51957, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X5,X2)|~isa(X5,X2))).
+####
+#cnf(i_0_51959, plain, (~xora(X1,X1)|~xora(X5,X2)|~nevera(X2,X2)|~isa(X5,X2))).
+####
+#cnf(i_0_51972, plain, (~xora(X1,X1)|~xora(X2,X2)|~xora(X6,X5)|~isa(X6,X5))).
+####
+#cnf(i_0_52166, plain, (~xora(X1,X3)|~xora(X4,X3)|~isa(X4,X3)|~mighta(X2,X1))).
+##
+#cnf(i_0_52355, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X4,X4)|~isa(X3,X4))).
+##
+#cnf(i_0_52168, plain, (~xora(X1,X3)|~xora(X4,X3)|~isa(X4,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_52169, plain, (~xora(X1,X3)|~xora(X4,X3)|~nota(X1,X2)|~isa(X4,X3))).
+################
+#cnf(i_0_52263, plain, (~xora(X1,X2)|~nevera(X3,X2)|~isa(X1,X2)|~mighta(X3,X4))).
+############
+#cnf(i_0_52284, plain, (~xora(X1,X2)|~nevera(X3,X2)|~nota(X3,X4)|~isa(X1,X2))).
+####
+#cnf(i_0_52293, plain, (~xora(X1,X2)|~nevera(X2,X3)|~isa(X1,X2)|~mighta(X4,X3))).
+####
+#cnf(i_0_52294, plain, (~xora(X1,X2)|~nevera(X2,X2)|~isa(X1,X2)|~mighta(X4,X3))).
+######
+#cnf(i_0_52688, plain, (mighta(X1,X1)|~xora(X3,X1)|~nota(X2,X4)|~isa(X3,X1))).
+########
+#cnf(i_0_52885, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X4,X4)|~isa(X3,X4))).
+##############
+#cnf(i_0_52394, plain, (~xora(X3,X4)|~nevera(X4,X1)|~isa(X3,X4)|~mighta(X1,X2))).
+#
+#cnf(i_0_53119, plain, (mighta(X1,X1)|~xora(X3,X1)|~isa(X3,X1)|~mighta(X4,X2))).
+###
+#cnf(i_0_52395, plain, (~xora(X3,X4)|~nevera(X4,X1)|~nota(X1,X2)|~isa(X3,X4))).
+############################
+#cnf(i_0_52589, plain, (~xora(X3,X1)|~xora(X4,X3)|~isa(X4,X3)|~mighta(X2,X1))).
+####
+#cnf(i_0_52591, plain, (~xora(X3,X1)|~xora(X4,X3)|~isa(X4,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_52592, plain, (~xora(X3,X1)|~xora(X4,X3)|~nota(X1,X2)|~isa(X4,X3))).
+###########################
+#cnf(i_0_51937, plain, (mighta(X1,X2)|~xora(X5,X1)|~isa(X5,X1)|~status(X3,X4,X2))).
+#######
+#cnf(i_0_54443, plain, (nevera(X4,X2)|mighta(X1,X2)|~xora(X3,X1)|~isa(X3,X1))).
+######
+#cnf(i_0_52690, plain, (~xora(X3,X1)|~nevera(X1,X1)|~nota(X2,X4)|~isa(X3,X1))).
+######
+#cnf(i_0_54444, plain, (nevera(X2,X4)|mighta(X1,X2)|~xora(X3,X1)|~isa(X3,X1))).
+############
+#cnf(i_0_54446, plain, (isa(X2,X4)|mighta(X1,X2)|~xora(X3,X1)|~isa(X3,X1))).
+########
+#cnf(i_0_54511, plain, (nevera(X3,X2)|mighta(X1,X1)|~xora(X4,X1)|~isa(X4,X1))).
+############
+#cnf(i_0_54529, plain, (nevera(X3,X1)|mighta(X1,X1)|~xora(X4,X2)|~isa(X4,X2))).
+########
+#cnf(i_0_54530, plain, (nevera(X3,X1)|mighta(X1,X2)|~xora(X4,X2)|~isa(X4,X2))).
+###################
+#cnf(i_0_54677, plain, (nevera(X1,X3)|mighta(X1,X1)|~xora(X4,X2)|~isa(X4,X2))).
+########
+#cnf(i_0_54678, plain, (nevera(X1,X3)|mighta(X1,X2)|~xora(X4,X2)|~isa(X4,X2))).
+#################
+#cnf(i_0_54753, plain, (isa(X2,X3)|mighta(X1,X1)|~xora(X4,X1)|~isa(X4,X1))).
+########
+#cnf(i_0_54771, plain, (isa(X1,X3)|mighta(X1,X1)|~xora(X4,X2)|~isa(X4,X2))).
+########
+#cnf(i_0_54772, plain, (isa(X1,X3)|mighta(X1,X2)|~xora(X4,X2)|~isa(X4,X2))).
+###########################################################
+#cnf(i_0_51949, plain, (mighta(X1,X2)|~xora(X5,X2)|~isa(X5,X2)|~status(X3,X4,X1))).
+##########
+#cnf(i_0_52036, plain, (mighta(X1,X1)|~xora(X5,X1)|~isa(X5,X1)|~status(X2,X3,X4))).
+###########
+#cnf(i_0_52039, plain, (mighta(X1,X1)|~xora(X5,X4)|~isa(X5,X4)|~status(X2,X3,X1))).
+###########################
+#cnf(i_0_51960, plain, (status(X1,X2,X3)|~xora(X5,X4)|~isa(X4,X3)|~isa(X5,X4))).
+####
+#cnf(i_0_51963, plain, (status(X1,X2,X3)|~xora(X5,X4)|~nevera(X4,X4)|~isa(X5,X4))).
+##
+#cnf(i_0_51983, plain, (status(X1,X2,X3)|~xora(X4,X4)|~xora(X6,X5)|~isa(X6,X5))).
+##########
+#cnf(i_0_51936, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X5,X1)|~isa(X5,X1))).
+####
+#cnf(i_0_56169, plain, (nota(X3,X2)|isa(X1,X2)|~xora(X4,X3)|~isa(X4,X3))).
+#########
+#cnf(i_0_52038, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X5,X1)|~isa(X5,X1))).
+###################
+#cnf(i_0_57, plain, (status(X1,X2,X3)|status(X1,X2,X5)|~xora(X5,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_56533, plain, (status(X6,X7,X8)|~xora(X8,X9)|~isa(X9,X8))).
+#
+#cnf(i_0_56840, plain, (isa(X1,X2)|~xora(X2,X3)|~isa(X3,X2))).
+#
+#cnf(i_0_56836, plain, (~xora(X2,X3)|~nota(X1,X2)|~isa(X3,X2))).
+###
+#cnf(i_0_56959, plain, (mighta(X1,X1)|~xora(X1,X1)|~xora(X4,X5)|~isa(X5,X4))).
+#
+#cnf(i_0_56961, plain, (~xora(X1,X1)|~xora(X4,X5)|~nevera(X1,X1)|~isa(X5,X4))).
+#
+#cnf(i_0_56828, plain, (nevera(X1,X2)|~xora(X1,X3)|~xora(X3,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_56829, plain, (nevera(X1,X2)|~xora(X2,X3)|~xora(X3,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_56830, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X2,X3)|~isa(X4,X3))).
+##
+#cnf(i_0_56831, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X3,X2)|~isa(X4,X3))).
+#
+#cnf(i_0_56832, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X1,X3)|~isa(X4,X3))).
+#
+#cnf(i_0_56833, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X3,X1)|~isa(X4,X3))).
+##
+#cnf(i_0_56834, plain, (nevera(X1,X2)|~xora(X3,X2)|~xora(X3,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_56835, plain, (nevera(X1,X2)|~xora(X3,X1)|~xora(X3,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_56837, plain, (mighta(X1,X2)|~xora(X2,X4)|~nota(X1,X3)|~isa(X4,X2))).
+##
+#cnf(i_0_56838, plain, (mighta(X1,X2)|~xora(X1,X4)|~nota(X2,X3)|~isa(X4,X1))).
+#
+#cnf(i_0_56839, plain, (nota(X1,X2)|~xora(X1,X4)|~nota(X3,X2)|~isa(X4,X1))).
+#
+#cnf(i_0_56841, plain, (isa(X1,X2)|~xora(X3,X4)|~isa(X3,X2)|~isa(X4,X3))).
+###
+#cnf(i_0_56842, plain, (isa(X1,X2)|~xora(X1,X3)|~xora(X3,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_56843, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X1,X3)|~isa(X4,X3))).
+##
+#cnf(i_0_56844, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X3,X1)|~isa(X4,X3))).
+#
+#cnf(i_0_56845, plain, (isa(X1,X2)|~xora(X3,X1)|~xora(X3,X4)|~isa(X4,X3))).
+#
+#cnf(i_0_56846, plain, (mighta(X1,X2)|~xora(X2,X4)|~isa(X4,X2)|~mighta(X3,X1))).
+##
+#cnf(i_0_56848, plain, (mighta(X1,X2)|~xora(X1,X4)|~isa(X4,X1)|~mighta(X3,X2))).
+#
+#cnf(i_0_56849, plain, (mighta(X1,X2)|~xora(X2,X4)|~isa(X4,X2)|~mighta(X1,X3))).
+#
+#cnf(i_0_56850, plain, (mighta(X1,X2)|~xora(X1,X4)|~isa(X4,X1)|~mighta(X2,X3))).
+##
+#cnf(i_0_56858, plain, (mighta(X1,X2)|~xora(X2,X2)|~xora(X1,X5)|~isa(X5,X1))).
+##
+#cnf(i_0_56860, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X1,X5)|~isa(X5,X1))).
+##
+#cnf(i_0_56869, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X2,X5)|~isa(X5,X2))).
+####################
+#cnf(i_0_57283, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X3,X3)|~isa(X4,X3))).
+################################################
+#cnf(i_0_57776, plain, (mighta(X1,X1)|~xora(X1,X3)|~nota(X2,X4)|~isa(X3,X1))).
+########
+#cnf(i_0_58008, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X3,X3)|~isa(X4,X3))).
+##############
+#cnf(i_0_58299, plain, (mighta(X1,X1)|~xora(X1,X3)|~isa(X3,X1)|~mighta(X4,X2))).
+###################################################################
+#cnf(i_0_56852, plain, (mighta(X1,X2)|~xora(X1,X5)|~isa(X5,X1)|~status(X3,X4,X2))).
+#######
+#cnf(i_0_59169, plain, (nevera(X4,X2)|mighta(X1,X2)|~xora(X1,X3)|~isa(X3,X1))).
+#######
+#cnf(i_0_55719, plain, (~xora(X3,X4)|~nota(X1,X2)|~isa(X4,X2)|~isa(X3,X4))).
+#####
+#cnf(i_0_59170, plain, (nevera(X2,X4)|mighta(X1,X2)|~xora(X1,X3)|~isa(X3,X1))).
+###########
+#cnf(i_0_56847, plain, (~xora(X2,X4)|~nevera(X1,X2)|~isa(X4,X2)|~mighta(X3,X1))).
+#
+#cnf(i_0_59172, plain, (isa(X2,X4)|mighta(X1,X2)|~xora(X1,X3)|~isa(X3,X1))).
+###
+#cnf(i_0_56859, plain, (~xora(X1,X2)|~xora(X2,X2)|~xora(X1,X5)|~isa(X5,X1))).
+####
+#cnf(i_0_56870, plain, (~xora(X1,X1)|~xora(X2,X5)|~nevera(X1,X2)|~isa(X5,X2))).
+#
+#cnf(i_0_59245, plain, (nevera(X3,X2)|mighta(X1,X1)|~xora(X1,X4)|~isa(X4,X1))).
+#######
+#cnf(i_0_56871, plain, (~xora(X1,X1)|~xora(X2,X5)|~nevera(X2,X1)|~isa(X5,X2))).
+#####
+#cnf(i_0_59268, plain, (nevera(X3,X1)|mighta(X1,X1)|~xora(X2,X4)|~isa(X4,X2))).
+###
+#cnf(i_0_56872, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X2,X5)|~isa(X5,X2))).
+####
+#cnf(i_0_56874, plain, (~xora(X1,X1)|~xora(X2,X5)|~nevera(X2,X2)|~isa(X5,X2))).
+#
+#cnf(i_0_59269, plain, (nevera(X3,X1)|mighta(X1,X2)|~xora(X2,X4)|~isa(X4,X2))).
+###
+#cnf(i_0_56887, plain, (~xora(X1,X1)|~xora(X2,X2)|~xora(X5,X6)|~isa(X6,X5))).
+####
+#cnf(i_0_57105, plain, (~xora(X1,X3)|~xora(X3,X4)|~isa(X4,X3)|~mighta(X2,X1))).
+####
+#cnf(i_0_57107, plain, (~xora(X1,X3)|~xora(X3,X4)|~isa(X4,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_57108, plain, (~xora(X1,X3)|~xora(X3,X4)|~nota(X1,X2)|~isa(X4,X3))).
+###
+#cnf(i_0_59445, plain, (nevera(X1,X3)|mighta(X1,X1)|~xora(X2,X4)|~isa(X4,X2))).
+########
+#cnf(i_0_59446, plain, (nevera(X1,X3)|mighta(X1,X2)|~xora(X2,X4)|~isa(X4,X2))).
+#########
+#cnf(i_0_57254, plain, (~xora(X3,X4)|~nevera(X1,X3)|~isa(X4,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_57255, plain, (~xora(X3,X4)|~nevera(X1,X3)|~nota(X1,X2)|~isa(X4,X3))).
+####
+#cnf(i_0_57349, plain, (~xora(X3,X4)|~nevera(X3,X1)|~isa(X4,X3)|~mighta(X2,X1))).
+#
+#cnf(i_0_59652, plain, (isa(X2,X3)|mighta(X1,X1)|~xora(X1,X4)|~isa(X4,X1))).
+###
+#cnf(i_0_57351, plain, (~xora(X3,X4)|~nevera(X3,X1)|~isa(X4,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_57352, plain, (~xora(X3,X4)|~nevera(X3,X1)|~nota(X1,X2)|~isa(X4,X3))).
+#
+#cnf(i_0_59676, plain, (isa(X1,X3)|mighta(X1,X1)|~xora(X2,X4)|~isa(X4,X2))).
+########
+#cnf(i_0_59677, plain, (isa(X1,X3)|mighta(X1,X2)|~xora(X2,X4)|~isa(X4,X2))).
+###################
+#cnf(i_0_57651, plain, (~xora(X3,X1)|~xora(X3,X4)|~isa(X4,X3)|~mighta(X2,X1))).
+####
+#cnf(i_0_57653, plain, (~xora(X3,X1)|~xora(X3,X4)|~isa(X4,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_57654, plain, (~xora(X3,X1)|~xora(X3,X4)|~nota(X1,X2)|~isa(X4,X3))).
+############################
+#cnf(i_0_57778, plain, (~xora(X1,X3)|~nevera(X1,X1)|~nota(X2,X4)|~isa(X3,X1))).
+###
+#cnf(i_0_56864, plain, (mighta(X1,X2)|~xora(X2,X5)|~isa(X5,X2)|~status(X3,X4,X1))).
+###########
+#cnf(i_0_56955, plain, (mighta(X1,X1)|~xora(X1,X5)|~isa(X5,X1)|~status(X2,X3,X4))).
+###########
+#cnf(i_0_56958, plain, (mighta(X1,X1)|~xora(X4,X5)|~isa(X5,X4)|~status(X2,X3,X1))).
+#######################
+#cnf(i_0_58301, plain, (~xora(X1,X3)|~nevera(X1,X1)|~isa(X3,X1)|~mighta(X4,X2))).
+###
+#cnf(i_0_56875, plain, (status(X1,X2,X3)|~xora(X4,X5)|~isa(X4,X3)|~isa(X5,X4))).
+####
+#cnf(i_0_56878, plain, (status(X1,X2,X3)|~xora(X4,X5)|~nevera(X4,X4)|~isa(X5,X4))).
+###
+#cnf(i_0_56899, plain, (status(X1,X2,X3)|~xora(X4,X4)|~xora(X5,X6)|~isa(X6,X5))).
+#########
+#cnf(i_0_56851, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X1,X5)|~isa(X5,X1))).
+####
+#cnf(i_0_62660, plain, (nota(X3,X2)|isa(X1,X2)|~xora(X3,X4)|~isa(X4,X3))).
+##########
+#cnf(i_0_56957, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X1,X5)|~isa(X5,X1))).
+##################
+#cnf(i_0_85, plain, (nota(X3,X2)|isa(X1,X2)|~status(esk3_2(X1,X2),esk4_2(X1,X2),X3))).
+##
+#cnf(i_0_63147, plain, (nota(X1,X2)|isa(X1,X2))).
+####
+#cnf(i_0_63148, plain, (isa(X1,X2)|mighta(X1,X1))).
+######################################################################################################################################################
+#cnf(i_0_206, plain, (isa(X1,X3)|mighta(X1,X2)|~status(esk3_2(X1,X3),esk4_2(X1,X3),X2))).
+##############
+#cnf(i_0_209, plain, (isa(X2,X3)|mighta(X1,X2)|~status(esk3_2(X2,X3),esk4_2(X2,X3),X1))).
+#############
+#cnf(i_0_248, plain, (nevera(X3,X1)|mighta(X1,X2)|~status(esk7_2(X3,X1),esk8_2(X3,X1),X2))).
+#
+#cnf(i_0_63489, plain, (nevera(X1,X2)|mighta(X2,X1))).
+######
+#cnf(i_0_63523, plain, (nevera(X1,X2)|mighta(X1,X2))).
+#########
+#cnf(i_0_63488, plain, (nevera(X1,X2)|mighta(X2,X2))).
+#########
+#cnf(i_0_63522, plain, (nevera(X1,X2)|mighta(X1,X1))).
+#####################################################################################################################################################################################################
+#cnf(i_0_62172, plain, (~xora(X3,X4)|~nota(X1,X2)|~isa(X3,X2)|~isa(X4,X3))).
+########################
+#cnf(i_0_51938, plain, (~xora(X5,X1)|~nevera(X1,X2)|~isa(X5,X1)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_51939, plain, (~xora(X1,X2)|~xora(X5,X1)|~isa(X5,X1)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_51950, plain, (~xora(X5,X2)|~nevera(X1,X2)|~isa(X5,X2)|~status(X3,X4,X1))).
+####################
+#cnf(i_0_51951, plain, (~xora(X1,X2)|~xora(X5,X2)|~isa(X5,X2)|~status(X3,X4,X1))).
+####################
+#cnf(i_0_52037, plain, (~xora(X5,X1)|~nevera(X1,X1)|~isa(X5,X1)|~status(X2,X3,X4))).
+####################
+#cnf(i_0_52041, plain, (~xora(X5,X4)|~nevera(X1,X1)|~isa(X5,X4)|~status(X2,X3,X1))).
+####################
+#cnf(i_0_52043, plain, (~xora(X1,X1)|~xora(X6,X4)|~isa(X6,X4)|~status(X2,X3,X5))).
+##########################
+#cnf(i_0_251, plain, (nevera(X3,X2)|mighta(X1,X2)|~status(esk7_2(X3,X2),esk8_2(X3,X2),X1))).
+###############
+#cnf(i_0_296, plain, (nevera(X1,X3)|mighta(X1,X2)|~status(esk7_2(X1,X3),esk8_2(X1,X3),X2))).
+##############
+#cnf(i_0_299, plain, (nevera(X2,X3)|mighta(X1,X2)|~status(esk7_2(X2,X3),esk8_2(X2,X3),X1))).
+###################
+#cnf(i_0_38287, plain, (nevera(X2,X3)|~nevera(X1,X1)|~status(esk7_2(X2,X3),esk8_2(X2,X3),X1))).
+################
+#cnf(i_0_38290, plain, (isa(X2,X3)|~nevera(X1,X1)|~status(esk3_2(X2,X3),esk4_2(X2,X3),X1))).
+##############
+#cnf(i_0_56853, plain, (~xora(X1,X5)|~nevera(X1,X2)|~isa(X5,X1)|~status(X3,X4,X2))).
+#######
+#cnf(i_0_45061, plain, (status(X1,X2,X3)|status(X1,X2,X5)|~xora(X5,X4)|~nevera(X4,X4))).
+##
+#cnf(i_0_65074, plain, (status(X6,X7,X8)|~xora(X8,X9)|~nevera(X9,X9))).
+#
+#cnf(i_0_65442, plain, (isa(X1,X2)|~xora(X2,X3)|~nevera(X3,X3))).
+##
+#cnf(i_0_65438, plain, (~xora(X2,X3)|~nevera(X3,X3)|~nota(X1,X2))).
+##
+#cnf(i_0_65584, plain, (status(X1,X2,X3)|~xora(X3,X4)|~xora(X5,X5))).
+###
+#cnf(i_0_65576, plain, (mighta(X1,X1)|~xora(X1,X1)|~xora(X4,X5)|~nevera(X5,X5))).
+####
+#cnf(i_0_65425, plain, (nevera(X1,X2)|~xora(X1,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+#
+#cnf(i_0_65426, plain, (nevera(X1,X2)|~xora(X2,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+#
+#cnf(i_0_65428, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X2,X3)|~nevera(X4,X4))).
+##
+#cnf(i_0_65430, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X3,X2)|~nevera(X4,X4))).
+#
+#cnf(i_0_65432, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X1,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_65434, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X3,X1)|~nevera(X4,X4))).
+##
+#cnf(i_0_65435, plain, (nevera(X1,X2)|~xora(X3,X2)|~xora(X3,X4)|~nevera(X4,X4))).
+#
+#cnf(i_0_65436, plain, (nevera(X1,X2)|~xora(X3,X1)|~xora(X3,X4)|~nevera(X4,X4))).
+#
+#cnf(i_0_65437, plain, (nevera(X1,X2)|~xora(X3,X4)|~nevera(X3,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_65578, plain, (~xora(X1,X1)|~xora(X4,X5)|~nevera(X1,X1)|~nevera(X5,X5))).
+#
+#cnf(i_0_65439, plain, (mighta(X1,X2)|~xora(X2,X4)|~nevera(X4,X4)|~nota(X1,X3))).
+#
+#cnf(i_0_65440, plain, (mighta(X1,X2)|~xora(X1,X4)|~nevera(X4,X4)|~nota(X2,X3))).
+#
+#cnf(i_0_65441, plain, (nota(X1,X2)|~xora(X1,X4)|~nevera(X4,X4)|~nota(X3,X2))).
+##
+#cnf(i_0_65443, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X4,X4)|~isa(X3,X2))).
+##
+#cnf(i_0_65444, plain, (isa(X1,X2)|~xora(X1,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+##
+#cnf(i_0_65446, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X1,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_65448, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X3,X1)|~nevera(X4,X4))).
+#
+#cnf(i_0_65449, plain, (isa(X1,X2)|~xora(X3,X1)|~xora(X3,X4)|~nevera(X4,X4))).
+##
+#cnf(i_0_65450, plain, (isa(X1,X2)|~xora(X3,X4)|~nevera(X3,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_65452, plain, (mighta(X1,X2)|~xora(X2,X4)|~nevera(X4,X4)|~mighta(X3,X1))).
+#
+#cnf(i_0_65454, plain, (mighta(X1,X2)|~xora(X1,X4)|~nevera(X4,X4)|~mighta(X3,X2))).
+#
+#cnf(i_0_65453, plain, (~xora(X2,X4)|~nevera(X1,X2)|~nevera(X4,X4)|~mighta(X3,X1))).
+#
+#cnf(i_0_65455, plain, (mighta(X1,X2)|~xora(X2,X4)|~nevera(X4,X4)|~mighta(X1,X3))).
+#
+#cnf(i_0_65456, plain, (mighta(X1,X2)|~xora(X1,X4)|~nevera(X4,X4)|~mighta(X2,X3))).
+#
+#cnf(i_0_65464, plain, (mighta(X1,X2)|~xora(X2,X2)|~xora(X1,X5)|~nevera(X5,X5))).
+###
+#cnf(i_0_65466, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X1,X5)|~nevera(X5,X5))).
+#
+#cnf(i_0_65475, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X2,X5)|~nevera(X5,X5))).
+#####
+#cnf(i_0_65465, plain, (~xora(X1,X2)|~xora(X2,X2)|~xora(X1,X5)|~nevera(X5,X5))).
+####
+#cnf(i_0_65476, plain, (~xora(X1,X1)|~xora(X2,X5)|~nevera(X1,X2)|~nevera(X5,X5))).
+########
+#cnf(i_0_65477, plain, (~xora(X1,X1)|~xora(X2,X5)|~nevera(X2,X1)|~nevera(X5,X5))).
+########
+#cnf(i_0_65478, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X2,X5)|~nevera(X5,X5))).
+####
+#cnf(i_0_65480, plain, (~xora(X1,X1)|~xora(X2,X5)|~nevera(X2,X2)|~nevera(X5,X5))).
+####
+#cnf(i_0_65493, plain, (~xora(X1,X1)|~xora(X2,X2)|~xora(X5,X6)|~nevera(X6,X6))).
+##
+#cnf(i_0_65813, plain, (mighta(X1,X2)|~xora(X2,X2)|~xora(X1,X5)|~xora(X6,X6))).
+###
+#cnf(i_0_65815, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X1,X5)|~xora(X6,X6))).
+#
+#cnf(i_0_65824, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X2,X5)|~xora(X6,X6))).
+##########
+#cnf(i_0_65814, plain, (~xora(X1,X2)|~xora(X2,X2)|~xora(X1,X5)|~xora(X6,X6))).
+####
+#cnf(i_0_65825, plain, (~xora(X1,X1)|~xora(X2,X5)|~xora(X6,X6)|~nevera(X1,X2))).
+########
+#cnf(i_0_65826, plain, (~xora(X1,X1)|~xora(X2,X5)|~xora(X6,X6)|~nevera(X2,X1))).
+########
+#cnf(i_0_65827, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X2,X5)|~xora(X6,X6))).
+####
+#cnf(i_0_65829, plain, (~xora(X1,X1)|~xora(X2,X5)|~xora(X6,X6)|~nevera(X2,X2))).
+########
+#cnf(i_0_66020, plain, (~xora(X1,X3)|~xora(X3,X4)|~nevera(X4,X4)|~mighta(X2,X1))).
+####
+#cnf(i_0_66022, plain, (~xora(X1,X3)|~xora(X3,X4)|~nevera(X4,X4)|~mighta(X1,X2))).
+####
+#cnf(i_0_66023, plain, (~xora(X1,X3)|~xora(X3,X4)|~nevera(X4,X4)|~nota(X1,X2))).
+####################
+#cnf(i_0_66285, plain, (~xora(X3,X4)|~nevera(X1,X3)|~nevera(X4,X4)|~mighta(X1,X2))).
+####
+#cnf(i_0_66286, plain, (~xora(X3,X4)|~nevera(X1,X3)|~nevera(X4,X4)|~nota(X1,X2))).
+####
+#cnf(i_0_66455, plain, (~xora(X3,X4)|~nevera(X3,X1)|~nevera(X4,X4)|~mighta(X2,X1))).
+####
+#cnf(i_0_66457, plain, (~xora(X3,X4)|~nevera(X3,X1)|~nevera(X4,X4)|~mighta(X1,X2))).
+####
+#cnf(i_0_66458, plain, (~xora(X3,X4)|~nevera(X3,X1)|~nevera(X4,X4)|~nota(X1,X2))).
+###
+#cnf(i_0_67484, plain, (mighta(X1,X1)|~xora(X1,X3)|~nevera(X3,X3)|~nota(X2,X4))).
+#########################
+#cnf(i_0_66994, plain, (~xora(X3,X1)|~xora(X3,X4)|~nevera(X4,X4)|~mighta(X2,X1))).
+####
+#cnf(i_0_66996, plain, (~xora(X3,X1)|~xora(X3,X4)|~nevera(X4,X4)|~mighta(X1,X2))).
+####
+#cnf(i_0_66997, plain, (~xora(X3,X1)|~xora(X3,X4)|~nevera(X4,X4)|~nota(X1,X2))).
+###
+#cnf(i_0_68554, plain, (mighta(X1,X1)|~xora(X1,X3)|~nevera(X3,X3)|~mighta(X4,X2))).
+#############
+#cnf(i_0_67288, plain, (~xora(X3,X4)|~nevera(X3,X3)|~nevera(X4,X4)|~mighta(X2,X1))).
+########
+#cnf(i_0_67291, plain, (~xora(X3,X4)|~nevera(X3,X3)|~nevera(X4,X4)|~nota(X1,X2))).
+###################################################################################################################################################
+#cnf(i_0_65427, plain, (nevera(X1,X2)|mighta(X2,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+############
+#cnf(i_0_65429, plain, (nevera(X1,X2)|mighta(X3,X2)|~xora(X3,X4)|~nevera(X4,X4))).
+############
+#cnf(i_0_65431, plain, (nevera(X1,X2)|mighta(X1,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+############
+#cnf(i_0_65433, plain, (nevera(X1,X2)|mighta(X3,X1)|~xora(X3,X4)|~nevera(X4,X4))).
+############
+#cnf(i_0_65445, plain, (isa(X1,X2)|mighta(X1,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+########
+#cnf(i_0_65447, plain, (isa(X1,X2)|mighta(X3,X1)|~xora(X3,X4)|~nevera(X4,X4))).
+########
+#cnf(i_0_65451, plain, (nota(X1,X2)|isa(X3,X2)|~xora(X1,X4)|~nevera(X4,X4))).
+###############
+#cnf(i_0_66391, plain, (nevera(X1,X2)|mighta(X3,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+#########################
+#cnf(i_0_67890, plain, (isa(X1,X2)|mighta(X3,X3)|~xora(X3,X4)|~nevera(X4,X4))).
+########################################################################################################################
+#cnf(i_0_65458, plain, (mighta(X1,X2)|~xora(X1,X5)|~nevera(X5,X5)|~status(X3,X4,X2))).
+###########
+#cnf(i_0_65470, plain, (mighta(X1,X2)|~xora(X2,X5)|~nevera(X5,X5)|~status(X3,X4,X1))).
+###########
+#cnf(i_0_65571, plain, (mighta(X1,X1)|~xora(X1,X5)|~nevera(X5,X5)|~status(X2,X3,X4))).
+##########
+#cnf(i_0_65575, plain, (mighta(X1,X1)|~xora(X4,X5)|~nevera(X5,X5)|~status(X2,X3,X1))).
+###########
+#cnf(i_0_65807, plain, (mighta(X1,X2)|~xora(X1,X5)|~xora(X6,X6)|~status(X3,X4,X2))).
+###########
+#cnf(i_0_65819, plain, (mighta(X1,X2)|~xora(X2,X5)|~xora(X6,X6)|~status(X3,X4,X1))).
+##########
+#cnf(i_0_65920, plain, (mighta(X1,X1)|~xora(X1,X5)|~xora(X6,X6)|~status(X2,X3,X4))).
+##############################################
+#cnf(i_0_65481, plain, (status(X1,X2,X3)|~xora(X4,X5)|~nevera(X5,X5)|~isa(X4,X3))).
+####
+#cnf(i_0_65484, plain, (status(X1,X2,X3)|~xora(X4,X5)|~nevera(X4,X4)|~nevera(X5,X5))).
+##
+#cnf(i_0_65506, plain, (status(X1,X2,X3)|~xora(X4,X4)|~xora(X5,X6)|~nevera(X6,X6))).
+######
+#cnf(i_0_65830, plain, (status(X1,X2,X3)|~xora(X4,X5)|~xora(X6,X6)|~isa(X4,X3))).
+####
+#cnf(i_0_65833, plain, (status(X1,X2,X3)|~xora(X4,X5)|~xora(X6,X6)|~nevera(X4,X4))).
+################
+#cnf(i_0_65457, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X1,X5)|~nevera(X5,X5))).
+########
+#cnf(i_0_65573, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X1,X5)|~nevera(X5,X5))).
+##########
+#cnf(i_0_65806, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X1,X5)|~xora(X6,X6))).
+########
+#cnf(i_0_65922, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X1,X5)|~xora(X6,X6))).
+##############################
+#cnf(i_0_45088, plain, (status(X1,X2,X3)|status(X1,X2,X5)|~xora(X4,X5)|~nevera(X4,X4))).
+#
+#cnf(i_0_77509, plain, (status(X6,X7,X8)|~xora(X9,X8)|~nevera(X9,X9))).
+#
+#cnf(i_0_77903, plain, (isa(X1,X2)|~xora(X3,X2)|~nevera(X3,X3))).
+#
+#cnf(i_0_77899, plain, (~xora(X3,X2)|~nevera(X3,X3)|~nota(X1,X2))).
+###
+#cnf(i_0_78051, plain, (status(X1,X2,X3)|~xora(X4,X3)|~xora(X5,X5))).
+###
+#cnf(i_0_78043, plain, (mighta(X1,X1)|~xora(X1,X1)|~xora(X5,X4)|~nevera(X5,X5))).
+####
+#cnf(i_0_77886, plain, (nevera(X1,X2)|~xora(X1,X3)|~xora(X4,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_77887, plain, (nevera(X1,X2)|~xora(X2,X3)|~xora(X4,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_78045, plain, (~xora(X1,X1)|~xora(X5,X4)|~nevera(X1,X1)|~nevera(X5,X5))).
+#
+#cnf(i_0_77889, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X2,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_77891, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X3,X2)|~nevera(X4,X4))).
+#
+#cnf(i_0_77893, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X1,X3)|~nevera(X4,X4))).
+##
+#cnf(i_0_77895, plain, (nevera(X1,X2)|~xora(X4,X3)|~nevera(X3,X1)|~nevera(X4,X4))).
+#
+#cnf(i_0_77896, plain, (nevera(X1,X2)|~xora(X3,X2)|~xora(X4,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_77897, plain, (nevera(X1,X2)|~xora(X3,X1)|~xora(X4,X3)|~nevera(X4,X4))).
+###
+#cnf(i_0_77900, plain, (mighta(X1,X2)|~xora(X4,X2)|~nevera(X4,X4)|~nota(X1,X3))).
+#
+#cnf(i_0_77901, plain, (mighta(X1,X2)|~xora(X4,X1)|~nevera(X4,X4)|~nota(X2,X3))).
+##
+#cnf(i_0_77902, plain, (nota(X1,X2)|~xora(X4,X1)|~nevera(X4,X4)|~nota(X3,X2))).
+#
+#cnf(i_0_77904, plain, (isa(X1,X2)|~xora(X4,X3)|~nevera(X4,X4)|~isa(X3,X2))).
+###
+#cnf(i_0_77905, plain, (isa(X1,X2)|~xora(X1,X3)|~xora(X4,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_77907, plain, (isa(X1,X2)|~xora(X4,X3)|~nevera(X1,X3)|~nevera(X4,X4))).
+#
+#cnf(i_0_77909, plain, (isa(X1,X2)|~xora(X4,X3)|~nevera(X3,X1)|~nevera(X4,X4))).
+##
+#cnf(i_0_77910, plain, (isa(X1,X2)|~xora(X3,X1)|~xora(X4,X3)|~nevera(X4,X4))).
+##
+#cnf(i_0_77913, plain, (mighta(X1,X2)|~xora(X4,X2)|~nevera(X4,X4)|~mighta(X3,X1))).
+##
+#cnf(i_0_77915, plain, (mighta(X1,X2)|~xora(X4,X1)|~nevera(X4,X4)|~mighta(X3,X2))).
+#
+#cnf(i_0_77916, plain, (mighta(X1,X2)|~xora(X4,X2)|~nevera(X4,X4)|~mighta(X1,X3))).
+#
+#cnf(i_0_77917, plain, (mighta(X1,X2)|~xora(X4,X1)|~nevera(X4,X4)|~mighta(X2,X3))).
+##
+#cnf(i_0_77925, plain, (mighta(X1,X2)|~xora(X2,X2)|~xora(X5,X1)|~nevera(X5,X5))).
+##
+#cnf(i_0_77927, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X5,X1)|~nevera(X5,X5))).
+##
+#cnf(i_0_77936, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X5,X2)|~nevera(X5,X5))).
+################################
+#cnf(i_0_78329, plain, (mighta(X1,X2)|~xora(X2,X2)|~xora(X5,X1)|~xora(X6,X6))).
+##
+#cnf(i_0_78331, plain, (mighta(X1,X1)|~xora(X2,X2)|~xora(X5,X1)|~xora(X6,X6))).
+##
+#cnf(i_0_78340, plain, (mighta(X1,X2)|~xora(X1,X1)|~xora(X5,X2)|~xora(X6,X6))).
+###################################################
+#cnf(i_0_75481, plain, (~xora(X3,X4)|~nevera(X4,X4)|~nota(X1,X2)|~isa(X3,X2))).
+########################
+#cnf(i_0_77914, plain, (~xora(X4,X2)|~nevera(X1,X2)|~nevera(X4,X4)|~mighta(X3,X1))).
+###
+#cnf(i_0_80747, plain, (mighta(X1,X1)|~xora(X3,X1)|~nevera(X3,X3)|~nota(X2,X4))).
+#
+#cnf(i_0_77926, plain, (~xora(X1,X2)|~xora(X2,X2)|~xora(X5,X1)|~nevera(X5,X5))).
+####
+#cnf(i_0_77937, plain, (~xora(X1,X1)|~xora(X5,X2)|~nevera(X1,X2)|~nevera(X5,X5))).
+########
+#cnf(i_0_77938, plain, (~xora(X1,X1)|~xora(X5,X2)|~nevera(X2,X1)|~nevera(X5,X5))).
+########
+#cnf(i_0_77939, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X5,X2)|~nevera(X5,X5))).
+###############
+#cnf(i_0_81893, plain, (mighta(X1,X1)|~xora(X3,X1)|~nevera(X3,X3)|~mighta(X4,X2))).
+#
+#cnf(i_0_78330, plain, (~xora(X1,X2)|~xora(X2,X2)|~xora(X5,X1)|~xora(X6,X6))).
+####
+#cnf(i_0_78341, plain, (~xora(X1,X1)|~xora(X5,X2)|~xora(X6,X6)|~nevera(X1,X2))).
+########
+#cnf(i_0_78342, plain, (~xora(X1,X1)|~xora(X5,X2)|~xora(X6,X6)|~nevera(X2,X1))).
+########
+#cnf(i_0_78343, plain, (~xora(X1,X2)|~xora(X1,X1)|~xora(X5,X2)|~xora(X6,X6))).
+############
+#cnf(i_0_78570, plain, (~xora(X1,X3)|~xora(X4,X3)|~nevera(X4,X4)|~mighta(X2,X1))).
+####
+#cnf(i_0_78572, plain, (~xora(X1,X3)|~xora(X4,X3)|~nevera(X4,X4)|~mighta(X1,X2))).
+####
+#cnf(i_0_78573, plain, (~xora(X1,X3)|~xora(X4,X3)|~nevera(X4,X4)|~nota(X1,X2))).
+####################
+#cnf(i_0_79088, plain, (~xora(X3,X4)|~nevera(X1,X4)|~nevera(X3,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_79089, plain, (~xora(X3,X4)|~nevera(X1,X4)|~nevera(X3,X3)|~nota(X1,X2))).
+####
+#cnf(i_0_79377, plain, (~xora(X3,X4)|~nevera(X4,X1)|~nevera(X3,X3)|~mighta(X2,X1))).
+####
+#cnf(i_0_79379, plain, (~xora(X3,X4)|~nevera(X4,X1)|~nevera(X3,X3)|~mighta(X1,X2))).
+####
+#cnf(i_0_79380, plain, (~xora(X3,X4)|~nevera(X4,X1)|~nevera(X3,X3)|~nota(X1,X2))).
+############################
+#cnf(i_0_80273, plain, (~xora(X3,X1)|~xora(X4,X3)|~nevera(X4,X4)|~mighta(X2,X1))).
+####
+#cnf(i_0_80275, plain, (~xora(X3,X1)|~xora(X4,X3)|~nevera(X4,X4)|~mighta(X1,X2))).
+####
+#cnf(i_0_80276, plain, (~xora(X3,X1)|~xora(X4,X3)|~nevera(X4,X4)|~nota(X1,X2))).
+#####################################################
+#cnf(i_0_77888, plain, (nevera(X1,X2)|mighta(X2,X3)|~xora(X4,X3)|~nevera(X4,X4))).
+############
+#cnf(i_0_77890, plain, (nevera(X1,X2)|mighta(X3,X2)|~xora(X4,X3)|~nevera(X4,X4))).
+############
+#cnf(i_0_77892, plain, (nevera(X1,X2)|mighta(X1,X3)|~xora(X4,X3)|~nevera(X4,X4))).
+############
+#cnf(i_0_77894, plain, (nevera(X1,X2)|mighta(X3,X1)|~xora(X4,X3)|~nevera(X4,X4))).
+############
+#cnf(i_0_77906, plain, (isa(X1,X2)|mighta(X1,X3)|~xora(X4,X3)|~nevera(X4,X4))).
+########
+#cnf(i_0_77908, plain, (isa(X1,X2)|mighta(X3,X1)|~xora(X4,X3)|~nevera(X4,X4))).
+########
+#cnf(i_0_77912, plain, (nota(X1,X2)|isa(X3,X2)|~xora(X4,X1)|~nevera(X4,X4))).
+##############
+#cnf(i_0_79285, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X4)|~nevera(X3,X3))).
+##########################
+#cnf(i_0_81231, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X3,X4)|~nevera(X3,X3))).
+########################################################################################################################
+#cnf(i_0_77919, plain, (mighta(X1,X2)|~xora(X5,X1)|~nevera(X5,X5)|~status(X3,X4,X2))).
+##########
+#cnf(i_0_77931, plain, (mighta(X1,X2)|~xora(X5,X2)|~nevera(X5,X5)|~status(X3,X4,X1))).
+###########
+#cnf(i_0_78035, plain, (mighta(X1,X1)|~xora(X5,X1)|~nevera(X5,X5)|~status(X2,X3,X4))).
+###########
+#cnf(i_0_78042, plain, (mighta(X1,X1)|~xora(X5,X4)|~nevera(X5,X5)|~status(X2,X3,X1))).
+##########
+#cnf(i_0_78323, plain, (mighta(X1,X2)|~xora(X5,X1)|~xora(X6,X6)|~status(X3,X4,X2))).
+###########
+#cnf(i_0_78335, plain, (mighta(X1,X2)|~xora(X5,X2)|~xora(X6,X6)|~status(X3,X4,X1))).
+###########
+#cnf(i_0_78439, plain, (mighta(X1,X1)|~xora(X5,X1)|~xora(X6,X6)|~status(X2,X3,X4))).
+#############################################
+#cnf(i_0_77942, plain, (status(X1,X2,X3)|~xora(X5,X4)|~nevera(X5,X5)|~isa(X4,X3))).
+#########
+#cnf(i_0_78346, plain, (status(X1,X2,X3)|~xora(X5,X4)|~xora(X6,X6)|~isa(X4,X3))).
+##############
+#cnf(i_0_77918, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X5,X1)|~nevera(X5,X5))).
+########
+#cnf(i_0_78037, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X5,X1)|~nevera(X5,X5))).
+##########
+#cnf(i_0_78322, plain, (nota(X1,X2)|status(X3,X4,X2)|~xora(X5,X1)|~xora(X6,X6))).
+########
+#cnf(i_0_78441, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X5,X1)|~xora(X6,X6))).
+##################################################
+#cnf(i_0_19584, plain, (mighta(X1,X1)|~nota(X2,X3)|~status(esk5_2(X2,X3),esk6_2(X2,X3),X1))).
+##################
+#cnf(i_0_19586, plain, (mighta(X1,X1)|~mighta(X2,X3)|~status(esk1_2(X2,X3),esk2_2(X2,X3),X1))).
+###############################
+#cnf(i_0_43, plain, (nota(X1,X2)|nota(X5,X1)|status(X3,X4,X2)|~status(X3,X4,X5))).
+#############
+#cnf(i_0_45357, plain, (nota(X5,X1)|mighta(X1,X1)|status(X2,X3,X4)|~status(X2,X3,X5))).
+##########################
+#cnf(i_0_106, plain, (status(esk1_2(X1,X2),esk2_2(X1,X2),X3)|~isa(X2,X3)|~mighta(X1,X2))).
+#
+#cnf(i_0_92933, plain, (mighta(X1,X2)|~isa(X1,X2)|~mighta(X3,X1))).
+#
+#cnf(i_0_92935, plain, (mighta(X1,X2)|~isa(X2,X1)|~mighta(X3,X2))).
+#
+#cnf(i_0_92934, plain, (~nevera(X1,X2)|~isa(X1,X2)|~mighta(X3,X1))).
+##
+#cnf(i_0_93019, plain, (mighta(X1,X2)|~isa(X1,X2)|~mighta(X1,X3))).
+####
+#cnf(i_0_93114, plain, (mighta(X1,X2)|~nota(X1,X3)|~isa(X1,X2))).
+##
+#cnf(i_0_93002, plain, (~nevera(X1,X2)|~isa(X2,X1)|~mighta(X3,X2))).
+#
+#cnf(i_0_93246, plain, (mighta(X1,X2)|~isa(X2,X1)|~mighta(X2,X3))).
+####
+#cnf(i_0_93342, plain, (mighta(X1,X2)|~nota(X2,X3)|~isa(X2,X1))).
+#
+#cnf(i_0_93430, plain, (nevera(X3,X1)|~nevera(X1,X2)|~isa(X1,X2))).
+#
+#cnf(i_0_93493, plain, (nevera(X1,X3)|~nevera(X1,X2)|~isa(X1,X2))).
+##
+#cnf(i_0_93520, plain, (isa(X1,X3)|~nevera(X1,X2)|~isa(X1,X2))).
+###
+#cnf(i_0_93409, plain, (~nevera(X1,X2)|~isa(X1,X2)|~mighta(X1,X3))).
+#########
+#cnf(i_0_94014, plain, (nevera(X3,X2)|~nevera(X1,X2)|~isa(X2,X1))).
+#
+#cnf(i_0_94079, plain, (nevera(X2,X3)|~nevera(X1,X2)|~isa(X2,X1))).
+#
+#cnf(i_0_94106, plain, (isa(X2,X3)|~nevera(X1,X2)|~isa(X2,X1))).
+#
+#cnf(i_0_93506, plain, (~nevera(X1,X2)|~nota(X1,X3)|~isa(X1,X2))).
+############
+#cnf(i_0_93684, plain, (~nevera(X1,X2)|~isa(X2,X1)|~mighta(X2,X3))).
+########
+#cnf(i_0_93915, plain, (~nevera(X1,X2)|~nota(X2,X3)|~isa(X2,X1))).
+#####################################
+#cnf(i_0_92936, plain, (mighta(X1,X2)|~isa(X3,X2)|~mighta(X1,X3))).
+#####
+#cnf(i_0_92937, plain, (mighta(X1,X2)|~isa(X3,X1)|~mighta(X2,X3))).
+#######
+#cnf(i_0_92938, plain, (mighta(X1,X1)|~isa(X3,X1)|~mighta(X2,X3))).
+##########
+#cnf(i_0_93681, plain, (mighta(X1,X1)|~isa(X2,X1)|~mighta(X2,X3))).
+###
+#cnf(i_0_93912, plain, (mighta(X1,X1)|~nota(X2,X3)|~isa(X2,X1))).
+#########
+#cnf(i_0_94838, plain, (nevera(X1,X2)|~nevera(X3,X3)|~isa(X2,X3))).
+####
+#cnf(i_0_95168, plain, (nevera(X1,X2)|~nevera(X3,X3)|~isa(X1,X3))).
+####
+#cnf(i_0_95290, plain, (isa(X1,X2)|~nevera(X3,X3)|~isa(X1,X3))).
+###############################
+#cnf(i_0_96953, plain, (mighta(X1,X2)|~isa(X3,X2)|~mighta(X3,X1))).
+#############
+#cnf(i_0_97243, plain, (mighta(X1,X2)|~isa(X3,X1)|~mighta(X3,X2))).
+#####################
+#cnf(i_0_93001, plain, (~nevera(X1,X1)|~isa(X2,X1)|~mighta(X3,X2))).
+####################################
+#cnf(i_0_93683, plain, (~nevera(X1,X1)|~isa(X2,X1)|~mighta(X2,X3))).
+############
+#cnf(i_0_93914, plain, (~nevera(X1,X1)|~nota(X2,X3)|~isa(X2,X1))).
+###########################
+#cnf(i_0_93040, plain, (nevera(X3,X1)|mighta(X1,X2)|~isa(X1,X2))).
+############
+#cnf(i_0_93101, plain, (nevera(X1,X3)|mighta(X1,X2)|~isa(X1,X2))).
+############
+#cnf(i_0_93128, plain, (isa(X1,X3)|mighta(X1,X2)|~isa(X1,X2))).
+###########
+#cnf(i_0_93267, plain, (nevera(X3,X2)|mighta(X1,X2)|~isa(X2,X1))).
+############
+#cnf(i_0_93329, plain, (nevera(X2,X3)|mighta(X1,X2)|~isa(X2,X1))).
+############
+#cnf(i_0_93356, plain, (isa(X2,X3)|mighta(X1,X2)|~isa(X2,X1))).
+##
+#cnf(i_0_96866, plain, (~nevera(X1,X2)|~isa(X3,X2)|~mighta(X1,X3))).
+##########
+#cnf(i_0_102300, plain, (nevera(X1,X3)|~nevera(X1,X2)|~isa(X3,X2))).
+#####
+#cnf(i_0_102377, plain, (nevera(X3,X1)|~nevera(X1,X2)|~isa(X3,X2))).
+###############
+#cnf(i_0_102904, plain, (nevera(X1,X2)|~nevera(X3,X1)|~isa(X2,X3))).
+###############
+#cnf(i_0_103313, plain, (nevera(X1,X2)|~nevera(X3,X2)|~isa(X1,X3))).
+###################################
+#cnf(i_0_96936, plain, (~nevera(X1,X2)|~isa(X3,X1)|~mighta(X2,X3))).
+###################################################################
+#cnf(i_0_94869, plain, (nevera(X1,X2)|mighta(X3,X3)|~isa(X2,X3))).
+##############
+#cnf(i_0_95199, plain, (nevera(X1,X2)|mighta(X3,X3)|~isa(X1,X3))).
+#############
+#cnf(i_0_95321, plain, (isa(X1,X2)|mighta(X3,X3)|~isa(X1,X3))).
+#################
+#cnf(i_0_96974, plain, (nevera(X1,X3)|mighta(X1,X2)|~isa(X3,X2))).
+#############
+#cnf(i_0_99168, plain, (~nevera(X1,X2)|~isa(X3,X2)|~mighta(X3,X1))).
+###############
+#cnf(i_0_97041, plain, (nevera(X3,X1)|mighta(X1,X2)|~isa(X3,X2))).
+#################
+#cnf(i_0_99242, plain, (~nevera(X1,X2)|~isa(X3,X1)|~mighta(X3,X2))).
+#############
+#cnf(i_0_97264, plain, (nevera(X2,X3)|mighta(X1,X2)|~isa(X3,X1))).
+#################
+#cnf(i_0_97332, plain, (nevera(X3,X2)|mighta(X1,X2)|~isa(X3,X1))).
+###########################################################################################################################################################
+#cnf(i_0_92957, plain, (mighta(X1,X2)|~isa(X1,X2)|~isa(X3,X1)|~mighta(X4,X3))).
+##
+#cnf(i_0_93013, plain, (mighta(X1,X2)|~xora(X3,X3)|~xora(X1,X1)|~isa(X1,X2))).
+######
+#cnf(i_0_93240, plain, (mighta(X1,X2)|~xora(X3,X3)|~xora(X2,X2)|~isa(X2,X1))).
+##
+#cnf(i_0_93296, plain, (mighta(X1,X2)|~isa(X2,X1)|~isa(X3,X2)|~mighta(X4,X3))).
+###
+#cnf(i_0_93636, plain, (mighta(X1,X2)|~isa(X1,X2)|~isa(X3,X1)|~mighta(X3,X4))).
+###
+#cnf(i_0_93638, plain, (mighta(X1,X2)|~isa(X2,X1)|~isa(X3,X2)|~mighta(X3,X4))).
+########
+#cnf(i_0_93867, plain, (mighta(X1,X2)|~nota(X3,X4)|~isa(X1,X2)|~isa(X3,X1))).
+##
+#cnf(i_0_93869, plain, (mighta(X1,X2)|~nota(X3,X4)|~isa(X2,X1)|~isa(X3,X2))).
+#############
+#cnf(i_0_93403, plain, (~xora(X3,X3)|~xora(X1,X1)|~nevera(X1,X2)|~isa(X1,X2))).
+####
+#cnf(i_0_93459, plain, (~nevera(X1,X2)|~isa(X1,X2)|~isa(X3,X1)|~mighta(X4,X3))).
+######
+#cnf(i_0_94645, plain, (nevera(X1,X2)|~nevera(X3,X4)|~isa(X2,X3)|~isa(X3,X4))).
+###
+#cnf(i_0_94746, plain, (isa(X1,X2)|~xora(X2,X3)|~nevera(X3,X4)|~isa(X3,X4))).
+#
+#cnf(i_0_94778, plain, (isa(X1,X2)|~xora(X3,X2)|~nevera(X3,X4)|~isa(X3,X4))).
+##
+#cnf(i_0_93637, plain, (~nevera(X1,X2)|~isa(X1,X2)|~isa(X3,X1)|~mighta(X3,X4))).
+#####
+#cnf(i_0_95228, plain, (nevera(X1,X2)|~nevera(X3,X4)|~isa(X1,X3)|~isa(X3,X4))).
+##
+#cnf(i_0_95350, plain, (isa(X1,X2)|~nevera(X3,X4)|~isa(X1,X3)|~isa(X3,X4))).
+#
+#cnf(i_0_93868, plain, (~nevera(X1,X2)|~nota(X3,X4)|~isa(X1,X2)|~isa(X3,X1))).
+#####
+#cnf(i_0_95646, plain, (nevera(X1,X2)|~nevera(X4,X3)|~isa(X1,X3)|~isa(X3,X4))).
+##
+#cnf(i_0_95647, plain, (isa(X1,X2)|~nevera(X4,X3)|~isa(X1,X3)|~isa(X3,X4))).
+#
+#cnf(i_0_93987, plain, (~xora(X3,X3)|~xora(X2,X2)|~nevera(X1,X2)|~isa(X2,X1))).
+###
+#cnf(i_0_95663, plain, (nevera(X1,X2)|~nevera(X4,X3)|~isa(X2,X3)|~isa(X3,X4))).
+#
+#cnf(i_0_94043, plain, (~nevera(X1,X2)|~isa(X2,X1)|~isa(X3,X2)|~mighta(X4,X3))).
+##
+#cnf(i_0_95764, plain, (isa(X1,X2)|~xora(X2,X3)|~nevera(X4,X3)|~isa(X3,X4))).
+#
+#cnf(i_0_95796, plain, (isa(X1,X2)|~xora(X3,X2)|~nevera(X4,X3)|~isa(X3,X4))).
+#########
+#cnf(i_0_94045, plain, (~nevera(X1,X2)|~isa(X2,X1)|~isa(X3,X2)|~mighta(X3,X4))).
+########
+#cnf(i_0_94046, plain, (~nevera(X1,X2)|~nota(X3,X4)|~isa(X2,X1)|~isa(X3,X2))).
+####################################
+#cnf(i_0_94670, plain, (~xora(X1,X2)|~nevera(X1,X4)|~nota(X3,X2)|~isa(X1,X4))).
+####
+#cnf(i_0_94813, plain, (~xora(X1,X2)|~nevera(X2,X4)|~nota(X3,X1)|~isa(X2,X4))).
+############################################################################
+#cnf(i_0_95688, plain, (~xora(X1,X2)|~nevera(X4,X1)|~nota(X3,X2)|~isa(X1,X4))).
+####
+#cnf(i_0_95831, plain, (~xora(X1,X2)|~nevera(X4,X2)|~nota(X3,X1)|~isa(X2,X4))).
+#######################
+#cnf(i_0_100700, plain, (mighta(X1,X4)|~xora(X1,X2)|~nota(X3,X2)|~isa(X1,X4))).
+######
+#cnf(i_0_100849, plain, (mighta(X2,X4)|~xora(X1,X2)|~nota(X3,X1)|~isa(X2,X4))).
+##############################################
+#cnf(i_0_101576, plain, (mighta(X4,X1)|~xora(X1,X2)|~nota(X3,X2)|~isa(X1,X4))).
+######
+#cnf(i_0_101725, plain, (mighta(X4,X2)|~xora(X1,X2)|~nota(X3,X1)|~isa(X2,X4))).
+############################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_96911, plain, (mighta(X1,X2)|~isa(X3,X2)|~isa(X4,X3)|~mighta(X1,X4))).
+#####
+#cnf(i_0_97003, plain, (mighta(X1,X2)|~isa(X3,X2)|~isa(X1,X3)|~mighta(X4,X1))).
+####
+#cnf(i_0_97004, plain, (mighta(X1,X2)|~isa(X3,X2)|~isa(X3,X1)|~mighta(X4,X3))).
+####
+#cnf(i_0_97005, plain, (mighta(X1,X2)|~isa(X3,X2)|~isa(X1,X3)|~mighta(X1,X4))).
+####
+#cnf(i_0_97006, plain, (mighta(X1,X2)|~nota(X1,X4)|~isa(X3,X2)|~isa(X1,X3))).
+####
+#cnf(i_0_97007, plain, (mighta(X1,X2)|~isa(X3,X2)|~isa(X3,X1)|~mighta(X3,X4))).
+####
+#cnf(i_0_97008, plain, (mighta(X1,X2)|~nota(X3,X4)|~isa(X3,X2)|~isa(X3,X1))).
+#######
+#cnf(i_0_97200, plain, (mighta(X1,X2)|~isa(X3,X2)|~isa(X4,X1)|~mighta(X3,X4))).
+####
+#cnf(i_0_97204, plain, (mighta(X1,X2)|~isa(X3,X1)|~isa(X4,X2)|~mighta(X3,X4))).
+#####
+#cnf(i_0_97293, plain, (mighta(X1,X2)|~isa(X3,X1)|~isa(X2,X3)|~mighta(X4,X2))).
+#####
+#cnf(i_0_97295, plain, (mighta(X1,X2)|~isa(X3,X1)|~isa(X4,X3)|~mighta(X2,X4))).
+####
+#cnf(i_0_97296, plain, (mighta(X1,X2)|~isa(X3,X1)|~isa(X2,X3)|~mighta(X2,X4))).
+####
+#cnf(i_0_97297, plain, (mighta(X1,X2)|~nota(X2,X4)|~isa(X3,X1)|~isa(X2,X3))).
+##########
+#cnf(i_0_97466, plain, (mighta(X1,X1)|~isa(X2,X1)|~isa(X3,X2)|~mighta(X4,X3))).
+#########
+#cnf(i_0_97589, plain, (mighta(X1,X1)|~isa(X2,X1)|~isa(X3,X2)|~mighta(X3,X4))).
+###
+#cnf(i_0_97590, plain, (mighta(X1,X1)|~nota(X3,X4)|~isa(X2,X1)|~isa(X3,X2))).
+####################################
+#cnf(i_0_98283, plain, (nevera(X1,X2)|~nevera(X4,X4)|~isa(X1,X3)|~isa(X3,X4))).
+##
+#cnf(i_0_98284, plain, (isa(X1,X2)|~nevera(X4,X4)|~isa(X1,X3)|~isa(X3,X4))).
+###
+#cnf(i_0_98300, plain, (nevera(X1,X2)|~nevera(X4,X4)|~isa(X2,X3)|~isa(X3,X4))).
+###
+#cnf(i_0_98401, plain, (isa(X1,X2)|~xora(X2,X3)|~nevera(X4,X4)|~isa(X3,X4))).
+#
+#cnf(i_0_98433, plain, (isa(X1,X2)|~xora(X3,X2)|~nevera(X4,X4)|~isa(X3,X4))).
+#########################################
+#cnf(i_0_99215, plain, (mighta(X1,X2)|~isa(X3,X2)|~isa(X4,X3)|~mighta(X4,X1))).
+####
+#cnf(i_0_99219, plain, (mighta(X1,X2)|~isa(X3,X1)|~isa(X4,X3)|~mighta(X4,X2))).
+###############################################################
+#cnf(i_0_102347, plain, (nevera(X3,X4)|~nevera(X1,X2)|~isa(X3,X2)|~isa(X3,X1))).
+####
+#cnf(i_0_102348, plain, (isa(X3,X4)|~nevera(X1,X2)|~isa(X3,X2)|~isa(X3,X1))).
+####
+#cnf(i_0_102357, plain, (nevera(X4,X3)|~nevera(X1,X2)|~isa(X3,X2)|~isa(X3,X1))).
+####
+#cnf(i_0_102366, plain, (nevera(X1,X4)|~nevera(X1,X2)|~isa(X3,X2)|~isa(X1,X3))).
+####
+#cnf(i_0_102367, plain, (isa(X1,X4)|~nevera(X1,X2)|~isa(X3,X2)|~isa(X1,X3))).
+####
+#cnf(i_0_102376, plain, (nevera(X4,X1)|~nevera(X1,X2)|~isa(X3,X2)|~isa(X1,X3))).
+###########
+#cnf(i_0_102638, plain, (nevera(X1,X2)|~nevera(X1,X4)|~isa(X2,X3)|~isa(X3,X4))).
+##################
+#cnf(i_0_103046, plain, (nevera(X1,X2)|~nevera(X3,X4)|~isa(X2,X3)|~isa(X1,X4))).
+######
+#cnf(i_0_103063, plain, (nevera(X1,X2)|~nevera(X3,X4)|~isa(X1,X3)|~isa(X2,X4))).
+##########
+#cnf(i_0_103384, plain, (nevera(X1,X2)|~nevera(X2,X4)|~isa(X1,X3)|~isa(X3,X4))).
+##########
+#cnf(i_0_103455, plain, (nevera(X1,X2)|~nevera(X4,X1)|~isa(X1,X3)|~isa(X3,X4))).
+####
+#cnf(i_0_103456, plain, (isa(X1,X2)|~nevera(X4,X1)|~isa(X1,X3)|~isa(X3,X4))).
+####
+#cnf(i_0_103457, plain, (nevera(X1,X2)|~nevera(X4,X1)|~isa(X2,X3)|~isa(X3,X4))).
+####
+#cnf(i_0_103473, plain, (nevera(X1,X2)|~nevera(X4,X2)|~isa(X2,X3)|~isa(X3,X4))).
+####
+#cnf(i_0_103474, plain, (nevera(X1,X2)|~nevera(X4,X2)|~isa(X1,X3)|~isa(X3,X4))).
+############################################################
+#cnf(i_0_104716, plain, (mighta(X4,X4)|~xora(X1,X2)|~nota(X3,X2)|~isa(X1,X4))).
+#####
+#cnf(i_0_104865, plain, (mighta(X4,X4)|~xora(X1,X2)|~nota(X3,X1)|~isa(X2,X4))).
+######################################################################################################################
+#cnf(i_0_90292, plain, (~xora(X3,X4)|~nevera(X3,X3)|~nota(X1,X2)|~isa(X4,X2))).
+########################################
+#cnf(i_0_98224, plain, (~nevera(X4,X4)|~isa(X1,X2)|~isa(X2,X4)|~mighta(X3,X1))).
+############
+#cnf(i_0_98226, plain, (~nevera(X4,X4)|~isa(X1,X2)|~isa(X2,X4)|~mighta(X1,X3))).
+########
+#cnf(i_0_98227, plain, (~nevera(X4,X4)|~nota(X1,X3)|~isa(X1,X2)|~isa(X2,X4))).
+################
+#cnf(i_0_98325, plain, (~xora(X1,X2)|~nevera(X4,X4)|~nota(X3,X2)|~isa(X1,X4))).
+####
+#cnf(i_0_98469, plain, (~xora(X1,X2)|~nevera(X4,X4)|~nota(X3,X1)|~isa(X2,X4))).
+###########################
+#cnf(i_0_114765, plain, (mighta(X1,X1)|~xora(X1,X2)|~nota(X4,X2)|~isa(X1,X3))).
+##
+#cnf(i_0_134985, plain, (mighta(X1,X1)|~xora(X1,X2)|~nota(X3,X2))).
+#####
+#cnf(i_0_135249, plain, (isa(X3,X2)|mighta(X1,X1)|~xora(X1,X2))).
+###################################
+#cnf(i_0_114911, plain, (mighta(X2,X2)|~xora(X1,X2)|~nota(X4,X1)|~isa(X2,X3))).
+#
+#cnf(i_0_135683, plain, (mighta(X1,X1)|~xora(X2,X1)|~nota(X3,X2))).
+#####
+#cnf(i_0_135948, plain, (isa(X3,X2)|mighta(X1,X1)|~xora(X2,X1))).
+#####################################################################################################################################################################################################################################################
+#cnf(i_0_102329, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X1,X3)|~mighta(X4,X1))).
+############
+#cnf(i_0_102330, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X3,X1)|~mighta(X4,X3))).
+############
+#cnf(i_0_102331, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X4,X3)|~mighta(X1,X4))).
+############
+#cnf(i_0_102332, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X4,X1)|~mighta(X3,X4))).
+############
+#cnf(i_0_102333, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X1,X3)|~mighta(X1,X4))).
+############
+#cnf(i_0_102334, plain, (~nevera(X1,X2)|~nota(X1,X4)|~isa(X3,X2)|~isa(X1,X3))).
+############
+#cnf(i_0_102335, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X3,X1)|~mighta(X3,X4))).
+############
+#cnf(i_0_102336, plain, (~nevera(X1,X2)|~nota(X3,X4)|~isa(X3,X2)|~isa(X3,X1))).
+############
+#cnf(i_0_102337, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X4,X3)|~mighta(X4,X1))).
+############
+#cnf(i_0_102338, plain, (~nevera(X1,X2)|~isa(X3,X2)|~isa(X4,X1)|~mighta(X4,X3))).
+####################################################################################################
+#cnf(i_0_103394, plain, (~nevera(X4,X1)|~isa(X1,X2)|~isa(X2,X4)|~mighta(X3,X1))).
+################
+#cnf(i_0_103396, plain, (~nevera(X4,X1)|~isa(X1,X2)|~isa(X2,X4)|~mighta(X1,X3))).
+############
+#cnf(i_0_103397, plain, (~nevera(X4,X1)|~nota(X1,X3)|~isa(X1,X2)|~isa(X2,X4))).
+####################
+#cnf(i_0_103400, plain, (~nevera(X4,X1)|~isa(X3,X2)|~isa(X2,X4)|~mighta(X1,X3))).
+################################################################################
+#cnf(i_0_104285, plain, (~nevera(X1,X2)|~isa(X3,X1)|~isa(X4,X3)|~mighta(X4,X2))).
+#######################
+#cnf(i_0_135419, plain, (mighta(X4,X4)|~xora(X4,X2)|~nevera(X1,X2)|~mighta(X1,X3))).
+##
+#cnf(i_0_135421, plain, (mighta(X4,X4)|~xora(X4,X2)|~nevera(X1,X2)|~mighta(X3,X1))).
+#
+#cnf(i_0_135525, plain, (mighta(X4,X4)|~xora(X4,X1)|~nevera(X1,X2)|~mighta(X2,X3))).
+#
+#cnf(i_0_135537, plain, (mighta(X4,X4)|~xora(X4,X1)|~nevera(X1,X2)|~mighta(X3,X2))).
+###########
+#cnf(i_0_136118, plain, (mighta(X4,X4)|~xora(X2,X4)|~nevera(X1,X2)|~mighta(X1,X3))).
+#
+#cnf(i_0_136120, plain, (mighta(X4,X4)|~xora(X2,X4)|~nevera(X1,X2)|~mighta(X3,X1))).
+##
+#cnf(i_0_136224, plain, (mighta(X4,X4)|~xora(X1,X4)|~nevera(X1,X2)|~mighta(X2,X3))).
+#
+#cnf(i_0_136236, plain, (mighta(X4,X4)|~xora(X1,X4)|~nevera(X1,X2)|~mighta(X3,X2))).
+#################################################################################################################################################################################
+#cnf(i_0_142901, plain, (mighta(X1,X1)|~xora(X1,X2)|~nevera(X3,X2)|~nota(X3,X4))).
+##############################
+#cnf(i_0_143791, plain, (mighta(X1,X1)|~xora(X1,X2)|~nevera(X2,X3)|~nota(X3,X4))).
+#############################
+#cnf(i_0_144689, plain, (mighta(X1,X1)|~xora(X2,X1)|~nevera(X3,X2)|~nota(X3,X4))).
+#############################
+#cnf(i_0_145595, plain, (mighta(X1,X1)|~xora(X2,X1)|~nevera(X2,X3)|~nota(X3,X4))).
+###########################################################
+#cnf(i_0_100529, plain, (nevera(X4,X3)|mighta(X1,X2)|~isa(X1,X2)|~isa(X3,X1))).
+#############
+#cnf(i_0_100532, plain, (nevera(X4,X3)|mighta(X1,X2)|~isa(X2,X1)|~isa(X3,X2))).
+####################
+#cnf(i_0_100658, plain, (nevera(X1,X2)|mighta(X3,X4)|~isa(X1,X3)|~isa(X3,X4))).
+##############
+#cnf(i_0_100659, plain, (isa(X1,X2)|mighta(X3,X4)|~isa(X1,X3)|~isa(X3,X4))).
+##########
+#cnf(i_0_100779, plain, (isa(X1,X2)|mighta(X3,X4)|~xora(X2,X3)|~isa(X3,X4))).
+########
+#cnf(i_0_100811, plain, (isa(X1,X2)|mighta(X3,X4)|~xora(X3,X2)|~isa(X3,X4))).
+##############
+#cnf(i_0_100894, plain, (nevera(X3,X4)|mighta(X1,X2)|~isa(X2,X1)|~isa(X3,X2))).
+################################
+#cnf(i_0_101256, plain, (isa(X3,X4)|mighta(X1,X2)|~isa(X2,X1)|~isa(X3,X2))).
+######################################
+#cnf(i_0_101655, plain, (isa(X1,X2)|mighta(X4,X3)|~xora(X2,X3)|~isa(X3,X4))).
+########
+#cnf(i_0_101687, plain, (isa(X1,X2)|mighta(X4,X3)|~xora(X3,X2)|~isa(X3,X4))).
+###################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_100531, plain, (nevera(X4,X3)|mighta(X1,X2)|~isa(X3,X2)|~isa(X3,X1))).
+###############
+#cnf(i_0_100533, plain, (nevera(X4,X3)|mighta(X1,X1)|~isa(X2,X1)|~isa(X3,X2))).
+##############
+#cnf(i_0_100561, plain, (nevera(X4,X1)|mighta(X1,X2)|~isa(X3,X2)|~isa(X1,X3))).
+###############
+#cnf(i_0_100565, plain, (nevera(X4,X2)|mighta(X1,X2)|~isa(X3,X1)|~isa(X2,X3))).
+################
+#cnf(i_0_100893, plain, (nevera(X3,X4)|mighta(X1,X2)|~isa(X3,X2)|~isa(X3,X1))).
+###############
+#cnf(i_0_100895, plain, (nevera(X3,X4)|mighta(X1,X1)|~isa(X2,X1)|~isa(X3,X2))).
+##############
+#cnf(i_0_100923, plain, (nevera(X1,X4)|mighta(X1,X2)|~isa(X3,X2)|~isa(X1,X3))).
+###############
+#cnf(i_0_100927, plain, (nevera(X2,X4)|mighta(X1,X2)|~isa(X3,X1)|~isa(X2,X3))).
+################
+#cnf(i_0_101255, plain, (isa(X3,X4)|mighta(X1,X2)|~isa(X3,X2)|~isa(X3,X1))).
+###########
+#cnf(i_0_101257, plain, (isa(X3,X4)|mighta(X1,X1)|~isa(X2,X1)|~isa(X3,X2))).
+##########
+#cnf(i_0_101285, plain, (isa(X1,X4)|mighta(X1,X2)|~isa(X3,X2)|~isa(X1,X3))).
+###########
+#cnf(i_0_101289, plain, (isa(X2,X4)|mighta(X1,X2)|~isa(X3,X1)|~isa(X2,X3))).
+####################################################
+#cnf(i_0_104795, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X2,X3)|~isa(X3,X4))).
+########
+#cnf(i_0_104827, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X3,X2)|~isa(X3,X4))).
+####################################################################
+#cnf(i_0_105595, plain, (nevera(X3,X4)|mighta(X1,X2)|~isa(X3,X2)|~isa(X4,X1))).
+################
+#cnf(i_0_105600, plain, (nevera(X3,X4)|mighta(X1,X2)|~isa(X3,X1)|~isa(X4,X2))).
+###############
+#cnf(i_0_105625, plain, (nevera(X1,X4)|mighta(X1,X2)|~isa(X3,X2)|~isa(X4,X3))).
+##############
+#cnf(i_0_105630, plain, (nevera(X2,X4)|mighta(X1,X2)|~isa(X3,X1)|~isa(X4,X3))).
+############################
+#cnf(i_0_105747, plain, (nevera(X1,X2)|mighta(X2,X4)|~isa(X1,X3)|~isa(X3,X4))).
+########################
+#cnf(i_0_106370, plain, (nevera(X4,X2)|mighta(X1,X2)|~isa(X3,X1)|~isa(X4,X3))).
+####################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_135412, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X4,X2)|~mighta(X1,X3))).
+###############
+#cnf(i_0_135422, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X4,X2)|~mighta(X3,X1))).
+################
+#cnf(i_0_135455, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X4,X3)|~nevera(X1,X3))).
+############
+#cnf(i_0_135457, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X4,X3)|~nevera(X3,X1))).
+###############
+#cnf(i_0_135473, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X4,X3)|~nevera(X2,X3))).
+############
+#cnf(i_0_135475, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X4,X3)|~nevera(X3,X2))).
+############
+#cnf(i_0_135518, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X4,X1)|~mighta(X2,X3))).
+##############
+#cnf(i_0_135530, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X4,X1)|~mighta(X3,X2))).
+###############
+#cnf(i_0_135549, plain, (mighta(X1,X1)|mighta(X4,X4)|~xora(X4,X1)|~mighta(X3,X2))).
+################
+#cnf(i_0_135553, plain, (mighta(X1,X1)|mighta(X4,X4)|~xora(X4,X1)|~nota(X2,X3))).
+#################
+#cnf(i_0_136111, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X2,X4)|~mighta(X1,X3))).
+###############
+#cnf(i_0_136121, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X2,X4)|~mighta(X3,X1))).
+################
+#cnf(i_0_136154, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X4)|~nevera(X1,X3))).
+############
+#cnf(i_0_136156, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X4)|~nevera(X3,X1))).
+###############
+#cnf(i_0_136172, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X4)|~nevera(X2,X3))).
+############
+#cnf(i_0_136174, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X4)|~nevera(X3,X2))).
+############
+#cnf(i_0_136217, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X1,X4)|~mighta(X2,X3))).
+##############
+#cnf(i_0_136229, plain, (mighta(X1,X2)|mighta(X4,X4)|~xora(X1,X4)|~mighta(X3,X2))).
+######################
+#cnf(i_0_142915, plain, (isa(X3,X4)|mighta(X1,X1)|~xora(X1,X2)|~nevera(X3,X2))).
+#########################
+#cnf(i_0_143805, plain, (isa(X3,X4)|mighta(X1,X1)|~xora(X1,X2)|~nevera(X2,X3))).
+#########################
+#cnf(i_0_144703, plain, (isa(X3,X4)|mighta(X1,X1)|~xora(X2,X1)|~nevera(X3,X2))).
+##########################
+#cnf(i_0_145609, plain, (isa(X3,X4)|mighta(X1,X1)|~xora(X2,X1)|~nevera(X2,X3))).
+###############################################################################################################################################################################################
+#cnf(i_0_56854, plain, (~xora(X1,X2)|~xora(X1,X5)|~isa(X5,X1)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_56865, plain, (~xora(X2,X5)|~nevera(X1,X2)|~isa(X5,X2)|~status(X3,X4,X1))).
+####################
+#cnf(i_0_56866, plain, (~xora(X1,X2)|~xora(X2,X5)|~isa(X5,X2)|~status(X3,X4,X1))).
+####################
+#cnf(i_0_56956, plain, (~xora(X1,X5)|~nevera(X1,X1)|~isa(X5,X1)|~status(X2,X3,X4))).
+####################
+#cnf(i_0_56960, plain, (~xora(X4,X5)|~nevera(X1,X1)|~isa(X5,X4)|~status(X2,X3,X1))).
+####################
+#cnf(i_0_56962, plain, (~xora(X1,X1)|~xora(X4,X6)|~isa(X6,X4)|~status(X2,X3,X5))).
+##################################################################
+#cnf(i_0_164331, plain, (mighta(X1,X2)|mighta(X3,X3)|~xora(X3,X2)|~nota(X1,X4))).
+##############################################################################################
+#cnf(i_0_93400, plain, (~xora(X3,X3)|~nevera(X1,X2)|~isa(X1,X2)|~status(X4,X5,X1))).
+#########
+#cnf(i_0_167849, plain, (mighta(X1,X2)|mighta(X3,X3)|~xora(X3,X1)|~nota(X2,X4))).
+###########
+#cnf(i_0_93401, plain, (~xora(X1,X1)|~nevera(X1,X2)|~isa(X1,X2)|~status(X4,X5,X3))).
+########################
+#cnf(i_0_93984, plain, (~xora(X3,X3)|~nevera(X1,X2)|~isa(X2,X1)|~status(X4,X5,X2))).
+####################
+#cnf(i_0_93985, plain, (~xora(X2,X2)|~nevera(X1,X2)|~isa(X2,X1)|~status(X4,X5,X3))).
+##################
+#cnf(i_0_169796, plain, (mighta(X1,X2)|mighta(X3,X3)|~xora(X2,X3)|~nota(X1,X4))).
+###################################################################################################
+#cnf(i_0_173418, plain, (mighta(X1,X2)|mighta(X3,X3)|~xora(X1,X3)|~nota(X2,X4))).
+##############################################################################################################################
+#cnf(i_0_93010, plain, (mighta(X1,X2)|~xora(X3,X3)|~isa(X1,X2)|~status(X4,X5,X1))).
+###########
+#cnf(i_0_93011, plain, (mighta(X1,X2)|~xora(X1,X1)|~isa(X1,X2)|~status(X4,X5,X3))).
+#############
+#cnf(i_0_93237, plain, (mighta(X1,X2)|~xora(X3,X3)|~isa(X2,X1)|~status(X4,X5,X2))).
+#########
+#cnf(i_0_65459, plain, (~xora(X1,X5)|~nevera(X1,X2)|~nevera(X5,X5)|~status(X3,X4,X2))).
+######
+#cnf(i_0_93238, plain, (mighta(X1,X2)|~xora(X2,X2)|~isa(X2,X1)|~status(X4,X5,X3))).
+##########################
+#cnf(i_0_65460, plain, (~xora(X1,X2)|~xora(X1,X5)|~nevera(X5,X5)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_65471, plain, (~xora(X2,X5)|~nevera(X1,X2)|~nevera(X5,X5)|~status(X3,X4,X1))).
+##################
+#cnf(i_0_94682, plain, (status(X1,X2,X3)|~xora(X3,X4)|~nevera(X4,X5)|~isa(X4,X5))).
+###
+#cnf(i_0_94707, plain, (status(X1,X2,X3)|~xora(X4,X3)|~nevera(X4,X5)|~isa(X4,X5))).
+#####
+#cnf(i_0_95231, plain, (status(X1,X2,X3)|~xora(X4,X4)|~nevera(X4,X5)|~isa(X4,X5))).
+###
+#cnf(i_0_95700, plain, (status(X1,X2,X3)|~xora(X3,X4)|~nevera(X5,X4)|~isa(X4,X5))).
+##
+#cnf(i_0_95725, plain, (status(X1,X2,X3)|~xora(X4,X3)|~nevera(X5,X4)|~isa(X4,X5))).
+######
+#cnf(i_0_96257, plain, (status(X1,X2,X3)|~xora(X4,X4)|~nevera(X5,X4)|~isa(X4,X5))).
+#######
+#cnf(i_0_65472, plain, (~xora(X1,X2)|~xora(X2,X5)|~nevera(X5,X5)|~status(X3,X4,X1))).
+####################
+#cnf(i_0_65572, plain, (~xora(X1,X5)|~nevera(X1,X1)|~nevera(X5,X5)|~status(X2,X3,X4))).
+#################
+#cnf(i_0_135447, plain, (nevera(X1,X2)|mighta(X3,X3)|mighta(X4,X4)|~xora(X4,X3))).
+###
+#cnf(i_0_65577, plain, (~xora(X4,X5)|~nevera(X1,X1)|~nevera(X5,X5)|~status(X2,X3,X1))).
+###################
+#cnf(i_0_135448, plain, (nevera(X1,X2)|mighta(X1,X3)|mighta(X4,X4)|~xora(X4,X3))).
+#
+#cnf(i_0_65579, plain, (~xora(X1,X1)|~xora(X4,X6)|~nevera(X6,X6)|~status(X2,X3,X5))).
+######################
+#cnf(i_0_135449, plain, (nevera(X1,X2)|mighta(X3,X1)|mighta(X4,X4)|~xora(X4,X3))).
+##
+#cnf(i_0_65808, plain, (~xora(X1,X5)|~xora(X6,X6)|~nevera(X1,X2)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_65809, plain, (~xora(X1,X2)|~xora(X1,X5)|~xora(X6,X6)|~status(X3,X4,X2))).
+######
+#cnf(i_0_135464, plain, (isa(X1,X2)|mighta(X3,X3)|mighta(X4,X4)|~xora(X4,X3))).
+##############
+#cnf(i_0_65820, plain, (~xora(X2,X5)|~xora(X6,X6)|~nevera(X1,X2)|~status(X3,X4,X1))).
+#####
+#cnf(i_0_135468, plain, (nevera(X1,X2)|mighta(X2,X3)|mighta(X4,X4)|~xora(X4,X3))).
+###############
+#cnf(i_0_65821, plain, (~xora(X1,X2)|~xora(X2,X5)|~xora(X6,X6)|~status(X3,X4,X1))).
+#######
+#cnf(i_0_135469, plain, (nevera(X1,X2)|mighta(X3,X2)|mighta(X4,X4)|~xora(X4,X3))).
+#############
+#cnf(i_0_65921, plain, (~xora(X1,X5)|~xora(X6,X6)|~nevera(X1,X1)|~status(X2,X3,X4))).
+###########
+#cnf(i_0_136147, plain, (nevera(X1,X2)|mighta(X1,X3)|mighta(X4,X4)|~xora(X3,X4))).
+###################
+#cnf(i_0_136148, plain, (nevera(X1,X2)|mighta(X3,X1)|mighta(X4,X4)|~xora(X3,X4))).
+#####################
+#cnf(i_0_136167, plain, (nevera(X1,X2)|mighta(X2,X3)|mighta(X4,X4)|~xora(X3,X4))).
+###################
+#cnf(i_0_136168, plain, (nevera(X1,X2)|mighta(X3,X2)|mighta(X4,X4)|~xora(X3,X4))).
+########################################################################
+#cnf(i_0_164345, plain, (isa(X1,X4)|mighta(X1,X2)|mighta(X3,X3)|~xora(X3,X2))).
+##############################
+#cnf(i_0_77920, plain, (~xora(X5,X1)|~nevera(X1,X2)|~nevera(X5,X5)|~status(X3,X4,X2))).
+###########
+#cnf(i_0_167863, plain, (isa(X2,X4)|mighta(X1,X2)|mighta(X3,X3)|~xora(X3,X1))).
+#########
+#cnf(i_0_77921, plain, (~xora(X1,X2)|~xora(X5,X1)|~nevera(X5,X5)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_77932, plain, (~xora(X5,X2)|~nevera(X1,X2)|~nevera(X5,X5)|~status(X3,X4,X1))).
+##############
+#cnf(i_0_169810, plain, (isa(X1,X4)|mighta(X1,X2)|mighta(X3,X3)|~xora(X2,X3))).
+######
+#cnf(i_0_77933, plain, (~xora(X1,X2)|~xora(X5,X2)|~nevera(X5,X5)|~status(X3,X4,X1))).
+########################
+#cnf(i_0_78044, plain, (~xora(X5,X4)|~nevera(X1,X1)|~nevera(X5,X5)|~status(X2,X3,X1))).
+###############
+#cnf(i_0_173432, plain, (isa(X2,X4)|mighta(X1,X2)|mighta(X3,X3)|~xora(X1,X3))).
+#############
+#cnf(i_0_78324, plain, (~xora(X5,X1)|~xora(X6,X6)|~nevera(X1,X2)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_78325, plain, (~xora(X1,X2)|~xora(X5,X1)|~xora(X6,X6)|~status(X3,X4,X2))).
+####################
+#cnf(i_0_78336, plain, (~xora(X5,X2)|~xora(X6,X6)|~nevera(X1,X2)|~status(X3,X4,X1))).
+####################
+#cnf(i_0_78337, plain, (~xora(X1,X2)|~xora(X5,X2)|~xora(X6,X6)|~status(X3,X4,X1))).
+##########################################################################################################################################################################################################################
+#cnf(i_0_98337, plain, (status(X1,X2,X3)|~xora(X3,X4)|~nevera(X5,X5)|~isa(X4,X5))).
+###
+#cnf(i_0_98362, plain, (status(X1,X2,X3)|~xora(X4,X3)|~nevera(X5,X5)|~isa(X4,X5))).
+########################################
+#cnf(i_0_93923, plain, (mighta(X1,X2)|status(X4,X5,X3)|~xora(X1,X1)|~isa(X1,X2))).
+############
+#cnf(i_0_94515, plain, (mighta(X1,X2)|status(X4,X5,X3)|~xora(X2,X2)|~isa(X2,X1))).
+############
+#cnf(i_0_100715, plain, (mighta(X4,X5)|status(X1,X2,X3)|~xora(X3,X4)|~isa(X4,X5))).
+##########
+#cnf(i_0_100740, plain, (mighta(X4,X5)|status(X1,X2,X3)|~xora(X4,X3)|~isa(X4,X5))).
+###############
+#cnf(i_0_101591, plain, (mighta(X5,X4)|status(X1,X2,X3)|~xora(X3,X4)|~isa(X4,X5))).
+###########
+#cnf(i_0_101616, plain, (mighta(X5,X4)|status(X1,X2,X3)|~xora(X4,X3)|~isa(X4,X5))).
+##################################
+#cnf(i_0_104731, plain, (mighta(X5,X5)|status(X1,X2,X3)|~xora(X3,X4)|~isa(X4,X5))).
+###########
+#cnf(i_0_104756, plain, (mighta(X5,X5)|status(X1,X2,X3)|~xora(X4,X3)|~isa(X4,X5))).
+#####################
+#cnf(i_0_181209, plain, (mighta(X4,X4)|status(X1,X2,X3)|~xora(X3,X4)|~isa(X4,X5))).
+##
+#cnf(i_0_199876, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X4,X1))).
+##############
+#cnf(i_0_200150, plain, (mighta(X5,X5)|~xora(X1,X1)|~xora(X4,X5)|~nevera(X1,X1))).
+#######
+#cnf(i_0_199987, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X2,X2)|~xora(X1,X5))).
+#
+#cnf(i_0_199999, plain, (mighta(X5,X5)|~xora(X1,X1)|~xora(X2,X5)|~nevera(X1,X2))).
+###
+#cnf(i_0_200000, plain, (mighta(X5,X5)|~xora(X1,X1)|~xora(X2,X5)|~nevera(X2,X1))).
+###
+#cnf(i_0_200001, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X1,X1)|~xora(X2,X5))).
+####
+#cnf(i_0_200148, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X1,X1)|~xora(X4,X5))).
+######################################
+#cnf(i_0_199945, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X1,X3)|~xora(X3,X4))).
+########
+#cnf(i_0_201716, plain, (mighta(X3,X3)|~xora(X1,X4)|~xora(X4,X3)|~mighta(X2,X1))).
+##
+#cnf(i_0_201718, plain, (mighta(X3,X3)|~xora(X1,X4)|~xora(X4,X3)|~mighta(X1,X2))).
+#
+#cnf(i_0_201719, plain, (mighta(X3,X3)|~xora(X1,X4)|~xora(X4,X3)|~nota(X1,X2))).
+########################
+#cnf(i_0_199946, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X2,X3)|~xora(X3,X4))).
+#################
+#cnf(i_0_199955, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X2)|~xora(X3,X4))).
+########
+#cnf(i_0_204011, plain, (mighta(X3,X3)|~xora(X4,X1)|~xora(X4,X3)|~mighta(X2,X1))).
+##
+#cnf(i_0_204013, plain, (mighta(X3,X3)|~xora(X4,X1)|~xora(X4,X3)|~mighta(X1,X2))).
+#
+#cnf(i_0_204014, plain, (mighta(X3,X3)|~xora(X4,X1)|~xora(X4,X3)|~nota(X1,X2))).
+########################
+#cnf(i_0_199956, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X1)|~xora(X3,X4))).
+#################
+#cnf(i_0_199962, plain, (nota(X1,X2)|mighta(X4,X4)|~xora(X1,X4)|~nota(X3,X2))).
+############
+#cnf(i_0_199964, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X3,X4)|~isa(X3,X2))).
+##########
+#cnf(i_0_199965, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X1,X3)|~xora(X3,X4))).
+##########
+#cnf(i_0_199970, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X3,X1)|~xora(X3,X4))).
+################
+#cnf(i_0_199986, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X2,X2)|~xora(X1,X5))).
+################
+#cnf(i_0_199988, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X2,X2)|~xora(X1,X5))).
+###############
+#cnf(i_0_199998, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X1,X1)|~xora(X2,X5))).
+#################################################################################################################################################
+#cnf(i_0_199972, plain, (nota(X1,X2)|isa(X3,X2)|mighta(X4,X4)|~xora(X1,X4))).
+#
+#cnf(i_0_93393, plain, (~nevera(X1,X2)|~isa(X1,X2)|~status(X4,X5,X1)|~status(X4,X5,X3))).
+################
+#cnf(i_0_93977, plain, (~nevera(X1,X2)|~isa(X2,X1)|~status(X4,X5,X2)|~status(X4,X5,X3))).
+###
+#cnf(i_0_199981, plain, (mighta(X5,X5)|~xora(X1,X5)|~nevera(X1,X2)|~status(X3,X4,X2))).
+###########
+#cnf(i_0_199982, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X1,X5)|~status(X3,X4,X2))).
+###########
+#cnf(i_0_199994, plain, (mighta(X5,X5)|~xora(X2,X5)|~nevera(X1,X2)|~status(X3,X4,X1))).
+##########
+#cnf(i_0_199995, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X2,X5)|~status(X3,X4,X1))).
+############
+#cnf(i_0_200149, plain, (mighta(X5,X5)|~xora(X4,X5)|~nevera(X1,X1)|~status(X2,X3,X1))).
+###########################################################
+#cnf(i_0_199980, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X1,X5)|~status(X3,X4,X2))).
+########################
+#cnf(i_0_199993, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X2,X5)|~status(X3,X4,X1))).
+########################
+#cnf(i_0_200126, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X1,X5)|~status(X2,X3,X4))).
+########################
+#cnf(i_0_200147, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X4,X5)|~status(X2,X3,X1))).
+#
+#cnf(i_0_212369, plain, (mighta(X6,X6)|~xora(X7,X6)|~status(X8,X9,X6))).
+#
+#cnf(i_0_212753, plain, (~xora(X2,X1)|~nevera(X1,X1)|~status(X3,X4,X1))).
+#
+#cnf(i_0_212912, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X1,X1))).
+###
+#cnf(i_0_213013, plain, (~xora(X1,X2)|~xora(X2,X2)|~nevera(X2,X2))).
+##################
+#cnf(i_0_212931, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X5,X1)|~isa(X5,X1))).
+#
+#cnf(i_0_212935, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X1,X5)|~isa(X5,X1))).
+#
+#cnf(i_0_212851, plain, (~xora(X1,X1)|~xora(X3,X2)|~status(X4,X5,X2))).
+################
+#cnf(i_0_213527, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X3,X3))).
+#
+#cnf(i_0_212915, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X5,X5)|~isa(X5,X1))).
+####
+#cnf(i_0_212939, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X1,X5)|~nevera(X5,X5))).
+#
+#cnf(i_0_212943, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X1,X5)|~xora(X6,X6))).
+#
+#cnf(i_0_212944, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X5,X1)|~nevera(X5,X5))).
+##
+#cnf(i_0_212948, plain, (mighta(X1,X1)|~xora(X2,X1)|~xora(X5,X1)|~xora(X6,X6))).
+##
+#cnf(i_0_213003, plain, (nota(X5,X2)|~xora(X1,X2)|~xora(X5,X5)|~nevera(X2,X2))).
+###
+#cnf(i_0_213093, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X2,X5)|~nevera(X2,X2))).
+#
+#cnf(i_0_213517, plain, (nota(X6,X3)|~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X6))).
+###
+#cnf(i_0_213607, plain, (mighta(X6,X6)|~xora(X1,X1)|~xora(X2,X3)|~xora(X3,X6))).
+##
+#cnf(i_0_213032, plain, (~xora(X1,X2)|~xora(X5,X2)|~nevera(X2,X2)|~isa(X5,X2))).
+####
+#cnf(i_0_213036, plain, (~xora(X1,X2)|~xora(X2,X5)|~nevera(X2,X2)|~isa(X5,X2))).
+############
+#cnf(i_0_213326, plain, (~xora(X1,X1)|~xora(X3,X2)|~xora(X4,X2)|~isa(X4,X2))).
+####################
+#cnf(i_0_213466, plain, (~xora(X1,X1)|~xora(X3,X2)|~xora(X2,X4)|~isa(X4,X2))).
+###
+#cnf(i_0_212902, plain, (nota(X5,X1)|mighta(X1,X1)|~xora(X2,X1)|~xora(X5,X5))).
+############
+#cnf(i_0_212992, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X2,X1)|~xora(X1,X5))).
+###########################
+#cnf(i_0_212786, plain, (mighta(X1,X2)|~xora(X3,X1)|~isa(X1,X2)|~status(X4,X5,X1))).
+##
+#cnf(i_0_213016, plain, (~xora(X1,X2)|~xora(X5,X5)|~nevera(X2,X2)|~isa(X5,X2))).
+#####
+#cnf(i_0_216327, plain, (mighta(X1,X2)|~xora(X3,X1)|~xora(X1,X1)|~isa(X1,X2))).
+##
+#cnf(i_0_216769, plain, (mighta(X1,X2)|~xora(X3,X2)|~xora(X2,X2)|~isa(X2,X1))).
+#
+#cnf(i_0_216633, plain, (~xora(X3,X1)|~xora(X1,X1)|~nevera(X1,X2)|~isa(X1,X2))).
+#####
+#cnf(i_0_216768, plain, (mighta(X1,X1)|~xora(X3,X2)|~xora(X2,X2)|~isa(X2,X1))).
+###
+#cnf(i_0_216771, plain, (~xora(X3,X2)|~xora(X2,X2)|~nevera(X1,X2)|~isa(X2,X1))).
+#################
+#cnf(i_0_212790, plain, (mighta(X1,X2)|~xora(X3,X2)|~isa(X2,X1)|~status(X4,X5,X2))).
+###################
+#cnf(i_0_213040, plain, (~xora(X1,X2)|~xora(X2,X5)|~nevera(X2,X2)|~nevera(X5,X5))).
+####
+#cnf(i_0_213044, plain, (~xora(X1,X2)|~xora(X2,X5)|~xora(X6,X6)|~nevera(X2,X2))).
+####
+#cnf(i_0_213045, plain, (~xora(X1,X2)|~xora(X5,X2)|~nevera(X2,X2)|~nevera(X5,X5))).
+####
+#cnf(i_0_213049, plain, (~xora(X1,X2)|~xora(X5,X2)|~xora(X6,X6)|~nevera(X2,X2))).
+########
+#cnf(i_0_213530, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X6)|~isa(X6,X3))).
+##########
+#cnf(i_0_212791, plain, (mighta(X1,X1)|~xora(X3,X2)|~isa(X2,X1)|~status(X4,X5,X2))).
+##
+#cnf(i_0_213554, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X3,X6)|~nevera(X6,X6))).
+####
+#cnf(i_0_213558, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X3,X6)|~xora(X7,X7))).
+####
+#cnf(i_0_213559, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X3)|~nevera(X6,X6))).
+##
+#cnf(i_0_212910, plain, (mighta(X1,X1)|~xora(X2,X1)|~isa(X5,X1)|~status(X3,X4,X5))).
+##
+#cnf(i_0_213563, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X3)|~xora(X7,X7))).
+###########
+#cnf(i_0_213000, plain, (nota(X5,X2)|~xora(X1,X2)|~nevera(X2,X2)|~status(X3,X4,X5))).
+##
+#cnf(i_0_219572, plain, (nota(X1,X2)|~xora(X3,X2)|~nevera(X2,X2)|~nota(X1,X4))).
+#
+#cnf(i_0_219574, plain, (nota(X1,X2)|~xora(X3,X2)|~nevera(X2,X2)|~mighta(X4,X1))).
+#
+#cnf(i_0_219575, plain, (nota(X1,X2)|~xora(X3,X2)|~nevera(X2,X2)|~mighta(X1,X4))).
+######################
+#cnf(i_0_219570, plain, (nevera(X4,X1)|nota(X1,X2)|~xora(X3,X2)|~nevera(X2,X2))).
+#########
+#cnf(i_0_219571, plain, (nevera(X1,X4)|nota(X1,X2)|~xora(X3,X2)|~nevera(X2,X2))).
+#########
+#cnf(i_0_219573, plain, (nota(X1,X2)|isa(X1,X4)|~xora(X3,X2)|~nevera(X2,X2))).
+###########################################
+#cnf(i_0_213514, plain, (nota(X6,X3)|~xora(X1,X1)|~xora(X2,X3)|~status(X4,X5,X6))).
+#############################################################################
+#cnf(i_0_212899, plain, (nota(X5,X1)|mighta(X1,X1)|~xora(X2,X1)|~status(X3,X4,X5))).
+###
+#cnf(i_0_223624, plain, (nota(X1,X2)|mighta(X2,X2)|~xora(X3,X2)|~nota(X1,X4))).
+######
+#cnf(i_0_216770, plain, (~xora(X3,X2)|~xora(X2,X2)|~nevera(X1,X1)|~isa(X2,X1))).
+#######
+#cnf(i_0_223626, plain, (nota(X1,X2)|mighta(X2,X2)|~xora(X3,X2)|~mighta(X4,X1))).
+############
+#cnf(i_0_223627, plain, (nota(X1,X2)|mighta(X2,X2)|~xora(X3,X2)|~mighta(X1,X4))).
+########################################
+#cnf(i_0_223622, plain, (nevera(X4,X1)|nota(X1,X2)|mighta(X2,X2)|~xora(X3,X2))).
+################
+#cnf(i_0_223623, plain, (nevera(X1,X4)|nota(X1,X2)|mighta(X2,X2)|~xora(X3,X2))).
+################
+#cnf(i_0_223625, plain, (nota(X1,X2)|isa(X1,X4)|mighta(X2,X2)|~xora(X3,X2))).
+#############################
+#cnf(i_0_212787, plain, (~xora(X3,X1)|~nevera(X1,X2)|~isa(X1,X2)|~status(X4,X5,X1))).
+########################
+#cnf(i_0_212793, plain, (~xora(X3,X2)|~nevera(X1,X2)|~isa(X2,X1)|~status(X4,X5,X2))).
+##################################
+#cnf(i_0_181527, plain, (mighta(X4,X4)|status(X1,X2,X3)|~xora(X4,X3)|~isa(X4,X5))).
+#
+#cnf(i_0_228302, plain, (mighta(X1,X1)|status(X2,X3,X4)|~xora(X1,X4))).
+###############
+#cnf(i_0_228601, plain, (mighta(X5,X5)|~xora(X1,X1)|~xora(X5,X4)|~nevera(X1,X1))).
+#######
+#cnf(i_0_228419, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X2,X2)|~xora(X5,X1))).
+#
+#cnf(i_0_228433, plain, (mighta(X5,X5)|~xora(X1,X1)|~xora(X5,X2)|~nevera(X1,X2))).
+###
+#cnf(i_0_228434, plain, (mighta(X5,X5)|~xora(X1,X1)|~xora(X5,X2)|~nevera(X2,X1))).
+####
+#cnf(i_0_228438, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X5,X2)|~nevera(X2,X2))).
+##
+#cnf(i_0_228556, plain, (mighta(X6,X6)|~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X3))).
+##
+#cnf(i_0_228599, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X1,X1)|~xora(X5,X4))).
+############################################
+#cnf(i_0_228377, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X1,X3)|~xora(X4,X3))).
+########
+#cnf(i_0_230537, plain, (mighta(X3,X3)|~xora(X1,X4)|~xora(X3,X4)|~mighta(X2,X1))).
+#
+#cnf(i_0_230539, plain, (mighta(X3,X3)|~xora(X1,X4)|~xora(X3,X4)|~mighta(X1,X2))).
+#
+#cnf(i_0_230540, plain, (mighta(X3,X3)|~xora(X1,X4)|~xora(X3,X4)|~nota(X1,X2))).
+########################
+#cnf(i_0_228378, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X2,X3)|~xora(X4,X3))).
+##################
+#cnf(i_0_228387, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X2)|~xora(X4,X3))).
+########
+#cnf(i_0_233090, plain, (mighta(X3,X3)|~xora(X4,X1)|~xora(X3,X4)|~mighta(X2,X1))).
+#
+#cnf(i_0_233092, plain, (mighta(X3,X3)|~xora(X4,X1)|~xora(X3,X4)|~mighta(X1,X2))).
+#
+#cnf(i_0_233093, plain, (mighta(X3,X3)|~xora(X4,X1)|~xora(X3,X4)|~nota(X1,X2))).
+########################
+#cnf(i_0_228388, plain, (nevera(X1,X2)|mighta(X4,X4)|~xora(X3,X1)|~xora(X4,X3))).
+##################
+#cnf(i_0_228394, plain, (nota(X1,X2)|mighta(X4,X4)|~xora(X4,X1)|~nota(X3,X2))).
+############
+#cnf(i_0_228396, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X4,X3)|~isa(X3,X2))).
+#########
+#cnf(i_0_228397, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X1,X3)|~xora(X4,X3))).
+###########
+#cnf(i_0_228402, plain, (isa(X1,X2)|mighta(X4,X4)|~xora(X3,X1)|~xora(X4,X3))).
+################
+#cnf(i_0_228418, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X2,X2)|~xora(X5,X1))).
+#################
+#cnf(i_0_228426, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X2,X1)|~xora(X5,X1))).
+###############
+#cnf(i_0_228432, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X1,X1)|~xora(X5,X2))).
+#######################################
+#cnf(i_0_212792, plain, (~xora(X3,X2)|~nevera(X1,X1)|~isa(X2,X1)|~status(X4,X5,X2))).
+########################
+#cnf(i_0_213011, plain, (~xora(X1,X2)|~nevera(X2,X2)|~isa(X5,X2)|~status(X3,X4,X5))).
+####################################
+#cnf(i_0_213525, plain, (~xora(X1,X1)|~xora(X2,X3)|~isa(X6,X3)|~status(X4,X5,X6))).
+##########################################################
+#cnf(i_0_228404, plain, (nota(X1,X2)|isa(X3,X2)|mighta(X4,X4)|~xora(X4,X1))).
+####################
+#cnf(i_0_228413, plain, (mighta(X5,X5)|~xora(X5,X1)|~nevera(X1,X2)|~status(X3,X4,X2))).
+###########
+#cnf(i_0_228414, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X5,X1)|~status(X3,X4,X2))).
+##########
+#cnf(i_0_228428, plain, (mighta(X5,X5)|~xora(X5,X2)|~nevera(X1,X2)|~status(X3,X4,X1))).
+###########
+#cnf(i_0_228429, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X5,X2)|~status(X3,X4,X1))).
+############
+#cnf(i_0_228600, plain, (mighta(X5,X5)|~xora(X5,X4)|~nevera(X1,X1)|~status(X2,X3,X1))).
+###############################################################
+#cnf(i_0_228412, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X5,X1)|~status(X3,X4,X2))).
+########################
+#cnf(i_0_228427, plain, (mighta(X1,X2)|mighta(X5,X5)|~xora(X5,X2)|~status(X3,X4,X1))).
+#########################
+#cnf(i_0_228598, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X5,X4)|~status(X2,X3,X1))).
+#
+#cnf(i_0_241739, plain, (mighta(X6,X6)|~xora(X6,X7)|~status(X8,X9,X6))).
+#
+#cnf(i_0_242139, plain, (~xora(X1,X2)|~nevera(X1,X1)|~status(X3,X4,X1))).
+#
+#cnf(i_0_242306, plain, (mighta(X1,X1)|~xora(X1,X2)|~xora(X1,X1))).
+###
+#cnf(i_0_242407, plain, (~xora(X1,X2)|~xora(X1,X1)|~nevera(X1,X1))).
+##################
+#cnf(i_0_242325, plain, (mighta(X1,X1)|~xora(X1,X2)|~xora(X5,X1)|~isa(X5,X1))).
+#
+#cnf(i_0_242329, plain, (mighta(X1,X1)|~xora(X1,X2)|~xora(X1,X5)|~isa(X5,X1))).
+#
+#cnf(i_0_242242, plain, (~xora(X1,X1)|~xora(X2,X3)|~status(X4,X5,X2))).
+################
+#cnf(i_0_242945, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X2,X2))).
+#
+#cnf(i_0_242309, plain, (mighta(X1,X1)|~xora(X1,X2)|~xora(X5,X5)|~isa(X5,X1))).
+####
+#cnf(i_0_242333, plain, (mighta(X1,X1)|~xora(X1,X2)|~xora(X1,X5)|~nevera(X5,X5))).
+#
+#cnf(i_0_242337, plain, (mighta(X1,X1)|~xora(X1,X2)|~xora(X1,X5)|~xora(X6,X6))).
+#
+#cnf(i_0_242338, plain, (mighta(X1,X1)|~xora(X1,X2)|~xora(X5,X1)|~nevera(X5,X5))).
+####
+#cnf(i_0_242397, plain, (nota(X5,X1)|~xora(X1,X2)|~xora(X5,X5)|~nevera(X1,X1))).
+###
+#cnf(i_0_242486, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X1,X5)|~nevera(X1,X1))).
+#
+#cnf(i_0_242487, plain, (mighta(X5,X5)|~xora(X1,X2)|~xora(X5,X1)|~nevera(X1,X1))).
+##
+#cnf(i_0_242935, plain, (nota(X6,X2)|~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X6))).
+##
+#cnf(i_0_243024, plain, (mighta(X6,X6)|~xora(X1,X1)|~xora(X2,X3)|~xora(X2,X6))).
+#
+#cnf(i_0_242426, plain, (~xora(X1,X2)|~xora(X5,X1)|~nevera(X1,X1)|~isa(X5,X1))).
+#
+#cnf(i_0_243025, plain, (mighta(X6,X6)|~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X2))).
+###
+#cnf(i_0_242430, plain, (~xora(X1,X2)|~xora(X1,X5)|~nevera(X1,X1)|~isa(X5,X1))).
+############
+#cnf(i_0_242733, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X4,X2)|~isa(X4,X2))).
+####################
+#cnf(i_0_242881, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X2,X4)|~isa(X4,X2))).
+###########
+#cnf(i_0_242296, plain, (nota(X5,X1)|mighta(X1,X1)|~xora(X1,X2)|~xora(X5,X5))).
+############
+#cnf(i_0_242385, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X1,X2)|~xora(X1,X5))).
+###############
+#cnf(i_0_242386, plain, (mighta(X1,X1)|mighta(X5,X5)|~xora(X1,X2)|~xora(X5,X1))).
+######
+#cnf(i_0_242410, plain, (~xora(X1,X2)|~xora(X5,X5)|~nevera(X1,X1)|~isa(X5,X1))).
+############
+#cnf(i_0_242434, plain, (~xora(X1,X2)|~xora(X1,X5)|~nevera(X1,X1)|~nevera(X5,X5))).
+####
+#cnf(i_0_242438, plain, (~xora(X1,X2)|~xora(X1,X5)|~xora(X6,X6)|~nevera(X1,X1))).
+####
+#cnf(i_0_242439, plain, (~xora(X1,X2)|~xora(X5,X1)|~nevera(X1,X1)|~nevera(X5,X5))).
+##########
+#cnf(i_0_242173, plain, (mighta(X1,X2)|~xora(X1,X3)|~isa(X1,X2)|~status(X4,X5,X1))).
+##
+#cnf(i_0_242948, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X6)|~isa(X6,X2))).
+#####
+#cnf(i_0_247430, plain, (mighta(X1,X2)|~xora(X1,X3)|~xora(X1,X1)|~isa(X1,X2))).
+##
+#cnf(i_0_247753, plain, (mighta(X1,X2)|~xora(X2,X3)|~xora(X2,X2)|~isa(X2,X1))).
+#
+#cnf(i_0_247609, plain, (~xora(X1,X3)|~xora(X1,X1)|~nevera(X1,X2)|~isa(X1,X2))).
+#####
+#cnf(i_0_247752, plain, (mighta(X1,X1)|~xora(X2,X3)|~xora(X2,X2)|~isa(X2,X1))).
+###
+#cnf(i_0_247755, plain, (~xora(X2,X3)|~xora(X2,X2)|~nevera(X1,X2)|~isa(X2,X1))).
+#################
+#cnf(i_0_242177, plain, (mighta(X1,X2)|~xora(X2,X3)|~isa(X2,X1)|~status(X4,X5,X2))).
+###################
+#cnf(i_0_242972, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X2,X6)|~nevera(X6,X6))).
+####
+#cnf(i_0_242976, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X2,X6)|~xora(X7,X7))).
+####
+#cnf(i_0_242977, plain, (~xora(X1,X1)|~xora(X2,X3)|~xora(X6,X2)|~nevera(X6,X6))).
+#####################
+#cnf(i_0_242178, plain, (mighta(X1,X1)|~xora(X2,X3)|~isa(X2,X1)|~status(X4,X5,X2))).
+############
+#cnf(i_0_242304, plain, (mighta(X1,X1)|~xora(X1,X2)|~isa(X5,X1)|~status(X3,X4,X5))).
+#############
+#cnf(i_0_242394, plain, (nota(X5,X1)|~xora(X1,X2)|~nevera(X1,X1)|~status(X3,X4,X5))).
+#
+#cnf(i_0_249762, plain, (nota(X1,X2)|~xora(X2,X3)|~nevera(X2,X2)|~nota(X1,X4))).
+##
+#cnf(i_0_249764, plain, (nota(X1,X2)|~xora(X2,X3)|~nevera(X2,X2)|~mighta(X4,X1))).
+#
+#cnf(i_0_249765, plain, (nota(X1,X2)|~xora(X2,X3)|~nevera(X2,X2)|~mighta(X1,X4))).
+#####################
+#cnf(i_0_249760, plain, (nevera(X4,X1)|nota(X1,X2)|~xora(X2,X3)|~nevera(X2,X2))).
+##########
+#cnf(i_0_249761, plain, (nevera(X1,X4)|nota(X1,X2)|~xora(X2,X3)|~nevera(X2,X2))).
+#########
+#cnf(i_0_249763, plain, (nota(X1,X2)|isa(X1,X4)|~xora(X2,X3)|~nevera(X2,X2))).
+###########################################
+#cnf(i_0_242932, plain, (nota(X6,X2)|~xora(X1,X1)|~xora(X2,X3)|~status(X4,X5,X6))).
+#####################################################################
+#cnf(i_0_242293, plain, (nota(X5,X1)|mighta(X1,X1)|~xora(X1,X2)|~status(X3,X4,X5))).
+###
+#cnf(i_0_254147, plain, (nota(X1,X2)|mighta(X2,X2)|~xora(X2,X3)|~nota(X1,X4))).
+############
+#cnf(i_0_254149, plain, (nota(X1,X2)|mighta(X2,X2)|~xora(X2,X3)|~mighta(X4,X1))).
+############
+#cnf(i_0_254150, plain, (nota(X1,X2)|mighta(X2,X2)|~xora(X2,X3)|~mighta(X1,X4))).
+###
+#cnf(i_0_247754, plain, (~xora(X2,X3)|~xora(X2,X2)|~nevera(X1,X1)|~isa(X2,X1))).
+######################################
+#cnf(i_0_254145, plain, (nevera(X4,X1)|nota(X1,X2)|mighta(X2,X2)|~xora(X2,X3))).
+################
+#cnf(i_0_254146, plain, (nevera(X1,X4)|nota(X1,X2)|mighta(X2,X2)|~xora(X2,X3))).
+################
+#cnf(i_0_254148, plain, (nota(X1,X2)|isa(X1,X4)|mighta(X2,X2)|~xora(X2,X3))).
+######################
+#cnf(i_0_242174, plain, (~xora(X1,X3)|~nevera(X1,X2)|~isa(X1,X2)|~status(X4,X5,X1))).
+########################
+#cnf(i_0_242180, plain, (~xora(X2,X3)|~nevera(X1,X2)|~isa(X2,X1)|~status(X4,X5,X2))).
+#############################################################################
+#cnf(i_0_200004, plain, (mighta(X5,X5)|status(X1,X2,X3)|~xora(X4,X5)|~isa(X4,X3))).
+##
+#cnf(i_0_258784, plain, (mighta(X3,X3)|~xora(X4,X3)|~nota(X1,X2)|~isa(X4,X2))).
+############################
+#cnf(i_0_228439, plain, (mighta(X5,X5)|status(X1,X2,X3)|~xora(X5,X4)|~isa(X4,X3))).
+###
+#cnf(i_0_259627, plain, (mighta(X3,X3)|~xora(X3,X4)|~nota(X1,X2)|~isa(X4,X2))).
+#########################################
+#cnf(i_0_93003, plain, (mighta(X1,X2)|~isa(X1,X2)|~status(X4,X5,X1)|~status(X4,X5,X3))).
+######
+#cnf(i_0_93230, plain, (mighta(X1,X2)|~isa(X2,X1)|~status(X4,X5,X2)|~status(X4,X5,X3))).
+###########
+#cnf(i_0_242179, plain, (~xora(X2,X3)|~nevera(X1,X1)|~isa(X2,X1)|~status(X4,X5,X2))).
+########################
+#cnf(i_0_242405, plain, (~xora(X1,X2)|~nevera(X1,X1)|~isa(X5,X1)|~status(X3,X4,X5))).
+##########
+#cnf(i_0_93507, plain, (status(X3,X4,X5)|~nevera(X1,X2)|~isa(X1,X2)|~status(X3,X4,X1))).
+###
+#cnf(i_0_94093, plain, (status(X3,X4,X5)|~nevera(X1,X2)|~isa(X2,X1)|~status(X3,X4,X2))).
+#######################
+#cnf(i_0_242943, plain, (~xora(X1,X1)|~xora(X2,X3)|~isa(X6,X2)|~status(X4,X5,X6))).
+##############
+#cnf(i_0_199979, plain, (nota(X1,X2)|mighta(X5,X5)|status(X3,X4,X2)|~xora(X1,X5))).
+###############
+#cnf(i_0_200128, plain, (mighta(X1,X1)|mighta(X5,X5)|status(X2,X3,X4)|~xora(X1,X5))).
+#################
+#cnf(i_0_228411, plain, (nota(X1,X2)|mighta(X5,X5)|status(X3,X4,X2)|~xora(X5,X1))).
+#####################################################################################
+#cnf(i_0_93115, plain, (mighta(X1,X2)|status(X3,X4,X5)|~isa(X1,X2)|~status(X3,X4,X1))).
+##########
+#cnf(i_0_93343, plain, (mighta(X1,X2)|status(X3,X4,X5)|~isa(X2,X1)|~status(X3,X4,X2))).
+############################################################
+#cnf(i_0_142, plain, (status(esk1_2(X1,X2),esk2_2(X1,X2),X3)|~isa(X1,X3)|~mighta(X1,X2))).
+################
+#cnf(i_0_180, plain, (status(esk5_2(X1,X2),esk6_2(X1,X2),X3)|~nota(X1,X2)|~isa(X1,X3))).
+###
+#cnf(i_0_266120, plain, (~nota(X1,X2)|~isa(X1,X2))).
+##
+#cnf(i_0_266124, plain, (nota(X1,X2)|~nota(X3,X2)|~isa(X3,X1))).
+#######
+#cnf(i_0_266468, plain, (nota(X1,X2)|isa(X3,X2)|~isa(X3,X1))).
+###
+#cnf(i_0_266224, plain, (~nota(X3,X2)|~isa(X1,X2)|~isa(X3,X1))).
+#
+#cnf(i_0_266814, plain, (isa(X3,X2)|~isa(X1,X2)|~isa(X3,X1))).
+#
+#cnf(i_0_267712, negated_conjecture, (isa(X1,esk31_0)|~isa(X1,esk30_0))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(nota, axiom, ![X1, X2]:(?[X3, X4]:(status(X3,X4,X1)&~(status(X3,X4,X2)))<=>nota(X1,X2)), file('./p/KRS179+1.tptp', nota)).
+fof(isa, axiom, ![X1, X2]:(![X3, X4]:(status(X3,X4,X1)=>status(X3,X4,X2))<=>isa(X1,X2)), file('./p/KRS179+1.tptp', isa)).
+fof(isa_transitive, conjecture, ![X1, X2, X11]:((isa(X1,X2)&isa(X2,X11))=>isa(X1,X11)), file('./p/KRS179+1.tptp', isa_transitive)).
+fof(c_0_3, plain, ![X28, X29, X30, X31, X32, X33]:((~status(X30,X31,X28)|status(X30,X31,X29)|nota(X28,X29))&((status(esk5_2(X32,X33),esk6_2(X32,X33),X32)|~nota(X32,X33))&(~status(esk5_2(X32,X33),esk6_2(X32,X33),X33)|~nota(X32,X33)))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[nota])])])])])])])).
+fof(c_0_4, plain, ![X20, X21, X24, X25, X26, X27]:(((status(esk3_2(X20,X21),esk4_2(X20,X21),X20)|isa(X20,X21))&(~status(esk3_2(X20,X21),esk4_2(X20,X21),X21)|isa(X20,X21)))&(~isa(X24,X25)|(~status(X26,X27,X24)|status(X26,X27,X25)))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[isa])])])])])])).
+cnf(c_0_5, plain, (~status(esk5_2(X1,X2),esk6_2(X1,X2),X2)|~nota(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_6, plain, (status(X1,X2,X4)|nota(X3,X4)|~status(X1,X2,X3)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_7, plain, (status(X3,X4,X2)|~isa(X1,X2)|~status(X3,X4,X1)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (status(esk5_2(X1,X2),esk6_2(X1,X2),X1)|~nota(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_9, plain, (isa(X1,X2)|~status(esk3_2(X1,X2),esk4_2(X1,X2),X2)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_10, plain, (nota(X1,X2)|~nota(X3,X2)|~status(esk5_2(X3,X2),esk6_2(X3,X2),X1)), inference(pm,[status(thm)],[c_0_5, c_0_6])).
+cnf(c_0_11, plain, (status(esk5_2(X1,X2),esk6_2(X1,X2),X3)|~nota(X1,X2)|~isa(X1,X3)), inference(pm,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_12, plain, (nota(X1,X2)|isa(X3,X2)|~status(esk3_2(X3,X2),esk4_2(X3,X2),X1)), inference(pm,[status(thm)],[c_0_9, c_0_6])).
+cnf(c_0_13, plain, (status(esk3_2(X1,X2),esk4_2(X1,X2),X1)|isa(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_14, plain, (nota(X1,X2)|~nota(X3,X2)|~isa(X3,X1)), inference(pm,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_15, plain, (nota(X1,X2)|isa(X1,X2)), inference(pm,[status(thm)],[c_0_12, c_0_13])).
+fof(c_0_16, negated_conjecture, ~(![X1, X2, X11]:((isa(X1,X2)&isa(X2,X11))=>isa(X1,X11))), inference(assume_negation,[status(cth)],[isa_transitive])).
+cnf(c_0_17, plain, (~nota(X1,X2)|~isa(X1,X2)), inference(pm,[status(thm)],[c_0_5, c_0_11])).
+cnf(c_0_18, plain, (nota(X1,X2)|isa(X3,X2)|~isa(X3,X1)), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+fof(c_0_19, negated_conjecture, ((isa(esk29_0,esk30_0)&isa(esk30_0,esk31_0))&~isa(esk29_0,esk31_0)), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_16])])])).
+cnf(c_0_20, plain, (isa(X1,X2)|~isa(X3,X2)|~isa(X1,X3)), inference(pm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_21, negated_conjecture, (isa(esk30_0,esk31_0)), inference(split_conjunct,[status(thm)],[c_0_19])).
+cnf(c_0_22, negated_conjecture, (~isa(esk29_0,esk31_0)), inference(split_conjunct,[status(thm)],[c_0_19])).
+cnf(c_0_23, negated_conjecture, (isa(X1,esk31_0)|~isa(X1,esk30_0)), inference(pm,[status(thm)],[c_0_20, c_0_21])).
+cnf(c_0_24, negated_conjecture, (isa(esk29_0,esk30_0)), inference(split_conjunct,[status(thm)],[c_0_19])).
+cnf(c_0_25, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_22, c_0_23]), c_0_24])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 26
+# Proof object clause steps            : 19
+# Proof object formula steps           : 7
+# Proof object conjectures             : 8
+# Proof object clause conjectures      : 5
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 9
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 10
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 14
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 38
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 38
+# Processed clauses                    : 17306
+# ...of these trivial                  : 0
+# ...subsumed                          : 15953
+# ...remaining for further processing  : 1353
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 356
+# Backward-rewritten                   : 0
+# Generated clauses                    : 267847
+# ...of the previous two non-trivial   : 267751
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 267831
+# Factorizations                       : 16
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 997
+#    Positive orientable unit clauses  : 11
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 8
+#    Non-unit-clauses                  : 978
+# Current number of unprocessed clauses: 250167
+# ...number of literals in the above   : 1439508
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 356
+# Clause-clause subsumption calls (NU) : 673391
+# Rec. Clause-clause subsumption calls : 245480
+# Non-unit clause-clause subsumptions  : 16309
+# Unit Clause-clause subsumption calls : 94
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 6
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 1798780

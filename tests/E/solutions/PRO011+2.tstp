@@ -1,0 +1,2914 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_76, plain, (atomic(tptp3))).
+#
+#cnf(i_0_73, plain, (atomic(tptp4))).
+#
+#cnf(i_0_74, plain, (atomic(tptp1))).
+#
+#cnf(i_0_72, plain, (~atomic(tptp0))).
+#
+#cnf(i_0_75, plain, (atomic(tptp2))).
+#
+#cnf(i_0_71, plain, (activity(tptp0))).
+#
+#cnf(i_0_37, plain, (arboreal(X1)|~legal(X1))).
+#
+#cnf(i_0_77, plain, (tptp3!=tptp4)).
+#
+#cnf(i_0_99, negated_conjecture, (occurrence_of(esk18_0,tptp0))).
+#
+#cnf(i_0_14, plain, (legal(X1)|~precedes(X2,X1))).
+#
+#cnf(i_0_25, plain, (legal(X1)|~root(X1,X2))).
+#
+#cnf(i_0_80, plain, (tptp3!=tptp1)).
+#
+#cnf(i_0_59, plain, (activity_occurrence(X1)|~occurrence_of(X1,X2))).
+#
+#cnf(i_0_100, negated_conjecture, (activity_occurrence(esk18_0))).
+#
+#cnf(i_0_40, plain, (activity_occurrence(X1)|~subactivity_occurrence(X2,X1))).
+#
+#cnf(i_0_78, plain, (tptp1!=tptp4)).
+#
+#cnf(i_0_41, plain, (activity_occurrence(X1)|~subactivity_occurrence(X1,X2))).
+#
+#cnf(i_0_60, plain, (activity(X1)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_63, plain, (subactivity(X1,X1)|~activity(X1))).
+#
+#cnf(i_0_81, plain, (tptp3!=tptp2)).
+#
+#cnf(i_0_19, plain, (subactivity_occurrence(X1,X2)|~root_occ(X1,X2))).
+#
+#cnf(i_0_23, plain, (subactivity_occurrence(X1,X2)|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_9, plain, (arboreal(X1)|~next_subocc(X2,X1,X3))).
+#
+#cnf(i_0_79, plain, (tptp2!=tptp4)).
+#
+#cnf(i_0_10, plain, (arboreal(X1)|~next_subocc(X1,X2,X3))).
+#
+#cnf(i_0_15, plain, (earlier(X1,X2)|~precedes(X1,X2))).
+#
+#cnf(i_0_39, plain, (activity(esk7_1(X1))|~activity_occurrence(X1))).
+#
+#cnf(i_0_82, plain, (tptp2!=tptp1)).
+#
+#cnf(i_0_11, plain, (precedes(X1,X2)|~min_precedes(X1,X2,X3))).
+#
+#cnf(i_0_38, plain, (occurrence_of(X1,esk7_1(X1))|~activity_occurrence(X1))).
+##
+#cnf(i_0_16, plain, (~earlier(X2,X1)|~earlier(X1,X2))).
+#
+#cnf(i_0_27, plain, (atomic(X2)|~arboreal(X1)|~occurrence_of(X1,X2))).
+#
+#cnf(i_0_26, plain, (arboreal(X2)|~atomic(X1)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_106, negated_conjecture, (~arboreal(esk18_0))).
+#
+#cnf(i_0_8, plain, (min_precedes(X1,X2,X3)|~next_subocc(X1,X2,X3))).
+#
+#cnf(i_0_110, plain, (precedes(X1,X2)|~next_subocc(X1,X2,X3))).
+#
+#cnf(i_0_34, plain, (atomic(esk6_2(X1,X2))|~atocc(X1,X2))).
+#
+#cnf(i_0_104, plain, (~precedes(X2,X1)|~earlier(X1,X2))).
+#
+#cnf(i_0_13, plain, (precedes(X1,X2)|~legal(X2)|~earlier(X1,X2))).
+#
+#cnf(i_0_36, plain, (root(X1,X2)|~atocc(X1,X2)|~legal(X1))).
+#
+#cnf(i_0_109, plain, (arboreal(X1)|~activity_occurrence(X1)|~atomic(esk7_1(X1)))).
+##
+#cnf(i_0_107, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~arboreal(X1))).
+#
+#cnf(i_0_69, plain, (root_occ(esk15_1(X1),X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_64, plain, (leaf_occ(esk17_1(X1),X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_111, plain, (~precedes(X1,X2)|~precedes(X2,X1))).
+#
+#cnf(i_0_114, plain, (subactivity_occurrence(esk15_1(X1),X1)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_116, plain, (activity_occurrence(esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_12, plain, (~root(X2,X3)|~min_precedes(X1,X2,X3))).
+#
+#cnf(i_0_115, plain, (subactivity_occurrence(esk17_1(X1),X1)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_119, plain, (activity_occurrence(esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_30, plain, (~leaf(X1,X3)|~min_precedes(X1,X2,X3))).
+#
+#cnf(i_0_20, plain, (occurrence_of(X1,esk2_2(X2,X1))|~root_occ(X2,X1))).
+#
+#cnf(i_0_122, plain, (activity_occurrence(X1)|~root_occ(X2,X1))).
+##
+#cnf(i_0_118, plain, (~root(X1,X2)|~next_subocc(X3,X1,X2))).
+#
+#cnf(i_0_124, plain, (activity(esk2_2(X1,X2))|~root_occ(X1,X2))).
+#
+#cnf(i_0_24, plain, (occurrence_of(X1,esk3_2(X2,X1))|~leaf_occ(X2,X1))).
+#
+#cnf(i_0_127, plain, (activity_occurrence(X1)|~leaf_occ(X2,X1))).
+#
+#cnf(i_0_121, plain, (~leaf(X1,X2)|~next_subocc(X1,X3,X2))).
+##
+#cnf(i_0_129, plain, (activity(esk3_2(X1,X2))|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_33, plain, (occurrence_of(X1,esk6_2(X1,X2))|~atocc(X1,X2))).
+#
+#cnf(i_0_42, plain, (~root_occ(X3,X1)|~occurrence_of(X1,X2)|~min_precedes(X4,X3,X2))).
+#
+#cnf(i_0_132, plain, (activity_occurrence(X1)|~atocc(X1,X2))).
+#
+#cnf(i_0_134, plain, (activity(esk6_2(X1,X2))|~atocc(X1,X2))).
+#
+#cnf(i_0_18, plain, (root(X1,esk2_2(X1,X2))|~root_occ(X1,X2))).
+#
+#cnf(i_0_43, plain, (~leaf_occ(X3,X1)|~occurrence_of(X1,X2)|~min_precedes(X3,X4,X2))).
+#
+#cnf(i_0_142, plain, (legal(X1)|~root_occ(X1,X2))).
+#
+#cnf(i_0_149, plain, (legal(esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_150, plain, (arboreal(esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_136, plain, (~next_subocc(X4,X1,X3)|~root_occ(X1,X2)|~occurrence_of(X2,X3))).
+#
+#cnf(i_0_22, plain, (leaf(X1,esk3_2(X1,X2))|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_56, plain, (atocc(X1,esk13_2(X2,X1))|~root(X1,X2))).
+#
+#cnf(i_0_157, plain, (activity_occurrence(X1)|~root(X1,X2))).
+#
+#cnf(i_0_143, plain, (~next_subocc(X1,X4,X3)|~leaf_occ(X1,X2)|~occurrence_of(X2,X3))).
+#
+#cnf(i_0_158, plain, (activity_occurrence(X1)|~root_occ(X1,X2))).
+##
+#cnf(i_0_35, plain, (subactivity(X1,esk6_2(X2,X1))|~atocc(X2,X1))).
+#
+#cnf(i_0_137, plain, (~activity_occurrence(X2)|~root_occ(X1,X2)|~min_precedes(X3,X1,esk7_1(X2)))).
+#
+#cnf(i_0_57, plain, (subactivity(esk13_2(X1,X2),X1)|~root(X2,X1))).
+#
+#cnf(i_0_44, plain, (X2=X3|~occurrence_of(X1,X3)|~occurrence_of(X1,X2))).
+#
+#cnf(i_0_216, negated_conjecture, (tptp0=X1|~occurrence_of(esk18_0,X1))).
+#
+#cnf(i_0_144, plain, (~activity_occurrence(X2)|~leaf_occ(X1,X2)|~min_precedes(X1,X3,esk7_1(X2)))).
+#
+#cnf(i_0_226, negated_conjecture, (esk7_1(esk18_0)=tptp0)).
+##
+#cnf(i_0_217, plain, (esk7_1(X1)=X2|~activity_occurrence(X1)|~occurrence_of(X1,X2))).
+###
+#cnf(i_0_70, plain, (occurrence_of(esk15_1(X1),tptp3)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_246, plain, (activity(tptp3)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_252, negated_conjecture, (activity(tptp3))).
+###
+#cnf(i_0_237, negated_conjecture, (~root_occ(X1,esk18_0)|~min_precedes(X2,X1,tptp0))).
+#
+#cnf(i_0_68, plain, (occurrence_of(esk16_1(X1),tptp4)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_257, plain, (activity(tptp4)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_263, negated_conjecture, (activity(tptp4))).
+#
+#cnf(i_0_238, negated_conjecture, (~leaf_occ(X1,esk18_0)|~min_precedes(X1,X2,tptp0))).
+#
+#cnf(i_0_254, plain, (activity_occurrence(esk16_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_265, negated_conjecture, (activity_occurrence(esk16_1(esk18_0)))).
+#
+#cnf(i_0_255, plain, (arboreal(esk16_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_253, negated_conjecture, (~next_subocc(X2,X1,tptp0)|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_266, negated_conjecture, (arboreal(esk16_1(esk18_0)))).
+#
+#cnf(i_0_2, plain, (earlier(X1,X3)|~earlier(X2,X3)|~earlier(X1,X2))).
+#
+#cnf(i_0_273, plain, (earlier(X1,X2)|~precedes(X1,X3)|~earlier(X3,X2))).
+#
+#cnf(i_0_264, negated_conjecture, (~next_subocc(X1,X2,tptp0)|~leaf_occ(X1,esk18_0))).
+#
+#cnf(i_0_274, plain, (earlier(X1,X2)|~precedes(X3,X2)|~earlier(X1,X3))).
+#
+#cnf(i_0_282, plain, (earlier(X1,X2)|~precedes(X1,X3)|~precedes(X3,X2))).
+##
+#cnf(i_0_268, plain, (~earlier(X2,X1)|~earlier(X3,X2)|~earlier(X1,X3))).
+#
+#cnf(i_0_123, plain, (arboreal(X1)|~atomic(esk2_2(X2,X1))|~root_occ(X2,X1))).
+#
+#cnf(i_0_128, plain, (arboreal(X1)|~leaf_occ(X2,X1)|~atomic(esk3_2(X2,X1)))).
+#
+#cnf(i_0_133, plain, (arboreal(X1)|~atocc(X1,X2)|~atomic(esk6_2(X1,X2)))).
+##
+#cnf(i_0_324, plain, (arboreal(X1)|~atocc(X1,X2))).
+#
+#cnf(i_0_325, plain, (arboreal(X1)|~root(X1,X2))).
+#
+#cnf(i_0_326, plain, (arboreal(X1)|~root_occ(X1,X2))).
+#
+#cnf(i_0_271, plain, (~precedes(X1,X2)|~earlier(X3,X1)|~earlier(X2,X3))).
+##
+#cnf(i_0_227, negated_conjecture, (esk6_2(esk18_0,X1)=tptp0|~atocc(esk18_0,X1))).
+#
+#cnf(i_0_125, plain, (atomic(esk2_2(X1,X2))|~arboreal(X2)|~root_occ(X1,X2))).
+##
+#cnf(i_0_130, plain, (atomic(esk3_2(X1,X2))|~arboreal(X2)|~leaf_occ(X1,X2))).
+##
+#cnf(i_0_228, negated_conjecture, (esk3_2(X1,esk18_0)=tptp0|~leaf_occ(X1,esk18_0))).
+##
+#cnf(i_0_345, negated_conjecture, (leaf(X1,tptp0)|~leaf_occ(X1,esk18_0))).
+#
+#cnf(i_0_229, negated_conjecture, (esk2_2(X1,esk18_0)=tptp0|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_350, negated_conjecture, (root(X1,tptp0)|~root_occ(X1,esk18_0))).
+##
+#cnf(i_0_355, negated_conjecture, (root(esk15_1(esk18_0),tptp0))).
+#
+#cnf(i_0_356, negated_conjecture, (legal(esk15_1(esk18_0)))).
+#
+#cnf(i_0_357, negated_conjecture, (activity_occurrence(esk15_1(esk18_0)))).
+##
+#cnf(i_0_358, negated_conjecture, (arboreal(esk15_1(esk18_0)))).
+##
+#cnf(i_0_47, plain, (subactivity_occurrence(X1,esk9_3(X2,X3,X1))|~min_precedes(X3,X1,X2))).
+##
+#cnf(i_0_360, plain, (activity_occurrence(X1)|~min_precedes(X3,X1,X2))).
+#
+#cnf(i_0_364, plain, (activity_occurrence(X1)|~next_subocc(X2,X1,X3))).
+#
+#cnf(i_0_361, plain, (activity_occurrence(esk9_3(X1,X2,X3))|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_48, plain, (subactivity_occurrence(X1,esk9_3(X2,X1,X3))|~min_precedes(X1,X3,X2))).
+#
+#cnf(i_0_367, plain, (activity_occurrence(X1)|~min_precedes(X1,X3,X2))).
+#
+#cnf(i_0_371, plain, (activity_occurrence(X1)|~next_subocc(X1,X2,X3))).
+#
+#cnf(i_0_279, plain, (~precedes(X1,X2)|~precedes(X2,X3)|~earlier(X3,X1))).
+##
+#cnf(i_0_53, plain, (atocc(X1,esk11_3(X2,X1,X3))|~min_precedes(X1,X3,X2))).
+###
+#cnf(i_0_380, plain, (arboreal(X1)|~min_precedes(X1,X3,X2))).
+##
+#cnf(i_0_52, plain, (atocc(X1,esk12_3(X2,X3,X1))|~min_precedes(X3,X1,X2))).
+###
+#cnf(i_0_387, plain, (arboreal(X1)|~min_precedes(X3,X1,X2))).
+###
+#cnf(i_0_49, plain, (occurrence_of(esk9_3(X1,X2,X3),X1)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_396, plain, (activity(X1)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_406, plain, (activity(X1)|~next_subocc(X2,X3,X1))).
+###
+#cnf(i_0_55, plain, (subactivity(esk11_3(X1,X2,X3),X1)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_54, plain, (subactivity(esk12_3(X1,X2,X3),X1)|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_240, plain, (esk6_2(X1,X2)=esk7_1(X1)|~activity_occurrence(X1)|~atocc(X1,X2))).
+#
+#cnf(i_0_156, plain, (root(X1,esk13_2(X2,X1))|~legal(X1)|~root(X1,X2))).
+##
+#cnf(i_0_300, plain, (~precedes(X1,X2)|~precedes(X2,X3)|~precedes(X3,X1))).
+##
+#cnf(i_0_45, plain, (leaf_occ(X1,esk8_2(X1,X2))|atomic(X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_421, plain, (activity_occurrence(esk8_2(X1,X2))|atomic(X2)|~leaf(X1,X2))).
+##
+#cnf(i_0_50, plain, (leaf_occ(X1,esk10_2(X1,X2))|atomic(X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_429, plain, (activity_occurrence(esk10_2(X1,X2))|atomic(X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_46, plain, (atomic(X2)|occurrence_of(esk8_2(X1,X2),X2)|~leaf(X1,X2))).
+##
+#cnf(i_0_440, plain, (activity(X1)|atomic(X1)|~leaf(X2,X1))).
+#
+#cnf(i_0_441, plain, (atomic(X1)|~leaf(X2,X1)|~arboreal(esk8_2(X2,X1)))).
+###
+#cnf(i_0_51, plain, (atomic(X2)|occurrence_of(esk10_2(X1,X2),X2)|~leaf(X1,X2))).
+##
+#cnf(i_0_460, plain, (atomic(X1)|~leaf(X2,X1)|~arboreal(esk10_2(X2,X1)))).
+###
+#cnf(i_0_62, plain, (root(esk14_2(X1,X2),X1)|atomic(X1)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_471, plain, (legal(esk14_2(X1,X2))|atomic(X1)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_472, plain, (activity_occurrence(esk14_2(X1,X2))|atomic(X1)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_473, plain, (arboreal(esk14_2(X1,X2))|atomic(X1)|~occurrence_of(X2,X1))).
+###
+#cnf(i_0_61, plain, (subactivity_occurrence(esk14_2(X1,X2),X2)|atomic(X1)|~occurrence_of(X2,X1))).
+###
+#cnf(i_0_151, plain, (~activity_occurrence(X3)|~next_subocc(X1,X2,esk7_1(X3))|~root_occ(X2,X3))).
+#
+#cnf(i_0_419, plain, (subactivity_occurrence(X1,esk8_2(X1,X2))|atomic(X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_490, plain, (activity_occurrence(X1)|atomic(X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_495, negated_conjecture, (activity_occurrence(X1)|~leaf_occ(X1,esk18_0))).
+##
+#cnf(i_0_496, negated_conjecture, (activity_occurrence(esk17_1(esk18_0)))).
+##
+#cnf(i_0_494, plain, (activity_occurrence(X1)|atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_159, plain, (~activity_occurrence(X3)|~next_subocc(X1,X2,esk7_1(X3))|~leaf_occ(X1,X3))).
+##
+#cnf(i_0_497, plain, (activity_occurrence(X2)|arboreal(X1)|~leaf_occ(X2,X1))).
+###
+#cnf(i_0_427, plain, (subactivity_occurrence(X1,esk10_2(X1,X2))|atomic(X2)|~leaf(X1,X2))).
+####
+#cnf(i_0_241, plain, (esk3_2(X2,X1)=esk7_1(X1)|~activity_occurrence(X1)|~leaf_occ(X2,X1))).
+##
+#cnf(i_0_512, plain, (leaf(X1,esk7_1(X2))|~activity_occurrence(X2)|~leaf_occ(X1,X2))).
+####
+#cnf(i_0_242, plain, (esk2_2(X2,X1)=esk7_1(X1)|~activity_occurrence(X1)|~root_occ(X2,X1))).
+#
+#cnf(i_0_7, plain, (~next_subocc(X1,X4,X3)|~min_precedes(X2,X4,X3)|~min_precedes(X1,X2,X3))).
+##
+#cnf(i_0_524, plain, (root(X1,esk7_1(X2))|~activity_occurrence(X2)|~root_occ(X1,X2))).
+##
+#cnf(i_0_529, plain, (~next_subocc(X1,X2,X3)|~next_subocc(X1,X4,X3)|~min_precedes(X4,X2,X3))).
+####
+#cnf(i_0_530, plain, (~next_subocc(X1,X2,X3)|~next_subocc(X4,X2,X3)|~min_precedes(X1,X4,X3))).
+##
+#cnf(i_0_435, plain, (activity_occurrence(esk16_1(esk8_2(X1,tptp0)))|~leaf(X1,tptp0))).
+#
+#cnf(i_0_436, plain, (arboreal(esk16_1(esk8_2(X1,tptp0)))|~leaf(X1,tptp0))).
+#
+#cnf(i_0_537, plain, (~next_subocc(X1,X2,X3)|~next_subocc(X1,X4,X3)|~next_subocc(X4,X2,X3))).
+#
+#cnf(i_0_454, plain, (activity_occurrence(esk16_1(esk10_2(X1,tptp0)))|~leaf(X1,tptp0))).
+#
+#cnf(i_0_455, plain, (arboreal(esk16_1(esk10_2(X1,tptp0)))|~leaf(X1,tptp0))).
+#
+#cnf(i_0_397, plain, (atomic(X1)|~arboreal(esk9_3(X1,X2,X3))|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_219, plain, (esk3_2(X1,X2)=X3|~leaf_occ(X1,X2)|~occurrence_of(X2,X3))).
+##
+#cnf(i_0_633, plain, (leaf(X1,X3)|~leaf_occ(X1,X2)|~occurrence_of(X2,X3))).
+#
+#cnf(i_0_141, plain, (~occurrence_of(X1,tptp0)|~occurrence_of(X1,X2)|~min_precedes(X3,esk15_1(X1),X2))).
+####
+#cnf(i_0_148, plain, (~occurrence_of(X1,tptp0)|~occurrence_of(X1,X2)|~min_precedes(esk17_1(X1),X3,X2))).
+#
+#cnf(i_0_638, plain, (activity_occurrence(X1)|atomic(X3)|~leaf_occ(X1,X2)|~occurrence_of(X2,X3))).
+###
+#cnf(i_0_155, plain, (~next_subocc(X1,esk15_1(X2),X3)|~occurrence_of(X2,tptp0)|~occurrence_of(X2,X3))).
+###
+#cnf(i_0_220, plain, (esk2_2(X1,X2)=X3|~root_occ(X1,X2)|~occurrence_of(X2,X3))).
+#
+#cnf(i_0_163, plain, (~next_subocc(esk17_1(X1),X2,X3)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,X3))).
+##
+#cnf(i_0_761, plain, (root(X1,X3)|~root_occ(X1,X2)|~occurrence_of(X2,X3))).
+##########
+#cnf(i_0_138, plain, (~atocc(X2,X3)|~root_occ(X1,X2)|~min_precedes(X4,X1,esk6_2(X2,X3)))).
+####
+#cnf(i_0_139, plain, (~leaf_occ(X3,X2)|~root_occ(X1,X2)|~min_precedes(X4,X1,esk3_2(X3,X2)))).
+###
+#cnf(i_0_657, plain, (leaf(esk17_1(X1),X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,X2))).
+#
+#cnf(i_0_140, plain, (~root_occ(X1,X2)|~root_occ(X3,X2)|~min_precedes(X4,X1,esk2_2(X3,X2)))).
+#
+#cnf(i_0_789, plain, (root(esk15_1(X1),X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,X2))).
+###
+#cnf(i_0_145, plain, (~atocc(X2,X3)|~leaf_occ(X1,X2)|~min_precedes(X1,X4,esk6_2(X2,X3)))).
+##
+#cnf(i_0_248, plain, (X1=tptp3|~occurrence_of(esk15_1(X2),X1)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_146, plain, (~leaf_occ(X1,X2)|~leaf_occ(X3,X2)|~min_precedes(X1,X4,esk3_2(X3,X2)))).
+#
+#cnf(i_0_259, plain, (X1=tptp4|~occurrence_of(esk16_1(X2),X1)|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_147, plain, (~leaf_occ(X1,X2)|~root_occ(X3,X2)|~min_precedes(X1,X4,esk2_2(X3,X2)))).
+##
+#cnf(i_0_218, plain, (esk6_2(X1,X2)=X3|~atocc(X1,X2)|~occurrence_of(X1,X3))).
+#
+#cnf(i_0_952, plain, (atomic(X3)|~atocc(X1,X2)|~occurrence_of(X1,X3))).
+#
+#cnf(i_0_152, plain, (~atocc(X3,X4)|~next_subocc(X1,X2,esk6_2(X3,X4))|~root_occ(X2,X3))).
+##
+#cnf(i_0_976, plain, (atomic(X1)|~root(X2,X3)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_992, negated_conjecture, (atomic(X1)|~occurrence_of(esk15_1(esk18_0),X1))).
+#
+#cnf(i_0_153, plain, (~next_subocc(X1,X2,esk3_2(X3,X4))|~leaf_occ(X3,X4)|~root_occ(X2,X4))).
+#
+#cnf(i_0_999, negated_conjecture, (atomic(esk7_1(esk15_1(esk18_0))))).
+#
+#cnf(i_0_997, plain, (atomic(X1)|~root_occ(X2,X3)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_977, plain, (atomic(X1)|~occurrence_of(X2,X1)|~min_precedes(X4,X2,X3))).
+#
+#cnf(i_0_154, plain, (~next_subocc(X1,X2,esk2_2(X3,X4))|~root_occ(X2,X4)|~root_occ(X3,X4))).
+#
+#cnf(i_0_978, plain, (atomic(X1)|~occurrence_of(X2,X1)|~min_precedes(X2,X4,X3))).
+#
+#cnf(i_0_1026, plain, (atomic(X1)|~next_subocc(X3,X2,X4)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_1042, plain, (atomic(X1)|~next_subocc(X2,X3,X4)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_160, plain, (~atocc(X3,X4)|~next_subocc(X1,X2,esk6_2(X3,X4))|~leaf_occ(X1,X3))).
+#
+#cnf(i_0_972, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~atocc(X1,X2))).
+##
+#cnf(i_0_988, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~root(X1,X2))).
+#
+#cnf(i_0_1079, negated_conjecture, (~atocc(esk18_0,X1))).
+##
+#cnf(i_0_1021, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~root_occ(X1,X2))).
+##
+#cnf(i_0_1092, negated_conjecture, (~root(esk18_0,X1))).
+###
+#cnf(i_0_958, plain, (subactivity(X1,X3)|~atocc(X2,X1)|~occurrence_of(X2,X3))).
+##
+#cnf(i_0_1030, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~min_precedes(X2,X1,X3))).
+#
+#cnf(i_0_1046, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~min_precedes(X1,X2,X3))).
+#
+#cnf(i_0_1053, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~next_subocc(X2,X1,X3))).
+#
+#cnf(i_0_1103, negated_conjecture, (~root_occ(esk18_0,X1))).
+#
+#cnf(i_0_1060, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~next_subocc(X1,X2,X3))).
+######
+#cnf(i_0_1111, plain, (subactivity(X1,esk7_1(X2))|~activity_occurrence(X2)|~atocc(X2,X1))).
+#
+#cnf(i_0_1094, negated_conjecture, (~min_precedes(X2,esk18_0,X1))).
+##
+#cnf(i_0_1025, plain, (atomic(X1)|~occurrence_of(esk15_1(X2),X1)|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_969, plain, (atomic(X1)|~atocc(esk10_2(X2,X1),X3)|~leaf(X2,X1))).
+#
+#cnf(i_0_1095, negated_conjecture, (~min_precedes(esk18_0,X2,X1))).
+#
+#cnf(i_0_971, plain, (atomic(X1)|~atocc(esk8_2(X2,X1),X3)|~leaf(X2,X1))).
+#
+#cnf(i_0_985, plain, (atomic(X1)|~leaf(X2,X1)|~root(esk10_2(X2,X1),X3))).
+#
+#cnf(i_0_987, plain, (atomic(X1)|~leaf(X2,X1)|~root(esk8_2(X2,X1),X3))).
+#
+#cnf(i_0_1126, negated_conjecture, (~next_subocc(X1,esk18_0,X2))).
+#
+#cnf(i_0_1018, plain, (atomic(X1)|~leaf(X2,X1)|~root_occ(esk10_2(X2,X1),X3))).
+#
+#cnf(i_0_1020, plain, (atomic(X1)|~leaf(X2,X1)|~root_occ(esk8_2(X2,X1),X3))).
+##
+#cnf(i_0_1145, negated_conjecture, (~next_subocc(esk18_0,X1,X2))).
+##########
+#cnf(i_0_974, plain, (atomic(esk3_2(X1,X2))|~atocc(X2,X3)|~leaf_occ(X1,X2))).
+###
+#cnf(i_0_975, plain, (atomic(esk2_2(X1,X2))|~atocc(X2,X3)|~root_occ(X1,X2))).
+####
+#cnf(i_0_990, plain, (atomic(esk3_2(X1,X2))|~root(X2,X3)|~leaf_occ(X1,X2))).
+##
+#cnf(i_0_991, plain, (atomic(esk2_2(X1,X2))|~root(X2,X3)|~root_occ(X1,X2))).
+####
+#cnf(i_0_1023, plain, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~root_occ(X2,X3))).
+###
+#cnf(i_0_1024, plain, (atomic(esk2_2(X1,X2))|~root_occ(X2,X3)|~root_occ(X1,X2))).
+########
+#cnf(i_0_1027, plain, (atomic(X1)|~leaf(X2,X1)|~min_precedes(X3,esk10_2(X2,X1),X4))).
+#
+#cnf(i_0_1029, plain, (atomic(X1)|~leaf(X2,X1)|~min_precedes(X3,esk8_2(X2,X1),X4))).
+##
+#cnf(i_0_1043, plain, (atomic(X1)|~leaf(X2,X1)|~min_precedes(esk10_2(X2,X1),X3,X4))).
+#
+#cnf(i_0_1045, plain, (atomic(X1)|~leaf(X2,X1)|~min_precedes(esk8_2(X2,X1),X3,X4))).
+#
+#cnf(i_0_1050, plain, (atomic(X1)|~leaf(X3,X1)|~next_subocc(X2,esk10_2(X3,X1),X4))).
+#
+#cnf(i_0_161, plain, (~next_subocc(X1,X2,esk3_2(X3,X4))|~leaf_occ(X1,X4)|~leaf_occ(X3,X4))).
+#
+#cnf(i_0_1052, plain, (atomic(X1)|~leaf(X3,X1)|~next_subocc(X2,esk8_2(X3,X1),X4))).
+#
+#cnf(i_0_1057, plain, (atomic(X1)|~leaf(X2,X1)|~next_subocc(esk10_2(X2,X1),X3,X4))).
+#
+#cnf(i_0_1059, plain, (atomic(X1)|~leaf(X2,X1)|~next_subocc(esk8_2(X2,X1),X3,X4))).
+#
+#cnf(i_0_162, plain, (~next_subocc(X1,X2,esk2_2(X3,X4))|~leaf_occ(X1,X4)|~root_occ(X3,X4))).
+###############
+#cnf(i_0_394, plain, (arboreal(esk9_3(X1,X2,X3))|~atomic(X1)|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_654, plain, (leaf(X1,esk6_2(X2,X3))|~atocc(X2,X3)|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_655, plain, (leaf(X1,esk3_2(X2,X3))|~leaf_occ(X1,X3)|~leaf_occ(X2,X3))).
+#
+#cnf(i_0_656, plain, (leaf(X1,esk2_2(X2,X3))|~leaf_occ(X1,X3)|~root_occ(X2,X3))).
+##
+#cnf(i_0_786, plain, (root(X1,esk6_2(X2,X3))|~atocc(X2,X3)|~root_occ(X1,X2))).
+#####
+#cnf(i_0_787, plain, (root(X1,esk3_2(X2,X3))|~leaf_occ(X2,X3)|~root_occ(X1,X3))).
+#####
+#cnf(i_0_788, plain, (root(X1,esk2_2(X2,X3))|~root_occ(X1,X3)|~root_occ(X2,X3))).
+######
+#cnf(i_0_1112, plain, (subactivity(X1,esk6_2(X2,X3))|~atocc(X2,X1)|~atocc(X2,X3))).
+#
+#cnf(i_0_1113, plain, (subactivity(X1,esk3_2(X2,X3))|~atocc(X3,X1)|~leaf_occ(X2,X3))).
+#
+#cnf(i_0_1114, plain, (subactivity(X1,esk2_2(X2,X3))|~atocc(X3,X1)|~root_occ(X2,X3))).
+##
+#cnf(i_0_1115, plain, (subactivity(esk13_2(X1,X2),X3)|~root(X2,X1)|~occurrence_of(X2,X3))).
+#
+#cnf(i_0_98, negated_conjecture, (occurrence_of(X1,tptp1)|occurrence_of(X1,tptp2)|~leaf_occ(X1,esk18_0))).
+########################
+#cnf(i_0_32, plain, (atocc(X3,X1)|~subactivity(X1,X2)|~atomic(X2)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_1460, plain, (atocc(X1,X2)|~activity(X2)|~atomic(X2)|~occurrence_of(X1,X2))).
+#
+#cnf(i_0_1463, negated_conjecture, (~activity(X1)|~atomic(X1)|~occurrence_of(esk18_0,X1))).
+######
+#cnf(i_0_267, plain, (precedes(X1,X2)|~legal(X2)|~earlier(X3,X2)|~earlier(X1,X3))).
+#
+#cnf(i_0_275, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X1,X3)|~earlier(X3,X2))).
+##
+#cnf(i_0_284, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X3,X2)|~earlier(X1,X3))).
+#
+#cnf(i_0_295, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X1,X3)|~precedes(X3,X2))).
+##
+#cnf(i_0_1431, negated_conjecture, (~subactivity(X1,X2)|~atomic(X2)|~occurrence_of(esk18_0,X2))).
+#####
+#cnf(i_0_515, plain, (activity_occurrence(X1)|atomic(esk7_1(X2))|~activity_occurrence(X2)|~leaf_occ(X1,X2))).
+###
+#cnf(i_0_1569, negated_conjecture, (~root(X2,X1)|~atomic(X1)|~occurrence_of(esk18_0,X1))).
+#####
+#cnf(i_0_1032, plain, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~min_precedes(X3,X2,X4))).
+##
+#cnf(i_0_1033, plain, (atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~min_precedes(X3,X2,X4))).
+####
+#cnf(i_0_1048, plain, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~min_precedes(X2,X3,X4))).
+###
+#cnf(i_0_1049, plain, (atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~min_precedes(X2,X3,X4))).
+####
+#cnf(i_0_1055, plain, (atomic(esk3_2(X1,X2))|~next_subocc(X3,X2,X4)|~leaf_occ(X1,X2))).
+###
+#cnf(i_0_1056, plain, (atomic(esk2_2(X1,X2))|~next_subocc(X3,X2,X4)|~root_occ(X1,X2))).
+####
+#cnf(i_0_1062, plain, (atomic(esk3_2(X1,X2))|~next_subocc(X2,X3,X4)|~leaf_occ(X1,X2))).
+##
+#cnf(i_0_1063, plain, (atomic(esk2_2(X1,X2))|~next_subocc(X2,X3,X4)|~root_occ(X1,X2))).
+#############
+#cnf(i_0_1571, negated_conjecture, (~atomic(X1)|~occurrence_of(esk18_0,X1)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_1, plain, (min_precedes(X1,X4,X3)|~min_precedes(X2,X4,X3)|~min_precedes(X1,X2,X3))).
+########
+#cnf(i_0_1688, plain, (precedes(X1,X2)|~min_precedes(X4,X2,X3)|~min_precedes(X1,X4,X3))).
+#
+#cnf(i_0_1722, plain, (legal(X1)|~min_precedes(X3,X1,X4)|~min_precedes(X2,X3,X4))).
+#
+#cnf(i_0_1743, plain, (legal(X1)|~next_subocc(X4,X2,X3)|~min_precedes(X2,X1,X3))).
+##
+#cnf(i_0_1745, plain, (legal(X1)|~next_subocc(X2,X1,X3)|~min_precedes(X4,X2,X3))).
+#
+#cnf(i_0_1747, plain, (legal(X1)|~next_subocc(X2,X3,X4)|~next_subocc(X3,X1,X4))).
+##
+#cnf(i_0_1676, negated_conjecture, (~next_subocc(X2,X3,X1)|~atomic(X1)|~occurrence_of(esk18_0,X1))).
+#
+#cnf(i_0_1739, plain, (precedes(X1,X2)|~next_subocc(X1,X3,X4)|~min_precedes(X3,X2,X4))).
+##
+#cnf(i_0_1741, plain, (precedes(X1,X2)|~next_subocc(X3,X2,X4)|~min_precedes(X1,X3,X4))).
+###
+#cnf(i_0_1768, plain, (precedes(X1,X2)|~next_subocc(X1,X3,X4)|~next_subocc(X3,X2,X4))).
+####
+#cnf(i_0_1720, plain, (min_precedes(X1,X2,X3)|~next_subocc(X1,X4,X3)|~min_precedes(X4,X2,X3))).
+#########
+#cnf(i_0_1721, plain, (min_precedes(X1,X2,X3)|~next_subocc(X4,X2,X3)|~min_precedes(X1,X4,X3))).
+##########
+#cnf(i_0_1858, plain, (min_precedes(X1,X2,X3)|~next_subocc(X1,X4,X3)|~next_subocc(X4,X2,X3))).
+##########
+#cnf(i_0_67, plain, (next_subocc(esk15_1(X1),esk16_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_1988, plain, (~leaf(esk15_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_1975, plain, (precedes(esk15_1(X1),esk16_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2027, plain, (legal(esk16_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_1989, plain, (~root(esk16_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2054, negated_conjecture, (legal(esk16_1(esk18_0)))).
+#
+#cnf(i_0_1993, plain, (atomic(X1)|~occurrence_of(esk16_1(X2),X1)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_1990, negated_conjecture, (~root_occ(esk16_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2055, plain, (legal(esk16_1(esk10_2(X1,tptp0)))|~leaf(X1,tptp0))).
+#
+#cnf(i_0_2057, plain, (legal(esk16_1(esk8_2(X1,tptp0)))|~leaf(X1,tptp0))).
+##
+#cnf(i_0_1991, negated_conjecture, (~leaf_occ(esk15_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_65, plain, (next_subocc(esk16_1(X1),esk17_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_2106, plain, (arboreal(esk17_1(X1))|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_2112, plain, (precedes(esk16_1(X1),esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2162, plain, (legal(esk17_1(X1))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_2125, plain, (~leaf(esk16_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2130, plain, (atomic(X1)|~occurrence_of(esk17_1(X2),X1)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_970, plain, (atomic(X1)|~atocc(esk9_3(X1,X2,X3),X4)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_2126, plain, (~root(esk17_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_986, plain, (atomic(X1)|~root(esk9_3(X1,X2,X3),X4)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_1019, plain, (atomic(X1)|~root_occ(esk9_3(X1,X2,X3),X4)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_1997, plain, (legal(X1)|~occurrence_of(X2,tptp0)|~min_precedes(esk16_1(X2),X1,tptp0))).
+#
+#cnf(i_0_2127, negated_conjecture, (~root_occ(esk17_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_1998, plain, (legal(X1)|~next_subocc(esk16_1(X2),X1,tptp0)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_2134, plain, (legal(X1)|~occurrence_of(X2,tptp0)|~min_precedes(esk17_1(X2),X1,tptp0))).
+#
+#cnf(i_0_2128, negated_conjecture, (~leaf_occ(esk16_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2135, plain, (legal(X1)|~next_subocc(esk17_1(X2),X1,tptp0)|~occurrence_of(X2,tptp0))).
+######
+#cnf(i_0_3, plain, (X3=X4|~root_occ(X4,X1)|~root_occ(X3,X1)|~occurrence_of(X1,X2))).
+#
+#cnf(i_0_2028, plain, (~precedes(esk16_1(X1),esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2633, plain, (X1=X2|~activity_occurrence(X3)|~root_occ(X2,X3)|~root_occ(X1,X3))).
+#####
+#cnf(i_0_2634, plain, (X1=X2|~atocc(X3,X4)|~root_occ(X2,X3)|~root_occ(X1,X3))).
+#
+#cnf(i_0_2635, plain, (X1=X2|~leaf_occ(X4,X3)|~root_occ(X2,X3)|~root_occ(X1,X3))).
+##
+#cnf(i_0_2636, plain, (X1=X2|~root_occ(X2,X3)|~root_occ(X1,X3)|~root_occ(X4,X3))).
+#
+#cnf(i_0_3369, plain, (X1=X2|~root(X3,X4)|~root_occ(X2,X3)|~root_occ(X1,X3))).
+#
+#cnf(i_0_4446, plain, (X1=X2|~root_occ(X2,X3)|~root_occ(X1,X3)|~root_occ(X3,X4))).
+####
+#cnf(i_0_398, plain, (X1=X2|~occurrence_of(esk9_3(X2,X3,X4),X1)|~min_precedes(X3,X4,X2))).
+###
+#cnf(i_0_1013, negated_conjecture, (atomic(X1)|~occurrence_of(X2,esk7_1(esk15_1(esk18_0)))|~occurrence_of(X2,X1))).
+##########
+#cnf(i_0_1723, plain, (~precedes(X1,X2)|~min_precedes(X3,X1,X4)|~min_precedes(X2,X3,X4))).
+#####
+#cnf(i_0_17, plain, (root_occ(X3,X1)|~subactivity_occurrence(X3,X1)|~root(X3,X2)|~occurrence_of(X1,X2))).
+###
+#cnf(i_0_1752, plain, (~precedes(X1,X2)|~next_subocc(X2,X3,X4)|~min_precedes(X3,X1,X4))).
+###
+#cnf(i_0_21, plain, (leaf_occ(X3,X1)|~leaf(X3,X2)|~subactivity_occurrence(X3,X1)|~occurrence_of(X1,X2))).
+#####
+#cnf(i_0_1771, plain, (~precedes(X1,X2)|~next_subocc(X3,X1,X4)|~min_precedes(X2,X3,X4))).
+#
+#cnf(i_0_378, plain, (root(X1,esk11_3(X2,X1,X3))|~legal(X1)|~min_precedes(X1,X3,X2))).
+######
+#cnf(i_0_385, plain, (root(X1,esk12_3(X2,X3,X1))|~legal(X1)|~min_precedes(X3,X1,X2))).
+#########
+#cnf(i_0_1790, plain, (~precedes(X1,X2)|~next_subocc(X2,X3,X4)|~next_subocc(X3,X1,X4))).
+#
+#cnf(i_0_1467, plain, (root(X1,X2)|~activity(X2)|~legal(X1)|~atomic(X2)|~occurrence_of(X1,X2))).
+######################
+#cnf(i_0_1001, negated_conjecture, (atomic(esk3_2(X1,esk15_1(esk18_0)))|~leaf_occ(X1,esk15_1(esk18_0)))).
+##
+#cnf(i_0_1002, negated_conjecture, (atomic(esk2_2(X1,esk15_1(esk18_0)))|~root_occ(X1,esk15_1(esk18_0)))).
+####
+#cnf(i_0_4915, plain, (root_occ(X1,X2)|~activity_occurrence(X2)|~subactivity_occurrence(X1,X2)|~root(X1,esk7_1(X2)))).
+#
+#cnf(i_0_5145, negated_conjecture, (root_occ(X1,esk18_0)|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0))).
+#####
+#cnf(i_0_4957, plain, (leaf_occ(X1,X2)|~activity_occurrence(X2)|~leaf(X1,esk7_1(X2))|~subactivity_occurrence(X1,X2))).
+##
+#cnf(i_0_5200, negated_conjecture, (leaf_occ(X1,esk18_0)|~leaf(X1,tptp0)|~subactivity_occurrence(X1,esk18_0))).
+#
+#cnf(i_0_269, plain, (earlier(X1,X2)|~earlier(X3,X2)|~earlier(X4,X3)|~earlier(X1,X4))).
+###
+#cnf(i_0_277, plain, (earlier(X1,X2)|~precedes(X1,X4)|~earlier(X3,X2)|~earlier(X4,X3))).
+#
+#cnf(i_0_280, plain, (earlier(X1,X2)|~precedes(X3,X4)|~earlier(X1,X3)|~earlier(X4,X2))).
+#
+#cnf(i_0_281, plain, (earlier(X1,X2)|~precedes(X1,X3)|~precedes(X3,X4)|~earlier(X4,X2))).
+####
+#cnf(i_0_287, plain, (earlier(X1,X2)|~precedes(X3,X2)|~precedes(X4,X3)|~earlier(X1,X4))).
+##
+#cnf(i_0_290, plain, (earlier(X1,X2)|~precedes(X4,X2)|~earlier(X1,X3)|~earlier(X3,X4))).
+#
+#cnf(i_0_291, plain, (earlier(X1,X2)|~precedes(X1,X3)|~precedes(X4,X2)|~earlier(X3,X4))).
+#####
+#cnf(i_0_298, plain, (earlier(X1,X2)|~precedes(X3,X2)|~precedes(X1,X4)|~precedes(X4,X3))).
+#############
+#cnf(i_0_1976, plain, (~root_occ(esk16_1(X1),X2)|~occurrence_of(X2,tptp0)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_1977, plain, (~leaf_occ(esk15_1(X1),X2)|~occurrence_of(X2,tptp0)|~occurrence_of(X1,tptp0))).
+########
+#cnf(i_0_2113, plain, (~root_occ(esk17_1(X1),X2)|~occurrence_of(X2,tptp0)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_2114, plain, (~leaf_occ(esk16_1(X1),X2)|~occurrence_of(X2,tptp0)|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_29, plain, (leaf(X1,X2)|min_precedes(X1,esk5_2(X1,X2),X2)|~root(X1,X2))).
+######
+#cnf(i_0_5737, plain, (activity(X1)|leaf(X2,X1)|~root(X2,X1))).
+#
+#cnf(i_0_5793, plain, (activity(X1)|atomic(X1)|~root(X2,X1))).
+##
+#cnf(i_0_1570, negated_conjecture, (~root(X2,X1)|~atomic(X3)|~occurrence_of(esk18_0,X3)|~occurrence_of(X2,X3))).
+###
+#cnf(i_0_5752, plain, (activity_occurrence(esk5_2(X1,X2))|leaf(X1,X2)|~root(X1,X2))).
+##
+#cnf(i_0_5753, plain, (leaf(X1,X2)|arboreal(esk5_2(X1,X2))|~root(X1,X2))).
+##
+#cnf(i_0_5735, plain, (leaf(X1,X2)|~root(esk5_2(X1,X2),X2)|~root(X1,X2))).
+#
+#cnf(i_0_5818, negated_conjecture, (~atomic(X1)|~occurrence_of(esk15_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+####
+#cnf(i_0_5898, negated_conjecture, (~occurrence_of(esk18_0,tptp3))).
+#
+#cnf(i_0_5726, plain, (leaf(X1,X2)|precedes(X1,esk5_2(X1,X2))|~root(X1,X2))).
+#
+#cnf(i_0_5899, plain, (leaf(X1,X2)|legal(esk5_2(X1,X2))|~root(X1,X2))).
+##
+#cnf(i_0_5894, negated_conjecture, (~occurrence_of(esk18_0,esk7_1(esk15_1(esk18_0))))).
+####
+#cnf(i_0_1579, negated_conjecture, (~atocc(X3,X1)|~atomic(X2)|~occurrence_of(esk18_0,X2)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_31, plain, (root(X1,X2)|min_precedes(esk4_2(X1,X2),X1,X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_6026, plain, (activity(X1)|root(X2,X1)|~leaf(X2,X1))).
+#
+#cnf(i_0_6041, plain, (activity_occurrence(X1)|root(X1,X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_6004, negated_conjecture, (~leaf(esk18_0,X1))).
+##
+#cnf(i_0_6042, plain, (root(X1,X2)|arboreal(X1)|~leaf(X1,X2))).
+##
+#cnf(i_0_6096, negated_conjecture, (~leaf_occ(esk18_0,X1))).
+###
+#cnf(i_0_6108, negated_conjecture, (root(X1,tptp0)|arboreal(X1)|~leaf_occ(X1,esk18_0))).
+##
+#cnf(i_0_6016, plain, (activity_occurrence(esk4_2(X1,X2))|root(X1,X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_6017, plain, (root(X1,X2)|arboreal(esk4_2(X1,X2))|~leaf(X1,X2))).
+#
+#cnf(i_0_6088, plain, (activity_occurrence(X1)|root(X1,esk3_2(X1,X2))|~leaf_occ(X1,X2))).
+##
+#cnf(i_0_6158, plain, (activity_occurrence(X1)|~leaf_occ(X1,X2))).
+#####
+#cnf(i_0_6105, plain, (root(X1,esk3_2(X1,X2))|arboreal(X1)|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_6201, plain, (arboreal(X1)|~leaf_occ(X1,X2))).
+##
+#cnf(i_0_6234, plain, (arboreal(X1)|atomic(X2)|~leaf(X1,X2))).
+##########
+#cnf(i_0_6025, plain, (root(X1,X2)|~leaf(esk4_2(X1,X2),X2)|~leaf(X1,X2))).
+##
+#cnf(i_0_6033, plain, (root(X2,X3)|atomic(X1)|~leaf(X2,X3)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_6236, plain, (arboreal(X1)|~leaf(X1,X3)|~subactivity_occurrence(X1,X2)|~occurrence_of(X2,X3))).
+###
+#cnf(i_0_6027, negated_conjecture, (root(X2,X1)|~leaf(X2,X1)|~atomic(X1)|~occurrence_of(esk18_0,X1))).
+##
+#cnf(i_0_1599, negated_conjecture, (~atomic(X2)|~root_occ(X1,X3)|~occurrence_of(esk18_0,X2)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_6015, plain, (root(X1,X2)|precedes(esk4_2(X1,X2),X1)|~leaf(X1,X2))).
+#
+#cnf(i_0_6334, plain, (legal(X1)|root(X1,X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_6392, negated_conjecture, (legal(X1)|root(X1,tptp0)|~leaf_occ(X1,esk18_0))).
+##
+#cnf(i_0_6389, plain, (legal(X1)|root(X1,esk3_2(X1,X2))|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_6400, plain, (legal(X1)|~leaf_occ(X1,X2))).
+#
+#cnf(i_0_6435, plain, (legal(X1)|atomic(X2)|~leaf(X1,X2))).
+#
+#cnf(i_0_5827, negated_conjecture, (~atomic(X3)|~root_occ(X1,X2)|~occurrence_of(esk18_0,X3)|~occurrence_of(X1,X3))).
+#########
+#cnf(i_0_6335, plain, (root(X1,X2)|~leaf(X1,X2)|~precedes(X1,esk4_2(X1,X2)))).
+##
+#cnf(i_0_6437, plain, (legal(X1)|~leaf(X1,X3)|~subactivity_occurrence(X1,X2)|~occurrence_of(X2,X3))).
+#
+#cnf(i_0_304, plain, (~earlier(X1,X2)|~earlier(X3,X1)|~earlier(X4,X3)|~earlier(X2,X4))).
+##
+#cnf(i_0_6291, plain, (arboreal(X1)|~activity_occurrence(X2)|~leaf(X1,esk7_1(X2))|~subactivity_occurrence(X1,X2))).
+#
+#cnf(i_0_6582, negated_conjecture, (arboreal(X1)|~leaf(X1,tptp0)|~subactivity_occurrence(X1,esk18_0))).
+#
+#cnf(i_0_305, plain, (~precedes(X2,X4)|~earlier(X1,X2)|~earlier(X3,X1)|~earlier(X4,X3))).
+###
+#cnf(i_0_6491, plain, (legal(X1)|~activity_occurrence(X2)|~leaf(X1,esk7_1(X2))|~subactivity_occurrence(X1,X2))).
+##
+#cnf(i_0_6661, negated_conjecture, (legal(X1)|~leaf(X1,tptp0)|~subactivity_occurrence(X1,esk18_0))).
+###
+#cnf(i_0_307, plain, (~precedes(X2,X4)|~precedes(X4,X3)|~earlier(X1,X2)|~earlier(X3,X1))).
+#################
+#cnf(i_0_6043, plain, (root(X1,X2)|atomic(esk7_1(X1))|~activity_occurrence(X1)|~leaf(X1,X2))).
+####
+#cnf(i_0_391, plain, (activity_occurrence(esk16_1(esk9_3(tptp0,X1,X2)))|~min_precedes(X1,X2,tptp0))).
+#
+#cnf(i_0_392, plain, (arboreal(esk16_1(esk9_3(tptp0,X1,X2)))|~min_precedes(X1,X2,tptp0))).
+#
+#cnf(i_0_1473, plain, (atomic(X1)|~activity(X3)|~atomic(X3)|~occurrence_of(X2,X1)|~occurrence_of(X2,X3))).
+######
+#cnf(i_0_2056, plain, (legal(esk16_1(esk9_3(tptp0,X1,X2)))|~min_precedes(X1,X2,tptp0))).
+##
+#cnf(i_0_651, plain, (leaf(X1,X2)|~leaf_occ(X1,esk9_3(X2,X3,X4))|~min_precedes(X3,X4,X2))).
+##
+#cnf(i_0_783, plain, (root(X1,X2)|~root_occ(X1,esk9_3(X2,X3,X4))|~min_precedes(X3,X4,X2))).
+#
+#cnf(i_0_1028, plain, (atomic(X1)|~min_precedes(X4,esk9_3(X1,X2,X3),X5)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_1044, plain, (atomic(X1)|~min_precedes(esk9_3(X1,X2,X3),X4,X5)|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_1051, plain, (atomic(X1)|~next_subocc(X2,esk9_3(X1,X3,X4),X5)|~min_precedes(X3,X4,X1))).
+#
+#cnf(i_0_1058, plain, (atomic(X1)|~next_subocc(esk9_3(X1,X2,X3),X4,X5)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_1109, plain, (subactivity(X1,X2)|~atocc(esk9_3(X2,X3,X4),X1)|~min_precedes(X3,X4,X2))).
+##
+#cnf(i_0_2037, plain, (earlier(X1,esk16_1(X2))|~occurrence_of(X2,tptp0)|~earlier(X1,esk15_1(X2)))).
+#
+#cnf(i_0_2038, plain, (earlier(X1,esk16_1(X2))|~precedes(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_2166, plain, (earlier(esk16_1(X1),X2)|~occurrence_of(X1,tptp0)|~earlier(esk17_1(X1),X2))).
+##
+#cnf(i_0_2168, plain, (earlier(esk16_1(X1),X2)|~precedes(esk17_1(X1),X2)|~occurrence_of(X1,tptp0))).
+#######
+#cnf(i_0_331, plain, (~precedes(X1,X2)|~precedes(X4,X3)|~earlier(X3,X1)|~earlier(X2,X4))).
+####
+#cnf(i_0_332, plain, (~precedes(X1,X2)|~precedes(X2,X4)|~precedes(X4,X3)|~earlier(X3,X1))).
+#####
+#cnf(i_0_2033, plain, (earlier(esk15_1(X1),X2)|~occurrence_of(X1,tptp0)|~earlier(esk16_1(X1),X2))).
+#
+#cnf(i_0_2035, plain, (earlier(esk15_1(X1),X2)|~precedes(esk16_1(X1),X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2170, plain, (earlier(X1,esk17_1(X2))|~occurrence_of(X2,tptp0)|~earlier(X1,esk16_1(X2)))).
+##
+#cnf(i_0_2171, plain, (earlier(X1,esk17_1(X2))|~precedes(X1,esk16_1(X2))|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_3013, plain, (esk15_1(X1)=X2|~activity_occurrence(X1)|~root_occ(X2,X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_7505, negated_conjecture, (esk15_1(esk18_0)=X1|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0))).
+##
+#cnf(i_0_7507, negated_conjecture, (esk17_1(esk18_0)=esk15_1(esk18_0)|~root(esk17_1(esk18_0),tptp0))).
+##
+#cnf(i_0_994, plain, (atomic(X1)|atomic(X2)|~occurrence_of(esk14_2(X2,X3),X1)|~occurrence_of(X3,X2))).
+##
+#cnf(i_0_3370, plain, (X1=X2|~root_occ(X2,X3)|~root_occ(X1,X3)|~min_precedes(X5,X3,X4))).
+#
+#cnf(i_0_3371, plain, (X1=X2|~root_occ(X2,X3)|~root_occ(X1,X3)|~min_precedes(X3,X5,X4))).
+#
+#cnf(i_0_7983, plain, (X1=X2|~next_subocc(X4,X3,X5)|~root_occ(X2,X3)|~root_occ(X1,X3))).
+##
+#cnf(i_0_8444, plain, (X1=X2|~next_subocc(X3,X4,X5)|~root_occ(X2,X3)|~root_occ(X1,X3))).
+###########
+#cnf(i_0_376, plain, (~precedes(X1,X2)|~precedes(X2,X3)|~precedes(X3,X4)|~precedes(X4,X1))).
+#
+#cnf(i_0_4830, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk7_1(esk15_1(esk18_0))))).
+#
+#cnf(i_0_1097, plain, (atomic(esk7_1(esk15_1(X1)))|~activity_occurrence(esk15_1(X1))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_2030, plain, (~occurrence_of(X1,tptp0)|~earlier(X2,esk15_1(X1))|~earlier(esk16_1(X1),X2))).
+##
+#cnf(i_0_1971, plain, (atomic(esk7_1(esk16_1(X1)))|~activity_occurrence(esk16_1(X1))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_2031, plain, (~precedes(esk16_1(X1),X2)|~occurrence_of(X1,tptp0)|~earlier(X2,esk15_1(X1)))).
+###
+#cnf(i_0_2108, plain, (atomic(esk7_1(esk17_1(X1)))|~activity_occurrence(esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_2032, plain, (~precedes(esk16_1(X1),X2)|~precedes(X2,esk15_1(X1))|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_2041, plain, (~precedes(X1,esk15_1(X2))|~occurrence_of(X2,tptp0)|~earlier(esk16_1(X2),X1))).
+#
+#cnf(i_0_1429, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp1)|occurrence_of(esk17_1(esk18_0),tptp2))).
+#
+#cnf(i_0_9770, negated_conjecture, (activity(tptp2)|occurrence_of(esk17_1(esk18_0),tptp1))).
+#
+#cnf(i_0_9780, negated_conjecture, (activity(tptp1)|activity(tptp2))).
+##
+#cnf(i_0_9778, negated_conjecture, (activity(tptp2)|arboreal(esk17_1(esk18_0)))).
+#
+#cnf(i_0_9779, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp1|activity(tptp2))).
+#####
+#cnf(i_0_9768, negated_conjecture, (arboreal(esk17_1(esk18_0))|occurrence_of(esk17_1(esk18_0),tptp1))).
+#
+#cnf(i_0_2163, plain, (~occurrence_of(X1,tptp0)|~earlier(X2,esk16_1(X1))|~earlier(esk17_1(X1),X2))).
+#
+#cnf(i_0_9808, negated_conjecture, (arboreal(esk17_1(esk18_0)))).
+#
+#cnf(i_0_9782, negated_conjecture, (X1=tptp1|activity(tptp2)|~occurrence_of(esk17_1(esk18_0),X1))).
+##
+#cnf(i_0_2164, plain, (~precedes(esk17_1(X1),X2)|~occurrence_of(X1,tptp0)|~earlier(X2,esk16_1(X1)))).
+###
+#cnf(i_0_9799, negated_conjecture, (activity(tptp2)|leaf(X1,tptp1)|~leaf_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_2165, plain, (~precedes(esk17_1(X1),X2)|~precedes(X2,esk16_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_9800, negated_conjecture, (activity(tptp2)|root(X1,tptp1)|~root_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_9801, negated_conjecture, (activity(tptp2)|subactivity(X1,tptp1)|~atocc(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_9791, negated_conjecture, (activity(tptp2)|~root_occ(X1,esk17_1(esk18_0))|~min_precedes(X2,X1,tptp1))).
+#
+#cnf(i_0_2174, plain, (~precedes(X1,esk16_1(X2))|~occurrence_of(X2,tptp0)|~earlier(esk17_1(X2),X1))).
+#
+#cnf(i_0_9792, negated_conjecture, (activity(tptp2)|~leaf_occ(X1,esk17_1(esk18_0))|~min_precedes(X1,X2,tptp1))).
+#
+#cnf(i_0_9793, negated_conjecture, (activity(tptp2)|~next_subocc(X1,X2,tptp1)|~root_occ(X2,esk17_1(esk18_0)))).
+#
+#cnf(i_0_9794, negated_conjecture, (activity(tptp2)|~next_subocc(X1,X2,tptp1)|~leaf_occ(X1,esk17_1(esk18_0)))).
+##################
+#cnf(i_0_442, plain, (X1=X2|atomic(X2)|~leaf(X3,X2)|~occurrence_of(esk8_2(X3,X2),X1))).
+##
+#cnf(i_0_461, plain, (X1=X2|atomic(X2)|~leaf(X3,X2)|~occurrence_of(esk10_2(X3,X2),X1))).
+###
+#cnf(i_0_1116, plain, (subactivity(esk12_3(X1,X2,X3),X4)|~occurrence_of(X3,X4)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_1117, plain, (subactivity(esk11_3(X1,X2,X3),X4)|~occurrence_of(X2,X4)|~min_precedes(X2,X3,X1))).
+###############
+#cnf(i_0_6285, negated_conjecture, (root(X1,tptp0)|atomic(X2)|~leaf_occ(X1,esk18_0)|~occurrence_of(X1,X2))).
+#####
+#cnf(i_0_177, plain, (occurrence_of(X1,X2)|~activity_occurrence(X1)|~occurrence_of(X3,esk7_1(X1))|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_10129, negated_conjecture, (~occurrence_of(X1,esk7_1(esk15_1(esk18_0)))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_10225, negated_conjecture, (occurrence_of(esk18_0,X1)|~occurrence_of(X2,tptp0)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_10262, negated_conjecture, (~occurrence_of(esk15_1(esk18_0),tptp0))).
+####
+#cnf(i_0_10301, negated_conjecture, (~occurrence_of(X1,tptp0)|~occurrence_of(X1,tptp3))).
+#
+#cnf(i_0_10313, negated_conjecture, (occurrence_of(esk18_0,esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp0))).
+#############
+#cnf(i_0_10314, negated_conjecture, (occurrence_of(esk18_0,esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_10315, negated_conjecture, (occurrence_of(esk18_0,esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_10309, negated_conjecture, (~occurrence_of(esk15_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_10316, negated_conjecture, (occurrence_of(esk18_0,esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_10272, negated_conjecture, (~atomic(X1)|~occurrence_of(X2,tptp0)|~occurrence_of(X2,X1))).
+########
+#cnf(i_0_10632, negated_conjecture, (~atomic(X1)|~occurrence_of(esk18_0,X1))).
+#####
+#cnf(i_0_10359, negated_conjecture, (occurrence_of(X1,X2)|~activity_occurrence(X1)|~occurrence_of(esk18_0,X2)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_256, plain, (esk7_1(esk16_1(X1))=tptp4|~activity_occurrence(esk16_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_10718, negated_conjecture, (esk7_1(esk16_1(esk18_0))=tptp4)).
+#
+#cnf(i_0_10723, negated_conjecture, (occurrence_of(esk16_1(esk18_0),tptp4))).
+##
+#cnf(i_0_10750, negated_conjecture, (atomic(X1)|~occurrence_of(esk16_1(esk18_0),X1))).
+#
+#cnf(i_0_10749, negated_conjecture, (X1=tptp4|~occurrence_of(esk16_1(esk18_0),X1))).
+###
+#cnf(i_0_10736, negated_conjecture, (leaf(X1,tptp4)|~leaf_occ(X1,esk16_1(esk18_0)))).
+#
+#cnf(i_0_10737, negated_conjecture, (root(X1,tptp4)|~root_occ(X1,esk16_1(esk18_0)))).
+#
+#cnf(i_0_10738, negated_conjecture, (subactivity(X1,tptp4)|~atocc(esk16_1(esk18_0),X1))).
+##
+#cnf(i_0_10758, negated_conjecture, (atomic(X1)|~occurrence_of(X2,tptp4)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_10803, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp4))).
+#
+#cnf(i_0_10793, negated_conjecture, (~occurrence_of(esk18_0,tptp4))).
+#
+#cnf(i_0_10815, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X1,tptp4))).
+#####
+#cnf(i_0_10735, negated_conjecture, (~occurrence_of(esk16_1(esk18_0),tptp0))).
+#
+#cnf(i_0_10741, negated_conjecture, (arboreal(X1)|~leaf(X1,tptp4)|~subactivity_occurrence(X1,esk16_1(esk18_0)))).
+#
+#cnf(i_0_10846, negated_conjecture, (~occurrence_of(X1,tptp0)|~occurrence_of(X1,tptp4))).
+#
+#cnf(i_0_10742, negated_conjecture, (legal(X1)|~leaf(X1,tptp4)|~subactivity_occurrence(X1,esk16_1(esk18_0)))).
+##
+#cnf(i_0_10800, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk10_2(X2,X1),tptp4))).
+##
+#cnf(i_0_10802, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk8_2(X2,X1),tptp4))).
+##
+#cnf(i_0_10805, negated_conjecture, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+##
+#cnf(i_0_10922, negated_conjecture, (arboreal(X1)|~leaf_occ(X2,X1)|~occurrence_of(X1,tptp4))).
+##
+#cnf(i_0_10806, negated_conjecture, (atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+##
+#cnf(i_0_10957, negated_conjecture, (arboreal(X1)|~root_occ(X2,X1)|~occurrence_of(X1,tptp4))).
+###########
+#cnf(i_0_10638, negated_conjecture, (~leaf_occ(X1,esk18_0)|~atomic(esk3_2(X1,esk18_0)))).
+#
+#cnf(i_0_10756, negated_conjecture, (atomic(esk3_2(X1,esk16_1(esk18_0)))|~leaf_occ(X1,esk16_1(esk18_0)))).
+#
+#cnf(i_0_10757, negated_conjecture, (atomic(esk2_2(X1,esk16_1(esk18_0)))|~root_occ(X1,esk16_1(esk18_0)))).
+####
+#cnf(i_0_10801, negated_conjecture, (atomic(X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp4)|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_10763, negated_conjecture, (esk6_2(esk16_1(esk18_0),X1)=tptp4|~atocc(esk16_1(esk18_0),X1))).
+##
+#cnf(i_0_10730, negated_conjecture, (occurrence_of(esk16_1(esk18_0),X1)|~occurrence_of(X2,tptp4)|~occurrence_of(X2,X1))).
+#################
+#cnf(i_0_10764, negated_conjecture, (esk3_2(X1,esk16_1(esk18_0))=tptp4|~leaf_occ(X1,esk16_1(esk18_0)))).
+###
+#cnf(i_0_10765, negated_conjecture, (esk2_2(X1,esk16_1(esk18_0))=tptp4|~root_occ(X1,esk16_1(esk18_0)))).
+#####
+#cnf(i_0_11180, negated_conjecture, (occurrence_of(esk16_1(esk18_0),esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp4))).
+##########################
+#cnf(i_0_10639, negated_conjecture, (~atomic(esk2_2(X1,esk18_0))|~root_occ(X1,esk18_0))).
+###
+#cnf(i_0_1447, plain, (atocc(X1,X2)|~activity_occurrence(X1)|~subactivity(X2,esk7_1(X1))|~atomic(esk7_1(X1)))).
+##
+#cnf(i_0_11373, negated_conjecture, (atocc(esk16_1(esk18_0),X1)|~subactivity(X1,tptp4))).
+#
+#cnf(i_0_11384, negated_conjecture, (root(esk16_1(esk18_0),X1)|~subactivity(X1,tptp4))).
+#
+#cnf(i_0_11402, negated_conjecture, (root(esk16_1(esk18_0),tptp4))).
+####
+#cnf(i_0_11387, negated_conjecture, (esk6_2(esk16_1(esk18_0),X1)=tptp4|~subactivity(X1,tptp4))).
+###
+#cnf(i_0_11383, negated_conjecture, (subactivity(X1,X2)|~subactivity(X1,tptp4)|~occurrence_of(esk16_1(esk18_0),X2))).
+#
+#cnf(i_0_11429, negated_conjecture, (subactivity(tptp4,X1)|~occurrence_of(esk16_1(esk18_0),X1))).
+###
+#cnf(i_0_11396, negated_conjecture, (root(esk16_1(esk18_0),esk13_2(tptp4,X1))|~root(X1,tptp4))).
+###
+#cnf(i_0_6292, plain, (arboreal(X1)|~atocc(X2,X3)|~leaf(X1,esk6_2(X2,X3))|~subactivity_occurrence(X1,X2))).
+##
+#cnf(i_0_6293, plain, (arboreal(X1)|~leaf(X1,esk3_2(X2,X3))|~subactivity_occurrence(X1,X3)|~leaf_occ(X2,X3))).
+####
+#cnf(i_0_6294, plain, (arboreal(X1)|~leaf(X1,esk2_2(X2,X3))|~subactivity_occurrence(X1,X3)|~root_occ(X2,X3))).
+####
+#cnf(i_0_6492, plain, (legal(X1)|~atocc(X2,X3)|~leaf(X1,esk6_2(X2,X3))|~subactivity_occurrence(X1,X2))).
+###
+#cnf(i_0_6493, plain, (legal(X1)|~leaf(X1,esk3_2(X2,X3))|~subactivity_occurrence(X1,X3)|~leaf_occ(X2,X3))).
+####
+#cnf(i_0_6494, plain, (legal(X1)|~leaf(X1,esk2_2(X2,X3))|~subactivity_occurrence(X1,X3)|~root_occ(X2,X3))).
+####
+#cnf(i_0_10788, negated_conjecture, (subactivity(X1,tptp4)|~activity(X1)|~atomic(X1)|~occurrence_of(esk16_1(esk18_0),X1))).
+#####
+#cnf(i_0_10813, negated_conjecture, (atomic(X1)|~occurrence_of(esk9_3(tptp4,X2,X3),X1)|~min_precedes(X2,X3,tptp4))).
+##
+#cnf(i_0_9769, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp2|occurrence_of(esk17_1(esk18_0),tptp1))).
+#
+#cnf(i_0_11718, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp2|activity(tptp1))).
+####
+#cnf(i_0_11728, negated_conjecture, (activity(tptp1)|occurrence_of(esk17_1(esk18_0),tptp2))).
+#####
+#cnf(i_0_11760, negated_conjecture, (X1=tptp2|activity(tptp1)|~occurrence_of(esk17_1(esk18_0),X1))).
+#####
+#cnf(i_0_10328, negated_conjecture, (~activity_occurrence(X1)|~atomic(esk7_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_11802, negated_conjecture, (activity(tptp2)|~occurrence_of(esk17_1(esk18_0),tptp0))).
+#
+#cnf(i_0_11803, negated_conjecture, (activity(tptp1)|~occurrence_of(esk17_1(esk18_0),tptp0))).
+#
+#cnf(i_0_11813, negated_conjecture, (root(X1,X2)|~activity_occurrence(X1)|~leaf(X1,X2)|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_11744, negated_conjecture, (activity(tptp1)|leaf(X1,tptp2)|~leaf_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_11745, negated_conjecture, (activity(tptp1)|root(X1,tptp2)|~root_occ(X1,esk17_1(esk18_0)))).
+##
+#cnf(i_0_11746, negated_conjecture, (activity(tptp1)|subactivity(X1,tptp2)|~atocc(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_11731, negated_conjecture, (activity(tptp1)|~root_occ(X1,esk17_1(esk18_0))|~min_precedes(X2,X1,tptp2))).
+#
+#cnf(i_0_11732, negated_conjecture, (activity(tptp1)|~leaf_occ(X1,esk17_1(esk18_0))|~min_precedes(X1,X2,tptp2))).
+##
+#cnf(i_0_11733, negated_conjecture, (activity(tptp1)|~next_subocc(X1,X2,tptp2)|~root_occ(X2,esk17_1(esk18_0)))).
+#
+#cnf(i_0_11734, negated_conjecture, (activity(tptp1)|~next_subocc(X1,X2,tptp2)|~leaf_occ(X1,esk17_1(esk18_0)))).
+##
+#cnf(i_0_11809, negated_conjecture, (~activity_occurrence(X1)|~arboreal(X1)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_11822, negated_conjecture, (root(X1,tptp0)|~activity_occurrence(X1)|~leaf_occ(X1,esk18_0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_11854, negated_conjecture, (root(esk17_1(esk18_0),tptp0)|~occurrence_of(esk17_1(esk18_0),tptp0))).
+##
+#cnf(i_0_11855, negated_conjecture, (legal(esk17_1(esk18_0))|~occurrence_of(esk17_1(esk18_0),tptp0))).
+#
+#cnf(i_0_11861, negated_conjecture, (esk17_1(esk18_0)=esk15_1(esk18_0)|~occurrence_of(esk17_1(esk18_0),tptp0))).
+#
+#cnf(i_0_245, plain, (esk7_1(esk15_1(X1))=tptp3|~activity_occurrence(esk15_1(X1))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_11888, negated_conjecture, (atomic(X1)|~occurrence_of(X2,tptp3)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_11889, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp3))).
+#
+#cnf(i_0_11944, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X1,tptp3))).
+#####
+#cnf(i_0_11860, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),tptp0))).
+##
+#cnf(i_0_11928, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk10_2(X2,X1),tptp3))).
+#
+#cnf(i_0_11930, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk8_2(X2,X1),tptp3))).
+###
+#cnf(i_0_11933, negated_conjecture, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp3))).
+#
+#cnf(i_0_12044, negated_conjecture, (arboreal(X1)|~leaf_occ(X2,X1)|~occurrence_of(X1,tptp3))).
+###
+#cnf(i_0_11934, negated_conjecture, (atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp3))).
+#
+#cnf(i_0_12081, negated_conjecture, (arboreal(X1)|~root_occ(X2,X1)|~occurrence_of(X1,tptp3))).
+######
+#cnf(i_0_11929, negated_conjecture, (atomic(X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp3)|~min_precedes(X2,X3,X1))).
+######
+#cnf(i_0_11941, negated_conjecture, (atomic(X1)|~occurrence_of(esk9_3(tptp3,X2,X3),X1)|~min_precedes(X2,X3,tptp3))).
+###
+#cnf(i_0_646, plain, (esk3_2(X1,X2)=esk3_2(X3,X2)|~leaf_occ(X1,X2)|~leaf_occ(X3,X2))).
+##########
+#cnf(i_0_11810, negated_conjecture, (~activity_occurrence(X1)|~atocc(X1,X2)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_11811, negated_conjecture, (~activity_occurrence(X1)|~root(X1,X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_647, plain, (esk3_2(X1,X2)=esk2_2(X3,X2)|~leaf_occ(X1,X2)|~root_occ(X3,X2))).
+###############
+#cnf(i_0_11812, negated_conjecture, (~activity_occurrence(X1)|~root_occ(X1,X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_774, plain, (esk2_2(X1,X2)=esk2_2(X3,X2)|~root_occ(X1,X2)|~root_occ(X3,X2))).
+##############
+#cnf(i_0_168, plain, (activity_occurrence(X2)|~occurrence_of(X3,esk17_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+##
+#cnf(i_0_171, plain, (activity_occurrence(X2)|~occurrence_of(X3,esk15_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_172, plain, (legal(X2)|~occurrence_of(X3,esk15_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_173, plain, (arboreal(X2)|~occurrence_of(X3,esk15_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+##############
+#cnf(i_0_2157, plain, (arboreal(X2)|~occurrence_of(X3,esk17_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+##
+#cnf(i_0_2188, plain, (legal(X2)|~occurrence_of(X3,esk17_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_12247, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(X1,tptp0)|~min_precedes(X3,X1,X2))).
+###
+#cnf(i_0_10319, negated_conjecture, (occurrence_of(esk18_0,X1)|~leaf(X2,tptp0)|~occurrence_of(esk10_2(X2,tptp0),X1))).
+#
+#cnf(i_0_12248, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(X1,tptp0)|~min_precedes(X1,X3,X2))).
+##
+#cnf(i_0_10321, negated_conjecture, (occurrence_of(esk18_0,X1)|~leaf(X2,tptp0)|~occurrence_of(esk8_2(X2,tptp0),X1))).
+######
+#cnf(i_0_12706, negated_conjecture, (~activity_occurrence(X1)|~next_subocc(X2,X1,X3)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_12747, negated_conjecture, (~activity_occurrence(X1)|~next_subocc(X1,X2,X3)|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_4967, negated_conjecture, (leaf_occ(X1,X2)|~subactivity_occurrence(X1,X2)|~leaf_occ(X1,esk18_0)|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_10726, negated_conjecture, (~root_occ(X1,esk16_1(esk18_0))|~min_precedes(X2,X1,tptp4))).
+####
+#cnf(i_0_10727, negated_conjecture, (~leaf_occ(X1,esk16_1(esk18_0))|~min_precedes(X1,X2,tptp4))).
+####
+#cnf(i_0_10728, negated_conjecture, (~next_subocc(X1,X2,tptp4)|~root_occ(X2,esk16_1(esk18_0)))).
+#
+#cnf(i_0_181, plain, (atomic(X3)|~atocc(X1,X2)|~occurrence_of(X4,esk6_2(X1,X2))|~occurrence_of(X4,X3))).
+##
+#cnf(i_0_12868, negated_conjecture, (atomic(X1)|~atocc(X2,X3)|~occurrence_of(esk18_0,X1)|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_12876, negated_conjecture, (~atocc(X1,X2)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_12893, negated_conjecture, (~root(X1,X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_12903, negated_conjecture, (atomic(X1)|~occurrence_of(esk14_2(X1,X2),tptp0)|~occurrence_of(X2,X1))).
+######
+#cnf(i_0_650, plain, (leaf(X1,X2)|atomic(X2)|~leaf(X3,X2)|~leaf_occ(X1,esk10_2(X3,X2)))).
+##
+#cnf(i_0_652, plain, (leaf(X1,X2)|atomic(X2)|~leaf(X3,X2)|~leaf_occ(X1,esk8_2(X3,X2)))).
+#
+#cnf(i_0_658, plain, (leaf(X1,X2)|atomic(X3)|~leaf(X1,X3)|~occurrence_of(esk10_2(X1,X3),X2))).
+#
+#cnf(i_0_659, plain, (leaf(X1,X2)|atomic(X3)|~leaf(X1,X3)|~occurrence_of(esk8_2(X1,X3),X2))).
+##
+#cnf(i_0_782, plain, (root(X1,X2)|atomic(X2)|~leaf(X3,X2)|~root_occ(X1,esk10_2(X3,X2)))).
+#
+#cnf(i_0_784, plain, (root(X1,X2)|atomic(X2)|~leaf(X3,X2)|~root_occ(X1,esk8_2(X3,X2)))).
+##
+#cnf(i_0_12910, negated_conjecture, (~root_occ(X1,X2)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_12894, negated_conjecture, (~occurrence_of(X1,tptp0)|~min_precedes(X3,X1,X2))).
+#
+#cnf(i_0_13132, negated_conjecture, (root(X1,X2)|~leaf(X1,X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_13146, negated_conjecture, (root(X1,tptp0)|~leaf_occ(X1,esk18_0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_13133, negated_conjecture, (leaf(X1,X2)|~root(X1,X2)|~occurrence_of(esk5_2(X1,X2),tptp0))).
+#
+#cnf(i_0_12895, negated_conjecture, (~occurrence_of(X1,tptp0)|~min_precedes(X1,X3,X2))).
+##
+#cnf(i_0_13177, negated_conjecture, (root(X1,X2)|~leaf(X1,X2)|~occurrence_of(esk4_2(X1,X2),tptp0))).
+#
+#cnf(i_0_13142, negated_conjecture, (root(X1,esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_13219, negated_conjecture, (~leaf_occ(X1,X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_13261, negated_conjecture, (atomic(X2)|~leaf(X1,X2)|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_13134, negated_conjecture, (~next_subocc(X2,X1,X3)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_13179, negated_conjecture, (~next_subocc(X1,X2,X3)|~occurrence_of(X1,tptp0))).
+#############
+#cnf(i_0_5744, plain, (leaf(X2,X3)|atomic(X1)|~root(X2,X3)|~occurrence_of(esk5_2(X2,X3),X1))).
+#
+#cnf(i_0_6008, plain, (root(X2,X3)|atomic(X1)|~leaf(X2,X3)|~occurrence_of(esk4_2(X2,X3),X1))).
+###
+#cnf(i_0_9783, negated_conjecture, (activity(tptp2)|atomic(X1)|~activity(tptp1)|~occurrence_of(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_13345, negated_conjecture, (activity(tptp2)|atomic(esk7_1(esk17_1(esk18_0)))|~activity(tptp1))).
+##
+#cnf(i_0_13260, negated_conjecture, (~occurrence_of(esk17_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_11761, negated_conjecture, (activity(tptp1)|atomic(X1)|~activity(tptp2)|~occurrence_of(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_13413, negated_conjecture, (activity(tptp1)|atomic(esk7_1(esk17_1(esk18_0)))|~activity(tptp2))).
+###
+#cnf(i_0_10286, negated_conjecture, (X1=X2|~occurrence_of(esk18_0,X1)|~occurrence_of(X3,tptp0)|~occurrence_of(X3,X2))).
+###
+#cnf(i_0_13276, negated_conjecture, (~occurrence_of(esk16_1(X1),tptp0)|~occurrence_of(X1,tptp0))).
+######
+#cnf(i_0_1472, plain, (atomic(esk7_1(X1))|~activity(X2)|~activity_occurrence(X1)|~atomic(X2)|~occurrence_of(X1,X2))).
+####
+#cnf(i_0_1451, plain, (atocc(X1,esk13_2(X2,X3))|~root(X3,X2)|~atomic(X2)|~occurrence_of(X1,X2))).
+####
+#cnf(i_0_1441, plain, (atomic(X1)|~subactivity(X3,X4)|~atomic(X4)|~occurrence_of(X2,X1)|~occurrence_of(X2,X4))).
+#############
+#cnf(i_0_14212, plain, (atomic(X1)|~root(X4,X3)|~atomic(X3)|~occurrence_of(X2,X1)|~occurrence_of(X2,X3))).
+######
+#cnf(i_0_411, plain, (esk6_2(X1,esk13_2(X2,X1))=esk7_1(X1)|~activity_occurrence(X1)|~root(X1,X2))).
+#
+#cnf(i_0_10124, negated_conjecture, (root(X1,tptp0)|atomic(esk7_1(X1))|~activity_occurrence(X1)|~leaf_occ(X1,esk18_0))).
+##########
+#cnf(i_0_10729, negated_conjecture, (~next_subocc(X1,X2,tptp4)|~leaf_occ(X1,esk16_1(esk18_0)))).
+#
+#cnf(i_0_28, plain, (leaf(X2,X3)|min_precedes(X2,esk5_2(X2,X3),X3)|~min_precedes(X1,X2,X3))).
+########
+#cnf(i_0_14470, plain, (activity_occurrence(esk5_2(X1,X2))|leaf(X1,X2)|~min_precedes(X3,X1,X2))).
+#
+#cnf(i_0_14471, plain, (leaf(X1,X2)|arboreal(esk5_2(X1,X2))|~min_precedes(X3,X1,X2))).
+#
+#cnf(i_0_14533, plain, (activity_occurrence(esk5_2(X1,X2))|leaf(X1,X2)|~next_subocc(X3,X1,X2))).
+##
+#cnf(i_0_14570, plain, (leaf(X1,X2)|arboreal(esk5_2(X1,X2))|~next_subocc(X3,X1,X2))).
+##
+#cnf(i_0_14454, plain, (leaf(X1,X2)|~root(esk5_2(X1,X2),X2)|~min_precedes(X3,X1,X2))).
+##
+#cnf(i_0_14669, plain, (leaf(X1,X2)|~root(esk5_2(X1,X2),X2)|~next_subocc(X3,X1,X2))).
+#
+#cnf(i_0_14444, plain, (leaf(X1,X2)|precedes(X1,esk5_2(X1,X2))|~min_precedes(X3,X1,X2))).
+#
+#cnf(i_0_14749, plain, (leaf(X1,X2)|legal(esk5_2(X1,X2))|~min_precedes(X3,X1,X2))).
+###
+#cnf(i_0_14831, plain, (leaf(X1,X2)|legal(esk5_2(X1,X2))|~next_subocc(X3,X1,X2))).
+###
+#cnf(i_0_14793, plain, (leaf(X1,X2)|precedes(X1,esk5_2(X1,X2))|~next_subocc(X3,X1,X2))).
+#####
+#cnf(i_0_14474, negated_conjecture, (leaf(X1,X2)|~occurrence_of(esk5_2(X1,X2),tptp0)|~min_precedes(X3,X1,X2))).
+#
+#cnf(i_0_14976, negated_conjecture, (leaf(X1,X2)|~next_subocc(X3,X1,X2)|~occurrence_of(esk5_2(X1,X2),tptp0))).
+###
+#cnf(i_0_14496, plain, (leaf(X1,X2)|min_precedes(X1,esk5_2(X1,X2),X2)|~next_subocc(X3,X1,X2))).
+####################
+#cnf(i_0_1435, plain, (root(X1,X2)|~subactivity(X2,X3)|~legal(X1)|~atomic(X3)|~occurrence_of(X1,X3))).
+#####
+#cnf(i_0_1466, plain, (subactivity(X1,X2)|~activity(X1)|~atomic(X1)|~occurrence_of(X3,X2)|~occurrence_of(X3,X1))).
+#
+#cnf(i_0_10859, negated_conjecture, (~leaf(X1,tptp0)|~occurrence_of(esk10_2(X1,tptp0),tptp4))).
+#
+#cnf(i_0_15198, plain, (subactivity(tptp3,X1)|~occurrence_of(esk15_1(X2),X1)|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_15287, plain, (subactivity(tptp3,tptp3)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_15290, plain, (subactivity(tptp3,tptp3)|~leaf(X1,tptp0))).
+#
+#cnf(i_0_10861, negated_conjecture, (~leaf(X1,tptp0)|~occurrence_of(esk8_2(X1,tptp0),tptp4))).
+##
+#cnf(i_0_15296, negated_conjecture, (subactivity(tptp3,tptp3)|~leaf_occ(X1,esk18_0))).
+#
+#cnf(i_0_15326, negated_conjecture, (subactivity(tptp3,tptp3))).
+###
+#cnf(i_0_15328, negated_conjecture, (root(X1,tptp3)|~legal(X1)|~occurrence_of(X1,tptp3))).
+#####
+#cnf(i_0_15197, plain, (subactivity(tptp4,X1)|~occurrence_of(esk16_1(X2),X1)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_15384, plain, (subactivity(tptp4,tptp4)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_15389, plain, (subactivity(tptp4,tptp4)|~leaf(X1,tptp0))).
+###
+#cnf(i_0_15395, negated_conjecture, (subactivity(tptp4,tptp4)|~leaf_occ(X1,esk18_0))).
+#
+#cnf(i_0_15396, negated_conjecture, (subactivity(tptp4,tptp4))).
+##
+#cnf(i_0_10460, negated_conjecture, (~leaf_occ(X1,X2)|~atomic(esk3_2(X1,X2))|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_15398, negated_conjecture, (root(X1,tptp4)|~legal(X1)|~occurrence_of(X1,tptp4))).
+#####
+#cnf(i_0_2637, plain, (esk15_1(X1)=X2|~root_occ(X2,X1)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,X3))).
+#####
+#cnf(i_0_15439, negated_conjecture, (~arboreal(X2)|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_3726, plain, (esk15_1(X1)=X2|~leaf_occ(X3,X1)|~root_occ(X2,X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_15487, plain, (esk15_1(X1)=X2|~root_occ(X2,X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_15480, negated_conjecture, (~arboreal(X1)|~occurrence_of(X1,tptp0))).
+###########
+#cnf(i_0_645, plain, (esk3_2(X1,X2)=esk6_2(X2,X3)|~atocc(X2,X3)|~leaf_occ(X1,X2))).
+#####
+#cnf(i_0_15497, negated_conjecture, (~leaf(X1,tptp0)|~arboreal(esk10_2(X1,tptp0)))).
+####
+#cnf(i_0_15499, negated_conjecture, (~leaf(X1,tptp0)|~arboreal(esk8_2(X1,tptp0)))).
+######
+#cnf(i_0_772, plain, (esk2_2(X1,X2)=esk6_2(X2,X3)|~atocc(X2,X3)|~root_occ(X1,X2))).
+#################
+#cnf(i_0_966, plain, (esk6_2(X1,esk13_2(X2,X1))=X3|~root(X1,X2)|~occurrence_of(X1,X3))).
+#####
+#cnf(i_0_15498, negated_conjecture, (~arboreal(esk9_3(tptp0,X1,X2))|~min_precedes(X1,X2,tptp0))).
+########################
+#cnf(i_0_10552, negated_conjecture, (~atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+#################################################
+#cnf(i_0_10194, plain, (occurrence_of(X1,esk7_1(X2))|~activity_occurrence(X1)|~activity_occurrence(X2)|~occurrence_of(X2,esk7_1(X1)))).
+######
+#cnf(i_0_16326, negated_conjecture, (occurrence_of(X1,tptp0)|~activity_occurrence(X1)|~occurrence_of(esk18_0,esk7_1(X1)))).
+##
+#cnf(i_0_16362, negated_conjecture, (activity(tptp2)|~occurrence_of(esk18_0,tptp1))).
+#
+#cnf(i_0_16363, negated_conjecture, (activity(tptp1)|~occurrence_of(esk18_0,tptp2))).
+#
+#cnf(i_0_16371, negated_conjecture, (activity(tptp2)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,tptp1))).
+###
+#cnf(i_0_16372, negated_conjecture, (activity(tptp1)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,tptp2))).
+###########
+#cnf(i_0_16329, negated_conjecture, (occurrence_of(X1,tptp4)|~activity_occurrence(X1)|~occurrence_of(esk16_1(esk18_0),esk7_1(X1)))).
+##
+#cnf(i_0_16376, negated_conjecture, (activity(tptp2)|~leaf(X1,tptp0)|~occurrence_of(esk10_2(X1,tptp0),tptp1))).
+##
+#cnf(i_0_16378, negated_conjecture, (activity(tptp2)|~leaf(X1,tptp0)|~occurrence_of(esk8_2(X1,tptp0),tptp1))).
+#
+#cnf(i_0_16382, negated_conjecture, (activity(tptp1)|~leaf(X1,tptp0)|~occurrence_of(esk10_2(X1,tptp0),tptp2))).
+#
+#cnf(i_0_16384, negated_conjecture, (activity(tptp1)|~leaf(X1,tptp0)|~occurrence_of(esk8_2(X1,tptp0),tptp2))).
+####
+#cnf(i_0_11717, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp1|esk7_1(esk17_1(esk18_0))=tptp2)).
+######
+#cnf(i_0_16569, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp1|~occurrence_of(esk18_0,tptp2))).
+###
+#cnf(i_0_16605, negated_conjecture, (~occurrence_of(esk18_0,tptp1)|~occurrence_of(esk18_0,tptp2))).
+#
+#cnf(i_0_16584, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp1)|~occurrence_of(esk18_0,tptp2))).
+########
+#cnf(i_0_16628, negated_conjecture, (X1=tptp1|~occurrence_of(esk17_1(esk18_0),X1)|~occurrence_of(esk18_0,tptp2))).
+######
+#cnf(i_0_16607, negated_conjecture, (leaf(X1,tptp1)|~leaf_occ(X1,esk17_1(esk18_0))|~occurrence_of(esk18_0,tptp2))).
+##
+#cnf(i_0_16608, negated_conjecture, (root(X1,tptp1)|~root_occ(X1,esk17_1(esk18_0))|~occurrence_of(esk18_0,tptp2))).
+#
+#cnf(i_0_16609, negated_conjecture, (subactivity(X1,tptp1)|~atocc(esk17_1(esk18_0),X1)|~occurrence_of(esk18_0,tptp2))).
+#
+#cnf(i_0_16548, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp1|occurrence_of(esk17_1(esk18_0),tptp2))).
+#######
+#cnf(i_0_5165, negated_conjecture, (X1=X2|~subactivity_occurrence(X2,esk18_0)|~root(X2,tptp0)|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_17404, negated_conjecture, (X1=esk15_1(esk18_0)|~root_occ(X1,esk18_0))).
+####################
+#cnf(i_0_6034, plain, (root(X2,X3)|atomic(esk3_2(X1,X2))|~leaf(X2,X3)|~leaf_occ(X1,X2))).
+####
+#cnf(i_0_6035, plain, (root(X2,X3)|atomic(esk2_2(X1,X2))|~leaf(X2,X3)|~root_occ(X1,X2))).
+########################################
+#cnf(i_0_11187, negated_conjecture, (occurrence_of(esk16_1(esk18_0),X1)|~occurrence_of(esk16_1(X2),X1)|~occurrence_of(X2,tptp0))).
+##################
+#cnf(i_0_963, plain, (esk6_2(X1,X2)=esk6_2(X1,X3)|~atocc(X1,X2)|~atocc(X1,X3))).
+#######
+#cnf(i_0_10633, negated_conjecture, (~leaf(X2,tptp0)|~atomic(X1)|~occurrence_of(esk10_2(X2,tptp0),X1))).
+####
+#cnf(i_0_10635, negated_conjecture, (~leaf(X2,tptp0)|~atomic(X1)|~occurrence_of(esk8_2(X2,tptp0),X1))).
+##
+#cnf(i_0_4916, plain, (root_occ(X1,X2)|~atocc(X2,X3)|~subactivity_occurrence(X1,X2)|~root(X1,esk6_2(X2,X3)))).
+#
+#cnf(i_0_4917, plain, (root_occ(X1,X2)|~subactivity_occurrence(X1,X2)|~root(X1,esk3_2(X3,X2))|~leaf_occ(X3,X2))).
+##
+#cnf(i_0_4918, plain, (root_occ(X1,X2)|~subactivity_occurrence(X1,X2)|~root(X1,esk2_2(X3,X2))|~root_occ(X3,X2))).
+#
+#cnf(i_0_4925, plain, (root_occ(X1,X2)|~subactivity_occurrence(X1,X2)|~root_occ(X1,X3)|~occurrence_of(X2,esk2_2(X1,X3)))).
+#
+#cnf(i_0_17941, negated_conjecture, (root_occ(X1,X2)|~subactivity_occurrence(X1,X2)|~root_occ(X1,esk18_0)|~occurrence_of(X2,tptp0))).
+#######
+#cnf(i_0_4958, plain, (leaf_occ(X1,X2)|~atocc(X2,X3)|~leaf(X1,esk6_2(X2,X3))|~subactivity_occurrence(X1,X2))).
+#
+#cnf(i_0_4959, plain, (leaf_occ(X1,X2)|~leaf(X1,esk3_2(X3,X2))|~subactivity_occurrence(X1,X2)|~leaf_occ(X3,X2))).
+#
+#cnf(i_0_10325, negated_conjecture, (~occurrence_of(esk9_3(tptp3,X1,X2),tptp0)|~min_precedes(X1,X2,tptp3))).
+#
+#cnf(i_0_4960, plain, (leaf_occ(X1,X2)|~leaf(X1,esk2_2(X3,X2))|~subactivity_occurrence(X1,X2)|~root_occ(X3,X2))).
+#
+#cnf(i_0_4964, plain, (leaf_occ(X1,X2)|~subactivity_occurrence(X1,X2)|~leaf_occ(X1,X3)|~occurrence_of(X2,esk3_2(X1,X3)))).
+#####
+#cnf(i_0_5739, plain, (leaf(X1,X2)|~root(X1,X2)|~root_occ(esk5_2(X1,X2),X3)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_10860, negated_conjecture, (~occurrence_of(esk9_3(tptp0,X1,X2),tptp4)|~min_precedes(X1,X2,tptp0))).
+##
+#cnf(i_0_5900, plain, (leaf(X1,X2)|~root(X1,X2)|~earlier(esk5_2(X1,X2),X3)|~earlier(X3,X1))).
+#
+#cnf(i_0_5901, plain, (leaf(X1,X2)|~root(X1,X2)|~precedes(esk5_2(X1,X2),X3)|~earlier(X3,X1))).
+##
+#cnf(i_0_5902, plain, (leaf(X1,X2)|~root(X1,X2)|~precedes(esk5_2(X1,X2),X3)|~precedes(X3,X1))).
+#
+#cnf(i_0_5922, plain, (leaf(X2,X3)|~root(X2,X3)|~precedes(X1,X2)|~earlier(esk5_2(X2,X3),X1))).
+####
+#cnf(i_0_6019, plain, (root(X1,X2)|~leaf(X1,X2)|~leaf_occ(esk4_2(X1,X2),X3)|~occurrence_of(X3,X2))).
+##
+#cnf(i_0_16620, negated_conjecture, (~occurrence_of(esk18_0,tptp1)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,tptp2))).
+#
+#cnf(i_0_6337, plain, (root(X1,X2)|~leaf(X1,X2)|~earlier(X3,esk4_2(X1,X2))|~earlier(X1,X3))).
+#
+#cnf(i_0_6338, plain, (root(X1,X2)|~leaf(X1,X2)|~precedes(X1,X3)|~earlier(X3,esk4_2(X1,X2)))).
+#
+#cnf(i_0_6339, plain, (root(X1,X2)|~leaf(X1,X2)|~precedes(X3,esk4_2(X1,X2))|~precedes(X1,X3))).
+##
+#cnf(i_0_6359, plain, (root(X2,X3)|~leaf(X2,X3)|~precedes(X1,esk4_2(X2,X3))|~earlier(X2,X1))).
+#####
+#cnf(i_0_12414, plain, (activity_occurrence(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(X2))|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_12464, plain, (activity_occurrence(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_12514, plain, (legal(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_12564, plain, (arboreal(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+#
+#cnf(i_0_12614, plain, (arboreal(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(X2))|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_12664, plain, (legal(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(X2))|~occurrence_of(X2,tptp0))).
+#################
+#cnf(i_0_6282, plain, (root(X1,esk3_2(X1,X2))|atomic(X3)|~leaf_occ(X1,X2)|~occurrence_of(X1,X3))).
+############
+#cnf(i_0_18946, plain, (atomic(X1)|atomic(X4)|~leaf_occ(X2,X3)|~occurrence_of(X2,X1)|~occurrence_of(X2,X4))).
+#
+#cnf(i_0_97, negated_conjecture, (occurrence_of(esk20_2(X1,X2),tptp1)|occurrence_of(X2,tptp1)|~leaf_occ(X2,esk18_0))).
+##
+#cnf(i_0_19049, negated_conjecture, (activity(tptp1)|occurrence_of(X2,tptp1)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_19095, negated_conjecture, (activity(tptp1)|occurrence_of(esk17_1(esk18_0),tptp1))).
+#
+#cnf(i_0_19099, negated_conjecture, (activity(tptp1))).
+##
+#cnf(i_0_13345, negated_conjecture, (activity(tptp2)|atomic(esk7_1(esk17_1(esk18_0))))).
+##
+#cnf(i_0_9783, negated_conjecture, (activity(tptp2)|atomic(X1)|~occurrence_of(esk17_1(esk18_0),X1))).
+###
+#cnf(i_0_19046, negated_conjecture, (activity_occurrence(esk20_2(X1,X2))|occurrence_of(X2,tptp1)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_19047, negated_conjecture, (arboreal(esk20_2(X1,X2))|occurrence_of(X2,tptp1)|~leaf_occ(X2,esk18_0))).
+##
+#cnf(i_0_96, negated_conjecture, (subactivity_occurrence(esk20_2(X1,X2),esk18_0)|occurrence_of(X2,tptp1)|~leaf_occ(X2,esk18_0))).
+##
+#cnf(i_0_94, negated_conjecture, (occurrence_of(esk19_2(X2,X1),tptp2)|occurrence_of(X1,tptp2)|~leaf_occ(X1,esk18_0))).
+##
+#cnf(i_0_19268, negated_conjecture, (activity(tptp2)|occurrence_of(X2,tptp2)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_19314, negated_conjecture, (activity(tptp2)|occurrence_of(esk17_1(esk18_0),tptp2))).
+#
+#cnf(i_0_19318, negated_conjecture, (activity(tptp2))).
+##
+#cnf(i_0_19265, negated_conjecture, (activity_occurrence(esk19_2(X1,X2))|occurrence_of(X2,tptp2)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_19266, negated_conjecture, (arboreal(esk19_2(X1,X2))|occurrence_of(X2,tptp2)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_90, negated_conjecture, (subactivity_occurrence(esk19_2(X2,X1),esk18_0)|occurrence_of(X1,tptp2)|~leaf_occ(X1,esk18_0))).
+####
+#cnf(i_0_10740, negated_conjecture, (leaf_occ(X1,esk16_1(esk18_0))|~leaf(X1,tptp4)|~subactivity_occurrence(X1,esk16_1(esk18_0)))).
+##
+#cnf(i_0_12832, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~atocc(X2,X3)|~occurrence_of(X1,esk6_2(X2,X3)))).
+###
+#cnf(i_0_19480, negated_conjecture, (~atocc(X1,X2)|~occurrence_of(X3,esk6_2(X1,X2))|~occurrence_of(X3,tptp0))).
+#####
+#cnf(i_0_1728, plain, (earlier(X1,X2)|~earlier(X3,X2)|~min_precedes(X4,X3,X5)|~min_precedes(X1,X4,X5))).
+#
+#cnf(i_0_1730, plain, (earlier(X1,X2)|~precedes(X3,X2)|~min_precedes(X4,X3,X5)|~min_precedes(X1,X4,X5))).
+#
+#cnf(i_0_1732, plain, (earlier(X1,X2)|~earlier(X1,X3)|~min_precedes(X4,X2,X5)|~min_precedes(X3,X4,X5))).
+##
+#cnf(i_0_1733, plain, (earlier(X1,X2)|~precedes(X1,X3)|~min_precedes(X4,X2,X5)|~min_precedes(X3,X4,X5))).
+#
+#cnf(i_0_1757, plain, (earlier(X1,X2)|~next_subocc(X1,X4,X5)|~earlier(X3,X2)|~min_precedes(X4,X3,X5))).
+#
+#cnf(i_0_1759, plain, (earlier(X1,X2)|~precedes(X3,X2)|~next_subocc(X1,X4,X5)|~min_precedes(X4,X3,X5))).
+##
+#cnf(i_0_1761, plain, (earlier(X1,X2)|~next_subocc(X3,X4,X5)|~earlier(X1,X3)|~min_precedes(X4,X2,X5))).
+#
+#cnf(i_0_1762, plain, (earlier(X1,X2)|~precedes(X1,X3)|~next_subocc(X3,X4,X5)|~min_precedes(X4,X2,X5))).
+#
+#cnf(i_0_1776, plain, (earlier(X1,X2)|~next_subocc(X4,X3,X5)|~earlier(X3,X2)|~min_precedes(X1,X4,X5))).
+##
+#cnf(i_0_1778, plain, (earlier(X1,X2)|~precedes(X3,X2)|~next_subocc(X4,X3,X5)|~min_precedes(X1,X4,X5))).
+#
+#cnf(i_0_1780, plain, (earlier(X1,X2)|~next_subocc(X4,X2,X5)|~earlier(X1,X3)|~min_precedes(X3,X4,X5))).
+#
+#cnf(i_0_1781, plain, (earlier(X1,X2)|~precedes(X1,X3)|~next_subocc(X4,X2,X5)|~min_precedes(X3,X4,X5))).
+##
+#cnf(i_0_1795, plain, (earlier(X1,X2)|~next_subocc(X1,X4,X5)|~next_subocc(X4,X3,X5)|~earlier(X3,X2))).
+#
+#cnf(i_0_1797, plain, (earlier(X1,X2)|~precedes(X3,X2)|~next_subocc(X1,X4,X5)|~next_subocc(X4,X3,X5))).
+#
+#cnf(i_0_1799, plain, (earlier(X1,X2)|~next_subocc(X3,X4,X5)|~next_subocc(X4,X2,X5)|~earlier(X1,X3))).
+##
+#cnf(i_0_1800, plain, (earlier(X1,X2)|~precedes(X1,X3)|~next_subocc(X3,X4,X5)|~next_subocc(X4,X2,X5))).
+#####################################
+#cnf(i_0_11380, plain, (atocc(X1,esk7_1(X1))|~activity(esk7_1(X1))|~activity_occurrence(X1)|~atomic(esk7_1(X1)))).
+#
+#cnf(i_0_20982, negated_conjecture, (atocc(esk16_1(esk18_0),tptp4))).
+###
+#cnf(i_0_20926, negated_conjecture, (esk6_2(esk16_1(esk18_0),tptp4)=tptp4)).
+###################
+#cnf(i_0_20993, negated_conjecture, (X1=X2|~root_occ(X2,esk16_1(esk18_0))|~root_occ(X1,esk16_1(esk18_0)))).
+####
+#cnf(i_0_15217, plain, (subactivity(X1,esk7_1(X2))|~activity(X1)|~activity_occurrence(X2)|~atomic(X1)|~occurrence_of(X2,X1))).
+#############
+#cnf(i_0_178, plain, (atomic(X2)|~activity_occurrence(X1)|~arboreal(X1)|~occurrence_of(X3,esk7_1(X1))|~occurrence_of(X3,X2))).
+#####
+#cnf(i_0_21910, negated_conjecture, (atomic(X1)|~occurrence_of(esk18_0,tptp2)|~occurrence_of(X2,tptp1)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_21952, negated_conjecture, (atomic(X1)|~occurrence_of(esk17_1(esk18_0),X1)|~occurrence_of(esk18_0,tptp2))).
+#
+#cnf(i_0_21959, negated_conjecture, (atomic(esk7_1(esk17_1(esk18_0)))|~occurrence_of(esk18_0,tptp2))).
+#
+#cnf(i_0_21943, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(esk18_0,tptp2)|~occurrence_of(X1,tptp1))).
+##
+#cnf(i_0_22007, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk18_0,tptp2)|~occurrence_of(X1,tptp1))).
+#
+#cnf(i_0_179, plain, (arboreal(X1)|~activity_occurrence(X1)|~atomic(X2)|~occurrence_of(X3,esk7_1(X1))|~occurrence_of(X3,X2))).
+#####
+#cnf(i_0_2765, plain, (activity(X2)|~activity_occurrence(X1)|~activity_occurrence(X3)|~root_occ(esk7_1(X1),X3)|~root_occ(X2,X3))).
+##
+#cnf(i_0_22163, negated_conjecture, (activity(X1)|~activity_occurrence(X2)|~root_occ(tptp0,X2)|~root_occ(X1,X2))).
+#
+#cnf(i_0_22166, negated_conjecture, (activity(X1)|~activity_occurrence(X2)|~root_occ(tptp4,X2)|~root_occ(X1,X2))).
+#
+#cnf(i_0_22171, negated_conjecture, (activity(esk15_1(X1))|~activity_occurrence(X1)|~root_occ(tptp0,X1)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_22178, negated_conjecture, (activity(esk15_1(X1))|~activity_occurrence(X1)|~root_occ(tptp4,X1)|~occurrence_of(X1,tptp0))).
+##########
+#cnf(i_0_10784, negated_conjecture, (subactivity(esk13_2(X1,esk16_1(esk18_0)),tptp4)|~root(esk16_1(esk18_0),X1))).
+##
+#cnf(i_0_5172, negated_conjecture, (root(X1,X2)|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+#
+#cnf(i_0_22317, negated_conjecture, (root(esk15_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+########
+#cnf(i_0_2005, plain, (precedes(X1,esk16_1(X2))|~occurrence_of(X2,tptp0)|~min_precedes(X1,esk15_1(X2),tptp0))).
+#
+#cnf(i_0_2006, plain, (precedes(X1,esk16_1(X2))|~next_subocc(X1,esk15_1(X2),tptp0)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_2008, plain, (precedes(esk15_1(X1),X2)|~occurrence_of(X1,tptp0)|~min_precedes(esk16_1(X1),X2,tptp0))).
+#
+#cnf(i_0_2009, plain, (precedes(esk15_1(X1),X2)|~next_subocc(esk16_1(X1),X2,tptp0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_22485, plain, (precedes(esk15_1(X1),esk17_1(X1))|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_22499, plain, (earlier(esk15_1(X1),X2)|~occurrence_of(X1,tptp0)|~earlier(esk17_1(X1),X2))).
+#
+#cnf(i_0_22503, plain, (earlier(esk15_1(X1),X2)|~precedes(esk17_1(X1),X2)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_22510, plain, (earlier(X1,esk17_1(X2))|~occurrence_of(X2,tptp0)|~earlier(X1,esk15_1(X2)))).
+#
+#cnf(i_0_22511, plain, (earlier(X1,esk17_1(X2))|~precedes(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_2142, plain, (precedes(X1,esk17_1(X2))|~occurrence_of(X2,tptp0)|~min_precedes(X1,esk16_1(X2),tptp0))).
+#
+#cnf(i_0_2143, plain, (precedes(X1,esk17_1(X2))|~next_subocc(X1,esk16_1(X2),tptp0)|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_2145, plain, (precedes(esk16_1(X1),X2)|~occurrence_of(X1,tptp0)|~min_precedes(esk17_1(X1),X2,tptp0))).
+#
+#cnf(i_0_2146, plain, (precedes(esk16_1(X1),X2)|~next_subocc(esk17_1(X1),X2,tptp0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_4883, negated_conjecture, (root(X1,tptp0)|~subactivity_occurrence(X1,esk18_0)|~root(X1,X2)|~occurrence_of(esk18_0,X2))).
+##
+#cnf(i_0_5750, negated_conjecture, (leaf(X1,tptp0)|~root(X1,tptp0)|~root_occ(esk5_2(X1,tptp0),esk18_0))).
+#
+#cnf(i_0_6040, negated_conjecture, (root(X1,tptp0)|~leaf(X1,tptp0)|~leaf_occ(esk4_2(X1,tptp0),esk18_0))).
+###
+#cnf(i_0_10311, negated_conjecture, (occurrence_of(esk18_0,X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp0)|~min_precedes(X2,X3,X1))).
+###
+#cnf(i_0_22488, plain, (~precedes(esk17_1(X1),X2)|~occurrence_of(X1,tptp0)|~earlier(X2,esk15_1(X1)))).
+####
+#cnf(i_0_22522, plain, (~precedes(X1,esk15_1(X2))|~occurrence_of(X2,tptp0)|~earlier(esk17_1(X2),X1))).
+###
+#cnf(i_0_22172, negated_conjecture, (activity(X1)|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0)|~root_occ(tptp0,esk18_0))).
+##
+#cnf(i_0_23355, negated_conjecture, (activity(esk15_1(esk18_0))|~root_occ(tptp0,esk18_0))).
+#
+#cnf(i_0_22179, negated_conjecture, (activity(X1)|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0)|~root_occ(tptp4,esk18_0))).
+#
+#cnf(i_0_23362, negated_conjecture, (activity(esk15_1(esk18_0))|~root_occ(tptp4,esk18_0))).
+#######
+#cnf(i_0_5205, negated_conjecture, (leaf_occ(X1,esk18_0)|~subactivity_occurrence(X1,esk18_0)|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+#####
+#cnf(i_0_10787, negated_conjecture, (subactivity(X1,tptp4)|~subactivity(X1,X2)|~atomic(X2)|~occurrence_of(esk16_1(esk18_0),X2))).
+##
+#cnf(i_0_23405, negated_conjecture, (subactivity(tptp3,tptp4)|~occurrence_of(esk16_1(esk18_0),tptp3))).
+##
+#cnf(i_0_23420, negated_conjecture, (root(esk16_1(esk18_0),tptp3)|~occurrence_of(esk16_1(esk18_0),tptp3))).
+#######
+#cnf(i_0_17950, negated_conjecture, (root_occ(X1,esk18_0)|~subactivity_occurrence(X1,esk18_0)|~root_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+###############
+#cnf(i_0_10342, negated_conjecture, (X1=esk7_1(X2)|~activity_occurrence(X2)|~occurrence_of(esk18_0,X1)|~occurrence_of(X2,tptp0))).
+###################
+#cnf(i_0_10624, negated_conjecture, (~atomic(X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp0)|~min_precedes(X2,X3,X1))).
+##########
+#cnf(i_0_5204, negated_conjecture, (leaf_occ(esk17_1(X1),esk18_0)|~subactivity_occurrence(esk17_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_10739, negated_conjecture, (root_occ(X1,esk16_1(esk18_0))|~subactivity_occurrence(X1,esk16_1(esk18_0))|~root(X1,tptp4))).
+#######
+#cnf(i_0_12807, negated_conjecture, (leaf_occ(esk17_1(esk18_0),X1)|~subactivity_occurrence(esk17_1(esk18_0),X1)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_16248, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(esk15_1(esk18_0),esk7_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_24134, negated_conjecture, (legal(esk17_1(esk18_0))|~subactivity_occurrence(esk17_1(esk18_0),X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_24192, negated_conjecture, (legal(esk17_1(esk18_0)))).
+#
+#cnf(i_0_18012, negated_conjecture, (root_occ(esk15_1(esk18_0),X1)|~subactivity_occurrence(esk15_1(esk18_0),X1)|~occurrence_of(X1,tptp0))).
+######
+#cnf(i_0_23487, negated_conjecture, (root_occ(esk15_1(X1),esk18_0)|~subactivity_occurrence(esk15_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_24279, negated_conjecture, (root(esk15_1(X1),tptp0)|~subactivity_occurrence(esk15_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_420, plain, (atomic(X2)|~leaf(X1,X2)|~occurrence_of(esk8_2(X1,X2),X3)|~min_precedes(X1,X4,X3))).
+###
+#cnf(i_0_422, plain, (atomic(X4)|~leaf(X1,X4)|~next_subocc(X1,X2,X3)|~occurrence_of(esk8_2(X1,X4),X3))).
+##
+#cnf(i_0_428, plain, (atomic(X2)|~leaf(X1,X2)|~occurrence_of(esk10_2(X1,X2),X3)|~min_precedes(X1,X4,X3))).
+###
+#cnf(i_0_430, plain, (atomic(X4)|~leaf(X1,X4)|~next_subocc(X1,X2,X3)|~occurrence_of(esk10_2(X1,X4),X3))).
+###
+#cnf(i_0_443, plain, (atomic(X3)|~leaf(X2,X3)|~root_occ(X1,esk8_2(X2,X3))|~min_precedes(X4,X1,X3))).
+#
+#cnf(i_0_444, plain, (atomic(X3)|~leaf(X2,X3)|~leaf_occ(X1,esk8_2(X2,X3))|~min_precedes(X1,X4,X3))).
+###
+#cnf(i_0_445, plain, (atomic(X3)|~leaf(X4,X3)|~next_subocc(X1,X2,X3)|~root_occ(X2,esk8_2(X4,X3)))).
+#
+#cnf(i_0_446, plain, (atomic(X3)|~leaf(X4,X3)|~next_subocc(X1,X2,X3)|~leaf_occ(X1,esk8_2(X4,X3)))).
+###
+#cnf(i_0_462, plain, (atomic(X3)|~leaf(X2,X3)|~root_occ(X1,esk10_2(X2,X3))|~min_precedes(X4,X1,X3))).
+#
+#cnf(i_0_463, plain, (atomic(X3)|~leaf(X2,X3)|~leaf_occ(X1,esk10_2(X2,X3))|~min_precedes(X1,X4,X3))).
+###
+#cnf(i_0_464, plain, (atomic(X3)|~leaf(X4,X3)|~next_subocc(X1,X2,X3)|~root_occ(X2,esk10_2(X4,X3)))).
+#
+#cnf(i_0_465, plain, (atomic(X3)|~leaf(X4,X3)|~next_subocc(X1,X2,X3)|~leaf_occ(X1,esk10_2(X4,X3)))).
+###
+#cnf(i_0_4827, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk10_2(X2,X1),esk7_1(esk15_1(esk18_0))))).
+##
+#cnf(i_0_4829, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk8_2(X2,X1),esk7_1(esk15_1(esk18_0))))).
+###
+#cnf(i_0_5759, plain, (leaf(X2,X3)|legal(X1)|~root(X2,X3)|~min_precedes(esk5_2(X2,X3),X1,X3))).
+#
+#cnf(i_0_5761, plain, (leaf(X2,X3)|legal(X1)|~root(X2,X3)|~next_subocc(esk5_2(X2,X3),X1,X3))).
+##
+#cnf(i_0_5907, plain, (leaf(X1,X3)|earlier(X1,X2)|~root(X1,X3)|~earlier(esk5_2(X1,X3),X2))).
+#
+#cnf(i_0_5911, plain, (leaf(X1,X3)|earlier(X1,X2)|~root(X1,X3)|~precedes(esk5_2(X1,X3),X2))).
+####
+#cnf(i_0_6351, plain, (root(X2,X3)|earlier(X1,X2)|~leaf(X2,X3)|~earlier(X1,esk4_2(X2,X3)))).
+#
+#cnf(i_0_6352, plain, (root(X2,X3)|earlier(X1,X2)|~leaf(X2,X3)|~precedes(X1,esk4_2(X2,X3)))).
+##
+#cnf(i_0_18953, plain, (atomic(X3)|root_occ(X1,X2)|~subactivity_occurrence(X1,X2)|~leaf_occ(X1,X2)|~occurrence_of(X1,X3))).
+#############
+#cnf(i_0_11398, negated_conjecture, (root(esk16_1(esk18_0),esk12_3(tptp4,X1,X2))|~min_precedes(X1,X2,tptp4))).
+###
+#cnf(i_0_11400, negated_conjecture, (root(esk16_1(esk18_0),esk11_3(tptp4,X1,X2))|~min_precedes(X1,X2,tptp4))).
+##
+#cnf(i_0_4, plain, (X3=X4|atomic(X2)|~leaf_occ(X4,X1)|~leaf_occ(X3,X1)|~occurrence_of(X1,X2))).
+###
+#cnf(i_0_2764, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~root_occ(esk7_1(esk15_1(esk18_0)),X2)|~root_occ(X1,X2))).
+#
+#cnf(i_0_26467, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~root_occ(tptp3,X2)|~root_occ(X1,X2))).
+##
+#cnf(i_0_26475, negated_conjecture, (atomic(esk15_1(X1))|~activity_occurrence(X1)|~root_occ(tptp3,X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_26476, negated_conjecture, (atomic(X1)|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0)|~root_occ(tptp3,esk18_0))).
+#
+#cnf(i_0_26529, negated_conjecture, (atomic(esk15_1(esk18_0))|~root_occ(tptp3,esk18_0))).
+###
+#cnf(i_0_14283, plain, (atomic(X1)|~atomic(X2)|~occurrence_of(X5,X1)|~occurrence_of(X5,X2)|~min_precedes(X3,X4,X2))).
+###
+#cnf(i_0_16246, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~occurrence_of(esk15_1(esk18_0),esk7_1(X2))|~occurrence_of(X2,X1))).
+###
+#cnf(i_0_13263, negated_conjecture, (~leaf(X1,X3)|~subactivity_occurrence(X1,X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X2,X3))).
+#####
+#cnf(i_0_26535, plain, (atomic(X1)|~next_subocc(X4,X5,X2)|~atomic(X2)|~occurrence_of(X3,X1)|~occurrence_of(X3,X2))).
+#######
+#cnf(i_0_22487, plain, (~occurrence_of(X1,tptp0)|~earlier(X2,esk15_1(X1))|~earlier(esk17_1(X1),X2))).
+############
+#cnf(i_0_22489, plain, (~precedes(esk17_1(X1),X2)|~precedes(X2,esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#################
+#cnf(i_0_1134, plain, (atomic(esk3_2(X1,esk15_1(X2)))|~leaf_occ(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_1135, plain, (atomic(esk2_2(X1,esk15_1(X2)))|~root_occ(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+########
+#cnf(i_0_2003, plain, (atomic(esk3_2(X1,esk16_1(X2)))|~leaf_occ(X1,esk16_1(X2))|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_2004, plain, (atomic(esk2_2(X1,esk16_1(X2)))|~root_occ(X1,esk16_1(X2))|~occurrence_of(X2,tptp0))).
+#########
+#cnf(i_0_2140, plain, (atomic(esk3_2(X1,esk17_1(X2)))|~leaf_occ(X1,esk17_1(X2))|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_2141, plain, (atomic(esk2_2(X1,esk17_1(X2)))|~root_occ(X1,esk17_1(X2))|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_26642, negated_conjecture, (~activity_occurrence(X2)|~leaf(X1,esk7_1(X2))|~subactivity_occurrence(X1,X2)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_27464, negated_conjecture, (~leaf(X1,tptp0)|~subactivity_occurrence(X1,esk18_0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_10128, negated_conjecture, (root(esk17_1(esk18_0),tptp0)|atomic(X1)|~occurrence_of(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_27485, negated_conjecture, (atomic(X1)|~occurrence_of(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_27494, negated_conjecture, (atomic(esk7_1(esk17_1(esk18_0))))).
+##
+#cnf(i_0_27499, negated_conjecture, (atomic(X1)|~occurrence_of(X2,esk7_1(esk17_1(esk18_0)))|~occurrence_of(X2,X1))).
+##########
+#cnf(i_0_27497, negated_conjecture, (atomic(esk3_2(X1,esk17_1(esk18_0)))|~leaf_occ(X1,esk17_1(esk18_0)))).
+##
+#cnf(i_0_27498, negated_conjecture, (atomic(esk2_2(X1,esk17_1(esk18_0)))|~root_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_27495, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk7_1(esk17_1(esk18_0))))).
+######
+#cnf(i_0_27743, negated_conjecture, (~occurrence_of(X1,esk7_1(esk17_1(esk18_0)))|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_27553, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk10_2(X2,X1),esk7_1(esk17_1(esk18_0))))).
+#
+#cnf(i_0_27555, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk8_2(X2,X1),esk7_1(esk17_1(esk18_0))))).
+#
+#cnf(i_0_27510, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~root_occ(esk7_1(esk17_1(esk18_0)),X2)|~root_occ(X1,X2))).
+###
+#cnf(i_0_27613, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~occurrence_of(esk17_1(esk18_0),esk7_1(X2))|~occurrence_of(X2,X1))).
+##############
+#cnf(i_0_27793, negated_conjecture, (~occurrence_of(esk18_0,tptp2)|~occurrence_of(X1,tptp1)|~occurrence_of(X1,tptp0))).
+#######
+#cnf(i_0_17982, negated_conjecture, (esk15_1(X1)=X2|~subactivity_occurrence(X2,X1)|~root_occ(X2,esk18_0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_27467, negated_conjecture, (~leaf(X1,tptp4)|~subactivity_occurrence(X1,esk16_1(esk18_0))|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_22175, negated_conjecture, (activity(X1)|~subactivity_occurrence(tptp0,esk18_0)|~root(tptp0,tptp0)|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_27805, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(esk17_1(esk18_0),esk7_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_28106, negated_conjecture, (activity(esk15_1(esk18_0))|~subactivity_occurrence(tptp0,esk18_0)|~root(tptp0,tptp0))).
+#
+#cnf(i_0_22182, negated_conjecture, (activity(X1)|~subactivity_occurrence(tptp4,esk18_0)|~root(tptp4,tptp0)|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_28159, negated_conjecture, (activity(esk15_1(esk18_0))|~subactivity_occurrence(tptp4,esk18_0)|~root(tptp4,tptp0))).
+##
+#cnf(i_0_26481, negated_conjecture, (atomic(X1)|~subactivity_occurrence(tptp3,esk18_0)|~root(tptp3,tptp0)|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_28165, negated_conjecture, (atomic(esk15_1(esk18_0))|~subactivity_occurrence(tptp3,esk18_0)|~root(tptp3,tptp0))).
+#
+#cnf(i_0_166, plain, (leaf_occ(X2,X1)|~occurrence_of(X3,esk17_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+#######
+#cnf(i_0_167, plain, (subactivity_occurrence(X2,X1)|~occurrence_of(X3,esk17_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+####
+#cnf(i_0_169, plain, (root_occ(X2,X1)|~occurrence_of(X3,esk15_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+#
+#cnf(i_0_28340, negated_conjecture, (root(X1,tptp0)|~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_28473, negated_conjecture, (~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(X1,tptp0)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_28470, negated_conjecture, (legal(X1)|~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_28471, negated_conjecture, (activity_occurrence(X1)|~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_28472, negated_conjecture, (arboreal(X1)|~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_28501, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(esk18_0))|~occurrence_of(esk7_1(X1),tptp0))).
+#
+#cnf(i_0_28529, negated_conjecture, (legal(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28554, negated_conjecture, (activity_occurrence(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28579, negated_conjecture, (arboreal(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28631, negated_conjecture, (~occurrence_of(esk18_0,esk15_1(esk18_0))|~occurrence_of(tptp0,tptp0))).
+####
+#cnf(i_0_28634, negated_conjecture, (~occurrence_of(esk16_1(esk18_0),esk15_1(esk18_0))|~occurrence_of(tptp4,tptp0))).
+#####
+#cnf(i_0_28531, negated_conjecture, (legal(esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28705, negated_conjecture, (legal(tptp4)|~occurrence_of(esk16_1(esk18_0),esk15_1(esk18_0)))).
+####
+#cnf(i_0_28532, negated_conjecture, (legal(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28533, negated_conjecture, (legal(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+##
+#cnf(i_0_28556, negated_conjecture, (activity_occurrence(esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28847, negated_conjecture, (activity_occurrence(tptp4)|~occurrence_of(esk16_1(esk18_0),esk15_1(esk18_0)))).
+####
+#cnf(i_0_28557, negated_conjecture, (activity_occurrence(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28558, negated_conjecture, (activity_occurrence(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+##
+#cnf(i_0_28581, negated_conjecture, (arboreal(esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28987, negated_conjecture, (arboreal(tptp4)|~occurrence_of(esk16_1(esk18_0),esk15_1(esk18_0)))).
+####
+#cnf(i_0_28582, negated_conjecture, (arboreal(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+#
+#cnf(i_0_28583, negated_conjecture, (arboreal(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+#####
+#cnf(i_0_28328, negated_conjecture, (~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(X2,esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_28480, negated_conjecture, (root(esk7_1(X1),tptp0)|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#
+#cnf(i_0_29179, negated_conjecture, (root(tptp0,tptp0)|~occurrence_of(esk18_0,esk15_1(esk18_0)))).
+#####
+#cnf(i_0_29182, negated_conjecture, (root(tptp4,tptp0)|~occurrence_of(esk16_1(esk18_0),esk15_1(esk18_0)))).
+##
+#cnf(i_0_28756, negated_conjecture, (legal(tptp0)|~leaf_occ(X1,esk18_0)|~occurrence_of(esk18_0,esk15_1(esk18_0)))).
+#
+#cnf(i_0_29194, negated_conjecture, (legal(tptp0)|~occurrence_of(esk18_0,esk15_1(esk18_0)))).
+#####
+#cnf(i_0_28897, negated_conjecture, (activity_occurrence(tptp0)|~leaf_occ(X1,esk18_0)|~occurrence_of(esk18_0,esk15_1(esk18_0)))).
+##
+#cnf(i_0_29203, negated_conjecture, (activity_occurrence(tptp0)|~occurrence_of(esk18_0,esk15_1(esk18_0)))).
+#####
+#cnf(i_0_29037, negated_conjecture, (arboreal(tptp0)|~leaf_occ(X1,esk18_0)|~occurrence_of(esk18_0,esk15_1(esk18_0)))).
+#
+#cnf(i_0_29212, negated_conjecture, (arboreal(tptp0)|~occurrence_of(esk18_0,esk15_1(esk18_0)))).
+############
+#cnf(i_0_28639, negated_conjecture, (legal(tptp4)|~occurrence_of(esk16_1(X1),esk15_1(esk18_0))|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_28647, negated_conjecture, (activity_occurrence(tptp4)|~occurrence_of(esk16_1(X1),esk15_1(esk18_0))|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_28655, negated_conjecture, (arboreal(tptp4)|~occurrence_of(esk16_1(X1),esk15_1(esk18_0))|~occurrence_of(X1,tptp0))).
+################
+#cnf(i_0_28474, negated_conjecture, (atomic(X1)|~occurrence_of(X3,esk15_1(esk18_0))|~occurrence_of(X2,X1)|~occurrence_of(X3,X2))).
+###
+#cnf(i_0_19524, negated_conjecture, (~atocc(X1,X2)|~occurrence_of(X3,tptp0)|~occurrence_of(X3,X4)|~occurrence_of(X1,X4))).
+####
+#cnf(i_0_29425, negated_conjecture, (~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,X2))).
+######
+#cnf(i_0_29139, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(esk7_1(X2),X1))).
+#
+#cnf(i_0_29502, negated_conjecture, (atomic(X1)|~occurrence_of(esk18_0,esk15_1(esk18_0))|~occurrence_of(tptp0,X1))).
+##
+#cnf(i_0_29505, negated_conjecture, (atomic(X1)|~occurrence_of(esk16_1(esk18_0),esk15_1(esk18_0))|~occurrence_of(tptp4,X1))).
+##
+#cnf(i_0_28527, negated_conjecture, (legal(X1)|~occurrence_of(esk9_3(X1,X2,X3),esk15_1(esk18_0))|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_28552, negated_conjecture, (activity_occurrence(X1)|~occurrence_of(esk9_3(X1,X2,X3),esk15_1(esk18_0))|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_28577, negated_conjecture, (arboreal(X1)|~occurrence_of(esk9_3(X1,X2,X3),esk15_1(esk18_0))|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_29441, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(esk16_1(esk18_0),esk7_1(X1))|~occurrence_of(X1,tptp0))).
+#######
+#cnf(i_0_28482, negated_conjecture, (root(esk6_2(X1,X2),tptp0)|~atocc(X1,X2)|~occurrence_of(X1,esk15_1(esk18_0)))).
+#######
+#cnf(i_0_28483, negated_conjecture, (root(esk3_2(X1,X2),tptp0)|~leaf_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+#####
+#cnf(i_0_28484, negated_conjecture, (root(esk2_2(X1,X2),tptp0)|~root_occ(X1,X2)|~occurrence_of(X2,esk15_1(esk18_0)))).
+######
+#cnf(i_0_170, plain, (subactivity_occurrence(X2,X1)|~occurrence_of(X3,esk15_1(X1))|~occurrence_of(X1,tptp0)|~occurrence_of(X3,X2))).
+############
+#cnf(i_0_1440, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~subactivity(X2,X3)|~atomic(X3)|~occurrence_of(X1,X3))).
+####
+#cnf(i_0_14210, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~root(X3,X2)|~atomic(X2)|~occurrence_of(X1,X2))).
+############
+#cnf(i_0_5797, plain, (activity(esk13_2(X1,X2))|atomic(esk13_2(X1,X2))|~legal(X2)|~root(X2,X1))).
+######
+#cnf(i_0_5914, plain, (leaf(X2,X3)|earlier(X1,esk5_2(X2,X3))|~root(X2,X3)|~earlier(X1,X2))).
+######
+#cnf(i_0_5915, plain, (leaf(X2,X3)|earlier(X1,esk5_2(X2,X3))|~root(X2,X3)|~precedes(X1,X2))).
+#####
+#cnf(i_0_6344, plain, (root(X1,X2)|earlier(esk4_2(X1,X2),X3)|~leaf(X1,X2)|~earlier(X1,X3))).
+##
+#cnf(i_0_29427, negated_conjecture, (~root(X1,X2)|~occurrence_of(X3,tptp0)|~occurrence_of(X3,X4)|~occurrence_of(X1,X4))).
+###
+#cnf(i_0_6348, plain, (root(X1,X2)|earlier(esk4_2(X1,X2),X3)|~leaf(X1,X2)|~precedes(X1,X3))).
+#####
+#cnf(i_0_30454, negated_conjecture, (~occurrence_of(esk15_1(esk18_0),X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,X2))).
+####################
+#cnf(i_0_30469, negated_conjecture, (~root_occ(X1,X2)|~occurrence_of(X3,tptp0)|~occurrence_of(X3,X4)|~occurrence_of(X1,X4))).
+########
+#cnf(i_0_10634, negated_conjecture, (~atomic(X1)|~occurrence_of(esk9_3(tptp0,X2,X3),X1)|~min_precedes(X2,X3,tptp0))).
+################
+#cnf(i_0_29397, negated_conjecture, (~activity_occurrence(X1)|~atocc(X1,X2)|~occurrence_of(X3,esk7_1(X1))|~occurrence_of(X3,tptp0))).
+#######
+#cnf(i_0_15281, plain, (subactivity(tptp3,esk7_1(esk15_1(X1)))|~activity_occurrence(esk15_1(X1))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_15378, plain, (subactivity(tptp4,esk7_1(esk16_1(X1)))|~activity_occurrence(esk16_1(X1))|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_10771, negated_conjecture, (root(X1,tptp4)|atomic(X2)|~leaf_occ(X1,esk16_1(esk18_0))|~occurrence_of(X1,X2))).
+##########
+#cnf(i_0_29404, negated_conjecture, (~activity_occurrence(X3)|~atocc(X1,X2)|~occurrence_of(X1,esk7_1(X3))|~occurrence_of(X3,tptp0))).
+#########
+#cnf(i_0_12866, plain, (atomic(X1)|~atocc(X2,X3)|~occurrence_of(X4,X5)|~occurrence_of(X4,X1)|~occurrence_of(X2,X5))).
+#
+#cnf(i_0_31065, negated_conjecture, (atomic(X1)|~occurrence_of(esk16_1(esk18_0),X3)|~occurrence_of(X2,X3)|~occurrence_of(X2,X1))).
+########
+#cnf(i_0_31115, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~occurrence_of(esk16_1(esk18_0),esk7_1(X2))|~occurrence_of(X2,X1))).
+######
+#cnf(i_0_30420, negated_conjecture, (~activity_occurrence(X1)|~root(X1,X2)|~occurrence_of(X3,esk7_1(X1))|~occurrence_of(X3,tptp0))).
+#######
+#cnf(i_0_14462, plain, (leaf(X2,X3)|atomic(X1)|~occurrence_of(esk5_2(X2,X3),X1)|~min_precedes(X4,X2,X3))).
+##
+#cnf(i_0_15078, plain, (leaf(X2,X3)|atomic(X1)|~next_subocc(X4,X2,X3)|~occurrence_of(esk5_2(X2,X3),X1))).
+#
+#cnf(i_0_16189, plain, (arboreal(X1)|~activity_occurrence(X1)|~activity_occurrence(X2)|~atomic(esk7_1(X2))|~occurrence_of(X2,esk7_1(X1)))).
+#####
+#cnf(i_0_31419, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X2,esk7_1(X1))|~occurrence_of(X2,tptp4))).
+#######
+#cnf(i_0_31420, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk16_1(X2),esk7_1(X1))|~occurrence_of(X2,tptp0))).
+#################
+#cnf(i_0_31067, plain, (atomic(X1)|~root(X2,X3)|~occurrence_of(X4,X5)|~occurrence_of(X4,X1)|~occurrence_of(X2,X5))).
+###
+#cnf(i_0_31644, negated_conjecture, (atomic(X1)|~occurrence_of(esk15_1(esk18_0),X3)|~occurrence_of(X2,X3)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_30427, negated_conjecture, (~activity_occurrence(X3)|~root(X1,X2)|~occurrence_of(X1,esk7_1(X3))|~occurrence_of(X3,tptp0))).
+#######
+#cnf(i_0_31483, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~activity_occurrence(X2)|~occurrence_of(X1,esk7_1(X2))|~occurrence_of(X2,tptp4))).
+######
+#cnf(i_0_31659, plain, (atomic(X1)|~root_occ(X2,X3)|~occurrence_of(X4,X5)|~occurrence_of(X4,X1)|~occurrence_of(X2,X5))).
+##
+#cnf(i_0_174, plain, (atocc(X1,X3)|~root(X1,X2)|~occurrence_of(X4,esk13_2(X2,X1))|~occurrence_of(X4,X3))).
+####
+#cnf(i_0_175, plain, (subactivity(X3,X1)|~root(X2,X1)|~occurrence_of(X4,esk13_2(X1,X2))|~occurrence_of(X4,X3))).
+##
+#cnf(i_0_182, plain, (occurrence_of(X1,X3)|~atocc(X1,X2)|~occurrence_of(X4,esk6_2(X1,X2))|~occurrence_of(X4,X3))).
+#####
+#cnf(i_0_184, plain, (subactivity(X1,X3)|~atocc(X2,X1)|~occurrence_of(X4,esk6_2(X2,X1))|~occurrence_of(X4,X3))).
+###
+#cnf(i_0_32412, negated_conjecture, (subactivity(tptp4,X1)|~occurrence_of(X2,tptp4)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_32450, negated_conjecture, (subactivity(tptp4,esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp4))).
+##
+#cnf(i_0_30605, negated_conjecture, (~activity_occurrence(X1)|~root_occ(X1,X2)|~occurrence_of(X3,esk7_1(X1))|~occurrence_of(X3,tptp0))).
+###
+#cnf(i_0_32452, negated_conjecture, (subactivity(tptp4,esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,tptp4))).
+##
+#cnf(i_0_32453, negated_conjecture, (subactivity(tptp4,esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+##
+#cnf(i_0_32454, negated_conjecture, (subactivity(tptp4,esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+###
+#cnf(i_0_32467, negated_conjecture, (atocc(X1,tptp4)|~activity_occurrence(X1)|~atomic(esk7_1(X1))|~occurrence_of(X1,tptp4))).
+#
+#cnf(i_0_32779, negated_conjecture, (atocc(X1,tptp4)|~activity_occurrence(X1)|~occurrence_of(X1,tptp4))).
+#######
+#cnf(i_0_32796, negated_conjecture, (esk6_2(X1,tptp4)=esk7_1(X1)|~activity_occurrence(X1)|~occurrence_of(X1,tptp4))).
+#####
+#cnf(i_0_32446, negated_conjecture, (subactivity(tptp4,tptp3)|~occurrence_of(esk15_1(X1),tptp4)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_30612, negated_conjecture, (~activity_occurrence(X3)|~root_occ(X1,X2)|~occurrence_of(X1,esk7_1(X3))|~occurrence_of(X3,tptp0))).
+##
+#cnf(i_0_32448, negated_conjecture, (subactivity(tptp4,X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp4)|~min_precedes(X2,X3,X1))).
+#####
+#cnf(i_0_185, plain, (leaf(X1,X3)|~leaf_occ(X1,X2)|~occurrence_of(X4,esk3_2(X1,X2))|~occurrence_of(X4,X3))).
+###
+#cnf(i_0_33059, negated_conjecture, (leaf(X1,X2)|~leaf_occ(X1,X3)|~occurrence_of(esk18_0,X2)|~occurrence_of(X3,tptp0))).
+#
+#cnf(i_0_33113, negated_conjecture, (leaf(esk17_1(X1),X2)|~occurrence_of(esk18_0,X2)|~occurrence_of(X1,tptp0))).
+########
+#cnf(i_0_33050, negated_conjecture, (leaf(X1,X2)|~leaf_occ(X1,esk18_0)|~occurrence_of(X3,tptp0)|~occurrence_of(X3,X2))).
+########
+#cnf(i_0_33242, negated_conjecture, (leaf(X1,esk7_1(X2))|~activity_occurrence(X2)|~leaf_occ(X1,esk18_0)|~occurrence_of(X2,tptp0))).
+########
+#cnf(i_0_187, plain, (occurrence_of(X1,X3)|~leaf_occ(X2,X1)|~occurrence_of(X4,esk3_2(X2,X1))|~occurrence_of(X4,X3))).
+####
+#cnf(i_0_33609, negated_conjecture, (occurrence_of(X1,X2)|~leaf_occ(X3,X1)|~occurrence_of(esk18_0,X2)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_33870, negated_conjecture, (occurrence_of(X1,X2)|~occurrence_of(esk18_0,X2)|~occurrence_of(X1,tptp0))).
+###########
+#cnf(i_0_33973, negated_conjecture, (~occurrence_of(esk18_0,esk7_1(esk17_1(esk18_0)))|~occurrence_of(X1,tptp0))).
+#######
+#cnf(i_0_34046, negated_conjecture, (root(X1,X2)|~root_occ(X1,X3)|~occurrence_of(esk18_0,X2)|~occurrence_of(X3,tptp0))).
+##
+#cnf(i_0_34218, negated_conjecture, (root(esk15_1(X1),X2)|~occurrence_of(esk18_0,X2)|~occurrence_of(X1,tptp0))).
+#######
+#cnf(i_0_34140, negated_conjecture, (~leaf(X1,tptp0)|~occurrence_of(esk18_0,esk7_1(esk17_1(esk18_0))))).
+###############
+#cnf(i_0_34124, negated_conjecture, (occurrence_of(esk10_2(X1,tptp0),X2)|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+###
+#cnf(i_0_34547, negated_conjecture, (leaf(X1,X2)|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+###########
+#cnf(i_0_34602, negated_conjecture, (activity_occurrence(X1)|atomic(X2)|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+#
+#cnf(i_0_34627, negated_conjecture, (activity_occurrence(X1)|~leaf(X1,tptp0))).
+#########
+#cnf(i_0_34610, negated_conjecture, (arboreal(X1)|atomic(X2)|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+##
+#cnf(i_0_34653, negated_conjecture, (arboreal(X1)|~leaf(X1,tptp0))).
+###
+#cnf(i_0_34544, negated_conjecture, (~leaf(X1,tptp0)|~next_subocc(X1,X2,X3)|~occurrence_of(esk18_0,X3))).
+######
+#cnf(i_0_34613, negated_conjecture, (legal(X1)|atomic(X2)|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+#
+#cnf(i_0_34681, negated_conjecture, (legal(X1)|~leaf(X1,tptp0))).
+#####
+#cnf(i_0_34545, negated_conjecture, (~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2)|~min_precedes(X1,X3,X2))).
+###########
+#cnf(i_0_34421, negated_conjecture, (activity_occurrence(esk10_2(X1,tptp0))|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+#
+#cnf(i_0_34334, negated_conjecture, (~leaf_occ(X1,esk18_0)|~occurrence_of(esk18_0,esk7_1(esk17_1(esk18_0))))).
+##
+#cnf(i_0_34718, negated_conjecture, (activity_occurrence(esk10_2(X1,tptp0))|~leaf(X1,tptp0)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_34719, negated_conjecture, (activity_occurrence(esk10_2(X1,tptp0))|~leaf(X1,tptp0)|~root_occ(X2,esk18_0))).
+######
+#cnf(i_0_34619, negated_conjecture, (atomic(X1)|~leaf(X2,tptp0)|~occurrence_of(X2,tptp0)|~occurrence_of(esk18_0,X1))).
+###
+#cnf(i_0_34893, negated_conjecture, (~leaf(X1,tptp0)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_34126, negated_conjecture, (occurrence_of(esk8_2(X1,tptp0),X2)|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+#########
+#cnf(i_0_35005, negated_conjecture, (activity_occurrence(esk8_2(X1,tptp0))|~leaf(X1,tptp0)|~occurrence_of(esk18_0,X2))).
+###
+#cnf(i_0_35173, negated_conjecture, (activity_occurrence(esk8_2(X1,tptp0))|~leaf(X1,tptp0)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_35174, negated_conjecture, (activity_occurrence(esk8_2(X1,tptp0))|~leaf(X1,tptp0)|~root_occ(X2,esk18_0))).
+####
+#cnf(i_0_34130, negated_conjecture, (occurrence_of(X1,esk3_2(X2,esk18_0))|~leaf_occ(X2,esk18_0)|~occurrence_of(X1,tptp0))).
+#########
+#cnf(i_0_34131, negated_conjecture, (occurrence_of(X1,esk2_2(X2,esk18_0))|~root_occ(X2,esk18_0)|~occurrence_of(X1,tptp0))).
+####################
+#cnf(i_0_34132, negated_conjecture, (occurrence_of(X1,X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X3,tptp0)|~occurrence_of(X3,X2))).
+###################
+#cnf(i_0_34128, negated_conjecture, (occurrence_of(X1,esk7_1(X2))|~activity_occurrence(X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X2,tptp0))).
+#####################
+#cnf(i_0_188, plain, (root(X1,X3)|~root_occ(X1,X2)|~occurrence_of(X4,esk2_2(X1,X2))|~occurrence_of(X4,X3))).
+########
+#cnf(i_0_36363, negated_conjecture, (root(X1,X2)|~root_occ(X1,esk18_0)|~occurrence_of(X3,tptp0)|~occurrence_of(X3,X2))).
+##
+#cnf(i_0_36441, negated_conjecture, (root(esk15_1(esk18_0),X1)|~occurrence_of(X2,tptp0)|~occurrence_of(X2,X1))).
+######
+#cnf(i_0_36475, negated_conjecture, (root(esk15_1(esk18_0),esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp0))).
+########
+#cnf(i_0_36422, negated_conjecture, (root(X1,esk7_1(X2))|~activity_occurrence(X2)|~root_occ(X1,esk18_0)|~occurrence_of(X2,tptp0))).
+###########
+#cnf(i_0_190, plain, (occurrence_of(X1,X3)|~root_occ(X2,X1)|~occurrence_of(X4,esk2_2(X2,X1))|~occurrence_of(X4,X3))).
+#################
+#cnf(i_0_6724, plain, (root(X1,esk3_2(X1,X2))|atomic(esk7_1(X1))|~activity_occurrence(X1)|~leaf_occ(X1,X2))).
+##
+#cnf(i_0_36954, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~leaf_occ(X1,X2))).
+##
+#cnf(i_0_37019, plain, (atomic(esk7_1(X1))|atomic(X2)|~activity_occurrence(X1)|~leaf(X1,X2))).
+###########
+#cnf(i_0_27792, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp1|~occurrence_of(X1,tptp2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_37127, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp1)|~occurrence_of(X1,tptp2)|~occurrence_of(X1,tptp0))).
+#######
+#cnf(i_0_1464, plain, (atomic(X1)|~activity(X3)|~leaf(X2,X1)|~atomic(X3)|~occurrence_of(esk10_2(X2,X1),X3))).
+#
+#cnf(i_0_1465, plain, (atomic(X1)|~activity(X3)|~leaf(X2,X1)|~atomic(X3)|~occurrence_of(esk8_2(X2,X1),X3))).
+###########################
+#cnf(i_0_1434, plain, (subactivity(X1,X2)|~subactivity(X1,X4)|~atomic(X4)|~occurrence_of(X3,X2)|~occurrence_of(X3,X4))).
+###
+#cnf(i_0_37438, negated_conjecture, (subactivity(tptp3,X1)|~occurrence_of(X2,tptp3)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_37468, negated_conjecture, (subactivity(tptp3,esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp3))).
+##
+#cnf(i_0_34141, negated_conjecture, (~occurrence_of(esk18_0,esk7_1(esk17_1(esk18_0)))|~min_precedes(X1,X2,tptp0))).
+###
+#cnf(i_0_37471, negated_conjecture, (subactivity(tptp3,esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,tptp3))).
+###
+#cnf(i_0_37473, negated_conjecture, (subactivity(tptp3,esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp3))).
+###
+#cnf(i_0_37475, negated_conjecture, (subactivity(tptp3,esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp3))).
+##
+#cnf(i_0_37496, negated_conjecture, (atocc(X1,tptp3)|~activity_occurrence(X1)|~atomic(esk7_1(X1))|~occurrence_of(X1,tptp3))).
+##
+#cnf(i_0_37811, negated_conjecture, (atocc(X1,tptp3)|~activity_occurrence(X1)|~occurrence_of(X1,tptp3))).
+########
+#cnf(i_0_37828, negated_conjecture, (esk6_2(X1,tptp3)=esk7_1(X1)|~activity_occurrence(X1)|~occurrence_of(X1,tptp3))).
+###
+#cnf(i_0_37545, negated_conjecture, (~next_subocc(X1,X2,tptp0)|~occurrence_of(esk18_0,esk7_1(esk17_1(esk18_0))))).
+#######
+#cnf(i_0_37454, negated_conjecture, (root(esk16_1(esk18_0),tptp3)|~occurrence_of(X1,tptp3)|~occurrence_of(X1,tptp4))).
+###
+#cnf(i_0_37465, negated_conjecture, (subactivity(tptp3,X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp3)|~min_precedes(X2,X3,X1))).
+#####
+#cnf(i_0_37819, negated_conjecture, (esk6_2(esk16_1(esk18_0),tptp3)=tptp4|~occurrence_of(esk16_1(esk18_0),tptp3))).
+##
+#cnf(i_0_1461, plain, (atocc(X1,X2)|~atocc(X4,X2)|~atomic(X3)|~occurrence_of(X1,X3)|~occurrence_of(X4,X3))).
+#########
+#cnf(i_0_1495, plain, (precedes(X1,X2)|~legal(X2)|~earlier(X3,X2)|~earlier(X4,X3)|~earlier(X1,X4))).
+#
+#cnf(i_0_1496, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X1,X4)|~earlier(X3,X2)|~earlier(X4,X3))).
+##
+#cnf(i_0_1497, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X4,X3)|~earlier(X3,X2)|~earlier(X1,X4))).
+#
+#cnf(i_0_1498, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X1,X4)|~precedes(X4,X3)|~earlier(X3,X2))).
+####
+#cnf(i_0_1502, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X4,X2)|~earlier(X1,X3)|~earlier(X3,X4))).
+#
+#cnf(i_0_1503, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X3,X4)|~precedes(X4,X2)|~earlier(X1,X3))).
+##########
+#cnf(i_0_1521, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X1,X3)|~precedes(X4,X2)|~earlier(X3,X4))).
+#
+#cnf(i_0_1522, plain, (precedes(X1,X2)|~legal(X2)|~precedes(X1,X3)|~precedes(X3,X4)|~precedes(X4,X2))).
+##################
+#cnf(i_0_34038, negated_conjecture, (~occurrence_of(esk16_1(esk18_0),X1)|~occurrence_of(X2,tptp0)|~occurrence_of(esk18_0,X1))).
+################
+#cnf(i_0_34039, negated_conjecture, (~occurrence_of(esk15_1(esk18_0),X1)|~occurrence_of(X2,tptp0)|~occurrence_of(esk18_0,X1))).
+#####
+#cnf(i_0_11270, negated_conjecture, (occurrence_of(X1,X2)|~activity_occurrence(X1)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X1,tptp4))).
+################################
+#cnf(i_0_6289, plain, (arboreal(X1)|~leaf(X1,X2)|~subactivity_occurrence(X1,esk9_3(X2,X3,X4))|~min_precedes(X3,X4,X2))).
+###
+#cnf(i_0_39404, negated_conjecture, (~leaf(X2,tptp0)|~occurrence_of(esk16_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+######
+#cnf(i_0_6489, plain, (legal(X1)|~leaf(X1,X2)|~subactivity_occurrence(X1,esk9_3(X2,X3,X4))|~min_precedes(X3,X4,X2))).
+#
+#cnf(i_0_39880, plain, (legal(X1)|~leaf(X1,X2)|~min_precedes(X3,X1,X2))).
+####
+#cnf(i_0_39886, plain, (legal(X1)|~leaf(X1,X2)|~next_subocc(X3,X1,X2))).
+#########
+#cnf(i_0_39428, negated_conjecture, (~leaf(X2,tptp0)|~occurrence_of(esk15_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+###
+#cnf(i_0_6499, plain, (legal(X1)|~leaf(X1,X2)|~occurrence_of(esk9_3(X3,X4,X1),X2)|~min_precedes(X4,X1,X3))).
+###
+#cnf(i_0_6500, plain, (legal(X1)|~leaf(X1,X2)|~occurrence_of(esk9_3(X3,X1,X4),X2)|~min_precedes(X1,X4,X3))).
+###
+#cnf(i_0_11181, negated_conjecture, (occurrence_of(esk16_1(esk18_0),esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,tptp4))).
+##############
+#cnf(i_0_11182, negated_conjecture, (occurrence_of(esk16_1(esk18_0),esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+##############
+#cnf(i_0_11183, negated_conjecture, (occurrence_of(esk16_1(esk18_0),esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+#######
+#cnf(i_0_39837, negated_conjecture, (~leaf_occ(X1,esk18_0)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(esk18_0,X2))).
+######
+#cnf(i_0_11397, negated_conjecture, (root(esk16_1(esk18_0),esk13_2(X1,X2))|~root(X2,X1)|~occurrence_of(X2,tptp4))).
+##
+#cnf(i_0_40478, negated_conjecture, (~occurrence_of(esk16_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+#
+#cnf(i_0_16194, plain, (atomic(esk7_1(X1))|~activity_occurrence(X2)|~activity_occurrence(X1)|~arboreal(X2)|~occurrence_of(X1,esk7_1(X2)))).
+#########
+#cnf(i_0_36480, negated_conjecture, (root(esk15_1(esk18_0),esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_36482, negated_conjecture, (root(esk15_1(esk18_0),esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+###########
+#cnf(i_0_40545, negated_conjecture, (~occurrence_of(esk18_0,X1)|~occurrence_of(X2,tptp4)|~occurrence_of(X2,X1))).
+###
+#cnf(i_0_834, plain, (esk6_2(esk15_1(X1),X2)=tptp3|~atocc(esk15_1(X1),X2)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_850, plain, (esk6_2(esk16_1(X1),X2)=tptp4|~atocc(esk16_1(X1),X2)|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_11433, negated_conjecture, (atocc(X1,tptp4)|~atomic(X2)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+##
+#cnf(i_0_40969, negated_conjecture, (atocc(X1,tptp4)|~occurrence_of(X1,tptp4))).
+##
+#cnf(i_0_41005, negated_conjecture, (arboreal(X1)|~occurrence_of(X1,tptp4))).
+######
+#cnf(i_0_41021, negated_conjecture, (arboreal(esk9_3(tptp4,X1,X2))|~min_precedes(X1,X2,tptp4))).
+##########
+#cnf(i_0_41003, negated_conjecture, (esk6_2(X1,tptp4)=X2|~occurrence_of(X1,tptp4)|~occurrence_of(X1,X2))).
+#################
+#cnf(i_0_40538, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(esk18_0,esk7_1(X1))|~occurrence_of(X1,tptp4))).
+#######
+#cnf(i_0_41146, negated_conjecture, (esk3_2(X2,X1)=esk6_2(X1,tptp4)|~leaf_occ(X2,X1)|~occurrence_of(X1,tptp4))).
+##
+#cnf(i_0_41221, negated_conjecture, (activity(esk6_2(X2,tptp4))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+##
+#cnf(i_0_41239, negated_conjecture, (atomic(esk6_2(X2,tptp4))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+########
+#cnf(i_0_41220, negated_conjecture, (leaf(X1,esk6_2(X2,tptp4))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+######
+#cnf(i_0_41249, negated_conjecture, (occurrence_of(X1,esk6_2(X1,tptp4))|~leaf_occ(X2,X1)|~occurrence_of(X1,tptp4))).
+########
+#cnf(i_0_41148, negated_conjecture, (esk2_2(X2,X1)=esk6_2(X1,tptp4)|~root_occ(X2,X1)|~occurrence_of(X1,tptp4))).
+#
+#cnf(i_0_41681, negated_conjecture, (activity(esk6_2(X2,tptp4))|~root_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+###
+#cnf(i_0_41696, negated_conjecture, (atomic(esk6_2(X2,tptp4))|~root_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+########
+#cnf(i_0_41680, negated_conjecture, (root(X1,esk6_2(X2,tptp4))|~root_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+############
+#cnf(i_0_41706, negated_conjecture, (occurrence_of(X1,esk6_2(X1,tptp4))|~root_occ(X2,X1)|~occurrence_of(X1,tptp4))).
+#############
+#cnf(i_0_41246, negated_conjecture, (subactivity(tptp4,esk6_2(X2,tptp4))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+##
+#cnf(i_0_40558, negated_conjecture, (~occurrence_of(esk16_1(X2),X1)|~occurrence_of(esk18_0,X1)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_41703, negated_conjecture, (subactivity(tptp4,esk6_2(X2,tptp4))|~root_occ(X1,X2)|~occurrence_of(X2,tptp4))).
+#############
+#cnf(i_0_41006, negated_conjecture, (esk6_2(X1,tptp4)=esk6_2(X1,X2)|~atocc(X1,X2)|~occurrence_of(X1,tptp4))).
+#####################
+#cnf(i_0_40603, negated_conjecture, (~activity_occurrence(X1)|~arboreal(X1)|~occurrence_of(X2,esk7_1(X1))|~occurrence_of(X2,tptp0))).
+######
+#cnf(i_0_29372, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X2,esk15_1(esk18_0))|~occurrence_of(X2,X1))).
+###
+#cnf(i_0_31093, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+##
+#cnf(i_0_42461, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+#######
+#cnf(i_0_42578, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk16_1(esk18_0),esk7_1(X1)))).
+#############
+#cnf(i_0_42605, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X3,tptp4)|~occurrence_of(X1,X2)|~occurrence_of(X3,X2))).
+#############
+#cnf(i_0_40552, negated_conjecture, (~atocc(X1,X2)|~occurrence_of(esk18_0,esk6_2(X1,X2))|~occurrence_of(X1,tptp4))).
+###
+#cnf(i_0_31686, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(esk15_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+###
+#cnf(i_0_42830, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk15_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+###
+#cnf(i_0_42928, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk15_1(esk18_0),esk7_1(X1)))).
+#
+#cnf(i_0_42945, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X1,esk7_1(esk15_1(esk18_0))))).
+##############
+#cnf(i_0_40553, negated_conjecture, (~leaf_occ(X1,X2)|~occurrence_of(esk18_0,esk3_2(X1,X2))|~occurrence_of(X2,tptp4))).
+#
+#cnf(i_0_1016, negated_conjecture, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,esk7_1(esk15_1(esk18_0))))).
+##
+#cnf(i_0_43131, negated_conjecture, (arboreal(X1)|~leaf_occ(X2,X1)|~occurrence_of(X1,esk7_1(esk15_1(esk18_0))))).
+#######
+#cnf(i_0_1017, negated_conjecture, (atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,esk7_1(esk15_1(esk18_0))))).
+###
+#cnf(i_0_43305, negated_conjecture, (arboreal(X1)|~root_occ(X2,X1)|~occurrence_of(X1,esk7_1(esk15_1(esk18_0))))).
+###################################
+#cnf(i_0_40554, negated_conjecture, (~root_occ(X1,X2)|~occurrence_of(esk18_0,esk2_2(X1,X2))|~occurrence_of(X2,tptp4))).
+###########################
+#cnf(i_0_27541, negated_conjecture, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,esk7_1(esk17_1(esk18_0))))).
+##
+#cnf(i_0_43532, negated_conjecture, (arboreal(X1)|~leaf_occ(X2,X1)|~occurrence_of(X1,esk7_1(esk17_1(esk18_0))))).
+####
+#cnf(i_0_43678, negated_conjecture, (arboreal(X1)|~leaf_occ(X2,X1)|~occurrence_of(esk18_0,tptp2)|~occurrence_of(X1,tptp1))).
+##
+#cnf(i_0_43698, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~leaf_occ(X2,X1)|~occurrence_of(esk17_1(esk18_0),esk7_1(X1)))).
+###
+#cnf(i_0_27542, negated_conjecture, (atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,esk7_1(esk17_1(esk18_0))))).
+#
+#cnf(i_0_43781, negated_conjecture, (arboreal(X1)|~root_occ(X2,X1)|~occurrence_of(X1,esk7_1(esk17_1(esk18_0))))).
+####
+#cnf(i_0_43926, negated_conjecture, (arboreal(X1)|~root_occ(X2,X1)|~occurrence_of(esk18_0,tptp2)|~occurrence_of(X1,tptp1))).
+###
+#cnf(i_0_43946, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~root_occ(X2,X1)|~occurrence_of(esk17_1(esk18_0),esk7_1(X1)))).
+######
+#cnf(i_0_43779, negated_conjecture, (~root_occ(X1,esk18_0)|~occurrence_of(esk18_0,esk7_1(esk17_1(esk18_0))))).
+#
+#cnf(i_0_66, plain, (occurrence_of(esk17_1(X1),tptp1)|occurrence_of(esk17_1(X1),tptp2)|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_11441, negated_conjecture, (activity(esk13_2(tptp4,X1))|atomic(esk13_2(tptp4,X1))|~root(X1,tptp4))).
+#####
+#cnf(i_0_2167, plain, (precedes(esk16_1(X1),X2)|~legal(X2)|~occurrence_of(X1,tptp0)|~earlier(esk17_1(X1),X2))).
+##
+#cnf(i_0_2169, plain, (precedes(esk16_1(X1),X2)|~legal(X2)|~precedes(esk17_1(X1),X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_5722, plain, (leaf(X2,X3)|~root(X2,X3)|~precedes(X1,X2)|~min_precedes(esk5_2(X2,X3),X1,X3))).
+#
+#cnf(i_0_5723, plain, (leaf(X2,X3)|~root(X2,X3)|~precedes(X1,X2)|~next_subocc(esk5_2(X2,X3),X1,X3))).
+##
+#cnf(i_0_6054, plain, (root(X1,X3)|~leaf(X1,X3)|~precedes(X1,X2)|~min_precedes(X2,esk4_2(X1,X3),X3))).
+#
+#cnf(i_0_6056, plain, (root(X1,X3)|~leaf(X1,X3)|~precedes(X1,X2)|~next_subocc(X2,esk4_2(X1,X3),X3))).
+#
+#cnf(i_0_6831, plain, (atomic(X1)|~activity(esk7_1(X2))|~activity_occurrence(X2)|~atomic(esk7_1(X2))|~occurrence_of(X2,X1))).
+########
+#cnf(i_0_44564, plain, (atomic(X1)|~activity_occurrence(X2)|~atomic(esk7_1(X2))|~occurrence_of(X2,X1))).
+############
+#cnf(i_0_44647, plain, (atomic(X1)|~activity_occurrence(X2)|~leaf_occ(X2,X3)|~occurrence_of(X2,X1))).
+##################
+#cnf(i_0_44661, plain, (atomic(X1)|atomic(X3)|~activity_occurrence(X2)|~leaf(X2,X3)|~occurrence_of(X2,X1))).
+########
+#cnf(i_0_44684, plain, (atomic(esk3_2(X1,X2))|~activity_occurrence(X2)|~leaf_occ(X2,X3)|~leaf_occ(X1,X2))).
+####
+#cnf(i_0_44686, plain, (atomic(esk2_2(X1,X2))|~activity_occurrence(X2)|~leaf_occ(X2,X3)|~root_occ(X1,X2))).
+######
+#cnf(i_0_44587, plain, (atomic(esk3_2(X1,X2))|~activity_occurrence(X2)|~leaf_occ(X1,X2)|~atomic(esk7_1(X2)))).
+###
+#cnf(i_0_44589, plain, (atomic(esk2_2(X1,X2))|~activity_occurrence(X2)|~atomic(esk7_1(X2))|~root_occ(X1,X2))).
+#######################
+#cnf(i_0_44673, plain, (atomic(X1)|~activity_occurrence(esk10_2(X2,X1))|~leaf(X2,X1)|~leaf_occ(esk10_2(X2,X1),X3))).
+#
+#cnf(i_0_44676, plain, (atomic(X1)|~activity_occurrence(esk8_2(X2,X1))|~leaf(X2,X1)|~leaf_occ(esk8_2(X2,X1),X3))).
+####
+#cnf(i_0_22500, plain, (precedes(esk15_1(X1),X2)|~legal(X2)|~occurrence_of(X1,tptp0)|~earlier(esk17_1(X1),X2))).
+#
+#cnf(i_0_22505, plain, (precedes(esk15_1(X1),X2)|~legal(X2)|~precedes(esk17_1(X1),X2)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_39915, negated_conjecture, (~leaf_occ(X1,esk18_0)|~occurrence_of(esk15_1(esk18_0),X2)|~occurrence_of(esk18_0,X2))).
+########
+#cnf(i_0_45195, negated_conjecture, (~occurrence_of(esk15_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+###############
+#cnf(i_0_40111, negated_conjecture, (subactivity(X1,X2)|~atocc(X3,X1)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X3,tptp4))).
+######
+#cnf(i_0_40258, negated_conjecture, (leaf(X1,X2)|~leaf_occ(X1,X3)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X3,tptp4))).
+########
+#cnf(i_0_40401, negated_conjecture, (root(X1,X2)|~root_occ(X1,X3)|~occurrence_of(esk16_1(esk18_0),X2)|~occurrence_of(X3,tptp4))).
+#####
+#cnf(i_0_2034, plain, (precedes(esk15_1(X1),X2)|~legal(X2)|~occurrence_of(X1,tptp0)|~earlier(esk16_1(X1),X2))).
+#
+#cnf(i_0_2036, plain, (precedes(esk15_1(X1),X2)|~legal(X2)|~precedes(esk16_1(X1),X2)|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_28207, plain, (leaf_occ(esk7_1(X1),X2)|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(X2))|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_45633, negated_conjecture, (leaf_occ(tptp0,X1)|~occurrence_of(esk18_0,esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#####
+#cnf(i_0_45637, negated_conjecture, (leaf_occ(tptp4,X1)|~occurrence_of(esk16_1(esk18_0),esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_33991, negated_conjecture, (~atocc(X1,X2)|~occurrence_of(esk18_0,esk6_2(X1,X2))|~occurrence_of(X3,tptp0))).
+#
+#cnf(i_0_28276, plain, (subactivity_occurrence(esk7_1(X1),X2)|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(X2))|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_45845, negated_conjecture, (subactivity_occurrence(tptp0,X1)|~occurrence_of(esk18_0,esk17_1(X1))|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_45849, negated_conjecture, (subactivity_occurrence(tptp4,X1)|~occurrence_of(esk16_1(esk18_0),esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_28409, plain, (root_occ(esk7_1(X1),X2)|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_46063, negated_conjecture, (root_occ(tptp0,X1)|~occurrence_of(esk18_0,esk15_1(X1))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_45728, negated_conjecture, (~atocc(X1,X2)|~leaf(X3,tptp0)|~occurrence_of(esk18_0,esk6_2(X1,X2)))).
+######
+#cnf(i_0_46067, negated_conjecture, (root_occ(tptp4,X1)|~occurrence_of(esk16_1(esk18_0),esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_29875, plain, (subactivity_occurrence(esk7_1(X1),X2)|~activity_occurrence(X1)|~occurrence_of(X1,esk15_1(X2))|~occurrence_of(X2,tptp0))).
+###
+#cnf(i_0_46277, negated_conjecture, (subactivity_occurrence(tptp0,X1)|~occurrence_of(esk18_0,esk15_1(X1))|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_46281, negated_conjecture, (subactivity_occurrence(tptp4,X1)|~occurrence_of(esk16_1(esk18_0),esk15_1(X1))|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_17403, negated_conjecture, (X1=esk17_1(esk18_0)|~root(esk17_1(esk18_0),tptp0)|~root_occ(X1,esk18_0))).
+######
+#cnf(i_0_37827, negated_conjecture, (esk6_2(X1,tptp3)=X2|~activity_occurrence(X1)|~occurrence_of(X1,tptp3)|~occurrence_of(X1,X2))).
+#########
+#cnf(i_0_46179, negated_conjecture, (~atocc(X1,X2)|~leaf_occ(X3,esk18_0)|~occurrence_of(esk18_0,esk6_2(X1,X2)))).
+#########
+#cnf(i_0_31956, plain, (atocc(X1,esk7_1(X2))|~activity_occurrence(X2)|~root(X1,X3)|~occurrence_of(X2,esk13_2(X3,X1)))).
+#
+#cnf(i_0_32019, plain, (subactivity(esk7_1(X1),X2)|~activity_occurrence(X1)|~root(X3,X2)|~occurrence_of(X1,esk13_2(X2,X3)))).
+#
+#cnf(i_0_32296, plain, (occurrence_of(X1,esk7_1(X2))|~activity_occurrence(X2)|~atocc(X1,X3)|~occurrence_of(X2,esk6_2(X1,X3)))).
+####
+#cnf(i_0_32367, plain, (subactivity(X1,esk7_1(X2))|~activity_occurrence(X2)|~atocc(X3,X1)|~occurrence_of(X2,esk6_2(X3,X1)))).
+######
+#cnf(i_0_33005, plain, (leaf(X1,esk7_1(X2))|~activity_occurrence(X2)|~leaf_occ(X1,X3)|~occurrence_of(X2,esk3_2(X1,X3)))).
+########
+#cnf(i_0_33555, plain, (occurrence_of(X1,esk7_1(X2))|~activity_occurrence(X2)|~leaf_occ(X3,X1)|~occurrence_of(X2,esk3_2(X3,X1)))).
+##
+#cnf(i_0_36313, plain, (root(X1,esk7_1(X2))|~activity_occurrence(X2)|~root_occ(X1,X3)|~occurrence_of(X2,esk2_2(X1,X3)))).
+########
+#cnf(i_0_36873, plain, (occurrence_of(X1,esk7_1(X2))|~activity_occurrence(X2)|~root_occ(X3,X1)|~occurrence_of(X2,esk2_2(X3,X1)))).
+####
+#cnf(i_0_42585, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~leaf_occ(X2,X1)|~occurrence_of(esk16_1(esk18_0),esk3_2(X2,X1)))).
+####
+#cnf(i_0_42587, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~root_occ(X2,X1)|~occurrence_of(esk16_1(esk18_0),esk2_2(X2,X1)))).
+######
+#cnf(i_0_42935, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~leaf_occ(X2,X1)|~occurrence_of(esk15_1(esk18_0),esk3_2(X2,X1)))).
+##
+#cnf(i_0_42937, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~root_occ(X2,X1)|~occurrence_of(esk15_1(esk18_0),esk2_2(X2,X1)))).
+###########
+#cnf(i_0_1740, plain, (precedes(X1,X2)|~min_precedes(X3,X2,X4)|~min_precedes(X5,X3,X4)|~min_precedes(X1,X5,X4))).
+####
+#cnf(i_0_1769, plain, (precedes(X1,X2)|~next_subocc(X1,X3,X4)|~min_precedes(X5,X2,X4)|~min_precedes(X3,X5,X4))).
+###
+#cnf(i_0_1788, plain, (precedes(X1,X2)|~next_subocc(X3,X2,X4)|~min_precedes(X5,X3,X4)|~min_precedes(X1,X5,X4))).
+####
+#cnf(i_0_1818, plain, (precedes(X1,X2)|~next_subocc(X3,X2,X4)|~next_subocc(X1,X5,X4)|~min_precedes(X5,X3,X4))).
+##
+#cnf(i_0_1839, plain, (precedes(X1,X2)|~next_subocc(X3,X5,X4)|~min_precedes(X1,X3,X4)|~min_precedes(X5,X2,X4))).
+#
+#cnf(i_0_40806, negated_conjecture, (~leaf_occ(X1,esk18_0)|~occurrence_of(X2,esk3_2(X1,esk18_0))|~occurrence_of(X2,tptp4))).
+##
+#cnf(i_0_1840, plain, (precedes(X1,X2)|~next_subocc(X1,X3,X4)|~next_subocc(X3,X5,X4)|~min_precedes(X5,X2,X4))).
+####
+#cnf(i_0_1872, plain, (precedes(X1,X2)|~next_subocc(X3,X2,X4)|~next_subocc(X5,X3,X4)|~min_precedes(X1,X5,X4))).
+#######
+#cnf(i_0_1928, plain, (precedes(X1,X2)|~next_subocc(X3,X2,X4)|~next_subocc(X1,X5,X4)|~next_subocc(X5,X3,X4))).
+#####
+#cnf(i_0_6286, plain, (root(X1,X2)|atomic(X3)|~leaf_occ(X1,X4)|~occurrence_of(X1,X3)|~occurrence_of(X4,X2))).
+##############
+#cnf(i_0_40808, negated_conjecture, (~root_occ(X1,esk18_0)|~occurrence_of(X2,esk2_2(X1,esk18_0))|~occurrence_of(X2,tptp4))).
+###############
+#cnf(i_0_23455, negated_conjecture, (esk15_1(esk18_0)=X1|~subactivity_occurrence(X1,esk18_0)|~root_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+######
+#cnf(i_0_95, negated_conjecture, (occurrence_of(X2,tptp1)|min_precedes(X1,esk20_2(X1,X2),tptp0)|~leaf_occ(X2,esk18_0))).
+#
+#cnf(i_0_48302, negated_conjecture, (occurrence_of(X1,tptp1)|~leaf_occ(X1,esk18_0))).
+#
+#cnf(i_0_48439, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp1))).
+#
+#cnf(i_0_48455, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),tptp4)|~occurrence_of(esk18_0,tptp1))).
+#
+#cnf(i_0_48446, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp1)).
+#
+#cnf(i_0_48510, negated_conjecture, (atocc(esk17_1(esk18_0),tptp1))).
+#
+#cnf(i_0_48571, negated_conjecture, (root(esk17_1(esk18_0),tptp1))).
+#
+#cnf(i_0_48514, negated_conjecture, (~occurrence_of(esk18_0,tptp1))).
+#######
+#cnf(i_0_48456, negated_conjecture, (X1=tptp1|~occurrence_of(esk17_1(esk18_0),X1))).
+###
+#cnf(i_0_43781, negated_conjecture, (arboreal(X1)|~root_occ(X2,X1)|~occurrence_of(X1,tptp1))).
+#
+#cnf(i_0_43532, negated_conjecture, (arboreal(X1)|~leaf_occ(X2,X1)|~occurrence_of(X1,tptp1))).
+##
+#cnf(i_0_48574, negated_conjecture, (esk6_2(esk17_1(esk18_0),tptp1)=tptp1)).
+#
+#cnf(i_0_48655, negated_conjecture, (subactivity(tptp1,tptp1))).
+###
+#cnf(i_0_48467, negated_conjecture, (subactivity(tptp1,X1)|~occurrence_of(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_27499, negated_conjecture, (atomic(X1)|~occurrence_of(X2,tptp1)|~occurrence_of(X2,X1))).
+####
+#cnf(i_0_48547, negated_conjecture, (leaf(X1,tptp1)|~leaf_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_48548, negated_conjecture, (root(X1,tptp1)|~root_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_27743, negated_conjecture, (~occurrence_of(X1,tptp1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_48549, negated_conjecture, (subactivity(X1,tptp1)|~atocc(esk17_1(esk18_0),X1))).
+##########
+#cnf(i_0_48499, negated_conjecture, (atocc(esk17_1(esk18_0),X1)|~subactivity(X1,tptp1))).
+##
+#cnf(i_0_48776, negated_conjecture, (root(esk17_1(esk18_0),X1)|~subactivity(X1,tptp1))).
+#
+#cnf(i_0_48817, negated_conjecture, (activity(X1)|atomic(X1)|~subactivity(X1,tptp1))).
+##
+#cnf(i_0_48820, negated_conjecture, (~subactivity(tptp0,tptp1))).
+##
+#cnf(i_0_27495, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp1))).
+#
+#cnf(i_0_48842, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X1,tptp1))).
+######
+#cnf(i_0_48670, negated_conjecture, (root(X1,tptp1)|~legal(X1)|~occurrence_of(X1,tptp1))).
+########
+#cnf(i_0_48671, negated_conjecture, (subactivity(tptp1,tptp4)|~occurrence_of(esk16_1(esk18_0),tptp1))).
+##
+#cnf(i_0_48454, negated_conjecture, (subactivity(tptp4,tptp1)|~occurrence_of(esk17_1(esk18_0),tptp4))).
+####
+#cnf(i_0_48539, negated_conjecture, (subactivity(tptp3,tptp1)|~occurrence_of(esk17_1(esk18_0),tptp3))).
+##
+#cnf(i_0_48646, negated_conjecture, (legal(tptp1)|~occurrence_of(esk17_1(esk18_0),esk15_1(esk18_0)))).
+#
+#cnf(i_0_48647, negated_conjecture, (activity_occurrence(tptp1)|~occurrence_of(esk17_1(esk18_0),esk15_1(esk18_0)))).
+#
+#cnf(i_0_48648, negated_conjecture, (arboreal(tptp1)|~occurrence_of(esk17_1(esk18_0),esk15_1(esk18_0)))).
+########
+#cnf(i_0_48667, negated_conjecture, (subactivity(tptp1,X1)|~occurrence_of(X2,tptp1)|~occurrence_of(X2,X1))).
+######
+#cnf(i_0_48554, negated_conjecture, (arboreal(X1)|~leaf(X1,tptp1)|~subactivity_occurrence(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_48555, negated_conjecture, (legal(X1)|~leaf(X1,tptp1)|~subactivity_occurrence(X1,esk17_1(esk18_0)))).
+####
+#cnf(i_0_27555, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk8_2(X2,X1),tptp1))).
+#
+#cnf(i_0_27553, negated_conjecture, (atomic(X1)|~leaf(X2,X1)|~occurrence_of(esk10_2(X2,X1),tptp1))).
+####
+#cnf(i_0_27510, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~root_occ(tptp1,X2)|~root_occ(X1,X2))).
+##
+#cnf(i_0_48551, negated_conjecture, (activity(X1)|~activity_occurrence(X2)|~root_occ(tptp1,X2)|~root_occ(X1,X2))).
+####
+#cnf(i_0_27542, negated_conjecture, (atomic(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+##
+#cnf(i_0_27541, negated_conjecture, (atomic(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+#######
+#cnf(i_0_48668, negated_conjecture, (subactivity(tptp1,esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp1))).
+############
+#cnf(i_0_48779, negated_conjecture, (esk6_2(esk17_1(esk18_0),X1)=tptp1|~subactivity(X1,tptp1))).
+#########
+#cnf(i_0_48451, negated_conjecture, (occurrence_of(esk16_1(esk18_0),tptp1)|~occurrence_of(esk17_1(esk18_0),tptp4))).
+###
+#cnf(i_0_48522, negated_conjecture, (root(tptp1,tptp0)|~occurrence_of(esk17_1(esk18_0),esk15_1(esk18_0)))).
+##
+#cnf(i_0_48489, negated_conjecture, (~root_occ(X1,esk17_1(esk18_0))|~min_precedes(X2,X1,tptp1))).
+##
+#cnf(i_0_48515, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp4)|~occurrence_of(esk16_1(esk18_0),tptp1))).
+##
+#cnf(i_0_49318, negated_conjecture, (~occurrence_of(esk16_1(esk18_0),tptp1))).
+#####
+#cnf(i_0_48463, negated_conjecture, (subactivity(X1,X2)|~subactivity(X1,tptp1)|~occurrence_of(esk17_1(esk18_0),X2))).
+##
+#cnf(i_0_48442, negated_conjecture, (occurrence_of(X1,tptp1)|~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_49366, negated_conjecture, (~occurrence_of(X1,tptp4)|~occurrence_of(X1,tptp1))).
+#
+#cnf(i_0_49451, negated_conjecture, (activity_occurrence(X1)|~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_49452, negated_conjecture, (arboreal(X1)|~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_49559, negated_conjecture, (activity_occurrence(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_49534, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),tptp4))).
+#
+#cnf(i_0_49603, negated_conjecture, (arboreal(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(esk18_0)))).
+######
+#cnf(i_0_48709, negated_conjecture, (atomic(X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp1)|~min_precedes(X2,X3,X1))).
+###
+#cnf(i_0_49564, negated_conjecture, (activity_occurrence(esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_49734, negated_conjecture, (activity_occurrence(tptp1)|~occurrence_of(esk17_1(esk18_0),esk17_1(esk18_0)))).
+#
+#cnf(i_0_49367, negated_conjecture, (~occurrence_of(esk16_1(X1),tptp1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_49736, negated_conjecture, (activity_occurrence(tptp4)|~occurrence_of(esk16_1(esk18_0),esk17_1(esk18_0)))).
+#####
+#cnf(i_0_49566, negated_conjecture, (activity_occurrence(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,esk17_1(esk18_0)))).
+#
+#cnf(i_0_49568, negated_conjecture, (activity_occurrence(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,esk17_1(esk18_0)))).
+##
+#cnf(i_0_49608, negated_conjecture, (arboreal(esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_49931, negated_conjecture, (arboreal(tptp1)|~occurrence_of(esk17_1(esk18_0),esk17_1(esk18_0)))).
+#
+#cnf(i_0_49933, negated_conjecture, (arboreal(tptp4)|~occurrence_of(esk16_1(esk18_0),esk17_1(esk18_0)))).
+#####
+#cnf(i_0_48490, negated_conjecture, (~leaf_occ(X1,esk17_1(esk18_0))|~min_precedes(X1,X2,tptp1))).
+##
+#cnf(i_0_49610, negated_conjecture, (arboreal(esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,esk17_1(esk18_0)))).
+#
+#cnf(i_0_49612, negated_conjecture, (arboreal(esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,esk17_1(esk18_0)))).
+#
+#cnf(i_0_48491, negated_conjecture, (~next_subocc(X1,X2,tptp1)|~root_occ(X2,esk17_1(esk18_0)))).
+#
+#cnf(i_0_48602, negated_conjecture, (esk6_2(esk17_1(esk18_0),X1)=tptp1|~atocc(esk17_1(esk18_0),X1))).
+##
+#cnf(i_0_48493, negated_conjecture, (occurrence_of(esk17_1(esk18_0),X1)|~occurrence_of(X2,tptp1)|~occurrence_of(X2,X1))).
+#########################
+#cnf(i_0_48492, negated_conjecture, (~next_subocc(X1,X2,tptp1)|~leaf_occ(X1,esk17_1(esk18_0)))).
+#########
+#cnf(i_0_50120, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X2,esk7_1(X1))|~occurrence_of(X2,tptp1))).
+######
+#cnf(i_0_48556, negated_conjecture, (occurrence_of(X1,tptp1)|~activity_occurrence(X1)|~occurrence_of(esk17_1(esk18_0),esk7_1(X1)))).
+########
+#cnf(i_0_48441, negated_conjecture, (occurrence_of(esk7_1(X1),tptp1)|~activity_occurrence(X1)|~occurrence_of(X1,esk17_1(esk18_0)))).
+##
+#cnf(i_0_50590, negated_conjecture, (occurrence_of(tptp0,tptp1)|~occurrence_of(esk18_0,esk17_1(esk18_0)))).
+####
+#cnf(i_0_50591, negated_conjecture, (occurrence_of(tptp1,tptp1)|~occurrence_of(esk17_1(esk18_0),esk17_1(esk18_0)))).
+#
+#cnf(i_0_50592, negated_conjecture, (occurrence_of(tptp4,tptp1)|~occurrence_of(esk16_1(esk18_0),esk17_1(esk18_0)))).
+###
+#cnf(i_0_48959, negated_conjecture, (subactivity(tptp1,esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,tptp1))).
+##
+#cnf(i_0_48961, negated_conjecture, (subactivity(tptp1,esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+###
+#cnf(i_0_48963, negated_conjecture, (subactivity(tptp1,esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+###
+#cnf(i_0_48604, negated_conjecture, (esk3_2(X1,esk17_1(esk18_0))=tptp1|~leaf_occ(X1,esk17_1(esk18_0)))).
+##
+#cnf(i_0_48606, negated_conjecture, (esk2_2(X1,esk17_1(esk18_0))=tptp1|~root_occ(X1,esk17_1(esk18_0)))).
+###
+#cnf(i_0_49839, negated_conjecture, (activity_occurrence(tptp0)|~leaf_occ(X1,esk18_0)|~occurrence_of(esk18_0,esk17_1(esk18_0)))).
+#
+#cnf(i_0_50896, negated_conjecture, (activity_occurrence(tptp0)|~occurrence_of(esk18_0,esk17_1(esk18_0)))).
+#######
+#cnf(i_0_50002, negated_conjecture, (arboreal(tptp0)|~leaf_occ(X1,esk18_0)|~occurrence_of(esk18_0,esk17_1(esk18_0)))).
+#
+#cnf(i_0_50908, negated_conjecture, (arboreal(tptp0)|~occurrence_of(esk18_0,esk17_1(esk18_0)))).
+########
+#cnf(i_0_48504, negated_conjecture, (occurrence_of(esk17_1(esk18_0),esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X1,tptp1))).
+#############################
+#cnf(i_0_48755, negated_conjecture, (~leaf(X1,tptp0)|~occurrence_of(esk10_2(X1,tptp0),tptp1))).
+###
+#cnf(i_0_49206, negated_conjecture, (atocc(X1,tptp1)|~activity_occurrence(X1)|~atomic(esk7_1(X1))|~occurrence_of(X1,tptp1))).
+##
+#cnf(i_0_51234, negated_conjecture, (atocc(X1,tptp1)|~activity_occurrence(X1)|~occurrence_of(X1,tptp1))).
+########
+#cnf(i_0_51252, negated_conjecture, (esk6_2(X1,tptp1)=esk7_1(X1)|~activity_occurrence(X1)|~occurrence_of(X1,tptp1))).
+#########
+#cnf(i_0_49074, negated_conjecture, (atomic(esk15_1(X1))|~activity_occurrence(X1)|~root_occ(tptp1,X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_49089, negated_conjecture, (activity(esk15_1(X1))|~activity_occurrence(X1)|~root_occ(tptp1,X1)|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_48758, negated_conjecture, (~leaf(X1,tptp0)|~occurrence_of(esk8_2(X1,tptp0),tptp1))).
+#########
+#cnf(i_0_48457, negated_conjecture, (subactivity(X1,tptp1)|~activity(X1)|~atomic(X1)|~occurrence_of(esk17_1(esk18_0),X1))).
+####
+#cnf(i_0_48735, negated_conjecture, (atomic(X1)|~occurrence_of(esk9_3(tptp1,X2,X3),X1)|~min_precedes(X2,X3,tptp1))).
+#####
+#cnf(i_0_48948, negated_conjecture, (subactivity(tptp1,tptp3)|~occurrence_of(esk15_1(X1),tptp1)|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_49634, negated_conjecture, (activity_occurrence(tptp4)|~occurrence_of(esk16_1(X1),esk17_1(esk18_0))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_49647, negated_conjecture, (arboreal(tptp4)|~occurrence_of(esk16_1(X1),esk17_1(esk18_0))|~occurrence_of(X1,tptp0))).
+####################
+#cnf(i_0_48582, negated_conjecture, (X1=X2|~root_occ(X2,esk17_1(esk18_0))|~root_occ(X1,esk17_1(esk18_0)))).
+##
+#cnf(i_0_48561, negated_conjecture, (atomic(X1)|~occurrence_of(esk17_1(esk18_0),esk15_1(esk18_0))|~occurrence_of(tptp1,X1))).
+####
+#cnf(i_0_48581, negated_conjecture, (atomic(X1)|~occurrence_of(esk17_1(esk18_0),X3)|~occurrence_of(X2,X3)|~occurrence_of(X2,X1))).
+########
+#cnf(i_0_49466, negated_conjecture, (atomic(X1)|~occurrence_of(X3,esk17_1(esk18_0))|~occurrence_of(X2,X1)|~occurrence_of(X3,X2))).
+#######
+#cnf(i_0_48523, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),esk15_1(esk18_0))|~occurrence_of(tptp1,tptp0))).
+####
+#cnf(i_0_48757, negated_conjecture, (~occurrence_of(esk9_3(tptp0,X1,X2),tptp1)|~min_precedes(X1,X2,tptp0))).
+####
+#cnf(i_0_49539, negated_conjecture, (~occurrence_of(esk9_3(tptp1,X1,X2),tptp4)|~min_precedes(X1,X2,tptp1))).
+###
+#cnf(i_0_48443, negated_conjecture, (occurrence_of(X1,tptp1)|~subactivity_occurrence(X1,esk18_0)|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp0))).
+##
+#cnf(i_0_50520, negated_conjecture, (atomic(X1)|~activity_occurrence(X2)|~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(esk7_1(X2),X1))).
+#
+#cnf(i_0_53325, negated_conjecture, (atomic(X1)|~occurrence_of(esk18_0,esk17_1(esk18_0))|~occurrence_of(tptp0,X1))).
+#
+#cnf(i_0_53326, negated_conjecture, (atomic(X1)|~occurrence_of(esk17_1(esk18_0),esk17_1(esk18_0))|~occurrence_of(tptp1,X1))).
+##
+#cnf(i_0_53327, negated_conjecture, (atomic(X1)|~occurrence_of(esk16_1(esk18_0),esk17_1(esk18_0))|~occurrence_of(tptp4,X1))).
+#######
+#cnf(i_0_48578, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),X2)|~occurrence_of(X1,tptp0)|~occurrence_of(X1,X2))).
+################
+#cnf(i_0_49458, negated_conjecture, (~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(X1,tptp4)|~occurrence_of(X2,X1))).
+##
+#cnf(i_0_49385, negated_conjecture, (subactivity(X1,X2)|~subactivity(X1,tptp1)|~occurrence_of(X3,tptp1)|~occurrence_of(X3,X2))).
+########
+#cnf(i_0_49376, negated_conjecture, (subactivity(X1,esk7_1(X2))|~activity_occurrence(X2)|~subactivity(X1,tptp1)|~occurrence_of(X2,tptp1))).
+##
+#cnf(i_0_48517, negated_conjecture, (~leaf(X1,tptp1)|~subactivity_occurrence(X1,esk17_1(esk18_0))|~occurrence_of(X1,tptp0))).
+####
+#cnf(i_0_50511, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(esk7_1(X1),tptp4)|~occurrence_of(X1,esk17_1(esk18_0)))).
+###
+#cnf(i_0_48678, negated_conjecture, (subactivity(tptp1,esk6_2(esk17_1(esk18_0),X1))|~atocc(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_53666, negated_conjecture, (~occurrence_of(esk18_0,esk17_1(esk18_0))|~occurrence_of(tptp0,tptp4))).
+#
+#cnf(i_0_48680, negated_conjecture, (subactivity(tptp1,esk3_2(X1,esk17_1(esk18_0)))|~leaf_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_48682, negated_conjecture, (subactivity(tptp1,esk2_2(X1,esk17_1(esk18_0)))|~root_occ(X1,esk17_1(esk18_0)))).
+#
+#cnf(i_0_48761, negated_conjecture, (subactivity(esk13_2(X1,esk17_1(esk18_0)),tptp1)|~root(esk17_1(esk18_0),X1))).
+#
+#cnf(i_0_53667, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),esk17_1(esk18_0))|~occurrence_of(tptp1,tptp4))).
+#
+#cnf(i_0_48440, negated_conjecture, (occurrence_of(esk17_1(X1),tptp1)|~subactivity_occurrence(esk17_1(X1),esk18_0)|~occurrence_of(X1,tptp0))).
+###
+#cnf(i_0_53668, negated_conjecture, (~occurrence_of(esk16_1(esk18_0),esk17_1(esk18_0))|~occurrence_of(tptp4,tptp4))).
+##
+#cnf(i_0_48519, negated_conjecture, (leaf_occ(tptp1,X1)|~occurrence_of(esk17_1(esk18_0),esk17_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_48520, negated_conjecture, (subactivity_occurrence(tptp1,X1)|~occurrence_of(esk17_1(esk18_0),esk17_1(X1))|~occurrence_of(X1,tptp0))).
+##
+#cnf(i_0_48521, negated_conjecture, (root_occ(tptp1,X1)|~occurrence_of(esk17_1(esk18_0),esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_48528, negated_conjecture, (subactivity_occurrence(tptp1,X1)|~occurrence_of(esk17_1(esk18_0),esk15_1(X1))|~occurrence_of(X1,tptp0))).
+#
+#cnf(i_0_48951, negated_conjecture, (subactivity(tptp1,X1)|~occurrence_of(esk9_3(X1,X2,X3),tptp1)|~min_precedes(X2,X3,X1))).
+##
+#cnf(i_0_49076, negated_conjecture, (atomic(X1)|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0)|~root_occ(tptp1,esk18_0))).
+#
+#cnf(i_0_54173, negated_conjecture, (atomic(esk15_1(esk18_0))|~root_occ(tptp1,esk18_0))).
+#
+#cnf(i_0_49091, negated_conjecture, (activity(X1)|~subactivity_occurrence(X1,esk18_0)|~root(X1,tptp0)|~root_occ(tptp1,esk18_0))).
+##
+#cnf(i_0_54184, negated_conjecture, (activity(esk15_1(esk18_0))|~root_occ(tptp1,esk18_0))).
+#
+#cnf(i_0_49556, negated_conjecture, (activity_occurrence(X1)|~occurrence_of(esk9_3(X1,X2,X3),esk17_1(esk18_0))|~min_precedes(X2,X3,X1))).
+#
+#cnf(i_0_49600, negated_conjecture, (arboreal(X1)|~occurrence_of(esk9_3(X1,X2,X3),esk17_1(esk18_0))|~min_precedes(X2,X3,X1))).
+#######
+#cnf(i_0_48552, negated_conjecture, (root_occ(X1,esk17_1(esk18_0))|~subactivity_occurrence(X1,esk17_1(esk18_0))|~root(X1,tptp1))).
+#######
+#cnf(i_0_48553, negated_conjecture, (leaf_occ(X1,esk17_1(esk18_0))|~leaf(X1,tptp1)|~subactivity_occurrence(X1,esk17_1(esk18_0)))).
+##########
+#cnf(i_0_48814, negated_conjecture, (atomic(X1)|~subactivity(X2,tptp1)|~atomic(X2)|~occurrence_of(X3,X1)|~occurrence_of(X3,X2))).
+#################
+#cnf(i_0_53425, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),X1)|~occurrence_of(X2,tptp0)|~occurrence_of(esk18_0,X1))).
+##############
+#cnf(i_0_49509, negated_conjecture, (occurrence_of(esk6_2(X1,X2),tptp1)|~atocc(X1,X2)|~occurrence_of(X1,esk17_1(esk18_0)))).
+#######
+#cnf(i_0_49511, negated_conjecture, (occurrence_of(esk3_2(X1,X2),tptp1)|~leaf_occ(X1,X2)|~occurrence_of(X2,esk17_1(esk18_0)))).
+###
+#cnf(i_0_54479, negated_conjecture, (~leaf(X2,tptp0)|~occurrence_of(esk17_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+#
+#cnf(i_0_49513, negated_conjecture, (occurrence_of(esk2_2(X1,X2),tptp1)|~root_occ(X1,X2)|~occurrence_of(X2,esk17_1(esk18_0)))).
+#####
+#cnf(i_0_49082, negated_conjecture, (atomic(X1)|~subactivity_occurrence(tptp1,esk18_0)|~root(tptp1,tptp0)|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_54859, negated_conjecture, (atomic(esk15_1(esk18_0))|~subactivity_occurrence(tptp1,esk18_0)|~root(tptp1,tptp0))).
+##
+#cnf(i_0_49097, negated_conjecture, (activity(X1)|~subactivity_occurrence(tptp1,esk18_0)|~root(tptp1,tptp0)|~root_occ(X1,esk18_0))).
+#
+#cnf(i_0_54867, negated_conjecture, (activity(esk15_1(esk18_0))|~subactivity_occurrence(tptp1,esk18_0)|~root(tptp1,tptp0))).
+###########
+#cnf(i_0_50449, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~activity_occurrence(X2)|~occurrence_of(X1,esk7_1(X2))|~occurrence_of(X2,tptp1))).
+######
+#cnf(i_0_50788, negated_conjecture, (root(X1,tptp1)|atomic(X2)|~leaf_occ(X1,esk17_1(esk18_0))|~occurrence_of(X1,X2))).
+#########
+#cnf(i_0_54753, negated_conjecture, (~leaf_occ(X1,esk18_0)|~occurrence_of(esk17_1(esk18_0),X2)|~occurrence_of(esk18_0,X2))).
+############
+#cnf(i_0_55005, negated_conjecture, (~occurrence_of(esk17_1(esk18_0),X1)|~occurrence_of(esk18_0,X1))).
+#####
+#cnf(i_0_50064, negated_conjecture, (esk6_2(esk17_1(esk18_0),tptp3)=tptp1|~occurrence_of(esk17_1(esk18_0),tptp3))).
+#############
+#cnf(i_0_51065, negated_conjecture, (occurrence_of(X1,X2)|~activity_occurrence(X1)|~occurrence_of(esk17_1(esk18_0),X2)|~occurrence_of(X1,tptp1))).
+######
+#cnf(i_0_55021, negated_conjecture, (~occurrence_of(esk18_0,X1)|~occurrence_of(X2,tptp1)|~occurrence_of(X2,X1))).
+#
+#cnf(i_0_50367, negated_conjecture, (occurrence_of(esk17_1(esk18_0),esk6_2(X1,X2))|~atocc(X1,X2)|~occurrence_of(X1,tptp1))).
+##################
+#cnf(i_0_50369, negated_conjecture, (occurrence_of(esk17_1(esk18_0),esk3_2(X1,X2))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+##################
+#cnf(i_0_50371, negated_conjecture, (occurrence_of(esk17_1(esk18_0),esk2_2(X1,X2))|~root_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+#######
+#cnf(i_0_55011, negated_conjecture, (~activity_occurrence(X1)|~occurrence_of(esk18_0,esk7_1(X1))|~occurrence_of(X1,tptp1))).
+#################
+#cnf(i_0_48480, negated_conjecture, (subactivity(X1,tptp1)|~subactivity(X1,X2)|~atomic(X2)|~occurrence_of(esk17_1(esk18_0),X2))).
+#####
+#cnf(i_0_48584, negated_conjecture, (atocc(X1,tptp1)|~atomic(X2)|~occurrence_of(esk17_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+#
+#cnf(i_0_56354, negated_conjecture, (atocc(X1,tptp1)|~occurrence_of(X1,tptp1))).
+###
+#cnf(i_0_56398, negated_conjecture, (arboreal(X1)|~occurrence_of(X1,tptp1))).
+########
+#cnf(i_0_56415, negated_conjecture, (arboreal(esk9_3(tptp1,X1,X2))|~min_precedes(X1,X2,tptp1))).
+################
+#cnf(i_0_56396, negated_conjecture, (esk6_2(X1,tptp1)=X2|~occurrence_of(X1,tptp1)|~occurrence_of(X1,X2))).
+##########################
+#cnf(i_0_55478, negated_conjecture, (~atocc(X1,X2)|~occurrence_of(esk18_0,esk6_2(X1,X2))|~occurrence_of(X1,tptp1))).
+#
+#cnf(i_0_56572, negated_conjecture, (esk3_2(X2,X1)=esk6_2(X1,tptp1)|~leaf_occ(X2,X1)|~occurrence_of(X1,tptp1))).
+#
+#cnf(i_0_56664, negated_conjecture, (activity(esk6_2(X2,tptp1))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+###
+#cnf(i_0_56697, negated_conjecture, (atomic(esk6_2(X2,tptp1))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+########
+#cnf(i_0_56663, negated_conjecture, (leaf(X1,esk6_2(X2,tptp1))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+#####
+#cnf(i_0_56703, negated_conjecture, (occurrence_of(X1,esk6_2(X1,tptp1))|~leaf_occ(X2,X1)|~occurrence_of(X1,tptp1))).
+######
+#cnf(i_0_55480, negated_conjecture, (~leaf_occ(X1,X2)|~occurrence_of(esk18_0,esk3_2(X1,X2))|~occurrence_of(X2,tptp1))).
+##
+#cnf(i_0_56574, negated_conjecture, (esk2_2(X2,X1)=esk6_2(X1,tptp1)|~root_occ(X2,X1)|~occurrence_of(X1,tptp1))).
+#
+#cnf(i_0_57275, negated_conjecture, (activity(esk6_2(X2,tptp1))|~root_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+###
+#cnf(i_0_57305, negated_conjecture, (atomic(esk6_2(X2,tptp1))|~root_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+########
+#cnf(i_0_57274, negated_conjecture, (root(X1,esk6_2(X2,tptp1))|~root_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+############
+#cnf(i_0_57311, negated_conjecture, (occurrence_of(X1,esk6_2(X1,tptp1))|~root_occ(X2,X1)|~occurrence_of(X1,tptp1))).
+##########
+#cnf(i_0_55482, negated_conjecture, (~root_occ(X1,X2)|~occurrence_of(esk18_0,esk2_2(X1,X2))|~occurrence_of(X2,tptp1))).
+###
+#cnf(i_0_56698, negated_conjecture, (subactivity(tptp1,esk6_2(X2,tptp1))|~leaf_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+####
+#cnf(i_0_57306, negated_conjecture, (subactivity(tptp1,esk6_2(X2,tptp1))|~root_occ(X1,X2)|~occurrence_of(X2,tptp1))).
+###############
+#cnf(i_0_56399, negated_conjecture, (esk6_2(X1,tptp1)=esk6_2(X1,X2)|~atocc(X1,X2)|~occurrence_of(X1,tptp1))).
+#########################
+#cnf(i_0_53036, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(esk17_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+####
+#cnf(i_0_58011, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk17_1(esk18_0),X2)|~occurrence_of(X1,X2))).
+####
+#cnf(i_0_58134, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(esk17_1(esk18_0),esk7_1(X1)))).
+###############
+#cnf(i_0_58168, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~occurrence_of(X3,tptp1)|~occurrence_of(X1,X2)|~occurrence_of(X3,X2))).
+##########
+#cnf(i_0_48839, negated_conjecture, (~subactivity(tptp0,X1)|~atomic(X1)|~occurrence_of(X2,tptp1)|~occurrence_of(X2,X1))).
+#######
+#cnf(i_0_53160, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(X2,X1))).
+####
+#cnf(i_0_48823, negated_conjecture, (activity(esk13_2(tptp1,X1))|atomic(esk13_2(tptp1,X1))|~root(X1,tptp1))).
+#
+#cnf(i_0_58398, negated_conjecture, (~subactivity(tptp0,X1)|~atomic(X1)|~occurrence_of(esk17_1(esk18_0),X1))).
+##################
+#cnf(i_0_54359, negated_conjecture, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~leaf(X1,tptp1)|~subactivity_occurrence(X1,esk17_1(esk18_0)))).
+####
+#cnf(i_0_49464, negated_conjecture, (X1=tptp1|~occurrence_of(X3,esk17_1(esk18_0))|~occurrence_of(X2,X1)|~occurrence_of(X3,X2))).
+########
+#cnf(i_0_58143, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~leaf_occ(X2,X1)|~occurrence_of(esk17_1(esk18_0),esk3_2(X2,X1)))).
+####
+#cnf(i_0_58145, negated_conjecture, (arboreal(X1)|~activity_occurrence(X1)|~root_occ(X2,X1)|~occurrence_of(esk17_1(esk18_0),esk2_2(X2,X1)))).
+####
+#cnf(i_0_49453, negated_conjecture, (esk7_1(X1)=tptp1|~activity_occurrence(X1)|~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(X2,X1))).
+###
+#cnf(i_0_50518, negated_conjecture, (X1=tptp1|~activity_occurrence(X2)|~occurrence_of(X2,esk17_1(esk18_0))|~occurrence_of(esk7_1(X2),X1))).
+#
+#cnf(i_0_58897, negated_conjecture, (X1=tptp1|~occurrence_of(esk18_0,esk17_1(esk18_0))|~occurrence_of(tptp0,X1))).
+#
+#cnf(i_0_58898, negated_conjecture, (X1=tptp1|~occurrence_of(esk17_1(esk18_0),esk17_1(esk18_0))|~occurrence_of(tptp1,X1))).
+##
+#cnf(i_0_58899, negated_conjecture, (X1=tptp1|~occurrence_of(esk16_1(esk18_0),esk17_1(esk18_0))|~occurrence_of(tptp4,X1))).
+####
+#cnf(i_0_86, negated_conjecture, (occurrence_of(X1,tptp2)|min_precedes(X2,esk19_2(X2,X1),tptp0)|~leaf_occ(X1,esk18_0))).
+#
+#cnf(i_0_58979, negated_conjecture, (occurrence_of(X1,tptp2)|~leaf_occ(X1,esk18_0))).
+#
+#cnf(i_0_59117, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp2))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(sos_22, axiom, ![X65, X66, X67]:((occurrence_of(X65,X66)&occurrence_of(X65,X67))=>X66=X67), file('./p/PRO011+2.tptp', sos_22)).
+fof(sos_15, axiom, ![X47, X48]:(atocc(X47,X48)<=>?[X49]:((subactivity(X48,X49)&atomic(X49))&occurrence_of(X47,X49))), file('./p/PRO011+2.tptp', sos_15)).
+fof(goals, conjecture, ![X100]:(occurrence_of(X100,tptp0)=>?[X101, X102]:((leaf_occ(X102,X100)&(occurrence_of(X102,tptp1)=>~(?[X103]:((occurrence_of(X103,tptp2)&subactivity_occurrence(X103,X100))&min_precedes(X101,X103,tptp0)))))&(occurrence_of(X102,tptp2)=>~(?[X104]:((occurrence_of(X104,tptp1)&subactivity_occurrence(X104,X100))&min_precedes(X101,X104,tptp0)))))), file('./p/PRO011+2.tptp', goals)).
+fof(sos_29, axiom, ![X90, X91]:(occurrence_of(X91,X90)=>(activity(X90)&activity_occurrence(X91))), file('./p/PRO011+2.tptp', sos_29)).
+fof(sos_18, axiom, ![X53]:(activity_occurrence(X53)=>?[X54]:(activity(X54)&occurrence_of(X53,X54))), file('./p/PRO011+2.tptp', sos_18)).
+fof(sos_34, axiom, ~(atomic(tptp0)), file('./p/PRO011+2.tptp', sos_34)).
+fof(sos_11, axiom, ![X36, X37]:(leaf_occ(X36,X37)<=>?[X38]:((occurrence_of(X37,X38)&subactivity_occurrence(X36,X37))&leaf(X36,X38))), file('./p/PRO011+2.tptp', sos_11)).
+fof(sos_23, axiom, ![X68, X69]:((leaf(X68,X69)&~(atomic(X69)))=>?[X70]:(occurrence_of(X70,X69)&leaf_occ(X68,X70))), file('./p/PRO011+2.tptp', sos_23)).
+fof(sos_26, axiom, ![X78, X79, X80]:(min_precedes(X79,X80,X78)=>?[X81, X82]:(((subactivity(X81,X78)&subactivity(X82,X78))&atocc(X79,X81))&atocc(X80,X82))), file('./p/PRO011+2.tptp', sos_26)).
+fof(sos_19, axiom, ![X55, X56]:(subactivity_occurrence(X55,X56)=>(activity_occurrence(X55)&activity_occurrence(X56))), file('./p/PRO011+2.tptp', sos_19)).
+fof(sos_32, axiom, ![X96]:(occurrence_of(X96,tptp0)=>?[X97, X98, X99]:((((((occurrence_of(X97,tptp3)&root_occ(X97,X96))&occurrence_of(X98,tptp4))&next_subocc(X97,X98,tptp0))&(occurrence_of(X99,tptp1)|occurrence_of(X99,tptp2)))&next_subocc(X98,X99,tptp0))&leaf_occ(X99,X96))), file('./p/PRO011+2.tptp', sos_32)).
+fof(sos_44, axiom, tptp1!=tptp2, file('./p/PRO011+2.tptp', sos_44)).
+fof(c_0_12, plain, ![X186, X187, X188]:(~occurrence_of(X186,X187)|~occurrence_of(X186,X188)|X187=X188), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_22])])).
+fof(c_0_13, plain, ![X165, X166, X168, X169, X170]:((((subactivity(X166,esk6_2(X165,X166))|~atocc(X165,X166))&(atomic(esk6_2(X165,X166))|~atocc(X165,X166)))&(occurrence_of(X165,esk6_2(X165,X166))|~atocc(X165,X166)))&(~subactivity(X169,X170)|~atomic(X170)|~occurrence_of(X168,X170)|atocc(X168,X169))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_15])])])])])])).
+fof(c_0_14, negated_conjecture, ~(![X100]:(occurrence_of(X100,tptp0)=>?[X101, X102]:((leaf_occ(X102,X100)&(occurrence_of(X102,tptp1)=>~(?[X103]:((occurrence_of(X103,tptp2)&subactivity_occurrence(X103,X100))&min_precedes(X101,X103,tptp0)))))&(occurrence_of(X102,tptp2)=>~(?[X104]:((occurrence_of(X104,tptp1)&subactivity_occurrence(X104,X100))&min_precedes(X101,X104,tptp0))))))), inference(assume_negation,[status(cth)],[goals])).
+cnf(c_0_15, plain, (X2=X3|~occurrence_of(X1,X2)|~occurrence_of(X1,X3)), inference(split_conjunct,[status(thm)],[c_0_12])).
+cnf(c_0_16, plain, (occurrence_of(X1,esk6_2(X1,X2))|~atocc(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_13])).
+fof(c_0_17, negated_conjecture, ![X222, X223]:(occurrence_of(esk18_0,tptp0)&(((occurrence_of(X223,tptp2)|(occurrence_of(X223,tptp1)|~leaf_occ(X223,esk18_0)))&(((occurrence_of(esk20_2(X222,X223),tptp1)|(occurrence_of(X223,tptp1)|~leaf_occ(X223,esk18_0)))&(subactivity_occurrence(esk20_2(X222,X223),esk18_0)|(occurrence_of(X223,tptp1)|~leaf_occ(X223,esk18_0))))&(min_precedes(X222,esk20_2(X222,X223),tptp0)|(occurrence_of(X223,tptp1)|~leaf_occ(X223,esk18_0)))))&((((occurrence_of(X223,tptp2)|(occurrence_of(esk19_2(X222,X223),tptp2)|~leaf_occ(X223,esk18_0)))&(((occurrence_of(esk20_2(X222,X223),tptp1)|(occurrence_of(esk19_2(X222,X223),tptp2)|~leaf_occ(X223,esk18_0)))&(subactivity_occurrence(esk20_2(X222,X223),esk18_0)|(occurrence_of(esk19_2(X222,X223),tptp2)|~leaf_occ(X223,esk18_0))))&(min_precedes(X222,esk20_2(X222,X223),tptp0)|(occurrence_of(esk19_2(X222,X223),tptp2)|~leaf_occ(X223,esk18_0)))))&((occurrence_of(X223,tptp2)|(subactivity_occurrence(esk19_2(X222,X223),esk18_0)|~leaf_occ(X223,esk18_0)))&(((occurrence_of(esk20_2(X222,X223),tptp1)|(subactivity_occurrence(esk19_2(X222,X223),esk18_0)|~leaf_occ(X223,esk18_0)))&(subactivity_occurrence(esk20_2(X222,X223),esk18_0)|(subactivity_occurrence(esk19_2(X222,X223),esk18_0)|~leaf_occ(X223,esk18_0))))&(min_precedes(X222,esk20_2(X222,X223),tptp0)|(subactivity_occurrence(esk19_2(X222,X223),esk18_0)|~leaf_occ(X223,esk18_0))))))&((occurrence_of(X223,tptp2)|(min_precedes(X222,esk19_2(X222,X223),tptp0)|~leaf_occ(X223,esk18_0)))&(((occurrence_of(esk20_2(X222,X223),tptp1)|(min_precedes(X222,esk19_2(X222,X223),tptp0)|~leaf_occ(X223,esk18_0)))&(subactivity_occurrence(esk20_2(X222,X223),esk18_0)|(min_precedes(X222,esk19_2(X222,X223),tptp0)|~leaf_occ(X223,esk18_0))))&(min_precedes(X222,esk20_2(X222,X223),tptp0)|(min_precedes(X222,esk19_2(X222,X223),tptp0)|~leaf_occ(X223,esk18_0)))))))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_14])])])])])).
+fof(c_0_18, plain, ![X211, X212]:((activity(X211)|~occurrence_of(X212,X211))&(activity_occurrence(X212)|~occurrence_of(X212,X211))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_29])])])).
+cnf(c_0_19, plain, (atomic(esk6_2(X1,X2))|~atocc(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_13])).
+cnf(c_0_20, plain, (esk6_2(X1,X2)=X3|~atocc(X1,X2)|~occurrence_of(X1,X3)), inference(pm,[status(thm)],[c_0_15, c_0_16])).
+fof(c_0_21, plain, ![X174]:((activity(esk7_1(X174))|~activity_occurrence(X174))&(occurrence_of(X174,esk7_1(X174))|~activity_occurrence(X174))), inference(distribute,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_18])])])])).
+cnf(c_0_22, negated_conjecture, (occurrence_of(esk18_0,tptp0)), inference(split_conjunct,[status(thm)],[c_0_17])).
+cnf(c_0_23, plain, (activity_occurrence(X1)|~occurrence_of(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_18])).
+cnf(c_0_24, plain, (atomic(X1)|~atocc(X2,X3)|~occurrence_of(X2,X1)), inference(pm,[status(thm)],[c_0_19, c_0_20])).
+cnf(c_0_25, plain, (occurrence_of(X1,esk7_1(X1))|~activity_occurrence(X1)), inference(split_conjunct,[status(thm)],[c_0_21])).
+cnf(c_0_26, negated_conjecture, (tptp0=X1|~occurrence_of(esk18_0,X1)), inference(pm,[status(thm)],[c_0_15, c_0_22])).
+cnf(c_0_27, negated_conjecture, (activity_occurrence(esk18_0)), inference(pm,[status(thm)],[c_0_23, c_0_22])).
+fof(c_0_28, plain, ~atomic(tptp0), inference(fof_simplification,[status(thm)],[sos_34])).
+fof(c_0_29, plain, ![X147, X148, X150, X151, X152]:((((occurrence_of(X148,esk3_2(X147,X148))|~leaf_occ(X147,X148))&(subactivity_occurrence(X147,X148)|~leaf_occ(X147,X148)))&(leaf(X147,esk3_2(X147,X148))|~leaf_occ(X147,X148)))&(~occurrence_of(X151,X152)|~subactivity_occurrence(X150,X151)|~leaf(X150,X152)|leaf_occ(X150,X151))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_11])])])])])])).
+fof(c_0_30, plain, ![X189, X190]:((occurrence_of(esk8_2(X189,X190),X190)|(~leaf(X189,X190)|atomic(X190)))&(leaf_occ(X189,esk8_2(X189,X190))|(~leaf(X189,X190)|atomic(X190)))), inference(distribute,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[sos_23])])])])])).
+cnf(c_0_31, plain, (atomic(esk7_1(X1))|~activity_occurrence(X1)|~atocc(X1,X2)), inference(pm,[status(thm)],[c_0_24, c_0_25])).
+cnf(c_0_32, negated_conjecture, (esk7_1(esk18_0)=tptp0), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_26, c_0_25]), c_0_27])])).
+cnf(c_0_33, plain, (~atomic(tptp0)), inference(split_conjunct,[status(thm)],[c_0_28])).
+fof(c_0_34, plain, ![X199, X200, X201]:((((subactivity(esk11_3(X199,X200,X201),X199)|~min_precedes(X200,X201,X199))&(subactivity(esk12_3(X199,X200,X201),X199)|~min_precedes(X200,X201,X199)))&(atocc(X200,esk11_3(X199,X200,X201))|~min_precedes(X200,X201,X199)))&(atocc(X201,esk12_3(X199,X200,X201))|~min_precedes(X200,X201,X199))), inference(distribute,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_26])])])])).
+fof(c_0_35, plain, ![X176, X177]:((activity_occurrence(X176)|~subactivity_occurrence(X176,X177))&(activity_occurrence(X177)|~subactivity_occurrence(X176,X177))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_19])])])).
+cnf(c_0_36, plain, (subactivity_occurrence(X1,X2)|~leaf_occ(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_29])).
+cnf(c_0_37, plain, (leaf_occ(X1,esk8_2(X1,X2))|atomic(X2)|~leaf(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_30])).
+cnf(c_0_38, plain, (occurrence_of(X1,esk3_2(X2,X1))|~leaf_occ(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_29])).
+cnf(c_0_39, negated_conjecture, (~atocc(esk18_0,X1)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_31, c_0_32]), c_0_27])]), c_0_33])).
+cnf(c_0_40, plain, (atocc(X1,esk11_3(X2,X1,X3))|~min_precedes(X1,X3,X2)), inference(split_conjunct,[status(thm)],[c_0_34])).
+cnf(c_0_41, plain, (activity_occurrence(X1)|~subactivity_occurrence(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_35])).
+cnf(c_0_42, plain, (subactivity_occurrence(X1,esk8_2(X1,X2))|atomic(X2)|~leaf(X1,X2)), inference(pm,[status(thm)],[c_0_36, c_0_37])).
+cnf(c_0_43, plain, (leaf(X1,esk3_2(X1,X2))|~leaf_occ(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_29])).
+cnf(c_0_44, negated_conjecture, (esk3_2(X1,esk18_0)=tptp0|~leaf_occ(X1,esk18_0)), inference(pm,[status(thm)],[c_0_26, c_0_38])).
+cnf(c_0_45, negated_conjecture, (~min_precedes(esk18_0,X1,X2)), inference(pm,[status(thm)],[c_0_39, c_0_40])).
+cnf(c_0_46, negated_conjecture, (min_precedes(X1,esk20_2(X1,X2),tptp0)|occurrence_of(X2,tptp1)|~leaf_occ(X2,esk18_0)), inference(split_conjunct,[status(thm)],[c_0_17])).
+fof(c_0_47, plain, ![X217]:(((((((occurrence_of(esk15_1(X217),tptp3)|~occurrence_of(X217,tptp0))&(root_occ(esk15_1(X217),X217)|~occurrence_of(X217,tptp0)))&(occurrence_of(esk16_1(X217),tptp4)|~occurrence_of(X217,tptp0)))&(next_subocc(esk15_1(X217),esk16_1(X217),tptp0)|~occurrence_of(X217,tptp0)))&(occurrence_of(esk17_1(X217),tptp1)|occurrence_of(esk17_1(X217),tptp2)|~occurrence_of(X217,tptp0)))&(next_subocc(esk16_1(X217),esk17_1(X217),tptp0)|~occurrence_of(X217,tptp0)))&(leaf_occ(esk17_1(X217),X217)|~occurrence_of(X217,tptp0))), inference(distribute,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[sos_32])])])])).
+cnf(c_0_48, plain, (activity_occurrence(X1)|atomic(X2)|~leaf(X1,X2)), inference(pm,[status(thm)],[c_0_41, c_0_42])).
+cnf(c_0_49, negated_conjecture, (leaf(X1,tptp0)|~leaf_occ(X1,esk18_0)), inference(pm,[status(thm)],[c_0_43, c_0_44])).
+cnf(c_0_50, negated_conjecture, (occurrence_of(X1,tptp2)|min_precedes(X2,esk19_2(X2,X1),tptp0)|~leaf_occ(X1,esk18_0)), inference(split_conjunct,[status(thm)],[c_0_17])).
+cnf(c_0_51, negated_conjecture, (occurrence_of(X1,tptp1)|~leaf_occ(X1,esk18_0)), inference(pm,[status(thm)],[c_0_45, c_0_46])).
+cnf(c_0_52, plain, (leaf_occ(esk17_1(X1),X1)|~occurrence_of(X1,tptp0)), inference(split_conjunct,[status(thm)],[c_0_47])).
+cnf(c_0_53, negated_conjecture, (activity_occurrence(X1)|~leaf_occ(X1,esk18_0)), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_48, c_0_49]), c_0_33])).
+cnf(c_0_54, negated_conjecture, (occurrence_of(X1,tptp2)|~leaf_occ(X1,esk18_0)), inference(pm,[status(thm)],[c_0_45, c_0_50])).
+cnf(c_0_55, plain, (esk7_1(X1)=X2|~activity_occurrence(X1)|~occurrence_of(X1,X2)), inference(pm,[status(thm)],[c_0_15, c_0_25])).
+cnf(c_0_56, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_51, c_0_52]), c_0_22])])).
+cnf(c_0_57, negated_conjecture, (activity_occurrence(esk17_1(esk18_0))), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_53, c_0_52]), c_0_22])])).
+cnf(c_0_58, negated_conjecture, (occurrence_of(esk17_1(esk18_0),tptp2)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_54, c_0_52]), c_0_22])])).
+cnf(c_0_59, negated_conjecture, (esk7_1(esk17_1(esk18_0))=tptp1), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_55, c_0_56]), c_0_57])])).
+cnf(c_0_60, plain, (tptp1!=tptp2), inference(split_conjunct,[status(thm)],[sos_44])).
+cnf(c_0_61, negated_conjecture, ($false), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_55, c_0_58]), c_0_59]), c_0_57])]), c_0_60]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 62
+# Proof object clause steps            : 38
+# Proof object formula steps           : 24
+# Proof object conjectures             : 21
+# Proof object clause conjectures      : 18
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 17
+# Proof object initial formulas used   : 12
+# Proof object generating inferences   : 21
+# Proof object simplifying inferences  : 18
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 46
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 99
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 99
+# Processed clauses                    : 5143
+# ...of these trivial                  : 5
+# ...subsumed                          : 3746
+# ...remaining for further processing  : 1392
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 111
+# Backward-rewritten                   : 70
+# Generated clauses                    : 59088
+# ...of the previous two non-trivial   : 57210
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 59087
+# Factorizations                       : 1
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 1211
+#    Positive orientable unit clauses  : 37
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 27
+#    Non-unit-clauses                  : 1147
+# Current number of unprocessed clauses: 51924
+# ...number of literals in the above   : 287747
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 181
+# Clause-clause subsumption calls (NU) : 239766
+# Rec. Clause-clause subsumption calls : 107672
+# Non-unit clause-clause subsumptions  : 3211
+# Unit Clause-clause subsumption calls : 989
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 12
+# BW rewrite match successes           : 11
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 444843

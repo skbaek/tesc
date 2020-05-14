@@ -1,0 +1,63 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SET104-7
+% SZS output start Proof for SET104-7
+fof(f1109,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f1108])).
+fof(f1108,plain,(
+  unordered_pair(null_class,unordered_pair(x,unordered_pair(y,y))) != unordered_pair(null_class,unordered_pair(x,unordered_pair(y,y)))),
+  inference(forward_demodulation,[],[f1047,f108])).
+fof(f108,axiom,(
+  ( ! [X0,X1] : (unordered_pair(X0,X1) = unordered_pair(X1,X0)) )),
+  file('./p/SET104-7.tptp',unknown)).
+fof(f1047,plain,(
+  unordered_pair(null_class,unordered_pair(x,unordered_pair(y,y))) != unordered_pair(null_class,unordered_pair(unordered_pair(y,y),x))),
+  inference(backward_demodulation,[],[f1033,f292])).
+fof(f292,plain,(
+  unordered_pair(null_class,unordered_pair(unordered_pair(y,y),unordered_pair(y,y))) != unordered_pair(null_class,unordered_pair(x,unordered_pair(y,y)))),
+  inference(backward_demodulation,[],[f290,f235])).
+fof(f235,plain,(
+  unordered_pair(null_class,unordered_pair(unordered_pair(y,y),unordered_pair(y,y))) != unordered_pair(unordered_pair(x,x),unordered_pair(x,unordered_pair(y,y)))),
+  inference(definition_unfolding,[],[f148,f12,f12,f154])).
+fof(f154,plain,(
+  ( ! [X0,X1] : (ordered_pair(X0,X1) = unordered_pair(unordered_pair(X0,X0),unordered_pair(X0,unordered_pair(X1,X1)))) )),
+  inference(definition_unfolding,[],[f13,f12,f12])).
+fof(f13,axiom,(
+  ( ! [X0,X1] : (unordered_pair(singleton(X0),unordered_pair(X0,singleton(X1))) = ordered_pair(X0,X1)) )),
+  file('./p/SET104-7.tptp',unknown)).
+fof(f12,axiom,(
+  ( ! [X0] : (unordered_pair(X0,X0) = singleton(X0)) )),
+  file('./p/SET104-7.tptp',unknown)).
+fof(f148,axiom,(
+  unordered_pair(null_class,singleton(singleton(y))) != ordered_pair(x,y)),
+  file('./p/SET104-7.tptp',unknown)).
+fof(f290,plain,(
+  null_class = unordered_pair(x,x)),
+  inference(resolution,[],[f216,f149])).
+fof(f149,axiom,(
+  ~member(x,universal_class)),
+  file('./p/SET104-7.tptp',unknown)).
+fof(f216,plain,(
+  ( ! [X0] : (member(X0,universal_class) | unordered_pair(X0,X0) = null_class) )),
+  inference(definition_unfolding,[],[f126,f12])).
+fof(f126,axiom,(
+  ( ! [X0] : (singleton(X0) = null_class | member(X0,universal_class)) )),
+  file('./p/SET104-7.tptp',unknown)).
+fof(f1033,plain,(
+  ( ! [X5] : (unordered_pair(X5,X5) = unordered_pair(X5,x)) )),
+  inference(resolution,[],[f205,f149])).
+fof(f205,plain,(
+  ( ! [X0,X1] : (member(X1,universal_class) | unordered_pair(X0,X1) = unordered_pair(X0,X0)) )),
+  inference(definition_unfolding,[],[f111,f12])).
+fof(f111,axiom,(
+  ( ! [X0,X1] : (unordered_pair(X0,X1) = singleton(X0) | member(X1,universal_class)) )),
+  file('./p/SET104-7.tptp',unknown)).
+% SZS output end Proof for SET104-7
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 6012
+% Time elapsed: 0.016 s
+% ------------------------------
+% ------------------------------

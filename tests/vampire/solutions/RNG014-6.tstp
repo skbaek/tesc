@@ -1,0 +1,60 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for RNG014-6
+% SZS output start Proof for RNG014-6
+fof(f11867,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f11866])).
+fof(f11866,plain,(
+  additive_inverse(multiply(a,b)) != additive_inverse(multiply(a,b))),
+  inference(superposition,[],[f16,f11696])).
+fof(f11696,plain,(
+  ( ! [X54,X55] : (multiply(X55,additive_inverse(X54)) = additive_inverse(multiply(X55,X54))) )),
+  inference(forward_demodulation,[],[f11695,f2])).
+fof(f2,axiom,(
+  ( ! [X0] : (add(X0,additive_identity) = X0) )),
+  file('./p/RNG014-6.tptp',unknown)).
+fof(f11695,plain,(
+  ( ! [X54,X55] : (multiply(X55,additive_inverse(X54)) = add(additive_inverse(multiply(X55,X54)),additive_identity)) )),
+  inference(forward_demodulation,[],[f11566,f4])).
+fof(f4,axiom,(
+  ( ! [X0] : (additive_identity = multiply(X0,additive_identity)) )),
+  file('./p/RNG014-6.tptp',unknown)).
+fof(f11566,plain,(
+  ( ! [X54,X55] : (multiply(X55,additive_inverse(X54)) = add(additive_inverse(multiply(X55,X54)),multiply(X55,additive_identity))) )),
+  inference(superposition,[],[f122,f6])).
+fof(f6,axiom,(
+  ( ! [X0] : (additive_identity = add(X0,additive_inverse(X0))) )),
+  file('./p/RNG014-6.tptp',unknown)).
+fof(f122,plain,(
+  ( ! [X2,X0,X1] : (multiply(X0,X2) = add(additive_inverse(multiply(X0,X1)),multiply(X0,add(X1,X2)))) )),
+  inference(superposition,[],[f56,f8])).
+fof(f8,axiom,(
+  ( ! [X2,X0,X1] : (multiply(X0,add(X1,X2)) = add(multiply(X0,X1),multiply(X0,X2))) )),
+  file('./p/RNG014-6.tptp',unknown)).
+fof(f56,plain,(
+  ( ! [X17,X16] : (add(additive_inverse(X16),add(X16,X17)) = X17) )),
+  inference(forward_demodulation,[],[f44,f1])).
+fof(f1,axiom,(
+  ( ! [X0] : (add(additive_identity,X0) = X0) )),
+  file('./p/RNG014-6.tptp',unknown)).
+fof(f44,plain,(
+  ( ! [X17,X16] : (add(additive_inverse(X16),add(X16,X17)) = add(additive_identity,X17)) )),
+  inference(superposition,[],[f11,f5])).
+fof(f5,axiom,(
+  ( ! [X0] : (additive_identity = add(additive_inverse(X0),X0)) )),
+  file('./p/RNG014-6.tptp',unknown)).
+fof(f11,axiom,(
+  ( ! [X2,X0,X1] : (add(X0,add(X1,X2)) = add(add(X0,X1),X2)) )),
+  file('./p/RNG014-6.tptp',unknown)).
+fof(f16,axiom,(
+  multiply(a,additive_inverse(b)) != additive_inverse(multiply(a,b))),
+  file('./p/RNG014-6.tptp',unknown)).
+% SZS output end Proof for RNG014-6
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 23794
+% Time elapsed: 0.253 s
+% ------------------------------
+% ------------------------------

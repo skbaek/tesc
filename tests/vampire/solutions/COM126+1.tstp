@@ -1,0 +1,318 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for COM126+1
+% SZS output start Proof for COM126+1
+fof(f104668,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f1408,f1415,f8885,f104666])).
+fof(f104666,plain,(
+  ~spl91_1 | spl91_2 | ~spl91_100),
+  inference(avatar_contradiction_clause,[],[f104665])).
+fof(f104665,plain,(
+  $false | (~spl91_1 | spl91_2 | ~spl91_100)),
+  inference(subsumption_resolution,[],[f104664,f569])).
+fof(f569,plain,(
+  ~visFreeVar(sK87,ve2app)),
+  inference(resolution,[],[f473,f446])).
+fof(f446,plain,(
+  ~visFreeVar(sK87,vapp(ve1app,ve2app))),
+  inference(cnf_transformation,[],[f293])).
+fof(f293,plain,(
+  ~vtcheck(vbind(sK87,sK88,sK89),vapp(ve1app,ve2app),sK90) & vtcheck(sK89,vapp(ve1app,ve2app),sK90) & ~visFreeVar(sK87,vapp(ve1app,ve2app))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK87,sK88,sK89,sK90])],[f204,f292])).
+fof(f292,plain,(
+  ? [X0,X1,X2,X3] : (~vtcheck(vbind(X0,X1,X2),vapp(ve1app,ve2app),X3) & vtcheck(X2,vapp(ve1app,ve2app),X3) & ~visFreeVar(X0,vapp(ve1app,ve2app))) => (~vtcheck(vbind(sK87,sK88,sK89),vapp(ve1app,ve2app),sK90) & vtcheck(sK89,vapp(ve1app,ve2app),sK90) & ~visFreeVar(sK87,vapp(ve1app,ve2app)))),
+  introduced(choice_axiom,[])).
+fof(f204,plain,(
+  ? [X0,X1,X2,X3] : (~vtcheck(vbind(X0,X1,X2),vapp(ve1app,ve2app),X3) & vtcheck(X2,vapp(ve1app,ve2app),X3) & ~visFreeVar(X0,vapp(ve1app,ve2app)))),
+  inference(flattening,[],[f203])).
+fof(f203,plain,(
+  ? [X0,X1,X2,X3] : (~vtcheck(vbind(X0,X1,X2),vapp(ve1app,ve2app),X3) & (vtcheck(X2,vapp(ve1app,ve2app),X3) & ~visFreeVar(X0,vapp(ve1app,ve2app))))),
+  inference(ennf_transformation,[],[f117])).
+fof(f117,plain,(
+  ~! [X0,X1,X2,X3] : ((vtcheck(X2,vapp(ve1app,ve2app),X3) & ~visFreeVar(X0,vapp(ve1app,ve2app))) => vtcheck(vbind(X0,X1,X2),vapp(ve1app,ve2app),X3))),
+  inference(rectify,[],[f60])).
+fof(f60,negated_conjecture,(
+  ~! [X8,X9,X19,X14] : ((vtcheck(X19,vapp(ve1app,ve2app),X14) & ~visFreeVar(X8,vapp(ve1app,ve2app))) => vtcheck(vbind(X8,X9,X19),vapp(ve1app,ve2app),X14))),
+  inference(negated_conjecture,[],[f59])).
+fof(f59,conjecture,(
+  ! [X8,X9,X19,X14] : ((vtcheck(X19,vapp(ve1app,ve2app),X14) & ~visFreeVar(X8,vapp(ve1app,ve2app))) => vtcheck(vbind(X8,X9,X19),vapp(ve1app,ve2app),X14))),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f473,plain,(
+  ( ! [X4,X2,X3] : (visFreeVar(X3,vapp(X2,X4)) | ~visFreeVar(X3,X4)) )),
+  inference(equality_resolution,[],[f472])).
+fof(f472,plain,(
+  ( ! [X4,X2,X0,X3] : (visFreeVar(X0,vapp(X2,X4)) | ~visFreeVar(X3,X4) | X0 != X3) )),
+  inference(equality_resolution,[],[f315])).
+fof(f315,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (visFreeVar(X0,X1) | ~visFreeVar(X3,X4) | vapp(X2,X4) != X1 | X0 != X3) )),
+  inference(cnf_transformation,[],[f131])).
+fof(f131,plain,(
+  ! [X0,X1,X2,X3,X4] : (((visFreeVar(X3,X4) | visFreeVar(X3,X2) | ~visFreeVar(X0,X1)) & (visFreeVar(X0,X1) | (~visFreeVar(X3,X4) & ~visFreeVar(X3,X2)))) | vapp(X2,X4) != X1 | X0 != X3)),
+  inference(flattening,[],[f130])).
+fof(f130,plain,(
+  ! [X0,X1,X2,X3,X4] : ((((visFreeVar(X3,X4) | visFreeVar(X3,X2)) | ~visFreeVar(X0,X1)) & (visFreeVar(X0,X1) | (~visFreeVar(X3,X4) & ~visFreeVar(X3,X2)))) | (vapp(X2,X4) != X1 | X0 != X3))),
+  inference(ennf_transformation,[],[f70])).
+fof(f70,plain,(
+  ! [X0,X1,X2,X3,X4] : ((vapp(X2,X4) = X1 & X0 = X3) => ((visFreeVar(X0,X1) => (visFreeVar(X3,X4) | visFreeVar(X3,X2))) & ((visFreeVar(X3,X4) | visFreeVar(X3,X2)) => visFreeVar(X0,X1))))),
+  inference(rectify,[],[f12])).
+fof(f12,axiom,(
+  ! [X0,X3,X11,X13,X12] : ((vapp(X11,X12) = X3 & X0 = X13) => ((visFreeVar(X0,X3) => (visFreeVar(X13,X12) | visFreeVar(X13,X11))) & ((visFreeVar(X13,X12) | visFreeVar(X13,X11)) => visFreeVar(X0,X3))))),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f104664,plain,(
+  visFreeVar(sK87,ve2app) | (~spl91_1 | spl91_2 | ~spl91_100)),
+  inference(subsumption_resolution,[],[f104656,f571])).
+fof(f571,plain,(
+  ~visFreeVar(sK87,ve1app)),
+  inference(resolution,[],[f475,f446])).
+fof(f475,plain,(
+  ( ! [X4,X2,X3] : (visFreeVar(X3,vapp(X2,X4)) | ~visFreeVar(X3,X2)) )),
+  inference(equality_resolution,[],[f474])).
+fof(f474,plain,(
+  ( ! [X4,X2,X0,X3] : (visFreeVar(X0,vapp(X2,X4)) | ~visFreeVar(X3,X2) | X0 != X3) )),
+  inference(equality_resolution,[],[f314])).
+fof(f314,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (visFreeVar(X0,X1) | ~visFreeVar(X3,X2) | vapp(X2,X4) != X1 | X0 != X3) )),
+  inference(cnf_transformation,[],[f131])).
+fof(f104656,plain,(
+  visFreeVar(sK87,ve1app) | visFreeVar(sK87,ve2app) | (~spl91_1 | spl91_2 | ~spl91_100)),
+  inference(resolution,[],[f24738,f448])).
+fof(f448,plain,(
+  ~vtcheck(vbind(sK87,sK88,sK89),vapp(ve1app,ve2app),sK90)),
+  inference(cnf_transformation,[],[f293])).
+fof(f24738,plain,(
+  ( ! [X0,X1] : (vtcheck(vbind(X0,X1,sK89),vapp(ve1app,ve2app),sK90) | visFreeVar(X0,ve1app) | visFreeVar(X0,ve2app)) ) | (~spl91_1 | spl91_2 | ~spl91_100)),
+  inference(subsumption_resolution,[],[f24733,f8880])).
+fof(f8880,plain,(
+  vtcheck(sK89,ve2app,sK85(vapp(ve1app,ve2app),sK90,sK89)) | ~spl91_100),
+  inference(avatar_component_clause,[],[f8878])).
+fof(f8878,plain,(
+  spl91_100 <=> vtcheck(sK89,ve2app,sK85(vapp(ve1app,ve2app),sK90,sK89))),
+  introduced(avatar_definition,[new_symbols(naming,[spl91_100])])).
+fof(f24733,plain,(
+  ( ! [X0,X1] : (vtcheck(vbind(X0,X1,sK89),vapp(ve1app,ve2app),sK90) | visFreeVar(X0,ve1app) | ~vtcheck(sK89,ve2app,sK85(vapp(ve1app,ve2app),sK90,sK89)) | visFreeVar(X0,ve2app)) ) | (~spl91_1 | spl91_2)),
+  inference(resolution,[],[f3129,f8697])).
+fof(f8697,plain,(
+  vtcheck(sK89,ve1app,varrow(sK85(vapp(ve1app,ve2app),sK90,sK89),sK90)) | (~spl91_1 | spl91_2)),
+  inference(subsumption_resolution,[],[f8696,f447])).
+fof(f447,plain,(
+  vtcheck(sK89,vapp(ve1app,ve2app),sK90)),
+  inference(cnf_transformation,[],[f293])).
+fof(f8696,plain,(
+  vtcheck(sK89,ve1app,varrow(sK85(vapp(ve1app,ve2app),sK90,sK89),sK90)) | ~vtcheck(sK89,vapp(ve1app,ve2app),sK90) | (~spl91_1 | spl91_2)),
+  inference(subsumption_resolution,[],[f8695,f304])).
+fof(f304,plain,(
+  ( ! [X2,X0,X1] : (vvar(X0) != vapp(X1,X2)) )),
+  inference(cnf_transformation,[],[f63])).
+fof(f63,plain,(
+  ! [X0,X1,X2] : vvar(X0) != vapp(X1,X2)),
+  inference(rectify,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X3,X5] : vvar(X0) != vapp(X3,X5)),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f8695,plain,(
+  vtcheck(sK89,ve1app,varrow(sK85(vapp(ve1app,ve2app),sK90,sK89),sK90)) | vapp(ve1app,ve2app) = vvar(sK86(vapp(ve1app,ve2app),sK90,sK89)) | ~vtcheck(sK89,vapp(ve1app,ve2app),sK90) | (~spl91_1 | spl91_2)),
+  inference(subsumption_resolution,[],[f8687,f1406])).
+fof(f1406,plain,(
+  ~sP12(sK89,sK90,vapp(ve1app,ve2app)) | spl91_2),
+  inference(avatar_component_clause,[],[f1405])).
+fof(f1405,plain,(
+  spl91_2 <=> sP12(sK89,sK90,vapp(ve1app,ve2app))),
+  introduced(avatar_definition,[new_symbols(naming,[spl91_2])])).
+fof(f8687,plain,(
+  vtcheck(sK89,ve1app,varrow(sK85(vapp(ve1app,ve2app),sK90,sK89),sK90)) | sP12(sK89,sK90,vapp(ve1app,ve2app)) | vapp(ve1app,ve2app) = vvar(sK86(vapp(ve1app,ve2app),sK90,sK89)) | ~vtcheck(sK89,vapp(ve1app,ve2app),sK90) | ~spl91_1),
+  inference(superposition,[],[f438,f7727])).
+fof(f7727,plain,(
+  ve1app = sK83(vapp(ve1app,ve2app),sK90,sK89) | ~spl91_1),
+  inference(equality_resolution,[],[f2168])).
+fof(f2168,plain,(
+  ( ! [X0,X1] : (vapp(ve1app,ve2app) != vapp(X0,X1) | sK83(vapp(ve1app,ve2app),sK90,sK89) = X0) ) | ~spl91_1),
+  inference(superposition,[],[f300,f1403])).
+fof(f1403,plain,(
+  vapp(ve1app,ve2app) = vapp(sK83(vapp(ve1app,ve2app),sK90,sK89),sK84(vapp(ve1app,ve2app),sK90,sK89)) | ~spl91_1),
+  inference(avatar_component_clause,[],[f1401])).
+fof(f1401,plain,(
+  spl91_1 <=> vapp(ve1app,ve2app) = vapp(sK83(vapp(ve1app,ve2app),sK90,sK89),sK84(vapp(ve1app,ve2app),sK90,sK89))),
+  introduced(avatar_definition,[new_symbols(naming,[spl91_1])])).
+fof(f300,plain,(
+  ( ! [X2,X0,X3,X1] : (vapp(X0,X1) != vapp(X2,X3) | X0 = X2) )),
+  inference(cnf_transformation,[],[f122])).
+fof(f122,plain,(
+  ! [X0,X1,X2,X3] : ((vapp(X0,X1) = vapp(X2,X3) | X1 != X3 | X0 != X2) & ((X1 = X3 & X0 = X2) | vapp(X0,X1) != vapp(X2,X3)))),
+  inference(flattening,[],[f121])).
+fof(f121,plain,(
+  ! [X0,X1,X2,X3] : ((vapp(X0,X1) = vapp(X2,X3) | (X1 != X3 | X0 != X2)) & ((X1 = X3 & X0 = X2) | vapp(X0,X1) != vapp(X2,X3)))),
+  inference(ennf_transformation,[],[f62])).
+fof(f62,plain,(
+  ! [X0,X1,X2,X3] : (((X1 = X3 & X0 = X2) => vapp(X0,X1) = vapp(X2,X3)) & (vapp(X0,X1) = vapp(X2,X3) => (X1 = X3 & X0 = X2)))),
+  inference(rectify,[],[f3])).
+fof(f3,axiom,(
+  ! [X3,X5,X6,X7] : (((X5 = X7 & X3 = X6) => vapp(X3,X5) = vapp(X6,X7)) & (vapp(X3,X5) = vapp(X6,X7) => (X5 = X7 & X3 = X6)))),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f438,plain,(
+  ( ! [X2,X0,X1] : (vtcheck(X2,sK83(X0,X1,X2),varrow(sK85(X0,X1,X2),X1)) | sP12(X2,X1,X0) | vvar(sK86(X0,X1,X2)) = X0 | ~vtcheck(X2,X0,X1)) )),
+  inference(cnf_transformation,[],[f291])).
+fof(f291,plain,(
+  ! [X0,X1,X2] : ((vtcheck(X2,sK84(X0,X1,X2),sK85(X0,X1,X2)) & vtcheck(X2,sK83(X0,X1,X2),varrow(sK85(X0,X1,X2),X1)) & vapp(sK83(X0,X1,X2),sK84(X0,X1,X2)) = X0) | sP12(X2,X1,X0) | (vsomeType(X1) = vlookup(sK86(X0,X1,X2),X2) & vvar(sK86(X0,X1,X2)) = X0) | ~vtcheck(X2,X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK83,sK84,sK85,sK86])],[f288,f290,f289])).
+fof(f289,plain,(
+  ! [X2,X1,X0] : (? [X3,X4,X5] : (vtcheck(X2,X4,X5) & vtcheck(X2,X3,varrow(X5,X1)) & vapp(X3,X4) = X0) => (vtcheck(X2,sK84(X0,X1,X2),sK85(X0,X1,X2)) & vtcheck(X2,sK83(X0,X1,X2),varrow(sK85(X0,X1,X2),X1)) & vapp(sK83(X0,X1,X2),sK84(X0,X1,X2)) = X0))),
+  introduced(choice_axiom,[])).
+fof(f290,plain,(
+  ! [X2,X1,X0] : (? [X6] : (vsomeType(X1) = vlookup(X6,X2) & vvar(X6) = X0) => (vsomeType(X1) = vlookup(sK86(X0,X1,X2),X2) & vvar(sK86(X0,X1,X2)) = X0))),
+  introduced(choice_axiom,[])).
+fof(f288,plain,(
+  ! [X0,X1,X2] : (? [X3,X4,X5] : (vtcheck(X2,X4,X5) & vtcheck(X2,X3,varrow(X5,X1)) & vapp(X3,X4) = X0) | sP12(X2,X1,X0) | ? [X6] : (vsomeType(X1) = vlookup(X6,X2) & vvar(X6) = X0) | ~vtcheck(X2,X0,X1))),
+  inference(rectify,[],[f221])).
+fof(f221,plain,(
+  ! [X0,X1,X2] : (? [X3,X4,X5] : (vtcheck(X2,X4,X5) & vtcheck(X2,X3,varrow(X5,X1)) & vapp(X3,X4) = X0) | sP12(X2,X1,X0) | ? [X10] : (vsomeType(X1) = vlookup(X10,X2) & vvar(X10) = X0) | ~vtcheck(X2,X0,X1))),
+  inference(definition_folding,[],[f194,f220])).
+fof(f220,plain,(
+  ! [X2,X1,X0] : (? [X6,X7,X8,X9] : (vtcheck(vbind(X6,X8,X2),X7,X9) & varrow(X8,X9) = X1 & vabs(X6,X8,X7) = X0) | ~sP12(X2,X1,X0))),
+  introduced(predicate_definition_introduction,[new_symbols(naming,[sP12])])).
+fof(f194,plain,(
+  ! [X0,X1,X2] : (? [X3,X4,X5] : (vtcheck(X2,X4,X5) & vtcheck(X2,X3,varrow(X5,X1)) & vapp(X3,X4) = X0) | ? [X6,X7,X8,X9] : (vtcheck(vbind(X6,X8,X2),X7,X9) & varrow(X8,X9) = X1 & vabs(X6,X8,X7) = X0) | ? [X10] : (vsomeType(X1) = vlookup(X10,X2) & vvar(X10) = X0) | ~vtcheck(X2,X0,X1))),
+  inference(flattening,[],[f193])).
+fof(f193,plain,(
+  ! [X0,X1,X2] : ((? [X3,X4,X5] : (vtcheck(X2,X4,X5) & vtcheck(X2,X3,varrow(X5,X1)) & vapp(X3,X4) = X0) | ? [X6,X7,X8,X9] : (vtcheck(vbind(X6,X8,X2),X7,X9) & varrow(X8,X9) = X1 & vabs(X6,X8,X7) = X0) | ? [X10] : (vsomeType(X1) = vlookup(X10,X2) & vvar(X10) = X0)) | ~vtcheck(X2,X0,X1))),
+  inference(ennf_transformation,[],[f112])).
+fof(f112,plain,(
+  ! [X0,X1,X2] : (vtcheck(X2,X0,X1) => (? [X3,X4,X5] : (vtcheck(X2,X4,X5) & vtcheck(X2,X3,varrow(X5,X1)) & vapp(X3,X4) = X0) | ? [X6,X7,X8,X9] : (vtcheck(vbind(X6,X8,X2),X7,X9) & varrow(X8,X9) = X1 & vabs(X6,X8,X7) = X0) | ? [X10] : (vsomeType(X1) = vlookup(X10,X2) & vvar(X10) = X0)))),
+  inference(rectify,[],[f54])).
+fof(f54,axiom,(
+  ! [X10,X14,X19] : (vtcheck(X19,X10,X14) => (? [X11,X12,X9] : (vtcheck(X19,X12,X9) & vtcheck(X19,X11,varrow(X9,X14)) & vapp(X11,X12) = X10) | ? [X8,X12,X32,X33] : (vtcheck(vbind(X8,X32,X19),X12,X33) & varrow(X32,X33) = X14 & vabs(X8,X32,X12) = X10) | ? [X8] : (vlookup(X8,X19) = vsomeType(X14) & vvar(X8) = X10)))),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f3129,plain,(
+  ( ! [X6,X8,X7,X5,X9] : (~vtcheck(X7,ve1app,varrow(X9,X8)) | vtcheck(vbind(X5,X6,X7),vapp(ve1app,ve2app),X8) | visFreeVar(X5,ve1app) | ~vtcheck(X7,ve2app,X9) | visFreeVar(X5,ve2app)) )),
+  inference(resolution,[],[f721,f445])).
+fof(f445,plain,(
+  ( ! [X2,X0,X3,X1] : (vtcheck(vbind(X0,X1,X2),ve2app,X3) | ~vtcheck(X2,ve2app,X3) | visFreeVar(X0,ve2app)) )),
+  inference(cnf_transformation,[],[f202])).
+fof(f202,plain,(
+  ! [X0,X1,X2,X3] : (vtcheck(vbind(X0,X1,X2),ve2app,X3) | ~vtcheck(X2,ve2app,X3) | visFreeVar(X0,ve2app))),
+  inference(flattening,[],[f201])).
+fof(f201,plain,(
+  ! [X0,X1,X2,X3] : (vtcheck(vbind(X0,X1,X2),ve2app,X3) | (~vtcheck(X2,ve2app,X3) | visFreeVar(X0,ve2app)))),
+  inference(ennf_transformation,[],[f116])).
+fof(f116,plain,(
+  ! [X0,X1,X2,X3] : ((vtcheck(X2,ve2app,X3) & ~visFreeVar(X0,ve2app)) => vtcheck(vbind(X0,X1,X2),ve2app,X3))),
+  inference(rectify,[],[f58])).
+fof(f58,axiom,(
+  ! [X8,X9,X19,X14] : ((vtcheck(X19,ve2app,X14) & ~visFreeVar(X8,ve2app)) => vtcheck(vbind(X8,X9,X19),ve2app,X14))),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f721,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (~vtcheck(vbind(X0,X1,X2),X3,X4) | vtcheck(vbind(X0,X1,X2),vapp(ve1app,X3),X5) | ~vtcheck(X2,ve1app,varrow(X4,X5)) | visFreeVar(X0,ve1app)) )),
+  inference(resolution,[],[f432,f444])).
+fof(f444,plain,(
+  ( ! [X2,X0,X3,X1] : (vtcheck(vbind(X0,X1,X2),ve1app,X3) | ~vtcheck(X2,ve1app,X3) | visFreeVar(X0,ve1app)) )),
+  inference(cnf_transformation,[],[f200])).
+fof(f200,plain,(
+  ! [X0,X1,X2,X3] : (vtcheck(vbind(X0,X1,X2),ve1app,X3) | ~vtcheck(X2,ve1app,X3) | visFreeVar(X0,ve1app))),
+  inference(flattening,[],[f199])).
+fof(f199,plain,(
+  ! [X0,X1,X2,X3] : (vtcheck(vbind(X0,X1,X2),ve1app,X3) | (~vtcheck(X2,ve1app,X3) | visFreeVar(X0,ve1app)))),
+  inference(ennf_transformation,[],[f115])).
+fof(f115,plain,(
+  ! [X0,X1,X2,X3] : ((vtcheck(X2,ve1app,X3) & ~visFreeVar(X0,ve1app)) => vtcheck(vbind(X0,X1,X2),ve1app,X3))),
+  inference(rectify,[],[f57])).
+fof(f57,axiom,(
+  ! [X8,X9,X19,X14] : ((vtcheck(X19,ve1app,X14) & ~visFreeVar(X8,ve1app)) => vtcheck(vbind(X8,X9,X19),ve1app,X14))),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f432,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~vtcheck(X1,X2,varrow(X0,X4)) | ~vtcheck(X1,X3,X0) | vtcheck(X1,vapp(X2,X3),X4)) )),
+  inference(cnf_transformation,[],[f192])).
+fof(f192,plain,(
+  ! [X0,X1,X2,X3,X4] : (vtcheck(X1,vapp(X2,X3),X4) | ~vtcheck(X1,X3,X0) | ~vtcheck(X1,X2,varrow(X0,X4)))),
+  inference(flattening,[],[f191])).
+fof(f191,plain,(
+  ! [X0,X1,X2,X3,X4] : (vtcheck(X1,vapp(X2,X3),X4) | (~vtcheck(X1,X3,X0) | ~vtcheck(X1,X2,varrow(X0,X4))))),
+  inference(ennf_transformation,[],[f111])).
+fof(f111,plain,(
+  ! [X0,X1,X2,X3,X4] : ((vtcheck(X1,X3,X0) & vtcheck(X1,X2,varrow(X0,X4))) => vtcheck(X1,vapp(X2,X3),X4))),
+  inference(rectify,[],[f53])).
+fof(f53,axiom,(
+  ! [X9,X19,X11,X12,X14] : ((vtcheck(X19,X12,X9) & vtcheck(X19,X11,varrow(X9,X14))) => vtcheck(X19,vapp(X11,X12),X14))),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f8885,plain,(
+  spl91_100 | ~spl91_1 | spl91_2),
+  inference(avatar_split_clause,[],[f8884,f1405,f1401,f8878])).
+fof(f8884,plain,(
+  vtcheck(sK89,ve2app,sK85(vapp(ve1app,ve2app),sK90,sK89)) | (~spl91_1 | spl91_2)),
+  inference(subsumption_resolution,[],[f8883,f447])).
+fof(f8883,plain,(
+  vtcheck(sK89,ve2app,sK85(vapp(ve1app,ve2app),sK90,sK89)) | ~vtcheck(sK89,vapp(ve1app,ve2app),sK90) | (~spl91_1 | spl91_2)),
+  inference(subsumption_resolution,[],[f8882,f304])).
+fof(f8882,plain,(
+  vtcheck(sK89,ve2app,sK85(vapp(ve1app,ve2app),sK90,sK89)) | vapp(ve1app,ve2app) = vvar(sK86(vapp(ve1app,ve2app),sK90,sK89)) | ~vtcheck(sK89,vapp(ve1app,ve2app),sK90) | (~spl91_1 | spl91_2)),
+  inference(subsumption_resolution,[],[f8832,f1406])).
+fof(f8832,plain,(
+  vtcheck(sK89,ve2app,sK85(vapp(ve1app,ve2app),sK90,sK89)) | sP12(sK89,sK90,vapp(ve1app,ve2app)) | vapp(ve1app,ve2app) = vvar(sK86(vapp(ve1app,ve2app),sK90,sK89)) | ~vtcheck(sK89,vapp(ve1app,ve2app),sK90) | ~spl91_1),
+  inference(superposition,[],[f440,f7987])).
+fof(f7987,plain,(
+  ve2app = sK84(vapp(ve1app,ve2app),sK90,sK89) | ~spl91_1),
+  inference(equality_resolution,[],[f2170])).
+fof(f2170,plain,(
+  ( ! [X4,X5] : (vapp(ve1app,ve2app) != vapp(X4,X5) | sK84(vapp(ve1app,ve2app),sK90,sK89) = X5) ) | ~spl91_1),
+  inference(superposition,[],[f301,f1403])).
+fof(f301,plain,(
+  ( ! [X2,X0,X3,X1] : (vapp(X0,X1) != vapp(X2,X3) | X1 = X3) )),
+  inference(cnf_transformation,[],[f122])).
+fof(f440,plain,(
+  ( ! [X2,X0,X1] : (vtcheck(X2,sK84(X0,X1,X2),sK85(X0,X1,X2)) | sP12(X2,X1,X0) | vvar(sK86(X0,X1,X2)) = X0 | ~vtcheck(X2,X0,X1)) )),
+  inference(cnf_transformation,[],[f291])).
+fof(f1415,plain,(
+  ~spl91_2),
+  inference(avatar_contradiction_clause,[],[f1414])).
+fof(f1414,plain,(
+  $false | ~spl91_2),
+  inference(subsumption_resolution,[],[f1412,f305])).
+fof(f305,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (vabs(X0,X1,X2) != vapp(X3,X4)) )),
+  inference(cnf_transformation,[],[f64])).
+fof(f64,plain,(
+  ! [X0,X1,X2,X3,X4] : vabs(X0,X1,X2) != vapp(X3,X4)),
+  inference(rectify,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X2,X3,X5,X6] : vabs(X0,X2,X3) != vapp(X5,X6)),
+  file('./p/COM126+1.tptp',unknown)).
+fof(f1412,plain,(
+  vapp(ve1app,ve2app) = vabs(sK79(sK89,sK90,vapp(ve1app,ve2app)),sK81(sK89,sK90,vapp(ve1app,ve2app)),sK80(sK89,sK90,vapp(ve1app,ve2app))) | ~spl91_2),
+  inference(resolution,[],[f1407,f433])).
+fof(f433,plain,(
+  ( ! [X2,X0,X1] : (~sP12(X0,X1,X2) | vabs(sK79(X0,X1,X2),sK81(X0,X1,X2),sK80(X0,X1,X2)) = X2) )),
+  inference(cnf_transformation,[],[f287])).
+fof(f287,plain,(
+  ! [X0,X1,X2] : ((vtcheck(vbind(sK79(X0,X1,X2),sK81(X0,X1,X2),X0),sK80(X0,X1,X2),sK82(X0,X1,X2)) & varrow(sK81(X0,X1,X2),sK82(X0,X1,X2)) = X1 & vabs(sK79(X0,X1,X2),sK81(X0,X1,X2),sK80(X0,X1,X2)) = X2) | ~sP12(X0,X1,X2))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK79,sK80,sK81,sK82])],[f285,f286])).
+fof(f286,plain,(
+  ! [X2,X1,X0] : (? [X3,X4,X5,X6] : (vtcheck(vbind(X3,X5,X0),X4,X6) & varrow(X5,X6) = X1 & vabs(X3,X5,X4) = X2) => (vtcheck(vbind(sK79(X0,X1,X2),sK81(X0,X1,X2),X0),sK80(X0,X1,X2),sK82(X0,X1,X2)) & varrow(sK81(X0,X1,X2),sK82(X0,X1,X2)) = X1 & vabs(sK79(X0,X1,X2),sK81(X0,X1,X2),sK80(X0,X1,X2)) = X2))),
+  introduced(choice_axiom,[])).
+fof(f285,plain,(
+  ! [X0,X1,X2] : (? [X3,X4,X5,X6] : (vtcheck(vbind(X3,X5,X0),X4,X6) & varrow(X5,X6) = X1 & vabs(X3,X5,X4) = X2) | ~sP12(X0,X1,X2))),
+  inference(rectify,[],[f284])).
+fof(f284,plain,(
+  ! [X2,X1,X0] : (? [X6,X7,X8,X9] : (vtcheck(vbind(X6,X8,X2),X7,X9) & varrow(X8,X9) = X1 & vabs(X6,X8,X7) = X0) | ~sP12(X2,X1,X0))),
+  inference(nnf_transformation,[],[f220])).
+fof(f1407,plain,(
+  sP12(sK89,sK90,vapp(ve1app,ve2app)) | ~spl91_2),
+  inference(avatar_component_clause,[],[f1405])).
+fof(f1408,plain,(
+  spl91_1 | spl91_2),
+  inference(avatar_split_clause,[],[f1399,f1405,f1401])).
+fof(f1399,plain,(
+  sP12(sK89,sK90,vapp(ve1app,ve2app)) | vapp(ve1app,ve2app) = vapp(sK83(vapp(ve1app,ve2app),sK90,sK89),sK84(vapp(ve1app,ve2app),sK90,sK89))),
+  inference(subsumption_resolution,[],[f1391,f304])).
+fof(f1391,plain,(
+  sP12(sK89,sK90,vapp(ve1app,ve2app)) | vapp(ve1app,ve2app) = vvar(sK86(vapp(ve1app,ve2app),sK90,sK89)) | vapp(ve1app,ve2app) = vapp(sK83(vapp(ve1app,ve2app),sK90,sK89),sK84(vapp(ve1app,ve2app),sK90,sK89))),
+  inference(resolution,[],[f436,f447])).
+fof(f436,plain,(
+  ( ! [X2,X0,X1] : (~vtcheck(X2,X0,X1) | sP12(X2,X1,X0) | vvar(sK86(X0,X1,X2)) = X0 | vapp(sK83(X0,X1,X2),sK84(X0,X1,X2)) = X0) )),
+  inference(cnf_transformation,[],[f291])).
+% SZS output end Proof for COM126+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 120125
+% Time elapsed: 5.249 s
+% ------------------------------
+% ------------------------------

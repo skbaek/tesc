@@ -1,0 +1,132 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for KRS128+1
+% SZS output start Proof for KRS128+1
+fof(f74,plain,(
+  $false),
+  inference(resolution,[],[f73,f59])).
+fof(f59,plain,(
+  cUnsatisfiable(i2003_11_14_17_22_31584)),
+  inference(cnf_transformation,[],[f12])).
+fof(f12,axiom,(
+  cUnsatisfiable(i2003_11_14_17_22_31584)),
+  file('./p/KRS128+1.tptp',unknown)).
+fof(f73,plain,(
+  ( ! [X0] : (~cUnsatisfiable(X0)) )),
+  inference(subsumption_resolution,[],[f70,f67])).
+fof(f67,plain,(
+  ( ! [X0] : (ca_Cx4(sK0(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(duplicate_literal_removal,[],[f66])).
+fof(f66,plain,(
+  ( ! [X0] : (ca_Cx4(sK0(X0)) | ~cUnsatisfiable(X0) | ~cUnsatisfiable(X0)) )),
+  inference(resolution,[],[f48,f45])).
+fof(f45,plain,(
+  ( ! [X0] : (rr(X0,sK0(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(cnf_transformation,[],[f28])).
+fof(f28,plain,(
+  ! [X0] : ((! [X1] : (ca_Cx4(X1) | ~rr(X0,X1)) & ! [X2] : (cd(X2) | ~rr(X0,X2)) & (cexcomp(sK0(X0)) & rr(X0,sK0(X0)))) | ~cUnsatisfiable(X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f24,f27])).
+fof(f27,plain,(
+  ! [X0] : (? [X3] : (cexcomp(X3) & rr(X0,X3)) => (cexcomp(sK0(X0)) & rr(X0,sK0(X0))))),
+  introduced(choice_axiom,[])).
+fof(f24,plain,(
+  ! [X0] : ((! [X1] : (ca_Cx4(X1) | ~rr(X0,X1)) & ! [X2] : (cd(X2) | ~rr(X0,X2)) & ? [X3] : (cexcomp(X3) & rr(X0,X3))) | ~cUnsatisfiable(X0))),
+  inference(ennf_transformation,[],[f18])).
+fof(f18,plain,(
+  ! [X0] : (cUnsatisfiable(X0) => (! [X1] : (rr(X0,X1) => ca_Cx4(X1)) & ! [X2] : (rr(X0,X2) => cd(X2)) & ? [X3] : (cexcomp(X3) & rr(X0,X3))))),
+  inference(unused_predicate_definition_removal,[],[f13])).
+fof(f13,plain,(
+  ! [X0] : (cUnsatisfiable(X0) <=> (! [X1] : (rr(X0,X1) => ca_Cx4(X1)) & ! [X2] : (rr(X0,X2) => cd(X2)) & ? [X3] : (cexcomp(X3) & rr(X0,X3))))),
+  inference(rectify,[],[f3])).
+fof(f3,axiom,(
+  ! [X0] : (cUnsatisfiable(X0) <=> (! [X1] : (rr(X0,X1) => ca_Cx4(X1)) & ! [X1] : (rr(X0,X1) => cd(X1)) & ? [X1] : (cexcomp(X1) & rr(X0,X1))))),
+  file('./p/KRS128+1.tptp',unknown)).
+fof(f48,plain,(
+  ( ! [X0,X1] : (~rr(X0,X1) | ca_Cx4(X1) | ~cUnsatisfiable(X0)) )),
+  inference(cnf_transformation,[],[f28])).
+fof(f70,plain,(
+  ( ! [X0] : (~cUnsatisfiable(X0) | ~ca_Cx4(sK0(X0))) )),
+  inference(resolution,[],[f69,f62])).
+fof(f62,plain,(
+  ( ! [X0] : (~ca_Cx4xcomp(X0) | ~ca_Cx4(X0)) )),
+  inference(resolution,[],[f53,f54])).
+fof(f54,plain,(
+  ( ! [X2,X0] : (~ra_Px4(X0,X2) | ~ca_Cx4xcomp(X0)) )),
+  inference(cnf_transformation,[],[f42])).
+fof(f42,plain,(
+  ! [X0] : ((ca_Cx4xcomp(X0) | ra_Px4(X0,sK4(X0))) & (! [X2] : ~ra_Px4(X0,X2) | ~ca_Cx4xcomp(X0)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK4])],[f40,f41])).
+fof(f41,plain,(
+  ! [X0] : (? [X1] : ra_Px4(X0,X1) => ra_Px4(X0,sK4(X0)))),
+  introduced(choice_axiom,[])).
+fof(f40,plain,(
+  ! [X0] : ((ca_Cx4xcomp(X0) | ? [X1] : ra_Px4(X0,X1)) & (! [X2] : ~ra_Px4(X0,X2) | ~ca_Cx4xcomp(X0)))),
+  inference(rectify,[],[f39])).
+fof(f39,plain,(
+  ! [X0] : ((ca_Cx4xcomp(X0) | ? [X1] : ra_Px4(X0,X1)) & (! [X1] : ~ra_Px4(X0,X1) | ~ca_Cx4xcomp(X0)))),
+  inference(nnf_transformation,[],[f26])).
+fof(f26,plain,(
+  ! [X0] : (ca_Cx4xcomp(X0) <=> ! [X1] : ~ra_Px4(X0,X1))),
+  inference(ennf_transformation,[],[f10])).
+fof(f10,axiom,(
+  ! [X0] : (ca_Cx4xcomp(X0) <=> ~? [X1] : ra_Px4(X0,X1))),
+  file('./p/KRS128+1.tptp',unknown)).
+fof(f53,plain,(
+  ( ! [X0] : (ra_Px4(X0,sK3(X0)) | ~ca_Cx4(X0)) )),
+  inference(cnf_transformation,[],[f38])).
+fof(f38,plain,(
+  ! [X0] : (ra_Px4(X0,sK3(X0)) | ~ca_Cx4(X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK3])],[f25,f37])).
+fof(f37,plain,(
+  ! [X0] : (? [X1] : ra_Px4(X0,X1) => ra_Px4(X0,sK3(X0)))),
+  introduced(choice_axiom,[])).
+fof(f25,plain,(
+  ! [X0] : (? [X1] : ra_Px4(X0,X1) | ~ca_Cx4(X0))),
+  inference(ennf_transformation,[],[f19])).
+fof(f19,plain,(
+  ! [X0] : (ca_Cx4(X0) => ? [X1] : ra_Px4(X0,X1))),
+  inference(unused_predicate_definition_removal,[],[f16])).
+fof(f16,plain,(
+  ! [X0] : (ca_Cx4(X0) <=> ? [X1] : ra_Px4(X0,X1))),
+  inference(rectify,[],[f9])).
+fof(f9,axiom,(
+  ! [X0] : (ca_Cx4(X0) <=> ? [X2] : ra_Px4(X0,X2))),
+  file('./p/KRS128+1.tptp',unknown)).
+fof(f69,plain,(
+  ( ! [X0] : (ca_Cx4xcomp(sK0(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(subsumption_resolution,[],[f68,f46])).
+fof(f46,plain,(
+  ( ! [X0] : (cexcomp(sK0(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(cnf_transformation,[],[f28])).
+fof(f68,plain,(
+  ( ! [X0] : (~cUnsatisfiable(X0) | ~cexcomp(sK0(X0)) | ca_Cx4xcomp(sK0(X0))) )),
+  inference(resolution,[],[f65,f58])).
+fof(f58,plain,(
+  ( ! [X0] : (~cd(X0) | ~cexcomp(X0) | ca_Cx4xcomp(X0)) )),
+  inference(cnf_transformation,[],[f44])).
+fof(f44,plain,(
+  ! [X0] : ((ca_Cx4xcomp(X0) | ~cexcomp(X0) | ~cd(X0)) & ((cexcomp(X0) & cd(X0)) | ~ca_Cx4xcomp(X0)))),
+  inference(flattening,[],[f43])).
+fof(f43,plain,(
+  ! [X0] : ((ca_Cx4xcomp(X0) | (~cexcomp(X0) | ~cd(X0))) & ((cexcomp(X0) & cd(X0)) | ~ca_Cx4xcomp(X0)))),
+  inference(nnf_transformation,[],[f11])).
+fof(f11,axiom,(
+  ! [X0] : (ca_Cx4xcomp(X0) <=> (cexcomp(X0) & cd(X0)))),
+  file('./p/KRS128+1.tptp',unknown)).
+fof(f65,plain,(
+  ( ! [X0] : (cd(sK0(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(duplicate_literal_removal,[],[f64])).
+fof(f64,plain,(
+  ( ! [X0] : (cd(sK0(X0)) | ~cUnsatisfiable(X0) | ~cUnsatisfiable(X0)) )),
+  inference(resolution,[],[f47,f45])).
+fof(f47,plain,(
+  ( ! [X2,X0] : (~rr(X0,X2) | cd(X2) | ~cUnsatisfiable(X0)) )),
+  inference(cnf_transformation,[],[f28])).
+% SZS output end Proof for KRS128+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

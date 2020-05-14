@@ -1,0 +1,140 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_14, plain, (response(lark,lark)=l2)).
+#
+#cnf(i_0_15, plain, (response(l2,lark)=l3)).
+#
+#cnf(i_0_16, negated_conjecture, (response(l3,l3)=l3)).
+#
+#cnf(i_0_13, plain, (response(l2,l2)!=l2)).
+#
+#cnf(i_0_9, plain, (response(response(kestrel,X1),X2)=X1)).
+#
+#cnf(i_0_10, plain, (response(response(lark,X1),X2)=response(X1,response(X2,X2)))).
+#
+#cnf(i_0_22, plain, (response(lark,response(X1,X1))=response(l2,X1))).
+#
+#cnf(i_0_26, plain, (response(lark,l2)=l3)).
+#
+#cnf(i_0_25, negated_conjecture, (response(l2,l3)=response(lark,l3))).
+#
+#cnf(i_0_29, plain, (response(l2,response(X1,X1))=response(l3,X1))).
+#
+#cnf(i_0_31, negated_conjecture, (response(lark,l3)=l3)).
+#
+#cnf(i_0_25, negated_conjecture, (response(l2,l3)=l3)).
+#
+#cnf(i_0_32, plain, (response(l3,lark)=response(l2,l2))).
+#
+#cnf(i_0_35, negated_conjecture, (response(l3,response(X1,X1))=response(l3,X1))).
+#
+#cnf(i_0_37, negated_conjecture, (response(l3,l2)=response(l2,l2))).
+#
+#cnf(i_0_27, plain, (response(l2,response(kestrel,X1))=response(lark,X1))).
+#
+#cnf(i_0_40, plain, (response(l3,kestrel)=response(lark,kestrel))).
+#
+#cnf(i_0_33, plain, (response(l3,response(kestrel,X1))=response(l2,X1))).
+#
+#cnf(i_0_42, negated_conjecture, (response(l2,kestrel)=response(lark,kestrel))).
+#
+#cnf(i_0_38, negated_conjecture, (response(l3,X1)=response(l2,X1))).
+#
+#cnf(i_0_32, plain, (response(l2,l2)=l3)).
+#
+#cnf(i_0_33, plain, (response(l2,X1)=response(lark,X1))).
+#
+#cnf(i_0_15, plain, (l3=l2)).
+#
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(lark_exists, axiom, (response(response(lark,X1),X2)=response(X1,response(X2,X2))), file('./p/COL059-1.tptp', lark_exists)).
+cnf(l2_definition, axiom, (response(lark,lark)=l2), file('./p/COL059-1.tptp', l2_definition)).
+cnf(l3_definition, axiom, (response(l2,lark)=l3), file('./p/COL059-1.tptp', l3_definition)).
+cnf(prove_l3_not_egocentric, negated_conjecture, (response(l3,l3)=l3), file('./p/COL059-1.tptp', prove_l3_not_egocentric)).
+cnf(kestrel_exists, axiom, (response(response(kestrel,X1),X2)=X1), file('./p/COL059-1.tptp', kestrel_exists)).
+cnf(lark_not_egocentric, axiom, (response(l2,l2)!=l2), file('./p/COL059-1.tptp', lark_not_egocentric)).
+cnf(c_0_6, axiom, (response(response(lark,X1),X2)=response(X1,response(X2,X2))), lark_exists).
+cnf(c_0_7, axiom, (response(lark,lark)=l2), l2_definition).
+cnf(c_0_8, plain, (response(lark,response(X1,X1))=response(l2,X1)), inference(pm,[status(thm)],[c_0_6, c_0_7])).
+cnf(c_0_9, axiom, (response(l2,lark)=l3), l3_definition).
+cnf(c_0_10, plain, (response(lark,l2)=l3), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_8, c_0_7]), c_0_9])).
+cnf(c_0_11, negated_conjecture, (response(l3,l3)=l3), prove_l3_not_egocentric).
+cnf(c_0_12, plain, (response(l2,response(X1,X1))=response(l3,X1)), inference(pm,[status(thm)],[c_0_6, c_0_10])).
+cnf(c_0_13, negated_conjecture, (response(l2,l3)=response(lark,l3)), inference(pm,[status(thm)],[c_0_8, c_0_11])).
+cnf(c_0_14, negated_conjecture, (response(lark,l3)=l3), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_12, c_0_11]), c_0_13]), c_0_11])).
+cnf(c_0_15, axiom, (response(response(kestrel,X1),X2)=X1), kestrel_exists).
+cnf(c_0_16, negated_conjecture, (response(l3,response(X1,X1))=response(l3,X1)), inference(pm,[status(thm)],[c_0_6, c_0_14])).
+cnf(c_0_17, plain, (response(l3,response(kestrel,X1))=response(l2,X1)), inference(pm,[status(thm)],[c_0_12, c_0_15])).
+cnf(c_0_18, negated_conjecture, (response(l3,X1)=response(l2,X1)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_16, c_0_15]), c_0_17])).
+cnf(c_0_19, plain, (response(l2,response(kestrel,X1))=response(lark,X1)), inference(pm,[status(thm)],[c_0_8, c_0_15])).
+cnf(c_0_20, plain, (response(l3,lark)=response(l2,l2)), inference(pm,[status(thm)],[c_0_12, c_0_7])).
+cnf(c_0_21, plain, (response(l2,X1)=response(lark,X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_17, c_0_18]), c_0_19])).
+cnf(c_0_22, axiom, (response(l2,l2)!=l2), lark_not_egocentric).
+cnf(c_0_23, plain, (response(l2,l2)=l3), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_20, c_0_18]), c_0_9])).
+cnf(c_0_24, plain, (l3=l2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_9, c_0_21]), c_0_7])).
+cnf(c_0_25, plain, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_22, c_0_23]), c_0_24])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 26
+# Proof object clause steps            : 20
+# Proof object formula steps           : 6
+# Proof object conjectures             : 6
+# Proof object clause conjectures      : 5
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 6
+# Proof object initial formulas used   : 6
+# Proof object generating inferences   : 10
+# Proof object simplifying inferences  : 13
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 8
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 8
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 8
+# Processed clauses                    : 24
+# ...of these trivial                  : 0
+# ...subsumed                          : 0
+# ...remaining for further processing  : 23
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 18
+# Generated clauses                    : 31
+# ...of the previous two non-trivial   : 34
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 31
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 5
+#    Positive orientable unit clauses  : 4
+#    Positive unorientable unit clauses: 1
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 0
+# Current number of unprocessed clauses: 18
+# ...number of literals in the above   : 18
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 18
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 16
+# BW rewrite match successes           : 16
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 475

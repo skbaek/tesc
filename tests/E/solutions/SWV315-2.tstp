@@ -1,0 +1,145 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_19, plain, (c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,X2,tc_Message_Omsg))).
+#
+#cnf(i_0_22, plain, (c_in(X1,c_insert(X4,X2,X3),X3)|~c_in(X1,X2,X3))).
+#
+#cnf(i_0_18, plain, (c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,c_Message_Oanalz(X2),tc_Message_Omsg))).
+#
+#cnf(i_0_14, negated_conjecture, (~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg)|~c_in(v_A,c_Event_Obad,tc_Message_Oagent))).
+#
+#cnf(i_0_12, negated_conjecture, (c_in(v_X,c_Message_Osynth(c_Message_Oanalz(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf))),tc_Message_Omsg))).
+#
+#cnf(i_0_17, plain, (c_in(c_Message_Omsg_OKey(X1),X2,tc_Message_Omsg)|~c_in(c_Message_Omsg_OKey(X1),c_Message_Osynth(X2),tc_Message_Omsg))).
+#
+#cnf(i_0_21, plain, (c_in(X1,X3,X4)|c_in(X1,X2,X4)|~c_in(X1,c_union(X2,X3,X4),X4))).
+#
+#cnf(i_0_23, negated_conjecture, (~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg),tc_Message_Omsg)|~c_in(v_A,c_Event_Obad,tc_Message_Oagent))).
+#
+#cnf(i_0_20, plain, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(X1)),c_Event_Oknows(c_Message_Oagent_OSpy,X2),tc_Message_Omsg)|~c_in(X1,c_Event_Obad,tc_Message_Oagent))).
+#
+#cnf(i_0_13, negated_conjecture, (c_in(v_A,c_Event_Obad,tc_Message_Oagent)|~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg))).
+#
+#cnf(i_0_25, negated_conjecture, (c_in(v_A,c_Event_Obad,tc_Message_Oagent)|~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg))).
+#
+#cnf(i_0_24, negated_conjecture, (~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)|~c_in(v_A,c_Event_Obad,tc_Message_Oagent))).
+#
+#cnf(i_0_15, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg)|c_in(v_A,c_Event_Obad,tc_Message_Oagent))).
+#
+#cnf(i_0_16, plain, (c_in(X1,c_union(c_Message_Osynth(c_Message_Oanalz(X3)),c_Message_Oparts(X3),tc_Message_Omsg),tc_Message_Omsg)|~c_in(X1,c_Message_Oparts(c_insert(X2,X3,tc_Message_Omsg)),tc_Message_Omsg)|~c_in(X2,c_Message_Osynth(c_Message_Oanalz(X3)),tc_Message_Omsg))).
+#
+#cnf(i_0_30, plain, (c_in(X1,c_union(c_Message_Osynth(c_Message_Oanalz(X2)),c_Message_Oparts(X2),tc_Message_Omsg),tc_Message_Omsg)|~c_in(X1,c_insert(X3,X2,tc_Message_Omsg),tc_Message_Omsg)|~c_in(X3,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg))).
+#
+#cnf(i_0_27, negated_conjecture, (~c_in(v_A,c_Event_Obad,tc_Message_Oagent))).
+#
+#cnf(i_0_15, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg))).
+#
+#cnf(i_0_32, plain, (c_in(X1,c_union(c_Message_Osynth(c_Message_Oanalz(X2)),c_Message_Oparts(X2),tc_Message_Omsg),tc_Message_Omsg)|~c_in(X3,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg)|~c_in(X1,X2,tc_Message_Omsg))).
+###
+#cnf(i_0_31, plain, (c_in(X1,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg)|c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,c_insert(X3,X2,tc_Message_Omsg),tc_Message_Omsg)|~c_in(X3,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg))).
+##
+#cnf(i_0_29, plain, (c_in(X1,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg)|c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,c_Message_Oparts(c_insert(X3,X2,tc_Message_Omsg)),tc_Message_Omsg)|~c_in(X3,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg))).
+#
+#cnf(i_0_35, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Osynth(c_Message_Oanalz(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf))),tc_Message_Omsg)|c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg))).
+#
+#cnf(i_0_37, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oanalz(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg)|c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg))).
+#
+#cnf(i_0_38, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(cls_conjecture_4, negated_conjecture, (~c_in(v_A,c_Event_Obad,tc_Message_Oagent)|~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg)), file('./p/SWV315-2.tptp', cls_conjecture_4)).
+cnf(cls_Message_Oparts_OInj_0, axiom, (c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,X2,tc_Message_Omsg)), file('./p/SWV315-2.tptp', cls_Message_Oparts_OInj_0)).
+cnf(cls_Set_Oinsert__iff_2, axiom, (c_in(X1,c_insert(X4,X2,X3),X3)|~c_in(X1,X2,X3)), file('./p/SWV315-2.tptp', cls_Set_Oinsert__iff_2)).
+cnf(cls_Public_OSpy__spies__bad__shrK_0, axiom, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(X1)),c_Event_Oknows(c_Message_Oagent_OSpy,X2),tc_Message_Omsg)|~c_in(X1,c_Event_Obad,tc_Message_Oagent)), file('./p/SWV315-2.tptp', cls_Public_OSpy__spies__bad__shrK_0)).
+cnf(cls_Set_OUn__iff_0, axiom, (c_in(X1,X3,X4)|c_in(X1,X2,X4)|~c_in(X1,c_union(X2,X3,X4),X4)), file('./p/SWV315-2.tptp', cls_Set_OUn__iff_0)).
+cnf(cls_Message_OFake__parts__insert__in__Un__dest_0, axiom, (c_in(X1,c_union(c_Message_Osynth(c_Message_Oanalz(X3)),c_Message_Oparts(X3),tc_Message_Omsg),tc_Message_Omsg)|~c_in(X1,c_Message_Oparts(c_insert(X2,X3,tc_Message_Omsg)),tc_Message_Omsg)|~c_in(X2,c_Message_Osynth(c_Message_Oanalz(X3)),tc_Message_Omsg)), file('./p/SWV315-2.tptp', cls_Message_OFake__parts__insert__in__Un__dest_0)).
+cnf(cls_conjecture_5, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg)|c_in(v_A,c_Event_Obad,tc_Message_Oagent)), file('./p/SWV315-2.tptp', cls_conjecture_5)).
+cnf(cls_conjecture_1, negated_conjecture, (c_in(v_X,c_Message_Osynth(c_Message_Oanalz(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf))),tc_Message_Omsg)), file('./p/SWV315-2.tptp', cls_conjecture_1)).
+cnf(cls_Message_OKey__synth__eq_0, axiom, (c_in(c_Message_Omsg_OKey(X1),X2,tc_Message_Omsg)|~c_in(c_Message_Omsg_OKey(X1),c_Message_Osynth(X2),tc_Message_Omsg)), file('./p/SWV315-2.tptp', cls_Message_OKey__synth__eq_0)).
+cnf(cls_Message_Oanalz__conj__parts_0, axiom, (c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,c_Message_Oanalz(X2),tc_Message_Omsg)), file('./p/SWV315-2.tptp', cls_Message_Oanalz__conj__parts_0)).
+cnf(cls_conjecture_2, negated_conjecture, (c_in(v_A,c_Event_Obad,tc_Message_Oagent)|~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg)), file('./p/SWV315-2.tptp', cls_conjecture_2)).
+cnf(c_0_11, negated_conjecture, (~c_in(v_A,c_Event_Obad,tc_Message_Oagent)|~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg)), cls_conjecture_4).
+cnf(c_0_12, axiom, (c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,X2,tc_Message_Omsg)), cls_Message_Oparts_OInj_0).
+cnf(c_0_13, negated_conjecture, (~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg),tc_Message_Omsg)|~c_in(v_A,c_Event_Obad,tc_Message_Oagent)), inference(pm,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_14, axiom, (c_in(X1,c_insert(X4,X2,X3),X3)|~c_in(X1,X2,X3)), cls_Set_Oinsert__iff_2).
+cnf(c_0_15, negated_conjecture, (~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)|~c_in(v_A,c_Event_Obad,tc_Message_Oagent)), inference(pm,[status(thm)],[c_0_13, c_0_14])).
+cnf(c_0_16, axiom, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(X1)),c_Event_Oknows(c_Message_Oagent_OSpy,X2),tc_Message_Omsg)|~c_in(X1,c_Event_Obad,tc_Message_Oagent)), cls_Public_OSpy__spies__bad__shrK_0).
+cnf(c_0_17, axiom, (c_in(X1,X3,X4)|c_in(X1,X2,X4)|~c_in(X1,c_union(X2,X3,X4),X4)), cls_Set_OUn__iff_0).
+cnf(c_0_18, axiom, (c_in(X1,c_union(c_Message_Osynth(c_Message_Oanalz(X3)),c_Message_Oparts(X3),tc_Message_Omsg),tc_Message_Omsg)|~c_in(X1,c_Message_Oparts(c_insert(X2,X3,tc_Message_Omsg)),tc_Message_Omsg)|~c_in(X2,c_Message_Osynth(c_Message_Oanalz(X3)),tc_Message_Omsg)), cls_Message_OFake__parts__insert__in__Un__dest_0).
+cnf(c_0_19, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg)|c_in(v_A,c_Event_Obad,tc_Message_Oagent)), cls_conjecture_5).
+cnf(c_0_20, negated_conjecture, (~c_in(v_A,c_Event_Obad,tc_Message_Oagent)), inference(pm,[status(thm)],[c_0_15, c_0_16])).
+cnf(c_0_21, plain, (c_in(X1,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg)|c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,c_Message_Oparts(c_insert(X3,X2,tc_Message_Omsg)),tc_Message_Omsg)|~c_in(X3,c_Message_Osynth(c_Message_Oanalz(X2)),tc_Message_Omsg)), inference(pm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_22, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_insert(v_X,c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf),tc_Message_Omsg)),tc_Message_Omsg)), inference(sr,[status(thm)],[c_0_19, c_0_20])).
+cnf(c_0_23, negated_conjecture, (c_in(v_X,c_Message_Osynth(c_Message_Oanalz(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf))),tc_Message_Omsg)), cls_conjecture_1).
+cnf(c_0_24, axiom, (c_in(c_Message_Omsg_OKey(X1),X2,tc_Message_Omsg)|~c_in(c_Message_Omsg_OKey(X1),c_Message_Osynth(X2),tc_Message_Omsg)), cls_Message_OKey__synth__eq_0).
+cnf(c_0_25, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Osynth(c_Message_Oanalz(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf))),tc_Message_Omsg)|c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_21, c_0_22]), c_0_23])])).
+cnf(c_0_26, axiom, (c_in(X1,c_Message_Oparts(X2),tc_Message_Omsg)|~c_in(X1,c_Message_Oanalz(X2),tc_Message_Omsg)), cls_Message_Oanalz__conj__parts_0).
+cnf(c_0_27, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oanalz(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg)|c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg)), inference(pm,[status(thm)],[c_0_24, c_0_25])).
+cnf(c_0_28, negated_conjecture, (c_in(v_A,c_Event_Obad,tc_Message_Oagent)|~c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg)), cls_conjecture_2).
+cnf(c_0_29, negated_conjecture, (c_in(c_Message_Omsg_OKey(c_Public_OshrK(v_A)),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,v_evsf)),tc_Message_Omsg)), inference(pm,[status(thm)],[c_0_26, c_0_27])).
+cnf(c_0_30, negated_conjecture, ($false), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_28, c_0_29])]), c_0_20]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 31
+# Proof object clause steps            : 20
+# Proof object formula steps           : 11
+# Proof object conjectures             : 16
+# Proof object clause conjectures      : 12
+# Proof object formula conjectures     : 4
+# Proof object initial clauses used    : 11
+# Proof object initial formulas used   : 11
+# Proof object generating inferences   : 7
+# Proof object simplifying inferences  : 6
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 11
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 11
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 11
+# Processed clauses                    : 26
+# ...of these trivial                  : 0
+# ...subsumed                          : 3
+# ...remaining for further processing  : 23
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 4
+# Generated clauses                    : 17
+# ...of the previous two non-trivial   : 16
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 16
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 18
+#    Positive orientable unit clauses  : 3
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 1
+#    Non-unit-clauses                  : 14
+# Current number of unprocessed clauses: 1
+# ...number of literals in the above   : 4
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 5
+# Clause-clause subsumption calls (NU) : 49
+# Rec. Clause-clause subsumption calls : 47
+# Non-unit clause-clause subsumptions  : 2
+# Unit Clause-clause subsumption calls : 5
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 2
+# BW rewrite match successes           : 2
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 754

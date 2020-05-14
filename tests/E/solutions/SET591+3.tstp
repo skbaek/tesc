@@ -1,0 +1,707 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_11, plain, (subset(X1,X1))).
+#
+#cnf(i_0_9, plain, (subset(X1,X2)|X1!=X2)).
+##
+#cnf(i_0_14, negated_conjecture, (empty_set!=esk3_0)).
+#
+#cnf(i_0_12, plain, (empty(X1)|member(esk2_1(X1),X1))).
+#
+#cnf(i_0_15, negated_conjecture, (subset(esk3_0,difference(esk4_0,esk3_0)))).
+#
+#cnf(i_0_6, plain, (member(X1,X2)|~member(X1,difference(X2,X3)))).
+#
+#cnf(i_0_7, plain, (~member(X1,empty_set))).
+#
+#cnf(i_0_17, plain, (empty(empty_set))).
+#
+#cnf(i_0_1, plain, (subset(X1,X2)|~member(esk1_2(X1,X2),X2))).
+#
+#cnf(i_0_8, plain, (X1=X2|~subset(X2,X1)|~subset(X1,X2))).
+#
+#cnf(i_0_13, plain, (~empty(X1)|~member(X2,X1))).
+#
+#cnf(i_0_2, plain, (member(esk1_2(X1,X2),X1)|subset(X1,X2))).
+#
+#cnf(i_0_21, plain, (subset(empty_set,X1))).
+#
+#cnf(i_0_23, plain, (subset(X1,X2)|~empty(X1))).
+#
+#cnf(i_0_5, plain, (~member(X1,difference(X3,X2))|~member(X1,X2))).
+#
+#cnf(i_0_25, plain, (empty_set=X1|~subset(X1,empty_set))).
+#
+#cnf(i_0_32, plain, (empty_set=X1|~empty(X1))).
+##
+#cnf(i_0_27, plain, (X1=X2|~empty(X1)|~subset(X2,X1))).
+##
+#cnf(i_0_36, plain, (X1=X2|~empty(X1)|~empty(X2))).
+#####
+#cnf(i_0_3, plain, (member(X3,X2)|~member(X3,X1)|~subset(X1,X2))).
+#
+#cnf(i_0_52, plain, (~member(X1,X2)|~subset(X2,empty_set))).
+#
+#cnf(i_0_62, plain, (empty(X1)|~subset(X1,empty_set))).
+#
+#cnf(i_0_66, plain, (empty(X1)|X1!=empty_set)).
+#
+#cnf(i_0_63, plain, (subset(X1,X2)|~subset(X1,empty_set))).
+#
+#cnf(i_0_56, plain, (~empty(X1)|~member(X2,X3)|~subset(X3,X1))).
+##
+#cnf(i_0_77, plain, (subset(X1,X2)|X1!=empty_set)).
+####
+#cnf(i_0_86, plain, (empty(X2)|~empty(X1)|~subset(X2,X1))).
+####
+#cnf(i_0_70, plain, (X1=X2|X1!=empty_set|~empty(X2))).
+######
+#cnf(i_0_82, plain, (X3!=X1|~empty(X1)|~member(X2,X3))).
+##
+#cnf(i_0_121, plain, (subset(X1,X3)|X1!=X2|~empty(X2))).
+#####
+#cnf(i_0_125, plain, (empty_set=X1|X1!=X2|~empty(X2))).
+#####
+#cnf(i_0_136, negated_conjecture, (X1!=esk3_0|X1!=X2|~empty(X2))).
+##
+#cnf(i_0_87, plain, (subset(X2,X3)|~empty(X1)|~subset(X2,X1))).
+##
+#cnf(i_0_147, negated_conjecture, (esk3_0!=X1|~empty(X1))).
+#####
+#cnf(i_0_151, plain, (empty_set=X1|~empty(X2)|~subset(X1,X2))).
+######
+#cnf(i_0_92, plain, (X1=X2|X1!=empty_set|~subset(X2,X1))).
+#
+#cnf(i_0_171, negated_conjecture, (~empty(difference(esk4_0,esk3_0)))).
+####
+#cnf(i_0_149, negated_conjecture, (X1!=esk3_0|X1!=empty_set)).
+#
+#cnf(i_0_74, plain, (X1=X2|~empty(X1)|~subset(X2,empty_set))).
+##########
+#cnf(i_0_134, plain, (subset(X1,X2)|X3!=empty_set|X1!=X3)).
+#
+#cnf(i_0_191, negated_conjecture, (difference(esk4_0,esk3_0)!=empty_set)).
+###
+#cnf(i_0_218, plain, (empty(X1)|X2!=empty_set|X1!=X2)).
+#
+#cnf(i_0_96, plain, (X3!=empty_set|~empty(X1)|~member(X2,X3))).
+#######
+#cnf(i_0_72, plain, (X1=X2|~subset(X1,empty_set)|~subset(X2,X1))).
+#########
+#cnf(i_0_123, plain, (X2!=empty_set|X1!=X2|~member(X3,X1))).
+####
+#cnf(i_0_272, plain, (X1!=empty_set|~member(X2,X1))).
+############
+#cnf(i_0_280, plain, (X1!=empty_set|~member(X2,X3)|~subset(X3,X1))).
+#
+#cnf(i_0_291, plain, (empty(X2)|X1!=empty_set|~subset(X2,X1))).
+######
+#cnf(i_0_292, plain, (subset(X2,X3)|X1!=empty_set|~subset(X2,X1))).
+#######
+#cnf(i_0_304, plain, (empty_set=X1|X2!=empty_set|~subset(X1,X2))).
+##########
+#cnf(i_0_150, negated_conjecture, (X1!=esk3_0|X2!=empty_set|X1!=X2)).
+#####
+#cnf(i_0_131, plain, (X1=X2|X2!=X3|~empty(X1)|~empty(X3))).
+########
+#cnf(i_0_183, plain, (X1=X2|X1!=empty_set|~subset(X2,empty_set))).
+##########
+#cnf(i_0_60, plain, (empty(X1)|member(esk2_1(X1),X2)|~subset(X1,X2))).
+#####
+#cnf(i_0_238, negated_conjecture, (difference(esk4_0,esk3_0)!=X1|X1!=empty_set)).
+#
+#cnf(i_0_424, plain, (empty(X1)|~subset(X2,empty_set)|~subset(X1,X2))).
+#########
+#cnf(i_0_454, plain, (empty(X1)|X1!=X2|~subset(X2,empty_set))).
+######
+#cnf(i_0_475, negated_conjecture, (difference(esk4_0,esk3_0)!=X1|~subset(X1,empty_set))).
+#######
+#cnf(i_0_476, plain, (empty_set=X1|X1!=X2|~subset(X2,empty_set))).
+#####
+#cnf(i_0_503, negated_conjecture, (difference(esk4_0,esk3_0)!=X1|~empty(X1))).
+###
+#cnf(i_0_515, plain, (subset(X2,X1)|X2!=X3|~subset(X3,empty_set))).
+##############
+#cnf(i_0_141, plain, (empty(X1)|X2!=X3|~empty(X3)|~subset(X1,X2))).
+###
+#cnf(i_0_512, plain, (X2!=X3|~member(X1,X2)|~subset(X3,empty_set))).
+#########
+#cnf(i_0_495, plain, (empty(X1)|X1!=X2|~empty(X3)|~subset(X2,X3))).
+#########
+#cnf(i_0_157, plain, (X1=X2|~empty(X1)|~empty(X3)|~subset(X2,X3))).
+##
+#cnf(i_0_480, negated_conjecture, (esk3_0!=X1|X1!=X2|~subset(X2,empty_set))).
+#########
+#cnf(i_0_128, plain, (X1=X2|X1!=X3|~empty(X3)|~subset(X2,X1))).
+###
+#cnf(i_0_691, negated_conjecture, (esk3_0!=X1|~subset(X1,empty_set))).
+###
+#cnf(i_0_258, plain, (X1=X2|~subset(X1,empty_set)|~subset(X2,empty_set))).
+##################
+#cnf(i_0_430, plain, (empty(X2)|~empty(X1)|~subset(X3,X1)|~subset(X2,X3))).
+###############
+#cnf(i_0_731, negated_conjecture, (esk3_0!=X1|~empty(X2)|~subset(X1,X2))).
+#######
+#cnf(i_0_154, plain, (X1=X2|~empty(X3)|~subset(X2,X1)|~subset(X1,X3))).
+###############
+#cnf(i_0_593, plain, (subset(X1,X2)|X1!=X3|X3!=X4|~empty(X4))).
+######
+#cnf(i_0_733, negated_conjecture, (esk3_0!=X1|X2!=empty_set|~subset(X1,X2))).
+#####
+#cnf(i_0_496, plain, (empty(X1)|X3!=empty_set|X1!=X2|X2!=X3)).
+#####
+#cnf(i_0_185, plain, (X1=X2|X1!=empty_set|X2!=X3|~empty(X3))).
+#########
+#cnf(i_0_220, plain, (X1=X2|X3!=empty_set|X2!=X3|~empty(X1))).
+###################
+#cnf(i_0_540, plain, (empty_set=X1|X1!=X2|X2!=X3|~empty(X3))).
+#########
+#cnf(i_0_594, plain, (subset(X1,X2)|X1!=X3|~empty(X4)|~subset(X3,X4))).
+###########
+#cnf(i_0_497, plain, (empty(X1)|X3!=empty_set|X1!=X2|~subset(X2,X3))).
+########
+#cnf(i_0_308, plain, (X1=X2|X3!=empty_set|~empty(X1)|~subset(X2,X3))).
+##########
+#cnf(i_0_64, plain, (~member(X1,X3)|~subset(X2,empty_set)|~subset(X3,X2))).
+##
+#cnf(i_0_1273, plain, (subset(X1,X2)|~subset(X3,empty_set)|~subset(X1,X3))).
+#############
+#cnf(i_0_1275, plain, (empty_set=X1|~subset(X2,empty_set)|~subset(X1,X2))).
+###################
+#cnf(i_0_51, plain, (subset(X1,X2)|~member(esk1_2(X1,X2),X3)|~subset(X3,X2))).
+#
+#cnf(i_0_139, plain, (empty_set=X1|X2!=X3|~empty(X3)|~subset(X1,X2))).
+#####
+#cnf(i_0_1281, negated_conjecture, (esk3_0!=X1|~subset(X2,empty_set)|~subset(X1,X2))).
+###
+#cnf(i_0_427, plain, (empty(X3)|X1!=empty_set|X2!=X1|~subset(X3,X2))).
+###############
+#cnf(i_0_37, plain, (empty(X1)|member(X2,X1)|~empty(esk2_1(X1))|~empty(X2))).
+###
+#cnf(i_0_186, plain, (X1=X2|X1!=empty_set|~empty(X3)|~subset(X2,X3))).
+##############
+#cnf(i_0_142, plain, (subset(X1,X2)|X3!=X4|~empty(X4)|~subset(X1,X3))).
+#########
+#cnf(i_0_198, negated_conjecture, (~empty(X1)|~subset(difference(esk4_0,esk3_0),empty_set))).
+#######
+#cnf(i_0_541, plain, (empty_set=X1|X1!=X2|~empty(X3)|~subset(X2,X3))).
+##############
+#cnf(i_0_431, plain, (empty(X2)|X1!=empty_set|~subset(X3,X1)|~subset(X2,X3))).
+###########
+#cnf(i_0_621, plain, (X1!=X2|X2!=X4|~empty(X4)|~member(X3,X1))).
+###
+#cnf(i_0_568, plain, (empty(X1)|X1!=X2|X2!=X3|~subset(X3,empty_set))).
+###########
+#cnf(i_0_29, plain, (empty(difference(X1,X2))|~member(esk2_1(difference(X1,X2)),X2))).
+#
+#cnf(i_0_1861, plain, (empty(difference(X1,X2))|~subset(difference(X1,X2),X2))).
+##
+#cnf(i_0_1884, plain, (empty(difference(X1,X2))|difference(X1,X2)!=X2)).
+##
+#cnf(i_0_1897, plain, (difference(X1,X2)=empty_set|difference(X1,X2)!=X2)).
+#
+#cnf(i_0_1922, negated_conjecture, (difference(esk4_0,esk3_0)!=esk3_0)).
+##
+#cnf(i_0_221, plain, (X1=X2|X3!=empty_set|X1!=X3|~subset(X2,X1))).
+######
+#cnf(i_0_1902, negated_conjecture, (difference(X1,X2)!=esk3_0|difference(X1,X2)!=X2)).
+##
+#cnf(i_0_260, plain, (X1=X2|X2!=X3|~empty(X3)|~subset(X1,empty_set))).
+#################
+#cnf(i_0_477, plain, (X1=X2|X1!=X3|~empty(X2)|~subset(X3,empty_set))).
+#############
+#cnf(i_0_193, negated_conjecture, (X1!=esk3_0|X2!=X1|X2!=X3|~empty(X3))).
+###########
+#cnf(i_0_1378, plain, (empty_set=X1|~empty(X3)|~subset(X1,X2)|~subset(X2,X3))).
+################
+#cnf(i_0_1347, plain, (subset(X1,X2)|~empty(X4)|~subset(X1,X3)|~subset(X3,X4))).
+#################
+#cnf(i_0_622, plain, (X1!=X2|~empty(X4)|~member(X3,X1)|~subset(X2,X4))).
+#####
+#cnf(i_0_307, plain, (X1=X2|X3!=empty_set|~subset(X2,X1)|~subset(X1,X3))).
+#################
+#cnf(i_0_111, plain, (empty(X1)|member(X2,X1)|esk2_1(X1)!=empty_set|~empty(X2))).
+####
+#cnf(i_0_516, plain, (empty(X1)|X2!=X3|~subset(X3,empty_set)|~subset(X1,X2))).
+##
+#cnf(i_0_723, negated_conjecture, (esk3_0!=X1|X2!=X3|~empty(X3)|~subset(X1,X2))).
+#####################
+#cnf(i_0_4, plain, (member(X1,difference(X2,X3))|member(X1,X3)|~member(X1,X2))).
+#
+#cnf(i_0_2616, plain, (member(X3,X2)|~empty(difference(X1,X2))|~member(X3,X1))).
+#
+#cnf(i_0_2709, plain, (member(X1,X2)|difference(X3,X2)!=X2|~member(X1,X3))).
+#
+#cnf(i_0_2713, plain, (difference(X2,empty_set)!=empty_set|~member(X1,X2))).
+#
+#cnf(i_0_2764, plain, (empty(X1)|difference(X1,empty_set)!=empty_set)).
+#
+#cnf(i_0_2766, plain, (subset(X1,X2)|difference(X1,empty_set)!=empty_set)).
+##
+#cnf(i_0_2653, plain, (~empty(difference(X2,empty_set))|~member(X1,X2))).
+#
+#cnf(i_0_2883, plain, (empty(X1)|~empty(difference(X1,empty_set)))).
+#####
+#cnf(i_0_2885, plain, (subset(X1,X2)|~empty(difference(X1,empty_set)))).
+####
+#cnf(i_0_2810, plain, (empty_set=X1|difference(X1,empty_set)!=empty_set)).
+##
+#cnf(i_0_2817, negated_conjecture, (difference(X1,empty_set)!=empty_set|esk3_0!=X1)).
+####
+#cnf(i_0_2663, plain, (~empty(difference(X3,X1))|~empty(X1)|~member(X2,X3))).
+#
+#cnf(i_0_3141, plain, (empty(X1)|~empty(difference(X1,X2))|~empty(X2))).
+#
+#cnf(i_0_3217, plain, (empty(X1)|difference(X1,X2)!=X2|~empty(X2))).
+#
+#cnf(i_0_3210, plain, (empty(X1)|difference(X1,X2)!=empty_set|~empty(X2))).
+#
+#cnf(i_0_2724, plain, (difference(X3,X1)!=X1|~empty(X1)|~member(X2,X3))).
+##
+#cnf(i_0_3143, plain, (subset(X1,X3)|~empty(difference(X1,X2))|~empty(X2))).
+#
+#cnf(i_0_3272, plain, (subset(X1,X3)|difference(X1,X2)!=X2|~empty(X2))).
+#
+#cnf(i_0_3398, negated_conjecture, (difference(X1,X2)!=X2|esk3_0!=X1|~empty(X2))).
+##
+#cnf(i_0_3391, plain, (empty_set=X1|difference(X1,X2)!=X2|~empty(X2))).
+#####
+#cnf(i_0_2994, plain, (X1=X2|~empty(difference(X2,empty_set))|~empty(X1))).
+#
+#cnf(i_0_3176, plain, (difference(X1,X2)!=empty_set|~empty(X2)|~member(X3,X1))).
+##
+#cnf(i_0_3381, plain, (subset(X1,X2)|difference(X1,X3)!=empty_set|~empty(X3))).
+##
+#cnf(i_0_3712, negated_conjecture, (difference(X1,X2)!=empty_set|esk3_0!=X1|~empty(X2))).
+#
+#cnf(i_0_3705, plain, (empty_set=X1|difference(X1,X2)!=empty_set|~empty(X2))).
+###
+#cnf(i_0_2664, plain, (X1!=empty_set|~empty(difference(X3,X1))|~member(X2,X3))).
+#
+#cnf(i_0_3862, plain, (empty(X2)|X1!=empty_set|~empty(difference(X2,X1)))).
+#
+#cnf(i_0_3942, plain, (empty(X1)|difference(X1,X2)!=X2|X2!=empty_set)).
+#
+#cnf(i_0_3935, plain, (empty(X1)|difference(X1,X2)!=empty_set|X2!=empty_set)).
+#
+#cnf(i_0_2725, plain, (difference(X3,X1)!=X1|X1!=empty_set|~member(X2,X3))).
+##
+#cnf(i_0_2765, plain, (empty(X2)|difference(X1,empty_set)!=empty_set|~subset(X2,X1))).
+##
+#cnf(i_0_2990, negated_conjecture, (esk3_0!=X1|~empty(difference(X1,empty_set))|~empty(X2))).
+##
+#cnf(i_0_2884, plain, (empty(X2)|~empty(difference(X1,empty_set))|~subset(X2,X1))).
+###
+#cnf(i_0_4111, plain, (empty(X1)|X1!=X2|~empty(difference(X2,empty_set)))).
+######
+#cnf(i_0_2971, plain, (empty(X1)|difference(X1,empty_set)!=X2|X2!=empty_set)).
+###
+#cnf(i_0_2822, plain, (empty(X1)|difference(X2,empty_set)!=empty_set|X1!=X2)).
+#######
+#cnf(i_0_2813, plain, (X1=X2|difference(X1,empty_set)!=empty_set|~subset(X2,X1))).
+###
+#cnf(i_0_4388, negated_conjecture, (difference(difference(esk4_0,esk3_0),empty_set)!=empty_set)).
+###
+#cnf(i_0_2818, plain, (X1=X2|difference(X2,empty_set)!=empty_set|~empty(X1))).
+###
+#cnf(i_0_2979, plain, (X1=X2|~empty(difference(X1,empty_set))|~subset(X2,X1))).
+#######
+#cnf(i_0_2983, plain, (empty_set=X1|~empty(difference(X1,empty_set))|~empty(X2))).
+######
+#cnf(i_0_3864, plain, (subset(X2,X3)|X1!=empty_set|~empty(difference(X2,X1)))).
+##
+#cnf(i_0_4001, plain, (subset(X1,X3)|difference(X1,X2)!=X2|X2!=empty_set)).
+##
+#cnf(i_0_4859, plain, (empty_set=X1|difference(X1,X2)!=X2|X2!=empty_set)).
+#
+#cnf(i_0_4866, negated_conjecture, (difference(X1,X2)!=X2|esk3_0!=X1|X2!=empty_set)).
+############
+#cnf(i_0_506, negated_conjecture, (difference(esk4_0,esk3_0)!=X1|~empty(X2)|~subset(X1,X2))).
+#####
+#cnf(i_0_2669, plain, (empty(X1)|member(esk2_1(X1),X2)|~empty(difference(X1,X2)))).
+####
+#cnf(i_0_2959, plain, (empty(X1)|~empty(X2)|~subset(difference(X1,empty_set),empty_set))).
+######
+#cnf(i_0_2996, plain, (X1=X2|X1!=empty_set|~empty(difference(X2,empty_set)))).
+#
+#cnf(i_0_122, plain, (X1!=X2|~empty(X2)|~member(X3,X4)|~subset(X4,X1))).
+#
+#cnf(i_0_5165, plain, (empty_set=X1|~empty(difference(X1,empty_set)))).
+##############
+#cnf(i_0_4847, plain, (subset(X1,X2)|difference(X1,X3)!=empty_set|X3!=empty_set)).
+###
+#cnf(i_0_5446, plain, (empty_set=X1|difference(X1,X2)!=empty_set|X2!=empty_set)).
+###
+#cnf(i_0_2730, plain, (empty(X1)|member(esk2_1(X1),X2)|difference(X1,X2)!=X2)).
+#####
+#cnf(i_0_5592, plain, (empty(X1)|difference(X1,X2)!=X2|~subset(X2,empty_set))).
+######
+#cnf(i_0_400, negated_conjecture, (X1!=empty_set|~subset(difference(esk4_0,esk3_0),empty_set))).
+##
+#cnf(i_0_5614, plain, (empty(difference(X1,X2))|difference(difference(X1,X2),X2)!=X2)).
+##
+#cnf(i_0_5708, negated_conjecture, (~subset(difference(esk4_0,esk3_0),empty_set))).
+#
+#cnf(i_0_2617, plain, (member(X3,X2)|difference(X1,X2)!=empty_set|~member(X3,X1))).
+##
+#cnf(i_0_4191, plain, (empty_set=X1|X1!=X2|~empty(difference(X2,empty_set)))).
+####
+#cnf(i_0_5976, plain, (subset(X2,X1)|X2!=X3|~empty(difference(X3,empty_set)))).
+#######
+#cnf(i_0_2826, plain, (empty_set=X1|difference(X2,empty_set)!=empty_set|~subset(X1,X2))).
+####
+#cnf(i_0_2936, plain, (empty(X1)|X2!=X3|~empty(difference(X1,X2))|~empty(X3))).
+######
+#cnf(i_0_5886, negated_conjecture, (~empty(X1)|~subset(difference(esk4_0,esk3_0),X1))).
+#
+#cnf(i_0_2972, plain, (empty(X1)|difference(X1,empty_set)!=X2|~subset(X2,empty_set))).
+####
+#cnf(i_0_6367, plain, (empty(X1)|~subset(difference(X1,empty_set),empty_set))).
+#####
+#cnf(i_0_6380, plain, (empty(X1)|difference(X1,empty_set)!=X2|~empty(X2))).
+####
+#cnf(i_0_6497, plain, (empty(X1)|~empty(X2)|~subset(difference(X1,empty_set),X2))).
+############
+#cnf(i_0_6506, plain, (empty(X1)|difference(difference(X1,empty_set),empty_set)!=empty_set)).
+#
+#cnf(i_0_6500, plain, (empty(X1)|X2!=empty_set|~subset(difference(X1,empty_set),X2))).
+##########
+#cnf(i_0_5597, plain, (empty(X3)|difference(X3,X1)!=X1|X1!=X2|~empty(X2))).
+###
+#cnf(i_0_5889, negated_conjecture, (X1!=empty_set|~subset(difference(esk4_0,esk3_0),X1))).
+###
+#cnf(i_0_61, plain, (member(esk1_2(X1,X2),X3)|subset(X1,X2)|~subset(X1,X3))).
+######
+#cnf(i_0_6907, plain, (subset(X1,X2)|~subset(X3,X2)|~subset(X1,X3))).
+####################
+#cnf(i_0_6994, plain, (X1=X2|~empty(X1)|~subset(X3,X1)|~subset(X2,X3))).
+#########
+#cnf(i_0_7237, plain, (X1=X2|X2!=X3|~empty(X1)|~subset(X3,X1))).
+#########
+#cnf(i_0_7264, plain, (X1=X2|X3!=X1|~empty(X1)|~subset(X2,X3))).
+#
+#cnf(i_0_5893, negated_conjecture, (~subset(difference(esk4_0,esk3_0),X1)|~subset(X1,empty_set))).
+#########
+#cnf(i_0_7058, negated_conjecture, (subset(X1,difference(esk4_0,esk3_0))|~subset(X1,esk3_0))).
+###############
+#cnf(i_0_5896, negated_conjecture, (difference(difference(esk4_0,esk3_0),X1)!=X1|~empty(X1))).
+###
+#cnf(i_0_6975, plain, (X1=X2|~subset(X2,X1)|~subset(X3,X2)|~subset(X1,X3))).
+############
+#cnf(i_0_8033, plain, (X1=X2|X1!=X3|~subset(X2,X1)|~subset(X3,X2))).
+#
+#cnf(i_0_8139, negated_conjecture, (difference(esk4_0,esk3_0)!=X1|~subset(X1,esk3_0))).
+#########
+#cnf(i_0_8060, plain, (X1=X2|X3!=X2|~subset(X2,X1)|~subset(X1,X3))).
+#######
+#cnf(i_0_8173, negated_conjecture, (difference(esk4_0,esk3_0)!=X1|X1!=esk3_0)).
+###
+#cnf(i_0_8145, plain, (X1=X2|X2!=empty_set|X1!=X3|~subset(X3,X2))).
+################
+#cnf(i_0_7783, plain, (X1=X2|X1!=empty_set|X3!=X1|~subset(X2,X3))).
+############
+#cnf(i_0_3403, plain, (empty(X1)|difference(X2,X3)!=X3|X1!=X2|~empty(X3))).
+#
+#cnf(i_0_5973, plain, (X2!=X3|~empty(difference(X3,empty_set))|~member(X1,X2))).
+#####
+#cnf(i_0_2833, plain, (subset(X1,X2)|difference(X3,empty_set)!=empty_set|~subset(X1,X3))).
+###########
+#cnf(i_0_636, negated_conjecture, (esk3_0!=X1|X1!=X2|~empty(X3)|~subset(X2,X3))).
+###
+#cnf(i_0_261, plain, (X1=X2|~empty(X3)|~subset(X1,empty_set)|~subset(X2,X3))).
+####################
+#cnf(i_0_3321, plain, (X1=X2|~empty(difference(X2,X3))|~empty(X1)|~empty(X3))).
+##
+#cnf(i_0_3399, plain, (X1=X2|difference(X2,X3)!=X3|~empty(X1)|~empty(X3))).
+######
+#cnf(i_0_53, plain, (member(X1,X2)|~member(X1,X4)|~subset(X4,difference(X2,X3)))).
+#
+#cnf(i_0_9888, plain, (~member(X1,X2)|~subset(X2,difference(empty_set,X3)))).
+##
+#cnf(i_0_9964, negated_conjecture, (member(X1,esk4_0)|~member(X1,esk3_0))).
+###
+#cnf(i_0_10092, plain, (empty(X1)|~subset(X1,difference(empty_set,X2)))).
+##
+#cnf(i_0_10227, plain, (empty(difference(empty_set,X1)))).
+###########
+#cnf(i_0_10228, plain, (difference(empty_set,X1)=empty_set)).
+###################
+#cnf(i_0_10410, plain, (difference(X2,X1)=empty_set|X2!=X3|~empty(X3))).
+###
+#cnf(i_0_10423, negated_conjecture, (esk4_0!=X1|~empty(X1))).
+###
+#cnf(i_0_10421, plain, (difference(X1,X2)=empty_set|~empty(X1))).
+#
+#cnf(i_0_10536, negated_conjecture, (~empty(esk4_0))).
+#####
+#cnf(i_0_10583, plain, (empty(difference(X1,X2))|~empty(X1))).
+###############
+#cnf(i_0_10523, negated_conjecture, (empty_set!=esk4_0)).
+#############################################
+#cnf(i_0_10636, plain, (difference(X1,X2)=X3|~empty(X3)|~empty(X1))).
+###############
+#cnf(i_0_10525, negated_conjecture, (esk4_0!=X1|X1!=empty_set)).
+#
+#cnf(i_0_10470, plain, (empty(difference(X1,X2))|X1!=X3|~empty(X3))).
+########################
+#cnf(i_0_10656, plain, (empty_set=X1|X1!=difference(X2,X3)|~empty(X2))).
+##
+#cnf(i_0_10660, plain, (subset(X1,X2)|X1!=difference(X3,X4)|~empty(X3))).
+###
+#cnf(i_0_11173, plain, (subset(difference(X1,X2),X3)|~empty(X1))).
+###########
+#cnf(i_0_11186, plain, (empty(X1)|X1!=difference(X2,X3)|~empty(X2))).
+##########
+#cnf(i_0_11353, plain, (empty(X1)|~empty(X2)|~subset(X1,difference(X2,X3)))).
+#############################################
+#cnf(i_0_10640, negated_conjecture, (difference(X1,X2)!=esk3_0|~empty(X1))).
+######
+#cnf(i_0_10111, negated_conjecture, (member(X1,X2)|~member(X1,esk3_0)|~subset(esk4_0,X2))).
+######
+#cnf(i_0_10650, negated_conjecture, (difference(X1,X2)!=esk4_0|~empty(X1))).
+#####
+#cnf(i_0_10106, negated_conjecture, (subset(X1,esk4_0)|~member(esk1_2(X1,esk4_0),esk3_0))).
+#
+#cnf(i_0_11937, negated_conjecture, (subset(esk3_0,esk4_0))).
+#########
+#cnf(i_0_11938, negated_conjecture, (subset(X1,esk4_0)|~subset(X1,esk3_0))).
+######################
+#cnf(i_0_11950, negated_conjecture, (empty(esk3_0)|difference(esk4_0,empty_set)!=empty_set)).
+###
+#cnf(i_0_11951, negated_conjecture, (difference(esk4_0,empty_set)!=empty_set)).
+###
+#cnf(i_0_11946, negated_conjecture, (empty(esk3_0)|esk4_0!=X1|~subset(X1,empty_set))).
+#######################
+#cnf(i_0_11974, negated_conjecture, (esk3_0=X1|esk4_0!=X1|~subset(X1,esk3_0))).
+############
+#cnf(i_0_11957, negated_conjecture, (esk4_0=esk3_0|esk4_0!=X1|~subset(X1,esk3_0))).
+############
+#cnf(i_0_12012, negated_conjecture, (empty(X1)|~subset(esk4_0,empty_set)|~subset(X1,esk3_0))).
+#####
+#cnf(i_0_12294, negated_conjecture, (empty(X1)|X1!=esk3_0|~subset(esk4_0,empty_set))).
+#######
+#cnf(i_0_10652, plain, (X1=difference(X2,X3)|X1!=empty_set|~empty(X2))).
+#####################
+#cnf(i_0_9992, negated_conjecture, (member(X1,esk4_0)|~member(X1,X2)|~subset(X2,esk3_0))).
+##
+#cnf(i_0_11358, plain, (empty_set=X1|~empty(X2)|~subset(X1,difference(X2,X3)))).
+#######
+#cnf(i_0_12385, negated_conjecture, (esk3_0!=X1|~subset(esk4_0,empty_set))).
+####
+#cnf(i_0_12833, negated_conjecture, (~subset(esk4_0,empty_set))).
+#################
+#cnf(i_0_11367, plain, (subset(X1,X2)|~empty(X3)|~subset(X1,difference(X3,X4)))).
+###
+#cnf(i_0_12904, negated_conjecture, (~empty(X1)|~subset(esk4_0,X1))).
+#############
+#cnf(i_0_11368, plain, (member(X1,X2)|~empty(X3)|~member(X1,difference(X3,X4)))).
+#############
+#cnf(i_0_11056, plain, (empty(difference(X1,X2))|X3!=empty_set|X1!=X3)).
+#
+#cnf(i_0_13229, plain, (empty(difference(X1,X2))|X1!=empty_set)).
+############
+#cnf(i_0_13365, plain, (difference(X1,X2)=empty_set|X1!=empty_set)).
+#################################################
+#cnf(i_0_12907, negated_conjecture, (X1!=empty_set|~subset(esk4_0,X1))).
+################
+#cnf(i_0_12908, negated_conjecture, (esk4_0!=X1|~subset(X1,empty_set))).
+##
+#cnf(i_0_13366, plain, (difference(X1,X2)=X3|X1!=empty_set|~empty(X3))).
+#############################################
+#cnf(i_0_12005, negated_conjecture, (X1=esk4_0|~subset(esk4_0,X1)|~subset(X1,esk3_0))).
+####
+#cnf(i_0_13929, negated_conjecture, (X1=esk4_0|X1!=esk3_0|~subset(esk4_0,X1))).
+################
+#cnf(i_0_12058, negated_conjecture, (subset(X1,X2)|~subset(esk4_0,X2)|~subset(X1,esk3_0))).
+######
+#cnf(i_0_14145, negated_conjecture, (subset(X1,X2)|X1!=esk3_0|~subset(esk4_0,X2))).
+#
+#cnf(i_0_14362, negated_conjecture, (subset(X1,esk4_0)|X1!=esk3_0)).
+#######
+#cnf(i_0_14335, negated_conjecture, (subset(X1,X2)|X1!=esk3_0|esk4_0!=X2)).
+################
+#cnf(i_0_14176, negated_conjecture, (subset(X1,X2)|esk4_0!=X2|~subset(X1,esk3_0))).
+#
+#cnf(i_0_14738, negated_conjecture, (subset(esk3_0,X1)|esk4_0!=X1)).
+################################
+#cnf(i_0_14408, negated_conjecture, (subset(X1,esk4_0)|X2!=esk3_0|~subset(X1,X2))).
+####
+#cnf(i_0_14938, negated_conjecture, (subset(X1,esk4_0)|X2!=esk3_0|X1!=X2)).
+####
+#cnf(i_0_14825, negated_conjecture, (subset(esk3_0,X1)|esk4_0!=X2|~subset(X2,X1))).
+#######
+#cnf(i_0_15189, negated_conjecture, (subset(esk3_0,X1)|esk4_0!=X2|X2!=X1)).
+###############
+#cnf(i_0_12915, negated_conjecture, (difference(esk4_0,X1)!=X1|~empty(X1))).
+########
+#cnf(i_0_12911, negated_conjecture, (~subset(X1,empty_set)|~subset(esk4_0,X1))).
+#######################################
+#cnf(i_0_12040, negated_conjecture, (subset(X1,esk4_0)|~subset(X2,esk3_0)|~subset(X1,X2))).
+###########
+#cnf(i_0_15583, negated_conjecture, (subset(X1,esk4_0)|X1!=X2|~subset(X2,esk3_0))).
+##########
+#cnf(i_0_12916, negated_conjecture, (difference(esk4_0,X1)!=empty_set|~empty(X1))).
+#########
+#cnf(i_0_13386, plain, (empty_set=X1|X1!=difference(X2,X3)|X2!=empty_set)).
+######
+#cnf(i_0_14820, negated_conjecture, (empty(esk3_0)|esk4_0!=X2|~empty(X1)|~subset(X2,X1))).
+########
+#cnf(i_0_14372, negated_conjecture, (empty(difference(X1,esk4_0))|difference(X1,esk4_0)!=esk3_0)).
+#
+#cnf(i_0_15960, negated_conjecture, (difference(X1,esk4_0)!=esk3_0)).
+##
+#cnf(i_0_13390, plain, (subset(X1,X2)|X1!=difference(X3,X4)|X3!=empty_set)).
+###
+#cnf(i_0_16139, plain, (subset(difference(X1,X2),X3)|X1!=empty_set)).
+################
+#cnf(i_0_16170, plain, (empty(X1)|X1!=difference(X2,X3)|X2!=empty_set)).
+#########
+#cnf(i_0_16361, plain, (empty(X1)|X2!=empty_set|~subset(X1,difference(X2,X3)))).
+##################
+#cnf(i_0_13370, negated_conjecture, (difference(X1,X2)!=esk3_0|X1!=empty_set)).
+###########
+#cnf(i_0_16711, negated_conjecture, (empty(esk3_0)|difference(X1,X2)!=esk4_0|X1!=empty_set)).
+#
+#cnf(i_0_13380, negated_conjecture, (difference(X1,X2)!=esk4_0|X1!=empty_set)).
+#######
+#cnf(i_0_10637, plain, (difference(X1,X2)=X3|~empty(X1)|~subset(X3,empty_set))).
+#####################
+#cnf(i_0_10752, negated_conjecture, (X1!=esk4_0|X1!=X2|~empty(X2))).
+######
+#cnf(i_0_9966, plain, (member(X1,X2)|X3!=difference(X2,X4)|~member(X1,X3))).
+##################################
+#cnf(i_0_12910, negated_conjecture, (esk4_0!=X1|~empty(X2)|~subset(X1,X2))).
+###############
+#cnf(i_0_10409, plain, (difference(X2,X1)=empty_set|X3!=empty_set|X2!=X3)).
+#####################################################################
+#cnf(i_0_15463, negated_conjecture, (~empty(X1)|~subset(esk4_0,difference(X1,X2)))).
+#################################
+#cnf(i_0_14428, negated_conjecture, (X1=X2|esk4_0!=X2|X1!=esk3_0|~subset(X2,X1))).
+########
+#cnf(i_0_13382, plain, (X1=difference(X2,X3)|X1!=empty_set|X2!=empty_set)).
+#################
+#cnf(i_0_14390, negated_conjecture, (empty(X1)|X1!=esk3_0|~empty(difference(esk4_0,empty_set)))).
+##################
+#cnf(i_0_12917, negated_conjecture, (difference(esk4_0,X1)!=X1|X1!=empty_set)).
+#
+#cnf(i_0_12726, negated_conjecture, (empty(X1)|member(esk2_1(X1),esk4_0)|~subset(X1,esk3_0))).
+#############
+#cnf(i_0_16366, plain, (empty_set=X1|X2!=empty_set|~subset(X1,difference(X2,X3)))).
+##########################
+#cnf(i_0_13116, negated_conjecture, (~empty(difference(esk4_0,empty_set))|~empty(X1))).
+######################################
+#cnf(i_0_16375, plain, (subset(X1,X2)|X3!=empty_set|~subset(X1,difference(X3,X4)))).
+################
+#cnf(i_0_16379, plain, (member(X1,X2)|X3!=empty_set|~member(X1,difference(X3,X4)))).
+###################
+#cnf(i_0_248, plain, (subset(X1,X2)|X4!=empty_set|X1!=X3|X3!=X4)).
+#########
+#cnf(i_0_2830, plain, (subset(X1,X2)|difference(X3,empty_set)!=empty_set|X1!=X3)).
+#############
+#cnf(i_0_6899, plain, (subset(X2,X3)|~empty(difference(X1,empty_set))|~subset(X2,X1))).
+##################
+#cnf(i_0_19194, plain, (empty_set=X1|~empty(difference(X2,empty_set))|~subset(X1,X2))).
+#############################################################
+#cnf(i_0_423, plain, (empty(X1)|~member(esk2_1(X1),X3)|~subset(X1,difference(X2,X3)))).
+#
+#cnf(i_0_19654, negated_conjecture, (empty(esk3_0)|~member(esk2_1(esk3_0),esk3_0))).
+##
+#cnf(i_0_19729, negated_conjecture, (empty(esk3_0))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(subset_defn, axiom, ![X1, X2]:(subset(X1,X2)<=>![X3]:(member(X3,X1)=>member(X3,X2))), file('./p/SET591+3.tptp', subset_defn)).
+fof(empty_defn, axiom, ![X1]:(empty(X1)<=>![X2]:~(member(X2,X1))), file('./p/SET591+3.tptp', empty_defn)).
+fof(empty_set_defn, axiom, ![X1]:~(member(X1,empty_set)), file('./p/SET591+3.tptp', empty_set_defn)).
+fof(difference_defn, axiom, ![X1, X2, X3]:(member(X3,difference(X1,X2))<=>(member(X3,X1)&~(member(X3,X2)))), file('./p/SET591+3.tptp', difference_defn)).
+fof(prove_th50, conjecture, ![X1, X2]:(subset(X1,difference(X2,X1))=>X1=empty_set), file('./p/SET591+3.tptp', prove_th50)).
+fof(equal_defn, axiom, ![X1, X2]:(X1=X2<=>(subset(X1,X2)&subset(X2,X1))), file('./p/SET591+3.tptp', equal_defn)).
+fof(c_0_6, plain, ![X4, X5, X6, X7, X8]:((~subset(X4,X5)|(~member(X6,X4)|member(X6,X5)))&((member(esk1_2(X7,X8),X7)|subset(X7,X8))&(~member(esk1_2(X7,X8),X8)|subset(X7,X8)))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[subset_defn])])])])])])).
+fof(c_0_7, plain, ![X17, X18, X19]:((~empty(X17)|~member(X18,X17))&(member(esk2_1(X19),X19)|empty(X19))), inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[empty_defn])])])])])])).
+fof(c_0_8, plain, ![X13]:~member(X13,empty_set), inference(variable_rename,[status(thm)],[inference(fof_simplification,[status(thm)],[empty_set_defn])])).
+fof(c_0_9, plain, ![X10, X11, X12]:(((member(X12,X10)|~member(X12,difference(X10,X11)))&(~member(X12,X11)|~member(X12,difference(X10,X11))))&(~member(X12,X10)|member(X12,X11)|member(X12,difference(X10,X11)))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[difference_defn])])])])).
+cnf(c_0_10, plain, (member(X3,X2)|~subset(X1,X2)|~member(X3,X1)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_11, plain, (member(esk2_1(X1),X1)|empty(X1)), inference(split_conjunct,[status(thm)],[c_0_7])).
+fof(c_0_12, negated_conjecture, ~(![X1, X2]:(subset(X1,difference(X2,X1))=>X1=empty_set)), inference(assume_negation,[status(cth)],[prove_th50])).
+fof(c_0_13, plain, ![X14, X15]:(((subset(X14,X15)|X14!=X15)&(subset(X15,X14)|X14!=X15))&(~subset(X14,X15)|~subset(X15,X14)|X14=X15)), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[equal_defn])])])).
+cnf(c_0_14, plain, (~member(X1,empty_set)), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_15, plain, (member(esk1_2(X1,X2),X1)|subset(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_16, plain, (~member(X1,X2)|~member(X1,difference(X3,X2))), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_17, plain, (empty(X1)|member(esk2_1(X1),X2)|~subset(X1,X2)), inference(pm,[status(thm)],[c_0_10, c_0_11])).
+fof(c_0_18, negated_conjecture, (subset(esk3_0,difference(esk4_0,esk3_0))&esk3_0!=empty_set), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_12])])])).
+cnf(c_0_19, plain, (X1=X2|~subset(X1,X2)|~subset(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_13])).
+cnf(c_0_20, plain, (subset(empty_set,X1)), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+cnf(c_0_21, plain, (~empty(X1)|~member(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_22, plain, (empty(X1)|~member(esk2_1(X1),X2)|~subset(X1,difference(X3,X2))), inference(pm,[status(thm)],[c_0_16, c_0_17])).
+cnf(c_0_23, negated_conjecture, (subset(esk3_0,difference(esk4_0,esk3_0))), inference(split_conjunct,[status(thm)],[c_0_18])).
+cnf(c_0_24, plain, (empty_set=X1|~subset(X1,empty_set)), inference(pm,[status(thm)],[c_0_19, c_0_20])).
+cnf(c_0_25, plain, (subset(X1,X2)|~empty(X1)), inference(pm,[status(thm)],[c_0_21, c_0_15])).
+cnf(c_0_26, negated_conjecture, (empty(esk3_0)|~member(esk2_1(esk3_0),esk3_0)), inference(pm,[status(thm)],[c_0_22, c_0_23])).
+cnf(c_0_27, plain, (empty_set=X1|~empty(X1)), inference(pm,[status(thm)],[c_0_24, c_0_25])).
+cnf(c_0_28, negated_conjecture, (empty(esk3_0)), inference(pm,[status(thm)],[c_0_26, c_0_11])).
+cnf(c_0_29, negated_conjecture, (esk3_0!=empty_set), inference(split_conjunct,[status(thm)],[c_0_18])).
+cnf(c_0_30, negated_conjecture, ($false), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_27, c_0_28]), c_0_29]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 31
+# Proof object clause steps            : 18
+# Proof object formula steps           : 13
+# Proof object conjectures             : 8
+# Proof object clause conjectures      : 5
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 9
+# Proof object initial formulas used   : 6
+# Proof object generating inferences   : 9
+# Proof object simplifying inferences  : 1
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 7
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 15
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 15
+# Processed clauses                    : 2333
+# ...of these trivial                  : 104
+# ...subsumed                          : 1925
+# ...remaining for further processing  : 304
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 7
+# Backward-rewritten                   : 5
+# Generated clauses                    : 19738
+# ...of the previous two non-trivial   : 19166
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 19624
+# Factorizations                       : 0
+# Equation resolutions                 : 114
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 292
+#    Positive orientable unit clauses  : 7
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 12
+#    Non-unit-clauses                  : 273
+# Current number of unprocessed clauses: 16758
+# ...number of literals in the above   : 79001
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 12
+# Clause-clause subsumption calls (NU) : 12410
+# Rec. Clause-clause subsumption calls : 8563
+# Non-unit clause-clause subsumptions  : 1542
+# Unit Clause-clause subsumption calls : 336
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 4
+# BW rewrite match successes           : 4
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 82690

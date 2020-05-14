@@ -1,0 +1,135 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_18, hypothesis, (cold(X2)|warm(X1))).
+#
+#cnf(i_0_33, hypothesis, (at(f,s0))).
+#
+#cnf(i_0_21, hypothesis, (at(a,walk(a,X1))|~at(b,X1))).
+#
+#cnf(i_0_34, negated_conjecture, (~at(a,X1))).
+#
+#cnf(i_0_22, hypothesis, (~at(b,X1))).
+####
+#cnf(i_0_28, hypothesis, (at(c,go(c,X1))|~at(d,X1))).
+#
+#cnf(i_0_30, hypothesis, (at(c,go(c,X1))|~at(e,X1))).
+#
+#cnf(i_0_27, hypothesis, (at(d,go(d,X1))|~at(c,X1))).
+#
+#cnf(i_0_32, hypothesis, (at(d,go(d,X1))|~at(f,X1))).
+#
+#cnf(i_0_29, hypothesis, (at(e,go(e,X1))|~at(c,X1))).
+#
+#cnf(i_0_31, hypothesis, (at(f,go(f,X1))|~at(d,X1))).
+#
+#cnf(i_0_24, hypothesis, (~at(c,X1)|~cold(X1))).
+#
+#cnf(i_0_36, hypothesis, (~at(d,X1)|~cold(go(c,X1)))).
+#
+#cnf(i_0_38, hypothesis, (warm(X2)|~at(d,X1))).
+#
+#cnf(i_0_39, hypothesis, (warm(X1)|~at(c,X2))).
+#
+#cnf(i_0_40, hypothesis, (warm(X1)|~at(f,X2))).
+#
+#cnf(i_0_37, hypothesis, (~at(e,X1)|~cold(go(c,X1)))).
+#
+#cnf(i_0_43, hypothesis, (warm(X1))).
+#
+#cnf(i_0_26, hypothesis, (~at(d,X1))).
+##
+#cnf(i_0_46, hypothesis, (~at(c,X1))).
+##
+#cnf(i_0_47, hypothesis, (~at(f,X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(drive_b_to_a, hypothesis, (at(a,drive(a,X1))|~at(b,X1)), file('./p/PLA002-1.tptp', drive_b_to_a)).
+cnf(prove_you_can_get_to_a, negated_conjecture, (~at(a,X1)), file('./p/PLA002-1.tptp', prove_you_can_get_to_a)).
+cnf(cross_river_c_to_b, hypothesis, (at(b,skate(b,X1))|~cold(X1)|~at(c,X1)), file('./p/PLA002-1.tptp', cross_river_c_to_b)).
+cnf(go_d_to_c, hypothesis, (at(c,go(c,X1))|~at(d,X1)), file('./p/PLA002-1.tptp', go_d_to_c)).
+cnf(warm_or_cold, hypothesis, (warm(X1)|cold(X2)), file('./p/PLA002-1.tptp', warm_or_cold)).
+cnf(go_f_to_d, hypothesis, (at(d,go(d,X1))|~at(f,X1)), file('./p/PLA002-1.tptp', go_f_to_d)).
+cnf(initial, hypothesis, (at(f,s0)), file('./p/PLA002-1.tptp', initial)).
+cnf(climb_mountain_d_to_b, hypothesis, (at(b,climb(b,X1))|~warm(X1)|~at(d,X1)), file('./p/PLA002-1.tptp', climb_mountain_d_to_b)).
+cnf(c_0_8, hypothesis, (at(a,drive(a,X1))|~at(b,X1)), drive_b_to_a).
+cnf(c_0_9, negated_conjecture, (~at(a,X1)), prove_you_can_get_to_a).
+cnf(c_0_10, hypothesis, (at(b,skate(b,X1))|~cold(X1)|~at(c,X1)), cross_river_c_to_b).
+cnf(c_0_11, hypothesis, (~at(b,X1)), inference(sr,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_12, hypothesis, (~at(c,X1)|~cold(X1)), inference(sr,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_13, hypothesis, (at(c,go(c,X1))|~at(d,X1)), go_d_to_c).
+cnf(c_0_14, hypothesis, (~at(d,X1)|~cold(go(c,X1))), inference(pm,[status(thm)],[c_0_12, c_0_13])).
+cnf(c_0_15, hypothesis, (warm(X1)|cold(X2)), warm_or_cold).
+cnf(c_0_16, hypothesis, (warm(X1)|~at(d,X2)), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+cnf(c_0_17, hypothesis, (at(d,go(d,X1))|~at(f,X1)), go_f_to_d).
+cnf(c_0_18, hypothesis, (warm(X1)|~at(f,X2)), inference(pm,[status(thm)],[c_0_16, c_0_17])).
+cnf(c_0_19, hypothesis, (at(f,s0)), initial).
+cnf(c_0_20, hypothesis, (at(b,climb(b,X1))|~warm(X1)|~at(d,X1)), climb_mountain_d_to_b).
+cnf(c_0_21, hypothesis, (warm(X1)), inference(pm,[status(thm)],[c_0_18, c_0_19])).
+cnf(c_0_22, hypothesis, (~at(d,X1)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_20, c_0_21])]), c_0_11])).
+cnf(c_0_23, hypothesis, (~at(f,X1)), inference(pm,[status(thm)],[c_0_22, c_0_17])).
+cnf(c_0_24, hypothesis, ($false), inference(sr,[status(thm)],[c_0_19, c_0_23]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 25
+# Proof object clause steps            : 17
+# Proof object formula steps           : 8
+# Proof object conjectures             : 2
+# Proof object clause conjectures      : 1
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 8
+# Proof object initial formulas used   : 8
+# Proof object generating inferences   : 5
+# Proof object simplifying inferences  : 6
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 17
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 17
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 17
+# Processed clauses                    : 26
+# ...of these trivial                  : 0
+# ...subsumed                          : 5
+# ...remaining for further processing  : 21
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 4
+# Backward-rewritten                   : 0
+# Generated clauses                    : 17
+# ...of the previous two non-trivial   : 15
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 16
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 16
+#    Positive orientable unit clauses  : 1
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 5
+#    Non-unit-clauses                  : 10
+# Current number of unprocessed clauses: 2
+# ...number of literals in the above   : 2
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 5
+# Clause-clause subsumption calls (NU) : 19
+# Rec. Clause-clause subsumption calls : 18
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 34
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 2
+# BW rewrite match successes           : 2
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 685

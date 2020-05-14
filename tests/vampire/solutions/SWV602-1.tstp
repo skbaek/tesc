@@ -1,0 +1,114 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SWV602-1
+% SZS output start Proof for SWV602-1
+fof(f68906,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f68905,f679])).
+fof(f679,axiom,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) != c_HOL_Oone__class_Oone(tc_RealDef_Oreal)),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f68905,plain,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_HOL_Oone__class_Oone(tc_RealDef_Oreal)),
+  inference(forward_demodulation,[],[f68904,f1254])).
+fof(f1254,plain,(
+  ( ! [X0] : (c_HOL_Oplus__class_Oplus(X0,c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),tc_RealDef_Oreal) = X0) )),
+  inference(resolution,[],[f477,f1027])).
+fof(f1027,axiom,(
+  class_OrderedGroup_Omonoid__add(tc_RealDef_Oreal)),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f477,axiom,(
+  ( ! [X0,X1] : (~class_OrderedGroup_Omonoid__add(X0) | c_HOL_Oplus__class_Oplus(X1,c_HOL_Ozero__class_Ozero(X0),X0) = X1) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f68904,plain,(
+  c_HOL_Oone__class_Oone(tc_RealDef_Oreal) = c_HOL_Oplus__class_Oplus(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),tc_RealDef_Oreal)),
+  inference(forward_demodulation,[],[f68903,f1640])).
+fof(f1640,plain,(
+  ( ! [X1] : (c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_HOL_Otimes__class_Otimes(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),X1,tc_RealDef_Oreal)) )),
+  inference(resolution,[],[f824,f997])).
+fof(f997,axiom,(
+  class_Ring__and__Field_Oring__no__zero__divisors(tc_RealDef_Oreal)),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f824,axiom,(
+  ( ! [X2,X0] : (~class_Ring__and__Field_Oring__no__zero__divisors(X0) | c_HOL_Ozero__class_Ozero(X0) = c_HOL_Otimes__class_Otimes(c_HOL_Ozero__class_Ozero(X0),X2,X0)) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f68903,plain,(
+  c_HOL_Oone__class_Oone(tc_RealDef_Oreal) = c_HOL_Oplus__class_Oplus(c_HOL_Otimes__class_Otimes(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Otimes__class_Otimes(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),tc_RealDef_Oreal),tc_RealDef_Oreal)),
+  inference(forward_demodulation,[],[f68902,f7477])).
+fof(f7477,plain,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Ocos(c_HOL_Oinverse__class_Odivide(c_HOL_Oplus__class_Oplus(c_Transcendental_Opi,c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal))),
+  inference(backward_demodulation,[],[f7469,f1183])).
+fof(f1183,plain,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Ocos(c_HOL_Oinverse__class_Odivide(c_HOL_Otimes__class_Otimes(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal))),
+  inference(forward_demodulation,[],[f915,f901])).
+fof(f901,axiom,(
+  ( ! [X8,X7] : (c_HOL_Otimes__class_Otimes(X7,X8,tc_RealDef_Oreal) = c_HOL_Otimes__class_Otimes(X8,X7,tc_RealDef_Oreal)) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f915,axiom,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Ocos(c_HOL_Oinverse__class_Odivide(c_HOL_Otimes__class_Otimes(c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal))),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f7469,plain,(
+  ( ! [X1] : (c_HOL_Oplus__class_Oplus(X1,X1,tc_RealDef_Oreal) = c_HOL_Otimes__class_Otimes(X1,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal)) )),
+  inference(resolution,[],[f775,f1037])).
+fof(f1037,axiom,(
+  class_Int_Onumber__ring(tc_RealDef_Oreal)),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f775,axiom,(
+  ( ! [X0,X7] : (~class_Int_Onumber__ring(X0) | c_HOL_Otimes__class_Otimes(X7,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),X0),X0) = c_HOL_Oplus__class_Oplus(X7,X7,X0)) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f68902,plain,(
+  c_HOL_Oone__class_Oone(tc_RealDef_Oreal) = c_HOL_Oplus__class_Oplus(c_HOL_Otimes__class_Otimes(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Otimes__class_Otimes(c_Transcendental_Ocos(c_HOL_Oinverse__class_Odivide(c_HOL_Oplus__class_Oplus(c_Transcendental_Opi,c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal)),c_Transcendental_Ocos(c_HOL_Oinverse__class_Odivide(c_HOL_Oplus__class_Oplus(c_Transcendental_Opi,c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal)),tc_RealDef_Oreal),tc_RealDef_Oreal)),
+  inference(forward_demodulation,[],[f68703,f8450])).
+fof(f8450,plain,(
+  ( ! [X24,X25] : (c_HOL_Ominus__class_Ominus(X25,c_HOL_Ominus__class_Ominus(X25,X24,tc_RealDef_Oreal),tc_RealDef_Oreal) = X24) )),
+  inference(superposition,[],[f440,f2437])).
+fof(f2437,plain,(
+  ( ! [X8,X9] : (c_HOL_Oplus__class_Oplus(X9,c_HOL_Ominus__class_Ominus(X8,X9,tc_RealDef_Oreal),tc_RealDef_Oreal) = X8) )),
+  inference(superposition,[],[f1766,f285])).
+fof(f285,axiom,(
+  ( ! [X6,X7] : (c_HOL_Oplus__class_Oplus(c_HOL_Ominus__class_Ominus(X6,X7,tc_RealDef_Oreal),X7,tc_RealDef_Oreal) = X6) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f1766,plain,(
+  ( ! [X0,X1] : (c_HOL_Oplus__class_Oplus(X0,X1,tc_RealDef_Oreal) = c_HOL_Oplus__class_Oplus(X1,X0,tc_RealDef_Oreal)) )),
+  inference(resolution,[],[f44,f1018])).
+fof(f1018,axiom,(
+  class_OrderedGroup_Ocomm__monoid__add(tc_RealDef_Oreal)),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f44,axiom,(
+  ( ! [X2,X0,X1] : (~class_OrderedGroup_Ocomm__monoid__add(X0) | c_HOL_Oplus__class_Oplus(X1,X2,X0) = c_HOL_Oplus__class_Oplus(X2,X1,X0)) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f440,axiom,(
+  ( ! [X7,X5] : (c_HOL_Ominus__class_Ominus(c_HOL_Oplus__class_Oplus(X5,X7,tc_RealDef_Oreal),X7,tc_RealDef_Oreal) = X5) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f68703,plain,(
+  c_HOL_Oone__class_Oone(tc_RealDef_Oreal) = c_HOL_Oplus__class_Oplus(c_HOL_Otimes__class_Otimes(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Otimes__class_Otimes(c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Oinverse__class_Odivide(c_HOL_Oplus__class_Oplus(c_Transcendental_Opi,c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal),tc_RealDef_Oreal),tc_RealDef_Oreal)),c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Oinverse__class_Odivide(c_HOL_Oplus__class_Oplus(c_Transcendental_Opi,c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal),tc_RealDef_Oreal),tc_RealDef_Oreal)),tc_RealDef_Oreal),tc_RealDef_Oreal)),
+  inference(superposition,[],[f1074,f7478])).
+fof(f7478,plain,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Oinverse__class_Odivide(c_HOL_Oplus__class_Oplus(c_Transcendental_Opi,c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal),tc_RealDef_Oreal))),
+  inference(backward_demodulation,[],[f7469,f1184])).
+fof(f1184,plain,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Oinverse__class_Odivide(c_HOL_Otimes__class_Otimes(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal),tc_RealDef_Oreal))),
+  inference(forward_demodulation,[],[f1133,f901])).
+fof(f1133,plain,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),c_HOL_Oinverse__class_Odivide(c_HOL_Otimes__class_Otimes(c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal),tc_RealDef_Oreal))),
+  inference(definition_unfolding,[],[f916,f807])).
+fof(f807,axiom,(
+  ( ! [X5] : (c_Transcendental_Osin(X5) = c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),X5,tc_RealDef_Oreal))) )),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f916,axiom,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Osin(c_HOL_Oinverse__class_Odivide(c_HOL_Otimes__class_Otimes(c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),c_Transcendental_Opi,tc_RealDef_Oreal),c_RealDef_Oreal(v_n,tc_nat),tc_RealDef_Oreal))),
+  file('./p/SWV602-1.tptp',unknown)).
+fof(f1074,plain,(
+  ( ! [X5] : (c_HOL_Oone__class_Oone(tc_RealDef_Oreal) = c_HOL_Oplus__class_Oplus(c_HOL_Otimes__class_Otimes(c_Transcendental_Ocos(X5),c_Transcendental_Ocos(X5),tc_RealDef_Oreal),c_HOL_Otimes__class_Otimes(c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),X5,tc_RealDef_Oreal)),c_Transcendental_Ocos(c_HOL_Ominus__class_Ominus(c_HOL_Oinverse__class_Odivide(c_Transcendental_Opi,c_Int_Onumber__class_Onumber__of(c_Int_OBit0(c_Int_OBit1(c_Int_OPls)),tc_RealDef_Oreal),tc_RealDef_Oreal),X5,tc_RealDef_Oreal)),tc_RealDef_Oreal),tc_RealDef_Oreal)) )),
+  inference(definition_unfolding,[],[f184,f807,f807])).
+fof(f184,axiom,(
+  ( ! [X5] : (c_HOL_Oone__class_Oone(tc_RealDef_Oreal) = c_HOL_Oplus__class_Oplus(c_HOL_Otimes__class_Otimes(c_Transcendental_Ocos(X5),c_Transcendental_Ocos(X5),tc_RealDef_Oreal),c_HOL_Otimes__class_Otimes(c_Transcendental_Osin(X5),c_Transcendental_Osin(X5),tc_RealDef_Oreal),tc_RealDef_Oreal)) )),
+  file('./p/SWV602-1.tptp',unknown)).
+% SZS output end Proof for SWV602-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 32494
+% Time elapsed: 2.055 s
+% ------------------------------
+% ------------------------------

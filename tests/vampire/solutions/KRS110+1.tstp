@@ -1,0 +1,144 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for KRS110+1
+% SZS output start Proof for KRS110+1
+fof(f218,plain,(
+  $false),
+  inference(resolution,[],[f216,f177])).
+fof(f177,plain,(
+  cUnsatisfiable(i2003_11_14_17_21_12565)),
+  inference(cnf_transformation,[],[f35])).
+fof(f35,axiom,(
+  cUnsatisfiable(i2003_11_14_17_21_12565)),
+  file('./p/KRS110+1.tptp',unknown)).
+fof(f216,plain,(
+  ( ! [X0] : (~cUnsatisfiable(X0)) )),
+  inference(subsumption_resolution,[],[f215,f203])).
+fof(f203,plain,(
+  ( ! [X0] : (cp(sK1(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(resolution,[],[f156,f164])).
+fof(f164,plain,(
+  ( ! [X0] : (~ca_Ax2(X0) | cp(X0)) )),
+  inference(cnf_transformation,[],[f125])).
+fof(f125,plain,(
+  ! [X0] : ((ca_Ax2(X0) | ! [X1] : (~cp(X1) | ~rinvS(X0,X1)) | ~cp(X0)) & (((cp(sK4(X0)) & rinvS(X0,sK4(X0))) & cp(X0)) | ~ca_Ax2(X0)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK4])],[f123,f124])).
+fof(f124,plain,(
+  ! [X0] : (? [X2] : (cp(X2) & rinvS(X0,X2)) => (cp(sK4(X0)) & rinvS(X0,sK4(X0))))),
+  introduced(choice_axiom,[])).
+fof(f123,plain,(
+  ! [X0] : ((ca_Ax2(X0) | ! [X1] : (~cp(X1) | ~rinvS(X0,X1)) | ~cp(X0)) & ((? [X2] : (cp(X2) & rinvS(X0,X2)) & cp(X0)) | ~ca_Ax2(X0)))),
+  inference(rectify,[],[f122])).
+fof(f122,plain,(
+  ! [X0] : ((ca_Ax2(X0) | ! [X1] : (~cp(X1) | ~rinvS(X0,X1)) | ~cp(X0)) & ((? [X1] : (cp(X1) & rinvS(X0,X1)) & cp(X0)) | ~ca_Ax2(X0)))),
+  inference(flattening,[],[f121])).
+fof(f121,plain,(
+  ! [X0] : ((ca_Ax2(X0) | (! [X1] : (~cp(X1) | ~rinvS(X0,X1)) | ~cp(X0))) & ((? [X1] : (cp(X1) & rinvS(X0,X1)) & cp(X0)) | ~ca_Ax2(X0)))),
+  inference(nnf_transformation,[],[f43])).
+fof(f43,plain,(
+  ! [X0] : (ca_Ax2(X0) <=> (? [X1] : (cp(X1) & rinvS(X0,X1)) & cp(X0)))),
+  inference(rectify,[],[f28])).
+fof(f28,axiom,(
+  ! [X3] : (ca_Ax2(X3) <=> (? [X4] : (cp(X4) & rinvS(X3,X4)) & cp(X3)))),
+  file('./p/KRS110+1.tptp',unknown)).
+fof(f156,plain,(
+  ( ! [X0] : (ca_Ax2(sK1(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(cnf_transformation,[],[f112])).
+fof(f112,plain,(
+  ! [X0] : ((cUnsatisfiable(X0) | (~cpxcomp(sK0(X0)) & rs(X0,sK0(X0))) | ! [X2] : (~ca_Ax2(X2) | ~rs(X0,X2))) & ((! [X3] : (cpxcomp(X3) | ~rs(X0,X3)) & (ca_Ax2(sK1(X0)) & rs(X0,sK1(X0)))) | ~cUnsatisfiable(X0)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1])],[f109,f111,f110])).
+fof(f110,plain,(
+  ! [X0] : (? [X1] : (~cpxcomp(X1) & rs(X0,X1)) => (~cpxcomp(sK0(X0)) & rs(X0,sK0(X0))))),
+  introduced(choice_axiom,[])).
+fof(f111,plain,(
+  ! [X0] : (? [X4] : (ca_Ax2(X4) & rs(X0,X4)) => (ca_Ax2(sK1(X0)) & rs(X0,sK1(X0))))),
+  introduced(choice_axiom,[])).
+fof(f109,plain,(
+  ! [X0] : ((cUnsatisfiable(X0) | ? [X1] : (~cpxcomp(X1) & rs(X0,X1)) | ! [X2] : (~ca_Ax2(X2) | ~rs(X0,X2))) & ((! [X3] : (cpxcomp(X3) | ~rs(X0,X3)) & ? [X4] : (ca_Ax2(X4) & rs(X0,X4))) | ~cUnsatisfiable(X0)))),
+  inference(rectify,[],[f108])).
+fof(f108,plain,(
+  ! [X0] : ((cUnsatisfiable(X0) | ? [X1] : (~cpxcomp(X1) & rs(X0,X1)) | ! [X2] : (~ca_Ax2(X2) | ~rs(X0,X2))) & ((! [X1] : (cpxcomp(X1) | ~rs(X0,X1)) & ? [X2] : (ca_Ax2(X2) & rs(X0,X2))) | ~cUnsatisfiable(X0)))),
+  inference(flattening,[],[f107])).
+fof(f107,plain,(
+  ! [X0] : ((cUnsatisfiable(X0) | (? [X1] : (~cpxcomp(X1) & rs(X0,X1)) | ! [X2] : (~ca_Ax2(X2) | ~rs(X0,X2)))) & ((! [X1] : (cpxcomp(X1) | ~rs(X0,X1)) & ? [X2] : (ca_Ax2(X2) & rs(X0,X2))) | ~cUnsatisfiable(X0)))),
+  inference(nnf_transformation,[],[f96])).
+fof(f96,plain,(
+  ! [X0] : (cUnsatisfiable(X0) <=> (! [X1] : (cpxcomp(X1) | ~rs(X0,X1)) & ? [X2] : (ca_Ax2(X2) & rs(X0,X2))))),
+  inference(ennf_transformation,[],[f40])).
+fof(f40,plain,(
+  ! [X0] : (cUnsatisfiable(X0) <=> (! [X1] : (rs(X0,X1) => cpxcomp(X1)) & ? [X2] : (ca_Ax2(X2) & rs(X0,X2))))),
+  inference(rectify,[],[f25])).
+fof(f25,axiom,(
+  ! [X3] : (cUnsatisfiable(X3) <=> (! [X4] : (rs(X3,X4) => cpxcomp(X4)) & ? [X4] : (ca_Ax2(X4) & rs(X3,X4))))),
+  file('./p/KRS110+1.tptp',unknown)).
+fof(f215,plain,(
+  ( ! [X0] : (~cUnsatisfiable(X0) | ~cp(sK1(X0))) )),
+  inference(resolution,[],[f214,f207])).
+fof(f207,plain,(
+  ( ! [X1] : (~cpxcomp(X1) | ~cp(X1)) )),
+  inference(resolution,[],[f162,f160])).
+fof(f160,plain,(
+  ( ! [X2,X0] : (~ra_Px1(X0,X2) | ~cp(X0)) )),
+  inference(cnf_transformation,[],[f116])).
+fof(f116,plain,(
+  ! [X0] : ((cp(X0) | ra_Px1(X0,sK2(X0))) & (! [X2] : ~ra_Px1(X0,X2) | ~cp(X0)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2])],[f114,f115])).
+fof(f115,plain,(
+  ! [X0] : (? [X1] : ra_Px1(X0,X1) => ra_Px1(X0,sK2(X0)))),
+  introduced(choice_axiom,[])).
+fof(f114,plain,(
+  ! [X0] : ((cp(X0) | ? [X1] : ra_Px1(X0,X1)) & (! [X2] : ~ra_Px1(X0,X2) | ~cp(X0)))),
+  inference(rectify,[],[f113])).
+fof(f113,plain,(
+  ! [X0] : ((cp(X0) | ? [X1] : ra_Px1(X0,X1)) & (! [X1] : ~ra_Px1(X0,X1) | ~cp(X0)))),
+  inference(nnf_transformation,[],[f97])).
+fof(f97,plain,(
+  ! [X0] : (cp(X0) <=> ! [X1] : ~ra_Px1(X0,X1))),
+  inference(ennf_transformation,[],[f41])).
+fof(f41,plain,(
+  ! [X0] : (cp(X0) <=> ~? [X1] : ra_Px1(X0,X1))),
+  inference(rectify,[],[f26])).
+fof(f26,axiom,(
+  ! [X3] : (cp(X3) <=> ~? [X4] : ra_Px1(X3,X4))),
+  file('./p/KRS110+1.tptp',unknown)).
+fof(f162,plain,(
+  ( ! [X0] : (ra_Px1(X0,sK3(X0)) | ~cpxcomp(X0)) )),
+  inference(cnf_transformation,[],[f120])).
+fof(f120,plain,(
+  ! [X0] : ((cpxcomp(X0) | ! [X1] : ~ra_Px1(X0,X1)) & (ra_Px1(X0,sK3(X0)) | ~cpxcomp(X0)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK3])],[f118,f119])).
+fof(f119,plain,(
+  ! [X0] : (? [X2] : ra_Px1(X0,X2) => ra_Px1(X0,sK3(X0)))),
+  introduced(choice_axiom,[])).
+fof(f118,plain,(
+  ! [X0] : ((cpxcomp(X0) | ! [X1] : ~ra_Px1(X0,X1)) & (? [X2] : ra_Px1(X0,X2) | ~cpxcomp(X0)))),
+  inference(rectify,[],[f117])).
+fof(f117,plain,(
+  ! [X0] : ((cpxcomp(X0) | ! [X1] : ~ra_Px1(X0,X1)) & (? [X1] : ra_Px1(X0,X1) | ~cpxcomp(X0)))),
+  inference(nnf_transformation,[],[f42])).
+fof(f42,plain,(
+  ! [X0] : (cpxcomp(X0) <=> ? [X1] : ra_Px1(X0,X1))),
+  inference(rectify,[],[f27])).
+fof(f27,axiom,(
+  ! [X3] : (cpxcomp(X3) <=> ? [X5] : ra_Px1(X3,X5))),
+  file('./p/KRS110+1.tptp',unknown)).
+fof(f214,plain,(
+  ( ! [X0] : (cpxcomp(sK1(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(duplicate_literal_removal,[],[f213])).
+fof(f213,plain,(
+  ( ! [X0] : (cpxcomp(sK1(X0)) | ~cUnsatisfiable(X0) | ~cUnsatisfiable(X0)) )),
+  inference(resolution,[],[f157,f155])).
+fof(f155,plain,(
+  ( ! [X0] : (rs(X0,sK1(X0)) | ~cUnsatisfiable(X0)) )),
+  inference(cnf_transformation,[],[f112])).
+fof(f157,plain,(
+  ( ! [X0,X3] : (~rs(X0,X3) | cpxcomp(X3) | ~cUnsatisfiable(X0)) )),
+  inference(cnf_transformation,[],[f112])).
+% SZS output end Proof for KRS110+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

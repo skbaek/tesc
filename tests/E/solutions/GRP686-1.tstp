@@ -1,0 +1,429 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_13, plain, (mult(X1,unit)=X1)).
+#
+#cnf(i_0_14, plain, (mult(unit,X1)=X1)).
+#
+#cnf(i_0_10, plain, (ld(X1,mult(X1,X2))=X2)).
+#
+#cnf(i_0_16, negated_conjecture, (mult(mult(a,mult(a,b)),c)!=mult(mult(a,a),mult(b,c)))).
+#
+#cnf(i_0_18, plain, (ld(X1,X1)=unit)).
+#
+#cnf(i_0_17, plain, (ld(unit,X1)=X1)).
+#
+#cnf(i_0_9, plain, (mult(X1,ld(X1,X2))=X2)).
+#
+#cnf(i_0_11, plain, (mult(rd(X1,X2),X2)=X1)).
+#
+#cnf(i_0_23, plain, (rd(X1,unit)=X1)).
+#
+#cnf(i_0_12, plain, (rd(mult(X1,X2),X2)=X1)).
+#
+#cnf(i_0_27, plain, (rd(X1,X1)=unit)).
+#
+#cnf(i_0_24, plain, (ld(rd(X1,X2),X1)=X2)).
+#
+#cnf(i_0_29, plain, (rd(X2,ld(X1,X2))=X1)).
+#
+#cnf(i_0_15, plain, (mult(mult(X1,mult(X2,X2)),X3)=mult(X1,mult(X2,mult(X2,X3))))).
+#
+#cnf(i_0_47, plain, (mult(mult(X1,X1),X2)=mult(X1,mult(X1,X2)))).
+#
+#cnf(i_0_16, negated_conjecture, (mult(mult(a,mult(a,b)),c)!=mult(a,mult(a,mult(b,c))))).
+#
+#cnf(i_0_53, plain, (rd(mult(X1,mult(X1,X2)),X2)=mult(X1,X1))).
+#
+#cnf(i_0_68, plain, (rd(mult(X1,X2),ld(X1,X2))=mult(X1,X1))).
+#
+#cnf(i_0_82, plain, (rd(X1,ld(X1,unit))=mult(X1,X1))).
+#
+#cnf(i_0_85, plain, (ld(mult(X1,X1),X1)=ld(X1,unit))).
+#
+#cnf(i_0_73, plain, (ld(mult(X1,X1),mult(X1,X2))=ld(X1,X2))).
+#
+#cnf(i_0_105, plain, (ld(mult(X1,X1),X2)=ld(X1,ld(X1,X2)))).
+#
+#cnf(i_0_83, plain, (rd(X2,ld(X1,ld(X1,X2)))=mult(X1,X1))).
+#####
+#cnf(i_0_64, plain, (rd(mult(rd(X1,X2),X1),X2)=mult(rd(X1,X2),rd(X1,X2)))).
+##
+#cnf(i_0_79, plain, (rd(X1,ld(rd(X1,X2),X2))=mult(rd(X1,X2),rd(X1,X2)))).
+##
+#cnf(i_0_88, plain, (mult(rd(unit,X1),rd(unit,X1))=rd(rd(unit,X1),X1))).
+##
+#cnf(i_0_43, plain, (rd(mult(X1,mult(X2,mult(X2,X3))),X3)=mult(X1,mult(X2,X2)))).
+#
+#cnf(i_0_190, plain, (rd(mult(X1,mult(X2,X3)),ld(X2,X3))=mult(X1,mult(X2,X2)))).
+#
+#cnf(i_0_213, plain, (rd(mult(X1,X2),ld(X2,unit))=mult(X1,mult(X2,X2)))).
+#
+#cnf(i_0_231, plain, (mult(rd(X1,X2),mult(X2,X2))=rd(X1,ld(X2,unit)))).
+#
+#cnf(i_0_220, plain, (ld(mult(X1,mult(X2,X2)),mult(X1,X2))=ld(X2,unit))).
+#
+#cnf(i_0_284, plain, (ld(X1,mult(rd(X1,mult(X2,X2)),X2))=ld(X2,unit))).
+#
+#cnf(i_0_288, plain, (mult(rd(unit,mult(X1,X1)),X1)=ld(X1,unit))).
+#
+#cnf(i_0_312, plain, (rd(ld(X1,unit),X1)=rd(unit,mult(X1,X1)))).
+#
+#cnf(i_0_290, plain, (mult(rd(X1,mult(X2,X2)),X2)=mult(X1,ld(X2,unit)))).
+#
+#cnf(i_0_329, plain, (ld(rd(unit,mult(X1,X1)),ld(X1,unit))=X1)).
+#
+#cnf(i_0_343, plain, (rd(mult(X1,ld(X2,unit)),X2)=rd(X1,mult(X2,X2)))).
+#
+#cnf(i_0_393, plain, (rd(X1,mult(X1,X1))=rd(unit,X1))).
+#
+#cnf(i_0_398, plain, (ld(rd(unit,X1),X1)=mult(X1,X1))).
+#
+#cnf(i_0_399, plain, (rd(rd(unit,X1),X1)=rd(unit,mult(X1,X1)))).
+#
+#cnf(i_0_427, plain, (rd(unit,X1)=ld(X1,unit))).
+#
+#cnf(i_0_445, plain, (mult(ld(X1,unit),X1)=unit)).
+#
+#cnf(i_0_444, plain, (ld(ld(X1,unit),unit)=X1)).
+###
+#cnf(i_0_393, plain, (rd(X1,mult(X1,X1))=ld(X1,unit))).
+#
+#cnf(i_0_398, plain, (ld(ld(X1,unit),X1)=mult(X1,X1))).
+##
+#cnf(i_0_449, plain, (mult(ld(X1,unit),mult(X1,X1))=X1)).
+####
+#cnf(i_0_312, plain, (rd(ld(X1,unit),X1)=ld(X1,ld(X1,unit)))).
+#
+#cnf(i_0_440, plain, (mult(ld(X1,ld(X1,unit)),X1)=ld(X1,unit))).
+###
+#cnf(i_0_443, plain, (ld(ld(X1,ld(X1,unit)),unit)=mult(X1,X1))).
+##
+#cnf(i_0_467, plain, (mult(ld(X1,ld(X1,unit)),mult(X1,X1))=unit)).
+####
+#cnf(i_0_329, plain, (ld(ld(X1,ld(X1,unit)),ld(X1,unit))=X1)).
+###
+#cnf(i_0_236, plain, (ld(rd(X1,X2),rd(X1,ld(X2,unit)))=mult(X2,X2))).
+#
+#cnf(i_0_237, plain, (rd(rd(X1,ld(X2,unit)),mult(X2,X2))=rd(X1,X2))).
+##
+#cnf(i_0_518, plain, (mult(ld(X1,unit),mult(X1,mult(X1,X2)))=mult(X1,X2))).
+#
+#cnf(i_0_731, plain, (mult(ld(X1,unit),mult(X1,X2))=X2)).
+#
+#cnf(i_0_743, plain, (rd(X2,mult(X1,X2))=ld(X1,unit))).
+#
+#cnf(i_0_792, plain, (rd(ld(X1,X2),X2)=ld(X1,unit))).
+#
+#cnf(i_0_742, plain, (ld(ld(X1,unit),X2)=mult(X1,X2))).
+#
+#cnf(i_0_765, plain, (mult(ld(X1,unit),X2)=ld(X1,X2))).
+##
+#cnf(i_0_784, plain, (ld(rd(X2,X1),unit)=rd(X1,X2))).
+#####
+#cnf(i_0_877, plain, (mult(rd(X1,X2),rd(X2,X1))=unit)).
+###
+#cnf(i_0_890, plain, (ld(rd(X2,X1),X3)=mult(rd(X1,X2),X3))).
+#
+#cnf(i_0_984, plain, (mult(rd(X2,X1),mult(rd(X1,X2),X3))=X3)).
+##
+#cnf(i_0_786, plain, (rd(X1,mult(X2,mult(X2,X1)))=ld(X2,ld(X2,unit)))).
+#
+#cnf(i_0_807, plain, (rd(ld(X1,ld(X1,X2)),X2)=ld(X1,ld(X1,unit)))).
+###
+#cnf(i_0_857, plain, (rd(ld(X1,X2),mult(X1,X2))=ld(X1,ld(X1,unit)))).
+###
+#cnf(i_0_843, plain, (ld(ld(X1,ld(X1,unit)),X2)=mult(X1,mult(X1,X2)))).
+#
+#cnf(i_0_859, plain, (rd(ld(X1,X2),ld(X2,unit))=ld(X1,mult(X2,X2)))).
+#
+#cnf(i_0_867, plain, (mult(ld(X1,ld(X1,unit)),X2)=ld(X1,ld(X1,X2)))).
+##########
+#cnf(i_0_849, plain, (ld(ld(X1,mult(X2,X2)),ld(X1,X2))=ld(X2,unit))).
+##
+#cnf(i_0_1278, plain, (mult(X1,ld(mult(X1,mult(X1,X1)),X1))=ld(X1,unit))).
+#
+#cnf(i_0_1289, plain, (ld(mult(X1,mult(X1,X1)),X1)=ld(X1,ld(X1,unit)))).
+#
+#cnf(i_0_1332, plain, (rd(X1,ld(X1,ld(X1,unit)))=mult(X1,mult(X1,X1)))).
+#
+#cnf(i_0_848, plain, (ld(X1,mult(X2,mult(X2,X3)))=mult(ld(X1,mult(X2,X2)),X3))).
+#
+#cnf(i_0_919, plain, (rd(rd(X1,X2),rd(X2,X1))=mult(rd(X1,X2),rd(X1,X2)))).
+#
+#cnf(i_0_79, plain, (rd(X1,mult(rd(X2,X1),X2))=mult(rd(X1,X2),rd(X1,X2)))).
+#
+#cnf(i_0_236, plain, (mult(rd(X2,X1),rd(X1,ld(X2,unit)))=mult(X2,X2))).
+#######
+#cnf(i_0_1187, plain, (mult(ld(X1,mult(X2,X2)),ld(X2,unit))=ld(X1,X2))).
+##
+#cnf(i_0_1506, plain, (rd(mult(X1,X1),rd(X2,ld(X1,unit)))=rd(X1,X2))).
+#
+#cnf(i_0_1626, plain, (rd(X1,mult(X2,ld(X1,unit)))=rd(mult(X1,X1),X2))).
+#
+#cnf(i_0_1529, plain, (ld(X2,rd(X2,ld(X1,ld(X1,unit))))=mult(X1,X1))).
+#
+#cnf(i_0_1694, plain, (ld(X1,rd(X1,mult(X2,X2)))=ld(X2,ld(X2,unit)))).
+##
+#cnf(i_0_1745, plain, (ld(mult(X1,mult(X2,X2)),X1)=ld(X2,ld(X2,unit)))).
+#
+#cnf(i_0_1680, plain, (rd(X1,ld(X2,ld(X2,unit)))=mult(X1,mult(X2,X2)))).
+#
+#cnf(i_0_1722, plain, (mult(X1,ld(X2,ld(X2,unit)))=rd(X1,mult(X2,X2)))).
+#######
+#cnf(i_0_1843, plain, (rd(mult(X1,X1),mult(X2,X2))=mult(X1,rd(X1,mult(X2,X2))))).
+#########
+#cnf(i_0_1384, plain, (mult(ld(mult(X1,mult(X1,X2)),mult(X1,X1)),X2)=unit)).
+#
+#cnf(i_0_1929, plain, (ld(mult(X1,mult(X1,X2)),mult(X1,X1))=ld(X2,unit))).
+#
+#cnf(i_0_1983, plain, (ld(mult(X1,mult(X1,X2)),X1)=ld(X2,ld(X1,unit)))).
+#
+#cnf(i_0_2006, plain, (ld(mult(X1,X2),mult(X1,X1))=ld(ld(X1,X2),unit))).
+#
+#cnf(i_0_2039, plain, (rd(X1,ld(X2,ld(X1,unit)))=mult(X1,mult(X1,X2)))).
+#
+#cnf(i_0_2056, plain, (ld(ld(X1,X2),ld(X1,unit))=ld(mult(X1,X2),X1))).
+##
+#cnf(i_0_2081, plain, (ld(ld(X1,ld(X1,X2)),unit)=ld(X2,mult(X1,X1)))).
+###
+#cnf(i_0_2120, plain, (rd(ld(X1,unit),ld(X2,X1))=ld(X1,ld(X1,X2)))).
+#
+#cnf(i_0_2128, plain, (mult(X1,mult(X1,ld(X2,unit)))=rd(mult(X1,X1),X2))).
+#
+#cnf(i_0_2272, plain, (ld(X1,rd(mult(X1,X1),X2))=mult(X1,ld(X2,unit)))).
+#
+#cnf(i_0_2179, plain, (ld(ld(X2,mult(X1,X1)),unit)=ld(X1,ld(X1,X2)))).
+##
+#cnf(i_0_2300, plain, (rd(mult(X1,X1),ld(X2,unit))=mult(X1,mult(X1,X2)))).
+#
+#cnf(i_0_2350, plain, (mult(X1,rd(ld(X1,unit),X2))=ld(X1,rd(X1,X2)))).
+#
+#cnf(i_0_2456, plain, (ld(X1,ld(X1,rd(X1,X2)))=rd(ld(X1,unit),X2))).
+#
+#cnf(i_0_2074, plain, (mult(ld(X1,X2),ld(mult(X1,X2),X1))=ld(X1,unit))).
+##
+#cnf(i_0_2221, plain, (mult(ld(X1,ld(X1,X2)),ld(X2,X1))=ld(X1,unit))).
+####
+#cnf(i_0_2063, plain, (mult(mult(X1,X2),ld(ld(X1,X2),unit))=mult(X1,X1))).
+##
+#cnf(i_0_2105, plain, (mult(mult(X1,mult(X1,X2)),ld(X2,unit))=mult(X1,X1))).
+#
+#cnf(i_0_2124, plain, (rd(mult(X1,X1),rd(X3,X2))=mult(X1,mult(X1,rd(X2,X3))))).
+##
+#cnf(i_0_2184, plain, (ld(ld(X2,mult(X1,X1)),X3)=mult(ld(X1,ld(X1,X2)),X3))).
+#
+#cnf(i_0_2186, plain, (ld(ld(X1,ld(X1,X2)),X3)=mult(ld(X2,mult(X1,X1)),X3))).
+##
+#cnf(i_0_2275, plain, (rd(rd(mult(X1,X1),X2),ld(X2,unit))=mult(X1,X1))).
+#########
+#cnf(i_0_2458, plain, (rd(rd(X1,X2),rd(ld(X1,unit),X2))=mult(X1,X1))).
+#####
+#cnf(i_0_3012, plain, (rd(rd(mult(X1,X1),X2),X2)=mult(X1,rd(X1,mult(X2,X2))))).
+##
+#cnf(i_0_2226, plain, (mult(ld(X1,ld(X1,X2)),ld(X2,mult(X1,X1)))=unit)).
+#
+#cnf(i_0_2232, plain, (mult(ld(X1,mult(X2,X2)),ld(X2,ld(X2,X1)))=unit)).
+###
+#cnf(i_0_214, plain, (rd(mult(X1,X3),ld(X2,ld(X2,X3)))=mult(X1,mult(X2,X2)))).
+#
+#cnf(i_0_3359, plain, (rd(X1,ld(X3,ld(X3,X2)))=mult(rd(X1,X2),mult(X3,X3)))).
+#
+#cnf(i_0_3420, plain, (rd(rd(X1,X3),mult(X2,X2))=rd(X1,mult(X2,mult(X2,X3))))).
+##
+#cnf(i_0_3492, plain, (rd(X1,rd(mult(X2,X2),X1))=mult(X1,rd(X1,mult(X2,X2))))).
+#
+#cnf(i_0_216, plain, (mult(rd(X1,mult(X2,X3)),mult(X2,X2))=rd(X1,ld(X2,X3)))).
+#
+#cnf(i_0_342, plain, (mult(rd(mult(X2,X2),X1),mult(X1,ld(X2,unit)))=X2)).
+##
+#cnf(i_0_851, plain, (rd(ld(X1,mult(X2,X3)),ld(X2,X3))=ld(X1,mult(X2,X2)))).
+###############
+#cnf(i_0_1377, plain, (mult(X1,mult(ld(X1,mult(X2,X2)),X3))=mult(X2,mult(X2,X3)))).
+#
+#cnf(i_0_1400, plain, (mult(ld(X1,mult(X2,X2)),ld(X2,X3))=ld(X1,mult(X2,X3)))).
+#
+#cnf(i_0_3908, plain, (ld(ld(X1,X2),ld(X1,X3))=ld(mult(X1,X2),mult(X1,X3)))).
+###
+#cnf(i_0_2032, plain, (mult(mult(X1,mult(X1,X2)),ld(X2,ld(X1,unit)))=X1)).
+#
+#cnf(i_0_2048, plain, (ld(mult(rd(X1,X2),X1),rd(X1,X2))=ld(X2,rd(X2,X1)))).
+##
+#cnf(i_0_2273, plain, (rd(rd(mult(X1,X1),X2),mult(X1,ld(X2,unit)))=X1)).
+##
+#cnf(i_0_2412, plain, (rd(mult(X1,mult(X1,X2)),mult(X2,X2))=rd(mult(X1,X1),X2))).
+#
+#cnf(i_0_2457, plain, (rd(ld(X1,rd(X1,X2)),rd(ld(X1,unit),X2))=X1)).
+#######
+#cnf(i_0_2760, plain, (rd(mult(X1,X1),mult(X2,mult(X2,X1)))=rd(X1,mult(X2,X2)))).
+#
+#cnf(i_0_3141, plain, (mult(mult(X1,rd(X1,mult(X2,X2))),X2)=rd(mult(X1,X1),X2))).
+##
+#cnf(i_0_3480, plain, (rd(mult(X1,X2),mult(X3,mult(X3,X2)))=rd(X1,mult(X3,X3)))).
+#
+#cnf(i_0_3495, plain, (rd(X1,mult(X3,mult(X3,ld(X2,X1))))=rd(X2,mult(X3,X3)))).
+#
+#cnf(i_0_3564, plain, (mult(X1,mult(X1,rd(ld(X1,X3),X2)))=rd(mult(X1,X3),X2))).
+#
+#cnf(i_0_4666, plain, (rd(mult(X1,mult(X1,X2)),X3)=mult(X1,mult(X1,rd(X2,X3))))).
+#
+#cnf(i_0_4670, plain, (ld(X1,rd(mult(X1,X2),X3))=mult(X1,rd(ld(X1,X2),X3)))).
+####
+#cnf(i_0_4808, plain, (rd(ld(X1,ld(X1,X2)),X3)=ld(X1,ld(X1,rd(X2,X3))))).
+######
+#cnf(i_0_3815, plain, (mult(mult(X1,X2),ld(ld(X1,X2),X3))=mult(X1,mult(X1,X3)))).
+#
+#cnf(i_0_3869, plain, (rd(ld(X1,X2),ld(X3,mult(X1,X2)))=ld(X1,ld(X1,X3)))).
+#
+#cnf(i_0_3907, plain, (ld(mult(X1,mult(X1,X1)),mult(X1,X2))=ld(X1,ld(X1,X2)))).
+#
+#cnf(i_0_5200, plain, (ld(mult(X1,mult(X1,X1)),X2)=ld(X1,ld(X1,ld(X1,X2))))).
+#
+#cnf(i_0_3968, plain, (ld(mult(X1,mult(X1,X2)),mult(X1,X3))=ld(X2,ld(X1,X3)))).
+#
+#cnf(i_0_5355, plain, (ld(mult(X1,mult(X1,X2)),X3)=ld(X2,ld(X1,ld(X1,X3))))).
+#
+#cnf(i_0_5513, plain, (mult(rd(X2,mult(X1,X1)),X3)=mult(X2,ld(X1,ld(X1,X3))))).
+#
+#cnf(i_0_4056, plain, (rd(rd(X1,X2),ld(X2,rd(X2,X1)))=mult(rd(X1,X2),X1))).
+#
+#cnf(i_0_4555, plain, (rd(mult(X1,ld(X2,X3)),mult(X2,X3))=rd(X1,mult(X2,X2)))).
+####
+#cnf(i_0_4727, plain, (rd(mult(X1,X2),mult(X3,ld(X1,X2)))=rd(mult(X1,X1),X3))).
+#
+#cnf(i_0_4731, plain, (rd(mult(X1,X2),ld(X3,ld(X1,X2)))=mult(X1,mult(X1,X3)))).
+##
+#cnf(i_0_4763, plain, (mult(mult(X1,mult(X1,rd(X2,X3))),X3)=mult(X1,mult(X1,X2)))).
+#
+#cnf(i_0_6084, plain, (mult(mult(X1,mult(X1,X2)),X3)=mult(X1,mult(X1,mult(X2,X3))))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(c04, axiom, (rd(mult(X1,X2),X2)=X1), file('./p/GRP686-1.tptp', c04)).
+cnf(c07, axiom, (mult(X1,mult(X2,mult(X2,X3)))=mult(mult(X1,mult(X2,X2)),X3)), file('./p/GRP686-1.tptp', c07)).
+cnf(c01, axiom, (mult(X1,ld(X1,X2))=X2), file('./p/GRP686-1.tptp', c01)).
+cnf(c02, axiom, (ld(X1,mult(X1,X2))=X2), file('./p/GRP686-1.tptp', c02)).
+cnf(c03, axiom, (mult(rd(X1,X2),X2)=X1), file('./p/GRP686-1.tptp', c03)).
+cnf(c05, axiom, (mult(X1,unit)=X1), file('./p/GRP686-1.tptp', c05)).
+cnf(c06, axiom, (mult(unit,X1)=X1), file('./p/GRP686-1.tptp', c06)).
+cnf(goals, negated_conjecture, (mult(mult(a,a),mult(b,c))!=mult(mult(a,mult(a,b)),c)), file('./p/GRP686-1.tptp', goals)).
+cnf(c_0_8, axiom, (rd(mult(X1,X2),X2)=X1), c04).
+cnf(c_0_9, axiom, (mult(X1,mult(X2,mult(X2,X3)))=mult(mult(X1,mult(X2,X2)),X3)), c07).
+cnf(c_0_10, plain, (rd(mult(X1,mult(X2,mult(X2,X3))),X3)=mult(X1,mult(X2,X2))), inference(pm,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_11, axiom, (mult(X1,ld(X1,X2))=X2), c01).
+cnf(c_0_12, axiom, (ld(X1,mult(X1,X2))=X2), c02).
+cnf(c_0_13, axiom, (mult(rd(X1,X2),X2)=X1), c03).
+cnf(c_0_14, plain, (rd(mult(X1,mult(X2,X3)),ld(X2,X3))=mult(X1,mult(X2,X2))), inference(pm,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_15, axiom, (mult(X1,unit)=X1), c05).
+cnf(c_0_16, plain, (ld(rd(X1,X2),X1)=X2), inference(pm,[status(thm)],[c_0_12, c_0_13])).
+cnf(c_0_17, plain, (rd(mult(X1,X2),ld(X2,unit))=mult(X1,mult(X2,X2))), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+cnf(c_0_18, axiom, (mult(unit,X1)=X1), c06).
+cnf(c_0_19, plain, (ld(mult(X1,mult(X2,X2)),mult(X1,X2))=ld(X2,unit)), inference(pm,[status(thm)],[c_0_16, c_0_17])).
+cnf(c_0_20, plain, (mult(mult(X1,X1),X2)=mult(X1,mult(X1,X2))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_9, c_0_18]), c_0_18])).
+cnf(c_0_21, plain, (ld(X1,mult(rd(X1,mult(X2,X2)),X2))=ld(X2,unit)), inference(pm,[status(thm)],[c_0_19, c_0_13])).
+cnf(c_0_22, plain, (rd(mult(X1,mult(X1,X2)),X2)=mult(X1,X1)), inference(pm,[status(thm)],[c_0_8, c_0_20])).
+cnf(c_0_23, plain, (mult(rd(X1,mult(X2,X2)),X2)=mult(X1,ld(X2,unit))), inference(pm,[status(thm)],[c_0_11, c_0_21])).
+cnf(c_0_24, plain, (rd(mult(X1,X2),ld(X1,X2))=mult(X1,X1)), inference(pm,[status(thm)],[c_0_22, c_0_11])).
+cnf(c_0_25, plain, (rd(mult(X1,ld(X2,unit)),X2)=rd(X1,mult(X2,X2))), inference(pm,[status(thm)],[c_0_8, c_0_23])).
+cnf(c_0_26, plain, (rd(X1,ld(X1,unit))=mult(X1,X1)), inference(pm,[status(thm)],[c_0_24, c_0_15])).
+cnf(c_0_27, plain, (rd(mult(rd(X1,X2),X1),X2)=mult(rd(X1,X2),rd(X1,X2))), inference(pm,[status(thm)],[c_0_22, c_0_13])).
+cnf(c_0_28, plain, (rd(X1,mult(X1,X1))=rd(unit,X1)), inference(pm,[status(thm)],[c_0_25, c_0_11])).
+cnf(c_0_29, plain, (mult(rd(unit,X1),rd(unit,X1))=rd(rd(unit,X1),X1)), inference(pm,[status(thm)],[c_0_26, c_0_16])).
+cnf(c_0_30, plain, (rd(rd(unit,X1),X1)=rd(unit,mult(X1,X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_27, c_0_28]), c_0_13]), c_0_28]), c_0_28]), c_0_29])).
+cnf(c_0_31, plain, (mult(rd(X1,X2),mult(X2,X2))=rd(X1,ld(X2,unit))), inference(pm,[status(thm)],[c_0_17, c_0_13])).
+cnf(c_0_32, plain, (rd(unit,X1)=ld(X1,unit)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_13, c_0_30]), c_0_23]), c_0_18])).
+cnf(c_0_33, plain, (rd(X1,ld(X2,X1))=X2), inference(pm,[status(thm)],[c_0_8, c_0_11])).
+cnf(c_0_34, plain, (mult(ld(X1,unit),mult(X1,X1))=X1), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_31, c_0_32]), c_0_33])).
+cnf(c_0_35, plain, (mult(ld(X1,unit),mult(X1,mult(X1,X2)))=mult(X1,X2)), inference(pm,[status(thm)],[c_0_9, c_0_34])).
+cnf(c_0_36, plain, (mult(ld(X1,unit),mult(X1,X2))=X2), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_35, c_0_11]), c_0_11])).
+cnf(c_0_37, plain, (mult(ld(X1,unit),X2)=ld(X1,X2)), inference(pm,[status(thm)],[c_0_36, c_0_11])).
+cnf(c_0_38, plain, (rd(X1,mult(X2,X1))=ld(X2,unit)), inference(pm,[status(thm)],[c_0_8, c_0_36])).
+cnf(c_0_39, plain, (ld(X1,X1)=unit), inference(pm,[status(thm)],[c_0_12, c_0_15])).
+cnf(c_0_40, plain, (ld(X1,mult(X2,mult(X2,X3)))=mult(ld(X1,mult(X2,X2)),X3)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_9, c_0_37]), c_0_37])).
+cnf(c_0_41, plain, (ld(ld(X1,unit),X2)=mult(X1,X2)), inference(pm,[status(thm)],[c_0_12, c_0_36])).
+cnf(c_0_42, plain, (ld(rd(X1,X2),unit)=rd(X2,X1)), inference(pm,[status(thm)],[c_0_38, c_0_13])).
+cnf(c_0_43, plain, (rd(ld(X1,X2),ld(X2,unit))=ld(X1,mult(X2,X2))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_17, c_0_37]), c_0_37])).
+cnf(c_0_44, plain, (mult(ld(mult(X1,mult(X1,X2)),mult(X1,X1)),X2)=unit), inference(pm,[status(thm)],[c_0_39, c_0_40])).
+cnf(c_0_45, plain, (ld(rd(X1,X2),rd(X1,ld(X2,unit)))=mult(X2,X2)), inference(pm,[status(thm)],[c_0_12, c_0_31])).
+cnf(c_0_46, plain, (ld(rd(X1,X2),X3)=mult(rd(X2,X1),X3)), inference(pm,[status(thm)],[c_0_41, c_0_42])).
+cnf(c_0_47, plain, (mult(ld(X1,mult(X2,X2)),ld(X2,unit))=ld(X1,X2)), inference(pm,[status(thm)],[c_0_13, c_0_43])).
+cnf(c_0_48, plain, (ld(mult(X1,mult(X1,X2)),mult(X1,X1))=ld(X2,unit)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_8, c_0_44]), c_0_32])).
+cnf(c_0_49, plain, (mult(rd(X1,X2),rd(X2,ld(X1,unit)))=mult(X1,X1)), inference(rw,[status(thm)],[c_0_45, c_0_46])).
+cnf(c_0_50, plain, (ld(mult(X1,mult(X1,X2)),X1)=ld(X2,ld(X1,unit))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_47, c_0_48]), c_0_37])).
+cnf(c_0_51, plain, (rd(mult(X1,X1),rd(X2,ld(X1,unit)))=rd(X1,X2)), inference(pm,[status(thm)],[c_0_8, c_0_49])).
+cnf(c_0_52, plain, (rd(X1,ld(X2,ld(X1,unit)))=mult(X1,mult(X1,X2))), inference(pm,[status(thm)],[c_0_33, c_0_50])).
+cnf(c_0_53, plain, (rd(X1,mult(X2,ld(X1,unit)))=rd(mult(X1,X1),X2)), inference(pm,[status(thm)],[c_0_51, c_0_8])).
+cnf(c_0_54, plain, (mult(rd(X1,mult(X2,X3)),mult(X2,X2))=rd(X1,ld(X2,X3))), inference(pm,[status(thm)],[c_0_14, c_0_13])).
+cnf(c_0_55, plain, (rd(mult(X1,X1),rd(X2,X3))=mult(X1,mult(X1,rd(X3,X2)))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_52, c_0_46]), c_0_53])).
+cnf(c_0_56, plain, (ld(mult(X1,X1),mult(X1,X2))=ld(X1,X2)), inference(pm,[status(thm)],[c_0_16, c_0_24])).
+cnf(c_0_57, plain, (mult(X1,mult(X1,rd(ld(X1,X2),X3)))=rd(mult(X1,X2),X3)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_38, c_0_54]), c_0_55]), c_0_46]), c_0_15])).
+cnf(c_0_58, plain, (ld(mult(X1,X1),X2)=ld(X1,ld(X1,X2))), inference(pm,[status(thm)],[c_0_56, c_0_11])).
+cnf(c_0_59, plain, (rd(mult(X1,mult(X1,X2)),X3)=mult(X1,mult(X1,rd(X2,X3)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_20, c_0_57]), c_0_20]), c_0_58]), c_0_20]), c_0_57]), c_0_11])).
+cnf(c_0_60, negated_conjecture, (mult(mult(a,a),mult(b,c))!=mult(mult(a,mult(a,b)),c)), goals).
+cnf(c_0_61, plain, (mult(mult(X1,mult(X1,rd(X2,X3))),X3)=mult(X1,mult(X1,X2))), inference(pm,[status(thm)],[c_0_13, c_0_59])).
+cnf(c_0_62, negated_conjecture, (mult(mult(a,mult(a,b)),c)!=mult(a,mult(a,mult(b,c)))), inference(rw,[status(thm)],[c_0_60, c_0_20])).
+cnf(c_0_63, plain, (mult(mult(X1,mult(X1,X2)),X3)=mult(X1,mult(X1,mult(X2,X3)))), inference(pm,[status(thm)],[c_0_61, c_0_8])).
+cnf(c_0_64, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_62, c_0_63])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 65
+# Proof object clause steps            : 57
+# Proof object formula steps           : 8
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 3
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 8
+# Proof object initial formulas used   : 8
+# Proof object generating inferences   : 46
+# Proof object simplifying inferences  : 26
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 8
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 8
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 8
+# Processed clauses                    : 279
+# ...of these trivial                  : 131
+# ...subsumed                          : 0
+# ...remaining for further processing  : 148
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 59
+# Generated clauses                    : 6225
+# ...of the previous two non-trivial   : 4063
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 6225
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 89
+#    Positive orientable unit clauses  : 89
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 0
+# Current number of unprocessed clauses: 3711
+# ...number of literals in the above   : 3711
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 59
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 106
+# BW rewrite match successes           : 56
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 77100

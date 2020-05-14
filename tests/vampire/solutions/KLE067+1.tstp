@@ -1,0 +1,72 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for KLE067+1
+% SZS output start Proof for KLE067+1
+fof(f74,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f71])).
+fof(f71,plain,(
+  domain(addition(sK0,sK1)) != domain(addition(sK0,sK1))),
+  inference(superposition,[],[f46,f67])).
+fof(f67,plain,(
+  ( ! [X0] : (domain(X0) = domain(domain(X0))) )),
+  inference(forward_demodulation,[],[f62,f35])).
+fof(f35,plain,(
+  ( ! [X0] : (multiplication(one,X0) = X0) )),
+  inference(cnf_transformation,[],[f7])).
+fof(f7,axiom,(
+  ! [X0] : multiplication(one,X0) = X0),
+  file('./p/KLE067+1.tptp',unknown)).
+fof(f62,plain,(
+  ( ! [X0] : (domain(multiplication(one,X0)) = domain(domain(X0))) )),
+  inference(superposition,[],[f41,f35])).
+fof(f41,plain,(
+  ( ! [X0,X1] : (domain(multiplication(X0,X1)) = domain(multiplication(X0,domain(X1)))) )),
+  inference(cnf_transformation,[],[f22])).
+fof(f22,plain,(
+  ! [X0,X1] : domain(multiplication(X0,X1)) = domain(multiplication(X0,domain(X1)))),
+  inference(rectify,[],[f14])).
+fof(f14,axiom,(
+  ! [X3,X4] : domain(multiplication(X3,X4)) = domain(multiplication(X3,domain(X4)))),
+  file('./p/KLE067+1.tptp',unknown)).
+fof(f46,plain,(
+  domain(addition(sK0,sK1)) != domain(domain(addition(sK0,sK1)))),
+  inference(forward_demodulation,[],[f45,f44])).
+fof(f44,plain,(
+  ( ! [X0,X1] : (domain(addition(X0,X1)) = addition(domain(X0),domain(X1))) )),
+  inference(cnf_transformation,[],[f24])).
+fof(f24,plain,(
+  ! [X0,X1] : domain(addition(X0,X1)) = addition(domain(X0),domain(X1))),
+  inference(rectify,[],[f17])).
+fof(f17,axiom,(
+  ! [X3,X4] : domain(addition(X3,X4)) = addition(domain(X3),domain(X4))),
+  file('./p/KLE067+1.tptp',unknown)).
+fof(f45,plain,(
+  addition(domain(sK0),domain(sK1)) != domain(addition(domain(sK0),domain(sK1)))),
+  inference(cnf_transformation,[],[f28])).
+fof(f28,plain,(
+  addition(domain(sK0),domain(sK1)) != domain(addition(domain(sK0),domain(sK1)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1])],[f26,f27])).
+fof(f27,plain,(
+  ? [X0,X1] : addition(domain(X0),domain(X1)) != domain(addition(domain(X0),domain(X1))) => addition(domain(sK0),domain(sK1)) != domain(addition(domain(sK0),domain(sK1)))),
+  introduced(choice_axiom,[])).
+fof(f26,plain,(
+  ? [X0,X1] : addition(domain(X0),domain(X1)) != domain(addition(domain(X0),domain(X1)))),
+  inference(ennf_transformation,[],[f25])).
+fof(f25,plain,(
+  ~! [X0,X1] : addition(domain(X0),domain(X1)) = domain(addition(domain(X0),domain(X1)))),
+  inference(rectify,[],[f19])).
+fof(f19,negated_conjecture,(
+  ~! [X3,X4] : addition(domain(X3),domain(X4)) = domain(addition(domain(X3),domain(X4)))),
+  inference(negated_conjecture,[],[f18])).
+fof(f18,conjecture,(
+  ! [X3,X4] : addition(domain(X3),domain(X4)) = domain(addition(domain(X3),domain(X4)))),
+  file('./p/KLE067+1.tptp',unknown)).
+% SZS output end Proof for KLE067+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

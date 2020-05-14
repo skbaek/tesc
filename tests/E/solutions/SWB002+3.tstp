@@ -1,0 +1,303 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_68, plain, (ic(uri_owl_Nothing))).
+#
+#cnf(i_0_71, plain, (ic(uri_owl_Thing))).
+#
+#cnf(i_0_114, plain, (ip(uri_owl_complementOf))).
+#
+#cnf(i_0_67, plain, (~icext(uri_owl_Nothing,X1))).
+#
+#cnf(i_0_120, plain, (ip(uri_owl_intersectionOf))).
+#
+#cnf(i_0_129, plain, (ip(uri_owl_unionOf))).
+#
+#cnf(i_0_111, plain, (ip(uri_owl_allValuesFrom))).
+#
+#cnf(i_0_38, plain, (~icext(X1,X2)|~iext(uri_owl_unionOf,X1,uri_rdf_nil))).
+#
+#cnf(i_0_117, plain, (ip(uri_owl_hasValue))).
+#
+#cnf(i_0_123, plain, (ip(uri_owl_onProperty))).
+#
+#cnf(i_0_126, plain, (ip(uri_owl_someValuesFrom))).
+#
+#cnf(i_0_247, negated_conjecture, (~iext(uri_ex_p,X1,X2)|~iext(uri_ex_q,X2,X1))).
+#
+#cnf(i_0_69, plain, (icext(uri_owl_Thing,X1))).
+#
+#cnf(i_0_213, plain, (icext(uri_rdfs_Resource,X1))).
+#
+#cnf(i_0_77, plain, (ic(X1)|~idc(X1))).
+#
+#cnf(i_0_250, plain, (~iext(uri_owl_unionOf,uri_owl_Thing,uri_rdf_nil))).
+#
+#cnf(i_0_82, plain, (ip(X1)|~ioap(X1))).
+#
+#cnf(i_0_87, plain, (ip(X1)|~iodp(X1))).
+#
+#cnf(i_0_92, plain, (ip(X1)|~ioxp(X1))).
+#
+#cnf(i_0_251, plain, (~iext(uri_owl_unionOf,uri_rdfs_Resource,uri_rdf_nil))).
+#
+#cnf(i_0_102, plain, (iext(uri_rdf_type,X1,uri_rdfs_Resource))).
+#
+#cnf(i_0_210, plain, (ic(X1)|~icext(uri_rdfs_Class,X1))).
+#
+#cnf(i_0_214, plain, (lv(X1)|~icext(uri_rdfs_Literal,X1))).
+#
+#cnf(i_0_2, plain, (~icext(X3,X2)|~icext(X1,X2)|~iext(uri_owl_complementOf,X1,X3))).
+#
+#cnf(i_0_244, plain, (ip(X1)|~iext(X1,X2,X3))).
+#
+#cnf(i_0_256, plain, (ip(uri_rdf_type))).
+#
+#cnf(i_0_211, plain, (icext(uri_rdfs_Class,X1)|~ic(X1))).
+#
+#cnf(i_0_252, plain, (~icext(X1,X2)|~iext(uri_owl_complementOf,uri_rdfs_Resource,X1))).
+#
+#cnf(i_0_215, plain, (icext(uri_rdfs_Literal,X1)|~lv(X1))).
+#
+#cnf(i_0_159, plain, (iext(uri_rdf_type,uri_rdf_nil,uri_rdf_List))).
+#
+#cnf(i_0_158, plain, (iext(uri_rdf_type,uri_rdf_first,uri_rdf_Property))).
+#
+#cnf(i_0_261, plain, (~iext(uri_owl_complementOf,uri_rdfs_Resource,uri_rdfs_Resource))).
+#
+#cnf(i_0_160, plain, (iext(uri_rdf_type,uri_rdf_rest,uri_rdf_Property))).
+#
+#cnf(i_0_169, plain, (iext(uri_rdf_type,uri_rdf_type,uri_rdf_Property))).
+##
+#cnf(i_0_263, plain, (~iext(uri_owl_complementOf,uri_rdfs_Resource,uri_owl_Thing))).
+#
+#cnf(i_0_216, plain, (iext(uri_rdf_type,uri_rdf_Property,uri_rdfs_Class))).
+#
+#cnf(i_0_161, plain, (iext(uri_rdf_type,uri_rdf__1,uri_rdf_Property))).
+#
+#cnf(i_0_199, plain, (iext(uri_rdf_type,uri_rdf__1,uri_rdfs_ContainerMembershipProperty))).
+#
+#cnf(i_0_253, plain, (~icext(X1,X2)|~iext(uri_owl_complementOf,uri_owl_Thing,X1))).
+#
+#cnf(i_0_162, plain, (iext(uri_rdf_type,uri_rdf__2,uri_rdf_Property))).
+#
+#cnf(i_0_200, plain, (iext(uri_rdf_type,uri_rdf__2,uri_rdfs_ContainerMembershipProperty))).
+#
+#cnf(i_0_163, plain, (iext(uri_rdf_type,uri_rdf__3,uri_rdf_Property))).
+#
+#cnf(i_0_277, plain, (~iext(uri_owl_complementOf,uri_owl_Thing,uri_rdfs_Resource))).
+#
+#cnf(i_0_201, plain, (iext(uri_rdf_type,uri_rdf__3,uri_rdfs_ContainerMembershipProperty))).
+#
+#cnf(i_0_164, plain, (iext(uri_rdf_type,uri_rdf_object,uri_rdf_Property))).
+#
+#cnf(i_0_165, plain, (iext(uri_rdf_type,uri_rdf_value,uri_rdf_Property))).
+#
+#cnf(i_0_279, plain, (~iext(uri_owl_complementOf,uri_owl_Thing,uri_owl_Thing))).
+#
+#cnf(i_0_166, plain, (iext(uri_rdf_type,uri_rdf_subject,uri_rdf_Property))).
+#
+#cnf(i_0_204, plain, (iext(uri_rdf_type,uri_rdf_XMLLiteral,uri_rdfs_Datatype))).
+#
+#cnf(i_0_183, plain, (iext(uri_rdfs_domain,uri_rdf_first,uri_rdf_List))).
+#
+#cnf(i_0_254, plain, (~icext(X2,X1)|~iext(uri_owl_complementOf,X2,uri_rdfs_Resource))).
+#
+#cnf(i_0_288, plain, (ip(uri_rdfs_domain))).
+#
+#cnf(i_0_185, plain, (iext(uri_rdfs_domain,uri_rdf_rest,uri_rdf_List))).
+#
+#cnf(i_0_240, plain, (iext(uri_rdfs_domain,uri_rdf_type,uri_rdfs_Resource))).
+##
+#cnf(i_0_207, plain, (iext(uri_rdfs_domain,uri_rdfs_domain,uri_rdf_Property))).
+#
+#cnf(i_0_217, plain, (iext(uri_rdfs_domain,uri_rdfs_range,uri_rdf_Property))).
+#
+#cnf(i_0_226, plain, (iext(uri_rdfs_domain,uri_rdfs_subClassOf,uri_rdfs_Class))).
+##
+#cnf(i_0_233, plain, (iext(uri_rdfs_domain,uri_rdfs_subPropertyOf,uri_rdf_Property))).
+#
+#cnf(i_0_193, plain, (iext(uri_rdfs_domain,uri_rdf__1,uri_rdfs_Resource))).
+#
+#cnf(i_0_194, plain, (iext(uri_rdfs_domain,uri_rdf__2,uri_rdfs_Resource))).
+#
+#cnf(i_0_255, plain, (~icext(X2,X1)|~iext(uri_owl_complementOf,X2,uri_owl_Thing))).
+#
+#cnf(i_0_195, plain, (iext(uri_rdfs_domain,uri_rdf__3,uri_rdfs_Resource))).
+#
+#cnf(i_0_220, plain, (iext(uri_rdfs_domain,uri_rdf_object,uri_rdfs_Statement))).
+#
+#cnf(i_0_242, plain, (iext(uri_rdfs_domain,uri_rdf_value,uri_rdfs_Resource))).
+##
+#cnf(i_0_224, plain, (iext(uri_rdfs_domain,uri_rdf_subject,uri_rdfs_Statement))).
+#
+#cnf(i_0_171, plain, (iext(uri_rdfs_domain,uri_rdfs_comment,uri_rdfs_Resource))).
+#
+#cnf(i_0_173, plain, (iext(uri_rdfs_domain,uri_rdfs_isDefinedBy,uri_rdfs_Resource))).
+##
+#cnf(i_0_178, plain, (iext(uri_rdfs_domain,uri_rdfs_seeAlso,uri_rdfs_Resource))).
+#
+#cnf(i_0_176, plain, (iext(uri_rdfs_domain,uri_rdfs_label,uri_rdfs_Resource))).
+#
+#cnf(i_0_191, plain, (iext(uri_rdfs_domain,uri_rdfs_member,uri_rdfs_Resource))).
+#
+#cnf(i_0_257, plain, (~ic(X1)|~iext(uri_owl_unionOf,uri_rdfs_Class,uri_rdf_nil))).
+#
+#cnf(i_0_222, plain, (iext(uri_rdfs_domain,uri_rdf_predicate,uri_rdfs_Statement))).
+#
+#cnf(i_0_184, plain, (iext(uri_rdfs_range,uri_rdf_first,uri_rdfs_Resource))).
+#
+#cnf(i_0_315, plain, (ip(uri_rdfs_range))).
+#
+#cnf(i_0_262, plain, (~ic(X1)|~iext(uri_owl_complementOf,uri_rdfs_Resource,uri_rdfs_Class))).
+#
+#cnf(i_0_186, plain, (iext(uri_rdfs_range,uri_rdf_rest,uri_rdf_List))).
+#
+#cnf(i_0_241, plain, (iext(uri_rdfs_range,uri_rdf_type,uri_rdfs_Class))).
+#
+#cnf(i_0_209, plain, (iext(uri_rdfs_range,uri_rdfs_domain,uri_rdfs_Class))).
+#
+#cnf(i_0_264, plain, (~lv(X1)|~iext(uri_owl_unionOf,uri_rdfs_Literal,uri_rdf_nil))).
+#
+#cnf(i_0_219, plain, (iext(uri_rdfs_range,uri_rdfs_range,uri_rdfs_Class))).
+#
+#cnf(i_0_230, plain, (iext(uri_rdfs_range,uri_rdfs_subClassOf,uri_rdfs_Class))).
+#
+#cnf(i_0_237, plain, (iext(uri_rdfs_range,uri_rdfs_subPropertyOf,uri_rdf_Property))).
+#
+#cnf(i_0_266, plain, (~lv(X1)|~iext(uri_owl_complementOf,uri_rdfs_Resource,uri_rdfs_Literal))).
+#
+#cnf(i_0_196, plain, (iext(uri_rdfs_range,uri_rdf__1,uri_rdfs_Resource))).
+#
+#cnf(i_0_197, plain, (iext(uri_rdfs_range,uri_rdf__2,uri_rdfs_Resource))).
+#
+#cnf(i_0_198, plain, (iext(uri_rdfs_range,uri_rdf__3,uri_rdfs_Resource))).
+#
+#cnf(i_0_276, plain, (~lv(X1)|~iext(uri_owl_complementOf,uri_owl_Thing,uri_rdfs_Literal))).
+#
+#cnf(i_0_243, plain, (iext(uri_rdfs_range,uri_rdf_value,uri_rdfs_Resource))).
+#
+#cnf(i_0_225, plain, (iext(uri_rdfs_range,uri_rdf_subject,uri_rdfs_Resource))).
+#
+#cnf(i_0_172, plain, (iext(uri_rdfs_range,uri_rdfs_comment,uri_rdfs_Literal))).
+#
+#cnf(i_0_278, plain, (~ic(X1)|~iext(uri_owl_complementOf,uri_owl_Thing,uri_rdfs_Class))).
+#
+#cnf(i_0_174, plain, (iext(uri_rdfs_range,uri_rdfs_isDefinedBy,uri_rdfs_Resource))).
+#
+#cnf(i_0_179, plain, (iext(uri_rdfs_range,uri_rdfs_seeAlso,uri_rdfs_Resource))).
+#
+#cnf(i_0_177, plain, (iext(uri_rdfs_range,uri_rdfs_label,uri_rdfs_Literal))).
+#
+#cnf(i_0_289, plain, (~lv(X1)|~iext(uri_owl_complementOf,uri_rdfs_Literal,uri_rdfs_Resource))).
+#
+#cnf(i_0_192, plain, (iext(uri_rdfs_range,uri_rdfs_member,uri_rdfs_Resource))).
+#
+#cnf(i_0_221, plain, (iext(uri_rdfs_range,uri_rdf_predicate,uri_rdfs_Resource))).
+##
+#cnf(i_0_291, plain, (~ic(X1)|~iext(uri_owl_complementOf,uri_rdfs_Class,uri_rdfs_Resource))).
+#
+#cnf(i_0_206, plain, (iext(uri_rdfs_subClassOf,uri_rdfs_Datatype,uri_rdfs_Class))).
+#
+#cnf(i_0_333, plain, (ip(uri_rdfs_subClassOf))).
+#
+#cnf(i_0_187, plain, (iext(uri_rdfs_subClassOf,uri_rdf_Alt,uri_rdfs_Container))).
+#
+#cnf(i_0_301, plain, (~lv(X1)|~iext(uri_owl_complementOf,uri_rdfs_Literal,uri_owl_Thing))).
+#
+#cnf(i_0_188, plain, (iext(uri_rdfs_subClassOf,uri_rdf_Bag,uri_rdfs_Container))).
+#
+#cnf(i_0_190, plain, (iext(uri_rdfs_subClassOf,uri_rdfs_ContainerMembershipProperty,uri_rdf_Property))).
+#
+#cnf(i_0_202, plain, (iext(uri_rdfs_subClassOf,uri_rdfs_Seq,uri_rdfs_Container))).
+#
+#cnf(i_0_303, plain, (~ic(X1)|~iext(uri_owl_complementOf,uri_rdfs_Class,uri_owl_Thing))).
+#
+#cnf(i_0_203, plain, (iext(uri_rdfs_subClassOf,uri_rdf_XMLLiteral,uri_rdfs_Literal))).
+#
+#cnf(i_0_175, plain, (iext(uri_rdfs_subPropertyOf,uri_rdfs_isDefinedBy,uri_rdfs_seeAlso))).
+#
+#cnf(i_0_339, plain, (ip(uri_rdfs_subPropertyOf))).
+#
+#cnf(i_0_258, plain, (~icext(X2,X1)|~ic(X1)|~iext(uri_owl_complementOf,X2,uri_rdfs_Class))).
+#
+#cnf(i_0_249, plain, (iext(uri_ex_p,uri_ex_s,esk19_0))).
+#
+#cnf(i_0_344, plain, (ip(uri_ex_p))).
+#
+#cnf(i_0_248, plain, (iext(uri_ex_q,esk19_0,uri_ex_s))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(testcase_conclusion_fullish_002_Existential_Blank_Nodes, conjecture, ?[X21, X22]:(iext(uri_ex_p,X21,X22)&iext(uri_ex_q,X22,X21)), file('./p/SWB002+3.tptp', testcase_conclusion_fullish_002_Existential_Blank_Nodes)).
+fof(testcase_premise_fullish_002_Existential_Blank_Nodes, axiom, ?[X23]:(iext(uri_ex_p,uri_ex_s,X23)&iext(uri_ex_q,X23,uri_ex_s)), file('./p/SWB002+3.tptp', testcase_premise_fullish_002_Existential_Blank_Nodes)).
+fof(c_0_2, negated_conjecture, ~(?[X21, X22]:(iext(uri_ex_p,X21,X22)&iext(uri_ex_q,X22,X21))), inference(assume_negation,[status(cth)],[testcase_conclusion_fullish_002_Existential_Blank_Nodes])).
+fof(c_0_3, negated_conjecture, ![X219, X220]:(~iext(uri_ex_p,X219,X220)|~iext(uri_ex_q,X220,X219)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_2])])).
+fof(c_0_4, plain, (iext(uri_ex_p,uri_ex_s,esk19_0)&iext(uri_ex_q,esk19_0,uri_ex_s)), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[testcase_premise_fullish_002_Existential_Blank_Nodes])])).
+cnf(c_0_5, negated_conjecture, (~iext(uri_ex_p,X1,X2)|~iext(uri_ex_q,X2,X1)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_6, plain, (iext(uri_ex_q,esk19_0,uri_ex_s)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_7, plain, (iext(uri_ex_p,uri_ex_s,esk19_0)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_6]), c_0_7])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 9
+# Proof object clause steps            : 4
+# Proof object formula steps           : 5
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 3
+# Proof object initial formulas used   : 2
+# Proof object generating inferences   : 1
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 140
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 249
+# Removed in clause preprocessing      : 19
+# Initial clauses in saturation        : 230
+# Processed clauses                    : 119
+# ...of these trivial                  : 2
+# ...subsumed                          : 4
+# ...remaining for further processing  : 113
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 97
+# ...of the previous two non-trivial   : 39
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 97
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 113
+#    Positive orientable unit clauses  : 79
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 7
+#    Non-unit-clauses                  : 27
+# Current number of unprocessed clauses: 149
+# ...number of literals in the above   : 699
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 1
+# Clause-clause subsumption calls (NU) : 150
+# Rec. Clause-clause subsumption calls : 124
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 49
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 3
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 15013

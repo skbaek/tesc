@@ -1,0 +1,340 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_2, plain, (aNaturalNumber0(sz00))).
+#
+#cnf(i_0_11, plain, (aScalar0(sz0z00))).
+#
+#cnf(i_0_67, hypothesis, (aScalar0(xA))).
+#
+#cnf(i_0_61, hypothesis, (aDimensionOf0(xs)!=sz00)).
+#
+#cnf(i_0_69, hypothesis, (aScalar0(xB))).
+#
+#cnf(i_0_71, hypothesis, (aScalar0(xC))).
+#
+#cnf(i_0_73, hypothesis, (aScalar0(xD))).
+#
+#cnf(i_0_3, plain, (szszuzczcdt0(X1)!=sz00|~aNaturalNumber0(X1))).
+#
+#cnf(i_0_75, hypothesis, (aScalar0(xE))).
+#
+#cnf(i_0_77, hypothesis, (aScalar0(xF))).
+#
+#cnf(i_0_79, hypothesis, (aScalar0(xG))).
+#
+#cnf(i_0_92, negated_conjecture, (sdtasdt0(smndt0(xS),xR)!=smndt0(xN))).
+#
+#cnf(i_0_81, hypothesis, (aScalar0(xH))).
+#
+#cnf(i_0_83, hypothesis, (aScalar0(xR))).
+#
+#cnf(i_0_85, hypothesis, (aScalar0(xP))).
+#
+#cnf(i_0_87, hypothesis, (aScalar0(xS))).
+#
+#cnf(i_0_89, hypothesis, (aScalar0(xN))).
+#
+#cnf(i_0_58, hypothesis, (aVector0(xs))).
+#
+#cnf(i_0_57, hypothesis, (aVector0(xt))).
+#
+#cnf(i_0_63, hypothesis, (aVector0(xp))).
+#
+#cnf(i_0_65, hypothesis, (aVector0(xq))).
+#
+#cnf(i_0_34, plain, (sdtlseqdt0(X1,X1)|~aScalar0(X1))).
+#
+#cnf(i_0_62, hypothesis, (sziznziztdt0(xs)=xp)).
+#
+#cnf(i_0_64, hypothesis, (sziznziztdt0(xt)=xq)).
+#
+#cnf(i_0_4, plain, (aNaturalNumber0(szszuzczcdt0(X1))|~aNaturalNumber0(X1))).
+#
+#cnf(i_0_45, plain, (aNaturalNumber0(aDimensionOf0(X1))|~aVector0(X1))).
+#
+#cnf(i_0_14, plain, (aScalar0(smndt0(X1))|~aScalar0(X1))).
+#
+#cnf(i_0_60, hypothesis, (aDimensionOf0(xt)=aDimensionOf0(xs))).
+#
+#cnf(i_0_93, hypothesis, (aNaturalNumber0(aDimensionOf0(xs)))).
+#
+#cnf(i_0_9, plain, (iLess0(X1,szszuzczcdt0(X1))|~aNaturalNumber0(X1))).
+#
+#cnf(i_0_70, hypothesis, (sdtasasdt0(xp,xp)=xC)).
+#
+#cnf(i_0_72, hypothesis, (sdtasasdt0(xq,xq)=xD)).
+#
+#cnf(i_0_74, hypothesis, (sdtasasdt0(xp,xq)=xE)).
+#
+#cnf(i_0_76, hypothesis, (sdtasdt0(xA,xA)=xF)).
+#
+#cnf(i_0_78, hypothesis, (sdtasdt0(xB,xB)=xG)).
+#
+#cnf(i_0_80, hypothesis, (sdtasdt0(xA,xB)=xH)).
+#
+#cnf(i_0_82, hypothesis, (sdtasdt0(xC,xG)=xR)).
+#
+#cnf(i_0_84, hypothesis, (sdtasdt0(xE,xH)=xP)).
+#
+#cnf(i_0_86, hypothesis, (sdtasdt0(xF,xD)=xS)).
+#
+#cnf(i_0_88, hypothesis, (sdtasdt0(xR,xS)=xN)).
+#
+#cnf(i_0_15, plain, (smndt0(sz0z00)=sz0z00|~aScalar0(X1))).
+##
+#cnf(i_0_16, plain, (smndt0(smndt0(X1))=X1|~aScalar0(X1))).
+##
+#cnf(i_0_22, plain, (sdtpldt0(X1,sz0z00)=X1|~aScalar0(X1))).
+#
+#cnf(i_0_21, plain, (sdtpldt0(sz0z00,X1)=X1|~aScalar0(X1))).
+#
+#cnf(i_0_91, hypothesis, (sdtlseqdt0(sdtasdt0(xP,xP),xN))).
+#
+#cnf(i_0_20, plain, (sdtasdt0(X1,sz0z00)=sz0z00|~aScalar0(X1))).
+#
+#cnf(i_0_19, plain, (sdtasdt0(sz0z00,X1)=sz0z00|~aScalar0(X1))).
+#
+#cnf(i_0_42, plain, (sdtlseqdt0(sz0z00,sdtasdt0(X1,X1))|~aScalar0(X1))).
+#
+#cnf(i_0_98, hypothesis, (sdtlseqdt0(sz0z00,xG))).
+#
+#cnf(i_0_99, hypothesis, (sdtlseqdt0(sz0z00,xF))).
+#
+#cnf(i_0_100, plain, (sdtlseqdt0(sz0z00,sz0z00))).
+##
+#cnf(i_0_56, plain, (sdtlseqdt0(sz0z00,sdtasasdt0(X1,X1))|~aVector0(X1))).
+#
+#cnf(i_0_102, hypothesis, (sdtlseqdt0(sz0z00,xD))).
+#
+#cnf(i_0_103, hypothesis, (sdtlseqdt0(sz0z00,xC))).
+#
+#cnf(i_0_66, hypothesis, (sdtlbdtrb0(xs,aDimensionOf0(xs))=xA)).
+#
+#cnf(i_0_68, hypothesis, (sdtlbdtrb0(xt,aDimensionOf0(xs))=xB)).
+#
+#cnf(i_0_18, plain, (sdtpldt0(X1,smndt0(X1))=sz0z00|~aScalar0(X1))).
+#
+#cnf(i_0_12, plain, (aScalar0(sdtpldt0(X1,X2))|~aScalar0(X2)|~aScalar0(X1))).
+#
+#cnf(i_0_13, plain, (aScalar0(sdtasdt0(X1,X2))|~aScalar0(X2)|~aScalar0(X1))).
+#
+#cnf(i_0_46, plain, (aScalar0(sdtlbdtrb0(X1,X2))|~aVector0(X1)|~aNaturalNumber0(X2))).
+#
+#cnf(i_0_17, plain, (sdtpldt0(smndt0(X1),X1)=sz0z00|~aScalar0(X1))).
+#
+#cnf(i_0_106, plain, (sdtpldt0(sz0z00,sz0z00)=sz0z00|~aScalar0(X1))).
+###
+#cnf(i_0_6, plain, (X1=sz00|aNaturalNumber0(esk1_1(X1))|~aNaturalNumber0(X1))).
+#####
+#cnf(i_0_121, plain, (smndt0(sz0z00)=sz0z00|~aVector0(X1)|~aNaturalNumber0(X2))).
+#
+#cnf(i_0_138, hypothesis, (smndt0(sz0z00)=sz0z00|~aVector0(X1))).
+##
+#cnf(i_0_143, hypothesis, (sdtpldt0(sz0z00,sz0z00)=sz0z00|~aVector0(X1))).
+##
+#cnf(i_0_39, plain, (sdtlseqdt0(X2,X1)|sdtlseqdt0(X1,X2)|~aScalar0(X2)|~aScalar0(X1))).
+###
+#cnf(i_0_5, plain, (szszuzczcdt0(esk1_1(X1))=X1|X1=sz00|~aNaturalNumber0(X1))).
+#
+#cnf(i_0_90, hypothesis, (sdtlseqdt0(sdtasdt0(xE,xE),sdtasdt0(xC,xD)))).
+####
+#cnf(i_0_7, plain, (X1=X2|szszuzczcdt0(X1)!=szszuzczcdt0(X2)|~aNaturalNumber0(X2)|~aNaturalNumber0(X1))).
+#
+#cnf(i_0_35, plain, (X1=X2|~sdtlseqdt0(X2,X1)|~sdtlseqdt0(X1,X2)|~aScalar0(X2)|~aScalar0(X1))).
+###
+#cnf(i_0_51, plain, (aDimensionOf0(X2)=sz00|aVector0(X1)|X1!=sziznziztdt0(X2)|~aVector0(X2))).
+#
+#cnf(i_0_165, hypothesis, (aVector0(X1)|X1!=xq)).
+#
+#cnf(i_0_166, hypothesis, (aVector0(X1)|X1!=xp)).
+#
+#cnf(i_0_171, hypothesis, (smndt0(sz0z00)=sz0z00|X1!=xq)).
+#
+#cnf(i_0_175, hypothesis, (smndt0(sz0z00)=sz0z00)).
+#
+#cnf(i_0_182, hypothesis, (sdtpldt0(sz0z00,sz0z00)=sz0z00)).
+##
+#cnf(i_0_162, plain, (aDimensionOf0(X1)=sz00|aVector0(sziznziztdt0(X1))|~aVector0(X1))).
+###
+#cnf(i_0_31, plain, (smndt0(sdtasdt0(X1,X2))=sdtasdt0(X1,smndt0(X2))|~aScalar0(X2)|~aScalar0(X1))).
+##
+#cnf(i_0_191, hypothesis, (sdtasdt0(xR,smndt0(xS))=smndt0(xN))).
+#
+#cnf(i_0_200, hypothesis, (aScalar0(smndt0(xN))|~aScalar0(smndt0(xS)))).
+#
+#cnf(i_0_192, hypothesis, (sdtasdt0(xF,smndt0(xD))=smndt0(xS))).
+#
+#cnf(i_0_202, hypothesis, (aScalar0(smndt0(xS))|~aScalar0(smndt0(xD)))).
+#
+#cnf(i_0_193, hypothesis, (sdtasdt0(xE,smndt0(xH))=smndt0(xP))).
+#
+#cnf(i_0_204, hypothesis, (aScalar0(smndt0(xP))|~aScalar0(smndt0(xH)))).
+#
+#cnf(i_0_194, hypothesis, (sdtasdt0(xC,smndt0(xG))=smndt0(xR))).
+#
+#cnf(i_0_206, hypothesis, (aScalar0(smndt0(xR))|~aScalar0(smndt0(xG)))).
+#
+#cnf(i_0_195, hypothesis, (sdtasdt0(xB,smndt0(xB))=smndt0(xG))).
+#
+#cnf(i_0_208, hypothesis, (aScalar0(smndt0(xG))|~aScalar0(smndt0(xB)))).
+#
+#cnf(i_0_196, hypothesis, (sdtasdt0(xA,smndt0(xB))=smndt0(xH))).
+#
+#cnf(i_0_210, hypothesis, (aScalar0(smndt0(xH))|~aScalar0(smndt0(xB)))).
+#
+#cnf(i_0_197, hypothesis, (sdtasdt0(xA,smndt0(xA))=smndt0(xF))).
+#
+#cnf(i_0_212, hypothesis, (aScalar0(smndt0(xF))|~aScalar0(smndt0(xA)))).
+#
+#cnf(i_0_198, plain, (sdtasdt0(sz0z00,smndt0(X1))=sz0z00|~aScalar0(X1))).
+#
+#cnf(i_0_218, hypothesis, (sdtasdt0(sz0z00,sz0z00)=sz0z00)).
+##
+#cnf(i_0_30, plain, (smndt0(sdtasdt0(X1,X2))=sdtasdt0(smndt0(X1),X2)|~aScalar0(X2)|~aScalar0(X1))).
+##
+#cnf(i_0_228, hypothesis, (sdtasdt0(smndt0(xR),xS)=smndt0(xN))).
+#
+#cnf(i_0_246, hypothesis, (aScalar0(smndt0(xN))|~aScalar0(smndt0(xR)))).
+#
+#cnf(i_0_230, hypothesis, (sdtasdt0(smndt0(xF),xD)=smndt0(xS))).
+#
+#cnf(i_0_249, hypothesis, (aScalar0(smndt0(xS))|~aScalar0(smndt0(xF)))).
+#
+#cnf(i_0_232, hypothesis, (sdtasdt0(smndt0(xE),xH)=smndt0(xP))).
+#
+#cnf(i_0_252, hypothesis, (aScalar0(smndt0(xP))|~aScalar0(smndt0(xE)))).
+#
+#cnf(i_0_234, hypothesis, (sdtasdt0(smndt0(xC),xG)=smndt0(xR))).
+#
+#cnf(i_0_255, hypothesis, (aScalar0(smndt0(xR))|~aScalar0(smndt0(xC)))).
+#
+#cnf(i_0_236, hypothesis, (sdtasdt0(smndt0(xB),xB)=smndt0(xG))).
+##
+#cnf(i_0_238, hypothesis, (sdtasdt0(smndt0(xA),xB)=smndt0(xH))).
+#
+#cnf(i_0_261, hypothesis, (aScalar0(smndt0(xH))|~aScalar0(smndt0(xA)))).
+#
+#cnf(i_0_239, hypothesis, (sdtasdt0(smndt0(xA),xA)=smndt0(xF))).
+##
+#cnf(i_0_245, plain, (sdtasdt0(smndt0(X1),sz0z00)=sz0z00|~aScalar0(X1))).
+####
+#cnf(i_0_227, plain, (sdtasdt0(smndt0(X1),X2)=sdtasdt0(X1,smndt0(X2))|~aScalar0(X2)|~aScalar0(X1))).
+#
+#cnf(i_0_280, negated_conjecture, (sdtasdt0(xS,smndt0(xR))!=smndt0(xN))).
+###
+#cnf(i_0_291, hypothesis, (sdtasdt0(sz0z00,smndt0(X1))=sdtasdt0(sz0z00,X1)|~aScalar0(X1))).
+##
+#cnf(i_0_292, hypothesis, (aScalar0(sdtasdt0(sz0z00,X1))|~aScalar0(smndt0(X1))|~aScalar0(X1))).
+##
+#cnf(i_0_150, plain, (X1=sz00|iLess0(esk1_1(X1),X1)|~aNaturalNumber0(esk1_1(X1))|~aNaturalNumber0(X1))).
+#
+#cnf(i_0_32, plain, (sdtasdt0(smndt0(X1),smndt0(X2))=sdtasdt0(X1,X2)|~aScalar0(X2)|~aScalar0(X1))).
+#
+#cnf(i_0_313, hypothesis, (sdtasdt0(smndt0(X1),sz0z00)=sdtasdt0(X1,sz0z00)|~aScalar0(X1))).
+##
+#cnf(i_0_318, hypothesis, (aScalar0(sdtasdt0(X1,sz0z00))|~aScalar0(smndt0(X1))|~aScalar0(X1))).
+####
+#cnf(i_0_25, plain, (sdtpldt0(X1,X2)=sdtpldt0(X2,X1)|~aScalar0(X3)|~aScalar0(X2)|~aScalar0(X1))).
+#######
+#cnf(i_0_23, plain, (sdtasdt0(X1,X2)=sdtasdt0(X2,X1)|~aScalar0(X3)|~aScalar0(X2)|~aScalar0(X1))).
+#
+#cnf(i_0_362, hypothesis, (sdtasdt0(xD,xF)=xS|~aScalar0(X1))).
+#
+#cnf(i_0_366, hypothesis, (~aScalar0(smndt0(xR))|~aScalar0(X1))).
+####
+#cnf(i_0_466, hypothesis, (~aScalar0(X1))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(m__, conjecture, sdtasdt0(smndt0(xS),xR)=smndt0(xN), file('./p/RNG059+1.tptp', m__)).
+fof(mMNeg, axiom, ![X1, X2]:((aScalar0(X1)&aScalar0(X2))=>(sdtasdt0(X1,smndt0(X2))=smndt0(sdtasdt0(X1,X2))&sdtasdt0(smndt0(X1),X2)=smndt0(sdtasdt0(X1,X2)))), file('./p/RNG059+1.tptp', mMNeg)).
+fof(m__1949, hypothesis, (aScalar0(xN)&xN=sdtasdt0(xR,xS)), file('./p/RNG059+1.tptp', m__1949)).
+fof(m__1930, hypothesis, (aScalar0(xS)&xS=sdtasdt0(xF,xD)), file('./p/RNG059+1.tptp', m__1930)).
+fof(m__1892, hypothesis, (aScalar0(xR)&xR=sdtasdt0(xC,xG)), file('./p/RNG059+1.tptp', m__1892)).
+fof(mArith, axiom, ![X1, X2, X3]:(((aScalar0(X1)&aScalar0(X2))&aScalar0(X3))=>(((sdtpldt0(sdtpldt0(X1,X2),X3)=sdtpldt0(X1,sdtpldt0(X2,X3))&sdtpldt0(X1,X2)=sdtpldt0(X2,X1))&sdtasdt0(sdtasdt0(X1,X2),X3)=sdtasdt0(X1,sdtasdt0(X2,X3)))&sdtasdt0(X1,X2)=sdtasdt0(X2,X1))), file('./p/RNG059+1.tptp', mArith)).
+fof(mNegSc, axiom, ![X1]:(aScalar0(X1)=>aScalar0(smndt0(X1))), file('./p/RNG059+1.tptp', mNegSc)).
+fof(mSZeroSc, axiom, aScalar0(sz0z00), file('./p/RNG059+1.tptp', mSZeroSc)).
+fof(c_0_8, negated_conjecture, ~(sdtasdt0(smndt0(xS),xR)=smndt0(xN)), inference(assume_negation,[status(cth)],[m__])).
+fof(c_0_9, plain, ![X27, X28]:((sdtasdt0(X27,smndt0(X28))=smndt0(sdtasdt0(X27,X28))|(~aScalar0(X27)|~aScalar0(X28)))&(sdtasdt0(smndt0(X27),X28)=smndt0(sdtasdt0(X27,X28))|(~aScalar0(X27)|~aScalar0(X28)))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[mMNeg])])])).
+fof(c_0_10, negated_conjecture, sdtasdt0(smndt0(xS),xR)!=smndt0(xN), inference(fof_simplification,[status(thm)],[c_0_8])).
+cnf(c_0_11, plain, (sdtasdt0(X1,smndt0(X2))=smndt0(sdtasdt0(X1,X2))|~aScalar0(X1)|~aScalar0(X2)), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_12, plain, (sdtasdt0(smndt0(X1),X2)=smndt0(sdtasdt0(X1,X2))|~aScalar0(X1)|~aScalar0(X2)), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_13, hypothesis, (xN=sdtasdt0(xR,xS)), inference(split_conjunct,[status(thm)],[m__1949])).
+cnf(c_0_14, hypothesis, (aScalar0(xS)), inference(split_conjunct,[status(thm)],[m__1930])).
+cnf(c_0_15, hypothesis, (aScalar0(xR)), inference(split_conjunct,[status(thm)],[m__1892])).
+fof(c_0_16, plain, ![X17, X18, X19]:((((sdtpldt0(sdtpldt0(X17,X18),X19)=sdtpldt0(X17,sdtpldt0(X18,X19))|(~aScalar0(X17)|~aScalar0(X18)|~aScalar0(X19)))&(sdtpldt0(X17,X18)=sdtpldt0(X18,X17)|(~aScalar0(X17)|~aScalar0(X18)|~aScalar0(X19))))&(sdtasdt0(sdtasdt0(X17,X18),X19)=sdtasdt0(X17,sdtasdt0(X18,X19))|(~aScalar0(X17)|~aScalar0(X18)|~aScalar0(X19))))&(sdtasdt0(X17,X18)=sdtasdt0(X18,X17)|(~aScalar0(X17)|~aScalar0(X18)|~aScalar0(X19)))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[mArith])])])).
+cnf(c_0_17, negated_conjecture, (sdtasdt0(smndt0(xS),xR)!=smndt0(xN)), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_18, plain, (sdtasdt0(smndt0(X1),X2)=sdtasdt0(X1,smndt0(X2))|~aScalar0(X2)|~aScalar0(X1)), inference(pm,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_19, hypothesis, (sdtasdt0(smndt0(xR),xS)=smndt0(xN)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_12, c_0_13]), c_0_14]), c_0_15])])).
+cnf(c_0_20, plain, (sdtasdt0(X1,X2)=sdtasdt0(X2,X1)|~aScalar0(X1)|~aScalar0(X2)|~aScalar0(X3)), inference(split_conjunct,[status(thm)],[c_0_16])).
+cnf(c_0_21, negated_conjecture, (sdtasdt0(xS,smndt0(xR))!=smndt0(xN)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_17, c_0_18]), c_0_15]), c_0_14])])).
+fof(c_0_22, plain, ![X15]:(~aScalar0(X15)|aScalar0(smndt0(X15))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[mNegSc])])).
+cnf(c_0_23, hypothesis, (~aScalar0(smndt0(xR))|~aScalar0(X1)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_19, c_0_20]), c_0_14])]), c_0_21])).
+cnf(c_0_24, plain, (aScalar0(smndt0(X1))|~aScalar0(X1)), inference(split_conjunct,[status(thm)],[c_0_22])).
+cnf(c_0_25, plain, (aScalar0(sz0z00)), inference(split_conjunct,[status(thm)],[mSZeroSc])).
+cnf(c_0_26, hypothesis, (~aScalar0(X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_23, c_0_24]), c_0_15])])).
+cnf(c_0_27, plain, ($false), inference(sr,[status(thm)],[c_0_25, c_0_26]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 28
+# Proof object clause steps            : 15
+# Proof object formula steps           : 13
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 9
+# Proof object initial formulas used   : 8
+# Proof object generating inferences   : 5
+# Proof object simplifying inferences  : 12
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 58
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 92
+# Removed in clause preprocessing      : 5
+# Initial clauses in saturation        : 87
+# Processed clauses                    : 168
+# ...of these trivial                  : 2
+# ...subsumed                          : 44
+# ...remaining for further processing  : 122
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 6
+# Backward-rewritten                   : 0
+# Generated clauses                    : 407
+# ...of the previous two non-trivial   : 300
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 389
+# Factorizations                       : 2
+# Equation resolutions                 : 3
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 103
+#    Positive orientable unit clauses  : 45
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 4
+#    Non-unit-clauses                  : 54
+# Current number of unprocessed clauses: 207
+# ...number of literals in the above   : 733
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 19
+# Clause-clause subsumption calls (NU) : 386
+# Rec. Clause-clause subsumption calls : 353
+# Non-unit clause-clause subsumptions  : 45
+# Unit Clause-clause subsumption calls : 59
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 2
+# BW rewrite match successes           : 2
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 7984

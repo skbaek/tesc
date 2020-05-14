@@ -1,0 +1,282 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for NUM468+2
+% SZS output start Proof for NUM468+2
+fof(f175192,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f4231,f36950,f127576,f175191])).
+fof(f175191,plain,(
+  ~spl4_62 | ~spl4_1433),
+  inference(avatar_contradiction_clause,[],[f175190])).
+fof(f175190,plain,(
+  $false | (~spl4_62 | ~spl4_1433)),
+  inference(subsumption_resolution,[],[f175189,f5240])).
+fof(f5240,plain,(
+  sdtpldt0(xm,xn) != sdtasdt0(xl,sdtpldt0(sK2,sK3))),
+  inference(backward_demodulation,[],[f5206,f4358])).
+fof(f4358,plain,(
+  sdtpldt0(xm,xn) != sdtasdt0(xl,sdtpldt0(sK2,sdtsldt0(xm,xl)))),
+  inference(backward_demodulation,[],[f4344,f4215])).
+fof(f4215,plain,(
+  sdtpldt0(xm,xn) != sdtasdt0(xl,sdtpldt0(sdtsldt0(xm,xl),sK2))),
+  inference(forward_demodulation,[],[f175,f3784])).
+fof(f3784,plain,(
+  sdtsldt0(xn,xl) = sK2),
+  inference(subsumption_resolution,[],[f3781,f173])).
+fof(f173,plain,(
+  aNaturalNumber0(sdtsldt0(xn,xl))),
+  inference(cnf_transformation,[],[f92])).
+fof(f92,plain,(
+  sdtpldt0(xm,xn) != sdtasdt0(xl,sdtpldt0(sdtsldt0(xm,xl),sdtsldt0(xn,xl))) & xn = sdtasdt0(xl,sdtsldt0(xn,xl)) & aNaturalNumber0(sdtsldt0(xn,xl)) & xm = sdtasdt0(xl,sdtsldt0(xm,xl)) & aNaturalNumber0(sdtsldt0(xm,xl)) & sz00 != xl),
+  inference(flattening,[],[f91])).
+fof(f91,plain,(
+  ((sdtpldt0(xm,xn) != sdtasdt0(xl,sdtpldt0(sdtsldt0(xm,xl),sdtsldt0(xn,xl))) & (xn = sdtasdt0(xl,sdtsldt0(xn,xl)) & aNaturalNumber0(sdtsldt0(xn,xl)))) & (xm = sdtasdt0(xl,sdtsldt0(xm,xl)) & aNaturalNumber0(sdtsldt0(xm,xl)))) & sz00 != xl),
+  inference(ennf_transformation,[],[f36])).
+fof(f36,negated_conjecture,(
+  ~(sz00 != xl => ((xm = sdtasdt0(xl,sdtsldt0(xm,xl)) & aNaturalNumber0(sdtsldt0(xm,xl))) => ((xn = sdtasdt0(xl,sdtsldt0(xn,xl)) & aNaturalNumber0(sdtsldt0(xn,xl))) => sdtpldt0(xm,xn) = sdtasdt0(xl,sdtpldt0(sdtsldt0(xm,xl),sdtsldt0(xn,xl))))))),
+  inference(negated_conjecture,[],[f35])).
+fof(f35,conjecture,(
+  sz00 != xl => ((xm = sdtasdt0(xl,sdtsldt0(xm,xl)) & aNaturalNumber0(sdtsldt0(xm,xl))) => ((xn = sdtasdt0(xl,sdtsldt0(xn,xl)) & aNaturalNumber0(sdtsldt0(xn,xl))) => sdtpldt0(xm,xn) = sdtasdt0(xl,sdtpldt0(sdtsldt0(xm,xl),sdtsldt0(xn,xl)))))),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f3781,plain,(
+  sdtsldt0(xn,xl) = sK2 | ~aNaturalNumber0(sdtsldt0(xn,xl))),
+  inference(trivial_inequality_removal,[],[f3776])).
+fof(f3776,plain,(
+  xn != xn | sdtsldt0(xn,xl) = sK2 | ~aNaturalNumber0(sdtsldt0(xn,xl))),
+  inference(superposition,[],[f1125,f174])).
+fof(f174,plain,(
+  xn = sdtasdt0(xl,sdtsldt0(xn,xl))),
+  inference(cnf_transformation,[],[f92])).
+fof(f1125,plain,(
+  ( ! [X3] : (xn != sdtasdt0(xl,X3) | sK2 = X3 | ~aNaturalNumber0(X3)) )),
+  inference(subsumption_resolution,[],[f1124,f161])).
+fof(f161,plain,(
+  aNaturalNumber0(xl)),
+  inference(cnf_transformation,[],[f33])).
+fof(f33,axiom,(
+  aNaturalNumber0(xn) & aNaturalNumber0(xm) & aNaturalNumber0(xl)),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f1124,plain,(
+  ( ! [X3] : (xn != sdtasdt0(xl,X3) | sK2 = X3 | ~aNaturalNumber0(X3) | ~aNaturalNumber0(xl)) )),
+  inference(subsumption_resolution,[],[f1123,f170])).
+fof(f170,plain,(
+  sz00 != xl),
+  inference(cnf_transformation,[],[f92])).
+fof(f1123,plain,(
+  ( ! [X3] : (xn != sdtasdt0(xl,X3) | sK2 = X3 | ~aNaturalNumber0(X3) | sz00 = xl | ~aNaturalNumber0(xl)) )),
+  inference(subsumption_resolution,[],[f1103,f167])).
+fof(f167,plain,(
+  aNaturalNumber0(sK2)),
+  inference(cnf_transformation,[],[f107])).
+fof(f107,plain,(
+  doDivides0(xl,xn) & (xn = sdtasdt0(xl,sK2) & aNaturalNumber0(sK2)) & doDivides0(xl,xm) & (xm = sdtasdt0(xl,sK3) & aNaturalNumber0(sK3))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2,sK3])],[f39,f106,f105])).
+fof(f105,plain,(
+  ? [X0] : (xn = sdtasdt0(xl,X0) & aNaturalNumber0(X0)) => (xn = sdtasdt0(xl,sK2) & aNaturalNumber0(sK2))),
+  introduced(choice_axiom,[])).
+fof(f106,plain,(
+  ? [X1] : (xm = sdtasdt0(xl,X1) & aNaturalNumber0(X1)) => (xm = sdtasdt0(xl,sK3) & aNaturalNumber0(sK3))),
+  introduced(choice_axiom,[])).
+fof(f39,plain,(
+  doDivides0(xl,xn) & ? [X0] : (xn = sdtasdt0(xl,X0) & aNaturalNumber0(X0)) & doDivides0(xl,xm) & ? [X1] : (xm = sdtasdt0(xl,X1) & aNaturalNumber0(X1))),
+  inference(rectify,[],[f34])).
+fof(f34,axiom,(
+  doDivides0(xl,xn) & ? [X0] : (xn = sdtasdt0(xl,X0) & aNaturalNumber0(X0)) & doDivides0(xl,xm) & ? [X0] : (xm = sdtasdt0(xl,X0) & aNaturalNumber0(X0))),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f1103,plain,(
+  ( ! [X3] : (xn != sdtasdt0(xl,X3) | sK2 = X3 | ~aNaturalNumber0(X3) | ~aNaturalNumber0(sK2) | sz00 = xl | ~aNaturalNumber0(xl)) )),
+  inference(superposition,[],[f127,f168])).
+fof(f168,plain,(
+  xn = sdtasdt0(xl,sK2)),
+  inference(cnf_transformation,[],[f107])).
+fof(f127,plain,(
+  ( ! [X2,X0,X1] : (sdtasdt0(X0,X1) != sdtasdt0(X0,X2) | X1 = X2 | ~aNaturalNumber0(X2) | ~aNaturalNumber0(X1) | sz00 = X0 | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f61])).
+fof(f61,plain,(
+  ! [X0] : (! [X1,X2] : (X1 = X2 | (sdtasdt0(X1,X0) != sdtasdt0(X2,X0) & sdtasdt0(X0,X1) != sdtasdt0(X0,X2)) | ~aNaturalNumber0(X2) | ~aNaturalNumber0(X1)) | sz00 = X0 | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f60])).
+fof(f60,plain,(
+  ! [X0] : ((! [X1,X2] : ((X1 = X2 | (sdtasdt0(X1,X0) != sdtasdt0(X2,X0) & sdtasdt0(X0,X1) != sdtasdt0(X0,X2))) | (~aNaturalNumber0(X2) | ~aNaturalNumber0(X1))) | sz00 = X0) | ~aNaturalNumber0(X0))),
+  inference(ennf_transformation,[],[f15])).
+fof(f15,axiom,(
+  ! [X0] : (aNaturalNumber0(X0) => (sz00 != X0 => ! [X1,X2] : ((aNaturalNumber0(X2) & aNaturalNumber0(X1)) => ((sdtasdt0(X1,X0) = sdtasdt0(X2,X0) | sdtasdt0(X0,X1) = sdtasdt0(X0,X2)) => X1 = X2))))),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f175,plain,(
+  sdtpldt0(xm,xn) != sdtasdt0(xl,sdtpldt0(sdtsldt0(xm,xl),sdtsldt0(xn,xl)))),
+  inference(cnf_transformation,[],[f92])).
+fof(f4344,plain,(
+  sdtpldt0(sdtsldt0(xm,xl),sK2) = sdtpldt0(sK2,sdtsldt0(xm,xl))),
+  inference(resolution,[],[f171,f300])).
+fof(f300,plain,(
+  ( ! [X13] : (~aNaturalNumber0(X13) | sdtpldt0(X13,sK2) = sdtpldt0(sK2,X13)) )),
+  inference(resolution,[],[f113,f167])).
+fof(f113,plain,(
+  ( ! [X0,X1] : (~aNaturalNumber0(X1) | sdtpldt0(X0,X1) = sdtpldt0(X1,X0) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f46])).
+fof(f46,plain,(
+  ! [X0,X1] : (sdtpldt0(X0,X1) = sdtpldt0(X1,X0) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f45])).
+fof(f45,plain,(
+  ! [X0,X1] : (sdtpldt0(X0,X1) = sdtpldt0(X1,X0) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => sdtpldt0(X0,X1) = sdtpldt0(X1,X0))),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f171,plain,(
+  aNaturalNumber0(sdtsldt0(xm,xl))),
+  inference(cnf_transformation,[],[f92])).
+fof(f5206,plain,(
+  sdtsldt0(xm,xl) = sK3),
+  inference(subsumption_resolution,[],[f5205,f171])).
+fof(f5205,plain,(
+  sdtsldt0(xm,xl) = sK3 | ~aNaturalNumber0(sdtsldt0(xm,xl))),
+  inference(trivial_inequality_removal,[],[f5200])).
+fof(f5200,plain,(
+  xm != xm | sdtsldt0(xm,xl) = sK3 | ~aNaturalNumber0(sdtsldt0(xm,xl))),
+  inference(superposition,[],[f1128,f172])).
+fof(f172,plain,(
+  xm = sdtasdt0(xl,sdtsldt0(xm,xl))),
+  inference(cnf_transformation,[],[f92])).
+fof(f1128,plain,(
+  ( ! [X4] : (xm != sdtasdt0(xl,X4) | sK3 = X4 | ~aNaturalNumber0(X4)) )),
+  inference(subsumption_resolution,[],[f1127,f161])).
+fof(f1127,plain,(
+  ( ! [X4] : (xm != sdtasdt0(xl,X4) | sK3 = X4 | ~aNaturalNumber0(X4) | ~aNaturalNumber0(xl)) )),
+  inference(subsumption_resolution,[],[f1126,f170])).
+fof(f1126,plain,(
+  ( ! [X4] : (xm != sdtasdt0(xl,X4) | sK3 = X4 | ~aNaturalNumber0(X4) | sz00 = xl | ~aNaturalNumber0(xl)) )),
+  inference(subsumption_resolution,[],[f1104,f164])).
+fof(f164,plain,(
+  aNaturalNumber0(sK3)),
+  inference(cnf_transformation,[],[f107])).
+fof(f1104,plain,(
+  ( ! [X4] : (xm != sdtasdt0(xl,X4) | sK3 = X4 | ~aNaturalNumber0(X4) | ~aNaturalNumber0(sK3) | sz00 = xl | ~aNaturalNumber0(xl)) )),
+  inference(superposition,[],[f127,f165])).
+fof(f165,plain,(
+  xm = sdtasdt0(xl,sK3)),
+  inference(cnf_transformation,[],[f107])).
+fof(f175189,plain,(
+  sdtpldt0(xm,xn) = sdtasdt0(xl,sdtpldt0(sK2,sK3)) | (~spl4_62 | ~spl4_1433)),
+  inference(backward_demodulation,[],[f175188,f127663])).
+fof(f127663,plain,(
+  sdtasdt0(xl,sdtpldt0(sK2,sK3)) = sdtasdt0(sdtpldt0(sK2,sK3),xl) | ~spl4_1433),
+  inference(resolution,[],[f127343,f308])).
+fof(f308,plain,(
+  ( ! [X10] : (~aNaturalNumber0(X10) | sdtasdt0(X10,xl) = sdtasdt0(xl,X10)) )),
+  inference(resolution,[],[f117,f161])).
+fof(f117,plain,(
+  ( ! [X0,X1] : (~aNaturalNumber0(X1) | sdtasdt0(X0,X1) = sdtasdt0(X1,X0) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f51])).
+fof(f51,plain,(
+  ! [X0,X1] : (sdtasdt0(X0,X1) = sdtasdt0(X1,X0) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f50])).
+fof(f50,plain,(
+  ! [X0,X1] : (sdtasdt0(X0,X1) = sdtasdt0(X1,X0) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f9])).
+fof(f9,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => sdtasdt0(X0,X1) = sdtasdt0(X1,X0))),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f127343,plain,(
+  aNaturalNumber0(sdtpldt0(sK2,sK3)) | ~spl4_1433),
+  inference(avatar_component_clause,[],[f127342])).
+fof(f127342,plain,(
+  spl4_1433 <=> aNaturalNumber0(sdtpldt0(sK2,sK3))),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_1433])])).
+fof(f175188,plain,(
+  sdtpldt0(xm,xn) = sdtasdt0(sdtpldt0(sK2,sK3),xl) | ~spl4_62),
+  inference(forward_demodulation,[],[f175187,f3233])).
+fof(f3233,plain,(
+  sdtpldt0(sK3,sK2) = sdtpldt0(sK2,sK3)),
+  inference(resolution,[],[f300,f164])).
+fof(f175187,plain,(
+  sdtpldt0(xm,xn) = sdtasdt0(sdtpldt0(sK3,sK2),xl) | ~spl4_62),
+  inference(forward_demodulation,[],[f175041,f4219])).
+fof(f4219,plain,(
+  xm = sdtasdt0(sK3,xl)),
+  inference(forward_demodulation,[],[f3271,f165])).
+fof(f3271,plain,(
+  sdtasdt0(xl,sK3) = sdtasdt0(sK3,xl)),
+  inference(resolution,[],[f308,f164])).
+fof(f175041,plain,(
+  sdtasdt0(sdtpldt0(sK3,sK2),xl) = sdtpldt0(sdtasdt0(sK3,xl),xn) | ~spl4_62),
+  inference(resolution,[],[f11761,f4223])).
+fof(f4223,plain,(
+  aNaturalNumber0(sK3) | ~spl4_62),
+  inference(avatar_component_clause,[],[f4222])).
+fof(f4222,plain,(
+  spl4_62 <=> aNaturalNumber0(sK3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_62])])).
+fof(f11761,plain,(
+  ( ! [X14] : (~aNaturalNumber0(X14) | sdtasdt0(sdtpldt0(X14,sK2),xl) = sdtpldt0(sdtasdt0(X14,xl),xn)) )),
+  inference(forward_demodulation,[],[f11751,f3277])).
+fof(f3277,plain,(
+  xn = sdtasdt0(sK2,xl)),
+  inference(forward_demodulation,[],[f3270,f168])).
+fof(f3270,plain,(
+  sdtasdt0(xl,sK2) = sdtasdt0(sK2,xl)),
+  inference(resolution,[],[f308,f167])).
+fof(f11751,plain,(
+  ( ! [X14] : (~aNaturalNumber0(X14) | sdtasdt0(sdtpldt0(X14,sK2),xl) = sdtpldt0(sdtasdt0(X14,xl),sdtasdt0(sK2,xl))) )),
+  inference(resolution,[],[f1092,f161])).
+fof(f1092,plain,(
+  ( ! [X39,X38] : (~aNaturalNumber0(X39) | ~aNaturalNumber0(X38) | sdtasdt0(sdtpldt0(X38,sK2),X39) = sdtpldt0(sdtasdt0(X38,X39),sdtasdt0(sK2,X39))) )),
+  inference(resolution,[],[f124,f167])).
+fof(f124,plain,(
+  ( ! [X2,X0,X1] : (~aNaturalNumber0(X2) | sdtasdt0(sdtpldt0(X1,X2),X0) = sdtpldt0(sdtasdt0(X1,X0),sdtasdt0(X2,X0)) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f57])).
+fof(f57,plain,(
+  ! [X0,X1,X2] : ((sdtasdt0(sdtpldt0(X1,X2),X0) = sdtpldt0(sdtasdt0(X1,X0),sdtasdt0(X2,X0)) & sdtasdt0(X0,sdtpldt0(X1,X2)) = sdtpldt0(sdtasdt0(X0,X1),sdtasdt0(X0,X2))) | ~aNaturalNumber0(X2) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f56])).
+fof(f56,plain,(
+  ! [X0,X1,X2] : ((sdtasdt0(sdtpldt0(X1,X2),X0) = sdtpldt0(sdtasdt0(X1,X0),sdtasdt0(X2,X0)) & sdtasdt0(X0,sdtpldt0(X1,X2)) = sdtpldt0(sdtasdt0(X0,X1),sdtasdt0(X0,X2))) | (~aNaturalNumber0(X2) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f13])).
+fof(f13,axiom,(
+  ! [X0,X1,X2] : ((aNaturalNumber0(X2) & aNaturalNumber0(X1) & aNaturalNumber0(X0)) => (sdtasdt0(sdtpldt0(X1,X2),X0) = sdtpldt0(sdtasdt0(X1,X0),sdtasdt0(X2,X0)) & sdtasdt0(X0,sdtpldt0(X1,X2)) = sdtpldt0(sdtasdt0(X0,X1),sdtasdt0(X0,X2))))),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f127576,plain,(
+  ~spl4_62 | ~spl4_514 | spl4_1433),
+  inference(avatar_contradiction_clause,[],[f127575])).
+fof(f127575,plain,(
+  $false | (~spl4_62 | ~spl4_514 | spl4_1433)),
+  inference(subsumption_resolution,[],[f127574,f36939])).
+fof(f36939,plain,(
+  aNaturalNumber0(sK2) | ~spl4_514),
+  inference(avatar_component_clause,[],[f36938])).
+fof(f36938,plain,(
+  spl4_514 <=> aNaturalNumber0(sK2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_514])])).
+fof(f127574,plain,(
+  ~aNaturalNumber0(sK2) | (~spl4_62 | spl4_1433)),
+  inference(subsumption_resolution,[],[f127573,f4223])).
+fof(f127573,plain,(
+  ~aNaturalNumber0(sK3) | ~aNaturalNumber0(sK2) | spl4_1433),
+  inference(resolution,[],[f127344,f111])).
+fof(f111,plain,(
+  ( ! [X0,X1] : (aNaturalNumber0(sdtpldt0(X0,X1)) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f42])).
+fof(f42,plain,(
+  ! [X0,X1] : (aNaturalNumber0(sdtpldt0(X0,X1)) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f41])).
+fof(f41,plain,(
+  ! [X0,X1] : (aNaturalNumber0(sdtpldt0(X0,X1)) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => aNaturalNumber0(sdtpldt0(X0,X1)))),
+  file('./p/NUM468+2.tptp',unknown)).
+fof(f127344,plain,(
+  ~aNaturalNumber0(sdtpldt0(sK2,sK3)) | spl4_1433),
+  inference(avatar_component_clause,[],[f127342])).
+fof(f36950,plain,(
+  spl4_514),
+  inference(avatar_split_clause,[],[f167,f36938])).
+fof(f4231,plain,(
+  spl4_62),
+  inference(avatar_split_clause,[],[f164,f4222])).
+% SZS output end Proof for NUM468+2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 87759
+% Time elapsed: 3.237 s
+% ------------------------------
+% ------------------------------

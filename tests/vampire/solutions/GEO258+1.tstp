@@ -1,0 +1,123 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GEO258+1
+% SZS output start Proof for GEO258+1
+fof(f241,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f193,f206,f217,f237,f238,f240])).
+fof(f240,plain,(
+  ~spl4_6 | ~spl4_4),
+  inference(avatar_split_clause,[],[f239,f190,f214])).
+fof(f214,plain,(
+  spl4_6 <=> before_on_line(sK0,sK2,sK3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_6])])).
+fof(f190,plain,(
+  spl4_4 <=> before_on_line(sK0,sK1,sK2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_4])])).
+fof(f239,plain,(
+  ~before_on_line(sK0,sK2,sK3) | ~spl4_4),
+  inference(subsumption_resolution,[],[f229,f192])).
+fof(f192,plain,(
+  before_on_line(sK0,sK1,sK2) | ~spl4_4),
+  inference(avatar_component_clause,[],[f190])).
+fof(f229,plain,(
+  ~before_on_line(sK0,sK2,sK3) | ~before_on_line(sK0,sK1,sK2)),
+  inference(resolution,[],[f119,f154])).
+fof(f154,plain,(
+  ~between_on_line(sK0,sK3,sK2,sK1)),
+  inference(cnf_transformation,[],[f104])).
+fof(f104,plain,(
+  ~between_on_line(sK0,sK3,sK2,sK1) & between_on_line(sK0,sK1,sK2,sK3)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2,sK3])],[f98,f103])).
+fof(f103,plain,(
+  ? [X0,X1,X2,X3] : (~between_on_line(X0,X3,X2,X1) & between_on_line(X0,X1,X2,X3)) => (~between_on_line(sK0,sK3,sK2,sK1) & between_on_line(sK0,sK1,sK2,sK3))),
+  introduced(choice_axiom,[])).
+fof(f98,plain,(
+  ? [X0,X1,X2,X3] : (~between_on_line(X0,X3,X2,X1) & between_on_line(X0,X1,X2,X3))),
+  inference(ennf_transformation,[],[f59])).
+fof(f59,plain,(
+  ~! [X0,X1,X2,X3] : (between_on_line(X0,X1,X2,X3) => between_on_line(X0,X3,X2,X1))),
+  inference(rectify,[],[f33])).
+fof(f33,negated_conjecture,(
+  ~! [X1,X0,X3,X4] : (between_on_line(X1,X0,X3,X4) => between_on_line(X1,X4,X3,X0))),
+  inference(negated_conjecture,[],[f32])).
+fof(f32,conjecture,(
+  ! [X1,X0,X3,X4] : (between_on_line(X1,X0,X3,X4) => between_on_line(X1,X4,X3,X0))),
+  file('./p/GEO258+1.tptp',unknown)).
+fof(f119,plain,(
+  ( ! [X2,X0,X3,X1] : (between_on_line(X0,X1,X2,X3) | ~before_on_line(X0,X2,X1) | ~before_on_line(X0,X3,X2)) )),
+  inference(cnf_transformation,[],[f102])).
+fof(f102,plain,(
+  ! [X0,X1,X2,X3] : ((between_on_line(X0,X1,X2,X3) | ((~before_on_line(X0,X2,X1) | ~before_on_line(X0,X3,X2)) & (~before_on_line(X0,X2,X3) | ~before_on_line(X0,X1,X2)))) & ((before_on_line(X0,X2,X1) & before_on_line(X0,X3,X2)) | (before_on_line(X0,X2,X3) & before_on_line(X0,X1,X2)) | ~between_on_line(X0,X1,X2,X3)))),
+  inference(flattening,[],[f101])).
+fof(f101,plain,(
+  ! [X0,X1,X2,X3] : ((between_on_line(X0,X1,X2,X3) | ((~before_on_line(X0,X2,X1) | ~before_on_line(X0,X3,X2)) & (~before_on_line(X0,X2,X3) | ~before_on_line(X0,X1,X2)))) & (((before_on_line(X0,X2,X1) & before_on_line(X0,X3,X2)) | (before_on_line(X0,X2,X3) & before_on_line(X0,X1,X2))) | ~between_on_line(X0,X1,X2,X3)))),
+  inference(nnf_transformation,[],[f37])).
+fof(f37,plain,(
+  ! [X0,X1,X2,X3] : (between_on_line(X0,X1,X2,X3) <=> ((before_on_line(X0,X2,X1) & before_on_line(X0,X3,X2)) | (before_on_line(X0,X2,X3) & before_on_line(X0,X1,X2))))),
+  inference(rectify,[],[f5])).
+fof(f5,axiom,(
+  ! [X1,X0,X3,X4] : (between_on_line(X1,X0,X3,X4) <=> ((before_on_line(X1,X3,X0) & before_on_line(X1,X4,X3)) | (before_on_line(X1,X3,X4) & before_on_line(X1,X0,X3))))),
+  file('./p/GEO258+1.tptp',unknown)).
+fof(f238,plain,(
+  spl4_3 | spl4_6),
+  inference(avatar_split_clause,[],[f199,f214,f186])).
+fof(f186,plain,(
+  spl4_3 <=> before_on_line(sK0,sK3,sK2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_3])])).
+fof(f199,plain,(
+  before_on_line(sK0,sK2,sK3) | before_on_line(sK0,sK3,sK2)),
+  inference(resolution,[],[f115,f153])).
+fof(f153,plain,(
+  between_on_line(sK0,sK1,sK2,sK3)),
+  inference(cnf_transformation,[],[f104])).
+fof(f115,plain,(
+  ( ! [X2,X0,X3,X1] : (~between_on_line(X0,X1,X2,X3) | before_on_line(X0,X2,X3) | before_on_line(X0,X3,X2)) )),
+  inference(cnf_transformation,[],[f102])).
+fof(f237,plain,(
+  ~spl4_3 | ~spl4_5),
+  inference(avatar_split_clause,[],[f219,f203,f186])).
+fof(f203,plain,(
+  spl4_5 <=> before_on_line(sK0,sK2,sK1)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_5])])).
+fof(f219,plain,(
+  ~before_on_line(sK0,sK2,sK1) | ~before_on_line(sK0,sK3,sK2)),
+  inference(resolution,[],[f118,f154])).
+fof(f118,plain,(
+  ( ! [X2,X0,X3,X1] : (between_on_line(X0,X1,X2,X3) | ~before_on_line(X0,X2,X3) | ~before_on_line(X0,X1,X2)) )),
+  inference(cnf_transformation,[],[f102])).
+fof(f217,plain,(
+  spl4_5 | spl4_6),
+  inference(avatar_split_clause,[],[f212,f214,f203])).
+fof(f212,plain,(
+  before_on_line(sK0,sK2,sK3) | before_on_line(sK0,sK2,sK1)),
+  inference(resolution,[],[f117,f153])).
+fof(f117,plain,(
+  ( ! [X2,X0,X3,X1] : (~between_on_line(X0,X1,X2,X3) | before_on_line(X0,X2,X3) | before_on_line(X0,X2,X1)) )),
+  inference(cnf_transformation,[],[f102])).
+fof(f206,plain,(
+  spl4_5 | spl4_4),
+  inference(avatar_split_clause,[],[f201,f190,f203])).
+fof(f201,plain,(
+  before_on_line(sK0,sK1,sK2) | before_on_line(sK0,sK2,sK1)),
+  inference(resolution,[],[f116,f153])).
+fof(f116,plain,(
+  ( ! [X2,X0,X3,X1] : (~between_on_line(X0,X1,X2,X3) | before_on_line(X0,X1,X2) | before_on_line(X0,X2,X1)) )),
+  inference(cnf_transformation,[],[f102])).
+fof(f193,plain,(
+  spl4_3 | spl4_4),
+  inference(avatar_split_clause,[],[f184,f190,f186])).
+fof(f184,plain,(
+  before_on_line(sK0,sK1,sK2) | before_on_line(sK0,sK3,sK2)),
+  inference(resolution,[],[f114,f153])).
+fof(f114,plain,(
+  ( ! [X2,X0,X3,X1] : (~between_on_line(X0,X1,X2,X3) | before_on_line(X0,X1,X2) | before_on_line(X0,X3,X2)) )),
+  inference(cnf_transformation,[],[f102])).
+% SZS output end Proof for GEO258+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.006 s
+% ------------------------------
+% ------------------------------

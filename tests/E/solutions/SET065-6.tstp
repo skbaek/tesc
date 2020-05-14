@@ -1,0 +1,161 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_142, plain, (inductive(omega))).
+#
+#cnf(i_0_161, plain, (function(choice))).
+#
+#cnf(i_0_96, plain, (subclass(X1,universal_class))).
+#
+#cnf(i_0_184, negated_conjecture, (~member(null_class,universal_class))).
+#
+#cnf(i_0_163, plain, (function(X1)|~one_to_one(X1))).
+#
+#cnf(i_0_170, plain, (function(X1)|~operation(X1))).
+#
+#cnf(i_0_144, plain, (member(omega,universal_class))).
+#
+#cnf(i_0_116, plain, (~member(X1,complement(X2))|~member(X1,X2))).
+#
+#cnf(i_0_98, plain, (subclass(X2,X1)|X1!=X2)).
+##
+#cnf(i_0_174, plain, (function(X1)|~compatible(X1,X2,X3))).
+#
+#cnf(i_0_122, plain, (intersection(X1,cross_product(unordered_pair(X2,X2),universal_class))!=null_class|~member(X2,domain_of(X1)))).
+#
+#cnf(i_0_179, plain, (operation(X3)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_178, plain, (operation(X2)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_143, plain, (subclass(omega,X1)|~inductive(X1))).
+#
+#cnf(i_0_139, plain, (member(null_class,X1)|~inductive(X1))).
+#
+#cnf(i_0_103, plain, (member(unordered_pair(X1,X2),universal_class))).
+#
+#cnf(i_0_180, plain, (compatible(X1,X2,X3)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_158, plain, (X1=null_class|member(regular(X1),X1))).
+#
+#cnf(i_0_186, negated_conjecture, (~inductive(universal_class))).
+#
+#cnf(i_0_110, plain, (subclass(element_relation,cross_product(universal_class,universal_class)))).
+#
+#cnf(i_0_136, plain, (subclass(successor_relation,cross_product(universal_class,universal_class)))).
+#
+#cnf(i_0_114, plain, (member(X1,X3)|~member(X1,intersection(X2,X3)))).
+#
+#cnf(i_0_185, plain, (~inductive(complement(X1))|~member(null_class,X1))).
+#
+#cnf(i_0_113, plain, (member(X1,X2)|~member(X1,intersection(X2,X3)))).
+#
+#cnf(i_0_95, plain, (subclass(X1,X2)|~member(not_subclass_element(X1,X2),X2))).
+#
+#cnf(i_0_189, plain, (member(null_class,X1)|~inductive(intersection(X2,X1)))).
+#
+#cnf(i_0_191, plain, (member(null_class,X1)|~inductive(intersection(X1,X2)))).
+#
+#cnf(i_0_99, plain, (X1=X2|~subclass(X2,X1)|~subclass(X1,X2))).
+#
+#cnf(i_0_193, plain, (X1=universal_class|~subclass(universal_class,X1))).
+##
+#cnf(i_0_94, plain, (member(not_subclass_element(X1,X2),X1)|subclass(X1,X2))).
+#
+#cnf(i_0_202, plain, (subclass(X1,X1))).
+#
+#cnf(i_0_192, plain, (omega=X1|~inductive(X1)|~subclass(X1,omega))).
+##
+#cnf(i_0_102, plain, (member(X1,unordered_pair(X2,X1))|~member(X1,universal_class))).
+#
+#cnf(i_0_101, plain, (member(X1,unordered_pair(X1,X2))|~member(X1,universal_class))).
+#
+#cnf(i_0_93, plain, (member(X3,X2)|~member(X3,X1)|~subclass(X1,X2))).
+#
+#cnf(i_0_213, plain, (member(omega,X1)|~subclass(universal_class,X1))).
+#
+#cnf(i_0_204, negated_conjecture, (~member(null_class,X1))).
+##
+#cnf(i_0_214, plain, (~inductive(X2)|~subclass(X2,X1))).
+#
+#cnf(i_0_215, plain, (member(unordered_pair(X1,X2),X3)|~subclass(universal_class,X3))).
+#
+#cnf(i_0_226, negated_conjecture, (~inductive(X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(prove_null_class_is_a_set_1, negated_conjecture, (~member(null_class,universal_class)), file('./p/SET065-6.tptp', prove_null_class_is_a_set_1)).
+cnf(subclass_members, axiom, (member(X3,X2)|~subclass(X1,X2)|~member(X3,X1)), file('./p/SET065-6.tptp', subclass_members)).
+cnf(class_elements_are_sets, axiom, (subclass(X1,universal_class)), file('./p/SET065-6.tptp', class_elements_are_sets)).
+cnf(inductive1, axiom, (member(null_class,X1)|~inductive(X1)), file('./p/SET065-6.tptp', inductive1)).
+cnf(omega_is_inductive1, axiom, (inductive(omega)), file('./p/SET065-6.tptp', omega_is_inductive1)).
+cnf(c_0_5, negated_conjecture, (~member(null_class,universal_class)), prove_null_class_is_a_set_1).
+cnf(c_0_6, axiom, (member(X3,X2)|~subclass(X1,X2)|~member(X3,X1)), subclass_members).
+cnf(c_0_7, axiom, (subclass(X1,universal_class)), class_elements_are_sets).
+cnf(c_0_8, negated_conjecture, (~member(null_class,X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_6]), c_0_7])])).
+cnf(c_0_9, axiom, (member(null_class,X1)|~inductive(X1)), inductive1).
+cnf(c_0_10, axiom, (inductive(omega)), omega_is_inductive1).
+cnf(c_0_11, negated_conjecture, (~inductive(X1)), inference(pm,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_12, plain, ($false), inference(sr,[status(thm)],[c_0_10, c_0_11]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 13
+# Proof object clause steps            : 8
+# Proof object formula steps           : 5
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 3
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 5
+# Proof object initial formulas used   : 5
+# Proof object generating inferences   : 2
+# Proof object simplifying inferences  : 3
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 92
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 92
+# Removed in clause preprocessing      : 15
+# Initial clauses in saturation        : 77
+# Processed clauses                    : 44
+# ...of these trivial                  : 1
+# ...subsumed                          : 3
+# ...remaining for further processing  : 40
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 1
+# Backward-rewritten                   : 0
+# Generated clauses                    : 53
+# ...of the previous two non-trivial   : 47
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 52
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 38
+#    Positive orientable unit clauses  : 7
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 4
+#    Non-unit-clauses                  : 27
+# Current number of unprocessed clauses: 80
+# ...number of literals in the above   : 184
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 17
+# Clause-clause subsumption calls (NU) : 45
+# Rec. Clause-clause subsumption calls : 38
+# Non-unit clause-clause subsumptions  : 4
+# Unit Clause-clause subsumption calls : 29
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 7
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 4369

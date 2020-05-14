@@ -1,0 +1,453 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP184-4
+% SZS output start Proof for GRP184-4
+fof(f2075316,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f2075276])).
+fof(f2075276,plain,(
+  least_upper_bound(a,inverse(a)) != least_upper_bound(a,inverse(a))),
+  inference(superposition,[],[f410227,f410230])).
+fof(f410230,plain,(
+  ( ! [X212] : (multiply(least_upper_bound(identity,X212),inverse(greatest_lower_bound(identity,X212))) = least_upper_bound(X212,inverse(X212))) )),
+  inference(backward_demodulation,[],[f410228,f285641])).
+fof(f285641,plain,(
+  ( ! [X212] : (multiply(least_upper_bound(identity,X212),inverse(greatest_lower_bound(identity,X212))) = least_upper_bound(X212,inverse(greatest_lower_bound(identity,X212)))) )),
+  inference(forward_demodulation,[],[f285640,f16])).
+fof(f16,axiom,(
+  identity = inverse(identity)),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f285640,plain,(
+  ( ! [X212] : (multiply(least_upper_bound(inverse(identity),X212),inverse(greatest_lower_bound(identity,X212))) = least_upper_bound(X212,inverse(greatest_lower_bound(identity,X212)))) )),
+  inference(forward_demodulation,[],[f285639,f69])).
+fof(f69,plain,(
+  ( ! [X2,X1] : (inverse(greatest_lower_bound(X2,inverse(X1))) = least_upper_bound(inverse(X2),X1)) )),
+  inference(superposition,[],[f19,f17])).
+fof(f17,axiom,(
+  ( ! [X0] : (inverse(inverse(X0)) = X0) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f19,axiom,(
+  ( ! [X0,X1] : (inverse(greatest_lower_bound(X0,X1)) = least_upper_bound(inverse(X0),inverse(X1))) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f285639,plain,(
+  ( ! [X212] : (multiply(inverse(greatest_lower_bound(identity,inverse(X212))),inverse(greatest_lower_bound(identity,X212))) = least_upper_bound(X212,inverse(greatest_lower_bound(identity,X212)))) )),
+  inference(forward_demodulation,[],[f285638,f38369])).
+fof(f38369,plain,(
+  ( ! [X88] : (least_upper_bound(X88,inverse(greatest_lower_bound(identity,X88))) = multiply(inverse(greatest_lower_bound(identity,X88)),least_upper_bound(X88,identity))) )),
+  inference(forward_demodulation,[],[f38368,f66])).
+fof(f66,plain,(
+  ( ! [X0] : (inverse(greatest_lower_bound(identity,X0)) = least_upper_bound(identity,inverse(X0))) )),
+  inference(superposition,[],[f19,f16])).
+fof(f38368,plain,(
+  ( ! [X88] : (least_upper_bound(X88,inverse(greatest_lower_bound(identity,X88))) = multiply(least_upper_bound(identity,inverse(X88)),least_upper_bound(X88,identity))) )),
+  inference(forward_demodulation,[],[f38367,f5])).
+fof(f5,axiom,(
+  ( ! [X0,X1] : (least_upper_bound(X0,X1) = least_upper_bound(X1,X0)) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f38367,plain,(
+  ( ! [X88] : (multiply(least_upper_bound(inverse(X88),identity),least_upper_bound(X88,identity)) = least_upper_bound(X88,inverse(greatest_lower_bound(identity,X88)))) )),
+  inference(forward_demodulation,[],[f38163,f29285])).
+fof(f29285,plain,(
+  ( ! [X50,X51] : (least_upper_bound(inverse(greatest_lower_bound(identity,X50)),least_upper_bound(X51,identity)) = least_upper_bound(X51,inverse(greatest_lower_bound(identity,X50)))) )),
+  inference(superposition,[],[f152,f484])).
+fof(f484,plain,(
+  ( ! [X11] : (inverse(greatest_lower_bound(identity,X11)) = least_upper_bound(identity,inverse(greatest_lower_bound(identity,X11)))) )),
+  inference(superposition,[],[f144,f66])).
+fof(f144,plain,(
+  ( ! [X0,X1] : (least_upper_bound(X0,X1) = least_upper_bound(X0,least_upper_bound(X0,X1))) )),
+  inference(superposition,[],[f7,f8])).
+fof(f8,axiom,(
+  ( ! [X0] : (least_upper_bound(X0,X0) = X0) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f7,axiom,(
+  ( ! [X2,X0,X1] : (least_upper_bound(X0,least_upper_bound(X1,X2)) = least_upper_bound(least_upper_bound(X0,X1),X2)) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f152,plain,(
+  ( ! [X6,X7,X5] : (least_upper_bound(X5,least_upper_bound(X6,X7)) = least_upper_bound(X7,least_upper_bound(X5,X6))) )),
+  inference(superposition,[],[f7,f5])).
+fof(f38163,plain,(
+  ( ! [X88] : (multiply(least_upper_bound(inverse(X88),identity),least_upper_bound(X88,identity)) = least_upper_bound(inverse(greatest_lower_bound(identity,X88)),least_upper_bound(X88,identity))) )),
+  inference(superposition,[],[f285,f4484])).
+fof(f4484,plain,(
+  ( ! [X1] : (inverse(greatest_lower_bound(identity,X1)) = multiply(inverse(X1),least_upper_bound(X1,identity))) )),
+  inference(forward_demodulation,[],[f4402,f66])).
+fof(f4402,plain,(
+  ( ! [X1] : (least_upper_bound(identity,inverse(X1)) = multiply(inverse(X1),least_upper_bound(X1,identity))) )),
+  inference(superposition,[],[f183,f48])).
+fof(f48,plain,(
+  ( ! [X0] : (inverse(X0) = multiply(inverse(X0),identity)) )),
+  inference(forward_demodulation,[],[f41,f1])).
+fof(f1,axiom,(
+  ( ! [X0] : (multiply(identity,X0) = X0) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f41,plain,(
+  ( ! [X0] : (inverse(multiply(identity,X0)) = multiply(inverse(X0),identity)) )),
+  inference(superposition,[],[f18,f16])).
+fof(f18,axiom,(
+  ( ! [X0,X1] : (inverse(multiply(X0,X1)) = multiply(inverse(X1),inverse(X0))) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f183,plain,(
+  ( ! [X2,X3] : (multiply(inverse(X2),least_upper_bound(X2,X3)) = least_upper_bound(identity,multiply(inverse(X2),X3))) )),
+  inference(superposition,[],[f12,f2])).
+fof(f2,axiom,(
+  ( ! [X0] : (identity = multiply(inverse(X0),X0)) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f12,axiom,(
+  ( ! [X2,X0,X1] : (multiply(X0,least_upper_bound(X1,X2)) = least_upper_bound(multiply(X0,X1),multiply(X0,X2))) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f285,plain,(
+  ( ! [X0,X1] : (multiply(least_upper_bound(X1,identity),X0) = least_upper_bound(multiply(X1,X0),X0)) )),
+  inference(superposition,[],[f14,f1])).
+fof(f14,axiom,(
+  ( ! [X2,X0,X1] : (multiply(least_upper_bound(X1,X2),X0) = least_upper_bound(multiply(X1,X0),multiply(X2,X0))) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f285638,plain,(
+  ( ! [X212] : (multiply(inverse(greatest_lower_bound(identity,inverse(X212))),inverse(greatest_lower_bound(identity,X212))) = multiply(inverse(greatest_lower_bound(identity,X212)),least_upper_bound(X212,identity))) )),
+  inference(forward_demodulation,[],[f285185,f66])).
+fof(f285185,plain,(
+  ( ! [X212] : (multiply(inverse(greatest_lower_bound(identity,inverse(X212))),inverse(greatest_lower_bound(identity,X212))) = multiply(least_upper_bound(identity,inverse(X212)),least_upper_bound(X212,identity))) )),
+  inference(superposition,[],[f2493,f4484])).
+fof(f2493,plain,(
+  ( ! [X10,X9] : (multiply(inverse(greatest_lower_bound(identity,X9)),multiply(X9,X10)) = multiply(least_upper_bound(identity,X9),X10)) )),
+  inference(forward_demodulation,[],[f2492,f66])).
+fof(f2492,plain,(
+  ( ! [X10,X9] : (multiply(least_upper_bound(identity,inverse(X9)),multiply(X9,X10)) = multiply(least_upper_bound(identity,X9),X10)) )),
+  inference(forward_demodulation,[],[f2491,f276])).
+fof(f276,plain,(
+  ( ! [X0,X1] : (multiply(least_upper_bound(identity,X1),X0) = least_upper_bound(X0,multiply(X1,X0))) )),
+  inference(superposition,[],[f14,f1])).
+fof(f2491,plain,(
+  ( ! [X10,X9] : (multiply(least_upper_bound(identity,inverse(X9)),multiply(X9,X10)) = least_upper_bound(X10,multiply(X9,X10))) )),
+  inference(forward_demodulation,[],[f2455,f5])).
+fof(f2455,plain,(
+  ( ! [X10,X9] : (least_upper_bound(X10,multiply(X9,X10)) = multiply(least_upper_bound(inverse(X9),identity),multiply(X9,X10))) )),
+  inference(superposition,[],[f285,f105])).
+fof(f105,plain,(
+  ( ! [X2,X3] : (multiply(inverse(X2),multiply(X2,X3)) = X3) )),
+  inference(forward_demodulation,[],[f95,f1])).
+fof(f95,plain,(
+  ( ! [X2,X3] : (multiply(inverse(X2),multiply(X2,X3)) = multiply(identity,X3)) )),
+  inference(superposition,[],[f3,f2])).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (multiply(multiply(X0,X1),X2) = multiply(X0,multiply(X1,X2))) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f410228,plain,(
+  ( ! [X88] : (least_upper_bound(X88,inverse(greatest_lower_bound(identity,X88))) = least_upper_bound(X88,inverse(X88))) )),
+  inference(backward_demodulation,[],[f410218,f38369])).
+fof(f410218,plain,(
+  ( ! [X206] : (least_upper_bound(X206,inverse(X206)) = multiply(inverse(greatest_lower_bound(identity,X206)),least_upper_bound(X206,identity))) )),
+  inference(backward_demodulation,[],[f410080,f283166])).
+fof(f283166,plain,(
+  ( ! [X206] : (least_upper_bound(X206,inverse(greatest_lower_bound(X206,identity))) = multiply(inverse(greatest_lower_bound(identity,X206)),least_upper_bound(X206,identity))) )),
+  inference(forward_demodulation,[],[f283165,f66])).
+fof(f283165,plain,(
+  ( ! [X206] : (least_upper_bound(X206,inverse(greatest_lower_bound(X206,identity))) = multiply(least_upper_bound(identity,inverse(X206)),least_upper_bound(X206,identity))) )),
+  inference(forward_demodulation,[],[f283164,f5])).
+fof(f283164,plain,(
+  ( ! [X206] : (multiply(least_upper_bound(inverse(X206),identity),least_upper_bound(X206,identity)) = least_upper_bound(X206,inverse(greatest_lower_bound(X206,identity)))) )),
+  inference(forward_demodulation,[],[f283163,f131801])).
+fof(f131801,plain,(
+  ( ! [X38] : (least_upper_bound(X38,inverse(greatest_lower_bound(X38,identity))) = multiply(least_upper_bound(identity,X38),inverse(greatest_lower_bound(identity,X38)))) )),
+  inference(forward_demodulation,[],[f131800,f16])).
+fof(f131800,plain,(
+  ( ! [X38] : (least_upper_bound(X38,inverse(greatest_lower_bound(X38,identity))) = multiply(least_upper_bound(inverse(identity),X38),inverse(greatest_lower_bound(identity,X38)))) )),
+  inference(forward_demodulation,[],[f131799,f69])).
+fof(f131799,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = least_upper_bound(X38,inverse(greatest_lower_bound(X38,identity)))) )),
+  inference(forward_demodulation,[],[f131798,f5])).
+fof(f131798,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = least_upper_bound(inverse(greatest_lower_bound(X38,identity)),X38)) )),
+  inference(forward_demodulation,[],[f131797,f803])).
+fof(f803,plain,(
+  ( ! [X12,X10,X11] : (least_upper_bound(inverse(greatest_lower_bound(X10,X11)),X12) = inverse(greatest_lower_bound(X10,greatest_lower_bound(X11,inverse(X12))))) )),
+  inference(superposition,[],[f69,f6])).
+fof(f6,axiom,(
+  ( ! [X2,X0,X1] : (greatest_lower_bound(X0,greatest_lower_bound(X1,X2)) = greatest_lower_bound(greatest_lower_bound(X0,X1),X2)) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f131797,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = inverse(greatest_lower_bound(X38,greatest_lower_bound(identity,inverse(X38))))) )),
+  inference(forward_demodulation,[],[f131796,f1455])).
+fof(f1455,plain,(
+  ( ! [X14,X15,X16] : (greatest_lower_bound(X14,greatest_lower_bound(X15,X16)) = greatest_lower_bound(X15,greatest_lower_bound(X14,greatest_lower_bound(X15,X16)))) )),
+  inference(forward_demodulation,[],[f1454,f115])).
+fof(f115,plain,(
+  ( ! [X0,X1] : (greatest_lower_bound(X0,X1) = greatest_lower_bound(X0,greatest_lower_bound(X0,X1))) )),
+  inference(superposition,[],[f6,f9])).
+fof(f9,axiom,(
+  ( ! [X0] : (greatest_lower_bound(X0,X0) = X0) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f1454,plain,(
+  ( ! [X14,X15,X16] : (greatest_lower_bound(X14,greatest_lower_bound(X15,X16)) = greatest_lower_bound(X15,greatest_lower_bound(X14,greatest_lower_bound(X14,greatest_lower_bound(X15,X16))))) )),
+  inference(forward_demodulation,[],[f1430,f6])).
+fof(f1430,plain,(
+  ( ! [X14,X15,X16] : (greatest_lower_bound(greatest_lower_bound(X14,X15),X16) = greatest_lower_bound(X15,greatest_lower_bound(X14,greatest_lower_bound(greatest_lower_bound(X14,X15),X16)))) )),
+  inference(superposition,[],[f116,f115])).
+fof(f116,plain,(
+  ( ! [X4,X2,X3] : (greatest_lower_bound(X2,greatest_lower_bound(X3,X4)) = greatest_lower_bound(greatest_lower_bound(X3,X2),X4)) )),
+  inference(superposition,[],[f6,f4])).
+fof(f4,axiom,(
+  ( ! [X0,X1] : (greatest_lower_bound(X0,X1) = greatest_lower_bound(X1,X0)) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f131796,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = inverse(greatest_lower_bound(identity,greatest_lower_bound(X38,greatest_lower_bound(identity,inverse(X38)))))) )),
+  inference(forward_demodulation,[],[f131795,f44195])).
+fof(f44195,plain,(
+  ( ! [X132,X130,X131] : (inverse(greatest_lower_bound(X131,greatest_lower_bound(X132,X130))) = inverse(greatest_lower_bound(X131,greatest_lower_bound(X130,X132)))) )),
+  inference(forward_demodulation,[],[f43925,f6])).
+fof(f43925,plain,(
+  ( ! [X132,X130,X131] : (inverse(greatest_lower_bound(greatest_lower_bound(X131,X132),X130)) = inverse(greatest_lower_bound(X131,greatest_lower_bound(X130,X132)))) )),
+  inference(superposition,[],[f892,f1426])).
+fof(f1426,plain,(
+  ( ! [X4,X5,X3] : (greatest_lower_bound(X3,greatest_lower_bound(X4,X5)) = greatest_lower_bound(X4,greatest_lower_bound(X3,X5))) )),
+  inference(superposition,[],[f116,f6])).
+fof(f892,plain,(
+  ( ! [X2,X3] : (inverse(greatest_lower_bound(X2,X3)) = inverse(greatest_lower_bound(X3,X2))) )),
+  inference(superposition,[],[f71,f19])).
+fof(f71,plain,(
+  ( ! [X4,X3] : (least_upper_bound(inverse(X4),inverse(X3)) = inverse(greatest_lower_bound(X3,X4))) )),
+  inference(superposition,[],[f19,f5])).
+fof(f131795,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = inverse(greatest_lower_bound(identity,greatest_lower_bound(greatest_lower_bound(identity,inverse(X38)),X38)))) )),
+  inference(forward_demodulation,[],[f131794,f66])).
+fof(f131794,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = least_upper_bound(identity,inverse(greatest_lower_bound(greatest_lower_bound(identity,inverse(X38)),X38)))) )),
+  inference(forward_demodulation,[],[f131793,f5])).
+fof(f131793,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = least_upper_bound(inverse(greatest_lower_bound(greatest_lower_bound(identity,inverse(X38)),X38)),identity)) )),
+  inference(forward_demodulation,[],[f131497,f149])).
+fof(f149,plain,(
+  ( ! [X14,X15,X16] : (least_upper_bound(inverse(X14),least_upper_bound(inverse(X15),X16)) = least_upper_bound(inverse(greatest_lower_bound(X14,X15)),X16)) )),
+  inference(superposition,[],[f7,f19])).
+fof(f131497,plain,(
+  ( ! [X38] : (multiply(inverse(greatest_lower_bound(identity,inverse(X38))),inverse(greatest_lower_bound(identity,X38))) = least_upper_bound(inverse(greatest_lower_bound(identity,inverse(X38))),least_upper_bound(inverse(X38),identity))) )),
+  inference(superposition,[],[f2635,f2263])).
+fof(f2263,plain,(
+  ( ! [X1] : (least_upper_bound(X1,identity) = multiply(inverse(greatest_lower_bound(identity,X1)),X1)) )),
+  inference(forward_demodulation,[],[f2229,f66])).
+fof(f2229,plain,(
+  ( ! [X1] : (least_upper_bound(X1,identity) = multiply(least_upper_bound(identity,inverse(X1)),X1)) )),
+  inference(superposition,[],[f276,f2])).
+fof(f2635,plain,(
+  ( ! [X37,X38] : (multiply(X37,inverse(greatest_lower_bound(identity,X38))) = least_upper_bound(X37,multiply(X37,inverse(X38)))) )),
+  inference(forward_demodulation,[],[f2634,f40])).
+fof(f40,plain,(
+  ( ! [X2,X1] : (inverse(multiply(X2,inverse(X1))) = multiply(X1,inverse(X2))) )),
+  inference(superposition,[],[f18,f17])).
+fof(f2634,plain,(
+  ( ! [X37,X38] : (least_upper_bound(X37,inverse(multiply(X38,inverse(X37)))) = multiply(X37,inverse(greatest_lower_bound(identity,X38)))) )),
+  inference(forward_demodulation,[],[f2610,f40])).
+fof(f2610,plain,(
+  ( ! [X37,X38] : (least_upper_bound(X37,inverse(multiply(X38,inverse(X37)))) = inverse(multiply(greatest_lower_bound(identity,X38),inverse(X37)))) )),
+  inference(superposition,[],[f67,f325])).
+fof(f325,plain,(
+  ( ! [X0,X1] : (multiply(greatest_lower_bound(identity,X1),X0) = greatest_lower_bound(X0,multiply(X1,X0))) )),
+  inference(superposition,[],[f15,f1])).
+fof(f15,axiom,(
+  ( ! [X2,X0,X1] : (multiply(greatest_lower_bound(X1,X2),X0) = greatest_lower_bound(multiply(X1,X0),multiply(X2,X0))) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f67,plain,(
+  ( ! [X2,X1] : (inverse(greatest_lower_bound(inverse(X1),X2)) = least_upper_bound(X1,inverse(X2))) )),
+  inference(superposition,[],[f19,f17])).
+fof(f283163,plain,(
+  ( ! [X206] : (multiply(least_upper_bound(inverse(X206),identity),least_upper_bound(X206,identity)) = multiply(least_upper_bound(identity,X206),inverse(greatest_lower_bound(identity,X206)))) )),
+  inference(forward_demodulation,[],[f283162,f16])).
+fof(f283162,plain,(
+  ( ! [X206] : (multiply(least_upper_bound(inverse(X206),identity),least_upper_bound(X206,identity)) = multiply(least_upper_bound(inverse(identity),X206),inverse(greatest_lower_bound(identity,X206)))) )),
+  inference(forward_demodulation,[],[f282587,f69])).
+fof(f282587,plain,(
+  ( ! [X206] : (multiply(least_upper_bound(inverse(X206),identity),least_upper_bound(X206,identity)) = multiply(inverse(greatest_lower_bound(identity,inverse(X206))),inverse(greatest_lower_bound(identity,X206)))) )),
+  inference(superposition,[],[f2266,f4484])).
+fof(f2266,plain,(
+  ( ! [X10,X9] : (multiply(least_upper_bound(X9,identity),X10) = multiply(inverse(greatest_lower_bound(identity,X9)),multiply(X9,X10))) )),
+  inference(forward_demodulation,[],[f2265,f66])).
+fof(f2265,plain,(
+  ( ! [X10,X9] : (multiply(least_upper_bound(identity,inverse(X9)),multiply(X9,X10)) = multiply(least_upper_bound(X9,identity),X10)) )),
+  inference(forward_demodulation,[],[f2234,f285])).
+fof(f2234,plain,(
+  ( ! [X10,X9] : (multiply(least_upper_bound(identity,inverse(X9)),multiply(X9,X10)) = least_upper_bound(multiply(X9,X10),X10)) )),
+  inference(superposition,[],[f276,f105])).
+fof(f410080,plain,(
+  ( ! [X3] : (least_upper_bound(X3,inverse(X3)) = least_upper_bound(X3,inverse(greatest_lower_bound(X3,identity)))) )),
+  inference(superposition,[],[f147,f88941])).
+fof(f88941,plain,(
+  ( ! [X0] : (inverse(greatest_lower_bound(X0,identity)) = least_upper_bound(greatest_lower_bound(X0,identity),inverse(X0))) )),
+  inference(superposition,[],[f67,f58014])).
+fof(f58014,plain,(
+  ( ! [X0] : (greatest_lower_bound(X0,identity) = greatest_lower_bound(inverse(greatest_lower_bound(X0,identity)),X0)) )),
+  inference(superposition,[],[f1635,f22135])).
+fof(f22135,plain,(
+  ( ! [X100] : (identity = greatest_lower_bound(least_upper_bound(identity,X100),inverse(greatest_lower_bound(X100,identity)))) )),
+  inference(forward_demodulation,[],[f22014,f26])).
+fof(f26,plain,(
+  ( ! [X0] : (identity = multiply(X0,inverse(X0))) )),
+  inference(superposition,[],[f2,f17])).
+fof(f22014,plain,(
+  ( ! [X100] : (multiply(greatest_lower_bound(X100,identity),inverse(greatest_lower_bound(X100,identity))) = greatest_lower_bound(least_upper_bound(identity,X100),inverse(greatest_lower_bound(X100,identity)))) )),
+  inference(superposition,[],[f334,f4465])).
+fof(f4465,plain,(
+  ( ! [X49] : (least_upper_bound(identity,X49) = multiply(X49,inverse(greatest_lower_bound(X49,identity)))) )),
+  inference(forward_demodulation,[],[f4464,f63])).
+fof(f63,plain,(
+  ( ! [X6] : (multiply(X6,identity) = X6) )),
+  inference(forward_demodulation,[],[f58,f17])).
+fof(f58,plain,(
+  ( ! [X6] : (multiply(X6,identity) = inverse(inverse(X6))) )),
+  inference(superposition,[],[f17,f47])).
+fof(f47,plain,(
+  ( ! [X0] : (inverse(X0) = inverse(multiply(X0,identity))) )),
+  inference(forward_demodulation,[],[f39,f1])).
+fof(f39,plain,(
+  ( ! [X0] : (inverse(multiply(X0,identity)) = multiply(identity,inverse(X0))) )),
+  inference(superposition,[],[f18,f16])).
+fof(f4464,plain,(
+  ( ! [X49] : (multiply(X49,inverse(greatest_lower_bound(X49,identity))) = multiply(least_upper_bound(identity,X49),identity)) )),
+  inference(forward_demodulation,[],[f4463,f276])).
+fof(f4463,plain,(
+  ( ! [X49] : (least_upper_bound(identity,multiply(X49,identity)) = multiply(X49,inverse(greatest_lower_bound(X49,identity)))) )),
+  inference(forward_demodulation,[],[f4377,f17])).
+fof(f4377,plain,(
+  ( ! [X49] : (least_upper_bound(identity,multiply(inverse(inverse(X49)),identity)) = multiply(inverse(inverse(X49)),inverse(greatest_lower_bound(X49,identity)))) )),
+  inference(superposition,[],[f183,f68])).
+fof(f68,plain,(
+  ( ! [X0] : (inverse(greatest_lower_bound(X0,identity)) = least_upper_bound(inverse(X0),identity)) )),
+  inference(superposition,[],[f19,f16])).
+fof(f334,plain,(
+  ( ! [X0,X1] : (multiply(greatest_lower_bound(X1,identity),X0) = greatest_lower_bound(multiply(X1,X0),X0)) )),
+  inference(superposition,[],[f15,f1])).
+fof(f1635,plain,(
+  ( ! [X28,X26,X27] : (greatest_lower_bound(X28,X26) = greatest_lower_bound(X26,greatest_lower_bound(least_upper_bound(X27,X26),X28))) )),
+  inference(superposition,[],[f122,f35])).
+fof(f35,plain,(
+  ( ! [X2,X1] : (greatest_lower_bound(X1,least_upper_bound(X2,X1)) = X1) )),
+  inference(superposition,[],[f11,f5])).
+fof(f11,axiom,(
+  ( ! [X0,X1] : (greatest_lower_bound(X0,least_upper_bound(X0,X1)) = X0) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f122,plain,(
+  ( ! [X6,X7,X5] : (greatest_lower_bound(X5,greatest_lower_bound(X6,X7)) = greatest_lower_bound(X7,greatest_lower_bound(X5,X6))) )),
+  inference(superposition,[],[f6,f4])).
+fof(f147,plain,(
+  ( ! [X10,X8,X9] : (least_upper_bound(X8,least_upper_bound(greatest_lower_bound(X8,X9),X10)) = least_upper_bound(X8,X10)) )),
+  inference(superposition,[],[f7,f10])).
+fof(f10,axiom,(
+  ( ! [X0,X1] : (least_upper_bound(X0,greatest_lower_bound(X0,X1)) = X0) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f410227,plain,(
+  multiply(least_upper_bound(identity,a),inverse(greatest_lower_bound(identity,a))) != least_upper_bound(a,inverse(a))),
+  inference(backward_demodulation,[],[f410220,f39401])).
+fof(f39401,plain,(
+  multiply(least_upper_bound(identity,a),inverse(greatest_lower_bound(identity,a))) != least_upper_bound(identity,least_upper_bound(a,inverse(a)))),
+  inference(backward_demodulation,[],[f39399,f23])).
+fof(f23,plain,(
+  multiply(least_upper_bound(identity,a),inverse(greatest_lower_bound(identity,a))) != multiply(inverse(greatest_lower_bound(identity,a)),least_upper_bound(identity,a))),
+  inference(forward_demodulation,[],[f22,f4])).
+fof(f22,plain,(
+  multiply(least_upper_bound(identity,a),inverse(greatest_lower_bound(a,identity))) != multiply(inverse(greatest_lower_bound(a,identity)),least_upper_bound(identity,a))),
+  inference(forward_demodulation,[],[f21,f5])).
+fof(f21,axiom,(
+  multiply(least_upper_bound(a,identity),inverse(greatest_lower_bound(a,identity))) != multiply(inverse(greatest_lower_bound(a,identity)),least_upper_bound(a,identity))),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f39399,plain,(
+  ( ! [X88] : (least_upper_bound(identity,least_upper_bound(X88,inverse(X88))) = multiply(inverse(greatest_lower_bound(identity,X88)),least_upper_bound(identity,X88))) )),
+  inference(forward_demodulation,[],[f39398,f5])).
+fof(f39398,plain,(
+  ( ! [X88] : (least_upper_bound(identity,least_upper_bound(inverse(X88),X88)) = multiply(inverse(greatest_lower_bound(identity,X88)),least_upper_bound(identity,X88))) )),
+  inference(forward_demodulation,[],[f39397,f66])).
+fof(f39397,plain,(
+  ( ! [X88] : (least_upper_bound(identity,least_upper_bound(inverse(X88),X88)) = multiply(least_upper_bound(identity,inverse(X88)),least_upper_bound(identity,X88))) )),
+  inference(forward_demodulation,[],[f39396,f5])).
+fof(f39396,plain,(
+  ( ! [X88] : (least_upper_bound(identity,least_upper_bound(inverse(X88),X88)) = multiply(least_upper_bound(inverse(X88),identity),least_upper_bound(identity,X88))) )),
+  inference(forward_demodulation,[],[f39229,f1926])).
+fof(f1926,plain,(
+  ( ! [X59,X58] : (least_upper_bound(inverse(greatest_lower_bound(identity,X58)),least_upper_bound(identity,X59)) = least_upper_bound(identity,least_upper_bound(inverse(X58),X59))) )),
+  inference(forward_demodulation,[],[f1899,f270])).
+fof(f270,plain,(
+  ( ! [X0,X1] : (least_upper_bound(identity,least_upper_bound(inverse(X0),X1)) = least_upper_bound(inverse(greatest_lower_bound(identity,X0)),X1)) )),
+  inference(superposition,[],[f7,f66])).
+fof(f1899,plain,(
+  ( ! [X59,X58] : (least_upper_bound(inverse(greatest_lower_bound(identity,X58)),X59) = least_upper_bound(inverse(greatest_lower_bound(identity,X58)),least_upper_bound(identity,X59))) )),
+  inference(superposition,[],[f147,f1298])).
+fof(f1298,plain,(
+  ( ! [X1] : (identity = greatest_lower_bound(inverse(greatest_lower_bound(identity,X1)),identity)) )),
+  inference(superposition,[],[f1244,f66])).
+fof(f1244,plain,(
+  ( ! [X1] : (identity = greatest_lower_bound(least_upper_bound(identity,X1),identity)) )),
+  inference(forward_demodulation,[],[f1224,f16])).
+fof(f1224,plain,(
+  ( ! [X1] : (inverse(identity) = greatest_lower_bound(least_upper_bound(identity,X1),inverse(identity))) )),
+  inference(superposition,[],[f80,f951])).
+fof(f951,plain,(
+  ( ! [X2] : (identity = least_upper_bound(inverse(least_upper_bound(identity,X2)),identity)) )),
+  inference(forward_demodulation,[],[f914,f17])).
+fof(f914,plain,(
+  ( ! [X2] : (inverse(inverse(identity)) = least_upper_bound(inverse(least_upper_bound(identity,X2)),identity)) )),
+  inference(superposition,[],[f383,f394])).
+fof(f394,plain,(
+  ( ! [X6] : (identity = least_upper_bound(identity,inverse(least_upper_bound(identity,X6)))) )),
+  inference(superposition,[],[f10,f79])).
+fof(f79,plain,(
+  ( ! [X0] : (inverse(least_upper_bound(identity,X0)) = greatest_lower_bound(identity,inverse(X0))) )),
+  inference(superposition,[],[f20,f16])).
+fof(f20,axiom,(
+  ( ! [X0,X1] : (inverse(least_upper_bound(X0,X1)) = greatest_lower_bound(inverse(X0),inverse(X1))) )),
+  file('./p/GRP184-4.tptp',unknown)).
+fof(f383,plain,(
+  ( ! [X0] : (least_upper_bound(X0,identity) = inverse(inverse(least_upper_bound(identity,X0)))) )),
+  inference(forward_demodulation,[],[f382,f79])).
+fof(f382,plain,(
+  ( ! [X0] : (least_upper_bound(X0,identity) = inverse(greatest_lower_bound(identity,inverse(X0)))) )),
+  inference(forward_demodulation,[],[f372,f4])).
+fof(f372,plain,(
+  ( ! [X0] : (least_upper_bound(X0,identity) = inverse(greatest_lower_bound(inverse(X0),identity))) )),
+  inference(superposition,[],[f68,f17])).
+fof(f80,plain,(
+  ( ! [X2,X1] : (inverse(least_upper_bound(inverse(X1),X2)) = greatest_lower_bound(X1,inverse(X2))) )),
+  inference(superposition,[],[f20,f17])).
+fof(f39229,plain,(
+  ( ! [X88] : (multiply(least_upper_bound(inverse(X88),identity),least_upper_bound(identity,X88)) = least_upper_bound(inverse(greatest_lower_bound(identity,X88)),least_upper_bound(identity,X88))) )),
+  inference(superposition,[],[f285,f4745])).
+fof(f4745,plain,(
+  ( ! [X1] : (inverse(greatest_lower_bound(identity,X1)) = multiply(inverse(X1),least_upper_bound(identity,X1))) )),
+  inference(forward_demodulation,[],[f4744,f66])).
+fof(f4744,plain,(
+  ( ! [X1] : (least_upper_bound(identity,inverse(X1)) = multiply(inverse(X1),least_upper_bound(identity,X1))) )),
+  inference(forward_demodulation,[],[f4643,f5])).
+fof(f4643,plain,(
+  ( ! [X1] : (least_upper_bound(inverse(X1),identity) = multiply(inverse(X1),least_upper_bound(identity,X1))) )),
+  inference(superposition,[],[f191,f48])).
+fof(f191,plain,(
+  ( ! [X2,X3] : (multiply(inverse(X2),least_upper_bound(X3,X2)) = least_upper_bound(multiply(inverse(X2),X3),identity)) )),
+  inference(superposition,[],[f12,f2])).
+fof(f410220,plain,(
+  ( ! [X88] : (least_upper_bound(X88,inverse(X88)) = least_upper_bound(identity,least_upper_bound(X88,inverse(X88)))) )),
+  inference(backward_demodulation,[],[f410217,f39399])).
+fof(f410217,plain,(
+  ( ! [X212] : (least_upper_bound(X212,inverse(X212)) = multiply(inverse(greatest_lower_bound(identity,X212)),least_upper_bound(identity,X212))) )),
+  inference(backward_demodulation,[],[f410080,f283182])).
+fof(f283182,plain,(
+  ( ! [X212] : (least_upper_bound(X212,inverse(greatest_lower_bound(X212,identity))) = multiply(inverse(greatest_lower_bound(identity,X212)),least_upper_bound(identity,X212))) )),
+  inference(forward_demodulation,[],[f283181,f66])).
+fof(f283181,plain,(
+  ( ! [X212] : (least_upper_bound(X212,inverse(greatest_lower_bound(X212,identity))) = multiply(least_upper_bound(identity,inverse(X212)),least_upper_bound(identity,X212))) )),
+  inference(forward_demodulation,[],[f283180,f5])).
+fof(f283180,plain,(
+  ( ! [X212] : (multiply(least_upper_bound(inverse(X212),identity),least_upper_bound(identity,X212)) = least_upper_bound(X212,inverse(greatest_lower_bound(X212,identity)))) )),
+  inference(forward_demodulation,[],[f283179,f131801])).
+fof(f283179,plain,(
+  ( ! [X212] : (multiply(least_upper_bound(inverse(X212),identity),least_upper_bound(identity,X212)) = multiply(least_upper_bound(identity,X212),inverse(greatest_lower_bound(identity,X212)))) )),
+  inference(forward_demodulation,[],[f283178,f16])).
+fof(f283178,plain,(
+  ( ! [X212] : (multiply(least_upper_bound(inverse(X212),identity),least_upper_bound(identity,X212)) = multiply(least_upper_bound(inverse(identity),X212),inverse(greatest_lower_bound(identity,X212)))) )),
+  inference(forward_demodulation,[],[f282590,f69])).
+fof(f282590,plain,(
+  ( ! [X212] : (multiply(least_upper_bound(inverse(X212),identity),least_upper_bound(identity,X212)) = multiply(inverse(greatest_lower_bound(identity,inverse(X212))),inverse(greatest_lower_bound(identity,X212)))) )),
+  inference(superposition,[],[f2266,f4745])).
+% SZS output end Proof for GRP184-4
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 2007344
+% Time elapsed: 58.391 s
+% ------------------------------
+% ------------------------------

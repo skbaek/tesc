@@ -1,0 +1,504 @@
+# Initializing proof state
+# Scanning for AC axioms
+# unordered_pair is commutative
+# AC handling enabled
+#
+#cnf(i_0_188, plain, (inductive(omega))).
+#
+#cnf(i_0_207, plain, (function(choice))).
+#
+#cnf(i_0_234, plain, (subclass(X1,X1))).
+#
+#cnf(i_0_241, plain, (~member(X1,null_class))).
+#
+#cnf(i_0_142, plain, (subclass(X1,universal_class))).
+#
+#cnf(i_0_242, plain, (subclass(null_class,X1))).
+#
+#cnf(i_0_209, plain, (function(X1)|~one_to_one(X1))).
+#
+#cnf(i_0_276, negated_conjecture, (~member(x,universal_class))).
+#
+#cnf(i_0_216, plain, (function(X1)|~operation(X1))).
+#
+#cnf(i_0_245, plain, (member(null_class,universal_class))).
+#
+#cnf(i_0_190, plain, (member(omega,universal_class))).
+#
+#cnf(i_0_240, plain, (~member(X1,intersection(complement(X2),X2)))).
+#
+#cnf(i_0_144, plain, (subclass(X2,X1)|X1!=X2)).
+##
+#cnf(i_0_220, plain, (function(X1)|~compatible(X1,X2,X3))).
+#
+#cnf(i_0_162, plain, (~member(X1,complement(X2))|~member(X1,X2))).
+#
+#cnf(i_0_225, plain, (operation(X3)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_224, plain, (operation(X2)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_189, plain, (subclass(omega,X1)|~inductive(X1))).
+#
+#cnf(i_0_255, plain, (unordered_pair(X2,X1)!=null_class|~member(X1,universal_class))).
+#
+#cnf(i_0_185, plain, (member(null_class,X1)|~inductive(X1))).
+#
+#cnf(i_0_149, plain, (member(unordered_pair(X1,X2),universal_class))).
+##
+#cnf(i_0_279, plain, (~inductive(null_class))).
+#
+#cnf(i_0_243, plain, (X1=null_class|~subclass(X1,null_class))).
+##
+#cnf(i_0_226, plain, (compatible(X1,X2,X3)|~homomorphism(X1,X2,X3))).
+#
+#cnf(i_0_277, plain, (unordered_pair(X1,omega)!=null_class)).
+#
+#cnf(i_0_246, plain, (unordered_pair(X1,X2)=unordered_pair(X2,X1))).
+#
+#cnf(i_0_263, plain, (X1=X2|~member(X1,unordered_pair(X2,X2)))).
+##
+#cnf(i_0_278, plain, (unordered_pair(X1,null_class)!=null_class)).
+##
+#cnf(i_0_294, plain, (null_class=X1|~inductive(unordered_pair(X1,X1)))).
+##
+#cnf(i_0_286, plain, (unordered_pair(omega,X1)!=null_class)).
+##
+#cnf(i_0_204, plain, (X1=null_class|member(regular(X1),X1))).
+#
+#cnf(i_0_302, plain, (intersection(complement(X1),X1)=null_class)).
+##
+#cnf(i_0_156, plain, (subclass(element_relation,cross_product(universal_class,universal_class)))).
+#
+#cnf(i_0_182, plain, (subclass(successor_relation,cross_product(universal_class,universal_class)))).
+#
+#cnf(i_0_262, plain, (member(null_class,unordered_pair(null_class,null_class)))).
+##
+#cnf(i_0_248, plain, (subclass(unordered_pair(X1,X1),unordered_pair(X2,X1)))).
+#
+#cnf(i_0_247, plain, (subclass(unordered_pair(X1,X1),unordered_pair(X1,X2)))).
+#
+#cnf(i_0_160, plain, (member(X1,X3)|~member(X1,intersection(X2,X3)))).
+#
+#cnf(i_0_295, plain, (unordered_pair(null_class,X1)!=null_class)).
+##
+#cnf(i_0_159, plain, (member(X1,X2)|~member(X1,intersection(X2,X3)))).
+#
+#cnf(i_0_141, plain, (subclass(X1,X2)|~member(not_subclass_element(X1,X2),X2))).
+####
+#cnf(i_0_317, plain, (member(null_class,X1)|~inductive(intersection(X2,X1)))).
+###
+#cnf(i_0_322, plain, (member(null_class,X1)|~inductive(intersection(X1,X2)))).
+###
+#cnf(i_0_145, plain, (X1=X2|~subclass(X2,X1)|~subclass(X1,X2))).
+##
+#cnf(i_0_329, plain, (X1=universal_class|~subclass(universal_class,X1))).
+######
+#cnf(i_0_140, plain, (member(not_subclass_element(X1,X2),X1)|subclass(X1,X2))).
+#
+#cnf(i_0_325, plain, (omega=X1|~inductive(X1)|~subclass(X1,omega))).
+##
+#cnf(i_0_280, plain, (~inductive(complement(X1))|~member(null_class,X1))).
+##
+#cnf(i_0_148, plain, (member(X1,unordered_pair(X2,X1))|~member(X1,universal_class))).
+#
+#cnf(i_0_147, plain, (member(X1,unordered_pair(X1,X2))|~member(X1,universal_class))).
+#
+#cnf(i_0_283, plain, (unordered_pair(X1,unordered_pair(X2,X3))!=null_class)).
+#######
+#cnf(i_0_235, plain, (subclass(X1,X3)|~subclass(X2,X3)|~subclass(X1,X2))).
+##
+#cnf(i_0_366, plain, (subclass(X1,X2)|~subclass(universal_class,X2))).
+#
+#cnf(i_0_385, plain, (subclass(X1,X2)|X2!=universal_class)).
+##
+#cnf(i_0_353, plain, (unordered_pair(unordered_pair(X2,X3),X1)!=null_class)).
+#
+#cnf(i_0_371, plain, (subclass(X1,X2)|~subclass(X1,null_class))).
+#
+#cnf(i_0_409, plain, (subclass(X1,X2)|null_class!=X1)).
+###
+#cnf(i_0_412, plain, (subclass(X1,X2)|null_class!=universal_class)).
+######
+#cnf(i_0_391, plain, (X1=null_class|null_class!=universal_class)).
+#
+#cnf(i_0_446, negated_conjecture, (null_class!=universal_class)).
+#########
+#cnf(i_0_400, plain, (subclass(X1,X2)|~subclass(universal_class,null_class))).
+##########
+#cnf(i_0_379, plain, (X1=null_class|~subclass(universal_class,null_class))).
+#######
+#cnf(i_0_516, plain, (X2=X1|~subclass(universal_class,null_class))).
+#######
+#cnf(i_0_562, plain, (function(X1)|~subclass(universal_class,null_class))).
+######
+#cnf(i_0_564, plain, (inductive(X1)|~subclass(universal_class,null_class))).
+#########
+#cnf(i_0_580, plain, (~inductive(X1)|~subclass(universal_class,null_class))).
+####
+#cnf(i_0_751, plain, (~subclass(universal_class,null_class))).
+#####################################
+#cnf(i_0_392, plain, (X1=X2|X2!=universal_class|~subclass(X2,X1))).
+####
+#cnf(i_0_416, plain, (omega=X1|null_class!=X1|~inductive(X1))).
+#
+#cnf(i_0_419, plain, (X1=X2|null_class!=X1|~subclass(X2,X1))).
+#######
+#cnf(i_0_390, plain, (omega=X1|omega!=universal_class|~inductive(X1))).
+############
+#cnf(i_0_775, plain, (X1=X2|X2!=universal_class|null_class!=X2)).
+###########
+#cnf(i_0_899, plain, (X2!=null_class|X2!=universal_class)).
+##
+#cnf(i_0_402, plain, (omega=X1|~inductive(X1)|~subclass(X1,null_class))).
+#########
+#cnf(i_0_369, plain, (subclass(X1,X2)|~inductive(X2)|~subclass(X1,omega))).
+####
+#cnf(i_0_954, plain, (subclass(X1,X2)|omega!=X1|~inductive(X2))).
+######
+#cnf(i_0_958, plain, (subclass(X1,X2)|omega!=universal_class|~inductive(X2))).
+#######
+#cnf(i_0_758, plain, (~subclass(X1,null_class)|~subclass(universal_class,X1))).
+###
+#cnf(i_0_970, plain, (X1=universal_class|omega!=universal_class|~inductive(X1))).
+#########
+#cnf(i_0_1003, plain, (X1!=universal_class|~subclass(X1,null_class))).
+#
+#cnf(i_0_362, plain, (subclass(omega,X1)|~inductive(X2)|~subclass(X2,X1))).
+####
+#cnf(i_0_1063, plain, (subclass(omega,X1)|X1!=X2|~inductive(X2))).
+##
+#cnf(i_0_1080, plain, (omega=null_class|null_class!=X1|~inductive(X1))).
+########
+#cnf(i_0_380, plain, (X1=X2|~subclass(universal_class,X2)|~subclass(X2,X1))).
+#############
+#cnf(i_0_1018, plain, (null_class!=X1|~subclass(universal_class,X1))).
+#
+#cnf(i_0_403, plain, (X1=X2|~subclass(X1,null_class)|~subclass(X2,X1))).
+#################
+#cnf(i_0_394, plain, (subclass(X1,X2)|X3!=universal_class|~subclass(X3,X2))).
+#####
+#cnf(i_0_1218, plain, (subclass(X1,X2)|X3!=universal_class|X2!=X3)).
+############
+#cnf(i_0_1188, plain, (X1=universal_class|X2!=universal_class|~subclass(X2,X1))).
+#######
+#cnf(i_0_422, plain, (subclass(X1,X2)|null_class!=X3|~subclass(X1,X3))).
+####
+#cnf(i_0_1325, plain, (subclass(X1,X2)|null_class!=X3|X3!=X1)).
+############
+#cnf(i_0_1298, plain, (X1=null_class|null_class!=X2|~subclass(X1,X2))).
+#######
+#cnf(i_0_1046, plain, (omega=null_class|~inductive(X1)|~subclass(X1,null_class))).
+#############
+#cnf(i_0_139, plain, (member(X3,X2)|~member(X3,X1)|~subclass(X1,X2))).
+#
+#cnf(i_0_1448, plain, (member(omega,X1)|~subclass(universal_class,X1))).
+#
+#cnf(i_0_1420, negated_conjecture, (~member(x,X1))).
+#
+#cnf(i_0_1450, plain, (member(null_class,X1)|~subclass(universal_class,X1))).
+##
+#cnf(i_0_1451, plain, (member(null_class,X1)|~inductive(X2)|~subclass(X2,X1))).
+###
+#cnf(i_0_1492, plain, (member(null_class,X1)|X1!=X2|~inductive(X2))).
+###
+#cnf(i_0_1452, plain, (member(unordered_pair(X1,X2),X3)|~subclass(universal_class,X3))).
+####
+#cnf(i_0_1460, plain, (omega=X1|~subclass(universal_class,unordered_pair(X1,X1)))).
+######
+#cnf(i_0_1542, plain, (omega=X1|unordered_pair(X1,X1)!=universal_class)).
+#####
+#cnf(i_0_1512, plain, (null_class!=X1|~inductive(X1))).
+##
+#cnf(i_0_1476, plain, (null_class=X1|~subclass(universal_class,unordered_pair(X1,X1)))).
+##
+#cnf(i_0_1561, plain, (omega!=null_class)).
+#####
+#cnf(i_0_1570, plain, (null_class=X1|unordered_pair(X1,X1)!=universal_class)).
+###########
+#cnf(i_0_1482, plain, (~inductive(X1)|~subclass(X1,null_class))).
+#
+#cnf(i_0_1436, plain, (member(X1,X2)|X2!=universal_class|~member(X1,X3))).
+#
+#cnf(i_0_1625, plain, (member(omega,X1)|X1!=universal_class)).
+#
+#cnf(i_0_1627, plain, (member(null_class,X1)|X1!=universal_class)).
+######
+#cnf(i_0_1633, plain, (member(unordered_pair(X1,X2),X3)|X3!=universal_class)).
+####
+#cnf(i_0_1641, plain, (member(omega,X1)|intersection(X1,X2)!=universal_class)).
+##
+#cnf(i_0_1642, plain, (member(omega,X1)|intersection(X2,X1)!=universal_class)).
+####
+#cnf(i_0_1652, plain, (member(null_class,X1)|intersection(X1,X2)!=universal_class)).
+###
+#cnf(i_0_1653, plain, (member(null_class,X1)|intersection(X2,X1)!=universal_class)).
+#######
+#cnf(i_0_1439, plain, (member(X1,X2)|null_class!=X3|~member(X1,X3))).
+####
+#cnf(i_0_1697, plain, (X1=X2|null_class!=X3|~member(X1,X3))).
+########
+#cnf(i_0_1766, plain, (function(X1)|null_class!=X2|~member(choice,X2))).
+#
+#cnf(i_0_1768, plain, (inductive(X1)|null_class!=X2|~member(omega,X2))).
+######################
+#cnf(i_0_1693, plain, (null_class!=X2|~member(X1,X2))).
+###########################
+#cnf(i_0_200, plain, (subclass(X1,cross_product(universal_class,universal_class))|~function(X1))).
+#########
+#cnf(i_0_1422, plain, (~member(X1,X2)|~subclass(X2,null_class))).
+##################
+#cnf(i_0_270, plain, (member_of(X1)=X1|member(member_of(X1),universal_class))).
+####
+#cnf(i_0_273, plain, (member_of(X1)=X1|member(member_of1(X1),universal_class))).
+#########
+#cnf(i_0_264, plain, (unordered_pair(X1,X1)=null_class|member(X1,universal_class))).
+##
+#cnf(i_0_2013, negated_conjecture, (unordered_pair(x,x)=null_class)).
+########################
+#cnf(i_0_1433, plain, (member(X1,X2)|~member(X1,X3)|~subclass(universal_class,X2))).
+############
+#cnf(i_0_771, plain, (X1=X2|X2!=universal_class|~subclass(universal_class,X1))).
+########
+#cnf(i_0_788, plain, (X1=X2|null_class!=X1|~subclass(X2,null_class))).
+#############
+#cnf(i_0_1458, plain, (member(omega,X1)|~subclass(universal_class,intersection(X1,X2)))).
+#########
+#cnf(i_0_1459, plain, (member(omega,X1)|~subclass(universal_class,intersection(X2,X1)))).
+###########
+#cnf(i_0_1474, plain, (member(null_class,X1)|~subclass(universal_class,intersection(X1,X2)))).
+#########
+#cnf(i_0_1475, plain, (member(null_class,X1)|~subclass(universal_class,intersection(X2,X1)))).
+#
+#cnf(i_0_1978, plain, (~subclass(unordered_pair(null_class,null_class),null_class))).
+##################################
+#cnf(i_0_941, plain, (subclass(X1,X2)|~inductive(X2)|~subclass(universal_class,omega))).
+####################
+#cnf(i_0_244, plain, (X1=null_class|member(not_subclass_element(X1,null_class),X1))).
+##############
+#cnf(i_0_1640, plain, (complement(X1)!=universal_class|~member(omega,X1))).
+####
+#cnf(i_0_2632, plain, (complement(universal_class)!=universal_class)).
+###
+#cnf(i_0_1950, plain, (cross_product(universal_class,universal_class)=universal_class|~function(universal_class))).
+###
+#cnf(i_0_195, plain, (subclass(compose(X1,X2),cross_product(universal_class,universal_class)))).
+######
+#cnf(i_0_2638, plain, (complement(X1)!=universal_class|X1!=universal_class)).
+###
+#cnf(i_0_2162, plain, (inductive(X1)|X1!=universal_class|~subclass(universal_class,omega))).
+##
+#cnf(i_0_2711, plain, (inductive(X1)|omega!=universal_class|X1!=universal_class)).
+#######
+#cnf(i_0_2630, plain, (complement(unordered_pair(omega,X1))!=universal_class)).
+#
+#cnf(i_0_2282, plain, (inductive(X1)|null_class!=X1|~subclass(omega,null_class))).
+#######
+#cnf(i_0_2631, plain, (complement(unordered_pair(X1,omega))!=universal_class)).
+###########
+#cnf(i_0_355, plain, (X1=universal_class|~subclass(universal_class,X2)|~subclass(X2,X1))).
+############
+#cnf(i_0_2823, plain, (X1=universal_class|X1!=X2|~subclass(universal_class,X2))).
+#
+#cnf(i_0_1651, plain, (complement(X1)!=universal_class|~member(null_class,X1))).
+#####
+#cnf(i_0_2862, plain, (subclass(X1,X2)|X2!=X3|~subclass(universal_class,X3))).
+#######
+#cnf(i_0_2937, plain, (complement(X1)!=universal_class|~inductive(X1))).
+#############
+#cnf(i_0_357, plain, (X1=null_class|~subclass(X2,null_class)|~subclass(X1,X2))).
+###########
+#cnf(i_0_2929, plain, (complement(unordered_pair(null_class,X1))!=universal_class)).
+##
+#cnf(i_0_3029, plain, (X1=null_class|X2!=X1|~subclass(X2,null_class))).
+######
+#cnf(i_0_2930, plain, (complement(unordered_pair(X1,null_class))!=universal_class)).
+#
+#cnf(i_0_3093, plain, (subclass(X2,X1)|X3!=X2|~subclass(X3,null_class))).
+#####################
+#cnf(i_0_378, plain, (omega=X1|~inductive(X1)|~subclass(universal_class,omega))).
+######
+#cnf(i_0_2637, plain, (complement(X1)!=universal_class|~subclass(universal_class,X1))).
+#######
+#cnf(i_0_942, plain, (X1=universal_class|~inductive(X1)|~subclass(universal_class,omega))).
+################
+#cnf(i_0_1378, plain, (successor_relation=null_class|cross_product(universal_class,universal_class)!=null_class)).
+####
+#cnf(i_0_1379, plain, (element_relation=null_class|cross_product(universal_class,universal_class)!=null_class)).
+##############################
+#cnf(i_0_272, plain, (member_of(unordered_pair(X1,X1))=X1|~member(X1,universal_class))).
+########
+#cnf(i_0_382, plain, (subclass(X1,X2)|~subclass(universal_class,X3)|~subclass(X3,X2))).
+#########################
+#cnf(i_0_406, plain, (subclass(X1,X2)|~subclass(X3,null_class)|~subclass(X1,X3))).
+###########################
+#cnf(i_0_1645, plain, (member(omega,X1)|X2!=universal_class|~subclass(X2,X1))).
+##
+#cnf(i_0_3622, plain, (member(omega,X1)|X2!=universal_class|X1!=X2)).
+####
+#cnf(i_0_1656, plain, (member(null_class,X1)|X2!=universal_class|~subclass(X2,X1))).
+###
+#cnf(i_0_3687, plain, (member(null_class,X1)|X2!=universal_class|X1!=X2)).
+#####
+#cnf(i_0_1949, plain, (subclass(X1,cross_product(universal_class,universal_class))|~function(universal_class))).
+########
+#cnf(i_0_1665, plain, (unordered_pair(X1,X2)=X3|unordered_pair(X3,X3)!=universal_class)).
+#####
+#cnf(i_0_2292, plain, (X1!=null_class|~subclass(omega,null_class))).
+#
+#cnf(i_0_3855, plain, (member(null_class,X1)|unordered_pair(X1,X1)!=universal_class)).
+##
+#cnf(i_0_3867, plain, (member(X3,universal_class)|unordered_pair(X3,X3)!=universal_class)).
+#########
+#cnf(i_0_3900, plain, (~subclass(omega,null_class))).
+##############
+#cnf(i_0_146, plain, (X1=X3|X1=X2|~member(X1,unordered_pair(X2,X3)))).
+###
+#cnf(i_0_301, plain, (complement(X1)=null_class|~member(regular(complement(X1)),X1))).
+##
+#cnf(i_0_1108, plain, (X1=X2|~subclass(universal_class,X2)|~subclass(universal_class,X1))).
+####################
+#cnf(i_0_1156, plain, (X1=X2|~subclass(X1,null_class)|~subclass(X2,null_class))).
+#################
+#cnf(i_0_4012, plain, (null_class!=X1|X1!=omega)).
+###########
+#cnf(i_0_1516, plain, (null_class=X1|unordered_pair(X1,X1)!=X2|~inductive(X2))).
+####
+#cnf(i_0_1997, plain, (member_of(X2)=X2|unordered_pair(X1,member_of(X2))!=null_class)).
+#
+#cnf(i_0_3937, plain, (unordered_pair(null_class,null_class)!=universal_class)).
+###
+#cnf(i_0_2007, plain, (member_of(X2)=X2|unordered_pair(X1,member_of1(X2))!=null_class)).
+############
+#cnf(i_0_4549, plain, (member_of(X1)=X1|unordered_pair(member_of(X1),X2)!=null_class)).
+#####
+#cnf(i_0_4007, plain, (null_class!=X1|~subclass(omega,X1))).
+#
+#cnf(i_0_4602, plain, (member_of(X1)=X1|unordered_pair(member_of1(X1),X2)!=null_class)).
+###################################
+#cnf(i_0_4014, plain, (X1!=omega|~subclass(X1,null_class))).
+#######################
+#cnf(i_0_763, plain, (cross_product(universal_class,universal_class)=successor_relation|successor_relation!=universal_class)).
+########
+#cnf(i_0_765, plain, (cross_product(universal_class,universal_class)=element_relation|element_relation!=universal_class)).
+##########
+#cnf(i_0_1266, plain, (cross_product(universal_class,universal_class)=universal_class|successor_relation!=universal_class)).
+####
+#cnf(i_0_1268, plain, (cross_product(universal_class,universal_class)=universal_class|element_relation!=universal_class)).
+############
+#cnf(i_0_2027, plain, (member(X1,universal_class)|subclass(unordered_pair(X1,X1),null_class))).
+#
+#cnf(i_0_4787, plain, (member(X1,universal_class)|~inductive(unordered_pair(X1,X1)))).
+###############
+#cnf(i_0_4809, plain, (member(X1,universal_class)|unordered_pair(X1,X1)!=omega)).
+#####
+#cnf(i_0_4796, plain, (member(X1,universal_class)|subclass(unordered_pair(X1,X1),X2))).
+###########
+#cnf(i_0_4893, plain, (member(X1,universal_class)|~subclass(universal_class,unordered_pair(X1,X1)))).
+#################
+#cnf(i_0_2860, plain, (member(null_class,X1)|X1!=X2|~subclass(universal_class,X2))).
+######
+#cnf(i_0_3998, plain, (~subclass(X1,null_class)|~subclass(omega,X1))).
+#
+#cnf(i_0_5060, plain, (member(X1,universal_class)|~subclass(omega,unordered_pair(X1,X1)))).
+######################
+#cnf(i_0_2861, plain, (member(omega,X1)|X1!=X2|~subclass(universal_class,X2))).
+########
+#cnf(i_0_3092, plain, (member(X1,universal_class)|X2!=X1|~subclass(X2,null_class))).
+##
+#cnf(i_0_5167, plain, (member(X1,universal_class)|~subclass(X1,null_class))).
+#
+#cnf(i_0_5215, plain, (member(X1,X2)|X2!=universal_class|~subclass(X1,null_class))).
+##
+#cnf(i_0_5207, negated_conjecture, (~subclass(x,null_class))).
+##
+#cnf(i_0_5186, plain, (member(X1,universal_class)|null_class!=X2|X2!=X1)).
+#
+#cnf(i_0_5268, plain, (member(X1,universal_class)|null_class!=X1)).
+###
+#cnf(i_0_5298, plain, (member(X1,X2)|X2!=universal_class|null_class!=X1)).
+#
+#cnf(i_0_5296, plain, (member(X1,X2)|null_class!=X1|~subclass(universal_class,X2))).
+#
+#cnf(i_0_5250, negated_conjecture, (x!=null_class)).
+###
+#cnf(i_0_5213, plain, (member(X1,X2)|~subclass(universal_class,X2)|~subclass(X1,null_class))).
+###############
+#cnf(i_0_205, plain, (intersection(X1,regular(X1))=null_class|X1=null_class)).
+############
+#cnf(i_0_275, negated_conjecture, (unordered_pair(member_of(x),member_of(x))=x)).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(prove_corollary_2_to_singletons_are_sets_1, negated_conjecture, (singleton(member_of(x))=x), file('./p/SET093-7.tptp', prove_corollary_2_to_singletons_are_sets_1)).
+cnf(singleton_set, axiom, (unordered_pair(X1,X1)=singleton(X1)), file('./p/SET093-7.tptp', singleton_set)).
+cnf(unordered_pairs_in_universal, axiom, (member(unordered_pair(X1,X2),universal_class)), file('./p/SET093-7.tptp', unordered_pairs_in_universal)).
+cnf(prove_corollary_2_to_singletons_are_sets_2, negated_conjecture, (~member(x,universal_class)), file('./p/SET093-7.tptp', prove_corollary_2_to_singletons_are_sets_2)).
+cnf(c_0_4, negated_conjecture, (singleton(member_of(x))=x), prove_corollary_2_to_singletons_are_sets_1).
+cnf(c_0_5, axiom, (unordered_pair(X1,X1)=singleton(X1)), singleton_set).
+cnf(c_0_6, axiom, (member(unordered_pair(X1,X2),universal_class)), unordered_pairs_in_universal).
+cnf(c_0_7, negated_conjecture, (unordered_pair(member_of(x),member_of(x))=x), inference(rw,[status(thm)],[c_0_4, c_0_5])).
+cnf(c_0_8, negated_conjecture, (~member(x,universal_class)), prove_corollary_2_to_singletons_are_sets_2).
+cnf(c_0_9, negated_conjecture, ($false), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_6, c_0_7]), c_0_8]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 10
+# Proof object clause steps            : 6
+# Proof object formula steps           : 4
+# Proof object conjectures             : 6
+# Proof object clause conjectures      : 4
+# Proof object formula conjectures     : 2
+# Proof object initial clauses used    : 4
+# Proof object initial formulas used   : 4
+# Proof object generating inferences   : 1
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 138
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 138
+# Removed in clause preprocessing      : 15
+# Initial clauses in saturation        : 123
+# Processed clauses                    : 1306
+# ...of these trivial                  : 29
+# ...subsumed                          : 1065
+# ...remaining for further processing  : 212
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 12
+# Backward-rewritten                   : 1
+# Generated clauses                    : 5165
+# ...of the previous two non-trivial   : 4964
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 5139
+# Factorizations                       : 0
+# Equation resolutions                 : 26
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 199
+#    Positive orientable unit clauses  : 17
+#    Positive unorientable unit clauses: 1
+#    Negative unit clauses             : 23
+#    Non-unit-clauses                  : 158
+# Current number of unprocessed clauses: 3692
+# ...number of literals in the above   : 12368
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 28
+# Clause-clause subsumption calls (NU) : 5545
+# Rec. Clause-clause subsumption calls : 4095
+# Non-unit clause-clause subsumptions  : 488
+# Unit Clause-clause subsumption calls : 367
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 6
+# BW rewrite match successes           : 5
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 21366

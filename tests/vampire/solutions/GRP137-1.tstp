@@ -1,0 +1,27 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP137-1
+% SZS output start Proof for GRP137-1
+fof(f21,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f18,f19])).
+fof(f19,plain,(
+  a = b),
+  inference(forward_demodulation,[],[f17,f16])).
+fof(f16,axiom,(
+  a = greatest_lower_bound(a,b)),
+  file('./p/GRP137-1.tptp',unknown)).
+fof(f17,axiom,(
+  b = greatest_lower_bound(a,b)),
+  file('./p/GRP137-1.tptp',unknown)).
+fof(f18,axiom,(
+  a != b),
+  file('./p/GRP137-1.tptp',unknown)).
+% SZS output end Proof for GRP137-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

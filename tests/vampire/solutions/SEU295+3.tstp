@@ -1,0 +1,48 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SEU295+3
+% SZS output start Proof for SEU295+3
+fof(f442,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f439,f289])).
+fof(f289,plain,(
+  finite(sK26)),
+  inference(cnf_transformation,[],[f173])).
+fof(f173,plain,(
+  ~finite(set_intersection2(sK26,sK27)) & finite(sK26)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK26,sK27])],[f110,f172])).
+fof(f172,plain,(
+  ? [X0,X1] : (~finite(set_intersection2(X0,X1)) & finite(X0)) => (~finite(set_intersection2(sK26,sK27)) & finite(sK26))),
+  introduced(choice_axiom,[])).
+fof(f110,plain,(
+  ? [X0,X1] : (~finite(set_intersection2(X0,X1)) & finite(X0))),
+  inference(ennf_transformation,[],[f53])).
+fof(f53,negated_conjecture,(
+  ~! [X0,X1] : (finite(X0) => finite(set_intersection2(X0,X1)))),
+  inference(negated_conjecture,[],[f52])).
+fof(f52,conjecture,(
+  ! [X0,X1] : (finite(X0) => finite(set_intersection2(X0,X1)))),
+  file('./p/SEU295+3.tptp',unknown)).
+fof(f439,plain,(
+  ~finite(sK26)),
+  inference(resolution,[],[f200,f290])).
+fof(f290,plain,(
+  ~finite(set_intersection2(sK26,sK27))),
+  inference(cnf_transformation,[],[f173])).
+fof(f200,plain,(
+  ( ! [X0,X1] : (finite(set_intersection2(X0,X1)) | ~finite(X0)) )),
+  inference(cnf_transformation,[],[f103])).
+fof(f103,plain,(
+  ! [X0,X1] : (finite(set_intersection2(X0,X1)) | ~finite(X0))),
+  inference(ennf_transformation,[],[f16])).
+fof(f16,axiom,(
+  ! [X0,X1] : (finite(X0) => finite(set_intersection2(X0,X1)))),
+  file('./p/SEU295+3.tptp',unknown)).
+% SZS output end Proof for SEU295+3
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.007 s
+% ------------------------------
+% ------------------------------

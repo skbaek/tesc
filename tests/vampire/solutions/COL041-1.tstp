@@ -1,0 +1,39 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for COL041-1
+% SZS output start Proof for COL041-1
+fof(f129649,plain,(
+  $false),
+  inference(equality_resolution,[],[f44342])).
+fof(f44342,plain,(
+  ( ! [X0] : (apply(X0,apply(apply(b,f(apply(apply(b,X0),apply(apply(c,b),X0)))),X0)) != apply(m,apply(apply(b,f(apply(apply(b,X0),apply(apply(c,b),X0)))),X0))) )),
+  inference(superposition,[],[f171,f6])).
+fof(f6,plain,(
+  ( ! [X0,X1] : (apply(m,apply(apply(b,X0),X1)) = apply(X0,apply(X1,apply(apply(b,X0),X1)))) )),
+  inference(superposition,[],[f1,f2])).
+fof(f2,axiom,(
+  ( ! [X0] : (apply(m,X0) = apply(X0,X0)) )),
+  file('./p/COL041-1.tptp',unknown)).
+fof(f1,axiom,(
+  ( ! [X2,X0,X1] : (apply(apply(apply(b,X0),X1),X2) = apply(X0,apply(X1,X2))) )),
+  file('./p/COL041-1.tptp',unknown)).
+fof(f171,plain,(
+  ( ! [X14,X12,X13] : (apply(X14,apply(apply(X12,f(apply(apply(b,X14),apply(apply(c,X12),X13)))),X13)) != apply(f(apply(apply(b,X14),apply(apply(c,X12),X13))),apply(X14,apply(apply(X12,f(apply(apply(b,X14),apply(apply(c,X12),X13)))),X13)))) )),
+  inference(superposition,[],[f8,f3])).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (apply(apply(apply(c,X0),X1),X2) = apply(apply(X0,X2),X1)) )),
+  file('./p/COL041-1.tptp',unknown)).
+fof(f8,plain,(
+  ( ! [X2,X3] : (apply(X2,apply(X3,f(apply(apply(b,X2),X3)))) != apply(f(apply(apply(b,X2),X3)),apply(X2,apply(X3,f(apply(apply(b,X2),X3)))))) )),
+  inference(superposition,[],[f4,f1])).
+fof(f4,axiom,(
+  ( ! [X1] : (apply(X1,f(X1)) != apply(f(X1),apply(X1,f(X1)))) )),
+  file('./p/COL041-1.tptp',unknown)).
+% SZS output end Proof for COL041-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 285794
+% Time elapsed: 15.495 s
+% ------------------------------
+% ------------------------------

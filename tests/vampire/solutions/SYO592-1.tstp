@@ -1,0 +1,1746 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SYO592-1
+% SZS output start Proof for SYO592-1
+fof(f79784,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f1331,f1345,f1349,f1350,f1358,f1371,f1374,f2996,f3430,f3653,f3759,f3834,f3998,f4036,f4086,f4592,f13950,f20163,f53920,f79301,f79374,f79502,f79673,f79725,f79770,f79778,f79783])).
+fof(f79783,plain,(
+  ~spl0_6 | ~spl0_8 | ~spl0_203),
+  inference(avatar_contradiction_clause,[],[f79782])).
+fof(f79782,plain,(
+  $false | (~spl0_6 | ~spl0_8 | ~spl0_203)),
+  inference(subsumption_resolution,[],[f79781,f1449])).
+fof(f1449,plain,(
+  esk6_1(true) | (~spl0_6 | ~spl0_8)),
+  inference(resolution,[],[f1446,f1320])).
+fof(f1320,axiom,(
+  p(true)),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1446,plain,(
+  ( ! [X0] : (~p(X0) | esk6_1(X0)) ) | (~spl0_6 | ~spl0_8)),
+  inference(subsumption_resolution,[],[f1444,f1348])).
+fof(f1348,plain,(
+  ( ! [X0] : (~esk4_1(X0) | ~p(X0)) ) | ~spl0_6),
+  inference(avatar_component_clause,[],[f1347])).
+fof(f1347,plain,(
+  spl0_6 <=> ! [X0] : (~p(X0) | ~esk4_1(X0))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_6])])).
+fof(f1444,plain,(
+  ( ! [X0] : (~p(X0) | esk6_1(X0) | esk4_1(X0)) ) | ~spl0_8),
+  inference(resolution,[],[f1442,f1360])).
+fof(f1360,plain,(
+  ( ! [X0] : (esk8_1(X0) | esk4_1(X0)) ) | ~spl0_8),
+  inference(resolution,[],[f1357,f1254])).
+fof(f1254,axiom,(
+  ( ! [X0] : (~esk5_1(X0) | esk8_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1357,plain,(
+  ( ! [X0] : (esk5_1(X0) | esk4_1(X0)) ) | ~spl0_8),
+  inference(avatar_component_clause,[],[f1356])).
+fof(f1356,plain,(
+  spl0_8 <=> ! [X0] : (esk4_1(X0) | esk5_1(X0))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_8])])).
+fof(f1442,plain,(
+  ( ! [X1] : (~esk8_1(X1) | ~p(X1) | esk6_1(X1)) )),
+  inference(resolution,[],[f1048,f1041])).
+fof(f1041,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk429_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk6_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1048,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk429_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X0) | ~esk8_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79781,plain,(
+  ~esk6_1(true) | (~spl0_6 | ~spl0_8 | ~spl0_203)),
+  inference(resolution,[],[f79777,f1453])).
+fof(f1453,plain,(
+  esk7_1(true) | (~spl0_6 | ~spl0_8)),
+  inference(resolution,[],[f1452,f1320])).
+fof(f1452,plain,(
+  ( ! [X0] : (~p(X0) | esk7_1(X0)) ) | (~spl0_6 | ~spl0_8)),
+  inference(subsumption_resolution,[],[f1450,f1348])).
+fof(f1450,plain,(
+  ( ! [X0] : (~p(X0) | esk7_1(X0) | esk4_1(X0)) ) | ~spl0_8),
+  inference(resolution,[],[f1443,f1360])).
+fof(f1443,plain,(
+  ( ! [X2] : (~esk8_1(X2) | ~p(X2) | esk7_1(X2)) )),
+  inference(resolution,[],[f1048,f84])).
+fof(f84,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk429_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk7_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79777,plain,(
+  ( ! [X0] : (~esk7_1(X0) | ~esk6_1(X0)) ) | ~spl0_203),
+  inference(avatar_component_clause,[],[f79776])).
+fof(f79776,plain,(
+  spl0_203 <=> ! [X0] : (~esk7_1(X0) | ~esk6_1(X0))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_203])])).
+fof(f79778,plain,(
+  spl0_12 | spl0_203 | ~spl0_10 | ~spl0_202),
+  inference(avatar_split_clause,[],[f79774,f79768,f1369,f79776,f2986])).
+fof(f2986,plain,(
+  spl0_12 <=> ! [X23] : ~p(X23)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_12])])).
+fof(f1369,plain,(
+  spl0_10 <=> ! [X0] : esk9_1(X0)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_10])])).
+fof(f79768,plain,(
+  spl0_202 <=> ! [X1,X0] : (~esk14_2(X0,X1) | ~esk22_2(X0,X1))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_202])])).
+fof(f79774,plain,(
+  ( ! [X0,X1] : (~esk7_1(X0) | ~esk6_1(X0) | ~p(X1)) ) | (~spl0_10 | ~spl0_202)),
+  inference(subsumption_resolution,[],[f79773,f1394])).
+fof(f1394,plain,(
+  ( ! [X0,X1] : (esk22_2(X0,X1) | ~esk7_1(X0) | ~p(X1)) ) | ~spl0_10),
+  inference(resolution,[],[f1392,f763])).
+fof(f763,axiom,(
+  ( ! [X0,X1] : (~esk23_2(X0,X1) | esk22_2(X0,X1) | ~p(X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1392,plain,(
+  ( ! [X2,X3] : (esk23_2(X2,X3) | ~esk7_1(X2)) ) | ~spl0_10),
+  inference(subsumption_resolution,[],[f1388,f565])).
+fof(f565,axiom,(
+  ( ! [X0,X1] : (esk23_2(X0,X1) | p(X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1388,plain,(
+  ( ! [X2,X3] : (~esk7_1(X2) | ~p(X3) | esk23_2(X2,X3)) ) | ~spl0_10),
+  inference(resolution,[],[f1386,f826])).
+fof(f826,axiom,(
+  ( ! [X0,X1] : (~esk11_2(X0,X1) | esk23_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1386,plain,(
+  ( ! [X0,X1] : (esk11_2(X0,X1) | ~esk7_1(X0) | ~p(X1)) ) | ~spl0_10),
+  inference(subsumption_resolution,[],[f1384,f1370])).
+fof(f1370,plain,(
+  ( ! [X0] : (esk9_1(X0)) ) | ~spl0_10),
+  inference(avatar_component_clause,[],[f1369])).
+fof(f1384,plain,(
+  ( ! [X0,X1] : (esk11_2(X0,X1) | ~esk9_1(X0) | ~esk7_1(X0) | ~p(X1)) )),
+  inference(resolution,[],[f71,f882])).
+fof(f882,axiom,(
+  ( ! [X0,X1] : (~esk10_2(X0,X1) | ~esk7_1(X0) | ~p(X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f71,axiom,(
+  ( ! [X0,X1] : (esk10_2(X0,X1) | esk11_2(X0,X1) | ~esk9_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79773,plain,(
+  ( ! [X0,X1] : (~esk22_2(X0,X1) | ~esk7_1(X0) | ~esk6_1(X0) | ~p(X1)) ) | (~spl0_10 | ~spl0_202)),
+  inference(resolution,[],[f79769,f2547])).
+fof(f2547,plain,(
+  ( ! [X4,X5] : (esk14_2(X4,X5) | ~esk7_1(X4) | ~esk6_1(X4) | ~p(X5)) ) | ~spl0_10),
+  inference(duplicate_literal_removal,[],[f2546])).
+fof(f2546,plain,(
+  ( ! [X4,X5] : (esk14_2(X4,X5) | ~esk7_1(X4) | ~esk6_1(X4) | ~p(X5) | ~esk7_1(X4)) ) | ~spl0_10),
+  inference(resolution,[],[f2536,f1390])).
+fof(f1390,plain,(
+  ( ! [X6,X7] : (esk24_2(X6,X7) | ~p(X7) | ~esk7_1(X6)) ) | ~spl0_10),
+  inference(resolution,[],[f1386,f68])).
+fof(f68,axiom,(
+  ( ! [X0,X1] : (~esk11_2(X0,X1) | esk24_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2536,plain,(
+  ( ! [X0,X1] : (~esk24_2(X0,X1) | esk14_2(X0,X1) | ~esk7_1(X0) | ~esk6_1(X0)) )),
+  inference(resolution,[],[f2506,f1234])).
+fof(f1234,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk423_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk7_1(X0) | ~esk6_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2506,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (esk423_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk24_2(X104,X105) | esk14_2(X104,X105)) )),
+  inference(resolution,[],[f815,f1069])).
+fof(f1069,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk424_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk14_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f815,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk424_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk423_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk24_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79769,plain,(
+  ( ! [X0,X1] : (~esk14_2(X0,X1) | ~esk22_2(X0,X1)) ) | ~spl0_202),
+  inference(avatar_component_clause,[],[f79768])).
+fof(f79770,plain,(
+  spl0_12 | spl0_12 | spl0_12 | spl0_202 | ~spl0_24 | ~spl0_201),
+  inference(avatar_split_clause,[],[f79766,f79723,f3651,f79768,f2986,f2986,f2986])).
+fof(f3651,plain,(
+  spl0_24 <=> ! [X22,X21] : esk26_2(X21,X22)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_24])])).
+fof(f79723,plain,(
+  spl0_201 <=> ! [X1,X3,X0,X2,X4] : (~esk42_5(X0,X1,X2,X3,X4) | ~esk32_5(X0,X1,X2,X3,X4))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_201])])).
+fof(f79766,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk14_2(X0,X1) | ~esk22_2(X0,X1) | ~p(X2) | ~p(X3) | ~p(X4)) ) | (~spl0_24 | ~spl0_201)),
+  inference(subsumption_resolution,[],[f79765,f3652])).
+fof(f3652,plain,(
+  ( ! [X21,X22] : (esk26_2(X21,X22)) ) | ~spl0_24),
+  inference(avatar_component_clause,[],[f3651])).
+fof(f79765,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk14_2(X0,X1) | ~esk22_2(X0,X1) | ~p(X2) | ~p(X3) | ~p(X4) | ~esk26_2(X0,X1)) ) | (~spl0_24 | ~spl0_201)),
+  inference(duplicate_literal_removal,[],[f79764])).
+fof(f79764,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk14_2(X0,X1) | ~esk22_2(X0,X1) | ~p(X2) | ~p(X3) | ~p(X4) | ~p(X4) | ~p(X3) | ~p(X2) | ~esk26_2(X0,X1) | ~esk22_2(X0,X1)) ) | (~spl0_24 | ~spl0_201)),
+  inference(resolution,[],[f79733,f1843])).
+fof(f1843,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (esk42_5(X0,X1,X2,X3,X4) | ~p(X3) | ~p(X4) | ~p(X2) | ~esk26_2(X0,X1) | ~esk22_2(X0,X1)) )),
+  inference(resolution,[],[f1842,f1609])).
+fof(f1609,plain,(
+  ( ! [X14,X12,X10,X13,X11] : (esk50_5(X11,X12,X13,X10,X14) | ~esk26_2(X11,X12) | ~esk22_2(X11,X12)) )),
+  inference(subsumption_resolution,[],[f1608,f1537])).
+fof(f1537,plain,(
+  ( ! [X14,X12,X10,X13,X11] : (esk50_5(X10,X11,X12,X13,X14) | p(X12)) )),
+  inference(resolution,[],[f1105,f226])).
+fof(f226,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk401_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X2)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1105,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk401_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk50_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1608,plain,(
+  ( ! [X14,X12,X10,X13,X11] : (~esk22_2(X11,X12) | ~p(X13) | ~esk26_2(X11,X12) | esk50_5(X11,X12,X13,X10,X14)) )),
+  inference(subsumption_resolution,[],[f1607,f1536])).
+fof(f1536,plain,(
+  ( ! [X6,X8,X7,X5,X9] : (esk50_5(X5,X6,X7,X8,X9) | p(X8)) )),
+  inference(resolution,[],[f1105,f367])).
+fof(f367,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk401_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X3)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1607,plain,(
+  ( ! [X14,X12,X10,X13,X11] : (~p(X10) | ~esk22_2(X11,X12) | ~p(X13) | ~esk26_2(X11,X12) | esk50_5(X11,X12,X13,X10,X14)) )),
+  inference(subsumption_resolution,[],[f1598,f1535])).
+fof(f1535,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (esk50_5(X0,X1,X2,X3,X4) | p(X4)) )),
+  inference(resolution,[],[f1105,f717])).
+fof(f717,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk401_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1598,plain,(
+  ( ! [X14,X12,X10,X13,X11] : (~p(X10) | ~esk22_2(X11,X12) | ~p(X13) | ~p(X14) | ~esk26_2(X11,X12) | esk50_5(X11,X12,X13,X10,X14)) )),
+  inference(resolution,[],[f1594,f227])).
+fof(f227,axiom,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk28_5(X0,X1,X2,X3,X4) | esk50_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1594,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (esk28_5(X2,X3,X4,X1,X0) | ~p(X1) | ~esk22_2(X2,X3) | ~p(X4) | ~p(X0) | ~esk26_2(X2,X3)) )),
+  inference(resolution,[],[f1589,f116])).
+fof(f116,axiom,(
+  ( ! [X4,X2,X0,X3,X1] : (esk27_5(X0,X1,X2,X3,X4) | esk28_5(X0,X1,X2,X3,X4) | ~esk26_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1589,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk27_5(X3,X4,X0,X2,X1) | ~p(X1) | ~p(X2) | ~esk22_2(X3,X4) | ~p(X0)) )),
+  inference(resolution,[],[f350,f1252])).
+fof(f1252,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk422_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk27_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f350,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk422_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X2) | ~p(X4) | ~p(X3) | ~esk22_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1842,plain,(
+  ( ! [X6,X8,X7,X5,X9] : (~esk50_5(X5,X6,X7,X8,X9) | esk42_5(X5,X6,X7,X8,X9) | ~p(X8) | ~p(X9) | ~p(X7)) )),
+  inference(resolution,[],[f1290,f652])).
+fof(f652,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk401_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X3) | ~p(X4) | ~p(X2)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1290,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk401_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk50_5(X0,X1,X2,X3,X4) | esk42_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79733,plain,(
+  ( ! [X28,X26,X29,X27,X25] : (~esk42_5(X25,X26,X27,X28,X29) | ~esk14_2(X25,X26) | ~esk22_2(X25,X26) | ~p(X27) | ~p(X29) | ~p(X28)) ) | (~spl0_24 | ~spl0_201)),
+  inference(resolution,[],[f79724,f6016])).
+fof(f6016,plain,(
+  ( ! [X19,X17,X15,X18,X16] : (esk32_5(X15,X16,X17,X18,X19) | ~esk14_2(X15,X16) | ~esk22_2(X15,X16) | ~p(X17) | ~p(X19) | ~p(X18)) ) | ~spl0_24),
+  inference(subsumption_resolution,[],[f6014,f3652])).
+fof(f6014,plain,(
+  ( ! [X19,X17,X15,X18,X16] : (~esk14_2(X15,X16) | esk32_5(X15,X16,X17,X18,X19) | ~esk22_2(X15,X16) | ~p(X17) | ~p(X19) | ~esk26_2(X15,X16) | ~p(X18)) )),
+  inference(duplicate_literal_removal,[],[f6011])).
+fof(f6011,plain,(
+  ( ! [X19,X17,X15,X18,X16] : (~esk14_2(X15,X16) | esk32_5(X15,X16,X17,X18,X19) | ~esk22_2(X15,X16) | ~esk22_2(X15,X16) | ~p(X17) | ~p(X19) | ~esk26_2(X15,X16) | ~p(X18)) )),
+  inference(resolution,[],[f5986,f1599])).
+fof(f1599,plain,(
+  ( ! [X19,X17,X15,X18,X16] : (esk43_5(X16,X17,X18,X15,X19) | ~esk22_2(X16,X17) | ~p(X18) | ~p(X19) | ~esk26_2(X16,X17) | ~p(X15)) )),
+  inference(resolution,[],[f1594,f428])).
+fof(f428,axiom,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk28_5(X0,X1,X2,X3,X4) | esk43_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f5986,plain,(
+  ( ! [X35,X33,X31,X34,X32] : (~esk43_5(X31,X32,X33,X34,X35) | ~esk14_2(X31,X32) | esk32_5(X31,X32,X33,X34,X35) | ~esk22_2(X31,X32)) )),
+  inference(resolution,[],[f4336,f694])).
+fof(f694,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk418_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk22_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4336,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X63,X59,X68,X64,X76,X52,X72,X60,X56,X69,X65,X77,X53,X73] : (esk418_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | ~esk43_5(X52,X53,X54,X55,X56) | ~esk14_2(X52,X53) | esk32_5(X52,X53,X54,X55,X56)) )),
+  inference(resolution,[],[f2561,f615])).
+fof(f615,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk413_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk32_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2561,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk413_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk43_5(X0,X1,X2,X3,X4) | esk418_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk14_2(X0,X1)) )),
+  inference(resolution,[],[f47,f764])).
+fof(f764,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk412_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk418_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk14_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f47,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk412_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk43_5(X0,X1,X2,X3,X4) | esk413_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79724,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk32_5(X0,X1,X2,X3,X4) | ~esk42_5(X0,X1,X2,X3,X4)) ) | ~spl0_201),
+  inference(avatar_component_clause,[],[f79723])).
+fof(f79725,plain,(
+  spl0_12 | spl0_12 | spl0_12 | spl0_201 | ~spl0_26 | ~spl0_200),
+  inference(avatar_split_clause,[],[f79721,f79671,f3832,f79723,f2986,f2986,f2986])).
+fof(f3832,plain,(
+  spl0_26 <=> ! [X42,X44,X46,X43,X45] : esk52_5(X42,X43,X44,X45,X46)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_26])])).
+fof(f79671,plain,(
+  spl0_200 <=> ! [X16,X18,X11,X13,X15,X17,X12,X14] : (~esk58_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~esk68_8(X11,X12,X13,X14,X15,X16,X17,X18))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_200])])).
+fof(f79721,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (~esk42_5(X0,X1,X2,X3,X4) | ~esk32_5(X0,X1,X2,X3,X4) | ~p(X5) | ~p(X6) | ~p(X7)) ) | (~spl0_26 | ~spl0_200)),
+  inference(subsumption_resolution,[],[f79720,f3833])).
+fof(f3833,plain,(
+  ( ! [X45,X43,X46,X44,X42] : (esk52_5(X42,X43,X44,X45,X46)) ) | ~spl0_26),
+  inference(avatar_component_clause,[],[f3832])).
+fof(f79720,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (~esk42_5(X0,X1,X2,X3,X4) | ~esk32_5(X0,X1,X2,X3,X4) | ~p(X5) | ~p(X6) | ~p(X7) | ~esk52_5(X0,X1,X2,X3,X4)) ) | (~spl0_26 | ~spl0_200)),
+  inference(duplicate_literal_removal,[],[f79719])).
+fof(f79719,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (~esk42_5(X0,X1,X2,X3,X4) | ~esk32_5(X0,X1,X2,X3,X4) | ~p(X5) | ~p(X6) | ~p(X7) | ~p(X5) | ~p(X6) | ~p(X7) | ~esk52_5(X0,X1,X2,X3,X4) | ~esk42_5(X0,X1,X2,X3,X4)) ) | (~spl0_26 | ~spl0_200)),
+  inference(resolution,[],[f79702,f2009])).
+fof(f2009,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (esk68_8(X0,X1,X2,X3,X4,X5,X6,X7) | ~p(X6) | ~p(X7) | ~p(X5) | ~esk52_5(X0,X1,X2,X3,X4) | ~esk42_5(X0,X1,X2,X3,X4)) )),
+  inference(resolution,[],[f1999,f1791])).
+fof(f1791,plain,(
+  ( ! [X30,X28,X26,X24,X31,X29,X27,X25] : (esk79_8(X25,X26,X27,X28,X29,X24,X30,X31) | ~esk52_5(X25,X26,X27,X28,X29) | ~esk42_5(X25,X26,X27,X28,X29)) )),
+  inference(subsumption_resolution,[],[f1790,f1611])).
+fof(f1611,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (esk79_8(X0,X1,X2,X3,X4,X5,X6,X7) | p(X5)) )),
+  inference(resolution,[],[f400,f1295])).
+fof(f1295,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk373_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X5)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f400,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk373_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk79_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1790,plain,(
+  ( ! [X30,X28,X26,X24,X31,X29,X27,X25] : (~p(X24) | ~esk42_5(X25,X26,X27,X28,X29) | ~esk52_5(X25,X26,X27,X28,X29) | esk79_8(X25,X26,X27,X28,X29,X24,X30,X31)) )),
+  inference(subsumption_resolution,[],[f1789,f1613])).
+fof(f1613,plain,(
+  ( ! [X23,X21,X19,X17,X22,X20,X18,X16] : (esk79_8(X16,X17,X18,X19,X20,X21,X22,X23) | p(X23)) )),
+  inference(resolution,[],[f400,f180])).
+fof(f180,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk373_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1789,plain,(
+  ( ! [X30,X28,X26,X24,X31,X29,X27,X25] : (~p(X24) | ~esk42_5(X25,X26,X27,X28,X29) | ~p(X31) | ~esk52_5(X25,X26,X27,X28,X29) | esk79_8(X25,X26,X27,X28,X29,X24,X30,X31)) )),
+  inference(subsumption_resolution,[],[f1778,f1612])).
+fof(f1612,plain,(
+  ( ! [X14,X12,X10,X8,X15,X13,X11,X9] : (esk79_8(X8,X9,X10,X11,X12,X13,X14,X15) | p(X14)) )),
+  inference(resolution,[],[f400,f330])).
+fof(f330,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk373_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X6)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1778,plain,(
+  ( ! [X30,X28,X26,X24,X31,X29,X27,X25] : (~p(X24) | ~esk42_5(X25,X26,X27,X28,X29) | ~p(X30) | ~p(X31) | ~esk52_5(X25,X26,X27,X28,X29) | esk79_8(X25,X26,X27,X28,X29,X24,X30,X31)) )),
+  inference(resolution,[],[f1760,f390])).
+fof(f390,axiom,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (~esk54_8(X0,X1,X2,X3,X4,X5,X6,X7) | esk79_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1760,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (esk54_8(X2,X3,X4,X5,X6,X1,X7,X0) | ~p(X1) | ~esk42_5(X2,X3,X4,X5,X6) | ~p(X7) | ~p(X0) | ~esk52_5(X2,X3,X4,X5,X6)) )),
+  inference(resolution,[],[f1755,f497])).
+fof(f497,axiom,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (esk53_8(X0,X1,X2,X3,X4,X5,X6,X7) | esk54_8(X0,X1,X2,X3,X4,X5,X6,X7) | ~esk52_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1755,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (~esk53_8(X3,X4,X5,X6,X7,X2,X0,X1) | ~p(X1) | ~p(X2) | ~esk42_5(X3,X4,X5,X6,X7) | ~p(X0)) )),
+  inference(resolution,[],[f805,f1318])).
+fof(f1318,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk400_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk53_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f805,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk400_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X6) | ~p(X7) | ~p(X5) | ~esk42_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1999,plain,(
+  ( ! [X14,X12,X10,X8,X15,X13,X11,X9] : (~esk79_8(X8,X9,X10,X11,X12,X13,X14,X15) | esk68_8(X8,X9,X10,X11,X12,X13,X14,X15) | ~p(X14) | ~p(X15) | ~p(X13)) )),
+  inference(resolution,[],[f455,f1276])).
+fof(f1276,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk373_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X6) | ~p(X7) | ~p(X5)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f455,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk373_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk68_8(X0,X1,X2,X3,X4,X5,X6,X7) | ~esk79_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79702,plain,(
+  ( ! [X30,X28,X26,X24,X31,X29,X27,X25] : (~esk68_8(X24,X25,X26,X27,X28,X29,X30,X31) | ~esk42_5(X24,X25,X26,X27,X28) | ~esk32_5(X24,X25,X26,X27,X28) | ~p(X30) | ~p(X31) | ~p(X29)) ) | (~spl0_26 | ~spl0_200)),
+  inference(resolution,[],[f79672,f6757])).
+fof(f6757,plain,(
+  ( ! [X39,X37,X35,X33,X38,X36,X34,X32] : (esk58_8(X32,X33,X34,X35,X36,X37,X38,X39) | ~esk42_5(X32,X33,X34,X35,X36) | ~esk32_5(X32,X33,X34,X35,X36) | ~p(X38) | ~p(X39) | ~p(X37)) ) | ~spl0_26),
+  inference(subsumption_resolution,[],[f6753,f3833])).
+fof(f6753,plain,(
+  ( ! [X39,X37,X35,X33,X38,X36,X34,X32] : (~esk32_5(X32,X33,X34,X35,X36) | ~esk42_5(X32,X33,X34,X35,X36) | esk58_8(X32,X33,X34,X35,X36,X37,X38,X39) | ~p(X38) | ~p(X39) | ~esk52_5(X32,X33,X34,X35,X36) | ~p(X37)) )),
+  inference(duplicate_literal_removal,[],[f6750])).
+fof(f6750,plain,(
+  ( ! [X39,X37,X35,X33,X38,X36,X34,X32] : (~esk32_5(X32,X33,X34,X35,X36) | ~esk42_5(X32,X33,X34,X35,X36) | esk58_8(X32,X33,X34,X35,X36,X37,X38,X39) | ~esk42_5(X32,X33,X34,X35,X36) | ~p(X38) | ~p(X39) | ~esk52_5(X32,X33,X34,X35,X36) | ~p(X37)) )),
+  inference(resolution,[],[f6117,f1781])).
+fof(f1781,plain,(
+  ( ! [X54,X52,X50,X48,X55,X53,X51,X49] : (esk70_8(X49,X50,X51,X52,X53,X48,X54,X55) | ~esk42_5(X49,X50,X51,X52,X53) | ~p(X54) | ~p(X55) | ~esk52_5(X49,X50,X51,X52,X53) | ~p(X48)) )),
+  inference(resolution,[],[f1760,f733])).
+fof(f733,axiom,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (~esk54_8(X0,X1,X2,X3,X4,X5,X6,X7) | esk70_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f6117,plain,(
+  ( ! [X94,X101,X99,X97,X95,X100,X98,X96] : (~esk70_8(X94,X95,X96,X97,X98,X99,X100,X101) | ~esk32_5(X94,X95,X96,X97,X98) | ~esk42_5(X94,X95,X96,X97,X98) | esk58_8(X94,X95,X96,X97,X98,X99,X100,X101)) )),
+  inference(resolution,[],[f4394,f730])).
+fof(f730,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk388_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk58_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4394,plain,(
+  ( ! [X28,X37,X33,X45,X41,X50,X29,X38,X34,X46,X42,X51,X30,X26,X39,X35,X47,X43,X48,X31,X27,X36,X32,X44,X40,X49] : (esk388_26(X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51) | ~esk32_5(X26,X27,X28,X29,X30) | ~esk70_8(X26,X27,X28,X29,X30,X31,X32,X33) | ~esk42_5(X26,X27,X28,X29,X30)) )),
+  inference(resolution,[],[f2627,f1150])).
+fof(f1150,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk393_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk42_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2627,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk393_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk70_8(X0,X1,X2,X3,X4,X5,X6,X7) | ~esk32_5(X0,X1,X2,X3,X4) | esk388_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  inference(resolution,[],[f92,f876])).
+fof(f876,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk387_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk32_5(X0,X1,X2,X3,X4) | esk393_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f92,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk387_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk388_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk70_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79672,plain,(
+  ( ! [X14,X12,X17,X15,X13,X11,X18,X16] : (~esk58_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~esk68_8(X11,X12,X13,X14,X15,X16,X17,X18)) ) | ~spl0_200),
+  inference(avatar_component_clause,[],[f79671])).
+fof(f79673,plain,(
+  spl0_12 | spl0_12 | spl0_12 | spl0_200 | ~spl0_27 | ~spl0_198),
+  inference(avatar_split_clause,[],[f79669,f79500,f3996,f79671,f2986,f2986,f2986])).
+fof(f3996,plain,(
+  spl0_27 <=> ! [X63,X58,X60,X62,X64,X57,X59,X61] : esk81_8(X57,X58,X59,X60,X61,X62,X63,X64)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_27])])).
+fof(f79500,plain,(
+  spl0_198 <=> ! [X9,X1,X3,X5,X7,X8,X10,X0,X2,X4,X6] : (~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_198])])).
+fof(f79669,plain,(
+  ( ! [X14,X12,X21,X19,X17,X15,X13,X11,X20,X18,X16] : (~esk58_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~esk68_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~p(X19) | ~p(X20) | ~p(X21)) ) | (~spl0_27 | ~spl0_198)),
+  inference(subsumption_resolution,[],[f79663,f3997])).
+fof(f3997,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58,X63] : (esk81_8(X57,X58,X59,X60,X61,X62,X63,X64)) ) | ~spl0_27),
+  inference(avatar_component_clause,[],[f3996])).
+fof(f79663,plain,(
+  ( ! [X14,X12,X21,X19,X17,X15,X13,X11,X20,X18,X16] : (~esk58_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~esk68_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~p(X19) | ~p(X20) | ~p(X21) | ~esk81_8(X11,X12,X13,X14,X15,X16,X17,X18)) ) | (~spl0_27 | ~spl0_198)),
+  inference(duplicate_literal_removal,[],[f79662])).
+fof(f79662,plain,(
+  ( ! [X14,X12,X21,X19,X17,X15,X13,X11,X20,X18,X16] : (~esk58_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~esk68_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~p(X19) | ~p(X20) | ~p(X21) | ~p(X20) | ~p(X21) | ~p(X19) | ~esk81_8(X11,X12,X13,X14,X15,X16,X17,X18) | ~esk68_8(X11,X12,X13,X14,X15,X16,X17,X18)) ) | (~spl0_27 | ~spl0_198)),
+  inference(resolution,[],[f79551,f2289])).
+fof(f2289,plain,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~p(X9) | ~p(X10) | ~p(X8) | ~esk81_8(X0,X1,X2,X3,X4,X5,X6,X7) | ~esk68_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  inference(resolution,[],[f2287,f1979])).
+fof(f1979,plain,(
+  ( ! [X80,X78,X87,X85,X83,X81,X79,X77,X86,X84,X82] : (esk108_11(X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87) | ~esk81_8(X77,X78,X79,X80,X81,X82,X83,X84) | ~esk68_8(X77,X78,X79,X80,X81,X82,X83,X84)) )),
+  inference(subsumption_resolution,[],[f1978,f1825])).
+fof(f1825,plain,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (esk108_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | p(X10)) )),
+  inference(resolution,[],[f1056,f1051])).
+fof(f1051,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk345_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1056,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk345_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk108_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1978,plain,(
+  ( ! [X80,X78,X87,X85,X83,X81,X79,X77,X86,X84,X82] : (~esk68_8(X77,X78,X79,X80,X81,X82,X83,X84) | ~esk81_8(X77,X78,X79,X80,X81,X82,X83,X84) | ~p(X87) | esk108_11(X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87)) )),
+  inference(subsumption_resolution,[],[f1977,f1827])).
+fof(f1827,plain,(
+  ( ! [X30,X28,X26,X24,X23,X31,X29,X27,X25,X32,X22] : (esk108_11(X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32) | p(X30)) )),
+  inference(resolution,[],[f1056,f594])).
+fof(f594,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk345_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X8)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1977,plain,(
+  ( ! [X80,X78,X87,X85,X83,X81,X79,X77,X86,X84,X82] : (~esk68_8(X77,X78,X79,X80,X81,X82,X83,X84) | ~p(X85) | ~esk81_8(X77,X78,X79,X80,X81,X82,X83,X84) | ~p(X87) | esk108_11(X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87)) )),
+  inference(subsumption_resolution,[],[f1970,f1826])).
+fof(f1826,plain,(
+  ( ! [X14,X12,X21,X19,X17,X15,X13,X11,X20,X18,X16] : (esk108_11(X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21) | p(X20)) )),
+  inference(resolution,[],[f1056,f951])).
+fof(f951,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk345_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X9)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1970,plain,(
+  ( ! [X80,X78,X87,X85,X83,X81,X79,X77,X86,X84,X82] : (~esk68_8(X77,X78,X79,X80,X81,X82,X83,X84) | ~p(X85) | ~p(X86) | ~esk81_8(X77,X78,X79,X80,X81,X82,X83,X84) | ~p(X87) | esk108_11(X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87)) )),
+  inference(resolution,[],[f1962,f768])).
+fof(f768,axiom,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (~esk83_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | esk108_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1962,plain,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (esk83_11(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X0) | ~esk68_8(X1,X2,X3,X4,X5,X6,X7,X8) | ~p(X9) | ~p(X10) | ~esk81_8(X1,X2,X3,X4,X5,X6,X7,X8) | ~p(X0)) )),
+  inference(resolution,[],[f1956,f907])).
+fof(f907,axiom,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (esk82_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk81_8(X0,X1,X2,X3,X4,X5,X6,X7) | esk83_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1956,plain,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (~esk82_11(X2,X3,X4,X5,X6,X7,X8,X9,X10,X0,X1) | ~p(X1) | ~esk68_8(X2,X3,X4,X5,X6,X7,X8,X9) | ~p(X10) | ~p(X0)) )),
+  inference(resolution,[],[f1291,f549])).
+fof(f549,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk372_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk82_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1291,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk372_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X9) | ~p(X10) | ~esk68_8(X0,X1,X2,X3,X4,X5,X6,X7) | ~p(X8)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2287,plain,(
+  ( ! [X14,X12,X21,X19,X17,X15,X13,X11,X20,X18,X16] : (~esk108_11(X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21) | esk97_11(X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21) | ~p(X20) | ~p(X21) | ~p(X19)) )),
+  inference(resolution,[],[f1115,f125])).
+fof(f125,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk345_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X9) | ~p(X10) | ~p(X8)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1115,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk345_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk108_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79551,plain,(
+  ( ! [X158,X156,X154,X163,X161,X159,X157,X155,X164,X162,X160] : (~esk97_11(X154,X155,X156,X157,X158,X159,X160,X161,X162,X163,X164) | ~esk58_8(X154,X155,X156,X157,X158,X159,X160,X161) | ~esk68_8(X154,X155,X156,X157,X158,X159,X160,X161) | ~p(X162) | ~p(X163) | ~p(X164)) ) | (~spl0_27 | ~spl0_198)),
+  inference(resolution,[],[f79501,f8376])).
+fof(f8376,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58,X56,X65,X55,X63] : (esk87_11(X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65) | ~esk58_8(X55,X56,X57,X58,X59,X60,X61,X62) | ~esk68_8(X55,X56,X57,X58,X59,X60,X61,X62) | ~p(X63) | ~p(X64) | ~p(X65)) ) | ~spl0_27),
+  inference(subsumption_resolution,[],[f8375,f3997])).
+fof(f8375,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58,X56,X65,X55,X63] : (~esk58_8(X55,X56,X57,X58,X59,X60,X61,X62) | esk87_11(X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65) | ~esk68_8(X55,X56,X57,X58,X59,X60,X61,X62) | ~p(X63) | ~p(X64) | ~esk81_8(X55,X56,X57,X58,X59,X60,X61,X62) | ~p(X65)) )),
+  inference(duplicate_literal_removal,[],[f8373])).
+fof(f8373,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58,X56,X65,X55,X63] : (~esk58_8(X55,X56,X57,X58,X59,X60,X61,X62) | esk87_11(X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65) | ~esk68_8(X55,X56,X57,X58,X59,X60,X61,X62) | ~p(X63) | ~p(X64) | ~esk81_8(X55,X56,X57,X58,X59,X60,X61,X62) | ~p(X65) | ~esk68_8(X55,X56,X57,X58,X59,X60,X61,X62)) )),
+  inference(resolution,[],[f7111,f1966])).
+fof(f1966,plain,(
+  ( ! [X39,X37,X35,X33,X43,X41,X38,X36,X34,X42,X40] : (esk99_11(X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43) | ~p(X41) | ~p(X42) | ~esk81_8(X33,X34,X35,X36,X37,X38,X39,X40) | ~p(X43) | ~esk68_8(X33,X34,X35,X36,X37,X38,X39,X40)) )),
+  inference(resolution,[],[f1962,f445])).
+fof(f445,axiom,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (~esk83_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | esk99_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7111,plain,(
+  ( ! [X80,X70,X78,X76,X74,X72,X71,X79,X77,X75,X73] : (~esk99_11(X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80) | ~esk58_8(X70,X71,X72,X73,X74,X75,X76,X77) | esk87_11(X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80) | ~esk68_8(X70,X71,X72,X73,X74,X75,X76,X77)) )),
+  inference(resolution,[],[f4605,f142])).
+fof(f142,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk365_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk68_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4605,plain,(
+  ( ! [X177,X156,X165,X161,X173,X169,X178,X157,X166,X162,X174,X170,X179,X158,X167,X163,X175,X171,X180,X176,X159,X164,X160,X172,X168,X181] : (esk365_26(X156,X157,X158,X159,X160,X161,X162,X163,X164,X165,X166,X167,X168,X169,X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180,X181) | ~esk58_8(X156,X157,X158,X159,X160,X161,X162,X163) | ~esk99_11(X156,X157,X158,X159,X160,X161,X162,X163,X164,X165,X166) | esk87_11(X156,X157,X158,X159,X160,X161,X162,X163,X164,X165,X166)) )),
+  inference(resolution,[],[f2800,f1220])).
+fof(f1220,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk360_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2800,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk360_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk99_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk58_8(X0,X1,X2,X3,X4,X5,X6,X7) | esk365_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  inference(resolution,[],[f637,f592])).
+fof(f592,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk359_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk58_8(X0,X1,X2,X3,X4,X5,X6,X7) | esk365_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f637,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk359_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk99_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | esk360_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79501,plain,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (~esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) ) | ~spl0_198),
+  inference(avatar_component_clause,[],[f79500])).
+fof(f79502,plain,(
+  spl0_12 | spl0_12 | spl0_12 | spl0_198 | ~spl0_28 | ~spl0_197),
+  inference(avatar_split_clause,[],[f79498,f79372,f4034,f79500,f2986,f2986,f2986])).
+fof(f4034,plain,(
+  spl0_28 <=> ! [X82,X73,X75,X77,X79,X81,X72,X74,X76,X78,X80] : esk110_11(X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_28])])).
+fof(f79372,plain,(
+  spl0_197 <=> ! [X9,X11,X13,X1,X3,X5,X7,X8,X10,X12,X0,X2,X4,X6] : (~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_197])])).
+fof(f79498,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~p(X11) | ~p(X12) | ~p(X13)) ) | (~spl0_28 | ~spl0_197)),
+  inference(subsumption_resolution,[],[f79497,f4035])).
+fof(f4035,plain,(
+  ( ! [X80,X78,X76,X74,X72,X81,X79,X77,X75,X73,X82] : (esk110_11(X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82)) ) | ~spl0_28),
+  inference(avatar_component_clause,[],[f4034])).
+fof(f79497,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~p(X11) | ~p(X12) | ~p(X13) | ~esk110_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) ) | (~spl0_28 | ~spl0_197)),
+  inference(duplicate_literal_removal,[],[f79496])).
+fof(f79496,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~p(X11) | ~p(X12) | ~p(X13) | ~p(X12) | ~p(X13) | ~p(X11) | ~esk110_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) ) | (~spl0_28 | ~spl0_197)),
+  inference(resolution,[],[f79419,f2401])).
+fof(f2401,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X13) | ~p(X12) | ~p(X11) | ~esk110_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  inference(resolution,[],[f2400,f2097])).
+fof(f2097,plain,(
+  ( ! [X177,X175,X173,X171,X169,X180,X178,X176,X174,X172,X170,X168,X181,X179] : (esk137_14(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180,X169,X168,X181) | ~esk110_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180) | ~esk97_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180)) )),
+  inference(subsumption_resolution,[],[f2096,f1949])).
+fof(f1949,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (esk137_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | p(X13)) )),
+  inference(resolution,[],[f1151,f1006])).
+fof(f1006,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk317_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1151,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk317_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk137_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2096,plain,(
+  ( ! [X177,X175,X173,X171,X169,X180,X178,X176,X174,X172,X170,X168,X181,X179] : (~esk97_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180) | ~p(X181) | ~esk110_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180) | esk137_14(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180,X169,X168,X181)) )),
+  inference(subsumption_resolution,[],[f2095,f1951])).
+fof(f1951,plain,(
+  ( ! [X30,X28,X39,X37,X35,X33,X41,X31,X29,X38,X36,X34,X32,X40] : (esk137_14(X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41) | p(X40)) )),
+  inference(resolution,[],[f1151,f166])).
+fof(f166,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk317_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X12)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2095,plain,(
+  ( ! [X177,X175,X173,X171,X169,X180,X178,X176,X174,X172,X170,X168,X181,X179] : (~p(X168) | ~esk97_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180) | ~p(X181) | ~esk110_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180) | esk137_14(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180,X169,X168,X181)) )),
+  inference(subsumption_resolution,[],[f2093,f1950])).
+fof(f1950,plain,(
+  ( ! [X26,X24,X14,X23,X21,X19,X17,X27,X25,X15,X22,X20,X18,X16] : (esk137_14(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27) | p(X25)) )),
+  inference(resolution,[],[f1151,f441])).
+fof(f441,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk317_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X11)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2093,plain,(
+  ( ! [X177,X175,X173,X171,X169,X180,X178,X176,X174,X172,X170,X168,X181,X179] : (~p(X168) | ~p(X169) | ~esk97_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180) | ~p(X181) | ~esk110_11(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180) | esk137_14(X170,X171,X172,X173,X174,X175,X176,X177,X178,X179,X180,X169,X168,X181)) )),
+  inference(resolution,[],[f2014,f1223])).
+fof(f1223,axiom,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk112_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | esk137_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2014,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (esk112_14(X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X2,X1,X0) | ~p(X1) | ~p(X2) | ~esk97_11(X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X0) | ~esk110_11(X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  inference(resolution,[],[f2004,f1192])).
+fof(f1192,axiom,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (esk111_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | esk112_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk110_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2004,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk111_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X13,X12,X11) | ~p(X11) | ~p(X12) | ~p(X13) | ~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  inference(resolution,[],[f496,f623])).
+fof(f623,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk344_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk111_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f496,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk344_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~p(X13) | ~p(X12) | ~p(X11)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2400,plain,(
+  ( ! [X26,X24,X14,X23,X21,X19,X17,X27,X25,X15,X22,X20,X18,X16] : (~esk137_14(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27) | esk126_14(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27) | ~p(X27) | ~p(X26) | ~p(X25)) )),
+  inference(resolution,[],[f66,f374])).
+fof(f374,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk317_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X13) | ~p(X12) | ~p(X11)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f66,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk317_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk137_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79419,plain,(
+  ( ! [X208,X198,X196,X206,X204,X202,X200,X209,X199,X197,X207,X205,X203,X201] : (~esk126_14(X196,X197,X198,X199,X200,X201,X202,X203,X204,X205,X206,X207,X208,X209) | ~esk97_11(X196,X197,X198,X199,X200,X201,X202,X203,X204,X205,X206) | ~esk87_11(X196,X197,X198,X199,X200,X201,X202,X203,X204,X205,X206) | ~p(X207) | ~p(X209) | ~p(X208)) ) | (~spl0_28 | ~spl0_197)),
+  inference(resolution,[],[f79373,f10411])).
+fof(f10411,plain,(
+  ( ! [X26,X24,X14,X23,X21,X19,X17,X27,X25,X15,X22,X20,X18,X16] : (esk116_14(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27) | ~esk97_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk87_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X25) | ~p(X27) | ~p(X26)) ) | ~spl0_28),
+  inference(subsumption_resolution,[],[f10410,f4035])).
+fof(f10410,plain,(
+  ( ! [X26,X24,X14,X23,X21,X19,X17,X27,X25,X15,X22,X20,X18,X16] : (~esk87_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk97_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk116_14(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27) | ~p(X25) | ~p(X27) | ~esk110_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X26)) )),
+  inference(duplicate_literal_removal,[],[f10404])).
+fof(f10404,plain,(
+  ( ! [X26,X24,X14,X23,X21,X19,X17,X27,X25,X15,X22,X20,X18,X16] : (~esk87_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk97_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk116_14(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27) | ~p(X25) | ~esk97_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X27) | ~esk110_11(X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X26)) )),
+  inference(resolution,[],[f7531,f2087])).
+fof(f2087,plain,(
+  ( ! [X94,X92,X90,X88,X97,X87,X85,X95,X93,X91,X89,X96,X86,X84] : (esk128_14(X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X85,X84,X97) | ~p(X85) | ~esk97_11(X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96) | ~p(X97) | ~esk110_11(X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96) | ~p(X84)) )),
+  inference(resolution,[],[f2014,f609])).
+fof(f609,axiom,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk112_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | esk128_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7531,plain,(
+  ( ! [X70,X68,X66,X78,X76,X74,X72,X71,X69,X67,X79,X77,X75,X73] : (~esk128_14(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79) | ~esk87_11(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76) | ~esk97_11(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76) | esk116_14(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79)) )),
+  inference(resolution,[],[f4828,f706])).
+fof(f706,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk332_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4828,plain,(
+  ( ! [X144,X152,X132,X140,X136,X149,X145,X153,X133,X141,X137,X150,X146,X154,X134,X130,X142,X138,X151,X147,X155,X135,X131,X143,X139,X148] : (esk332_26(X130,X131,X132,X133,X134,X135,X136,X137,X138,X139,X140,X141,X142,X143,X144,X145,X146,X147,X148,X149,X150,X151,X152,X153,X154,X155) | ~esk87_11(X130,X131,X132,X133,X134,X135,X136,X137,X138,X139,X140) | ~esk128_14(X130,X131,X132,X133,X134,X135,X136,X137,X138,X139,X140,X141,X142,X143) | ~esk97_11(X130,X131,X132,X133,X134,X135,X136,X137,X138,X139,X140)) )),
+  inference(resolution,[],[f2902,f37])).
+fof(f37,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk337_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk97_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2902,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk337_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk128_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | esk332_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  inference(resolution,[],[f1310,f163])).
+fof(f163,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk331_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk87_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | esk337_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1310,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk331_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk332_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk128_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79373,plain,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) ) | ~spl0_197),
+  inference(avatar_component_clause,[],[f79372])).
+fof(f79374,plain,(
+  spl0_12 | spl0_12 | spl0_12 | spl0_197 | ~spl0_30 | ~spl0_196),
+  inference(avatar_split_clause,[],[f79370,f79299,f4590,f79372,f2986,f2986,f2986])).
+fof(f4590,plain,(
+  spl0_30 <=> ! [X96,X98,X100,X89,X91,X93,X95,X87,X97,X99,X88,X90,X92,X94] : esk139_14(X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_30])])).
+fof(f79299,plain,(
+  spl0_196 <=> ! [X232,X234,X236,X224,X226,X228,X230,X221,X223,X233,X235,X225,X227,X229,X231,X220,X222] : (~esk145_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | ~esk153_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_196])])).
+fof(f79370,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X14) | ~p(X15) | ~p(X16)) ) | (~spl0_30 | ~spl0_196)),
+  inference(subsumption_resolution,[],[f79369,f4591])).
+fof(f4591,plain,(
+  ( ! [X94,X92,X90,X88,X99,X97,X87,X95,X93,X91,X89,X100,X98,X96] : (esk139_14(X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100)) ) | ~spl0_30),
+  inference(avatar_component_clause,[],[f4590])).
+fof(f79369,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X14) | ~p(X15) | ~p(X16) | ~esk139_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) ) | (~spl0_30 | ~spl0_196)),
+  inference(duplicate_literal_removal,[],[f79368])).
+fof(f79368,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X14) | ~p(X15) | ~p(X16) | ~p(X14) | ~p(X15) | ~p(X16) | ~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk139_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) ) | (~spl0_30 | ~spl0_196)),
+  inference(resolution,[],[f79329,f2852])).
+fof(f2852,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~p(X16) | ~p(X14) | ~p(X15) | ~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~esk139_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  inference(resolution,[],[f2632,f2370])).
+fof(f2370,plain,(
+  ( ! [X191,X189,X187,X196,X194,X192,X198,X202,X200,X190,X188,X197,X195,X193,X199,X203,X201] : (esk166_17(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X202,X203,X201) | ~esk126_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200) | ~esk139_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200)) )),
+  inference(subsumption_resolution,[],[f2369,f1980])).
+fof(f1980,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (esk166_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | p(X14)) )),
+  inference(resolution,[],[f30,f1196])).
+fof(f1196,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk289_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X14)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f30,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk289_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk166_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2369,plain,(
+  ( ! [X191,X189,X187,X196,X194,X192,X198,X202,X200,X190,X188,X197,X195,X193,X199,X203,X201] : (~esk139_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200) | ~esk126_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200) | ~p(X202) | esk166_17(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X202,X203,X201)) )),
+  inference(subsumption_resolution,[],[f2368,f1982])).
+fof(f1982,plain,(
+  ( ! [X39,X37,X35,X47,X45,X43,X41,X50,X48,X38,X36,X34,X46,X44,X42,X40,X49] : (esk166_17(X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50) | p(X49)) )),
+  inference(resolution,[],[f30,f339])).
+fof(f339,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk289_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X15)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2368,plain,(
+  ( ! [X191,X189,X187,X196,X194,X192,X198,X202,X200,X190,X188,X197,X195,X193,X199,X203,X201] : (~esk139_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200) | ~esk126_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200) | ~p(X202) | ~p(X203) | esk166_17(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X202,X203,X201)) )),
+  inference(subsumption_resolution,[],[f2365,f1981])).
+fof(f1981,plain,(
+  ( ! [X30,X28,X26,X24,X33,X23,X21,X19,X17,X31,X29,X27,X25,X32,X22,X20,X18] : (esk166_17(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33) | p(X33)) )),
+  inference(resolution,[],[f30,f741])).
+fof(f741,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk289_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2365,plain,(
+  ( ! [X191,X189,X187,X196,X194,X192,X198,X202,X200,X190,X188,X197,X195,X193,X199,X203,X201] : (~esk139_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200) | ~p(X201) | ~esk126_14(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200) | ~p(X202) | ~p(X203) | esk166_17(X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X202,X203,X201)) )),
+  inference(resolution,[],[f2221,f1214])).
+fof(f1214,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (~esk141_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | esk166_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2221,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (esk141_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk139_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X16) | ~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X14) | ~p(X15)) )),
+  inference(resolution,[],[f53,f2202])).
+fof(f2202,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (~esk140_17(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X0,X1) | ~p(X1) | ~esk126_14(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15) | ~p(X16) | ~p(X0)) )),
+  inference(resolution,[],[f1267,f679])).
+fof(f679,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk316_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk140_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1267,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk316_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X15) | ~p(X16) | ~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | ~p(X14)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f53,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (esk140_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk139_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | esk141_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2632,plain,(
+  ( ! [X30,X28,X26,X24,X33,X23,X21,X19,X17,X31,X29,X27,X25,X32,X22,X20,X18] : (~esk166_17(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33) | esk153_17(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33) | ~p(X33) | ~p(X31) | ~p(X32)) )),
+  inference(resolution,[],[f93,f1185])).
+fof(f1185,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk289_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X16) | ~p(X14) | ~p(X15)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f93,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk289_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk166_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79329,plain,(
+  ( ! [X212,X210,X208,X216,X218,X220,X206,X204,X215,X213,X211,X209,X217,X219,X207,X205,X214] : (~esk153_17(X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220) | ~esk126_14(X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X217) | ~esk116_14(X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X217) | ~p(X220) | ~p(X218) | ~p(X219)) ) | (~spl0_30 | ~spl0_196)),
+  inference(resolution,[],[f79300,f10845])).
+fof(f10845,plain,(
+  ( ! [X30,X28,X26,X24,X33,X23,X21,X19,X17,X31,X29,X27,X25,X32,X22,X20,X18] : (esk145_17(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33) | ~esk126_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30) | ~esk116_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30) | ~p(X33) | ~p(X31) | ~p(X32)) ) | ~spl0_30),
+  inference(subsumption_resolution,[],[f10844,f4591])).
+fof(f10844,plain,(
+  ( ! [X30,X28,X26,X24,X33,X23,X21,X19,X17,X31,X29,X27,X25,X32,X22,X20,X18] : (~esk116_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30) | ~esk126_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30) | esk145_17(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33) | ~p(X33) | ~p(X31) | ~p(X32) | ~esk139_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30)) )),
+  inference(duplicate_literal_removal,[],[f10838])).
+fof(f10838,plain,(
+  ( ! [X30,X28,X26,X24,X33,X23,X21,X19,X17,X31,X29,X27,X25,X32,X22,X20,X18] : (~esk116_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30) | ~esk126_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30) | esk145_17(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33) | ~p(X33) | ~esk126_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30) | ~p(X31) | ~p(X32) | ~esk139_14(X17,X18,X19,X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30)) )),
+  inference(resolution,[],[f7873,f2360])).
+fof(f2360,plain,(
+  ( ! [X103,X111,X109,X107,X105,X118,X116,X114,X112,X102,X110,X108,X106,X104,X117,X115,X113] : (esk157_17(X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X117,X118,X116) | ~p(X116) | ~esk126_14(X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115) | ~p(X117) | ~p(X118) | ~esk139_14(X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115)) )),
+  inference(resolution,[],[f2221,f664])).
+fof(f664,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (~esk141_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | esk157_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7873,plain,(
+  ( ! [X127,X125,X123,X121,X128,X118,X116,X114,X112,X126,X124,X122,X120,X119,X117,X115,X113] : (~esk157_17(X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128) | ~esk116_14(X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125) | ~esk126_14(X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125) | esk145_17(X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128)) )),
+  inference(resolution,[],[f4869,f959])).
+fof(f959,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk304_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk145_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4869,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (esk304_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk157_17(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120) | ~esk116_14(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117) | ~esk126_14(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117)) )),
+  inference(resolution,[],[f2974,f566])).
+fof(f566,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk309_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk126_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2974,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk309_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk304_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk157_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  inference(resolution,[],[f471,f572])).
+fof(f572,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk303_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk309_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk116_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f471,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk303_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk157_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | esk304_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79300,plain,(
+  ( ! [X222,X220,X231,X229,X227,X225,X235,X233,X223,X221,X230,X228,X226,X224,X236,X234,X232] : (~esk145_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | ~esk153_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236)) ) | ~spl0_196),
+  inference(avatar_component_clause,[],[f79299])).
+fof(f79301,plain,(
+  spl0_12 | spl0_9 | spl0_12 | spl0_196 | ~spl0_29 | ~spl0_109 | ~spl0_178),
+  inference(avatar_split_clause,[],[f79297,f53918,f20161,f4084,f79299,f2986,f1366,f2986])).
+fof(f1366,plain,(
+  spl0_9 <=> ! [X1] : p(X1)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_9])])).
+fof(f4084,plain,(
+  spl0_29 <=> ! [X113,X115,X117,X104,X106,X108,X110,X102,X112,X114,X116,X118,X105,X107,X109,X111,X103] : esk168_17(X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_29])])).
+fof(f20161,plain,(
+  spl0_109 <=> ! [X16,X18,X9,X11,X13,X15,X1,X3,X5,X7,X17,X19,X8,X10,X12,X14,X0,X2,X4,X6] : (~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_109])])).
+fof(f53918,plain,(
+  spl0_178 <=> ! [X214,X224,X226,X228,X211,X221,X223,X217,X219,X213,X215,X225,X227,X229,X210,X220,X222,X216,X218,X212] : (~esk179_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk178_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk175_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_178])])).
+fof(f79297,plain,(
+  ( ! [X222,X220,X231,X229,X227,X225,X239,X237,X235,X233,X223,X221,X230,X228,X226,X224,X238,X236,X234,X232] : (~esk145_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | ~esk153_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | ~p(X237) | p(X238) | ~p(X239)) ) | (~spl0_29 | ~spl0_109 | ~spl0_178)),
+  inference(subsumption_resolution,[],[f79296,f28425])).
+fof(f28425,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X17) | p(X18) | ~p(X19) | ~esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) ) | (~spl0_29 | ~spl0_109)),
+  inference(resolution,[],[f20162,f8083])).
+fof(f8083,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X23,X21,X31,X29,X27,X25,X38,X36,X34,X32,X22,X20] : (esk173_20(X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39) | ~p(X37) | p(X38) | ~p(X39) | ~esk153_17(X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36)) ) | ~spl0_29),
+  inference(resolution,[],[f7245,f4103])).
+fof(f4103,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk191_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X17) | p(X18) | ~p(X19) | esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  inference(resolution,[],[f3334,f952])).
+fof(f952,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk263_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3334,plain,(
+  ( ! [X28,X37,X33,X45,X41,X50,X29,X38,X34,X46,X42,X51,X30,X26,X39,X35,X47,X43,X48,X31,X27,X36,X32,X44,X40,X49] : (esk263_26(X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51) | ~esk191_20(X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45) | ~p(X43) | p(X44) | ~p(X45)) )),
+  inference(resolution,[],[f915,f731])).
+fof(f731,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk262_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X17) | p(X18) | ~p(X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f915,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk262_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk191_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk263_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7245,plain,(
+  ( ! [X212,X210,X208,X216,X218,X206,X204,X202,X200,X215,X213,X211,X209,X219,X217,X207,X205,X203,X201,X214] : (esk191_20(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X218,X219,X217) | ~esk153_17(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f7244,f2199])).
+fof(f2199,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (esk191_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | p(X19)) )),
+  inference(resolution,[],[f1230,f682])).
+fof(f682,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk262_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1230,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk262_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk191_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7244,plain,(
+  ( ! [X212,X210,X208,X216,X218,X206,X204,X202,X200,X215,X213,X211,X217,X209,X219,X207,X205,X203,X201,X214] : (~p(X217) | ~esk153_17(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216) | esk191_20(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X218,X219,X217)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f7243,f2201])).
+fof(f2201,plain,(
+  ( ! [X59,X57,X47,X45,X43,X41,X54,X52,X50,X48,X58,X56,X46,X44,X42,X40,X53,X51,X49,X55] : (esk191_20(X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59) | p(X57)) )),
+  inference(resolution,[],[f1230,f150])).
+fof(f150,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk262_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X17)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7243,plain,(
+  ( ! [X212,X210,X208,X216,X218,X206,X204,X202,X200,X215,X213,X211,X217,X209,X219,X207,X205,X203,X201,X214] : (~p(X217) | ~esk153_17(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216) | ~p(X218) | esk191_20(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X218,X219,X217)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f7242,f2200])).
+fof(f2200,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X23,X21,X31,X29,X27,X25,X38,X36,X34,X32,X22,X20] : (esk191_20(X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39) | ~p(X38)) )),
+  inference(resolution,[],[f1230,f219])).
+fof(f219,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk262_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X18)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7242,plain,(
+  ( ! [X212,X210,X208,X216,X218,X206,X204,X202,X200,X215,X213,X211,X217,X209,X219,X207,X205,X203,X201,X214] : (~p(X217) | ~esk153_17(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216) | ~p(X218) | p(X219) | esk191_20(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X218,X219,X217)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f7233,f4085])).
+fof(f4085,plain,(
+  ( ! [X103,X111,X109,X107,X105,X118,X116,X114,X112,X102,X110,X108,X106,X104,X117,X115,X113] : (esk168_17(X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118)) ) | ~spl0_29),
+  inference(avatar_component_clause,[],[f4084])).
+fof(f7233,plain,(
+  ( ! [X212,X210,X208,X216,X218,X206,X204,X202,X200,X215,X213,X211,X209,X217,X219,X207,X205,X203,X201,X214] : (~esk168_17(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216) | ~p(X217) | ~esk153_17(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216) | ~p(X218) | p(X219) | esk191_20(X200,X201,X202,X203,X204,X205,X206,X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X218,X219,X217)) )),
+  inference(resolution,[],[f2607,f1005])).
+fof(f1005,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk170_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk191_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2607,plain,(
+  ( ! [X80,X94,X92,X90,X88,X99,X97,X87,X85,X83,X81,X95,X93,X91,X89,X98,X96,X86,X84,X82] : (esk170_20(X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99) | ~esk168_17(X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96) | ~p(X99) | ~esk153_17(X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96) | ~p(X97) | p(X98)) )),
+  inference(resolution,[],[f1012,f2212])).
+fof(f2212,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk169_20(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X0,X1) | ~p(X1) | ~esk153_17(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18) | ~p(X19) | p(X0)) )),
+  inference(resolution,[],[f44,f98])).
+fof(f98,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk286_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk169_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f44,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk286_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X18) | ~p(X19) | ~esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~p(X17)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1012,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (esk169_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk168_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | esk170_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f20162,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) ) | ~spl0_109),
+  inference(avatar_component_clause,[],[f20161])).
+fof(f79296,plain,(
+  ( ! [X222,X220,X231,X229,X227,X225,X239,X237,X235,X233,X223,X221,X230,X228,X226,X224,X238,X236,X234,X232] : (~esk145_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | esk181_20(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236,X237,X238,X239) | ~esk153_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | ~p(X237) | p(X238) | ~p(X239)) ) | (~spl0_29 | ~spl0_178)),
+  inference(subsumption_resolution,[],[f79295,f11188])).
+fof(f11188,plain,(
+  ( ! [X127,X125,X123,X121,X134,X132,X130,X128,X138,X136,X126,X124,X122,X120,X135,X133,X131,X129,X139,X137] : (esk179_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk145_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~p(X137) | p(X138) | ~p(X139)) ) | ~spl0_29),
+  inference(duplicate_literal_removal,[],[f11187])).
+fof(f11187,plain,(
+  ( ! [X127,X125,X123,X121,X134,X132,X130,X128,X138,X136,X126,X124,X122,X120,X135,X133,X131,X129,X139,X137] : (~esk145_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | esk179_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~p(X137) | p(X138) | ~p(X139)) ) | ~spl0_29),
+  inference(resolution,[],[f8247,f7239])).
+fof(f7239,plain,(
+  ( ! [X59,X57,X47,X45,X43,X41,X54,X52,X50,X48,X58,X56,X46,X44,X42,X40,X53,X51,X49,X55] : (esk184_20(X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X58,X59,X57) | ~esk153_17(X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56) | ~p(X58) | p(X59) | ~p(X57)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f7225,f4085])).
+fof(f7225,plain,(
+  ( ! [X59,X57,X47,X45,X43,X41,X54,X52,X50,X48,X58,X56,X46,X44,X42,X40,X53,X51,X49,X55] : (~esk168_17(X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56) | ~p(X57) | ~esk153_17(X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56) | ~p(X58) | p(X59) | esk184_20(X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X58,X59,X57)) )),
+  inference(resolution,[],[f2607,f204])).
+fof(f204,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk170_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f8247,plain,(
+  ( ! [X80,X70,X68,X66,X78,X76,X74,X72,X85,X83,X81,X71,X69,X67,X79,X77,X75,X73,X84,X82] : (~esk184_20(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85) | ~esk145_17(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82) | esk179_20(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85) | ~esk153_17(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82)) )),
+  inference(resolution,[],[f4476,f786])).
+fof(f786,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk281_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4476,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk281_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk145_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  inference(resolution,[],[f3205,f1094])).
+fof(f1094,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk275_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk145_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | esk281_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3205,plain,(
+  ( ! [X144,X152,X132,X140,X136,X149,X145,X153,X133,X141,X137,X150,X146,X154,X134,X130,X142,X138,X151,X147,X155,X135,X131,X143,X139,X148] : (esk275_26(X130,X131,X132,X133,X134,X135,X136,X137,X138,X139,X140,X141,X142,X143,X144,X145,X146,X147,X148,X149,X150,X151,X152,X153,X154,X155) | ~esk184_20(X130,X131,X132,X133,X134,X135,X136,X137,X138,X139,X140,X141,X142,X143,X144,X145,X146,X147,X148,X149) | esk179_20(X130,X131,X132,X133,X134,X135,X136,X137,X138,X139,X140,X141,X142,X143,X144,X145,X146,X147,X148,X149)) )),
+  inference(resolution,[],[f527,f775])).
+fof(f775,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk276_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f527,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk276_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk275_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79295,plain,(
+  ( ! [X222,X220,X231,X229,X227,X225,X239,X237,X235,X233,X223,X221,X230,X228,X226,X224,X238,X236,X234,X232] : (~esk179_20(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236,X237,X238,X239) | ~esk145_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | esk181_20(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236,X237,X238,X239) | ~esk153_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | ~p(X237) | p(X238) | ~p(X239)) ) | (~spl0_29 | ~spl0_178)),
+  inference(subsumption_resolution,[],[f79278,f27852])).
+fof(f27852,plain,(
+  ( ! [X127,X125,X123,X121,X134,X132,X130,X128,X138,X136,X126,X124,X122,X120,X135,X133,X131,X129,X139,X137] : (esk178_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~esk145_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~p(X137) | p(X138) | ~p(X139)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f27850,f9173])).
+fof(f9173,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk171_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X17) | p(X18) | ~p(X19) | ~esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f9172,f8082])).
+fof(f8082,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (esk172_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X17) | p(X18) | ~p(X19) | ~esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) ) | ~spl0_29),
+  inference(resolution,[],[f7245,f4104])).
+fof(f4104,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X23,X21,X31,X29,X27,X25,X38,X36,X34,X32,X22,X20] : (~esk191_20(X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39) | ~p(X37) | p(X38) | ~p(X39) | esk172_20(X20,X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39)) )),
+  inference(resolution,[],[f3334,f727])).
+fof(f727,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk263_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk172_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f9172,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~p(X17) | p(X18) | ~p(X19) | ~esk171_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk172_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) ) | ~spl0_29),
+  inference(resolution,[],[f7241,f1219])).
+fof(f1219,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk194_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk171_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk172_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7241,plain,(
+  ( ! [X177,X167,X165,X163,X161,X175,X173,X171,X169,X178,X176,X166,X164,X162,X160,X174,X172,X170,X168,X179] : (esk194_20(X160,X161,X162,X163,X164,X165,X166,X167,X168,X169,X170,X171,X172,X173,X174,X175,X176,X178,X179,X177) | ~esk153_17(X160,X161,X162,X163,X164,X165,X166,X167,X168,X169,X170,X171,X172,X173,X174,X175,X176) | ~p(X178) | p(X179) | ~p(X177)) ) | ~spl0_29),
+  inference(subsumption_resolution,[],[f7231,f4085])).
+fof(f7231,plain,(
+  ( ! [X177,X167,X165,X163,X161,X175,X173,X171,X169,X178,X176,X166,X164,X162,X160,X174,X172,X170,X168,X179] : (~esk168_17(X160,X161,X162,X163,X164,X165,X166,X167,X168,X169,X170,X171,X172,X173,X174,X175,X176) | ~p(X177) | ~esk153_17(X160,X161,X162,X163,X164,X165,X166,X167,X168,X169,X170,X171,X172,X173,X174,X175,X176) | ~p(X178) | p(X179) | esk194_20(X160,X161,X162,X163,X164,X165,X166,X167,X168,X169,X170,X171,X172,X173,X174,X175,X176,X178,X179,X177)) )),
+  inference(resolution,[],[f2607,f779])).
+fof(f779,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk170_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk194_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f27850,plain,(
+  ( ! [X127,X125,X123,X121,X134,X132,X130,X128,X138,X136,X126,X124,X122,X120,X135,X133,X131,X129,X139,X137] : (~esk145_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | esk178_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | esk171_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~p(X137) | p(X138) | ~p(X139)) ) | ~spl0_29),
+  inference(duplicate_literal_removal,[],[f27849])).
+fof(f27849,plain,(
+  ( ! [X127,X125,X123,X121,X134,X132,X130,X128,X138,X136,X126,X124,X122,X120,X135,X133,X131,X129,X139,X137] : (~esk145_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | esk178_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | esk171_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~p(X137) | p(X138) | ~p(X139)) ) | ~spl0_29),
+  inference(resolution,[],[f11256,f7239])).
+fof(f11256,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk145_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk153_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | esk178_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk171_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  inference(resolution,[],[f8476,f1067])).
+fof(f1067,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk277_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk178_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk171_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f8476,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (esk277_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk145_17(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94) | ~esk184_20(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97) | ~esk153_17(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94)) )),
+  inference(resolution,[],[f4641,f786])).
+fof(f4641,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk281_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk277_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk145_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  inference(resolution,[],[f3203,f1094])).
+fof(f3203,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (esk275_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk184_20(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97) | esk277_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103)) )),
+  inference(resolution,[],[f527,f480])).
+fof(f480,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk276_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk277_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f79278,plain,(
+  ( ! [X222,X220,X231,X229,X227,X225,X239,X237,X235,X233,X223,X221,X230,X228,X226,X224,X238,X236,X234,X232] : (~esk178_20(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236,X237,X238,X239) | ~esk179_20(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236,X237,X238,X239) | ~esk145_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | esk181_20(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236,X237,X238,X239) | ~esk153_17(X220,X221,X222,X223,X224,X225,X226,X227,X228,X229,X230,X231,X232,X233,X234,X235,X236) | ~p(X237) | p(X238) | ~p(X239)) ) | (~spl0_29 | ~spl0_178)),
+  inference(resolution,[],[f53919,f28038])).
+fof(f28038,plain,(
+  ( ! [X127,X125,X123,X121,X134,X132,X130,X128,X138,X136,X126,X124,X122,X120,X135,X133,X131,X129,X139,X137] : (esk175_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk145_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | esk181_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~p(X137) | p(X138) | ~p(X139)) ) | ~spl0_29),
+  inference(duplicate_literal_removal,[],[f28037])).
+fof(f28037,plain,(
+  ( ! [X127,X125,X123,X121,X134,X132,X130,X128,X138,X136,X126,X124,X122,X120,X135,X133,X131,X129,X139,X137] : (esk175_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk145_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | esk181_20(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136,X137,X138,X139) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~esk153_17(X120,X121,X122,X123,X124,X125,X126,X127,X128,X129,X130,X131,X132,X133,X134,X135,X136) | ~p(X137) | p(X138) | ~p(X139)) ) | ~spl0_29),
+  inference(resolution,[],[f11528,f7239])).
+fof(f11528,plain,(
+  ( ! [X80,X70,X68,X66,X78,X76,X74,X72,X85,X83,X81,X71,X69,X67,X79,X77,X75,X73,X84,X82] : (~esk184_20(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85) | esk175_20(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85) | ~esk145_17(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82) | esk181_20(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85) | ~esk153_17(X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82)) )),
+  inference(resolution,[],[f8268,f786])).
+fof(f8268,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk281_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk175_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk145_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | ~esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  inference(resolution,[],[f4619,f1094])).
+fof(f4619,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk275_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk175_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  inference(resolution,[],[f3200,f840])).
+fof(f840,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk280_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk175_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3200,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk280_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk275_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk184_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  inference(resolution,[],[f527,f1080])).
+fof(f1080,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk276_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk280_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f53919,plain,(
+  ( ! [X212,X210,X216,X218,X220,X222,X229,X227,X225,X215,X213,X211,X217,X219,X221,X223,X228,X226,X224,X214] : (~esk175_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk178_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk179_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229)) ) | ~spl0_178),
+  inference(avatar_component_clause,[],[f53918])).
+fof(f53920,plain,(
+  spl0_178 | spl0_12 | spl0_9 | spl0_9 | ~spl0_25 | ~spl0_77),
+  inference(avatar_split_clause,[],[f53907,f13948,f3757,f1366,f1366,f2986,f53918])).
+fof(f3757,plain,(
+  spl0_25 <=> ! [X104,X106,X108,X110,X96,X98,X100,X102,X93,X95,X112,X105,X107,X109,X111,X97,X99,X101,X103,X94] : esk195_20(X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_25])])).
+fof(f13948,plain,(
+  spl0_77 <=> ! [X16,X18,X20,X22,X9,X11,X13,X15,X1,X3,X5,X7,X8,X17,X19,X21,X23,X10,X12,X14,X2,X4,X6] : (~esk200_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23) | ~esk204_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_77])])).
+fof(f53907,plain,(
+  ( ! [X212,X210,X208,X216,X218,X220,X222,X229,X227,X225,X215,X213,X211,X209,X217,X219,X221,X223,X207,X228,X226,X224,X214] : (p(X207) | p(X208) | ~p(X209) | ~esk179_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk175_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk178_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229)) ) | (~spl0_25 | ~spl0_77)),
+  inference(duplicate_literal_removal,[],[f53906])).
+fof(f53906,plain,(
+  ( ! [X212,X210,X208,X216,X218,X220,X222,X229,X227,X225,X215,X213,X211,X209,X217,X219,X221,X223,X207,X228,X226,X224,X214] : (p(X207) | p(X208) | ~p(X209) | ~esk179_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk175_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | p(X207) | p(X208) | ~p(X209) | ~esk178_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | ~esk179_20(X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229)) ) | (~spl0_25 | ~spl0_77)),
+  inference(resolution,[],[f31475,f9947])).
+fof(f9947,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | p(X20) | p(X21) | ~p(X22) | ~esk178_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) ) | ~spl0_25),
+  inference(duplicate_literal_removal,[],[f9943])).
+fof(f9943,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | p(X20) | p(X21) | ~p(X22) | ~esk178_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) ) | ~spl0_25),
+  inference(resolution,[],[f7675,f4978])).
+fof(f4978,plain,(
+  ( ! [X103,X101,X99,X97,X111,X109,X107,X105,X116,X114,X112,X95,X102,X100,X98,X96,X110,X108,X106,X104,X117,X115,X113] : (~esk210_23(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117) | ~esk178_20(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114) | esk204_23(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117) | ~esk179_20(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114)) )),
+  inference(resolution,[],[f3313,f364])).
+fof(f364,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk245_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3313,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk245_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk178_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk210_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  inference(resolution,[],[f859,f376])).
+fof(f376,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk244_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk210_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f859,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk244_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk178_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk245_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7675,plain,(
+  ( ! [X80,X90,X88,X70,X78,X76,X74,X72,X85,X83,X81,X87,X91,X89,X71,X69,X79,X77,X75,X73,X86,X84,X82] : (esk210_23(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X90,X91,X89) | ~esk179_20(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88) | p(X90) | p(X91) | ~p(X89)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7665,f3758])).
+fof(f3758,plain,(
+  ( ! [X94,X103,X101,X99,X97,X111,X109,X107,X105,X112,X95,X93,X102,X100,X98,X96,X110,X108,X106,X104] : (esk195_20(X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112)) ) | ~spl0_25),
+  inference(avatar_component_clause,[],[f3757])).
+fof(f7665,plain,(
+  ( ! [X80,X90,X88,X70,X78,X76,X74,X72,X85,X83,X81,X87,X91,X89,X71,X69,X79,X77,X75,X73,X86,X84,X82] : (~esk195_20(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88) | ~p(X89) | ~esk179_20(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88) | p(X90) | p(X91) | esk210_23(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X90,X91,X89)) )),
+  inference(resolution,[],[f2850,f755])).
+fof(f755,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk197_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk210_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2850,plain,(
+  ( ! [X80,X90,X88,X70,X78,X76,X74,X72,X85,X83,X81,X87,X91,X89,X71,X69,X79,X77,X75,X73,X86,X84,X82] : (esk197_23(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91) | ~esk195_20(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88) | ~p(X91) | ~esk179_20(X69,X70,X71,X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88) | p(X89) | p(X90)) )),
+  inference(resolution,[],[f426,f2318])).
+fof(f2318,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk196_23(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X0,X1) | ~p(X1) | ~esk179_20(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21) | p(X22) | p(X0)) )),
+  inference(resolution,[],[f295,f502])).
+fof(f502,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk256_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk196_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f295,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk256_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X21) | ~p(X22) | ~esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | p(X20)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f426,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (esk196_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk195_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk197_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f31475,plain,(
+  ( ! [X212,X210,X208,X216,X218,X220,X222,X229,X227,X225,X215,X213,X211,X209,X217,X219,X221,X223,X207,X228,X226,X224,X214] : (~esk204_23(X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226,X227,X228,X229) | p(X227) | p(X228) | ~p(X229) | ~esk179_20(X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226) | ~esk175_20(X207,X208,X209,X210,X211,X212,X213,X214,X215,X216,X217,X218,X219,X220,X221,X222,X223,X224,X225,X226)) ) | (~spl0_25 | ~spl0_77)),
+  inference(resolution,[],[f13949,f9963])).
+fof(f9963,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X45,X43,X41,X23,X31,X29,X27,X25,X38,X36,X34,X32,X44,X42,X40] : (esk200_23(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45) | p(X43) | p(X44) | ~p(X45) | ~esk179_20(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42) | ~esk175_20(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42)) ) | ~spl0_25),
+  inference(duplicate_literal_removal,[],[f9959])).
+fof(f9959,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X45,X43,X41,X23,X31,X29,X27,X25,X38,X36,X34,X32,X44,X42,X40] : (~esk179_20(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42) | p(X43) | p(X44) | ~p(X45) | esk200_23(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45) | ~esk175_20(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42) | ~esk179_20(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42)) ) | ~spl0_25),
+  inference(resolution,[],[f7676,f4992])).
+fof(f4992,plain,(
+  ( ! [X103,X101,X99,X97,X111,X109,X107,X105,X116,X114,X112,X95,X102,X100,X98,X96,X110,X108,X106,X104,X117,X115,X113] : (~esk207_23(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117) | esk200_23(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117) | ~esk175_20(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114) | ~esk179_20(X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114)) )),
+  inference(resolution,[],[f3335,f25])).
+fof(f25,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk251_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk179_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3335,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk251_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk175_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk207_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  inference(resolution,[],[f968,f752])).
+fof(f752,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk250_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk207_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f968,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk250_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk175_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk251_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7676,plain,(
+  ( ! [X94,X92,X103,X101,X99,X97,X111,X109,X107,X105,X114,X112,X95,X93,X102,X100,X98,X96,X110,X108,X106,X104,X113] : (esk207_23(X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X113,X114,X112) | ~esk179_20(X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111) | p(X113) | p(X114) | ~p(X112)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7666,f3758])).
+fof(f7666,plain,(
+  ( ! [X94,X92,X103,X101,X99,X97,X111,X109,X107,X105,X114,X112,X95,X93,X102,X100,X98,X96,X110,X108,X106,X104,X113] : (~esk195_20(X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111) | ~p(X112) | ~esk179_20(X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111) | p(X113) | p(X114) | esk207_23(X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X113,X114,X112)) )),
+  inference(resolution,[],[f2850,f924])).
+fof(f924,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk197_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk207_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f13949,plain,(
+  ( ! [X6,X4,X2,X14,X12,X10,X8,X21,X19,X17,X23,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk200_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23) | ~esk204_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23)) ) | ~spl0_77),
+  inference(avatar_component_clause,[],[f13948])).
+fof(f20163,plain,(
+  spl0_12 | spl0_9 | spl0_12 | spl0_109 | ~spl0_25),
+  inference(avatar_split_clause,[],[f20159,f3757,f20161,f2986,f1366,f2986])).
+fof(f20159,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X20) | p(X21) | ~esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X22)) ) | ~spl0_25),
+  inference(duplicate_literal_removal,[],[f20156])).
+fof(f20156,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X20) | p(X21) | ~esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X22) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X20) | p(X21) | ~p(X22)) ) | ~spl0_25),
+  inference(resolution,[],[f9749,f9799])).
+fof(f9799,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk198_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X22,X0,X21) | ~esk181_20(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20) | ~p(X21) | p(X22) | ~p(X0)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f9798,f9263])).
+fof(f9263,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (esk199_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X22) | ~p(X21) | p(X20)) ) | ~spl0_25),
+  inference(resolution,[],[f7594,f3199])).
+fof(f3199,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X45,X43,X41,X23,X31,X29,X27,X25,X38,X36,X34,X32,X44,X42,X40] : (~esk212_23(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45) | esk199_23(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45) | ~p(X45) | ~p(X44) | p(X43)) )),
+  inference(resolution,[],[f510,f1095])).
+fof(f1095,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk242_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X22) | ~p(X21) | p(X20)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f510,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk242_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk199_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7594,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7593,f2282])).
+fof(f2282,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | p(X21)) )),
+  inference(resolution,[],[f1026,f476])).
+fof(f476,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk242_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X21)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1026,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk242_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7593,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~p(X21) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7592,f2284])).
+fof(f2284,plain,(
+  ( ! [X61,X59,X57,X68,X47,X64,X66,X54,X52,X50,X48,X62,X60,X58,X56,X67,X46,X65,X55,X53,X51,X49,X63] : (esk212_23(X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68) | p(X68)) )),
+  inference(resolution,[],[f1026,f275])).
+fof(f275,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk242_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7592,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~p(X21) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X22) | esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7591,f2283])).
+fof(f2283,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X45,X43,X41,X23,X31,X29,X27,X25,X38,X36,X34,X32,X44,X42,X40] : (esk212_23(X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45) | ~p(X43)) )),
+  inference(resolution,[],[f1026,f453])).
+fof(f453,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk242_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X20)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7591,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (p(X20) | ~p(X21) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X22) | esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7579,f3758])).
+fof(f7579,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk195_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | p(X20) | ~p(X21) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X22) | esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  inference(resolution,[],[f2847,f90])).
+fof(f90,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk197_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk212_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2847,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (esk197_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk195_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | p(X20) | ~p(X21) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~p(X22)) )),
+  inference(resolution,[],[f426,f2343])).
+fof(f2343,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk196_23(X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X1,X2,X0) | p(X1) | ~p(X2) | ~esk181_20(X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~p(X0)) )),
+  inference(resolution,[],[f1263,f654])).
+fof(f654,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk258_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk196_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1263,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk258_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X22) | p(X20) | ~p(X21) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f9798,plain,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~p(X0) | ~esk181_20(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20) | ~p(X21) | p(X22) | ~esk199_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X22,X0,X21) | ~esk198_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X22,X0,X21)) ) | ~spl0_25),
+  inference(resolution,[],[f7600,f250])).
+fof(f250,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk214_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk199_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk198_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7600,plain,(
+  ( ! [X191,X189,X187,X185,X194,X192,X196,X198,X202,X200,X204,X206,X190,X188,X186,X184,X193,X195,X197,X199,X201,X203,X205] : (esk214_23(X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X201,X202,X203,X204,X205,X206) | ~p(X205) | ~esk181_20(X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X201,X202,X203) | ~p(X206) | p(X204)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7587,f3758])).
+fof(f7587,plain,(
+  ( ! [X191,X189,X187,X185,X194,X192,X196,X198,X202,X200,X204,X206,X190,X188,X186,X184,X193,X195,X197,X199,X201,X203,X205] : (~esk195_20(X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X201,X202,X203) | p(X204) | ~p(X205) | ~esk181_20(X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X201,X202,X203) | ~p(X206) | esk214_23(X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199,X200,X201,X202,X203,X204,X205,X206)) )),
+  inference(resolution,[],[f2847,f1098])).
+fof(f1098,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk197_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk214_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f9749,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X45,X43,X41,X23,X31,X29,X27,X25,X38,X36,X34,X32,X44,X42,X40] : (esk198_23(X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X45,X23,X44) | ~esk181_20(X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43) | ~p(X44) | p(X45) | ~esk173_20(X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43) | ~p(X23)) ) | ~spl0_25),
+  inference(duplicate_literal_removal,[],[f9746])).
+fof(f9746,plain,(
+  ( ! [X30,X28,X26,X24,X37,X35,X33,X39,X45,X43,X41,X23,X31,X29,X27,X25,X38,X36,X34,X32,X44,X42,X40] : (~p(X23) | ~esk181_20(X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43) | ~p(X44) | p(X45) | ~esk173_20(X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43) | esk198_23(X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X45,X23,X44) | ~esk181_20(X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43)) ) | ~spl0_25),
+  inference(resolution,[],[f7595,f4965])).
+fof(f4965,plain,(
+  ( ! [X80,X94,X92,X90,X88,X78,X76,X74,X72,X85,X83,X81,X87,X93,X91,X89,X79,X77,X75,X73,X86,X84,X82] : (~esk205_23(X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94) | ~esk173_20(X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91) | esk198_23(X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94) | ~esk181_20(X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91)) )),
+  inference(resolution,[],[f3172,f552])).
+fof(f552,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk255_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk181_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3172,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk255_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk198_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk205_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  inference(resolution,[],[f494,f263])).
+fof(f263,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk254_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk173_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk255_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f494,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk254_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk205_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk198_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f7595,plain,(
+  ( ! [X61,X59,X57,X68,X47,X64,X66,X54,X52,X50,X48,X62,X60,X58,X56,X67,X46,X65,X55,X53,X51,X49,X63] : (esk205_23(X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68) | ~p(X67) | ~esk181_20(X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65) | ~p(X68) | p(X66)) ) | ~spl0_25),
+  inference(subsumption_resolution,[],[f7581,f3758])).
+fof(f7581,plain,(
+  ( ! [X61,X59,X57,X68,X47,X64,X66,X54,X52,X50,X48,X62,X60,X58,X56,X67,X46,X65,X55,X53,X51,X49,X63] : (~esk195_20(X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65) | p(X66) | ~p(X67) | ~esk181_20(X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65) | ~p(X68) | esk205_23(X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68)) )),
+  inference(resolution,[],[f2847,f517])).
+fof(f517,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk197_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk205_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f13950,plain,(
+  spl0_12 | spl0_77 | spl0_12 | ~spl0_23),
+  inference(avatar_split_clause,[],[f13946,f3428,f2986,f13948,f2986])).
+fof(f3428,plain,(
+  spl0_23 <=> ! [X63,X51,X53,X73,X55,X65,X67,X69,X71,X56,X58,X60,X62,X52,X72,X54,X64,X66,X68,X70,X57,X59,X61] : esk215_23(X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_23])])).
+fof(f13946,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~p(X0) | ~esk200_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23) | ~p(X24) | ~esk204_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23)) ) | ~spl0_23),
+  inference(duplicate_literal_removal,[],[f13943])).
+fof(f13943,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~p(X0) | ~esk200_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23) | ~p(X24) | ~esk204_23(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23) | ~p(X0)) ) | ~spl0_23),
+  inference(resolution,[],[f11213,f2371])).
+fof(f2371,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk216_25(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X0,X1) | ~p(X1) | ~esk204_23(X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X0)) )),
+  inference(resolution,[],[f1288,f123])).
+fof(f123,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk240_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1288,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk240_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X23) | ~p(X24) | ~esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f11213,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X24,X23) | ~p(X24) | ~esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) ) | ~spl0_23),
+  inference(subsumption_resolution,[],[f11212,f4116])).
+fof(f4116,plain,(
+  ( ! [X28,X37,X33,X45,X41,X29,X25,X38,X34,X46,X42,X30,X26,X39,X35,X47,X43,X48,X31,X27,X36,X32,X44,X40,X49] : (esk216_25(X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45,X46,X47,X48,X49) | ~p(X48) | esk204_23(X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45,X46,X47)) )),
+  inference(resolution,[],[f3422,f301])).
+fof(f301,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk240_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3422,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk240_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk216_25(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102) | ~p(X101)) )),
+  inference(resolution,[],[f270,f1200])).
+fof(f1200,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk239_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X23)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f270,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk239_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk240_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f11212,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~p(X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X24,X23)) ) | ~spl0_23),
+  inference(subsumption_resolution,[],[f11211,f3423])).
+fof(f3423,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X63,X59,X68,X64,X76,X52,X72,X60,X56,X69,X65,X53,X73] : (esk216_25(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76) | p(X76)) )),
+  inference(subsumption_resolution,[],[f3421,f613])).
+fof(f613,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk240_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3421,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X63,X59,X68,X64,X76,X52,X72,X60,X56,X69,X65,X77,X53,X73] : (~esk240_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | esk216_25(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76) | p(X76)) )),
+  inference(resolution,[],[f270,f1228])).
+fof(f1228,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk239_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f11211,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~p(X23) | ~p(X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X24,X23)) ) | ~spl0_23),
+  inference(duplicate_literal_removal,[],[f11208])).
+fof(f11208,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~p(X23) | ~p(X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X24,X23) | ~p(X24)) ) | ~spl0_23),
+  inference(resolution,[],[f8606,f7996])).
+fof(f7996,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk218_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X23)) ) | ~spl0_23),
+  inference(duplicate_literal_removal,[],[f7995])).
+fof(f7995,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk218_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X23)) ) | ~spl0_23),
+  inference(resolution,[],[f4665,f4717])).
+fof(f4717,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk219_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X23)) ) | ~spl0_23),
+  inference(subsumption_resolution,[],[f4716,f3423])).
+fof(f4716,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk219_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X24) | ~p(X23)) ) | ~spl0_23),
+  inference(subsumption_resolution,[],[f4715,f3429])).
+fof(f3429,plain,(
+  ( ! [X61,X59,X57,X70,X68,X66,X64,X54,X52,X72,X62,X60,X58,X56,X71,X69,X67,X65,X55,X53,X51,X73,X63] : (esk215_23(X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73)) ) | ~spl0_23),
+  inference(avatar_component_clause,[],[f3428])).
+fof(f4715,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk215_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk219_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X24) | ~p(X23)) )),
+  inference(resolution,[],[f3347,f3395])).
+fof(f3395,plain,(
+  ( ! [X28,X37,X33,X45,X41,X29,X25,X38,X34,X46,X42,X30,X26,X39,X35,X47,X43,X48,X31,X27,X36,X32,X44,X40,X49] : (~esk225_25(X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45,X46,X47,X48,X49) | esk219_25(X25,X26,X27,X28,X29,X30,X31,X32,X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43,X44,X45,X46,X47,X48,X49) | ~p(X49) | ~p(X48)) )),
+  inference(resolution,[],[f310,f177])).
+fof(f177,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk231_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~p(X24) | ~p(X23)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f310,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk231_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk225_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk219_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3347,plain,(
+  ( ! [X177,X189,X198,X185,X194,X182,X178,X190,X199,X186,X195,X183,X179,X191,X187,X196,X192,X175,X180,X176,X188,X197,X184,X193,X181] : (esk225_25(X175,X176,X177,X178,X179,X180,X181,X182,X183,X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199) | esk216_25(X175,X176,X177,X178,X179,X180,X181,X182,X183,X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197,X198,X199) | ~esk215_23(X175,X176,X177,X178,X179,X180,X181,X182,X183,X184,X185,X186,X187,X188,X189,X190,X191,X192,X193,X194,X195,X196,X197)) )),
+  inference(resolution,[],[f220,f1296])).
+fof(f1296,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk217_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk225_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f220,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk217_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk215_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4665,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk219_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk218_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) ) | ~spl0_23),
+  inference(subsumption_resolution,[],[f4664,f3429])).
+fof(f4664,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk215_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk219_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk218_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  inference(resolution,[],[f3340,f897])).
+fof(f897,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk226_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk219_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk218_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3340,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk226_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk215_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  inference(resolution,[],[f220,f320])).
+fof(f320,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk217_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk226_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f8606,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X50,X62,X58,X71,X67,X55,X51,X63,X59,X68,X64,X52,X72,X60,X56,X69,X65,X53,X73] : (esk218_25(X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74) | ~esk200_23(X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72) | ~esk204_23(X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72) | ~p(X74) | ~p(X73)) ) | ~spl0_23),
+  inference(duplicate_literal_removal,[],[f8604])).
+fof(f8604,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X50,X62,X58,X71,X67,X55,X51,X63,X59,X68,X64,X52,X72,X60,X56,X69,X65,X53,X73] : (esk218_25(X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74) | ~esk200_23(X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72) | ~esk204_23(X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72) | ~p(X74) | ~esk204_23(X50,X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72) | ~p(X73)) ) | ~spl0_23),
+  inference(resolution,[],[f5037,f4673])).
+fof(f4673,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk221_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X24) | ~esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~p(X23)) ) | ~spl0_23),
+  inference(subsumption_resolution,[],[f4670,f3429])).
+fof(f4670,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk215_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk221_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~p(X24) | ~esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~p(X23)) )),
+  inference(resolution,[],[f3343,f2371])).
+fof(f3343,plain,(
+  ( ! [X94,X90,X99,X78,X87,X83,X95,X91,X96,X79,X75,X84,X80,X92,X88,X97,X76,X85,X81,X93,X89,X98,X77,X86,X82] : (esk216_25(X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99) | ~esk215_23(X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97) | esk221_25(X75,X76,X77,X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99)) )),
+  inference(resolution,[],[f220,f670])).
+fof(f670,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk217_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk221_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f5037,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X51,X63,X59,X68,X64,X52,X72,X60,X56,X69,X65,X53,X73] : (~esk221_25(X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75) | esk218_25(X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75) | ~esk200_23(X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73) | ~esk204_23(X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73)) )),
+  inference(resolution,[],[f3381,f892])).
+fof(f892,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk238_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk204_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3381,plain,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk238_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk218_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk221_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | ~esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  inference(resolution,[],[f51,f182])).
+fof(f182,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk237_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk238_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk200_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f51,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk237_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk221_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk218_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4592,plain,(
+  spl0_30 | spl0_9 | spl0_9),
+  inference(avatar_split_clause,[],[f4585,f1366,f1366,f4590])).
+fof(f4585,plain,(
+  ( ! [X94,X92,X90,X88,X99,X97,X87,X85,X95,X93,X91,X89,X100,X98,X96,X86] : (p(X85) | p(X86) | esk139_14(X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100)) )),
+  inference(resolution,[],[f4579,f722])).
+fof(f722,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X7,X5,X3,X1,X15,X13,X11,X9,X16] : (~esk140_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16) | esk139_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4579,plain,(
+  ( ! [X61,X59,X57,X68,X66,X64,X54,X52,X62,X60,X58,X56,X67,X65,X55,X53,X63] : (esk140_17(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68) | p(X67) | p(X68)) )),
+  inference(subsumption_resolution,[],[f4576,f675])).
+fof(f675,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk313_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4576,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X63,X59,X68,X64,X76,X52,X72,X60,X56,X69,X65,X77,X53,X73] : (~esk313_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | esk140_17(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68) | p(X67) | p(X68)) )),
+  inference(resolution,[],[f3841,f1307])).
+fof(f1307,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk314_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3841,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X63,X59,X68,X64,X76,X52,X72,X60,X56,X69,X65,X77,X53,X73] : (~esk314_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | ~esk313_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | esk140_17(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68) | p(X67)) )),
+  inference(subsumption_resolution,[],[f3840,f973])).
+fof(f973,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk315_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X15)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3840,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X63,X59,X68,X64,X76,X52,X72,X60,X56,X69,X65,X77,X53,X73] : (~esk314_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | ~esk315_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | ~esk313_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | esk140_17(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68) | p(X67)) )),
+  inference(subsumption_resolution,[],[f3837,f132])).
+fof(f132,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk316_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X15)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3837,plain,(
+  ( ! [X61,X57,X70,X66,X54,X74,X62,X58,X71,X67,X55,X75,X63,X59,X68,X64,X76,X52,X72,X60,X56,X69,X65,X77,X53,X73] : (~esk316_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | ~esk314_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | ~esk315_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | ~esk313_26(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73,X74,X75,X76,X77) | esk140_17(X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68) | p(X67)) )),
+  inference(resolution,[],[f976,f1088])).
+fof(f1088,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk312_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X15)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f976,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk312_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk316_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk314_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk315_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk313_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk140_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4086,plain,(
+  spl0_29 | spl0_9 | spl0_9),
+  inference(avatar_split_clause,[],[f4079,f1366,f1366,f4084])).
+fof(f4079,plain,(
+  ( ! [X103,X101,X111,X109,X107,X105,X118,X116,X114,X112,X102,X100,X110,X108,X106,X104,X117,X115,X113] : (p(X100) | p(X101) | esk168_17(X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118)) )),
+  inference(resolution,[],[f4006,f1194])).
+fof(f1194,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X18,X16] : (~esk169_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | esk168_17(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4006,plain,(
+  ( ! [X59,X57,X47,X45,X43,X41,X54,X52,X50,X48,X58,X56,X46,X44,X42,X40,X53,X51,X49,X55] : (esk169_20(X40,X41,X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55,X56,X57,X58,X59) | p(X59) | p(X57)) )),
+  inference(resolution,[],[f3874,f824])).
+fof(f824,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk284_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X17)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3874,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk284_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk169_20(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97) | p(X97)) )),
+  inference(subsumption_resolution,[],[f3873,f1119])).
+fof(f1119,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk286_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3873,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk284_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk169_20(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97) | ~esk286_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X97)) )),
+  inference(subsumption_resolution,[],[f3872,f74])).
+fof(f74,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk288_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3872,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk288_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk284_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk169_20(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97) | ~esk286_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X97)) )),
+  inference(subsumption_resolution,[],[f3868,f1001])).
+fof(f1001,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk285_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3868,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk285_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk288_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk284_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk169_20(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97) | ~esk286_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X97)) )),
+  inference(resolution,[],[f1137,f532])).
+fof(f532,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk287_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1137,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk287_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk285_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk288_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk284_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk169_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19) | ~esk286_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4036,plain,(
+  spl0_28 | spl0_9 | spl0_9),
+  inference(avatar_split_clause,[],[f4029,f1366,f1366,f4034])).
+fof(f4029,plain,(
+  ( ! [X80,X70,X78,X76,X74,X72,X81,X71,X79,X77,X75,X73,X82] : (p(X70) | p(X71) | esk110_11(X72,X73,X74,X75,X76,X77,X78,X79,X80,X81,X82)) )),
+  inference(resolution,[],[f4002,f1025])).
+fof(f1025,axiom,(
+  ( ! [X6,X4,X2,X0,X12,X10,X8,X7,X5,X3,X1,X13,X11,X9] : (~esk111_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13) | esk110_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f4002,plain,(
+  ( ! [X47,X45,X43,X54,X52,X50,X48,X46,X44,X42,X55,X53,X51,X49] : (esk111_14(X42,X43,X44,X45,X46,X47,X48,X49,X50,X51,X52,X53,X54,X55) | p(X55) | p(X53)) )),
+  inference(resolution,[],[f3812,f1141])).
+fof(f1141,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk340_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X11)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3812,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk340_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk111_14(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91) | p(X91)) )),
+  inference(subsumption_resolution,[],[f3811,f303])).
+fof(f303,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk343_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3811,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk343_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk340_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk111_14(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91) | p(X91)) )),
+  inference(subsumption_resolution,[],[f3810,f313])).
+fof(f313,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk341_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3810,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk341_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk343_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk340_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk111_14(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91) | p(X91)) )),
+  inference(subsumption_resolution,[],[f3806,f978])).
+fof(f978,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk342_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3806,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk341_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk342_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk343_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk340_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk111_14(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91) | p(X91)) )),
+  inference(resolution,[],[f1273,f958])).
+fof(f958,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk344_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1273,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk344_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk341_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk342_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk343_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk340_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk111_14(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3998,plain,(
+  spl0_27 | spl0_9 | spl0_9),
+  inference(avatar_split_clause,[],[f3991,f1366,f1366,f3996])).
+fof(f3991,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58,X56,X55,X63] : (p(X55) | p(X56) | esk81_8(X57,X58,X59,X60,X61,X62,X63,X64)) )),
+  inference(resolution,[],[f3984,f61])).
+fof(f61,axiom,(
+  ( ! [X6,X4,X2,X0,X10,X8,X7,X5,X3,X1,X9] : (~esk82_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | esk81_8(X0,X1,X2,X3,X4,X5,X6,X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3984,plain,(
+  ( ! [X39,X37,X35,X33,X43,X41,X38,X36,X34,X42,X40] : (esk82_11(X33,X34,X35,X36,X37,X38,X39,X40,X41,X42,X43) | p(X43) | p(X42)) )),
+  inference(resolution,[],[f3791,f564])).
+fof(f564,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk368_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X9)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3791,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (~esk368_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | esk82_11(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114) | p(X114)) )),
+  inference(subsumption_resolution,[],[f3790,f890])).
+fof(f890,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk370_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3790,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (esk82_11(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114) | ~esk368_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk370_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | p(X114)) )),
+  inference(subsumption_resolution,[],[f3789,f994])).
+fof(f994,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk369_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3789,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (esk82_11(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114) | ~esk368_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk369_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk370_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | p(X114)) )),
+  inference(subsumption_resolution,[],[f3785,f129])).
+fof(f129,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk372_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3785,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (esk82_11(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114) | ~esk368_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk372_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk369_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk370_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | p(X114)) )),
+  inference(resolution,[],[f62,f169])).
+fof(f169,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk371_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X10)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f62,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk371_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk82_11(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10) | ~esk368_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk372_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk369_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk370_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3834,plain,(
+  spl0_26 | spl0_9 | spl0_9),
+  inference(avatar_split_clause,[],[f3827,f1366,f1366,f3832])).
+fof(f3827,plain,(
+  ( ! [X45,X43,X41,X46,X44,X42,X40] : (p(X40) | p(X41) | esk52_5(X42,X43,X44,X45,X46)) )),
+  inference(resolution,[],[f3817,f712])).
+fof(f712,axiom,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (~esk53_8(X0,X1,X2,X3,X4,X5,X6,X7) | esk52_5(X0,X1,X2,X3,X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3817,plain,(
+  ( ! [X23,X21,X19,X17,X22,X20,X18,X16] : (esk53_8(X16,X17,X18,X19,X20,X21,X22,X23) | p(X23) | p(X22)) )),
+  inference(resolution,[],[f3773,f1256])).
+fof(f1256,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk396_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X6)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3773,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (~esk396_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | esk53_8(X104,X105,X106,X107,X108,X109,X110,X111) | p(X111)) )),
+  inference(subsumption_resolution,[],[f3772,f1235])).
+fof(f1235,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk399_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3772,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (~esk396_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | esk53_8(X104,X105,X106,X107,X108,X109,X110,X111) | ~esk399_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | p(X111)) )),
+  inference(subsumption_resolution,[],[f3771,f239])).
+fof(f239,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk397_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3771,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (~esk396_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | esk53_8(X104,X105,X106,X107,X108,X109,X110,X111) | ~esk397_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk399_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | p(X111)) )),
+  inference(subsumption_resolution,[],[f3766,f673])).
+fof(f673,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk398_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3766,plain,(
+  ( ! [X127,X123,X111,X128,X107,X116,X112,X124,X120,X129,X108,X104,X117,X113,X125,X121,X109,X105,X118,X114,X126,X122,X110,X106,X119,X115] : (~esk398_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk396_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | esk53_8(X104,X105,X106,X107,X108,X109,X110,X111) | ~esk397_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | ~esk399_26(X104,X105,X106,X107,X108,X109,X110,X111,X112,X113,X114,X115,X116,X117,X118,X119,X120,X121,X122,X123,X124,X125,X126,X127,X128,X129) | p(X111)) )),
+  inference(resolution,[],[f862,f409])).
+fof(f409,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk400_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X7)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f862,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk400_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk398_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk396_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk53_8(X0,X1,X2,X3,X4,X5,X6,X7) | ~esk397_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk399_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3759,plain,(
+  spl0_25 | spl0_9),
+  inference(avatar_split_clause,[],[f3755,f1366,f3757])).
+fof(f3755,plain,(
+  ( ! [X94,X92,X103,X101,X99,X97,X111,X109,X107,X105,X112,X95,X93,X102,X100,X98,X96,X110,X108,X106,X104] : (p(X92) | esk195_20(X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103,X104,X105,X106,X107,X108,X109,X110,X111,X112)) )),
+  inference(resolution,[],[f3749,f653])).
+fof(f653,axiom,(
+  ( ! [X6,X4,X2,X0,X14,X12,X10,X8,X21,X19,X17,X7,X5,X3,X1,X15,X13,X11,X9,X22,X20,X18,X16] : (~esk196_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | esk195_20(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3749,plain,(
+  ( ! [X80,X94,X92,X90,X88,X99,X97,X78,X87,X85,X83,X81,X95,X93,X91,X89,X100,X98,X96,X79,X86,X84,X82] : (esk196_23(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100) | p(X100)) )),
+  inference(subsumption_resolution,[],[f3748,f424])).
+fof(f424,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk257_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3748,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (esk196_23(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100) | ~esk257_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X100)) )),
+  inference(subsumption_resolution,[],[f3747,f469])).
+fof(f469,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk256_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3747,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (esk196_23(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100) | ~esk256_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk257_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X100)) )),
+  inference(subsumption_resolution,[],[f3744,f929])).
+fof(f929,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk259_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3744,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (esk196_23(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100) | ~esk256_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk257_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk259_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X100)) )),
+  inference(resolution,[],[f596,f458])).
+fof(f458,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk258_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f596,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk258_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk196_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22) | ~esk256_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk257_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk259_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3653,plain,(
+  spl0_24 | spl0_9),
+  inference(avatar_split_clause,[],[f3649,f1366,f3651])).
+fof(f3649,plain,(
+  ( ! [X21,X22,X20] : (p(X20) | esk26_2(X21,X22)) )),
+  inference(resolution,[],[f3643,f289])).
+fof(f289,axiom,(
+  ( ! [X4,X2,X0,X3,X1] : (~esk27_5(X0,X1,X2,X3,X4) | esk26_2(X0,X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3643,plain,(
+  ( ! [X80,X78,X81,X79,X82] : (esk27_5(X78,X79,X80,X81,X82) | p(X82)) )),
+  inference(subsumption_resolution,[],[f3642,f1011])).
+fof(f1011,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk421_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3642,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (esk27_5(X78,X79,X80,X81,X82) | ~esk421_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X82)) )),
+  inference(subsumption_resolution,[],[f3641,f575])).
+fof(f575,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk419_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3641,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk419_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk27_5(X78,X79,X80,X81,X82) | ~esk421_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X82)) )),
+  inference(subsumption_resolution,[],[f3638,f991])).
+fof(f991,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk420_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3638,plain,(
+  ( ! [X94,X90,X103,X99,X78,X87,X83,X95,X91,X100,X96,X79,X84,X80,X92,X88,X101,X97,X85,X81,X93,X89,X102,X98,X86,X82] : (~esk419_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | ~esk420_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | esk27_5(X78,X79,X80,X81,X82) | ~esk421_26(X78,X79,X80,X81,X82,X83,X84,X85,X86,X87,X88,X89,X90,X91,X92,X93,X94,X95,X96,X97,X98,X99,X100,X101,X102,X103) | p(X82)) )),
+  inference(resolution,[],[f197,f946])).
+fof(f946,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (esk422_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | p(X4)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f197,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X25,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk422_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk419_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | ~esk420_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25) | esk27_5(X0,X1,X2,X3,X4) | ~esk421_26(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24,X25)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f3430,plain,(
+  spl0_23 | spl0_9),
+  inference(avatar_split_clause,[],[f3426,f1366,f3428])).
+fof(f3426,plain,(
+  ( ! [X61,X59,X57,X70,X68,X66,X64,X54,X52,X50,X72,X62,X60,X58,X56,X71,X69,X67,X65,X55,X53,X51,X73,X63] : (p(X50) | esk215_23(X51,X52,X53,X54,X55,X56,X57,X58,X59,X60,X61,X62,X63,X64,X65,X66,X67,X68,X69,X70,X71,X72,X73)) )),
+  inference(resolution,[],[f3423,f630])).
+fof(f630,axiom,(
+  ( ! [X24,X4,X0,X12,X8,X21,X17,X5,X1,X13,X9,X22,X18,X6,X2,X14,X10,X23,X19,X7,X3,X15,X11,X20,X16] : (~esk216_25(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22,X23,X24) | esk215_23(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,X21,X22)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f2996,plain,(
+  ~spl0_12),
+  inference(avatar_contradiction_clause,[],[f2995])).
+fof(f2995,plain,(
+  $false | ~spl0_12),
+  inference(resolution,[],[f2987,f1320])).
+fof(f2987,plain,(
+  ( ! [X23] : (~p(X23)) ) | ~spl0_12),
+  inference(avatar_component_clause,[],[f2986])).
+fof(f1374,plain,(
+  ~spl0_9),
+  inference(avatar_contradiction_clause,[],[f1372])).
+fof(f1372,plain,(
+  $false | ~spl0_9),
+  inference(resolution,[],[f1367,f1321])).
+fof(f1321,axiom,(
+  ~p(false)),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1367,plain,(
+  ( ! [X1] : (p(X1)) ) | ~spl0_9),
+  inference(avatar_component_clause,[],[f1366])).
+fof(f1371,plain,(
+  spl0_9 | spl0_10),
+  inference(avatar_split_clause,[],[f1364,f1369,f1366])).
+fof(f1364,plain,(
+  ( ! [X0,X1] : (esk9_1(X0) | p(X1)) )),
+  inference(resolution,[],[f1004,f172])).
+fof(f172,axiom,(
+  ( ! [X0,X1] : (esk10_2(X0,X1) | p(X1)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1004,axiom,(
+  ( ! [X0,X1] : (~esk10_2(X0,X1) | esk9_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1358,plain,(
+  ~spl0_2 | spl0_8),
+  inference(avatar_split_clause,[],[f1163,f1356,f1328])).
+fof(f1328,plain,(
+  spl0_2 <=> esk3_0),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f1163,axiom,(
+  ( ! [X0] : (esk4_1(X0) | ~esk3_0 | esk5_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1350,plain,(
+  spl0_1),
+  inference(avatar_split_clause,[],[f873,f1324])).
+fof(f1324,plain,(
+  spl0_1 <=> esk1_0),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f873,axiom,(
+  esk1_0),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1349,plain,(
+  spl0_6 | ~spl0_3),
+  inference(avatar_split_clause,[],[f674,f1333,f1347])).
+fof(f1333,plain,(
+  spl0_3 <=> esk2_0),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_3])])).
+fof(f674,axiom,(
+  ( ! [X0] : (~esk2_0 | ~p(X0) | ~esk4_1(X0)) )),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1345,plain,(
+  ~spl0_1 | spl0_3),
+  inference(avatar_split_clause,[],[f635,f1333,f1324])).
+fof(f635,axiom,(
+  esk2_0 | ~esk1_0),
+  file('./p/SYO592-1.tptp',unknown)).
+fof(f1331,plain,(
+  ~spl0_1 | spl0_2),
+  inference(avatar_split_clause,[],[f14,f1328,f1324])).
+fof(f14,axiom,(
+  esk3_0 | ~esk1_0),
+  file('./p/SYO592-1.tptp',unknown)).
+% SZS output end Proof for SYO592-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 46694
+% Time elapsed: 3.087 s
+% ------------------------------
+% ------------------------------

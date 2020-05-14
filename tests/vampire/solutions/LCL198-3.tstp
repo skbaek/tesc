@@ -1,0 +1,117 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for LCL198-3
+% SZS output start Proof for LCL198-3
+fof(f1295,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f1284,f456])).
+fof(f456,plain,(
+  ( ! [X17,X16] : (theorem(or(or(not(X16),X17),X16))) )),
+  inference(resolution,[],[f386,f28])).
+fof(f28,plain,(
+  ( ! [X0,X1] : (~theorem(or(X0,X1)) | theorem(or(X1,X0))) )),
+  inference(resolution,[],[f19,f15])).
+fof(f15,plain,(
+  ( ! [X4,X3] : (~theorem(or(not(X4),X3)) | ~theorem(X4) | theorem(X3)) )),
+  inference(definition_unfolding,[],[f8,f6])).
+fof(f6,axiom,(
+  ( ! [X4,X3] : (implies(X3,X4) = or(not(X3),X4)) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f8,axiom,(
+  ( ! [X4,X3] : (~theorem(X4) | ~theorem(implies(X4,X3)) | theorem(X3)) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f19,plain,(
+  ( ! [X0,X1] : (theorem(or(not(or(X0,X1)),or(X1,X0)))) )),
+  inference(resolution,[],[f12,f7])).
+fof(f7,axiom,(
+  ( ! [X3] : (~axiom(X3) | theorem(X3)) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f12,plain,(
+  ( ! [X0,X1] : (axiom(or(not(or(X0,X1)),or(X1,X0)))) )),
+  inference(definition_unfolding,[],[f3,f6])).
+fof(f3,axiom,(
+  ( ! [X0,X1] : (axiom(implies(or(X0,X1),or(X1,X0)))) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f386,plain,(
+  ( ! [X10,X11] : (theorem(or(X10,or(not(X10),X11)))) )),
+  inference(resolution,[],[f347,f29])).
+fof(f29,plain,(
+  ( ! [X2,X0,X1] : (~theorem(or(X0,or(X1,X2))) | theorem(or(X1,or(X0,X2)))) )),
+  inference(resolution,[],[f21,f15])).
+fof(f21,plain,(
+  ( ! [X2,X0,X1] : (theorem(or(not(or(X0,or(X1,X2))),or(X1,or(X0,X2))))) )),
+  inference(resolution,[],[f13,f7])).
+fof(f13,plain,(
+  ( ! [X2,X0,X1] : (axiom(or(not(or(X0,or(X1,X2))),or(X1,or(X0,X2))))) )),
+  inference(definition_unfolding,[],[f4,f6])).
+fof(f4,axiom,(
+  ( ! [X2,X0,X1] : (axiom(implies(or(X0,or(X1,X2)),or(X1,or(X0,X2))))) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f347,plain,(
+  ( ! [X19,X20] : (theorem(or(not(X19),or(X19,X20)))) )),
+  inference(resolution,[],[f111,f18])).
+fof(f18,plain,(
+  ( ! [X0,X1] : (theorem(or(not(X0),or(X1,X0)))) )),
+  inference(resolution,[],[f11,f7])).
+fof(f11,plain,(
+  ( ! [X0,X1] : (axiom(or(not(X0),or(X1,X0)))) )),
+  inference(definition_unfolding,[],[f2,f6])).
+fof(f2,axiom,(
+  ( ! [X0,X1] : (axiom(implies(X0,or(X1,X0)))) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f111,plain,(
+  ( ! [X4,X2,X3] : (~theorem(or(X2,or(X3,X4))) | theorem(or(X2,or(X4,X3)))) )),
+  inference(resolution,[],[f57,f19])).
+fof(f57,plain,(
+  ( ! [X2,X0,X1] : (~theorem(or(not(X0),X1)) | ~theorem(or(X2,X0)) | theorem(or(X2,X1))) )),
+  inference(resolution,[],[f35,f15])).
+fof(f35,plain,(
+  ( ! [X2,X0,X1] : (theorem(or(not(or(X2,X0)),or(X2,X1))) | ~theorem(or(not(X0),X1))) )),
+  inference(resolution,[],[f26,f15])).
+fof(f26,plain,(
+  ( ! [X2,X0,X1] : (theorem(or(not(or(not(X0),X1)),or(not(or(X2,X0)),or(X2,X1))))) )),
+  inference(resolution,[],[f14,f7])).
+fof(f14,plain,(
+  ( ! [X2,X0,X1] : (axiom(or(not(or(not(X0),X1)),or(not(or(X2,X0)),or(X2,X1))))) )),
+  inference(definition_unfolding,[],[f5,f6,f6,f6])).
+fof(f5,axiom,(
+  ( ! [X2,X0,X1] : (axiom(implies(implies(X0,X1),implies(or(X2,X0),or(X2,X1))))) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f1284,plain,(
+  ~theorem(or(or(not(p),q),p))),
+  inference(resolution,[],[f446,f16])).
+fof(f16,plain,(
+  ~theorem(or(not(or(not(p),or(not(p),q))),or(not(p),q)))),
+  inference(definition_unfolding,[],[f9,f6,f6,f6])).
+fof(f9,axiom,(
+  ~theorem(implies(or(not(p),implies(p,q)),implies(p,q)))),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f446,plain,(
+  ( ! [X17,X18] : (theorem(or(not(or(not(X18),X17)),X17)) | ~theorem(or(X17,X18))) )),
+  inference(resolution,[],[f143,f110])).
+fof(f110,plain,(
+  ( ! [X0,X1] : (~theorem(or(X0,or(X1,X1))) | theorem(or(X0,X1))) )),
+  inference(resolution,[],[f57,f17])).
+fof(f17,plain,(
+  ( ! [X0] : (theorem(or(not(or(X0,X0)),X0))) )),
+  inference(resolution,[],[f10,f7])).
+fof(f10,plain,(
+  ( ! [X0] : (axiom(or(not(or(X0,X0)),X0))) )),
+  inference(definition_unfolding,[],[f1,f6])).
+fof(f1,axiom,(
+  ( ! [X0] : (axiom(implies(or(X0,X0),X0))) )),
+  file('./p/LCL198-3.tptp',unknown)).
+fof(f143,plain,(
+  ( ! [X6,X4,X5] : (theorem(or(not(or(not(X5),X6)),or(X4,X6))) | ~theorem(or(X4,X5))) )),
+  inference(resolution,[],[f52,f15])).
+fof(f52,plain,(
+  ( ! [X8,X7,X9] : (theorem(or(not(or(X7,X8)),or(not(or(not(X8),X9)),or(X7,X9))))) )),
+  inference(resolution,[],[f29,f26])).
+% SZS output end Proof for LCL198-3
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5884
+% Time elapsed: 0.025 s
+% ------------------------------
+% ------------------------------

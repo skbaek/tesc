@@ -1,0 +1,99 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GEO043-2
+% SZS output start Proof for GEO043-2
+fof(f500,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f499,f179])).
+fof(f179,plain,(
+  between(w,v,u)),
+  inference(subsumption_resolution,[],[f178,f19])).
+fof(f19,axiom,(
+  between(u,v,w)),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f178,plain,(
+  between(w,v,u) | ~between(u,v,w)),
+  inference(subsumption_resolution,[],[f176,f27])).
+fof(f27,plain,(
+  ( ! [X4,X3] : (between(X3,X4,X4)) )),
+  inference(superposition,[],[f4,f23])).
+fof(f23,plain,(
+  ( ! [X2,X0,X1] : (extension(X1,X0,X2,X2) = X0) )),
+  inference(resolution,[],[f5,f3])).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (~equidistant(X0,X1,X2,X2) | X0 = X1) )),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f5,axiom,(
+  ( ! [X0,X5,X3,X1] : (equidistant(X1,extension(X0,X1,X5,X3),X5,X3)) )),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X0,X5,X3,X1] : (between(X0,X1,extension(X0,X1,X5,X3))) )),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f176,plain,(
+  between(w,v,u) | ~between(v,w,w) | ~between(u,v,w)),
+  inference(superposition,[],[f9,f163])).
+fof(f163,plain,(
+  v = inner_pasch(u,v,w,w,v)),
+  inference(resolution,[],[f101,f27])).
+fof(f101,plain,(
+  ( ! [X0] : (~between(v,X0,w) | v = inner_pasch(u,v,w,X0,v)) )),
+  inference(resolution,[],[f28,f19])).
+fof(f28,plain,(
+  ( ! [X2,X0,X3,X1] : (~between(X3,X0,X2) | ~between(X0,X1,X2) | inner_pasch(X3,X0,X2,X1,X0) = X0) )),
+  inference(resolution,[],[f8,f7])).
+fof(f7,axiom,(
+  ( ! [X0,X1] : (~between(X0,X1,X0) | X0 = X1) )),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f8,axiom,(
+  ( ! [X0,X10,X5,X3,X1] : (between(X3,inner_pasch(X10,X3,X5,X0,X1),X1) | ~between(X1,X0,X5) | ~between(X10,X3,X5)) )),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f9,axiom,(
+  ( ! [X0,X10,X5,X3,X1] : (between(X0,inner_pasch(X10,X3,X5,X0,X1),X10) | ~between(X1,X0,X5) | ~between(X10,X3,X5)) )),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f499,plain,(
+  ~between(w,v,u)),
+  inference(subsumption_resolution,[],[f498,f214])).
+fof(f214,plain,(
+  between(x,w,u)),
+  inference(subsumption_resolution,[],[f213,f20])).
+fof(f20,axiom,(
+  between(u,w,x)),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f213,plain,(
+  between(x,w,u) | ~between(u,w,x)),
+  inference(subsumption_resolution,[],[f211,f27])).
+fof(f211,plain,(
+  between(x,w,u) | ~between(w,x,x) | ~between(u,w,x)),
+  inference(superposition,[],[f9,f193])).
+fof(f193,plain,(
+  w = inner_pasch(u,w,x,x,w)),
+  inference(resolution,[],[f102,f27])).
+fof(f102,plain,(
+  ( ! [X1] : (~between(w,X1,x) | w = inner_pasch(u,w,x,X1,w)) )),
+  inference(resolution,[],[f28,f20])).
+fof(f498,plain,(
+  ~between(x,w,u) | ~between(w,v,u)),
+  inference(subsumption_resolution,[],[f497,f21])).
+fof(f21,axiom,(
+  ~between(v,w,x)),
+  file('./p/GEO043-2.tptp',unknown)).
+fof(f497,plain,(
+  between(v,w,x) | ~between(x,w,u) | ~between(w,v,u)),
+  inference(superposition,[],[f8,f474])).
+fof(f474,plain,(
+  w = inner_pasch(w,v,u,w,x)),
+  inference(resolution,[],[f187,f214])).
+fof(f187,plain,(
+  ( ! [X0] : (~between(X0,w,u) | w = inner_pasch(w,v,u,w,X0)) )),
+  inference(resolution,[],[f179,f30])).
+fof(f30,plain,(
+  ( ! [X2,X0,X3,X1] : (~between(X1,X3,X2) | ~between(X0,X1,X2) | inner_pasch(X1,X3,X2,X1,X0) = X1) )),
+  inference(resolution,[],[f9,f7])).
+% SZS output end Proof for GEO043-2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5628
+% Time elapsed: 0.016 s
+% ------------------------------
+% ------------------------------

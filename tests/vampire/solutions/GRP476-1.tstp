@@ -1,0 +1,678 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP476-1
+% SZS output start Proof for GRP476-1
+fof(f29341,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f29340,f8867])).
+fof(f8867,plain,(
+  ( ! [X0,X3,X1] : (divide(divide(X3,divide(X0,X1)),divide(X1,X0)) = X3) )),
+  inference(backward_demodulation,[],[f8859,f6345])).
+fof(f6345,plain,(
+  ( ! [X0,X3,X1] : (divide(inverse(divide(divide(X0,X1),X3)),divide(X1,X0)) = X3) )),
+  inference(forward_demodulation,[],[f6160,f3479])).
+fof(f3479,plain,(
+  ( ! [X982,X985,X983] : (divide(X983,X982) = divide(divide(X983,X982),inverse(divide(X985,X985)))) )),
+  inference(superposition,[],[f1754,f2882])).
+fof(f2882,plain,(
+  ( ! [X45,X44] : (divide(X44,X44) = divide(X45,X45)) )),
+  inference(superposition,[],[f105,f2555])).
+fof(f2555,plain,(
+  ( ! [X187,X185,X186,X184] : (divide(inverse(divide(divide(divide(X184,X185),X186),divide(X187,X187))),divide(X185,X184)) = X186) )),
+  inference(forward_demodulation,[],[f2536,f105])).
+fof(f2536,plain,(
+  ( ! [X187,X185,X182,X186,X184,X183,X181] : (divide(inverse(divide(divide(divide(X184,X185),X186),divide(X187,X187))),divide(X185,X184)) = divide(divide(inverse(divide(divide(divide(X181,X182),X183),X186)),divide(X182,X181)),X183)) )),
+  inference(superposition,[],[f105,f1443])).
+fof(f1443,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (inverse(divide(X3,X2)) = inverse(divide(X3,divide(inverse(divide(divide(divide(X0,X1),X2),divide(X4,X4))),divide(X1,X0))))) )),
+  inference(superposition,[],[f1249,f1])).
+fof(f1,axiom,(
+  ( ! [X2,X0,X3,X1] : (divide(inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2))),divide(X1,X0)) = X3) )),
+  file('./p/GRP476-1.tptp',unknown)).
+fof(f1249,plain,(
+  ( ! [X61,X62,X60,X58] : (inverse(X61) = inverse(divide(divide(inverse(divide(X60,X61)),X62),divide(inverse(divide(X60,divide(X58,X58))),X62)))) )),
+  inference(forward_demodulation,[],[f1248,f1])).
+fof(f1248,plain,(
+  ( ! [X61,X57,X62,X60,X58,X56,X55] : (inverse(X61) = inverse(divide(divide(inverse(divide(X60,X61)),X62),divide(inverse(divide(X60,divide(X58,divide(inverse(divide(divide(divide(X56,X55),X57),divide(X58,X57))),divide(X55,X56))))),X62)))) )),
+  inference(forward_demodulation,[],[f1163,f148])).
+fof(f148,plain,(
+  ( ! [X24,X23,X21,X25,X22,X20] : (inverse(divide(divide(inverse(divide(divide(divide(X21,X20),X23),divide(X22,X23))),X24),divide(X25,X24))) = inverse(divide(X22,divide(X25,divide(X20,X21))))) )),
+  inference(backward_demodulation,[],[f142,f23])).
+fof(f23,plain,(
+  ( ! [X26,X24,X23,X21,X19,X27,X25,X22,X20,X18] : (divide(inverse(divide(divide(divide(X26,X27),divide(divide(X19,X18),inverse(divide(divide(divide(X18,X19),divide(X20,X21)),X22)))),X25)),divide(X27,X26)) = inverse(divide(divide(inverse(divide(divide(divide(X21,X20),X23),divide(X22,X23))),X24),divide(X25,X24)))) )),
+  inference(superposition,[],[f6,f6])).
+fof(f6,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2))) = divide(inverse(divide(divide(divide(X4,X5),divide(X1,X0)),X3)),divide(X5,X4))) )),
+  inference(superposition,[],[f1,f1])).
+fof(f142,plain,(
+  ( ! [X158,X156,X154,X159,X157,X155,X160] : (divide(inverse(divide(divide(divide(X159,X160),divide(divide(X155,X154),inverse(divide(divide(divide(X154,X155),X156),X157)))),X158)),divide(X160,X159)) = inverse(divide(X157,divide(X158,X156)))) )),
+  inference(superposition,[],[f6,f105])).
+fof(f1163,plain,(
+  ( ! [X61,X59,X57,X62,X60,X58,X56,X55,X63] : (inverse(X61) = inverse(divide(divide(inverse(divide(X60,X61)),X62),divide(inverse(divide(divide(inverse(divide(divide(divide(divide(X55,X56),inverse(divide(divide(divide(X56,X55),X57),divide(X58,X57)))),X59),divide(X60,X59))),X63),divide(X58,X63))),X62)))) )),
+  inference(superposition,[],[f995,f7])).
+fof(f7,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (divide(inverse(divide(divide(divide(divide(X1,X0),inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2)))),X4),divide(X5,X4))),X3) = X5) )),
+  inference(superposition,[],[f1,f1])).
+fof(f995,plain,(
+  ( ! [X6,X12,X8,X7,X13] : (inverse(X12) = inverse(divide(divide(inverse(divide(divide(X6,X8),X12)),X13),divide(inverse(divide(divide(X6,X7),divide(X8,X7))),X13)))) )),
+  inference(forward_demodulation,[],[f952,f1])).
+fof(f952,plain,(
+  ( ! [X6,X12,X10,X8,X7,X13,X11,X9] : (inverse(X12) = inverse(divide(divide(inverse(divide(divide(divide(inverse(divide(divide(divide(X10,X9),X11),divide(X6,X11))),divide(X9,X10)),X8),X12)),X13),divide(inverse(divide(divide(X6,X7),divide(X8,X7))),X13)))) )),
+  inference(superposition,[],[f218,f5])).
+fof(f5,plain,(
+  ( ! [X4,X2,X0,X5,X3,X1] : (divide(inverse(divide(divide(X3,X4),divide(X5,X4))),divide(divide(X1,X0),inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2))))) = X5) )),
+  inference(superposition,[],[f1,f1])).
+fof(f218,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (inverse(X3) = inverse(divide(divide(inverse(divide(divide(divide(X0,X1),divide(X2,divide(X1,X0))),X3)),X4),divide(X2,X4)))) )),
+  inference(superposition,[],[f67,f52])).
+fof(f52,plain,(
+  ( ! [X6,X4,X0,X5,X1] : (divide(divide(inverse(divide(divide(divide(X5,X6),divide(X1,X0)),X4)),divide(X6,X5)),divide(X1,X0)) = X4) )),
+  inference(backward_demodulation,[],[f38,f34])).
+fof(f34,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (inverse(divide(divide(divide(X3,X2),X7),divide(divide(X4,divide(X2,X3)),X7))) = divide(divide(inverse(divide(divide(divide(X5,X6),divide(X1,X0)),X4)),divide(X6,X5)),divide(X1,X0))) )),
+  inference(superposition,[],[f6,f6])).
+fof(f38,plain,(
+  ( ! [X4,X2,X5,X3] : (inverse(divide(divide(divide(X3,X2),X5),divide(divide(X4,divide(X2,X3)),X5))) = X4) )),
+  inference(superposition,[],[f6,f1])).
+fof(f67,plain,(
+  ( ! [X6,X7,X5,X11] : (inverse(divide(divide(X5,X6),divide(X7,X6))) = inverse(divide(divide(X5,X11),divide(X7,X11)))) )),
+  inference(forward_demodulation,[],[f60,f1])).
+fof(f60,plain,(
+  ( ! [X6,X10,X8,X7,X5,X11,X9] : (inverse(divide(divide(X5,X6),divide(X7,X6))) = inverse(divide(divide(divide(inverse(divide(divide(divide(X9,X8),X10),divide(X5,X10))),divide(X8,X9)),X11),divide(X7,X11)))) )),
+  inference(superposition,[],[f38,f5])).
+fof(f105,plain,(
+  ( ! [X6,X7,X5,X3] : (divide(divide(inverse(divide(divide(divide(X6,X7),X3),X5)),divide(X7,X6)),X3) = X5) )),
+  inference(forward_demodulation,[],[f87,f1])).
+fof(f87,plain,(
+  ( ! [X6,X2,X0,X7,X5,X3,X1] : (divide(divide(inverse(divide(divide(divide(X6,X7),divide(inverse(divide(divide(divide(X1,X0),X2),divide(X3,X2))),divide(X0,X1))),X5)),divide(X7,X6)),X3) = X5) )),
+  inference(superposition,[],[f7,f6])).
+fof(f1754,plain,(
+  ( ! [X745,X741,X743,X744,X740] : (divide(X740,X741) = divide(divide(X743,X744),inverse(divide(divide(divide(X744,X743),X745),divide(divide(X741,X740),X745))))) )),
+  inference(forward_demodulation,[],[f1674,f493])).
+fof(f493,plain,(
+  ( ! [X57,X54,X52,X56,X55,X53,X51] : (divide(divide(inverse(X54),divide(divide(X55,X56),inverse(divide(divide(divide(X56,X55),X57),divide(inverse(divide(divide(divide(X51,X52),X53),X54)),divide(X52,X51)))))),X57) = X53) )),
+  inference(superposition,[],[f113,f105])).
+fof(f113,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (divide(divide(inverse(divide(X3,X4)),divide(divide(X1,X0),inverse(divide(divide(divide(X0,X1),X2),X3)))),X2) = X4) )),
+  inference(superposition,[],[f105,f105])).
+fof(f1674,plain,(
+  ( ! [X738,X745,X747,X741,X743,X739,X748,X744,X746,X740,X742] : (divide(divide(X743,X744),inverse(divide(divide(divide(X744,X743),X745),divide(divide(X741,X740),X745)))) = divide(divide(inverse(X742),divide(divide(X746,X747),inverse(divide(divide(divide(X747,X746),X748),divide(inverse(divide(divide(divide(X738,X739),divide(X740,X741)),X742)),divide(X739,X738)))))),X748)) )),
+  inference(superposition,[],[f113,f42])).
+fof(f42,plain,(
+  ( ! [X14,X21,X19,X17,X15,X22,X20,X18] : (divide(divide(inverse(divide(divide(divide(X18,X19),divide(X15,X14)),X17)),divide(X19,X18)),divide(divide(X20,X21),inverse(divide(divide(divide(X21,X20),X22),divide(divide(X14,X15),X22))))) = X17) )),
+  inference(superposition,[],[f5,f6])).
+fof(f6160,plain,(
+  ( ! [X2,X0,X3,X1] : (divide(inverse(divide(divide(divide(X0,X1),inverse(divide(X2,X2))),X3)),divide(X1,X0)) = X3) )),
+  inference(superposition,[],[f3479,f105])).
+fof(f8859,plain,(
+  ( ! [X385,X388,X386] : (inverse(divide(divide(X385,X386),X388)) = divide(X388,divide(X385,X386))) )),
+  inference(forward_demodulation,[],[f8808,f6345])).
+fof(f8808,plain,(
+  ( ! [X389,X385,X388,X390,X386] : (inverse(divide(divide(X385,X386),X388)) = divide(inverse(divide(divide(X389,X390),divide(X388,divide(X385,X386)))),divide(X390,X389))) )),
+  inference(backward_demodulation,[],[f8742,f6843])).
+fof(f6843,plain,(
+  ( ! [X389,X385,X388,X390,X386] : (inverse(divide(divide(X385,X386),X388)) = divide(inverse(divide(divide(divide(X389,X390),divide(X386,X385)),X388)),divide(X390,X389))) )),
+  inference(forward_demodulation,[],[f6842,f6365])).
+fof(f6365,plain,(
+  ( ! [X26,X21,X25,X20] : (divide(X21,X20) = divide(divide(X25,X26),inverse(divide(divide(X26,X25),divide(X20,X21))))) )),
+  inference(backward_demodulation,[],[f6363,f1920])).
+fof(f1920,plain,(
+  ( ! [X26,X24,X23,X21,X25,X22,X20] : (divide(X21,X20) = divide(divide(X25,X26),inverse(divide(divide(divide(X26,X25),inverse(divide(divide(divide(X21,X20),X22),divide(divide(X23,X24),X22)))),divide(X24,X23))))) )),
+  inference(superposition,[],[f1754,f1754])).
+fof(f6363,plain,(
+  ( ! [X118,X116,X114,X120,X119,X117,X115] : (inverse(divide(divide(divide(X119,X120),inverse(divide(divide(divide(X115,X114),X116),divide(divide(X117,X118),X116)))),divide(X118,X117))) = inverse(divide(divide(X119,X120),divide(X114,X115)))) )),
+  inference(backward_demodulation,[],[f6362,f1942])).
+fof(f1942,plain,(
+  ( ! [X121,X118,X116,X114,X122,X120,X119,X117,X115] : (divide(inverse(divide(divide(divide(X121,X122),divide(X120,X119)),divide(X114,X115))),divide(X122,X121)) = inverse(divide(divide(divide(X119,X120),inverse(divide(divide(divide(X115,X114),X116),divide(divide(X117,X118),X116)))),divide(X118,X117)))) )),
+  inference(superposition,[],[f6,f1754])).
+fof(f6362,plain,(
+  ( ! [X158,X163,X161,X159,X164,X162] : (divide(inverse(divide(divide(divide(X163,X164),divide(X162,X161)),divide(X158,X159))),divide(X164,X163)) = inverse(divide(divide(X161,X162),divide(X158,X159)))) )),
+  inference(forward_demodulation,[],[f6187,f3479])).
+fof(f6187,plain,(
+  ( ! [X158,X163,X161,X159,X164,X162,X160] : (divide(inverse(divide(divide(divide(X163,X164),divide(X162,X161)),divide(X158,X159))),divide(X164,X163)) = inverse(divide(divide(divide(X161,X162),inverse(divide(X160,X160))),divide(X158,X159)))) )),
+  inference(superposition,[],[f6,f3479])).
+fof(f6842,plain,(
+  ( ! [X389,X391,X385,X388,X390,X386,X392] : (inverse(divide(divide(X385,X386),X388)) = divide(inverse(divide(divide(divide(X389,X390),divide(divide(X391,X392),inverse(divide(divide(X392,X391),divide(X385,X386))))),X388)),divide(X390,X389))) )),
+  inference(forward_demodulation,[],[f6841,f6367])).
+fof(f6367,plain,(
+  ( ! [X263,X259,X265,X258,X264] : (inverse(divide(divide(divide(X263,X264),X265),divide(divide(X258,X259),X265))) = inverse(divide(divide(X263,X264),divide(X258,X259)))) )),
+  inference(backward_demodulation,[],[f6363,f1958])).
+fof(f1958,plain,(
+  ( ! [X261,X263,X259,X265,X260,X262,X258,X264] : (inverse(divide(divide(divide(X263,X264),X265),divide(divide(X258,X259),X265))) = inverse(divide(divide(divide(X263,X264),inverse(divide(divide(divide(X259,X258),X260),divide(divide(X261,X262),X260)))),divide(X262,X261)))) )),
+  inference(superposition,[],[f39,f1754])).
+fof(f39,plain,(
+  ( ! [X12,X10,X8,X11,X9] : (inverse(divide(divide(divide(X9,X8),X11),divide(X10,X11))) = inverse(divide(divide(divide(X9,X8),X12),divide(X10,X12)))) )),
+  inference(superposition,[],[f6,f6])).
+fof(f6841,plain,(
+  ( ! [X389,X391,X385,X393,X388,X390,X386,X392] : (divide(inverse(divide(divide(divide(X389,X390),divide(divide(X391,X392),inverse(divide(divide(divide(X392,X391),X393),divide(divide(X385,X386),X393))))),X388)),divide(X390,X389)) = inverse(divide(divide(X385,X386),X388))) )),
+  inference(forward_demodulation,[],[f6214,f6116])).
+fof(f6116,plain,(
+  ( ! [X6,X5] : (divide(X5,inverse(divide(X6,X6))) = X5) )),
+  inference(superposition,[],[f3479,f7])).
+fof(f6214,plain,(
+  ( ! [X389,X391,X385,X387,X393,X388,X390,X386,X392] : (divide(inverse(divide(divide(divide(X389,X390),divide(divide(X391,X392),inverse(divide(divide(divide(X392,X391),X393),divide(divide(X385,X386),X393))))),X388)),divide(X390,X389)) = inverse(divide(divide(X385,X386),divide(X388,inverse(divide(X387,X387)))))) )),
+  inference(superposition,[],[f19,f3479])).
+fof(f19,plain,(
+  ( ! [X14,X12,X10,X8,X15,X13,X11,X9] : (inverse(divide(divide(X8,X9),divide(X10,X9))) = divide(inverse(divide(divide(divide(X14,X15),divide(divide(X11,X12),inverse(divide(divide(divide(X12,X11),X13),divide(X8,X13))))),X10)),divide(X15,X14))) )),
+  inference(superposition,[],[f1,f5])).
+fof(f8742,plain,(
+  ( ! [X30,X33,X29,X38,X32] : (inverse(divide(divide(divide(X30,X29),divide(X32,X33)),X38)) = inverse(divide(divide(X30,X29),divide(X38,divide(X33,X32))))) )),
+  inference(backward_demodulation,[],[f8565,f8481])).
+fof(f8481,plain,(
+  ( ! [X30,X33,X29,X38,X32] : (divide(inverse(divide(divide(X33,X32),X38)),divide(X30,X29)) = inverse(divide(divide(divide(X30,X29),divide(X32,X33)),X38))) )),
+  inference(backward_demodulation,[],[f8480,f5988])).
+fof(f5988,plain,(
+  ( ! [X30,X37,X35,X33,X29,X38,X34,X32] : (divide(inverse(divide(divide(X33,X32),X38)),divide(X30,X29)) = inverse(divide(divide(divide(divide(X34,X35),inverse(divide(divide(divide(X35,X34),divide(X29,X30)),divide(X32,X33)))),X37),divide(X38,X37)))) )),
+  inference(forward_demodulation,[],[f5719,f61])).
+fof(f61,plain,(
+  ( ! [X14,X12,X17,X15,X13,X18,X16] : (inverse(divide(divide(divide(X12,X13),divide(X14,X15)),X16)) = inverse(divide(divide(divide(X12,X13),X18),divide(inverse(divide(divide(divide(X15,X14),X17),divide(X16,X17))),X18)))) )),
+  inference(superposition,[],[f38,f6])).
+fof(f5719,plain,(
+  ( ! [X30,X37,X35,X33,X31,X29,X38,X36,X34,X32] : (inverse(divide(divide(divide(divide(X34,X35),inverse(divide(divide(divide(X35,X34),X36),divide(inverse(divide(divide(divide(X30,X29),X31),divide(divide(X32,X33),X31))),X36)))),X37),divide(X38,X37))) = divide(inverse(divide(divide(X33,X32),X38)),divide(X30,X29))) )),
+  inference(superposition,[],[f31,f1754])).
+fof(f31,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (inverse(divide(divide(divide(divide(X1,X0),inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2)))),X4),divide(X5,X4))) = divide(inverse(divide(divide(divide(X6,X7),X3),X5)),divide(X7,X6))) )),
+  inference(superposition,[],[f6,f1])).
+fof(f8480,plain,(
+  ( ! [X24,X21,X19,X25,X22,X20,X18] : (inverse(divide(divide(divide(divide(X19,X18),inverse(divide(divide(divide(X18,X19),divide(X20,X21)),X22))),X24),divide(X25,X24))) = inverse(divide(divide(divide(X21,X20),X22),X25))) )),
+  inference(backward_demodulation,[],[f8479,f7202])).
+fof(f7202,plain,(
+  ( ! [X26,X24,X21,X19,X27,X25,X22,X20,X18] : (inverse(divide(divide(divide(divide(X19,X18),inverse(divide(divide(divide(X18,X19),divide(X20,X21)),X22))),X24),divide(X25,X24))) = divide(inverse(divide(divide(divide(X26,X27),inverse(divide(divide(X21,X20),X22))),X25)),divide(X27,X26))) )),
+  inference(backward_demodulation,[],[f6845,f33])).
+fof(f33,plain,(
+  ( ! [X26,X24,X23,X21,X19,X27,X25,X22,X20,X18] : (inverse(divide(divide(divide(divide(X19,X18),inverse(divide(divide(divide(X18,X19),divide(X20,X21)),X22))),X24),divide(X25,X24))) = divide(inverse(divide(divide(divide(X26,X27),inverse(divide(divide(divide(X21,X20),X23),divide(X22,X23)))),X25)),divide(X27,X26))) )),
+  inference(superposition,[],[f6,f6])).
+fof(f6845,plain,(
+  ( ! [X2,X0,X3,X1] : (inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2))) = inverse(divide(divide(X0,X1),X3))) )),
+  inference(backward_demodulation,[],[f6843,f6])).
+fof(f8479,plain,(
+  ( ! [X92,X90,X87,X93,X91,X89] : (inverse(divide(divide(divide(X90,X91),X87),X89)) = divide(inverse(divide(divide(divide(X92,X93),inverse(divide(divide(X90,X91),X87))),X89)),divide(X93,X92))) )),
+  inference(forward_demodulation,[],[f8478,f6845])).
+fof(f8478,plain,(
+  ( ! [X92,X90,X87,X85,X93,X91,X89,X84] : (inverse(divide(divide(divide(X90,X91),X87),X89)) = divide(inverse(divide(divide(divide(X92,X93),inverse(divide(divide(divide(X90,X91),divide(X85,X84)),divide(X87,divide(X85,X84))))),X89)),divide(X93,X92))) )),
+  inference(forward_demodulation,[],[f8465,f6420])).
+fof(f6420,plain,(
+  ( ! [X724,X726,X722,X727,X723] : (divide(divide(inverse(divide(X727,X726)),divide(X723,X722)),X724) = inverse(divide(divide(X724,divide(X722,X723)),divide(X726,X727)))) )),
+  inference(backward_demodulation,[],[f6367,f2016])).
+fof(f2016,plain,(
+  ( ! [X724,X726,X722,X725,X727,X723] : (inverse(divide(divide(divide(X724,divide(X722,X723)),X725),divide(divide(X726,X727),X725))) = divide(divide(inverse(divide(X727,X726)),divide(X723,X722)),X724)) )),
+  inference(superposition,[],[f105,f1754])).
+fof(f8465,plain,(
+  ( ! [X92,X90,X87,X85,X93,X91,X89,X84] : (inverse(divide(divide(divide(X90,X91),X87),X89)) = divide(inverse(divide(divide(divide(X92,X93),divide(divide(inverse(divide(divide(X85,X84),X87)),divide(X84,X85)),divide(X90,X91))),X89)),divide(X93,X92))) )),
+  inference(backward_demodulation,[],[f8462,f8372])).
+fof(f8372,plain,(
+  ( ! [X92,X90,X87,X85,X93,X91,X89,X84] : (inverse(divide(divide(divide(X90,X91),X87),X89)) = divide(inverse(divide(divide(divide(X92,X93),divide(X91,X90)),inverse(divide(divide(divide(X84,X85),inverse(divide(divide(X85,X84),X87))),X89)))),divide(X93,X92))) )),
+  inference(forward_demodulation,[],[f7233,f6845])).
+fof(f7233,plain,(
+  ( ! [X92,X90,X88,X87,X85,X93,X91,X89,X84] : (inverse(divide(divide(divide(X90,X91),X87),X89)) = divide(inverse(divide(divide(divide(X92,X93),divide(X91,X90)),inverse(divide(divide(divide(divide(X84,X85),inverse(divide(divide(X85,X84),X87))),X88),divide(X89,X88))))),divide(X93,X92))) )),
+  inference(backward_demodulation,[],[f6845,f98])).
+fof(f98,plain,(
+  ( ! [X92,X90,X88,X87,X85,X93,X91,X89,X86,X84] : (divide(inverse(divide(divide(divide(X92,X93),divide(X91,X90)),inverse(divide(divide(divide(divide(X84,X85),inverse(divide(divide(divide(X85,X84),X86),divide(X87,X86)))),X88),divide(X89,X88))))),divide(X93,X92)) = inverse(divide(divide(divide(X90,X91),X87),X89))) )),
+  inference(superposition,[],[f6,f7])).
+fof(f8462,plain,(
+  ( ! [X14,X17,X15,X20,X18,X16] : (inverse(divide(divide(X20,divide(X15,X14)),inverse(divide(divide(X17,X16),X18)))) = inverse(divide(divide(X20,divide(divide(X16,X17),divide(X14,X15))),X18))) )),
+  inference(forward_demodulation,[],[f7257,f8388])).
+fof(f8388,plain,(
+  ( ! [X26,X24,X23,X25,X22] : (inverse(divide(divide(X25,divide(X23,X22)),X24)) = inverse(divide(divide(X25,X26),divide(inverse(divide(divide(X22,X23),X24)),X26)))) )),
+  inference(backward_demodulation,[],[f8384,f1435])).
+fof(f1435,plain,(
+  ( ! [X26,X24,X23,X27,X25,X22] : (inverse(divide(divide(X25,divide(X23,X22)),X24)) = inverse(divide(divide(X25,X26),divide(inverse(divide(divide(divide(X22,X23),X24),divide(X27,X27))),X26)))) )),
+  inference(superposition,[],[f1249,f38])).
+fof(f8384,plain,(
+  ( ! [X277,X275,X276,X274] : (inverse(divide(divide(divide(X274,X275),X276),divide(X277,X277))) = inverse(divide(divide(X274,X275),X276))) )),
+  inference(backward_demodulation,[],[f7251,f2546])).
+fof(f2546,plain,(
+  ( ! [X277,X279,X273,X275,X276,X278,X274] : (inverse(divide(divide(divide(X274,X275),X276),divide(X277,X277))) = divide(inverse(divide(X273,X276)),divide(divide(X278,X279),inverse(divide(divide(divide(X279,X278),divide(X275,X274)),X273))))) )),
+  inference(superposition,[],[f68,f1443])).
+fof(f68,plain,(
+  ( ! [X6,X4,X0,X5,X3,X1] : (divide(inverse(divide(X3,divide(X4,divide(X1,X0)))),divide(divide(X5,X6),inverse(divide(divide(divide(X6,X5),divide(X1,X0)),X3)))) = X4) )),
+  inference(backward_demodulation,[],[f61,f8])).
+fof(f8,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (divide(inverse(divide(X3,divide(X4,divide(X1,X0)))),divide(divide(X5,X6),inverse(divide(divide(divide(X6,X5),X7),divide(inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2))),X7))))) = X4) )),
+  inference(superposition,[],[f5,f1])).
+fof(f7251,plain,(
+  ( ! [X187,X185,X190,X188,X186,X184] : (divide(inverse(divide(X188,X190)),divide(divide(X185,X184),inverse(divide(divide(divide(X184,X185),divide(X186,X187)),X188)))) = inverse(divide(divide(X187,X186),X190))) )),
+  inference(backward_demodulation,[],[f6845,f146])).
+fof(f146,plain,(
+  ( ! [X189,X187,X185,X190,X188,X186,X184] : (inverse(divide(divide(divide(X187,X186),X189),divide(X190,X189))) = divide(inverse(divide(X188,X190)),divide(divide(X185,X184),inverse(divide(divide(divide(X184,X185),divide(X186,X187)),X188))))) )),
+  inference(superposition,[],[f6,f105])).
+fof(f7257,plain,(
+  ( ! [X14,X21,X17,X15,X20,X18,X16] : (inverse(divide(divide(X20,X21),divide(inverse(divide(divide(divide(X14,X15),divide(X16,X17)),X18)),X21))) = inverse(divide(divide(X20,divide(X15,X14)),inverse(divide(divide(X17,X16),X18))))) )),
+  inference(backward_demodulation,[],[f6845,f214])).
+fof(f214,plain,(
+  ( ! [X14,X21,X19,X17,X15,X20,X18,X16] : (inverse(divide(divide(X20,X21),divide(inverse(divide(divide(divide(X14,X15),divide(X16,X17)),X18)),X21))) = inverse(divide(divide(X20,divide(X15,X14)),inverse(divide(divide(divide(X17,X16),X19),divide(X18,X19)))))) )),
+  inference(superposition,[],[f67,f6])).
+fof(f8565,plain,(
+  ( ! [X21,X17,X20,X18] : (inverse(divide(divide(X18,X17),divide(X20,X21))) = divide(inverse(divide(X21,X20)),divide(X18,X17))) )),
+  inference(backward_demodulation,[],[f8557,f6406])).
+fof(f6406,plain,(
+  ( ! [X21,X17,X22,X20,X18] : (divide(inverse(divide(divide(X21,X20),divide(X22,X22))),divide(X18,X17)) = inverse(divide(divide(X18,X17),divide(X20,X21)))) )),
+  inference(backward_demodulation,[],[f6367,f2849])).
+fof(f2849,plain,(
+  ( ! [X21,X19,X17,X22,X20,X18] : (inverse(divide(divide(divide(X18,X17),X19),divide(divide(X20,X21),X19))) = divide(inverse(divide(divide(X21,X20),divide(X22,X22))),divide(X18,X17))) )),
+  inference(superposition,[],[f2555,f1754])).
+fof(f8557,plain,(
+  ( ! [X505,X506] : (inverse(X506) = inverse(divide(X506,divide(X505,X505)))) )),
+  inference(backward_demodulation,[],[f8491,f3395])).
+fof(f3395,plain,(
+  ( ! [X505,X507,X508,X504,X506] : (inverse(X506) = inverse(divide(divide(inverse(divide(divide(divide(X507,X508),divide(X504,divide(X508,X507))),X506)),X504),divide(X505,X505)))) )),
+  inference(superposition,[],[f218,f2882])).
+fof(f8491,plain,(
+  ( ! [X6,X7,X5,X3] : (divide(inverse(divide(divide(divide(X7,X6),divide(X3,divide(X6,X7))),X5)),X3) = X5) )),
+  inference(backward_demodulation,[],[f8481,f105])).
+fof(f29340,plain,(
+  ( ! [X14,X15] : (a2 != divide(divide(a2,divide(X14,X15)),divide(X15,X14))) )),
+  inference(forward_demodulation,[],[f29320,f12830])).
+fof(f12830,plain,(
+  ( ! [X139] : (inverse(inverse(X139)) = X139) )),
+  inference(backward_demodulation,[],[f12813,f9782])).
+fof(f9782,plain,(
+  ( ! [X132,X135,X139] : (inverse(divide(X135,divide(X139,divide(divide(X132,X132),X135)))) = X139) )),
+  inference(forward_demodulation,[],[f9781,f9727])).
+fof(f9727,plain,(
+  ( ! [X39,X35,X36,X34] : (divide(divide(X35,X36),X34) = divide(divide(X35,X39),divide(X34,divide(X39,X36)))) )),
+  inference(forward_demodulation,[],[f9726,f9026])).
+fof(f9026,plain,(
+  ( ! [X4,X5] : (divide(X5,X4) = inverse(divide(X4,X5))) )),
+  inference(backward_demodulation,[],[f8867,f6346])).
+fof(f6346,plain,(
+  ( ! [X4,X0,X5,X1] : (divide(X5,X4) = inverse(divide(divide(divide(X4,X5),divide(X1,X0)),divide(X0,X1)))) )),
+  inference(backward_demodulation,[],[f6345,f5009])).
+fof(f5009,plain,(
+  ( ! [X6,X4,X0,X7,X5,X1] : (inverse(divide(divide(divide(X4,X5),divide(X1,X0)),divide(X0,X1))) = divide(inverse(divide(divide(X6,X7),divide(X5,X4))),divide(X7,X6))) )),
+  inference(forward_demodulation,[],[f4836,f3479])).
+fof(f4836,plain,(
+  ( ! [X6,X4,X0,X7,X5,X3,X1] : (inverse(divide(divide(divide(X4,X5),divide(X1,X0)),divide(X0,X1))) = divide(inverse(divide(divide(divide(X6,X7),divide(X5,X4)),inverse(divide(X3,X3)))),divide(X7,X6))) )),
+  inference(superposition,[],[f24,f2882])).
+fof(f24,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (inverse(divide(divide(divide(X4,X5),divide(X1,X0)),X3)) = divide(inverse(divide(divide(divide(X6,X7),divide(X5,X4)),inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2))))),divide(X7,X6))) )),
+  inference(superposition,[],[f6,f1])).
+fof(f9726,plain,(
+  ( ! [X39,X35,X36,X34] : (inverse(divide(X34,divide(X35,X36))) = divide(divide(X35,X39),divide(X34,divide(X39,X36)))) )),
+  inference(forward_demodulation,[],[f9725,f9026])).
+fof(f9725,plain,(
+  ( ! [X39,X35,X36,X34] : (inverse(divide(X34,divide(X35,X36))) = divide(inverse(divide(X39,X35)),divide(X34,divide(X39,X36)))) )),
+  inference(forward_demodulation,[],[f9724,f8989])).
+fof(f8989,plain,(
+  ( ! [X26,X21,X25,X20] : (divide(X21,X20) = divide(divide(X25,X26),divide(divide(X20,X21),divide(X26,X25)))) )),
+  inference(backward_demodulation,[],[f8859,f6365])).
+fof(f9724,plain,(
+  ( ! [X39,X35,X41,X36,X34,X40] : (inverse(divide(X34,divide(X35,X36))) = divide(inverse(divide(X39,X35)),divide(divide(X40,X41),divide(divide(divide(X39,X36),X34),divide(X41,X40))))) )),
+  inference(forward_demodulation,[],[f9019,f9026])).
+fof(f9019,plain,(
+  ( ! [X39,X35,X41,X36,X34,X40] : (inverse(divide(X34,divide(X35,X36))) = divide(inverse(divide(X39,X35)),divide(divide(X40,X41),divide(inverse(divide(X34,divide(X39,X36))),divide(X41,X40))))) )),
+  inference(backward_demodulation,[],[f8859,f8731])).
+fof(f8731,plain,(
+  ( ! [X39,X35,X41,X36,X34,X40] : (inverse(divide(X34,divide(X35,X36))) = divide(inverse(divide(X39,X35)),divide(divide(X40,X41),inverse(divide(divide(X41,X40),inverse(divide(X34,divide(X39,X36)))))))) )),
+  inference(backward_demodulation,[],[f8671,f330])).
+fof(f330,plain,(
+  ( ! [X39,X37,X35,X41,X38,X36,X34,X40] : (inverse(divide(X34,divide(X35,X36))) = divide(inverse(divide(X39,X35)),divide(divide(X40,X41),inverse(divide(divide(divide(X41,X40),divide(divide(X37,X38),inverse(divide(divide(divide(X38,X37),X36),X34)))),X39))))) )),
+  inference(superposition,[],[f107,f107])).
+fof(f107,plain,(
+  ( ! [X70,X72,X71,X69,X67] : (divide(inverse(divide(X69,divide(X70,X67))),divide(divide(X71,X72),inverse(divide(divide(divide(X72,X71),X67),X69)))) = X70) )),
+  inference(forward_demodulation,[],[f106,f1])).
+fof(f106,plain,(
+  ( ! [X70,X66,X64,X72,X71,X69,X67,X65] : (divide(inverse(divide(X69,divide(X70,X67))),divide(divide(X71,X72),inverse(divide(divide(divide(X72,X71),divide(inverse(divide(divide(divide(X65,X64),X66),divide(X67,X66))),divide(X64,X65))),X69)))) = X70) )),
+  inference(forward_demodulation,[],[f96,f61])).
+fof(f96,plain,(
+  ( ! [X70,X68,X66,X64,X72,X71,X69,X67,X65,X73] : (divide(inverse(divide(X69,divide(X70,X67))),divide(divide(X71,X72),inverse(divide(divide(divide(X72,X71),X73),divide(inverse(divide(divide(divide(divide(X64,X65),inverse(divide(divide(divide(X65,X64),X66),divide(X67,X66)))),X68),divide(X69,X68))),X73))))) = X70) )),
+  inference(superposition,[],[f5,f7])).
+fof(f8671,plain,(
+  ( ! [X231,X229,X227,X230,X228,X232] : (inverse(divide(divide(X232,divide(divide(X230,X231),inverse(divide(divide(divide(X231,X230),X229),X227)))),X228)) = inverse(divide(X232,inverse(divide(X227,divide(X228,X229)))))) )),
+  inference(backward_demodulation,[],[f8563,f395])).
+fof(f395,plain,(
+  ( ! [X231,X229,X227,X233,X230,X228,X232] : (inverse(divide(divide(X232,X233),divide(inverse(divide(X227,divide(X228,X229))),X233))) = inverse(divide(divide(X232,divide(divide(X230,X231),inverse(divide(divide(divide(X231,X230),X229),X227)))),X228))) )),
+  inference(superposition,[],[f67,f107])).
+fof(f8563,plain,(
+  ( ! [X372,X370,X373] : (inverse(divide(divide(X372,X373),divide(X370,X373))) = inverse(divide(X372,X370))) )),
+  inference(backward_demodulation,[],[f8557,f3370])).
+fof(f3370,plain,(
+  ( ! [X372,X370,X373,X371] : (inverse(divide(divide(X372,X373),divide(X370,X373))) = inverse(divide(divide(X372,X370),divide(X371,X371)))) )),
+  inference(superposition,[],[f67,f2882])).
+fof(f9781,plain,(
+  ( ! [X132,X135,X133,X139] : (inverse(divide(X135,divide(X139,divide(divide(X132,X133),divide(X135,divide(X133,X132)))))) = X139) )),
+  inference(forward_demodulation,[],[f9780,f9136])).
+fof(f9136,plain,(
+  ( ! [X24,X23,X25,X22] : (divide(divide(X24,divide(X22,X23)),X25) = divide(X24,divide(X25,divide(X23,X22)))) )),
+  inference(forward_demodulation,[],[f9135,f8859])).
+fof(f9135,plain,(
+  ( ! [X24,X23,X25,X22] : (inverse(divide(divide(X25,divide(X23,X22)),X24)) = divide(divide(X24,divide(X22,X23)),X25)) )),
+  inference(forward_demodulation,[],[f8892,f9040])).
+fof(f9040,plain,(
+  ( ! [X372,X370,X373] : (inverse(divide(divide(X372,X373),divide(X370,X373))) = divide(X370,X372)) )),
+  inference(backward_demodulation,[],[f9026,f8563])).
+fof(f8892,plain,(
+  ( ! [X26,X24,X23,X25,X22] : (inverse(divide(divide(X25,divide(X23,X22)),X24)) = inverse(divide(divide(X25,X26),divide(divide(X24,divide(X22,X23)),X26)))) )),
+  inference(backward_demodulation,[],[f8859,f8388])).
+fof(f9780,plain,(
+  ( ! [X132,X135,X133,X139] : (inverse(divide(X135,divide(divide(X139,divide(divide(X133,X132),X135)),divide(X132,X133)))) = X139) )),
+  inference(forward_demodulation,[],[f9779,f9727])).
+fof(f9779,plain,(
+  ( ! [X132,X135,X133,X139,X137] : (inverse(divide(X135,divide(divide(X139,X137),divide(divide(X132,X133),divide(X137,divide(divide(X133,X132),X135)))))) = X139) )),
+  inference(forward_demodulation,[],[f9732,f9136])).
+fof(f9732,plain,(
+  ( ! [X132,X135,X133,X139,X137] : (inverse(divide(X135,divide(divide(divide(X139,X137),divide(divide(divide(X133,X132),X135),X137)),divide(X132,X133)))) = X139) )),
+  inference(backward_demodulation,[],[f9727,f9183])).
+fof(f9183,plain,(
+  ( ! [X132,X138,X135,X133,X139,X137] : (inverse(divide(X135,divide(divide(divide(X139,X137),X138),divide(divide(X132,X133),divide(X138,divide(divide(divide(X133,X132),X135),X137)))))) = X139) )),
+  inference(forward_demodulation,[],[f9182,f9136])).
+fof(f9182,plain,(
+  ( ! [X132,X138,X135,X133,X139,X137] : (inverse(divide(X135,divide(divide(divide(X139,X137),X138),divide(divide(divide(X132,X133),divide(X137,divide(divide(X133,X132),X135))),X138)))) = X139) )),
+  inference(forward_demodulation,[],[f9181,f9136])).
+fof(f9181,plain,(
+  ( ! [X132,X138,X135,X133,X139,X137] : (inverse(divide(X135,divide(divide(divide(X139,X137),X138),divide(divide(divide(divide(X132,X133),divide(X135,divide(X133,X132))),X137),X138)))) = X139) )),
+  inference(forward_demodulation,[],[f9153,f9136])).
+fof(f9153,plain,(
+  ( ! [X132,X138,X135,X133,X139,X137] : (inverse(divide(divide(X135,divide(X138,divide(divide(divide(X132,X133),divide(X135,divide(X133,X132))),X137))),divide(divide(X139,X137),X138))) = X139) )),
+  inference(backward_demodulation,[],[f9136,f9131])).
+fof(f9131,plain,(
+  ( ! [X132,X138,X135,X133,X139,X137] : (inverse(divide(divide(divide(X135,divide(X137,divide(divide(X132,X133),divide(X135,divide(X133,X132))))),X138),divide(divide(X139,X137),X138))) = X139) )),
+  inference(forward_demodulation,[],[f8889,f8859])).
+fof(f8889,plain,(
+  ( ! [X132,X138,X135,X133,X139,X137] : (inverse(divide(divide(divide(X135,inverse(divide(divide(divide(X132,X133),divide(X135,divide(X133,X132))),X137))),X138),divide(divide(X139,X137),X138))) = X139) )),
+  inference(backward_demodulation,[],[f8859,f8379])).
+fof(f8379,plain,(
+  ( ! [X132,X138,X135,X133,X139,X137] : (inverse(divide(divide(divide(X135,inverse(divide(divide(divide(X132,X133),inverse(divide(divide(X133,X132),X135))),X137))),X138),divide(divide(X139,X137),X138))) = X139) )),
+  inference(forward_demodulation,[],[f7238,f6845])).
+fof(f7238,plain,(
+  ( ! [X132,X138,X136,X135,X133,X139,X137] : (inverse(divide(divide(divide(X135,inverse(divide(divide(divide(divide(X132,X133),inverse(divide(divide(X133,X132),X135))),X136),divide(X137,X136)))),X138),divide(divide(X139,X137),X138))) = X139) )),
+  inference(backward_demodulation,[],[f6845,f103])).
+fof(f103,plain,(
+  ( ! [X134,X132,X138,X136,X135,X133,X139,X137] : (inverse(divide(divide(divide(X135,inverse(divide(divide(divide(divide(X132,X133),inverse(divide(divide(divide(X133,X132),X134),divide(X135,X134)))),X136),divide(X137,X136)))),X138),divide(divide(X139,X137),X138))) = X139) )),
+  inference(superposition,[],[f38,f7])).
+fof(f12813,plain,(
+  ( ! [X94,X92,X93] : (inverse(X94) = divide(X93,divide(X94,divide(divide(X92,X92),X93)))) )),
+  inference(backward_demodulation,[],[f12807,f12062])).
+fof(f12062,plain,(
+  ( ! [X94,X92,X95,X93,X96] : (divide(X93,divide(X94,divide(divide(X92,X92),X93))) = divide(divide(X95,X96),divide(X94,divide(X96,X95)))) )),
+  inference(forward_demodulation,[],[f12061,f9727])).
+fof(f12061,plain,(
+  ( ! [X94,X92,X95,X93,X91,X96] : (divide(X93,divide(X94,divide(divide(X92,X91),divide(X93,divide(X91,X92))))) = divide(divide(X95,X96),divide(X94,divide(X96,X95)))) )),
+  inference(forward_demodulation,[],[f12060,f9136])).
+fof(f12060,plain,(
+  ( ! [X94,X92,X95,X93,X91,X96] : (divide(divide(X95,X96),divide(X94,divide(X96,X95))) = divide(X93,divide(divide(X94,divide(divide(X91,X92),X93)),divide(X92,X91)))) )),
+  inference(forward_demodulation,[],[f12059,f8859])).
+fof(f12059,plain,(
+  ( ! [X94,X92,X95,X93,X91,X96] : (divide(X93,divide(inverse(divide(divide(divide(X91,X92),X93),X94)),divide(X92,X91))) = divide(divide(X95,X96),divide(X94,divide(X96,X95)))) )),
+  inference(forward_demodulation,[],[f7356,f8859])).
+fof(f7356,plain,(
+  ( ! [X94,X92,X95,X93,X91,X96] : (divide(X93,divide(inverse(divide(divide(divide(X91,X92),X93),X94)),divide(X92,X91))) = divide(divide(X95,X96),inverse(divide(divide(X96,X95),X94)))) )),
+  inference(backward_demodulation,[],[f6845,f1913])).
+fof(f1913,plain,(
+  ( ! [X94,X92,X97,X95,X93,X91,X96] : (divide(X93,divide(inverse(divide(divide(divide(X91,X92),X93),X94)),divide(X92,X91))) = divide(divide(X95,X96),inverse(divide(divide(divide(X96,X95),X97),divide(X94,X97))))) )),
+  inference(superposition,[],[f1754,f105])).
+fof(f12807,plain,(
+  ( ! [X699,X698,X694] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = inverse(X694)) )),
+  inference(forward_demodulation,[],[f12806,f11474])).
+fof(f11474,plain,(
+  ( ! [X24,X23] : (divide(divide(X23,inverse(X24)),X24) = X23) )),
+  inference(forward_demodulation,[],[f11473,f11259])).
+fof(f11259,plain,(
+  ( ! [X7,X13,X9] : (divide(X9,X7) = divide(divide(X9,X13),divide(X7,X13))) )),
+  inference(forward_demodulation,[],[f11258,f9040])).
+fof(f11258,plain,(
+  ( ! [X8,X7,X13,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(divide(X9,X13),divide(X7,X13))) )),
+  inference(forward_demodulation,[],[f11257,f9026])).
+fof(f11257,plain,(
+  ( ! [X8,X7,X13,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(X7,X13))) )),
+  inference(forward_demodulation,[],[f11256,f9037])).
+fof(f9037,plain,(
+  ( ! [X6,X5] : (divide(X5,divide(X6,X6)) = X5) )),
+  inference(backward_demodulation,[],[f9026,f6116])).
+fof(f11256,plain,(
+  ( ! [X10,X8,X7,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(X7,divide(X13,divide(divide(X10,X11),divide(X10,X11)))))) )),
+  inference(forward_demodulation,[],[f11255,f9715])).
+fof(f9715,plain,(
+  ( ! [X14,X21,X17,X15,X18,X16] : (divide(divide(X21,divide(X15,X14)),divide(X18,divide(X17,X16))) = divide(X21,divide(X18,divide(divide(X14,X15),divide(X16,X17))))) )),
+  inference(forward_demodulation,[],[f9714,f9213])).
+fof(f9213,plain,(
+  ( ! [X492,X493,X495,X491] : (inverse(divide(X493,divide(X495,divide(X492,X491)))) = divide(X495,divide(X493,divide(X491,X492)))) )),
+  inference(forward_demodulation,[],[f8895,f9040])).
+fof(f8895,plain,(
+  ( ! [X492,X496,X493,X495,X491] : (inverse(divide(X493,divide(X495,divide(X492,X491)))) = inverse(divide(divide(divide(X493,divide(X491,X492)),X496),divide(X495,X496)))) )),
+  inference(backward_demodulation,[],[f8859,f8405])).
+fof(f8405,plain,(
+  ( ! [X492,X496,X493,X495,X491] : (inverse(divide(X493,divide(X495,divide(X492,X491)))) = inverse(divide(divide(inverse(divide(divide(X491,X492),X493)),X496),divide(X495,X496)))) )),
+  inference(backward_demodulation,[],[f8384,f2938])).
+fof(f2938,plain,(
+  ( ! [X492,X494,X496,X493,X495,X491] : (inverse(divide(divide(inverse(divide(divide(divide(X491,X492),X493),divide(X494,X494))),X496),divide(X495,X496))) = inverse(divide(X493,divide(X495,divide(X492,X491))))) )),
+  inference(superposition,[],[f67,f2555])).
+fof(f9714,plain,(
+  ( ! [X14,X21,X17,X15,X18,X16] : (divide(divide(X21,divide(X15,X14)),divide(X18,divide(X17,X16))) = inverse(divide(X18,divide(X21,divide(divide(X16,X17),divide(X14,X15)))))) )),
+  inference(forward_demodulation,[],[f9017,f8859])).
+fof(f9017,plain,(
+  ( ! [X14,X21,X17,X15,X18,X16] : (inverse(divide(X18,divide(X21,divide(divide(X16,X17),divide(X14,X15))))) = inverse(divide(divide(X18,divide(X17,X16)),divide(X21,divide(X15,X14))))) )),
+  inference(backward_demodulation,[],[f8859,f8442])).
+fof(f8442,plain,(
+  ( ! [X14,X21,X17,X15,X18,X16] : (inverse(inverse(divide(divide(X21,divide(X15,X14)),divide(X18,divide(X17,X16))))) = inverse(divide(X18,divide(X21,divide(divide(X16,X17),divide(X14,X15)))))) )),
+  inference(backward_demodulation,[],[f8438,f6622])).
+fof(f6622,plain,(
+  ( ! [X14,X21,X19,X17,X15,X20,X18,X16] : (inverse(inverse(divide(divide(X21,divide(X15,X14)),divide(X18,divide(X17,X16))))) = inverse(inverse(divide(divide(divide(X21,divide(X15,X14)),divide(X19,X20)),divide(X18,divide(divide(X19,X20),divide(X16,X17))))))) )),
+  inference(backward_demodulation,[],[f6420,f6524])).
+fof(f6524,plain,(
+  ( ! [X14,X21,X19,X17,X15,X20,X18,X16] : (inverse(divide(divide(inverse(divide(divide(divide(X19,X20),divide(X16,X17)),X18)),divide(X20,X19)),divide(X21,divide(X15,X14)))) = inverse(inverse(divide(divide(X21,divide(X15,X14)),divide(X18,divide(X17,X16)))))) )),
+  inference(backward_demodulation,[],[f6508,f3709])).
+fof(f3709,plain,(
+  ( ! [X26,X24,X14,X23,X21,X19,X17,X25,X15,X22,X20,X18,X16] : (divide(inverse(divide(divide(divide(X22,X23),divide(divide(X24,X25),inverse(divide(divide(divide(X25,X24),X26),divide(inverse(divide(divide(divide(X14,X15),divide(X16,X17)),X18)),X26))))),X21)),divide(X23,X22)) = inverse(divide(divide(inverse(divide(divide(divide(X19,X20),divide(X16,X17)),X18)),divide(X20,X19)),divide(X21,divide(X15,X14))))) )),
+  inference(superposition,[],[f19,f27])).
+fof(f27,plain,(
+  ( ! [X6,X4,X0,X7,X5,X3,X1] : (divide(inverse(divide(divide(divide(X4,X5),divide(X1,X0)),X3)),divide(X5,X4)) = divide(inverse(divide(divide(divide(X6,X7),divide(X1,X0)),X3)),divide(X7,X6))) )),
+  inference(superposition,[],[f6,f6])).
+fof(f6508,plain,(
+  ( ! [X47,X43,X41,X50,X48,X46,X44,X42,X40,X51,X49] : (divide(inverse(divide(divide(divide(X47,X48),divide(divide(X49,X50),inverse(divide(divide(divide(X50,X49),X51),divide(inverse(divide(divide(divide(X40,X41),divide(X42,X43)),X44)),X51))))),X46)),divide(X48,X47)) = inverse(inverse(divide(divide(X46,divide(X41,X40)),divide(X44,divide(X43,X42)))))) )),
+  inference(backward_demodulation,[],[f6477,f3711])).
+fof(f3711,plain,(
+  ( ! [X47,X45,X43,X41,X50,X48,X46,X44,X42,X40,X51,X49] : (divide(inverse(divide(divide(divide(X47,X48),divide(divide(X49,X50),inverse(divide(divide(divide(X50,X49),X51),divide(inverse(divide(divide(divide(X40,X41),divide(X42,X43)),X44)),X51))))),X46)),divide(X48,X47)) = inverse(divide(inverse(divide(divide(divide(X43,X42),X45),divide(X44,X45))),divide(X46,divide(X41,X40))))) )),
+  inference(superposition,[],[f19,f6])).
+fof(f6477,plain,(
+  ( ! [X14,X19,X17,X15,X20,X18,X16] : (inverse(divide(inverse(divide(divide(divide(X17,X16),X19),divide(X18,X19))),divide(X20,divide(X15,X14)))) = inverse(inverse(divide(divide(X20,divide(X15,X14)),divide(X18,divide(X17,X16)))))) )),
+  inference(backward_demodulation,[],[f6472,f208])).
+fof(f208,plain,(
+  ( ! [X14,X21,X19,X17,X15,X20,X18,X16] : (inverse(divide(divide(inverse(divide(divide(divide(X14,X15),divide(X16,X17)),X18)),X21),divide(X20,X21))) = inverse(divide(inverse(divide(divide(divide(X17,X16),X19),divide(X18,X19))),divide(X20,divide(X15,X14))))) )),
+  inference(superposition,[],[f67,f6])).
+fof(f6472,plain,(
+  ( ! [X70,X68,X66,X64,X71,X67,X65] : (inverse(divide(divide(inverse(divide(divide(divide(X64,X65),divide(X66,X67)),X68)),X70),divide(X71,X70))) = inverse(inverse(divide(divide(X71,divide(X65,X64)),divide(X68,divide(X67,X66)))))) )),
+  inference(backward_demodulation,[],[f6406,f2520])).
+fof(f2520,plain,(
+  ( ! [X70,X68,X66,X64,X71,X69,X67,X65] : (inverse(divide(inverse(divide(divide(divide(X67,X66),X68),divide(X69,X69))),divide(X71,divide(X65,X64)))) = inverse(divide(divide(inverse(divide(divide(divide(X64,X65),divide(X66,X67)),X68)),X70),divide(X71,X70)))) )),
+  inference(superposition,[],[f148,f1443])).
+fof(f8438,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58] : (inverse(inverse(divide(divide(divide(X64,divide(X62,X61)),divide(X57,X58)),divide(X60,divide(divide(X57,X58),X59))))) = inverse(divide(X60,divide(X64,divide(X59,divide(X61,X62)))))) )),
+  inference(backward_demodulation,[],[f8405,f6606])).
+fof(f6606,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58,X63] : (inverse(divide(divide(inverse(divide(divide(divide(X61,X62),X59),X60)),X63),divide(X64,X63))) = inverse(inverse(divide(divide(divide(X64,divide(X62,X61)),divide(X57,X58)),divide(X60,divide(divide(X57,X58),X59)))))) )),
+  inference(backward_demodulation,[],[f6420,f603])).
+fof(f603,plain,(
+  ( ! [X61,X59,X57,X64,X62,X60,X58,X63] : (inverse(divide(divide(inverse(divide(divide(divide(X57,X58),X59),X60)),divide(X58,X57)),divide(X64,divide(X62,X61)))) = inverse(divide(divide(inverse(divide(divide(divide(X61,X62),X59),X60)),X63),divide(X64,X63)))) )),
+  inference(superposition,[],[f148,f105])).
+fof(f11255,plain,(
+  ( ! [X10,X8,X7,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(divide(X7,divide(X11,X10)),divide(X13,divide(X11,X10))))) )),
+  inference(forward_demodulation,[],[f11254,f8859])).
+fof(f11254,plain,(
+  ( ! [X10,X8,X7,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(inverse(divide(divide(X11,X10),X7)),divide(X13,divide(X11,X10))))) )),
+  inference(forward_demodulation,[],[f11253,f9136])).
+fof(f11253,plain,(
+  ( ! [X10,X8,X7,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(divide(inverse(divide(divide(X11,X10),X7)),divide(X10,X11)),X13))) )),
+  inference(forward_demodulation,[],[f11252,f8859])).
+fof(f11252,plain,(
+  ( ! [X10,X8,X7,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(inverse(divide(divide(X10,X11),inverse(divide(divide(X11,X10),X7)))),X13))) )),
+  inference(forward_demodulation,[],[f11251,f10626])).
+fof(f10626,plain,(
+  ( ! [X37,X38,X36,X34] : (divide(divide(X37,X38),divide(X34,divide(divide(X38,X37),X36))) = divide(inverse(X36),X34)) )),
+  inference(backward_demodulation,[],[f10625,f9380])).
+fof(f9380,plain,(
+  ( ! [X39,X37,X35,X41,X38,X36,X34,X40] : (divide(divide(X37,X38),divide(X34,divide(divide(X38,X37),X36))) = divide(divide(inverse(X35),divide(divide(X39,X40),divide(divide(divide(X35,X36),X34),divide(divide(X40,X39),X41)))),X41)) )),
+  inference(forward_demodulation,[],[f9379,f9026])).
+fof(f9379,plain,(
+  ( ! [X39,X37,X35,X41,X38,X36,X34,X40] : (divide(divide(X37,X38),divide(X34,divide(divide(X38,X37),X36))) = divide(divide(inverse(X35),divide(divide(X39,X40),divide(inverse(divide(X34,divide(X35,X36))),divide(divide(X40,X39),X41)))),X41)) )),
+  inference(forward_demodulation,[],[f8943,f8859])).
+fof(f8943,plain,(
+  ( ! [X39,X37,X35,X41,X38,X36,X34,X40] : (divide(divide(inverse(X35),divide(divide(X39,X40),inverse(divide(divide(divide(X40,X39),X41),inverse(divide(X34,divide(X35,X36))))))),X41) = divide(divide(X37,X38),divide(X34,divide(divide(X38,X37),X36)))) )),
+  inference(backward_demodulation,[],[f8859,f491])).
+fof(f491,plain,(
+  ( ! [X39,X37,X35,X41,X38,X36,X34,X40] : (divide(divide(X37,X38),inverse(divide(divide(divide(X38,X37),X36),X34))) = divide(divide(inverse(X35),divide(divide(X39,X40),inverse(divide(divide(divide(X40,X39),X41),inverse(divide(X34,divide(X35,X36))))))),X41)) )),
+  inference(superposition,[],[f113,f107])).
+fof(f10625,plain,(
+  ( ! [X61,X66,X64,X62,X60,X65] : (divide(inverse(X60),X62) = divide(divide(inverse(X61),divide(divide(X64,X65),divide(divide(divide(X61,X60),X62),divide(divide(X65,X64),X66)))),X66)) )),
+  inference(forward_demodulation,[],[f10624,f9026])).
+fof(f10624,plain,(
+  ( ! [X61,X66,X64,X62,X60,X65] : (divide(inverse(X60),X62) = divide(divide(inverse(X61),divide(divide(X64,X65),divide(divide(inverse(divide(X60,X61)),X62),divide(divide(X65,X64),X66)))),X66)) )),
+  inference(forward_demodulation,[],[f8574,f8859])).
+fof(f8574,plain,(
+  ( ! [X61,X66,X64,X62,X60,X65] : (divide(divide(inverse(X61),divide(divide(X64,X65),inverse(divide(divide(divide(X65,X64),X66),divide(inverse(divide(X60,X61)),X62))))),X66) = divide(inverse(X60),X62)) )),
+  inference(backward_demodulation,[],[f8557,f1494])).
+fof(f1494,plain,(
+  ( ! [X61,X66,X64,X62,X60,X65,X63] : (divide(inverse(divide(X60,divide(X63,X63))),X62) = divide(divide(inverse(X61),divide(divide(X64,X65),inverse(divide(divide(divide(X65,X64),X66),divide(inverse(divide(X60,X61)),X62))))),X66)) )),
+  inference(superposition,[],[f113,f1249])).
+fof(f11251,plain,(
+  ( ! [X14,X10,X8,X7,X15,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(divide(X14,X15),divide(X13,divide(divide(X15,X14),divide(divide(X10,X11),inverse(divide(divide(X11,X10),X7)))))))) )),
+  inference(forward_demodulation,[],[f7259,f8859])).
+fof(f7259,plain,(
+  ( ! [X14,X10,X8,X7,X15,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(divide(X14,X15),inverse(divide(divide(divide(X15,X14),divide(divide(X10,X11),inverse(divide(divide(X11,X10),X7)))),X13))))) )),
+  inference(backward_demodulation,[],[f6845,f327])).
+fof(f327,plain,(
+  ( ! [X14,X12,X10,X8,X7,X15,X13,X11,X9] : (inverse(divide(divide(X7,X8),divide(X9,X8))) = divide(inverse(divide(X13,X9)),divide(divide(X14,X15),inverse(divide(divide(divide(X15,X14),divide(divide(X10,X11),inverse(divide(divide(divide(X11,X10),X12),divide(X7,X12))))),X13))))) )),
+  inference(superposition,[],[f107,f5])).
+fof(f11473,plain,(
+  ( ! [X24,X23,X22] : (divide(divide(divide(X23,X22),divide(inverse(X24),X22)),X24) = X23) )),
+  inference(forward_demodulation,[],[f11472,f9026])).
+fof(f11472,plain,(
+  ( ! [X24,X23,X22] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(X24),X22)),X24) = X23) )),
+  inference(forward_demodulation,[],[f11471,f10626])).
+fof(f11471,plain,(
+  ( ! [X24,X23,X19,X22,X20,X18] : (divide(divide(inverse(divide(X22,X23)),divide(divide(X20,divide(X19,X18)),divide(X22,divide(divide(divide(X19,X18),X20),X24)))),X24) = X23) )),
+  inference(forward_demodulation,[],[f11470,f8859])).
+fof(f11470,plain,(
+  ( ! [X24,X23,X19,X22,X20,X18] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(X19,X18),X20)),divide(X22,divide(divide(divide(X19,X18),X20),X24)))),X24) = X23) )),
+  inference(forward_demodulation,[],[f11469,f9026])).
+fof(f11469,plain,(
+  ( ! [X24,X23,X19,X22,X20,X18] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(X19,X18),X20)),divide(X22,divide(inverse(divide(X20,divide(X19,X18))),X24)))),X24) = X23) )),
+  inference(forward_demodulation,[],[f11468,f10626])).
+fof(f11468,plain,(
+  ( ! [X24,X23,X19,X17,X22,X20,X18,X16] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(X19,X18),X20)),divide(X22,divide(divide(X17,X16),divide(X24,divide(divide(X16,X17),divide(X20,divide(X19,X18)))))))),X24) = X23) )),
+  inference(forward_demodulation,[],[f11467,f9136])).
+fof(f11467,plain,(
+  ( ! [X24,X23,X19,X17,X22,X20,X18,X16] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(X19,X18),X20)),divide(X22,divide(divide(X17,X16),divide(X24,divide(divide(divide(X16,X17),divide(X18,X19)),X20)))))),X24) = X23) )),
+  inference(forward_demodulation,[],[f11466,f9136])).
+fof(f11466,plain,(
+  ( ! [X24,X23,X19,X17,X22,X20,X18,X16] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(X19,X18),X20)),divide(X22,divide(divide(divide(X17,X16),divide(X20,divide(divide(X16,X17),divide(X18,X19)))),X24)))),X24) = X23) )),
+  inference(forward_demodulation,[],[f11465,f8859])).
+fof(f11465,plain,(
+  ( ! [X24,X23,X19,X17,X22,X20,X18,X16] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(X19,X18),X20)),divide(X22,divide(divide(divide(X17,X16),inverse(divide(divide(divide(X16,X17),divide(X18,X19)),X20))),X24)))),X24) = X23) )),
+  inference(forward_demodulation,[],[f7284,f8859])).
+fof(f7284,plain,(
+  ( ! [X24,X23,X19,X17,X22,X20,X18,X16] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(X19,X18),X20)),inverse(divide(divide(divide(divide(X17,X16),inverse(divide(divide(divide(X16,X17),divide(X18,X19)),X20))),X24),X22)))),X24) = X23) )),
+  inference(backward_demodulation,[],[f6845,f504])).
+fof(f504,plain,(
+  ( ! [X24,X23,X21,X19,X17,X22,X20,X18,X16] : (divide(divide(inverse(divide(X22,X23)),divide(inverse(divide(divide(divide(X19,X18),X21),divide(X20,X21))),inverse(divide(divide(divide(divide(X17,X16),inverse(divide(divide(divide(X16,X17),divide(X18,X19)),X20))),X24),X22)))),X24) = X23) )),
+  inference(superposition,[],[f113,f6])).
+fof(f12806,plain,(
+  ( ! [X699,X704,X698,X694] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(inverse(X694),inverse(X704)),X704)) )),
+  inference(forward_demodulation,[],[f12805,f10626])).
+fof(f12805,plain,(
+  ( ! [X699,X695,X704,X696,X698,X694] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(divide(X696,X695),divide(inverse(X704),divide(divide(X695,X696),X694))),X704)) )),
+  inference(forward_demodulation,[],[f12804,f9136])).
+fof(f12804,plain,(
+  ( ! [X699,X695,X704,X696,X698,X694] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(divide(divide(X696,X695),divide(X694,divide(X695,X696))),inverse(X704)),X704)) )),
+  inference(forward_demodulation,[],[f12803,f9727])).
+fof(f12803,plain,(
+  ( ! [X699,X695,X704,X696,X698,X694,X701] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(divide(divide(X696,X695),X701),divide(inverse(X704),divide(X701,divide(X694,divide(X695,X696))))),X704)) )),
+  inference(forward_demodulation,[],[f12802,f9853])).
+fof(f9853,plain,(
+  ( ! [X187,X190,X188,X186] : (divide(divide(X190,X188),divide(divide(X187,X186),X188)) = divide(X190,divide(X187,X186))) )),
+  inference(forward_demodulation,[],[f9852,f8859])).
+fof(f9852,plain,(
+  ( ! [X187,X190,X188,X186] : (inverse(divide(divide(X187,X186),X190)) = divide(divide(X190,X188),divide(divide(X187,X186),X188))) )),
+  inference(forward_demodulation,[],[f9851,f9026])).
+fof(f9851,plain,(
+  ( ! [X187,X190,X188,X186] : (inverse(divide(divide(X187,X186),X190)) = divide(inverse(divide(X188,X190)),divide(divide(X187,X186),X188))) )),
+  inference(forward_demodulation,[],[f9850,f8989])).
+fof(f9850,plain,(
+  ( ! [X187,X185,X190,X188,X186,X184] : (inverse(divide(divide(X187,X186),X190)) = divide(inverse(divide(X188,X190)),divide(divide(X185,X184),divide(divide(X188,divide(X187,X186)),divide(X184,X185))))) )),
+  inference(forward_demodulation,[],[f8813,f8859])).
+fof(f8813,plain,(
+  ( ! [X187,X185,X190,X188,X186,X184] : (inverse(divide(divide(X187,X186),X190)) = divide(inverse(divide(X188,X190)),divide(divide(X185,X184),inverse(divide(divide(X184,X185),divide(X188,divide(X187,X186))))))) )),
+  inference(backward_demodulation,[],[f8742,f7251])).
+fof(f12802,plain,(
+  ( ! [X697,X699,X695,X704,X696,X698,X694,X701] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(divide(divide(X696,X695),X701),divide(inverse(X704),divide(divide(X701,X697),divide(divide(X694,divide(X695,X696)),X697)))),X704)) )),
+  inference(forward_demodulation,[],[f12801,f9715])).
+fof(f12801,plain,(
+  ( ! [X697,X699,X695,X704,X696,X698,X694,X701] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(divide(divide(divide(X696,X695),X701),divide(X697,X701)),divide(inverse(X704),divide(X697,divide(X694,divide(X695,X696))))),X704)) )),
+  inference(forward_demodulation,[],[f12800,f8859])).
+fof(f12800,plain,(
+  ( ! [X697,X699,X695,X704,X696,X698,X694,X701] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(inverse(divide(divide(X697,X701),divide(divide(X696,X695),X701))),divide(inverse(X704),divide(X697,divide(X694,divide(X695,X696))))),X704)) )),
+  inference(forward_demodulation,[],[f12799,f8859])).
+fof(f12799,plain,(
+  ( ! [X697,X699,X695,X704,X696,X698,X694,X701] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(inverse(inverse(divide(divide(divide(X696,X695),X701),divide(X697,X701)))),divide(inverse(X704),divide(X697,divide(X694,divide(X695,X696))))),X704)) )),
+  inference(forward_demodulation,[],[f12798,f8859])).
+fof(f12798,plain,(
+  ( ! [X697,X699,X695,X704,X696,X698,X694,X701] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(inverse(inverse(divide(divide(divide(X696,X695),X701),divide(X697,X701)))),divide(inverse(X704),inverse(divide(divide(X694,divide(X695,X696)),X697)))),X704)) )),
+  inference(forward_demodulation,[],[f12797,f10626])).
+fof(f12797,plain,(
+  ( ! [X697,X699,X695,X702,X696,X698,X704,X694,X701,X703] : (divide(divide(X698,X699),divide(X694,divide(X699,X698))) = divide(divide(inverse(inverse(divide(divide(divide(X696,X695),X701),divide(X697,X701)))),divide(divide(X702,X703),divide(inverse(divide(divide(X694,divide(X695,X696)),X697)),divide(divide(X703,X702),X704)))),X704)) )),
+  inference(forward_demodulation,[],[f12796,f8859])).
+fof(f12796,plain,(
+  ( ! [X697,X699,X695,X702,X696,X704,X698,X694,X701,X703] : (divide(divide(inverse(inverse(divide(divide(divide(X696,X695),X701),divide(X697,X701)))),divide(divide(X702,X703),inverse(divide(divide(divide(X703,X702),X704),inverse(divide(divide(X694,divide(X695,X696)),X697)))))),X704) = divide(divide(X698,X699),divide(X694,divide(X699,X698)))) )),
+  inference(forward_demodulation,[],[f7424,f8859])).
+fof(f7424,plain,(
+  ( ! [X697,X699,X695,X702,X696,X704,X698,X694,X701,X703] : (divide(divide(inverse(inverse(divide(divide(divide(X696,X695),X701),divide(X697,X701)))),divide(divide(X702,X703),inverse(divide(divide(divide(X703,X702),X704),inverse(divide(divide(X694,divide(X695,X696)),X697)))))),X704) = divide(divide(X698,X699),inverse(divide(divide(X699,X698),X694)))) )),
+  inference(backward_demodulation,[],[f6845,f2363])).
+fof(f2363,plain,(
+  ( ! [X697,X699,X695,X700,X702,X696,X698,X704,X694,X701,X703] : (divide(divide(X698,X699),inverse(divide(divide(divide(X699,X698),X700),divide(X694,X700)))) = divide(divide(inverse(inverse(divide(divide(divide(X696,X695),X701),divide(X697,X701)))),divide(divide(X702,X703),inverse(divide(divide(divide(X703,X702),X704),inverse(divide(divide(X694,divide(X695,X696)),X697)))))),X704)) )),
+  inference(superposition,[],[f113,f10])).
+fof(f10,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2))) = divide(inverse(divide(divide(X4,divide(X1,X0)),X3)),divide(divide(X5,X6),inverse(divide(divide(divide(X6,X5),X7),divide(X4,X7)))))) )),
+  inference(superposition,[],[f5,f1])).
+fof(f29320,plain,(
+  ( ! [X14,X15] : (a2 != divide(divide(inverse(inverse(a2)),divide(X14,X15)),divide(X15,X14))) )),
+  inference(superposition,[],[f3490,f10654])).
+fof(f10654,plain,(
+  ( ! [X4,X7,X5,X3] : (divide(X7,divide(X4,X5)) = divide(divide(X7,divide(inverse(X3),divide(X5,X4))),X3)) )),
+  inference(backward_demodulation,[],[f10626,f10013])).
+fof(f10013,plain,(
+  ( ! [X4,X0,X7,X5,X3,X1] : (divide(X7,divide(X4,X5)) = divide(divide(X7,divide(divide(X1,X0),divide(divide(X5,X4),divide(divide(X0,X1),X3)))),X3)) )),
+  inference(forward_demodulation,[],[f10012,f8859])).
+fof(f10012,plain,(
+  ( ! [X4,X0,X7,X5,X3,X1] : (inverse(divide(divide(X4,X5),X7)) = divide(divide(X7,divide(divide(X1,X0),divide(divide(X5,X4),divide(divide(X0,X1),X3)))),X3)) )),
+  inference(forward_demodulation,[],[f10011,f9136])).
+fof(f10011,plain,(
+  ( ! [X4,X0,X7,X5,X3,X1] : (inverse(divide(divide(X4,X5),X7)) = divide(divide(X7,divide(divide(divide(X1,X0),divide(X3,divide(X0,X1))),divide(X5,X4))),X3)) )),
+  inference(forward_demodulation,[],[f10010,f8859])).
+fof(f10010,plain,(
+  ( ! [X4,X0,X7,X5,X3,X1] : (inverse(divide(divide(X4,X5),X7)) = divide(divide(X7,divide(divide(divide(X1,X0),inverse(divide(divide(X0,X1),X3))),divide(X5,X4))),X3)) )),
+  inference(forward_demodulation,[],[f10009,f9136])).
+fof(f10009,plain,(
+  ( ! [X4,X0,X7,X5,X3,X1] : (inverse(divide(divide(X4,X5),X7)) = divide(divide(divide(X7,divide(X4,X5)),divide(divide(X1,X0),inverse(divide(divide(X0,X1),X3)))),X3)) )),
+  inference(forward_demodulation,[],[f8828,f8859])).
+fof(f8828,plain,(
+  ( ! [X4,X0,X7,X5,X3,X1] : (inverse(divide(divide(X4,X5),X7)) = divide(inverse(divide(divide(divide(X1,X0),inverse(divide(divide(X0,X1),X3))),divide(X7,divide(X4,X5)))),X3)) )),
+  inference(backward_demodulation,[],[f8742,f8342])).
+fof(f8342,plain,(
+  ( ! [X4,X0,X7,X5,X3,X1] : (divide(inverse(divide(divide(divide(divide(X1,X0),inverse(divide(divide(X0,X1),X3))),divide(X5,X4)),X7)),X3) = inverse(divide(divide(X4,X5),X7))) )),
+  inference(forward_demodulation,[],[f7203,f6845])).
+fof(f7203,plain,(
+  ( ! [X6,X4,X0,X7,X5,X3,X1] : (inverse(divide(divide(divide(X4,X5),X6),divide(X7,X6))) = divide(inverse(divide(divide(divide(divide(X1,X0),inverse(divide(divide(X0,X1),X3))),divide(X5,X4)),X7)),X3)) )),
+  inference(backward_demodulation,[],[f6845,f35])).
+fof(f35,plain,(
+  ( ! [X6,X4,X2,X0,X7,X5,X3,X1] : (inverse(divide(divide(divide(X4,X5),X6),divide(X7,X6))) = divide(inverse(divide(divide(divide(divide(X1,X0),inverse(divide(divide(divide(X0,X1),X2),divide(X3,X2)))),divide(X5,X4)),X7)),X3)) )),
+  inference(superposition,[],[f6,f1])).
+fof(f3490,plain,(
+  ( ! [X1037] : (a2 != divide(divide(X1037,X1037),inverse(a2))) )),
+  inference(superposition,[],[f4,f2882])).
+fof(f4,plain,(
+  a2 != divide(divide(inverse(b2),inverse(b2)),inverse(a2))),
+  inference(definition_unfolding,[],[f3,f2,f2])).
+fof(f2,axiom,(
+  ( ! [X0,X1] : (multiply(X0,X1) = divide(X0,inverse(X1))) )),
+  file('./p/GRP476-1.tptp',unknown)).
+fof(f3,axiom,(
+  a2 != multiply(multiply(inverse(b2),b2),a2)),
+  file('./p/GRP476-1.tptp',unknown)).
+% SZS output end Proof for GRP476-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 40937
+% Time elapsed: 0.616 s
+% ------------------------------
+% ------------------------------

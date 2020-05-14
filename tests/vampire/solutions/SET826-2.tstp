@@ -1,0 +1,33 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SET826-2
+% SZS output start Proof for SET826-2
+fof(f7,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f6,f4])).
+fof(f4,axiom,(
+  ~c_in(v_x,v_Y,t_a)),
+  file('./p/SET826-2.tptp',unknown)).
+fof(f6,plain,(
+  c_in(v_x,v_Y,t_a)),
+  inference(resolution,[],[f5,f2])).
+fof(f2,axiom,(
+  c_in(v_x,v_V,t_a)),
+  file('./p/SET826-2.tptp',unknown)).
+fof(f5,plain,(
+  ( ! [X0] : (~c_in(X0,v_V,t_a) | c_in(X0,v_Y,t_a)) )),
+  inference(resolution,[],[f1,f3])).
+fof(f3,axiom,(
+  c_lessequals(v_V,v_Y,tc_set(t_a))),
+  file('./p/SET826-2.tptp',unknown)).
+fof(f1,axiom,(
+  ( ! [X2,X0,X3,X1] : (~c_lessequals(X1,X3,tc_set(X2)) | c_in(X0,X3,X2) | ~c_in(X0,X1,X2)) )),
+  file('./p/SET826-2.tptp',unknown)).
+% SZS output end Proof for SET826-2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

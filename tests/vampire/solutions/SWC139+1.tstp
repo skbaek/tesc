@@ -1,0 +1,54 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SWC139+1
+% SZS output start Proof for SWC139+1
+fof(f590,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f589,f553])).
+fof(f553,plain,(
+  neq(sK54,nil)),
+  inference(cnf_transformation,[],[f347])).
+fof(f347,plain,(
+  (((~neq(sK56,nil) & neq(sK54,nil) & sK53 = sK55 & sK54 = sK56 & ssList(sK56)) & ssList(sK55)) & ssList(sK54)) & ssList(sK53)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK53,sK54,sK55,sK56])],[f222,f346,f345,f344,f343])).
+fof(f343,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (~neq(X3,nil) & neq(X1,nil) & X0 = X2 & X1 = X3 & ssList(X3)) & ssList(X2)) & ssList(X1)) & ssList(X0)) => (? [X1] : (? [X2] : (? [X3] : (~neq(X3,nil) & neq(X1,nil) & sK53 = X2 & X1 = X3 & ssList(X3)) & ssList(X2)) & ssList(X1)) & ssList(sK53))),
+  introduced(choice_axiom,[])).
+fof(f344,plain,(
+  ? [X1] : (? [X2] : (? [X3] : (~neq(X3,nil) & neq(X1,nil) & sK53 = X2 & X1 = X3 & ssList(X3)) & ssList(X2)) & ssList(X1)) => (? [X2] : (? [X3] : (~neq(X3,nil) & neq(sK54,nil) & sK53 = X2 & sK54 = X3 & ssList(X3)) & ssList(X2)) & ssList(sK54))),
+  introduced(choice_axiom,[])).
+fof(f345,plain,(
+  ? [X2] : (? [X3] : (~neq(X3,nil) & neq(sK54,nil) & sK53 = X2 & sK54 = X3 & ssList(X3)) & ssList(X2)) => (? [X3] : (~neq(X3,nil) & neq(sK54,nil) & sK53 = sK55 & sK54 = X3 & ssList(X3)) & ssList(sK55))),
+  introduced(choice_axiom,[])).
+fof(f346,plain,(
+  ? [X3] : (~neq(X3,nil) & neq(sK54,nil) & sK53 = sK55 & sK54 = X3 & ssList(X3)) => (~neq(sK56,nil) & neq(sK54,nil) & sK53 = sK55 & sK54 = sK56 & ssList(sK56))),
+  introduced(choice_axiom,[])).
+fof(f222,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (~neq(X3,nil) & neq(X1,nil) & X0 = X2 & X1 = X3 & ssList(X3)) & ssList(X2)) & ssList(X1)) & ssList(X0))),
+  inference(flattening,[],[f221])).
+fof(f221,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : ((~neq(X3,nil) & neq(X1,nil) & X0 = X2 & X1 = X3) & ssList(X3)) & ssList(X2)) & ssList(X1)) & ssList(X0))),
+  inference(ennf_transformation,[],[f97])).
+fof(f97,negated_conjecture,(
+  ~! [X0] : (ssList(X0) => ! [X1] : (ssList(X1) => ! [X2] : (ssList(X2) => ! [X3] : (ssList(X3) => (neq(X3,nil) | ~neq(X1,nil) | X0 != X2 | X1 != X3)))))),
+  inference(negated_conjecture,[],[f96])).
+fof(f96,conjecture,(
+  ! [X0] : (ssList(X0) => ! [X1] : (ssList(X1) => ! [X2] : (ssList(X2) => ! [X3] : (ssList(X3) => (neq(X3,nil) | ~neq(X1,nil) | X0 != X2 | X1 != X3)))))),
+  file('./p/SWC139+1.tptp',unknown)).
+fof(f589,plain,(
+  ~neq(sK54,nil)),
+  inference(backward_demodulation,[],[f551,f554])).
+fof(f554,plain,(
+  ~neq(sK56,nil)),
+  inference(cnf_transformation,[],[f347])).
+fof(f551,plain,(
+  sK54 = sK56),
+  inference(cnf_transformation,[],[f347])).
+% SZS output end Proof for SWC139+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5245
+% Time elapsed: 0.005 s
+% ------------------------------
+% ------------------------------

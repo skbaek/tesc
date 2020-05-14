@@ -1,0 +1,54 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for LCL064-1
+% SZS output start Proof for LCL064-1
+fof(f122346,plain,(
+  $false),
+  inference(resolution,[],[f21004,f5])).
+fof(f5,axiom,(
+  ~is_a_theorem(implies(implies(a,b),implies(implies(b,c),implies(a,c))))),
+  file('./p/LCL064-1.tptp',unknown)).
+fof(f21004,plain,(
+  ( ! [X70,X71,X69] : (is_a_theorem(implies(implies(X69,X70),implies(implies(X70,X71),implies(X69,X71))))) )),
+  inference(resolution,[],[f1826,f2])).
+fof(f2,axiom,(
+  ( ! [X0,X1] : (is_a_theorem(implies(X0,implies(X1,X0)))) )),
+  file('./p/LCL064-1.tptp',unknown)).
+fof(f1826,plain,(
+  ( ! [X6,X4,X7,X5] : (~is_a_theorem(implies(X4,implies(implies(X5,X6),implies(X7,X5)))) | is_a_theorem(implies(X4,implies(implies(X5,X6),implies(X7,X6))))) )),
+  inference(resolution,[],[f144,f2])).
+fof(f144,plain,(
+  ( ! [X10,X8,X7,X11,X9] : (~is_a_theorem(implies(X8,implies(X9,implies(X10,X11)))) | is_a_theorem(implies(X7,implies(X8,implies(X9,X11)))) | ~is_a_theorem(implies(X7,implies(X8,implies(X9,X10))))) )),
+  inference(resolution,[],[f44,f43])).
+fof(f43,plain,(
+  ( ! [X14,X12,X15,X13] : (is_a_theorem(implies(X12,implies(implies(X13,X14),implies(X13,X15)))) | ~is_a_theorem(implies(X12,implies(X13,implies(X14,X15))))) )),
+  inference(resolution,[],[f29,f3])).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(implies(X0,implies(X1,X2)),implies(implies(X0,X1),implies(X0,X2))))) )),
+  file('./p/LCL064-1.tptp',unknown)).
+fof(f29,plain,(
+  ( ! [X6,X7,X5] : (~is_a_theorem(implies(X6,X7)) | is_a_theorem(implies(X5,X7)) | ~is_a_theorem(implies(X5,X6))) )),
+  inference(resolution,[],[f22,f6])).
+fof(f6,plain,(
+  ( ! [X0,X1] : (is_a_theorem(implies(X1,X0)) | ~is_a_theorem(X0)) )),
+  inference(resolution,[],[f1,f2])).
+fof(f1,axiom,(
+  ( ! [X0,X1] : (~is_a_theorem(implies(X0,X1)) | ~is_a_theorem(X0) | is_a_theorem(X1)) )),
+  file('./p/LCL064-1.tptp',unknown)).
+fof(f22,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(implies(X0,implies(X1,X2))) | ~is_a_theorem(implies(X0,X1)) | is_a_theorem(implies(X0,X2))) )),
+  inference(resolution,[],[f21,f1])).
+fof(f21,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(implies(implies(X0,X1),implies(X0,X2))) | ~is_a_theorem(implies(X0,implies(X1,X2)))) )),
+  inference(resolution,[],[f3,f1])).
+fof(f44,plain,(
+  ( ! [X19,X17,X18,X16] : (~is_a_theorem(implies(X17,implies(X19,X18))) | ~is_a_theorem(implies(X16,implies(X17,X19))) | is_a_theorem(implies(X16,implies(X17,X18)))) )),
+  inference(resolution,[],[f29,f21])).
+% SZS output end Proof for LCL064-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 106693
+% Time elapsed: 23.840 s
+% ------------------------------
+% ------------------------------

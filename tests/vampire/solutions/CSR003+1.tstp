@@ -1,0 +1,1281 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for CSR003+1
+% SZS output start Proof for CSR003+1
+fof(f679183,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f1546,f2611,f2684,f3898,f4917,f5671,f5687,f5716,f5723,f5735,f5922,f6143,f7014,f7104,f7714,f7736,f7747,f7869,f8412,f12104,f12105,f12113,f12163,f12885,f12892,f131728,f131729,f131735,f131774,f677504,f677761,f678660])).
+fof(f678660,plain,(
+  spl11_51 | ~spl11_126 | ~spl11_2411),
+  inference(avatar_contradiction_clause,[],[f678659])).
+fof(f678659,plain,(
+  $false | (spl11_51 | ~spl11_126 | ~spl11_2411)),
+  inference(subsumption_resolution,[],[f678406,f3577])).
+fof(f3577,plain,(
+  ~holdsAt(waterLevel(n3),n2) | spl11_51),
+  inference(avatar_component_clause,[],[f3576])).
+fof(f3576,plain,(
+  spl11_51 <=> holdsAt(waterLevel(n3),n2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_51])])).
+fof(f678406,plain,(
+  holdsAt(waterLevel(n3),n2) | (~spl11_126 | ~spl11_2411)),
+  inference(backward_demodulation,[],[f677503,f12882])).
+fof(f12882,plain,(
+  holdsAt(waterLevel(n3),sK3(n0,filling,n3)) | ~spl11_126),
+  inference(avatar_component_clause,[],[f12880])).
+fof(f12880,plain,(
+  spl11_126 <=> holdsAt(waterLevel(n3),sK3(n0,filling,n3))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_126])])).
+fof(f677503,plain,(
+  n2 = sK3(n0,filling,n3) | ~spl11_2411),
+  inference(avatar_component_clause,[],[f677501])).
+fof(f677501,plain,(
+  spl11_2411 <=> n2 = sK3(n0,filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_2411])])).
+fof(f677761,plain,(
+  spl11_21 | ~spl11_126 | ~spl11_2410),
+  inference(avatar_contradiction_clause,[],[f677760])).
+fof(f677760,plain,(
+  $false | (spl11_21 | ~spl11_126 | ~spl11_2410)),
+  inference(subsumption_resolution,[],[f677505,f1117])).
+fof(f1117,plain,(
+  ~holdsAt(waterLevel(n3),n1) | spl11_21),
+  inference(avatar_component_clause,[],[f1116])).
+fof(f1116,plain,(
+  spl11_21 <=> holdsAt(waterLevel(n3),n1)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_21])])).
+fof(f677505,plain,(
+  holdsAt(waterLevel(n3),n1) | (~spl11_126 | ~spl11_2410)),
+  inference(backward_demodulation,[],[f677499,f12882])).
+fof(f677499,plain,(
+  n1 = sK3(n0,filling,n3) | ~spl11_2410),
+  inference(avatar_component_clause,[],[f677497])).
+fof(f677497,plain,(
+  spl11_2410 <=> n1 = sK3(n0,filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_2410])])).
+fof(f677504,plain,(
+  spl11_2410 | spl11_2411 | ~spl11_113 | spl11_116),
+  inference(avatar_split_clause,[],[f677495,f12447,f12149,f677501,f677497])).
+fof(f12149,plain,(
+  spl11_113 <=> stoppedIn(n0,filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_113])])).
+fof(f12447,plain,(
+  spl11_116 <=> n0 = sK3(n0,filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_116])])).
+fof(f677495,plain,(
+  n2 = sK3(n0,filling,n3) | n1 = sK3(n0,filling,n3) | (~spl11_113 | spl11_116)),
+  inference(subsumption_resolution,[],[f677494,f12448])).
+fof(f12448,plain,(
+  n0 != sK3(n0,filling,n3) | spl11_116),
+  inference(avatar_component_clause,[],[f12447])).
+fof(f677494,plain,(
+  n0 = sK3(n0,filling,n3) | n2 = sK3(n0,filling,n3) | n1 = sK3(n0,filling,n3) | ~spl11_113),
+  inference(resolution,[],[f63416,f12151])).
+fof(f12151,plain,(
+  stoppedIn(n0,filling,n3) | ~spl11_113),
+  inference(avatar_component_clause,[],[f12149])).
+fof(f63416,plain,(
+  ( ! [X4,X5] : (~stoppedIn(X4,X5,n3) | n0 = sK3(X4,X5,n3) | n2 = sK3(X4,X5,n3) | n1 = sK3(X4,X5,n3)) )),
+  inference(duplicate_literal_removal,[],[f63311])).
+fof(f63311,plain,(
+  ( ! [X4,X5] : (n1 = sK3(X4,X5,n3) | n0 = sK3(X4,X5,n3) | n2 = sK3(X4,X5,n3) | n2 = sK3(X4,X5,n3) | ~stoppedIn(X4,X5,n3)) )),
+  inference(resolution,[],[f7670,f6443])).
+fof(f6443,plain,(
+  ( ! [X4,X3] : (~less(n2,sK3(X3,X4,n3)) | n2 = sK3(X3,X4,n3) | ~stoppedIn(X3,X4,n3)) )),
+  inference(resolution,[],[f956,f259])).
+fof(f259,plain,(
+  ( ! [X0,X1] : (~less(X1,X0) | ~less(X0,X1)) )),
+  inference(cnf_transformation,[],[f164])).
+fof(f164,plain,(
+  ! [X0,X1] : ((less(X0,X1) | X0 = X1 | less(X1,X0)) & ((X0 != X1 & ~less(X1,X0)) | ~less(X0,X1)))),
+  inference(flattening,[],[f163])).
+fof(f163,plain,(
+  ! [X0,X1] : ((less(X0,X1) | (X0 = X1 | less(X1,X0))) & ((X0 != X1 & ~less(X1,X0)) | ~less(X0,X1)))),
+  inference(nnf_transformation,[],[f89])).
+fof(f89,plain,(
+  ! [X0,X1] : (less(X0,X1) <=> (X0 != X1 & ~less(X1,X0)))),
+  inference(rectify,[],[f48])).
+fof(f48,axiom,(
+  ! [X11,X12] : (less(X11,X12) <=> (X11 != X12 & ~less(X12,X11)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f956,plain,(
+  ( ! [X2,X3] : (less(sK3(X2,X3,n3),n2) | ~stoppedIn(X2,X3,n3) | n2 = sK3(X2,X3,n3)) )),
+  inference(resolution,[],[f436,f237])).
+fof(f237,plain,(
+  ( ! [X0,X1] : (~less_or_equal(X0,X1) | less(X0,X1) | X0 = X1) )),
+  inference(cnf_transformation,[],[f153])).
+fof(f153,plain,(
+  ! [X0,X1] : ((less_or_equal(X0,X1) | (X0 != X1 & ~less(X0,X1))) & (X0 = X1 | less(X0,X1) | ~less_or_equal(X0,X1)))),
+  inference(flattening,[],[f152])).
+fof(f152,plain,(
+  ! [X0,X1] : ((less_or_equal(X0,X1) | (X0 != X1 & ~less(X0,X1))) & ((X0 = X1 | less(X0,X1)) | ~less_or_equal(X0,X1)))),
+  inference(nnf_transformation,[],[f78])).
+fof(f78,plain,(
+  ! [X0,X1] : (less_or_equal(X0,X1) <=> (X0 = X1 | less(X0,X1)))),
+  inference(rectify,[],[f37])).
+fof(f37,axiom,(
+  ! [X11,X12] : (less_or_equal(X11,X12) <=> (X11 = X12 | less(X11,X12)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f436,plain,(
+  ( ! [X10,X11] : (less_or_equal(sK3(X10,X11,n3),n2) | ~stoppedIn(X10,X11,n3)) )),
+  inference(resolution,[],[f167,f245])).
+fof(f245,plain,(
+  ( ! [X0] : (~less(X0,n3) | less_or_equal(X0,n2)) )),
+  inference(cnf_transformation,[],[f156])).
+fof(f156,plain,(
+  ! [X0] : ((less(X0,n3) | ~less_or_equal(X0,n2)) & (less_or_equal(X0,n2) | ~less(X0,n3)))),
+  inference(nnf_transformation,[],[f82])).
+fof(f82,plain,(
+  ! [X0] : (less(X0,n3) <=> less_or_equal(X0,n2))),
+  inference(rectify,[],[f41])).
+fof(f41,axiom,(
+  ! [X11] : (less(X11,n3) <=> less_or_equal(X11,n2))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f167,plain,(
+  ( ! [X2,X0,X1] : (less(sK3(X0,X1,X2),X2) | ~stoppedIn(X0,X1,X2)) )),
+  inference(cnf_transformation,[],[f124])).
+fof(f124,plain,(
+  ! [X0,X1,X2] : ((terminates(sK2(X0,X1,X2),X1,sK3(X0,X1,X2)) & less(sK3(X0,X1,X2),X2) & less(X0,sK3(X0,X1,X2)) & happens(sK2(X0,X1,X2),sK3(X0,X1,X2))) | ~stoppedIn(X0,X1,X2))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2,sK3])],[f96,f123])).
+fof(f123,plain,(
+  ! [X2,X1,X0] : (? [X3,X4] : (terminates(X3,X1,X4) & less(X4,X2) & less(X0,X4) & happens(X3,X4)) => (terminates(sK2(X0,X1,X2),X1,sK3(X0,X1,X2)) & less(sK3(X0,X1,X2),X2) & less(X0,sK3(X0,X1,X2)) & happens(sK2(X0,X1,X2),sK3(X0,X1,X2))))),
+  introduced(choice_axiom,[])).
+fof(f96,plain,(
+  ! [X0,X1,X2] : (? [X3,X4] : (terminates(X3,X1,X4) & less(X4,X2) & less(X0,X4) & happens(X3,X4)) | ~stoppedIn(X0,X1,X2))),
+  inference(ennf_transformation,[],[f93])).
+fof(f93,plain,(
+  ! [X0,X1,X2] : (stoppedIn(X0,X1,X2) => ? [X3,X4] : (terminates(X3,X1,X4) & less(X4,X2) & less(X0,X4) & happens(X3,X4)))),
+  inference(unused_predicate_definition_removal,[],[f1])).
+fof(f1,axiom,(
+  ! [X0,X1,X2] : (stoppedIn(X0,X1,X2) <=> ? [X3,X4] : (terminates(X3,X1,X4) & less(X4,X2) & less(X0,X4) & happens(X3,X4)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f7670,plain,(
+  ( ! [X0] : (less(n2,X0) | n1 = X0 | n0 = X0 | n2 = X0) )),
+  inference(duplicate_literal_removal,[],[f7625])).
+fof(f7625,plain,(
+  ( ! [X0] : (n0 = X0 | n1 = X0 | less(n2,X0) | n2 = X0 | n1 = X0) )),
+  inference(resolution,[],[f3038,f860])).
+fof(f860,plain,(
+  ( ! [X1] : (less(n2,X1) | less(X1,n1) | n2 = X1 | n1 = X1) )),
+  inference(resolution,[],[f377,f237])).
+fof(f377,plain,(
+  ( ! [X8] : (less_or_equal(X8,n1) | n2 = X8 | less(n2,X8)) )),
+  inference(resolution,[],[f261,f243])).
+fof(f243,plain,(
+  ( ! [X0] : (~less(X0,n2) | less_or_equal(X0,n1)) )),
+  inference(cnf_transformation,[],[f155])).
+fof(f155,plain,(
+  ! [X0] : ((less(X0,n2) | ~less_or_equal(X0,n1)) & (less_or_equal(X0,n1) | ~less(X0,n2)))),
+  inference(nnf_transformation,[],[f81])).
+fof(f81,plain,(
+  ! [X0] : (less(X0,n2) <=> less_or_equal(X0,n1))),
+  inference(rectify,[],[f40])).
+fof(f40,axiom,(
+  ! [X11] : (less(X11,n2) <=> less_or_equal(X11,n1))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f261,plain,(
+  ( ! [X0,X1] : (less(X1,X0) | less(X0,X1) | X0 = X1) )),
+  inference(cnf_transformation,[],[f164])).
+fof(f3038,plain,(
+  ( ! [X0] : (~less(X0,n1) | n0 = X0 | n1 = X0) )),
+  inference(resolution,[],[f856,f259])).
+fof(f856,plain,(
+  ( ! [X1] : (less(n1,X1) | n1 = X1 | n0 = X1) )),
+  inference(subsumption_resolution,[],[f855,f240])).
+fof(f240,plain,(
+  ( ! [X0] : (~less(X0,n0)) )),
+  inference(cnf_transformation,[],[f119])).
+fof(f119,plain,(
+  ! [X0] : ~less(X0,n0)),
+  inference(ennf_transformation,[],[f79])).
+fof(f79,plain,(
+  ~? [X0] : less(X0,n0)),
+  inference(rectify,[],[f38])).
+fof(f38,axiom,(
+  ~? [X11] : less(X11,n0)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f855,plain,(
+  ( ! [X1] : (n1 = X1 | less(n1,X1) | less(X1,n0) | n0 = X1) )),
+  inference(resolution,[],[f375,f237])).
+fof(f375,plain,(
+  ( ! [X6] : (less_or_equal(X6,n0) | n1 = X6 | less(n1,X6)) )),
+  inference(resolution,[],[f261,f241])).
+fof(f241,plain,(
+  ( ! [X0] : (~less(X0,n1) | less_or_equal(X0,n0)) )),
+  inference(cnf_transformation,[],[f154])).
+fof(f154,plain,(
+  ! [X0] : ((less(X0,n1) | ~less_or_equal(X0,n0)) & (less_or_equal(X0,n0) | ~less(X0,n1)))),
+  inference(nnf_transformation,[],[f80])).
+fof(f80,plain,(
+  ! [X0] : (less(X0,n1) <=> less_or_equal(X0,n0))),
+  inference(rectify,[],[f39])).
+fof(f39,axiom,(
+  ! [X11] : (less(X11,n1) <=> less_or_equal(X11,n0))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f131774,plain,(
+  ~spl11_116 | ~spl11_127),
+  inference(avatar_contradiction_clause,[],[f131773])).
+fof(f131773,plain,(
+  $false | (~spl11_116 | ~spl11_127)),
+  inference(subsumption_resolution,[],[f131737,f263])).
+fof(f263,plain,(
+  ~holdsAt(filling,n0)),
+  inference(cnf_transformation,[],[f50])).
+fof(f50,axiom,(
+  ~holdsAt(filling,n0)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f131737,plain,(
+  holdsAt(filling,n0) | (~spl11_116 | ~spl11_127)),
+  inference(backward_demodulation,[],[f12449,f12889])).
+fof(f12889,plain,(
+  holdsAt(filling,sK3(n0,filling,n3)) | ~spl11_127),
+  inference(avatar_component_clause,[],[f12887])).
+fof(f12887,plain,(
+  spl11_127 <=> holdsAt(filling,sK3(n0,filling,n3))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_127])])).
+fof(f12449,plain,(
+  n0 = sK3(n0,filling,n3) | ~spl11_116),
+  inference(avatar_component_clause,[],[f12447])).
+fof(f131735,plain,(
+  ~spl11_117 | ~spl11_118),
+  inference(avatar_contradiction_clause,[],[f131734])).
+fof(f131734,plain,(
+  $false | (~spl11_117 | ~spl11_118)),
+  inference(subsumption_resolution,[],[f131733,f218])).
+fof(f218,plain,(
+  tapOn != tapOff),
+  inference(cnf_transformation,[],[f19])).
+fof(f19,axiom,(
+  tapOn != tapOff),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f131733,plain,(
+  tapOn = tapOff | (~spl11_117 | ~spl11_118)),
+  inference(backward_demodulation,[],[f12454,f12459])).
+fof(f12459,plain,(
+  tapOff = sK2(n0,filling,n3) | ~spl11_118),
+  inference(avatar_component_clause,[],[f12457])).
+fof(f12457,plain,(
+  spl11_118 <=> tapOff = sK2(n0,filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_118])])).
+fof(f12454,plain,(
+  tapOn = sK2(n0,filling,n3) | ~spl11_117),
+  inference(avatar_component_clause,[],[f12452])).
+fof(f12452,plain,(
+  spl11_117 <=> tapOn = sK2(n0,filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_117])])).
+fof(f131729,plain,(
+  spl11_115 | spl11_117 | ~spl11_113),
+  inference(avatar_split_clause,[],[f16570,f12149,f12452,f12443])).
+fof(f12443,plain,(
+  spl11_115 <=> overflow = sK2(n0,filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_115])])).
+fof(f16570,plain,(
+  tapOn = sK2(n0,filling,n3) | overflow = sK2(n0,filling,n3) | ~spl11_113),
+  inference(resolution,[],[f12151,f521])).
+fof(f521,plain,(
+  ( ! [X10,X11,X9] : (~stoppedIn(X9,X10,X11) | tapOn = sK2(X9,X10,X11) | overflow = sK2(X9,X10,X11)) )),
+  inference(resolution,[],[f165,f212])).
+fof(f212,plain,(
+  ( ! [X0,X1] : (~happens(X0,X1) | tapOn = X0 | overflow = X0) )),
+  inference(cnf_transformation,[],[f150])).
+fof(f150,plain,(
+  ! [X0,X1] : ((happens(X0,X1) | ((overflow != X0 | ~holdsAt(filling,X1) | ~holdsAt(waterLevel(n3),X1)) & (n0 != X1 | tapOn != X0))) & ((overflow = X0 & holdsAt(filling,X1) & holdsAt(waterLevel(n3),X1)) | (n0 = X1 & tapOn = X0) | ~happens(X0,X1)))),
+  inference(flattening,[],[f149])).
+fof(f149,plain,(
+  ! [X0,X1] : ((happens(X0,X1) | ((overflow != X0 | ~holdsAt(filling,X1) | ~holdsAt(waterLevel(n3),X1)) & (n0 != X1 | tapOn != X0))) & (((overflow = X0 & holdsAt(filling,X1) & holdsAt(waterLevel(n3),X1)) | (n0 = X1 & tapOn = X0)) | ~happens(X0,X1)))),
+  inference(nnf_transformation,[],[f71])).
+fof(f71,plain,(
+  ! [X0,X1] : (happens(X0,X1) <=> ((overflow = X0 & holdsAt(filling,X1) & holdsAt(waterLevel(n3),X1)) | (n0 = X1 & tapOn = X0)))),
+  inference(rectify,[],[f16])).
+fof(f16,axiom,(
+  ! [X3,X4] : (happens(X3,X4) <=> ((overflow = X3 & holdsAt(filling,X4) & holdsAt(waterLevel(n3),X4)) | (n0 = X4 & tapOn = X3)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f165,plain,(
+  ( ! [X2,X0,X1] : (happens(sK2(X0,X1,X2),sK3(X0,X1,X2)) | ~stoppedIn(X0,X1,X2)) )),
+  inference(cnf_transformation,[],[f124])).
+fof(f131728,plain,(
+  spl11_115 | spl11_118 | ~spl11_113),
+  inference(avatar_split_clause,[],[f16571,f12149,f12457,f12443])).
+fof(f16571,plain,(
+  tapOff = sK2(n0,filling,n3) | overflow = sK2(n0,filling,n3) | ~spl11_113),
+  inference(resolution,[],[f12151,f550])).
+fof(f550,plain,(
+  ( ! [X2,X0,X1] : (~stoppedIn(X0,X1,X2) | tapOff = sK2(X0,X1,X2) | overflow = sK2(X0,X1,X2)) )),
+  inference(resolution,[],[f168,f199])).
+fof(f199,plain,(
+  ( ! [X2,X0,X1] : (~terminates(X0,X1,X2) | tapOff = X0 | overflow = X0) )),
+  inference(cnf_transformation,[],[f144])).
+fof(f144,plain,(
+  ! [X0,X1,X2] : ((terminates(X0,X1,X2) | ((filling != X1 | overflow != X0) & (filling != X1 | tapOff != X0))) & ((filling = X1 & overflow = X0) | (filling = X1 & tapOff = X0) | ~terminates(X0,X1,X2)))),
+  inference(flattening,[],[f143])).
+fof(f143,plain,(
+  ! [X0,X1,X2] : ((terminates(X0,X1,X2) | ((filling != X1 | overflow != X0) & (filling != X1 | tapOff != X0))) & (((filling = X1 & overflow = X0) | (filling = X1 & tapOff = X0)) | ~terminates(X0,X1,X2)))),
+  inference(nnf_transformation,[],[f69])).
+fof(f69,plain,(
+  ! [X0,X1,X2] : (terminates(X0,X1,X2) <=> ((filling = X1 & overflow = X0) | (filling = X1 & tapOff = X0)))),
+  inference(rectify,[],[f14])).
+fof(f14,axiom,(
+  ! [X3,X1,X4] : (terminates(X3,X1,X4) <=> ((filling = X1 & overflow = X3) | (filling = X1 & tapOff = X3)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f168,plain,(
+  ( ! [X2,X0,X1] : (terminates(sK2(X0,X1,X2),X1,sK3(X0,X1,X2)) | ~stoppedIn(X0,X1,X2)) )),
+  inference(cnf_transformation,[],[f124])).
+fof(f12892,plain,(
+  spl11_127 | ~spl11_113 | ~spl11_115),
+  inference(avatar_split_clause,[],[f12891,f12443,f12149,f12887])).
+fof(f12891,plain,(
+  holdsAt(filling,sK3(n0,filling,n3)) | (~spl11_113 | ~spl11_115)),
+  inference(subsumption_resolution,[],[f12878,f220])).
+fof(f220,plain,(
+  tapOn != overflow),
+  inference(cnf_transformation,[],[f21])).
+fof(f21,axiom,(
+  tapOn != overflow),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f12878,plain,(
+  tapOn = overflow | holdsAt(filling,sK3(n0,filling,n3)) | (~spl11_113 | ~spl11_115)),
+  inference(resolution,[],[f12856,f210])).
+fof(f210,plain,(
+  ( ! [X0,X1] : (~happens(X0,X1) | tapOn = X0 | holdsAt(filling,X1)) )),
+  inference(cnf_transformation,[],[f150])).
+fof(f12856,plain,(
+  happens(overflow,sK3(n0,filling,n3)) | (~spl11_113 | ~spl11_115)),
+  inference(subsumption_resolution,[],[f12855,f12151])).
+fof(f12855,plain,(
+  happens(overflow,sK3(n0,filling,n3)) | ~stoppedIn(n0,filling,n3) | ~spl11_115),
+  inference(superposition,[],[f165,f12445])).
+fof(f12445,plain,(
+  overflow = sK2(n0,filling,n3) | ~spl11_115),
+  inference(avatar_component_clause,[],[f12443])).
+fof(f12885,plain,(
+  spl11_126 | ~spl11_113 | ~spl11_115),
+  inference(avatar_split_clause,[],[f12884,f12443,f12149,f12880])).
+fof(f12884,plain,(
+  holdsAt(waterLevel(n3),sK3(n0,filling,n3)) | (~spl11_113 | ~spl11_115)),
+  inference(subsumption_resolution,[],[f12874,f220])).
+fof(f12874,plain,(
+  tapOn = overflow | holdsAt(waterLevel(n3),sK3(n0,filling,n3)) | (~spl11_113 | ~spl11_115)),
+  inference(resolution,[],[f12856,f208])).
+fof(f208,plain,(
+  ( ! [X0,X1] : (~happens(X0,X1) | tapOn = X0 | holdsAt(waterLevel(n3),X1)) )),
+  inference(cnf_transformation,[],[f150])).
+fof(f12163,plain,(
+  spl11_56 | spl11_113 | ~spl11_38),
+  inference(avatar_split_clause,[],[f12162,f2609,f12149,f4649])).
+fof(f4649,plain,(
+  spl11_56 <=> holdsAt(waterLevel(n3),n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_56])])).
+fof(f2609,plain,(
+  spl11_38 <=> ! [X10] : (holdsAt(waterLevel(plus(n0,X10)),plus(n0,X10)) | stoppedIn(n0,filling,plus(n0,X10)) | ~less(n0,X10))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_38])])).
+fof(f12162,plain,(
+  stoppedIn(n0,filling,n3) | holdsAt(waterLevel(n3),n3) | ~spl11_38),
+  inference(forward_demodulation,[],[f12161,f229])).
+fof(f229,plain,(
+  n3 = plus(n0,n3)),
+  inference(cnf_transformation,[],[f29])).
+fof(f29,axiom,(
+  n3 = plus(n0,n3)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f12161,plain,(
+  holdsAt(waterLevel(n3),n3) | stoppedIn(n0,filling,plus(n0,n3)) | ~spl11_38),
+  inference(subsumption_resolution,[],[f6982,f444])).
+fof(f444,plain,(
+  less(n0,n3)),
+  inference(resolution,[],[f349,f246])).
+fof(f246,plain,(
+  ( ! [X0] : (~less_or_equal(X0,n2) | less(X0,n3)) )),
+  inference(cnf_transformation,[],[f156])).
+fof(f349,plain,(
+  less_or_equal(n0,n2)),
+  inference(resolution,[],[f299,f238])).
+fof(f238,plain,(
+  ( ! [X0,X1] : (~less(X0,X1) | less_or_equal(X0,X1)) )),
+  inference(cnf_transformation,[],[f153])).
+fof(f299,plain,(
+  less(n0,n2)),
+  inference(resolution,[],[f295,f244])).
+fof(f244,plain,(
+  ( ! [X0] : (~less_or_equal(X0,n1) | less(X0,n2)) )),
+  inference(cnf_transformation,[],[f155])).
+fof(f295,plain,(
+  less_or_equal(n0,n1)),
+  inference(resolution,[],[f293,f238])).
+fof(f293,plain,(
+  less(n0,n1)),
+  inference(resolution,[],[f242,f288])).
+fof(f288,plain,(
+  ( ! [X1] : (less_or_equal(X1,X1)) )),
+  inference(equality_resolution,[],[f239])).
+fof(f239,plain,(
+  ( ! [X0,X1] : (less_or_equal(X0,X1) | X0 != X1) )),
+  inference(cnf_transformation,[],[f153])).
+fof(f242,plain,(
+  ( ! [X0] : (~less_or_equal(X0,n0) | less(X0,n1)) )),
+  inference(cnf_transformation,[],[f154])).
+fof(f6982,plain,(
+  holdsAt(waterLevel(n3),n3) | stoppedIn(n0,filling,plus(n0,n3)) | ~less(n0,n3) | ~spl11_38),
+  inference(superposition,[],[f2610,f229])).
+fof(f2610,plain,(
+  ( ! [X10] : (holdsAt(waterLevel(plus(n0,X10)),plus(n0,X10)) | stoppedIn(n0,filling,plus(n0,X10)) | ~less(n0,X10)) ) | ~spl11_38),
+  inference(avatar_component_clause,[],[f2609])).
+fof(f12113,plain,(
+  ~spl11_31 | ~spl11_34),
+  inference(avatar_split_clause,[],[f9367,f2580,f2522])).
+fof(f2522,plain,(
+  spl11_31 <=> happens(overflow,n2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_31])])).
+fof(f2580,plain,(
+  spl11_34 <=> holdsAt(filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_34])])).
+fof(f9367,plain,(
+  ~holdsAt(filling,n3) | ~happens(overflow,n2)),
+  inference(resolution,[],[f1988,f278])).
+fof(f278,plain,(
+  ( ! [X2] : (terminates(overflow,filling,X2)) )),
+  inference(equality_resolution,[],[f277])).
+fof(f277,plain,(
+  ( ! [X2,X0] : (terminates(X0,filling,X2) | overflow != X0) )),
+  inference(equality_resolution,[],[f204])).
+fof(f204,plain,(
+  ( ! [X2,X0,X1] : (terminates(X0,X1,X2) | filling != X1 | overflow != X0) )),
+  inference(cnf_transformation,[],[f144])).
+fof(f1988,plain,(
+  ( ! [X2,X3] : (~terminates(X3,X2,n2) | ~holdsAt(X2,n3) | ~happens(X3,n2)) )),
+  inference(superposition,[],[f482,f231])).
+fof(f231,plain,(
+  n3 = plus(n1,n2)),
+  inference(cnf_transformation,[],[f31])).
+fof(f31,axiom,(
+  n3 = plus(n1,n2)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f482,plain,(
+  ( ! [X2,X0,X1] : (~holdsAt(X1,plus(n1,X0)) | ~terminates(X2,X1,X0) | ~happens(X2,X0)) )),
+  inference(superposition,[],[f179,f236])).
+fof(f236,plain,(
+  ( ! [X0,X1] : (plus(X0,X1) = plus(X1,X0)) )),
+  inference(cnf_transformation,[],[f77])).
+fof(f77,plain,(
+  ! [X0,X1] : plus(X0,X1) = plus(X1,X0)),
+  inference(rectify,[],[f36])).
+fof(f36,axiom,(
+  ! [X11,X12] : plus(X11,X12) = plus(X12,X11)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f179,plain,(
+  ( ! [X2,X0,X1] : (~holdsAt(X2,plus(X1,n1)) | ~terminates(X0,X2,X1) | ~happens(X0,X1)) )),
+  inference(cnf_transformation,[],[f110])).
+fof(f110,plain,(
+  ! [X0,X1,X2] : (~holdsAt(X2,plus(X1,n1)) | ~terminates(X0,X2,X1) | ~happens(X0,X1))),
+  inference(flattening,[],[f109])).
+fof(f109,plain,(
+  ! [X0,X1,X2] : (~holdsAt(X2,plus(X1,n1)) | (~terminates(X0,X2,X1) | ~happens(X0,X1)))),
+  inference(ennf_transformation,[],[f65])).
+fof(f65,plain,(
+  ! [X0,X1,X2] : ((terminates(X0,X2,X1) & happens(X0,X1)) => ~holdsAt(X2,plus(X1,n1)))),
+  inference(rectify,[],[f10])).
+fof(f10,axiom,(
+  ! [X3,X4,X1] : ((terminates(X3,X1,X4) & happens(X3,X4)) => ~holdsAt(X1,plus(X4,n1)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f12105,plain,(
+  ~spl11_31 | spl11_32),
+  inference(avatar_split_clause,[],[f8677,f2526,f2522])).
+fof(f2526,plain,(
+  spl11_32 <=> holdsAt(spilling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_32])])).
+fof(f8677,plain,(
+  holdsAt(spilling,n3) | ~happens(overflow,n2)),
+  inference(superposition,[],[f801,f231])).
+fof(f801,plain,(
+  ( ! [X0] : (holdsAt(spilling,plus(n1,X0)) | ~happens(overflow,X0)) )),
+  inference(superposition,[],[f476,f236])).
+fof(f476,plain,(
+  ( ! [X0] : (holdsAt(spilling,plus(X0,n1)) | ~happens(overflow,X0)) )),
+  inference(resolution,[],[f178,f274])).
+fof(f274,plain,(
+  ( ! [X2] : (initiates(overflow,spilling,X2)) )),
+  inference(equality_resolution,[],[f273])).
+fof(f273,plain,(
+  ( ! [X2,X0] : (initiates(X0,spilling,X2) | overflow != X0) )),
+  inference(equality_resolution,[],[f196])).
+fof(f196,plain,(
+  ( ! [X2,X0,X1] : (initiates(X0,X1,X2) | spilling != X1 | overflow != X0) )),
+  inference(cnf_transformation,[],[f142])).
+fof(f142,plain,(
+  ! [X0,X1,X2] : ((initiates(X0,X1,X2) | (~sP1(X1,X0,X2) & ~sP0(X1,X0,X2) & (spilling != X1 | overflow != X0) & (filling != X1 | tapOn != X0))) & (sP1(X1,X0,X2) | sP0(X1,X0,X2) | (spilling = X1 & overflow = X0) | (filling = X1 & tapOn = X0) | ~initiates(X0,X1,X2)))),
+  inference(flattening,[],[f141])).
+fof(f141,plain,(
+  ! [X0,X1,X2] : ((initiates(X0,X1,X2) | (~sP1(X1,X0,X2) & ~sP0(X1,X0,X2) & (spilling != X1 | overflow != X0) & (filling != X1 | tapOn != X0))) & ((sP1(X1,X0,X2) | sP0(X1,X0,X2) | (spilling = X1 & overflow = X0) | (filling = X1 & tapOn = X0)) | ~initiates(X0,X1,X2)))),
+  inference(nnf_transformation,[],[f122])).
+fof(f122,plain,(
+  ! [X0,X1,X2] : (initiates(X0,X1,X2) <=> (sP1(X1,X0,X2) | sP0(X1,X0,X2) | (spilling = X1 & overflow = X0) | (filling = X1 & tapOn = X0)))),
+  inference(definition_folding,[],[f68,f121,f120])).
+fof(f120,plain,(
+  ! [X1,X0,X2] : (sP0(X1,X0,X2) <=> ? [X4] : (waterLevel(X4) = X1 & tapOff = X0 & holdsAt(waterLevel(X4),X2)))),
+  introduced(predicate_definition_introduction,[new_symbols(naming,[sP0])])).
+fof(f121,plain,(
+  ! [X1,X0,X2] : (sP1(X1,X0,X2) <=> ? [X3] : (waterLevel(X3) = X1 & overflow = X0 & holdsAt(waterLevel(X3),X2)))),
+  introduced(predicate_definition_introduction,[new_symbols(naming,[sP1])])).
+fof(f68,plain,(
+  ! [X0,X1,X2] : (initiates(X0,X1,X2) <=> (? [X3] : (waterLevel(X3) = X1 & overflow = X0 & holdsAt(waterLevel(X3),X2)) | ? [X4] : (waterLevel(X4) = X1 & tapOff = X0 & holdsAt(waterLevel(X4),X2)) | (spilling = X1 & overflow = X0) | (filling = X1 & tapOn = X0)))),
+  inference(rectify,[],[f13])).
+fof(f13,axiom,(
+  ! [X3,X1,X4] : (initiates(X3,X1,X4) <=> (? [X8] : (waterLevel(X8) = X1 & overflow = X3 & holdsAt(waterLevel(X8),X4)) | ? [X8] : (waterLevel(X8) = X1 & tapOff = X3 & holdsAt(waterLevel(X8),X4)) | (spilling = X1 & overflow = X3) | (filling = X1 & tapOn = X3)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f178,plain,(
+  ( ! [X2,X0,X1] : (~initiates(X0,X2,X1) | holdsAt(X2,plus(X1,n1)) | ~happens(X0,X1)) )),
+  inference(cnf_transformation,[],[f108])).
+fof(f108,plain,(
+  ! [X0,X1,X2] : (holdsAt(X2,plus(X1,n1)) | ~initiates(X0,X2,X1) | ~happens(X0,X1))),
+  inference(flattening,[],[f107])).
+fof(f107,plain,(
+  ! [X0,X1,X2] : (holdsAt(X2,plus(X1,n1)) | (~initiates(X0,X2,X1) | ~happens(X0,X1)))),
+  inference(ennf_transformation,[],[f64])).
+fof(f64,plain,(
+  ! [X0,X1,X2] : ((initiates(X0,X2,X1) & happens(X0,X1)) => holdsAt(X2,plus(X1,n1)))),
+  inference(rectify,[],[f9])).
+fof(f9,axiom,(
+  ! [X3,X4,X1] : ((initiates(X3,X1,X4) & happens(X3,X4)) => holdsAt(X1,plus(X4,n1)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f12104,plain,(
+  ~spl11_32 | spl11_66 | ~spl11_68 | ~spl11_73),
+  inference(avatar_contradiction_clause,[],[f12103])).
+fof(f12103,plain,(
+  $false | (~spl11_32 | spl11_66 | ~spl11_68 | ~spl11_73)),
+  inference(subsumption_resolution,[],[f12102,f5703])).
+fof(f5703,plain,(
+  ~releasedAt(spilling,n3) | spl11_66),
+  inference(avatar_component_clause,[],[f5701])).
+fof(f5701,plain,(
+  spl11_66 <=> releasedAt(spilling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_66])])).
+fof(f12102,plain,(
+  releasedAt(spilling,n3) | (~spl11_32 | ~spl11_68 | ~spl11_73)),
+  inference(resolution,[],[f12050,f5734])).
+fof(f5734,plain,(
+  ( ! [X4] : (~releasedAt(X4,n4) | releasedAt(X4,n3)) ) | ~spl11_68),
+  inference(avatar_component_clause,[],[f5733])).
+fof(f5733,plain,(
+  spl11_68 <=> ! [X4] : (~releasedAt(X4,n4) | releasedAt(X4,n3))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_68])])).
+fof(f12050,plain,(
+  releasedAt(spilling,n4) | (~spl11_32 | ~spl11_73)),
+  inference(subsumption_resolution,[],[f12046,f268])).
+fof(f268,plain,(
+  ~holdsAt(spilling,n4)),
+  inference(cnf_transformation,[],[f91])).
+fof(f91,plain,(
+  ~holdsAt(spilling,n4)),
+  inference(flattening,[],[f56])).
+fof(f56,negated_conjecture,(
+  ~holdsAt(spilling,n4)),
+  inference(negated_conjecture,[],[f55])).
+fof(f55,conjecture,(
+  holdsAt(spilling,n4)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f12046,plain,(
+  releasedAt(spilling,n4) | holdsAt(spilling,n4) | (~spl11_32 | ~spl11_73)),
+  inference(resolution,[],[f6134,f2528])).
+fof(f2528,plain,(
+  holdsAt(spilling,n3) | ~spl11_32),
+  inference(avatar_component_clause,[],[f2526])).
+fof(f6134,plain,(
+  ( ! [X0] : (~holdsAt(X0,n3) | releasedAt(X0,n4) | holdsAt(X0,n4)) ) | ~spl11_73),
+  inference(avatar_component_clause,[],[f6133])).
+fof(f6133,plain,(
+  spl11_73 <=> ! [X0] : (releasedAt(X0,n4) | ~holdsAt(X0,n3) | holdsAt(X0,n4))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_73])])).
+fof(f8412,plain,(
+  ~spl11_21 | ~spl11_77),
+  inference(avatar_contradiction_clause,[],[f8411])).
+fof(f8411,plain,(
+  $false | (~spl11_21 | ~spl11_77)),
+  inference(subsumption_resolution,[],[f8361,f289])).
+fof(f289,plain,(
+  ( ! [X1] : (~less(X1,X1)) )),
+  inference(equality_resolution,[],[f260])).
+fof(f260,plain,(
+  ( ! [X0,X1] : (X0 != X1 | ~less(X0,X1)) )),
+  inference(cnf_transformation,[],[f164])).
+fof(f8361,plain,(
+  less(n1,n1) | (~spl11_21 | ~spl11_77)),
+  inference(backward_demodulation,[],[f8351,f585])).
+fof(f585,plain,(
+  less(n1,n5)),
+  inference(resolution,[],[f517,f250])).
+fof(f250,plain,(
+  ( ! [X0] : (~less_or_equal(X0,n4) | less(X0,n5)) )),
+  inference(cnf_transformation,[],[f158])).
+fof(f158,plain,(
+  ! [X0] : ((less(X0,n5) | ~less_or_equal(X0,n4)) & (less_or_equal(X0,n4) | ~less(X0,n5)))),
+  inference(nnf_transformation,[],[f84])).
+fof(f84,plain,(
+  ! [X0] : (less(X0,n5) <=> less_or_equal(X0,n4))),
+  inference(rectify,[],[f43])).
+fof(f43,axiom,(
+  ! [X11] : (less(X11,n5) <=> less_or_equal(X11,n4))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f517,plain,(
+  less_or_equal(n1,n4)),
+  inference(resolution,[],[f451,f238])).
+fof(f451,plain,(
+  less(n1,n4)),
+  inference(resolution,[],[f353,f248])).
+fof(f248,plain,(
+  ( ! [X0] : (~less_or_equal(X0,n3) | less(X0,n4)) )),
+  inference(cnf_transformation,[],[f157])).
+fof(f157,plain,(
+  ! [X0] : ((less(X0,n4) | ~less_or_equal(X0,n3)) & (less_or_equal(X0,n3) | ~less(X0,n4)))),
+  inference(nnf_transformation,[],[f83])).
+fof(f83,plain,(
+  ! [X0] : (less(X0,n4) <=> less_or_equal(X0,n3))),
+  inference(rectify,[],[f42])).
+fof(f42,axiom,(
+  ! [X11] : (less(X11,n4) <=> less_or_equal(X11,n3))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f353,plain,(
+  less_or_equal(n1,n3)),
+  inference(resolution,[],[f303,f238])).
+fof(f303,plain,(
+  less(n1,n3)),
+  inference(resolution,[],[f298,f246])).
+fof(f298,plain,(
+  less_or_equal(n1,n2)),
+  inference(resolution,[],[f296,f238])).
+fof(f296,plain,(
+  less(n1,n2)),
+  inference(resolution,[],[f244,f288])).
+fof(f8351,plain,(
+  n1 = n5 | (~spl11_21 | ~spl11_77)),
+  inference(forward_demodulation,[],[f7925,f7908])).
+fof(f7908,plain,(
+  n1 = plus(n1,n2) | (~spl11_21 | ~spl11_77)),
+  inference(backward_demodulation,[],[f7893,f231])).
+fof(f7893,plain,(
+  n1 = n3 | (~spl11_21 | ~spl11_77)),
+  inference(resolution,[],[f1118,f7142])).
+fof(f7142,plain,(
+  ( ! [X4] : (~holdsAt(waterLevel(X4),n1) | n1 = X4) ) | ~spl11_77),
+  inference(resolution,[],[f7013,f217])).
+fof(f217,plain,(
+  ( ! [X2,X0,X1] : (~holdsAt(waterLevel(X2),X0) | X1 = X2 | ~holdsAt(waterLevel(X1),X0)) )),
+  inference(cnf_transformation,[],[f118])).
+fof(f118,plain,(
+  ! [X0,X1,X2] : (X1 = X2 | ~holdsAt(waterLevel(X2),X0) | ~holdsAt(waterLevel(X1),X0))),
+  inference(flattening,[],[f117])).
+fof(f117,plain,(
+  ! [X0,X1,X2] : (X1 = X2 | (~holdsAt(waterLevel(X2),X0) | ~holdsAt(waterLevel(X1),X0)))),
+  inference(ennf_transformation,[],[f73])).
+fof(f73,plain,(
+  ! [X0,X1,X2] : ((holdsAt(waterLevel(X2),X0) & holdsAt(waterLevel(X1),X0)) => X1 = X2)),
+  inference(rectify,[],[f18])).
+fof(f18,axiom,(
+  ! [X4,X9,X10] : ((holdsAt(waterLevel(X10),X4) & holdsAt(waterLevel(X9),X4)) => X9 = X10)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f7013,plain,(
+  holdsAt(waterLevel(n1),n1) | ~spl11_77),
+  inference(avatar_component_clause,[],[f7011])).
+fof(f7011,plain,(
+  spl11_77 <=> holdsAt(waterLevel(n1),n1)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_77])])).
+fof(f1118,plain,(
+  holdsAt(waterLevel(n3),n1) | ~spl11_21),
+  inference(avatar_component_clause,[],[f1116])).
+fof(f7925,plain,(
+  plus(n1,n2) = n5 | (~spl11_21 | ~spl11_77)),
+  inference(backward_demodulation,[],[f7893,f338])).
+fof(f338,plain,(
+  n5 = plus(n3,n2)),
+  inference(superposition,[],[f236,f234])).
+fof(f234,plain,(
+  plus(n2,n3) = n5),
+  inference(cnf_transformation,[],[f34])).
+fof(f34,axiom,(
+  plus(n2,n3) = n5),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f7869,plain,(
+  spl11_21 | spl11_42 | spl11_22),
+  inference(avatar_split_clause,[],[f7868,f1120,f2627,f1116])).
+fof(f2627,plain,(
+  spl11_42 <=> ! [X5] : (holdsAt(X5,n2) | ~holdsAt(X5,n1) | releasedAt(X5,n2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_42])])).
+fof(f1120,plain,(
+  spl11_22 <=> n0 = n1),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_22])])).
+fof(f7868,plain,(
+  ( ! [X0] : (releasedAt(X0,n2) | holdsAt(X0,n2) | ~holdsAt(X0,n1) | holdsAt(waterLevel(n3),n1)) ) | spl11_22),
+  inference(subsumption_resolution,[],[f4300,f1121])).
+fof(f1121,plain,(
+  n0 != n1 | spl11_22),
+  inference(avatar_component_clause,[],[f1120])).
+fof(f4300,plain,(
+  ( ! [X0] : (releasedAt(X0,n2) | holdsAt(X0,n2) | ~holdsAt(X0,n1) | n0 = n1 | holdsAt(waterLevel(n3),n1)) )),
+  inference(resolution,[],[f584,f209])).
+fof(f209,plain,(
+  ( ! [X0,X1] : (~happens(X0,X1) | n0 = X1 | holdsAt(waterLevel(n3),X1)) )),
+  inference(cnf_transformation,[],[f150])).
+fof(f584,plain,(
+  ( ! [X5] : (happens(sK4(X5,n1),n1) | releasedAt(X5,n2) | holdsAt(X5,n2) | ~holdsAt(X5,n1)) )),
+  inference(forward_demodulation,[],[f581,f230])).
+fof(f230,plain,(
+  n2 = plus(n1,n1)),
+  inference(cnf_transformation,[],[f30])).
+fof(f30,axiom,(
+  n2 = plus(n1,n1)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f581,plain,(
+  ( ! [X5] : (releasedAt(X5,n2) | happens(sK4(X5,n1),n1) | holdsAt(X5,plus(n1,n1)) | ~holdsAt(X5,n1)) )),
+  inference(superposition,[],[f170,f230])).
+fof(f170,plain,(
+  ( ! [X0,X1] : (releasedAt(X0,plus(X1,n1)) | happens(sK4(X0,X1),X1) | holdsAt(X0,plus(X1,n1)) | ~holdsAt(X0,X1)) )),
+  inference(cnf_transformation,[],[f126])).
+fof(f126,plain,(
+  ! [X0,X1] : (holdsAt(X0,plus(X1,n1)) | (terminates(sK4(X0,X1),X0,X1) & happens(sK4(X0,X1),X1)) | releasedAt(X0,plus(X1,n1)) | ~holdsAt(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK4])],[f100,f125])).
+fof(f125,plain,(
+  ! [X1,X0] : (? [X2] : (terminates(X2,X0,X1) & happens(X2,X1)) => (terminates(sK4(X0,X1),X0,X1) & happens(sK4(X0,X1),X1)))),
+  introduced(choice_axiom,[])).
+fof(f100,plain,(
+  ! [X0,X1] : (holdsAt(X0,plus(X1,n1)) | ? [X2] : (terminates(X2,X0,X1) & happens(X2,X1)) | releasedAt(X0,plus(X1,n1)) | ~holdsAt(X0,X1))),
+  inference(flattening,[],[f99])).
+fof(f99,plain,(
+  ! [X0,X1] : (holdsAt(X0,plus(X1,n1)) | (? [X2] : (terminates(X2,X0,X1) & happens(X2,X1)) | releasedAt(X0,plus(X1,n1)) | ~holdsAt(X0,X1)))),
+  inference(ennf_transformation,[],[f60])).
+fof(f60,plain,(
+  ! [X0,X1] : ((~? [X2] : (terminates(X2,X0,X1) & happens(X2,X1)) & ~releasedAt(X0,plus(X1,n1)) & holdsAt(X0,X1)) => holdsAt(X0,plus(X1,n1)))),
+  inference(rectify,[],[f5])).
+fof(f5,axiom,(
+  ! [X1,X4] : ((~? [X3] : (terminates(X3,X1,X4) & happens(X3,X4)) & ~releasedAt(X1,plus(X4,n1)) & holdsAt(X1,X4)) => holdsAt(X1,plus(X4,n1)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f7747,plain,(
+  ~spl11_29),
+  inference(avatar_contradiction_clause,[],[f7746])).
+fof(f7746,plain,(
+  $false | ~spl11_29),
+  inference(subsumption_resolution,[],[f7745,f221])).
+fof(f221,plain,(
+  ( ! [X0] : (filling != waterLevel(X0)) )),
+  inference(cnf_transformation,[],[f74])).
+fof(f74,plain,(
+  ! [X0] : filling != waterLevel(X0)),
+  inference(rectify,[],[f22])).
+fof(f22,axiom,(
+  ! [X11] : filling != waterLevel(X11)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f7745,plain,(
+  filling = waterLevel(sK10(sK7(filling,n1),filling)) | ~spl11_29),
+  inference(subsumption_resolution,[],[f7740,f1011])).
+fof(f1011,plain,(
+  ~releasedAt(filling,n1)),
+  inference(subsumption_resolution,[],[f1006,f285])).
+fof(f285,plain,(
+  happens(tapOn,n0)),
+  inference(equality_resolution,[],[f284])).
+fof(f284,plain,(
+  ( ! [X0] : (happens(X0,n0) | tapOn != X0) )),
+  inference(equality_resolution,[],[f214])).
+fof(f214,plain,(
+  ( ! [X0,X1] : (happens(X0,X1) | n0 != X1 | tapOn != X0) )),
+  inference(cnf_transformation,[],[f150])).
+fof(f1006,plain,(
+  ~releasedAt(filling,n1) | ~happens(tapOn,n0)),
+  inference(resolution,[],[f493,f276])).
+fof(f276,plain,(
+  ( ! [X2] : (initiates(tapOn,filling,X2)) )),
+  inference(equality_resolution,[],[f275])).
+fof(f275,plain,(
+  ( ! [X2,X0] : (initiates(X0,filling,X2) | tapOn != X0) )),
+  inference(equality_resolution,[],[f195])).
+fof(f195,plain,(
+  ( ! [X2,X0,X1] : (initiates(X0,X1,X2) | filling != X1 | tapOn != X0) )),
+  inference(cnf_transformation,[],[f142])).
+fof(f493,plain,(
+  ( ! [X6,X7] : (~initiates(X7,X6,n0) | ~releasedAt(X6,n1) | ~happens(X7,n0)) )),
+  inference(superposition,[],[f181,f227])).
+fof(f227,plain,(
+  n1 = plus(n0,n1)),
+  inference(cnf_transformation,[],[f27])).
+fof(f27,axiom,(
+  n1 = plus(n0,n1)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f181,plain,(
+  ( ! [X2,X0,X1] : (~releasedAt(X2,plus(X1,n1)) | ~initiates(X0,X2,X1) | ~happens(X0,X1)) )),
+  inference(cnf_transformation,[],[f114])).
+fof(f114,plain,(
+  ! [X0,X1,X2] : (~releasedAt(X2,plus(X1,n1)) | (~terminates(X0,X2,X1) & ~initiates(X0,X2,X1)) | ~happens(X0,X1))),
+  inference(flattening,[],[f113])).
+fof(f113,plain,(
+  ! [X0,X1,X2] : (~releasedAt(X2,plus(X1,n1)) | ((~terminates(X0,X2,X1) & ~initiates(X0,X2,X1)) | ~happens(X0,X1)))),
+  inference(ennf_transformation,[],[f67])).
+fof(f67,plain,(
+  ! [X0,X1,X2] : (((terminates(X0,X2,X1) | initiates(X0,X2,X1)) & happens(X0,X1)) => ~releasedAt(X2,plus(X1,n1)))),
+  inference(rectify,[],[f12])).
+fof(f12,axiom,(
+  ! [X3,X4,X1] : (((terminates(X3,X1,X4) | initiates(X3,X1,X4)) & happens(X3,X4)) => ~releasedAt(X1,plus(X4,n1)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f7740,plain,(
+  releasedAt(filling,n1) | filling = waterLevel(sK10(sK7(filling,n1),filling)) | ~spl11_29),
+  inference(resolution,[],[f2378,f2237])).
+fof(f2237,plain,(
+  ( ! [X5] : (~releasedAt(X5,n2) | releasedAt(X5,n1) | waterLevel(sK10(sK7(X5,n1),X5)) = X5) )),
+  inference(superposition,[],[f556,f230])).
+fof(f556,plain,(
+  ( ! [X2,X3] : (~releasedAt(X2,plus(X3,n1)) | releasedAt(X2,X3) | waterLevel(sK10(sK7(X2,X3),X2)) = X2) )),
+  inference(resolution,[],[f177,f206])).
+fof(f206,plain,(
+  ( ! [X2,X0,X1] : (~releases(X0,X1,X2) | waterLevel(sK10(X0,X1)) = X1) )),
+  inference(cnf_transformation,[],[f148])).
+fof(f148,plain,(
+  ! [X0,X1,X2] : ((releases(X0,X1,X2) | ! [X3] : (waterLevel(X3) != X1 | tapOn != X0)) & ((waterLevel(sK10(X0,X1)) = X1 & tapOn = X0) | ~releases(X0,X1,X2)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK10])],[f146,f147])).
+fof(f147,plain,(
+  ! [X1,X0] : (? [X4] : (waterLevel(X4) = X1 & tapOn = X0) => (waterLevel(sK10(X0,X1)) = X1 & tapOn = X0))),
+  introduced(choice_axiom,[])).
+fof(f146,plain,(
+  ! [X0,X1,X2] : ((releases(X0,X1,X2) | ! [X3] : (waterLevel(X3) != X1 | tapOn != X0)) & (? [X4] : (waterLevel(X4) = X1 & tapOn = X0) | ~releases(X0,X1,X2)))),
+  inference(rectify,[],[f145])).
+fof(f145,plain,(
+  ! [X0,X1,X2] : ((releases(X0,X1,X2) | ! [X3] : (waterLevel(X3) != X1 | tapOn != X0)) & (? [X3] : (waterLevel(X3) = X1 & tapOn = X0) | ~releases(X0,X1,X2)))),
+  inference(nnf_transformation,[],[f70])).
+fof(f70,plain,(
+  ! [X0,X1,X2] : (releases(X0,X1,X2) <=> ? [X3] : (waterLevel(X3) = X1 & tapOn = X0))),
+  inference(rectify,[],[f15])).
+fof(f15,axiom,(
+  ! [X3,X1,X4] : (releases(X3,X1,X4) <=> ? [X8] : (waterLevel(X8) = X1 & tapOn = X3))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f177,plain,(
+  ( ! [X0,X1] : (releases(sK7(X0,X1),X0,X1) | ~releasedAt(X0,plus(X1,n1)) | releasedAt(X0,X1)) )),
+  inference(cnf_transformation,[],[f132])).
+fof(f132,plain,(
+  ! [X0,X1] : (~releasedAt(X0,plus(X1,n1)) | (releases(sK7(X0,X1),X0,X1) & happens(sK7(X0,X1),X1)) | releasedAt(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK7])],[f106,f131])).
+fof(f131,plain,(
+  ! [X1,X0] : (? [X2] : (releases(X2,X0,X1) & happens(X2,X1)) => (releases(sK7(X0,X1),X0,X1) & happens(sK7(X0,X1),X1)))),
+  introduced(choice_axiom,[])).
+fof(f106,plain,(
+  ! [X0,X1] : (~releasedAt(X0,plus(X1,n1)) | ? [X2] : (releases(X2,X0,X1) & happens(X2,X1)) | releasedAt(X0,X1))),
+  inference(flattening,[],[f105])).
+fof(f105,plain,(
+  ! [X0,X1] : (~releasedAt(X0,plus(X1,n1)) | (? [X2] : (releases(X2,X0,X1) & happens(X2,X1)) | releasedAt(X0,X1)))),
+  inference(ennf_transformation,[],[f63])).
+fof(f63,plain,(
+  ! [X0,X1] : ((~? [X2] : (releases(X2,X0,X1) & happens(X2,X1)) & ~releasedAt(X0,X1)) => ~releasedAt(X0,plus(X1,n1)))),
+  inference(rectify,[],[f8])).
+fof(f8,axiom,(
+  ! [X1,X4] : ((~? [X3] : (releases(X3,X1,X4) & happens(X3,X4)) & ~releasedAt(X1,X4)) => ~releasedAt(X1,plus(X4,n1)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f2378,plain,(
+  releasedAt(filling,n2) | ~spl11_29),
+  inference(avatar_component_clause,[],[f2377])).
+fof(f2377,plain,(
+  spl11_29 <=> releasedAt(filling,n2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_29])])).
+fof(f7736,plain,(
+  spl11_29 | ~spl11_64 | ~spl11_65),
+  inference(avatar_split_clause,[],[f7732,f5695,f5685,f2377])).
+fof(f5685,plain,(
+  spl11_64 <=> ! [X0] : (~releasedAt(X0,n3) | releasedAt(X0,n2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_64])])).
+fof(f5695,plain,(
+  spl11_65 <=> releasedAt(filling,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_65])])).
+fof(f7732,plain,(
+  releasedAt(filling,n2) | (~spl11_64 | ~spl11_65)),
+  inference(resolution,[],[f5696,f5686])).
+fof(f5686,plain,(
+  ( ! [X0] : (~releasedAt(X0,n3) | releasedAt(X0,n2)) ) | ~spl11_64),
+  inference(avatar_component_clause,[],[f5685])).
+fof(f5696,plain,(
+  releasedAt(filling,n3) | ~spl11_65),
+  inference(avatar_component_clause,[],[f5695])).
+fof(f7714,plain,(
+  spl11_65 | ~spl11_16 | spl11_34 | spl11_51 | spl11_52),
+  inference(avatar_split_clause,[],[f7711,f3580,f3576,f2580,f837,f5695])).
+fof(f837,plain,(
+  spl11_16 <=> holdsAt(filling,n2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_16])])).
+fof(f3580,plain,(
+  spl11_52 <=> n0 = n2),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_52])])).
+fof(f7711,plain,(
+  releasedAt(filling,n3) | (~spl11_16 | spl11_34 | spl11_51 | spl11_52)),
+  inference(subsumption_resolution,[],[f7708,f2581])).
+fof(f2581,plain,(
+  ~holdsAt(filling,n3) | spl11_34),
+  inference(avatar_component_clause,[],[f2580])).
+fof(f7708,plain,(
+  holdsAt(filling,n3) | releasedAt(filling,n3) | (~spl11_16 | spl11_51 | spl11_52)),
+  inference(resolution,[],[f6121,f839])).
+fof(f839,plain,(
+  holdsAt(filling,n2) | ~spl11_16),
+  inference(avatar_component_clause,[],[f837])).
+fof(f6121,plain,(
+  ( ! [X0] : (~holdsAt(X0,n2) | holdsAt(X0,n3) | releasedAt(X0,n3)) ) | (spl11_51 | spl11_52)),
+  inference(subsumption_resolution,[],[f6120,f3577])).
+fof(f6120,plain,(
+  ( ! [X0] : (releasedAt(X0,n3) | holdsAt(X0,n3) | ~holdsAt(X0,n2) | holdsAt(waterLevel(n3),n2)) ) | spl11_52),
+  inference(subsumption_resolution,[],[f6114,f3581])).
+fof(f3581,plain,(
+  n0 != n2 | spl11_52),
+  inference(avatar_component_clause,[],[f3580])).
+fof(f6114,plain,(
+  ( ! [X0] : (releasedAt(X0,n3) | holdsAt(X0,n3) | ~holdsAt(X0,n2) | n0 = n2 | holdsAt(waterLevel(n3),n2)) )),
+  inference(resolution,[],[f2320,f209])).
+fof(f2320,plain,(
+  ( ! [X1] : (happens(sK4(X1,n2),n2) | releasedAt(X1,n3) | holdsAt(X1,n3) | ~holdsAt(X1,n2)) )),
+  inference(forward_demodulation,[],[f2319,f231])).
+fof(f2319,plain,(
+  ( ! [X1] : (holdsAt(X1,plus(n1,n2)) | releasedAt(X1,n3) | happens(sK4(X1,n2),n2) | ~holdsAt(X1,n2)) )),
+  inference(forward_demodulation,[],[f2314,f236])).
+fof(f2314,plain,(
+  ( ! [X1] : (releasedAt(X1,n3) | happens(sK4(X1,n2),n2) | holdsAt(X1,plus(n2,n1)) | ~holdsAt(X1,n2)) )),
+  inference(superposition,[],[f578,f231])).
+fof(f578,plain,(
+  ( ! [X0,X1] : (releasedAt(X1,plus(n1,X0)) | happens(sK4(X1,X0),X0) | holdsAt(X1,plus(X0,n1)) | ~holdsAt(X1,X0)) )),
+  inference(superposition,[],[f170,f236])).
+fof(f7104,plain,(
+  ~spl11_75),
+  inference(avatar_contradiction_clause,[],[f7103])).
+fof(f7103,plain,(
+  $false | ~spl11_75),
+  inference(subsumption_resolution,[],[f7102,f6996])).
+fof(f6996,plain,(
+  stoppedIn(n0,filling,n1) | ~spl11_75),
+  inference(avatar_component_clause,[],[f6994])).
+fof(f6994,plain,(
+  spl11_75 <=> stoppedIn(n0,filling,n1)),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_75])])).
+fof(f7102,plain,(
+  ~stoppedIn(n0,filling,n1) | ~spl11_75),
+  inference(subsumption_resolution,[],[f7085,f240])).
+fof(f7085,plain,(
+  less(n0,n0) | ~stoppedIn(n0,filling,n1) | ~spl11_75),
+  inference(superposition,[],[f166,f7019])).
+fof(f7019,plain,(
+  n0 = sK3(n0,filling,n1) | ~spl11_75),
+  inference(resolution,[],[f6996,f951])).
+fof(f951,plain,(
+  ( ! [X2,X3] : (~stoppedIn(X2,X3,n1) | n0 = sK3(X2,X3,n1)) )),
+  inference(subsumption_resolution,[],[f950,f240])).
+fof(f950,plain,(
+  ( ! [X2,X3] : (~stoppedIn(X2,X3,n1) | less(sK3(X2,X3,n1),n0) | n0 = sK3(X2,X3,n1)) )),
+  inference(resolution,[],[f435,f237])).
+fof(f435,plain,(
+  ( ! [X8,X9] : (less_or_equal(sK3(X8,X9,n1),n0) | ~stoppedIn(X8,X9,n1)) )),
+  inference(resolution,[],[f167,f241])).
+fof(f166,plain,(
+  ( ! [X2,X0,X1] : (less(X0,sK3(X0,X1,X2)) | ~stoppedIn(X0,X1,X2)) )),
+  inference(cnf_transformation,[],[f124])).
+fof(f7014,plain,(
+  spl11_77 | spl11_75 | ~spl11_38),
+  inference(avatar_split_clause,[],[f7009,f2609,f6994,f7011])).
+fof(f7009,plain,(
+  stoppedIn(n0,filling,n1) | holdsAt(waterLevel(n1),n1) | ~spl11_38),
+  inference(forward_demodulation,[],[f7008,f227])).
+fof(f7008,plain,(
+  holdsAt(waterLevel(n1),n1) | stoppedIn(n0,filling,plus(n0,n1)) | ~spl11_38),
+  inference(subsumption_resolution,[],[f6981,f293])).
+fof(f6981,plain,(
+  holdsAt(waterLevel(n1),n1) | stoppedIn(n0,filling,plus(n0,n1)) | ~less(n0,n1) | ~spl11_38),
+  inference(superposition,[],[f2610,f227])).
+fof(f6143,plain,(
+  spl11_73 | spl11_34 | spl11_57),
+  inference(avatar_split_clause,[],[f6142,f4653,f2580,f6133])).
+fof(f4653,plain,(
+  spl11_57 <=> n0 = n3),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_57])])).
+fof(f6142,plain,(
+  ( ! [X4] : (releasedAt(X4,n4) | holdsAt(X4,n4) | ~holdsAt(X4,n3)) ) | (spl11_34 | spl11_57)),
+  inference(subsumption_resolution,[],[f6141,f2581])).
+fof(f6141,plain,(
+  ( ! [X4] : (releasedAt(X4,n4) | holdsAt(X4,n4) | ~holdsAt(X4,n3) | holdsAt(filling,n3)) ) | spl11_57),
+  inference(subsumption_resolution,[],[f6129,f4654])).
+fof(f4654,plain,(
+  n0 != n3 | spl11_57),
+  inference(avatar_component_clause,[],[f4653])).
+fof(f6129,plain,(
+  ( ! [X4] : (releasedAt(X4,n4) | holdsAt(X4,n4) | ~holdsAt(X4,n3) | n0 = n3 | holdsAt(filling,n3)) )),
+  inference(resolution,[],[f2322,f211])).
+fof(f211,plain,(
+  ( ! [X0,X1] : (~happens(X0,X1) | n0 = X1 | holdsAt(filling,X1)) )),
+  inference(cnf_transformation,[],[f150])).
+fof(f2322,plain,(
+  ( ! [X2] : (happens(sK4(X2,n3),n3) | releasedAt(X2,n4) | holdsAt(X2,n4) | ~holdsAt(X2,n3)) )),
+  inference(forward_demodulation,[],[f2321,f232])).
+fof(f232,plain,(
+  plus(n1,n3) = n4),
+  inference(cnf_transformation,[],[f32])).
+fof(f32,axiom,(
+  plus(n1,n3) = n4),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f2321,plain,(
+  ( ! [X2] : (holdsAt(X2,plus(n1,n3)) | releasedAt(X2,n4) | happens(sK4(X2,n3),n3) | ~holdsAt(X2,n3)) )),
+  inference(forward_demodulation,[],[f2315,f236])).
+fof(f2315,plain,(
+  ( ! [X2] : (releasedAt(X2,n4) | happens(sK4(X2,n3),n3) | holdsAt(X2,plus(n3,n1)) | ~holdsAt(X2,n3)) )),
+  inference(superposition,[],[f578,f232])).
+fof(f5922,plain,(
+  ~spl11_34 | ~spl11_56),
+  inference(avatar_contradiction_clause,[],[f5921])).
+fof(f5921,plain,(
+  $false | (~spl11_34 | ~spl11_56)),
+  inference(subsumption_resolution,[],[f5920,f2530])).
+fof(f2530,plain,(
+  ~happens(overflow,n3)),
+  inference(subsumption_resolution,[],[f2518,f268])).
+fof(f2518,plain,(
+  holdsAt(spilling,n4) | ~happens(overflow,n3)),
+  inference(superposition,[],[f801,f232])).
+fof(f5920,plain,(
+  happens(overflow,n3) | (~spl11_34 | ~spl11_56)),
+  inference(subsumption_resolution,[],[f5915,f2582])).
+fof(f2582,plain,(
+  holdsAt(filling,n3) | ~spl11_34),
+  inference(avatar_component_clause,[],[f2580])).
+fof(f5915,plain,(
+  ~holdsAt(filling,n3) | happens(overflow,n3) | ~spl11_56),
+  inference(resolution,[],[f4651,f283])).
+fof(f283,plain,(
+  ( ! [X1] : (~holdsAt(waterLevel(n3),X1) | ~holdsAt(filling,X1) | happens(overflow,X1)) )),
+  inference(equality_resolution,[],[f215])).
+fof(f215,plain,(
+  ( ! [X0,X1] : (happens(X0,X1) | overflow != X0 | ~holdsAt(filling,X1) | ~holdsAt(waterLevel(n3),X1)) )),
+  inference(cnf_transformation,[],[f150])).
+fof(f4651,plain,(
+  holdsAt(waterLevel(n3),n3) | ~spl11_56),
+  inference(avatar_component_clause,[],[f4649])).
+fof(f5735,plain,(
+  spl11_34 | spl11_68 | spl11_57),
+  inference(avatar_split_clause,[],[f5731,f4653,f5733,f2580])).
+fof(f5731,plain,(
+  ( ! [X4] : (~releasedAt(X4,n4) | releasedAt(X4,n3) | holdsAt(filling,n3)) ) | spl11_57),
+  inference(subsumption_resolution,[],[f5558,f4654])).
+fof(f5558,plain,(
+  ( ! [X4] : (~releasedAt(X4,n4) | releasedAt(X4,n3) | n0 = n3 | holdsAt(filling,n3)) )),
+  inference(resolution,[],[f2069,f211])).
+fof(f2069,plain,(
+  ( ! [X2] : (happens(sK7(X2,n3),n3) | ~releasedAt(X2,n4) | releasedAt(X2,n3)) )),
+  inference(superposition,[],[f543,f232])).
+fof(f543,plain,(
+  ( ! [X0,X1] : (~releasedAt(X1,plus(n1,X0)) | happens(sK7(X1,X0),X0) | releasedAt(X1,X0)) )),
+  inference(superposition,[],[f176,f236])).
+fof(f176,plain,(
+  ( ! [X0,X1] : (~releasedAt(X0,plus(X1,n1)) | happens(sK7(X0,X1),X1) | releasedAt(X0,X1)) )),
+  inference(cnf_transformation,[],[f132])).
+fof(f5723,plain,(
+  spl11_16 | spl11_29 | ~spl11_42),
+  inference(avatar_split_clause,[],[f5722,f2627,f2377,f837])).
+fof(f5722,plain,(
+  holdsAt(filling,n2) | (spl11_29 | ~spl11_42)),
+  inference(subsumption_resolution,[],[f4461,f2379])).
+fof(f2379,plain,(
+  ~releasedAt(filling,n2) | spl11_29),
+  inference(avatar_component_clause,[],[f2377])).
+fof(f4461,plain,(
+  holdsAt(filling,n2) | releasedAt(filling,n2) | ~spl11_42),
+  inference(resolution,[],[f2628,f831])).
+fof(f831,plain,(
+  holdsAt(filling,n1)),
+  inference(subsumption_resolution,[],[f829,f285])).
+fof(f829,plain,(
+  holdsAt(filling,n1) | ~happens(tapOn,n0)),
+  inference(superposition,[],[f477,f227])).
+fof(f477,plain,(
+  ( ! [X1] : (holdsAt(filling,plus(X1,n1)) | ~happens(tapOn,X1)) )),
+  inference(resolution,[],[f178,f276])).
+fof(f2628,plain,(
+  ( ! [X5] : (~holdsAt(X5,n1) | holdsAt(X5,n2) | releasedAt(X5,n2)) ) | ~spl11_42),
+  inference(avatar_component_clause,[],[f2627])).
+fof(f5716,plain,(
+  ~spl11_31 | ~spl11_66),
+  inference(avatar_split_clause,[],[f3274,f5701,f2522])).
+fof(f3274,plain,(
+  ~releasedAt(spilling,n3) | ~happens(overflow,n2)),
+  inference(resolution,[],[f1998,f274])).
+fof(f1998,plain,(
+  ( ! [X2,X3] : (~initiates(X3,X2,n2) | ~releasedAt(X2,n3) | ~happens(X3,n2)) )),
+  inference(superposition,[],[f491,f231])).
+fof(f491,plain,(
+  ( ! [X2,X0,X1] : (~releasedAt(X1,plus(n1,X0)) | ~initiates(X2,X1,X0) | ~happens(X2,X0)) )),
+  inference(superposition,[],[f181,f236])).
+fof(f5687,plain,(
+  spl11_51 | spl11_64 | spl11_52),
+  inference(avatar_split_clause,[],[f5683,f3580,f5685,f3576])).
+fof(f5683,plain,(
+  ( ! [X0] : (~releasedAt(X0,n3) | releasedAt(X0,n2) | holdsAt(waterLevel(n3),n2)) ) | spl11_52),
+  inference(subsumption_resolution,[],[f5544,f3581])).
+fof(f5544,plain,(
+  ( ! [X0] : (~releasedAt(X0,n3) | releasedAt(X0,n2) | n0 = n2 | holdsAt(waterLevel(n3),n2)) )),
+  inference(resolution,[],[f2068,f209])).
+fof(f2068,plain,(
+  ( ! [X1] : (happens(sK7(X1,n2),n2) | ~releasedAt(X1,n3) | releasedAt(X1,n2)) )),
+  inference(superposition,[],[f543,f231])).
+fof(f5671,plain,(
+  ~spl11_16 | spl11_31 | ~spl11_51),
+  inference(avatar_contradiction_clause,[],[f5670])).
+fof(f5670,plain,(
+  $false | (~spl11_16 | spl11_31 | ~spl11_51)),
+  inference(subsumption_resolution,[],[f5669,f2524])).
+fof(f2524,plain,(
+  ~happens(overflow,n2) | spl11_31),
+  inference(avatar_component_clause,[],[f2522])).
+fof(f5669,plain,(
+  happens(overflow,n2) | (~spl11_16 | ~spl11_51)),
+  inference(subsumption_resolution,[],[f5663,f839])).
+fof(f5663,plain,(
+  ~holdsAt(filling,n2) | happens(overflow,n2) | ~spl11_51),
+  inference(resolution,[],[f3578,f283])).
+fof(f3578,plain,(
+  holdsAt(waterLevel(n3),n2) | ~spl11_51),
+  inference(avatar_component_clause,[],[f3576])).
+fof(f4917,plain,(
+  ~spl11_57),
+  inference(avatar_contradiction_clause,[],[f4916])).
+fof(f4916,plain,(
+  $false | ~spl11_57),
+  inference(subsumption_resolution,[],[f4703,f240])).
+fof(f4703,plain,(
+  less(n0,n0) | ~spl11_57),
+  inference(backward_demodulation,[],[f4655,f444])).
+fof(f4655,plain,(
+  n0 = n3 | ~spl11_57),
+  inference(avatar_component_clause,[],[f4653])).
+fof(f3898,plain,(
+  ~spl11_52),
+  inference(avatar_contradiction_clause,[],[f3897])).
+fof(f3897,plain,(
+  $false | ~spl11_52),
+  inference(subsumption_resolution,[],[f3620,f293])).
+fof(f3620,plain,(
+  ~less(n0,n1) | ~spl11_52),
+  inference(backward_demodulation,[],[f3582,f328])).
+fof(f328,plain,(
+  ~less(n2,n1)),
+  inference(resolution,[],[f259,f296])).
+fof(f3582,plain,(
+  n0 = n2 | ~spl11_52),
+  inference(avatar_component_clause,[],[f3580])).
+fof(f2684,plain,(
+  ~spl11_37),
+  inference(avatar_contradiction_clause,[],[f2683])).
+fof(f2683,plain,(
+  $false | ~spl11_37),
+  inference(subsumption_resolution,[],[f2680,f285])).
+fof(f2680,plain,(
+  ~happens(tapOn,n0) | ~spl11_37),
+  inference(resolution,[],[f2607,f276])).
+fof(f2607,plain,(
+  ( ! [X11] : (~initiates(X11,filling,n0) | ~happens(X11,n0)) ) | ~spl11_37),
+  inference(avatar_component_clause,[],[f2606])).
+fof(f2606,plain,(
+  spl11_37 <=> ! [X11] : (~initiates(X11,filling,n0) | ~happens(X11,n0))),
+  introduced(avatar_definition,[new_symbols(naming,[spl11_37])])).
+fof(f2611,plain,(
+  spl11_37 | spl11_38),
+  inference(avatar_split_clause,[],[f2599,f2609,f2606])).
+fof(f2599,plain,(
+  ( ! [X10,X11] : (holdsAt(waterLevel(plus(n0,X10)),plus(n0,X10)) | ~less(n0,X10) | ~initiates(X11,filling,n0) | ~happens(X11,n0) | stoppedIn(n0,filling,plus(n0,X10))) )),
+  inference(resolution,[],[f626,f262])).
+fof(f262,plain,(
+  holdsAt(waterLevel(n0),n0)),
+  inference(cnf_transformation,[],[f49])).
+fof(f49,axiom,(
+  holdsAt(waterLevel(n0),n0)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f626,plain,(
+  ( ! [X2,X0,X3,X1] : (~holdsAt(waterLevel(X2),X0) | holdsAt(waterLevel(plus(X2,X1)),plus(X0,X1)) | ~less(n0,X1) | ~initiates(X3,filling,X0) | ~happens(X3,X0) | stoppedIn(X0,filling,plus(X0,X1))) )),
+  inference(resolution,[],[f169,f286])).
+fof(f286,plain,(
+  ( ! [X0,X3,X1] : (trajectory(filling,X1,waterLevel(plus(X0,X3)),X3) | ~holdsAt(waterLevel(X0),X1)) )),
+  inference(equality_resolution,[],[f216])).
+fof(f216,plain,(
+  ( ! [X2,X0,X3,X1] : (trajectory(filling,X1,waterLevel(X2),X3) | plus(X0,X3) != X2 | ~holdsAt(waterLevel(X0),X1)) )),
+  inference(cnf_transformation,[],[f116])).
+fof(f116,plain,(
+  ! [X0,X1,X2,X3] : (trajectory(filling,X1,waterLevel(X2),X3) | plus(X0,X3) != X2 | ~holdsAt(waterLevel(X0),X1))),
+  inference(flattening,[],[f115])).
+fof(f115,plain,(
+  ! [X0,X1,X2,X3] : (trajectory(filling,X1,waterLevel(X2),X3) | (plus(X0,X3) != X2 | ~holdsAt(waterLevel(X0),X1)))),
+  inference(ennf_transformation,[],[f72])).
+fof(f72,plain,(
+  ! [X0,X1,X2,X3] : ((plus(X0,X3) = X2 & holdsAt(waterLevel(X0),X1)) => trajectory(filling,X1,waterLevel(X2),X3))),
+  inference(rectify,[],[f17])).
+fof(f17,axiom,(
+  ! [X9,X4,X10,X6] : ((plus(X9,X6) = X10 & holdsAt(waterLevel(X9),X4)) => trajectory(filling,X4,waterLevel(X10),X6))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f169,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (~trajectory(X2,X1,X3,X4) | stoppedIn(X1,X2,plus(X1,X4)) | holdsAt(X3,plus(X1,X4)) | ~less(n0,X4) | ~initiates(X0,X2,X1) | ~happens(X0,X1)) )),
+  inference(cnf_transformation,[],[f98])).
+fof(f98,plain,(
+  ! [X0,X1,X2,X3,X4] : (holdsAt(X3,plus(X1,X4)) | stoppedIn(X1,X2,plus(X1,X4)) | ~trajectory(X2,X1,X3,X4) | ~less(n0,X4) | ~initiates(X0,X2,X1) | ~happens(X0,X1))),
+  inference(flattening,[],[f97])).
+fof(f97,plain,(
+  ! [X0,X1,X2,X3,X4] : (holdsAt(X3,plus(X1,X4)) | (stoppedIn(X1,X2,plus(X1,X4)) | ~trajectory(X2,X1,X3,X4) | ~less(n0,X4) | ~initiates(X0,X2,X1) | ~happens(X0,X1)))),
+  inference(ennf_transformation,[],[f58])).
+fof(f58,plain,(
+  ! [X0,X1,X2,X3,X4] : ((~stoppedIn(X1,X2,plus(X1,X4)) & trajectory(X2,X1,X3,X4) & less(n0,X4) & initiates(X0,X2,X1) & happens(X0,X1)) => holdsAt(X3,plus(X1,X4)))),
+  inference(rectify,[],[f3])).
+fof(f3,axiom,(
+  ! [X3,X4,X1,X5,X6] : ((~stoppedIn(X4,X1,plus(X4,X6)) & trajectory(X1,X4,X5,X6) & less(n0,X6) & initiates(X3,X1,X4) & happens(X3,X4)) => holdsAt(X5,plus(X4,X6)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f1546,plain,(
+  ~spl11_22),
+  inference(avatar_contradiction_clause,[],[f1545])).
+fof(f1545,plain,(
+  $false | ~spl11_22),
+  inference(subsumption_resolution,[],[f1242,f265])).
+fof(f265,plain,(
+  ( ! [X0] : (~releasedAt(waterLevel(X0),n0)) )),
+  inference(cnf_transformation,[],[f90])).
+fof(f90,plain,(
+  ! [X0] : ~releasedAt(waterLevel(X0),n0)),
+  inference(rectify,[],[f52])).
+fof(f52,axiom,(
+  ! [X8] : ~releasedAt(waterLevel(X8),n0)),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f1242,plain,(
+  ( ! [X4] : (releasedAt(waterLevel(X4),n0)) ) | ~spl11_22),
+  inference(backward_demodulation,[],[f1122,f918])).
+fof(f918,plain,(
+  ( ! [X4] : (releasedAt(waterLevel(X4),n1)) )),
+  inference(subsumption_resolution,[],[f916,f285])).
+fof(f916,plain,(
+  ( ! [X4] : (releasedAt(waterLevel(X4),n1) | ~happens(tapOn,n0)) )),
+  inference(superposition,[],[f488,f227])).
+fof(f488,plain,(
+  ( ! [X0,X1] : (releasedAt(waterLevel(X0),plus(X1,n1)) | ~happens(tapOn,X1)) )),
+  inference(resolution,[],[f180,f282])).
+fof(f282,plain,(
+  ( ! [X2,X3] : (releases(tapOn,waterLevel(X3),X2)) )),
+  inference(equality_resolution,[],[f281])).
+fof(f281,plain,(
+  ( ! [X2,X0,X3] : (releases(X0,waterLevel(X3),X2) | tapOn != X0) )),
+  inference(equality_resolution,[],[f207])).
+fof(f207,plain,(
+  ( ! [X2,X0,X3,X1] : (releases(X0,X1,X2) | waterLevel(X3) != X1 | tapOn != X0) )),
+  inference(cnf_transformation,[],[f148])).
+fof(f180,plain,(
+  ( ! [X2,X0,X1] : (~releases(X0,X2,X1) | releasedAt(X2,plus(X1,n1)) | ~happens(X0,X1)) )),
+  inference(cnf_transformation,[],[f112])).
+fof(f112,plain,(
+  ! [X0,X1,X2] : (releasedAt(X2,plus(X1,n1)) | ~releases(X0,X2,X1) | ~happens(X0,X1))),
+  inference(flattening,[],[f111])).
+fof(f111,plain,(
+  ! [X0,X1,X2] : (releasedAt(X2,plus(X1,n1)) | (~releases(X0,X2,X1) | ~happens(X0,X1)))),
+  inference(ennf_transformation,[],[f66])).
+fof(f66,plain,(
+  ! [X0,X1,X2] : ((releases(X0,X2,X1) & happens(X0,X1)) => releasedAt(X2,plus(X1,n1)))),
+  inference(rectify,[],[f11])).
+fof(f11,axiom,(
+  ! [X3,X4,X1] : ((releases(X3,X1,X4) & happens(X3,X4)) => releasedAt(X1,plus(X4,n1)))),
+  file('./p/CSR003+1.tptp',unknown)).
+fof(f1122,plain,(
+  n0 = n1 | ~spl11_22),
+  inference(avatar_component_clause,[],[f1120])).
+% SZS output end Proof for CSR003+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 209548
+% Time elapsed: 43.169 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,751 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_370, plain, (s0(d))).
+#
+#cnf(i_0_374, plain, (s0(b))).
+#
+#cnf(i_0_382, plain, (r0(e))).
+#
+#cnf(i_0_738, negated_conjecture, (~s5(c))).
+#
+#cnf(i_0_378, plain, (r0(b))).
+#
+#cnf(i_0_389, plain, (l0(a))).
+#
+#cnf(i_0_393, plain, (l0(c))).
+#
+#cnf(i_0_397, plain, (k0(e))).
+#
+#cnf(i_0_401, plain, (k0(b))).
+#
+#cnf(i_0_386, plain, (q0(X1,d))).
+#
+#cnf(i_0_383, plain, (p0(b,X1))).
+##
+#cnf(i_0_398, plain, (q0(d,b))).
+#
+#cnf(i_0_402, plain, (q0(d,c))).
+##
+#cnf(i_0_405, plain, (q0(a,b))).
+#
+#cnf(i_0_390, plain, (q0(b,e))).
+#
+#cnf(i_0_375, plain, (q0(b,b))).
+#
+#cnf(i_0_372, plain, (n0(d,e))).
+#
+#cnf(i_0_376, plain, (n0(d,b))).
+#
+#cnf(i_0_395, plain, (n0(d,c))).
+#
+#cnf(i_0_399, plain, (n0(e,e))).
+#
+#cnf(i_0_380, plain, (n0(e,b))).
+#
+#cnf(i_0_384, plain, (n0(a,b))).
+#
+#cnf(i_0_406, plain, (n0(b,a))).
+#
+#cnf(i_0_403, plain, (n0(c,d))).
+###
+#cnf(i_0_387, plain, (p0(c,b))).
+#
+#cnf(i_0_388, plain, (m0(X1,d,X2))).
+#
+#cnf(i_0_408, plain, (k1(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_739, plain, (k1(d))).
+#
+#cnf(i_0_740, plain, (k1(a))).
+#
+#cnf(i_0_741, plain, (k1(b))).
+##
+#cnf(i_0_743, plain, (k1(e))).
+#
+#cnf(i_0_744, plain, (k1(c))).
+###
+#cnf(i_0_625, plain, (l3(X1,X1)|~r2(X1))).
+#
+#cnf(i_0_532, plain, (s1(X1)|~p0(X1,X1))).
+#
+#cnf(i_0_747, plain, (s1(b))).
+#
+#cnf(i_0_711, plain, (m5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_721, plain, (n5(X1,X1)|~r4(X1))).
+#
+#cnf(i_0_731, plain, (q5(X1,X1)|~l4(X1))).
+#
+#cnf(i_0_735, plain, (r5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_381, plain, (m0(a,X1,a))).
+#
+#cnf(i_0_543, plain, (m2(b))).
+#
+#cnf(i_0_733, plain, (q5(X1,X1)|~m4(X1,X1))).
+#
+#cnf(i_0_732, plain, (q5(X1,X1)|~q4(X1,X1))).
+#
+#cnf(i_0_544, plain, (n2(X1)|~p1(X2,X3,X1))).
+#
+#cnf(i_0_439, plain, (m1(X1,X1,X1)|~s0(X1))).
+#
+#cnf(i_0_647, plain, (n3(X1)|~p2(X2,X3,X1))).
+#
+#cnf(i_0_684, plain, (l4(X1)|~p3(X2,X3,X1))).
+#
+#cnf(i_0_464, plain, (n1(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_475, plain, (p1(X1,X1,X1)|~k0(X1))).
+#
+#cnf(i_0_748, plain, (n2(X1)|~k0(X1))).
+#
+#cnf(i_0_504, plain, (q1(X1,X1,X1)|~s0(X1))).
+##
+#cnf(i_0_523, plain, (q1(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_566, plain, (p2(X1,X1,X1)|~k1(X1))).
+#
+#cnf(i_0_749, plain, (n3(X1)|~k1(X1))).
+#
+#cnf(i_0_619, plain, (k3(X1,X1,X1)|~m2(X1))).
+#
+#cnf(i_0_617, plain, (k3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_643, plain, (m3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_651, plain, (p3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_750, plain, (l4(X1)|~n2(X1))).
+#
+#cnf(i_0_751, plain, (l4(X1)|~k0(X1))).
+#
+#cnf(i_0_673, plain, (r3(X1,X1,X1)|~r2(X1))).
+#
+#cnf(i_0_671, plain, (r3(X1,X1,X1)|~s2(X1))).
+#
+#cnf(i_0_409, plain, (l1(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_716, plain, (n5(X1,X1)|~n4(X2,X1))).
+#
+#cnf(i_0_720, plain, (n5(X1,X1)|~q4(X2,X1))).
+#
+#cnf(i_0_595, plain, (r2(X1)|~r1(X1)|~l0(X1))).
+#
+#cnf(i_0_404, plain, (m0(d,e,c))).
+###
+#cnf(i_0_396, plain, (m0(e,b,c))).
+#
+#cnf(i_0_392, plain, (m0(a,e,e))).
+#
+#cnf(i_0_407, plain, (m0(b,a,a))).
+#
+#cnf(i_0_400, plain, (m0(b,b,e))).
+#
+#cnf(i_0_385, plain, (m0(c,b,a))).
+#
+#cnf(i_0_536, plain, (k2(X1,X1)|~q1(X2,X1,X1))).
+#
+#cnf(i_0_752, plain, (k2(X1,X1)|~s0(X1))).
+#
+#cnf(i_0_753, plain, (k2(X1,X1)|~r0(X1))).
+#
+#cnf(i_0_736, plain, (s5(X1)|~r4(X2)|~l4(X1))).
+#
+#cnf(i_0_476, plain, (p1(X1,X1,X2)|~p0(X2,X1))).
+#
+#cnf(i_0_754, negated_conjecture, (~r4(X1)|~l4(c))).
+#
+#cnf(i_0_755, plain, (n2(X1)|~p0(X1,X2))).
+#
+#cnf(i_0_757, plain, (n2(c))).
+#
+#cnf(i_0_758, plain, (n2(b))).
+#
+#cnf(i_0_756, negated_conjecture, (~r4(X1)|~k0(c))).
+#
+#cnf(i_0_759, plain, (l4(c))).
+#
+#cnf(i_0_760, plain, (l4(b))).
+#
+#cnf(i_0_502, plain, (q1(X1,X2,X2)|~p0(X2,X1))).
+#
+#cnf(i_0_754, negated_conjecture, (~r4(X1))).
+#
+#cnf(i_0_761, plain, (k2(X1,X1)|~p0(X1,X2))).
+#
+#cnf(i_0_762, plain, (k2(b,b))).
+#
+#cnf(i_0_593, plain, (q2(X1,X1,X2)|~l1(X2,X1))).
+#
+#cnf(i_0_601, plain, (k3(X1,X1,X2)|~k2(X2,X1))).
+#
+#cnf(i_0_653, plain, (p3(X1,X1,X1)|~l2(X1,X1))).
+#
+#cnf(i_0_763, plain, (l4(X1)|~l2(X1,X1))).
+#
+#cnf(i_0_420, plain, (m1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_764, plain, (m1(d,d,d))).
+#
+#cnf(i_0_474, plain, (p1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_765, plain, (n2(X1)|~q0(X2,X1))).
+#
+#cnf(i_0_768, plain, (n2(e))).
+#
+#cnf(i_0_772, plain, (n2(d))).
+#
+#cnf(i_0_773, plain, (l4(e))).
+#
+#cnf(i_0_774, plain, (l4(d))).
+#
+#cnf(i_0_766, plain, (p1(d,d,d))).
+#
+#cnf(i_0_473, plain, (p1(X1,X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_776, plain, (n2(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_778, plain, (n2(a))).
+#
+#cnf(i_0_785, plain, (l4(a))).
+#
+#cnf(i_0_492, plain, (p1(X1,X1,X1)|~p0(X2,X1))).
+#
+#cnf(i_0_786, plain, (n2(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_788, plain, (n2(X1))).
+#
+#cnf(i_0_750, plain, (l4(X1))).
+#
+#cnf(i_0_731, plain, (q5(X1,X1))).
+#
+#cnf(i_0_651, plain, (p3(X1,X1,X1))).
+#
+#cnf(i_0_643, plain, (m3(X1,X1,X1))).
+#
+#cnf(i_0_617, plain, (k3(X1,X1,X1))).
+##
+#cnf(i_0_500, plain, (q1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_789, plain, (k2(X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_791, plain, (k2(d,d))).
+#
+#cnf(i_0_790, plain, (q1(d,d,d))).
+#
+#cnf(i_0_507, plain, (q1(X1,X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_793, plain, (k2(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_582, plain, (p2(X1,X1,X1)|~l1(X2,X1))).
+#
+#cnf(i_0_794, plain, (n3(X1)|~l1(X2,X1))).
+#
+#cnf(i_0_795, plain, (n3(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_796, plain, (n3(d))).
+#
+#cnf(i_0_797, plain, (n3(a))).
+#
+#cnf(i_0_798, plain, (n3(b))).
+##
+#cnf(i_0_800, plain, (n3(e))).
+#
+#cnf(i_0_801, plain, (n3(c))).
+###
+#cnf(i_0_672, plain, (r3(X1,X1,X1)|~l2(X2,X1))).
+#
+#cnf(i_0_722, plain, (n5(X1,X1)|~k4(X1)|~s1(X1))).
+#
+#cnf(i_0_729, plain, (q5(X1,X2)|~s4(X1)|~m2(X2))).
+#
+#cnf(i_0_533, plain, (s1(X1)|~s1(X3)|~q0(X1,X2))).
+#
+#cnf(i_0_809, plain, (s1(X1)|~s1(X2))).
+#
+#cnf(i_0_811, plain, (s1(X1))).
+#
+#cnf(i_0_722, plain, (n5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_561, plain, (p2(X1,X1,X1)|~q1(X1,X1,X1))).
+#
+#cnf(i_0_813, plain, (p2(X1,X1,X1)|~s0(X1))).
+#
+#cnf(i_0_818, plain, (n3(X1)|~s0(X1))).
+#
+#cnf(i_0_814, plain, (p2(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_819, plain, (n3(X1)|~r0(X1))).
+#
+#cnf(i_0_812, plain, (p2(d,d,d))).
+#
+#cnf(i_0_817, plain, (p2(X1,X1,X1)|~p0(X1,X1))).
+#
+#cnf(i_0_821, plain, (n3(X1)|~p0(X1,X1))).
+#
+#cnf(i_0_815, plain, (p2(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_823, plain, (n3(X1)|~q0(X2,X1))).
+#
+#cnf(i_0_816, plain, (p2(X1,X1,X1)|~n0(X2,X1))).
+##
+#cnf(i_0_542, plain, (m2(X1)|~l1(X2,X3)|~s0(X1))).
+#
+#cnf(i_0_709, plain, (l5(X1)|~q4(X2,X2)|~k1(X1))).
+#
+#cnf(i_0_832, plain, (m2(X1)|~n0(X3,X2)|~s0(X1))).
+#
+#cnf(i_0_833, plain, (m2(X1)|~s0(X1))).
+#
+#cnf(i_0_564, plain, (p2(X1,X1,X1)|~l1(X1,d))).
+#
+#cnf(i_0_841, plain, (n3(X1)|~l1(X1,d))).
+#
+#cnf(i_0_588, plain, (q2(X1,X1,X1)|~p1(X1,X1,X1))).
+#
+#cnf(i_0_613, plain, (k3(X1,X2,X1)|~p2(X2,X1,X1))).
+##
+#cnf(i_0_694, plain, (p4(X1,X2,X1)|~k3(X1,X1,X2))).
+#
+#cnf(i_0_713, plain, (m5(X1,X1)|~s4(X2)|~r0(X1))).
+##
+#cnf(i_0_412, plain, (m1(X1,X2,X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_421, plain, (m1(X1,X1,X1)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_844, plain, (m1(X1,X1,X1))).
+###
+#cnf(i_0_517, plain, (q1(X1,X1,X1)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_848, plain, (q1(X1,X1,X1))).
+#
+#cnf(i_0_849, plain, (k2(X1,X1))).
+#
+#cnf(i_0_561, plain, (p2(X1,X1,X1))).
+#
+#cnf(i_0_850, plain, (n3(X1))).
+###
+#cnf(i_0_583, plain, (p2(X1,X2,X1)|~m1(X2,X1,X2))).
+#
+#cnf(i_0_851, plain, (p2(X1,X2,X1)|~m0(X1,X1,X2))).
+###
+#cnf(i_0_674, plain, (r3(X1,X2,X1)|~p2(X1,X3,X2))).
+#
+#cnf(i_0_698, plain, (p4(X1,X1,X1)|~p3(X2,X2,X1))).
+#
+#cnf(i_0_853, plain, (r3(X1,X1,X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_855, plain, (r3(d,d,d))).
+#
+#cnf(i_0_854, plain, (r3(X1,X1,X1)|~m1(X2,X1,X2))).
+###
+#cnf(i_0_624, plain, (l3(X1,X1))).
+#
+#cnf(i_0_442, plain, (m1(X1,X2,X1)|~l0(X2)|~r0(X1))).
+#
+#cnf(i_0_428, plain, (m1(X1,X2,X1)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_468, plain, (n1(X1,X1,X1)|~k0(X1)|~s0(X1))).
+###
+#cnf(i_0_443, plain, (n1(X1,X1,X2)|~m0(b,X2,X1))).
+#
+#cnf(i_0_858, plain, (p2(X1,X2,X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_860, plain, (p2(X1,X2,X1)|~k0(X1)|~l0(X2))).
+##
+#cnf(i_0_707, plain, (k5(X1)|~s4(X2)|~r3(X3,X1,X1))).
+#
+#cnf(i_0_863, plain, (k5(d)|~s4(X1))).
+#
+#cnf(i_0_864, plain, (k5(X1)|~s4(X2)|~r2(X1))).
+#
+#cnf(i_0_865, plain, (k5(X1)|~s4(X2)|~s2(X1))).
+#
+#cnf(i_0_866, plain, (k5(X1)|~s4(X2)|~l2(X3,X1))).
+#
+#cnf(i_0_867, plain, (k5(X1)|~s4(X2)|~m1(X3,X1,X3))).
+#
+#cnf(i_0_873, plain, (k5(X1)|~s4(X2))).
+#
+#cnf(i_0_479, plain, (p1(X1,X1,X1)|~s0(X2)|~s0(X1))).
+####
+#cnf(i_0_857, plain, (r3(X1,X1,X1)|~l0(X1)|~r0(X2))).
+#
+#cnf(i_0_859, plain, (r3(X1,X1,X1)|~k0(X1)|~l0(X2))).
+###
+#cnf(i_0_591, plain, (q2(X1,X1,X1)|~q1(X2,c,X1))).
+#
+#cnf(i_0_598, plain, (s2(d)|~r1(d))).
+#
+#cnf(i_0_597, plain, (s2(d))).
+##
+#cnf(i_0_622, plain, (l3(X1,X2)|~p2(X1,X2,X1)|~r0(X1))).
+#
+#cnf(i_0_710, plain, (m5(X1,X2)|~p4(X1,X3,X2)|~r0(X1))).
+#
+#cnf(i_0_877, plain, (l3(X1,X2)|~r0(X1)|~m0(X1,X1,X2))).
+#
+#cnf(i_0_882, plain, (l3(b,e))).
+#
+#cnf(i_0_884, plain, (l3(d,X1)|~r0(d))).
+#
+#cnf(i_0_878, plain, (l3(X1,X2)|~m1(X2,X1,X2)|~r0(X1))).
+#
+#cnf(i_0_881, plain, (m5(X1,X1)|~k3(X1,X1,X2)|~r0(X1))).
+#
+#cnf(i_0_889, plain, (m5(X1,X1)|~r0(X1))).
+###
+#cnf(i_0_436, plain, (m1(X1,X2,X1)|~p0(X1,X2)|~s0(X1))).
+#
+#cnf(i_0_450, plain, (n1(X1,X1,X1)|~k1(X1)|~p0(X1,X1))).
+###
+#cnf(i_0_725, plain, (p5(X1,X1,X2)|~s4(X2)|~l2(X1,X1))).
+##
+#cnf(i_0_893, plain, (p2(X1,X2,X1)|~p0(X2,X1)|~s0(X2))).
+####
+#cnf(i_0_691, plain, (n4(X1,X1)|~k4(X2))).
+#
+#cnf(i_0_897, plain, (n5(X1,X1)|~k4(X2))).
+#
+#cnf(i_0_706, plain, (s4(X1)|~p3(X2,X3,X4)|~l1(X1,X3))).
+#
+#cnf(i_0_899, plain, (s4(X1)|~l1(X1,X2))).
+#
+#cnf(i_0_900, plain, (s4(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_901, plain, (s4(d))).
+#
+#cnf(i_0_909, plain, (k5(X1))).
+#
+#cnf(i_0_902, plain, (s4(a))).
+#
+#cnf(i_0_903, plain, (s4(b))).
+##
+#cnf(i_0_905, plain, (s4(e))).
+#
+#cnf(i_0_906, plain, (s4(c))).
+###
+#cnf(i_0_548, plain, (p2(X1,a,X1)|~q1(X1,a,X1))).
+###
+#cnf(i_0_414, plain, (m1(X1,X2,X1)|~p0(X3,X2)|~r0(X1))).
+#
+#cnf(i_0_418, plain, (m1(X1,X1,X2)|~k0(X1)|~n0(X2,X2))).
+##
+#cnf(i_0_693, plain, (p4(X1,X1,X1)|~q3(X2,X3))).
+##
+#cnf(i_0_727, plain, (p5(X1,X2,X1)|~q4(X2,X3))).
+##
+#cnf(i_0_892, plain, (r3(X1,X1,X1)|~p0(X2,X1)|~s0(X2))).
+##
+#cnf(i_0_913, plain, (p2(X1,X2,X1)|~p0(X3,X1)|~r0(X2))).
+###
+#cnf(i_0_456, plain, (n1(c,c,c))).
+#
+#cnf(i_0_495, plain, (p1(a,a,a))).
+######
+#cnf(i_0_912, plain, (r3(X1,X1,X1)|~p0(X3,X1)|~r0(X2))).
+##
+#cnf(i_0_876, plain, (l3(X1,X2)|~l0(X1)|~r0(X1)|~r0(X2))).
+#
+#cnf(i_0_446, plain, (n1(X1,c,X1)|~m0(X2,X1,c))).
+#
+#cnf(i_0_920, plain, (n1(d,c,d))).
+#
+#cnf(i_0_879, plain, (l3(X1,X2)|~k0(X1)|~l0(X2)|~r0(X1))).
+###
+#cnf(i_0_662, plain, (q3(X1,X2)|~q2(X3,X1,X2)|~n0(X3,X1))).
+#
+#cnf(i_0_923, plain, (q3(X1,X2)|~l1(X2,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_663, plain, (q3(X1,X1)|~q3(X2,X1)|~p2(X2,X1,X1))).
+#
+#cnf(i_0_512, plain, (q1(X1,X1,X2)|~p0(X2,d)|~s0(X1))).
+#
+#cnf(i_0_922, plain, (q3(X1,X1)|~p1(X1,X1,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_935, plain, (q3(X1,X1)|~k0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_934, plain, (q3(X1,X1)|~p0(X1,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_932, plain, (q3(a,a)|~n0(a,a))).
+#
+#cnf(i_0_937, plain, (q3(X1,X1)|~n0(X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_938, plain, (q3(X1,X1)|~n0(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_939, plain, (q3(X1,X1)|~p0(X2,X1)|~n0(X1,X1))).
+#
+#cnf(i_0_933, plain, (q3(d,d)|~n0(d,d))).
+##
+#cnf(i_0_940, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(X2,X2))).
+#
+#cnf(i_0_649, plain, (p3(X1,X2,X3)|~k3(X2,X3,X1)|~r2(X2))).
+#
+#cnf(i_0_949, plain, (p3(X1,X2,X2)|~r2(X2)|~k2(X1,X2))).
+#
+#cnf(i_0_470, plain, (p1(X1,X1,X2)|~k0(X2)|~n0(d,X1))).
+#
+#cnf(i_0_638, plain, (m3(X1,X2,X1)|~r2(X1)|~k2(c,X2))).
+#
+#cnf(i_0_667, plain, (r3(X1,X2,X2)|~s2(X2)|~l2(c,X1))).
+#
+#cnf(i_0_642, plain, (m3(X1,X1,X2)|~k3(X1,X2,X1)|~r2(X2))).
+#
+#cnf(i_0_947, plain, (p3(X1,X1,X2)|~r2(X1)|~p2(X2,X1,X1))).
+##
+#cnf(i_0_688, plain, (n4(X1,X2)|~n4(X1,X1)|~p3(X1,X2,X2))).
+#
+#cnf(i_0_955, plain, (n4(X1,X2)|~k4(X3)|~p3(X1,X2,X2))).
+###
+#cnf(i_0_715, plain, (n5(X1,X1)|~n5(X2,X1)|~m0(X2,X1,X2))).
+#
+#cnf(i_0_959, plain, (n5(X1,X1)|~n5(a,X1))).
+###
+#cnf(i_0_960, plain, (n5(d,d)|~n5(X1,d))).
+#####
+#cnf(i_0_422, plain, (m1(X1,X2,X2)|~l0(X3)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_712, plain, (m5(X1,X1)|~s4(X1)|~m4(e,e))).
+#
+#cnf(i_0_451, plain, (n1(X1,X2,X1)|~p0(X2,X3)|~p0(X1,X1))).
+#
+#cnf(i_0_969, plain, (n1(X1,b,X1)|~p0(X1,X1))).
+#
+#cnf(i_0_465, plain, (n1(X1,X1,X1)|~l1(X2,X1)|~n0(X2,X1))).
+###
+#cnf(i_0_453, plain, (n1(X1,X1,X1)|~m1(X2,X3,X1)|~k0(X2))).
+#
+#cnf(i_0_975, plain, (n1(X1,X1,X1)|~k0(X2)|~n0(X1,X1))).
+#
+#cnf(i_0_493, plain, (p1(X1,X1,X1)|~l0(X1)|~m0(X2,X3,X1))).
+#
+#cnf(i_0_979, plain, (p1(X1,X1,X1)|~l0(X1))).
+#
+#cnf(i_0_980, plain, (q3(X1,X1)|~l0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_981, plain, (p4(X1,X1,X1)|~l0(X2)|~n0(X2,X2))).
+###
+#cnf(i_0_584, plain, (q2(X1,X2,X2)|~p1(X1,X1,X1)|~k0(X2))).
+#
+#cnf(i_0_986, plain, (q2(X1,X2,X2)|~k0(X2)|~k0(X1))).
+#
+#cnf(i_0_991, plain, (q2(X1,X2,X2)|~k0(X2)|~l0(X1))).
+#
+#cnf(i_0_984, plain, (q2(X1,X2,X2)|~k0(X2)|~p0(X1,X1))).
+#
+#cnf(i_0_988, plain, (q2(X1,X2,X2)|~k0(X2)|~q0(X3,X1))).
+#
+#cnf(i_0_996, plain, (q2(d,X1,X1)|~k0(X1))).
+#
+#cnf(i_0_997, plain, (q3(X1,X1)|~k0(X1)|~n0(d,X1))).
+#
+#cnf(i_0_989, plain, (q2(X1,X2,X2)|~k0(X2)|~n0(X3,X1))).
+#
+#cnf(i_0_990, plain, (q2(X1,X2,X2)|~k0(X2)|~p0(X3,X1))).
+#
+#cnf(i_0_586, plain, (q2(X1,X1,X1)|~n1(X1,X1,X2)|~k1(X2))).
+####
+#cnf(i_0_692, plain, (p4(X1,X1,X2)|~r3(X2,X1,X2)|~r0(X1))).
+#
+#cnf(i_0_1003, plain, (m5(X1,X2)|~r3(X2,X1,X2)|~r0(X1))).
+######
+#cnf(i_0_1016, plain, (m5(X1,X2)|~p2(X2,X3,X1)|~r0(X1))).
+#########
+#cnf(i_0_951, plain, (p4(X1,X1,X1)|~r2(X2)|~p2(X1,X2,X2))).
+#
+#cnf(i_0_974, plain, (n1(X1,X1,X1)|~k0(X1)|~m0(X2,X2,X1))).
+#
+#cnf(i_0_998, plain, (p4(X1,X1,X1)|~k0(X2)|~n0(d,X2))).
+#
+#cnf(i_0_1004, plain, (p4(X1,X1,X2)|~p2(X2,X3,X1)|~r0(X1))).
+##
+#cnf(i_0_1028, plain, (p4(X1,X1,X1)|~r0(X1)|~m0(X1,X1,X2))).
+##
+#cnf(i_0_1034, plain, (p4(d,d,d)|~r0(d))).
+##
+#cnf(i_0_1029, plain, (p4(X1,X1,X1)|~m1(X2,X1,X2)|~r0(X1))).
+###
+#cnf(i_0_686, plain, (m4(X1,X2)|~s3(a,X1)|~l2(X3,X2))).
+#
+#cnf(i_0_734, plain, (r5(X1,X2)|~s4(X1))).
+#
+#cnf(i_0_894, plain, (l3(X1,X2)|~p0(X2,X1)|~r0(X1)|~s0(X2))).
+###
+#cnf(i_0_499, plain, (q1(X1,X2,X1)|~p0(X4,X1)|~n0(X3,X2))).
+##
+#cnf(i_0_520, plain, (q1(X1,X1,X2)|~m1(X1,X2,X2)|~r0(X3))).
+#
+#cnf(i_0_577, plain, (p2(X1,e,X1)|~n1(X1,e,e))).
+#
+#cnf(i_0_924, plain, (p4(X1,X1,X1)|~l1(X3,X2)|~n0(X2,X2))).
+#
+#cnf(i_0_942, plain, (p4(X1,X1,X1)|~n0(X2,X2)|~q0(X3,X2))).
+#
+#cnf(i_0_1059, plain, (p4(X1,X1,X1)|~n0(d,d))).
+##
+#cnf(i_0_944, plain, (p4(X1,X1,X1)|~n0(X2,X2)|~n0(X3,X2))).
+#
+#cnf(i_0_945, plain, (p4(X1,X1,X1)|~p0(X3,X2)|~n0(X2,X2))).
+##
+#cnf(i_0_874, plain, (q2(c,c,c)|~p0(c,X1))).
+##
+#cnf(i_0_596, plain, (s2(X1)|~q2(b,X1,b))).
+#
+#cnf(i_0_1065, plain, (s2(b))).
+##########
+#cnf(i_0_445, plain, (n1(X1,X1,X1)|~n0(X1,X1)|~q0(a,X1))).
+##
+#cnf(i_0_705, plain, (~q3(X2,X3)|~p0(X4,X1))).
+#
+#cnf(i_0_1075, plain, (~q3(X1,X2))).
+#
+#cnf(i_0_957, plain, (n4(X1,X2)|~k4(X3)|~r2(X2)|~k2(X1,X2))).
+###
+#cnf(i_0_1085, plain, (~n0(a,a))).
+#
+#cnf(i_0_936, plain, (~n0(X1,X1)|~s0(X2)|~s0(X1))).
+#
+#cnf(i_0_411, plain, (l1(X1,X1)|~l1(X2,X2)|~k1(X1)|~l0(X2))).
+#
+#cnf(i_0_1097, plain, (s4(X1)|~l1(X2,X2)|~k1(X1)|~l0(X2))).
+#
+#cnf(i_0_1086, plain, (~n0(d,d))).
+#
+#cnf(i_0_1100, plain, (s4(X1)|~k1(X1)|~l0(X2)|~n0(X3,X2))).
+#
+#cnf(i_0_1103, plain, (s4(X1)|~k1(X1))).
+#
+#cnf(i_0_703, plain, (q4(X1,X1)|~q4(X2,X3)|~r1(X1))).
+#
+#cnf(i_0_1089, plain, (~l0(X1)|~n0(X1,X1))).
+#
+#cnf(i_0_1113, plain, (n5(X1,X1)|~q4(X2,X3)|~r1(X1))).
+#
+#cnf(i_0_1111, plain, (p5(X1,X2,X1)|~q4(X3,X4)|~r1(X2))).
+#
+#cnf(i_0_1112, plain, (l5(X1)|~q4(X3,X4)|~r1(X2)|~k1(X1))).
+#
+#cnf(i_0_1114, plain, (~l0(e))).
+#
+#cnf(i_0_914, plain, (l3(X1,X2)|~p0(X3,X1)|~r0(X1)|~r0(X2))).
+###
+#cnf(i_0_1090, plain, (~k0(X1)|~n0(X1,X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(rule_137, axiom, (n2(X1)|~p1(X2,X3,X1)), file('./p/SYN214-1.tptp', rule_137)).
+cnf(rule_069, axiom, (p1(X1,X1,X2)|~p0(X2,X1)), file('./p/SYN214-1.tptp', rule_069)).
+cnf(rule_110, axiom, (q1(X1,X1,X1)|~m0(X2,X3,X1)), file('./p/SYN214-1.tptp', rule_110)).
+cnf(axiom_19, axiom, (m0(X1,d,X2)), file('./p/SYN214-1.tptp', axiom_19)).
+cnf(rule_277, axiom, (l4(X1)|~p3(X2,X3,X1)), file('./p/SYN214-1.tptp', rule_277)).
+cnf(rule_244, axiom, (p3(X1,X1,X1)|~n2(X1)), file('./p/SYN214-1.tptp', rule_244)).
+cnf(axiom_18, axiom, (p0(c,b)), file('./p/SYN214-1.tptp', axiom_18)).
+cnf(rule_154, axiom, (p2(X1,X1,X1)|~q1(X1,X1,X1)), file('./p/SYN214-1.tptp', rule_154)).
+cnf(prove_this, negated_conjecture, (~s5(c)), file('./p/SYN214-1.tptp', prove_this)).
+cnf(rule_329, axiom, (s5(X1)|~l4(X1)|~r4(X2)), file('./p/SYN214-1.tptp', rule_329)).
+cnf(rule_240, axiom, (n3(X1)|~p2(X2,X3,X1)), file('./p/SYN214-1.tptp', rule_240)).
+cnf(rule_298, axiom, (r4(X1)|~n3(X1)|~q3(X2,X3)|~p0(X4,X1)), file('./p/SYN214-1.tptp', rule_298)).
+cnf(rule_255, axiom, (q3(X1,X2)|~q2(X3,X1,X2)|~n0(X3,X1)), file('./p/SYN214-1.tptp', rule_255)).
+cnf(rule_181, axiom, (q2(X1,X1,X1)|~p1(X1,X1,X1)), file('./p/SYN214-1.tptp', rule_181)).
+cnf(axiom_14, axiom, (p0(b,X1)), file('./p/SYN214-1.tptp', axiom_14)).
+cnf(rule_068, axiom, (p1(X1,X1,X1)|~k0(X1)), file('./p/SYN214-1.tptp', rule_068)).
+cnf(axiom_30, axiom, (n0(e,e)), file('./p/SYN214-1.tptp', axiom_30)).
+cnf(axiom_28, axiom, (k0(e)), file('./p/SYN214-1.tptp', axiom_28)).
+cnf(c_0_18, axiom, (n2(X1)|~p1(X2,X3,X1)), rule_137).
+cnf(c_0_19, axiom, (p1(X1,X1,X2)|~p0(X2,X1)), rule_069).
+cnf(c_0_20, axiom, (q1(X1,X1,X1)|~m0(X2,X3,X1)), rule_110).
+cnf(c_0_21, axiom, (m0(X1,d,X2)), axiom_19).
+cnf(c_0_22, axiom, (l4(X1)|~p3(X2,X3,X1)), rule_277).
+cnf(c_0_23, axiom, (p3(X1,X1,X1)|~n2(X1)), rule_244).
+cnf(c_0_24, plain, (n2(X1)|~p0(X1,X2)), inference(pm,[status(thm)],[c_0_18, c_0_19])).
+cnf(c_0_25, axiom, (p0(c,b)), axiom_18).
+cnf(c_0_26, axiom, (p2(X1,X1,X1)|~q1(X1,X1,X1)), rule_154).
+cnf(c_0_27, plain, (q1(X1,X1,X1)), inference(pm,[status(thm)],[c_0_20, c_0_21])).
+cnf(c_0_28, negated_conjecture, (~s5(c)), prove_this).
+cnf(c_0_29, axiom, (s5(X1)|~l4(X1)|~r4(X2)), rule_329).
+cnf(c_0_30, plain, (l4(X1)|~n2(X1)), inference(pm,[status(thm)],[c_0_22, c_0_23])).
+cnf(c_0_31, plain, (n2(c)), inference(pm,[status(thm)],[c_0_24, c_0_25])).
+cnf(c_0_32, axiom, (n3(X1)|~p2(X2,X3,X1)), rule_240).
+cnf(c_0_33, plain, (p2(X1,X1,X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_26, c_0_27])])).
+cnf(c_0_34, negated_conjecture, (~r4(X1)|~l4(c)), inference(pm,[status(thm)],[c_0_28, c_0_29])).
+cnf(c_0_35, plain, (l4(c)), inference(pm,[status(thm)],[c_0_30, c_0_31])).
+cnf(c_0_36, axiom, (r4(X1)|~n3(X1)|~q3(X2,X3)|~p0(X4,X1)), rule_298).
+cnf(c_0_37, plain, (n3(X1)), inference(pm,[status(thm)],[c_0_32, c_0_33])).
+cnf(c_0_38, negated_conjecture, (~r4(X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_34, c_0_35])])).
+cnf(c_0_39, axiom, (q3(X1,X2)|~q2(X3,X1,X2)|~n0(X3,X1)), rule_255).
+cnf(c_0_40, axiom, (q2(X1,X1,X1)|~p1(X1,X1,X1)), rule_181).
+cnf(c_0_41, plain, (~q3(X1,X2)|~p0(X3,X4)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_36, c_0_37])]), c_0_38])).
+cnf(c_0_42, axiom, (p0(b,X1)), axiom_14).
+cnf(c_0_43, plain, (q3(X1,X1)|~p1(X1,X1,X1)|~n0(X1,X1)), inference(pm,[status(thm)],[c_0_39, c_0_40])).
+cnf(c_0_44, axiom, (p1(X1,X1,X1)|~k0(X1)), rule_068).
+cnf(c_0_45, plain, (~q3(X1,X2)), inference(pm,[status(thm)],[c_0_41, c_0_42])).
+cnf(c_0_46, plain, (q3(X1,X1)|~k0(X1)|~n0(X1,X1)), inference(pm,[status(thm)],[c_0_43, c_0_44])).
+cnf(c_0_47, plain, (~k0(X1)|~n0(X1,X1)), inference(pm,[status(thm)],[c_0_45, c_0_46])).
+cnf(c_0_48, axiom, (n0(e,e)), axiom_30).
+cnf(c_0_49, axiom, (k0(e)), axiom_28).
+cnf(c_0_50, plain, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_47, c_0_48]), c_0_49])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 51
+# Proof object clause steps            : 33
+# Proof object formula steps           : 18
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 3
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 18
+# Proof object initial formulas used   : 18
+# Proof object generating inferences   : 12
+# Proof object simplifying inferences  : 9
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 369
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 369
+# Removed in clause preprocessing      : 7
+# Initial clauses in saturation        : 362
+# Processed clauses                    : 432
+# ...of these trivial                  : 69
+# ...subsumed                          : 47
+# ...remaining for further processing  : 316
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 52
+# Backward-rewritten                   : 49
+# Generated clauses                    : 380
+# ...of the previous two non-trivial   : 330
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 380
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 215
+#    Positive orientable unit clauses  : 65
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 6
+#    Non-unit-clauses                  : 144
+# Current number of unprocessed clauses: 229
+# ...number of literals in the above   : 838
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 101
+# Clause-clause subsumption calls (NU) : 4989
+# Rec. Clause-clause subsumption calls : 3688
+# Non-unit clause-clause subsumptions  : 66
+# Unit Clause-clause subsumption calls : 582
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 44
+# BW rewrite match successes           : 37
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 14471

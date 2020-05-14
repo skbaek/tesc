@@ -1,0 +1,111 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GRP012+5
+% SZS output start Proof for GRP012+5
+fof(f1467,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f1438,f1356])).
+fof(f1356,plain,(
+  product(sK4,sK3,sK0)),
+  inference(resolution,[],[f375,f19])).
+fof(f19,plain,(
+  product(sK2,sK1,sK4)),
+  inference(cnf_transformation,[],[f10])).
+fof(f10,plain,(
+  (~product(inverse(sK3),inverse(sK4),sK0) & product(sK2,sK1,sK4) & product(inverse(sK1),inverse(sK2),sK3)) & ! [X5] : product(inverse(X5),X5,sK0) & ! [X6] : product(X6,inverse(X6),sK0) & ! [X7] : product(sK0,X7,X7) & ! [X8] : product(X8,sK0,X8) & ! [X9,X10,X11,X12,X13,X14] : (product(X12,X11,X14) | ~product(X9,X13,X14) | ~product(X10,X11,X13) | ~product(X9,X10,X12)) & ! [X15,X16,X17,X18,X19,X20] : (product(X15,X19,X20) | ~product(X18,X17,X20) | ~product(X16,X17,X19) | ~product(X15,X16,X18)) & ! [X21,X22] : product(X21,X22,sK5(X21,X22))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2,sK3,sK4,sK5])],[f6,f9,f8,f7])).
+fof(f7,plain,(
+  ? [X0] : (? [X1,X2,X3,X4] : (~product(inverse(X3),inverse(X4),X0) & product(X2,X1,X4) & product(inverse(X1),inverse(X2),X3)) & ! [X5] : product(inverse(X5),X5,X0) & ! [X6] : product(X6,inverse(X6),X0) & ! [X7] : product(X0,X7,X7) & ! [X8] : product(X8,X0,X8) & ! [X9,X10,X11,X12,X13,X14] : (product(X12,X11,X14) | ~product(X9,X13,X14) | ~product(X10,X11,X13) | ~product(X9,X10,X12)) & ! [X15,X16,X17,X18,X19,X20] : (product(X15,X19,X20) | ~product(X18,X17,X20) | ~product(X16,X17,X19) | ~product(X15,X16,X18)) & ! [X21,X22] : ? [X23] : product(X21,X22,X23)) => (? [X4,X3,X2,X1] : (~product(inverse(X3),inverse(X4),sK0) & product(X2,X1,X4) & product(inverse(X1),inverse(X2),X3)) & ! [X5] : product(inverse(X5),X5,sK0) & ! [X6] : product(X6,inverse(X6),sK0) & ! [X7] : product(sK0,X7,X7) & ! [X8] : product(X8,sK0,X8) & ! [X9,X10,X11,X12,X13,X14] : (product(X12,X11,X14) | ~product(X9,X13,X14) | ~product(X10,X11,X13) | ~product(X9,X10,X12)) & ! [X15,X16,X17,X18,X19,X20] : (product(X15,X19,X20) | ~product(X18,X17,X20) | ~product(X16,X17,X19) | ~product(X15,X16,X18)) & ! [X21,X22] : ? [X23] : product(X21,X22,X23))),
+  introduced(choice_axiom,[])).
+fof(f8,plain,(
+  ? [X4,X3,X2,X1] : (~product(inverse(X3),inverse(X4),sK0) & product(X2,X1,X4) & product(inverse(X1),inverse(X2),X3)) => (~product(inverse(sK3),inverse(sK4),sK0) & product(sK2,sK1,sK4) & product(inverse(sK1),inverse(sK2),sK3))),
+  introduced(choice_axiom,[])).
+fof(f9,plain,(
+  ! [X22,X21] : (? [X23] : product(X21,X22,X23) => product(X21,X22,sK5(X21,X22)))),
+  introduced(choice_axiom,[])).
+fof(f6,plain,(
+  ? [X0] : (? [X1,X2,X3,X4] : (~product(inverse(X3),inverse(X4),X0) & product(X2,X1,X4) & product(inverse(X1),inverse(X2),X3)) & ! [X5] : product(inverse(X5),X5,X0) & ! [X6] : product(X6,inverse(X6),X0) & ! [X7] : product(X0,X7,X7) & ! [X8] : product(X8,X0,X8) & ! [X9,X10,X11,X12,X13,X14] : (product(X12,X11,X14) | ~product(X9,X13,X14) | ~product(X10,X11,X13) | ~product(X9,X10,X12)) & ! [X15,X16,X17,X18,X19,X20] : (product(X15,X19,X20) | ~product(X18,X17,X20) | ~product(X16,X17,X19) | ~product(X15,X16,X18)) & ! [X21,X22] : ? [X23] : product(X21,X22,X23))),
+  inference(rectify,[],[f5])).
+fof(f5,plain,(
+  ? [X0] : (? [X20,X21,X22,X23] : (~product(inverse(X22),inverse(X23),X0) & product(X21,X20,X23) & product(inverse(X20),inverse(X21),X22)) & ! [X1] : product(inverse(X1),X1,X0) & ! [X2] : product(X2,inverse(X2),X0) & ! [X3] : product(X0,X3,X3) & ! [X4] : product(X4,X0,X4) & ! [X5,X6,X7,X8,X9,X10] : (product(X8,X7,X10) | ~product(X5,X9,X10) | ~product(X6,X7,X9) | ~product(X5,X6,X8)) & ! [X11,X12,X13,X14,X15,X16] : (product(X11,X15,X16) | ~product(X14,X13,X16) | ~product(X12,X13,X15) | ~product(X11,X12,X14)) & ! [X17,X18] : ? [X19] : product(X17,X18,X19))),
+  inference(flattening,[],[f4])).
+fof(f4,plain,(
+  ? [X0] : (? [X20,X21,X22,X23] : (~product(inverse(X22),inverse(X23),X0) & (product(X21,X20,X23) & product(inverse(X20),inverse(X21),X22))) & (! [X1] : product(inverse(X1),X1,X0) & ! [X2] : product(X2,inverse(X2),X0) & ! [X3] : product(X0,X3,X3) & ! [X4] : product(X4,X0,X4) & ! [X5,X6,X7,X8,X9,X10] : (product(X8,X7,X10) | (~product(X5,X9,X10) | ~product(X6,X7,X9) | ~product(X5,X6,X8))) & ! [X11,X12,X13,X14,X15,X16] : (product(X11,X15,X16) | (~product(X14,X13,X16) | ~product(X12,X13,X15) | ~product(X11,X12,X14))) & ! [X17,X18] : ? [X19] : product(X17,X18,X19)))),
+  inference(ennf_transformation,[],[f3])).
+fof(f3,plain,(
+  ~! [X0] : ((! [X1] : product(inverse(X1),X1,X0) & ! [X2] : product(X2,inverse(X2),X0) & ! [X3] : product(X0,X3,X3) & ! [X4] : product(X4,X0,X4) & ! [X5,X6,X7,X8,X9,X10] : ((product(X5,X9,X10) & product(X6,X7,X9) & product(X5,X6,X8)) => product(X8,X7,X10)) & ! [X11,X12,X13,X14,X15,X16] : ((product(X14,X13,X16) & product(X12,X13,X15) & product(X11,X12,X14)) => product(X11,X15,X16)) & ! [X17,X18] : ? [X19] : product(X17,X18,X19)) => ! [X20,X21,X22,X23] : ((product(X21,X20,X23) & product(inverse(X20),inverse(X21),X22)) => product(inverse(X22),inverse(X23),X0)))),
+  inference(rectify,[],[f2])).
+fof(f2,negated_conjecture,(
+  ~! [X0] : ((! [X1] : product(inverse(X1),X1,X0) & ! [X1] : product(X1,inverse(X1),X0) & ! [X1] : product(X0,X1,X1) & ! [X1] : product(X1,X0,X1) & ! [X1,X2,X3,X4,X5,X6] : ((product(X1,X5,X6) & product(X2,X3,X5) & product(X1,X2,X4)) => product(X4,X3,X6)) & ! [X1,X2,X3,X4,X5,X6] : ((product(X4,X3,X6) & product(X2,X3,X5) & product(X1,X2,X4)) => product(X1,X5,X6)) & ! [X1,X2] : ? [X3] : product(X1,X2,X3)) => ! [X4,X5,X6,X1] : ((product(X5,X4,X1) & product(inverse(X4),inverse(X5),X6)) => product(inverse(X6),inverse(X1),X0)))),
+  inference(negated_conjecture,[],[f1])).
+fof(f1,conjecture,(
+  ! [X0] : ((! [X1] : product(inverse(X1),X1,X0) & ! [X1] : product(X1,inverse(X1),X0) & ! [X1] : product(X0,X1,X1) & ! [X1] : product(X1,X0,X1) & ! [X1,X2,X3,X4,X5,X6] : ((product(X1,X5,X6) & product(X2,X3,X5) & product(X1,X2,X4)) => product(X4,X3,X6)) & ! [X1,X2,X3,X4,X5,X6] : ((product(X4,X3,X6) & product(X2,X3,X5) & product(X1,X2,X4)) => product(X1,X5,X6)) & ! [X1,X2] : ? [X3] : product(X1,X2,X3)) => ! [X4,X5,X6,X1] : ((product(X5,X4,X1) & product(inverse(X4),inverse(X5),X6)) => product(inverse(X6),inverse(X1),X0)))),
+  file('./p/GRP012+5.tptp',unknown)).
+fof(f375,plain,(
+  ( ! [X20] : (~product(sK2,sK1,X20) | product(X20,sK3,sK0)) )),
+  inference(resolution,[],[f98,f87])).
+fof(f87,plain,(
+  ( ! [X8] : (~product(X8,inverse(sK1),sK2) | product(X8,sK3,sK0)) )),
+  inference(resolution,[],[f23,f18])).
+fof(f18,plain,(
+  product(inverse(sK1),inverse(sK2),sK3)),
+  inference(cnf_transformation,[],[f10])).
+fof(f23,plain,(
+  ( ! [X10,X8,X11,X9] : (~product(X10,inverse(X11),X9) | product(X8,X9,sK0) | ~product(X8,X10,X11)) )),
+  inference(resolution,[],[f12,f16])).
+fof(f16,plain,(
+  ( ! [X6] : (product(X6,inverse(X6),sK0)) )),
+  inference(cnf_transformation,[],[f10])).
+fof(f12,plain,(
+  ( ! [X19,X17,X15,X20,X18,X16] : (~product(X18,X17,X20) | product(X15,X19,X20) | ~product(X16,X17,X19) | ~product(X15,X16,X18)) )),
+  inference(cnf_transformation,[],[f10])).
+fof(f98,plain,(
+  ( ! [X2,X0,X1] : (product(X0,inverse(X1),X2) | ~product(X2,X1,X0)) )),
+  inference(resolution,[],[f30,f14])).
+fof(f14,plain,(
+  ( ! [X8] : (product(X8,sK0,X8)) )),
+  inference(cnf_transformation,[],[f10])).
+fof(f30,plain,(
+  ( ! [X10,X8,X11,X9] : (~product(X8,sK0,X9) | product(X10,inverse(X11),X9) | ~product(X8,X11,X10)) )),
+  inference(resolution,[],[f13,f16])).
+fof(f13,plain,(
+  ( ! [X14,X12,X10,X13,X11,X9] : (~product(X10,X11,X13) | ~product(X9,X13,X14) | product(X12,X11,X14) | ~product(X9,X10,X12)) )),
+  inference(cnf_transformation,[],[f10])).
+fof(f1438,plain,(
+  ~product(sK4,sK3,sK0)),
+  inference(resolution,[],[f206,f384])).
+fof(f384,plain,(
+  ~product(sK0,sK4,inverse(sK3))),
+  inference(resolution,[],[f98,f20])).
+fof(f20,plain,(
+  ~product(inverse(sK3),inverse(sK4),sK0)),
+  inference(cnf_transformation,[],[f10])).
+fof(f206,plain,(
+  ( ! [X0,X1] : (product(sK0,X0,inverse(X1)) | ~product(X0,X1,sK0)) )),
+  inference(resolution,[],[f41,f113])).
+fof(f113,plain,(
+  ( ! [X4,X5] : (~product(X4,sK0,X5) | product(sK0,X4,X5)) )),
+  inference(resolution,[],[f31,f16])).
+fof(f31,plain,(
+  ( ! [X14,X12,X15,X13] : (~product(X12,inverse(X15),X14) | product(X14,X15,X13) | ~product(X12,sK0,X13)) )),
+  inference(resolution,[],[f13,f17])).
+fof(f17,plain,(
+  ( ! [X5] : (product(inverse(X5),X5,sK0)) )),
+  inference(cnf_transformation,[],[f10])).
+fof(f41,plain,(
+  ( ! [X4,X5] : (product(X4,sK0,inverse(X5)) | ~product(X4,X5,sK0)) )),
+  inference(resolution,[],[f22,f16])).
+fof(f22,plain,(
+  ( ! [X6,X4,X7,X5] : (~product(X7,X6,X5) | product(X4,X5,X6) | ~product(X4,X7,sK0)) )),
+  inference(resolution,[],[f12,f15])).
+fof(f15,plain,(
+  ( ! [X7] : (product(sK0,X7,X7)) )),
+  inference(cnf_transformation,[],[f10])).
+% SZS output end Proof for GRP012+5
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5628
+% Time elapsed: 0.028 s
+% ------------------------------
+% ------------------------------

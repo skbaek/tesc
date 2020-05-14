@@ -1,0 +1,174 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SEU128+1
+% SZS output start Proof for SEU128+1
+fof(f3483,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f3482,f60])).
+fof(f60,plain,(
+  ~subset(sK4,set_intersection2(sK5,sK6))),
+  inference(cnf_transformation,[],[f41])).
+fof(f41,plain,(
+  ~subset(sK4,set_intersection2(sK5,sK6)) & subset(sK4,sK6) & subset(sK4,sK5)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK4,sK5,sK6])],[f23,f40])).
+fof(f40,plain,(
+  ? [X0,X1,X2] : (~subset(X0,set_intersection2(X1,X2)) & subset(X0,X2) & subset(X0,X1)) => (~subset(sK4,set_intersection2(sK5,sK6)) & subset(sK4,sK6) & subset(sK4,sK5))),
+  introduced(choice_axiom,[])).
+fof(f23,plain,(
+  ? [X0,X1,X2] : (~subset(X0,set_intersection2(X1,X2)) & subset(X0,X2) & subset(X0,X1))),
+  inference(flattening,[],[f22])).
+fof(f22,plain,(
+  ? [X0,X1,X2] : (~subset(X0,set_intersection2(X1,X2)) & (subset(X0,X2) & subset(X0,X1)))),
+  inference(ennf_transformation,[],[f13])).
+fof(f13,negated_conjecture,(
+  ~! [X0,X1,X2] : ((subset(X0,X2) & subset(X0,X1)) => subset(X0,set_intersection2(X1,X2)))),
+  inference(negated_conjecture,[],[f12])).
+fof(f12,conjecture,(
+  ! [X0,X1,X2] : ((subset(X0,X2) & subset(X0,X1)) => subset(X0,set_intersection2(X1,X2)))),
+  file('./p/SEU128+1.tptp',unknown)).
+fof(f3482,plain,(
+  subset(sK4,set_intersection2(sK5,sK6))),
+  inference(forward_demodulation,[],[f3467,f43])).
+fof(f43,plain,(
+  ( ! [X0,X1] : (set_intersection2(X0,X1) = set_intersection2(X1,X0)) )),
+  inference(cnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1] : set_intersection2(X0,X1) = set_intersection2(X1,X0)),
+  file('./p/SEU128+1.tptp',unknown)).
+fof(f3467,plain,(
+  subset(sK4,set_intersection2(sK6,sK5))),
+  inference(superposition,[],[f3417,f1086])).
+fof(f1086,plain,(
+  sK4 = set_intersection2(sK4,sK5)),
+  inference(duplicate_literal_removal,[],[f1084])).
+fof(f1084,plain,(
+  sK4 = set_intersection2(sK4,sK5) | sK4 = set_intersection2(sK4,sK5)),
+  inference(resolution,[],[f199,f197])).
+fof(f197,plain,(
+  ( ! [X15] : (in(sK1(sK4,X15,sK4),sK5) | sK4 = set_intersection2(sK4,X15)) )),
+  inference(resolution,[],[f129,f98])).
+fof(f98,plain,(
+  ( ! [X0] : (~in(X0,sK4) | in(X0,sK5)) )),
+  inference(resolution,[],[f44,f58])).
+fof(f58,plain,(
+  subset(sK4,sK5)),
+  inference(cnf_transformation,[],[f41])).
+fof(f44,plain,(
+  ( ! [X0,X3,X1] : (~subset(X0,X1) | ~in(X3,X0) | in(X3,X1)) )),
+  inference(cnf_transformation,[],[f30])).
+fof(f30,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | (~in(sK0(X0,X1),X1) & in(sK0(X0,X1),X0))) & (! [X3] : (in(X3,X1) | ~in(X3,X0)) | ~subset(X0,X1)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f28,f29])).
+fof(f29,plain,(
+  ! [X1,X0] : (? [X2] : (~in(X2,X1) & in(X2,X0)) => (~in(sK0(X0,X1),X1) & in(sK0(X0,X1),X0)))),
+  introduced(choice_axiom,[])).
+fof(f28,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | ? [X2] : (~in(X2,X1) & in(X2,X0))) & (! [X3] : (in(X3,X1) | ~in(X3,X0)) | ~subset(X0,X1)))),
+  inference(rectify,[],[f27])).
+fof(f27,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | ? [X2] : (~in(X2,X1) & in(X2,X0))) & (! [X2] : (in(X2,X1) | ~in(X2,X0)) | ~subset(X0,X1)))),
+  inference(nnf_transformation,[],[f21])).
+fof(f21,plain,(
+  ! [X0,X1] : (subset(X0,X1) <=> ! [X2] : (in(X2,X1) | ~in(X2,X0)))),
+  inference(ennf_transformation,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1] : (subset(X0,X1) <=> ! [X2] : (in(X2,X0) => in(X2,X1)))),
+  file('./p/SEU128+1.tptp',unknown)).
+fof(f129,plain,(
+  ( ! [X0,X1] : (in(sK1(X0,X1,X0),X0) | set_intersection2(X0,X1) = X0) )),
+  inference(factoring,[],[f50])).
+fof(f50,plain,(
+  ( ! [X2,X0,X1] : (in(sK1(X0,X1,X2),X2) | in(sK1(X0,X1,X2),X0) | set_intersection2(X0,X1) = X2) )),
+  inference(cnf_transformation,[],[f35])).
+fof(f35,plain,(
+  ! [X0,X1,X2] : ((set_intersection2(X0,X1) = X2 | ((~in(sK1(X0,X1,X2),X1) | ~in(sK1(X0,X1,X2),X0) | ~in(sK1(X0,X1,X2),X2)) & ((in(sK1(X0,X1,X2),X1) & in(sK1(X0,X1,X2),X0)) | in(sK1(X0,X1,X2),X2)))) & (! [X4] : ((in(X4,X2) | ~in(X4,X1) | ~in(X4,X0)) & ((in(X4,X1) & in(X4,X0)) | ~in(X4,X2))) | set_intersection2(X0,X1) != X2))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1])],[f33,f34])).
+fof(f34,plain,(
+  ! [X2,X1,X0] : (? [X3] : ((~in(X3,X1) | ~in(X3,X0) | ~in(X3,X2)) & ((in(X3,X1) & in(X3,X0)) | in(X3,X2))) => ((~in(sK1(X0,X1,X2),X1) | ~in(sK1(X0,X1,X2),X0) | ~in(sK1(X0,X1,X2),X2)) & ((in(sK1(X0,X1,X2),X1) & in(sK1(X0,X1,X2),X0)) | in(sK1(X0,X1,X2),X2))))),
+  introduced(choice_axiom,[])).
+fof(f33,plain,(
+  ! [X0,X1,X2] : ((set_intersection2(X0,X1) = X2 | ? [X3] : ((~in(X3,X1) | ~in(X3,X0) | ~in(X3,X2)) & ((in(X3,X1) & in(X3,X0)) | in(X3,X2)))) & (! [X4] : ((in(X4,X2) | ~in(X4,X1) | ~in(X4,X0)) & ((in(X4,X1) & in(X4,X0)) | ~in(X4,X2))) | set_intersection2(X0,X1) != X2))),
+  inference(rectify,[],[f32])).
+fof(f32,plain,(
+  ! [X0,X1,X2] : ((set_intersection2(X0,X1) = X2 | ? [X3] : ((~in(X3,X1) | ~in(X3,X0) | ~in(X3,X2)) & ((in(X3,X1) & in(X3,X0)) | in(X3,X2)))) & (! [X3] : ((in(X3,X2) | ~in(X3,X1) | ~in(X3,X0)) & ((in(X3,X1) & in(X3,X0)) | ~in(X3,X2))) | set_intersection2(X0,X1) != X2))),
+  inference(flattening,[],[f31])).
+fof(f31,plain,(
+  ! [X0,X1,X2] : ((set_intersection2(X0,X1) = X2 | ? [X3] : (((~in(X3,X1) | ~in(X3,X0)) | ~in(X3,X2)) & ((in(X3,X1) & in(X3,X0)) | in(X3,X2)))) & (! [X3] : ((in(X3,X2) | (~in(X3,X1) | ~in(X3,X0))) & ((in(X3,X1) & in(X3,X0)) | ~in(X3,X2))) | set_intersection2(X0,X1) != X2))),
+  inference(nnf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1,X2] : (set_intersection2(X0,X1) = X2 <=> ! [X3] : (in(X3,X2) <=> (in(X3,X1) & in(X3,X0))))),
+  file('./p/SEU128+1.tptp',unknown)).
+fof(f199,plain,(
+  ( ! [X4,X5] : (~in(sK1(X4,X5,X4),X5) | set_intersection2(X4,X5) = X4) )),
+  inference(subsumption_resolution,[],[f198,f129])).
+fof(f198,plain,(
+  ( ! [X4,X5] : (set_intersection2(X4,X5) = X4 | ~in(sK1(X4,X5,X4),X5) | ~in(sK1(X4,X5,X4),X4)) )),
+  inference(duplicate_literal_removal,[],[f192])).
+fof(f192,plain,(
+  ( ! [X4,X5] : (set_intersection2(X4,X5) = X4 | ~in(sK1(X4,X5,X4),X5) | ~in(sK1(X4,X5,X4),X4) | set_intersection2(X4,X5) = X4) )),
+  inference(resolution,[],[f129,f52])).
+fof(f52,plain,(
+  ( ! [X2,X0,X1] : (~in(sK1(X0,X1,X2),X2) | ~in(sK1(X0,X1,X2),X1) | ~in(sK1(X0,X1,X2),X0) | set_intersection2(X0,X1) = X2) )),
+  inference(cnf_transformation,[],[f35])).
+fof(f3417,plain,(
+  ( ! [X25] : (subset(set_intersection2(sK4,X25),set_intersection2(sK6,X25))) )),
+  inference(duplicate_literal_removal,[],[f3391])).
+fof(f3391,plain,(
+  ( ! [X25] : (subset(set_intersection2(sK4,X25),set_intersection2(sK6,X25)) | subset(set_intersection2(sK4,X25),set_intersection2(sK6,X25))) )),
+  inference(resolution,[],[f343,f243])).
+fof(f243,plain,(
+  ( ! [X19,X20] : (in(sK0(set_intersection2(sK4,X19),X20),sK6) | subset(set_intersection2(sK4,X19),X20)) )),
+  inference(resolution,[],[f91,f99])).
+fof(f99,plain,(
+  ( ! [X1] : (~in(X1,sK4) | in(X1,sK6)) )),
+  inference(resolution,[],[f44,f59])).
+fof(f59,plain,(
+  subset(sK4,sK6)),
+  inference(cnf_transformation,[],[f41])).
+fof(f91,plain,(
+  ( ! [X2,X0,X1] : (in(sK0(set_intersection2(X0,X1),X2),X0) | subset(set_intersection2(X0,X1),X2)) )),
+  inference(resolution,[],[f67,f45])).
+fof(f45,plain,(
+  ( ! [X0,X1] : (in(sK0(X0,X1),X0) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f30])).
+fof(f67,plain,(
+  ( ! [X4,X0,X1] : (~in(X4,set_intersection2(X0,X1)) | in(X4,X0)) )),
+  inference(equality_resolution,[],[f47])).
+fof(f47,plain,(
+  ( ! [X4,X2,X0,X1] : (in(X4,X0) | ~in(X4,X2) | set_intersection2(X0,X1) != X2) )),
+  inference(cnf_transformation,[],[f35])).
+fof(f343,plain,(
+  ( ! [X6,X7,X5] : (~in(sK0(set_intersection2(X5,X6),set_intersection2(X7,X6)),X7) | subset(set_intersection2(X5,X6),set_intersection2(X7,X6))) )),
+  inference(duplicate_literal_removal,[],[f330])).
+fof(f330,plain,(
+  ( ! [X6,X7,X5] : (~in(sK0(set_intersection2(X5,X6),set_intersection2(X7,X6)),X7) | subset(set_intersection2(X5,X6),set_intersection2(X7,X6)) | subset(set_intersection2(X5,X6),set_intersection2(X7,X6))) )),
+  inference(resolution,[],[f107,f85])).
+fof(f85,plain,(
+  ( ! [X2,X0,X1] : (in(sK0(set_intersection2(X0,X1),X2),X1) | subset(set_intersection2(X0,X1),X2)) )),
+  inference(resolution,[],[f66,f45])).
+fof(f66,plain,(
+  ( ! [X4,X0,X1] : (~in(X4,set_intersection2(X0,X1)) | in(X4,X1)) )),
+  inference(equality_resolution,[],[f48])).
+fof(f48,plain,(
+  ( ! [X4,X2,X0,X1] : (in(X4,X1) | ~in(X4,X2) | set_intersection2(X0,X1) != X2) )),
+  inference(cnf_transformation,[],[f35])).
+fof(f107,plain,(
+  ( ! [X14,X12,X13] : (~in(sK0(X12,set_intersection2(X13,X14)),X14) | ~in(sK0(X12,set_intersection2(X13,X14)),X13) | subset(X12,set_intersection2(X13,X14))) )),
+  inference(resolution,[],[f65,f46])).
+fof(f46,plain,(
+  ( ! [X0,X1] : (~in(sK0(X0,X1),X1) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f30])).
+fof(f65,plain,(
+  ( ! [X4,X0,X1] : (in(X4,set_intersection2(X0,X1)) | ~in(X4,X1) | ~in(X4,X0)) )),
+  inference(equality_resolution,[],[f49])).
+fof(f49,plain,(
+  ( ! [X4,X2,X0,X1] : (in(X4,X2) | ~in(X4,X1) | ~in(X4,X0) | set_intersection2(X0,X1) != X2) )),
+  inference(cnf_transformation,[],[f35])).
+% SZS output end Proof for SEU128+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 6524
+% Time elapsed: 0.039 s
+% ------------------------------
+% ------------------------------

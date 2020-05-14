@@ -1,0 +1,60 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GEO443+1
+% SZS output start Proof for GEO443+1
+fof(f26269,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f26268,f19286])).
+fof(f19286,plain,(
+  ( ! [X2,X0,X1] : (s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X1))),s(cart(real,X0),X2))))) = s(real,i(s(fun(cart(real,X0),real),vectoru_norm),s(cart(real,X0),i(s(fun(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),fun(cart(real,X0),cart(real,X0))),vectoru_sub),s(cart(real,X0),X1))),s(cart(real,X0),X2)))))) )),
+  inference(cnf_transformation,[],[f5389])).
+fof(f5389,plain,(
+  ! [X0,X1,X2] : s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X1))),s(cart(real,X0),X2))))) = s(real,i(s(fun(cart(real,X0),real),vectoru_norm),s(cart(real,X0),i(s(fun(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),fun(cart(real,X0),cart(real,X0))),vectoru_sub),s(cart(real,X0),X1))),s(cart(real,X0),X2)))))),
+  inference(rectify,[],[f2817])).
+fof(f2817,axiom,(
+  ! [X1011,X0,X7] : s(real,i(s(fun(prod(cart(real,X1011),cart(real,X1011)),real),distance),s(prod(cart(real,X1011),cart(real,X1011)),i(s(fun(cart(real,X1011),prod(cart(real,X1011),cart(real,X1011))),i(s(fun(cart(real,X1011),fun(cart(real,X1011),prod(cart(real,X1011),cart(real,X1011)))),c_),s(cart(real,X1011),X0))),s(cart(real,X1011),X7))))) = s(real,i(s(fun(cart(real,X1011),real),vectoru_norm),s(cart(real,X1011),i(s(fun(cart(real,X1011),cart(real,X1011)),i(s(fun(cart(real,X1011),fun(cart(real,X1011),cart(real,X1011))),vectoru_sub),s(cart(real,X1011),X0))),s(cart(real,X1011),X7)))))),
+  file('./p/GEO443+1.tptp',unknown)).
+fof(f26268,plain,(
+  s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3593))),s(cart(real,sK3592),sK3594))))) != s(real,i(s(fun(cart(real,sK3592),real),vectoru_norm),s(cart(real,sK3592),i(s(fun(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),cart(real,sK3592))),vectoru_sub),s(cart(real,sK3592),sK3593))),s(cart(real,sK3592),sK3594)))))),
+  inference(forward_demodulation,[],[f26267,f19340])).
+fof(f19340,plain,(
+  ( ! [X2,X0,X1] : (s(real,i(s(fun(cart(real,X0),real),vectoru_norm),s(cart(real,X0),i(s(fun(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),fun(cart(real,X0),cart(real,X0))),vectoru_sub),s(cart(real,X0),X1))),s(cart(real,X0),X2))))) = s(real,i(s(fun(cart(real,X0),real),vectoru_norm),s(cart(real,X0),i(s(fun(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),fun(cart(real,X0),cart(real,X0))),vectoru_sub),s(cart(real,X0),X2))),s(cart(real,X0),X1)))))) )),
+  inference(cnf_transformation,[],[f5410])).
+fof(f5410,plain,(
+  ! [X0,X1,X2] : s(real,i(s(fun(cart(real,X0),real),vectoru_norm),s(cart(real,X0),i(s(fun(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),fun(cart(real,X0),cart(real,X0))),vectoru_sub),s(cart(real,X0),X1))),s(cart(real,X0),X2))))) = s(real,i(s(fun(cart(real,X0),real),vectoru_norm),s(cart(real,X0),i(s(fun(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),fun(cart(real,X0),cart(real,X0))),vectoru_sub),s(cart(real,X0),X2))),s(cart(real,X0),X1)))))),
+  inference(rectify,[],[f2848])).
+fof(f2848,axiom,(
+  ! [X1017,X0,X7] : s(real,i(s(fun(cart(real,X1017),real),vectoru_norm),s(cart(real,X1017),i(s(fun(cart(real,X1017),cart(real,X1017)),i(s(fun(cart(real,X1017),fun(cart(real,X1017),cart(real,X1017))),vectoru_sub),s(cart(real,X1017),X0))),s(cart(real,X1017),X7))))) = s(real,i(s(fun(cart(real,X1017),real),vectoru_norm),s(cart(real,X1017),i(s(fun(cart(real,X1017),cart(real,X1017)),i(s(fun(cart(real,X1017),fun(cart(real,X1017),cart(real,X1017))),vectoru_sub),s(cart(real,X1017),X7))),s(cart(real,X1017),X0)))))),
+  file('./p/GEO443+1.tptp',unknown)).
+fof(f26267,plain,(
+  s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3593))),s(cart(real,sK3592),sK3594))))) != s(real,i(s(fun(cart(real,sK3592),real),vectoru_norm),s(cart(real,sK3592),i(s(fun(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),cart(real,sK3592))),vectoru_sub),s(cart(real,sK3592),sK3594))),s(cart(real,sK3592),sK3593)))))),
+  inference(forward_demodulation,[],[f19411,f19286])).
+fof(f19411,plain,(
+  s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3593))),s(cart(real,sK3592),sK3594))))) != s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3594))),s(cart(real,sK3592),sK3593)))))),
+  inference(cnf_transformation,[],[f12829])).
+fof(f12829,plain,(
+  s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3593))),s(cart(real,sK3592),sK3594))))) != s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3594))),s(cart(real,sK3592),sK3593)))))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK3592,sK3593,sK3594])],[f7316,f12828])).
+fof(f12828,plain,(
+  ? [X0,X1,X2] : s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X1))),s(cart(real,X0),X2))))) != s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X2))),s(cart(real,X0),X1))))) => s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3593))),s(cart(real,sK3592),sK3594))))) != s(real,i(s(fun(prod(cart(real,sK3592),cart(real,sK3592)),real),distance),s(prod(cart(real,sK3592),cart(real,sK3592)),i(s(fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592))),i(s(fun(cart(real,sK3592),fun(cart(real,sK3592),prod(cart(real,sK3592),cart(real,sK3592)))),c_),s(cart(real,sK3592),sK3594))),s(cart(real,sK3592),sK3593)))))),
+  introduced(choice_axiom,[])).
+fof(f7316,plain,(
+  ? [X0,X1,X2] : s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X1))),s(cart(real,X0),X2))))) != s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X2))),s(cart(real,X0),X1)))))),
+  inference(ennf_transformation,[],[f5453])).
+fof(f5453,plain,(
+  ~! [X0,X1,X2] : s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X1))),s(cart(real,X0),X2))))) = s(real,i(s(fun(prod(cart(real,X0),cart(real,X0)),real),distance),s(prod(cart(real,X0),cart(real,X0)),i(s(fun(cart(real,X0),prod(cart(real,X0),cart(real,X0))),i(s(fun(cart(real,X0),fun(cart(real,X0),prod(cart(real,X0),cart(real,X0)))),c_),s(cart(real,X0),X2))),s(cart(real,X0),X1)))))),
+  inference(rectify,[],[f2892])).
+fof(f2892,negated_conjecture,(
+  ~! [X1048,X0,X7] : s(real,i(s(fun(prod(cart(real,X1048),cart(real,X1048)),real),distance),s(prod(cart(real,X1048),cart(real,X1048)),i(s(fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048))),i(s(fun(cart(real,X1048),fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048)))),c_),s(cart(real,X1048),X0))),s(cart(real,X1048),X7))))) = s(real,i(s(fun(prod(cart(real,X1048),cart(real,X1048)),real),distance),s(prod(cart(real,X1048),cart(real,X1048)),i(s(fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048))),i(s(fun(cart(real,X1048),fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048)))),c_),s(cart(real,X1048),X7))),s(cart(real,X1048),X0)))))),
+  inference(negated_conjecture,[],[f2891])).
+fof(f2891,conjecture,(
+  ! [X1048,X0,X7] : s(real,i(s(fun(prod(cart(real,X1048),cart(real,X1048)),real),distance),s(prod(cart(real,X1048),cart(real,X1048)),i(s(fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048))),i(s(fun(cart(real,X1048),fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048)))),c_),s(cart(real,X1048),X0))),s(cart(real,X1048),X7))))) = s(real,i(s(fun(prod(cart(real,X1048),cart(real,X1048)),real),distance),s(prod(cart(real,X1048),cart(real,X1048)),i(s(fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048))),i(s(fun(cart(real,X1048),fun(cart(real,X1048),prod(cart(real,X1048),cart(real,X1048)))),c_),s(cart(real,X1048),X7))),s(cart(real,X1048),X0)))))),
+  file('./p/GEO443+1.tptp',unknown)).
+% SZS output end Proof for GEO443+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 62557
+% Time elapsed: 1.706 s
+% ------------------------------
+% ------------------------------

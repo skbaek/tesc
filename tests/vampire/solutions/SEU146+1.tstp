@@ -1,0 +1,186 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SEU146+1
+% SZS output start Proof for SEU146+1
+fof(f138,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f63,f68,f69,f72,f75,f136])).
+fof(f136,plain,(
+  ~spl4_1 | spl4_2 | spl4_3),
+  inference(avatar_contradiction_clause,[],[f135])).
+fof(f135,plain,(
+  $false | (~spl4_1 | spl4_2 | spl4_3)),
+  inference(subsumption_resolution,[],[f134,f49])).
+fof(f49,plain,(
+  ( ! [X0] : (subset(empty_set,X0)) )),
+  inference(cnf_transformation,[],[f14])).
+fof(f14,axiom,(
+  ! [X0] : subset(empty_set,X0)),
+  file('./p/SEU146+1.tptp',unknown)).
+fof(f134,plain,(
+  ~subset(empty_set,sK0) | (~spl4_1 | spl4_2 | spl4_3)),
+  inference(subsumption_resolution,[],[f121,f67])).
+fof(f67,plain,(
+  empty_set != sK0 | spl4_3),
+  inference(avatar_component_clause,[],[f65])).
+fof(f65,plain,(
+  spl4_3 <=> empty_set = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_3])])).
+fof(f121,plain,(
+  empty_set = sK0 | ~subset(empty_set,sK0) | (~spl4_1 | spl4_2)),
+  inference(resolution,[],[f113,f38])).
+fof(f38,plain,(
+  ( ! [X0,X1] : (~subset(X1,X0) | X0 = X1 | ~subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f24])).
+fof(f24,plain,(
+  ! [X0,X1] : ((X0 = X1 | ~subset(X1,X0) | ~subset(X0,X1)) & ((subset(X1,X0) & subset(X0,X1)) | X0 != X1))),
+  inference(flattening,[],[f23])).
+fof(f23,plain,(
+  ! [X0,X1] : ((X0 = X1 | (~subset(X1,X0) | ~subset(X0,X1))) & ((subset(X1,X0) & subset(X0,X1)) | X0 != X1))),
+  inference(nnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1] : (X0 = X1 <=> (subset(X1,X0) & subset(X0,X1)))),
+  file('./p/SEU146+1.tptp',unknown)).
+fof(f113,plain,(
+  subset(sK0,empty_set) | (~spl4_1 | spl4_2)),
+  inference(subsumption_resolution,[],[f111,f94])).
+fof(f94,plain,(
+  ~in(sK1,sK0) | (~spl4_1 | spl4_2)),
+  inference(resolution,[],[f93,f41])).
+fof(f41,plain,(
+  ( ! [X0,X1] : (subset(singleton(X0),X1) | ~in(X0,X1)) )),
+  inference(cnf_transformation,[],[f25])).
+fof(f25,plain,(
+  ! [X0,X1] : ((subset(singleton(X0),X1) | ~in(X0,X1)) & (in(X0,X1) | ~subset(singleton(X0),X1)))),
+  inference(nnf_transformation,[],[f7])).
+fof(f7,axiom,(
+  ! [X0,X1] : (subset(singleton(X0),X1) <=> in(X0,X1))),
+  file('./p/SEU146+1.tptp',unknown)).
+fof(f93,plain,(
+  ~subset(singleton(sK1),sK0) | (~spl4_1 | spl4_2)),
+  inference(subsumption_resolution,[],[f91,f62])).
+fof(f62,plain,(
+  sK0 != singleton(sK1) | spl4_2),
+  inference(avatar_component_clause,[],[f60])).
+fof(f60,plain,(
+  spl4_2 <=> sK0 = singleton(sK1)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_2])])).
+fof(f91,plain,(
+  sK0 = singleton(sK1) | ~subset(singleton(sK1),sK0) | ~spl4_1),
+  inference(resolution,[],[f38,f57])).
+fof(f57,plain,(
+  subset(sK0,singleton(sK1)) | ~spl4_1),
+  inference(avatar_component_clause,[],[f56])).
+fof(f56,plain,(
+  spl4_1 <=> subset(sK0,singleton(sK1))),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_1])])).
+fof(f111,plain,(
+  in(sK1,sK0) | subset(sK0,empty_set) | ~spl4_1),
+  inference(resolution,[],[f102,f53])).
+fof(f53,plain,(
+  ( ! [X1] : (subset(X1,X1)) )),
+  inference(equality_resolution,[],[f37])).
+fof(f37,plain,(
+  ( ! [X0,X1] : (subset(X1,X0) | X0 != X1) )),
+  inference(cnf_transformation,[],[f24])).
+fof(f102,plain,(
+  ( ! [X0] : (~subset(X0,sK0) | in(sK1,X0) | subset(X0,empty_set)) ) | ~spl4_1),
+  inference(superposition,[],[f42,f85])).
+fof(f85,plain,(
+  empty_set = set_difference(sK0,singleton(sK1)) | ~spl4_1),
+  inference(resolution,[],[f51,f57])).
+fof(f51,plain,(
+  ( ! [X0,X1] : (~subset(X0,X1) | empty_set = set_difference(X0,X1)) )),
+  inference(cnf_transformation,[],[f34])).
+fof(f34,plain,(
+  ! [X0,X1] : ((empty_set = set_difference(X0,X1) | ~subset(X0,X1)) & (subset(X0,X1) | empty_set != set_difference(X0,X1)))),
+  inference(nnf_transformation,[],[f15])).
+fof(f15,axiom,(
+  ! [X0,X1] : (empty_set = set_difference(X0,X1) <=> subset(X0,X1))),
+  file('./p/SEU146+1.tptp',unknown)).
+fof(f42,plain,(
+  ( ! [X2,X0,X1] : (subset(X0,set_difference(X1,singleton(X2))) | in(X2,X0) | ~subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f20])).
+fof(f20,plain,(
+  ! [X0,X1,X2] : (subset(X0,set_difference(X1,singleton(X2))) | in(X2,X0) | ~subset(X0,X1))),
+  inference(flattening,[],[f19])).
+fof(f19,plain,(
+  ! [X0,X1,X2] : ((subset(X0,set_difference(X1,singleton(X2))) | in(X2,X0)) | ~subset(X0,X1))),
+  inference(ennf_transformation,[],[f8])).
+fof(f8,axiom,(
+  ! [X0,X1,X2] : (subset(X0,X1) => (subset(X0,set_difference(X1,singleton(X2))) | in(X2,X0)))),
+  file('./p/SEU146+1.tptp',unknown)).
+fof(f75,plain,(
+  spl4_1 | ~spl4_3),
+  inference(avatar_contradiction_clause,[],[f74])).
+fof(f74,plain,(
+  $false | (spl4_1 | ~spl4_3)),
+  inference(subsumption_resolution,[],[f73,f49])).
+fof(f73,plain,(
+  ~subset(empty_set,singleton(sK1)) | (spl4_1 | ~spl4_3)),
+  inference(backward_demodulation,[],[f66,f58])).
+fof(f58,plain,(
+  ~subset(sK0,singleton(sK1)) | spl4_1),
+  inference(avatar_component_clause,[],[f56])).
+fof(f66,plain,(
+  empty_set = sK0 | ~spl4_3),
+  inference(avatar_component_clause,[],[f65])).
+fof(f72,plain,(
+  spl4_1 | ~spl4_2),
+  inference(avatar_contradiction_clause,[],[f71])).
+fof(f71,plain,(
+  $false | (spl4_1 | ~spl4_2)),
+  inference(subsumption_resolution,[],[f70,f53])).
+fof(f70,plain,(
+  ~subset(sK0,sK0) | (spl4_1 | ~spl4_2)),
+  inference(forward_demodulation,[],[f58,f61])).
+fof(f61,plain,(
+  sK0 = singleton(sK1) | ~spl4_2),
+  inference(avatar_component_clause,[],[f60])).
+fof(f69,plain,(
+  spl4_1 | spl4_3 | spl4_2),
+  inference(avatar_split_clause,[],[f43,f60,f65,f56])).
+fof(f43,plain,(
+  sK0 = singleton(sK1) | empty_set = sK0 | subset(sK0,singleton(sK1))),
+  inference(cnf_transformation,[],[f29])).
+fof(f29,plain,(
+  ((sK0 != singleton(sK1) & empty_set != sK0) | ~subset(sK0,singleton(sK1))) & (sK0 = singleton(sK1) | empty_set = sK0 | subset(sK0,singleton(sK1)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1])],[f27,f28])).
+fof(f28,plain,(
+  ? [X0,X1] : (((singleton(X1) != X0 & empty_set != X0) | ~subset(X0,singleton(X1))) & (singleton(X1) = X0 | empty_set = X0 | subset(X0,singleton(X1)))) => (((sK0 != singleton(sK1) & empty_set != sK0) | ~subset(sK0,singleton(sK1))) & (sK0 = singleton(sK1) | empty_set = sK0 | subset(sK0,singleton(sK1))))),
+  introduced(choice_axiom,[])).
+fof(f27,plain,(
+  ? [X0,X1] : (((singleton(X1) != X0 & empty_set != X0) | ~subset(X0,singleton(X1))) & (singleton(X1) = X0 | empty_set = X0 | subset(X0,singleton(X1))))),
+  inference(flattening,[],[f26])).
+fof(f26,plain,(
+  ? [X0,X1] : (((singleton(X1) != X0 & empty_set != X0) | ~subset(X0,singleton(X1))) & ((singleton(X1) = X0 | empty_set = X0) | subset(X0,singleton(X1))))),
+  inference(nnf_transformation,[],[f21])).
+fof(f21,plain,(
+  ? [X0,X1] : (subset(X0,singleton(X1)) <~> (singleton(X1) = X0 | empty_set = X0))),
+  inference(ennf_transformation,[],[f10])).
+fof(f10,negated_conjecture,(
+  ~! [X0,X1] : (subset(X0,singleton(X1)) <=> (singleton(X1) = X0 | empty_set = X0))),
+  inference(negated_conjecture,[],[f9])).
+fof(f9,conjecture,(
+  ! [X0,X1] : (subset(X0,singleton(X1)) <=> (singleton(X1) = X0 | empty_set = X0))),
+  file('./p/SEU146+1.tptp',unknown)).
+fof(f68,plain,(
+  ~spl4_1 | ~spl4_3),
+  inference(avatar_split_clause,[],[f44,f65,f56])).
+fof(f44,plain,(
+  empty_set != sK0 | ~subset(sK0,singleton(sK1))),
+  inference(cnf_transformation,[],[f29])).
+fof(f63,plain,(
+  ~spl4_1 | ~spl4_2),
+  inference(avatar_split_clause,[],[f45,f60,f56])).
+fof(f45,plain,(
+  sK0 != singleton(sK1) | ~subset(sK0,singleton(sK1))),
+  inference(cnf_transformation,[],[f29])).
+% SZS output end Proof for SEU146+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

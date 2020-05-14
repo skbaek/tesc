@@ -1,0 +1,81 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_6, plain, (c_in(c_Pair(X1,X1,X2,X2),c_Transitive__Closure_Ortrancl(X3,X2),tc_prod(X2,X2)))).
+#
+#cnf(i_0_4, negated_conjecture, (c_in(c_Pair(v_y,v_x,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a)))).
+#
+#cnf(i_0_5, negated_conjecture, (~c_in(c_Pair(v_y,X1,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a))|~c_in(c_Pair(v_x,X1,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a)))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(cls_conjecture_2, negated_conjecture, (~c_in(c_Pair(v_x,X1,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a))|~c_in(c_Pair(v_y,X1,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a))), file('./p/COL120-2.tptp', cls_conjecture_2)).
+cnf(cls_Transitive__Closure_Ortrancl_Ortrancl__refl_0, axiom, (c_in(c_Pair(X1,X1,X2,X2),c_Transitive__Closure_Ortrancl(X3,X2),tc_prod(X2,X2))), file('./p/COL120-2.tptp', cls_Transitive__Closure_Ortrancl_Ortrancl__refl_0)).
+cnf(cls_conjecture_1, negated_conjecture, (c_in(c_Pair(v_y,v_x,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a))), file('./p/COL120-2.tptp', cls_conjecture_1)).
+cnf(c_0_3, negated_conjecture, (~c_in(c_Pair(v_x,X1,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a))|~c_in(c_Pair(v_y,X1,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a))), cls_conjecture_2).
+cnf(c_0_4, axiom, (c_in(c_Pair(X1,X1,X2,X2),c_Transitive__Closure_Ortrancl(X3,X2),tc_prod(X2,X2))), cls_Transitive__Closure_Ortrancl_Ortrancl__refl_0).
+cnf(c_0_5, negated_conjecture, (c_in(c_Pair(v_y,v_x,t_a,t_a),c_Transitive__Closure_Ortrancl(v_r,t_a),tc_prod(t_a,t_a))), cls_conjecture_1).
+cnf(c_0_6, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_3, c_0_4]), c_0_5])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 7
+# Proof object clause steps            : 4
+# Proof object formula steps           : 3
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 3
+# Proof object formula conjectures     : 2
+# Proof object initial clauses used    : 3
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 1
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 3
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 3
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 3
+# Processed clauses                    : 3
+# ...of these trivial                  : 0
+# ...subsumed                          : 0
+# ...remaining for further processing  : 3
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 1
+# ...of the previous two non-trivial   : 0
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 1
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 3
+#    Positive orientable unit clauses  : 2
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 1
+# Current number of unprocessed clauses: 0
+# ...number of literals in the above   : 0
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 0
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 175

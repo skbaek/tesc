@@ -1,0 +1,174 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for PLA005-1
+% SZS output start Proof for PLA005-1
+fof(f485,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f484,f26])).
+fof(f26,axiom,(
+  holds(clear(a),s0)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f484,plain,(
+  ~holds(clear(a),s0)),
+  inference(subsumption_resolution,[],[f483,f27])).
+fof(f27,axiom,(
+  holds(clear(b),s0)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f483,plain,(
+  ~holds(clear(b),s0) | ~holds(clear(a),s0)),
+  inference(subsumption_resolution,[],[f482,f29])).
+fof(f29,axiom,(
+  holds(empty,s0)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f482,plain,(
+  ~holds(empty,s0) | ~holds(clear(b),s0) | ~holds(clear(a),s0)),
+  inference(subsumption_resolution,[],[f479,f28])).
+fof(f28,axiom,(
+  holds(clear(c),s0)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f479,plain,(
+  ~holds(clear(c),s0) | ~holds(empty,s0) | ~holds(clear(b),s0) | ~holds(clear(a),s0)),
+  inference(resolution,[],[f475,f24])).
+fof(f24,axiom,(
+  holds(on(c,d),s0)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f475,plain,(
+  ( ! [X0] : (~holds(on(c,d),X0) | ~holds(clear(c),X0) | ~holds(empty,X0) | ~holds(clear(b),X0) | ~holds(clear(a),X0)) )),
+  inference(subsumption_resolution,[],[f474,f20])).
+fof(f20,axiom,(
+  differ(c,table)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f474,plain,(
+  ( ! [X0] : (~holds(clear(c),X0) | ~holds(on(c,d),X0) | ~holds(empty,X0) | ~holds(clear(b),X0) | ~holds(clear(a),X0) | ~differ(c,table)) )),
+  inference(subsumption_resolution,[],[f473,f13])).
+fof(f13,axiom,(
+  differ(a,c)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f473,plain,(
+  ( ! [X0] : (~holds(clear(c),X0) | ~holds(on(c,d),X0) | ~holds(empty,X0) | ~holds(clear(b),X0) | ~holds(clear(a),X0) | ~differ(a,c) | ~differ(c,table)) )),
+  inference(subsumption_resolution,[],[f472,f16])).
+fof(f16,axiom,(
+  differ(b,c)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f472,plain,(
+  ( ! [X0] : (~holds(clear(c),X0) | ~holds(on(c,d),X0) | ~holds(empty,X0) | ~holds(clear(b),X0) | ~differ(b,c) | ~holds(clear(a),X0) | ~differ(a,c) | ~differ(c,table)) )),
+  inference(duplicate_literal_removal,[],[f471])).
+fof(f471,plain,(
+  ( ! [X0] : (~holds(clear(c),X0) | ~holds(on(c,d),X0) | ~holds(empty,X0) | ~holds(clear(b),X0) | ~differ(b,c) | ~holds(clear(a),X0) | ~differ(a,c) | ~holds(clear(c),X0) | ~holds(empty,X0) | ~differ(c,table)) )),
+  inference(resolution,[],[f295,f2])).
+fof(f2,axiom,(
+  ( ! [X2,X0] : (holds(holding(X0),do(pickup(X0),X2)) | ~holds(clear(X0),X2) | ~holds(empty,X2) | ~differ(X0,table)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f295,plain,(
+  ( ! [X2,X3] : (~holds(holding(c),do(pickup(X2),X3)) | ~holds(clear(X2),X3) | ~holds(on(X2,d),X3) | ~holds(empty,X3) | ~holds(clear(b),X3) | ~differ(b,X2) | ~holds(clear(a),X3) | ~differ(a,X2)) )),
+  inference(resolution,[],[f202,f5])).
+fof(f5,axiom,(
+  ( ! [X2,X0,X3] : (holds(clear(X0),do(pickup(X3),X2)) | ~holds(clear(X0),X2) | ~differ(X0,X3)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f202,plain,(
+  ( ! [X2,X3] : (~holds(clear(a),do(pickup(X2),X3)) | ~holds(holding(c),do(pickup(X2),X3)) | ~holds(clear(X2),X3) | ~holds(on(X2,d),X3) | ~holds(empty,X3) | ~holds(clear(b),X3) | ~differ(b,X2)) )),
+  inference(resolution,[],[f121,f5])).
+fof(f121,plain,(
+  ( ! [X0,X1] : (~holds(clear(b),do(pickup(X0),X1)) | ~holds(holding(c),do(pickup(X0),X1)) | ~holds(clear(a),do(pickup(X0),X1)) | ~holds(clear(X0),X1) | ~holds(on(X0,d),X1) | ~holds(empty,X1)) )),
+  inference(resolution,[],[f117,f3])).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (holds(clear(X1),do(pickup(X0),X2)) | ~holds(clear(X0),X2) | ~holds(on(X0,X1),X2) | ~holds(empty,X2)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f117,plain,(
+  ( ! [X0] : (~holds(clear(d),X0) | ~holds(clear(a),X0) | ~holds(holding(c),X0) | ~holds(clear(b),X0)) )),
+  inference(subsumption_resolution,[],[f116,f33])).
+fof(f33,plain,(
+  differ(b,a)),
+  inference(resolution,[],[f11,f12])).
+fof(f12,axiom,(
+  differ(a,b)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f11,axiom,(
+  ( ! [X0,X1] : (~differ(X1,X0) | differ(X0,X1)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f116,plain,(
+  ( ! [X0] : (~holds(holding(c),X0) | ~holds(clear(a),X0) | ~holds(clear(d),X0) | ~holds(clear(b),X0) | ~differ(b,a)) )),
+  inference(resolution,[],[f103,f10])).
+fof(f10,axiom,(
+  ( ! [X2,X0,X3,X1] : (holds(clear(X3),do(putdown(X0,X1),X2)) | ~holds(clear(X3),X2) | ~differ(X3,X1)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f103,plain,(
+  ( ! [X0] : (~holds(clear(b),do(putdown(c,a),X0)) | ~holds(holding(c),X0) | ~holds(clear(a),X0) | ~holds(clear(d),X0)) )),
+  inference(subsumption_resolution,[],[f102,f35])).
+fof(f35,plain,(
+  differ(d,a)),
+  inference(resolution,[],[f11,f14])).
+fof(f14,axiom,(
+  differ(a,d)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f102,plain,(
+  ( ! [X0] : (~holds(clear(b),do(putdown(c,a),X0)) | ~holds(holding(c),X0) | ~holds(clear(a),X0) | ~holds(clear(d),X0) | ~differ(d,a)) )),
+  inference(resolution,[],[f93,f10])).
+fof(f93,plain,(
+  ( ! [X3] : (~holds(clear(d),do(putdown(c,a),X3)) | ~holds(clear(b),do(putdown(c,a),X3)) | ~holds(holding(c),X3) | ~holds(clear(a),X3)) )),
+  inference(subsumption_resolution,[],[f91,f6])).
+fof(f6,axiom,(
+  ( ! [X2,X0,X1] : (holds(empty,do(putdown(X0,X1),X2)) | ~holds(holding(X0),X2) | ~holds(clear(X1),X2)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f91,plain,(
+  ( ! [X3] : (~holds(clear(b),do(putdown(c,a),X3)) | ~holds(clear(d),do(putdown(c,a),X3)) | ~holds(empty,do(putdown(c,a),X3)) | ~holds(holding(c),X3) | ~holds(clear(a),X3)) )),
+  inference(resolution,[],[f89,f7])).
+fof(f7,axiom,(
+  ( ! [X2,X0,X1] : (holds(on(X0,X1),do(putdown(X0,X1),X2)) | ~holds(holding(X0),X2) | ~holds(clear(X1),X2)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f89,plain,(
+  ( ! [X0] : (~holds(on(c,a),X0) | ~holds(clear(b),X0) | ~holds(clear(d),X0) | ~holds(empty,X0)) )),
+  inference(subsumption_resolution,[],[f88,f21])).
+fof(f21,axiom,(
+  differ(d,table)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f88,plain,(
+  ( ! [X0] : (~holds(on(c,a),X0) | ~holds(clear(b),X0) | ~holds(clear(d),X0) | ~holds(empty,X0) | ~differ(d,table)) )),
+  inference(subsumption_resolution,[],[f87,f17])).
+fof(f17,axiom,(
+  differ(b,d)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f87,plain,(
+  ( ! [X0] : (~holds(on(c,a),X0) | ~holds(clear(b),X0) | ~differ(b,d) | ~holds(clear(d),X0) | ~holds(empty,X0) | ~differ(d,table)) )),
+  inference(subsumption_resolution,[],[f86,f19])).
+fof(f19,axiom,(
+  differ(c,d)),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f86,plain,(
+  ( ! [X0] : (~holds(on(c,a),X0) | ~differ(c,d) | ~holds(clear(b),X0) | ~differ(b,d) | ~holds(clear(d),X0) | ~holds(empty,X0) | ~differ(d,table)) )),
+  inference(resolution,[],[f73,f2])).
+fof(f73,plain,(
+  ( ! [X2,X3] : (~holds(holding(d),do(pickup(X2),X3)) | ~holds(on(c,a),X3) | ~differ(c,X2) | ~holds(clear(b),X3) | ~differ(b,X2)) )),
+  inference(resolution,[],[f65,f5])).
+fof(f65,plain,(
+  ( ! [X4,X5] : (~holds(clear(b),do(pickup(X4),X5)) | ~holds(holding(d),do(pickup(X4),X5)) | ~holds(on(c,a),X5) | ~differ(c,X4)) )),
+  inference(resolution,[],[f62,f4])).
+fof(f4,axiom,(
+  ( ! [X2,X0,X3,X1] : (holds(on(X0,X1),do(pickup(X3),X2)) | ~holds(on(X0,X1),X2) | ~differ(X0,X3)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f62,plain,(
+  ( ! [X0] : (~holds(on(c,a),X0) | ~holds(clear(b),X0) | ~holds(holding(d),X0)) )),
+  inference(resolution,[],[f54,f9])).
+fof(f9,axiom,(
+  ( ! [X4,X2,X0,X3,X1] : (holds(on(X0,X1),do(putdown(X3,X4),X2)) | ~holds(on(X0,X1),X2)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f54,plain,(
+  ( ! [X3] : (~holds(on(c,a),do(putdown(d,b),X3)) | ~holds(holding(d),X3) | ~holds(clear(b),X3)) )),
+  inference(resolution,[],[f44,f7])).
+fof(f44,plain,(
+  ( ! [X0] : (~holds(on(d,b),X0) | ~holds(on(c,a),X0)) )),
+  inference(resolution,[],[f1,f31])).
+fof(f31,axiom,(
+  ( ! [X2] : (~holds(and(on(c,a),on(d,b)),X2)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+fof(f1,axiom,(
+  ( ! [X2,X0,X1] : (holds(and(X0,X1),X2) | ~holds(X0,X2) | ~holds(X1,X2)) )),
+  file('./p/PLA005-1.tptp',unknown)).
+% SZS output end Proof for PLA005-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5117
+% Time elapsed: 0.008 s
+% ------------------------------
+% ------------------------------

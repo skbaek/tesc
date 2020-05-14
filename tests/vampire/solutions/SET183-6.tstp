@@ -1,0 +1,108 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SET183-6
+% SZS output start Proof for SET183-6
+fof(f21001,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f21000,f1224])).
+fof(f1224,plain,(
+  ( ! [X0,X1] : (subclass(intersection(X0,X1),X0)) )),
+  inference(duplicate_literal_removal,[],[f1207])).
+fof(f1207,plain,(
+  ( ! [X0,X1] : (subclass(intersection(X0,X1),X0) | subclass(intersection(X0,X1),X0)) )),
+  inference(resolution,[],[f188,f3])).
+fof(f3,axiom,(
+  ( ! [X0,X1] : (~member(not_subclass_element(X0,X1),X1) | subclass(X0,X1)) )),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f188,plain,(
+  ( ! [X6,X4,X5] : (member(not_subclass_element(intersection(X4,X5),X6),X4) | subclass(intersection(X4,X5),X6)) )),
+  inference(resolution,[],[f21,f2])).
+fof(f2,axiom,(
+  ( ! [X0,X1] : (member(not_subclass_element(X0,X1),X0) | subclass(X0,X1)) )),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f21,axiom,(
+  ( ! [X4,X0,X1] : (~member(X4,intersection(X0,X1)) | member(X4,X0)) )),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f21000,plain,(
+  ~subclass(intersection(x,y),x)),
+  inference(subsumption_resolution,[],[f20999,f114])).
+fof(f114,axiom,(
+  x != intersection(x,y)),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f20999,plain,(
+  x = intersection(x,y) | ~subclass(intersection(x,y),x)),
+  inference(resolution,[],[f20930,f7])).
+fof(f7,axiom,(
+  ( ! [X0,X1] : (~subclass(X1,X0) | X0 = X1 | ~subclass(X0,X1)) )),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f20930,plain,(
+  subclass(x,intersection(x,y))),
+  inference(superposition,[],[f20853,f10778])).
+fof(f10778,plain,(
+  x = intersection(y,x)),
+  inference(resolution,[],[f8328,f113])).
+fof(f113,axiom,(
+  subclass(x,y)),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f8328,plain,(
+  ( ! [X2,X3] : (~subclass(X2,X3) | intersection(X3,X2) = X2) )),
+  inference(subsumption_resolution,[],[f8308,f1255])).
+fof(f1255,plain,(
+  ( ! [X0,X1] : (subclass(intersection(X0,X1),X1)) )),
+  inference(duplicate_literal_removal,[],[f1238])).
+fof(f1238,plain,(
+  ( ! [X0,X1] : (subclass(intersection(X0,X1),X1) | subclass(intersection(X0,X1),X1)) )),
+  inference(resolution,[],[f191,f3])).
+fof(f191,plain,(
+  ( ! [X6,X4,X5] : (member(not_subclass_element(intersection(X4,X5),X6),X5) | subclass(intersection(X4,X5),X6)) )),
+  inference(resolution,[],[f22,f2])).
+fof(f22,axiom,(
+  ( ! [X4,X0,X1] : (~member(X4,intersection(X0,X1)) | member(X4,X1)) )),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f8308,plain,(
+  ( ! [X2,X3] : (~subclass(X2,X3) | intersection(X3,X2) = X2 | ~subclass(intersection(X3,X2),X2)) )),
+  inference(resolution,[],[f5408,f7])).
+fof(f5408,plain,(
+  ( ! [X6,X5] : (subclass(X5,intersection(X6,X5)) | ~subclass(X5,X6)) )),
+  inference(duplicate_literal_removal,[],[f5397])).
+fof(f5397,plain,(
+  ( ! [X6,X5] : (subclass(X5,intersection(X6,X5)) | ~subclass(X5,X6) | subclass(X5,intersection(X6,X5))) )),
+  inference(resolution,[],[f2439,f196])).
+fof(f196,plain,(
+  ( ! [X10,X8,X9] : (member(not_subclass_element(X8,X9),X10) | ~subclass(X8,X10) | subclass(X8,X9)) )),
+  inference(resolution,[],[f1,f2])).
+fof(f1,axiom,(
+  ( ! [X2,X0,X1] : (~member(X2,X0) | member(X2,X1) | ~subclass(X0,X1)) )),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f2439,plain,(
+  ( ! [X0,X1] : (~member(not_subclass_element(X0,intersection(X1,X0)),X1) | subclass(X0,intersection(X1,X0))) )),
+  inference(duplicate_literal_removal,[],[f2422])).
+fof(f2422,plain,(
+  ( ! [X0,X1] : (~member(not_subclass_element(X0,intersection(X1,X0)),X1) | subclass(X0,intersection(X1,X0)) | subclass(X0,intersection(X1,X0))) )),
+  inference(resolution,[],[f343,f2])).
+fof(f343,plain,(
+  ( ! [X12,X10,X11] : (~member(not_subclass_element(X10,intersection(X11,X12)),X12) | ~member(not_subclass_element(X10,intersection(X11,X12)),X11) | subclass(X10,intersection(X11,X12))) )),
+  inference(resolution,[],[f23,f3])).
+fof(f23,axiom,(
+  ( ! [X4,X0,X1] : (member(X4,intersection(X0,X1)) | ~member(X4,X1) | ~member(X4,X0)) )),
+  file('./p/SET183-6.tptp',unknown)).
+fof(f20853,plain,(
+  ( ! [X10,X11] : (subclass(intersection(X10,X11),intersection(X11,X10))) )),
+  inference(duplicate_literal_removal,[],[f20794])).
+fof(f20794,plain,(
+  ( ! [X10,X11] : (subclass(intersection(X10,X11),intersection(X11,X10)) | subclass(intersection(X10,X11),intersection(X11,X10))) )),
+  inference(resolution,[],[f2438,f191])).
+fof(f2438,plain,(
+  ( ! [X4,X2,X3] : (~member(not_subclass_element(intersection(X2,X3),intersection(X4,X2)),X4) | subclass(intersection(X2,X3),intersection(X4,X2))) )),
+  inference(duplicate_literal_removal,[],[f2423])).
+fof(f2423,plain,(
+  ( ! [X4,X2,X3] : (~member(not_subclass_element(intersection(X2,X3),intersection(X4,X2)),X4) | subclass(intersection(X2,X3),intersection(X4,X2)) | subclass(intersection(X2,X3),intersection(X4,X2))) )),
+  inference(resolution,[],[f343,f188])).
+% SZS output end Proof for SET183-6
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 17526
+% Time elapsed: 0.454 s
+% ------------------------------
+% ------------------------------

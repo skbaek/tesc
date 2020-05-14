@@ -1,0 +1,129 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SYN074+1
+% SZS output start Proof for SYN074+1
+fof(f191,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f190,f24])).
+fof(f24,plain,(
+  big_f(sK0,sK1)),
+  inference(equality_resolution,[],[f23])).
+fof(f23,plain,(
+  ( ! [X2] : (big_f(X2,sK1) | sK0 != X2) )),
+  inference(equality_resolution,[],[f18])).
+fof(f18,plain,(
+  ( ! [X2,X3] : (big_f(X2,X3) | sK1 != X3 | sK0 != X2) )),
+  inference(cnf_transformation,[],[f9])).
+fof(f9,plain,(
+  ! [X2,X3] : ((big_f(X2,X3) | sK1 != X3 | sK0 != X2) & ((sK1 = X3 & sK0 = X2) | ~big_f(X2,X3)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1])],[f7,f8])).
+fof(f8,plain,(
+  ? [X0,X1] : ! [X2,X3] : ((big_f(X2,X3) | X1 != X3 | X0 != X2) & ((X1 = X3 & X0 = X2) | ~big_f(X2,X3))) => ! [X3,X2] : ((big_f(X2,X3) | sK1 != X3 | sK0 != X2) & ((sK1 = X3 & sK0 = X2) | ~big_f(X2,X3)))),
+  introduced(choice_axiom,[])).
+fof(f7,plain,(
+  ? [X0,X1] : ! [X2,X3] : ((big_f(X2,X3) | X1 != X3 | X0 != X2) & ((X1 = X3 & X0 = X2) | ~big_f(X2,X3)))),
+  inference(flattening,[],[f6])).
+fof(f6,plain,(
+  ? [X0,X1] : ! [X2,X3] : ((big_f(X2,X3) | (X1 != X3 | X0 != X2)) & ((X1 = X3 & X0 = X2) | ~big_f(X2,X3)))),
+  inference(nnf_transformation,[],[f1])).
+fof(f1,axiom,(
+  ? [X0,X1] : ! [X2,X3] : (big_f(X2,X3) <=> (X1 = X3 & X0 = X2))),
+  file('./p/SYN074+1.tptp',unknown)).
+fof(f190,plain,(
+  ~big_f(sK0,sK1)),
+  inference(forward_demodulation,[],[f189,f48])).
+fof(f48,plain,(
+  sK0 = sK2(sK0)),
+  inference(equality_resolution,[],[f40])).
+fof(f40,plain,(
+  ( ! [X0] : (sK0 != X0 | sK0 = sK2(X0)) )),
+  inference(equality_factoring,[],[f29])).
+fof(f29,plain,(
+  ( ! [X1] : (sK2(X1) = X1 | sK0 = sK2(X1)) )),
+  inference(resolution,[],[f25,f16])).
+fof(f16,plain,(
+  ( ! [X2,X3] : (~big_f(X2,X3) | sK0 = X2) )),
+  inference(cnf_transformation,[],[f9])).
+fof(f25,plain,(
+  ( ! [X0] : (big_f(sK2(X0),sK4(X0)) | sK2(X0) = X0) )),
+  inference(equality_resolution,[],[f20])).
+fof(f20,plain,(
+  ( ! [X0,X5] : (sK2(X0) = X0 | big_f(sK2(X0),X5) | sK4(X0) != X5) )),
+  inference(cnf_transformation,[],[f15])).
+fof(f15,plain,(
+  ! [X0] : ((sK2(X0) != X0 | ! [X2] : ((sK3(X0,X2) != X2 | ~big_f(sK2(X0),sK3(X0,X2))) & (sK3(X0,X2) = X2 | big_f(sK2(X0),sK3(X0,X2))))) & (sK2(X0) = X0 | ! [X5] : ((big_f(sK2(X0),X5) | sK4(X0) != X5) & (sK4(X0) = X5 | ~big_f(sK2(X0),X5)))))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2,sK3,sK4])],[f11,f14,f13,f12])).
+fof(f12,plain,(
+  ! [X0] : (? [X1] : ((X0 != X1 | ! [X2] : ? [X3] : ((X2 != X3 | ~big_f(X1,X3)) & (X2 = X3 | big_f(X1,X3)))) & (X0 = X1 | ? [X4] : ! [X5] : ((big_f(X1,X5) | X4 != X5) & (X4 = X5 | ~big_f(X1,X5))))) => ((sK2(X0) != X0 | ! [X2] : ? [X3] : ((X2 != X3 | ~big_f(sK2(X0),X3)) & (X2 = X3 | big_f(sK2(X0),X3)))) & (sK2(X0) = X0 | ? [X4] : ! [X5] : ((big_f(sK2(X0),X5) | X4 != X5) & (X4 = X5 | ~big_f(sK2(X0),X5))))))),
+  introduced(choice_axiom,[])).
+fof(f13,plain,(
+  ! [X2,X0] : (? [X3] : ((X2 != X3 | ~big_f(sK2(X0),X3)) & (X2 = X3 | big_f(sK2(X0),X3))) => ((sK3(X0,X2) != X2 | ~big_f(sK2(X0),sK3(X0,X2))) & (sK3(X0,X2) = X2 | big_f(sK2(X0),sK3(X0,X2)))))),
+  introduced(choice_axiom,[])).
+fof(f14,plain,(
+  ! [X0] : (? [X4] : ! [X5] : ((big_f(sK2(X0),X5) | X4 != X5) & (X4 = X5 | ~big_f(sK2(X0),X5))) => ! [X5] : ((big_f(sK2(X0),X5) | sK4(X0) != X5) & (sK4(X0) = X5 | ~big_f(sK2(X0),X5))))),
+  introduced(choice_axiom,[])).
+fof(f11,plain,(
+  ! [X0] : ? [X1] : ((X0 != X1 | ! [X2] : ? [X3] : ((X2 != X3 | ~big_f(X1,X3)) & (X2 = X3 | big_f(X1,X3)))) & (X0 = X1 | ? [X4] : ! [X5] : ((big_f(X1,X5) | X4 != X5) & (X4 = X5 | ~big_f(X1,X5)))))),
+  inference(rectify,[],[f10])).
+fof(f10,plain,(
+  ! [X0] : ? [X1] : ((X0 != X1 | ! [X2] : ? [X3] : ((X2 != X3 | ~big_f(X1,X3)) & (X2 = X3 | big_f(X1,X3)))) & (X0 = X1 | ? [X2] : ! [X3] : ((big_f(X1,X3) | X2 != X3) & (X2 = X3 | ~big_f(X1,X3)))))),
+  inference(nnf_transformation,[],[f5])).
+fof(f5,plain,(
+  ! [X0] : ? [X1] : (? [X2] : ! [X3] : (big_f(X1,X3) <=> X2 = X3) <~> X0 = X1)),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,plain,(
+  ~? [X0] : ! [X1] : (? [X2] : ! [X3] : (big_f(X1,X3) <=> X2 = X3) <=> X0 = X1)),
+  inference(rectify,[],[f3])).
+fof(f3,negated_conjecture,(
+  ~? [X0] : ! [X2] : (? [X1] : ! [X3] : (big_f(X2,X3) <=> X1 = X3) <=> X0 = X2)),
+  inference(negated_conjecture,[],[f2])).
+fof(f2,conjecture,(
+  ? [X0] : ! [X2] : (? [X1] : ! [X3] : (big_f(X2,X3) <=> X1 = X3) <=> X0 = X2)),
+  file('./p/SYN074+1.tptp',unknown)).
+fof(f189,plain,(
+  ~big_f(sK2(sK0),sK1)),
+  inference(forward_demodulation,[],[f188,f128])).
+fof(f128,plain,(
+  sK1 = sK3(sK0,sK1)),
+  inference(equality_resolution,[],[f107])).
+fof(f107,plain,(
+  ( ! [X0] : (sK1 != X0 | sK1 = sK3(sK0,X0)) )),
+  inference(equality_factoring,[],[f71])).
+fof(f71,plain,(
+  ( ! [X0] : (sK3(sK0,X0) = X0 | sK1 = sK3(sK0,X0)) )),
+  inference(resolution,[],[f53,f17])).
+fof(f17,plain,(
+  ( ! [X2,X3] : (~big_f(X2,X3) | sK1 = X3) )),
+  inference(cnf_transformation,[],[f9])).
+fof(f53,plain,(
+  ( ! [X0] : (big_f(sK0,sK3(sK0,X0)) | sK3(sK0,X0) = X0) )),
+  inference(forward_demodulation,[],[f52,f48])).
+fof(f52,plain,(
+  ( ! [X0] : (sK3(sK0,X0) = X0 | big_f(sK2(sK0),sK3(sK0,X0))) )),
+  inference(trivial_inequality_removal,[],[f49])).
+fof(f49,plain,(
+  ( ! [X0] : (sK0 != sK0 | sK3(sK0,X0) = X0 | big_f(sK2(sK0),sK3(sK0,X0))) )),
+  inference(superposition,[],[f21,f48])).
+fof(f21,plain,(
+  ( ! [X2,X0] : (sK2(X0) != X0 | sK3(X0,X2) = X2 | big_f(sK2(X0),sK3(X0,X2))) )),
+  inference(cnf_transformation,[],[f15])).
+fof(f188,plain,(
+  ~big_f(sK2(sK0),sK3(sK0,sK1))),
+  inference(subsumption_resolution,[],[f187,f48])).
+fof(f187,plain,(
+  sK0 != sK2(sK0) | ~big_f(sK2(sK0),sK3(sK0,sK1))),
+  inference(trivial_inequality_removal,[],[f186])).
+fof(f186,plain,(
+  sK1 != sK1 | sK0 != sK2(sK0) | ~big_f(sK2(sK0),sK3(sK0,sK1))),
+  inference(superposition,[],[f22,f128])).
+fof(f22,plain,(
+  ( ! [X2,X0] : (sK3(X0,X2) != X2 | sK2(X0) != X0 | ~big_f(sK2(X0),sK3(X0,X2))) )),
+  inference(cnf_transformation,[],[f15])).
+% SZS output end Proof for SYN074+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

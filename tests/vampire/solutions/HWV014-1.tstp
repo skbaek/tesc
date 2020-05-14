@@ -1,0 +1,54 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for HWV014-1
+% SZS output start Proof for HWV014-1
+fof(f1084,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f1083,f94])).
+fof(f94,axiom,(
+  ~p_Reset(x_139)),
+  file('./p/HWV014-1.tptp',unknown)).
+fof(f1083,plain,(
+  p_Reset(x_139)),
+  inference(subsumption_resolution,[],[f1082,f93])).
+fof(f93,axiom,(
+  ~p_Wr(x_139)),
+  file('./p/HWV014-1.tptp',unknown)).
+fof(f1082,plain,(
+  p_Wr(x_139) | p_Reset(x_139)),
+  inference(subsumption_resolution,[],[f1081,f92])).
+fof(f92,axiom,(
+  p_Rd(x_139)),
+  file('./p/HWV014-1.tptp',unknown)).
+fof(f1081,plain,(
+  ~p_Rd(x_139) | p_Wr(x_139) | p_Reset(x_139)),
+  inference(subsumption_resolution,[],[f1061,f97])).
+fof(f97,plain,(
+  int_level(plus(x_139,n1)) != minus(int_level(x_139),n1)),
+  inference(definition_unfolding,[],[f95,f21,f21])).
+fof(f21,axiom,(
+  ( ! [X25] : (level(X25) = int_level(X25)) )),
+  file('./p/HWV014-1.tptp',unknown)).
+fof(f95,axiom,(
+  level(plus(x_139,n1)) != minus(level(x_139),n1)),
+  file('./p/HWV014-1.tptp',unknown)).
+fof(f1061,plain,(
+  int_level(plus(x_139,n1)) = minus(int_level(x_139),n1) | ~p_Rd(x_139) | p_Wr(x_139) | p_Reset(x_139)),
+  inference(resolution,[],[f71,f96])).
+fof(f96,plain,(
+  gt(int_level(x_139),n0)),
+  inference(definition_unfolding,[],[f91,f21])).
+fof(f91,axiom,(
+  gt(level(x_139),n0)),
+  file('./p/HWV014-1.tptp',unknown)).
+fof(f71,axiom,(
+  ( ! [X34] : (~gt(int_level(X34),n0) | int_level(plus(X34,n1)) = minus(int_level(X34),n1) | ~p_Rd(X34) | p_Wr(X34) | p_Reset(X34)) )),
+  file('./p/HWV014-1.tptp',unknown)).
+% SZS output end Proof for HWV014-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5500
+% Time elapsed: 0.009 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,137 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_13, plain, (divide(X1,X1)=zero)).
+#
+#cnf(i_0_12, plain, (divide(X1,identity)=zero)).
+#
+#cnf(i_0_10, plain, (divide(zero,X1)=zero)).
+#
+#cnf(i_0_14, negated_conjecture, (divide(a,zero)!=a)).
+#
+#cnf(i_0_8, plain, (divide(divide(X1,X2),X1)=zero)).
+#
+#cnf(i_0_11, plain, (X1=X2|divide(X2,X1)!=zero|divide(X1,X2)!=zero)).
+#
+#cnf(i_0_19, plain, (zero=X1|divide(X1,zero)!=zero)).
+#
+#cnf(i_0_21, plain, (X1=identity|divide(identity,X1)!=zero)).
+###
+#cnf(i_0_20, plain, (divide(X1,X2)=X1|divide(X1,divide(X1,X2))!=zero)).
+#####
+#cnf(i_0_9, plain, (divide(divide(divide(X1,X2),divide(X3,X2)),divide(divide(X1,X3),X2))=zero)).
+#
+#cnf(i_0_41, plain, (divide(divide(divide(X1,X2),divide(identity,X2)),zero)=zero)).
+#
+#cnf(i_0_57, plain, (divide(divide(X1,X2),divide(identity,X2))=zero)).
+##
+#cnf(i_0_40, plain, (divide(divide(divide(divide(X1,X2),X3),divide(X1,X3)),zero)=zero)).
+#
+#cnf(i_0_93, plain, (divide(divide(divide(X1,X2),X3),divide(X1,X3))=zero)).
+#
+#cnf(i_0_140, plain, (divide(divide(divide(divide(X1,X2),X3),X1),zero)=zero)).
+#
+#cnf(i_0_155, plain, (divide(divide(divide(X1,X2),X3),X1)=zero)).
+#
+#cnf(i_0_49, plain, (divide(divide(divide(X1,X2),zero),divide(divide(X1,X2),X2))=zero)).
+#
+#cnf(i_0_194, plain, (divide(divide(divide(divide(divide(X1,X2),X3),X4),X1),zero)=zero)).
+#
+#cnf(i_0_252, plain, (divide(divide(divide(divide(X1,X2),X3),X4),X1)=zero)).
+#
+#cnf(i_0_186, plain, (divide(divide(X1,X2),X3)=X1|divide(X1,divide(divide(X1,X2),X3))!=zero)).
+#############
+#cnf(i_0_46, plain, (divide(divide(divide(X1,X2),zero),divide(divide(X1,zero),X2))=zero)).
+##
+#cnf(i_0_398, plain, (divide(divide(divide(X1,divide(X1,zero)),zero),zero)=zero)).
+#
+#cnf(i_0_419, plain, (divide(divide(X1,divide(X1,zero)),zero)=zero)).
+#
+#cnf(i_0_457, plain, (divide(X1,divide(X1,zero))=zero)).
+#
+#cnf(i_0_513, plain, (divide(X1,zero)=X1)).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(quotient_property, axiom, (divide(divide(divide(X1,X2),divide(X3,X2)),divide(divide(X1,X3),X2))=zero), file('./p/HEN004-5.tptp', quotient_property)).
+cnf(zero_is_smallest, axiom, (divide(zero,X1)=zero), file('./p/HEN004-5.tptp', zero_is_smallest)).
+cnf(x_divide_x_is_zero, axiom, (divide(X1,X1)=zero), file('./p/HEN004-5.tptp', x_divide_x_is_zero)).
+cnf(divide_and_equal, axiom, (X1=X2|divide(X1,X2)!=zero|divide(X2,X1)!=zero), file('./p/HEN004-5.tptp', divide_and_equal)).
+cnf(quotient_smaller_than_numerator, axiom, (divide(divide(X1,X2),X1)=zero), file('./p/HEN004-5.tptp', quotient_smaller_than_numerator)).
+cnf(prove_x_divide_zero_is_x, negated_conjecture, (divide(a,zero)!=a), file('./p/HEN004-5.tptp', prove_x_divide_zero_is_x)).
+cnf(c_0_6, axiom, (divide(divide(divide(X1,X2),divide(X3,X2)),divide(divide(X1,X3),X2))=zero), quotient_property).
+cnf(c_0_7, axiom, (divide(zero,X1)=zero), zero_is_smallest).
+cnf(c_0_8, plain, (divide(divide(divide(X1,X2),zero),divide(divide(X1,zero),X2))=zero), inference(pm,[status(thm)],[c_0_6, c_0_7])).
+cnf(c_0_9, axiom, (divide(X1,X1)=zero), x_divide_x_is_zero).
+cnf(c_0_10, axiom, (X1=X2|divide(X1,X2)!=zero|divide(X2,X1)!=zero), divide_and_equal).
+cnf(c_0_11, plain, (divide(divide(divide(X1,divide(X1,zero)),zero),zero)=zero), inference(pm,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_12, axiom, (divide(divide(X1,X2),X1)=zero), quotient_smaller_than_numerator).
+cnf(c_0_13, plain, (divide(divide(X1,divide(X1,zero)),zero)=zero), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_10, c_0_11]), c_0_7])])).
+cnf(c_0_14, plain, (divide(X1,X2)=X1|divide(X1,divide(X1,X2))!=zero), inference(pm,[status(thm)],[c_0_10, c_0_12])).
+cnf(c_0_15, plain, (divide(X1,divide(X1,zero))=zero), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_10, c_0_13]), c_0_7])])).
+cnf(c_0_16, negated_conjecture, (divide(a,zero)!=a), prove_x_divide_zero_is_x).
+cnf(c_0_17, plain, (divide(X1,zero)=X1), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+cnf(c_0_18, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_16, c_0_17])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 19
+# Proof object clause steps            : 13
+# Proof object formula steps           : 6
+# Proof object conjectures             : 3
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 6
+# Proof object initial formulas used   : 6
+# Proof object generating inferences   : 6
+# Proof object simplifying inferences  : 6
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 7
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 7
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 7
+# Processed clauses                    : 45
+# ...of these trivial                  : 0
+# ...subsumed                          : 20
+# ...remaining for further processing  : 25
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 11
+# Generated clauses                    : 528
+# ...of the previous two non-trivial   : 154
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 528
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 14
+#    Positive orientable unit clauses  : 10
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 4
+# Current number of unprocessed clauses: 103
+# ...number of literals in the above   : 134
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 11
+# Clause-clause subsumption calls (NU) : 30
+# Rec. Clause-clause subsumption calls : 30
+# Non-unit clause-clause subsumptions  : 20
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 20
+# BW rewrite match successes           : 9
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 4440

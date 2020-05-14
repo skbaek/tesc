@@ -1,0 +1,411 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for COM008+2
+% SZS output start Proof for COM008+2
+fof(f386386,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f51,f52,f580,f1623,f4089,f31322,f52907,f71689,f386379])).
+fof(f386379,plain,(
+  ~spl3_1 | spl3_4 | spl3_11 | ~spl3_199 | ~spl3_212 | ~spl3_420),
+  inference(avatar_contradiction_clause,[],[f386378])).
+fof(f386378,plain,(
+  $false | (~spl3_1 | spl3_4 | spl3_11 | ~spl3_199 | ~spl3_212 | ~spl3_420)),
+  inference(subsumption_resolution,[],[f386248,f71362])).
+fof(f71362,plain,(
+  rewrite(a,sK2(a,b)) | ~spl3_420),
+  inference(avatar_component_clause,[],[f71361])).
+fof(f71361,plain,(
+  spl3_420 <=> rewrite(a,sK2(a,b))),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_420])])).
+fof(f386248,plain,(
+  ~rewrite(a,sK2(a,b)) | (~spl3_1 | spl3_4 | spl3_11 | ~spl3_199 | ~spl3_212)),
+  inference(resolution,[],[f385612,f43])).
+fof(f43,plain,(
+  ( ! [X1] : (transitive_reflexive_rewrite(X1,X1)) )),
+  inference(equality_resolution,[],[f33])).
+fof(f33,plain,(
+  ( ! [X0,X1] : (transitive_reflexive_rewrite(X0,X1) | X0 != X1) )),
+  inference(cnf_transformation,[],[f14])).
+fof(f14,plain,(
+  ! [X0,X1] : (transitive_reflexive_rewrite(X0,X1) | X0 != X1)),
+  inference(ennf_transformation,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1] : (X0 = X1 => transitive_reflexive_rewrite(X0,X1))),
+  file('./p/COM008+2.tptp',unknown)).
+fof(f385612,plain,(
+  ( ! [X87] : (~transitive_reflexive_rewrite(sK2(a,b),X87) | ~rewrite(a,X87)) ) | (~spl3_1 | spl3_4 | spl3_11 | ~spl3_199 | ~spl3_212)),
+  inference(subsumption_resolution,[],[f385608,f56537])).
+fof(f56537,plain,(
+  ( ! [X0] : (transitive_reflexive_rewrite(c,sK1(c,sK0(X0,sK2(a,c)))) | ~rewrite(a,X0)) ) | (~spl3_199 | ~spl3_212)),
+  inference(resolution,[],[f56224,f31479])).
+fof(f31479,plain,(
+  ( ! [X14] : (transitive_reflexive_rewrite(sK2(a,c),sK0(X14,sK2(a,c))) | ~rewrite(a,X14)) ) | ~spl3_199),
+  inference(resolution,[],[f30731,f37])).
+fof(f37,plain,(
+  ( ! [X2,X0,X1] : (~rewrite(X0,X2) | transitive_reflexive_rewrite(X2,sK0(X1,X2)) | ~rewrite(X0,X1)) )),
+  inference(cnf_transformation,[],[f25])).
+fof(f25,plain,(
+  ! [X0,X1,X2] : ((transitive_reflexive_rewrite(X2,sK0(X1,X2)) & transitive_reflexive_rewrite(X1,sK0(X1,X2))) | ~rewrite(X0,X2) | ~rewrite(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f19,f24])).
+fof(f24,plain,(
+  ! [X2,X1] : (? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)) => (transitive_reflexive_rewrite(X2,sK0(X1,X2)) & transitive_reflexive_rewrite(X1,sK0(X1,X2))))),
+  introduced(choice_axiom,[])).
+fof(f19,plain,(
+  ! [X0,X1,X2] : (? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)) | ~rewrite(X0,X2) | ~rewrite(X0,X1))),
+  inference(flattening,[],[f18])).
+fof(f18,plain,(
+  ! [X0,X1,X2] : (? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)) | (~rewrite(X0,X2) | ~rewrite(X0,X1)))),
+  inference(ennf_transformation,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X1,X2] : ((rewrite(X0,X2) & rewrite(X0,X1)) => ? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)))),
+  file('./p/COM008+2.tptp',unknown)).
+fof(f30731,plain,(
+  rewrite(a,sK2(a,c)) | ~spl3_199),
+  inference(avatar_component_clause,[],[f30730])).
+fof(f30730,plain,(
+  spl3_199 <=> rewrite(a,sK2(a,c))),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_199])])).
+fof(f56224,plain,(
+  ( ! [X0] : (~transitive_reflexive_rewrite(sK2(a,c),X0) | transitive_reflexive_rewrite(c,sK1(c,X0))) ) | (~spl3_199 | ~spl3_212)),
+  inference(resolution,[],[f31475,f38491])).
+fof(f38491,plain,(
+  transitive_reflexive_rewrite(sK2(a,c),c) | ~spl3_212),
+  inference(avatar_component_clause,[],[f38489])).
+fof(f38489,plain,(
+  spl3_212 <=> transitive_reflexive_rewrite(sK2(a,c),c)),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_212])])).
+fof(f31475,plain,(
+  ( ! [X2,X3] : (~transitive_reflexive_rewrite(sK2(a,c),X3) | ~transitive_reflexive_rewrite(sK2(a,c),X2) | transitive_reflexive_rewrite(X3,sK1(X3,X2))) ) | ~spl3_199),
+  inference(resolution,[],[f30731,f38])).
+fof(f38,plain,(
+  ( ! [X2,X0,X1] : (~rewrite(a,X0) | ~transitive_reflexive_rewrite(X0,X2) | ~transitive_reflexive_rewrite(X0,X1) | transitive_reflexive_rewrite(X1,sK1(X1,X2))) )),
+  inference(cnf_transformation,[],[f27])).
+fof(f27,plain,(
+  ! [X0,X1,X2] : ((transitive_reflexive_rewrite(X2,sK1(X1,X2)) & transitive_reflexive_rewrite(X1,sK1(X1,X2))) | ~transitive_reflexive_rewrite(X0,X2) | ~transitive_reflexive_rewrite(X0,X1) | ~rewrite(a,X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1])],[f21,f26])).
+fof(f26,plain,(
+  ! [X2,X1] : (? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)) => (transitive_reflexive_rewrite(X2,sK1(X1,X2)) & transitive_reflexive_rewrite(X1,sK1(X1,X2))))),
+  introduced(choice_axiom,[])).
+fof(f21,plain,(
+  ! [X0,X1,X2] : (? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)) | ~transitive_reflexive_rewrite(X0,X2) | ~transitive_reflexive_rewrite(X0,X1) | ~rewrite(a,X0))),
+  inference(flattening,[],[f20])).
+fof(f20,plain,(
+  ! [X0,X1,X2] : (? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)) | (~transitive_reflexive_rewrite(X0,X2) | ~transitive_reflexive_rewrite(X0,X1) | ~rewrite(a,X0)))),
+  inference(ennf_transformation,[],[f7])).
+fof(f7,axiom,(
+  ! [X0,X1,X2] : ((transitive_reflexive_rewrite(X0,X2) & transitive_reflexive_rewrite(X0,X1) & rewrite(a,X0)) => ? [X3] : (transitive_reflexive_rewrite(X2,X3) & transitive_reflexive_rewrite(X1,X3)))),
+  file('./p/COM008+2.tptp',unknown)).
+fof(f385608,plain,(
+  ( ! [X87] : (~rewrite(a,X87) | ~transitive_reflexive_rewrite(sK2(a,b),X87) | ~transitive_reflexive_rewrite(c,sK1(c,sK0(X87,sK2(a,c))))) ) | (~spl3_1 | spl3_4 | spl3_11 | ~spl3_199)),
+  inference(resolution,[],[f129407,f136200])).
+fof(f136200,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(sK2(a,b),X1) | ~transitive_reflexive_rewrite(c,X1)) ) | (~spl3_1 | spl3_11)),
+  inference(subsumption_resolution,[],[f136199,f31])).
+fof(f31,plain,(
+  transitive_reflexive_rewrite(a,b)),
+  inference(cnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  transitive_reflexive_rewrite(a,c) & transitive_reflexive_rewrite(a,b)),
+  file('./p/COM008+2.tptp',unknown)).
+fof(f136199,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(sK2(a,b),X1) | ~transitive_reflexive_rewrite(a,b) | ~transitive_reflexive_rewrite(c,X1)) ) | (~spl3_1 | spl3_11)),
+  inference(subsumption_resolution,[],[f136196,f1415])).
+fof(f1415,plain,(
+  b != a | spl3_11),
+  inference(avatar_component_clause,[],[f1414])).
+fof(f1414,plain,(
+  spl3_11 <=> b = a),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_11])])).
+fof(f136196,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(sK2(a,b),X1) | b = a | ~transitive_reflexive_rewrite(a,b) | ~transitive_reflexive_rewrite(c,X1)) ) | (~spl3_1 | spl3_11)),
+  inference(duplicate_literal_removal,[],[f136166])).
+fof(f136166,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(sK2(a,b),X1) | b = a | ~transitive_reflexive_rewrite(a,b) | ~transitive_reflexive_rewrite(sK2(a,b),X1) | ~transitive_reflexive_rewrite(c,X1)) ) | (~spl3_1 | spl3_11)),
+  inference(resolution,[],[f127017,f188])).
+fof(f188,plain,(
+  ( ! [X6,X4,X5] : (transitive_reflexive_rewrite(X6,sK1(sK2(a,X4),X5)) | a = X4 | ~transitive_reflexive_rewrite(a,X4) | ~transitive_reflexive_rewrite(sK2(a,X4),X5) | ~transitive_reflexive_rewrite(X6,X5)) )),
+  inference(resolution,[],[f116,f35])).
+fof(f35,plain,(
+  ( ! [X2,X0,X1] : (~transitive_reflexive_rewrite(X1,X2) | transitive_reflexive_rewrite(X0,X2) | ~transitive_reflexive_rewrite(X0,X1)) )),
+  inference(cnf_transformation,[],[f17])).
+fof(f17,plain,(
+  ! [X0,X1,X2] : (transitive_reflexive_rewrite(X0,X2) | ~transitive_reflexive_rewrite(X1,X2) | ~transitive_reflexive_rewrite(X0,X1))),
+  inference(flattening,[],[f16])).
+fof(f16,plain,(
+  ! [X0,X1,X2] : (transitive_reflexive_rewrite(X0,X2) | (~transitive_reflexive_rewrite(X1,X2) | ~transitive_reflexive_rewrite(X0,X1)))),
+  inference(ennf_transformation,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X1,X2] : ((transitive_reflexive_rewrite(X1,X2) & transitive_reflexive_rewrite(X0,X1)) => transitive_reflexive_rewrite(X0,X2))),
+  file('./p/COM008+2.tptp',unknown)).
+fof(f116,plain,(
+  ( ! [X8,X7] : (transitive_reflexive_rewrite(X8,sK1(sK2(a,X7),X8)) | ~transitive_reflexive_rewrite(sK2(a,X7),X8) | a = X7 | ~transitive_reflexive_rewrite(a,X7)) )),
+  inference(resolution,[],[f69,f43])).
+fof(f69,plain,(
+  ( ! [X2,X0,X1] : (~transitive_reflexive_rewrite(sK2(a,X0),X2) | ~transitive_reflexive_rewrite(sK2(a,X0),X1) | transitive_reflexive_rewrite(X1,sK1(X2,X1)) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(resolution,[],[f39,f40])).
+fof(f40,plain,(
+  ( ! [X0,X1] : (rewrite(X0,sK2(X0,X1)) | X0 = X1 | ~transitive_reflexive_rewrite(X0,X1)) )),
+  inference(cnf_transformation,[],[f29])).
+fof(f29,plain,(
+  ! [X0,X1] : ((transitive_reflexive_rewrite(sK2(X0,X1),X1) & rewrite(X0,sK2(X0,X1))) | X0 = X1 | ~transitive_reflexive_rewrite(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2])],[f23,f28])).
+fof(f28,plain,(
+  ! [X1,X0] : (? [X2] : (transitive_reflexive_rewrite(X2,X1) & rewrite(X0,X2)) => (transitive_reflexive_rewrite(sK2(X0,X1),X1) & rewrite(X0,sK2(X0,X1))))),
+  introduced(choice_axiom,[])).
+fof(f23,plain,(
+  ! [X0,X1] : (? [X2] : (transitive_reflexive_rewrite(X2,X1) & rewrite(X0,X2)) | X0 = X1 | ~transitive_reflexive_rewrite(X0,X1))),
+  inference(flattening,[],[f22])).
+fof(f22,plain,(
+  ! [X0,X1] : ((? [X2] : (transitive_reflexive_rewrite(X2,X1) & rewrite(X0,X2)) | X0 = X1) | ~transitive_reflexive_rewrite(X0,X1))),
+  inference(ennf_transformation,[],[f8])).
+fof(f8,axiom,(
+  ! [X0,X1] : (transitive_reflexive_rewrite(X0,X1) => (? [X2] : (transitive_reflexive_rewrite(X2,X1) & rewrite(X0,X2)) | X0 = X1))),
+  file('./p/COM008+2.tptp',unknown)).
+fof(f39,plain,(
+  ( ! [X2,X0,X1] : (~rewrite(a,X0) | ~transitive_reflexive_rewrite(X0,X2) | ~transitive_reflexive_rewrite(X0,X1) | transitive_reflexive_rewrite(X2,sK1(X1,X2))) )),
+  inference(cnf_transformation,[],[f27])).
+fof(f127017,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(c,sK1(sK2(a,b),X1)) | ~transitive_reflexive_rewrite(sK2(a,b),X1)) ) | (~spl3_1 | spl3_11)),
+  inference(subsumption_resolution,[],[f127016,f31])).
+fof(f127016,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(sK2(a,b),X1) | ~transitive_reflexive_rewrite(c,sK1(sK2(a,b),X1)) | ~transitive_reflexive_rewrite(a,b)) ) | (~spl3_1 | spl3_11)),
+  inference(subsumption_resolution,[],[f127010,f1415])).
+fof(f127010,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(sK2(a,b),X1) | b = a | ~transitive_reflexive_rewrite(c,sK1(sK2(a,b),X1)) | ~transitive_reflexive_rewrite(a,b)) ) | ~spl3_1),
+  inference(duplicate_literal_removal,[],[f126923])).
+fof(f126923,plain,(
+  ( ! [X1] : (~transitive_reflexive_rewrite(sK2(a,b),X1) | b = a | ~transitive_reflexive_rewrite(c,sK1(sK2(a,b),X1)) | ~transitive_reflexive_rewrite(a,b) | b = a | ~transitive_reflexive_rewrite(a,b) | ~transitive_reflexive_rewrite(sK2(a,b),X1)) ) | ~spl3_1),
+  inference(resolution,[],[f16191,f231])).
+fof(f231,plain,(
+  ( ! [X2,X3] : (transitive_reflexive_rewrite(X2,sK1(X2,sK1(sK2(a,X2),X3))) | a = X2 | ~transitive_reflexive_rewrite(a,X2) | ~transitive_reflexive_rewrite(sK2(a,X2),X3)) )),
+  inference(duplicate_literal_removal,[],[f223])).
+fof(f223,plain,(
+  ( ! [X2,X3] : (~transitive_reflexive_rewrite(sK2(a,X2),X3) | a = X2 | ~transitive_reflexive_rewrite(a,X2) | transitive_reflexive_rewrite(X2,sK1(X2,sK1(sK2(a,X2),X3))) | a = X2 | ~transitive_reflexive_rewrite(a,X2)) )),
+  inference(resolution,[],[f94,f101])).
+fof(f101,plain,(
+  ( ! [X0,X1] : (~transitive_reflexive_rewrite(sK2(a,X0),X1) | transitive_reflexive_rewrite(X0,sK1(X0,X1)) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(duplicate_literal_removal,[],[f90])).
+fof(f90,plain,(
+  ( ! [X0,X1] : (~transitive_reflexive_rewrite(sK2(a,X0),X1) | transitive_reflexive_rewrite(X0,sK1(X0,X1)) | a = X0 | ~transitive_reflexive_rewrite(a,X0) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(resolution,[],[f67,f41])).
+fof(f41,plain,(
+  ( ! [X0,X1] : (transitive_reflexive_rewrite(sK2(X0,X1),X1) | X0 = X1 | ~transitive_reflexive_rewrite(X0,X1)) )),
+  inference(cnf_transformation,[],[f29])).
+fof(f67,plain,(
+  ( ! [X2,X0,X1] : (~transitive_reflexive_rewrite(sK2(a,X0),X2) | ~transitive_reflexive_rewrite(sK2(a,X0),X1) | transitive_reflexive_rewrite(X2,sK1(X2,X1)) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(resolution,[],[f38,f40])).
+fof(f94,plain,(
+  ( ! [X8,X7] : (transitive_reflexive_rewrite(sK2(a,X7),sK1(sK2(a,X7),X8)) | ~transitive_reflexive_rewrite(sK2(a,X7),X8) | a = X7 | ~transitive_reflexive_rewrite(a,X7)) )),
+  inference(resolution,[],[f67,f43])).
+fof(f16191,plain,(
+  ( ! [X35,X36] : (~transitive_reflexive_rewrite(b,sK1(X35,sK1(sK2(a,X35),X36))) | ~transitive_reflexive_rewrite(sK2(a,X35),X36) | a = X35 | ~transitive_reflexive_rewrite(c,sK1(sK2(a,X35),X36)) | ~transitive_reflexive_rewrite(a,X35)) ) | ~spl3_1),
+  inference(resolution,[],[f2985,f46])).
+fof(f46,plain,(
+  ( ! [X0] : (~transitive_reflexive_rewrite(c,X0) | ~transitive_reflexive_rewrite(b,X0)) ) | ~spl3_1),
+  inference(avatar_component_clause,[],[f45])).
+fof(f45,plain,(
+  spl3_1 <=> ! [X0] : (~transitive_reflexive_rewrite(c,X0) | ~transitive_reflexive_rewrite(b,X0))),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_1])])).
+fof(f2985,plain,(
+  ( ! [X10,X8,X9] : (transitive_reflexive_rewrite(X10,sK1(X8,sK1(sK2(a,X8),X9))) | ~transitive_reflexive_rewrite(a,X8) | ~transitive_reflexive_rewrite(sK2(a,X8),X9) | a = X8 | ~transitive_reflexive_rewrite(X10,sK1(sK2(a,X8),X9))) )),
+  inference(resolution,[],[f232,f35])).
+fof(f232,plain,(
+  ( ! [X0,X1] : (transitive_reflexive_rewrite(sK1(sK2(a,X0),X1),sK1(X0,sK1(sK2(a,X0),X1))) | a = X0 | ~transitive_reflexive_rewrite(a,X0) | ~transitive_reflexive_rewrite(sK2(a,X0),X1)) )),
+  inference(duplicate_literal_removal,[],[f222])).
+fof(f222,plain,(
+  ( ! [X0,X1] : (~transitive_reflexive_rewrite(sK2(a,X0),X1) | a = X0 | ~transitive_reflexive_rewrite(a,X0) | transitive_reflexive_rewrite(sK1(sK2(a,X0),X1),sK1(X0,sK1(sK2(a,X0),X1))) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(resolution,[],[f94,f123])).
+fof(f123,plain,(
+  ( ! [X0,X1] : (~transitive_reflexive_rewrite(sK2(a,X0),X1) | transitive_reflexive_rewrite(X1,sK1(X0,X1)) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(duplicate_literal_removal,[],[f112])).
+fof(f112,plain,(
+  ( ! [X0,X1] : (~transitive_reflexive_rewrite(sK2(a,X0),X1) | transitive_reflexive_rewrite(X1,sK1(X0,X1)) | a = X0 | ~transitive_reflexive_rewrite(a,X0) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(resolution,[],[f69,f41])).
+fof(f129407,plain,(
+  ( ! [X2,X3] : (transitive_reflexive_rewrite(X3,sK1(c,sK0(X2,sK2(a,c)))) | ~rewrite(a,X2) | ~transitive_reflexive_rewrite(X3,X2)) ) | (spl3_4 | ~spl3_199)),
+  inference(subsumption_resolution,[],[f129406,f32])).
+fof(f32,plain,(
+  transitive_reflexive_rewrite(a,c)),
+  inference(cnf_transformation,[],[f2])).
+fof(f129406,plain,(
+  ( ! [X2,X3] : (~rewrite(a,X2) | ~transitive_reflexive_rewrite(a,c) | transitive_reflexive_rewrite(X3,sK1(c,sK0(X2,sK2(a,c)))) | ~transitive_reflexive_rewrite(X3,X2)) ) | (spl3_4 | ~spl3_199)),
+  inference(subsumption_resolution,[],[f129402,f166])).
+fof(f166,plain,(
+  c != a | spl3_4),
+  inference(avatar_component_clause,[],[f165])).
+fof(f165,plain,(
+  spl3_4 <=> c = a),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_4])])).
+fof(f129402,plain,(
+  ( ! [X2,X3] : (~rewrite(a,X2) | c = a | ~transitive_reflexive_rewrite(a,c) | transitive_reflexive_rewrite(X3,sK1(c,sK0(X2,sK2(a,c)))) | ~transitive_reflexive_rewrite(X3,X2)) ) | ~spl3_199),
+  inference(duplicate_literal_removal,[],[f129368])).
+fof(f129368,plain,(
+  ( ! [X2,X3] : (~rewrite(a,X2) | c = a | ~transitive_reflexive_rewrite(a,c) | transitive_reflexive_rewrite(X3,sK1(c,sK0(X2,sK2(a,c)))) | ~transitive_reflexive_rewrite(X3,X2) | ~rewrite(a,X2)) ) | ~spl3_199),
+  inference(resolution,[],[f15283,f31480])).
+fof(f31480,plain,(
+  ( ! [X15] : (transitive_reflexive_rewrite(X15,sK0(X15,sK2(a,c))) | ~rewrite(a,X15)) ) | ~spl3_199),
+  inference(resolution,[],[f30731,f36])).
+fof(f36,plain,(
+  ( ! [X2,X0,X1] : (~rewrite(X0,X2) | transitive_reflexive_rewrite(X1,sK0(X1,X2)) | ~rewrite(X0,X1)) )),
+  inference(cnf_transformation,[],[f25])).
+fof(f15283,plain,(
+  ( ! [X2,X0,X3,X1] : (~transitive_reflexive_rewrite(X2,sK0(X1,sK2(a,X0))) | ~rewrite(a,X1) | a = X0 | ~transitive_reflexive_rewrite(a,X0) | transitive_reflexive_rewrite(X3,sK1(X0,sK0(X1,sK2(a,X0)))) | ~transitive_reflexive_rewrite(X3,X2)) )),
+  inference(resolution,[],[f2918,f35])).
+fof(f2918,plain,(
+  ( ! [X10,X8,X9] : (transitive_reflexive_rewrite(X10,sK1(X8,sK0(X9,sK2(a,X8)))) | ~transitive_reflexive_rewrite(a,X8) | ~rewrite(a,X9) | a = X8 | ~transitive_reflexive_rewrite(X10,sK0(X9,sK2(a,X8)))) )),
+  inference(resolution,[],[f181,f35])).
+fof(f181,plain,(
+  ( ! [X2,X1] : (transitive_reflexive_rewrite(sK0(X1,sK2(a,X2)),sK1(X2,sK0(X1,sK2(a,X2)))) | a = X2 | ~transitive_reflexive_rewrite(a,X2) | ~rewrite(a,X1)) )),
+  inference(duplicate_literal_removal,[],[f175])).
+fof(f175,plain,(
+  ( ! [X2,X1] : (transitive_reflexive_rewrite(sK0(X1,sK2(a,X2)),sK1(X2,sK0(X1,sK2(a,X2)))) | a = X2 | ~transitive_reflexive_rewrite(a,X2) | ~transitive_reflexive_rewrite(a,X2) | a = X2 | ~rewrite(a,X1)) )),
+  inference(resolution,[],[f123,f59])).
+fof(f59,plain,(
+  ( ! [X2,X0,X1] : (transitive_reflexive_rewrite(sK2(X0,X1),sK0(X2,sK2(X0,X1))) | ~transitive_reflexive_rewrite(X0,X1) | X0 = X1 | ~rewrite(X0,X2)) )),
+  inference(resolution,[],[f40,f37])).
+fof(f71689,plain,(
+  spl3_11 | spl3_420),
+  inference(avatar_contradiction_clause,[],[f71688])).
+fof(f71688,plain,(
+  $false | (spl3_11 | spl3_420)),
+  inference(subsumption_resolution,[],[f71687,f31])).
+fof(f71687,plain,(
+  ~transitive_reflexive_rewrite(a,b) | (spl3_11 | spl3_420)),
+  inference(subsumption_resolution,[],[f71686,f1415])).
+fof(f71686,plain,(
+  b = a | ~transitive_reflexive_rewrite(a,b) | spl3_420),
+  inference(resolution,[],[f71363,f40])).
+fof(f71363,plain,(
+  ~rewrite(a,sK2(a,b)) | spl3_420),
+  inference(avatar_component_clause,[],[f71361])).
+fof(f52907,plain,(
+  spl3_4 | spl3_212),
+  inference(avatar_contradiction_clause,[],[f52906])).
+fof(f52906,plain,(
+  $false | (spl3_4 | spl3_212)),
+  inference(subsumption_resolution,[],[f52905,f32])).
+fof(f52905,plain,(
+  ~transitive_reflexive_rewrite(a,c) | (spl3_4 | spl3_212)),
+  inference(subsumption_resolution,[],[f52904,f166])).
+fof(f52904,plain,(
+  c = a | ~transitive_reflexive_rewrite(a,c) | spl3_212),
+  inference(resolution,[],[f38490,f41])).
+fof(f38490,plain,(
+  ~transitive_reflexive_rewrite(sK2(a,c),c) | spl3_212),
+  inference(avatar_component_clause,[],[f38489])).
+fof(f31322,plain,(
+  spl3_4 | spl3_199),
+  inference(avatar_contradiction_clause,[],[f31321])).
+fof(f31321,plain,(
+  $false | (spl3_4 | spl3_199)),
+  inference(subsumption_resolution,[],[f31320,f32])).
+fof(f31320,plain,(
+  ~transitive_reflexive_rewrite(a,c) | (spl3_4 | spl3_199)),
+  inference(subsumption_resolution,[],[f31319,f166])).
+fof(f31319,plain,(
+  c = a | ~transitive_reflexive_rewrite(a,c) | spl3_199),
+  inference(resolution,[],[f30732,f40])).
+fof(f30732,plain,(
+  ~rewrite(a,sK2(a,c)) | spl3_199),
+  inference(avatar_component_clause,[],[f30730])).
+fof(f4089,plain,(
+  ~spl3_6 | ~spl3_1 | spl3_11),
+  inference(avatar_split_clause,[],[f4088,f1414,f45,f238])).
+fof(f238,plain,(
+  spl3_6 <=> transitive_reflexive_rewrite(c,b)),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_6])])).
+fof(f4088,plain,(
+  ~transitive_reflexive_rewrite(c,b) | (~spl3_1 | spl3_11)),
+  inference(subsumption_resolution,[],[f4087,f31])).
+fof(f4087,plain,(
+  ~transitive_reflexive_rewrite(c,b) | ~transitive_reflexive_rewrite(a,b) | (~spl3_1 | spl3_11)),
+  inference(subsumption_resolution,[],[f319,f1415])).
+fof(f319,plain,(
+  b = a | ~transitive_reflexive_rewrite(c,b) | ~transitive_reflexive_rewrite(a,b) | ~spl3_1),
+  inference(duplicate_literal_removal,[],[f316])).
+fof(f316,plain,(
+  b = a | ~transitive_reflexive_rewrite(c,b) | ~transitive_reflexive_rewrite(a,b) | b = a | ~transitive_reflexive_rewrite(a,b) | ~spl3_1),
+  inference(resolution,[],[f303,f151])).
+fof(f151,plain,(
+  ( ! [X0] : (transitive_reflexive_rewrite(X0,sK1(X0,X0)) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(duplicate_literal_removal,[],[f140])).
+fof(f140,plain,(
+  ( ! [X0] : (transitive_reflexive_rewrite(X0,sK1(X0,X0)) | a = X0 | ~transitive_reflexive_rewrite(a,X0) | a = X0 | ~transitive_reflexive_rewrite(a,X0)) )),
+  inference(resolution,[],[f101,f41])).
+fof(f303,plain,(
+  ( ! [X7] : (~transitive_reflexive_rewrite(b,sK1(X7,X7)) | a = X7 | ~transitive_reflexive_rewrite(c,X7) | ~transitive_reflexive_rewrite(a,X7)) ) | ~spl3_1),
+  inference(resolution,[],[f154,f46])).
+fof(f154,plain,(
+  ( ! [X2,X3] : (transitive_reflexive_rewrite(X3,sK1(X2,X2)) | ~transitive_reflexive_rewrite(a,X2) | a = X2 | ~transitive_reflexive_rewrite(X3,X2)) )),
+  inference(resolution,[],[f151,f35])).
+fof(f1623,plain,(
+  ~spl3_1 | ~spl3_11),
+  inference(avatar_contradiction_clause,[],[f1622])).
+fof(f1622,plain,(
+  $false | (~spl3_1 | ~spl3_11)),
+  inference(subsumption_resolution,[],[f1427,f53])).
+fof(f53,plain,(
+  ~transitive_reflexive_rewrite(b,c) | ~spl3_1),
+  inference(resolution,[],[f46,f43])).
+fof(f1427,plain,(
+  transitive_reflexive_rewrite(b,c) | ~spl3_11),
+  inference(backward_demodulation,[],[f1416,f32])).
+fof(f1416,plain,(
+  b = a | ~spl3_11),
+  inference(avatar_component_clause,[],[f1414])).
+fof(f580,plain,(
+  ~spl3_4 | spl3_6),
+  inference(avatar_contradiction_clause,[],[f579])).
+fof(f579,plain,(
+  $false | (~spl3_4 | spl3_6)),
+  inference(subsumption_resolution,[],[f399,f240])).
+fof(f240,plain,(
+  ~transitive_reflexive_rewrite(c,b) | spl3_6),
+  inference(avatar_component_clause,[],[f238])).
+fof(f399,plain,(
+  transitive_reflexive_rewrite(c,b) | ~spl3_4),
+  inference(backward_demodulation,[],[f167,f31])).
+fof(f167,plain,(
+  c = a | ~spl3_4),
+  inference(avatar_component_clause,[],[f165])).
+fof(f52,plain,(
+  ~spl3_2),
+  inference(avatar_split_clause,[],[f42,f48])).
+fof(f48,plain,(
+  spl3_2 <=> goal),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_2])])).
+fof(f42,plain,(
+  ~goal),
+  inference(cnf_transformation,[],[f11])).
+fof(f11,plain,(
+  ~goal),
+  inference(flattening,[],[f10])).
+fof(f10,negated_conjecture,(
+  ~goal),
+  inference(negated_conjecture,[],[f9])).
+fof(f9,conjecture,(
+  goal),
+  file('./p/COM008+2.tptp',unknown)).
+fof(f51,plain,(
+  spl3_1 | spl3_2),
+  inference(avatar_split_clause,[],[f30,f48,f45])).
+fof(f30,plain,(
+  ( ! [X0] : (goal | ~transitive_reflexive_rewrite(c,X0) | ~transitive_reflexive_rewrite(b,X0)) )),
+  inference(cnf_transformation,[],[f13])).
+fof(f13,plain,(
+  ! [X0] : (goal | ~transitive_reflexive_rewrite(c,X0) | ~transitive_reflexive_rewrite(b,X0))),
+  inference(flattening,[],[f12])).
+fof(f12,plain,(
+  ! [X0] : (goal | (~transitive_reflexive_rewrite(c,X0) | ~transitive_reflexive_rewrite(b,X0)))),
+  inference(ennf_transformation,[],[f1])).
+fof(f1,axiom,(
+  ! [X0] : ((transitive_reflexive_rewrite(c,X0) & transitive_reflexive_rewrite(b,X0)) => goal)),
+  file('./p/COM008+2.tptp',unknown)).
+% SZS output end Proof for COM008+2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 469246
+% Time elapsed: 54.241 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,15 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for HWV093-1
+% SZS output start Proof for HWV093-1
+fof(f61,axiom,(
+  $false),
+  file('./p/HWV093-1.tptp',unknown)).
+% SZS output end Proof for HWV093-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 6908
+% Time elapsed: 0.016 s
+% ------------------------------
+% ------------------------------

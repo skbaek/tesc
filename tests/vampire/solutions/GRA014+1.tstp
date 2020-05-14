@@ -1,0 +1,795 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GRA014+1
+% SZS output start Proof for GRA014+1
+fof(f570,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f34,f38,f39,f58,f67,f76,f85,f94,f113,f126,f139,f150,f162,f167,f180,f185,f198,f202,f207,f220,f224,f228,f239,f260,f265,f268,f273,f282,f287,f291,f304,f306,f311,f313,f319,f330,f331,f332,f346,f347,f363,f370,f379,f380,f381,f402,f413,f440,f441,f460,f482,f508,f514,f538,f550,f569])).
+fof(f569,plain,(
+  ~spl0_3 | ~spl0_14 | ~spl0_18 | ~spl0_28),
+  inference(avatar_contradiction_clause,[],[f568])).
+fof(f568,plain,(
+  $false | (~spl0_3 | ~spl0_14 | ~spl0_18 | ~spl0_28)),
+  inference(subsumption_resolution,[],[f566,f108])).
+fof(f108,plain,(
+  green(n1,n3) | ~spl0_14),
+  inference(avatar_component_clause,[],[f106])).
+fof(f106,plain,(
+  spl0_14 <=> green(n1,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_14])])).
+fof(f566,plain,(
+  ~green(n1,n3) | (~spl0_3 | ~spl0_18 | ~spl0_28)),
+  inference(resolution,[],[f215,f510])).
+fof(f510,plain,(
+  ( ! [X0] : (~green(X0,n5) | ~green(X0,n3)) ) | (~spl0_3 | ~spl0_18)),
+  inference(resolution,[],[f134,f37])).
+fof(f37,plain,(
+  ( ! [X2,X0,X1] : (~green(X1,X2) | ~green(X0,X1) | ~green(X0,X2)) ) | ~spl0_3),
+  inference(avatar_component_clause,[],[f36])).
+fof(f36,plain,(
+  spl0_3 <=> ! [X1,X0,X2] : (~green(X0,X2) | ~green(X0,X1) | ~green(X1,X2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_3])])).
+fof(f134,plain,(
+  green(n3,n5) | ~spl0_18),
+  inference(avatar_component_clause,[],[f132])).
+fof(f132,plain,(
+  spl0_18 <=> green(n3,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_18])])).
+fof(f215,plain,(
+  green(n1,n5) | ~spl0_28),
+  inference(avatar_component_clause,[],[f213])).
+fof(f213,plain,(
+  spl0_28 <=> green(n1,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_28])])).
+fof(f550,plain,(
+  ~spl0_3 | ~spl0_20 | ~spl0_22 | ~spl0_32),
+  inference(avatar_contradiction_clause,[],[f549])).
+fof(f549,plain,(
+  $false | (~spl0_3 | ~spl0_20 | ~spl0_22 | ~spl0_32)),
+  inference(subsumption_resolution,[],[f547,f157])).
+fof(f157,plain,(
+  green(n1,n4) | ~spl0_22),
+  inference(avatar_component_clause,[],[f155])).
+fof(f155,plain,(
+  spl0_22 <=> green(n1,n4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_22])])).
+fof(f547,plain,(
+  ~green(n1,n4) | (~spl0_3 | ~spl0_20 | ~spl0_32)),
+  inference(resolution,[],[f255,f494])).
+fof(f494,plain,(
+  ( ! [X0] : (~green(X0,n6) | ~green(X0,n4)) ) | (~spl0_3 | ~spl0_20)),
+  inference(resolution,[],[f145,f37])).
+fof(f145,plain,(
+  green(n4,n6) | ~spl0_20),
+  inference(avatar_component_clause,[],[f143])).
+fof(f143,plain,(
+  spl0_20 <=> green(n4,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_20])])).
+fof(f255,plain,(
+  green(n1,n6) | ~spl0_32),
+  inference(avatar_component_clause,[],[f253])).
+fof(f253,plain,(
+  spl0_32 <=> green(n1,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_32])])).
+fof(f538,plain,(
+  ~spl0_16 | ~spl0_3 | ~spl0_20 | ~spl0_30),
+  inference(avatar_split_clause,[],[f534,f232,f143,f36,f119])).
+fof(f119,plain,(
+  spl0_16 <=> green(n2,n4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_16])])).
+fof(f232,plain,(
+  spl0_30 <=> green(n2,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_30])])).
+fof(f534,plain,(
+  ~green(n2,n4) | (~spl0_3 | ~spl0_20 | ~spl0_30)),
+  inference(resolution,[],[f234,f494])).
+fof(f234,plain,(
+  green(n2,n6) | ~spl0_30),
+  inference(avatar_component_clause,[],[f232])).
+fof(f514,plain,(
+  ~spl0_3 | ~spl0_6 | ~spl0_18 | ~spl0_24),
+  inference(avatar_contradiction_clause,[],[f513])).
+fof(f513,plain,(
+  $false | (~spl0_3 | ~spl0_6 | ~spl0_18 | ~spl0_24)),
+  inference(subsumption_resolution,[],[f511,f62])).
+fof(f62,plain,(
+  green(n2,n3) | ~spl0_6),
+  inference(avatar_component_clause,[],[f60])).
+fof(f60,plain,(
+  spl0_6 <=> green(n2,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_6])])).
+fof(f511,plain,(
+  ~green(n2,n3) | (~spl0_3 | ~spl0_18 | ~spl0_24)),
+  inference(resolution,[],[f510,f175])).
+fof(f175,plain,(
+  green(n2,n5) | ~spl0_24),
+  inference(avatar_component_clause,[],[f173])).
+fof(f173,plain,(
+  spl0_24 <=> green(n2,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_24])])).
+fof(f508,plain,(
+  ~spl0_1 | ~spl0_15 | ~spl0_27 | ~spl0_33),
+  inference(avatar_contradiction_clause,[],[f507])).
+fof(f507,plain,(
+  $false | (~spl0_1 | ~spl0_15 | ~spl0_27 | ~spl0_33)),
+  inference(subsumption_resolution,[],[f504,f112])).
+fof(f112,plain,(
+  red(n1,n3) | ~spl0_15),
+  inference(avatar_component_clause,[],[f110])).
+fof(f110,plain,(
+  spl0_15 <=> red(n1,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_15])])).
+fof(f504,plain,(
+  ~red(n1,n3) | (~spl0_1 | ~spl0_27 | ~spl0_33)),
+  inference(resolution,[],[f496,f259])).
+fof(f259,plain,(
+  red(n1,n6) | ~spl0_33),
+  inference(avatar_component_clause,[],[f257])).
+fof(f257,plain,(
+  spl0_33 <=> red(n1,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_33])])).
+fof(f496,plain,(
+  ( ! [X0] : (~red(X0,n6) | ~red(X0,n3)) ) | (~spl0_1 | ~spl0_27)),
+  inference(resolution,[],[f197,f29])).
+fof(f29,plain,(
+  ( ! [X2,X0,X1] : (~red(X1,X2) | ~red(X0,X1) | ~red(X0,X2)) ) | ~spl0_1),
+  inference(avatar_component_clause,[],[f28])).
+fof(f28,plain,(
+  spl0_1 <=> ! [X1,X0,X2] : (~red(X0,X2) | ~red(X0,X1) | ~red(X1,X2))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f197,plain,(
+  red(n3,n6) | ~spl0_27),
+  inference(avatar_component_clause,[],[f195])).
+fof(f195,plain,(
+  spl0_27 <=> red(n3,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_27])])).
+fof(f482,plain,(
+  ~spl0_1 | ~spl0_5 | ~spl0_25 | ~spl0_29),
+  inference(avatar_contradiction_clause,[],[f481])).
+fof(f481,plain,(
+  $false | (~spl0_1 | ~spl0_5 | ~spl0_25 | ~spl0_29)),
+  inference(subsumption_resolution,[],[f478,f57])).
+fof(f57,plain,(
+  red(n1,n2) | ~spl0_5),
+  inference(avatar_component_clause,[],[f55])).
+fof(f55,plain,(
+  spl0_5 <=> red(n1,n2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_5])])).
+fof(f478,plain,(
+  ~red(n1,n2) | (~spl0_1 | ~spl0_25 | ~spl0_29)),
+  inference(resolution,[],[f466,f219])).
+fof(f219,plain,(
+  red(n1,n5) | ~spl0_29),
+  inference(avatar_component_clause,[],[f217])).
+fof(f217,plain,(
+  spl0_29 <=> red(n1,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_29])])).
+fof(f466,plain,(
+  ( ! [X0] : (~red(X0,n5) | ~red(X0,n2)) ) | (~spl0_1 | ~spl0_25)),
+  inference(resolution,[],[f179,f29])).
+fof(f179,plain,(
+  red(n2,n5) | ~spl0_25),
+  inference(avatar_component_clause,[],[f177])).
+fof(f177,plain,(
+  spl0_25 <=> red(n2,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_25])])).
+fof(f460,plain,(
+  ~spl0_1 | ~spl0_13 | ~spl0_29 | ~spl0_33),
+  inference(avatar_contradiction_clause,[],[f459])).
+fof(f459,plain,(
+  $false | (~spl0_1 | ~spl0_13 | ~spl0_29 | ~spl0_33)),
+  inference(subsumption_resolution,[],[f456,f219])).
+fof(f456,plain,(
+  ~red(n1,n5) | (~spl0_1 | ~spl0_13 | ~spl0_33)),
+  inference(resolution,[],[f447,f259])).
+fof(f447,plain,(
+  ( ! [X0] : (~red(X0,n6) | ~red(X0,n5)) ) | (~spl0_1 | ~spl0_13)),
+  inference(resolution,[],[f93,f29])).
+fof(f93,plain,(
+  red(n5,n6) | ~spl0_13),
+  inference(avatar_component_clause,[],[f91])).
+fof(f91,plain,(
+  spl0_13 <=> red(n5,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_13])])).
+fof(f441,plain,(
+  ~spl0_9 | ~spl0_1 | ~spl0_11 | ~spl0_19),
+  inference(avatar_split_clause,[],[f420,f136,f82,f28,f73])).
+fof(f73,plain,(
+  spl0_9 <=> red(n3,n4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_9])])).
+fof(f82,plain,(
+  spl0_11 <=> red(n4,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_11])])).
+fof(f136,plain,(
+  spl0_19 <=> red(n3,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_19])])).
+fof(f420,plain,(
+  ~red(n3,n4) | (~spl0_1 | ~spl0_11 | ~spl0_19)),
+  inference(resolution,[],[f416,f138])).
+fof(f138,plain,(
+  red(n3,n5) | ~spl0_19),
+  inference(avatar_component_clause,[],[f136])).
+fof(f416,plain,(
+  ( ! [X0] : (~red(X0,n5) | ~red(X0,n4)) ) | (~spl0_1 | ~spl0_11)),
+  inference(resolution,[],[f84,f29])).
+fof(f84,plain,(
+  red(n4,n5) | ~spl0_11),
+  inference(avatar_component_clause,[],[f82])).
+fof(f440,plain,(
+  ~spl0_1 | ~spl0_7 | ~spl0_27 | ~spl0_31),
+  inference(avatar_contradiction_clause,[],[f439])).
+fof(f439,plain,(
+  $false | (~spl0_1 | ~spl0_7 | ~spl0_27 | ~spl0_31)),
+  inference(subsumption_resolution,[],[f437,f66])).
+fof(f66,plain,(
+  red(n2,n3) | ~spl0_7),
+  inference(avatar_component_clause,[],[f64])).
+fof(f64,plain,(
+  spl0_7 <=> red(n2,n3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_7])])).
+fof(f437,plain,(
+  ~red(n2,n3) | (~spl0_1 | ~spl0_27 | ~spl0_31)),
+  inference(resolution,[],[f427,f238])).
+fof(f238,plain,(
+  red(n2,n6) | ~spl0_31),
+  inference(avatar_component_clause,[],[f236])).
+fof(f236,plain,(
+  spl0_31 <=> red(n2,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_31])])).
+fof(f427,plain,(
+  ( ! [X0] : (~red(X0,n6) | ~red(X0,n3)) ) | (~spl0_1 | ~spl0_27)),
+  inference(resolution,[],[f197,f29])).
+fof(f413,plain,(
+  ~spl0_4 | ~spl0_3 | ~spl0_24 | ~spl0_28),
+  inference(avatar_split_clause,[],[f408,f213,f173,f36,f51])).
+fof(f51,plain,(
+  spl0_4 <=> green(n1,n2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_4])])).
+fof(f408,plain,(
+  ~green(n1,n2) | (~spl0_3 | ~spl0_24 | ~spl0_28)),
+  inference(resolution,[],[f392,f215])).
+fof(f392,plain,(
+  ( ! [X0] : (~green(X0,n5) | ~green(X0,n2)) ) | (~spl0_3 | ~spl0_24)),
+  inference(resolution,[],[f175,f37])).
+fof(f402,plain,(
+  ~spl0_1 | ~spl0_15 | ~spl0_19 | ~spl0_29),
+  inference(avatar_contradiction_clause,[],[f401])).
+fof(f401,plain,(
+  $false | (~spl0_1 | ~spl0_15 | ~spl0_19 | ~spl0_29)),
+  inference(subsumption_resolution,[],[f399,f112])).
+fof(f399,plain,(
+  ~red(n1,n3) | (~spl0_1 | ~spl0_19 | ~spl0_29)),
+  inference(resolution,[],[f390,f219])).
+fof(f390,plain,(
+  ( ! [X0] : (~red(X0,n5) | ~red(X0,n3)) ) | (~spl0_1 | ~spl0_19)),
+  inference(resolution,[],[f138,f29])).
+fof(f381,plain,(
+  ~spl0_17 | ~spl0_1 | ~spl0_11 | ~spl0_25),
+  inference(avatar_split_clause,[],[f354,f177,f82,f28,f123])).
+fof(f123,plain,(
+  spl0_17 <=> red(n2,n4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_17])])).
+fof(f354,plain,(
+  ~red(n2,n4) | (~spl0_1 | ~spl0_11 | ~spl0_25)),
+  inference(resolution,[],[f179,f348])).
+fof(f348,plain,(
+  ( ! [X0] : (~red(X0,n5) | ~red(X0,n4)) ) | (~spl0_1 | ~spl0_11)),
+  inference(resolution,[],[f84,f29])).
+fof(f380,plain,(
+  ~spl0_5 | ~spl0_1 | ~spl0_7 | ~spl0_15),
+  inference(avatar_split_clause,[],[f338,f110,f64,f28,f55])).
+fof(f338,plain,(
+  ~red(n1,n2) | (~spl0_1 | ~spl0_7 | ~spl0_15)),
+  inference(resolution,[],[f112,f334])).
+fof(f334,plain,(
+  ( ! [X0] : (~red(X0,n3) | ~red(X0,n2)) ) | (~spl0_1 | ~spl0_7)),
+  inference(resolution,[],[f66,f29])).
+fof(f379,plain,(
+  ~spl0_4 | ~spl0_3 | ~spl0_16 | ~spl0_22),
+  inference(avatar_split_clause,[],[f374,f155,f119,f36,f51])).
+fof(f374,plain,(
+  ~green(n1,n2) | (~spl0_3 | ~spl0_16 | ~spl0_22)),
+  inference(resolution,[],[f157,f342])).
+fof(f342,plain,(
+  ( ! [X0] : (~green(X0,n4) | ~green(X0,n2)) ) | (~spl0_3 | ~spl0_16)),
+  inference(resolution,[],[f121,f37])).
+fof(f121,plain,(
+  green(n2,n4) | ~spl0_16),
+  inference(avatar_component_clause,[],[f119])).
+fof(f370,plain,(
+  ~spl0_3 | ~spl0_8 | ~spl0_20 | ~spl0_26),
+  inference(avatar_contradiction_clause,[],[f369])).
+fof(f369,plain,(
+  $false | (~spl0_3 | ~spl0_8 | ~spl0_20 | ~spl0_26)),
+  inference(subsumption_resolution,[],[f367,f71])).
+fof(f71,plain,(
+  green(n3,n4) | ~spl0_8),
+  inference(avatar_component_clause,[],[f69])).
+fof(f69,plain,(
+  spl0_8 <=> green(n3,n4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_8])])).
+fof(f367,plain,(
+  ~green(n3,n4) | (~spl0_3 | ~spl0_20 | ~spl0_26)),
+  inference(resolution,[],[f353,f193])).
+fof(f193,plain,(
+  green(n3,n6) | ~spl0_26),
+  inference(avatar_component_clause,[],[f191])).
+fof(f191,plain,(
+  spl0_26 <=> green(n3,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_26])])).
+fof(f353,plain,(
+  ( ! [X0] : (~green(X0,n6) | ~green(X0,n4)) ) | (~spl0_3 | ~spl0_20)),
+  inference(resolution,[],[f145,f37])).
+fof(f363,plain,(
+  ~spl0_1 | ~spl0_11 | ~spl0_23 | ~spl0_29),
+  inference(avatar_contradiction_clause,[],[f362])).
+fof(f362,plain,(
+  $false | (~spl0_1 | ~spl0_11 | ~spl0_23 | ~spl0_29)),
+  inference(subsumption_resolution,[],[f360,f161])).
+fof(f161,plain,(
+  red(n1,n4) | ~spl0_23),
+  inference(avatar_component_clause,[],[f159])).
+fof(f159,plain,(
+  spl0_23 <=> red(n1,n4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_23])])).
+fof(f360,plain,(
+  ~red(n1,n4) | (~spl0_1 | ~spl0_11 | ~spl0_29)),
+  inference(resolution,[],[f219,f348])).
+fof(f347,plain,(
+  ~spl0_18 | ~spl0_3 | ~spl0_12 | ~spl0_26),
+  inference(avatar_split_clause,[],[f321,f191,f87,f36,f132])).
+fof(f87,plain,(
+  spl0_12 <=> green(n5,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_12])])).
+fof(f321,plain,(
+  ~green(n3,n5) | (~spl0_3 | ~spl0_12 | ~spl0_26)),
+  inference(resolution,[],[f320,f193])).
+fof(f320,plain,(
+  ( ! [X0] : (~green(X0,n6) | ~green(X0,n5)) ) | (~spl0_3 | ~spl0_12)),
+  inference(resolution,[],[f89,f37])).
+fof(f89,plain,(
+  green(n5,n6) | ~spl0_12),
+  inference(avatar_component_clause,[],[f87])).
+fof(f346,plain,(
+  ~spl0_3 | ~spl0_10 | ~spl0_16 | ~spl0_24),
+  inference(avatar_contradiction_clause,[],[f345])).
+fof(f345,plain,(
+  $false | (~spl0_3 | ~spl0_10 | ~spl0_16 | ~spl0_24)),
+  inference(subsumption_resolution,[],[f343,f121])).
+fof(f343,plain,(
+  ~green(n2,n4) | (~spl0_3 | ~spl0_10 | ~spl0_24)),
+  inference(resolution,[],[f175,f98])).
+fof(f98,plain,(
+  ( ! [X0] : (~green(X0,n5) | ~green(X0,n4)) ) | (~spl0_3 | ~spl0_10)),
+  inference(resolution,[],[f80,f37])).
+fof(f80,plain,(
+  green(n4,n5) | ~spl0_10),
+  inference(avatar_component_clause,[],[f78])).
+fof(f78,plain,(
+  spl0_10 <=> green(n4,n5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_10])])).
+fof(f332,plain,(
+  ~spl0_7 | ~spl0_1 | ~spl0_19 | ~spl0_25),
+  inference(avatar_split_clause,[],[f294,f177,f136,f28,f64])).
+fof(f294,plain,(
+  ~red(n2,n3) | (~spl0_1 | ~spl0_19 | ~spl0_25)),
+  inference(resolution,[],[f203,f179])).
+fof(f203,plain,(
+  ( ! [X0] : (~red(X0,n5) | ~red(X0,n3)) ) | (~spl0_1 | ~spl0_19)),
+  inference(resolution,[],[f138,f29])).
+fof(f331,plain,(
+  ~spl0_17 | ~spl0_1 | ~spl0_21 | ~spl0_31),
+  inference(avatar_split_clause,[],[f315,f236,f147,f28,f123])).
+fof(f147,plain,(
+  spl0_21 <=> red(n4,n6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_21])])).
+fof(f315,plain,(
+  ~red(n2,n4) | (~spl0_1 | ~spl0_21 | ~spl0_31)),
+  inference(resolution,[],[f238,f208])).
+fof(f208,plain,(
+  ( ! [X0] : (~red(X0,n6) | ~red(X0,n4)) ) | (~spl0_1 | ~spl0_21)),
+  inference(resolution,[],[f149,f29])).
+fof(f149,plain,(
+  red(n4,n6) | ~spl0_21),
+  inference(avatar_component_clause,[],[f147])).
+fof(f330,plain,(
+  ~spl0_1 | ~spl0_21 | ~spl0_23 | ~spl0_33),
+  inference(avatar_contradiction_clause,[],[f329])).
+fof(f329,plain,(
+  $false | (~spl0_1 | ~spl0_21 | ~spl0_23 | ~spl0_33)),
+  inference(subsumption_resolution,[],[f327,f161])).
+fof(f327,plain,(
+  ~red(n1,n4) | (~spl0_1 | ~spl0_21 | ~spl0_33)),
+  inference(resolution,[],[f259,f208])).
+fof(f319,plain,(
+  ~spl0_1 | ~spl0_13 | ~spl0_25 | ~spl0_31),
+  inference(avatar_contradiction_clause,[],[f318])).
+fof(f318,plain,(
+  $false | (~spl0_1 | ~spl0_13 | ~spl0_25 | ~spl0_31)),
+  inference(subsumption_resolution,[],[f316,f179])).
+fof(f316,plain,(
+  ~red(n2,n5) | (~spl0_1 | ~spl0_13 | ~spl0_31)),
+  inference(resolution,[],[f238,f288])).
+fof(f288,plain,(
+  ( ! [X0] : (~red(X0,n6) | ~red(X0,n5)) ) | (~spl0_1 | ~spl0_13)),
+  inference(resolution,[],[f93,f29])).
+fof(f313,plain,(
+  ~spl0_1 | ~spl0_13 | ~spl0_19 | ~spl0_27),
+  inference(avatar_contradiction_clause,[],[f312])).
+fof(f312,plain,(
+  $false | (~spl0_1 | ~spl0_13 | ~spl0_19 | ~spl0_27)),
+  inference(subsumption_resolution,[],[f308,f138])).
+fof(f308,plain,(
+  ~red(n3,n5) | (~spl0_1 | ~spl0_13 | ~spl0_27)),
+  inference(resolution,[],[f197,f288])).
+fof(f311,plain,(
+  ~spl0_1 | ~spl0_9 | ~spl0_21 | ~spl0_27),
+  inference(avatar_contradiction_clause,[],[f310])).
+fof(f310,plain,(
+  $false | (~spl0_1 | ~spl0_9 | ~spl0_21 | ~spl0_27)),
+  inference(subsumption_resolution,[],[f307,f75])).
+fof(f75,plain,(
+  red(n3,n4) | ~spl0_9),
+  inference(avatar_component_clause,[],[f73])).
+fof(f307,plain,(
+  ~red(n3,n4) | (~spl0_1 | ~spl0_21 | ~spl0_27)),
+  inference(resolution,[],[f197,f208])).
+fof(f306,plain,(
+  ~spl0_3 | ~spl0_6 | ~spl0_26 | ~spl0_30),
+  inference(avatar_contradiction_clause,[],[f305])).
+fof(f305,plain,(
+  $false | (~spl0_3 | ~spl0_6 | ~spl0_26 | ~spl0_30)),
+  inference(subsumption_resolution,[],[f301,f62])).
+fof(f301,plain,(
+  ~green(n2,n3) | (~spl0_3 | ~spl0_26 | ~spl0_30)),
+  inference(resolution,[],[f246,f234])).
+fof(f246,plain,(
+  ( ! [X0] : (~green(X0,n6) | ~green(X0,n3)) ) | (~spl0_3 | ~spl0_26)),
+  inference(resolution,[],[f193,f37])).
+fof(f304,plain,(
+  ~spl0_3 | ~spl0_14 | ~spl0_26 | ~spl0_32),
+  inference(avatar_contradiction_clause,[],[f303])).
+fof(f303,plain,(
+  $false | (~spl0_3 | ~spl0_14 | ~spl0_26 | ~spl0_32)),
+  inference(subsumption_resolution,[],[f300,f108])).
+fof(f300,plain,(
+  ~green(n1,n3) | (~spl0_3 | ~spl0_26 | ~spl0_32)),
+  inference(resolution,[],[f246,f255])).
+fof(f291,plain,(
+  ~spl0_11 | ~spl0_1 | ~spl0_13 | ~spl0_21),
+  inference(avatar_split_clause,[],[f289,f147,f91,f28,f82])).
+fof(f289,plain,(
+  ~red(n4,n5) | (~spl0_1 | ~spl0_13 | ~spl0_21)),
+  inference(resolution,[],[f288,f149])).
+fof(f287,plain,(
+  ~spl0_3 | ~spl0_12 | ~spl0_28 | ~spl0_32),
+  inference(avatar_contradiction_clause,[],[f286])).
+fof(f286,plain,(
+  $false | (~spl0_3 | ~spl0_12 | ~spl0_28 | ~spl0_32)),
+  inference(subsumption_resolution,[],[f284,f215])).
+fof(f284,plain,(
+  ~green(n1,n5) | (~spl0_3 | ~spl0_12 | ~spl0_32)),
+  inference(resolution,[],[f255,f99])).
+fof(f99,plain,(
+  ( ! [X0] : (~green(X0,n6) | ~green(X0,n5)) ) | (~spl0_3 | ~spl0_12)),
+  inference(resolution,[],[f89,f37])).
+fof(f282,plain,(
+  ~spl0_1 | ~spl0_5 | ~spl0_17 | ~spl0_23),
+  inference(avatar_contradiction_clause,[],[f281])).
+fof(f281,plain,(
+  $false | (~spl0_1 | ~spl0_5 | ~spl0_17 | ~spl0_23)),
+  inference(subsumption_resolution,[],[f278,f57])).
+fof(f278,plain,(
+  ~red(n1,n2) | (~spl0_1 | ~spl0_17 | ~spl0_23)),
+  inference(resolution,[],[f187,f161])).
+fof(f187,plain,(
+  ( ! [X0] : (~red(X0,n4) | ~red(X0,n2)) ) | (~spl0_1 | ~spl0_17)),
+  inference(resolution,[],[f125,f29])).
+fof(f125,plain,(
+  red(n2,n4) | ~spl0_17),
+  inference(avatar_component_clause,[],[f123])).
+fof(f273,plain,(
+  ~spl0_24 | ~spl0_3 | ~spl0_12 | ~spl0_30),
+  inference(avatar_split_clause,[],[f269,f232,f87,f36,f173])).
+fof(f269,plain,(
+  ~green(n2,n5) | (~spl0_3 | ~spl0_12 | ~spl0_30)),
+  inference(resolution,[],[f234,f99])).
+fof(f268,plain,(
+  ~spl0_15 | ~spl0_1 | ~spl0_9 | ~spl0_23),
+  inference(avatar_split_clause,[],[f266,f159,f73,f28,f110])).
+fof(f266,plain,(
+  ~red(n1,n3) | (~spl0_1 | ~spl0_9 | ~spl0_23)),
+  inference(resolution,[],[f161,f225])).
+fof(f225,plain,(
+  ( ! [X0] : (~red(X0,n4) | ~red(X0,n3)) ) | (~spl0_1 | ~spl0_9)),
+  inference(resolution,[],[f75,f29])).
+fof(f265,plain,(
+  ~spl0_22 | ~spl0_3 | ~spl0_10 | ~spl0_28),
+  inference(avatar_split_clause,[],[f261,f213,f78,f36,f155])).
+fof(f261,plain,(
+  ~green(n1,n4) | (~spl0_3 | ~spl0_10 | ~spl0_28)),
+  inference(resolution,[],[f215,f98])).
+fof(f260,plain,(
+  spl0_32 | spl0_33),
+  inference(avatar_split_clause,[],[f250,f257,f253])).
+fof(f250,plain,(
+  red(n1,n6) | green(n1,n6)),
+  inference(resolution,[],[f209,f25])).
+fof(f25,plain,(
+  ( ! [X0,X1] : (~less_than(X0,X1) | red(X0,X1) | green(X0,X1)) )),
+  inference(cnf_transformation,[],[f16])).
+fof(f16,plain,(
+  ! [X0,X1] : (green(X0,X1) | red(X0,X1) | ~less_than(X0,X1))),
+  inference(flattening,[],[f15])).
+fof(f15,plain,(
+  ! [X0,X1] : ((green(X0,X1) | red(X0,X1)) | ~less_than(X0,X1))),
+  inference(ennf_transformation,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X1] : (less_than(X0,X1) => (green(X0,X1) | red(X0,X1)))),
+  file('./p/GRA014+1.tptp',unknown)).
+fof(f209,plain,(
+  less_than(n1,n6)),
+  inference(resolution,[],[f151,f44])).
+fof(f44,plain,(
+  ( ! [X4] : (~less_than(X4,n5) | less_than(X4,n6)) )),
+  inference(resolution,[],[f24,f23])).
+fof(f23,plain,(
+  less_than(n5,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f3,axiom,(
+  less_than(n5,n6) & less_than(n4,n5) & less_than(n3,n4) & less_than(n2,n3) & less_than(n1,n2)),
+  file('./p/GRA014+1.tptp',unknown)).
+fof(f24,plain,(
+  ( ! [X2,X0,X1] : (~less_than(X1,X2) | less_than(X0,X2) | ~less_than(X0,X1)) )),
+  inference(cnf_transformation,[],[f14])).
+fof(f14,plain,(
+  ! [X0,X1,X2] : (less_than(X0,X2) | ~less_than(X1,X2) | ~less_than(X0,X1))),
+  inference(flattening,[],[f13])).
+fof(f13,plain,(
+  ! [X0,X1,X2] : (less_than(X0,X2) | (~less_than(X1,X2) | ~less_than(X0,X1)))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1,X2] : ((less_than(X1,X2) & less_than(X0,X1)) => less_than(X0,X2))),
+  file('./p/GRA014+1.tptp',unknown)).
+fof(f151,plain,(
+  less_than(n1,n5)),
+  inference(resolution,[],[f102,f43])).
+fof(f43,plain,(
+  ( ! [X3] : (~less_than(X3,n4) | less_than(X3,n5)) )),
+  inference(resolution,[],[f24,f22])).
+fof(f22,plain,(
+  less_than(n4,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f102,plain,(
+  less_than(n1,n4)),
+  inference(resolution,[],[f100,f42])).
+fof(f42,plain,(
+  ( ! [X2] : (~less_than(X2,n3) | less_than(X2,n4)) )),
+  inference(resolution,[],[f24,f21])).
+fof(f21,plain,(
+  less_than(n3,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f100,plain,(
+  less_than(n1,n3)),
+  inference(resolution,[],[f41,f19])).
+fof(f19,plain,(
+  less_than(n1,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f41,plain,(
+  ( ! [X1] : (~less_than(X1,n2) | less_than(X1,n3)) )),
+  inference(resolution,[],[f24,f20])).
+fof(f20,plain,(
+  less_than(n2,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f239,plain,(
+  spl0_30 | spl0_31),
+  inference(avatar_split_clause,[],[f229,f236,f232])).
+fof(f229,plain,(
+  red(n2,n6) | green(n2,n6)),
+  inference(resolution,[],[f169,f25])).
+fof(f169,plain,(
+  less_than(n2,n6)),
+  inference(resolution,[],[f115,f44])).
+fof(f115,plain,(
+  less_than(n2,n5)),
+  inference(resolution,[],[f101,f43])).
+fof(f101,plain,(
+  less_than(n2,n4)),
+  inference(resolution,[],[f42,f20])).
+fof(f228,plain,(
+  ~spl0_7 | ~spl0_1 | ~spl0_9 | ~spl0_17),
+  inference(avatar_split_clause,[],[f226,f123,f73,f28,f64])).
+fof(f226,plain,(
+  ~red(n2,n3) | (~spl0_1 | ~spl0_9 | ~spl0_17)),
+  inference(resolution,[],[f225,f125])).
+fof(f224,plain,(
+  ~spl0_3 | ~spl0_8 | ~spl0_14 | ~spl0_22),
+  inference(avatar_contradiction_clause,[],[f223])).
+fof(f223,plain,(
+  $false | (~spl0_3 | ~spl0_8 | ~spl0_14 | ~spl0_22)),
+  inference(subsumption_resolution,[],[f221,f108])).
+fof(f221,plain,(
+  ~green(n1,n3) | (~spl0_3 | ~spl0_8 | ~spl0_22)),
+  inference(resolution,[],[f157,f97])).
+fof(f97,plain,(
+  ( ! [X0] : (~green(X0,n4) | ~green(X0,n3)) ) | (~spl0_3 | ~spl0_8)),
+  inference(resolution,[],[f71,f37])).
+fof(f220,plain,(
+  spl0_28 | spl0_29),
+  inference(avatar_split_clause,[],[f210,f217,f213])).
+fof(f210,plain,(
+  red(n1,n5) | green(n1,n5)),
+  inference(resolution,[],[f151,f25])).
+fof(f207,plain,(
+  ~spl0_3 | ~spl0_10 | ~spl0_12 | ~spl0_20),
+  inference(avatar_contradiction_clause,[],[f206])).
+fof(f206,plain,(
+  $false | (~spl0_3 | ~spl0_10 | ~spl0_12 | ~spl0_20)),
+  inference(subsumption_resolution,[],[f204,f80])).
+fof(f204,plain,(
+  ~green(n4,n5) | (~spl0_3 | ~spl0_12 | ~spl0_20)),
+  inference(resolution,[],[f145,f99])).
+fof(f202,plain,(
+  ~spl0_3 | ~spl0_8 | ~spl0_10 | ~spl0_18),
+  inference(avatar_contradiction_clause,[],[f201])).
+fof(f201,plain,(
+  $false | (~spl0_3 | ~spl0_8 | ~spl0_10 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f199,f71])).
+fof(f199,plain,(
+  ~green(n3,n4) | (~spl0_3 | ~spl0_10 | ~spl0_18)),
+  inference(resolution,[],[f134,f98])).
+fof(f198,plain,(
+  spl0_26 | spl0_27),
+  inference(avatar_split_clause,[],[f188,f195,f191])).
+fof(f188,plain,(
+  red(n3,n6) | green(n3,n6)),
+  inference(resolution,[],[f128,f25])).
+fof(f128,plain,(
+  less_than(n3,n6)),
+  inference(resolution,[],[f114,f44])).
+fof(f114,plain,(
+  less_than(n3,n5)),
+  inference(resolution,[],[f43,f21])).
+fof(f185,plain,(
+  ~spl0_3 | ~spl0_6 | ~spl0_8 | ~spl0_16),
+  inference(avatar_contradiction_clause,[],[f184])).
+fof(f184,plain,(
+  $false | (~spl0_3 | ~spl0_6 | ~spl0_8 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f182,f62])).
+fof(f182,plain,(
+  ~green(n2,n3) | (~spl0_3 | ~spl0_8 | ~spl0_16)),
+  inference(resolution,[],[f121,f97])).
+fof(f180,plain,(
+  spl0_24 | spl0_25),
+  inference(avatar_split_clause,[],[f170,f177,f173])).
+fof(f170,plain,(
+  red(n2,n5) | green(n2,n5)),
+  inference(resolution,[],[f115,f25])).
+fof(f167,plain,(
+  ~spl0_4 | ~spl0_3 | ~spl0_6 | ~spl0_14),
+  inference(avatar_split_clause,[],[f165,f106,f60,f36,f51])).
+fof(f165,plain,(
+  ~green(n1,n2) | (~spl0_3 | ~spl0_6 | ~spl0_14)),
+  inference(resolution,[],[f96,f108])).
+fof(f96,plain,(
+  ( ! [X0] : (~green(X0,n3) | ~green(X0,n2)) ) | (~spl0_3 | ~spl0_6)),
+  inference(resolution,[],[f37,f62])).
+fof(f162,plain,(
+  spl0_22 | spl0_23),
+  inference(avatar_split_clause,[],[f152,f159,f155])).
+fof(f152,plain,(
+  red(n1,n4) | green(n1,n4)),
+  inference(resolution,[],[f102,f25])).
+fof(f150,plain,(
+  spl0_20 | spl0_21),
+  inference(avatar_split_clause,[],[f140,f147,f143])).
+fof(f140,plain,(
+  red(n4,n6) | green(n4,n6)),
+  inference(resolution,[],[f127,f25])).
+fof(f127,plain,(
+  less_than(n4,n6)),
+  inference(resolution,[],[f44,f22])).
+fof(f139,plain,(
+  spl0_18 | spl0_19),
+  inference(avatar_split_clause,[],[f129,f136,f132])).
+fof(f129,plain,(
+  red(n3,n5) | green(n3,n5)),
+  inference(resolution,[],[f114,f25])).
+fof(f126,plain,(
+  spl0_16 | spl0_17),
+  inference(avatar_split_clause,[],[f116,f123,f119])).
+fof(f116,plain,(
+  red(n2,n4) | green(n2,n4)),
+  inference(resolution,[],[f101,f25])).
+fof(f113,plain,(
+  spl0_14 | spl0_15),
+  inference(avatar_split_clause,[],[f103,f110,f106])).
+fof(f103,plain,(
+  red(n1,n3) | green(n1,n3)),
+  inference(resolution,[],[f100,f25])).
+fof(f94,plain,(
+  spl0_12 | spl0_13),
+  inference(avatar_split_clause,[],[f49,f91,f87])).
+fof(f49,plain,(
+  red(n5,n6) | green(n5,n6)),
+  inference(resolution,[],[f25,f23])).
+fof(f85,plain,(
+  spl0_10 | spl0_11),
+  inference(avatar_split_clause,[],[f48,f82,f78])).
+fof(f48,plain,(
+  red(n4,n5) | green(n4,n5)),
+  inference(resolution,[],[f25,f22])).
+fof(f76,plain,(
+  spl0_8 | spl0_9),
+  inference(avatar_split_clause,[],[f47,f73,f69])).
+fof(f47,plain,(
+  red(n3,n4) | green(n3,n4)),
+  inference(resolution,[],[f25,f21])).
+fof(f67,plain,(
+  spl0_6 | spl0_7),
+  inference(avatar_split_clause,[],[f46,f64,f60])).
+fof(f46,plain,(
+  red(n2,n3) | green(n2,n3)),
+  inference(resolution,[],[f25,f20])).
+fof(f58,plain,(
+  spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f45,f55,f51])).
+fof(f45,plain,(
+  red(n1,n2) | green(n1,n2)),
+  inference(resolution,[],[f25,f19])).
+fof(f39,plain,(
+  ~spl0_2),
+  inference(avatar_split_clause,[],[f26,f31])).
+fof(f31,plain,(
+  spl0_2 <=> goal),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f26,plain,(
+  ~goal),
+  inference(cnf_transformation,[],[f8])).
+fof(f8,plain,(
+  ~goal),
+  inference(flattening,[],[f7])).
+fof(f7,negated_conjecture,(
+  ~goal),
+  inference(negated_conjecture,[],[f6])).
+fof(f6,conjecture,(
+  goal),
+  file('./p/GRA014+1.tptp',unknown)).
+fof(f38,plain,(
+  spl0_3 | spl0_2),
+  inference(avatar_split_clause,[],[f18,f31,f36])).
+fof(f18,plain,(
+  ( ! [X2,X0,X1] : (goal | ~green(X0,X2) | ~green(X1,X2) | ~green(X0,X1)) )),
+  inference(cnf_transformation,[],[f12])).
+fof(f12,plain,(
+  ! [X0,X1,X2] : (goal | ~green(X0,X2) | ~green(X1,X2) | ~green(X0,X1))),
+  inference(flattening,[],[f11])).
+fof(f11,plain,(
+  ! [X0,X1,X2] : (goal | (~green(X0,X2) | ~green(X1,X2) | ~green(X0,X1)))),
+  inference(ennf_transformation,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1,X2] : ((green(X0,X2) & green(X1,X2) & green(X0,X1)) => goal)),
+  file('./p/GRA014+1.tptp',unknown)).
+fof(f34,plain,(
+  spl0_1 | spl0_2),
+  inference(avatar_split_clause,[],[f17,f31,f28])).
+fof(f17,plain,(
+  ( ! [X2,X0,X1] : (goal | ~red(X0,X2) | ~red(X1,X2) | ~red(X0,X1)) )),
+  inference(cnf_transformation,[],[f10])).
+fof(f10,plain,(
+  ! [X0,X1,X2] : (goal | ~red(X0,X2) | ~red(X1,X2) | ~red(X0,X1))),
+  inference(flattening,[],[f9])).
+fof(f9,plain,(
+  ! [X0,X1,X2] : (goal | (~red(X0,X2) | ~red(X1,X2) | ~red(X0,X1)))),
+  inference(ennf_transformation,[],[f1])).
+fof(f1,axiom,(
+  ! [X0,X1,X2] : ((red(X0,X2) & red(X1,X2) & red(X0,X1)) => goal)),
+  file('./p/GRA014+1.tptp',unknown)).
+% SZS output end Proof for GRA014+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5117
+% Time elapsed: 0.005 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,27 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SWV799-1
+% SZS output start Proof for SWV799-1
+fof(f676,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f603,f638])).
+fof(f638,plain,(
+  ( ! [X4,X0,X21] : (~c_in(c_Message_Omsg_OCrypt(X21,X0),c_Message_Oparts(c_Event_Oknows(X4,c_List_Olist_ONil(tc_Event_Oevent))),tc_Message_Omsg)) )),
+  inference(definition_unfolding,[],[f416,f424])).
+fof(f424,axiom,(
+  ( ! [X2] : (c_Event_OinitState(X2) = c_Event_Oknows(X2,c_List_Olist_ONil(tc_Event_Oevent))) )),
+  file('./p/SWV799-1.tptp',unknown)).
+fof(f416,axiom,(
+  ( ! [X4,X0,X21] : (~c_in(c_Message_Omsg_OCrypt(X21,X0),c_Message_Oparts(c_Event_OinitState(X4)),tc_Message_Omsg)) )),
+  file('./p/SWV799-1.tptp',unknown)).
+fof(f603,axiom,(
+  c_in(c_Message_Omsg_OCrypt(hAPP(c_Public_OshrK,v_A),c_Message_Omsg_OMPair(c_Message_Omsg_ONonce(v_NA),c_Message_Omsg_OMPair(c_Message_Omsg_OAgent(v_B),c_Message_Omsg_OMPair(hAPP(c_Message_Omsg_OKey,v_K),v_X)))),c_Message_Oparts(c_Event_Oknows(c_Message_Oagent_OSpy,c_List_Olist_ONil(tc_Event_Oevent))),tc_Message_Omsg)),
+  file('./p/SWV799-1.tptp',unknown)).
+% SZS output end Proof for SWV799-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5756
+% Time elapsed: 0.019 s
+% ------------------------------
+% ------------------------------

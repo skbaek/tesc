@@ -1,0 +1,282 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SEU192+1
+% SZS output start Proof for SEU192+1
+fof(f2239,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f156,f157,f158,f2222,f2237,f2238])).
+fof(f2238,plain,(
+  spl13_3 | ~spl13_1),
+  inference(avatar_split_clause,[],[f2233,f145,f153])).
+fof(f153,plain,(
+  spl13_3 <=> in(sK10,relation_dom(sK12))),
+  introduced(avatar_definition,[new_symbols(naming,[spl13_3])])).
+fof(f145,plain,(
+  spl13_1 <=> in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl13_1])])).
+fof(f2233,plain,(
+  in(sK10,relation_dom(sK12)) | ~spl13_1),
+  inference(subsumption_resolution,[],[f2226,f108])).
+fof(f108,plain,(
+  relation(sK12)),
+  inference(cnf_transformation,[],[f72])).
+fof(f72,plain,(
+  (~in(sK10,relation_dom(sK12)) | ~in(sK10,sK11) | ~in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))) & ((in(sK10,relation_dom(sK12)) & in(sK10,sK11)) | in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))) & relation(sK12)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK10,sK11,sK12])],[f70,f71])).
+fof(f71,plain,(
+  ? [X0,X1,X2] : ((~in(X0,relation_dom(X2)) | ~in(X0,X1) | ~in(X0,relation_dom(relation_dom_restriction(X2,X1)))) & ((in(X0,relation_dom(X2)) & in(X0,X1)) | in(X0,relation_dom(relation_dom_restriction(X2,X1)))) & relation(X2)) => ((~in(sK10,relation_dom(sK12)) | ~in(sK10,sK11) | ~in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))) & ((in(sK10,relation_dom(sK12)) & in(sK10,sK11)) | in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))) & relation(sK12))),
+  introduced(choice_axiom,[])).
+fof(f70,plain,(
+  ? [X0,X1,X2] : ((~in(X0,relation_dom(X2)) | ~in(X0,X1) | ~in(X0,relation_dom(relation_dom_restriction(X2,X1)))) & ((in(X0,relation_dom(X2)) & in(X0,X1)) | in(X0,relation_dom(relation_dom_restriction(X2,X1)))) & relation(X2))),
+  inference(flattening,[],[f69])).
+fof(f69,plain,(
+  ? [X0,X1,X2] : ((((~in(X0,relation_dom(X2)) | ~in(X0,X1)) | ~in(X0,relation_dom(relation_dom_restriction(X2,X1)))) & ((in(X0,relation_dom(X2)) & in(X0,X1)) | in(X0,relation_dom(relation_dom_restriction(X2,X1))))) & relation(X2))),
+  inference(nnf_transformation,[],[f46])).
+fof(f46,plain,(
+  ? [X0,X1,X2] : ((in(X0,relation_dom(relation_dom_restriction(X2,X1))) <~> (in(X0,relation_dom(X2)) & in(X0,X1))) & relation(X2))),
+  inference(ennf_transformation,[],[f31])).
+fof(f31,negated_conjecture,(
+  ~! [X0,X1,X2] : (relation(X2) => (in(X0,relation_dom(relation_dom_restriction(X2,X1))) <=> (in(X0,relation_dom(X2)) & in(X0,X1))))),
+  inference(negated_conjecture,[],[f30])).
+fof(f30,conjecture,(
+  ! [X0,X1,X2] : (relation(X2) => (in(X0,relation_dom(relation_dom_restriction(X2,X1))) <=> (in(X0,relation_dom(X2)) & in(X0,X1))))),
+  file('./p/SEU192+1.tptp',unknown)).
+fof(f2226,plain,(
+  ~relation(sK12) | in(sK10,relation_dom(sK12)) | ~spl13_1),
+  inference(resolution,[],[f146,f484])).
+fof(f484,plain,(
+  ( ! [X10,X8,X9] : (~in(X9,relation_dom(relation_dom_restriction(X8,X10))) | ~relation(X8) | in(X9,relation_dom(X8))) )),
+  inference(duplicate_literal_removal,[],[f471])).
+fof(f471,plain,(
+  ( ! [X10,X8,X9] : (~relation(X8) | ~in(X9,relation_dom(relation_dom_restriction(X8,X10))) | in(X9,relation_dom(X8)) | ~relation(X8)) )),
+  inference(resolution,[],[f223,f141])).
+fof(f141,plain,(
+  ( ! [X6,X0,X5] : (~in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),X0) | in(X5,relation_dom(X0)) | ~relation(X0)) )),
+  inference(forward_demodulation,[],[f127,f75])).
+fof(f75,plain,(
+  ( ! [X0,X1] : (unordered_pair(X0,X1) = unordered_pair(X1,X0)) )),
+  inference(cnf_transformation,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1] : unordered_pair(X0,X1) = unordered_pair(X1,X0)),
+  file('./p/SEU192+1.tptp',unknown)).
+fof(f127,plain,(
+  ( ! [X6,X0,X5] : (in(X5,relation_dom(X0)) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X0) | ~relation(X0)) )),
+  inference(equality_resolution,[],[f121])).
+fof(f121,plain,(
+  ( ! [X6,X0,X5,X1] : (in(X5,X1) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X0) | relation_dom(X0) != X1 | ~relation(X0)) )),
+  inference(definition_unfolding,[],[f83,f86])).
+fof(f86,plain,(
+  ( ! [X0,X1] : (ordered_pair(X0,X1) = unordered_pair(unordered_pair(X0,X1),singleton(X0))) )),
+  inference(cnf_transformation,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X1] : ordered_pair(X0,X1) = unordered_pair(unordered_pair(X0,X1),singleton(X0))),
+  file('./p/SEU192+1.tptp',unknown)).
+fof(f83,plain,(
+  ( ! [X6,X0,X5,X1] : (in(X5,X1) | ~in(ordered_pair(X5,X6),X0) | relation_dom(X0) != X1 | ~relation(X0)) )),
+  inference(cnf_transformation,[],[f58])).
+fof(f58,plain,(
+  ! [X0] : (! [X1] : ((relation_dom(X0) = X1 | ((! [X3] : ~in(ordered_pair(sK2(X0,X1),X3),X0) | ~in(sK2(X0,X1),X1)) & (in(ordered_pair(sK2(X0,X1),sK3(X0,X1)),X0) | in(sK2(X0,X1),X1)))) & (! [X5] : ((in(X5,X1) | ! [X6] : ~in(ordered_pair(X5,X6),X0)) & (in(ordered_pair(X5,sK4(X0,X5)),X0) | ~in(X5,X1))) | relation_dom(X0) != X1)) | ~relation(X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2,sK3,sK4])],[f54,f57,f56,f55])).
+fof(f55,plain,(
+  ! [X1,X0] : (? [X2] : ((! [X3] : ~in(ordered_pair(X2,X3),X0) | ~in(X2,X1)) & (? [X4] : in(ordered_pair(X2,X4),X0) | in(X2,X1))) => ((! [X3] : ~in(ordered_pair(sK2(X0,X1),X3),X0) | ~in(sK2(X0,X1),X1)) & (? [X4] : in(ordered_pair(sK2(X0,X1),X4),X0) | in(sK2(X0,X1),X1))))),
+  introduced(choice_axiom,[])).
+fof(f56,plain,(
+  ! [X1,X0] : (? [X4] : in(ordered_pair(sK2(X0,X1),X4),X0) => in(ordered_pair(sK2(X0,X1),sK3(X0,X1)),X0))),
+  introduced(choice_axiom,[])).
+fof(f57,plain,(
+  ! [X5,X0] : (? [X7] : in(ordered_pair(X5,X7),X0) => in(ordered_pair(X5,sK4(X0,X5)),X0))),
+  introduced(choice_axiom,[])).
+fof(f54,plain,(
+  ! [X0] : (! [X1] : ((relation_dom(X0) = X1 | ? [X2] : ((! [X3] : ~in(ordered_pair(X2,X3),X0) | ~in(X2,X1)) & (? [X4] : in(ordered_pair(X2,X4),X0) | in(X2,X1)))) & (! [X5] : ((in(X5,X1) | ! [X6] : ~in(ordered_pair(X5,X6),X0)) & (? [X7] : in(ordered_pair(X5,X7),X0) | ~in(X5,X1))) | relation_dom(X0) != X1)) | ~relation(X0))),
+  inference(rectify,[],[f53])).
+fof(f53,plain,(
+  ! [X0] : (! [X1] : ((relation_dom(X0) = X1 | ? [X2] : ((! [X3] : ~in(ordered_pair(X2,X3),X0) | ~in(X2,X1)) & (? [X3] : in(ordered_pair(X2,X3),X0) | in(X2,X1)))) & (! [X2] : ((in(X2,X1) | ! [X3] : ~in(ordered_pair(X2,X3),X0)) & (? [X3] : in(ordered_pair(X2,X3),X0) | ~in(X2,X1))) | relation_dom(X0) != X1)) | ~relation(X0))),
+  inference(nnf_transformation,[],[f36])).
+fof(f36,plain,(
+  ! [X0] : (! [X1] : (relation_dom(X0) = X1 <=> ! [X2] : (in(X2,X1) <=> ? [X3] : in(ordered_pair(X2,X3),X0))) | ~relation(X0))),
+  inference(ennf_transformation,[],[f5])).
+fof(f5,axiom,(
+  ! [X0] : (relation(X0) => ! [X1] : (relation_dom(X0) = X1 <=> ! [X2] : (in(X2,X1) <=> ? [X3] : in(ordered_pair(X2,X3),X0))))),
+  file('./p/SEU192+1.tptp',unknown)).
+fof(f223,plain,(
+  ( ! [X2,X0,X1] : (in(unordered_pair(singleton(X0),unordered_pair(X0,sK4(relation_dom_restriction(X1,X2),X0))),X1) | ~relation(X1) | ~in(X0,relation_dom(relation_dom_restriction(X1,X2)))) )),
+  inference(subsumption_resolution,[],[f222,f87])).
+fof(f87,plain,(
+  ( ! [X0,X1] : (relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(cnf_transformation,[],[f37])).
+fof(f37,plain,(
+  ! [X0,X1] : (relation(relation_dom_restriction(X0,X1)) | ~relation(X0))),
+  inference(ennf_transformation,[],[f12])).
+fof(f12,axiom,(
+  ! [X0,X1] : (relation(X0) => relation(relation_dom_restriction(X0,X1)))),
+  file('./p/SEU192+1.tptp',unknown)).
+fof(f222,plain,(
+  ( ! [X2,X0,X1] : (in(unordered_pair(singleton(X0),unordered_pair(X0,sK4(relation_dom_restriction(X1,X2),X0))),X1) | ~relation(relation_dom_restriction(X1,X2)) | ~relation(X1) | ~in(X0,relation_dom(relation_dom_restriction(X1,X2)))) )),
+  inference(duplicate_literal_removal,[],[f219])).
+fof(f219,plain,(
+  ( ! [X2,X0,X1] : (in(unordered_pair(singleton(X0),unordered_pair(X0,sK4(relation_dom_restriction(X1,X2),X0))),X1) | ~relation(relation_dom_restriction(X1,X2)) | ~relation(X1) | ~in(X0,relation_dom(relation_dom_restriction(X1,X2))) | ~relation(relation_dom_restriction(X1,X2))) )),
+  inference(resolution,[],[f137,f142])).
+fof(f142,plain,(
+  ( ! [X0,X5] : (in(unordered_pair(singleton(X5),unordered_pair(X5,sK4(X0,X5))),X0) | ~in(X5,relation_dom(X0)) | ~relation(X0)) )),
+  inference(forward_demodulation,[],[f128,f75])).
+fof(f128,plain,(
+  ( ! [X0,X5] : (in(unordered_pair(unordered_pair(X5,sK4(X0,X5)),singleton(X5)),X0) | ~in(X5,relation_dom(X0)) | ~relation(X0)) )),
+  inference(equality_resolution,[],[f122])).
+fof(f122,plain,(
+  ( ! [X0,X5,X1] : (in(unordered_pair(unordered_pair(X5,sK4(X0,X5)),singleton(X5)),X0) | ~in(X5,X1) | relation_dom(X0) != X1 | ~relation(X0)) )),
+  inference(definition_unfolding,[],[f82,f86])).
+fof(f82,plain,(
+  ( ! [X0,X5,X1] : (in(ordered_pair(X5,sK4(X0,X5)),X0) | ~in(X5,X1) | relation_dom(X0) != X1 | ~relation(X0)) )),
+  inference(cnf_transformation,[],[f58])).
+fof(f137,plain,(
+  ( ! [X6,X0,X5,X1] : (~in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),relation_dom_restriction(X0,X1)) | in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),X0) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(forward_demodulation,[],[f136,f75])).
+fof(f136,plain,(
+  ( ! [X6,X0,X5,X1] : (in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),X0) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),relation_dom_restriction(X0,X1)) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(forward_demodulation,[],[f125,f75])).
+fof(f125,plain,(
+  ( ! [X6,X0,X5,X1] : (in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X0) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),relation_dom_restriction(X0,X1)) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(equality_resolution,[],[f117])).
+fof(f117,plain,(
+  ( ! [X6,X2,X0,X5,X1] : (in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X0) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X2) | relation_dom_restriction(X0,X1) != X2 | ~relation(X2) | ~relation(X0)) )),
+  inference(definition_unfolding,[],[f77,f86,f86])).
+fof(f77,plain,(
+  ( ! [X6,X2,X0,X5,X1] : (in(ordered_pair(X5,X6),X0) | ~in(ordered_pair(X5,X6),X2) | relation_dom_restriction(X0,X1) != X2 | ~relation(X2) | ~relation(X0)) )),
+  inference(cnf_transformation,[],[f52])).
+fof(f52,plain,(
+  ! [X0] : (! [X1,X2] : (((relation_dom_restriction(X0,X1) = X2 | ((~in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X0) | ~in(sK0(X0,X1,X2),X1) | ~in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X2)) & ((in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X0) & in(sK0(X0,X1,X2),X1)) | in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X2)))) & (! [X5,X6] : ((in(ordered_pair(X5,X6),X2) | ~in(ordered_pair(X5,X6),X0) | ~in(X5,X1)) & ((in(ordered_pair(X5,X6),X0) & in(X5,X1)) | ~in(ordered_pair(X5,X6),X2))) | relation_dom_restriction(X0,X1) != X2)) | ~relation(X2)) | ~relation(X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1])],[f50,f51])).
+fof(f51,plain,(
+  ! [X2,X1,X0] : (? [X3,X4] : ((~in(ordered_pair(X3,X4),X0) | ~in(X3,X1) | ~in(ordered_pair(X3,X4),X2)) & ((in(ordered_pair(X3,X4),X0) & in(X3,X1)) | in(ordered_pair(X3,X4),X2))) => ((~in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X0) | ~in(sK0(X0,X1,X2),X1) | ~in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X2)) & ((in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X0) & in(sK0(X0,X1,X2),X1)) | in(ordered_pair(sK0(X0,X1,X2),sK1(X0,X1,X2)),X2))))),
+  introduced(choice_axiom,[])).
+fof(f50,plain,(
+  ! [X0] : (! [X1,X2] : (((relation_dom_restriction(X0,X1) = X2 | ? [X3,X4] : ((~in(ordered_pair(X3,X4),X0) | ~in(X3,X1) | ~in(ordered_pair(X3,X4),X2)) & ((in(ordered_pair(X3,X4),X0) & in(X3,X1)) | in(ordered_pair(X3,X4),X2)))) & (! [X5,X6] : ((in(ordered_pair(X5,X6),X2) | ~in(ordered_pair(X5,X6),X0) | ~in(X5,X1)) & ((in(ordered_pair(X5,X6),X0) & in(X5,X1)) | ~in(ordered_pair(X5,X6),X2))) | relation_dom_restriction(X0,X1) != X2)) | ~relation(X2)) | ~relation(X0))),
+  inference(rectify,[],[f49])).
+fof(f49,plain,(
+  ! [X0] : (! [X1,X2] : (((relation_dom_restriction(X0,X1) = X2 | ? [X3,X4] : ((~in(ordered_pair(X3,X4),X0) | ~in(X3,X1) | ~in(ordered_pair(X3,X4),X2)) & ((in(ordered_pair(X3,X4),X0) & in(X3,X1)) | in(ordered_pair(X3,X4),X2)))) & (! [X3,X4] : ((in(ordered_pair(X3,X4),X2) | ~in(ordered_pair(X3,X4),X0) | ~in(X3,X1)) & ((in(ordered_pair(X3,X4),X0) & in(X3,X1)) | ~in(ordered_pair(X3,X4),X2))) | relation_dom_restriction(X0,X1) != X2)) | ~relation(X2)) | ~relation(X0))),
+  inference(flattening,[],[f48])).
+fof(f48,plain,(
+  ! [X0] : (! [X1,X2] : (((relation_dom_restriction(X0,X1) = X2 | ? [X3,X4] : (((~in(ordered_pair(X3,X4),X0) | ~in(X3,X1)) | ~in(ordered_pair(X3,X4),X2)) & ((in(ordered_pair(X3,X4),X0) & in(X3,X1)) | in(ordered_pair(X3,X4),X2)))) & (! [X3,X4] : ((in(ordered_pair(X3,X4),X2) | (~in(ordered_pair(X3,X4),X0) | ~in(X3,X1))) & ((in(ordered_pair(X3,X4),X0) & in(X3,X1)) | ~in(ordered_pair(X3,X4),X2))) | relation_dom_restriction(X0,X1) != X2)) | ~relation(X2)) | ~relation(X0))),
+  inference(nnf_transformation,[],[f35])).
+fof(f35,plain,(
+  ! [X0] : (! [X1,X2] : ((relation_dom_restriction(X0,X1) = X2 <=> ! [X3,X4] : (in(ordered_pair(X3,X4),X2) <=> (in(ordered_pair(X3,X4),X0) & in(X3,X1)))) | ~relation(X2)) | ~relation(X0))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0] : (relation(X0) => ! [X1,X2] : (relation(X2) => (relation_dom_restriction(X0,X1) = X2 <=> ! [X3,X4] : (in(ordered_pair(X3,X4),X2) <=> (in(ordered_pair(X3,X4),X0) & in(X3,X1))))))),
+  file('./p/SEU192+1.tptp',unknown)).
+fof(f146,plain,(
+  in(sK10,relation_dom(relation_dom_restriction(sK12,sK11))) | ~spl13_1),
+  inference(avatar_component_clause,[],[f145])).
+fof(f2237,plain,(
+  spl13_2 | ~spl13_1),
+  inference(avatar_split_clause,[],[f2236,f145,f149])).
+fof(f149,plain,(
+  spl13_2 <=> in(sK10,sK11)),
+  introduced(avatar_definition,[new_symbols(naming,[spl13_2])])).
+fof(f2236,plain,(
+  in(sK10,sK11) | ~spl13_1),
+  inference(subsumption_resolution,[],[f2228,f108])).
+fof(f2228,plain,(
+  ~relation(sK12) | in(sK10,sK11) | ~spl13_1),
+  inference(resolution,[],[f146,f208])).
+fof(f208,plain,(
+  ( ! [X2,X0,X1] : (~in(X0,relation_dom(relation_dom_restriction(X2,X1))) | ~relation(X2) | in(X0,X1)) )),
+  inference(subsumption_resolution,[],[f207,f87])).
+fof(f207,plain,(
+  ( ! [X2,X0,X1] : (in(X0,X1) | ~relation(relation_dom_restriction(X2,X1)) | ~relation(X2) | ~in(X0,relation_dom(relation_dom_restriction(X2,X1)))) )),
+  inference(duplicate_literal_removal,[],[f204])).
+fof(f204,plain,(
+  ( ! [X2,X0,X1] : (in(X0,X1) | ~relation(relation_dom_restriction(X2,X1)) | ~relation(X2) | ~in(X0,relation_dom(relation_dom_restriction(X2,X1))) | ~relation(relation_dom_restriction(X2,X1))) )),
+  inference(resolution,[],[f138,f142])).
+fof(f138,plain,(
+  ( ! [X6,X0,X5,X1] : (~in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),relation_dom_restriction(X0,X1)) | in(X5,X1) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(forward_demodulation,[],[f126,f75])).
+fof(f126,plain,(
+  ( ! [X6,X0,X5,X1] : (in(X5,X1) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),relation_dom_restriction(X0,X1)) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(equality_resolution,[],[f118])).
+fof(f118,plain,(
+  ( ! [X6,X2,X0,X5,X1] : (in(X5,X1) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X2) | relation_dom_restriction(X0,X1) != X2 | ~relation(X2) | ~relation(X0)) )),
+  inference(definition_unfolding,[],[f76,f86])).
+fof(f76,plain,(
+  ( ! [X6,X2,X0,X5,X1] : (in(X5,X1) | ~in(ordered_pair(X5,X6),X2) | relation_dom_restriction(X0,X1) != X2 | ~relation(X2) | ~relation(X0)) )),
+  inference(cnf_transformation,[],[f52])).
+fof(f2222,plain,(
+  spl13_1 | ~spl13_2 | ~spl13_3),
+  inference(avatar_contradiction_clause,[],[f2221])).
+fof(f2221,plain,(
+  $false | (spl13_1 | ~spl13_2 | ~spl13_3)),
+  inference(subsumption_resolution,[],[f2220,f154])).
+fof(f154,plain,(
+  in(sK10,relation_dom(sK12)) | ~spl13_3),
+  inference(avatar_component_clause,[],[f153])).
+fof(f2220,plain,(
+  ~in(sK10,relation_dom(sK12)) | (spl13_1 | ~spl13_2)),
+  inference(subsumption_resolution,[],[f2219,f150])).
+fof(f150,plain,(
+  in(sK10,sK11) | ~spl13_2),
+  inference(avatar_component_clause,[],[f149])).
+fof(f2219,plain,(
+  ~in(sK10,sK11) | ~in(sK10,relation_dom(sK12)) | spl13_1),
+  inference(subsumption_resolution,[],[f2209,f108])).
+fof(f2209,plain,(
+  ~relation(sK12) | ~in(sK10,sK11) | ~in(sK10,relation_dom(sK12)) | spl13_1),
+  inference(resolution,[],[f462,f147])).
+fof(f147,plain,(
+  ~in(sK10,relation_dom(relation_dom_restriction(sK12,sK11))) | spl13_1),
+  inference(avatar_component_clause,[],[f145])).
+fof(f462,plain,(
+  ( ! [X8,X7,X9] : (in(X7,relation_dom(relation_dom_restriction(X9,X8))) | ~relation(X9) | ~in(X7,X8) | ~in(X7,relation_dom(X9))) )),
+  inference(duplicate_literal_removal,[],[f453])).
+fof(f453,plain,(
+  ( ! [X8,X7,X9] : (~in(X7,X8) | ~relation(X9) | in(X7,relation_dom(relation_dom_restriction(X9,X8))) | ~in(X7,relation_dom(X9)) | ~relation(X9)) )),
+  inference(resolution,[],[f261,f142])).
+fof(f261,plain,(
+  ( ! [X10,X8,X11,X9] : (~in(unordered_pair(singleton(X8),unordered_pair(X8,X9)),X10) | ~in(X8,X11) | ~relation(X10) | in(X8,relation_dom(relation_dom_restriction(X10,X11)))) )),
+  inference(subsumption_resolution,[],[f258,f87])).
+fof(f258,plain,(
+  ( ! [X10,X8,X11,X9] : (~in(unordered_pair(singleton(X8),unordered_pair(X8,X9)),X10) | ~in(X8,X11) | ~relation(relation_dom_restriction(X10,X11)) | ~relation(X10) | in(X8,relation_dom(relation_dom_restriction(X10,X11)))) )),
+  inference(duplicate_literal_removal,[],[f250])).
+fof(f250,plain,(
+  ( ! [X10,X8,X11,X9] : (~in(unordered_pair(singleton(X8),unordered_pair(X8,X9)),X10) | ~in(X8,X11) | ~relation(relation_dom_restriction(X10,X11)) | ~relation(X10) | in(X8,relation_dom(relation_dom_restriction(X10,X11))) | ~relation(relation_dom_restriction(X10,X11))) )),
+  inference(resolution,[],[f135,f141])).
+fof(f135,plain,(
+  ( ! [X6,X0,X5,X1] : (in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),relation_dom_restriction(X0,X1)) | ~in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),X0) | ~in(X5,X1) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(forward_demodulation,[],[f134,f75])).
+fof(f134,plain,(
+  ( ! [X6,X0,X5,X1] : (in(unordered_pair(singleton(X5),unordered_pair(X5,X6)),relation_dom_restriction(X0,X1)) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X0) | ~in(X5,X1) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(forward_demodulation,[],[f124,f75])).
+fof(f124,plain,(
+  ( ! [X6,X0,X5,X1] : (in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),relation_dom_restriction(X0,X1)) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X0) | ~in(X5,X1) | ~relation(relation_dom_restriction(X0,X1)) | ~relation(X0)) )),
+  inference(equality_resolution,[],[f116])).
+fof(f116,plain,(
+  ( ! [X6,X2,X0,X5,X1] : (in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X2) | ~in(unordered_pair(unordered_pair(X5,X6),singleton(X5)),X0) | ~in(X5,X1) | relation_dom_restriction(X0,X1) != X2 | ~relation(X2) | ~relation(X0)) )),
+  inference(definition_unfolding,[],[f78,f86,f86])).
+fof(f78,plain,(
+  ( ! [X6,X2,X0,X5,X1] : (in(ordered_pair(X5,X6),X2) | ~in(ordered_pair(X5,X6),X0) | ~in(X5,X1) | relation_dom_restriction(X0,X1) != X2 | ~relation(X2) | ~relation(X0)) )),
+  inference(cnf_transformation,[],[f52])).
+fof(f158,plain,(
+  spl13_1 | spl13_2),
+  inference(avatar_split_clause,[],[f109,f149,f145])).
+fof(f109,plain,(
+  in(sK10,sK11) | in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))),
+  inference(cnf_transformation,[],[f72])).
+fof(f157,plain,(
+  spl13_1 | spl13_3),
+  inference(avatar_split_clause,[],[f110,f153,f145])).
+fof(f110,plain,(
+  in(sK10,relation_dom(sK12)) | in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))),
+  inference(cnf_transformation,[],[f72])).
+fof(f156,plain,(
+  ~spl13_1 | ~spl13_2 | ~spl13_3),
+  inference(avatar_split_clause,[],[f111,f153,f149,f145])).
+fof(f111,plain,(
+  ~in(sK10,relation_dom(sK12)) | ~in(sK10,sK11) | ~in(sK10,relation_dom(relation_dom_restriction(sK12,sK11)))),
+  inference(cnf_transformation,[],[f72])).
+% SZS output end Proof for SEU192+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 7036
+% Time elapsed: 0.042 s
+% ------------------------------
+% ------------------------------

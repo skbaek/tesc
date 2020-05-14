@@ -1,0 +1,60 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for CSR041+3
+% SZS output start Proof for CSR041+3
+fof(f40096,plain,(
+  $false),
+  inference(resolution,[],[f24406,f31380])).
+fof(f31380,plain,(
+  ( ! [X2,X3] : (aspatialthing(f_contentmtofcdafromeventfn(X2,X3))) )),
+  inference(resolution,[],[f29121,f18497])).
+fof(f18497,plain,(
+  ( ! [X0] : (~aspatialinformationstore(X0) | aspatialthing(X0)) )),
+  inference(cnf_transformation,[],[f13012])).
+fof(f13012,plain,(
+  ! [X0] : (aspatialthing(X0) | ~aspatialinformationstore(X0))),
+  inference(ennf_transformation,[],[f1406])).
+fof(f1406,axiom,(
+  ! [X0] : (aspatialinformationstore(X0) => aspatialthing(X0))),
+  file('./p/CSR041+3.tptp',unknown)).
+fof(f29121,plain,(
+  ( ! [X0,X1] : (aspatialinformationstore(f_contentmtofcdafromeventfn(X0,X1))) )),
+  inference(resolution,[],[f24372,f20256])).
+fof(f20256,plain,(
+  ( ! [X0] : (~microtheory(X0) | aspatialinformationstore(X0)) )),
+  inference(cnf_transformation,[],[f13729])).
+fof(f13729,plain,(
+  ! [X0] : (aspatialinformationstore(X0) | ~microtheory(X0))),
+  inference(ennf_transformation,[],[f3192])).
+fof(f3192,axiom,(
+  ! [X0] : (microtheory(X0) => aspatialinformationstore(X0))),
+  file('./p/CSR041+3.tptp',unknown)).
+fof(f24372,plain,(
+  ( ! [X0,X1] : (microtheory(f_contentmtofcdafromeventfn(X0,X1))) )),
+  inference(cnf_transformation,[],[f11691])).
+fof(f11691,plain,(
+  ! [X0,X1] : microtheory(f_contentmtofcdafromeventfn(X0,X1))),
+  inference(rectify,[],[f7969])).
+fof(f7969,axiom,(
+  ! [X2,X3] : microtheory(f_contentmtofcdafromeventfn(X2,X3))),
+  file('./p/CSR041+3.tptp',unknown)).
+fof(f24406,plain,(
+  ~aspatialthing(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwinformationblastcomtechnical_university_of_munichhtml)),c_translation_3))),
+  inference(cnf_transformation,[],[f17118])).
+fof(f17118,plain,(
+  ~aspatialthing(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwinformationblastcomtechnical_university_of_munichhtml)),c_translation_3)) & mtvisible(c_tptp_member2831_mt)),
+  inference(ennf_transformation,[],[f8007])).
+fof(f8007,negated_conjecture,(
+  ~(mtvisible(c_tptp_member2831_mt) => aspatialthing(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwinformationblastcomtechnical_university_of_munichhtml)),c_translation_3)))),
+  inference(negated_conjecture,[],[f8006])).
+fof(f8006,conjecture,(
+  mtvisible(c_tptp_member2831_mt) => aspatialthing(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwinformationblastcomtechnical_university_of_munichhtml)),c_translation_3))),
+  file('./p/CSR041+3.tptp',unknown)).
+% SZS output end Proof for CSR041+3
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 21236
+% Time elapsed: 0.147 s
+% ------------------------------
+% ------------------------------

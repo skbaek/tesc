@@ -1,0 +1,45 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for CSR051-10
+% SZS output start Proof for CSR051-10
+fof(f8028,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f8027,f8012])).
+fof(f8012,axiom,(
+  a != b),
+  file('./p/CSR051-10.tptp',unknown)).
+fof(f8027,plain,(
+  a = b),
+  inference(forward_demodulation,[],[f8026,f2])).
+fof(f2,axiom,(
+  ( ! [X2,X0,X1] : (ifeq3(X0,X0,X1,X2) = X1) )),
+  file('./p/CSR051-10.tptp',unknown)).
+fof(f8026,plain,(
+  b = ifeq3(true,true,a,b)),
+  inference(superposition,[],[f8011,f8023])).
+fof(f8023,plain,(
+  true = marriagelicensedocument(c_tptpmarriagelicensedocument)),
+  inference(superposition,[],[f8022,f1])).
+fof(f1,axiom,(
+  ( ! [X2,X0,X1] : (ifeq4(X0,X0,X1,X2) = X1) )),
+  file('./p/CSR051-10.tptp',unknown)).
+fof(f8022,plain,(
+  true = ifeq4(true,true,marriagelicensedocument(c_tptpmarriagelicensedocument),true)),
+  inference(backward_demodulation,[],[f7936,f398])).
+fof(f398,axiom,(
+  true = ifeq4(mtvisible(c_tptp_member3356_mt),true,marriagelicensedocument(c_tptpmarriagelicensedocument),true)),
+  file('./p/CSR051-10.tptp',unknown)).
+fof(f7936,axiom,(
+  true = mtvisible(c_tptp_member3356_mt)),
+  file('./p/CSR051-10.tptp',unknown)).
+fof(f8011,axiom,(
+  ( ! [X17] : (b = ifeq3(marriagelicensedocument(X17),true,a,b)) )),
+  file('./p/CSR051-10.tptp',unknown)).
+% SZS output end Proof for CSR051-10
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 20980
+% Time elapsed: 0.161 s
+% ------------------------------
+% ------------------------------

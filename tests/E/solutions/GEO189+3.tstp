@@ -1,0 +1,276 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_51, negated_conjecture, (distinct_points(esk1_0,esk2_0))).
+#
+#cnf(i_0_50, negated_conjecture, (distinct_points(esk1_0,esk3_0))).
+#
+#cnf(i_0_49, negated_conjecture, (distinct_points(esk2_0,esk3_0))).
+#
+#cnf(i_0_1, plain, (~distinct_points(X1,X1))).
+#
+#cnf(i_0_15, plain, (convergent_lines(X1,X2)|~distinct_lines(X1,X2))).
+#
+#cnf(i_0_37, plain, (equal_points(X1,X2)|distinct_points(X1,X2))).
+#
+#cnf(i_0_39, plain, (equal_lines(X1,X2)|distinct_lines(X1,X2))).
+#
+#cnf(i_0_2, plain, (~distinct_lines(X1,X1))).
+#
+#cnf(i_0_19, plain, (unorthogonal_lines(X1,X2)|convergent_lines(X1,X2))).
+##
+#cnf(i_0_41, plain, (parallel_lines(X1,X2)|convergent_lines(X1,X2))).
+#
+#cnf(i_0_3, plain, (~convergent_lines(X1,X1))).
+#
+#cnf(i_0_43, plain, (incident_point_and_line(X1,X2)|apart_point_and_line(X1,X2))).
+#
+#cnf(i_0_45, plain, (orthogonal_lines(X1,X2)|unorthogonal_lines(X1,X2))).
+#
+#cnf(i_0_48, negated_conjecture, (incident_point_and_line(esk3_0,line_connecting(esk1_0,esk2_0)))).
+##
+#cnf(i_0_35, plain, (line(parallel_through_point(X1,X2))|~line(X1)|~point(X2))).
+#
+#cnf(i_0_36, plain, (line(orthogonal_through_point(X1,X2))|~line(X1)|~point(X2))).
+#
+#cnf(i_0_4, plain, (distinct_points(X2,X3)|distinct_points(X1,X3)|~distinct_points(X1,X2))).
+#
+#cnf(i_0_17, plain, (~apart_point_and_line(X1,parallel_through_point(X2,X1)))).
+#
+#cnf(i_0_60, plain, (incident_point_and_line(X1,parallel_through_point(X2,X1)))).
+###
+#cnf(i_0_25, plain, (~apart_point_and_line(X1,orthogonal_through_point(X2,X1)))).
+#
+#cnf(i_0_61, plain, (incident_point_and_line(X1,orthogonal_through_point(X2,X1)))).
+#
+#cnf(i_0_55, plain, (distinct_points(X2,X1)|~distinct_points(X1,X2))).
+#
+#cnf(i_0_64, negated_conjecture, (distinct_points(esk2_0,esk1_0))).
+#
+#cnf(i_0_16, plain, (~convergent_lines(parallel_through_point(X1,X2),X1))).
+#
+#cnf(i_0_59, negated_conjecture, (distinct_points(esk2_0,X1)|distinct_points(esk1_0,X1))).
+#
+#cnf(i_0_70, negated_conjecture, (distinct_points(X1,esk1_0)|distinct_points(esk2_0,X1))).
+#
+#cnf(i_0_72, negated_conjecture, (distinct_points(X1,esk2_0)|distinct_points(X1,esk1_0))).
+#
+#cnf(i_0_24, plain, (~unorthogonal_lines(orthogonal_through_point(X1,X2),X1))).
+#
+#cnf(i_0_79, plain, (convergent_lines(orthogonal_through_point(X1,X2),X1))).
+##
+#cnf(i_0_78, negated_conjecture, (distinct_points(esk1_0,X1)|distinct_points(X1,esk2_0))).
+#
+#cnf(i_0_67, plain, (~distinct_lines(parallel_through_point(X1,X2),X1))).
+###
+#cnf(i_0_12, plain, (apart_point_and_line(X3,X2)|distinct_points(X1,X3)|~apart_point_and_line(X1,X2))).
+#
+#cnf(i_0_38, plain, (~equal_points(X1,X2)|~distinct_points(X1,X2))).
+#
+#cnf(i_0_88, plain, (distinct_points(X3,X1)|~apart_point_and_line(X3,orthogonal_through_point(X2,X1)))).
+#
+#cnf(i_0_89, plain, (distinct_points(X3,X1)|~apart_point_and_line(X3,parallel_through_point(X2,X1)))).
+#
+#cnf(i_0_93, plain, (incident_point_and_line(X1,orthogonal_through_point(X3,X2))|distinct_points(X1,X2))).
+#
+#cnf(i_0_40, plain, (~equal_lines(X1,X2)|~distinct_lines(X1,X2))).
+#
+#cnf(i_0_95, plain, (incident_point_and_line(X1,parallel_through_point(X3,X2))|distinct_points(X1,X2))).
+#
+#cnf(i_0_5, plain, (distinct_lines(X2,X3)|distinct_lines(X1,X3)|~distinct_lines(X1,X2))).
+##
+#cnf(i_0_42, plain, (~parallel_lines(X1,X2)|~convergent_lines(X1,X2))).
+##
+#cnf(i_0_101, plain, (distinct_lines(X2,X1)|~distinct_lines(X1,X2))).
+#
+#cnf(i_0_100, plain, (distinct_lines(X3,X1)|~distinct_lines(parallel_through_point(X1,X2),X3))).
+#
+#cnf(i_0_107, plain, (~distinct_lines(X1,parallel_through_point(X1,X2)))).
+#
+#cnf(i_0_103, plain, (distinct_lines(X3,X1)|~distinct_lines(X3,parallel_through_point(X1,X2)))).
+###
+#cnf(i_0_44, plain, (~incident_point_and_line(X1,X2)|~apart_point_and_line(X1,X2))).
+#
+#cnf(i_0_115, plain, (distinct_lines(X3,parallel_through_point(X1,X2))|~distinct_lines(X3,X1))).
+#
+#cnf(i_0_116, plain, (distinct_lines(X3,parallel_through_point(X1,X2))|~distinct_lines(X1,X3))).
+###
+#cnf(i_0_126, plain, (distinct_lines(parallel_through_point(X1,X2),X3)|~distinct_lines(X3,X1))).
+#
+#cnf(i_0_133, plain, (distinct_lines(parallel_through_point(X1,X2),X3)|~distinct_lines(X1,X3))).
+#####
+#cnf(i_0_121, plain, (distinct_points(X3,X1)|~incident_point_and_line(X1,X2)|~apart_point_and_line(X3,X2))).
+####
+#cnf(i_0_152, plain, (distinct_points(X1,X2)|~incident_point_and_line(X1,X3)|~apart_point_and_line(X2,X3))).
+##
+#cnf(i_0_164, plain, (distinct_points(X1,X2)|~apart_point_and_line(X2,orthogonal_through_point(X3,X1)))).
+#
+#cnf(i_0_166, plain, (distinct_points(X1,X2)|~apart_point_and_line(X2,parallel_through_point(X3,X1)))).
+#
+#cnf(i_0_168, plain, (incident_point_and_line(X2,orthogonal_through_point(X3,X1))|distinct_points(X1,X2))).
+##
+#cnf(i_0_170, plain, (incident_point_and_line(X2,parallel_through_point(X3,X1))|distinct_points(X1,X2))).
+##
+#cnf(i_0_14, plain, (convergent_lines(X1,X3)|distinct_lines(X2,X3)|~convergent_lines(X1,X2))).
+##
+#cnf(i_0_184, plain, (distinct_lines(X2,X1)|~convergent_lines(X1,X2))).
+#
+#cnf(i_0_188, plain, (distinct_lines(X1,orthogonal_through_point(X1,X2)))).
+###
+#cnf(i_0_176, plain, (convergent_lines(X3,X1)|~convergent_lines(X3,parallel_through_point(X1,X2)))).
+#
+#cnf(i_0_183, plain, (distinct_lines(X3,X1)|~convergent_lines(parallel_through_point(X1,X2),X3))).
+#
+#cnf(i_0_191, plain, (distinct_lines(orthogonal_through_point(parallel_through_point(X1,X2),X3),X1))).
+##
+#cnf(i_0_193, plain, (convergent_lines(orthogonal_through_point(parallel_through_point(X1,X2),X3),X1))).
+#
+#cnf(i_0_194, plain, (convergent_lines(X1,X2)|~distinct_lines(X1,parallel_through_point(X2,X3)))).
+##
+#cnf(i_0_46, plain, (~orthogonal_lines(X1,X2)|~unorthogonal_lines(X1,X2))).
+#
+#cnf(i_0_212, plain, (convergent_lines(X1,X2)|~distinct_lines(X2,X1))).
+##
+#cnf(i_0_200, plain, (distinct_lines(X1,orthogonal_through_point(parallel_through_point(X1,X2),X3)))).
+###
+#cnf(i_0_208, plain, (convergent_lines(X1,X2)|~distinct_lines(parallel_through_point(X2,X3),X1))).
+########
+#cnf(i_0_178, plain, (convergent_lines(X3,parallel_through_point(X1,X2))|~convergent_lines(X3,X1))).
+#
+#cnf(i_0_236, plain, (distinct_lines(parallel_through_point(X1,X2),X3)|~convergent_lines(X3,X1))).
+##
+#cnf(i_0_245, plain, (distinct_lines(X1,X2)|~convergent_lines(X1,X2))).
+#
+#cnf(i_0_248, plain, (distinct_lines(orthogonal_through_point(X1,X2),X1))).
+###
+#cnf(i_0_243, plain, (distinct_lines(X1,parallel_through_point(X2,X3))|~convergent_lines(X1,X2))).
+#####
+#cnf(i_0_186, plain, (convergent_lines(orthogonal_through_point(X1,X2),X3)|distinct_lines(X1,X3))).
+#
+#cnf(i_0_192, plain, (distinct_lines(orthogonal_through_point(X1,X2),X3)|distinct_lines(X1,X3))).
+##
+#cnf(i_0_271, plain, (distinct_lines(X1,parallel_through_point(orthogonal_through_point(X1,X2),X3)))).
+#
+#cnf(i_0_281, plain, (convergent_lines(X1,orthogonal_through_point(X1,X2)))).
+####
+#cnf(i_0_270, plain, (distinct_lines(X1,orthogonal_through_point(X2,X3))|distinct_lines(X2,X1))).
+###
+#cnf(i_0_284, plain, (convergent_lines(X1,X2)|distinct_lines(orthogonal_through_point(X1,X3),X2))).
+#
+#cnf(i_0_292, plain, (convergent_lines(X1,parallel_through_point(orthogonal_through_point(X1,X2),X3)))).
+#
+#cnf(i_0_301, plain, (distinct_lines(parallel_through_point(orthogonal_through_point(X1,X2),X3),X1))).
+#
+#cnf(i_0_47, negated_conjecture, (~incident_point_and_line(esk2_0,line_connecting(esk1_0,esk3_0)))).
+##
+#cnf(i_0_297, plain, (convergent_lines(X2,X1)|distinct_lines(X1,orthogonal_through_point(X2,X3)))).
+##
+#cnf(i_0_122, plain, (~distinct_lines(parallel_through_point(parallel_through_point(X1,X2),X3),X1))).
+#
+#cnf(i_0_13, plain, (apart_point_and_line(X1,X3)|distinct_lines(X2,X3)|~apart_point_and_line(X1,X2))).
+#
+#cnf(i_0_328, plain, (apart_point_and_line(X3,X1)|~apart_point_and_line(X3,parallel_through_point(X1,X2)))).
+#
+#cnf(i_0_331, plain, (apart_point_and_line(X3,parallel_through_point(X1,X2))|~apart_point_and_line(X3,X1))).
+#
+#cnf(i_0_358, plain, (~apart_point_and_line(X1,X2))).
+#
+#cnf(i_0_43, plain, (incident_point_and_line(X1,X2))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(cp1, axiom, ![X1, X2]:~(convergent_lines(parallel_through_point(X2,X1),X2)), file('./p/GEO189+3.tptp', cp1)).
+fof(p1, axiom, ![X1, X2]:(distinct_lines(X1,X2)=>convergent_lines(X1,X2)), file('./p/GEO189+3.tptp', p1)).
+fof(apart2, axiom, ![X1]:~(distinct_lines(X1,X1)), file('./p/GEO189+3.tptp', apart2)).
+fof(apart5, axiom, ![X1, X2, X3]:(distinct_lines(X1,X2)=>(distinct_lines(X1,X3)|distinct_lines(X2,X3))), file('./p/GEO189+3.tptp', apart5)).
+fof(ceq2, axiom, ![X1, X2, X3]:(apart_point_and_line(X1,X2)=>(distinct_lines(X2,X3)|apart_point_and_line(X1,X3))), file('./p/GEO189+3.tptp', ceq2)).
+fof(cp2, axiom, ![X1, X2]:~(apart_point_and_line(X1,parallel_through_point(X2,X1))), file('./p/GEO189+3.tptp', cp2)).
+fof(con, conjecture, ![X1, X2, X3]:((((distinct_points(X1,X2)&distinct_points(X1,X3))&distinct_points(X2,X3))&incident_point_and_line(X3,line_connecting(X1,X2)))=>incident_point_and_line(X2,line_connecting(X1,X3))), file('./p/GEO189+3.tptp', con)).
+fof(a4, axiom, ![X1, X2]:(incident_point_and_line(X1,X2)<=>~(apart_point_and_line(X1,X2))), file('./p/GEO189+3.tptp', a4)).
+fof(c_0_8, plain, ![X46, X47]:~convergent_lines(parallel_through_point(X47,X46),X47), inference(variable_rename,[status(thm)],[inference(fof_simplification,[status(thm)],[cp1])])).
+fof(c_0_9, plain, ![X44, X45]:(~distinct_lines(X44,X45)|convergent_lines(X44,X45)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[p1])])).
+fof(c_0_10, plain, ![X12]:~distinct_lines(X12,X12), inference(variable_rename,[status(thm)],[inference(fof_simplification,[status(thm)],[apart2])])).
+fof(c_0_11, plain, ![X17, X18, X19]:(~distinct_lines(X17,X18)|(distinct_lines(X17,X19)|distinct_lines(X18,X19))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[apart5])])).
+cnf(c_0_12, plain, (~convergent_lines(parallel_through_point(X1,X2),X1)), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_13, plain, (convergent_lines(X1,X2)|~distinct_lines(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_14, plain, (~distinct_lines(X1,X1)), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_15, plain, (distinct_lines(X1,X3)|distinct_lines(X2,X3)|~distinct_lines(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_11])).
+cnf(c_0_16, plain, (~distinct_lines(parallel_through_point(X1,X2),X1)), inference(pm,[status(thm)],[c_0_12, c_0_13])).
+cnf(c_0_17, plain, (distinct_lines(X1,X2)|~distinct_lines(X2,X1)), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+fof(c_0_18, plain, ![X38, X39, X40]:(~apart_point_and_line(X38,X39)|(distinct_lines(X39,X40)|apart_point_and_line(X38,X40))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[ceq2])])).
+fof(c_0_19, plain, ![X48, X49]:~apart_point_and_line(X48,parallel_through_point(X49,X48)), inference(variable_rename,[status(thm)],[inference(fof_simplification,[status(thm)],[cp2])])).
+cnf(c_0_20, plain, (~distinct_lines(X1,parallel_through_point(X1,X2))), inference(pm,[status(thm)],[c_0_16, c_0_17])).
+cnf(c_0_21, plain, (distinct_lines(X2,X3)|apart_point_and_line(X1,X3)|~apart_point_and_line(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_18])).
+fof(c_0_22, negated_conjecture, ~(![X1, X2, X3]:((((distinct_points(X1,X2)&distinct_points(X1,X3))&distinct_points(X2,X3))&incident_point_and_line(X3,line_connecting(X1,X2)))=>incident_point_and_line(X2,line_connecting(X1,X3)))), inference(assume_negation,[status(cth)],[con])).
+fof(c_0_23, plain, ![X88, X89]:((~incident_point_and_line(X88,X89)|~apart_point_and_line(X88,X89))&(apart_point_and_line(X88,X89)|incident_point_and_line(X88,X89))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[a4])])])).
+cnf(c_0_24, plain, (~apart_point_and_line(X1,parallel_through_point(X2,X1))), inference(split_conjunct,[status(thm)],[c_0_19])).
+cnf(c_0_25, plain, (apart_point_and_line(X1,parallel_through_point(X2,X3))|~apart_point_and_line(X1,X2)), inference(pm,[status(thm)],[c_0_20, c_0_21])).
+fof(c_0_26, negated_conjecture, ((((distinct_points(esk1_0,esk2_0)&distinct_points(esk1_0,esk3_0))&distinct_points(esk2_0,esk3_0))&incident_point_and_line(esk3_0,line_connecting(esk1_0,esk2_0)))&~incident_point_and_line(esk2_0,line_connecting(esk1_0,esk3_0))), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_22])])])).
+cnf(c_0_27, plain, (apart_point_and_line(X1,X2)|incident_point_and_line(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_23])).
+cnf(c_0_28, plain, (~apart_point_and_line(X1,X2)), inference(pm,[status(thm)],[c_0_24, c_0_25])).
+cnf(c_0_29, negated_conjecture, (~incident_point_and_line(esk2_0,line_connecting(esk1_0,esk3_0))), inference(split_conjunct,[status(thm)],[c_0_26])).
+cnf(c_0_30, plain, (incident_point_and_line(X1,X2)), inference(sr,[status(thm)],[c_0_27, c_0_28])).
+cnf(c_0_31, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_29, c_0_30])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 32
+# Proof object clause steps            : 15
+# Proof object formula steps           : 17
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 8
+# Proof object initial formulas used   : 8
+# Proof object generating inferences   : 5
+# Proof object simplifying inferences  : 3
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 36
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 51
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 51
+# Processed clauses                    : 141
+# ...of these trivial                  : 1
+# ...subsumed                          : 52
+# ...remaining for further processing  : 88
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 11
+# Generated clauses                    : 314
+# ...of the previous two non-trivial   : 272
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 309
+# Factorizations                       : 4
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 76
+#    Positive orientable unit clauses  : 15
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 11
+#    Non-unit-clauses                  : 50
+# Current number of unprocessed clauses: 179
+# ...number of literals in the above   : 475
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 12
+# Clause-clause subsumption calls (NU) : 321
+# Rec. Clause-clause subsumption calls : 259
+# Non-unit clause-clause subsumptions  : 32
+# Unit Clause-clause subsumption calls : 326
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 10
+# BW rewrite match successes           : 9
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 4909

@@ -1,0 +1,87 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for LCL237-1
+% SZS output start Proof for LCL237-1
+fof(f5471,plain,(
+  $false),
+  inference(resolution,[],[f5458,f9])).
+fof(f9,axiom,(
+  ~theorem(or(not(q),or(not(p),not(or(not(p),not(q))))))),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f5458,plain,(
+  ( ! [X0,X1] : (theorem(or(X0,or(X1,not(or(X1,X0)))))) )),
+  inference(resolution,[],[f5353,f18])).
+fof(f18,plain,(
+  ( ! [X2,X0,X1] : (~theorem(or(X0,or(X1,X2))) | theorem(or(X1,or(X0,X2)))) )),
+  inference(resolution,[],[f4,f7])).
+fof(f7,axiom,(
+  ( ! [X4,X3] : (~axiom(or(not(X4),X3)) | ~theorem(X4) | theorem(X3)) )),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X2,X0,X1] : (axiom(or(not(or(X0,or(X1,X2))),or(X1,or(X0,X2))))) )),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f5353,plain,(
+  ( ! [X15,X16] : (theorem(or(X15,or(X16,not(or(X15,X16)))))) )),
+  inference(resolution,[],[f539,f110])).
+fof(f110,plain,(
+  ( ! [X10,X11] : (theorem(or(not(X10),or(X10,X11)))) )),
+  inference(resolution,[],[f32,f2])).
+fof(f2,axiom,(
+  ( ! [X0,X1] : (axiom(or(not(X0),or(X1,X0)))) )),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f32,plain,(
+  ( ! [X2,X0,X1] : (~axiom(or(not(X0),or(X1,X2))) | theorem(or(not(X0),or(X2,X1)))) )),
+  inference(resolution,[],[f12,f8])).
+fof(f8,axiom,(
+  ( ! [X4,X5,X3] : (~theorem(or(not(X4),X5)) | ~axiom(or(not(X3),X4)) | theorem(or(not(X3),X5))) )),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f12,plain,(
+  ( ! [X0,X1] : (theorem(or(not(or(X0,X1)),or(X1,X0)))) )),
+  inference(resolution,[],[f3,f6])).
+fof(f6,axiom,(
+  ( ! [X3] : (~axiom(X3) | theorem(X3)) )),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f3,axiom,(
+  ( ! [X0,X1] : (axiom(or(not(or(X0,X1)),or(X1,X0)))) )),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f539,plain,(
+  ( ! [X54,X52,X53] : (~theorem(or(not(X54),or(X53,not(or(X52,X54))))) | theorem(or(X52,or(X53,not(or(X52,X54)))))) )),
+  inference(resolution,[],[f160,f47])).
+fof(f47,plain,(
+  ( ! [X8,X7,X9] : (theorem(or(or(X9,X8),not(or(X9,X7)))) | ~theorem(or(not(X7),X8))) )),
+  inference(resolution,[],[f20,f14])).
+fof(f14,plain,(
+  ( ! [X2,X1] : (~theorem(or(X1,X2)) | theorem(or(X2,X1))) )),
+  inference(resolution,[],[f7,f3])).
+fof(f20,plain,(
+  ( ! [X2,X0,X1] : (theorem(or(not(or(X2,X0)),or(X2,X1))) | ~theorem(or(not(X0),X1))) )),
+  inference(resolution,[],[f5,f7])).
+fof(f5,axiom,(
+  ( ! [X2,X0,X1] : (axiom(or(not(or(not(X0),X1)),or(not(or(X2,X0)),or(X2,X1))))) )),
+  file('./p/LCL237-1.tptp',unknown)).
+fof(f160,plain,(
+  ( ! [X21,X22,X20] : (~theorem(or(or(X20,or(X21,X22)),X22)) | theorem(or(X20,or(X21,X22)))) )),
+  inference(resolution,[],[f70,f38])).
+fof(f38,plain,(
+  ( ! [X10,X11,X9] : (theorem(or(X9,or(X10,X11))) | ~theorem(or(X9,X11))) )),
+  inference(resolution,[],[f18,f15])).
+fof(f15,plain,(
+  ( ! [X4,X3] : (theorem(or(X4,X3)) | ~theorem(X3)) )),
+  inference(resolution,[],[f7,f2])).
+fof(f70,plain,(
+  ( ! [X4,X3] : (~theorem(or(or(X3,X4),X4)) | theorem(or(X3,X4))) )),
+  inference(resolution,[],[f38,f13])).
+fof(f13,plain,(
+  ( ! [X0] : (~theorem(or(X0,X0)) | theorem(X0)) )),
+  inference(resolution,[],[f7,f1])).
+fof(f1,axiom,(
+  ( ! [X0] : (axiom(or(not(or(X0,X0)),X0))) )),
+  file('./p/LCL237-1.tptp',unknown)).
+% SZS output end Proof for LCL237-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 9850
+% Time elapsed: 0.136 s
+% ------------------------------
+% ------------------------------

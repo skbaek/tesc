@@ -1,0 +1,432 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_60, plain, (holds(empty,s0))).
+#
+#cnf(i_0_46, plain, (differ(a,table))).
+#
+#cnf(i_0_43, plain, (differ(a,b))).
+#
+#cnf(i_0_62, negated_conjecture, (~holds(and(on(b,c),on(a,b)),X1))).
+#
+#cnf(i_0_44, plain, (differ(a,c))).
+#
+#cnf(i_0_45, plain, (differ(a,d))).
+#
+#cnf(i_0_49, plain, (differ(b,table))).
+#
+#cnf(i_0_47, plain, (differ(b,c))).
+#
+#cnf(i_0_48, plain, (differ(b,d))).
+#
+#cnf(i_0_51, plain, (differ(c,table))).
+#
+#cnf(i_0_50, plain, (differ(c,d))).
+#
+#cnf(i_0_52, plain, (differ(d,table))).
+#
+#cnf(i_0_61, plain, (holds(clear(table),X1))).
+#
+#cnf(i_0_42, plain, (differ(X1,X2)|~differ(X2,X1))).
+#
+#cnf(i_0_64, plain, (differ(table,d))).
+#
+#cnf(i_0_65, plain, (differ(table,c))).
+#
+#cnf(i_0_66, plain, (differ(table,b))).
+#
+#cnf(i_0_57, plain, (holds(clear(a),s0))).
+#
+#cnf(i_0_58, plain, (holds(clear(b),s0))).
+#
+#cnf(i_0_59, plain, (holds(clear(c),s0))).
+#
+#cnf(i_0_53, plain, (holds(on(a,table),s0))).
+#
+#cnf(i_0_54, plain, (holds(on(b,table),s0))).
+#
+#cnf(i_0_55, plain, (holds(on(c,d),s0))).
+#
+#cnf(i_0_56, plain, (holds(on(d,table),s0))).
+#
+#cnf(i_0_32, plain, (holds(and(X1,X2),X3)|~holds(X2,X3)|~holds(X1,X3))).
+#
+#cnf(i_0_40, plain, (holds(on(X1,X2),do(putdown(X3,X4),X5))|~holds(on(X1,X2),X5))).
+#
+#cnf(i_0_36, plain, (holds(clear(X1),do(pickup(X2),X3))|~differ(X1,X2)|~holds(clear(X1),X3))).
+#
+#cnf(i_0_67, negated_conjecture, (~holds(on(a,b),X1)|~holds(on(b,c),X1))).
+#
+#cnf(i_0_41, plain, (holds(clear(X1),do(putdown(X2,X3),X4))|~differ(X1,X3)|~holds(clear(X1),X4))).
+#
+#cnf(i_0_37, plain, (holds(empty,do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3))).
+#
+#cnf(i_0_35, plain, (holds(on(X1,X2),do(pickup(X3),X4))|~differ(X1,X3)|~holds(on(X1,X2),X4))).
+#
+#cnf(i_0_68, negated_conjecture, (~holds(on(a,b),do(putdown(X1,X2),X3))|~holds(on(b,c),X3))).
+#
+#cnf(i_0_39, plain, (holds(clear(X1),do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3))).
+#
+#cnf(i_0_38, plain, (holds(on(X1,X2),do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3))).
+#
+#cnf(i_0_33, plain, (holds(holding(X1),do(pickup(X1),X2))|~differ(X1,table)|~holds(clear(X1),X2)|~holds(empty,X2))).
+##
+#cnf(i_0_34, plain, (holds(clear(X1),do(pickup(X2),X3))|~holds(on(X2,X1),X3)|~holds(clear(X2),X3)|~holds(empty,X3))).
+#
+#cnf(i_0_72, negated_conjecture, (~holds(on(b,c),X1)|~holds(holding(a),X1)|~holds(clear(b),X1))).
+#
+#cnf(i_0_69, negated_conjecture, (~differ(b,X1)|~holds(on(a,b),do(pickup(X1),X2))|~holds(on(b,c),X2))).
+##
+#cnf(i_0_71, negated_conjecture, (~holds(on(a,b),do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1))).
+#
+#cnf(i_0_77, negated_conjecture, (~holds(on(a,b),X1)|~holds(holding(b),X1)|~holds(clear(c),X1))).
+#
+#cnf(i_0_74, negated_conjecture, (~holds(holding(a),do(putdown(X1,X2),X3))|~holds(clear(b),do(putdown(X1,X2),X3))|~holds(on(b,c),X3))).
+#
+#cnf(i_0_82, negated_conjecture, (~differ(b,X2)|~holds(holding(a),do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(clear(b),X3))).
+#
+#cnf(i_0_79, negated_conjecture, (~holds(holding(b),do(putdown(X1,X2),X3))|~holds(clear(c),do(putdown(X1,X2),X3))|~holds(on(a,b),X3))).
+#
+#cnf(i_0_84, negated_conjecture, (~differ(c,X2)|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(on(a,b),X3)|~holds(clear(c),X3))).
+#
+#cnf(i_0_81, negated_conjecture, (~holds(holding(a),do(putdown(b,X1),X2))|~holds(on(b,c),X2)|~holds(holding(b),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_83, negated_conjecture, (~holds(holding(b),do(putdown(c,X1),X2))|~holds(on(a,b),X2)|~holds(holding(c),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_75, negated_conjecture, (~differ(b,X1)|~holds(holding(a),do(pickup(X1),X2))|~holds(clear(b),do(pickup(X1),X2))|~holds(on(b,c),X2))).
+#
+#cnf(i_0_85, negated_conjecture, (~differ(b,X1)|~holds(holding(a),do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(clear(b),X2))).
+#
+#cnf(i_0_87, negated_conjecture, (~differ(b,a)|~holds(on(b,c),X1)|~holds(clear(b),X1)|~holds(clear(a),X1)|~holds(empty,X1))).
+#
+#cnf(i_0_80, negated_conjecture, (~differ(a,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(clear(c),do(pickup(X1),X2))|~holds(on(a,b),X2))).
+#
+#cnf(i_0_91, negated_conjecture, (~differ(a,X1)|~differ(c,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(clear(c),X2))).
+#
+#cnf(i_0_93, negated_conjecture, (~differ(c,b)|~holds(on(a,b),X1)|~holds(clear(c),X1)|~holds(clear(b),X1)|~holds(empty,X1))).
+#
+#cnf(i_0_73, negated_conjecture, (~holds(holding(a),do(putdown(b,c),X1))|~holds(clear(b),do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1))).
+#
+#cnf(i_0_97, negated_conjecture, (~holds(holding(a),do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1))).
+#
+#cnf(i_0_78, negated_conjecture, (~holds(holding(b),do(putdown(a,b),X1))|~holds(clear(c),do(putdown(a,b),X1))|~holds(holding(a),X1)|~holds(clear(b),X1))).
+#
+#cnf(i_0_99, negated_conjecture, (~differ(c,b)|~holds(holding(b),do(putdown(a,b),X1))|~holds(holding(a),X1)|~holds(clear(b),X1)|~holds(clear(c),X1))).
+#
+#cnf(i_0_86, negated_conjecture, (~differ(b,X1)|~holds(holding(a),do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(X1,b),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+##
+#cnf(i_0_92, negated_conjecture, (~differ(a,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(on(X1,c),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+##
+#cnf(i_0_89, negated_conjecture, (~differ(b,a)|~holds(clear(b),do(putdown(X1,X2),X3))|~holds(clear(a),do(putdown(X1,X2),X3))|~holds(empty,do(putdown(X1,X2),X3))|~holds(on(b,c),X3))).
+#
+#cnf(i_0_103, negated_conjecture, (~differ(b,a)|~differ(b,X2)|~holds(clear(a),do(putdown(X1,X2),X3))|~holds(empty,do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(clear(b),X3))).
+#
+#cnf(i_0_105, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~differ(a,X1)|~holds(empty,do(putdown(X2,X1),X3))|~holds(on(b,c),X3)|~holds(clear(b),X3)|~holds(clear(a),X3))).
+#
+#cnf(i_0_106, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~differ(a,X1)|~holds(on(b,c),X3)|~holds(clear(b),X3)|~holds(clear(a),X3)|~holds(holding(X2),X3)|~holds(clear(X1),X3))).
+##
+#cnf(i_0_95, negated_conjecture, (~differ(c,b)|~holds(clear(c),do(putdown(X1,X2),X3))|~holds(clear(b),do(putdown(X1,X2),X3))|~holds(empty,do(putdown(X1,X2),X3))|~holds(on(a,b),X3))).
+#
+#cnf(i_0_116, negated_conjecture, (~differ(c,b)|~differ(c,X2)|~holds(clear(b),do(putdown(X1,X2),X3))|~holds(empty,do(putdown(X1,X2),X3))|~holds(on(a,b),X3)|~holds(clear(c),X3))).
+#
+#cnf(i_0_118, negated_conjecture, (~differ(c,b)|~differ(c,X1)|~differ(b,X1)|~holds(empty,do(putdown(X2,X1),X3))|~holds(on(a,b),X3)|~holds(clear(c),X3)|~holds(clear(b),X3))).
+#
+#cnf(i_0_119, negated_conjecture, (~differ(c,b)|~differ(c,X1)|~differ(b,X1)|~holds(on(a,b),X3)|~holds(clear(c),X3)|~holds(clear(b),X3)|~holds(holding(X2),X3)|~holds(clear(X1),X3))).
+##
+#cnf(i_0_90, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~holds(clear(b),do(pickup(X1),X2))|~holds(clear(a),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2))).
+#
+#cnf(i_0_128, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~holds(clear(a),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(clear(b),X2))).
+#
+#cnf(i_0_130, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~differ(a,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(clear(b),X2)|~holds(clear(a),X2))).
+#
+#cnf(i_0_96, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~holds(clear(c),do(pickup(X1),X2))|~holds(clear(b),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(a,b),X2))).
+#
+#cnf(i_0_132, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~differ(c,X1)|~holds(clear(b),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(clear(c),X2))).
+#
+#cnf(i_0_134, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~differ(c,X1)|~differ(b,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(clear(c),X2)|~holds(clear(b),X2))).
+#
+#cnf(i_0_102, negated_conjecture, (~differ(b,a)|~holds(clear(a),do(putdown(b,X1),X2))|~holds(empty,do(putdown(b,X1),X2))|~holds(on(b,c),X2)|~holds(holding(b),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_136, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~holds(empty,do(putdown(b,X1),X2))|~holds(on(b,c),X2)|~holds(holding(b),X2)|~holds(clear(a),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_137, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~holds(on(b,c),X2)|~holds(holding(b),X2)|~holds(clear(a),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_115, negated_conjecture, (~differ(c,b)|~holds(clear(b),do(putdown(c,X1),X2))|~holds(empty,do(putdown(c,X1),X2))|~holds(on(a,b),X2)|~holds(holding(c),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_145, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~holds(empty,do(putdown(c,X1),X2))|~holds(on(a,b),X2)|~holds(holding(c),X2)|~holds(clear(b),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_146, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~holds(on(a,b),X2)|~holds(holding(c),X2)|~holds(clear(b),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_131, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(X1,a),X2)|~holds(clear(b),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_143, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~holds(holding(b),do(putdown(X2,X3),X4))|~holds(clear(a),do(putdown(X2,X3),X4))|~holds(clear(X1),do(putdown(X2,X3),X4))|~holds(on(b,c),X4))).
+#
+#cnf(i_0_154, negated_conjecture, (~differ(b,a)|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(clear(a),do(putdown(X1,X2),X3))|~holds(on(b,c),X3))).
+#
+#cnf(i_0_160, negated_conjecture, (~differ(b,a)|~differ(a,X2)|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(clear(a),X3))).
+#
+#cnf(i_0_159, negated_conjecture, (~differ(b,a)|~holds(holding(b),do(putdown(a,X1),X2))|~holds(on(b,c),X2)|~holds(holding(a),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_152, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~holds(holding(c),do(putdown(X2,X3),X4))|~holds(clear(b),do(putdown(X2,X3),X4))|~holds(clear(X1),do(putdown(X2,X3),X4))|~holds(on(a,b),X4))).
+#
+#cnf(i_0_164, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(b,X3)|~holds(holding(c),do(putdown(X2,X3),X4))|~holds(clear(X1),do(putdown(X2,X3),X4))|~holds(on(a,b),X4)|~holds(clear(b),X4))).
+#
+#cnf(i_0_165, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~holds(holding(c),do(putdown(X2,X1),X3))|~holds(on(a,b),X3)|~holds(clear(b),X3))).
+#
+#cnf(i_0_162, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(X1,X3)|~holds(holding(c),do(putdown(X2,X3),X4))|~holds(clear(b),do(putdown(X2,X3),X4))|~holds(on(a,b),X4)|~holds(clear(X1),X4))).
+##
+#cnf(i_0_174, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(X2,X1)|~holds(holding(c),do(putdown(X3,X2),X4))|~holds(clear(b),do(putdown(X3,X2),X4))|~holds(on(a,b),X4)|~holds(clear(X1),X4))).
+###
+#cnf(i_0_161, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~holds(holding(c),do(putdown(X1,X2),X3))|~holds(clear(b),do(putdown(X1,X2),X3))|~holds(on(a,b),X3)|~holds(holding(X1),X3)|~holds(clear(X2),X3))).
+#
+#cnf(i_0_182, negated_conjecture, (~differ(c,b)|~differ(b,b)|~holds(holding(c),do(putdown(b,X1),X2))|~holds(on(a,b),X2)|~holds(holding(b),X2)|~holds(clear(X1),X2))).
+##
+#cnf(i_0_172, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(X1,X2)|~holds(holding(c),do(putdown(b,X2),X3))|~holds(on(a,b),X3)|~holds(holding(b),X3)|~holds(clear(X1),X3)|~holds(clear(X2),X3))).
+#
+#cnf(i_0_179, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(X2,X1)|~holds(holding(c),do(putdown(b,X2),X3))|~holds(on(a,b),X3)|~holds(holding(b),X3)|~holds(clear(X1),X3)|~holds(clear(X2),X3))).
+###
+#cnf(i_0_163, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~holds(holding(c),do(putdown(b,X2),X3))|~holds(clear(X1),do(putdown(b,X2),X3))|~holds(on(a,b),X3)|~holds(holding(b),X3)|~holds(clear(X2),X3))).
+#
+#cnf(i_0_194, negated_conjecture, (~differ(c,b)|~holds(holding(c),do(putdown(b,X1),X2))|~holds(on(a,b),X2)|~holds(holding(b),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_140, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~differ(X1,X2)|~holds(on(b,c),do(pickup(X2),X3))|~holds(holding(b),do(pickup(X2),X3))|~holds(clear(a),do(pickup(X2),X3))|~holds(clear(X1),X3))).
+#
+#cnf(i_0_201, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~differ(b,X2)|~differ(X1,X2)|~holds(holding(b),do(pickup(X2),X3))|~holds(clear(a),do(pickup(X2),X3))|~holds(on(b,c),X3)|~holds(clear(X1),X3))).
+#
+#cnf(i_0_207, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~differ(b,X2)|~differ(a,X2)|~differ(X1,X2)|~holds(holding(b),do(pickup(X2),X3))|~holds(on(b,c),X3)|~holds(clear(a),X3)|~holds(clear(X1),X3))).
+##
+#cnf(i_0_209, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~differ(b,X2)|~differ(X2,X1)|~holds(holding(b),do(pickup(X2),X3))|~holds(clear(a),do(pickup(X2),X3))|~holds(on(b,c),X3)|~holds(clear(X1),X3))).
+#
+#cnf(i_0_215, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~differ(b,X2)|~differ(a,X2)|~differ(X2,X1)|~holds(holding(b),do(pickup(X2),X3))|~holds(on(b,c),X3)|~holds(clear(a),X3)|~holds(clear(X1),X3))).
+#####
+#cnf(i_0_149, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(X1,X2)|~holds(on(a,b),do(pickup(X2),X3))|~holds(holding(c),do(pickup(X2),X3))|~holds(clear(b),do(pickup(X2),X3))|~holds(clear(X1),X3))).
+#
+#cnf(i_0_233, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(a,X2)|~differ(X1,X2)|~holds(holding(c),do(pickup(X2),X3))|~holds(clear(b),do(pickup(X2),X3))|~holds(on(a,b),X3)|~holds(clear(X1),X3))).
+#
+#cnf(i_0_239, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(a,X2)|~differ(b,X2)|~differ(X1,X2)|~holds(holding(c),do(pickup(X2),X3))|~holds(on(a,b),X3)|~holds(clear(b),X3)|~holds(clear(X1),X3))).
+##
+#cnf(i_0_241, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(a,X2)|~differ(X2,X1)|~holds(holding(c),do(pickup(X2),X3))|~holds(clear(b),do(pickup(X2),X3))|~holds(on(a,b),X3)|~holds(clear(X1),X3))).
+#
+#cnf(i_0_247, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(a,X2)|~differ(b,X2)|~differ(X2,X1)|~holds(holding(c),do(pickup(X2),X3))|~holds(on(a,b),X3)|~holds(clear(b),X3)|~holds(clear(X1),X3))).
+#####
+#cnf(i_0_202, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~differ(X2,X1)|~holds(on(b,c),do(pickup(X2),X3))|~holds(holding(b),do(pickup(X2),X3))|~holds(clear(a),do(pickup(X2),X3))|~holds(clear(X1),X3))).
+##
+#cnf(i_0_234, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(X2,X1)|~holds(on(a,b),do(pickup(X2),X3))|~holds(holding(c),do(pickup(X2),X3))|~holds(clear(b),do(pickup(X2),X3))|~holds(clear(X1),X3))).
+####
+#cnf(i_0_135, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~differ(c,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(on(X1,b),X2)|~holds(clear(c),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_129, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~holds(clear(a),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(X1,b),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_274, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(X1,b),X2)|~holds(on(X1,a),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_273, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~differ(a,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(X1,b),X2)|~holds(clear(a),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_133, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~holds(clear(b),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(on(X1,c),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_276, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(on(X1,c),X2)|~holds(on(X1,b),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_275, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~differ(b,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(on(X1,c),X2)|~holds(clear(b),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_144, negated_conjecture, (~differ(b,a)|~differ(a,X1)|~differ(b,X2)|~holds(holding(b),do(pickup(X2),X3))|~holds(clear(a),do(pickup(X2),X3))|~holds(clear(X1),do(pickup(X2),X3))|~holds(on(b,c),X3))).
+#
+#cnf(i_0_277, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(clear(a),do(pickup(X1),X2))|~holds(on(b,c),X2))).
+#
+#cnf(i_0_282, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~differ(a,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(clear(a),X2))).
+##
+#cnf(i_0_283, negated_conjecture, (~differ(b,a)|~differ(b,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(X1,a),X2)|~holds(clear(X1),X2)|~holds(empty,X2))).
+#
+#cnf(i_0_285, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(on(b,c),X1)|~holds(on(b,a),X1)|~holds(clear(b),X1)|~holds(empty,X1))).
+#
+#cnf(i_0_287, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(on(b,a),do(putdown(X1,X2),X3))|~holds(clear(b),do(putdown(X1,X2),X3))|~holds(empty,do(putdown(X1,X2),X3))|~holds(on(b,c),X3))).
+#
+#cnf(i_0_290, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(clear(b),do(putdown(X1,X2),X3))|~holds(empty,do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(on(b,a),X3))).
+#
+#cnf(i_0_292, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X2)|~holds(empty,do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(on(b,a),X3)|~holds(clear(b),X3))).
+#
+#cnf(i_0_293, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X1)|~holds(on(b,c),X3)|~holds(on(b,a),X3)|~holds(clear(b),X3)|~holds(holding(X2),X3)|~holds(clear(X1),X3))).
+#
+#cnf(i_0_291, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(empty,do(putdown(b,X1),X2))|~holds(on(b,c),X2)|~holds(on(b,a),X2)|~holds(holding(b),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_302, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(on(b,c),X2)|~holds(on(b,a),X2)|~holds(holding(b),X2)|~holds(clear(X1),X2))).
+#
+#cnf(i_0_153, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(a,X2)|~holds(holding(c),do(pickup(X2),X3))|~holds(clear(b),do(pickup(X2),X3))|~holds(clear(X1),do(pickup(X2),X3))|~holds(on(a,b),X3))).
+#
+#cnf(i_0_312, negated_conjecture, (~differ(c,b)|~differ(b,X1)|~differ(a,X2)|~differ(b,X2)|~holds(holding(c),do(pickup(X2),X3))|~holds(clear(X1),do(pickup(X2),X3))|~holds(on(a,b),X3)|~holds(clear(b),X3))).
+#
+#cnf(i_0_314, negated_conjecture, (~differ(c,b)|~differ(a,X1)|~differ(b,X1)|~holds(holding(c),do(pickup(X1),X2))|~holds(on(a,b),X2)|~holds(clear(b),X2))).
+###
+#cnf(i_0_288, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X1)|~holds(on(b,a),do(pickup(X1),X2))|~holds(clear(b),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2))).
+#
+#cnf(i_0_318, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X1)|~holds(clear(b),do(pickup(X1),X2))|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(b,a),X2))).
+#
+#cnf(i_0_319, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X1)|~holds(empty,do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(on(b,a),X2)|~holds(clear(b),X2))).
+#
+#cnf(i_0_308, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(on(b,a),do(putdown(X1,X2),X3))|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(clear(X4),do(putdown(X1,X2),X3))|~holds(on(b,c),X3))).
+#
+#cnf(i_0_324, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(clear(X4),do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(on(b,a),X3))).
+#
+#cnf(i_0_325, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(on(b,a),X3))).
+#
+#cnf(i_0_322, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(X4,X2)|~holds(on(b,a),do(putdown(X1,X2),X3))|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(clear(X4),X3))).
+##
+#cnf(i_0_334, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(X2,X1)|~holds(on(b,a),do(putdown(X3,X2),X4))|~holds(holding(b),do(putdown(X3,X2),X4))|~holds(on(b,c),X4)|~holds(clear(X1),X4))).
+###
+#cnf(i_0_321, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(on(b,a),do(putdown(X1,X2),X3))|~holds(holding(b),do(putdown(X1,X2),X3))|~holds(on(b,c),X3)|~holds(holding(X1),X3)|~holds(clear(X2),X3))).
+#
+#cnf(i_0_342, negated_conjecture, (~differ(b,a)|~differ(b,b)|~holds(holding(b),do(putdown(b,a),X1))|~holds(on(b,c),X1)|~holds(holding(b),X1)|~holds(clear(a),X1))).
+####
+#cnf(i_0_305, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(X3,X1)|~holds(on(b,c),do(pickup(X1),X2))|~holds(on(b,a),do(pickup(X1),X2))|~holds(holding(b),do(pickup(X1),X2))|~holds(clear(X3),X2))).
+#
+#cnf(i_0_348, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X2)|~differ(X1,X2)|~holds(on(b,a),do(pickup(X2),X3))|~holds(holding(b),do(pickup(X2),X3))|~holds(on(b,c),X3)|~holds(clear(X1),X3))).
+#
+#cnf(i_0_354, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X1)|~differ(X2,X1)|~holds(holding(b),do(pickup(X1),X3))|~holds(on(b,c),X3)|~holds(on(b,a),X3)|~holds(clear(X2),X3))).
+##
+#cnf(i_0_361, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X1)|~differ(X1,X2)|~holds(holding(b),do(pickup(X1),X3))|~holds(on(b,c),X3)|~holds(on(b,a),X3)|~holds(clear(X2),X3))).
+###
+#cnf(i_0_349, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(X2,X1)|~holds(on(b,c),do(pickup(X2),X3))|~holds(on(b,a),do(pickup(X2),X3))|~holds(holding(b),do(pickup(X2),X3))|~holds(clear(X1),X3))).
+#
+#cnf(i_0_355, negated_conjecture, (~differ(b,a)|~differ(b,b)|~differ(b,X1)|~differ(X1,X2)|~holds(on(b,a),do(pickup(X1),X3))|~holds(holding(b),do(pickup(X1),X3))|~holds(on(b,c),X3)|~holds(clear(X2),X3))).
+#####
+#cnf(i_0_88, negated_conjecture, (~differ(b,a)|~holds(clear(b),do(putdown(b,c),X1))|~holds(clear(a),do(putdown(b,c),X1))|~holds(empty,do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1))).
+#
+#cnf(i_0_380, negated_conjecture, (~differ(b,a)|~holds(clear(a),do(putdown(b,c),X1))|~holds(empty,do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1))).
+#
+#cnf(i_0_382, negated_conjecture, (~differ(b,a)|~holds(empty,do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1)|~holds(clear(a),X1))).
+#
+#cnf(i_0_383, negated_conjecture, (~differ(b,a)|~holds(holding(b),X1)|~holds(clear(c),X1)|~holds(clear(a),X1))).
+#
+#cnf(i_0_384, negated_conjecture, (~differ(b,a)|~holds(holding(b),s0))).
+#
+#cnf(i_0_389, negated_conjecture, (~holds(holding(b),s0))).
+#
+#cnf(i_0_387, negated_conjecture, (~differ(b,a)|~differ(c,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(clear(a),do(pickup(X1),X2))|~holds(clear(c),X2))).
+#
+#cnf(i_0_390, negated_conjecture, (~differ(b,a)|~differ(c,X1)|~differ(a,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(clear(c),X2)|~holds(clear(a),X2))).
+#
+#cnf(i_0_392, negated_conjecture, (~differ(b,a)|~differ(c,b)|~holds(clear(c),X1)|~holds(clear(a),X1)|~holds(clear(b),X1)|~holds(empty,X1))).
+#
+#cnf(i_0_393, negated_conjecture, (~differ(b,a)|~differ(c,b))).
+#
+#cnf(i_0_398, negated_conjecture, (~differ(b,a))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(prove_ABC, negated_conjecture, (~holds(and(on(b,c),on(a,b)),X1)), file('./p/PLA014-2.tptp', prove_ABC)).
+cnf(and_definition, axiom, (holds(and(X1,X2),X3)|~holds(X1,X3)|~holds(X2,X3)), file('./p/PLA014-2.tptp', and_definition)).
+cnf(putdown_4, axiom, (holds(on(X1,X2),do(putdown(X3,X4),X5))|~holds(on(X1,X2),X5)), file('./p/PLA014-2.tptp', putdown_4)).
+cnf(putdown_2, axiom, (holds(on(X1,X2),do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3)), file('./p/PLA014-2.tptp', putdown_2)).
+cnf(pickup_3, axiom, (holds(on(X1,X2),do(pickup(X3),X4))|~holds(on(X1,X2),X4)|~differ(X1,X3)), file('./p/PLA014-2.tptp', pickup_3)).
+cnf(pickup_4, axiom, (holds(clear(X1),do(pickup(X2),X3))|~holds(clear(X1),X3)|~differ(X1,X2)), file('./p/PLA014-2.tptp', pickup_4)).
+cnf(pickup_1, axiom, (holds(holding(X1),do(pickup(X1),X2))|~holds(empty,X2)|~holds(clear(X1),X2)|~differ(X1,table)), file('./p/PLA014-2.tptp', pickup_1)).
+cnf(differ_a_table, axiom, (differ(a,table)), file('./p/PLA014-2.tptp', differ_a_table)).
+cnf(putdown_3, axiom, (holds(clear(X1),do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3)), file('./p/PLA014-2.tptp', putdown_3)).
+cnf(putdown_5, axiom, (holds(clear(X1),do(putdown(X2,X3),X4))|~holds(clear(X1),X4)|~differ(X1,X3)), file('./p/PLA014-2.tptp', putdown_5)).
+cnf(differ_a_c, axiom, (differ(a,c)), file('./p/PLA014-2.tptp', differ_a_c)).
+cnf(putdown_1, axiom, (holds(empty,do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3)), file('./p/PLA014-2.tptp', putdown_1)).
+cnf(differ_a_b, axiom, (differ(a,b)), file('./p/PLA014-2.tptp', differ_a_b)).
+cnf(differ_b_table, axiom, (differ(b,table)), file('./p/PLA014-2.tptp', differ_b_table)).
+cnf(initial_state7, axiom, (holds(clear(c),s0)), file('./p/PLA014-2.tptp', initial_state7)).
+cnf(initial_state5, axiom, (holds(clear(a),s0)), file('./p/PLA014-2.tptp', initial_state5)).
+cnf(initial_state6, axiom, (holds(clear(b),s0)), file('./p/PLA014-2.tptp', initial_state6)).
+cnf(initial_state8, axiom, (holds(empty,s0)), file('./p/PLA014-2.tptp', initial_state8)).
+cnf(symmetry_of_differ, axiom, (differ(X1,X2)|~differ(X2,X1)), file('./p/PLA014-2.tptp', symmetry_of_differ)).
+cnf(differ_b_c, axiom, (differ(b,c)), file('./p/PLA014-2.tptp', differ_b_c)).
+cnf(c_0_20, negated_conjecture, (~holds(and(on(b,c),on(a,b)),X1)), prove_ABC).
+cnf(c_0_21, axiom, (holds(and(X1,X2),X3)|~holds(X1,X3)|~holds(X2,X3)), and_definition).
+cnf(c_0_22, negated_conjecture, (~holds(on(a,b),X1)|~holds(on(b,c),X1)), inference(pm,[status(thm)],[c_0_20, c_0_21])).
+cnf(c_0_23, axiom, (holds(on(X1,X2),do(putdown(X3,X4),X5))|~holds(on(X1,X2),X5)), putdown_4).
+cnf(c_0_24, negated_conjecture, (~holds(on(a,b),do(putdown(X1,X2),X3))|~holds(on(b,c),X3)), inference(pm,[status(thm)],[c_0_22, c_0_23])).
+cnf(c_0_25, axiom, (holds(on(X1,X2),do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3)), putdown_2).
+cnf(c_0_26, negated_conjecture, (~holds(on(b,c),X1)|~holds(holding(a),X1)|~holds(clear(b),X1)), inference(pm,[status(thm)],[c_0_24, c_0_25])).
+cnf(c_0_27, axiom, (holds(on(X1,X2),do(pickup(X3),X4))|~holds(on(X1,X2),X4)|~differ(X1,X3)), pickup_3).
+cnf(c_0_28, negated_conjecture, (~differ(b,X1)|~holds(holding(a),do(pickup(X1),X2))|~holds(clear(b),do(pickup(X1),X2))|~holds(on(b,c),X2)), inference(pm,[status(thm)],[c_0_26, c_0_27])).
+cnf(c_0_29, axiom, (holds(clear(X1),do(pickup(X2),X3))|~holds(clear(X1),X3)|~differ(X1,X2)), pickup_4).
+cnf(c_0_30, negated_conjecture, (~differ(b,X1)|~holds(holding(a),do(pickup(X1),X2))|~holds(on(b,c),X2)|~holds(clear(b),X2)), inference(pm,[status(thm)],[c_0_28, c_0_29])).
+cnf(c_0_31, axiom, (holds(holding(X1),do(pickup(X1),X2))|~holds(empty,X2)|~holds(clear(X1),X2)|~differ(X1,table)), pickup_1).
+cnf(c_0_32, axiom, (differ(a,table)), differ_a_table).
+cnf(c_0_33, negated_conjecture, (~differ(b,a)|~holds(on(b,c),X1)|~holds(clear(b),X1)|~holds(clear(a),X1)|~holds(empty,X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_30, c_0_31]), c_0_32])])).
+cnf(c_0_34, negated_conjecture, (~differ(b,a)|~holds(clear(b),do(putdown(b,c),X1))|~holds(clear(a),do(putdown(b,c),X1))|~holds(empty,do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1)), inference(pm,[status(thm)],[c_0_33, c_0_25])).
+cnf(c_0_35, axiom, (holds(clear(X1),do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3)), putdown_3).
+cnf(c_0_36, negated_conjecture, (~differ(b,a)|~holds(clear(a),do(putdown(b,c),X1))|~holds(empty,do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1)), inference(pm,[status(thm)],[c_0_34, c_0_35])).
+cnf(c_0_37, axiom, (holds(clear(X1),do(putdown(X2,X3),X4))|~holds(clear(X1),X4)|~differ(X1,X3)), putdown_5).
+cnf(c_0_38, axiom, (differ(a,c)), differ_a_c).
+cnf(c_0_39, negated_conjecture, (~differ(b,a)|~holds(empty,do(putdown(b,c),X1))|~holds(holding(b),X1)|~holds(clear(c),X1)|~holds(clear(a),X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_36, c_0_37]), c_0_38])])).
+cnf(c_0_40, axiom, (holds(empty,do(putdown(X1,X2),X3))|~holds(holding(X1),X3)|~holds(clear(X2),X3)), putdown_1).
+cnf(c_0_41, negated_conjecture, (~differ(b,a)|~holds(holding(b),X1)|~holds(clear(c),X1)|~holds(clear(a),X1)), inference(pm,[status(thm)],[c_0_39, c_0_40])).
+cnf(c_0_42, negated_conjecture, (~differ(b,a)|~differ(c,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(clear(a),do(pickup(X1),X2))|~holds(clear(c),X2)), inference(pm,[status(thm)],[c_0_41, c_0_29])).
+cnf(c_0_43, negated_conjecture, (~differ(b,a)|~differ(c,X1)|~differ(a,X1)|~holds(holding(b),do(pickup(X1),X2))|~holds(clear(c),X2)|~holds(clear(a),X2)), inference(pm,[status(thm)],[c_0_42, c_0_29])).
+cnf(c_0_44, axiom, (differ(a,b)), differ_a_b).
+cnf(c_0_45, axiom, (differ(b,table)), differ_b_table).
+cnf(c_0_46, negated_conjecture, (~differ(b,a)|~differ(c,b)|~holds(clear(c),X1)|~holds(clear(a),X1)|~holds(clear(b),X1)|~holds(empty,X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_43, c_0_31]), c_0_44]), c_0_45])])).
+cnf(c_0_47, axiom, (holds(clear(c),s0)), initial_state7).
+cnf(c_0_48, axiom, (holds(clear(a),s0)), initial_state5).
+cnf(c_0_49, axiom, (holds(clear(b),s0)), initial_state6).
+cnf(c_0_50, axiom, (holds(empty,s0)), initial_state8).
+cnf(c_0_51, negated_conjecture, (~differ(b,a)|~differ(c,b)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_46, c_0_47]), c_0_48]), c_0_49]), c_0_50])])).
+cnf(c_0_52, axiom, (differ(X1,X2)|~differ(X2,X1)), symmetry_of_differ).
+cnf(c_0_53, axiom, (differ(b,c)), differ_b_c).
+cnf(c_0_54, negated_conjecture, (~differ(b,a)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_51, c_0_52]), c_0_53])])).
+cnf(c_0_55, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_54, c_0_52]), c_0_44])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 56
+# Proof object clause steps            : 36
+# Proof object formula steps           : 20
+# Proof object conjectures             : 18
+# Proof object clause conjectures      : 17
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 20
+# Proof object initial formulas used   : 20
+# Proof object generating inferences   : 16
+# Proof object simplifying inferences  : 15
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 31
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 31
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 31
+# Processed clauses                    : 196
+# ...of these trivial                  : 0
+# ...subsumed                          : 42
+# ...remaining for further processing  : 154
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 22
+# Backward-rewritten                   : 0
+# Generated clauses                    : 337
+# ...of the previous two non-trivial   : 335
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 337
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 132
+#    Positive orientable unit clauses  : 22
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 3
+#    Non-unit-clauses                  : 107
+# Current number of unprocessed clauses: 156
+# ...number of literals in the above   : 1357
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 22
+# Clause-clause subsumption calls (NU) : 5056
+# Rec. Clause-clause subsumption calls : 238
+# Non-unit clause-clause subsumptions  : 64
+# Unit Clause-clause subsumption calls : 192
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 0
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 9959

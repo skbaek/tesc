@@ -1,0 +1,4215 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for NUM375+1.010
+% SZS output start Proof for NUM375+1.010
+fof(f2102,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f260,f305,f316,f327,f336,f345,f354,f363,f372,f381,f390,f399,f408,f425,f436,f449,f460,f473,f487,f502,f513,f523,f533,f550,f561,f578,f589,f601,f619,f628,f643,f654,f671,f688,f705,f715,f728,f747,f761,f777,f787,f803,f820,f831,f843,f860,f879,f897,f908,f923,f933,f952,f968,f988,f1002,f1020,f1030,f1041,f1056,f1071,f1083,f1102,f1120,f1137,f1146,f1157,f1172,f1188,f1203,f1220,f1238,f1254,f1264,f1284,f1299,f1317,f1334,f1343,f1361,f1376,f1387,f1414,f1429,f1449,f1463,f1479,f1497,f1515,f1533,f1542,f1556,f1567,f1585,f1612,f1627,f1647,f1663,f1680,f1695,f1706,f1715,f1730,f1748,f1770,f1788,f1804,f1824,f1843,f1863,f1876,f1885,f1902,f1920,f1940,f1956,f1976,f1989,f2018,f2036,f2056,f2071,f2090,f2101])).
+fof(f2101,plain,(
+  ~spl3_3 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f2100])).
+fof(f2100,plain,(
+  $false | (~spl3_3 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f2099,f153])).
+fof(f153,plain,(
+  n3 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f3,plain,(
+  n9 != n10 & n8 != n10 & n8 != n9 & n7 != n10 & n7 != n9 & n7 != n8 & n6 != n10 & n6 != n9 & n6 != n8 & n6 != n7 & n5 != n10 & n5 != n9 & n5 != n8 & n5 != n7 & n5 != n6 & n4 != n10 & n4 != n9 & n4 != n8 & n4 != n7 & n4 != n6 & n4 != n5 & n3 != n10 & n3 != n9 & n3 != n8 & n3 != n7 & n3 != n6 & n3 != n5 & n3 != n4 & n2 != n10 & n2 != n9 & n2 != n8 & n2 != n7 & n2 != n6 & n2 != n5 & n2 != n4 & n2 != n3 & n1 != n10 & n1 != n9 & n1 != n8 & n1 != n7 & n1 != n6 & n1 != n5 & n1 != n4 & n1 != n3 & n1 != n2 & n0 != n10 & n0 != n9 & n0 != n8 & n0 != n7 & n0 != n6 & n0 != n5 & n0 != n4 & n0 != n3 & n0 != n2 & n0 != n1 & n10 != sK2 & n9 != sK2 & n8 != sK2 & n7 != sK2 & n6 != sK2 & n5 != sK2 & n4 != sK2 & n3 != sK2 & n2 != sK2 & n1 != sK2 & n0 != sK2 & sK2 = sum(pred(sum(sK0,succ(sK1))),sum(sK1,pred(sum(sK0,sK1)))) & (n10 = sK1 | n9 = sK1 | n8 = sK1 | n7 = sK1 | n6 = sK1 | n5 = sK1 | n4 = sK1 | n3 = sK1 | n2 = sK1 | n1 = sK1 | n0 = sK1) & (n10 = sK0 | n9 = sK0 | n8 = sK0 | n7 = sK0 | n6 = sK0 | n5 = sK0 | n4 = sK0 | n3 = sK0 | n2 = sK0 | n1 = sK0 | n0 = sK0) & n9 = sum(n10,n10) & n8 = sum(n10,n9) & n7 = sum(n10,n8) & n6 = sum(n10,n7) & n5 = sum(n10,n6) & n4 = sum(n10,n5) & n3 = sum(n10,n4) & n2 = sum(n10,n3) & n1 = sum(n10,n2) & n0 = sum(n10,n1) & n10 = sum(n10,n0) & n8 = sum(n9,n10) & n7 = sum(n9,n9) & n6 = sum(n9,n8) & n5 = sum(n9,n7) & n4 = sum(n9,n6) & n3 = sum(n9,n5) & n2 = sum(n9,n4) & n1 = sum(n9,n3) & n0 = sum(n9,n2) & n10 = sum(n9,n1) & n9 = sum(n9,n0) & n7 = sum(n8,n10) & n6 = sum(n8,n9) & n5 = sum(n8,n8) & n4 = sum(n8,n7) & n3 = sum(n8,n6) & n2 = sum(n8,n5) & n1 = sum(n8,n4) & n0 = sum(n8,n3) & n10 = sum(n8,n2) & n9 = sum(n8,n1) & n8 = sum(n8,n0) & n6 = sum(n7,n10) & n5 = sum(n7,n9) & n4 = sum(n7,n8) & n3 = sum(n7,n7) & n2 = sum(n7,n6) & n1 = sum(n7,n5) & n0 = sum(n7,n4) & n10 = sum(n7,n3) & n9 = sum(n7,n2) & n8 = sum(n7,n1) & n7 = sum(n7,n0) & n5 = sum(n6,n10) & n4 = sum(n6,n9) & n3 = sum(n6,n8) & n2 = sum(n6,n7) & n1 = sum(n6,n6) & n0 = sum(n6,n5) & n10 = sum(n6,n4) & n9 = sum(n6,n3) & n8 = sum(n6,n2) & n7 = sum(n6,n1) & n6 = sum(n6,n0) & n4 = sum(n5,n10) & n3 = sum(n5,n9) & n2 = sum(n5,n8) & n1 = sum(n5,n7) & n0 = sum(n5,n6) & n10 = sum(n5,n5) & n9 = sum(n5,n4) & n8 = sum(n5,n3) & n7 = sum(n5,n2) & n6 = sum(n5,n1) & n5 = sum(n5,n0) & n3 = sum(n4,n10) & n2 = sum(n4,n9) & n1 = sum(n4,n8) & n0 = sum(n4,n7) & n10 = sum(n4,n6) & n9 = sum(n4,n5) & n8 = sum(n4,n4) & n7 = sum(n4,n3) & n6 = sum(n4,n2) & n5 = sum(n4,n1) & n4 = sum(n4,n0) & n2 = sum(n3,n10) & n1 = sum(n3,n9) & n0 = sum(n3,n8) & n10 = sum(n3,n7) & n9 = sum(n3,n6) & n8 = sum(n3,n5) & n7 = sum(n3,n4) & n6 = sum(n3,n3) & n5 = sum(n3,n2) & n4 = sum(n3,n1) & n3 = sum(n3,n0) & n1 = sum(n2,n10) & n0 = sum(n2,n9) & n10 = sum(n2,n8) & n9 = sum(n2,n7) & n8 = sum(n2,n6) & n7 = sum(n2,n5) & n6 = sum(n2,n4) & n5 = sum(n2,n3) & n4 = sum(n2,n2) & n3 = sum(n2,n1) & n2 = sum(n2,n0) & n0 = sum(n1,n10) & n10 = sum(n1,n9) & n9 = sum(n1,n8) & n8 = sum(n1,n7) & n7 = sum(n1,n6) & n6 = sum(n1,n5) & n5 = sum(n1,n4) & n4 = sum(n1,n3) & n3 = sum(n1,n2) & n2 = sum(n1,n1) & n1 = sum(n1,n0) & n10 = sum(n0,n10) & n9 = sum(n0,n9) & n8 = sum(n0,n8) & n7 = sum(n0,n7) & n6 = sum(n0,n6) & n5 = sum(n0,n5) & n4 = sum(n0,n4) & n3 = sum(n0,n3) & n2 = sum(n0,n2) & n1 = sum(n0,n1) & n0 = sum(n0,n0) & n9 = pred(n10) & n8 = pred(n9) & n7 = pred(n8) & n6 = pred(n7) & n5 = pred(n6) & n4 = pred(n5) & n3 = pred(n4) & n2 = pred(n3) & n1 = pred(n2) & n0 = pred(n1) & n10 = pred(n0) & n0 = succ(n10) & succ(n9) = n10 & succ(n8) = n9 & succ(n7) = n8 & succ(n6) = n7 & succ(n5) = n6 & succ(n4) = n5 & succ(n3) = n4 & succ(n2) = n3 & succ(n1) = n2 & succ(n0) = n1),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2])],[f1,f2])).
+fof(f2,plain,(
+  ? [X0,X1,X2] : (n9 != n10 & n8 != n10 & n8 != n9 & n7 != n10 & n7 != n9 & n7 != n8 & n6 != n10 & n6 != n9 & n6 != n8 & n6 != n7 & n5 != n10 & n5 != n9 & n5 != n8 & n5 != n7 & n5 != n6 & n4 != n10 & n4 != n9 & n4 != n8 & n4 != n7 & n4 != n6 & n4 != n5 & n3 != n10 & n3 != n9 & n3 != n8 & n3 != n7 & n3 != n6 & n3 != n5 & n3 != n4 & n2 != n10 & n2 != n9 & n2 != n8 & n2 != n7 & n2 != n6 & n2 != n5 & n2 != n4 & n2 != n3 & n1 != n10 & n1 != n9 & n1 != n8 & n1 != n7 & n1 != n6 & n1 != n5 & n1 != n4 & n1 != n3 & n1 != n2 & n0 != n10 & n0 != n9 & n0 != n8 & n0 != n7 & n0 != n6 & n0 != n5 & n0 != n4 & n0 != n3 & n0 != n2 & n0 != n1 & n10 != X2 & n9 != X2 & n8 != X2 & n7 != X2 & n6 != X2 & n5 != X2 & n4 != X2 & n3 != X2 & n2 != X2 & n1 != X2 & n0 != X2 & sum(pred(sum(X0,succ(X1))),sum(X1,pred(sum(X0,X1)))) = X2 & (n10 = X1 | n9 = X1 | n8 = X1 | n7 = X1 | n6 = X1 | n5 = X1 | n4 = X1 | n3 = X1 | n2 = X1 | n1 = X1 | n0 = X1) & (n10 = X0 | n9 = X0 | n8 = X0 | n7 = X0 | n6 = X0 | n5 = X0 | n4 = X0 | n3 = X0 | n2 = X0 | n1 = X0 | n0 = X0) & n9 = sum(n10,n10) & n8 = sum(n10,n9) & n7 = sum(n10,n8) & n6 = sum(n10,n7) & n5 = sum(n10,n6) & n4 = sum(n10,n5) & n3 = sum(n10,n4) & n2 = sum(n10,n3) & n1 = sum(n10,n2) & n0 = sum(n10,n1) & n10 = sum(n10,n0) & n8 = sum(n9,n10) & n7 = sum(n9,n9) & n6 = sum(n9,n8) & n5 = sum(n9,n7) & n4 = sum(n9,n6) & n3 = sum(n9,n5) & n2 = sum(n9,n4) & n1 = sum(n9,n3) & n0 = sum(n9,n2) & n10 = sum(n9,n1) & n9 = sum(n9,n0) & n7 = sum(n8,n10) & n6 = sum(n8,n9) & n5 = sum(n8,n8) & n4 = sum(n8,n7) & n3 = sum(n8,n6) & n2 = sum(n8,n5) & n1 = sum(n8,n4) & n0 = sum(n8,n3) & n10 = sum(n8,n2) & n9 = sum(n8,n1) & n8 = sum(n8,n0) & n6 = sum(n7,n10) & n5 = sum(n7,n9) & n4 = sum(n7,n8) & n3 = sum(n7,n7) & n2 = sum(n7,n6) & n1 = sum(n7,n5) & n0 = sum(n7,n4) & n10 = sum(n7,n3) & n9 = sum(n7,n2) & n8 = sum(n7,n1) & n7 = sum(n7,n0) & n5 = sum(n6,n10) & n4 = sum(n6,n9) & n3 = sum(n6,n8) & n2 = sum(n6,n7) & n1 = sum(n6,n6) & n0 = sum(n6,n5) & n10 = sum(n6,n4) & n9 = sum(n6,n3) & n8 = sum(n6,n2) & n7 = sum(n6,n1) & n6 = sum(n6,n0) & n4 = sum(n5,n10) & n3 = sum(n5,n9) & n2 = sum(n5,n8) & n1 = sum(n5,n7) & n0 = sum(n5,n6) & n10 = sum(n5,n5) & n9 = sum(n5,n4) & n8 = sum(n5,n3) & n7 = sum(n5,n2) & n6 = sum(n5,n1) & n5 = sum(n5,n0) & n3 = sum(n4,n10) & n2 = sum(n4,n9) & n1 = sum(n4,n8) & n0 = sum(n4,n7) & n10 = sum(n4,n6) & n9 = sum(n4,n5) & n8 = sum(n4,n4) & n7 = sum(n4,n3) & n6 = sum(n4,n2) & n5 = sum(n4,n1) & n4 = sum(n4,n0) & n2 = sum(n3,n10) & n1 = sum(n3,n9) & n0 = sum(n3,n8) & n10 = sum(n3,n7) & n9 = sum(n3,n6) & n8 = sum(n3,n5) & n7 = sum(n3,n4) & n6 = sum(n3,n3) & n5 = sum(n3,n2) & n4 = sum(n3,n1) & n3 = sum(n3,n0) & n1 = sum(n2,n10) & n0 = sum(n2,n9) & n10 = sum(n2,n8) & n9 = sum(n2,n7) & n8 = sum(n2,n6) & n7 = sum(n2,n5) & n6 = sum(n2,n4) & n5 = sum(n2,n3) & n4 = sum(n2,n2) & n3 = sum(n2,n1) & n2 = sum(n2,n0) & n0 = sum(n1,n10) & n10 = sum(n1,n9) & n9 = sum(n1,n8) & n8 = sum(n1,n7) & n7 = sum(n1,n6) & n6 = sum(n1,n5) & n5 = sum(n1,n4) & n4 = sum(n1,n3) & n3 = sum(n1,n2) & n2 = sum(n1,n1) & n1 = sum(n1,n0) & n10 = sum(n0,n10) & n9 = sum(n0,n9) & n8 = sum(n0,n8) & n7 = sum(n0,n7) & n6 = sum(n0,n6) & n5 = sum(n0,n5) & n4 = sum(n0,n4) & n3 = sum(n0,n3) & n2 = sum(n0,n2) & n1 = sum(n0,n1) & n0 = sum(n0,n0) & n9 = pred(n10) & n8 = pred(n9) & n7 = pred(n8) & n6 = pred(n7) & n5 = pred(n6) & n4 = pred(n5) & n3 = pred(n4) & n2 = pred(n3) & n1 = pred(n2) & n0 = pred(n1) & n10 = pred(n0) & n0 = succ(n10) & succ(n9) = n10 & succ(n8) = n9 & succ(n7) = n8 & succ(n6) = n7 & succ(n5) = n6 & succ(n4) = n5 & succ(n3) = n4 & succ(n2) = n3 & succ(n1) = n2 & succ(n0) = n1) => (n9 != n10 & n8 != n10 & n8 != n9 & n7 != n10 & n7 != n9 & n7 != n8 & n6 != n10 & n6 != n9 & n6 != n8 & n6 != n7 & n5 != n10 & n5 != n9 & n5 != n8 & n5 != n7 & n5 != n6 & n4 != n10 & n4 != n9 & n4 != n8 & n4 != n7 & n4 != n6 & n4 != n5 & n3 != n10 & n3 != n9 & n3 != n8 & n3 != n7 & n3 != n6 & n3 != n5 & n3 != n4 & n2 != n10 & n2 != n9 & n2 != n8 & n2 != n7 & n2 != n6 & n2 != n5 & n2 != n4 & n2 != n3 & n1 != n10 & n1 != n9 & n1 != n8 & n1 != n7 & n1 != n6 & n1 != n5 & n1 != n4 & n1 != n3 & n1 != n2 & n0 != n10 & n0 != n9 & n0 != n8 & n0 != n7 & n0 != n6 & n0 != n5 & n0 != n4 & n0 != n3 & n0 != n2 & n0 != n1 & n10 != sK2 & n9 != sK2 & n8 != sK2 & n7 != sK2 & n6 != sK2 & n5 != sK2 & n4 != sK2 & n3 != sK2 & n2 != sK2 & n1 != sK2 & n0 != sK2 & sK2 = sum(pred(sum(sK0,succ(sK1))),sum(sK1,pred(sum(sK0,sK1)))) & (n10 = sK1 | n9 = sK1 | n8 = sK1 | n7 = sK1 | n6 = sK1 | n5 = sK1 | n4 = sK1 | n3 = sK1 | n2 = sK1 | n1 = sK1 | n0 = sK1) & (n10 = sK0 | n9 = sK0 | n8 = sK0 | n7 = sK0 | n6 = sK0 | n5 = sK0 | n4 = sK0 | n3 = sK0 | n2 = sK0 | n1 = sK0 | n0 = sK0) & n9 = sum(n10,n10) & n8 = sum(n10,n9) & n7 = sum(n10,n8) & n6 = sum(n10,n7) & n5 = sum(n10,n6) & n4 = sum(n10,n5) & n3 = sum(n10,n4) & n2 = sum(n10,n3) & n1 = sum(n10,n2) & n0 = sum(n10,n1) & n10 = sum(n10,n0) & n8 = sum(n9,n10) & n7 = sum(n9,n9) & n6 = sum(n9,n8) & n5 = sum(n9,n7) & n4 = sum(n9,n6) & n3 = sum(n9,n5) & n2 = sum(n9,n4) & n1 = sum(n9,n3) & n0 = sum(n9,n2) & n10 = sum(n9,n1) & n9 = sum(n9,n0) & n7 = sum(n8,n10) & n6 = sum(n8,n9) & n5 = sum(n8,n8) & n4 = sum(n8,n7) & n3 = sum(n8,n6) & n2 = sum(n8,n5) & n1 = sum(n8,n4) & n0 = sum(n8,n3) & n10 = sum(n8,n2) & n9 = sum(n8,n1) & n8 = sum(n8,n0) & n6 = sum(n7,n10) & n5 = sum(n7,n9) & n4 = sum(n7,n8) & n3 = sum(n7,n7) & n2 = sum(n7,n6) & n1 = sum(n7,n5) & n0 = sum(n7,n4) & n10 = sum(n7,n3) & n9 = sum(n7,n2) & n8 = sum(n7,n1) & n7 = sum(n7,n0) & n5 = sum(n6,n10) & n4 = sum(n6,n9) & n3 = sum(n6,n8) & n2 = sum(n6,n7) & n1 = sum(n6,n6) & n0 = sum(n6,n5) & n10 = sum(n6,n4) & n9 = sum(n6,n3) & n8 = sum(n6,n2) & n7 = sum(n6,n1) & n6 = sum(n6,n0) & n4 = sum(n5,n10) & n3 = sum(n5,n9) & n2 = sum(n5,n8) & n1 = sum(n5,n7) & n0 = sum(n5,n6) & n10 = sum(n5,n5) & n9 = sum(n5,n4) & n8 = sum(n5,n3) & n7 = sum(n5,n2) & n6 = sum(n5,n1) & n5 = sum(n5,n0) & n3 = sum(n4,n10) & n2 = sum(n4,n9) & n1 = sum(n4,n8) & n0 = sum(n4,n7) & n10 = sum(n4,n6) & n9 = sum(n4,n5) & n8 = sum(n4,n4) & n7 = sum(n4,n3) & n6 = sum(n4,n2) & n5 = sum(n4,n1) & n4 = sum(n4,n0) & n2 = sum(n3,n10) & n1 = sum(n3,n9) & n0 = sum(n3,n8) & n10 = sum(n3,n7) & n9 = sum(n3,n6) & n8 = sum(n3,n5) & n7 = sum(n3,n4) & n6 = sum(n3,n3) & n5 = sum(n3,n2) & n4 = sum(n3,n1) & n3 = sum(n3,n0) & n1 = sum(n2,n10) & n0 = sum(n2,n9) & n10 = sum(n2,n8) & n9 = sum(n2,n7) & n8 = sum(n2,n6) & n7 = sum(n2,n5) & n6 = sum(n2,n4) & n5 = sum(n2,n3) & n4 = sum(n2,n2) & n3 = sum(n2,n1) & n2 = sum(n2,n0) & n0 = sum(n1,n10) & n10 = sum(n1,n9) & n9 = sum(n1,n8) & n8 = sum(n1,n7) & n7 = sum(n1,n6) & n6 = sum(n1,n5) & n5 = sum(n1,n4) & n4 = sum(n1,n3) & n3 = sum(n1,n2) & n2 = sum(n1,n1) & n1 = sum(n1,n0) & n10 = sum(n0,n10) & n9 = sum(n0,n9) & n8 = sum(n0,n8) & n7 = sum(n0,n7) & n6 = sum(n0,n6) & n5 = sum(n0,n5) & n4 = sum(n0,n4) & n3 = sum(n0,n3) & n2 = sum(n0,n2) & n1 = sum(n0,n1) & n0 = sum(n0,n0) & n9 = pred(n10) & n8 = pred(n9) & n7 = pred(n8) & n6 = pred(n7) & n5 = pred(n6) & n4 = pred(n5) & n3 = pred(n4) & n2 = pred(n3) & n1 = pred(n2) & n0 = pred(n1) & n10 = pred(n0) & n0 = succ(n10) & succ(n9) = n10 & succ(n8) = n9 & succ(n7) = n8 & succ(n6) = n7 & succ(n5) = n6 & succ(n4) = n5 & succ(n3) = n4 & succ(n2) = n3 & succ(n1) = n2 & succ(n0) = n1)),
+  introduced(choice_axiom,[])).
+fof(f1,axiom,(
+  ? [X0,X1,X2] : (n9 != n10 & n8 != n10 & n8 != n9 & n7 != n10 & n7 != n9 & n7 != n8 & n6 != n10 & n6 != n9 & n6 != n8 & n6 != n7 & n5 != n10 & n5 != n9 & n5 != n8 & n5 != n7 & n5 != n6 & n4 != n10 & n4 != n9 & n4 != n8 & n4 != n7 & n4 != n6 & n4 != n5 & n3 != n10 & n3 != n9 & n3 != n8 & n3 != n7 & n3 != n6 & n3 != n5 & n3 != n4 & n2 != n10 & n2 != n9 & n2 != n8 & n2 != n7 & n2 != n6 & n2 != n5 & n2 != n4 & n2 != n3 & n1 != n10 & n1 != n9 & n1 != n8 & n1 != n7 & n1 != n6 & n1 != n5 & n1 != n4 & n1 != n3 & n1 != n2 & n0 != n10 & n0 != n9 & n0 != n8 & n0 != n7 & n0 != n6 & n0 != n5 & n0 != n4 & n0 != n3 & n0 != n2 & n0 != n1 & n10 != X2 & n9 != X2 & n8 != X2 & n7 != X2 & n6 != X2 & n5 != X2 & n4 != X2 & n3 != X2 & n2 != X2 & n1 != X2 & n0 != X2 & sum(pred(sum(X0,succ(X1))),sum(X1,pred(sum(X0,X1)))) = X2 & (n10 = X1 | n9 = X1 | n8 = X1 | n7 = X1 | n6 = X1 | n5 = X1 | n4 = X1 | n3 = X1 | n2 = X1 | n1 = X1 | n0 = X1) & (n10 = X0 | n9 = X0 | n8 = X0 | n7 = X0 | n6 = X0 | n5 = X0 | n4 = X0 | n3 = X0 | n2 = X0 | n1 = X0 | n0 = X0) & n9 = sum(n10,n10) & n8 = sum(n10,n9) & n7 = sum(n10,n8) & n6 = sum(n10,n7) & n5 = sum(n10,n6) & n4 = sum(n10,n5) & n3 = sum(n10,n4) & n2 = sum(n10,n3) & n1 = sum(n10,n2) & n0 = sum(n10,n1) & n10 = sum(n10,n0) & n8 = sum(n9,n10) & n7 = sum(n9,n9) & n6 = sum(n9,n8) & n5 = sum(n9,n7) & n4 = sum(n9,n6) & n3 = sum(n9,n5) & n2 = sum(n9,n4) & n1 = sum(n9,n3) & n0 = sum(n9,n2) & n10 = sum(n9,n1) & n9 = sum(n9,n0) & n7 = sum(n8,n10) & n6 = sum(n8,n9) & n5 = sum(n8,n8) & n4 = sum(n8,n7) & n3 = sum(n8,n6) & n2 = sum(n8,n5) & n1 = sum(n8,n4) & n0 = sum(n8,n3) & n10 = sum(n8,n2) & n9 = sum(n8,n1) & n8 = sum(n8,n0) & n6 = sum(n7,n10) & n5 = sum(n7,n9) & n4 = sum(n7,n8) & n3 = sum(n7,n7) & n2 = sum(n7,n6) & n1 = sum(n7,n5) & n0 = sum(n7,n4) & n10 = sum(n7,n3) & n9 = sum(n7,n2) & n8 = sum(n7,n1) & n7 = sum(n7,n0) & n5 = sum(n6,n10) & n4 = sum(n6,n9) & n3 = sum(n6,n8) & n2 = sum(n6,n7) & n1 = sum(n6,n6) & n0 = sum(n6,n5) & n10 = sum(n6,n4) & n9 = sum(n6,n3) & n8 = sum(n6,n2) & n7 = sum(n6,n1) & n6 = sum(n6,n0) & n4 = sum(n5,n10) & n3 = sum(n5,n9) & n2 = sum(n5,n8) & n1 = sum(n5,n7) & n0 = sum(n5,n6) & n10 = sum(n5,n5) & n9 = sum(n5,n4) & n8 = sum(n5,n3) & n7 = sum(n5,n2) & n6 = sum(n5,n1) & n5 = sum(n5,n0) & n3 = sum(n4,n10) & n2 = sum(n4,n9) & n1 = sum(n4,n8) & n0 = sum(n4,n7) & n10 = sum(n4,n6) & n9 = sum(n4,n5) & n8 = sum(n4,n4) & n7 = sum(n4,n3) & n6 = sum(n4,n2) & n5 = sum(n4,n1) & n4 = sum(n4,n0) & n2 = sum(n3,n10) & n1 = sum(n3,n9) & n0 = sum(n3,n8) & n10 = sum(n3,n7) & n9 = sum(n3,n6) & n8 = sum(n3,n5) & n7 = sum(n3,n4) & n6 = sum(n3,n3) & n5 = sum(n3,n2) & n4 = sum(n3,n1) & n3 = sum(n3,n0) & n1 = sum(n2,n10) & n0 = sum(n2,n9) & n10 = sum(n2,n8) & n9 = sum(n2,n7) & n8 = sum(n2,n6) & n7 = sum(n2,n5) & n6 = sum(n2,n4) & n5 = sum(n2,n3) & n4 = sum(n2,n2) & n3 = sum(n2,n1) & n2 = sum(n2,n0) & n0 = sum(n1,n10) & n10 = sum(n1,n9) & n9 = sum(n1,n8) & n8 = sum(n1,n7) & n7 = sum(n1,n6) & n6 = sum(n1,n5) & n5 = sum(n1,n4) & n4 = sum(n1,n3) & n3 = sum(n1,n2) & n2 = sum(n1,n1) & n1 = sum(n1,n0) & n10 = sum(n0,n10) & n9 = sum(n0,n9) & n8 = sum(n0,n8) & n7 = sum(n0,n7) & n6 = sum(n0,n6) & n5 = sum(n0,n5) & n4 = sum(n0,n4) & n3 = sum(n0,n3) & n2 = sum(n0,n2) & n1 = sum(n0,n1) & n0 = sum(n0,n0) & n9 = pred(n10) & n8 = pred(n9) & n7 = pred(n8) & n6 = pred(n7) & n5 = pred(n6) & n4 = pred(n5) & n3 = pred(n4) & n2 = pred(n3) & n1 = pred(n2) & n0 = pred(n1) & n10 = pred(n0) & n0 = succ(n10) & succ(n9) = n10 & succ(n8) = n9 & succ(n7) = n8 & succ(n6) = n7 & succ(n5) = n6 & succ(n4) = n5 & succ(n3) = n4 & succ(n2) = n3 & succ(n1) = n2 & succ(n0) = n1)),
+  file('./p/NUM375+1.010.tptp',unknown)).
+fof(f2099,plain,(
+  n3 = sK2 | (~spl3_3 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2098,f39])).
+fof(f39,plain,(
+  n3 = sum(n1,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2098,plain,(
+  sum(n1,n2) = sK2 | (~spl3_3 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2097,f17])).
+fof(f17,plain,(
+  n1 = pred(n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2097,plain,(
+  sK2 = sum(pred(n2),n2) | (~spl3_3 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2096,f139])).
+fof(f139,plain,(
+  n2 = sum(n10,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2096,plain,(
+  sK2 = sum(pred(sum(n10,n3)),n2) | (~spl3_3 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2095,f48])).
+fof(f48,plain,(
+  n2 = sum(n2,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2095,plain,(
+  sK2 = sum(pred(sum(n10,n3)),sum(n2,n0)) | (~spl3_3 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2094,f16])).
+fof(f16,plain,(
+  n0 = pred(n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2094,plain,(
+  sK2 = sum(pred(sum(n10,n3)),sum(n2,pred(n1))) | (~spl3_3 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2093,f138])).
+fof(f138,plain,(
+  n1 = sum(n10,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2093,plain,(
+  sK2 = sum(pred(sum(n10,n3)),sum(n2,pred(sum(n10,n2)))) | (~spl3_3 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f2092])).
+fof(f2092,plain,(
+  sK2 = sum(pred(sum(sK0,n3)),sum(n2,pred(sum(sK0,n2)))) | ~spl3_3),
+  inference(forward_demodulation,[],[f2091,f6])).
+fof(f6,plain,(
+  succ(n2) = n3),
+  inference(cnf_transformation,[],[f3])).
+fof(f2091,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n2))),sum(n2,pred(sum(sK0,n2)))) | ~spl3_3),
+  inference(forward_demodulation,[],[f149,f227])).
+fof(f227,plain,(
+  n2 = sK1 | ~spl3_3),
+  inference(avatar_component_clause,[],[f225])).
+fof(f225,plain,(
+  spl3_3 <=> n2 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_3])])).
+fof(f149,plain,(
+  sK2 = sum(pred(sum(sK0,succ(sK1))),sum(sK1,pred(sum(sK0,sK1))))),
+  inference(cnf_transformation,[],[f3])).
+fof(f304,plain,(
+  n10 = sK0 | ~spl3_22),
+  inference(avatar_component_clause,[],[f302])).
+fof(f302,plain,(
+  spl3_22 <=> n10 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_22])])).
+fof(f2090,plain,(
+  ~spl3_3 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f2089])).
+fof(f2089,plain,(
+  $false | (~spl3_3 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f2088,f156])).
+fof(f156,plain,(
+  n6 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f2088,plain,(
+  n6 = sK2 | (~spl3_3 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2087,f123])).
+fof(f123,plain,(
+  n6 = sum(n8,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2087,plain,(
+  sum(n8,n9) = sK2 | (~spl3_3 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2086,f24])).
+fof(f24,plain,(
+  n8 = pred(n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2086,plain,(
+  sK2 = sum(pred(n9),n9) | (~spl3_3 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2085,f95])).
+fof(f95,plain,(
+  n9 = sum(n6,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2085,plain,(
+  sK2 = sum(pred(sum(n6,n3)),n9) | (~spl3_3 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2084,f6])).
+fof(f2084,plain,(
+  sK2 = sum(pred(sum(n6,succ(n2))),n9) | (~spl3_3 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2083,f55])).
+fof(f55,plain,(
+  n9 = sum(n2,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2083,plain,(
+  sK2 = sum(pred(sum(n6,succ(n2))),sum(n2,n7)) | (~spl3_3 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2082,f23])).
+fof(f23,plain,(
+  n7 = pred(n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2082,plain,(
+  sK2 = sum(pred(sum(n6,succ(n2))),sum(n2,pred(n8))) | (~spl3_3 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2081,f94])).
+fof(f94,plain,(
+  n8 = sum(n6,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2081,plain,(
+  sK2 = sum(pred(sum(n6,succ(n2))),sum(n2,pred(sum(n6,n2)))) | (~spl3_3 | ~spl3_18)),
+  inference(backward_demodulation,[],[f227,f2072])).
+fof(f2072,plain,(
+  sK2 = sum(pred(sum(n6,succ(sK1))),sum(sK1,pred(sum(n6,sK1)))) | ~spl3_18),
+  inference(forward_demodulation,[],[f149,f288])).
+fof(f288,plain,(
+  n6 = sK0 | ~spl3_18),
+  inference(avatar_component_clause,[],[f286])).
+fof(f286,plain,(
+  spl3_18 <=> n6 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_18])])).
+fof(f2071,plain,(
+  ~spl3_1 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f2070])).
+fof(f2070,plain,(
+  $false | (~spl3_1 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f2069,f150])).
+fof(f150,plain,(
+  n0 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f2069,plain,(
+  n0 = sK2 | (~spl3_1 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2068,f97])).
+fof(f97,plain,(
+  n0 = sum(n6,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2068,plain,(
+  sum(n6,n5) = sK2 | (~spl3_1 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2067,f22])).
+fof(f22,plain,(
+  n6 = pred(n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2067,plain,(
+  sK2 = sum(pred(n7),n5) | (~spl3_1 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2066,f93])).
+fof(f93,plain,(
+  n7 = sum(n6,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2066,plain,(
+  sK2 = sum(pred(sum(n6,n1)),n5) | (~spl3_1 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2065,f31])).
+fof(f31,plain,(
+  n5 = sum(n0,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2065,plain,(
+  sK2 = sum(pred(sum(n6,n1)),sum(n0,n5)) | (~spl3_1 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2064,f21])).
+fof(f21,plain,(
+  n5 = pred(n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2064,plain,(
+  sK2 = sum(pred(sum(n6,n1)),sum(n0,pred(n6))) | (~spl3_1 | ~spl3_18)),
+  inference(forward_demodulation,[],[f2063,f92])).
+fof(f92,plain,(
+  n6 = sum(n6,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2063,plain,(
+  sK2 = sum(pred(sum(n6,n1)),sum(n0,pred(sum(n6,n0)))) | (~spl3_1 | ~spl3_18)),
+  inference(backward_demodulation,[],[f288,f2058])).
+fof(f2058,plain,(
+  sK2 = sum(pred(sum(sK0,n1)),sum(n0,pred(sum(sK0,n0)))) | ~spl3_1),
+  inference(forward_demodulation,[],[f2057,f4])).
+fof(f4,plain,(
+  succ(n0) = n1),
+  inference(cnf_transformation,[],[f3])).
+fof(f2057,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n0))),sum(n0,pred(sum(sK0,n0)))) | ~spl3_1),
+  inference(forward_demodulation,[],[f149,f219])).
+fof(f219,plain,(
+  n0 = sK1 | ~spl3_1),
+  inference(avatar_component_clause,[],[f217])).
+fof(f217,plain,(
+  spl3_1 <=> n0 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_1])])).
+fof(f2056,plain,(
+  ~spl3_1 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f2055])).
+fof(f2055,plain,(
+  $false | (~spl3_1 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f2054,f158])).
+fof(f158,plain,(
+  n8 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f2054,plain,(
+  n8 = sK2 | (~spl3_1 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2053,f145])).
+fof(f145,plain,(
+  n8 = sum(n10,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2053,plain,(
+  sum(n10,n9) = sK2 | (~spl3_1 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2052,f15])).
+fof(f15,plain,(
+  n10 = pred(n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2052,plain,(
+  sK2 = sum(pred(n0),n9) | (~spl3_1 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2051,f137])).
+fof(f137,plain,(
+  n0 = sum(n10,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2051,plain,(
+  sK2 = sum(pred(sum(n10,n1)),n9) | (~spl3_1 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2050,f4])).
+fof(f2050,plain,(
+  sK2 = sum(pred(sum(n10,succ(n0))),n9) | (~spl3_1 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2049,f35])).
+fof(f35,plain,(
+  n9 = sum(n0,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2049,plain,(
+  sK2 = sum(pred(sum(n10,succ(n0))),sum(n0,n9)) | (~spl3_1 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2048,f25])).
+fof(f25,plain,(
+  n9 = pred(n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2048,plain,(
+  sK2 = sum(pred(sum(n10,succ(n0))),sum(n0,pred(n10))) | (~spl3_1 | ~spl3_22)),
+  inference(forward_demodulation,[],[f2047,f136])).
+fof(f136,plain,(
+  n10 = sum(n10,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2047,plain,(
+  sK2 = sum(pred(sum(n10,succ(n0))),sum(n0,pred(sum(n10,n0)))) | (~spl3_1 | ~spl3_22)),
+  inference(backward_demodulation,[],[f219,f2037])).
+fof(f2037,plain,(
+  sK2 = sum(pred(sum(n10,succ(sK1))),sum(sK1,pred(sum(n10,sK1)))) | ~spl3_22),
+  inference(backward_demodulation,[],[f304,f149])).
+fof(f2036,plain,(
+  ~spl3_3 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f2035])).
+fof(f2035,plain,(
+  $false | (~spl3_3 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f2034,f157])).
+fof(f157,plain,(
+  n7 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f2034,plain,(
+  n7 = sK2 | (~spl3_3 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2033,f63])).
+fof(f63,plain,(
+  n7 = sum(n3,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2033,plain,(
+  sum(n3,n4) = sK2 | (~spl3_3 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2032,f19])).
+fof(f19,plain,(
+  n3 = pred(n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2032,plain,(
+  sK2 = sum(pred(n4),n4) | (~spl3_3 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2031,f40])).
+fof(f40,plain,(
+  n4 = sum(n1,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2031,plain,(
+  sK2 = sum(pred(sum(n1,n3)),n4) | (~spl3_3 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2030,f6])).
+fof(f2030,plain,(
+  sK2 = sum(pred(sum(n1,succ(n2))),n4) | (~spl3_3 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2029,f50])).
+fof(f50,plain,(
+  n4 = sum(n2,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2029,plain,(
+  sK2 = sum(pred(sum(n1,succ(n2))),sum(n2,n2)) | (~spl3_3 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2028,f18])).
+fof(f18,plain,(
+  n2 = pred(n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2028,plain,(
+  sK2 = sum(pred(sum(n1,succ(n2))),sum(n2,pred(n3))) | (~spl3_3 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2027,f39])).
+fof(f2027,plain,(
+  sK2 = sum(pred(sum(n1,succ(n2))),sum(n2,pred(sum(n1,n2)))) | (~spl3_3 | ~spl3_13)),
+  inference(backward_demodulation,[],[f227,f1990])).
+fof(f1990,plain,(
+  sK2 = sum(pred(sum(n1,succ(sK1))),sum(sK1,pred(sum(n1,sK1)))) | ~spl3_13),
+  inference(backward_demodulation,[],[f268,f149])).
+fof(f268,plain,(
+  n1 = sK0 | ~spl3_13),
+  inference(avatar_component_clause,[],[f266])).
+fof(f266,plain,(
+  spl3_13 <=> n1 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_13])])).
+fof(f2018,plain,(
+  ~spl3_1 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f2017])).
+fof(f2017,plain,(
+  $false | (~spl3_1 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f2016,f151])).
+fof(f151,plain,(
+  n1 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f2016,plain,(
+  n1 = sK2 | (~spl3_1 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2015,f37])).
+fof(f37,plain,(
+  n1 = sum(n1,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2015,plain,(
+  sum(n1,n0) = sK2 | (~spl3_1 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2014,f17])).
+fof(f2014,plain,(
+  sK2 = sum(pred(n2),n0) | (~spl3_1 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2013,f38])).
+fof(f38,plain,(
+  n2 = sum(n1,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2013,plain,(
+  sK2 = sum(pred(sum(n1,n1)),n0) | (~spl3_1 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2012,f4])).
+fof(f2012,plain,(
+  sK2 = sum(pred(sum(n1,succ(n0))),n0) | (~spl3_1 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2011,f26])).
+fof(f26,plain,(
+  n0 = sum(n0,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f2011,plain,(
+  sK2 = sum(pred(sum(n1,succ(n0))),sum(n0,n0)) | (~spl3_1 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2010,f16])).
+fof(f2010,plain,(
+  sK2 = sum(pred(sum(n1,succ(n0))),sum(n0,pred(n1))) | (~spl3_1 | ~spl3_13)),
+  inference(forward_demodulation,[],[f2009,f37])).
+fof(f2009,plain,(
+  sK2 = sum(pred(sum(n1,succ(n0))),sum(n0,pred(sum(n1,n0)))) | (~spl3_1 | ~spl3_13)),
+  inference(backward_demodulation,[],[f219,f1990])).
+fof(f1989,plain,(
+  ~spl3_6 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f1988])).
+fof(f1988,plain,(
+  $false | (~spl3_6 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f1987,f154])).
+fof(f154,plain,(
+  n4 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f1987,plain,(
+  n4 = sK2 | (~spl3_6 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1986,f30])).
+fof(f30,plain,(
+  n4 = sum(n0,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1986,plain,(
+  sum(n0,n4) = sK2 | (~spl3_6 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1985,f16])).
+fof(f1985,plain,(
+  sK2 = sum(pred(n1),n4) | (~spl3_6 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1984,f98])).
+fof(f98,plain,(
+  n1 = sum(n6,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1984,plain,(
+  sK2 = sum(pred(sum(n6,n6)),n4) | (~spl3_6 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1983,f91])).
+fof(f91,plain,(
+  n4 = sum(n5,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1983,plain,(
+  sK2 = sum(pred(sum(n6,n6)),sum(n5,n10)) | (~spl3_6 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1982,f15])).
+fof(f1982,plain,(
+  sK2 = sum(pred(sum(n6,n6)),sum(n5,pred(n0))) | (~spl3_6 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1981,f97])).
+fof(f1981,plain,(
+  sK2 = sum(pred(sum(n6,n6)),sum(n5,pred(sum(n6,n5)))) | (~spl3_6 | ~spl3_18)),
+  inference(backward_demodulation,[],[f288,f1958])).
+fof(f1958,plain,(
+  sK2 = sum(pred(sum(sK0,n6)),sum(n5,pred(sum(sK0,n5)))) | ~spl3_6),
+  inference(forward_demodulation,[],[f1957,f9])).
+fof(f9,plain,(
+  succ(n5) = n6),
+  inference(cnf_transformation,[],[f3])).
+fof(f1957,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n5))),sum(n5,pred(sum(sK0,n5)))) | ~spl3_6),
+  inference(forward_demodulation,[],[f149,f239])).
+fof(f239,plain,(
+  n5 = sK1 | ~spl3_6),
+  inference(avatar_component_clause,[],[f237])).
+fof(f237,plain,(
+  spl3_6 <=> n5 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_6])])).
+fof(f1976,plain,(
+  ~spl3_6 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f1975])).
+fof(f1975,plain,(
+  $false | (~spl3_6 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f1974,f155])).
+fof(f155,plain,(
+  n5 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f1974,plain,(
+  n5 = sK2 | (~spl3_6 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1973,f102])).
+fof(f102,plain,(
+  n5 = sum(n6,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1973,plain,(
+  sum(n6,n10) = sK2 | (~spl3_6 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1972,f22])).
+fof(f1972,plain,(
+  sK2 = sum(pred(n7),n10) | (~spl3_6 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1971,f43])).
+fof(f43,plain,(
+  n7 = sum(n1,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1971,plain,(
+  sK2 = sum(pred(sum(n1,n6)),n10) | (~spl3_6 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1970,f86])).
+fof(f86,plain,(
+  n10 = sum(n5,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1970,plain,(
+  sK2 = sum(pred(sum(n1,n6)),sum(n5,n5)) | (~spl3_6 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1969,f21])).
+fof(f1969,plain,(
+  sK2 = sum(pred(sum(n1,n6)),sum(n5,pred(n6))) | (~spl3_6 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1968,f42])).
+fof(f42,plain,(
+  n6 = sum(n1,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1968,plain,(
+  sK2 = sum(pred(sum(n1,n6)),sum(n5,pred(sum(n1,n5)))) | (~spl3_6 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f1958])).
+fof(f1956,plain,(
+  ~spl3_6 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f1955])).
+fof(f1955,plain,(
+  $false | (~spl3_6 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f1954,f151])).
+fof(f1954,plain,(
+  n1 = sK2 | (~spl3_6 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1953,f78])).
+fof(f78,plain,(
+  n1 = sum(n4,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1953,plain,(
+  sum(n4,n8) = sK2 | (~spl3_6 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1952,f20])).
+fof(f20,plain,(
+  n4 = pred(n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1952,plain,(
+  sK2 = sum(pred(n5),n8) | (~spl3_6 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1951,f142])).
+fof(f142,plain,(
+  n5 = sum(n10,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1951,plain,(
+  sK2 = sum(pred(sum(n10,n6)),n8) | (~spl3_6 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1950,f9])).
+fof(f1950,plain,(
+  sK2 = sum(pred(sum(n10,succ(n5))),n8) | (~spl3_6 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1949,f84])).
+fof(f84,plain,(
+  n8 = sum(n5,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1949,plain,(
+  sK2 = sum(pred(sum(n10,succ(n5))),sum(n5,n3)) | (~spl3_6 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1948,f19])).
+fof(f1948,plain,(
+  sK2 = sum(pred(sum(n10,succ(n5))),sum(n5,pred(n4))) | (~spl3_6 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1947,f141])).
+fof(f141,plain,(
+  n4 = sum(n10,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1947,plain,(
+  sK2 = sum(pred(sum(n10,succ(n5))),sum(n5,pred(sum(n10,n5)))) | (~spl3_6 | ~spl3_22)),
+  inference(backward_demodulation,[],[f239,f1941])).
+fof(f1941,plain,(
+  sK2 = sum(pred(sum(n10,succ(sK1))),sum(sK1,pred(sum(n10,sK1)))) | ~spl3_22),
+  inference(backward_demodulation,[],[f304,f149])).
+fof(f1940,plain,(
+  ~spl3_1 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1939])).
+fof(f1939,plain,(
+  $false | (~spl3_1 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1938,f154])).
+fof(f1938,plain,(
+  n4 = sK2 | (~spl3_1 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1937,f121])).
+fof(f121,plain,(
+  n4 = sum(n8,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1937,plain,(
+  sum(n8,n7) = sK2 | (~spl3_1 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1936,f24])).
+fof(f1936,plain,(
+  sK2 = sum(pred(n9),n7) | (~spl3_1 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1935,f115])).
+fof(f115,plain,(
+  n9 = sum(n8,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1935,plain,(
+  sK2 = sum(pred(sum(n8,n1)),n7) | (~spl3_1 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1934,f4])).
+fof(f1934,plain,(
+  sK2 = sum(pred(sum(n8,succ(n0))),n7) | (~spl3_1 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1933,f33])).
+fof(f33,plain,(
+  n7 = sum(n0,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1933,plain,(
+  sK2 = sum(pred(sum(n8,succ(n0))),sum(n0,n7)) | (~spl3_1 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1932,f23])).
+fof(f1932,plain,(
+  sK2 = sum(pred(sum(n8,succ(n0))),sum(n0,pred(n8))) | (~spl3_1 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1931,f114])).
+fof(f114,plain,(
+  n8 = sum(n8,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1931,plain,(
+  sK2 = sum(pred(sum(n8,succ(n0))),sum(n0,pred(sum(n8,n0)))) | (~spl3_1 | ~spl3_20)),
+  inference(backward_demodulation,[],[f219,f1886])).
+fof(f1886,plain,(
+  sK2 = sum(pred(sum(n8,succ(sK1))),sum(sK1,pred(sum(n8,sK1)))) | ~spl3_20),
+  inference(backward_demodulation,[],[f296,f149])).
+fof(f296,plain,(
+  n8 = sK0 | ~spl3_20),
+  inference(avatar_component_clause,[],[f294])).
+fof(f294,plain,(
+  spl3_20 <=> n8 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_20])])).
+fof(f1920,plain,(
+  ~spl3_3 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1919])).
+fof(f1919,plain,(
+  $false | (~spl3_3 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1918,f160])).
+fof(f160,plain,(
+  n10 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f1918,plain,(
+  n10 = sK2 | (~spl3_3 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1917,f136])).
+fof(f1917,plain,(
+  sum(n10,n0) = sK2 | (~spl3_3 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1916,f15])).
+fof(f1916,plain,(
+  sK2 = sum(pred(n0),n0) | (~spl3_3 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1915,f117])).
+fof(f117,plain,(
+  n0 = sum(n8,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1915,plain,(
+  sK2 = sum(pred(sum(n8,n3)),n0) | (~spl3_3 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1914,f6])).
+fof(f1914,plain,(
+  sK2 = sum(pred(sum(n8,succ(n2))),n0) | (~spl3_3 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1913,f57])).
+fof(f57,plain,(
+  n0 = sum(n2,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1913,plain,(
+  sK2 = sum(pred(sum(n8,succ(n2))),sum(n2,n9)) | (~spl3_3 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1912,f25])).
+fof(f1912,plain,(
+  sK2 = sum(pred(sum(n8,succ(n2))),sum(n2,pred(n10))) | (~spl3_3 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1911,f116])).
+fof(f116,plain,(
+  n10 = sum(n8,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1911,plain,(
+  sK2 = sum(pred(sum(n8,succ(n2))),sum(n2,pred(sum(n8,n2)))) | (~spl3_3 | ~spl3_20)),
+  inference(backward_demodulation,[],[f227,f1886])).
+fof(f1902,plain,(
+  ~spl3_6 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1901])).
+fof(f1901,plain,(
+  $false | (~spl3_6 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1900,f158])).
+fof(f1900,plain,(
+  n8 = sK2 | (~spl3_6 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1899,f54])).
+fof(f54,plain,(
+  n8 = sum(n2,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1899,plain,(
+  sum(n2,n6) = sK2 | (~spl3_6 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1898,f18])).
+fof(f1898,plain,(
+  sK2 = sum(pred(n3),n6) | (~spl3_6 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1897,f120])).
+fof(f120,plain,(
+  n3 = sum(n8,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1897,plain,(
+  sK2 = sum(pred(sum(n8,n6)),n6) | (~spl3_6 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1896,f9])).
+fof(f1896,plain,(
+  sK2 = sum(pred(sum(n8,succ(n5))),n6) | (~spl3_6 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1895,f82])).
+fof(f82,plain,(
+  n6 = sum(n5,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1895,plain,(
+  sK2 = sum(pred(sum(n8,succ(n5))),sum(n5,n1)) | (~spl3_6 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1894,f17])).
+fof(f1894,plain,(
+  sK2 = sum(pred(sum(n8,succ(n5))),sum(n5,pred(n2))) | (~spl3_6 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1893,f119])).
+fof(f119,plain,(
+  n2 = sum(n8,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1893,plain,(
+  sK2 = sum(pred(sum(n8,succ(n5))),sum(n5,pred(sum(n8,n5)))) | (~spl3_6 | ~spl3_20)),
+  inference(backward_demodulation,[],[f239,f1886])).
+fof(f1885,plain,(
+  ~spl3_5 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f1884])).
+fof(f1884,plain,(
+  $false | (~spl3_5 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f1883,f159])).
+fof(f159,plain,(
+  n9 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f1883,plain,(
+  n9 = sK2 | (~spl3_5 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1882,f65])).
+fof(f65,plain,(
+  n9 = sum(n3,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1882,plain,(
+  sum(n3,n6) = sK2 | (~spl3_5 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1881,f19])).
+fof(f1881,plain,(
+  sK2 = sum(pred(n4),n6) | (~spl3_5 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1880,f141])).
+fof(f1880,plain,(
+  sK2 = sum(pred(sum(n10,n5)),n6) | (~spl3_5 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1879,f72])).
+fof(f72,plain,(
+  n6 = sum(n4,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1879,plain,(
+  sK2 = sum(pred(sum(n10,n5)),sum(n4,n2)) | (~spl3_5 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1878,f18])).
+fof(f1878,plain,(
+  sK2 = sum(pred(sum(n10,n5)),sum(n4,pred(n3))) | (~spl3_5 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1877,f140])).
+fof(f140,plain,(
+  n3 = sum(n10,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1877,plain,(
+  sK2 = sum(pred(sum(n10,n5)),sum(n4,pred(sum(n10,n4)))) | (~spl3_5 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f1845])).
+fof(f1845,plain,(
+  sK2 = sum(pred(sum(sK0,n5)),sum(n4,pred(sum(sK0,n4)))) | ~spl3_5),
+  inference(forward_demodulation,[],[f1844,f8])).
+fof(f8,plain,(
+  succ(n4) = n5),
+  inference(cnf_transformation,[],[f3])).
+fof(f1844,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n4))),sum(n4,pred(sum(sK0,n4)))) | ~spl3_5),
+  inference(forward_demodulation,[],[f149,f235])).
+fof(f235,plain,(
+  n4 = sK1 | ~spl3_5),
+  inference(avatar_component_clause,[],[f233])).
+fof(f233,plain,(
+  spl3_5 <=> n4 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_5])])).
+fof(f1876,plain,(
+  ~spl3_5 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f1875])).
+fof(f1875,plain,(
+  $false | (~spl3_5 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f1874,f151])).
+fof(f1874,plain,(
+  n1 = sK2 | (~spl3_5 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1873,f138])).
+fof(f1873,plain,(
+  sum(n10,n2) = sK2 | (~spl3_5 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1872,f15])).
+fof(f1872,plain,(
+  sK2 = sum(pred(n0),n2) | (~spl3_5 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1871,f97])).
+fof(f1871,plain,(
+  sK2 = sum(pred(sum(n6,n5)),n2) | (~spl3_5 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1870,f79])).
+fof(f79,plain,(
+  n2 = sum(n4,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1870,plain,(
+  sK2 = sum(pred(sum(n6,n5)),sum(n4,n9)) | (~spl3_5 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1869,f25])).
+fof(f1869,plain,(
+  sK2 = sum(pred(sum(n6,n5)),sum(n4,pred(n10))) | (~spl3_5 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1868,f96])).
+fof(f96,plain,(
+  n10 = sum(n6,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1868,plain,(
+  sK2 = sum(pred(sum(n6,n5)),sum(n4,pred(sum(n6,n4)))) | (~spl3_5 | ~spl3_18)),
+  inference(backward_demodulation,[],[f288,f1845])).
+fof(f1863,plain,(
+  ~spl3_5 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f1862])).
+fof(f1862,plain,(
+  $false | (~spl3_5 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f1861,f152])).
+fof(f152,plain,(
+  n2 != sK2),
+  inference(cnf_transformation,[],[f3])).
+fof(f1861,plain,(
+  n2 = sK2 | (~spl3_5 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1860,f89])).
+fof(f89,plain,(
+  n2 = sum(n5,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1860,plain,(
+  sum(n5,n8) = sK2 | (~spl3_5 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1859,f21])).
+fof(f1859,plain,(
+  sK2 = sum(pred(n6),n8) | (~spl3_5 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1858,f42])).
+fof(f1858,plain,(
+  sK2 = sum(pred(sum(n1,n5)),n8) | (~spl3_5 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1857,f74])).
+fof(f74,plain,(
+  n8 = sum(n4,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1857,plain,(
+  sK2 = sum(pred(sum(n1,n5)),sum(n4,n4)) | (~spl3_5 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1856,f20])).
+fof(f1856,plain,(
+  sK2 = sum(pred(sum(n1,n5)),sum(n4,pred(n5))) | (~spl3_5 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1855,f41])).
+fof(f41,plain,(
+  n5 = sum(n1,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1855,plain,(
+  sK2 = sum(pred(sum(n1,n5)),sum(n4,pred(sum(n1,n4)))) | (~spl3_5 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f1845])).
+fof(f1843,plain,(
+  ~spl3_5 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1842])).
+fof(f1842,plain,(
+  $false | (~spl3_5 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1841,f155])).
+fof(f1841,plain,(
+  n5 = sK2 | (~spl3_5 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1840,f41])).
+fof(f1840,plain,(
+  sum(n1,n4) = sK2 | (~spl3_5 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1839,f17])).
+fof(f1839,plain,(
+  sK2 = sum(pred(n2),n4) | (~spl3_5 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1838,f119])).
+fof(f1838,plain,(
+  sK2 = sum(pred(sum(n8,n5)),n4) | (~spl3_5 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1837,f8])).
+fof(f1837,plain,(
+  sK2 = sum(pred(sum(n8,succ(n4))),n4) | (~spl3_5 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1836,f70])).
+fof(f70,plain,(
+  n4 = sum(n4,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1836,plain,(
+  sK2 = sum(pred(sum(n8,succ(n4))),sum(n4,n0)) | (~spl3_5 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1835,f16])).
+fof(f1835,plain,(
+  sK2 = sum(pred(sum(n8,succ(n4))),sum(n4,pred(n1))) | (~spl3_5 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1834,f118])).
+fof(f118,plain,(
+  n1 = sum(n8,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1834,plain,(
+  sK2 = sum(pred(sum(n8,succ(n4))),sum(n4,pred(sum(n8,n4)))) | (~spl3_5 | ~spl3_20)),
+  inference(backward_demodulation,[],[f235,f1825])).
+fof(f1825,plain,(
+  sK2 = sum(pred(sum(n8,succ(sK1))),sum(sK1,pred(sum(n8,sK1)))) | ~spl3_20),
+  inference(backward_demodulation,[],[f296,f149])).
+fof(f1824,plain,(
+  ~spl3_1 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1823])).
+fof(f1823,plain,(
+  $false | (~spl3_1 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1822,f157])).
+fof(f1822,plain,(
+  n7 = sK2 | (~spl3_1 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1821,f73])).
+fof(f73,plain,(
+  n7 = sum(n4,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1821,plain,(
+  sum(n4,n3) = sK2 | (~spl3_1 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1820,f20])).
+fof(f1820,plain,(
+  sK2 = sum(pred(n5),n3) | (~spl3_1 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1819,f71])).
+fof(f71,plain,(
+  n5 = sum(n4,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1819,plain,(
+  sK2 = sum(pred(sum(n4,n1)),n3) | (~spl3_1 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1818,f4])).
+fof(f1818,plain,(
+  sK2 = sum(pred(sum(n4,succ(n0))),n3) | (~spl3_1 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1817,f29])).
+fof(f29,plain,(
+  n3 = sum(n0,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1817,plain,(
+  sK2 = sum(pred(sum(n4,succ(n0))),sum(n0,n3)) | (~spl3_1 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1816,f19])).
+fof(f1816,plain,(
+  sK2 = sum(pred(sum(n4,succ(n0))),sum(n0,pred(n4))) | (~spl3_1 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1815,f70])).
+fof(f1815,plain,(
+  sK2 = sum(pred(sum(n4,succ(n0))),sum(n0,pred(sum(n4,n0)))) | (~spl3_1 | ~spl3_16)),
+  inference(backward_demodulation,[],[f219,f1749])).
+fof(f1749,plain,(
+  sK2 = sum(pred(sum(n4,succ(sK1))),sum(sK1,pred(sum(n4,sK1)))) | ~spl3_16),
+  inference(backward_demodulation,[],[f280,f149])).
+fof(f280,plain,(
+  n4 = sK0 | ~spl3_16),
+  inference(avatar_component_clause,[],[f278])).
+fof(f278,plain,(
+  spl3_16 <=> n4 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_16])])).
+fof(f1804,plain,(
+  ~spl3_5 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1803])).
+fof(f1803,plain,(
+  $false | (~spl3_5 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1802,f158])).
+fof(f1802,plain,(
+  n8 = sK2 | (~spl3_5 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1801,f114])).
+fof(f1801,plain,(
+  sum(n8,n0) = sK2 | (~spl3_5 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1800,f24])).
+fof(f1800,plain,(
+  sK2 = sum(pred(n9),n0) | (~spl3_5 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1799,f75])).
+fof(f75,plain,(
+  n9 = sum(n4,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1799,plain,(
+  sK2 = sum(pred(sum(n4,n5)),n0) | (~spl3_5 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1798,f8])).
+fof(f1798,plain,(
+  sK2 = sum(pred(sum(n4,succ(n4))),n0) | (~spl3_5 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1797,f77])).
+fof(f77,plain,(
+  n0 = sum(n4,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1797,plain,(
+  sK2 = sum(pred(sum(n4,succ(n4))),sum(n4,n7)) | (~spl3_5 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1796,f23])).
+fof(f1796,plain,(
+  sK2 = sum(pred(sum(n4,succ(n4))),sum(n4,pred(n8))) | (~spl3_5 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1795,f74])).
+fof(f1795,plain,(
+  sK2 = sum(pred(sum(n4,succ(n4))),sum(n4,pred(sum(n4,n4)))) | (~spl3_5 | ~spl3_16)),
+  inference(backward_demodulation,[],[f235,f1749])).
+fof(f1788,plain,(
+  ~spl3_3 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1787])).
+fof(f1787,plain,(
+  $false | (~spl3_3 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1786,f152])).
+fof(f1786,plain,(
+  n2 = sK2 | (~spl3_3 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1785,f99])).
+fof(f99,plain,(
+  n2 = sum(n6,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1785,plain,(
+  sum(n6,n7) = sK2 | (~spl3_3 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1784,f22])).
+fof(f1784,plain,(
+  sK2 = sum(pred(n7),n7) | (~spl3_3 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1783,f73])).
+fof(f1783,plain,(
+  sK2 = sum(pred(sum(n4,n3)),n7) | (~spl3_3 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1782,f6])).
+fof(f1782,plain,(
+  sK2 = sum(pred(sum(n4,succ(n2))),n7) | (~spl3_3 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1781,f53])).
+fof(f53,plain,(
+  n7 = sum(n2,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1781,plain,(
+  sK2 = sum(pred(sum(n4,succ(n2))),sum(n2,n5)) | (~spl3_3 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1780,f21])).
+fof(f1780,plain,(
+  sK2 = sum(pred(sum(n4,succ(n2))),sum(n2,pred(n6))) | (~spl3_3 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1779,f72])).
+fof(f1779,plain,(
+  sK2 = sum(pred(sum(n4,succ(n2))),sum(n2,pred(sum(n4,n2)))) | (~spl3_3 | ~spl3_16)),
+  inference(backward_demodulation,[],[f227,f1749])).
+fof(f1770,plain,(
+  ~spl3_6 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1769])).
+fof(f1769,plain,(
+  $false | (~spl3_6 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1768,f150])).
+fof(f1768,plain,(
+  n0 = sK2 | (~spl3_6 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1767,f127])).
+fof(f127,plain,(
+  n0 = sum(n9,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1767,plain,(
+  sum(n9,n2) = sK2 | (~spl3_6 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1766,f25])).
+fof(f1766,plain,(
+  sK2 = sum(pred(n10),n2) | (~spl3_6 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1765,f76])).
+fof(f76,plain,(
+  n10 = sum(n4,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1765,plain,(
+  sK2 = sum(pred(sum(n4,n6)),n2) | (~spl3_6 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1764,f9])).
+fof(f1764,plain,(
+  sK2 = sum(pred(sum(n4,succ(n5))),n2) | (~spl3_6 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1763,f89])).
+fof(f1763,plain,(
+  sK2 = sum(pred(sum(n4,succ(n5))),sum(n5,n8)) | (~spl3_6 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1762,f24])).
+fof(f1762,plain,(
+  sK2 = sum(pred(sum(n4,succ(n5))),sum(n5,pred(n9))) | (~spl3_6 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1761,f75])).
+fof(f1761,plain,(
+  sK2 = sum(pred(sum(n4,succ(n5))),sum(n5,pred(sum(n4,n5)))) | (~spl3_6 | ~spl3_16)),
+  inference(backward_demodulation,[],[f239,f1749])).
+fof(f1748,plain,(
+  ~spl3_4 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f1747])).
+fof(f1747,plain,(
+  $false | (~spl3_4 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f1746,f160])).
+fof(f1746,plain,(
+  n10 = sK2 | (~spl3_4 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1745,f76])).
+fof(f1745,plain,(
+  sum(n4,n6) = sK2 | (~spl3_4 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1744,f20])).
+fof(f1744,plain,(
+  sK2 = sum(pred(n5),n6) | (~spl3_4 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1743,f41])).
+fof(f1743,plain,(
+  sK2 = sum(pred(sum(n1,n4)),n6) | (~spl3_4 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1742,f62])).
+fof(f62,plain,(
+  n6 = sum(n3,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1742,plain,(
+  sK2 = sum(pred(sum(n1,n4)),sum(n3,n3)) | (~spl3_4 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1741,f19])).
+fof(f1741,plain,(
+  sK2 = sum(pred(sum(n1,n4)),sum(n3,pred(n4))) | (~spl3_4 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1740,f40])).
+fof(f1740,plain,(
+  sK2 = sum(pred(sum(n1,n4)),sum(n3,pred(sum(n1,n3)))) | (~spl3_4 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f1682])).
+fof(f1682,plain,(
+  sK2 = sum(pred(sum(sK0,n4)),sum(n3,pred(sum(sK0,n3)))) | ~spl3_4),
+  inference(forward_demodulation,[],[f1681,f7])).
+fof(f7,plain,(
+  succ(n3) = n4),
+  inference(cnf_transformation,[],[f3])).
+fof(f1681,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n3))),sum(n3,pred(sum(sK0,n3)))) | ~spl3_4),
+  inference(forward_demodulation,[],[f149,f231])).
+fof(f231,plain,(
+  n3 = sK1 | ~spl3_4),
+  inference(avatar_component_clause,[],[f229])).
+fof(f229,plain,(
+  spl3_4 <=> n3 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_4])])).
+fof(f1730,plain,(
+  ~spl3_4 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1729])).
+fof(f1729,plain,(
+  $false | (~spl3_4 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1728,f155])).
+fof(f1728,plain,(
+  n5 = sK2 | (~spl3_4 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1727,f112])).
+fof(f112,plain,(
+  n5 = sum(n7,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1727,plain,(
+  sum(n7,n9) = sK2 | (~spl3_4 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1726,f23])).
+fof(f1726,plain,(
+  sK2 = sum(pred(n8),n9) | (~spl3_4 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1725,f74])).
+fof(f1725,plain,(
+  sK2 = sum(pred(sum(n4,n4)),n9) | (~spl3_4 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1724,f65])).
+fof(f1724,plain,(
+  sK2 = sum(pred(sum(n4,n4)),sum(n3,n6)) | (~spl3_4 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1723,f22])).
+fof(f1723,plain,(
+  sK2 = sum(pred(sum(n4,n4)),sum(n3,pred(n7))) | (~spl3_4 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1722,f73])).
+fof(f1722,plain,(
+  sK2 = sum(pred(sum(n4,n4)),sum(n3,pred(sum(n4,n3)))) | (~spl3_4 | ~spl3_16)),
+  inference(backward_demodulation,[],[f280,f1682])).
+fof(f1715,plain,(
+  ~spl3_4 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f1714])).
+fof(f1714,plain,(
+  $false | (~spl3_4 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f1713,f156])).
+fof(f1713,plain,(
+  n6 = sK2 | (~spl3_4 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1712,f52])).
+fof(f52,plain,(
+  n6 = sum(n2,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1712,plain,(
+  sum(n2,n4) = sK2 | (~spl3_4 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1711,f18])).
+fof(f1711,plain,(
+  sK2 = sum(pred(n3),n4) | (~spl3_4 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1710,f140])).
+fof(f1710,plain,(
+  sK2 = sum(pred(sum(n10,n4)),n4) | (~spl3_4 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1709,f60])).
+fof(f60,plain,(
+  n4 = sum(n3,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1709,plain,(
+  sK2 = sum(pred(sum(n10,n4)),sum(n3,n1)) | (~spl3_4 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1708,f17])).
+fof(f1708,plain,(
+  sK2 = sum(pred(sum(n10,n4)),sum(n3,pred(n2))) | (~spl3_4 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1707,f139])).
+fof(f1707,plain,(
+  sK2 = sum(pred(sum(n10,n4)),sum(n3,pred(sum(n10,n3)))) | (~spl3_4 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f1682])).
+fof(f1706,plain,(
+  ~spl3_4 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1705])).
+fof(f1705,plain,(
+  $false | (~spl3_4 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1704,f152])).
+fof(f1704,plain,(
+  n2 = sK2 | (~spl3_4 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1703,f28])).
+fof(f28,plain,(
+  n2 = sum(n0,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1703,plain,(
+  sum(n0,n2) = sK2 | (~spl3_4 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1702,f16])).
+fof(f1702,plain,(
+  sK2 = sum(pred(n1),n2) | (~spl3_4 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1701,f118])).
+fof(f1701,plain,(
+  sK2 = sum(pred(sum(n8,n4)),n2) | (~spl3_4 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1700,f69])).
+fof(f69,plain,(
+  n2 = sum(n3,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1700,plain,(
+  sK2 = sum(pred(sum(n8,n4)),sum(n3,n10)) | (~spl3_4 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1699,f15])).
+fof(f1699,plain,(
+  sK2 = sum(pred(sum(n8,n4)),sum(n3,pred(n0))) | (~spl3_4 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1698,f117])).
+fof(f1698,plain,(
+  sK2 = sum(pred(sum(n8,n4)),sum(n3,pred(sum(n8,n3)))) | (~spl3_4 | ~spl3_20)),
+  inference(backward_demodulation,[],[f296,f1682])).
+fof(f1695,plain,(
+  ~spl3_4 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f1694])).
+fof(f1694,plain,(
+  $false | (~spl3_4 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f1693,f159])).
+fof(f1693,plain,(
+  n9 = sK2 | (~spl3_4 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1692,f125])).
+fof(f125,plain,(
+  n9 = sum(n9,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1692,plain,(
+  sum(n9,n0) = sK2 | (~spl3_4 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1691,f25])).
+fof(f1691,plain,(
+  sK2 = sum(pred(n10),n0) | (~spl3_4 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1690,f96])).
+fof(f1690,plain,(
+  sK2 = sum(pred(sum(n6,n4)),n0) | (~spl3_4 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1689,f67])).
+fof(f67,plain,(
+  n0 = sum(n3,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1689,plain,(
+  sK2 = sum(pred(sum(n6,n4)),sum(n3,n8)) | (~spl3_4 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1688,f24])).
+fof(f1688,plain,(
+  sK2 = sum(pred(sum(n6,n4)),sum(n3,pred(n9))) | (~spl3_4 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1687,f95])).
+fof(f1687,plain,(
+  sK2 = sum(pred(sum(n6,n4)),sum(n3,pred(sum(n6,n3)))) | (~spl3_4 | ~spl3_18)),
+  inference(backward_demodulation,[],[f288,f1682])).
+fof(f1680,plain,(
+  ~spl3_4 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1679])).
+fof(f1679,plain,(
+  $false | (~spl3_4 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1678,f151])).
+fof(f1678,plain,(
+  n1 = sK2 | (~spl3_4 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1677,f88])).
+fof(f88,plain,(
+  n1 = sum(n5,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1677,plain,(
+  sum(n5,n7) = sK2 | (~spl3_4 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1676,f21])).
+fof(f1676,plain,(
+  sK2 = sum(pred(n6),n7) | (~spl3_4 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1675,f52])).
+fof(f1675,plain,(
+  sK2 = sum(pred(sum(n2,n4)),n7) | (~spl3_4 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1674,f7])).
+fof(f1674,plain,(
+  sK2 = sum(pred(sum(n2,succ(n3))),n7) | (~spl3_4 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1673,f63])).
+fof(f1673,plain,(
+  sK2 = sum(pred(sum(n2,succ(n3))),sum(n3,n4)) | (~spl3_4 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1672,f20])).
+fof(f1672,plain,(
+  sK2 = sum(pred(sum(n2,succ(n3))),sum(n3,pred(n5))) | (~spl3_4 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1671,f51])).
+fof(f51,plain,(
+  n5 = sum(n2,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1671,plain,(
+  sK2 = sum(pred(sum(n2,succ(n3))),sum(n3,pred(sum(n2,n3)))) | (~spl3_4 | ~spl3_14)),
+  inference(backward_demodulation,[],[f231,f1586])).
+fof(f1586,plain,(
+  sK2 = sum(pred(sum(n2,succ(sK1))),sum(sK1,pred(sum(n2,sK1)))) | ~spl3_14),
+  inference(backward_demodulation,[],[f272,f149])).
+fof(f272,plain,(
+  n2 = sK0 | ~spl3_14),
+  inference(avatar_component_clause,[],[f270])).
+fof(f270,plain,(
+  spl3_14 <=> n2 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_14])])).
+fof(f1663,plain,(
+  ~spl3_5 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1662])).
+fof(f1662,plain,(
+  $false | (~spl3_5 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1661,f154])).
+fof(f1661,plain,(
+  n4 = sK2 | (~spl3_5 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1660,f101])).
+fof(f101,plain,(
+  n4 = sum(n6,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1660,plain,(
+  sum(n6,n9) = sK2 | (~spl3_5 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1659,f22])).
+fof(f1659,plain,(
+  sK2 = sum(pred(n7),n9) | (~spl3_5 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1658,f53])).
+fof(f1658,plain,(
+  sK2 = sum(pred(sum(n2,n5)),n9) | (~spl3_5 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1657,f8])).
+fof(f1657,plain,(
+  sK2 = sum(pred(sum(n2,succ(n4))),n9) | (~spl3_5 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1656,f75])).
+fof(f1656,plain,(
+  sK2 = sum(pred(sum(n2,succ(n4))),sum(n4,n5)) | (~spl3_5 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1655,f21])).
+fof(f1655,plain,(
+  sK2 = sum(pred(sum(n2,succ(n4))),sum(n4,pred(n6))) | (~spl3_5 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1654,f52])).
+fof(f1654,plain,(
+  sK2 = sum(pred(sum(n2,succ(n4))),sum(n4,pred(sum(n2,n4)))) | (~spl3_5 | ~spl3_14)),
+  inference(backward_demodulation,[],[f235,f1586])).
+fof(f1647,plain,(
+  ~spl3_1 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1646])).
+fof(f1646,plain,(
+  $false | (~spl3_1 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1645,f153])).
+fof(f1645,plain,(
+  n3 = sK2 | (~spl3_1 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1644,f49])).
+fof(f49,plain,(
+  n3 = sum(n2,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1644,plain,(
+  sum(n2,n1) = sK2 | (~spl3_1 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1643,f18])).
+fof(f1643,plain,(
+  sK2 = sum(pred(n3),n1) | (~spl3_1 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1642,f49])).
+fof(f1642,plain,(
+  sK2 = sum(pred(sum(n2,n1)),n1) | (~spl3_1 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1641,f4])).
+fof(f1641,plain,(
+  sK2 = sum(pred(sum(n2,succ(n0))),n1) | (~spl3_1 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1640,f27])).
+fof(f27,plain,(
+  n1 = sum(n0,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1640,plain,(
+  sK2 = sum(pred(sum(n2,succ(n0))),sum(n0,n1)) | (~spl3_1 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1639,f17])).
+fof(f1639,plain,(
+  sK2 = sum(pred(sum(n2,succ(n0))),sum(n0,pred(n2))) | (~spl3_1 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1638,f48])).
+fof(f1638,plain,(
+  sK2 = sum(pred(sum(n2,succ(n0))),sum(n0,pred(sum(n2,n0)))) | (~spl3_1 | ~spl3_14)),
+  inference(backward_demodulation,[],[f219,f1586])).
+fof(f1627,plain,(
+  ~spl3_6 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1626])).
+fof(f1626,plain,(
+  $false | (~spl3_6 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1625,f157])).
+fof(f1625,plain,(
+  n7 = sK2 | (~spl3_6 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1624,f103])).
+fof(f103,plain,(
+  n7 = sum(n7,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1624,plain,(
+  sum(n7,n0) = sK2 | (~spl3_6 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1623,f23])).
+fof(f1623,plain,(
+  sK2 = sum(pred(n8),n0) | (~spl3_6 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1622,f54])).
+fof(f1622,plain,(
+  sK2 = sum(pred(sum(n2,n6)),n0) | (~spl3_6 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1621,f9])).
+fof(f1621,plain,(
+  sK2 = sum(pred(sum(n2,succ(n5))),n0) | (~spl3_6 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1620,f87])).
+fof(f87,plain,(
+  n0 = sum(n5,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1620,plain,(
+  sK2 = sum(pred(sum(n2,succ(n5))),sum(n5,n6)) | (~spl3_6 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1619,f22])).
+fof(f1619,plain,(
+  sK2 = sum(pred(sum(n2,succ(n5))),sum(n5,pred(n7))) | (~spl3_6 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1618,f53])).
+fof(f1618,plain,(
+  sK2 = sum(pred(sum(n2,succ(n5))),sum(n5,pred(sum(n2,n5)))) | (~spl3_6 | ~spl3_14)),
+  inference(backward_demodulation,[],[f239,f1586])).
+fof(f1612,plain,(
+  ~spl3_3 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1611])).
+fof(f1611,plain,(
+  $false | (~spl3_3 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1610,f159])).
+fof(f1610,plain,(
+  n9 = sK2 | (~spl3_3 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1609,f75])).
+fof(f1609,plain,(
+  sum(n4,n5) = sK2 | (~spl3_3 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1608,f20])).
+fof(f1608,plain,(
+  sK2 = sum(pred(n5),n5) | (~spl3_3 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1607,f51])).
+fof(f1607,plain,(
+  sK2 = sum(pred(sum(n2,n3)),n5) | (~spl3_3 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1606,f6])).
+fof(f1606,plain,(
+  sK2 = sum(pred(sum(n2,succ(n2))),n5) | (~spl3_3 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1605,f51])).
+fof(f1605,plain,(
+  sK2 = sum(pred(sum(n2,succ(n2))),sum(n2,n3)) | (~spl3_3 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1604,f19])).
+fof(f1604,plain,(
+  sK2 = sum(pred(sum(n2,succ(n2))),sum(n2,pred(n4))) | (~spl3_3 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1603,f50])).
+fof(f1603,plain,(
+  sK2 = sum(pred(sum(n2,succ(n2))),sum(n2,pred(sum(n2,n2)))) | (~spl3_3 | ~spl3_14)),
+  inference(backward_demodulation,[],[f227,f1586])).
+fof(f1585,plain,(
+  ~spl3_7 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f1584])).
+fof(f1584,plain,(
+  $false | (~spl3_7 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f1583,f158])).
+fof(f1583,plain,(
+  n8 = sK2 | (~spl3_7 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1582,f104])).
+fof(f104,plain,(
+  n8 = sum(n7,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1582,plain,(
+  sum(n7,n1) = sK2 | (~spl3_7 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1581,f23])).
+fof(f1581,plain,(
+  sK2 = sum(pred(n8),n1) | (~spl3_7 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1580,f44])).
+fof(f44,plain,(
+  n8 = sum(n1,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1580,plain,(
+  sK2 = sum(pred(sum(n1,n7)),n1) | (~spl3_7 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1579,f98])).
+fof(f1579,plain,(
+  sK2 = sum(pred(sum(n1,n7)),sum(n6,n6)) | (~spl3_7 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1578,f22])).
+fof(f1578,plain,(
+  sK2 = sum(pred(sum(n1,n7)),sum(n6,pred(n7))) | (~spl3_7 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1577,f43])).
+fof(f1577,plain,(
+  sK2 = sum(pred(sum(n1,n7)),sum(n6,pred(sum(n1,n6)))) | (~spl3_7 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f1517])).
+fof(f1517,plain,(
+  sK2 = sum(pred(sum(sK0,n7)),sum(n6,pred(sum(sK0,n6)))) | ~spl3_7),
+  inference(forward_demodulation,[],[f1516,f10])).
+fof(f10,plain,(
+  succ(n6) = n7),
+  inference(cnf_transformation,[],[f3])).
+fof(f1516,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n6))),sum(n6,pred(sum(sK0,n6)))) | ~spl3_7),
+  inference(forward_demodulation,[],[f149,f243])).
+fof(f243,plain,(
+  n6 = sK1 | ~spl3_7),
+  inference(avatar_component_clause,[],[f241])).
+fof(f241,plain,(
+  spl3_7 <=> n6 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_7])])).
+fof(f1567,plain,(
+  ~spl3_7 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1566])).
+fof(f1566,plain,(
+  $false | (~spl3_7 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1565,f150])).
+fof(f1565,plain,(
+  n0 = sK2 | (~spl3_7 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1564,f67])).
+fof(f1564,plain,(
+  sum(n3,n8) = sK2 | (~spl3_7 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1563,f19])).
+fof(f1563,plain,(
+  sK2 = sum(pred(n4),n8) | (~spl3_7 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1562,f121])).
+fof(f1562,plain,(
+  sK2 = sum(pred(sum(n8,n7)),n8) | (~spl3_7 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1561,f94])).
+fof(f1561,plain,(
+  sK2 = sum(pred(sum(n8,n7)),sum(n6,n2)) | (~spl3_7 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1560,f18])).
+fof(f1560,plain,(
+  sK2 = sum(pred(sum(n8,n7)),sum(n6,pred(n3))) | (~spl3_7 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1559,f120])).
+fof(f1559,plain,(
+  sK2 = sum(pred(sum(n8,n7)),sum(n6,pred(sum(n8,n6)))) | (~spl3_7 | ~spl3_20)),
+  inference(backward_demodulation,[],[f296,f1517])).
+fof(f1556,plain,(
+  ~spl3_7 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1555])).
+fof(f1555,plain,(
+  $false | (~spl3_7 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1554,f153])).
+fof(f1554,plain,(
+  n3 = sK2 | (~spl3_7 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1553,f140])).
+fof(f1553,plain,(
+  sum(n10,n4) = sK2 | (~spl3_7 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1552,f15])).
+fof(f1552,plain,(
+  sK2 = sum(pred(n0),n4) | (~spl3_7 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1551,f77])).
+fof(f1551,plain,(
+  sK2 = sum(pred(sum(n4,n7)),n4) | (~spl3_7 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1550,f101])).
+fof(f1550,plain,(
+  sK2 = sum(pred(sum(n4,n7)),sum(n6,n9)) | (~spl3_7 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1549,f25])).
+fof(f1549,plain,(
+  sK2 = sum(pred(sum(n4,n7)),sum(n6,pred(n10))) | (~spl3_7 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1548,f76])).
+fof(f1548,plain,(
+  sK2 = sum(pred(sum(n4,n7)),sum(n6,pred(sum(n4,n6)))) | (~spl3_7 | ~spl3_16)),
+  inference(backward_demodulation,[],[f280,f1517])).
+fof(f1542,plain,(
+  ~spl3_7 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f1541])).
+fof(f1541,plain,(
+  $false | (~spl3_7 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f1540,f154])).
+fof(f1540,plain,(
+  n4 = sK2 | (~spl3_7 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1539,f91])).
+fof(f1539,plain,(
+  sum(n5,n10) = sK2 | (~spl3_7 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1538,f21])).
+fof(f1538,plain,(
+  sK2 = sum(pred(n6),n10) | (~spl3_7 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1537,f143])).
+fof(f143,plain,(
+  n6 = sum(n10,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1537,plain,(
+  sK2 = sum(pred(sum(n10,n7)),n10) | (~spl3_7 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1536,f96])).
+fof(f1536,plain,(
+  sK2 = sum(pred(sum(n10,n7)),sum(n6,n4)) | (~spl3_7 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1535,f20])).
+fof(f1535,plain,(
+  sK2 = sum(pred(sum(n10,n7)),sum(n6,pred(n5))) | (~spl3_7 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1534,f142])).
+fof(f1534,plain,(
+  sK2 = sum(pred(sum(n10,n7)),sum(n6,pred(sum(n10,n6)))) | (~spl3_7 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f1517])).
+fof(f1533,plain,(
+  ~spl3_7 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1532])).
+fof(f1532,plain,(
+  $false | (~spl3_7 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1531,f160])).
+fof(f1531,plain,(
+  n10 = sK2 | (~spl3_7 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1530,f116])).
+fof(f1530,plain,(
+  sum(n8,n2) = sK2 | (~spl3_7 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1529,f24])).
+fof(f1529,plain,(
+  sK2 = sum(pred(n9),n2) | (~spl3_7 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1528,f55])).
+fof(f1528,plain,(
+  sK2 = sum(pred(sum(n2,n7)),n2) | (~spl3_7 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1527,f99])).
+fof(f1527,plain,(
+  sK2 = sum(pred(sum(n2,n7)),sum(n6,n7)) | (~spl3_7 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1526,f23])).
+fof(f1526,plain,(
+  sK2 = sum(pred(sum(n2,n7)),sum(n6,pred(n8))) | (~spl3_7 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1525,f54])).
+fof(f1525,plain,(
+  sK2 = sum(pred(sum(n2,n7)),sum(n6,pred(sum(n2,n6)))) | (~spl3_7 | ~spl3_14)),
+  inference(backward_demodulation,[],[f272,f1517])).
+fof(f1515,plain,(
+  ~spl3_7 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f1514])).
+fof(f1514,plain,(
+  $false | (~spl3_7 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f1513,f157])).
+fof(f1513,plain,(
+  n7 = sK2 | (~spl3_7 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1512,f43])).
+fof(f1512,plain,(
+  sum(n1,n6) = sK2 | (~spl3_7 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1511,f17])).
+fof(f1511,plain,(
+  sK2 = sum(pred(n2),n6) | (~spl3_7 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1510,f99])).
+fof(f1510,plain,(
+  sK2 = sum(pred(sum(n6,n7)),n6) | (~spl3_7 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1509,f10])).
+fof(f1509,plain,(
+  sK2 = sum(pred(sum(n6,succ(n6))),n6) | (~spl3_7 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1508,f92])).
+fof(f1508,plain,(
+  sK2 = sum(pred(sum(n6,succ(n6))),sum(n6,n0)) | (~spl3_7 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1507,f16])).
+fof(f1507,plain,(
+  sK2 = sum(pred(sum(n6,succ(n6))),sum(n6,pred(n1))) | (~spl3_7 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1506,f98])).
+fof(f1506,plain,(
+  sK2 = sum(pred(sum(n6,succ(n6))),sum(n6,pred(sum(n6,n6)))) | (~spl3_7 | ~spl3_18)),
+  inference(backward_demodulation,[],[f243,f1498])).
+fof(f1498,plain,(
+  sK2 = sum(pred(sum(n6,succ(sK1))),sum(sK1,pred(sum(n6,sK1)))) | ~spl3_18),
+  inference(backward_demodulation,[],[f288,f149])).
+fof(f1497,plain,(
+  ~spl3_3 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1496])).
+fof(f1496,plain,(
+  $false | (~spl3_3 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1495,f155])).
+fof(f1495,plain,(
+  n5 = sK2 | (~spl3_3 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1494,f51])).
+fof(f1494,plain,(
+  sum(n2,n3) = sK2 | (~spl3_3 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1493,f18])).
+fof(f1493,plain,(
+  sK2 = sum(pred(n3),n3) | (~spl3_3 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1492,f29])).
+fof(f1492,plain,(
+  sK2 = sum(pred(sum(n0,n3)),n3) | (~spl3_3 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1491,f6])).
+fof(f1491,plain,(
+  sK2 = sum(pred(sum(n0,succ(n2))),n3) | (~spl3_3 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1490,f49])).
+fof(f1490,plain,(
+  sK2 = sum(pred(sum(n0,succ(n2))),sum(n2,n1)) | (~spl3_3 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1489,f17])).
+fof(f1489,plain,(
+  sK2 = sum(pred(sum(n0,succ(n2))),sum(n2,pred(n2))) | (~spl3_3 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1488,f28])).
+fof(f1488,plain,(
+  sK2 = sum(pred(sum(n0,succ(n2))),sum(n2,pred(sum(n0,n2)))) | (~spl3_3 | ~spl3_12)),
+  inference(backward_demodulation,[],[f227,f1388])).
+fof(f1388,plain,(
+  sK2 = sum(pred(sum(n0,succ(sK1))),sum(sK1,pred(sum(n0,sK1)))) | ~spl3_12),
+  inference(backward_demodulation,[],[f264,f149])).
+fof(f264,plain,(
+  n0 = sK0 | ~spl3_12),
+  inference(avatar_component_clause,[],[f262])).
+fof(f262,plain,(
+  spl3_12 <=> n0 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_12])])).
+fof(f1479,plain,(
+  ~spl3_5 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1478])).
+fof(f1478,plain,(
+  $false | (~spl3_5 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1477,f150])).
+fof(f1477,plain,(
+  n0 = sK2 | (~spl3_5 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1476,f77])).
+fof(f1476,plain,(
+  sum(n4,n7) = sK2 | (~spl3_5 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1475,f20])).
+fof(f1475,plain,(
+  sK2 = sum(pred(n5),n7) | (~spl3_5 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1474,f31])).
+fof(f1474,plain,(
+  sK2 = sum(pred(sum(n0,n5)),n7) | (~spl3_5 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1473,f8])).
+fof(f1473,plain,(
+  sK2 = sum(pred(sum(n0,succ(n4))),n7) | (~spl3_5 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1472,f73])).
+fof(f1472,plain,(
+  sK2 = sum(pred(sum(n0,succ(n4))),sum(n4,n3)) | (~spl3_5 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1471,f19])).
+fof(f1471,plain,(
+  sK2 = sum(pred(sum(n0,succ(n4))),sum(n4,pred(n4))) | (~spl3_5 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1470,f30])).
+fof(f1470,plain,(
+  sK2 = sum(pred(sum(n0,succ(n4))),sum(n4,pred(sum(n0,n4)))) | (~spl3_5 | ~spl3_12)),
+  inference(backward_demodulation,[],[f235,f1388])).
+fof(f1463,plain,(
+  ~spl3_7 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1462])).
+fof(f1462,plain,(
+  $false | (~spl3_7 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1461,f156])).
+fof(f1461,plain,(
+  n6 = sK2 | (~spl3_7 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1460,f92])).
+fof(f1460,plain,(
+  sum(n6,n0) = sK2 | (~spl3_7 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1459,f22])).
+fof(f1459,plain,(
+  sK2 = sum(pred(n7),n0) | (~spl3_7 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1458,f33])).
+fof(f1458,plain,(
+  sK2 = sum(pred(sum(n0,n7)),n0) | (~spl3_7 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1457,f10])).
+fof(f1457,plain,(
+  sK2 = sum(pred(sum(n0,succ(n6))),n0) | (~spl3_7 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1456,f97])).
+fof(f1456,plain,(
+  sK2 = sum(pred(sum(n0,succ(n6))),sum(n6,n5)) | (~spl3_7 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1455,f21])).
+fof(f1455,plain,(
+  sK2 = sum(pred(sum(n0,succ(n6))),sum(n6,pred(n6))) | (~spl3_7 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1454,f32])).
+fof(f32,plain,(
+  n6 = sum(n0,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1454,plain,(
+  sK2 = sum(pred(sum(n0,succ(n6))),sum(n6,pred(sum(n0,n6)))) | (~spl3_7 | ~spl3_12)),
+  inference(backward_demodulation,[],[f243,f1388])).
+fof(f1449,plain,(
+  ~spl3_1 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1448])).
+fof(f1448,plain,(
+  $false | (~spl3_1 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1447,f160])).
+fof(f1447,plain,(
+  n10 = sK2 | (~spl3_1 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1446,f36])).
+fof(f36,plain,(
+  n10 = sum(n0,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1446,plain,(
+  sum(n0,n10) = sK2 | (~spl3_1 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1445,f16])).
+fof(f1445,plain,(
+  sK2 = sum(pred(n1),n10) | (~spl3_1 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1444,f27])).
+fof(f1444,plain,(
+  sK2 = sum(pred(sum(n0,n1)),n10) | (~spl3_1 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1443,f4])).
+fof(f1443,plain,(
+  sK2 = sum(pred(sum(n0,succ(n0))),n10) | (~spl3_1 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1442,f36])).
+fof(f1442,plain,(
+  sK2 = sum(pred(sum(n0,succ(n0))),sum(n0,n10)) | (~spl3_1 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1441,f15])).
+fof(f1441,plain,(
+  sK2 = sum(pred(sum(n0,succ(n0))),sum(n0,pred(n0))) | (~spl3_1 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1440,f26])).
+fof(f1440,plain,(
+  sK2 = sum(pred(sum(n0,succ(n0))),sum(n0,pred(sum(n0,n0)))) | (~spl3_1 | ~spl3_12)),
+  inference(backward_demodulation,[],[f219,f1388])).
+fof(f1429,plain,(
+  ~spl3_6 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1428])).
+fof(f1428,plain,(
+  $false | (~spl3_6 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1427,f153])).
+fof(f1427,plain,(
+  n3 = sK2 | (~spl3_6 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1426,f90])).
+fof(f90,plain,(
+  n3 = sum(n5,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1426,plain,(
+  sum(n5,n9) = sK2 | (~spl3_6 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1425,f21])).
+fof(f1425,plain,(
+  sK2 = sum(pred(n6),n9) | (~spl3_6 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1424,f32])).
+fof(f1424,plain,(
+  sK2 = sum(pred(sum(n0,n6)),n9) | (~spl3_6 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1423,f9])).
+fof(f1423,plain,(
+  sK2 = sum(pred(sum(n0,succ(n5))),n9) | (~spl3_6 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1422,f85])).
+fof(f85,plain,(
+  n9 = sum(n5,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1422,plain,(
+  sK2 = sum(pred(sum(n0,succ(n5))),sum(n5,n4)) | (~spl3_6 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1421,f20])).
+fof(f1421,plain,(
+  sK2 = sum(pred(sum(n0,succ(n5))),sum(n5,pred(n5))) | (~spl3_6 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1420,f31])).
+fof(f1420,plain,(
+  sK2 = sum(pred(sum(n0,succ(n5))),sum(n5,pred(sum(n0,n5)))) | (~spl3_6 | ~spl3_12)),
+  inference(backward_demodulation,[],[f239,f1388])).
+fof(f1414,plain,(
+  ~spl3_4 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1413])).
+fof(f1413,plain,(
+  $false | (~spl3_4 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1412,f158])).
+fof(f1412,plain,(
+  n8 = sK2 | (~spl3_4 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1411,f64])).
+fof(f64,plain,(
+  n8 = sum(n3,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1411,plain,(
+  sum(n3,n5) = sK2 | (~spl3_4 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1410,f19])).
+fof(f1410,plain,(
+  sK2 = sum(pred(n4),n5) | (~spl3_4 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1409,f30])).
+fof(f1409,plain,(
+  sK2 = sum(pred(sum(n0,n4)),n5) | (~spl3_4 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1408,f7])).
+fof(f1408,plain,(
+  sK2 = sum(pred(sum(n0,succ(n3))),n5) | (~spl3_4 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1407,f61])).
+fof(f61,plain,(
+  n5 = sum(n3,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1407,plain,(
+  sK2 = sum(pred(sum(n0,succ(n3))),sum(n3,n2)) | (~spl3_4 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1406,f18])).
+fof(f1406,plain,(
+  sK2 = sum(pred(sum(n0,succ(n3))),sum(n3,pred(n3))) | (~spl3_4 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1405,f29])).
+fof(f1405,plain,(
+  sK2 = sum(pred(sum(n0,succ(n3))),sum(n3,pred(sum(n0,n3)))) | (~spl3_4 | ~spl3_12)),
+  inference(backward_demodulation,[],[f231,f1388])).
+fof(f1387,plain,(
+  ~spl3_11 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1386])).
+fof(f1386,plain,(
+  $false | (~spl3_11 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1385,f151])).
+fof(f1385,plain,(
+  n1 = sK2 | (~spl3_11 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1384,f108])).
+fof(f108,plain,(
+  n1 = sum(n7,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1384,plain,(
+  sum(n7,n5) = sK2 | (~spl3_11 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1383,f23])).
+fof(f1383,plain,(
+  sK2 = sum(pred(n8),n5) | (~spl3_11 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1382,f114])).
+fof(f1382,plain,(
+  sK2 = sum(pred(sum(n8,n0)),n5) | (~spl3_11 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1381,f142])).
+fof(f1381,plain,(
+  sK2 = sum(pred(sum(n8,n0)),sum(n10,n6)) | (~spl3_11 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1380,f22])).
+fof(f1380,plain,(
+  sK2 = sum(pred(sum(n8,n0)),sum(n10,pred(n7))) | (~spl3_11 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1379,f124])).
+fof(f124,plain,(
+  n7 = sum(n8,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1379,plain,(
+  sK2 = sum(pred(sum(n8,n0)),sum(n10,pred(sum(n8,n10)))) | (~spl3_11 | ~spl3_20)),
+  inference(backward_demodulation,[],[f296,f1301])).
+fof(f1301,plain,(
+  sK2 = sum(pred(sum(sK0,n0)),sum(n10,pred(sum(sK0,n10)))) | ~spl3_11),
+  inference(forward_demodulation,[],[f1300,f14])).
+fof(f14,plain,(
+  n0 = succ(n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1300,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n10))),sum(n10,pred(sum(sK0,n10)))) | ~spl3_11),
+  inference(forward_demodulation,[],[f149,f259])).
+fof(f259,plain,(
+  n10 = sK1 | ~spl3_11),
+  inference(avatar_component_clause,[],[f257])).
+fof(f257,plain,(
+  spl3_11 <=> n10 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_11])])).
+fof(f1376,plain,(
+  ~spl3_11 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1375])).
+fof(f1375,plain,(
+  $false | (~spl3_11 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1374,f154])).
+fof(f1374,plain,(
+  n4 = sK2 | (~spl3_11 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1373,f60])).
+fof(f1373,plain,(
+  sum(n3,n1) = sK2 | (~spl3_11 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1372,f19])).
+fof(f1372,plain,(
+  sK2 = sum(pred(n4),n1) | (~spl3_11 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1371,f70])).
+fof(f1371,plain,(
+  sK2 = sum(pred(sum(n4,n0)),n1) | (~spl3_11 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1370,f138])).
+fof(f1370,plain,(
+  sK2 = sum(pred(sum(n4,n0)),sum(n10,n2)) | (~spl3_11 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1369,f18])).
+fof(f1369,plain,(
+  sK2 = sum(pred(sum(n4,n0)),sum(n10,pred(n3))) | (~spl3_11 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1368,f80])).
+fof(f80,plain,(
+  n3 = sum(n4,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1368,plain,(
+  sK2 = sum(pred(sum(n4,n0)),sum(n10,pred(sum(n4,n10)))) | (~spl3_11 | ~spl3_16)),
+  inference(backward_demodulation,[],[f280,f1301])).
+fof(f1361,plain,(
+  ~spl3_11 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1360])).
+fof(f1360,plain,(
+  $false | (~spl3_11 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1359,f157])).
+fof(f1359,plain,(
+  n7 = sK2 | (~spl3_11 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1358,f144])).
+fof(f144,plain,(
+  n7 = sum(n10,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1358,plain,(
+  sum(n10,n8) = sK2 | (~spl3_11 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1357,f15])).
+fof(f1357,plain,(
+  sK2 = sum(pred(n0),n8) | (~spl3_11 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1356,f26])).
+fof(f1356,plain,(
+  sK2 = sum(pred(sum(n0,n0)),n8) | (~spl3_11 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1355,f145])).
+fof(f1355,plain,(
+  sK2 = sum(pred(sum(n0,n0)),sum(n10,n9)) | (~spl3_11 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1354,f25])).
+fof(f1354,plain,(
+  sK2 = sum(pred(sum(n0,n0)),sum(n10,pred(n10))) | (~spl3_11 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1353,f36])).
+fof(f1353,plain,(
+  sK2 = sum(pred(sum(n0,n0)),sum(n10,pred(sum(n0,n10)))) | (~spl3_11 | ~spl3_12)),
+  inference(backward_demodulation,[],[f264,f1301])).
+fof(f1343,plain,(
+  ~spl3_11 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f1342])).
+fof(f1342,plain,(
+  $false | (~spl3_11 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f1341,f155])).
+fof(f1341,plain,(
+  n5 = sK2 | (~spl3_11 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1340,f132])).
+fof(f132,plain,(
+  n5 = sum(n9,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1340,plain,(
+  sum(n9,n7) = sK2 | (~spl3_11 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1339,f25])).
+fof(f1339,plain,(
+  sK2 = sum(pred(n10),n7) | (~spl3_11 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1338,f136])).
+fof(f1338,plain,(
+  sK2 = sum(pred(sum(n10,n0)),n7) | (~spl3_11 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1337,f144])).
+fof(f1337,plain,(
+  sK2 = sum(pred(sum(n10,n0)),sum(n10,n8)) | (~spl3_11 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1336,f24])).
+fof(f1336,plain,(
+  sK2 = sum(pred(sum(n10,n0)),sum(n10,pred(n9))) | (~spl3_11 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1335,f146])).
+fof(f146,plain,(
+  n9 = sum(n10,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1335,plain,(
+  sK2 = sum(pred(sum(n10,n0)),sum(n10,pred(sum(n10,n10)))) | (~spl3_11 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f1301])).
+fof(f1334,plain,(
+  ~spl3_11 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f1333])).
+fof(f1333,plain,(
+  $false | (~spl3_11 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f1332,f159])).
+fof(f1332,plain,(
+  n9 = sK2 | (~spl3_11 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1331,f35])).
+fof(f1331,plain,(
+  sum(n0,n9) = sK2 | (~spl3_11 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1330,f16])).
+fof(f1330,plain,(
+  sK2 = sum(pred(n1),n9) | (~spl3_11 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1329,f37])).
+fof(f1329,plain,(
+  sK2 = sum(pred(sum(n1,n0)),n9) | (~spl3_11 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1328,f146])).
+fof(f1328,plain,(
+  sK2 = sum(pred(sum(n1,n0)),sum(n10,n10)) | (~spl3_11 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1327,f15])).
+fof(f1327,plain,(
+  sK2 = sum(pred(sum(n1,n0)),sum(n10,pred(n0))) | (~spl3_11 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1326,f47])).
+fof(f47,plain,(
+  n0 = sum(n1,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1326,plain,(
+  sK2 = sum(pred(sum(n1,n0)),sum(n10,pred(sum(n1,n10)))) | (~spl3_11 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f1301])).
+fof(f1317,plain,(
+  ~spl3_11 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1316])).
+fof(f1316,plain,(
+  $false | (~spl3_11 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1315,f150])).
+fof(f1315,plain,(
+  n0 = sK2 | (~spl3_11 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1314,f47])).
+fof(f1314,plain,(
+  sum(n1,n10) = sK2 | (~spl3_11 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1313,f17])).
+fof(f1313,plain,(
+  sK2 = sum(pred(n2),n10) | (~spl3_11 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1312,f48])).
+fof(f1312,plain,(
+  sK2 = sum(pred(sum(n2,n0)),n10) | (~spl3_11 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1311,f136])).
+fof(f1311,plain,(
+  sK2 = sum(pred(sum(n2,n0)),sum(n10,n0)) | (~spl3_11 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1310,f16])).
+fof(f1310,plain,(
+  sK2 = sum(pred(sum(n2,n0)),sum(n10,pred(n1))) | (~spl3_11 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1309,f58])).
+fof(f58,plain,(
+  n1 = sum(n2,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1309,plain,(
+  sK2 = sum(pred(sum(n2,n0)),sum(n10,pred(sum(n2,n10)))) | (~spl3_11 | ~spl3_14)),
+  inference(backward_demodulation,[],[f272,f1301])).
+fof(f1299,plain,(
+  ~spl3_11 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f1298])).
+fof(f1298,plain,(
+  $false | (~spl3_11 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f1297,f158])).
+fof(f1297,plain,(
+  n8 = sK2 | (~spl3_11 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1296,f84])).
+fof(f1296,plain,(
+  sum(n5,n3) = sK2 | (~spl3_11 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1295,f21])).
+fof(f1295,plain,(
+  sK2 = sum(pred(n6),n3) | (~spl3_11 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1294,f92])).
+fof(f1294,plain,(
+  sK2 = sum(pred(sum(n6,n0)),n3) | (~spl3_11 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1293,f14])).
+fof(f1293,plain,(
+  sK2 = sum(pred(sum(n6,succ(n10))),n3) | (~spl3_11 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1292,f140])).
+fof(f1292,plain,(
+  sK2 = sum(pred(sum(n6,succ(n10))),sum(n10,n4)) | (~spl3_11 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1291,f20])).
+fof(f1291,plain,(
+  sK2 = sum(pred(sum(n6,succ(n10))),sum(n10,pred(n5))) | (~spl3_11 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1290,f102])).
+fof(f1290,plain,(
+  sK2 = sum(pred(sum(n6,succ(n10))),sum(n10,pred(sum(n6,n10)))) | (~spl3_11 | ~spl3_18)),
+  inference(backward_demodulation,[],[f259,f1285])).
+fof(f1285,plain,(
+  sK2 = sum(pred(sum(n6,succ(sK1))),sum(sK1,pred(sum(n6,sK1)))) | ~spl3_18),
+  inference(backward_demodulation,[],[f288,f149])).
+fof(f1284,plain,(
+  ~spl3_1 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1283])).
+fof(f1283,plain,(
+  $false | (~spl3_1 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1282,f156])).
+fof(f1282,plain,(
+  n6 = sK2 | (~spl3_1 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1281,f133])).
+fof(f133,plain,(
+  n6 = sum(n9,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1281,plain,(
+  sum(n9,n8) = sK2 | (~spl3_1 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1280,f25])).
+fof(f1280,plain,(
+  sK2 = sum(pred(n10),n8) | (~spl3_1 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1279,f126])).
+fof(f126,plain,(
+  n10 = sum(n9,n1)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1279,plain,(
+  sK2 = sum(pred(sum(n9,n1)),n8) | (~spl3_1 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1278,f4])).
+fof(f1278,plain,(
+  sK2 = sum(pred(sum(n9,succ(n0))),n8) | (~spl3_1 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1277,f34])).
+fof(f34,plain,(
+  n8 = sum(n0,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1277,plain,(
+  sK2 = sum(pred(sum(n9,succ(n0))),sum(n0,n8)) | (~spl3_1 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1276,f24])).
+fof(f1276,plain,(
+  sK2 = sum(pred(sum(n9,succ(n0))),sum(n0,pred(n9))) | (~spl3_1 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1275,f125])).
+fof(f1275,plain,(
+  sK2 = sum(pred(sum(n9,succ(n0))),sum(n0,pred(sum(n9,n0)))) | (~spl3_1 | ~spl3_21)),
+  inference(backward_demodulation,[],[f219,f1173])).
+fof(f1173,plain,(
+  sK2 = sum(pred(sum(n9,succ(sK1))),sum(sK1,pred(sum(n9,sK1)))) | ~spl3_21),
+  inference(backward_demodulation,[],[f300,f149])).
+fof(f300,plain,(
+  n9 = sK0 | ~spl3_21),
+  inference(avatar_component_clause,[],[f298])).
+fof(f298,plain,(
+  spl3_21 <=> n9 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_21])])).
+fof(f1264,plain,(
+  ~spl3_11 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1263])).
+fof(f1263,plain,(
+  $false | (~spl3_11 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1262,f153])).
+fof(f1262,plain,(
+  n3 = sK2 | (~spl3_11 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1261,f120])).
+fof(f1261,plain,(
+  sum(n8,n6) = sK2 | (~spl3_11 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1260,f24])).
+fof(f1260,plain,(
+  sK2 = sum(pred(n9),n6) | (~spl3_11 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1259,f125])).
+fof(f1259,plain,(
+  sK2 = sum(pred(sum(n9,n0)),n6) | (~spl3_11 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1258,f14])).
+fof(f1258,plain,(
+  sK2 = sum(pred(sum(n9,succ(n10))),n6) | (~spl3_11 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1257,f143])).
+fof(f1257,plain,(
+  sK2 = sum(pred(sum(n9,succ(n10))),sum(n10,n7)) | (~spl3_11 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1256,f23])).
+fof(f1256,plain,(
+  sK2 = sum(pred(sum(n9,succ(n10))),sum(n10,pred(n8))) | (~spl3_11 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1255,f135])).
+fof(f135,plain,(
+  n8 = sum(n9,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1255,plain,(
+  sK2 = sum(pred(sum(n9,succ(n10))),sum(n10,pred(sum(n9,n10)))) | (~spl3_11 | ~spl3_21)),
+  inference(backward_demodulation,[],[f259,f1173])).
+fof(f1254,plain,(
+  ~spl3_5 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1253])).
+fof(f1253,plain,(
+  $false | (~spl3_5 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1252,f157])).
+fof(f1252,plain,(
+  n7 = sK2 | (~spl3_5 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1251,f53])).
+fof(f1251,plain,(
+  sum(n2,n5) = sK2 | (~spl3_5 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1250,f18])).
+fof(f1250,plain,(
+  sK2 = sum(pred(n3),n5) | (~spl3_5 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1249,f130])).
+fof(f130,plain,(
+  n3 = sum(n9,n5)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1249,plain,(
+  sK2 = sum(pred(sum(n9,n5)),n5) | (~spl3_5 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1248,f8])).
+fof(f1248,plain,(
+  sK2 = sum(pred(sum(n9,succ(n4))),n5) | (~spl3_5 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1247,f71])).
+fof(f1247,plain,(
+  sK2 = sum(pred(sum(n9,succ(n4))),sum(n4,n1)) | (~spl3_5 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1246,f17])).
+fof(f1246,plain,(
+  sK2 = sum(pred(sum(n9,succ(n4))),sum(n4,pred(n2))) | (~spl3_5 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1245,f129])).
+fof(f129,plain,(
+  n2 = sum(n9,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1245,plain,(
+  sK2 = sum(pred(sum(n9,succ(n4))),sum(n4,pred(sum(n9,n4)))) | (~spl3_5 | ~spl3_21)),
+  inference(backward_demodulation,[],[f235,f1173])).
+fof(f1238,plain,(
+  ~spl3_3 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1237])).
+fof(f1237,plain,(
+  $false | (~spl3_3 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1236,f151])).
+fof(f1236,plain,(
+  n1 = sK2 | (~spl3_3 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1235,f27])).
+fof(f1235,plain,(
+  sum(n0,n1) = sK2 | (~spl3_3 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1234,f16])).
+fof(f1234,plain,(
+  sK2 = sum(pred(n1),n1) | (~spl3_3 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1233,f128])).
+fof(f128,plain,(
+  n1 = sum(n9,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1233,plain,(
+  sK2 = sum(pred(sum(n9,n3)),n1) | (~spl3_3 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1232,f6])).
+fof(f1232,plain,(
+  sK2 = sum(pred(sum(n9,succ(n2))),n1) | (~spl3_3 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1231,f58])).
+fof(f1231,plain,(
+  sK2 = sum(pred(sum(n9,succ(n2))),sum(n2,n10)) | (~spl3_3 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1230,f15])).
+fof(f1230,plain,(
+  sK2 = sum(pred(sum(n9,succ(n2))),sum(n2,pred(n0))) | (~spl3_3 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1229,f127])).
+fof(f1229,plain,(
+  sK2 = sum(pred(sum(n9,succ(n2))),sum(n2,pred(sum(n9,n2)))) | (~spl3_3 | ~spl3_21)),
+  inference(backward_demodulation,[],[f227,f1173])).
+fof(f1220,plain,(
+  ~spl3_4 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1219])).
+fof(f1219,plain,(
+  $false | (~spl3_4 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1218,f154])).
+fof(f1218,plain,(
+  n4 = sK2 | (~spl3_4 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1217,f40])).
+fof(f1217,plain,(
+  sum(n1,n3) = sK2 | (~spl3_4 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1216,f17])).
+fof(f1216,plain,(
+  sK2 = sum(pred(n2),n3) | (~spl3_4 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1215,f129])).
+fof(f1215,plain,(
+  sK2 = sum(pred(sum(n9,n4)),n3) | (~spl3_4 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1214,f7])).
+fof(f1214,plain,(
+  sK2 = sum(pred(sum(n9,succ(n3))),n3) | (~spl3_4 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1213,f59])).
+fof(f59,plain,(
+  n3 = sum(n3,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1213,plain,(
+  sK2 = sum(pred(sum(n9,succ(n3))),sum(n3,n0)) | (~spl3_4 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1212,f16])).
+fof(f1212,plain,(
+  sK2 = sum(pred(sum(n9,succ(n3))),sum(n3,pred(n1))) | (~spl3_4 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1211,f128])).
+fof(f1211,plain,(
+  sK2 = sum(pred(sum(n9,succ(n3))),sum(n3,pred(sum(n9,n3)))) | (~spl3_4 | ~spl3_21)),
+  inference(backward_demodulation,[],[f231,f1173])).
+fof(f1203,plain,(
+  ~spl3_6 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1202])).
+fof(f1202,plain,(
+  $false | (~spl3_6 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1201,f160])).
+fof(f1201,plain,(
+  n10 = sK2 | (~spl3_6 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1200,f66])).
+fof(f66,plain,(
+  n10 = sum(n3,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1200,plain,(
+  sum(n3,n7) = sK2 | (~spl3_6 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1199,f19])).
+fof(f1199,plain,(
+  sK2 = sum(pred(n4),n7) | (~spl3_6 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1198,f131])).
+fof(f131,plain,(
+  n4 = sum(n9,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1198,plain,(
+  sK2 = sum(pred(sum(n9,n6)),n7) | (~spl3_6 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1197,f9])).
+fof(f1197,plain,(
+  sK2 = sum(pred(sum(n9,succ(n5))),n7) | (~spl3_6 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1196,f83])).
+fof(f83,plain,(
+  n7 = sum(n5,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1196,plain,(
+  sK2 = sum(pred(sum(n9,succ(n5))),sum(n5,n2)) | (~spl3_6 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1195,f18])).
+fof(f1195,plain,(
+  sK2 = sum(pred(sum(n9,succ(n5))),sum(n5,pred(n3))) | (~spl3_6 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1194,f130])).
+fof(f1194,plain,(
+  sK2 = sum(pred(sum(n9,succ(n5))),sum(n5,pred(sum(n9,n5)))) | (~spl3_6 | ~spl3_21)),
+  inference(backward_demodulation,[],[f239,f1173])).
+fof(f1188,plain,(
+  ~spl3_7 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1187])).
+fof(f1187,plain,(
+  $false | (~spl3_7 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1186,f152])).
+fof(f1186,plain,(
+  n2 = sK2 | (~spl3_7 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1185,f79])).
+fof(f1185,plain,(
+  sum(n4,n9) = sK2 | (~spl3_7 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1184,f20])).
+fof(f1184,plain,(
+  sK2 = sum(pred(n5),n9) | (~spl3_7 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1183,f132])).
+fof(f1183,plain,(
+  sK2 = sum(pred(sum(n9,n7)),n9) | (~spl3_7 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1182,f10])).
+fof(f1182,plain,(
+  sK2 = sum(pred(sum(n9,succ(n6))),n9) | (~spl3_7 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1181,f95])).
+fof(f1181,plain,(
+  sK2 = sum(pred(sum(n9,succ(n6))),sum(n6,n3)) | (~spl3_7 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1180,f19])).
+fof(f1180,plain,(
+  sK2 = sum(pred(sum(n9,succ(n6))),sum(n6,pred(n4))) | (~spl3_7 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1179,f131])).
+fof(f1179,plain,(
+  sK2 = sum(pred(sum(n9,succ(n6))),sum(n6,pred(sum(n9,n6)))) | (~spl3_7 | ~spl3_21)),
+  inference(backward_demodulation,[],[f243,f1173])).
+fof(f1172,plain,(
+  ~spl3_10 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f1171])).
+fof(f1171,plain,(
+  $false | (~spl3_10 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f1170,f151])).
+fof(f1170,plain,(
+  n1 = sK2 | (~spl3_10 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1169,f58])).
+fof(f1169,plain,(
+  sum(n2,n10) = sK2 | (~spl3_10 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1168,f18])).
+fof(f1168,plain,(
+  sK2 = sum(pred(n3),n10) | (~spl3_10 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1167,f80])).
+fof(f1167,plain,(
+  sK2 = sum(pred(sum(n4,n10)),n10) | (~spl3_10 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1166,f126])).
+fof(f1166,plain,(
+  sK2 = sum(pred(sum(n4,n10)),sum(n9,n1)) | (~spl3_10 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1165,f17])).
+fof(f1165,plain,(
+  sK2 = sum(pred(sum(n4,n10)),sum(n9,pred(n2))) | (~spl3_10 | ~spl3_16)),
+  inference(forward_demodulation,[],[f1164,f79])).
+fof(f1164,plain,(
+  sK2 = sum(pred(sum(n4,n10)),sum(n9,pred(sum(n4,n9)))) | (~spl3_10 | ~spl3_16)),
+  inference(backward_demodulation,[],[f280,f1073])).
+fof(f1073,plain,(
+  sK2 = sum(pred(sum(sK0,n10)),sum(n9,pred(sum(sK0,n9)))) | ~spl3_10),
+  inference(forward_demodulation,[],[f1072,f13])).
+fof(f13,plain,(
+  succ(n9) = n10),
+  inference(cnf_transformation,[],[f3])).
+fof(f1072,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n9))),sum(n9,pred(sum(sK0,n9)))) | ~spl3_10),
+  inference(forward_demodulation,[],[f149,f255])).
+fof(f255,plain,(
+  n9 = sK1 | ~spl3_10),
+  inference(avatar_component_clause,[],[f253])).
+fof(f253,plain,(
+  spl3_10 <=> n9 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_10])])).
+fof(f1157,plain,(
+  ~spl3_10 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f1156])).
+fof(f1156,plain,(
+  $false | (~spl3_10 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f1155,f159])).
+fof(f1155,plain,(
+  n9 = sK2 | (~spl3_10 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1154,f95])).
+fof(f1154,plain,(
+  sum(n6,n3) = sK2 | (~spl3_10 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1153,f22])).
+fof(f1153,plain,(
+  sK2 = sum(pred(n7),n3) | (~spl3_10 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1152,f124])).
+fof(f1152,plain,(
+  sK2 = sum(pred(sum(n8,n10)),n3) | (~spl3_10 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1151,f130])).
+fof(f1151,plain,(
+  sK2 = sum(pred(sum(n8,n10)),sum(n9,n5)) | (~spl3_10 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1150,f21])).
+fof(f1150,plain,(
+  sK2 = sum(pred(sum(n8,n10)),sum(n9,pred(n6))) | (~spl3_10 | ~spl3_20)),
+  inference(forward_demodulation,[],[f1149,f123])).
+fof(f1149,plain,(
+  sK2 = sum(pred(sum(n8,n10)),sum(n9,pred(sum(n8,n9)))) | (~spl3_10 | ~spl3_20)),
+  inference(backward_demodulation,[],[f296,f1073])).
+fof(f1146,plain,(
+  ~spl3_10 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f1145])).
+fof(f1145,plain,(
+  $false | (~spl3_10 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f1144,f152])).
+fof(f1144,plain,(
+  n2 = sK2 | (~spl3_10 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1143,f119])).
+fof(f1143,plain,(
+  sum(n8,n5) = sK2 | (~spl3_10 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1142,f24])).
+fof(f1142,plain,(
+  sK2 = sum(pred(n9),n5) | (~spl3_10 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1141,f146])).
+fof(f1141,plain,(
+  sK2 = sum(pred(sum(n10,n10)),n5) | (~spl3_10 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1140,f132])).
+fof(f1140,plain,(
+  sK2 = sum(pred(sum(n10,n10)),sum(n9,n7)) | (~spl3_10 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1139,f23])).
+fof(f1139,plain,(
+  sK2 = sum(pred(sum(n10,n10)),sum(n9,pred(n8))) | (~spl3_10 | ~spl3_22)),
+  inference(forward_demodulation,[],[f1138,f145])).
+fof(f1138,plain,(
+  sK2 = sum(pred(sum(n10,n10)),sum(n9,pred(sum(n10,n9)))) | (~spl3_10 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f1073])).
+fof(f1137,plain,(
+  ~spl3_10 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f1136])).
+fof(f1136,plain,(
+  $false | (~spl3_10 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f1135,f158])).
+fof(f1135,plain,(
+  n8 = sK2 | (~spl3_10 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1134,f34])).
+fof(f1134,plain,(
+  sum(n0,n8) = sK2 | (~spl3_10 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1133,f16])).
+fof(f1133,plain,(
+  sK2 = sum(pred(n1),n8) | (~spl3_10 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1132,f58])).
+fof(f1132,plain,(
+  sK2 = sum(pred(sum(n2,n10)),n8) | (~spl3_10 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1131,f135])).
+fof(f1131,plain,(
+  sK2 = sum(pred(sum(n2,n10)),sum(n9,n10)) | (~spl3_10 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1130,f15])).
+fof(f1130,plain,(
+  sK2 = sum(pred(sum(n2,n10)),sum(n9,pred(n0))) | (~spl3_10 | ~spl3_14)),
+  inference(forward_demodulation,[],[f1129,f57])).
+fof(f1129,plain,(
+  sK2 = sum(pred(sum(n2,n10)),sum(n9,pred(sum(n2,n9)))) | (~spl3_10 | ~spl3_14)),
+  inference(backward_demodulation,[],[f272,f1073])).
+fof(f1120,plain,(
+  ~spl3_10 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f1119])).
+fof(f1119,plain,(
+  $false | (~spl3_10 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f1118,f156])).
+fof(f1118,plain,(
+  n6 = sK2 | (~spl3_10 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1117,f143])).
+fof(f1117,plain,(
+  sum(n10,n7) = sK2 | (~spl3_10 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1116,f15])).
+fof(f1116,plain,(
+  sK2 = sum(pred(n0),n7) | (~spl3_10 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1115,f47])).
+fof(f1115,plain,(
+  sK2 = sum(pred(sum(n1,n10)),n7) | (~spl3_10 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1114,f134])).
+fof(f134,plain,(
+  n7 = sum(n9,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1114,plain,(
+  sK2 = sum(pred(sum(n1,n10)),sum(n9,n9)) | (~spl3_10 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1113,f25])).
+fof(f1113,plain,(
+  sK2 = sum(pred(sum(n1,n10)),sum(n9,pred(n10))) | (~spl3_10 | ~spl3_13)),
+  inference(forward_demodulation,[],[f1112,f46])).
+fof(f46,plain,(
+  n10 = sum(n1,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1112,plain,(
+  sK2 = sum(pred(sum(n1,n10)),sum(n9,pred(sum(n1,n9)))) | (~spl3_10 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f1073])).
+fof(f1102,plain,(
+  ~spl3_10 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f1101])).
+fof(f1101,plain,(
+  $false | (~spl3_10 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f1100,f154])).
+fof(f1100,plain,(
+  n4 = sK2 | (~spl3_10 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1099,f131])).
+fof(f1099,plain,(
+  sum(n9,n6) = sK2 | (~spl3_10 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1098,f25])).
+fof(f1098,plain,(
+  sK2 = sum(pred(n10),n6) | (~spl3_10 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1097,f36])).
+fof(f1097,plain,(
+  sK2 = sum(pred(sum(n0,n10)),n6) | (~spl3_10 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1096,f133])).
+fof(f1096,plain,(
+  sK2 = sum(pred(sum(n0,n10)),sum(n9,n8)) | (~spl3_10 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1095,f24])).
+fof(f1095,plain,(
+  sK2 = sum(pred(sum(n0,n10)),sum(n9,pred(n9))) | (~spl3_10 | ~spl3_12)),
+  inference(forward_demodulation,[],[f1094,f35])).
+fof(f1094,plain,(
+  sK2 = sum(pred(sum(n0,n10)),sum(n9,pred(sum(n0,n9)))) | (~spl3_10 | ~spl3_12)),
+  inference(backward_demodulation,[],[f264,f1073])).
+fof(f1083,plain,(
+  ~spl3_10 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f1082])).
+fof(f1082,plain,(
+  $false | (~spl3_10 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f1081,f150])).
+fof(f1081,plain,(
+  n0 = sK2 | (~spl3_10 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1080,f107])).
+fof(f107,plain,(
+  n0 = sum(n7,n4)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1080,plain,(
+  sum(n7,n4) = sK2 | (~spl3_10 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1079,f23])).
+fof(f1079,plain,(
+  sK2 = sum(pred(n8),n4) | (~spl3_10 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1078,f135])).
+fof(f1078,plain,(
+  sK2 = sum(pred(sum(n9,n10)),n4) | (~spl3_10 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1077,f131])).
+fof(f1077,plain,(
+  sK2 = sum(pred(sum(n9,n10)),sum(n9,n6)) | (~spl3_10 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1076,f22])).
+fof(f1076,plain,(
+  sK2 = sum(pred(sum(n9,n10)),sum(n9,pred(n7))) | (~spl3_10 | ~spl3_21)),
+  inference(forward_demodulation,[],[f1075,f134])).
+fof(f1075,plain,(
+  sK2 = sum(pred(sum(n9,n10)),sum(n9,pred(sum(n9,n9)))) | (~spl3_10 | ~spl3_21)),
+  inference(backward_demodulation,[],[f300,f1073])).
+fof(f1071,plain,(
+  ~spl3_10 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f1070])).
+fof(f1070,plain,(
+  $false | (~spl3_10 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f1069,f155])).
+fof(f1069,plain,(
+  n5 = sK2 | (~spl3_10 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1068,f71])).
+fof(f1068,plain,(
+  sum(n4,n1) = sK2 | (~spl3_10 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1067,f20])).
+fof(f1067,plain,(
+  sK2 = sum(pred(n5),n1) | (~spl3_10 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1066,f102])).
+fof(f1066,plain,(
+  sK2 = sum(pred(sum(n6,n10)),n1) | (~spl3_10 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1065,f13])).
+fof(f1065,plain,(
+  sK2 = sum(pred(sum(n6,succ(n9))),n1) | (~spl3_10 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1064,f128])).
+fof(f1064,plain,(
+  sK2 = sum(pred(sum(n6,succ(n9))),sum(n9,n3)) | (~spl3_10 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1063,f19])).
+fof(f1063,plain,(
+  sK2 = sum(pred(sum(n6,succ(n9))),sum(n9,pred(n4))) | (~spl3_10 | ~spl3_18)),
+  inference(forward_demodulation,[],[f1062,f101])).
+fof(f1062,plain,(
+  sK2 = sum(pred(sum(n6,succ(n9))),sum(n9,pred(sum(n6,n9)))) | (~spl3_10 | ~spl3_18)),
+  inference(backward_demodulation,[],[f255,f1057])).
+fof(f1057,plain,(
+  sK2 = sum(pred(sum(n6,succ(sK1))),sum(sK1,pred(sum(n6,sK1)))) | ~spl3_18),
+  inference(backward_demodulation,[],[f288,f149])).
+fof(f1056,plain,(
+  ~spl3_6 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f1055])).
+fof(f1055,plain,(
+  $false | (~spl3_6 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f1054,f156])).
+fof(f1054,plain,(
+  n6 = sK2 | (~spl3_6 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1053,f42])).
+fof(f1053,plain,(
+  sum(n1,n5) = sK2 | (~spl3_6 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1052,f17])).
+fof(f1052,plain,(
+  sK2 = sum(pred(n2),n5) | (~spl3_6 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1051,f109])).
+fof(f109,plain,(
+  n2 = sum(n7,n6)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1051,plain,(
+  sK2 = sum(pred(sum(n7,n6)),n5) | (~spl3_6 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1050,f9])).
+fof(f1050,plain,(
+  sK2 = sum(pred(sum(n7,succ(n5))),n5) | (~spl3_6 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1049,f81])).
+fof(f81,plain,(
+  n5 = sum(n5,n0)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1049,plain,(
+  sK2 = sum(pred(sum(n7,succ(n5))),sum(n5,n0)) | (~spl3_6 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1048,f16])).
+fof(f1048,plain,(
+  sK2 = sum(pred(sum(n7,succ(n5))),sum(n5,pred(n1))) | (~spl3_6 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1047,f108])).
+fof(f1047,plain,(
+  sK2 = sum(pred(sum(n7,succ(n5))),sum(n5,pred(sum(n7,n5)))) | (~spl3_6 | ~spl3_19)),
+  inference(backward_demodulation,[],[f239,f934])).
+fof(f934,plain,(
+  sK2 = sum(pred(sum(n7,succ(sK1))),sum(sK1,pred(sum(n7,sK1)))) | ~spl3_19),
+  inference(backward_demodulation,[],[f292,f149])).
+fof(f292,plain,(
+  n7 = sK0 | ~spl3_19),
+  inference(avatar_component_clause,[],[f290])).
+fof(f290,plain,(
+  spl3_19 <=> n7 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_19])])).
+fof(f1041,plain,(
+  ~spl3_10 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f1040])).
+fof(f1040,plain,(
+  $false | (~spl3_10 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f1039,f157])).
+fof(f1039,plain,(
+  n7 = sK2 | (~spl3_10 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1038,f83])).
+fof(f1038,plain,(
+  sum(n5,n2) = sK2 | (~spl3_10 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1037,f21])).
+fof(f1037,plain,(
+  sK2 = sum(pred(n6),n2) | (~spl3_10 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1036,f113])).
+fof(f113,plain,(
+  n6 = sum(n7,n10)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1036,plain,(
+  sK2 = sum(pred(sum(n7,n10)),n2) | (~spl3_10 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1035,f13])).
+fof(f1035,plain,(
+  sK2 = sum(pred(sum(n7,succ(n9))),n2) | (~spl3_10 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1034,f129])).
+fof(f1034,plain,(
+  sK2 = sum(pred(sum(n7,succ(n9))),sum(n9,n4)) | (~spl3_10 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1033,f20])).
+fof(f1033,plain,(
+  sK2 = sum(pred(sum(n7,succ(n9))),sum(n9,pred(n5))) | (~spl3_10 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1032,f112])).
+fof(f1032,plain,(
+  sK2 = sum(pred(sum(n7,succ(n9))),sum(n9,pred(sum(n7,n9)))) | (~spl3_10 | ~spl3_19)),
+  inference(backward_demodulation,[],[f255,f934])).
+fof(f1030,plain,(
+  ~spl3_11 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f1029])).
+fof(f1029,plain,(
+  $false | (~spl3_11 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f1028,f160])).
+fof(f1028,plain,(
+  n10 = sK2 | (~spl3_11 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1027,f96])).
+fof(f1027,plain,(
+  sum(n6,n4) = sK2 | (~spl3_11 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1026,f22])).
+fof(f1026,plain,(
+  sK2 = sum(pred(n7),n4) | (~spl3_11 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1025,f103])).
+fof(f1025,plain,(
+  sK2 = sum(pred(sum(n7,n0)),n4) | (~spl3_11 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1024,f14])).
+fof(f1024,plain,(
+  sK2 = sum(pred(sum(n7,succ(n10))),n4) | (~spl3_11 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1023,f141])).
+fof(f1023,plain,(
+  sK2 = sum(pred(sum(n7,succ(n10))),sum(n10,n5)) | (~spl3_11 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1022,f21])).
+fof(f1022,plain,(
+  sK2 = sum(pred(sum(n7,succ(n10))),sum(n10,pred(n6))) | (~spl3_11 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1021,f113])).
+fof(f1021,plain,(
+  sK2 = sum(pred(sum(n7,succ(n10))),sum(n10,pred(sum(n7,n10)))) | (~spl3_11 | ~spl3_19)),
+  inference(backward_demodulation,[],[f259,f934])).
+fof(f1020,plain,(
+  ~spl3_3 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f1019])).
+fof(f1019,plain,(
+  $false | (~spl3_3 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f1018,f158])).
+fof(f1018,plain,(
+  n8 = sK2 | (~spl3_3 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1017,f135])).
+fof(f1017,plain,(
+  sum(n9,n10) = sK2 | (~spl3_3 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1016,f25])).
+fof(f1016,plain,(
+  sK2 = sum(pred(n10),n10) | (~spl3_3 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1015,f106])).
+fof(f106,plain,(
+  n10 = sum(n7,n3)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1015,plain,(
+  sK2 = sum(pred(sum(n7,n3)),n10) | (~spl3_3 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1014,f6])).
+fof(f1014,plain,(
+  sK2 = sum(pred(sum(n7,succ(n2))),n10) | (~spl3_3 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1013,f56])).
+fof(f56,plain,(
+  n10 = sum(n2,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1013,plain,(
+  sK2 = sum(pred(sum(n7,succ(n2))),sum(n2,n8)) | (~spl3_3 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1012,f24])).
+fof(f1012,plain,(
+  sK2 = sum(pred(sum(n7,succ(n2))),sum(n2,pred(n9))) | (~spl3_3 | ~spl3_19)),
+  inference(forward_demodulation,[],[f1011,f105])).
+fof(f105,plain,(
+  n9 = sum(n7,n2)),
+  inference(cnf_transformation,[],[f3])).
+fof(f1011,plain,(
+  sK2 = sum(pred(sum(n7,succ(n2))),sum(n2,pred(sum(n7,n2)))) | (~spl3_3 | ~spl3_19)),
+  inference(backward_demodulation,[],[f227,f934])).
+fof(f1002,plain,(
+  ~spl3_7 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f1001])).
+fof(f1001,plain,(
+  $false | (~spl3_7 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f1000,f159])).
+fof(f1000,plain,(
+  n9 = sK2 | (~spl3_7 | ~spl3_19)),
+  inference(forward_demodulation,[],[f999,f55])).
+fof(f999,plain,(
+  sum(n2,n7) = sK2 | (~spl3_7 | ~spl3_19)),
+  inference(forward_demodulation,[],[f998,f18])).
+fof(f998,plain,(
+  sK2 = sum(pred(n3),n7) | (~spl3_7 | ~spl3_19)),
+  inference(forward_demodulation,[],[f997,f110])).
+fof(f110,plain,(
+  n3 = sum(n7,n7)),
+  inference(cnf_transformation,[],[f3])).
+fof(f997,plain,(
+  sK2 = sum(pred(sum(n7,n7)),n7) | (~spl3_7 | ~spl3_19)),
+  inference(forward_demodulation,[],[f996,f10])).
+fof(f996,plain,(
+  sK2 = sum(pred(sum(n7,succ(n6))),n7) | (~spl3_7 | ~spl3_19)),
+  inference(forward_demodulation,[],[f995,f93])).
+fof(f995,plain,(
+  sK2 = sum(pred(sum(n7,succ(n6))),sum(n6,n1)) | (~spl3_7 | ~spl3_19)),
+  inference(forward_demodulation,[],[f994,f17])).
+fof(f994,plain,(
+  sK2 = sum(pred(sum(n7,succ(n6))),sum(n6,pred(n2))) | (~spl3_7 | ~spl3_19)),
+  inference(forward_demodulation,[],[f993,f109])).
+fof(f993,plain,(
+  sK2 = sum(pred(sum(n7,succ(n6))),sum(n6,pred(sum(n7,n6)))) | (~spl3_7 | ~spl3_19)),
+  inference(backward_demodulation,[],[f243,f934])).
+fof(f988,plain,(
+  ~spl3_1 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f987])).
+fof(f987,plain,(
+  $false | (~spl3_1 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f986,f152])).
+fof(f986,plain,(
+  n2 = sK2 | (~spl3_1 | ~spl3_19)),
+  inference(forward_demodulation,[],[f985,f109])).
+fof(f985,plain,(
+  sum(n7,n6) = sK2 | (~spl3_1 | ~spl3_19)),
+  inference(forward_demodulation,[],[f984,f23])).
+fof(f984,plain,(
+  sK2 = sum(pred(n8),n6) | (~spl3_1 | ~spl3_19)),
+  inference(forward_demodulation,[],[f983,f104])).
+fof(f983,plain,(
+  sK2 = sum(pred(sum(n7,n1)),n6) | (~spl3_1 | ~spl3_19)),
+  inference(forward_demodulation,[],[f982,f4])).
+fof(f982,plain,(
+  sK2 = sum(pred(sum(n7,succ(n0))),n6) | (~spl3_1 | ~spl3_19)),
+  inference(forward_demodulation,[],[f981,f32])).
+fof(f981,plain,(
+  sK2 = sum(pred(sum(n7,succ(n0))),sum(n0,n6)) | (~spl3_1 | ~spl3_19)),
+  inference(forward_demodulation,[],[f980,f22])).
+fof(f980,plain,(
+  sK2 = sum(pred(sum(n7,succ(n0))),sum(n0,pred(n7))) | (~spl3_1 | ~spl3_19)),
+  inference(forward_demodulation,[],[f979,f103])).
+fof(f979,plain,(
+  sK2 = sum(pred(sum(n7,succ(n0))),sum(n0,pred(sum(n7,n0)))) | (~spl3_1 | ~spl3_19)),
+  inference(backward_demodulation,[],[f219,f934])).
+fof(f968,plain,(
+  ~spl3_5 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f967])).
+fof(f967,plain,(
+  $false | (~spl3_5 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f966,f153])).
+fof(f966,plain,(
+  n3 = sK2 | (~spl3_5 | ~spl3_19)),
+  inference(forward_demodulation,[],[f965,f29])).
+fof(f965,plain,(
+  sum(n0,n3) = sK2 | (~spl3_5 | ~spl3_19)),
+  inference(forward_demodulation,[],[f964,f16])).
+fof(f964,plain,(
+  sK2 = sum(pred(n1),n3) | (~spl3_5 | ~spl3_19)),
+  inference(forward_demodulation,[],[f963,f108])).
+fof(f963,plain,(
+  sK2 = sum(pred(sum(n7,n5)),n3) | (~spl3_5 | ~spl3_19)),
+  inference(forward_demodulation,[],[f962,f8])).
+fof(f962,plain,(
+  sK2 = sum(pred(sum(n7,succ(n4))),n3) | (~spl3_5 | ~spl3_19)),
+  inference(forward_demodulation,[],[f961,f80])).
+fof(f961,plain,(
+  sK2 = sum(pred(sum(n7,succ(n4))),sum(n4,n10)) | (~spl3_5 | ~spl3_19)),
+  inference(forward_demodulation,[],[f960,f15])).
+fof(f960,plain,(
+  sK2 = sum(pred(sum(n7,succ(n4))),sum(n4,pred(n0))) | (~spl3_5 | ~spl3_19)),
+  inference(forward_demodulation,[],[f959,f107])).
+fof(f959,plain,(
+  sK2 = sum(pred(sum(n7,succ(n4))),sum(n4,pred(sum(n7,n4)))) | (~spl3_5 | ~spl3_19)),
+  inference(backward_demodulation,[],[f235,f934])).
+fof(f952,plain,(
+  ~spl3_4 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f951])).
+fof(f951,plain,(
+  $false | (~spl3_4 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f950,f150])).
+fof(f950,plain,(
+  n0 = sK2 | (~spl3_4 | ~spl3_19)),
+  inference(forward_demodulation,[],[f949,f137])).
+fof(f949,plain,(
+  sum(n10,n1) = sK2 | (~spl3_4 | ~spl3_19)),
+  inference(forward_demodulation,[],[f948,f15])).
+fof(f948,plain,(
+  sK2 = sum(pred(n0),n1) | (~spl3_4 | ~spl3_19)),
+  inference(forward_demodulation,[],[f947,f107])).
+fof(f947,plain,(
+  sK2 = sum(pred(sum(n7,n4)),n1) | (~spl3_4 | ~spl3_19)),
+  inference(forward_demodulation,[],[f946,f7])).
+fof(f946,plain,(
+  sK2 = sum(pred(sum(n7,succ(n3))),n1) | (~spl3_4 | ~spl3_19)),
+  inference(forward_demodulation,[],[f945,f68])).
+fof(f68,plain,(
+  n1 = sum(n3,n9)),
+  inference(cnf_transformation,[],[f3])).
+fof(f945,plain,(
+  sK2 = sum(pred(sum(n7,succ(n3))),sum(n3,n9)) | (~spl3_4 | ~spl3_19)),
+  inference(forward_demodulation,[],[f944,f25])).
+fof(f944,plain,(
+  sK2 = sum(pred(sum(n7,succ(n3))),sum(n3,pred(n10))) | (~spl3_4 | ~spl3_19)),
+  inference(forward_demodulation,[],[f943,f106])).
+fof(f943,plain,(
+  sK2 = sum(pred(sum(n7,succ(n3))),sum(n3,pred(sum(n7,n3)))) | (~spl3_4 | ~spl3_19)),
+  inference(backward_demodulation,[],[f231,f934])).
+fof(f933,plain,(
+  ~spl3_9 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f932])).
+fof(f932,plain,(
+  $false | (~spl3_9 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f931,f158])).
+fof(f931,plain,(
+  n8 = sK2 | (~spl3_9 | ~spl3_21)),
+  inference(forward_demodulation,[],[f930,f94])).
+fof(f930,plain,(
+  sum(n6,n2) = sK2 | (~spl3_9 | ~spl3_21)),
+  inference(forward_demodulation,[],[f929,f22])).
+fof(f929,plain,(
+  sK2 = sum(pred(n7),n2) | (~spl3_9 | ~spl3_21)),
+  inference(forward_demodulation,[],[f928,f134])).
+fof(f928,plain,(
+  sK2 = sum(pred(sum(n9,n9)),n2) | (~spl3_9 | ~spl3_21)),
+  inference(forward_demodulation,[],[f927,f119])).
+fof(f927,plain,(
+  sK2 = sum(pred(sum(n9,n9)),sum(n8,n5)) | (~spl3_9 | ~spl3_21)),
+  inference(forward_demodulation,[],[f926,f21])).
+fof(f926,plain,(
+  sK2 = sum(pred(sum(n9,n9)),sum(n8,pred(n6))) | (~spl3_9 | ~spl3_21)),
+  inference(forward_demodulation,[],[f925,f133])).
+fof(f925,plain,(
+  sK2 = sum(pred(sum(n9,n9)),sum(n8,pred(sum(n9,n8)))) | (~spl3_9 | ~spl3_21)),
+  inference(backward_demodulation,[],[f300,f822])).
+fof(f822,plain,(
+  sK2 = sum(pred(sum(sK0,n9)),sum(n8,pred(sum(sK0,n8)))) | ~spl3_9),
+  inference(forward_demodulation,[],[f821,f12])).
+fof(f12,plain,(
+  succ(n8) = n9),
+  inference(cnf_transformation,[],[f3])).
+fof(f821,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n8))),sum(n8,pred(sum(sK0,n8)))) | ~spl3_9),
+  inference(forward_demodulation,[],[f149,f251])).
+fof(f251,plain,(
+  n8 = sK1 | ~spl3_9),
+  inference(avatar_component_clause,[],[f249])).
+fof(f249,plain,(
+  spl3_9 <=> n8 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_9])])).
+fof(f923,plain,(
+  ~spl3_9 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f922])).
+fof(f922,plain,(
+  $false | (~spl3_9 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f921,f159])).
+fof(f921,plain,(
+  n9 = sK2 | (~spl3_9 | ~spl3_16)),
+  inference(forward_demodulation,[],[f920,f45])).
+fof(f45,plain,(
+  n9 = sum(n1,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f920,plain,(
+  sum(n1,n8) = sK2 | (~spl3_9 | ~spl3_16)),
+  inference(forward_demodulation,[],[f919,f17])).
+fof(f919,plain,(
+  sK2 = sum(pred(n2),n8) | (~spl3_9 | ~spl3_16)),
+  inference(forward_demodulation,[],[f918,f79])).
+fof(f918,plain,(
+  sK2 = sum(pred(sum(n4,n9)),n8) | (~spl3_9 | ~spl3_16)),
+  inference(forward_demodulation,[],[f917,f114])).
+fof(f917,plain,(
+  sK2 = sum(pred(sum(n4,n9)),sum(n8,n0)) | (~spl3_9 | ~spl3_16)),
+  inference(forward_demodulation,[],[f916,f16])).
+fof(f916,plain,(
+  sK2 = sum(pred(sum(n4,n9)),sum(n8,pred(n1))) | (~spl3_9 | ~spl3_16)),
+  inference(forward_demodulation,[],[f915,f78])).
+fof(f915,plain,(
+  sK2 = sum(pred(sum(n4,n9)),sum(n8,pred(sum(n4,n8)))) | (~spl3_9 | ~spl3_16)),
+  inference(backward_demodulation,[],[f280,f822])).
+fof(f908,plain,(
+  ~spl3_9 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f907])).
+fof(f907,plain,(
+  $false | (~spl3_9 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f906,f156])).
+fof(f906,plain,(
+  n6 = sK2 | (~spl3_9 | ~spl3_20)),
+  inference(forward_demodulation,[],[f905,f82])).
+fof(f905,plain,(
+  sum(n5,n1) = sK2 | (~spl3_9 | ~spl3_20)),
+  inference(forward_demodulation,[],[f904,f21])).
+fof(f904,plain,(
+  sK2 = sum(pred(n6),n1) | (~spl3_9 | ~spl3_20)),
+  inference(forward_demodulation,[],[f903,f123])).
+fof(f903,plain,(
+  sK2 = sum(pred(sum(n8,n9)),n1) | (~spl3_9 | ~spl3_20)),
+  inference(forward_demodulation,[],[f902,f118])).
+fof(f902,plain,(
+  sK2 = sum(pred(sum(n8,n9)),sum(n8,n4)) | (~spl3_9 | ~spl3_20)),
+  inference(forward_demodulation,[],[f901,f20])).
+fof(f901,plain,(
+  sK2 = sum(pred(sum(n8,n9)),sum(n8,pred(n5))) | (~spl3_9 | ~spl3_20)),
+  inference(forward_demodulation,[],[f900,f122])).
+fof(f122,plain,(
+  n5 = sum(n8,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f900,plain,(
+  sK2 = sum(pred(sum(n8,n9)),sum(n8,pred(sum(n8,n8)))) | (~spl3_9 | ~spl3_20)),
+  inference(backward_demodulation,[],[f296,f822])).
+fof(f897,plain,(
+  ~spl3_9 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f896])).
+fof(f896,plain,(
+  $false | (~spl3_9 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f895,f153])).
+fof(f895,plain,(
+  n3 = sK2 | (~spl3_9 | ~spl3_13)),
+  inference(forward_demodulation,[],[f894,f130])).
+fof(f894,plain,(
+  sum(n9,n5) = sK2 | (~spl3_9 | ~spl3_13)),
+  inference(forward_demodulation,[],[f893,f25])).
+fof(f893,plain,(
+  sK2 = sum(pred(n10),n5) | (~spl3_9 | ~spl3_13)),
+  inference(forward_demodulation,[],[f892,f46])).
+fof(f892,plain,(
+  sK2 = sum(pred(sum(n1,n9)),n5) | (~spl3_9 | ~spl3_13)),
+  inference(forward_demodulation,[],[f891,f122])).
+fof(f891,plain,(
+  sK2 = sum(pred(sum(n1,n9)),sum(n8,n8)) | (~spl3_9 | ~spl3_13)),
+  inference(forward_demodulation,[],[f890,f24])).
+fof(f890,plain,(
+  sK2 = sum(pred(sum(n1,n9)),sum(n8,pred(n9))) | (~spl3_9 | ~spl3_13)),
+  inference(forward_demodulation,[],[f889,f45])).
+fof(f889,plain,(
+  sK2 = sum(pred(sum(n1,n9)),sum(n8,pred(sum(n1,n8)))) | (~spl3_9 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f822])).
+fof(f879,plain,(
+  ~spl3_9 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f878])).
+fof(f878,plain,(
+  $false | (~spl3_9 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f877,f151])).
+fof(f877,plain,(
+  n1 = sK2 | (~spl3_9 | ~spl3_12)),
+  inference(forward_demodulation,[],[f876,f118])).
+fof(f876,plain,(
+  sum(n8,n4) = sK2 | (~spl3_9 | ~spl3_12)),
+  inference(forward_demodulation,[],[f875,f24])).
+fof(f875,plain,(
+  sK2 = sum(pred(n9),n4) | (~spl3_9 | ~spl3_12)),
+  inference(forward_demodulation,[],[f874,f35])).
+fof(f874,plain,(
+  sK2 = sum(pred(sum(n0,n9)),n4) | (~spl3_9 | ~spl3_12)),
+  inference(forward_demodulation,[],[f873,f121])).
+fof(f873,plain,(
+  sK2 = sum(pred(sum(n0,n9)),sum(n8,n7)) | (~spl3_9 | ~spl3_12)),
+  inference(forward_demodulation,[],[f872,f23])).
+fof(f872,plain,(
+  sK2 = sum(pred(sum(n0,n9)),sum(n8,pred(n8))) | (~spl3_9 | ~spl3_12)),
+  inference(forward_demodulation,[],[f871,f34])).
+fof(f871,plain,(
+  sK2 = sum(pred(sum(n0,n9)),sum(n8,pred(sum(n0,n8)))) | (~spl3_9 | ~spl3_12)),
+  inference(backward_demodulation,[],[f264,f822])).
+fof(f860,plain,(
+  ~spl3_9 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f859])).
+fof(f859,plain,(
+  $false | (~spl3_9 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f858,f155])).
+fof(f858,plain,(
+  n5 = sK2 | (~spl3_9 | ~spl3_14)),
+  inference(forward_demodulation,[],[f857,f142])).
+fof(f857,plain,(
+  sum(n10,n6) = sK2 | (~spl3_9 | ~spl3_14)),
+  inference(forward_demodulation,[],[f856,f15])).
+fof(f856,plain,(
+  sK2 = sum(pred(n0),n6) | (~spl3_9 | ~spl3_14)),
+  inference(forward_demodulation,[],[f855,f57])).
+fof(f855,plain,(
+  sK2 = sum(pred(sum(n2,n9)),n6) | (~spl3_9 | ~spl3_14)),
+  inference(forward_demodulation,[],[f854,f123])).
+fof(f854,plain,(
+  sK2 = sum(pred(sum(n2,n9)),sum(n8,n9)) | (~spl3_9 | ~spl3_14)),
+  inference(forward_demodulation,[],[f853,f25])).
+fof(f853,plain,(
+  sK2 = sum(pred(sum(n2,n9)),sum(n8,pred(n10))) | (~spl3_9 | ~spl3_14)),
+  inference(forward_demodulation,[],[f852,f56])).
+fof(f852,plain,(
+  sK2 = sum(pred(sum(n2,n9)),sum(n8,pred(sum(n2,n8)))) | (~spl3_9 | ~spl3_14)),
+  inference(backward_demodulation,[],[f272,f822])).
+fof(f843,plain,(
+  ~spl3_9 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f842])).
+fof(f842,plain,(
+  $false | (~spl3_9 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f841,f154])).
+fof(f841,plain,(
+  n4 = sK2 | (~spl3_9 | ~spl3_19)),
+  inference(forward_demodulation,[],[f840,f70])).
+fof(f840,plain,(
+  sum(n4,n0) = sK2 | (~spl3_9 | ~spl3_19)),
+  inference(forward_demodulation,[],[f839,f20])).
+fof(f839,plain,(
+  sK2 = sum(pred(n5),n0) | (~spl3_9 | ~spl3_19)),
+  inference(forward_demodulation,[],[f838,f112])).
+fof(f838,plain,(
+  sK2 = sum(pred(sum(n7,n9)),n0) | (~spl3_9 | ~spl3_19)),
+  inference(forward_demodulation,[],[f837,f117])).
+fof(f837,plain,(
+  sK2 = sum(pred(sum(n7,n9)),sum(n8,n3)) | (~spl3_9 | ~spl3_19)),
+  inference(forward_demodulation,[],[f836,f19])).
+fof(f836,plain,(
+  sK2 = sum(pred(sum(n7,n9)),sum(n8,pred(n4))) | (~spl3_9 | ~spl3_19)),
+  inference(forward_demodulation,[],[f835,f111])).
+fof(f111,plain,(
+  n4 = sum(n7,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f835,plain,(
+  sK2 = sum(pred(sum(n7,n9)),sum(n8,pred(sum(n7,n8)))) | (~spl3_9 | ~spl3_19)),
+  inference(backward_demodulation,[],[f292,f822])).
+fof(f831,plain,(
+  ~spl3_9 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f830])).
+fof(f830,plain,(
+  $false | (~spl3_9 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f829,f160])).
+fof(f829,plain,(
+  n10 = sK2 | (~spl3_9 | ~spl3_22)),
+  inference(forward_demodulation,[],[f828,f106])).
+fof(f828,plain,(
+  sum(n7,n3) = sK2 | (~spl3_9 | ~spl3_22)),
+  inference(forward_demodulation,[],[f827,f23])).
+fof(f827,plain,(
+  sK2 = sum(pred(n8),n3) | (~spl3_9 | ~spl3_22)),
+  inference(forward_demodulation,[],[f826,f145])).
+fof(f826,plain,(
+  sK2 = sum(pred(sum(n10,n9)),n3) | (~spl3_9 | ~spl3_22)),
+  inference(forward_demodulation,[],[f825,f120])).
+fof(f825,plain,(
+  sK2 = sum(pred(sum(n10,n9)),sum(n8,n6)) | (~spl3_9 | ~spl3_22)),
+  inference(forward_demodulation,[],[f824,f22])).
+fof(f824,plain,(
+  sK2 = sum(pred(sum(n10,n9)),sum(n8,pred(n7))) | (~spl3_9 | ~spl3_22)),
+  inference(forward_demodulation,[],[f823,f144])).
+fof(f823,plain,(
+  sK2 = sum(pred(sum(n10,n9)),sum(n8,pred(sum(n10,n8)))) | (~spl3_9 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f822])).
+fof(f820,plain,(
+  ~spl3_9 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f819])).
+fof(f819,plain,(
+  $false | (~spl3_9 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f818,f152])).
+fof(f818,plain,(
+  n2 = sK2 | (~spl3_9 | ~spl3_18)),
+  inference(forward_demodulation,[],[f817,f69])).
+fof(f817,plain,(
+  sum(n3,n10) = sK2 | (~spl3_9 | ~spl3_18)),
+  inference(forward_demodulation,[],[f816,f19])).
+fof(f816,plain,(
+  sK2 = sum(pred(n4),n10) | (~spl3_9 | ~spl3_18)),
+  inference(forward_demodulation,[],[f815,f101])).
+fof(f815,plain,(
+  sK2 = sum(pred(sum(n6,n9)),n10) | (~spl3_9 | ~spl3_18)),
+  inference(forward_demodulation,[],[f814,f12])).
+fof(f814,plain,(
+  sK2 = sum(pred(sum(n6,succ(n8))),n10) | (~spl3_9 | ~spl3_18)),
+  inference(forward_demodulation,[],[f813,f116])).
+fof(f813,plain,(
+  sK2 = sum(pred(sum(n6,succ(n8))),sum(n8,n2)) | (~spl3_9 | ~spl3_18)),
+  inference(forward_demodulation,[],[f812,f18])).
+fof(f812,plain,(
+  sK2 = sum(pred(sum(n6,succ(n8))),sum(n8,pred(n3))) | (~spl3_9 | ~spl3_18)),
+  inference(forward_demodulation,[],[f811,f100])).
+fof(f100,plain,(
+  n3 = sum(n6,n8)),
+  inference(cnf_transformation,[],[f3])).
+fof(f811,plain,(
+  sK2 = sum(pred(sum(n6,succ(n8))),sum(n8,pred(sum(n6,n8)))) | (~spl3_9 | ~spl3_18)),
+  inference(backward_demodulation,[],[f251,f804])).
+fof(f804,plain,(
+  sK2 = sum(pred(sum(n6,succ(sK1))),sum(sK1,pred(sum(n6,sK1)))) | ~spl3_18),
+  inference(backward_demodulation,[],[f288,f149])).
+fof(f803,plain,(
+  ~spl3_5 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f802])).
+fof(f802,plain,(
+  $false | (~spl3_5 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f801,f160])).
+fof(f801,plain,(
+  n10 = sK2 | (~spl3_5 | ~spl3_17)),
+  inference(forward_demodulation,[],[f800,f126])).
+fof(f800,plain,(
+  sum(n9,n1) = sK2 | (~spl3_5 | ~spl3_17)),
+  inference(forward_demodulation,[],[f799,f25])).
+fof(f799,plain,(
+  sK2 = sum(pred(n10),n1) | (~spl3_5 | ~spl3_17)),
+  inference(forward_demodulation,[],[f798,f86])).
+fof(f798,plain,(
+  sK2 = sum(pred(sum(n5,n5)),n1) | (~spl3_5 | ~spl3_17)),
+  inference(forward_demodulation,[],[f797,f8])).
+fof(f797,plain,(
+  sK2 = sum(pred(sum(n5,succ(n4))),n1) | (~spl3_5 | ~spl3_17)),
+  inference(forward_demodulation,[],[f796,f78])).
+fof(f796,plain,(
+  sK2 = sum(pred(sum(n5,succ(n4))),sum(n4,n8)) | (~spl3_5 | ~spl3_17)),
+  inference(forward_demodulation,[],[f795,f24])).
+fof(f795,plain,(
+  sK2 = sum(pred(sum(n5,succ(n4))),sum(n4,pred(n9))) | (~spl3_5 | ~spl3_17)),
+  inference(forward_demodulation,[],[f794,f85])).
+fof(f794,plain,(
+  sK2 = sum(pred(sum(n5,succ(n4))),sum(n4,pred(sum(n5,n4)))) | (~spl3_5 | ~spl3_17)),
+  inference(backward_demodulation,[],[f235,f672])).
+fof(f672,plain,(
+  sK2 = sum(pred(sum(n5,succ(sK1))),sum(sK1,pred(sum(n5,sK1)))) | ~spl3_17),
+  inference(backward_demodulation,[],[f284,f149])).
+fof(f284,plain,(
+  n5 = sK0 | ~spl3_17),
+  inference(avatar_component_clause,[],[f282])).
+fof(f282,plain,(
+  spl3_17 <=> n5 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_17])])).
+fof(f787,plain,(
+  ~spl3_11 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f786])).
+fof(f786,plain,(
+  $false | (~spl3_11 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f785,f156])).
+fof(f785,plain,(
+  n6 = sK2 | (~spl3_11 | ~spl3_17)),
+  inference(forward_demodulation,[],[f784,f72])).
+fof(f784,plain,(
+  sum(n4,n2) = sK2 | (~spl3_11 | ~spl3_17)),
+  inference(forward_demodulation,[],[f783,f20])).
+fof(f783,plain,(
+  sK2 = sum(pred(n5),n2) | (~spl3_11 | ~spl3_17)),
+  inference(forward_demodulation,[],[f782,f81])).
+fof(f782,plain,(
+  sK2 = sum(pred(sum(n5,n0)),n2) | (~spl3_11 | ~spl3_17)),
+  inference(forward_demodulation,[],[f781,f14])).
+fof(f781,plain,(
+  sK2 = sum(pred(sum(n5,succ(n10))),n2) | (~spl3_11 | ~spl3_17)),
+  inference(forward_demodulation,[],[f780,f139])).
+fof(f780,plain,(
+  sK2 = sum(pred(sum(n5,succ(n10))),sum(n10,n3)) | (~spl3_11 | ~spl3_17)),
+  inference(forward_demodulation,[],[f779,f19])).
+fof(f779,plain,(
+  sK2 = sum(pred(sum(n5,succ(n10))),sum(n10,pred(n4))) | (~spl3_11 | ~spl3_17)),
+  inference(forward_demodulation,[],[f778,f91])).
+fof(f778,plain,(
+  sK2 = sum(pred(sum(n5,succ(n10))),sum(n10,pred(sum(n5,n10)))) | (~spl3_11 | ~spl3_17)),
+  inference(backward_demodulation,[],[f259,f672])).
+fof(f777,plain,(
+  ~spl3_4 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f776])).
+fof(f776,plain,(
+  $false | (~spl3_4 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f775,f157])).
+fof(f775,plain,(
+  n7 = sK2 | (~spl3_4 | ~spl3_17)),
+  inference(forward_demodulation,[],[f774,f124])).
+fof(f774,plain,(
+  sum(n8,n10) = sK2 | (~spl3_4 | ~spl3_17)),
+  inference(forward_demodulation,[],[f773,f24])).
+fof(f773,plain,(
+  sK2 = sum(pred(n9),n10) | (~spl3_4 | ~spl3_17)),
+  inference(forward_demodulation,[],[f772,f85])).
+fof(f772,plain,(
+  sK2 = sum(pred(sum(n5,n4)),n10) | (~spl3_4 | ~spl3_17)),
+  inference(forward_demodulation,[],[f771,f7])).
+fof(f771,plain,(
+  sK2 = sum(pred(sum(n5,succ(n3))),n10) | (~spl3_4 | ~spl3_17)),
+  inference(forward_demodulation,[],[f770,f66])).
+fof(f770,plain,(
+  sK2 = sum(pred(sum(n5,succ(n3))),sum(n3,n7)) | (~spl3_4 | ~spl3_17)),
+  inference(forward_demodulation,[],[f769,f23])).
+fof(f769,plain,(
+  sK2 = sum(pred(sum(n5,succ(n3))),sum(n3,pred(n8))) | (~spl3_4 | ~spl3_17)),
+  inference(forward_demodulation,[],[f768,f84])).
+fof(f768,plain,(
+  sK2 = sum(pred(sum(n5,succ(n3))),sum(n3,pred(sum(n5,n3)))) | (~spl3_4 | ~spl3_17)),
+  inference(backward_demodulation,[],[f231,f672])).
+fof(f761,plain,(
+  ~spl3_6 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f760])).
+fof(f760,plain,(
+  $false | (~spl3_6 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f759,f152])).
+fof(f759,plain,(
+  n2 = sK2 | (~spl3_6 | ~spl3_17)),
+  inference(forward_demodulation,[],[f758,f139])).
+fof(f758,plain,(
+  sum(n10,n3) = sK2 | (~spl3_6 | ~spl3_17)),
+  inference(forward_demodulation,[],[f757,f15])).
+fof(f757,plain,(
+  sK2 = sum(pred(n0),n3) | (~spl3_6 | ~spl3_17)),
+  inference(forward_demodulation,[],[f756,f87])).
+fof(f756,plain,(
+  sK2 = sum(pred(sum(n5,n6)),n3) | (~spl3_6 | ~spl3_17)),
+  inference(forward_demodulation,[],[f755,f9])).
+fof(f755,plain,(
+  sK2 = sum(pred(sum(n5,succ(n5))),n3) | (~spl3_6 | ~spl3_17)),
+  inference(forward_demodulation,[],[f754,f90])).
+fof(f754,plain,(
+  sK2 = sum(pred(sum(n5,succ(n5))),sum(n5,n9)) | (~spl3_6 | ~spl3_17)),
+  inference(forward_demodulation,[],[f753,f25])).
+fof(f753,plain,(
+  sK2 = sum(pred(sum(n5,succ(n5))),sum(n5,pred(n10))) | (~spl3_6 | ~spl3_17)),
+  inference(forward_demodulation,[],[f752,f86])).
+fof(f752,plain,(
+  sK2 = sum(pred(sum(n5,succ(n5))),sum(n5,pred(sum(n5,n5)))) | (~spl3_6 | ~spl3_17)),
+  inference(backward_demodulation,[],[f239,f672])).
+fof(f747,plain,(
+  ~spl3_1 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f746])).
+fof(f746,plain,(
+  $false | (~spl3_1 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f745,f159])).
+fof(f745,plain,(
+  n9 = sK2 | (~spl3_1 | ~spl3_17)),
+  inference(forward_demodulation,[],[f744,f85])).
+fof(f744,plain,(
+  sum(n5,n4) = sK2 | (~spl3_1 | ~spl3_17)),
+  inference(forward_demodulation,[],[f743,f21])).
+fof(f743,plain,(
+  sK2 = sum(pred(n6),n4) | (~spl3_1 | ~spl3_17)),
+  inference(forward_demodulation,[],[f742,f82])).
+fof(f742,plain,(
+  sK2 = sum(pred(sum(n5,n1)),n4) | (~spl3_1 | ~spl3_17)),
+  inference(forward_demodulation,[],[f741,f4])).
+fof(f741,plain,(
+  sK2 = sum(pred(sum(n5,succ(n0))),n4) | (~spl3_1 | ~spl3_17)),
+  inference(forward_demodulation,[],[f740,f30])).
+fof(f740,plain,(
+  sK2 = sum(pred(sum(n5,succ(n0))),sum(n0,n4)) | (~spl3_1 | ~spl3_17)),
+  inference(forward_demodulation,[],[f739,f20])).
+fof(f739,plain,(
+  sK2 = sum(pred(sum(n5,succ(n0))),sum(n0,pred(n5))) | (~spl3_1 | ~spl3_17)),
+  inference(forward_demodulation,[],[f738,f81])).
+fof(f738,plain,(
+  sK2 = sum(pred(sum(n5,succ(n0))),sum(n0,pred(sum(n5,n0)))) | (~spl3_1 | ~spl3_17)),
+  inference(backward_demodulation,[],[f219,f672])).
+fof(f728,plain,(
+  ~spl3_7 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f727])).
+fof(f727,plain,(
+  $false | (~spl3_7 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f726,f155])).
+fof(f726,plain,(
+  n5 = sK2 | (~spl3_7 | ~spl3_17)),
+  inference(forward_demodulation,[],[f725,f31])).
+fof(f725,plain,(
+  sum(n0,n5) = sK2 | (~spl3_7 | ~spl3_17)),
+  inference(forward_demodulation,[],[f724,f16])).
+fof(f724,plain,(
+  sK2 = sum(pred(n1),n5) | (~spl3_7 | ~spl3_17)),
+  inference(forward_demodulation,[],[f723,f88])).
+fof(f723,plain,(
+  sK2 = sum(pred(sum(n5,n7)),n5) | (~spl3_7 | ~spl3_17)),
+  inference(forward_demodulation,[],[f722,f10])).
+fof(f722,plain,(
+  sK2 = sum(pred(sum(n5,succ(n6))),n5) | (~spl3_7 | ~spl3_17)),
+  inference(forward_demodulation,[],[f721,f102])).
+fof(f721,plain,(
+  sK2 = sum(pred(sum(n5,succ(n6))),sum(n6,n10)) | (~spl3_7 | ~spl3_17)),
+  inference(forward_demodulation,[],[f720,f15])).
+fof(f720,plain,(
+  sK2 = sum(pred(sum(n5,succ(n6))),sum(n6,pred(n0))) | (~spl3_7 | ~spl3_17)),
+  inference(forward_demodulation,[],[f719,f87])).
+fof(f719,plain,(
+  sK2 = sum(pred(sum(n5,succ(n6))),sum(n6,pred(sum(n5,n6)))) | (~spl3_7 | ~spl3_17)),
+  inference(backward_demodulation,[],[f243,f672])).
+fof(f715,plain,(
+  ~spl3_10 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f714])).
+fof(f714,plain,(
+  $false | (~spl3_10 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f713,f153])).
+fof(f713,plain,(
+  n3 = sK2 | (~spl3_10 | ~spl3_17)),
+  inference(forward_demodulation,[],[f712,f59])).
+fof(f712,plain,(
+  sum(n3,n0) = sK2 | (~spl3_10 | ~spl3_17)),
+  inference(forward_demodulation,[],[f711,f19])).
+fof(f711,plain,(
+  sK2 = sum(pred(n4),n0) | (~spl3_10 | ~spl3_17)),
+  inference(forward_demodulation,[],[f710,f91])).
+fof(f710,plain,(
+  sK2 = sum(pred(sum(n5,n10)),n0) | (~spl3_10 | ~spl3_17)),
+  inference(forward_demodulation,[],[f709,f13])).
+fof(f709,plain,(
+  sK2 = sum(pred(sum(n5,succ(n9))),n0) | (~spl3_10 | ~spl3_17)),
+  inference(forward_demodulation,[],[f708,f127])).
+fof(f708,plain,(
+  sK2 = sum(pred(sum(n5,succ(n9))),sum(n9,n2)) | (~spl3_10 | ~spl3_17)),
+  inference(forward_demodulation,[],[f707,f18])).
+fof(f707,plain,(
+  sK2 = sum(pred(sum(n5,succ(n9))),sum(n9,pred(n3))) | (~spl3_10 | ~spl3_17)),
+  inference(forward_demodulation,[],[f706,f90])).
+fof(f706,plain,(
+  sK2 = sum(pred(sum(n5,succ(n9))),sum(n9,pred(sum(n5,n9)))) | (~spl3_10 | ~spl3_17)),
+  inference(backward_demodulation,[],[f255,f672])).
+fof(f705,plain,(
+  ~spl3_3 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f704])).
+fof(f704,plain,(
+  $false | (~spl3_3 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f703,f154])).
+fof(f703,plain,(
+  n4 = sK2 | (~spl3_3 | ~spl3_17)),
+  inference(forward_demodulation,[],[f702,f111])).
+fof(f702,plain,(
+  sum(n7,n8) = sK2 | (~spl3_3 | ~spl3_17)),
+  inference(forward_demodulation,[],[f701,f23])).
+fof(f701,plain,(
+  sK2 = sum(pred(n8),n8) | (~spl3_3 | ~spl3_17)),
+  inference(forward_demodulation,[],[f700,f84])).
+fof(f700,plain,(
+  sK2 = sum(pred(sum(n5,n3)),n8) | (~spl3_3 | ~spl3_17)),
+  inference(forward_demodulation,[],[f699,f6])).
+fof(f699,plain,(
+  sK2 = sum(pred(sum(n5,succ(n2))),n8) | (~spl3_3 | ~spl3_17)),
+  inference(forward_demodulation,[],[f698,f54])).
+fof(f698,plain,(
+  sK2 = sum(pred(sum(n5,succ(n2))),sum(n2,n6)) | (~spl3_3 | ~spl3_17)),
+  inference(forward_demodulation,[],[f697,f22])).
+fof(f697,plain,(
+  sK2 = sum(pred(sum(n5,succ(n2))),sum(n2,pred(n7))) | (~spl3_3 | ~spl3_17)),
+  inference(forward_demodulation,[],[f696,f83])).
+fof(f696,plain,(
+  sK2 = sum(pred(sum(n5,succ(n2))),sum(n2,pred(sum(n5,n2)))) | (~spl3_3 | ~spl3_17)),
+  inference(backward_demodulation,[],[f227,f672])).
+fof(f688,plain,(
+  ~spl3_9 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f687])).
+fof(f687,plain,(
+  $false | (~spl3_9 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f686,f150])).
+fof(f686,plain,(
+  n0 = sK2 | (~spl3_9 | ~spl3_17)),
+  inference(forward_demodulation,[],[f685,f57])).
+fof(f685,plain,(
+  sum(n2,n9) = sK2 | (~spl3_9 | ~spl3_17)),
+  inference(forward_demodulation,[],[f684,f18])).
+fof(f684,plain,(
+  sK2 = sum(pred(n3),n9) | (~spl3_9 | ~spl3_17)),
+  inference(forward_demodulation,[],[f683,f90])).
+fof(f683,plain,(
+  sK2 = sum(pred(sum(n5,n9)),n9) | (~spl3_9 | ~spl3_17)),
+  inference(forward_demodulation,[],[f682,f12])).
+fof(f682,plain,(
+  sK2 = sum(pred(sum(n5,succ(n8))),n9) | (~spl3_9 | ~spl3_17)),
+  inference(forward_demodulation,[],[f681,f115])).
+fof(f681,plain,(
+  sK2 = sum(pred(sum(n5,succ(n8))),sum(n8,n1)) | (~spl3_9 | ~spl3_17)),
+  inference(forward_demodulation,[],[f680,f17])).
+fof(f680,plain,(
+  sK2 = sum(pred(sum(n5,succ(n8))),sum(n8,pred(n2))) | (~spl3_9 | ~spl3_17)),
+  inference(forward_demodulation,[],[f679,f89])).
+fof(f679,plain,(
+  sK2 = sum(pred(sum(n5,succ(n8))),sum(n8,pred(sum(n5,n8)))) | (~spl3_9 | ~spl3_17)),
+  inference(backward_demodulation,[],[f251,f672])).
+fof(f671,plain,(
+  ~spl3_8 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f670])).
+fof(f670,plain,(
+  $false | (~spl3_8 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f669,f152])).
+fof(f669,plain,(
+  n2 = sK2 | (~spl3_8 | ~spl3_14)),
+  inference(forward_demodulation,[],[f668,f129])).
+fof(f668,plain,(
+  sum(n9,n4) = sK2 | (~spl3_8 | ~spl3_14)),
+  inference(forward_demodulation,[],[f667,f25])).
+fof(f667,plain,(
+  sK2 = sum(pred(n10),n4) | (~spl3_8 | ~spl3_14)),
+  inference(forward_demodulation,[],[f666,f56])).
+fof(f666,plain,(
+  sK2 = sum(pred(sum(n2,n8)),n4) | (~spl3_8 | ~spl3_14)),
+  inference(forward_demodulation,[],[f665,f111])).
+fof(f665,plain,(
+  sK2 = sum(pred(sum(n2,n8)),sum(n7,n8)) | (~spl3_8 | ~spl3_14)),
+  inference(forward_demodulation,[],[f664,f24])).
+fof(f664,plain,(
+  sK2 = sum(pred(sum(n2,n8)),sum(n7,pred(n9))) | (~spl3_8 | ~spl3_14)),
+  inference(forward_demodulation,[],[f663,f55])).
+fof(f663,plain,(
+  sK2 = sum(pred(sum(n2,n8)),sum(n7,pred(sum(n2,n7)))) | (~spl3_8 | ~spl3_14)),
+  inference(backward_demodulation,[],[f272,f552])).
+fof(f552,plain,(
+  sK2 = sum(pred(sum(sK0,n8)),sum(n7,pred(sum(sK0,n7)))) | ~spl3_8),
+  inference(forward_demodulation,[],[f551,f11])).
+fof(f11,plain,(
+  succ(n7) = n8),
+  inference(cnf_transformation,[],[f3])).
+fof(f551,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n7))),sum(n7,pred(sum(sK0,n7)))) | ~spl3_8),
+  inference(forward_demodulation,[],[f149,f247])).
+fof(f247,plain,(
+  n7 = sK1 | ~spl3_8),
+  inference(avatar_component_clause,[],[f245])).
+fof(f245,plain,(
+  spl3_8 <=> n7 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_8])])).
+fof(f654,plain,(
+  ~spl3_8 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f653])).
+fof(f653,plain,(
+  $false | (~spl3_8 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f652,f153])).
+fof(f652,plain,(
+  n3 = sK2 | (~spl3_8 | ~spl3_20)),
+  inference(forward_demodulation,[],[f651,f80])).
+fof(f651,plain,(
+  sum(n4,n10) = sK2 | (~spl3_8 | ~spl3_20)),
+  inference(forward_demodulation,[],[f650,f20])).
+fof(f650,plain,(
+  sK2 = sum(pred(n5),n10) | (~spl3_8 | ~spl3_20)),
+  inference(forward_demodulation,[],[f649,f122])).
+fof(f649,plain,(
+  sK2 = sum(pred(sum(n8,n8)),n10) | (~spl3_8 | ~spl3_20)),
+  inference(forward_demodulation,[],[f648,f106])).
+fof(f648,plain,(
+  sK2 = sum(pred(sum(n8,n8)),sum(n7,n3)) | (~spl3_8 | ~spl3_20)),
+  inference(forward_demodulation,[],[f647,f19])).
+fof(f647,plain,(
+  sK2 = sum(pred(sum(n8,n8)),sum(n7,pred(n4))) | (~spl3_8 | ~spl3_20)),
+  inference(forward_demodulation,[],[f646,f121])).
+fof(f646,plain,(
+  sK2 = sum(pred(sum(n8,n8)),sum(n7,pred(sum(n8,n7)))) | (~spl3_8 | ~spl3_20)),
+  inference(backward_demodulation,[],[f296,f552])).
+fof(f643,plain,(
+  ~spl3_8 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f642])).
+fof(f642,plain,(
+  $false | (~spl3_8 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f641,f156])).
+fof(f641,plain,(
+  n6 = sK2 | (~spl3_8 | ~spl3_16)),
+  inference(forward_demodulation,[],[f640,f32])).
+fof(f640,plain,(
+  sum(n0,n6) = sK2 | (~spl3_8 | ~spl3_16)),
+  inference(forward_demodulation,[],[f639,f16])).
+fof(f639,plain,(
+  sK2 = sum(pred(n1),n6) | (~spl3_8 | ~spl3_16)),
+  inference(forward_demodulation,[],[f638,f78])).
+fof(f638,plain,(
+  sK2 = sum(pred(sum(n4,n8)),n6) | (~spl3_8 | ~spl3_16)),
+  inference(forward_demodulation,[],[f637,f113])).
+fof(f637,plain,(
+  sK2 = sum(pred(sum(n4,n8)),sum(n7,n10)) | (~spl3_8 | ~spl3_16)),
+  inference(forward_demodulation,[],[f636,f15])).
+fof(f636,plain,(
+  sK2 = sum(pred(sum(n4,n8)),sum(n7,pred(n0))) | (~spl3_8 | ~spl3_16)),
+  inference(forward_demodulation,[],[f635,f77])).
+fof(f635,plain,(
+  sK2 = sum(pred(sum(n4,n8)),sum(n7,pred(sum(n4,n7)))) | (~spl3_8 | ~spl3_16)),
+  inference(backward_demodulation,[],[f280,f552])).
+fof(f628,plain,(
+  ~spl3_8 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f627])).
+fof(f627,plain,(
+  $false | (~spl3_8 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f626,f157])).
+fof(f626,plain,(
+  n7 = sK2 | (~spl3_8 | ~spl3_22)),
+  inference(forward_demodulation,[],[f625,f93])).
+fof(f625,plain,(
+  sum(n6,n1) = sK2 | (~spl3_8 | ~spl3_22)),
+  inference(forward_demodulation,[],[f624,f22])).
+fof(f624,plain,(
+  sK2 = sum(pred(n7),n1) | (~spl3_8 | ~spl3_22)),
+  inference(forward_demodulation,[],[f623,f144])).
+fof(f623,plain,(
+  sK2 = sum(pred(sum(n10,n8)),n1) | (~spl3_8 | ~spl3_22)),
+  inference(forward_demodulation,[],[f622,f108])).
+fof(f622,plain,(
+  sK2 = sum(pred(sum(n10,n8)),sum(n7,n5)) | (~spl3_8 | ~spl3_22)),
+  inference(forward_demodulation,[],[f621,f21])).
+fof(f621,plain,(
+  sK2 = sum(pred(sum(n10,n8)),sum(n7,pred(n6))) | (~spl3_8 | ~spl3_22)),
+  inference(forward_demodulation,[],[f620,f143])).
+fof(f620,plain,(
+  sK2 = sum(pred(sum(n10,n8)),sum(n7,pred(sum(n10,n7)))) | (~spl3_8 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f552])).
+fof(f619,plain,(
+  ~spl3_8 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f618])).
+fof(f618,plain,(
+  $false | (~spl3_8 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f617,f159])).
+fof(f617,plain,(
+  n9 = sK2 | (~spl3_8 | ~spl3_12)),
+  inference(forward_demodulation,[],[f616,f105])).
+fof(f616,plain,(
+  sum(n7,n2) = sK2 | (~spl3_8 | ~spl3_12)),
+  inference(forward_demodulation,[],[f615,f23])).
+fof(f615,plain,(
+  sK2 = sum(pred(n8),n2) | (~spl3_8 | ~spl3_12)),
+  inference(forward_demodulation,[],[f614,f34])).
+fof(f614,plain,(
+  sK2 = sum(pred(sum(n0,n8)),n2) | (~spl3_8 | ~spl3_12)),
+  inference(forward_demodulation,[],[f613,f109])).
+fof(f613,plain,(
+  sK2 = sum(pred(sum(n0,n8)),sum(n7,n6)) | (~spl3_8 | ~spl3_12)),
+  inference(forward_demodulation,[],[f612,f22])).
+fof(f612,plain,(
+  sK2 = sum(pred(sum(n0,n8)),sum(n7,pred(n7))) | (~spl3_8 | ~spl3_12)),
+  inference(forward_demodulation,[],[f611,f33])).
+fof(f611,plain,(
+  sK2 = sum(pred(sum(n0,n8)),sum(n7,pred(sum(n0,n7)))) | (~spl3_8 | ~spl3_12)),
+  inference(backward_demodulation,[],[f264,f552])).
+fof(f601,plain,(
+  ~spl3_8 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f600])).
+fof(f600,plain,(
+  $false | (~spl3_8 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f599,f160])).
+fof(f599,plain,(
+  n10 = sK2 | (~spl3_8 | ~spl3_18)),
+  inference(forward_demodulation,[],[f598,f56])).
+fof(f598,plain,(
+  sum(n2,n8) = sK2 | (~spl3_8 | ~spl3_18)),
+  inference(forward_demodulation,[],[f597,f18])).
+fof(f597,plain,(
+  sK2 = sum(pred(n3),n8) | (~spl3_8 | ~spl3_18)),
+  inference(forward_demodulation,[],[f596,f100])).
+fof(f596,plain,(
+  sK2 = sum(pred(sum(n6,n8)),n8) | (~spl3_8 | ~spl3_18)),
+  inference(forward_demodulation,[],[f595,f104])).
+fof(f595,plain,(
+  sK2 = sum(pred(sum(n6,n8)),sum(n7,n1)) | (~spl3_8 | ~spl3_18)),
+  inference(forward_demodulation,[],[f594,f17])).
+fof(f594,plain,(
+  sK2 = sum(pred(sum(n6,n8)),sum(n7,pred(n2))) | (~spl3_8 | ~spl3_18)),
+  inference(forward_demodulation,[],[f593,f99])).
+fof(f593,plain,(
+  sK2 = sum(pred(sum(n6,n8)),sum(n7,pred(sum(n6,n7)))) | (~spl3_8 | ~spl3_18)),
+  inference(backward_demodulation,[],[f288,f552])).
+fof(f589,plain,(
+  ~spl3_8 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f588])).
+fof(f588,plain,(
+  $false | (~spl3_8 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f587,f151])).
+fof(f587,plain,(
+  n1 = sK2 | (~spl3_8 | ~spl3_19)),
+  inference(forward_demodulation,[],[f586,f68])).
+fof(f586,plain,(
+  sum(n3,n9) = sK2 | (~spl3_8 | ~spl3_19)),
+  inference(forward_demodulation,[],[f585,f19])).
+fof(f585,plain,(
+  sK2 = sum(pred(n4),n9) | (~spl3_8 | ~spl3_19)),
+  inference(forward_demodulation,[],[f584,f111])).
+fof(f584,plain,(
+  sK2 = sum(pred(sum(n7,n8)),n9) | (~spl3_8 | ~spl3_19)),
+  inference(forward_demodulation,[],[f583,f105])).
+fof(f583,plain,(
+  sK2 = sum(pred(sum(n7,n8)),sum(n7,n2)) | (~spl3_8 | ~spl3_19)),
+  inference(forward_demodulation,[],[f582,f18])).
+fof(f582,plain,(
+  sK2 = sum(pred(sum(n7,n8)),sum(n7,pred(n3))) | (~spl3_8 | ~spl3_19)),
+  inference(forward_demodulation,[],[f581,f110])).
+fof(f581,plain,(
+  sK2 = sum(pred(sum(n7,n8)),sum(n7,pred(sum(n7,n7)))) | (~spl3_8 | ~spl3_19)),
+  inference(backward_demodulation,[],[f292,f552])).
+fof(f578,plain,(
+  ~spl3_8 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f577])).
+fof(f577,plain,(
+  $false | (~spl3_8 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f576,f150])).
+fof(f576,plain,(
+  n0 = sK2 | (~spl3_8 | ~spl3_13)),
+  inference(forward_demodulation,[],[f575,f117])).
+fof(f575,plain,(
+  sum(n8,n3) = sK2 | (~spl3_8 | ~spl3_13)),
+  inference(forward_demodulation,[],[f574,f24])).
+fof(f574,plain,(
+  sK2 = sum(pred(n9),n3) | (~spl3_8 | ~spl3_13)),
+  inference(forward_demodulation,[],[f573,f45])).
+fof(f573,plain,(
+  sK2 = sum(pred(sum(n1,n8)),n3) | (~spl3_8 | ~spl3_13)),
+  inference(forward_demodulation,[],[f572,f110])).
+fof(f572,plain,(
+  sK2 = sum(pred(sum(n1,n8)),sum(n7,n7)) | (~spl3_8 | ~spl3_13)),
+  inference(forward_demodulation,[],[f571,f23])).
+fof(f571,plain,(
+  sK2 = sum(pred(sum(n1,n8)),sum(n7,pred(n8))) | (~spl3_8 | ~spl3_13)),
+  inference(forward_demodulation,[],[f570,f44])).
+fof(f570,plain,(
+  sK2 = sum(pred(sum(n1,n8)),sum(n7,pred(sum(n1,n7)))) | (~spl3_8 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f552])).
+fof(f561,plain,(
+  ~spl3_8 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f560])).
+fof(f560,plain,(
+  $false | (~spl3_8 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f559,f155])).
+fof(f559,plain,(
+  n5 = sK2 | (~spl3_8 | ~spl3_21)),
+  inference(forward_demodulation,[],[f558,f81])).
+fof(f558,plain,(
+  sum(n5,n0) = sK2 | (~spl3_8 | ~spl3_21)),
+  inference(forward_demodulation,[],[f557,f21])).
+fof(f557,plain,(
+  sK2 = sum(pred(n6),n0) | (~spl3_8 | ~spl3_21)),
+  inference(forward_demodulation,[],[f556,f133])).
+fof(f556,plain,(
+  sK2 = sum(pred(sum(n9,n8)),n0) | (~spl3_8 | ~spl3_21)),
+  inference(forward_demodulation,[],[f555,f107])).
+fof(f555,plain,(
+  sK2 = sum(pred(sum(n9,n8)),sum(n7,n4)) | (~spl3_8 | ~spl3_21)),
+  inference(forward_demodulation,[],[f554,f20])).
+fof(f554,plain,(
+  sK2 = sum(pred(sum(n9,n8)),sum(n7,pred(n5))) | (~spl3_8 | ~spl3_21)),
+  inference(forward_demodulation,[],[f553,f132])).
+fof(f553,plain,(
+  sK2 = sum(pred(sum(n9,n8)),sum(n7,pred(sum(n9,n7)))) | (~spl3_8 | ~spl3_21)),
+  inference(backward_demodulation,[],[f300,f552])).
+fof(f550,plain,(
+  ~spl3_8 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f549])).
+fof(f549,plain,(
+  $false | (~spl3_8 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f548,f158])).
+fof(f548,plain,(
+  n8 = sK2 | (~spl3_8 | ~spl3_17)),
+  inference(forward_demodulation,[],[f547,f44])).
+fof(f547,plain,(
+  sum(n1,n7) = sK2 | (~spl3_8 | ~spl3_17)),
+  inference(forward_demodulation,[],[f546,f17])).
+fof(f546,plain,(
+  sK2 = sum(pred(n2),n7) | (~spl3_8 | ~spl3_17)),
+  inference(forward_demodulation,[],[f545,f89])).
+fof(f545,plain,(
+  sK2 = sum(pred(sum(n5,n8)),n7) | (~spl3_8 | ~spl3_17)),
+  inference(forward_demodulation,[],[f544,f11])).
+fof(f544,plain,(
+  sK2 = sum(pred(sum(n5,succ(n7))),n7) | (~spl3_8 | ~spl3_17)),
+  inference(forward_demodulation,[],[f543,f103])).
+fof(f543,plain,(
+  sK2 = sum(pred(sum(n5,succ(n7))),sum(n7,n0)) | (~spl3_8 | ~spl3_17)),
+  inference(forward_demodulation,[],[f542,f16])).
+fof(f542,plain,(
+  sK2 = sum(pred(sum(n5,succ(n7))),sum(n7,pred(n1))) | (~spl3_8 | ~spl3_17)),
+  inference(forward_demodulation,[],[f541,f88])).
+fof(f541,plain,(
+  sK2 = sum(pred(sum(n5,succ(n7))),sum(n7,pred(sum(n5,n7)))) | (~spl3_8 | ~spl3_17)),
+  inference(backward_demodulation,[],[f247,f534])).
+fof(f534,plain,(
+  sK2 = sum(pred(sum(n5,succ(sK1))),sum(sK1,pred(sum(n5,sK1)))) | ~spl3_17),
+  inference(backward_demodulation,[],[f284,f149])).
+fof(f533,plain,(
+  ~spl3_11 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f532])).
+fof(f532,plain,(
+  $false | (~spl3_11 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f531,f152])).
+fof(f531,plain,(
+  n2 = sK2 | (~spl3_11 | ~spl3_15)),
+  inference(forward_demodulation,[],[f530,f48])).
+fof(f530,plain,(
+  sum(n2,n0) = sK2 | (~spl3_11 | ~spl3_15)),
+  inference(forward_demodulation,[],[f529,f18])).
+fof(f529,plain,(
+  sK2 = sum(pred(n3),n0) | (~spl3_11 | ~spl3_15)),
+  inference(forward_demodulation,[],[f528,f59])).
+fof(f528,plain,(
+  sK2 = sum(pred(sum(n3,n0)),n0) | (~spl3_11 | ~spl3_15)),
+  inference(forward_demodulation,[],[f527,f14])).
+fof(f527,plain,(
+  sK2 = sum(pred(sum(n3,succ(n10))),n0) | (~spl3_11 | ~spl3_15)),
+  inference(forward_demodulation,[],[f526,f137])).
+fof(f526,plain,(
+  sK2 = sum(pred(sum(n3,succ(n10))),sum(n10,n1)) | (~spl3_11 | ~spl3_15)),
+  inference(forward_demodulation,[],[f525,f17])).
+fof(f525,plain,(
+  sK2 = sum(pred(sum(n3,succ(n10))),sum(n10,pred(n2))) | (~spl3_11 | ~spl3_15)),
+  inference(forward_demodulation,[],[f524,f69])).
+fof(f524,plain,(
+  sK2 = sum(pred(sum(n3,succ(n10))),sum(n10,pred(sum(n3,n10)))) | (~spl3_11 | ~spl3_15)),
+  inference(backward_demodulation,[],[f259,f409])).
+fof(f409,plain,(
+  sK2 = sum(pred(sum(n3,succ(sK1))),sum(sK1,pred(sum(n3,sK1)))) | ~spl3_15),
+  inference(backward_demodulation,[],[f276,f149])).
+fof(f276,plain,(
+  n3 = sK0 | ~spl3_15),
+  inference(avatar_component_clause,[],[f274])).
+fof(f274,plain,(
+  spl3_15 <=> n3 = sK0),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_15])])).
+fof(f523,plain,(
+  ~spl3_10 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f522])).
+fof(f522,plain,(
+  $false | (~spl3_10 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f521,f160])).
+fof(f521,plain,(
+  n10 = sK2 | (~spl3_10 | ~spl3_15)),
+  inference(forward_demodulation,[],[f520,f46])).
+fof(f520,plain,(
+  sum(n1,n9) = sK2 | (~spl3_10 | ~spl3_15)),
+  inference(forward_demodulation,[],[f519,f17])).
+fof(f519,plain,(
+  sK2 = sum(pred(n2),n9) | (~spl3_10 | ~spl3_15)),
+  inference(forward_demodulation,[],[f518,f69])).
+fof(f518,plain,(
+  sK2 = sum(pred(sum(n3,n10)),n9) | (~spl3_10 | ~spl3_15)),
+  inference(forward_demodulation,[],[f517,f13])).
+fof(f517,plain,(
+  sK2 = sum(pred(sum(n3,succ(n9))),n9) | (~spl3_10 | ~spl3_15)),
+  inference(forward_demodulation,[],[f516,f125])).
+fof(f516,plain,(
+  sK2 = sum(pred(sum(n3,succ(n9))),sum(n9,n0)) | (~spl3_10 | ~spl3_15)),
+  inference(forward_demodulation,[],[f515,f16])).
+fof(f515,plain,(
+  sK2 = sum(pred(sum(n3,succ(n9))),sum(n9,pred(n1))) | (~spl3_10 | ~spl3_15)),
+  inference(forward_demodulation,[],[f514,f68])).
+fof(f514,plain,(
+  sK2 = sum(pred(sum(n3,succ(n9))),sum(n9,pred(sum(n3,n9)))) | (~spl3_10 | ~spl3_15)),
+  inference(backward_demodulation,[],[f255,f409])).
+fof(f513,plain,(
+  ~spl3_8 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f512])).
+fof(f512,plain,(
+  $false | (~spl3_8 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f511,f154])).
+fof(f511,plain,(
+  n4 = sK2 | (~spl3_8 | ~spl3_15)),
+  inference(forward_demodulation,[],[f510,f141])).
+fof(f510,plain,(
+  sum(n10,n5) = sK2 | (~spl3_8 | ~spl3_15)),
+  inference(forward_demodulation,[],[f509,f15])).
+fof(f509,plain,(
+  sK2 = sum(pred(n0),n5) | (~spl3_8 | ~spl3_15)),
+  inference(forward_demodulation,[],[f508,f67])).
+fof(f508,plain,(
+  sK2 = sum(pred(sum(n3,n8)),n5) | (~spl3_8 | ~spl3_15)),
+  inference(forward_demodulation,[],[f507,f11])).
+fof(f507,plain,(
+  sK2 = sum(pred(sum(n3,succ(n7))),n5) | (~spl3_8 | ~spl3_15)),
+  inference(forward_demodulation,[],[f506,f112])).
+fof(f506,plain,(
+  sK2 = sum(pred(sum(n3,succ(n7))),sum(n7,n9)) | (~spl3_8 | ~spl3_15)),
+  inference(forward_demodulation,[],[f505,f25])).
+fof(f505,plain,(
+  sK2 = sum(pred(sum(n3,succ(n7))),sum(n7,pred(n10))) | (~spl3_8 | ~spl3_15)),
+  inference(forward_demodulation,[],[f504,f66])).
+fof(f504,plain,(
+  sK2 = sum(pred(sum(n3,succ(n7))),sum(n7,pred(sum(n3,n7)))) | (~spl3_8 | ~spl3_15)),
+  inference(backward_demodulation,[],[f247,f409])).
+fof(f502,plain,(
+  ~spl3_3 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f501])).
+fof(f501,plain,(
+  $false | (~spl3_3 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f500,f150])).
+fof(f500,plain,(
+  n0 = sK2 | (~spl3_3 | ~spl3_15)),
+  inference(forward_demodulation,[],[f499,f87])).
+fof(f499,plain,(
+  sum(n5,n6) = sK2 | (~spl3_3 | ~spl3_15)),
+  inference(forward_demodulation,[],[f498,f21])).
+fof(f498,plain,(
+  sK2 = sum(pred(n6),n6) | (~spl3_3 | ~spl3_15)),
+  inference(forward_demodulation,[],[f497,f62])).
+fof(f497,plain,(
+  sK2 = sum(pred(sum(n3,n3)),n6) | (~spl3_3 | ~spl3_15)),
+  inference(forward_demodulation,[],[f496,f6])).
+fof(f496,plain,(
+  sK2 = sum(pred(sum(n3,succ(n2))),n6) | (~spl3_3 | ~spl3_15)),
+  inference(forward_demodulation,[],[f495,f52])).
+fof(f495,plain,(
+  sK2 = sum(pred(sum(n3,succ(n2))),sum(n2,n4)) | (~spl3_3 | ~spl3_15)),
+  inference(forward_demodulation,[],[f494,f20])).
+fof(f494,plain,(
+  sK2 = sum(pred(sum(n3,succ(n2))),sum(n2,pred(n5))) | (~spl3_3 | ~spl3_15)),
+  inference(forward_demodulation,[],[f493,f61])).
+fof(f493,plain,(
+  sK2 = sum(pred(sum(n3,succ(n2))),sum(n2,pred(sum(n3,n2)))) | (~spl3_3 | ~spl3_15)),
+  inference(backward_demodulation,[],[f227,f409])).
+fof(f487,plain,(
+  ~spl3_4 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f486])).
+fof(f486,plain,(
+  $false | (~spl3_4 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f485,f153])).
+fof(f485,plain,(
+  n3 = sK2 | (~spl3_4 | ~spl3_15)),
+  inference(forward_demodulation,[],[f484,f100])).
+fof(f484,plain,(
+  sum(n6,n8) = sK2 | (~spl3_4 | ~spl3_15)),
+  inference(forward_demodulation,[],[f483,f22])).
+fof(f483,plain,(
+  sK2 = sum(pred(n7),n8) | (~spl3_4 | ~spl3_15)),
+  inference(forward_demodulation,[],[f482,f63])).
+fof(f482,plain,(
+  sK2 = sum(pred(sum(n3,n4)),n8) | (~spl3_4 | ~spl3_15)),
+  inference(forward_demodulation,[],[f481,f7])).
+fof(f481,plain,(
+  sK2 = sum(pred(sum(n3,succ(n3))),n8) | (~spl3_4 | ~spl3_15)),
+  inference(forward_demodulation,[],[f480,f64])).
+fof(f480,plain,(
+  sK2 = sum(pred(sum(n3,succ(n3))),sum(n3,n5)) | (~spl3_4 | ~spl3_15)),
+  inference(forward_demodulation,[],[f479,f21])).
+fof(f479,plain,(
+  sK2 = sum(pred(sum(n3,succ(n3))),sum(n3,pred(n6))) | (~spl3_4 | ~spl3_15)),
+  inference(forward_demodulation,[],[f478,f62])).
+fof(f478,plain,(
+  sK2 = sum(pred(sum(n3,succ(n3))),sum(n3,pred(sum(n3,n3)))) | (~spl3_4 | ~spl3_15)),
+  inference(backward_demodulation,[],[f231,f409])).
+fof(f473,plain,(
+  ~spl3_5 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f472])).
+fof(f472,plain,(
+  $false | (~spl3_5 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f471,f156])).
+fof(f471,plain,(
+  n6 = sK2 | (~spl3_5 | ~spl3_15)),
+  inference(forward_demodulation,[],[f470,f113])).
+fof(f470,plain,(
+  sum(n7,n10) = sK2 | (~spl3_5 | ~spl3_15)),
+  inference(forward_demodulation,[],[f469,f23])).
+fof(f469,plain,(
+  sK2 = sum(pred(n8),n10) | (~spl3_5 | ~spl3_15)),
+  inference(forward_demodulation,[],[f468,f64])).
+fof(f468,plain,(
+  sK2 = sum(pred(sum(n3,n5)),n10) | (~spl3_5 | ~spl3_15)),
+  inference(forward_demodulation,[],[f467,f8])).
+fof(f467,plain,(
+  sK2 = sum(pred(sum(n3,succ(n4))),n10) | (~spl3_5 | ~spl3_15)),
+  inference(forward_demodulation,[],[f466,f76])).
+fof(f466,plain,(
+  sK2 = sum(pred(sum(n3,succ(n4))),sum(n4,n6)) | (~spl3_5 | ~spl3_15)),
+  inference(forward_demodulation,[],[f465,f22])).
+fof(f465,plain,(
+  sK2 = sum(pred(sum(n3,succ(n4))),sum(n4,pred(n7))) | (~spl3_5 | ~spl3_15)),
+  inference(forward_demodulation,[],[f463,f63])).
+fof(f463,plain,(
+  sK2 = sum(pred(sum(n3,succ(n4))),sum(n4,pred(sum(n3,n4)))) | (~spl3_5 | ~spl3_15)),
+  inference(backward_demodulation,[],[f235,f409])).
+fof(f460,plain,(
+  ~spl3_7 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f459])).
+fof(f459,plain,(
+  $false | (~spl3_7 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f458,f151])).
+fof(f458,plain,(
+  n1 = sK2 | (~spl3_7 | ~spl3_15)),
+  inference(forward_demodulation,[],[f457,f128])).
+fof(f457,plain,(
+  sum(n9,n3) = sK2 | (~spl3_7 | ~spl3_15)),
+  inference(forward_demodulation,[],[f456,f25])).
+fof(f456,plain,(
+  sK2 = sum(pred(n10),n3) | (~spl3_7 | ~spl3_15)),
+  inference(forward_demodulation,[],[f455,f66])).
+fof(f455,plain,(
+  sK2 = sum(pred(sum(n3,n7)),n3) | (~spl3_7 | ~spl3_15)),
+  inference(forward_demodulation,[],[f454,f10])).
+fof(f454,plain,(
+  sK2 = sum(pred(sum(n3,succ(n6))),n3) | (~spl3_7 | ~spl3_15)),
+  inference(forward_demodulation,[],[f453,f100])).
+fof(f453,plain,(
+  sK2 = sum(pred(sum(n3,succ(n6))),sum(n6,n8)) | (~spl3_7 | ~spl3_15)),
+  inference(forward_demodulation,[],[f452,f24])).
+fof(f452,plain,(
+  sK2 = sum(pred(sum(n3,succ(n6))),sum(n6,pred(n9))) | (~spl3_7 | ~spl3_15)),
+  inference(forward_demodulation,[],[f451,f65])).
+fof(f451,plain,(
+  sK2 = sum(pred(sum(n3,succ(n6))),sum(n6,pred(sum(n3,n6)))) | (~spl3_7 | ~spl3_15)),
+  inference(backward_demodulation,[],[f243,f409])).
+fof(f449,plain,(
+  ~spl3_1 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f448])).
+fof(f448,plain,(
+  $false | (~spl3_1 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f447,f155])).
+fof(f447,plain,(
+  n5 = sK2 | (~spl3_1 | ~spl3_15)),
+  inference(forward_demodulation,[],[f446,f61])).
+fof(f446,plain,(
+  sum(n3,n2) = sK2 | (~spl3_1 | ~spl3_15)),
+  inference(forward_demodulation,[],[f445,f19])).
+fof(f445,plain,(
+  sK2 = sum(pred(n4),n2) | (~spl3_1 | ~spl3_15)),
+  inference(forward_demodulation,[],[f444,f60])).
+fof(f444,plain,(
+  sK2 = sum(pred(sum(n3,n1)),n2) | (~spl3_1 | ~spl3_15)),
+  inference(forward_demodulation,[],[f443,f4])).
+fof(f443,plain,(
+  sK2 = sum(pred(sum(n3,succ(n0))),n2) | (~spl3_1 | ~spl3_15)),
+  inference(forward_demodulation,[],[f442,f28])).
+fof(f442,plain,(
+  sK2 = sum(pred(sum(n3,succ(n0))),sum(n0,n2)) | (~spl3_1 | ~spl3_15)),
+  inference(forward_demodulation,[],[f441,f18])).
+fof(f441,plain,(
+  sK2 = sum(pred(sum(n3,succ(n0))),sum(n0,pred(n3))) | (~spl3_1 | ~spl3_15)),
+  inference(forward_demodulation,[],[f439,f59])).
+fof(f439,plain,(
+  sK2 = sum(pred(sum(n3,succ(n0))),sum(n0,pred(sum(n3,n0)))) | (~spl3_1 | ~spl3_15)),
+  inference(backward_demodulation,[],[f219,f409])).
+fof(f436,plain,(
+  ~spl3_6 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f435])).
+fof(f435,plain,(
+  $false | (~spl3_6 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f434,f159])).
+fof(f434,plain,(
+  n9 = sK2 | (~spl3_6 | ~spl3_15)),
+  inference(forward_demodulation,[],[f433,f115])).
+fof(f433,plain,(
+  sum(n8,n1) = sK2 | (~spl3_6 | ~spl3_15)),
+  inference(forward_demodulation,[],[f432,f24])).
+fof(f432,plain,(
+  sK2 = sum(pred(n9),n1) | (~spl3_6 | ~spl3_15)),
+  inference(forward_demodulation,[],[f431,f65])).
+fof(f431,plain,(
+  sK2 = sum(pred(sum(n3,n6)),n1) | (~spl3_6 | ~spl3_15)),
+  inference(forward_demodulation,[],[f430,f9])).
+fof(f430,plain,(
+  sK2 = sum(pred(sum(n3,succ(n5))),n1) | (~spl3_6 | ~spl3_15)),
+  inference(forward_demodulation,[],[f429,f88])).
+fof(f429,plain,(
+  sK2 = sum(pred(sum(n3,succ(n5))),sum(n5,n7)) | (~spl3_6 | ~spl3_15)),
+  inference(forward_demodulation,[],[f428,f23])).
+fof(f428,plain,(
+  sK2 = sum(pred(sum(n3,succ(n5))),sum(n5,pred(n8))) | (~spl3_6 | ~spl3_15)),
+  inference(forward_demodulation,[],[f427,f64])).
+fof(f427,plain,(
+  sK2 = sum(pred(sum(n3,succ(n5))),sum(n5,pred(sum(n3,n5)))) | (~spl3_6 | ~spl3_15)),
+  inference(backward_demodulation,[],[f239,f409])).
+fof(f425,plain,(
+  ~spl3_9 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f424])).
+fof(f424,plain,(
+  $false | (~spl3_9 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f423,f157])).
+fof(f423,plain,(
+  n7 = sK2 | (~spl3_9 | ~spl3_15)),
+  inference(forward_demodulation,[],[f422,f33])).
+fof(f422,plain,(
+  sum(n0,n7) = sK2 | (~spl3_9 | ~spl3_15)),
+  inference(forward_demodulation,[],[f421,f16])).
+fof(f421,plain,(
+  sK2 = sum(pred(n1),n7) | (~spl3_9 | ~spl3_15)),
+  inference(forward_demodulation,[],[f420,f68])).
+fof(f420,plain,(
+  sK2 = sum(pred(sum(n3,n9)),n7) | (~spl3_9 | ~spl3_15)),
+  inference(forward_demodulation,[],[f419,f12])).
+fof(f419,plain,(
+  sK2 = sum(pred(sum(n3,succ(n8))),n7) | (~spl3_9 | ~spl3_15)),
+  inference(forward_demodulation,[],[f418,f124])).
+fof(f418,plain,(
+  sK2 = sum(pred(sum(n3,succ(n8))),sum(n8,n10)) | (~spl3_9 | ~spl3_15)),
+  inference(forward_demodulation,[],[f417,f15])).
+fof(f417,plain,(
+  sK2 = sum(pred(sum(n3,succ(n8))),sum(n8,pred(n0))) | (~spl3_9 | ~spl3_15)),
+  inference(forward_demodulation,[],[f416,f67])).
+fof(f416,plain,(
+  sK2 = sum(pred(sum(n3,succ(n8))),sum(n8,pred(sum(n3,n8)))) | (~spl3_9 | ~spl3_15)),
+  inference(backward_demodulation,[],[f251,f409])).
+fof(f408,plain,(
+  ~spl3_2 | ~spl3_22),
+  inference(avatar_contradiction_clause,[],[f407])).
+fof(f407,plain,(
+  $false | (~spl3_2 | ~spl3_22)),
+  inference(subsumption_resolution,[],[f406,f150])).
+fof(f406,plain,(
+  n0 = sK2 | (~spl3_2 | ~spl3_22)),
+  inference(forward_demodulation,[],[f405,f26])).
+fof(f405,plain,(
+  sum(n0,n0) = sK2 | (~spl3_2 | ~spl3_22)),
+  inference(forward_demodulation,[],[f404,f16])).
+fof(f404,plain,(
+  sK2 = sum(pred(n1),n0) | (~spl3_2 | ~spl3_22)),
+  inference(forward_demodulation,[],[f403,f138])).
+fof(f403,plain,(
+  sK2 = sum(pred(sum(n10,n2)),n0) | (~spl3_2 | ~spl3_22)),
+  inference(forward_demodulation,[],[f402,f47])).
+fof(f402,plain,(
+  sK2 = sum(pred(sum(n10,n2)),sum(n1,n10)) | (~spl3_2 | ~spl3_22)),
+  inference(forward_demodulation,[],[f401,f15])).
+fof(f401,plain,(
+  sK2 = sum(pred(sum(n10,n2)),sum(n1,pred(n0))) | (~spl3_2 | ~spl3_22)),
+  inference(forward_demodulation,[],[f400,f137])).
+fof(f400,plain,(
+  sK2 = sum(pred(sum(n10,n2)),sum(n1,pred(sum(n10,n1)))) | (~spl3_2 | ~spl3_22)),
+  inference(backward_demodulation,[],[f304,f318])).
+fof(f318,plain,(
+  sK2 = sum(pred(sum(sK0,n2)),sum(n1,pred(sum(sK0,n1)))) | ~spl3_2),
+  inference(forward_demodulation,[],[f317,f5])).
+fof(f5,plain,(
+  succ(n1) = n2),
+  inference(cnf_transformation,[],[f3])).
+fof(f317,plain,(
+  sK2 = sum(pred(sum(sK0,succ(n1))),sum(n1,pred(sum(sK0,n1)))) | ~spl3_2),
+  inference(forward_demodulation,[],[f149,f223])).
+fof(f223,plain,(
+  n1 = sK1 | ~spl3_2),
+  inference(avatar_component_clause,[],[f221])).
+fof(f221,plain,(
+  spl3_2 <=> n1 = sK1),
+  introduced(avatar_definition,[new_symbols(naming,[spl3_2])])).
+fof(f399,plain,(
+  ~spl3_2 | ~spl3_21),
+  inference(avatar_contradiction_clause,[],[f398])).
+fof(f398,plain,(
+  $false | (~spl3_2 | ~spl3_21)),
+  inference(subsumption_resolution,[],[f397,f159])).
+fof(f397,plain,(
+  n9 = sK2 | (~spl3_2 | ~spl3_21)),
+  inference(forward_demodulation,[],[f396,f146])).
+fof(f396,plain,(
+  sum(n10,n10) = sK2 | (~spl3_2 | ~spl3_21)),
+  inference(forward_demodulation,[],[f395,f15])).
+fof(f395,plain,(
+  sK2 = sum(pred(n0),n10) | (~spl3_2 | ~spl3_21)),
+  inference(forward_demodulation,[],[f394,f127])).
+fof(f394,plain,(
+  sK2 = sum(pred(sum(n9,n2)),n10) | (~spl3_2 | ~spl3_21)),
+  inference(forward_demodulation,[],[f393,f46])).
+fof(f393,plain,(
+  sK2 = sum(pred(sum(n9,n2)),sum(n1,n9)) | (~spl3_2 | ~spl3_21)),
+  inference(forward_demodulation,[],[f392,f25])).
+fof(f392,plain,(
+  sK2 = sum(pred(sum(n9,n2)),sum(n1,pred(n10))) | (~spl3_2 | ~spl3_21)),
+  inference(forward_demodulation,[],[f391,f126])).
+fof(f391,plain,(
+  sK2 = sum(pred(sum(n9,n2)),sum(n1,pred(sum(n9,n1)))) | (~spl3_2 | ~spl3_21)),
+  inference(backward_demodulation,[],[f300,f318])).
+fof(f390,plain,(
+  ~spl3_2 | ~spl3_20),
+  inference(avatar_contradiction_clause,[],[f389])).
+fof(f389,plain,(
+  $false | (~spl3_2 | ~spl3_20)),
+  inference(subsumption_resolution,[],[f388,f157])).
+fof(f388,plain,(
+  n7 = sK2 | (~spl3_2 | ~spl3_20)),
+  inference(forward_demodulation,[],[f387,f134])).
+fof(f387,plain,(
+  sum(n9,n9) = sK2 | (~spl3_2 | ~spl3_20)),
+  inference(forward_demodulation,[],[f386,f25])).
+fof(f386,plain,(
+  sK2 = sum(pred(n10),n9) | (~spl3_2 | ~spl3_20)),
+  inference(forward_demodulation,[],[f385,f116])).
+fof(f385,plain,(
+  sK2 = sum(pred(sum(n8,n2)),n9) | (~spl3_2 | ~spl3_20)),
+  inference(forward_demodulation,[],[f384,f45])).
+fof(f384,plain,(
+  sK2 = sum(pred(sum(n8,n2)),sum(n1,n8)) | (~spl3_2 | ~spl3_20)),
+  inference(forward_demodulation,[],[f383,f24])).
+fof(f383,plain,(
+  sK2 = sum(pred(sum(n8,n2)),sum(n1,pred(n9))) | (~spl3_2 | ~spl3_20)),
+  inference(forward_demodulation,[],[f382,f115])).
+fof(f382,plain,(
+  sK2 = sum(pred(sum(n8,n2)),sum(n1,pred(sum(n8,n1)))) | (~spl3_2 | ~spl3_20)),
+  inference(backward_demodulation,[],[f296,f318])).
+fof(f381,plain,(
+  ~spl3_2 | ~spl3_19),
+  inference(avatar_contradiction_clause,[],[f380])).
+fof(f380,plain,(
+  $false | (~spl3_2 | ~spl3_19)),
+  inference(subsumption_resolution,[],[f379,f155])).
+fof(f379,plain,(
+  n5 = sK2 | (~spl3_2 | ~spl3_19)),
+  inference(forward_demodulation,[],[f378,f122])).
+fof(f378,plain,(
+  sum(n8,n8) = sK2 | (~spl3_2 | ~spl3_19)),
+  inference(forward_demodulation,[],[f377,f24])).
+fof(f377,plain,(
+  sK2 = sum(pred(n9),n8) | (~spl3_2 | ~spl3_19)),
+  inference(forward_demodulation,[],[f376,f105])).
+fof(f376,plain,(
+  sK2 = sum(pred(sum(n7,n2)),n8) | (~spl3_2 | ~spl3_19)),
+  inference(forward_demodulation,[],[f375,f44])).
+fof(f375,plain,(
+  sK2 = sum(pred(sum(n7,n2)),sum(n1,n7)) | (~spl3_2 | ~spl3_19)),
+  inference(forward_demodulation,[],[f374,f23])).
+fof(f374,plain,(
+  sK2 = sum(pred(sum(n7,n2)),sum(n1,pred(n8))) | (~spl3_2 | ~spl3_19)),
+  inference(forward_demodulation,[],[f373,f104])).
+fof(f373,plain,(
+  sK2 = sum(pred(sum(n7,n2)),sum(n1,pred(sum(n7,n1)))) | (~spl3_2 | ~spl3_19)),
+  inference(backward_demodulation,[],[f292,f318])).
+fof(f372,plain,(
+  ~spl3_2 | ~spl3_18),
+  inference(avatar_contradiction_clause,[],[f371])).
+fof(f371,plain,(
+  $false | (~spl3_2 | ~spl3_18)),
+  inference(subsumption_resolution,[],[f370,f153])).
+fof(f370,plain,(
+  n3 = sK2 | (~spl3_2 | ~spl3_18)),
+  inference(forward_demodulation,[],[f369,f110])).
+fof(f369,plain,(
+  sum(n7,n7) = sK2 | (~spl3_2 | ~spl3_18)),
+  inference(forward_demodulation,[],[f368,f23])).
+fof(f368,plain,(
+  sK2 = sum(pred(n8),n7) | (~spl3_2 | ~spl3_18)),
+  inference(forward_demodulation,[],[f367,f94])).
+fof(f367,plain,(
+  sK2 = sum(pred(sum(n6,n2)),n7) | (~spl3_2 | ~spl3_18)),
+  inference(forward_demodulation,[],[f366,f43])).
+fof(f366,plain,(
+  sK2 = sum(pred(sum(n6,n2)),sum(n1,n6)) | (~spl3_2 | ~spl3_18)),
+  inference(forward_demodulation,[],[f365,f22])).
+fof(f365,plain,(
+  sK2 = sum(pred(sum(n6,n2)),sum(n1,pred(n7))) | (~spl3_2 | ~spl3_18)),
+  inference(forward_demodulation,[],[f364,f93])).
+fof(f364,plain,(
+  sK2 = sum(pred(sum(n6,n2)),sum(n1,pred(sum(n6,n1)))) | (~spl3_2 | ~spl3_18)),
+  inference(backward_demodulation,[],[f288,f318])).
+fof(f363,plain,(
+  ~spl3_2 | ~spl3_17),
+  inference(avatar_contradiction_clause,[],[f362])).
+fof(f362,plain,(
+  $false | (~spl3_2 | ~spl3_17)),
+  inference(subsumption_resolution,[],[f361,f151])).
+fof(f361,plain,(
+  n1 = sK2 | (~spl3_2 | ~spl3_17)),
+  inference(forward_demodulation,[],[f360,f98])).
+fof(f360,plain,(
+  sum(n6,n6) = sK2 | (~spl3_2 | ~spl3_17)),
+  inference(forward_demodulation,[],[f359,f22])).
+fof(f359,plain,(
+  sK2 = sum(pred(n7),n6) | (~spl3_2 | ~spl3_17)),
+  inference(forward_demodulation,[],[f358,f83])).
+fof(f358,plain,(
+  sK2 = sum(pred(sum(n5,n2)),n6) | (~spl3_2 | ~spl3_17)),
+  inference(forward_demodulation,[],[f357,f42])).
+fof(f357,plain,(
+  sK2 = sum(pred(sum(n5,n2)),sum(n1,n5)) | (~spl3_2 | ~spl3_17)),
+  inference(forward_demodulation,[],[f356,f21])).
+fof(f356,plain,(
+  sK2 = sum(pred(sum(n5,n2)),sum(n1,pred(n6))) | (~spl3_2 | ~spl3_17)),
+  inference(forward_demodulation,[],[f355,f82])).
+fof(f355,plain,(
+  sK2 = sum(pred(sum(n5,n2)),sum(n1,pred(sum(n5,n1)))) | (~spl3_2 | ~spl3_17)),
+  inference(backward_demodulation,[],[f284,f318])).
+fof(f354,plain,(
+  ~spl3_2 | ~spl3_16),
+  inference(avatar_contradiction_clause,[],[f353])).
+fof(f353,plain,(
+  $false | (~spl3_2 | ~spl3_16)),
+  inference(subsumption_resolution,[],[f352,f160])).
+fof(f352,plain,(
+  n10 = sK2 | (~spl3_2 | ~spl3_16)),
+  inference(forward_demodulation,[],[f351,f86])).
+fof(f351,plain,(
+  sum(n5,n5) = sK2 | (~spl3_2 | ~spl3_16)),
+  inference(forward_demodulation,[],[f350,f21])).
+fof(f350,plain,(
+  sK2 = sum(pred(n6),n5) | (~spl3_2 | ~spl3_16)),
+  inference(forward_demodulation,[],[f349,f72])).
+fof(f349,plain,(
+  sK2 = sum(pred(sum(n4,n2)),n5) | (~spl3_2 | ~spl3_16)),
+  inference(forward_demodulation,[],[f348,f41])).
+fof(f348,plain,(
+  sK2 = sum(pred(sum(n4,n2)),sum(n1,n4)) | (~spl3_2 | ~spl3_16)),
+  inference(forward_demodulation,[],[f347,f20])).
+fof(f347,plain,(
+  sK2 = sum(pred(sum(n4,n2)),sum(n1,pred(n5))) | (~spl3_2 | ~spl3_16)),
+  inference(forward_demodulation,[],[f346,f71])).
+fof(f346,plain,(
+  sK2 = sum(pred(sum(n4,n2)),sum(n1,pred(sum(n4,n1)))) | (~spl3_2 | ~spl3_16)),
+  inference(backward_demodulation,[],[f280,f318])).
+fof(f345,plain,(
+  ~spl3_2 | ~spl3_15),
+  inference(avatar_contradiction_clause,[],[f344])).
+fof(f344,plain,(
+  $false | (~spl3_2 | ~spl3_15)),
+  inference(subsumption_resolution,[],[f343,f158])).
+fof(f343,plain,(
+  n8 = sK2 | (~spl3_2 | ~spl3_15)),
+  inference(forward_demodulation,[],[f342,f74])).
+fof(f342,plain,(
+  sum(n4,n4) = sK2 | (~spl3_2 | ~spl3_15)),
+  inference(forward_demodulation,[],[f341,f20])).
+fof(f341,plain,(
+  sK2 = sum(pred(n5),n4) | (~spl3_2 | ~spl3_15)),
+  inference(forward_demodulation,[],[f340,f61])).
+fof(f340,plain,(
+  sK2 = sum(pred(sum(n3,n2)),n4) | (~spl3_2 | ~spl3_15)),
+  inference(forward_demodulation,[],[f339,f40])).
+fof(f339,plain,(
+  sK2 = sum(pred(sum(n3,n2)),sum(n1,n3)) | (~spl3_2 | ~spl3_15)),
+  inference(forward_demodulation,[],[f338,f19])).
+fof(f338,plain,(
+  sK2 = sum(pred(sum(n3,n2)),sum(n1,pred(n4))) | (~spl3_2 | ~spl3_15)),
+  inference(forward_demodulation,[],[f337,f60])).
+fof(f337,plain,(
+  sK2 = sum(pred(sum(n3,n2)),sum(n1,pred(sum(n3,n1)))) | (~spl3_2 | ~spl3_15)),
+  inference(backward_demodulation,[],[f276,f318])).
+fof(f336,plain,(
+  ~spl3_2 | ~spl3_14),
+  inference(avatar_contradiction_clause,[],[f335])).
+fof(f335,plain,(
+  $false | (~spl3_2 | ~spl3_14)),
+  inference(subsumption_resolution,[],[f334,f156])).
+fof(f334,plain,(
+  n6 = sK2 | (~spl3_2 | ~spl3_14)),
+  inference(forward_demodulation,[],[f333,f62])).
+fof(f333,plain,(
+  sum(n3,n3) = sK2 | (~spl3_2 | ~spl3_14)),
+  inference(forward_demodulation,[],[f332,f19])).
+fof(f332,plain,(
+  sK2 = sum(pred(n4),n3) | (~spl3_2 | ~spl3_14)),
+  inference(forward_demodulation,[],[f331,f50])).
+fof(f331,plain,(
+  sK2 = sum(pred(sum(n2,n2)),n3) | (~spl3_2 | ~spl3_14)),
+  inference(forward_demodulation,[],[f330,f39])).
+fof(f330,plain,(
+  sK2 = sum(pred(sum(n2,n2)),sum(n1,n2)) | (~spl3_2 | ~spl3_14)),
+  inference(forward_demodulation,[],[f329,f18])).
+fof(f329,plain,(
+  sK2 = sum(pred(sum(n2,n2)),sum(n1,pred(n3))) | (~spl3_2 | ~spl3_14)),
+  inference(forward_demodulation,[],[f328,f49])).
+fof(f328,plain,(
+  sK2 = sum(pred(sum(n2,n2)),sum(n1,pred(sum(n2,n1)))) | (~spl3_2 | ~spl3_14)),
+  inference(backward_demodulation,[],[f272,f318])).
+fof(f327,plain,(
+  ~spl3_2 | ~spl3_13),
+  inference(avatar_contradiction_clause,[],[f326])).
+fof(f326,plain,(
+  $false | (~spl3_2 | ~spl3_13)),
+  inference(subsumption_resolution,[],[f325,f154])).
+fof(f325,plain,(
+  n4 = sK2 | (~spl3_2 | ~spl3_13)),
+  inference(forward_demodulation,[],[f324,f50])).
+fof(f324,plain,(
+  sum(n2,n2) = sK2 | (~spl3_2 | ~spl3_13)),
+  inference(forward_demodulation,[],[f323,f18])).
+fof(f323,plain,(
+  sK2 = sum(pred(n3),n2) | (~spl3_2 | ~spl3_13)),
+  inference(forward_demodulation,[],[f322,f39])).
+fof(f322,plain,(
+  sK2 = sum(pred(sum(n1,n2)),n2) | (~spl3_2 | ~spl3_13)),
+  inference(forward_demodulation,[],[f321,f38])).
+fof(f321,plain,(
+  sK2 = sum(pred(sum(n1,n2)),sum(n1,n1)) | (~spl3_2 | ~spl3_13)),
+  inference(forward_demodulation,[],[f320,f17])).
+fof(f320,plain,(
+  sK2 = sum(pred(sum(n1,n2)),sum(n1,pred(n2))) | (~spl3_2 | ~spl3_13)),
+  inference(forward_demodulation,[],[f319,f38])).
+fof(f319,plain,(
+  sK2 = sum(pred(sum(n1,n2)),sum(n1,pred(sum(n1,n1)))) | (~spl3_2 | ~spl3_13)),
+  inference(backward_demodulation,[],[f268,f318])).
+fof(f316,plain,(
+  ~spl3_2 | ~spl3_12),
+  inference(avatar_contradiction_clause,[],[f315])).
+fof(f315,plain,(
+  $false | (~spl3_2 | ~spl3_12)),
+  inference(subsumption_resolution,[],[f314,f152])).
+fof(f314,plain,(
+  n2 = sK2 | (~spl3_2 | ~spl3_12)),
+  inference(forward_demodulation,[],[f313,f38])).
+fof(f313,plain,(
+  sum(n1,n1) = sK2 | (~spl3_2 | ~spl3_12)),
+  inference(forward_demodulation,[],[f312,f17])).
+fof(f312,plain,(
+  sK2 = sum(pred(n2),n1) | (~spl3_2 | ~spl3_12)),
+  inference(forward_demodulation,[],[f311,f28])).
+fof(f311,plain,(
+  sK2 = sum(pred(sum(n0,n2)),n1) | (~spl3_2 | ~spl3_12)),
+  inference(forward_demodulation,[],[f310,f5])).
+fof(f310,plain,(
+  sK2 = sum(pred(sum(n0,succ(n1))),n1) | (~spl3_2 | ~spl3_12)),
+  inference(forward_demodulation,[],[f309,f37])).
+fof(f309,plain,(
+  sK2 = sum(pred(sum(n0,succ(n1))),sum(n1,n0)) | (~spl3_2 | ~spl3_12)),
+  inference(forward_demodulation,[],[f308,f16])).
+fof(f308,plain,(
+  sK2 = sum(pred(sum(n0,succ(n1))),sum(n1,pred(n1))) | (~spl3_2 | ~spl3_12)),
+  inference(forward_demodulation,[],[f307,f27])).
+fof(f307,plain,(
+  sK2 = sum(pred(sum(n0,succ(n1))),sum(n1,pred(sum(n0,n1)))) | (~spl3_2 | ~spl3_12)),
+  inference(backward_demodulation,[],[f223,f306])).
+fof(f306,plain,(
+  sK2 = sum(pred(sum(n0,succ(sK1))),sum(sK1,pred(sum(n0,sK1)))) | ~spl3_12),
+  inference(backward_demodulation,[],[f264,f149])).
+fof(f305,plain,(
+  spl3_12 | spl3_13 | spl3_14 | spl3_15 | spl3_16 | spl3_17 | spl3_18 | spl3_19 | spl3_20 | spl3_21 | spl3_22),
+  inference(avatar_split_clause,[],[f147,f302,f298,f294,f290,f286,f282,f278,f274,f270,f266,f262])).
+fof(f147,plain,(
+  n10 = sK0 | n9 = sK0 | n8 = sK0 | n7 = sK0 | n6 = sK0 | n5 = sK0 | n4 = sK0 | n3 = sK0 | n2 = sK0 | n1 = sK0 | n0 = sK0),
+  inference(cnf_transformation,[],[f3])).
+fof(f260,plain,(
+  spl3_1 | spl3_2 | spl3_3 | spl3_4 | spl3_5 | spl3_6 | spl3_7 | spl3_8 | spl3_9 | spl3_10 | spl3_11),
+  inference(avatar_split_clause,[],[f148,f257,f253,f249,f245,f241,f237,f233,f229,f225,f221,f217])).
+fof(f148,plain,(
+  n10 = sK1 | n9 = sK1 | n8 = sK1 | n7 = sK1 | n6 = sK1 | n5 = sK1 | n4 = sK1 | n3 = sK1 | n2 = sK1 | n1 = sK1 | n0 = sK1),
+  inference(cnf_transformation,[],[f3])).
+% SZS output end Proof for NUM375+1.010
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5884
+% Time elapsed: 0.016 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,108 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_9, plain, (c_in(X1,c_Message_Oanalz(X2),tc_Message_Omsg)|~c_in(X1,X2,tc_Message_Omsg))).
+#
+#cnf(i_0_10, plain, (c_in(X1,c_union(X4,X2,X3),X3)|~c_in(X1,X2,X3))).
+#
+#cnf(i_0_11, plain, (c_in(X1,c_union(X2,X4,X3),X3)|~c_in(X1,X2,X3))).
+#
+#cnf(i_0_8, negated_conjecture, (~c_in(v_X,c_union(c_Message_Oanalz(c_union(v_G,v_H,tc_Message_Omsg)),c_Message_Osynth(v_G),tc_Message_Omsg),tc_Message_Omsg))).
+#
+#cnf(i_0_7, negated_conjecture, (c_in(v_X,c_union(c_Message_Osynth(v_G),v_H,tc_Message_Omsg),tc_Message_Omsg))).
+#
+#cnf(i_0_12, plain, (c_in(X1,X3,X4)|c_in(X1,X2,X4)|~c_in(X1,c_union(X2,X3,X4),X4))).
+#
+#cnf(i_0_15, negated_conjecture, (c_in(v_X,c_Message_Osynth(v_G),tc_Message_Omsg)|c_in(v_X,v_H,tc_Message_Omsg))).
+#
+#cnf(i_0_13, negated_conjecture, (~c_in(v_X,c_Message_Osynth(v_G),tc_Message_Omsg))).
+#
+#cnf(i_0_15, negated_conjecture, (c_in(v_X,v_H,tc_Message_Omsg))).
+#
+#cnf(i_0_14, negated_conjecture, (~c_in(v_X,c_Message_Oanalz(c_union(v_G,v_H,tc_Message_Omsg)),tc_Message_Omsg))).
+#
+#cnf(i_0_18, negated_conjecture, (~c_in(v_X,c_union(v_G,v_H,tc_Message_Omsg),tc_Message_Omsg))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(cls_conjecture_1, negated_conjecture, (~c_in(v_X,c_union(c_Message_Oanalz(c_union(v_G,v_H,tc_Message_Omsg)),c_Message_Osynth(v_G),tc_Message_Omsg),tc_Message_Omsg)), file('./p/SWV244-2.tptp', cls_conjecture_1)).
+cnf(cls_Set_OUnCI_1, axiom, (c_in(X1,c_union(X2,X4,X3),X3)|~c_in(X1,X2,X3)), file('./p/SWV244-2.tptp', cls_Set_OUnCI_1)).
+cnf(cls_Set_OUnE_0, axiom, (c_in(X1,X3,X4)|c_in(X1,X2,X4)|~c_in(X1,c_union(X2,X3,X4),X4)), file('./p/SWV244-2.tptp', cls_Set_OUnE_0)).
+cnf(cls_conjecture_0, negated_conjecture, (c_in(v_X,c_union(c_Message_Osynth(v_G),v_H,tc_Message_Omsg),tc_Message_Omsg)), file('./p/SWV244-2.tptp', cls_conjecture_0)).
+cnf(cls_Set_OUnCI_0, axiom, (c_in(X1,c_union(X4,X2,X3),X3)|~c_in(X1,X2,X3)), file('./p/SWV244-2.tptp', cls_Set_OUnCI_0)).
+cnf(cls_Message_Oanalz_OInj_0, axiom, (c_in(X1,c_Message_Oanalz(X2),tc_Message_Omsg)|~c_in(X1,X2,tc_Message_Omsg)), file('./p/SWV244-2.tptp', cls_Message_Oanalz_OInj_0)).
+cnf(c_0_6, negated_conjecture, (~c_in(v_X,c_union(c_Message_Oanalz(c_union(v_G,v_H,tc_Message_Omsg)),c_Message_Osynth(v_G),tc_Message_Omsg),tc_Message_Omsg)), cls_conjecture_1).
+cnf(c_0_7, axiom, (c_in(X1,c_union(X2,X4,X3),X3)|~c_in(X1,X2,X3)), cls_Set_OUnCI_1).
+cnf(c_0_8, axiom, (c_in(X1,X3,X4)|c_in(X1,X2,X4)|~c_in(X1,c_union(X2,X3,X4),X4)), cls_Set_OUnE_0).
+cnf(c_0_9, negated_conjecture, (c_in(v_X,c_union(c_Message_Osynth(v_G),v_H,tc_Message_Omsg),tc_Message_Omsg)), cls_conjecture_0).
+cnf(c_0_10, axiom, (c_in(X1,c_union(X4,X2,X3),X3)|~c_in(X1,X2,X3)), cls_Set_OUnCI_0).
+cnf(c_0_11, negated_conjecture, (~c_in(v_X,c_Message_Oanalz(c_union(v_G,v_H,tc_Message_Omsg)),tc_Message_Omsg)), inference(pm,[status(thm)],[c_0_6, c_0_7])).
+cnf(c_0_12, axiom, (c_in(X1,c_Message_Oanalz(X2),tc_Message_Omsg)|~c_in(X1,X2,tc_Message_Omsg)), cls_Message_Oanalz_OInj_0).
+cnf(c_0_13, negated_conjecture, (c_in(v_X,c_Message_Osynth(v_G),tc_Message_Omsg)|c_in(v_X,v_H,tc_Message_Omsg)), inference(pm,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_14, negated_conjecture, (~c_in(v_X,c_Message_Osynth(v_G),tc_Message_Omsg)), inference(pm,[status(thm)],[c_0_6, c_0_10])).
+cnf(c_0_15, negated_conjecture, (~c_in(v_X,c_union(v_G,v_H,tc_Message_Omsg),tc_Message_Omsg)), inference(pm,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_16, negated_conjecture, (c_in(v_X,v_H,tc_Message_Omsg)), inference(sr,[status(thm)],[c_0_13, c_0_14])).
+cnf(c_0_17, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_10]), c_0_16])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 18
+# Proof object clause steps            : 12
+# Proof object formula steps           : 6
+# Proof object conjectures             : 10
+# Proof object clause conjectures      : 8
+# Proof object formula conjectures     : 2
+# Proof object initial clauses used    : 6
+# Proof object initial formulas used   : 6
+# Proof object generating inferences   : 5
+# Proof object simplifying inferences  : 3
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 6
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 6
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 6
+# Processed clauses                    : 11
+# ...of these trivial                  : 0
+# ...subsumed                          : 0
+# ...remaining for further processing  : 11
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 9
+# ...of the previous two non-trivial   : 5
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 8
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 10
+#    Positive orientable unit clauses  : 2
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 4
+#    Non-unit-clauses                  : 4
+# Current number of unprocessed clauses: 0
+# ...number of literals in the above   : 0
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 1
+# Clause-clause subsumption calls (NU) : 2
+# Rec. Clause-clause subsumption calls : 2
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 4
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 0
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 224

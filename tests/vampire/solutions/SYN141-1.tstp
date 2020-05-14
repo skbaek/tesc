@@ -1,0 +1,153 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SYN141-1
+% SZS output start Proof for SYN141-1
+fof(f5099,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f376,f1238,f1609,f1801,f2766,f4349,f5098])).
+fof(f5098,plain,(
+  ~spl0_2 | spl0_202),
+  inference(avatar_contradiction_clause,[],[f5097])).
+fof(f5097,plain,(
+  $false | (~spl0_2 | spl0_202)),
+  inference(subsumption_resolution,[],[f5096,f30])).
+fof(f30,axiom,(
+  n0(e,e)),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f5096,plain,(
+  ~n0(e,e) | (~spl0_2 | spl0_202)),
+  inference(subsumption_resolution,[],[f5094,f1233])).
+fof(f1233,plain,(
+  ~q3(e,b) | spl0_202),
+  inference(avatar_component_clause,[],[f1231])).
+fof(f1231,plain,(
+  spl0_202 <=> q3(e,b)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_202])])).
+fof(f5094,plain,(
+  q3(e,b) | ~n0(e,e) | ~spl0_2),
+  inference(resolution,[],[f2648,f2777])).
+fof(f2777,plain,(
+  l1(b,e) | ~spl0_2),
+  inference(subsumption_resolution,[],[f2771,f18])).
+fof(f18,axiom,(
+  p0(c,b)),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f2771,plain,(
+  l1(b,e) | ~p0(c,b) | ~spl0_2),
+  inference(resolution,[],[f375,f27])).
+fof(f27,axiom,(
+  m0(e,b,c)),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f375,plain,(
+  ( ! [X6,X8,X7] : (~m0(X7,X6,X8) | l1(X6,X7) | ~p0(X8,X6)) ) | ~spl0_2),
+  inference(avatar_component_clause,[],[f374])).
+fof(f374,plain,(
+  spl0_2 <=> ! [X7,X8,X6] : (~m0(X7,X6,X8) | l1(X6,X7) | ~p0(X8,X6))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f2648,plain,(
+  ( ! [X12,X13] : (~l1(X13,X12) | q3(X12,X13) | ~n0(X12,X12)) )),
+  inference(resolution,[],[f293,f224])).
+fof(f224,axiom,(
+  ( ! [X4,X5] : (q2(X4,X4,X5) | ~l1(X5,X4)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f293,axiom,(
+  ( ! [X4,X2,X5] : (~q2(X2,X4,X5) | ~n0(X2,X4) | q3(X4,X5)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f4349,plain,(
+  ~spl0_201),
+  inference(avatar_split_clause,[],[f1521,f1227])).
+fof(f1227,plain,(
+  spl0_201 <=> k4(c)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_201])])).
+fof(f1521,plain,(
+  ~k4(c)),
+  inference(resolution,[],[f342,f369])).
+fof(f369,axiom,(
+  ( ! [X0] : (~m5(c,X0)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f342,axiom,(
+  ( ! [X6] : (m5(X6,X6) | ~k4(X6)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f2766,plain,(
+  ~spl0_1),
+  inference(avatar_contradiction_clause,[],[f2763])).
+fof(f2763,plain,(
+  $false | ~spl0_1),
+  inference(resolution,[],[f372,f9])).
+fof(f9,axiom,(
+  r0(b)),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f372,plain,(
+  ( ! [X9] : (~r0(X9)) ) | ~spl0_1),
+  inference(avatar_component_clause,[],[f371])).
+fof(f371,plain,(
+  spl0_1 <=> ! [X9] : ~r0(X9)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f1801,plain,(
+  spl0_108),
+  inference(avatar_split_clause,[],[f1791,f845])).
+fof(f845,plain,(
+  spl0_108 <=> ! [X2] : p2(X2,X2,X2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_108])])).
+fof(f1791,plain,(
+  ( ! [X0] : (p2(X0,X0,X0)) )),
+  inference(resolution,[],[f188,f1735])).
+fof(f1735,plain,(
+  ( ! [X0] : (m1(X0,X0,X0)) )),
+  inference(resolution,[],[f44,f19])).
+fof(f19,axiom,(
+  ( ! [X0,X1] : (m0(X0,d,X1)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f44,axiom,(
+  ( ! [X10,X3] : (~m0(X10,X10,X3) | m1(X3,X3,X3)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f188,axiom,(
+  ( ! [X4,X9] : (~m1(X4,X4,X9) | p2(X9,X9,X9)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f1609,plain,(
+  ~spl0_108 | spl0_203),
+  inference(avatar_contradiction_clause,[],[f1606])).
+fof(f1606,plain,(
+  $false | (~spl0_108 | spl0_203)),
+  inference(resolution,[],[f1605,f1237])).
+fof(f1237,plain,(
+  ~n3(e) | spl0_203),
+  inference(avatar_component_clause,[],[f1235])).
+fof(f1235,plain,(
+  spl0_203 <=> n3(e)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_203])])).
+fof(f1605,plain,(
+  ( ! [X1] : (n3(X1)) ) | ~spl0_108),
+  inference(resolution,[],[f278,f846])).
+fof(f846,plain,(
+  ( ! [X2] : (p2(X2,X2,X2)) ) | ~spl0_108),
+  inference(avatar_component_clause,[],[f845])).
+fof(f278,axiom,(
+  ( ! [X8,X7,X9] : (~p2(X8,X9,X7) | n3(X7)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f1238,plain,(
+  spl0_201 | ~spl0_202 | ~spl0_203),
+  inference(avatar_split_clause,[],[f1225,f1235,f1231,f1227])).
+fof(f1225,plain,(
+  ~n3(e) | ~q3(e,b) | k4(c)),
+  inference(subsumption_resolution,[],[f312,f34])).
+fof(f34,axiom,(
+  n0(c,d)),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f312,axiom,(
+  ~n3(e) | ~q3(e,b) | ~n0(c,d) | k4(c)),
+  file('./p/SYN141-1.tptp',unknown)).
+fof(f376,plain,(
+  spl0_1 | spl0_2),
+  inference(avatar_split_clause,[],[f41,f374,f371])).
+fof(f41,axiom,(
+  ( ! [X6,X8,X7,X9] : (~m0(X7,X6,X8) | ~r0(X9) | ~p0(X8,X6) | l1(X6,X7)) )),
+  file('./p/SYN141-1.tptp',unknown)).
+% SZS output end Proof for SYN141-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 7419
+% Time elapsed: 0.026 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,128 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_2, plain, (ld(X1,mult(X1,X2))=X2)).
+#
+#cnf(i_0_1, plain, (mult(X1,ld(X1,X2))=X2)).
+#
+#cnf(i_0_3, plain, (mult(rd(X1,X2),X2)=X1)).
+#
+#cnf(i_0_6, negated_conjecture, (mult(X1,esk2_1(X1))!=esk2_1(X1)|mult(esk1_1(X1),X1)!=esk1_1(X1))).
+#
+#cnf(i_0_4, plain, (rd(mult(X1,X2),X2)=X1)).
+#
+#cnf(i_0_7, plain, (ld(rd(X1,X2),X1)=X2)).
+#
+#cnf(i_0_8, plain, (rd(X2,ld(X1,X2))=X1)).
+#
+#cnf(i_0_5, plain, (mult(mult(X1,mult(X2,X3)),X1)=mult(mult(X1,X2),mult(X3,X1)))).
+#
+#cnf(i_0_15, plain, (rd(mult(mult(X1,X2),mult(X3,X1)),X1)=mult(X1,mult(X2,X3)))).
+#
+#cnf(i_0_22, plain, (rd(mult(mult(X1,X2),X3),X1)=mult(X1,mult(X2,rd(X3,X1))))).
+#
+#cnf(i_0_30, plain, (mult(X1,mult(X2,rd(X1,X1)))=mult(X1,X2))).
+#
+#cnf(i_0_37, plain, (mult(X2,rd(X1,X1))=X2)).
+#
+#cnf(i_0_44, plain, (rd(X1,rd(X2,X2))=X1)).
+##
+#cnf(i_0_47, plain, (ld(X1,X1)=rd(X2,X2))).
+#
+#cnf(i_0_58, plain, (mult(ld(X2,X2),X1)=X1)).
+#
+#cnf(i_0_59, plain, (ld(ld(X2,X2),X1)=X1)).
+#
+#cnf(i_0_60, plain, (mult(X1,ld(X3,X3))=X1)).
+#
+#cnf(i_0_61, plain, (rd(X1,ld(X3,X3))=X1)).
+#
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(f04, axiom, ![X1, X2]:rd(mult(X2,X1),X1)=X2, file('./p/GRP656+1.tptp', f04)).
+fof(f05, axiom, ![X3, X1, X2]:mult(mult(X2,X1),mult(X3,X2))=mult(mult(X2,mult(X1,X3)),X2), file('./p/GRP656+1.tptp', f05)).
+fof(f03, axiom, ![X1, X2]:mult(rd(X2,X1),X1)=X2, file('./p/GRP656+1.tptp', f03)).
+fof(f02, axiom, ![X1, X2]:ld(X2,mult(X2,X1))=X1, file('./p/GRP656+1.tptp', f02)).
+fof(goals, conjecture, ?[X4]:![X5]:(mult(X5,X4)=X5&mult(X4,X5)=X5), file('./p/GRP656+1.tptp', goals)).
+fof(c_0_5, plain, ![X12, X13]:rd(mult(X13,X12),X12)=X13, inference(variable_rename,[status(thm)],[f04])).
+fof(c_0_6, plain, ![X14, X15, X16]:mult(mult(X16,X15),mult(X14,X16))=mult(mult(X16,mult(X15,X14)),X16), inference(variable_rename,[status(thm)],[f05])).
+cnf(c_0_7, plain, (rd(mult(X1,X2),X2)=X1), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_8, plain, (mult(mult(X1,X2),mult(X3,X1))=mult(mult(X1,mult(X2,X3)),X1)), inference(split_conjunct,[status(thm)],[c_0_6])).
+fof(c_0_9, plain, ![X10, X11]:mult(rd(X11,X10),X10)=X11, inference(variable_rename,[status(thm)],[f03])).
+cnf(c_0_10, plain, (rd(mult(mult(X1,X2),mult(X3,X1)),X1)=mult(X1,mult(X2,X3))), inference(pm,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, plain, (mult(rd(X1,X2),X2)=X1), inference(split_conjunct,[status(thm)],[c_0_9])).
+fof(c_0_12, plain, ![X8, X9]:ld(X9,mult(X9,X8))=X8, inference(variable_rename,[status(thm)],[f02])).
+cnf(c_0_13, plain, (rd(mult(mult(X1,X2),X3),X1)=mult(X1,mult(X2,rd(X3,X1)))), inference(pm,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_14, plain, (ld(X1,mult(X1,X2))=X2), inference(split_conjunct,[status(thm)],[c_0_12])).
+cnf(c_0_15, plain, (mult(X1,mult(X2,rd(X1,X1)))=mult(X1,X2)), inference(pm,[status(thm)],[c_0_7, c_0_13])).
+fof(c_0_16, negated_conjecture, ~(?[X4]:![X5]:(mult(X5,X4)=X5&mult(X4,X5)=X5)), inference(assume_negation,[status(cth)],[goals])).
+cnf(c_0_17, plain, (mult(X1,rd(X2,X2))=X1), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_14, c_0_15]), c_0_14])).
+fof(c_0_18, negated_conjecture, ![X17]:(mult(esk1_1(X17),X17)!=esk1_1(X17)|mult(X17,esk2_1(X17))!=esk2_1(X17)), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_16])])])])).
+cnf(c_0_19, plain, (ld(X1,X1)=rd(X2,X2)), inference(pm,[status(thm)],[c_0_14, c_0_17])).
+cnf(c_0_20, negated_conjecture, (mult(esk1_1(X1),X1)!=esk1_1(X1)|mult(X1,esk2_1(X1))!=esk2_1(X1)), inference(split_conjunct,[status(thm)],[c_0_18])).
+cnf(c_0_21, plain, (mult(ld(X1,X1),X2)=X2), inference(pm,[status(thm)],[c_0_11, c_0_19])).
+cnf(c_0_22, plain, (mult(X1,ld(X2,X2))=X1), inference(pm,[status(thm)],[c_0_17, c_0_19])).
+cnf(c_0_23, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_20, c_0_21]), c_0_22])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 24
+# Proof object clause steps            : 13
+# Proof object formula steps           : 11
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 5
+# Proof object initial formulas used   : 5
+# Proof object generating inferences   : 8
+# Proof object simplifying inferences  : 3
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 6
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 6
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 6
+# Processed clauses                    : 20
+# ...of these trivial                  : 1
+# ...subsumed                          : 0
+# ...remaining for further processing  : 18
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 2
+# Generated clauses                    : 94
+# ...of the previous two non-trivial   : 66
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 94
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 16
+#    Positive orientable unit clauses  : 14
+#    Positive unorientable unit clauses: 1
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 1
+# Current number of unprocessed clauses: 52
+# ...number of literals in the above   : 52
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 2
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 2
+# Rewrite failures with RHS unbound    : 13
+# BW rewrite match attempts            : 17
+# BW rewrite match successes           : 3
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 846

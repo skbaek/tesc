@@ -1,0 +1,51 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP424-1
+% SZS output start Proof for GRP424-1
+fof(f3719,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f3686,f1343])).
+fof(f1343,plain,(
+  ( ! [X4,X3] : (multiply(inverse(X3),X3) = multiply(inverse(X4),X4)) )),
+  inference(superposition,[],[f957,f5])).
+fof(f5,plain,(
+  ( ! [X2,X0,X3,X1] : (multiply(inverse(multiply(inverse(multiply(inverse(multiply(inverse(multiply(X0,inverse(multiply(inverse(X1),X2)))),multiply(X0,inverse(X2)))),inverse(multiply(inverse(X3),multiply(inverse(X2),X2))))),X1)),inverse(multiply(inverse(multiply(inverse(X2),X2)),multiply(inverse(X2),X2)))) = X3) )),
+  inference(superposition,[],[f1,f1])).
+fof(f1,axiom,(
+  ( ! [X2,X0,X1] : (multiply(inverse(multiply(inverse(multiply(X0,inverse(multiply(inverse(X1),X2)))),multiply(X0,inverse(X2)))),inverse(multiply(inverse(X2),X2))) = X1) )),
+  file('./p/GRP424-1.tptp',unknown)).
+fof(f957,plain,(
+  ( ! [X2,X3,X1] : (multiply(inverse(X1),X1) = multiply(inverse(multiply(X3,inverse(multiply(inverse(X2),X2)))),multiply(X3,inverse(multiply(inverse(X2),X2))))) )),
+  inference(superposition,[],[f307,f1])).
+fof(f307,plain,(
+  ( ! [X4,X2,X0,X3,X1] : (multiply(inverse(multiply(X4,inverse(multiply(inverse(X2),X2)))),multiply(X4,inverse(X3))) = multiply(inverse(X1),multiply(inverse(multiply(inverse(multiply(X0,inverse(multiply(inverse(X1),X2)))),multiply(X0,inverse(X2)))),inverse(X3)))) )),
+  inference(superposition,[],[f205,f1])).
+fof(f205,plain,(
+  ( ! [X4,X5,X3,X1] : (multiply(inverse(multiply(X3,inverse(X4))),multiply(X3,inverse(X1))) = multiply(inverse(multiply(X5,inverse(X4))),multiply(X5,inverse(X1)))) )),
+  inference(superposition,[],[f144,f1])).
+fof(f144,plain,(
+  ( ! [X47,X45,X48,X46,X49] : (multiply(inverse(multiply(X48,inverse(X46))),multiply(X48,inverse(multiply(X45,inverse(X47))))) = multiply(inverse(multiply(X49,inverse(X46))),multiply(X49,inverse(multiply(X45,inverse(X47)))))) )),
+  inference(superposition,[],[f74,f75])).
+fof(f75,plain,(
+  ( ! [X6,X8,X7] : (multiply(inverse(multiply(X8,inverse(multiply(inverse(multiply(inverse(X6),inverse(multiply(inverse(X7),X7)))),X7)))),multiply(X8,inverse(X7))) = X6) )),
+  inference(superposition,[],[f3,f1])).
+fof(f3,plain,(
+  ( ! [X2,X0,X3,X1] : (multiply(inverse(multiply(X0,inverse(multiply(inverse(X1),X2)))),multiply(X0,inverse(X2))) = multiply(inverse(multiply(inverse(multiply(X3,inverse(X1))),multiply(X3,inverse(inverse(multiply(inverse(X2),X2)))))),inverse(multiply(inverse(inverse(multiply(inverse(X2),X2))),inverse(multiply(inverse(X2),X2)))))) )),
+  inference(superposition,[],[f1,f1])).
+fof(f74,plain,(
+  ( ! [X4,X2,X3,X1] : (multiply(inverse(multiply(X4,inverse(multiply(inverse(X1),X2)))),multiply(X4,inverse(X2))) = multiply(inverse(multiply(X3,inverse(multiply(inverse(X1),X2)))),multiply(X3,inverse(X2)))) )),
+  inference(superposition,[],[f3,f3])).
+fof(f3686,plain,(
+  ( ! [X22] : (multiply(inverse(a1),a1) != multiply(inverse(X22),X22)) )),
+  inference(superposition,[],[f2,f1343])).
+fof(f2,axiom,(
+  multiply(inverse(a1),a1) != multiply(inverse(b1),b1)),
+  file('./p/GRP424-1.tptp',unknown)).
+% SZS output end Proof for GRP424-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 12920
+% Time elapsed: 0.224 s
+% ------------------------------
+% ------------------------------

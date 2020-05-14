@@ -1,0 +1,93 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP037-3
+% SZS output start Proof for GRP037-3
+fof(f198,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f43,f83,f197])).
+fof(f197,plain,(
+  ~spl0_2),
+  inference(avatar_contradiction_clause,[],[f196])).
+fof(f196,plain,(
+  $false | ~spl0_2),
+  inference(subsumption_resolution,[],[f193,f19])).
+fof(f19,axiom,(
+  inverse(a) != another_inverse(a)),
+  file('./p/GRP037-3.tptp',unknown)).
+fof(f193,plain,(
+  inverse(a) = another_inverse(a) | ~spl0_2),
+  inference(resolution,[],[f166,f17])).
+fof(f17,axiom,(
+  subgroup_member(a)),
+  file('./p/GRP037-3.tptp',unknown)).
+fof(f166,plain,(
+  ( ! [X2] : (~subgroup_member(X2) | inverse(X2) = another_inverse(X2)) ) | ~spl0_2),
+  inference(resolution,[],[f25,f102])).
+fof(f102,plain,(
+  ( ! [X6] : (product(X6,another_inverse(X6),identity) | ~subgroup_member(X6)) ) | ~spl0_2),
+  inference(backward_demodulation,[],[f42,f12])).
+fof(f12,axiom,(
+  ( ! [X6] : (product(X6,another_inverse(X6),another_identity) | ~subgroup_member(X6)) )),
+  file('./p/GRP037-3.tptp',unknown)).
+fof(f42,plain,(
+  identity = another_identity | ~spl0_2),
+  inference(avatar_component_clause,[],[f40])).
+fof(f40,plain,(
+  spl0_2 <=> identity = another_identity),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f25,plain,(
+  ( ! [X10,X11] : (~product(X11,X10,identity) | inverse(X11) = X10) )),
+  inference(resolution,[],[f15,f4])).
+fof(f4,axiom,(
+  ( ! [X0] : (product(X0,inverse(X0),identity)) )),
+  file('./p/GRP037-3.tptp',unknown)).
+fof(f15,axiom,(
+  ( ! [X6,X8,X7,X9] : (~product(X6,X9,X8) | X7 = X9 | ~product(X6,X7,X8)) )),
+  file('./p/GRP037-3.tptp',unknown)).
+fof(f83,plain,(
+  spl0_1),
+  inference(avatar_contradiction_clause,[],[f79])).
+fof(f79,plain,(
+  $false | spl0_1),
+  inference(resolution,[],[f78,f17])).
+fof(f78,plain,(
+  ( ! [X3] : (~subgroup_member(X3)) ) | spl0_1),
+  inference(subsumption_resolution,[],[f76,f38])).
+fof(f38,plain,(
+  ~subgroup_member(identity) | spl0_1),
+  inference(avatar_component_clause,[],[f36])).
+fof(f36,plain,(
+  spl0_1 <=> subgroup_member(identity)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f76,plain,(
+  ( ! [X3] : (subgroup_member(identity) | ~subgroup_member(X3)) )),
+  inference(duplicate_literal_removal,[],[f72])).
+fof(f72,plain,(
+  ( ! [X3] : (subgroup_member(identity) | ~subgroup_member(X3) | ~subgroup_member(X3)) )),
+  inference(resolution,[],[f9,f4])).
+fof(f9,axiom,(
+  ( ! [X6,X8,X7] : (~product(X6,inverse(X7),X8) | subgroup_member(X8) | ~subgroup_member(X7) | ~subgroup_member(X6)) )),
+  file('./p/GRP037-3.tptp',unknown)).
+fof(f43,plain,(
+  ~spl0_1 | spl0_2),
+  inference(avatar_split_clause,[],[f31,f40,f36])).
+fof(f31,plain,(
+  identity = another_identity | ~subgroup_member(identity)),
+  inference(resolution,[],[f20,f11])).
+fof(f11,axiom,(
+  ( ! [X6] : (product(X6,another_identity,X6) | ~subgroup_member(X6)) )),
+  file('./p/GRP037-3.tptp',unknown)).
+fof(f20,plain,(
+  ( ! [X0,X1] : (~product(identity,X0,X1) | X0 = X1) )),
+  inference(resolution,[],[f15,f1])).
+fof(f1,axiom,(
+  ( ! [X0] : (product(identity,X0,X0)) )),
+  file('./p/GRP037-3.tptp',unknown)).
+% SZS output end Proof for GRP037-3
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

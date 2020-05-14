@@ -1,0 +1,144 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SET958+1
+% SZS output start Proof for SET958+1
+fof(f117,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f78,f109,f116])).
+fof(f116,plain,(
+  ~spl7_2),
+  inference(avatar_contradiction_clause,[],[f115])).
+fof(f115,plain,(
+  $false | ~spl7_2),
+  inference(subsumption_resolution,[],[f113,f40])).
+fof(f40,plain,(
+  ~subset(sK3,sK4)),
+  inference(cnf_transformation,[],[f27])).
+fof(f27,plain,(
+  ~subset(sK3,sK4) & ! [X2,X3] : (in(ordered_pair(X2,X3),sK4) | ~in(ordered_pair(X2,X3),sK3)) & ! [X4] : (ordered_pair(sK5(X4),sK6(X4)) = X4 | ~in(X4,sK3))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK3,sK4,sK5,sK6])],[f16,f26,f25])).
+fof(f25,plain,(
+  ? [X0,X1] : (~subset(X0,X1) & ! [X2,X3] : (in(ordered_pair(X2,X3),X1) | ~in(ordered_pair(X2,X3),X0)) & ! [X4] : (? [X5,X6] : ordered_pair(X5,X6) = X4 | ~in(X4,X0))) => (~subset(sK3,sK4) & ! [X3,X2] : (in(ordered_pair(X2,X3),sK4) | ~in(ordered_pair(X2,X3),sK3)) & ! [X4] : (? [X5,X6] : ordered_pair(X5,X6) = X4 | ~in(X4,sK3)))),
+  introduced(choice_axiom,[])).
+fof(f26,plain,(
+  ! [X4] : (? [X5,X6] : ordered_pair(X5,X6) = X4 => ordered_pair(sK5(X4),sK6(X4)) = X4)),
+  introduced(choice_axiom,[])).
+fof(f16,plain,(
+  ? [X0,X1] : (~subset(X0,X1) & ! [X2,X3] : (in(ordered_pair(X2,X3),X1) | ~in(ordered_pair(X2,X3),X0)) & ! [X4] : (? [X5,X6] : ordered_pair(X5,X6) = X4 | ~in(X4,X0)))),
+  inference(flattening,[],[f15])).
+fof(f15,plain,(
+  ? [X0,X1] : (~subset(X0,X1) & (! [X2,X3] : (in(ordered_pair(X2,X3),X1) | ~in(ordered_pair(X2,X3),X0)) & ! [X4] : (? [X5,X6] : ordered_pair(X5,X6) = X4 | ~in(X4,X0))))),
+  inference(ennf_transformation,[],[f12])).
+fof(f12,plain,(
+  ~! [X0,X1] : ((! [X2,X3] : (in(ordered_pair(X2,X3),X0) => in(ordered_pair(X2,X3),X1)) & ! [X4] : ~(! [X5,X6] : ordered_pair(X5,X6) != X4 & in(X4,X0))) => subset(X0,X1))),
+  inference(rectify,[],[f10])).
+fof(f10,negated_conjecture,(
+  ~! [X0,X1] : ((! [X2,X3] : (in(ordered_pair(X2,X3),X0) => in(ordered_pair(X2,X3),X1)) & ! [X2] : ~(! [X3,X4] : ordered_pair(X3,X4) != X2 & in(X2,X0))) => subset(X0,X1))),
+  inference(negated_conjecture,[],[f9])).
+fof(f9,conjecture,(
+  ! [X0,X1] : ((! [X2,X3] : (in(ordered_pair(X2,X3),X0) => in(ordered_pair(X2,X3),X1)) & ! [X2] : ~(! [X3,X4] : ordered_pair(X3,X4) != X2 & in(X2,X0))) => subset(X0,X1))),
+  file('./p/SET958+1.tptp',unknown)).
+fof(f113,plain,(
+  subset(sK3,sK4) | ~spl7_2),
+  inference(resolution,[],[f77,f32])).
+fof(f32,plain,(
+  ( ! [X0,X1] : (~in(sK0(X0,X1),X1) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f20])).
+fof(f20,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | (~in(sK0(X0,X1),X1) & in(sK0(X0,X1),X0))) & (! [X3] : (in(X3,X1) | ~in(X3,X0)) | ~subset(X0,X1)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f18,f19])).
+fof(f19,plain,(
+  ! [X1,X0] : (? [X2] : (~in(X2,X1) & in(X2,X0)) => (~in(sK0(X0,X1),X1) & in(sK0(X0,X1),X0)))),
+  introduced(choice_axiom,[])).
+fof(f18,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | ? [X2] : (~in(X2,X1) & in(X2,X0))) & (! [X3] : (in(X3,X1) | ~in(X3,X0)) | ~subset(X0,X1)))),
+  inference(rectify,[],[f17])).
+fof(f17,plain,(
+  ! [X0,X1] : ((subset(X0,X1) | ? [X2] : (~in(X2,X1) & in(X2,X0))) & (! [X2] : (in(X2,X1) | ~in(X2,X0)) | ~subset(X0,X1)))),
+  inference(nnf_transformation,[],[f14])).
+fof(f14,plain,(
+  ! [X0,X1] : (subset(X0,X1) <=> ! [X2] : (in(X2,X1) | ~in(X2,X0)))),
+  inference(ennf_transformation,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1] : (subset(X0,X1) <=> ! [X2] : (in(X2,X0) => in(X2,X1)))),
+  file('./p/SET958+1.tptp',unknown)).
+fof(f77,plain,(
+  in(sK0(sK3,sK4),sK4) | ~spl7_2),
+  inference(avatar_component_clause,[],[f75])).
+fof(f75,plain,(
+  spl7_2 <=> in(sK0(sK3,sK4),sK4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl7_2])])).
+fof(f109,plain,(
+  spl7_1),
+  inference(avatar_contradiction_clause,[],[f108])).
+fof(f108,plain,(
+  $false | spl7_1),
+  inference(subsumption_resolution,[],[f107,f40])).
+fof(f107,plain,(
+  subset(sK3,sK4) | spl7_1),
+  inference(resolution,[],[f73,f31])).
+fof(f31,plain,(
+  ( ! [X0,X1] : (in(sK0(X0,X1),X0) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f20])).
+fof(f73,plain,(
+  ~in(sK0(sK3,sK4),sK3) | spl7_1),
+  inference(avatar_component_clause,[],[f71])).
+fof(f71,plain,(
+  spl7_1 <=> in(sK0(sK3,sK4),sK3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl7_1])])).
+fof(f78,plain,(
+  ~spl7_1 | spl7_2),
+  inference(avatar_split_clause,[],[f69,f75,f71])).
+fof(f69,plain,(
+  in(sK0(sK3,sK4),sK4) | ~in(sK0(sK3,sK4),sK3)),
+  inference(forward_demodulation,[],[f63,f61])).
+fof(f61,plain,(
+  sK0(sK3,sK4) = unordered_pair(singleton(sK5(sK0(sK3,sK4))),unordered_pair(sK5(sK0(sK3,sK4)),sK6(sK0(sK3,sK4))))),
+  inference(resolution,[],[f56,f40])).
+fof(f56,plain,(
+  ( ! [X0] : (subset(sK3,X0) | sK0(sK3,X0) = unordered_pair(singleton(sK5(sK0(sK3,X0))),unordered_pair(sK5(sK0(sK3,X0)),sK6(sK0(sK3,X0))))) )),
+  inference(resolution,[],[f47,f31])).
+fof(f47,plain,(
+  ( ! [X4] : (~in(X4,sK3) | unordered_pair(singleton(sK5(X4)),unordered_pair(sK5(X4),sK6(X4))) = X4) )),
+  inference(forward_demodulation,[],[f43,f29])).
+fof(f29,plain,(
+  ( ! [X0,X1] : (unordered_pair(X0,X1) = unordered_pair(X1,X0)) )),
+  inference(cnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1] : unordered_pair(X0,X1) = unordered_pair(X1,X0)),
+  file('./p/SET958+1.tptp',unknown)).
+fof(f43,plain,(
+  ( ! [X4] : (unordered_pair(unordered_pair(sK5(X4),sK6(X4)),singleton(sK5(X4))) = X4 | ~in(X4,sK3)) )),
+  inference(definition_unfolding,[],[f38,f33])).
+fof(f33,plain,(
+  ( ! [X0,X1] : (ordered_pair(X0,X1) = unordered_pair(unordered_pair(X0,X1),singleton(X0))) )),
+  inference(cnf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : ordered_pair(X0,X1) = unordered_pair(unordered_pair(X0,X1),singleton(X0))),
+  file('./p/SET958+1.tptp',unknown)).
+fof(f38,plain,(
+  ( ! [X4] : (ordered_pair(sK5(X4),sK6(X4)) = X4 | ~in(X4,sK3)) )),
+  inference(cnf_transformation,[],[f27])).
+fof(f63,plain,(
+  ~in(sK0(sK3,sK4),sK3) | in(unordered_pair(singleton(sK5(sK0(sK3,sK4))),unordered_pair(sK5(sK0(sK3,sK4)),sK6(sK0(sK3,sK4)))),sK4)),
+  inference(superposition,[],[f46,f61])).
+fof(f46,plain,(
+  ( ! [X2,X3] : (~in(unordered_pair(singleton(X2),unordered_pair(X2,X3)),sK3) | in(unordered_pair(singleton(X2),unordered_pair(X2,X3)),sK4)) )),
+  inference(forward_demodulation,[],[f45,f29])).
+fof(f45,plain,(
+  ( ! [X2,X3] : (in(unordered_pair(singleton(X2),unordered_pair(X2,X3)),sK4) | ~in(unordered_pair(unordered_pair(X2,X3),singleton(X2)),sK3)) )),
+  inference(forward_demodulation,[],[f42,f29])).
+fof(f42,plain,(
+  ( ! [X2,X3] : (in(unordered_pair(unordered_pair(X2,X3),singleton(X2)),sK4) | ~in(unordered_pair(unordered_pair(X2,X3),singleton(X2)),sK3)) )),
+  inference(definition_unfolding,[],[f39,f33,f33])).
+fof(f39,plain,(
+  ( ! [X2,X3] : (in(ordered_pair(X2,X3),sK4) | ~in(ordered_pair(X2,X3),sK3)) )),
+  inference(cnf_transformation,[],[f27])).
+% SZS output end Proof for SET958+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,54 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GEO241+3
+% SZS output start Proof for GEO241+3
+fof(f170,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f153,f133])).
+fof(f133,plain,(
+  ( ! [X0,X1] : (~left_convergent_lines(X0,X1)) )),
+  inference(cnf_transformation,[],[f89])).
+fof(f89,plain,(
+  ! [X0,X1] : (~left_convergent_lines(X0,reverse_line(X1)) & ~left_convergent_lines(X0,X1))),
+  inference(ennf_transformation,[],[f54])).
+fof(f54,plain,(
+  ! [X0,X1] : ~(left_convergent_lines(X0,reverse_line(X1)) | left_convergent_lines(X0,X1))),
+  inference(rectify,[],[f21])).
+fof(f21,axiom,(
+  ! [X3,X4] : ~(left_convergent_lines(X3,reverse_line(X4)) | left_convergent_lines(X3,X4))),
+  file('./p/GEO241+3.tptp',unknown)).
+fof(f153,plain,(
+  left_convergent_lines(sK2,line_connecting(sK0,sK1))),
+  inference(cnf_transformation,[],[f114])).
+fof(f114,plain,(
+  ~left_apart_point(sK1,sK2) & left_convergent_lines(sK2,line_connecting(sK0,sK1)) & distinct_points(sK0,sK1)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2])],[f112,f113])).
+fof(f113,plain,(
+  ? [X0,X1,X2] : (~left_apart_point(X1,X2) & left_convergent_lines(X2,line_connecting(X0,X1)) & distinct_points(X0,X1)) => (~left_apart_point(sK1,sK2) & left_convergent_lines(sK2,line_connecting(sK0,sK1)) & distinct_points(sK0,sK1))),
+  introduced(choice_axiom,[])).
+fof(f112,plain,(
+  ? [X0,X1,X2] : (~left_apart_point(X1,X2) & left_convergent_lines(X2,line_connecting(X0,X1)) & distinct_points(X0,X1))),
+  inference(flattening,[],[f111])).
+fof(f111,plain,(
+  ? [X0,X1,X2] : (~left_apart_point(X1,X2) & (left_convergent_lines(X2,line_connecting(X0,X1)) & distinct_points(X0,X1)))),
+  inference(ennf_transformation,[],[f74])).
+fof(f74,plain,(
+  ~! [X0,X1,X2] : ((left_convergent_lines(X2,line_connecting(X0,X1)) & distinct_points(X0,X1)) => left_apart_point(X1,X2))),
+  inference(pure_predicate_removal,[],[f70])).
+fof(f70,plain,(
+  ~! [X0,X1,X2] : ((left_convergent_lines(X2,line_connecting(X0,X1)) & distinct_points(X0,X1) & incident_point_and_line(X0,X2)) => left_apart_point(X1,X2))),
+  inference(rectify,[],[f38])).
+fof(f38,negated_conjecture,(
+  ~! [X2,X5,X3] : ((left_convergent_lines(X3,line_connecting(X2,X5)) & distinct_points(X2,X5) & incident_point_and_line(X2,X3)) => left_apart_point(X5,X3))),
+  inference(negated_conjecture,[],[f37])).
+fof(f37,conjecture,(
+  ! [X2,X5,X3] : ((left_convergent_lines(X3,line_connecting(X2,X5)) & distinct_points(X2,X5) & incident_point_and_line(X2,X3)) => left_apart_point(X5,X3))),
+  file('./p/GEO241+3.tptp',unknown)).
+% SZS output end Proof for GEO241+3
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,387 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_370, plain, (s0(d))).
+#
+#cnf(i_0_374, plain, (s0(b))).
+#
+#cnf(i_0_382, plain, (r0(e))).
+#
+#cnf(i_0_738, negated_conjecture, (~m1(a,a,X1))).
+#
+#cnf(i_0_378, plain, (r0(b))).
+#
+#cnf(i_0_389, plain, (l0(a))).
+#
+#cnf(i_0_393, plain, (l0(c))).
+#
+#cnf(i_0_397, plain, (k0(e))).
+#
+#cnf(i_0_401, plain, (k0(b))).
+#
+#cnf(i_0_386, plain, (q0(X1,d))).
+#
+#cnf(i_0_383, plain, (p0(b,X1))).
+##
+#cnf(i_0_398, plain, (q0(d,b))).
+#
+#cnf(i_0_402, plain, (q0(d,c))).
+##
+#cnf(i_0_405, plain, (q0(a,b))).
+#
+#cnf(i_0_390, plain, (q0(b,e))).
+#
+#cnf(i_0_375, plain, (q0(b,b))).
+#
+#cnf(i_0_372, plain, (n0(d,e))).
+#
+#cnf(i_0_376, plain, (n0(d,b))).
+#
+#cnf(i_0_395, plain, (n0(d,c))).
+#
+#cnf(i_0_399, plain, (n0(e,e))).
+#
+#cnf(i_0_380, plain, (n0(e,b))).
+#
+#cnf(i_0_384, plain, (n0(a,b))).
+#
+#cnf(i_0_406, plain, (n0(b,a))).
+#
+#cnf(i_0_403, plain, (n0(c,d))).
+###
+#cnf(i_0_387, plain, (p0(c,b))).
+#
+#cnf(i_0_388, plain, (m0(X1,d,X2))).
+#
+#cnf(i_0_408, plain, (k1(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_739, plain, (k1(d))).
+#
+#cnf(i_0_740, plain, (k1(a))).
+#
+#cnf(i_0_741, plain, (k1(b))).
+##
+#cnf(i_0_743, plain, (k1(e))).
+#
+#cnf(i_0_744, plain, (k1(c))).
+###
+#cnf(i_0_625, plain, (l3(X1,X1)|~r2(X1))).
+#
+#cnf(i_0_532, plain, (s1(X1)|~p0(X1,X1))).
+#
+#cnf(i_0_747, plain, (s1(b))).
+#
+#cnf(i_0_711, plain, (m5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_721, plain, (n5(X1,X1)|~r4(X1))).
+#
+#cnf(i_0_731, plain, (q5(X1,X1)|~l4(X1))).
+#
+#cnf(i_0_735, plain, (r5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_381, plain, (m0(a,X1,a))).
+#
+#cnf(i_0_543, plain, (m2(b))).
+#
+#cnf(i_0_733, plain, (q5(X1,X1)|~m4(X1,X1))).
+#
+#cnf(i_0_732, plain, (q5(X1,X1)|~q4(X1,X1))).
+#
+#cnf(i_0_544, plain, (n2(X1)|~p1(X2,X3,X1))).
+#
+#cnf(i_0_439, plain, (m1(X1,X1,X1)|~s0(X1))).
+#
+#cnf(i_0_647, plain, (n3(X1)|~p2(X2,X3,X1))).
+#
+#cnf(i_0_684, plain, (l4(X1)|~p3(X2,X3,X1))).
+#
+#cnf(i_0_464, plain, (n1(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_748, negated_conjecture, (~s0(a))).
+#
+#cnf(i_0_475, plain, (p1(X1,X1,X1)|~k0(X1))).
+#
+#cnf(i_0_749, plain, (n2(X1)|~k0(X1))).
+#
+#cnf(i_0_504, plain, (q1(X1,X1,X1)|~s0(X1))).
+##
+#cnf(i_0_523, plain, (q1(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_566, plain, (p2(X1,X1,X1)|~k1(X1))).
+#
+#cnf(i_0_750, plain, (n3(X1)|~k1(X1))).
+#
+#cnf(i_0_619, plain, (k3(X1,X1,X1)|~m2(X1))).
+#
+#cnf(i_0_617, plain, (k3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_643, plain, (m3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_651, plain, (p3(X1,X1,X1)|~n2(X1))).
+#
+#cnf(i_0_751, plain, (l4(X1)|~n2(X1))).
+#
+#cnf(i_0_752, plain, (l4(X1)|~k0(X1))).
+#
+#cnf(i_0_673, plain, (r3(X1,X1,X1)|~r2(X1))).
+#
+#cnf(i_0_671, plain, (r3(X1,X1,X1)|~s2(X1))).
+#
+#cnf(i_0_409, plain, (l1(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_716, plain, (n5(X1,X1)|~n4(X2,X1))).
+#
+#cnf(i_0_720, plain, (n5(X1,X1)|~q4(X2,X1))).
+#
+#cnf(i_0_595, plain, (r2(X1)|~r1(X1)|~l0(X1))).
+#
+#cnf(i_0_404, plain, (m0(d,e,c))).
+###
+#cnf(i_0_396, plain, (m0(e,b,c))).
+#
+#cnf(i_0_392, plain, (m0(a,e,e))).
+#
+#cnf(i_0_407, plain, (m0(b,a,a))).
+#
+#cnf(i_0_400, plain, (m0(b,b,e))).
+#
+#cnf(i_0_385, plain, (m0(c,b,a))).
+#
+#cnf(i_0_476, plain, (p1(X1,X1,X2)|~p0(X2,X1))).
+#
+#cnf(i_0_753, plain, (n2(X1)|~p0(X1,X2))).
+#
+#cnf(i_0_754, plain, (n2(c))).
+#
+#cnf(i_0_755, plain, (n2(b))).
+#
+#cnf(i_0_756, plain, (l4(c))).
+#
+#cnf(i_0_757, plain, (l4(b))).
+#
+#cnf(i_0_536, plain, (k2(X1,X1)|~q1(X2,X1,X1))).
+#
+#cnf(i_0_758, plain, (k2(X1,X1)|~s0(X1))).
+#
+#cnf(i_0_759, plain, (k2(X1,X1)|~r0(X1))).
+#
+#cnf(i_0_736, plain, (s5(X1)|~r4(X2)|~l4(X1))).
+#
+#cnf(i_0_502, plain, (q1(X1,X2,X2)|~p0(X2,X1))).
+#
+#cnf(i_0_760, plain, (k2(X1,X1)|~p0(X1,X2))).
+#
+#cnf(i_0_761, plain, (k2(b,b))).
+#
+#cnf(i_0_593, plain, (q2(X1,X1,X2)|~l1(X2,X1))).
+#
+#cnf(i_0_601, plain, (k3(X1,X1,X2)|~k2(X2,X1))).
+#
+#cnf(i_0_653, plain, (p3(X1,X1,X1)|~l2(X1,X1))).
+#
+#cnf(i_0_762, plain, (l4(X1)|~l2(X1,X1))).
+#
+#cnf(i_0_420, plain, (m1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_764, plain, (m1(d,d,d))).
+#
+#cnf(i_0_474, plain, (p1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_763, negated_conjecture, (~q0(X1,a))).
+#
+#cnf(i_0_765, plain, (n2(X1)|~q0(X2,X1))).
+#
+#cnf(i_0_768, plain, (n2(e))).
+#
+#cnf(i_0_772, plain, (n2(d))).
+#
+#cnf(i_0_773, plain, (l4(e))).
+#
+#cnf(i_0_774, plain, (l4(d))).
+#
+#cnf(i_0_766, plain, (p1(d,d,d))).
+#
+#cnf(i_0_473, plain, (p1(X1,X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_776, plain, (n2(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_778, plain, (n2(a))).
+#
+#cnf(i_0_785, plain, (l4(a))).
+#
+#cnf(i_0_492, plain, (p1(X1,X1,X1)|~p0(X2,X1))).
+#
+#cnf(i_0_786, plain, (n2(X1)|~p0(X2,X1))).
+#
+#cnf(i_0_788, plain, (n2(X1))).
+#
+#cnf(i_0_751, plain, (l4(X1))).
+#
+#cnf(i_0_731, plain, (q5(X1,X1))).
+#
+#cnf(i_0_651, plain, (p3(X1,X1,X1))).
+#
+#cnf(i_0_643, plain, (m3(X1,X1,X1))).
+#
+#cnf(i_0_617, plain, (k3(X1,X1,X1))).
+#
+#cnf(i_0_736, plain, (s5(X1)|~r4(X2))).
+#
+#cnf(i_0_500, plain, (q1(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_789, plain, (k2(X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_791, plain, (k2(d,d))).
+#
+#cnf(i_0_790, plain, (q1(d,d,d))).
+#
+#cnf(i_0_507, plain, (q1(X1,X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_793, plain, (k2(X1,X1)|~n0(X2,X1))).
+#
+#cnf(i_0_582, plain, (p2(X1,X1,X1)|~l1(X2,X1))).
+#
+#cnf(i_0_794, plain, (n3(X1)|~l1(X2,X1))).
+#
+#cnf(i_0_795, plain, (n3(X1)|~n0(X2,X1))).
+#
+#cnf(i_0_796, plain, (n3(d))).
+#
+#cnf(i_0_797, plain, (n3(a))).
+#
+#cnf(i_0_798, plain, (n3(b))).
+##
+#cnf(i_0_800, plain, (n3(e))).
+#
+#cnf(i_0_801, plain, (n3(c))).
+###
+#cnf(i_0_672, plain, (r3(X1,X1,X1)|~l2(X2,X1))).
+#
+#cnf(i_0_722, plain, (n5(X1,X1)|~k4(X1)|~s1(X1))).
+#
+#cnf(i_0_729, plain, (q5(X1,X2)|~s4(X1)|~m2(X2))).
+#
+#cnf(i_0_564, plain, (p2(X1,X1,X1)|~l1(X1,d))).
+#
+#cnf(i_0_804, plain, (n3(X1)|~l1(X1,d))).
+#
+#cnf(i_0_533, plain, (s1(X1)|~s1(X3)|~q0(X1,X2))).
+#
+#cnf(i_0_811, plain, (s1(X1)|~s1(X2))).
+#
+#cnf(i_0_813, plain, (s1(X1))).
+#
+#cnf(i_0_722, plain, (n5(X1,X1)|~k4(X1))).
+#
+#cnf(i_0_561, plain, (p2(X1,X1,X1)|~q1(X1,X1,X1))).
+#
+#cnf(i_0_815, plain, (p2(X1,X1,X1)|~s0(X1))).
+#
+#cnf(i_0_820, plain, (n3(X1)|~s0(X1))).
+#
+#cnf(i_0_816, plain, (p2(X1,X1,X1)|~r0(X1))).
+#
+#cnf(i_0_821, plain, (n3(X1)|~r0(X1))).
+#
+#cnf(i_0_814, plain, (p2(d,d,d))).
+#
+#cnf(i_0_819, plain, (p2(X1,X1,X1)|~p0(X1,X1))).
+#
+#cnf(i_0_823, plain, (n3(X1)|~p0(X1,X1))).
+#
+#cnf(i_0_817, plain, (p2(X1,X1,X1)|~q0(X2,X1))).
+#
+#cnf(i_0_825, plain, (n3(X1)|~q0(X2,X1))).
+#
+#cnf(i_0_818, plain, (p2(X1,X1,X1)|~n0(X2,X1))).
+##
+#cnf(i_0_542, plain, (m2(X1)|~l1(X2,X3)|~s0(X1))).
+#
+#cnf(i_0_709, plain, (l5(X1)|~q4(X2,X2)|~k1(X1))).
+#
+#cnf(i_0_588, plain, (q2(X1,X1,X1)|~p1(X1,X1,X1))).
+#
+#cnf(i_0_834, plain, (m2(X1)|~n0(X3,X2)|~s0(X1))).
+#
+#cnf(i_0_835, plain, (m2(X1)|~s0(X1))).
+#
+#cnf(i_0_613, plain, (k3(X1,X2,X1)|~p2(X2,X1,X1))).
+##
+#cnf(i_0_694, plain, (p4(X1,X2,X1)|~k3(X1,X1,X2))).
+#
+#cnf(i_0_713, plain, (m5(X1,X1)|~s4(X2)|~r0(X1))).
+##
+#cnf(i_0_412, plain, (m1(X1,X2,X1)|~m0(X2,X2,X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(prove_this, negated_conjecture, (~m1(a,a,X1)), file('./p/SYN241-1.tptp', prove_this)).
+cnf(rule_005, axiom, (m1(X1,X2,X1)|~m0(X2,X2,X1)), file('./p/SYN241-1.tptp', rule_005)).
+cnf(axiom_12, axiom, (m0(a,X1,a)), file('./p/SYN241-1.tptp', axiom_12)).
+cnf(c_0_3, negated_conjecture, (~m1(a,a,X1)), prove_this).
+cnf(c_0_4, axiom, (m1(X1,X2,X1)|~m0(X2,X2,X1)), rule_005).
+cnf(c_0_5, axiom, (m0(a,X1,a)), axiom_12).
+cnf(c_0_6, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_3, c_0_4]), c_0_5])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 7
+# Proof object clause steps            : 4
+# Proof object formula steps           : 3
+# Proof object conjectures             : 3
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 3
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 1
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 369
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 369
+# Removed in clause preprocessing      : 7
+# Initial clauses in saturation        : 362
+# Processed clauses                    : 172
+# ...of these trivial                  : 14
+# ...subsumed                          : 2
+# ...remaining for further processing  : 156
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 7
+# Backward-rewritten                   : 29
+# Generated clauses                    : 105
+# ...of the previous two non-trivial   : 85
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 105
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 120
+#    Positive orientable unit clauses  : 56
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 3
+#    Non-unit-clauses                  : 61
+# Current number of unprocessed clauses: 264
+# ...number of literals in the above   : 870
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 36
+# Clause-clause subsumption calls (NU) : 1363
+# Rec. Clause-clause subsumption calls : 973
+# Non-unit clause-clause subsumptions  : 5
+# Unit Clause-clause subsumption calls : 230
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 19
+# BW rewrite match successes           : 18
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 12229

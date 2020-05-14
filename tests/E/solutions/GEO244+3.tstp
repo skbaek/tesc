@@ -1,0 +1,130 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_38, plain, (equally_directed_lines(X1,X1))).
+#
+#cnf(i_0_69, negated_conjecture, (distinct_points(esk1_0,esk2_0))).
+#
+#cnf(i_0_61, plain, (equally_directed_lines(parallel_through_point(X1,X2),X1))).
+#
+#cnf(i_0_47, plain, (~left_apart_point(X1,X2))).
+#
+#cnf(i_0_15, plain, (unequally_directed_opposite_lines(X1,X2)|~convergent_lines(X1,X2))).
+#
+#cnf(i_0_16, plain, (unequally_directed_lines(X1,X2)|~convergent_lines(X1,X2))).
+##
+#cnf(i_0_49, plain, (~left_convergent_lines(X1,X2))).
+#
+#cnf(i_0_11, plain, (apart_point_and_line(X1,X2)|~right_apart_point(X1,X2))).
+#
+#cnf(i_0_53, plain, (line(reverse_line(X1))|~line(X1))).
+#
+#cnf(i_0_9, plain, (equally_directed_opposite_lines(X1,X2)|unequally_directed_opposite_lines(X1,X2))).
+#
+#cnf(i_0_34, plain, (~distinct_points(X1,X1))).
+#
+#cnf(i_0_7, plain, (equally_directed_lines(X1,X2)|unequally_directed_lines(X1,X2))).
+#
+#cnf(i_0_27, plain, (distinct_points(X1,X2)|~before_on_line(X3,X1,X2))).
+#
+#cnf(i_0_25, plain, (incident_point_and_line(X1,X2)|~before_on_line(X2,X3,X1))).
+#
+#cnf(i_0_36, plain, (~distinct_lines(X1,X1))).
+#
+#cnf(i_0_26, plain, (incident_point_and_line(X1,X2)|~before_on_line(X2,X1,X3))).
+#
+#cnf(i_0_1, plain, (unequally_directed_opposite_lines(X1,X2)|~unequally_directed_lines(X1,reverse_line(X2)))).
+####
+#cnf(i_0_2, plain, (unequally_directed_lines(X1,reverse_line(X2))|~unequally_directed_opposite_lines(X1,X2))).
+#
+#cnf(i_0_4, plain, (~right_apart_point(X1,X2))).
+##
+#cnf(i_0_6, plain, (~right_convergent_lines(X1,X2))).
+#
+#cnf(i_0_44, plain, (unequally_directed_lines(X1,reverse_line(X2))|unequally_directed_lines(X1,X2))).
+#
+#cnf(i_0_72, plain, (unequally_directed_lines(X1,X2)|unequally_directed_opposite_lines(X1,X2))).
+#
+#cnf(i_0_59, plain, (~distinct_lines(X1,reverse_line(X1)))).
+#
+#cnf(i_0_70, plain, (equally_directed_lines(X1,reverse_line(X2))|unequally_directed_opposite_lines(X1,X2))).
+#
+#cnf(i_0_73, plain, (unequally_directed_opposite_lines(X1,reverse_line(X2))|unequally_directed_opposite_lines(X1,X2))).
+#
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(con, conjecture, ![X3, X6, X7]:(distinct_points(X3,X6)=>(right_apart_point(X7,line_connecting(X3,X6))=>left_apart_point(X7,line_connecting(X6,X3)))), file('./p/GEO244+3.tptp', con)).
+fof(a2_defns, axiom, ![X1, X2]:(right_apart_point(X1,X2)<=>left_apart_point(X1,reverse_line(X2))), file('./p/GEO244+3.tptp', a2_defns)).
+fof(ax10_basics, axiom, ![X3, X4]:~((left_apart_point(X3,X4)|left_apart_point(X3,reverse_line(X4)))), file('./p/GEO244+3.tptp', ax10_basics)).
+fof(c_0_3, negated_conjecture, ~(![X3, X6, X7]:(distinct_points(X3,X6)=>(right_apart_point(X7,line_connecting(X3,X6))=>left_apart_point(X7,line_connecting(X6,X3))))), inference(assume_negation,[status(cth)],[con])).
+fof(c_0_4, plain, ![X11, X12]:((~right_apart_point(X11,X12)|left_apart_point(X11,reverse_line(X12)))&(~left_apart_point(X11,reverse_line(X12))|right_apart_point(X11,X12))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[a2_defns])])).
+fof(c_0_5, plain, ![X52, X53]:(~left_apart_point(X52,X53)&~left_apart_point(X52,reverse_line(X53))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[ax10_basics])])).
+fof(c_0_6, negated_conjecture, (distinct_points(esk1_0,esk2_0)&(right_apart_point(esk3_0,line_connecting(esk1_0,esk2_0))&~left_apart_point(esk3_0,line_connecting(esk2_0,esk1_0)))), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_3])])])).
+cnf(c_0_7, plain, (left_apart_point(X1,reverse_line(X2))|~right_apart_point(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_8, plain, (~left_apart_point(X1,X2)), inference(split_conjunct,[status(thm)],[c_0_5])).
+cnf(c_0_9, negated_conjecture, (right_apart_point(esk3_0,line_connecting(esk1_0,esk2_0))), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (~right_apart_point(X1,X2)), inference(sr,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, negated_conjecture, ($false), inference(sr,[status(thm)],[c_0_9, c_0_10]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 12
+# Proof object clause steps            : 5
+# Proof object formula steps           : 7
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 3
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 0
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 37
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 69
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 69
+# Processed clauses                    : 31
+# ...of these trivial                  : 0
+# ...subsumed                          : 5
+# ...remaining for further processing  : 25
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 4
+# ...of the previous two non-trivial   : 3
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 4
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 25
+#    Positive orientable unit clauses  : 3
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 7
+#    Non-unit-clauses                  : 15
+# Current number of unprocessed clauses: 41
+# ...number of literals in the above   : 132
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 22
+# Rec. Clause-clause subsumption calls : 21
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 40
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 0
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 3978

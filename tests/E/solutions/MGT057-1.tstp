@@ -1,0 +1,488 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_49, negated_conjecture, (has_endowment(sk2))).
+#
+#cnf(i_0_48, negated_conjecture, (organization(sk2))).
+#
+#cnf(i_0_39, plain, (organization(X1)|~has_endowment(X1))).
+#
+#cnf(i_0_36, plain, (~greater(X2,X1)|~greater(X1,X2))).
+#
+#cnf(i_0_53, negated_conjecture, (greater(eta,zero))).
+#
+#cnf(i_0_30, plain, (smaller_or_equal(X1,X2)|X1!=X2)).
+#
+#cnf(i_0_33, plain, (greater_or_equal(X1,X2)|X1!=X2)).
+#
+#cnf(i_0_55, negated_conjecture, (~greater(zero,eta))).
+#
+#cnf(i_0_29, plain, (smaller_or_equal(X1,X2)|~smaller(X1,X2))).
+#
+#cnf(i_0_34, plain, (greater(X2,X1)|~smaller(X1,X2))).
+#
+#cnf(i_0_35, plain, (smaller(X2,X1)|~greater(X1,X2))).
+##
+#cnf(i_0_32, plain, (greater_or_equal(X1,X2)|~greater(X1,X2))).
+#
+#cnf(i_0_57, plain, (smaller_or_equal(X1,X2)|~greater(X2,X1))).
+#
+#cnf(i_0_50, negated_conjecture, (age(sk2,sk3)=zero)).
+#
+#cnf(i_0_41, plain, (~has_immunity(X1,X2)|~has_endowment(X1)|~greater(age(X1,X2),eta))).
+#
+#cnf(i_0_51, negated_conjecture, (smaller_or_equal(age(sk2,sk4),eta))).
+#
+#cnf(i_0_52, negated_conjecture, (greater(age(sk2,sk5),eta))).
+#
+#cnf(i_0_31, plain, (X1=X2|greater(X1,X2)|~greater_or_equal(X1,X2))).
+#
+#cnf(i_0_62, negated_conjecture, (~has_immunity(sk2,sk5))).
+#
+#cnf(i_0_28, plain, (X1=X2|smaller(X1,X2)|~smaller_or_equal(X1,X2))).
+#
+#cnf(i_0_66, plain, (X2=X1|greater(X1,X2)|~smaller_or_equal(X2,X1))).
+#
+#cnf(i_0_38, plain, (X1=X2|greater(X1,X2)|smaller(X1,X2))).
+#
+#cnf(i_0_60, negated_conjecture, (~greater(eta,age(sk2,sk5)))).
+#
+#cnf(i_0_70, plain, (X1=X2|greater(X1,X2)|smaller_or_equal(X1,X2))).
+#
+#cnf(i_0_71, plain, (X2=X1|greater(X1,X2)|greater(X2,X1))).
+###
+#cnf(i_0_37, plain, (greater(X1,X3)|~greater(X2,X3)|~greater(X1,X2))).
+#
+#cnf(i_0_92, negated_conjecture, (greater(X1,zero)|~greater(X1,eta))).
+#
+#cnf(i_0_88, negated_conjecture, (greater(eta,X1)|~greater(zero,X1))).
+#
+#cnf(i_0_81, negated_conjecture, (~greater(X1,eta)|~greater(zero,X1))).
+#
+#cnf(i_0_96, negated_conjecture, (greater(age(sk2,sk5),zero))).
+#
+#cnf(i_0_93, negated_conjecture, (greater(X1,eta)|~greater(X1,age(sk2,sk5)))).
+#
+#cnf(i_0_117, negated_conjecture, (greater(X1,zero)|~greater(X1,age(sk2,sk5)))).
+#######
+#cnf(i_0_104, negated_conjecture, (greater(X1,X2)|~greater(X1,eta)|~greater(zero,X2))).
+#
+#cnf(i_0_89, negated_conjecture, (greater(age(sk2,sk5),X1)|~greater(eta,X1))).
+##
+#cnf(i_0_116, negated_conjecture, (greater(age(sk2,sk5),X1)|~greater(zero,X1))).
+##
+#cnf(i_0_97, negated_conjecture, (greater(X1,zero)|~greater(X2,eta)|~greater(X1,X2))).
+#
+#cnf(i_0_105, negated_conjecture, (~greater(zero,age(sk2,sk5)))).
+##
+#cnf(i_0_103, negated_conjecture, (greater(eta,X1)|~greater(zero,X2)|~greater(X2,X1))).
+#
+#cnf(i_0_40, plain, (has_immunity(X1,X2)|~has_endowment(X1)|~smaller_or_equal(age(X1,X2),eta))).
+##
+#cnf(i_0_216, negated_conjecture, (has_immunity(sk2,sk4))).
+#
+#cnf(i_0_212, negated_conjecture, (has_immunity(sk2,sk3)|~smaller_or_equal(zero,eta))).
+#
+#cnf(i_0_213, plain, (has_immunity(X1,X2)|age(X1,X2)!=eta|~has_endowment(X1))).
+#
+#cnf(i_0_217, negated_conjecture, (age(sk2,sk5)!=eta)).
+#
+#cnf(i_0_214, plain, (has_immunity(X1,X2)|~has_endowment(X1)|~greater(eta,age(X1,X2)))).
+#
+#cnf(i_0_218, negated_conjecture, (has_immunity(sk2,sk3))).
+#
+#cnf(i_0_221, negated_conjecture, (has_immunity(X1,X2)|~has_endowment(X1)|~greater(zero,age(X1,X2)))).
+##
+#cnf(i_0_98, negated_conjecture, (X1=eta|greater(X1,zero)|greater(eta,X1))).
+##############
+#cnf(i_0_90, plain, (X1=X3|greater(X1,X2)|greater(X3,X1)|~greater(X3,X2))).
+#####
+#cnf(i_0_84, plain, (~greater(X2,X1)|~greater(X3,X2)|~greater(X1,X3))).
+##############
+#cnf(i_0_94, plain, (X3=X2|greater(X1,X2)|greater(X2,X3)|~greater(X1,X3))).
+####
+#cnf(i_0_385, negated_conjecture, (zero=X1|greater(eta,X1)|greater(X1,zero))).
+##
+#cnf(i_0_82, negated_conjecture, (~greater(X1,age(sk2,sk5))|~greater(eta,X1))).
+###########
+#cnf(i_0_86, plain, (greater(X1,X2)|~greater(X3,X2)|~greater(X4,X3)|~greater(X1,X4))).
+#####
+#cnf(i_0_156, negated_conjecture, (~greater(X1,age(sk2,sk5))|~greater(zero,X1))).
+#####
+#cnf(i_0_174, negated_conjecture, (X1=X2|greater(X1,zero)|greater(X2,X1)|~greater(X2,eta))).
+########
+#cnf(i_0_206, negated_conjecture, (X2=X1|greater(eta,X1)|greater(X1,X2)|~greater(zero,X2))).
+############
+#cnf(i_0_219, plain, (has_immunity(X1,X2)|~has_endowment(X1)|~greater(X3,age(X1,X2))|~greater(eta,X3))).
+#
+#cnf(i_0_222, negated_conjecture, (has_immunity(X1,X2)|~has_endowment(X1)|~greater(X3,age(X1,X2))|~greater(zero,X3))).
+#####
+#cnf(i_0_131, negated_conjecture, (greater(X1,X2)|~greater(X1,eta)|~greater(zero,X3)|~greater(X3,X2))).
+###
+#cnf(i_0_132, negated_conjecture, (greater(X1,X2)|~greater(X3,eta)|~greater(zero,X2)|~greater(X1,X3))).
+#####
+#cnf(i_0_149, negated_conjecture, (greater(X1,X2)|~greater(X1,age(sk2,sk5))|~greater(eta,X2))).
+##
+#cnf(i_0_159, negated_conjecture, (greater(X1,X2)|~greater(X1,age(sk2,sk5))|~greater(zero,X2))).
+###
+#cnf(i_0_106, negated_conjecture, (~greater(X1,eta)|~greater(zero,X2)|~greater(X2,X1))).
+###########
+#cnf(i_0_119, negated_conjecture, (greater(X1,eta)|~greater(X2,age(sk2,sk5))|~greater(X1,X2))).
+##
+#cnf(i_0_123, negated_conjecture, (greater(X1,zero)|~greater(X2,age(sk2,sk5))|~greater(X1,X2))).
+#
+#cnf(i_0_166, negated_conjecture, (greater(X1,zero)|~greater(X3,eta)|~greater(X1,X2)|~greater(X2,X3))).
+#####
+#cnf(i_0_195, negated_conjecture, (greater(eta,X1)|~greater(zero,X3)|~greater(X2,X1)|~greater(X3,X2))).
+###########################################
+#cnf(i_0_148, negated_conjecture, (greater(age(sk2,sk5),X1)|~greater(eta,X2)|~greater(X2,X1))).
+#
+#cnf(i_0_158, negated_conjecture, (greater(age(sk2,sk5),X1)|~greater(zero,X2)|~greater(X2,X1))).
+#######
+#cnf(i_0_134, negated_conjecture, (zero=X2|greater(X2,zero)|greater(X1,X2)|~greater(X1,eta))).
+########
+#cnf(i_0_139, negated_conjecture, (X1=eta|greater(eta,X1)|greater(X1,X2)|~greater(zero,X2))).
+########
+#cnf(i_0_230, negated_conjecture, (X2=eta|greater(X2,zero)|greater(X1,X2)|~greater(X1,eta))).
+##
+#cnf(i_0_300, plain, (~greater(X1,X2)|~greater(X3,X1)|~greater(X4,X3)|~greater(X2,X4))).
+#########
+#cnf(i_0_389, negated_conjecture, (zero=X1|greater(age(sk2,sk5),X1)|greater(X1,zero))).
+####
+#cnf(i_0_390, negated_conjecture, (eta=X1|greater(age(sk2,sk5),X1)|greater(X1,eta))).
+####
+#cnf(i_0_408, negated_conjecture, (zero=X1|greater(eta,X1)|greater(X1,X2)|~greater(zero,X2))).
+############
+#cnf(i_0_1779, negated_conjecture, (X1=eta|greater(age(sk2,sk5),X1)|greater(X1,zero))).
+####
+#cnf(i_0_182, negated_conjecture, (X2=eta|greater(X1,zero)|greater(eta,X2)|~greater(X1,X2))).
+#########
+#cnf(i_0_210, negated_conjecture, (zero=X2|greater(eta,X1)|greater(X2,zero)|~greater(X2,X1))).
+#########
+#cnf(i_0_229, negated_conjecture, (X2=eta|greater(eta,X1)|greater(X2,zero)|~greater(X2,X1))).
+#
+#cnf(i_0_83, plain, (~has_immunity(X1,X2)|~has_endowment(X1)|~greater(age(X1,X2),X3)|~greater(X3,eta))).
+###########
+#cnf(i_0_409, negated_conjecture, (zero=X2|greater(X1,zero)|greater(eta,X2)|~greater(X1,X2))).
+#############
+#cnf(i_0_293, negated_conjecture, (~greater(X1,eta)|~greater(zero,X3)|~greater(X2,X1)|~greater(X3,X2))).
+######
+#cnf(i_0_67, negated_conjecture, (age(sk2,sk4)=eta|greater(eta,age(sk2,sk4)))).
+######
+#cnf(i_0_296, negated_conjecture, (~greater(X1,age(sk2,sk5))|~greater(eta,X2)|~greater(X2,X1))).
+########
+#cnf(i_0_297, negated_conjecture, (~greater(X1,age(sk2,sk5))|~greater(zero,X2)|~greater(X2,X1))).
+##############
+#cnf(i_0_287, plain, (X1=X2|X2=X3|greater(X1,X3)|greater(X2,X1)|greater(X3,X2))).
+###################################################
+#cnf(i_0_274, plain, (X1=X4|greater(X1,X2)|greater(X4,X1)|~greater(X3,X2)|~greater(X4,X3))).
+##########
+#cnf(i_0_275, plain, (X3=X4|greater(X1,X2)|greater(X4,X3)|~greater(X1,X3)|~greater(X4,X2))).
+################
+#cnf(i_0_382, plain, (X4=X2|greater(X1,X2)|greater(X2,X4)|~greater(X1,X3)|~greater(X3,X4))).
+###########################
+#cnf(i_0_46, plain, (hazard_of_mortality(X1,X2)=hazard_of_mortality(X1,X3)|~has_immunity(X1,X3)|~has_immunity(X1,X2)|~organization(X1))).
+#############
+#cnf(i_0_462, plain, (greater(X1,X2)|~greater(X3,X2)|~greater(X4,X3)|~greater(X5,X4)|~greater(X1,X5))).
+###############
+#cnf(i_0_252, plain, (X3=X1|greater(X1,X2)|greater(X3,X4)|~greater(X3,X2)|~greater(X1,X4))).
+############
+#cnf(i_0_253, plain, (X2=X3|greater(X1,X2)|greater(X2,X4)|~greater(X1,X3)|~greater(X3,X4))).
+###############
+#cnf(i_0_361, plain, (X2=X3|greater(X1,X2)|greater(X4,X3)|~greater(X1,X3)|~greater(X4,X2))).
+################################
+#cnf(i_0_47, plain, (has_immunity(X1,X3)|greater(hazard_of_mortality(X1,X3),hazard_of_mortality(X1,X2))|~has_immunity(X1,X2)|~organization(X1))).
+#
+#cnf(i_0_5603, plain, (has_immunity(X1,X2)|~has_immunity(X1,X3)|~organization(X1)|~greater(hazard_of_mortality(X1,X3),hazard_of_mortality(X1,X2)))).
+#####################################
+#cnf(i_0_75, plain, (age(X1,X2)=eta|greater(eta,age(X1,X2))|~has_immunity(X1,X2)|~has_endowment(X1))).
+##################
+#cnf(i_0_265, negated_conjecture, (X1=X3|greater(X1,X2)|greater(X3,X1)|~greater(zero,X2)|~greater(X3,eta))).
+########
+#cnf(i_0_366, negated_conjecture, (X3=X2|greater(X1,X2)|greater(X2,X3)|~greater(X1,eta)|~greater(zero,X3))).
+##########################
+#cnf(i_0_44, plain, (has_endowment(X1)|greater(age(X1,sk1(X1)),eta)|~has_immunity(X1,sk1(X1))|~organization(X1))).
+##
+#cnf(i_0_6268, plain, (has_endowment(X1)|~has_immunity(X1,sk1(X1))|~organization(X1)|~greater(eta,age(X1,sk1(X1))))).
+##
+#cnf(i_0_6320, negated_conjecture, (has_endowment(X1)|~has_immunity(X1,sk1(X1))|~organization(X1)|~greater(zero,age(X1,sk1(X1))))).
+###
+#cnf(i_0_6321, negated_conjecture, (has_endowment(X1)|greater(age(X1,sk1(X1)),zero)|~has_immunity(X1,sk1(X1))|~organization(X1))).
+####
+#cnf(i_0_215, plain, (age(X1,X2)=eta|has_immunity(X1,X2)|greater(age(X1,X2),eta)|~has_endowment(X1))).
+#####
+#cnf(i_0_6534, negated_conjecture, (age(X1,X2)=eta|has_immunity(X1,X2)|greater(age(X1,X2),zero)|~has_endowment(X1))).
+#
+#cnf(i_0_456, plain, (~greater(X3,X1)|~greater(X2,X3)|~greater(X4,X2)|~greater(X5,X4)|~greater(X1,X5))).
+###
+#cnf(i_0_266, negated_conjecture, (X2=X3|greater(X1,zero)|greater(X3,X2)|~greater(X3,eta)|~greater(X1,X2))).
+########
+#cnf(i_0_267, negated_conjecture, (X1=X2|greater(X1,eta)|greater(X2,X1)|~greater(X2,age(sk2,sk5)))).
+##########
+#cnf(i_0_268, negated_conjecture, (X1=X2|greater(X1,zero)|greater(X2,X1)|~greater(X2,age(sk2,sk5)))).
+########
+#cnf(i_0_270, negated_conjecture, (X1=X3|greater(X1,zero)|greater(X3,X1)|~greater(X2,eta)|~greater(X3,X2))).
+########
+#cnf(i_0_272, negated_conjecture, (X2=X3|greater(eta,X1)|greater(X3,X2)|~greater(zero,X2)|~greater(X3,X1))).
+############
+#cnf(i_0_378, negated_conjecture, (X3=X1|greater(eta,X1)|greater(X1,X3)|~greater(zero,X2)|~greater(X2,X3))).
+##########################################
+#cnf(i_0_444, negated_conjecture, (greater(X1,X2)|~greater(X1,eta)|~greater(zero,X4)|~greater(X3,X2)|~greater(X4,X3))).
+####
+#cnf(i_0_450, negated_conjecture, (greater(X1,X2)|~greater(zero,X2)|~greater(X3,eta)|~greater(X4,X3)|~greater(X1,X4))).
+####
+#cnf(i_0_478, negated_conjecture, (greater(X1,X2)|~greater(zero,X3)|~greater(X4,eta)|~greater(X3,X2)|~greater(X1,X4))).
+#######
+#cnf(i_0_496, negated_conjecture, (greater(X1,X2)|~greater(X1,age(sk2,sk5))|~greater(eta,X3)|~greater(X3,X2))).
+###
+#cnf(i_0_497, negated_conjecture, (greater(X1,X2)|~greater(X1,age(sk2,sk5))|~greater(zero,X3)|~greater(X3,X2))).
+######
+#cnf(i_0_516, negated_conjecture, (greater(X1,X2)|~greater(X3,age(sk2,sk5))|~greater(eta,X2)|~greater(X1,X3))).
+###
+#cnf(i_0_517, negated_conjecture, (greater(X1,X2)|~greater(X3,age(sk2,sk5))|~greater(zero,X2)|~greater(X1,X3))).
+##################################
+#cnf(i_0_452, negated_conjecture, (~greater(X2,age(sk2,sk5))|~greater(eta,X1)|~greater(X3,X2)|~greater(X1,X3))).
+########
+#cnf(i_0_535, negated_conjecture, (~greater(X2,age(sk2,sk5))|~greater(zero,X1)|~greater(X3,X2)|~greater(X1,X3))).
+########
+#cnf(i_0_696, negated_conjecture, (~greater(X1,eta)|~greater(zero,X4)|~greater(X3,X1)|~greater(X2,X3)|~greater(X4,X2))).
+###
+#cnf(i_0_443, negated_conjecture, (greater(eta,X1)|~greater(zero,X4)|~greater(X2,X1)|~greater(X3,X2)|~greater(X4,X3))).
+####
+#cnf(i_0_451, negated_conjecture, (greater(X1,zero)|~greater(X3,eta)|~greater(X1,X2)|~greater(X4,X3)|~greater(X2,X4))).
+####
+#cnf(i_0_453, negated_conjecture, (greater(X1,eta)|~greater(X2,age(sk2,sk5))|~greater(X3,X2)|~greater(X1,X3))).
+###
+#cnf(i_0_454, negated_conjecture, (greater(X1,zero)|~greater(X2,age(sk2,sk5))|~greater(X3,X2)|~greater(X1,X3))).
+####################################
+#cnf(i_0_248, negated_conjecture, (X2=X1|greater(X1,zero)|greater(X2,X3)|~greater(X2,eta)|~greater(X1,X3))).
+#######
+#cnf(i_0_250, negated_conjecture, (X1=X2|greater(eta,X1)|greater(X1,X3)|~greater(zero,X2)|~greater(X2,X3))).
+##########
+#cnf(i_0_355, negated_conjecture, (X2=X1|greater(X1,zero)|greater(X3,X1)|~greater(X2,eta)|~greater(X3,X2))).
+###########
+#cnf(i_0_357, negated_conjecture, (X1=X2|greater(eta,X1)|greater(X3,X2)|~greater(zero,X2)|~greater(X3,X1))).
+#########################
+#cnf(i_0_391, negated_conjecture, (X1=X2|greater(age(sk2,sk5),X2)|greater(X2,X1)|~greater(eta,X1))).
+#######
+#cnf(i_0_392, negated_conjecture, (X1=X2|greater(age(sk2,sk5),X2)|greater(X2,X1)|~greater(zero,X1))).
+#####################
+#cnf(i_0_367, plain, (X3=eta|greater(eta,X3)|~has_immunity(X1,X2)|~has_endowment(X1)|~greater(age(X1,X2),X3))).
+#######
+#cnf(i_0_43, plain, (has_immunity(X1,sk1(X1))|has_endowment(X1)|smaller_or_equal(age(X1,sk1(X1)),eta)|~organization(X1))).
+#
+#cnf(i_0_441, negated_conjecture, (has_immunity(X1,X2)|~has_endowment(X1)|~greater(X3,age(X1,X2))|~greater(zero,X4)|~greater(X4,X3))).
+##
+#cnf(i_0_446, plain, (has_immunity(X1,X2)|~has_endowment(X1)|~greater(X3,age(X1,X2))|~greater(eta,X4)|~greater(X4,X3))).
+################################################################################################################################################################
+#cnf(i_0_476, negated_conjecture, (greater(age(sk2,sk5),X1)|~greater(eta,X3)|~greater(X2,X1)|~greater(X3,X2))).
+#
+#cnf(i_0_477, negated_conjecture, (greater(age(sk2,sk5),X1)|~greater(zero,X3)|~greater(X2,X1)|~greater(X3,X2))).
+################
+#cnf(i_0_256, negated_conjecture, (zero=X3|has_immunity(X1,X2)|greater(X3,zero)|~has_endowment(X1)|~greater(X3,age(X1,X2)))).
+#
+#cnf(i_0_261, plain, (eta=X3|has_immunity(X1,X2)|greater(X3,eta)|~has_endowment(X1)|~greater(X3,age(X1,X2)))).
+###
+#cnf(i_0_2515, negated_conjecture, (X3=eta|has_immunity(X1,X2)|greater(X3,zero)|~has_endowment(X1)|~greater(X3,age(X1,X2)))).
+#
+#cnf(i_0_285, negated_conjecture, (X2=eta|X1=X2|greater(X1,zero)|greater(eta,X2)|greater(X2,X1))).
+##########
+#cnf(i_0_387, negated_conjecture, (X1=eta|X1=X2|greater(eta,X2)|greater(X1,zero)|greater(X2,X1))).
+##########
+#cnf(i_0_407, negated_conjecture, (zero=X2|X1=X2|greater(X1,zero)|greater(eta,X2)|greater(X2,X1))).
+##########
+#cnf(i_0_426, negated_conjecture, (zero=X1|X1=X2|greater(eta,X2)|greater(X1,zero)|greater(X2,X1))).
+############################
+#cnf(i_0_2879, negated_conjecture, (age(sk2,sk4)=eta|greater(X1,age(sk2,sk4))|~greater(X1,eta))).
+#
+#cnf(i_0_19486, negated_conjecture, (age(sk2,sk4)=eta|~greater(age(sk2,sk4),X1)|~greater(X1,eta))).
+#
+#cnf(i_0_19618, negated_conjecture, (age(sk2,sk4)=eta|~greater(age(sk2,sk4),eta))).
+#######
+#cnf(i_0_19697, negated_conjecture, (age(sk2,sk4)=eta|greater(eta,X1)|~greater(age(sk2,sk4),X1))).
+###
+#cnf(i_0_239, negated_conjecture, (X2=zero|greater(X1,X2)|greater(X2,X3)|~greater(X1,eta)|~greater(zero,X3))).
+#########
+#cnf(i_0_349, negated_conjecture, (eta=X1|greater(X1,X2)|greater(X3,X1)|~greater(zero,X2)|~greater(X3,eta))).
+################
+#cnf(i_0_120, negated_conjecture, (X1=age(sk2,sk5)|greater(age(sk2,sk5),X1)|greater(X1,eta))).
+############
+#cnf(i_0_124, negated_conjecture, (X1=age(sk2,sk5)|greater(age(sk2,sk5),X1)|greater(X1,zero))).
+#####
+#cnf(i_0_238, negated_conjecture, (X2=zero|greater(eta,X1)|greater(X2,X3)|~greater(zero,X3)|~greater(X2,X1))).
+########
+#cnf(i_0_243, negated_conjecture, (eta=X1|greater(eta,X3)|greater(X1,X2)|~greater(zero,X2)|~greater(X1,X3))).
+##########
+#cnf(i_0_259, negated_conjecture, (zero=X3|greater(X3,zero)|greater(X1,X2)|~greater(X1,eta)|~greater(X3,X2))).
+######
+#cnf(i_0_279, negated_conjecture, (X1=eta|greater(eta,X1)|greater(X1,X2)|~greater(zero,X3)|~greater(X3,X2))).
+###########
+#cnf(i_0_343, negated_conjecture, (X2=zero|greater(X3,zero)|greater(X1,X2)|~greater(X1,eta)|~greater(X3,X2))).
+######
+#cnf(i_0_447, plain, (~has_immunity(X1,X2)|~has_endowment(X1)|~greater(age(X1,X2),X4)|~greater(X3,eta)|~greater(X4,X3))).
+#
+#cnf(i_0_350, negated_conjecture, (eta=X2|greater(X1,zero)|greater(X3,X2)|~greater(X3,eta)|~greater(X1,X2))).
+#########
+#cnf(i_0_370, negated_conjecture, (X3=eta|greater(eta,X3)|greater(X1,X2)|~greater(zero,X2)|~greater(X1,X3))).
+########
+#cnf(i_0_393, negated_conjecture, (zero=X1|greater(X1,zero)|greater(X2,X1)|~greater(X3,eta)|~greater(X2,X3))).
+######
+#cnf(i_0_1006, negated_conjecture, (~has_immunity(X1,X2)|~has_endowment(X1)|~greater(X3,age(sk2,sk5))|~greater(age(X1,X2),X3))).
+###
+#cnf(i_0_480, negated_conjecture, (zero=X1|greater(eta,X1)|greater(X1,X2)|~greater(zero,X3)|~greater(X3,X2))).
+###########
+#cnf(i_0_491, negated_conjecture, (X3=eta|greater(X3,zero)|greater(X1,X2)|~greater(X1,eta)|~greater(X3,X2))).
+#########
+#cnf(i_0_500, negated_conjecture, (zero=X3|greater(eta,X3)|greater(X1,X2)|~greater(zero,X2)|~greater(X1,X3))).
+#######
+#cnf(i_0_511, negated_conjecture, (X2=eta|greater(X2,zero)|greater(X1,X2)|~greater(X3,eta)|~greater(X1,X3))).
+########################
+#cnf(i_0_867, negated_conjecture, (eta=X2|greater(X2,eta)|greater(X1,X2)|~greater(X1,age(sk2,sk5)))).
+###########
+#cnf(i_0_880, negated_conjecture, (X2=eta|greater(X2,zero)|greater(X1,X2)|~greater(X1,age(sk2,sk5)))).
+########
+#cnf(i_0_882, negated_conjecture, (zero=X2|greater(X2,zero)|greater(X1,X2)|~greater(X1,age(sk2,sk5)))).
+################################################################
+#cnf(i_0_244, negated_conjecture, (eta=X2|greater(X1,zero)|greater(eta,X3)|~greater(X1,X2)|~greater(X2,X3))).
+#########
+#cnf(i_0_258, negated_conjecture, (zero=X3|greater(eta,X1)|greater(X3,zero)|~greater(X2,X1)|~greater(X3,X2))).
+########
+#cnf(i_0_342, negated_conjecture, (X2=zero|greater(eta,X1)|greater(X3,zero)|~greater(X2,X1)|~greater(X3,X2))).
+########
+#cnf(i_0_371, negated_conjecture, (X3=eta|greater(X1,zero)|greater(eta,X3)|~greater(X1,X2)|~greater(X2,X3))).
+########
+#cnf(i_0_471, negated_conjecture, (X3=eta|greater(eta,X1)|greater(X3,zero)|~greater(X2,X1)|~greater(X3,X2))).
+###########
+#cnf(i_0_520, negated_conjecture, (zero=X2|greater(X1,zero)|greater(eta,X2)|~greater(X3,X2)|~greater(X1,X3))).
+######################################################################
+#cnf(i_0_5192, negated_conjecture, (X1=zero|greater(age(sk2,sk5),X1)|greater(X1,X2)|~greater(zero,X2))).
+########
+#cnf(i_0_5193, negated_conjecture, (X1=eta|greater(age(sk2,sk5),X1)|greater(X1,X2)|~greater(eta,X2))).
+###########
+#cnf(i_0_20653, negated_conjecture, (eta=X1|greater(age(sk2,sk5),X1)|greater(X1,X2)|~greater(zero,X2))).
+#############################
+#cnf(i_0_1419, negated_conjecture, (eta=X2|greater(age(sk2,sk5),X1)|greater(X2,eta)|~greater(X2,X1))).
+#####
+#cnf(i_0_1817, plain, (~greater(X1,X2)|~greater(X3,X1)|~greater(X4,X3)|~greater(X5,X4)|~greater(X6,X5)|~greater(X2,X6))).
+#####
+#cnf(i_0_1433, negated_conjecture, (X2=eta|greater(age(sk2,sk5),X1)|greater(X2,zero)|~greater(X2,X1))).
+########
+#cnf(i_0_1436, negated_conjecture, (zero=X2|greater(age(sk2,sk5),X1)|greater(X2,zero)|~greater(X2,X1))).
+########################################
+#cnf(i_0_5479, negated_conjecture, (zero=X1|greater(age(sk2,sk5),X1)|greater(X2,zero)|~greater(X2,X1))).
+########
+#cnf(i_0_5480, negated_conjecture, (eta=X1|greater(age(sk2,sk5),X1)|greater(X2,eta)|~greater(X2,X1))).
+#################################
+#cnf(i_0_24289, negated_conjecture, (eta=X1|greater(age(sk2,sk5),X1)|greater(X2,zero)|~greater(X2,X1))).
+#####################################################
+#cnf(i_0_273, plain, (X1=X2|X2=X4|greater(X1,X3)|greater(X2,X1)|greater(X4,X2)|~greater(X4,X3))).
+############
+#cnf(i_0_380, plain, (X1=X2|X4=X3|greater(X1,X3)|greater(X2,X1)|greater(X3,X4)|~greater(X2,X4))).
+############
+#cnf(i_0_384, plain, (X1=X2|X4=X1|greater(X3,X2)|greater(X2,X1)|greater(X1,X4)|~greater(X3,X4))).
+#############################################
+#cnf(i_0_54, negated_conjecture, (hazard_of_mortality(sk2,sk4)!=hazard_of_mortality(sk2,sk3)|~greater(hazard_of_mortality(sk2,sk5),hazard_of_mortality(sk2,sk4)))).
+####
+#cnf(i_0_40782, negated_conjecture, (hazard_of_mortality(sk2,sk4)!=hazard_of_mortality(sk2,sk3))).
+####
+#cnf(i_0_40797, negated_conjecture, (hazard_of_mortality(sk2,X1)!=hazard_of_mortality(sk2,sk3)|~has_immunity(sk2,X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(definition_1_32, axiom, (has_immunity(X1,X2)|~has_endowment(X1)|~smaller_or_equal(age(X1,X2),eta)), file('./p/MGT057-1.tptp', definition_1_32)).
+cnf(theorem_6_43, negated_conjecture, (smaller_or_equal(age(sk2,sk4),eta)), file('./p/MGT057-1.tptp', theorem_6_43)).
+cnf(theorem_6_41, negated_conjecture, (has_endowment(sk2)), file('./p/MGT057-1.tptp', theorem_6_41)).
+cnf(definition_1_33, axiom, (~has_endowment(X1)|~greater(age(X1,X2),eta)|~has_immunity(X1,X2)), file('./p/MGT057-1.tptp', definition_1_33)).
+cnf(theorem_6_44, negated_conjecture, (greater(age(sk2,sk5),eta)), file('./p/MGT057-1.tptp', theorem_6_44)).
+cnf(definition_smaller_or_equal_2, axiom, (smaller_or_equal(X1,X2)|~smaller(X1,X2)), file('./p/MGT057-1.tptp', definition_smaller_or_equal_2)).
+cnf(definition_smaller_8, axiom, (smaller(X2,X1)|~greater(X1,X2)), file('./p/MGT057-1.tptp', definition_smaller_8)).
+cnf(theorem_6_46, negated_conjecture, (~greater(hazard_of_mortality(sk2,sk5),hazard_of_mortality(sk2,sk4))|hazard_of_mortality(sk2,sk4)!=hazard_of_mortality(sk2,sk3)), file('./p/MGT057-1.tptp', theorem_6_46)).
+cnf(assumption_3_39, axiom, (has_immunity(X1,X3)|greater(hazard_of_mortality(X1,X3),hazard_of_mortality(X1,X2))|~organization(X1)|~has_immunity(X1,X2)), file('./p/MGT057-1.tptp', assumption_3_39)).
+cnf(theorem_6_40, negated_conjecture, (organization(sk2)), file('./p/MGT057-1.tptp', theorem_6_40)).
+cnf(assumption_2_38, axiom, (hazard_of_mortality(X1,X2)=hazard_of_mortality(X1,X3)|~organization(X1)|~has_immunity(X1,X2)|~has_immunity(X1,X3)), file('./p/MGT057-1.tptp', assumption_2_38)).
+cnf(theorem_6_42, negated_conjecture, (age(sk2,sk3)=zero), file('./p/MGT057-1.tptp', theorem_6_42)).
+cnf(theorem_6_45, negated_conjecture, (greater(eta,zero)), file('./p/MGT057-1.tptp', theorem_6_45)).
+cnf(c_0_13, axiom, (has_immunity(X1,X2)|~has_endowment(X1)|~smaller_or_equal(age(X1,X2),eta)), definition_1_32).
+cnf(c_0_14, negated_conjecture, (smaller_or_equal(age(sk2,sk4),eta)), theorem_6_43).
+cnf(c_0_15, negated_conjecture, (has_endowment(sk2)), theorem_6_41).
+cnf(c_0_16, axiom, (~has_endowment(X1)|~greater(age(X1,X2),eta)|~has_immunity(X1,X2)), definition_1_33).
+cnf(c_0_17, negated_conjecture, (greater(age(sk2,sk5),eta)), theorem_6_44).
+cnf(c_0_18, axiom, (smaller_or_equal(X1,X2)|~smaller(X1,X2)), definition_smaller_or_equal_2).
+cnf(c_0_19, axiom, (smaller(X2,X1)|~greater(X1,X2)), definition_smaller_8).
+cnf(c_0_20, negated_conjecture, (~greater(hazard_of_mortality(sk2,sk5),hazard_of_mortality(sk2,sk4))|hazard_of_mortality(sk2,sk4)!=hazard_of_mortality(sk2,sk3)), theorem_6_46).
+cnf(c_0_21, axiom, (has_immunity(X1,X3)|greater(hazard_of_mortality(X1,X3),hazard_of_mortality(X1,X2))|~organization(X1)|~has_immunity(X1,X2)), assumption_3_39).
+cnf(c_0_22, negated_conjecture, (has_immunity(sk2,sk4)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_13, c_0_14]), c_0_15])])).
+cnf(c_0_23, negated_conjecture, (organization(sk2)), theorem_6_40).
+cnf(c_0_24, negated_conjecture, (~has_immunity(sk2,sk5)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_16, c_0_17]), c_0_15])])).
+cnf(c_0_25, plain, (smaller_or_equal(X1,X2)|~greater(X2,X1)), inference(pm,[status(thm)],[c_0_18, c_0_19])).
+cnf(c_0_26, negated_conjecture, (hazard_of_mortality(sk2,sk4)!=hazard_of_mortality(sk2,sk3)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_20, c_0_21]), c_0_22]), c_0_23])]), c_0_24])).
+cnf(c_0_27, axiom, (hazard_of_mortality(X1,X2)=hazard_of_mortality(X1,X3)|~organization(X1)|~has_immunity(X1,X2)|~has_immunity(X1,X3)), assumption_2_38).
+cnf(c_0_28, plain, (has_immunity(X1,X2)|~has_endowment(X1)|~greater(eta,age(X1,X2))), inference(pm,[status(thm)],[c_0_13, c_0_25])).
+cnf(c_0_29, negated_conjecture, (age(sk2,sk3)=zero), theorem_6_42).
+cnf(c_0_30, negated_conjecture, (greater(eta,zero)), theorem_6_45).
+cnf(c_0_31, negated_conjecture, (hazard_of_mortality(sk2,X1)!=hazard_of_mortality(sk2,sk3)|~has_immunity(sk2,X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_26, c_0_27]), c_0_22]), c_0_23])])).
+cnf(c_0_32, negated_conjecture, (has_immunity(sk2,sk3)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_28, c_0_29]), c_0_30]), c_0_15])])).
+cnf(c_0_33, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(er,[status(thm)],[c_0_31]), c_0_32])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 34
+# Proof object clause steps            : 21
+# Proof object formula steps           : 13
+# Proof object conjectures             : 20
+# Proof object clause conjectures      : 13
+# Proof object formula conjectures     : 7
+# Proof object initial clauses used    : 13
+# Proof object initial formulas used   : 13
+# Proof object generating inferences   : 8
+# Proof object simplifying inferences  : 16
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 27
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 27
+# Removed in clause preprocessing      : 1
+# Initial clauses in saturation        : 26
+# Processed clauses                    : 1852
+# ...of these trivial                  : 0
+# ...subsumed                          : 1659
+# ...remaining for further processing  : 193
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 1
+# Backward-rewritten                   : 0
+# Generated clauses                    : 40777
+# ...of the previous two non-trivial   : 36382
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 40682
+# Factorizations                       : 94
+# Equation resolutions                 : 1
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 192
+#    Positive orientable unit clauses  : 9
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 6
+#    Non-unit-clauses                  : 177
+# Current number of unprocessed clauses: 34556
+# ...number of literals in the above   : 240858
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 1
+# Clause-clause subsumption calls (NU) : 30102
+# Rec. Clause-clause subsumption calls : 13108
+# Non-unit clause-clause subsumptions  : 1359
+# Unit Clause-clause subsumption calls : 15
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 1
+# BW rewrite match successes           : 1
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 279464

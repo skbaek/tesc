@@ -1,0 +1,63 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for LCL102-1
+% SZS output start Proof for LCL102-1
+fof(f18205,plain,(
+  $false),
+  inference(resolution,[],[f7445,f5])).
+fof(f5,axiom,(
+  ~is_a_theorem(equivalent(equivalent(equivalent(a,b),c),equivalent(equivalent(e,b),equivalent(equivalent(a,e),c))))),
+  file('./p/LCL102-1.tptp',unknown)).
+fof(f7445,plain,(
+  ( ! [X21,X19,X20,X18] : (is_a_theorem(equivalent(equivalent(equivalent(X18,X19),X20),equivalent(equivalent(X21,X19),equivalent(equivalent(X18,X21),X20))))) )),
+  inference(resolution,[],[f617,f63])).
+fof(f63,plain,(
+  ( ! [X14,X15,X13,X16] : (~is_a_theorem(equivalent(equivalent(equivalent(X15,X14),X13),X16)) | is_a_theorem(equivalent(X13,equivalent(equivalent(X14,X15),X16)))) )),
+  inference(resolution,[],[f27,f7])).
+fof(f7,plain,(
+  ( ! [X2,X0,X1] : (is_a_theorem(equivalent(equivalent(X2,X0),equivalent(X2,X1))) | ~is_a_theorem(equivalent(X0,X1))) )),
+  inference(resolution,[],[f4,f1])).
+fof(f1,axiom,(
+  ( ! [X0,X1] : (~is_a_theorem(equivalent(X0,X1)) | ~is_a_theorem(X0) | is_a_theorem(X1)) )),
+  file('./p/LCL102-1.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X2,X0,X1] : (is_a_theorem(equivalent(equivalent(X0,X1),equivalent(equivalent(X2,X0),equivalent(X2,X1))))) )),
+  file('./p/LCL102-1.tptp',unknown)).
+fof(f27,plain,(
+  ( ! [X2,X0,X3,X1] : (~is_a_theorem(equivalent(equivalent(equivalent(X0,X1),equivalent(equivalent(X1,X0),X2)),X3)) | is_a_theorem(equivalent(X2,X3))) )),
+  inference(resolution,[],[f10,f3])).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (is_a_theorem(equivalent(X0,equivalent(equivalent(X1,X2),equivalent(equivalent(X2,X1),X0))))) )),
+  file('./p/LCL102-1.tptp',unknown)).
+fof(f10,plain,(
+  ( ! [X2,X0,X1] : (~is_a_theorem(equivalent(X2,X0)) | ~is_a_theorem(equivalent(X0,X1)) | is_a_theorem(equivalent(X2,X1))) )),
+  inference(resolution,[],[f7,f1])).
+fof(f617,plain,(
+  ( ! [X52,X50,X53,X51] : (is_a_theorem(equivalent(equivalent(equivalent(X50,X51),equivalent(equivalent(X52,X50),X53)),equivalent(equivalent(X52,X51),X53)))) )),
+  inference(resolution,[],[f76,f45])).
+fof(f45,plain,(
+  ( ! [X12,X10,X11,X9] : (~is_a_theorem(equivalent(X9,equivalent(equivalent(X10,X11),equivalent(X10,X12)))) | is_a_theorem(equivalent(X9,equivalent(X11,X12)))) )),
+  inference(resolution,[],[f11,f1])).
+fof(f11,plain,(
+  ( ! [X2,X0,X3,X1] : (is_a_theorem(equivalent(equivalent(X0,equivalent(equivalent(X1,X2),equivalent(X1,X3))),equivalent(X0,equivalent(X2,X3))))) )),
+  inference(resolution,[],[f9,f4])).
+fof(f9,plain,(
+  ( ! [X2,X0,X3,X1] : (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X0,X1),equivalent(X0,X2)),equivalent(X1,X2)),X3)) | is_a_theorem(X3)) )),
+  inference(resolution,[],[f2,f1])).
+fof(f2,axiom,(
+  ( ! [X2,X0,X3,X1] : (is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X0,X1),equivalent(X0,X2)),equivalent(X1,X2)),X3),X3))) )),
+  file('./p/LCL102-1.tptp',unknown)).
+fof(f76,plain,(
+  ( ! [X6,X8,X7,X9] : (is_a_theorem(equivalent(equivalent(equivalent(X6,X7),X8),equivalent(equivalent(equivalent(X9,X6),equivalent(X9,X7)),X8)))) )),
+  inference(resolution,[],[f28,f2])).
+fof(f28,plain,(
+  ( ! [X6,X4,X7,X5] : (~is_a_theorem(equivalent(equivalent(equivalent(X4,X5),equivalent(X4,X6)),X7)) | is_a_theorem(equivalent(equivalent(X5,X6),X7))) )),
+  inference(resolution,[],[f10,f4])).
+% SZS output end Proof for LCL102-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 18805
+% Time elapsed: 1.719 s
+% ------------------------------
+% ------------------------------

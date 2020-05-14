@@ -1,0 +1,81 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GEO147-1
+% SZS output start Proof for GEO147-1
+fof(f286,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f132,f278,f285])).
+fof(f285,plain,(
+  spl0_1),
+  inference(avatar_contradiction_clause,[],[f284])).
+fof(f284,plain,(
+  $false | spl0_1),
+  inference(subsumption_resolution,[],[f283,f127])).
+fof(f127,plain,(
+  ~incident_o(sk27,ax3_sk1(sk28)) | spl0_1),
+  inference(avatar_component_clause,[],[f125])).
+fof(f125,plain,(
+  spl0_1 <=> incident_o(sk27,ax3_sk1(sk28))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f283,plain,(
+  incident_o(sk27,ax3_sk1(sk28))),
+  inference(resolution,[],[f280,f113])).
+fof(f113,plain,(
+  ( ! [X0,X1] : (~once(at(X0,X1)) | incident_o(X1,ax3_sk1(X0))) )),
+  inference(definition_unfolding,[],[f106,f108])).
+fof(f108,axiom,(
+  ( ! [X0] : (trajectory_of(X0) = ax3_sk1(X0)) )),
+  file('./p/GEO147-1.tptp',unknown)).
+fof(f106,axiom,(
+  ( ! [X0,X1] : (incident_o(X1,trajectory_of(X0)) | ~once(at(X0,X1))) )),
+  file('./p/GEO147-1.tptp',unknown)).
+fof(f280,plain,(
+  once(at(sk28,sk27))),
+  inference(resolution,[],[f273,f111])).
+fof(f111,axiom,(
+  connect(sk28,sk29,sk27)),
+  file('./p/GEO147-1.tptp',unknown)).
+fof(f273,plain,(
+  ( ! [X6,X8,X7] : (~connect(X6,X7,X8) | once(at(X6,X8))) )),
+  inference(resolution,[],[f97,f104])).
+fof(f104,axiom,(
+  ( ! [X0,X1] : (~once(at_the_same_time(X0,X1)) | once(X0)) )),
+  file('./p/GEO147-1.tptp',unknown)).
+fof(f97,axiom,(
+  ( ! [X2,X0,X1] : (once(at_the_same_time(at(X0,X2),at(X1,X2))) | ~connect(X0,X1,X2)) )),
+  file('./p/GEO147-1.tptp',unknown)).
+fof(f278,plain,(
+  spl0_2),
+  inference(avatar_split_clause,[],[f277,f129])).
+fof(f129,plain,(
+  spl0_2 <=> incident_o(sk27,ax3_sk1(sk29))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f277,plain,(
+  incident_o(sk27,ax3_sk1(sk29))),
+  inference(resolution,[],[f274,f113])).
+fof(f274,plain,(
+  once(at(sk29,sk27))),
+  inference(resolution,[],[f272,f111])).
+fof(f272,plain,(
+  ( ! [X4,X5,X3] : (~connect(X3,X4,X5) | once(at(X4,X5))) )),
+  inference(resolution,[],[f97,f105])).
+fof(f105,axiom,(
+  ( ! [X0,X1] : (~once(at_the_same_time(X0,X1)) | once(X1)) )),
+  file('./p/GEO147-1.tptp',unknown)).
+fof(f132,plain,(
+  ~spl0_1 | ~spl0_2),
+  inference(avatar_split_clause,[],[f116,f129,f125])).
+fof(f116,plain,(
+  ~incident_o(sk27,ax3_sk1(sk29)) | ~incident_o(sk27,ax3_sk1(sk28))),
+  inference(definition_unfolding,[],[f112,f108,f108])).
+fof(f112,axiom,(
+  ~incident_o(sk27,trajectory_of(sk29)) | ~incident_o(sk27,trajectory_of(sk28))),
+  file('./p/GEO147-1.tptp',unknown)).
+% SZS output end Proof for GEO147-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5117
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

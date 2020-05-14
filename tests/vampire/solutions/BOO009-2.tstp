@@ -1,0 +1,78 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for BOO009-2
+% SZS output start Proof for BOO009-2
+fof(f1058,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f1057])).
+fof(f1057,plain,(
+  a != a),
+  inference(superposition,[],[f15,f230])).
+fof(f230,plain,(
+  ( ! [X2,X3] : (multiply(X2,add(X2,X3)) = X2) )),
+  inference(backward_demodulation,[],[f228,f131])).
+fof(f131,plain,(
+  ( ! [X2,X3] : (add(X2,multiply(X2,X3)) = multiply(X2,add(X2,X3))) )),
+  inference(superposition,[],[f4,f94])).
+fof(f94,plain,(
+  ( ! [X0] : (add(X0,X0) = X0) )),
+  inference(forward_demodulation,[],[f81,f14])).
+fof(f14,axiom,(
+  ( ! [X0] : (add(additive_identity,X0) = X0) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f81,plain,(
+  ( ! [X0] : (add(additive_identity,X0) = add(X0,X0)) )),
+  inference(superposition,[],[f74,f10])).
+fof(f10,axiom,(
+  ( ! [X0] : (additive_identity = multiply(inverse(X0),X0)) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f74,plain,(
+  ( ! [X12,X13] : (add(multiply(inverse(X12),X13),X12) = add(X13,X12)) )),
+  inference(forward_demodulation,[],[f61,f12])).
+fof(f12,axiom,(
+  ( ! [X0] : (multiply(multiplicative_identity,X0) = X0) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f61,plain,(
+  ( ! [X12,X13] : (add(multiply(inverse(X12),X13),X12) = multiply(multiplicative_identity,add(X13,X12))) )),
+  inference(superposition,[],[f3,f8])).
+fof(f8,axiom,(
+  ( ! [X0] : (multiplicative_identity = add(inverse(X0),X0)) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (add(multiply(X0,X1),X2) = multiply(add(X0,X2),add(X1,X2))) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X2,X0,X1] : (add(X0,multiply(X1,X2)) = multiply(add(X0,X1),add(X0,X2))) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f228,plain,(
+  ( ! [X0,X1] : (add(X0,multiply(X0,X1)) = X0) )),
+  inference(forward_demodulation,[],[f227,f11])).
+fof(f11,axiom,(
+  ( ! [X0] : (multiply(X0,multiplicative_identity) = X0) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f227,plain,(
+  ( ! [X0,X1] : (multiply(X0,multiplicative_identity) = add(X0,multiply(X0,X1))) )),
+  inference(forward_demodulation,[],[f199,f95])).
+fof(f95,plain,(
+  ( ! [X1] : (multiplicative_identity = add(multiplicative_identity,X1)) )),
+  inference(forward_demodulation,[],[f82,f8])).
+fof(f82,plain,(
+  ( ! [X1] : (add(inverse(X1),X1) = add(multiplicative_identity,X1)) )),
+  inference(superposition,[],[f74,f11])).
+fof(f199,plain,(
+  ( ! [X0,X1] : (add(X0,multiply(X0,X1)) = multiply(X0,add(multiplicative_identity,X1))) )),
+  inference(superposition,[],[f6,f11])).
+fof(f6,axiom,(
+  ( ! [X2,X0,X1] : (multiply(X0,add(X1,X2)) = add(multiply(X0,X1),multiply(X0,X2))) )),
+  file('./p/BOO009-2.tptp',unknown)).
+fof(f15,axiom,(
+  a != multiply(a,add(a,b))),
+  file('./p/BOO009-2.tptp',unknown)).
+% SZS output end Proof for BOO009-2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5884
+% Time elapsed: 0.012 s
+% ------------------------------
+% ------------------------------

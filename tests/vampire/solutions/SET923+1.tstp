@@ -1,0 +1,72 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SET923+1
+% SZS output start Proof for SET923+1
+fof(f47,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f46,f31])).
+fof(f31,plain,(
+  sK2 != singleton(sK3)),
+  inference(cnf_transformation,[],[f19])).
+fof(f19,plain,(
+  sK2 != singleton(sK3) & empty_set != sK2 & empty_set = set_difference(sK2,singleton(sK3))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2,sK3])],[f10,f18])).
+fof(f18,plain,(
+  ? [X0,X1] : (singleton(X1) != X0 & empty_set != X0 & empty_set = set_difference(X0,singleton(X1))) => (sK2 != singleton(sK3) & empty_set != sK2 & empty_set = set_difference(sK2,singleton(sK3)))),
+  introduced(choice_axiom,[])).
+fof(f10,plain,(
+  ? [X0,X1] : (singleton(X1) != X0 & empty_set != X0 & empty_set = set_difference(X0,singleton(X1)))),
+  inference(ennf_transformation,[],[f8])).
+fof(f8,negated_conjecture,(
+  ~! [X0,X1] : ~(singleton(X1) != X0 & empty_set != X0 & empty_set = set_difference(X0,singleton(X1)))),
+  inference(negated_conjecture,[],[f7])).
+fof(f7,conjecture,(
+  ! [X0,X1] : ~(singleton(X1) != X0 & empty_set != X0 & empty_set = set_difference(X0,singleton(X1)))),
+  file('./p/SET923+1.tptp',unknown)).
+fof(f46,plain,(
+  sK2 = singleton(sK3)),
+  inference(subsumption_resolution,[],[f45,f30])).
+fof(f30,plain,(
+  empty_set != sK2),
+  inference(cnf_transformation,[],[f19])).
+fof(f45,plain,(
+  empty_set = sK2 | sK2 = singleton(sK3)),
+  inference(resolution,[],[f21,f35])).
+fof(f35,plain,(
+  subset(sK2,singleton(sK3))),
+  inference(trivial_inequality_removal,[],[f34])).
+fof(f34,plain,(
+  empty_set != empty_set | subset(sK2,singleton(sK3))),
+  inference(superposition,[],[f27,f29])).
+fof(f29,plain,(
+  empty_set = set_difference(sK2,singleton(sK3))),
+  inference(cnf_transformation,[],[f19])).
+fof(f27,plain,(
+  ( ! [X0,X1] : (empty_set != set_difference(X0,X1) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f17])).
+fof(f17,plain,(
+  ! [X0,X1] : ((empty_set = set_difference(X0,X1) | ~subset(X0,X1)) & (subset(X0,X1) | empty_set != set_difference(X0,X1)))),
+  inference(nnf_transformation,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X1] : (empty_set = set_difference(X0,X1) <=> subset(X0,X1))),
+  file('./p/SET923+1.tptp',unknown)).
+fof(f21,plain,(
+  ( ! [X0,X1] : (~subset(X0,singleton(X1)) | empty_set = X0 | singleton(X1) = X0) )),
+  inference(cnf_transformation,[],[f12])).
+fof(f12,plain,(
+  ! [X0,X1] : ((subset(X0,singleton(X1)) | (singleton(X1) != X0 & empty_set != X0)) & (singleton(X1) = X0 | empty_set = X0 | ~subset(X0,singleton(X1))))),
+  inference(flattening,[],[f11])).
+fof(f11,plain,(
+  ! [X0,X1] : ((subset(X0,singleton(X1)) | (singleton(X1) != X0 & empty_set != X0)) & ((singleton(X1) = X0 | empty_set = X0) | ~subset(X0,singleton(X1))))),
+  inference(nnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1] : (subset(X0,singleton(X1)) <=> (singleton(X1) = X0 | empty_set = X0))),
+  file('./p/SET923+1.tptp',unknown)).
+% SZS output end Proof for SET923+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

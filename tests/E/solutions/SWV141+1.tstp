@@ -1,0 +1,858 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_134, plain, (true)).
+#
+#cnf(i_0_137, negated_conjecture, (epred2_0)).
+#
+#cnf(i_0_4, plain, (leq(X1,X1))).
+#
+#cnf(i_0_3, plain, (~gt(X1,X1))).
+#
+#cnf(i_0_141, plain, (gt(n0,tptp_minus_1))).
+#
+#cnf(i_0_147, plain, (gt(n1,n0))).
+#
+#cnf(i_0_142, plain, (gt(n1,tptp_minus_1))).
+#
+#cnf(i_0_135, plain, (def!=use)).
+#
+#cnf(i_0_148, plain, (gt(n2,n0))).
+#
+#cnf(i_0_143, plain, (gt(n2,tptp_minus_1))).
+#
+#cnf(i_0_152, plain, (gt(n2,n1))).
+#
+#cnf(i_0_136, negated_conjecture, (~leq(n0,s_worst7))).
+#
+#cnf(i_0_149, plain, (gt(n3,n0))).
+#
+#cnf(i_0_144, plain, (gt(n3,tptp_minus_1))).
+#
+#cnf(i_0_153, plain, (gt(n3,n1))).
+#
+#cnf(i_0_156, plain, (gt(n3,n2))).
+#
+#cnf(i_0_145, plain, (gt(n4,n0))).
+#
+#cnf(i_0_139, plain, (gt(n4,tptp_minus_1))).
+#
+#cnf(i_0_150, plain, (gt(n4,n1))).
+#
+#cnf(i_0_154, plain, (gt(n4,n2))).
+#
+#cnf(i_0_157, plain, (gt(n4,n3))).
+#
+#cnf(i_0_146, plain, (gt(n5,n0))).
+#
+#cnf(i_0_140, plain, (gt(n5,tptp_minus_1))).
+#
+#cnf(i_0_151, plain, (gt(n5,n1))).
+#
+#cnf(i_0_155, plain, (gt(n5,n2))).
+#
+#cnf(i_0_158, plain, (gt(n5,n3))).
+#
+#cnf(i_0_138, plain, (gt(n5,n4))).
+#
+#cnf(i_0_7, plain, (gt(X2,X1)|~lt(X1,X2))).
+#
+#cnf(i_0_10, plain, (leq(X2,X1)|~gt(X1,X2))).
+#
+#cnf(i_0_209, plain, (leq(n4,n5))).
+#
+#cnf(i_0_210, plain, (leq(n3,n5))).
+#
+#cnf(i_0_211, plain, (leq(n2,n5))).
+#
+#cnf(i_0_212, plain, (leq(n1,n5))).
+#
+#cnf(i_0_213, plain, (leq(tptp_minus_1,n5))).
+#
+#cnf(i_0_214, plain, (leq(n0,n5))).
+#
+#cnf(i_0_215, plain, (leq(n3,n4))).
+#
+#cnf(i_0_216, plain, (leq(n2,n4))).
+#
+#cnf(i_0_217, plain, (leq(n1,n4))).
+#
+#cnf(i_0_218, plain, (leq(tptp_minus_1,n4))).
+#
+#cnf(i_0_219, plain, (leq(n0,n4))).
+#
+#cnf(i_0_220, plain, (leq(n2,n3))).
+#
+#cnf(i_0_221, plain, (leq(n1,n3))).
+#
+#cnf(i_0_222, plain, (leq(tptp_minus_1,n3))).
+#
+#cnf(i_0_223, plain, (leq(n0,n3))).
+#
+#cnf(i_0_224, plain, (leq(n1,n2))).
+#
+#cnf(i_0_225, plain, (leq(tptp_minus_1,n2))).
+#
+#cnf(i_0_226, plain, (leq(n0,n2))).
+#
+#cnf(i_0_227, plain, (leq(tptp_minus_1,n1))).
+#
+#cnf(i_0_228, plain, (leq(n0,n1))).
+#
+#cnf(i_0_229, plain, (leq(tptp_minus_1,n0))).
+#
+#cnf(i_0_9, plain, (leq(X2,X1)|~geq(X1,X2))).
+#
+#cnf(i_0_6, plain, (lt(X2,X1)|~gt(X1,X2))).
+#
+#cnf(i_0_8, plain, (geq(X2,X1)|~leq(X1,X2))).
+#
+#cnf(i_0_207, plain, (leq(n1,loopcounter))).
+#
+#cnf(i_0_208, plain, (leq(tptp_float_0_001,pv1341))).
+#
+#cnf(i_0_14, plain, (gt(plus(X1,n1),X1))).
+#
+#cnf(i_0_232, plain, (leq(X1,plus(X1,n1)))).
+#
+#cnf(i_0_167, plain, (plus(n0,n1)=n1)).
+#
+#cnf(i_0_104, plain, (plus(tptp_minus_1,n1)=n0)).
+#
+#cnf(i_0_103, plain, (sum(n0,tptp_minus_1,X1)=tptp_float_0_0)).
+#
+#cnf(i_0_102, plain, (tptp_float_0_0=n0)).
+#
+#cnf(i_0_103, plain, (sum(n0,tptp_minus_1,X1)=n0)).
+#
+#cnf(i_0_129, plain, (a_select2(tptp_update2(X1,X2,X3),X2)=X3)).
+#
+#cnf(i_0_11, plain, (X1=X2|gt(X2,X1)|~leq(X1,X2))).
+#
+#cnf(i_0_13, plain, (gt(X2,X1)|~leq(X1,minus(X2,n1)))).
+#
+#cnf(i_0_238, plain, (gt(X1,minus(X1,n1)))).
+#
+#cnf(i_0_239, plain, (leq(minus(X1,n1),X1))).
+#
+#cnf(i_0_117, plain, (plus(minus(X1,n1),n1)=X1)).
+#
+#cnf(i_0_120, plain, (gt(X2,X1)|~leq(plus(X1,n1),X2))).
+#
+#cnf(i_0_244, plain, (gt(X1,tptp_minus_1)|~leq(n0,X1))).
+#
+#cnf(i_0_245, plain, (gt(X1,n0)|~leq(n1,X1))).
+#
+#cnf(i_0_249, plain, (~leq(n0,tptp_minus_1))).
+#
+#cnf(i_0_250, plain, (leq(n0,X1)|~leq(n1,X1))).
+#
+#cnf(i_0_254, plain, (leq(n0,loopcounter))).
+#
+#cnf(i_0_248, plain, (leq(tptp_minus_1,X1)|~leq(n0,X1))).
+#
+#cnf(i_0_251, plain, (~leq(n1,n0))).
+#
+#cnf(i_0_252, plain, (leq(n0,plus(n1,n1)))).
+#
+#cnf(i_0_16, plain, (leq(X2,X1)|~gt(plus(X1,n1),X2))).
+#
+#cnf(i_0_261, plain, (leq(X1,tptp_minus_1)|~gt(n0,X1))).
+##
+#cnf(i_0_262, plain, (leq(X1,n0)|~gt(n1,X1))).
+#
+#cnf(i_0_268, plain, (leq(minus(n0,n1),tptp_minus_1))).
+#
+#cnf(i_0_273, plain, (leq(minus(n1,n1),n0))).
+#
+#cnf(i_0_116, plain, (minus(plus(X1,n1),n1)=X1)).
+#
+#cnf(i_0_282, plain, (minus(n0,n1)=tptp_minus_1)).
+#
+#cnf(i_0_283, plain, (minus(n1,n1)=n0)).
+#
+#cnf(i_0_285, plain, (gt(n0,X1)|~leq(X1,tptp_minus_1))).
+##
+#cnf(i_0_292, plain, (leq(X1,n0)|~leq(X1,tptp_minus_1))).
+#
+#cnf(i_0_289, plain, (gt(n1,X1)|~leq(X1,n0))).
+#
+#cnf(i_0_298, plain, (leq(X1,n1)|~leq(X1,n0))).
+##
+#cnf(i_0_295, plain, (leq(minus(tptp_minus_1,n1),n0))).
+#
+#cnf(i_0_121, plain, (leq(n0,X2)|~leq(minus(X1,X2),X1))).
+#
+#cnf(i_0_1, plain, (X1=X2|gt(X2,X1)|gt(X1,X2))).
+#
+#cnf(i_0_313, plain, (X2=X1|leq(X1,X2)|gt(X1,X2))).
+##
+#cnf(i_0_321, plain, (X1=X2|leq(X1,X2)|leq(X2,X1))).
+#
+#cnf(i_0_18, plain, (leq(uniform_int_rnd(X2,X1),X1)|~leq(n0,X1))).
+#
+#cnf(i_0_106, plain, (plus(n1,X1)=plus(X1,n1))).
+#
+#cnf(i_0_340, plain, (gt(plus(n1,X1),X1))).
+#
+#cnf(i_0_341, plain, (leq(X1,plus(n1,X1)))).
+##
+#cnf(i_0_104, plain, (plus(n1,tptp_minus_1)=n0)).
+#
+#cnf(i_0_342, plain, (gt(X1,X2)|~leq(plus(n1,X2),X1))).
+##
+#cnf(i_0_343, plain, (leq(X1,X2)|~gt(plus(n1,X2),X1))).
+####
+#cnf(i_0_117, plain, (plus(n1,minus(X1,n1))=X1)).
+#
+#cnf(i_0_339, plain, (minus(plus(n1,X1),n1)=X1)).
+#
+#cnf(i_0_2, plain, (gt(X1,X3)|~gt(X2,X3)|~gt(X1,X2))).
+#
+#cnf(i_0_433, plain, (gt(X1,n4)|~gt(X1,n5))).
+#
+#cnf(i_0_434, plain, (gt(X1,n3)|~gt(X1,n5))).
+#
+#cnf(i_0_401, plain, (~gt(X2,X1)|~gt(X1,X2))).
+#
+#cnf(i_0_435, plain, (gt(X1,n2)|~gt(X1,n5))).
+#
+#cnf(i_0_436, plain, (gt(X1,n1)|~gt(X1,n5))).
+#
+#cnf(i_0_437, plain, (gt(X1,tptp_minus_1)|~gt(X1,n5))).
+#
+#cnf(i_0_483, plain, (~gt(n4,n5))).
+#
+#cnf(i_0_438, plain, (gt(X1,n0)|~gt(X1,n5))).
+#
+#cnf(i_0_439, plain, (gt(X1,n3)|~gt(X1,n4))).
+#
+#cnf(i_0_440, plain, (gt(X1,n2)|~gt(X1,n4))).
+#
+#cnf(i_0_484, plain, (~gt(n3,n5))).
+#
+#cnf(i_0_441, plain, (gt(X1,n1)|~gt(X1,n4))).
+#
+#cnf(i_0_442, plain, (gt(X1,tptp_minus_1)|~gt(X1,n4))).
+#
+#cnf(i_0_443, plain, (gt(X1,n0)|~gt(X1,n4))).
+#
+#cnf(i_0_485, plain, (~gt(n2,n5))).
+#
+#cnf(i_0_444, plain, (gt(X1,n2)|~gt(X1,n3))).
+#
+#cnf(i_0_445, plain, (gt(X1,n1)|~gt(X1,n3))).
+#
+#cnf(i_0_446, plain, (gt(X1,tptp_minus_1)|~gt(X1,n3))).
+#
+#cnf(i_0_486, plain, (~gt(n1,n5))).
+#
+#cnf(i_0_447, plain, (gt(X1,n0)|~gt(X1,n3))).
+#
+#cnf(i_0_448, plain, (gt(X1,n1)|~gt(X1,n2))).
+#
+#cnf(i_0_449, plain, (gt(X1,tptp_minus_1)|~gt(X1,n2))).
+#
+#cnf(i_0_487, plain, (~gt(tptp_minus_1,n5))).
+#
+#cnf(i_0_450, plain, (gt(X1,n0)|~gt(X1,n2))).
+#
+#cnf(i_0_454, plain, (gt(X1,n0)|~gt(X1,n1))).
+#
+#cnf(i_0_403, plain, (gt(n5,X1)|~gt(n4,X1))).
+#
+#cnf(i_0_488, plain, (~gt(n0,n5))).
+#
+#cnf(i_0_758, plain, (leq(X1,n5)|~gt(n4,X1))).
+#
+#cnf(i_0_404, plain, (gt(n5,X1)|~gt(n3,X1))).
+#
+#cnf(i_0_800, plain, (leq(X1,n5)|~gt(n3,X1))).
+#
+#cnf(i_0_489, plain, (~gt(n3,n4))).
+#
+#cnf(i_0_405, plain, (gt(n5,X1)|~gt(n2,X1))).
+#
+#cnf(i_0_840, plain, (leq(X1,n5)|~gt(n2,X1))).
+#
+#cnf(i_0_406, plain, (gt(n5,X1)|~gt(n1,X1))).
+#
+#cnf(i_0_490, plain, (~gt(n2,n4))).
+#
+#cnf(i_0_876, plain, (leq(X1,n5)|~gt(n1,X1))).
+#
+#cnf(i_0_407, plain, (gt(n5,X1)|~gt(tptp_minus_1,X1))).
+#
+#cnf(i_0_915, plain, (leq(X1,n5)|~gt(tptp_minus_1,X1))).
+#
+#cnf(i_0_491, plain, (~gt(n1,n4))).
+#
+#cnf(i_0_408, plain, (gt(n5,X1)|~gt(n0,X1))).
+#
+#cnf(i_0_952, plain, (leq(X1,n5)|~gt(n0,X1))).
+#
+#cnf(i_0_409, plain, (gt(n4,X1)|~gt(n3,X1))).
+#
+#cnf(i_0_492, plain, (~gt(tptp_minus_1,n4))).
+#
+#cnf(i_0_987, plain, (leq(X1,n4)|~gt(n3,X1))).
+##
+#cnf(i_0_410, plain, (gt(n4,X1)|~gt(n2,X1))).
+#
+#cnf(i_0_493, plain, (~gt(n0,n4))).
+#
+#cnf(i_0_1029, plain, (leq(X1,n4)|~gt(n2,X1))).
+##
+#cnf(i_0_411, plain, (gt(n4,X1)|~gt(n1,X1))).
+#
+#cnf(i_0_494, plain, (~gt(n2,n3))).
+#
+#cnf(i_0_1071, plain, (leq(X1,n4)|~gt(n1,X1))).
+##
+#cnf(i_0_412, plain, (gt(n4,X1)|~gt(tptp_minus_1,X1))).
+#
+#cnf(i_0_495, plain, (~gt(n1,n3))).
+#
+#cnf(i_0_1112, plain, (leq(X1,n4)|~gt(tptp_minus_1,X1))).
+##
+#cnf(i_0_413, plain, (gt(n4,X1)|~gt(n0,X1))).
+#
+#cnf(i_0_496, plain, (~gt(tptp_minus_1,n3))).
+#
+#cnf(i_0_1151, plain, (leq(X1,n4)|~gt(n0,X1))).
+##
+#cnf(i_0_414, plain, (gt(n3,X1)|~gt(n2,X1))).
+#
+#cnf(i_0_497, plain, (~gt(n0,n3))).
+#
+#cnf(i_0_1191, plain, (leq(X1,n3)|~gt(n2,X1))).
+###
+#cnf(i_0_498, plain, (~gt(n1,n2))).
+#
+#cnf(i_0_415, plain, (gt(n3,X1)|~gt(n1,X1))).
+#
+#cnf(i_0_1239, plain, (leq(X1,n3)|~gt(n1,X1))).
+##
+#cnf(i_0_499, plain, (~gt(tptp_minus_1,n2))).
+##
+#cnf(i_0_416, plain, (gt(n3,X1)|~gt(tptp_minus_1,X1))).
+#
+#cnf(i_0_1282, plain, (leq(X1,n3)|~gt(tptp_minus_1,X1))).
+#
+#cnf(i_0_500, plain, (~gt(n0,n2))).
+###
+#cnf(i_0_417, plain, (gt(n3,X1)|~gt(n0,X1))).
+#
+#cnf(i_0_503, plain, (~gt(n0,n1))).
+#
+#cnf(i_0_1323, plain, (leq(X1,n3)|~gt(n0,X1))).
+####
+#cnf(i_0_418, plain, (gt(n2,X1)|~gt(n1,X1))).
+#
+#cnf(i_0_1366, plain, (leq(X1,n2)|~gt(n1,X1))).
+#####
+#cnf(i_0_419, plain, (gt(n2,X1)|~gt(tptp_minus_1,X1))).
+##
+#cnf(i_0_1408, plain, (leq(X1,n2)|~gt(tptp_minus_1,X1))).
+#####
+#cnf(i_0_420, plain, (gt(n2,X1)|~gt(n0,X1))).
+#
+#cnf(i_0_1447, plain, (leq(X1,n2)|~gt(n0,X1))).
+######
+#cnf(i_0_423, plain, (gt(n1,X1)|~gt(n0,X1))).
+#
+#cnf(i_0_1488, plain, (leq(X1,n1)|~gt(n0,X1))).
+########
+#cnf(i_0_1511, plain, (leq(X1,n1)|~leq(X1,tptp_minus_1))).
+#
+#cnf(i_0_453, plain, (gt(X1,tptp_minus_1)|~gt(X1,n1))).
+##
+#cnf(i_0_1542, plain, (leq(tptp_minus_1,X1)|~gt(X1,n1))).
+#
+#cnf(i_0_456, plain, (gt(X1,tptp_minus_1)|~gt(X1,n0))).
+#
+#cnf(i_0_1603, plain, (leq(tptp_minus_1,X1)|~gt(X1,n0))).
+##
+#cnf(i_0_894, plain, (leq(X1,n5)|~leq(X1,n0))).
+#
+#cnf(i_0_966, plain, (leq(X1,n5)|~leq(X1,tptp_minus_1))).
+#
+#cnf(i_0_1091, plain, (leq(X1,n4)|~leq(X1,n0))).
+##
+#cnf(i_0_1170, plain, (leq(X1,n4)|~leq(X1,tptp_minus_1))).
+#
+#cnf(i_0_1258, plain, (leq(X1,n3)|~leq(X1,n0))).
+#
+#cnf(i_0_1345, plain, (leq(X1,n3)|~leq(X1,tptp_minus_1))).
+##
+#cnf(i_0_1387, plain, (leq(X1,n2)|~leq(X1,n0))).
+#
+#cnf(i_0_1467, plain, (leq(X1,n2)|~leq(X1,tptp_minus_1))).
+#
+#cnf(i_0_1641, plain, (leq(tptp_minus_1,X1)|~leq(n1,X1))).
+##
+#cnf(i_0_571, plain, (n5=n4|~leq(n5,n4))).
+#
+#cnf(i_0_603, plain, (n5=n3|~leq(n5,n3))).
+#
+#cnf(i_0_636, plain, (n5=n2|~leq(n5,n2))).
+##
+#cnf(i_0_672, plain, (n5=n1|~leq(n5,n1))).
+#
+#cnf(i_0_711, plain, (n5=tptp_minus_1|~leq(n5,tptp_minus_1))).
+#
+#cnf(i_0_764, plain, (n5=n0|~leq(n5,n0))).
+##
+#cnf(i_0_818, plain, (n4=n3|~leq(n4,n3))).
+#
+#cnf(i_0_882, plain, (n4=n2|~leq(n4,n2))).
+#
+#cnf(i_0_929, plain, (n4=n1|~leq(n4,n1))).
+##
+#cnf(i_0_995, plain, (n4=tptp_minus_1|~leq(n4,tptp_minus_1))).
+#
+#cnf(i_0_1037, plain, (n4=n0|~leq(n4,n0))).
+#
+#cnf(i_0_1079, plain, (n3=n2|~leq(n3,n2))).
+##
+#cnf(i_0_1120, plain, (n3=n1|~leq(n3,n1))).
+#
+#cnf(i_0_1159, plain, (n3=tptp_minus_1|~leq(n3,tptp_minus_1))).
+#
+#cnf(i_0_1201, plain, (n3=n0|~leq(n3,n0))).
+##
+#cnf(i_0_1216, plain, (n2=n1|~leq(n2,n1))).
+#
+#cnf(i_0_1260, plain, (n2=tptp_minus_1|~leq(n2,tptp_minus_1))).
+#
+#cnf(i_0_1300, plain, (n2=n0|~leq(n2,n0))).
+###
+#cnf(i_0_1679, plain, (n5=n4|~leq(n5,n0))).
+#
+#cnf(i_0_1680, plain, (n5=n4|~leq(n5,tptp_minus_1))).
+#
+#cnf(i_0_554, plain, (~leq(n5,n0))).
+#
+#cnf(i_0_1683, plain, (n5=n3|~leq(n5,tptp_minus_1))).
+##
+#cnf(i_0_1687, plain, (n5=n2|~leq(n5,tptp_minus_1))).
+#
+#cnf(i_0_576, plain, (~leq(n5,tptp_minus_1))).
+###
+#cnf(i_0_1698, plain, (n4=n3|~leq(n4,tptp_minus_1))).
+#
+#cnf(i_0_608, plain, (~leq(n4,n0))).
+##
+#cnf(i_0_1702, plain, (n4=n2|~leq(n4,tptp_minus_1))).
+##
+#cnf(i_0_629, plain, (~leq(n4,tptp_minus_1))).
+##
+#cnf(i_0_1713, plain, (n3=n2|~leq(n3,tptp_minus_1))).
+#
+#cnf(i_0_1714, plain, (n3=n2|~leq(n3,n0))).
+#
+#cnf(i_0_653, plain, (~leq(n3,n0))).
+##
+#cnf(i_0_1724, plain, (n2=n1|~leq(n2,n0))).
+#
+#cnf(i_0_511, plain, (X1=X2|~leq(X1,X2)|~gt(X1,X2))).
+#####
+#cnf(i_0_680, plain, (~leq(n3,tptp_minus_1))).
+####
+#cnf(i_0_691, plain, (~leq(n2,n0))).
+####
+#cnf(i_0_719, plain, (~leq(n2,tptp_minus_1))).
+####
+#cnf(i_0_732, plain, (~leq(n1,tptp_minus_1))).
+##############
+#cnf(i_0_465, plain, (gt(plus(n1,n5),n4))).
+###
+#cnf(i_0_474, plain, (gt(plus(n1,n5),n3))).
+##
+#cnf(i_0_543, plain, (gt(plus(n1,n5),n2))).
+###
+#cnf(i_0_552, plain, (gt(plus(n1,n5),n1))).
+###
+#cnf(i_0_561, plain, (gt(plus(n1,n5),tptp_minus_1))).
+##
+#cnf(i_0_573, plain, (gt(plus(n1,n5),n0))).
+###
+#cnf(i_0_583, plain, (gt(plus(n1,n4),n3))).
+###
+#cnf(i_0_593, plain, (gt(plus(n1,n4),n2))).
+##
+#cnf(i_0_606, plain, (gt(plus(n1,n4),n1))).
+###
+#cnf(i_0_616, plain, (gt(plus(n1,n4),tptp_minus_1))).
+###
+#cnf(i_0_626, plain, (gt(plus(n1,n4),n0))).
+##
+#cnf(i_0_640, plain, (gt(plus(n1,n3),n2))).
+###
+#cnf(i_0_651, plain, (gt(plus(n1,n3),n1))).
+###
+#cnf(i_0_662, plain, (gt(plus(n1,n3),tptp_minus_1))).
+##
+#cnf(i_0_677, plain, (gt(plus(n1,n3),n0))).
+###
+#cnf(i_0_689, plain, (gt(plus(n1,n2),n1))).
+###
+#cnf(i_0_701, plain, (gt(plus(n1,n2),tptp_minus_1))).
+##
+#cnf(i_0_716, plain, (gt(plus(n1,n2),n0))).
+###
+#cnf(i_0_729, plain, (gt(plus(n1,n1),n0))).
+###
+#cnf(i_0_767, plain, (leq(minus(n4,n1),n5))).
+#
+#cnf(i_0_805, plain, (leq(minus(n3,n1),n5))).
+#
+#cnf(i_0_845, plain, (leq(minus(n2,n1),n5))).
+##
+#cnf(i_0_920, plain, (leq(minus(tptp_minus_1,n1),n5))).
+#
+#cnf(i_0_997, plain, (leq(minus(n3,n1),n4))).
+#
+#cnf(i_0_1040, plain, (leq(minus(n2,n1),n4))).
+##
+#cnf(i_0_1123, plain, (leq(minus(tptp_minus_1,n1),n4))).
+#
+#cnf(i_0_1204, plain, (leq(minus(n2,n1),n3))).
+#
+#cnf(i_0_1291, plain, (leq(minus(tptp_minus_1,n1),n3))).
+##
+#cnf(i_0_1419, plain, (leq(minus(tptp_minus_1,n1),n2))).
+#
+#cnf(i_0_1512, plain, (leq(minus(tptp_minus_1,n1),n1))).
+#
+#cnf(i_0_1569, plain, (leq(tptp_minus_1,plus(n1,n1)))).
+###
+#cnf(i_0_1819, plain, (leq(n4,plus(n1,n5)))).
+########
+#cnf(i_0_1831, plain, (leq(n3,plus(n1,n5)))).
+#######
+#cnf(i_0_1842, plain, (leq(n2,plus(n1,n5)))).
+#####
+#cnf(i_0_1852, plain, (leq(n1,plus(n1,n5)))).
+###
+#cnf(i_0_1857, plain, (leq(tptp_minus_1,plus(n1,n5)))).
+##
+#cnf(i_0_1868, plain, (leq(n0,plus(n1,n5)))).
+###
+#cnf(i_0_1876, plain, (leq(n3,plus(n1,n4)))).
+#######
+#cnf(i_0_1887, plain, (leq(n2,plus(n1,n4)))).
+#####
+#cnf(i_0_1897, plain, (leq(n1,plus(n1,n4)))).
+###
+#cnf(i_0_1902, plain, (leq(tptp_minus_1,plus(n1,n4)))).
+##
+#cnf(i_0_1913, plain, (leq(n0,plus(n1,n4)))).
+###
+#cnf(i_0_1921, plain, (leq(n2,plus(n1,n3)))).
+#####
+#cnf(i_0_1931, plain, (leq(n1,plus(n1,n3)))).
+###
+#cnf(i_0_1936, plain, (leq(tptp_minus_1,plus(n1,n3)))).
+###
+#cnf(i_0_1947, plain, (leq(n0,plus(n1,n3)))).
+##
+#cnf(i_0_1955, plain, (leq(n1,plus(n1,n2)))).
+###
+#cnf(i_0_1960, plain, (leq(tptp_minus_1,plus(n1,n2)))).
+###
+#cnf(i_0_1971, plain, (leq(n0,plus(n1,n2)))).
+############
+#cnf(i_0_1809, plain, (X1=X2|~leq(X1,X2)|~leq(X2,X1))).
+#########
+#cnf(i_0_426, plain, (gt(X1,X2)|~gt(minus(X1,n1),X2))).
+#
+#cnf(i_0_2055, plain, (gt(n0,X1)|~gt(tptp_minus_1,X1))).
+###
+#cnf(i_0_2066, plain, (gt(n0,minus(tptp_minus_1,n1)))).
+#
+#cnf(i_0_451, plain, (gt(X1,X2)|~gt(X1,plus(n1,X2)))).
+###
+#cnf(i_0_452, plain, (gt(X1,X2)|~gt(X1,plus(X2,n1)))).
+###########################
+#cnf(i_0_5, plain, (leq(X1,X3)|~leq(X2,X3)|~leq(X1,X2))).
+######
+#cnf(i_0_2230, plain, (leq(X1,pv1341)|~leq(X1,tptp_float_0_001))).
+##
+#cnf(i_0_2244, plain, (leq(X1,n5)|~leq(X1,n4))).
+#
+#cnf(i_0_2246, plain, (leq(X1,n5)|~leq(X1,n3))).
+#
+#cnf(i_0_2247, plain, (leq(X1,n4)|~leq(X1,n3))).
+##
+#cnf(i_0_2250, plain, (leq(X1,n5)|~leq(X1,n2))).
+#
+#cnf(i_0_2251, plain, (leq(X1,n4)|~leq(X1,n2))).
+#
+#cnf(i_0_2252, plain, (leq(X1,n3)|~leq(X1,n2))).
+##
+#cnf(i_0_2256, plain, (leq(X1,loopcounter)|~leq(X1,n1))).
+#
+#cnf(i_0_2257, plain, (leq(X1,n5)|~leq(X1,n1))).
+#
+#cnf(i_0_2258, plain, (leq(X1,n4)|~leq(X1,n1))).
+##
+#cnf(i_0_2259, plain, (leq(X1,n3)|~leq(X1,n1))).
+#
+#cnf(i_0_2260, plain, (leq(X1,n2)|~leq(X1,n1))).
+#######
+#cnf(i_0_2279, plain, (leq(X1,loopcounter)|~leq(X1,n0))).
+########
+#cnf(i_0_2329, plain, (n5=n4|~leq(n5,n3))).
+#
+#cnf(i_0_2346, plain, (n5=n4|~leq(n5,n2))).
+#
+#cnf(i_0_2355, plain, (n5=n3|~leq(n5,n2))).
+##
+#cnf(i_0_2356, plain, (n4=n3|~leq(n4,n2))).
+#
+#cnf(i_0_2381, plain, (n5=n4|~leq(n5,n1))).
+#
+#cnf(i_0_2390, plain, (n5=n3|~leq(n5,n1))).
+##
+#cnf(i_0_2391, plain, (n4=n3|~leq(n4,n1))).
+#
+#cnf(i_0_2400, plain, (n5=n2|~leq(n5,n1))).
+#
+#cnf(i_0_2401, plain, (n4=n2|~leq(n4,n1))).
+##
+#cnf(i_0_2402, plain, (n3=n2|~leq(n3,n1))).
+##########################
+#cnf(i_0_2224, plain, (leq(X1,X2)|~leq(plus(n1,X1),X2))).
+###
+#cnf(i_0_2225, plain, (leq(X1,X2)|~leq(plus(X1,n1),X2))).
+###
+#cnf(i_0_2243, plain, (leq(X1,X2)|~leq(X1,minus(X2,n1)))).
+####
+#cnf(i_0_2307, plain, (leq(n0,pv1341)|~leq(n1,tptp_float_0_001))).
+####
+#cnf(i_0_399, plain, (leq(X1,X2)|~gt(X3,X1)|~gt(X2,X3))).
+##########################
+#cnf(i_0_2625, plain, (leq(n4,X1)|~gt(X1,n5))).
+##
+#cnf(i_0_2626, plain, (leq(n3,X1)|~gt(X1,n5))).
+#
+#cnf(i_0_2627, plain, (leq(n2,X1)|~gt(X1,n5))).
+#
+#cnf(i_0_2628, plain, (leq(n1,X1)|~gt(X1,n5))).
+##
+#cnf(i_0_2629, plain, (leq(tptp_minus_1,X1)|~gt(X1,n5))).
+#
+#cnf(i_0_2630, plain, (leq(n0,X1)|~gt(X1,n5))).
+#
+#cnf(i_0_2637, plain, (leq(n3,X1)|~gt(X1,n4))).
+##
+#cnf(i_0_2638, plain, (leq(n2,X1)|~gt(X1,n4))).
+#
+#cnf(i_0_2639, plain, (leq(n1,X1)|~gt(X1,n4))).
+#
+#cnf(i_0_2640, plain, (leq(tptp_minus_1,X1)|~gt(X1,n4))).
+##
+#cnf(i_0_2641, plain, (leq(n0,X1)|~gt(X1,n4))).
+#
+#cnf(i_0_2647, plain, (leq(n2,X1)|~gt(X1,n3))).
+#
+#cnf(i_0_2648, plain, (leq(n1,X1)|~gt(X1,n3))).
+##
+#cnf(i_0_2649, plain, (leq(tptp_minus_1,X1)|~gt(X1,n3))).
+#
+#cnf(i_0_2650, plain, (leq(n0,X1)|~gt(X1,n3))).
+#
+#cnf(i_0_2655, plain, (leq(n1,X1)|~gt(X1,n2))).
+##
+#cnf(i_0_2656, plain, (leq(tptp_minus_1,X1)|~gt(X1,n2))).
+#
+#cnf(i_0_2657, plain, (leq(n0,X1)|~gt(X1,n2))).
+###
+#cnf(i_0_2683, plain, (leq(n0,X1)|~gt(X1,n1))).
+##
+#cnf(i_0_2615, plain, (leq(X1,X2)|~gt(minus(X2,n1),X1))).
+###
+#cnf(i_0_3286, plain, (leq(X1,n0)|~gt(tptp_minus_1,X1))).
+#
+#cnf(i_0_2680, plain, (leq(X1,X2)|~gt(X2,plus(n1,X1)))).
+###
+#cnf(i_0_2681, plain, (leq(X1,X2)|~gt(X2,plus(X1,n1)))).
+#######################################
+#cnf(i_0_12, plain, (leq(X2,minus(X1,n1))|~gt(X1,X2))).
+###
+#cnf(i_0_1545, plain, (~gt(tptp_minus_1,n1))).
+####
+#cnf(i_0_1606, plain, (~gt(tptp_minus_1,n0))).
+###
+#cnf(i_0_15, plain, (leq(X1,plus(X2,n1))|~leq(X1,X2))).
+###
+#cnf(i_0_17, plain, (gt(plus(X2,n1),X1)|~leq(X1,X2))).
+####
+#cnf(i_0_383, plain, (gt(X1,minus(X2,n1))|~leq(X2,X1))).
+########
+#cnf(i_0_389, plain, (gt(plus(n1,X1),X2)|~leq(X2,X1))).
+####
+#cnf(i_0_421, plain, (gt(plus(n1,X1),X2)|~gt(X1,X2))).
+#######
+#cnf(i_0_422, plain, (gt(plus(X1,n1),X2)|~gt(X1,X2))).
+#####
+#cnf(i_0_458, plain, (gt(X1,minus(X2,n1))|~gt(X1,X2))).
+###########
+#cnf(i_0_2210, plain, (leq(minus(X1,n1),X2)|~leq(X1,X2))).
+######
+#cnf(i_0_2298, plain, (leq(X1,plus(n1,X2))|~leq(X1,X2))).
+#
+#cnf(i_0_501, plain, (~gt(X1,plus(n1,X1)))).
+#########
+#cnf(i_0_2609, plain, (leq(X1,plus(n1,X2))|~gt(X2,X1))).
+###
+#cnf(i_0_502, plain, (~gt(X1,plus(X1,n1)))).
+#
+#cnf(i_0_2610, plain, (leq(X1,plus(X2,n1))|~gt(X2,X1))).
+##
+#cnf(i_0_2689, plain, (leq(minus(X1,n1),X2)|~gt(X2,X1))).
+#################
+#cnf(i_0_3460, plain, (~leq(plus(X1,n1),X1))).
+############
+#cnf(i_0_3501, plain, (~leq(X1,minus(X1,n1)))).
+##
+#cnf(i_0_122, plain, (a_select3(tptp_update3(X1,X2,X3,X4),X2,X3)=X4)).
+#
+#cnf(i_0_240, plain, (gt(X1,minus(minus(X1,n1),n1)))).
+##
+#cnf(i_0_246, plain, (gt(plus(n1,plus(X1,n1)),X1))).
+####
+#cnf(i_0_363, plain, (gt(plus(n1,plus(n1,X1)),X1))).
+#######
+#cnf(i_0_3558, plain, (~leq(plus(n1,X1),X1))).
+###
+#cnf(i_0_2492, plain, (leq(X1,plus(n1,plus(n1,X1))))).
+###
+#cnf(i_0_2523, plain, (leq(X1,plus(n1,plus(X1,n1))))).
+###
+#cnf(i_0_2534, plain, (leq(minus(minus(X1,n1),n1),X1))).
+#########
+#cnf(i_0_3932, plain, (gt(plus(n1,X1),minus(X1,n1)))).
+#
+#cnf(i_0_3933, plain, (gt(plus(X1,n1),minus(X1,n1)))).
+#
+#cnf(i_0_3717, plain, (~gt(minus(X1,n1),X1))).
+######
+#cnf(i_0_4092, plain, (leq(minus(X1,n1),plus(n1,X1)))).
+####
+#cnf(i_0_4114, plain, (leq(minus(X1,n1),plus(X1,n1)))).
+#######
+#cnf(i_0_19, plain, (leq(n0,uniform_int_rnd(X2,X1))|~leq(n0,X1))).
+#
+#cnf(i_0_2612, plain, (leq(X1,n1)|~leq(X2,n0)|~gt(X2,X1))).
+###########
+#cnf(i_0_2614, plain, (leq(X1,n0)|~leq(X2,tptp_minus_1)|~gt(X2,X1))).
+#
+#cnf(i_0_2690, plain, (leq(tptp_minus_1,X1)|~leq(n0,X2)|~gt(X1,X2))).
+###
+#cnf(i_0_2693, plain, (leq(n0,X1)|~leq(n1,X2)|~gt(X1,X2))).
+#
+#cnf(i_0_200, plain, (leq(n0,s_best7)|~gt(loopcounter,n0))).
+#
+#cnf(i_0_4532, plain, (leq(n0,s_best7))).
+##
+#cnf(i_0_4533, plain, (leq(X1,s_best7)|~leq(X1,n0))).
+#
+#cnf(i_0_199, plain, (leq(n0,s_sworst7)|~gt(loopcounter,n0))).
+#
+#cnf(i_0_4551, plain, (leq(n0,s_sworst7))).
+##
+#cnf(i_0_4552, plain, (leq(X1,s_sworst7)|~leq(X1,n0))).
+#
+#cnf(i_0_198, plain, (~gt(loopcounter,n0))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(gauss_array_0011, conjecture, ((((((((((((((leq(tptp_float_0_001,pv1341)&leq(n1,loopcounter))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_best7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_sworst7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_worst7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_best7,n3)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_sworst7,n3)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_worst7,n3)))&(gt(loopcounter,n0)=>leq(n0,s_best7)))&(gt(loopcounter,n0)=>leq(n0,s_sworst7)))&(gt(loopcounter,n0)=>leq(n0,s_worst7)))&(gt(loopcounter,n0)=>leq(s_best7,n3)))&(gt(loopcounter,n0)=>leq(s_sworst7,n3)))&(gt(loopcounter,n0)=>leq(s_worst7,n3)))=>leq(n0,s_worst7)), file('./p/SWV141+1.tptp', gauss_array_0011)).
+fof(leq_succ_gt, axiom, ![X1, X2]:(leq(succ(X1),X2)=>gt(X2,X1)), file('./p/SWV141+1.tptp', leq_succ_gt)).
+fof(succ_plus_1_r, axiom, ![X1]:plus(X1,n1)=succ(X1), file('./p/SWV141+1.tptp', succ_plus_1_r)).
+fof(successor_1, axiom, succ(n0)=n1, file('./p/SWV141+1.tptp', successor_1)).
+fof(c_0_4, plain, (epred2_0<=>(((((((((((((leq(tptp_float_0_001,pv1341)&leq(n1,loopcounter))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_best7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_sworst7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_worst7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_best7,n3)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_sworst7,n3)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_worst7,n3)))&(gt(loopcounter,n0)=>leq(n0,s_best7)))&(gt(loopcounter,n0)=>leq(n0,s_sworst7)))&(gt(loopcounter,n0)=>leq(n0,s_worst7)))&(gt(loopcounter,n0)=>leq(s_best7,n3)))&(gt(loopcounter,n0)=>leq(s_sworst7,n3)))&(gt(loopcounter,n0)=>leq(s_worst7,n3)))), introduced(definition)).
+fof(c_0_5, plain, (epred2_0=>(((((((((((((leq(tptp_float_0_001,pv1341)&leq(n1,loopcounter))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_best7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_sworst7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(n0,s_worst7)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_best7,n3)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_sworst7,n3)))&(~(leq(tptp_float_0_001,pv1341))=>leq(s_worst7,n3)))&(gt(loopcounter,n0)=>leq(n0,s_best7)))&(gt(loopcounter,n0)=>leq(n0,s_sworst7)))&(gt(loopcounter,n0)=>leq(n0,s_worst7)))&(gt(loopcounter,n0)=>leq(s_best7,n3)))&(gt(loopcounter,n0)=>leq(s_sworst7,n3)))&(gt(loopcounter,n0)=>leq(s_worst7,n3)))), inference(split_equiv,[status(thm)],[c_0_4])).
+fof(c_0_6, negated_conjecture, ~((epred2_0=>leq(n0,s_worst7))), inference(apply_def,[status(thm)],[inference(assume_negation,[status(cth)],[gauss_array_0011]), c_0_4])).
+fof(c_0_7, plain, ![X150, X151]:(~leq(succ(X150),X151)|gt(X151,X150)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[leq_succ_gt])])).
+fof(c_0_8, plain, ![X135]:plus(X135,n1)=succ(X135), inference(variable_rename,[status(thm)],[succ_plus_1_r])).
+fof(c_0_9, plain, ((((((((((((((leq(tptp_float_0_001,pv1341)|~epred2_0)&(leq(n1,loopcounter)|~epred2_0))&(leq(tptp_float_0_001,pv1341)|leq(n0,s_best7)|~epred2_0))&(leq(tptp_float_0_001,pv1341)|leq(n0,s_sworst7)|~epred2_0))&(leq(tptp_float_0_001,pv1341)|leq(n0,s_worst7)|~epred2_0))&(leq(tptp_float_0_001,pv1341)|leq(s_best7,n3)|~epred2_0))&(leq(tptp_float_0_001,pv1341)|leq(s_sworst7,n3)|~epred2_0))&(leq(tptp_float_0_001,pv1341)|leq(s_worst7,n3)|~epred2_0))&(~gt(loopcounter,n0)|leq(n0,s_best7)|~epred2_0))&(~gt(loopcounter,n0)|leq(n0,s_sworst7)|~epred2_0))&(~gt(loopcounter,n0)|leq(n0,s_worst7)|~epred2_0))&(~gt(loopcounter,n0)|leq(s_best7,n3)|~epred2_0))&(~gt(loopcounter,n0)|leq(s_sworst7,n3)|~epred2_0))&(~gt(loopcounter,n0)|leq(s_worst7,n3)|~epred2_0)), inference(distribute,[status(thm)],[inference(fof_nnf,[status(thm)],[inference(fof_simplification,[status(thm)],[c_0_5])])])).
+fof(c_0_10, negated_conjecture, (epred2_0&~leq(n0,s_worst7)), inference(fof_nnf,[status(thm)],[c_0_6])).
+cnf(c_0_11, plain, (gt(X2,X1)|~leq(succ(X1),X2)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_12, plain, (plus(X1,n1)=succ(X1)), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_13, plain, (succ(n0)=n1), inference(split_conjunct,[status(thm)],[successor_1])).
+cnf(c_0_14, plain, (leq(n0,s_worst7)|~gt(loopcounter,n0)|~epred2_0), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_15, negated_conjecture, (epred2_0), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_16, negated_conjecture, (~leq(n0,s_worst7)), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_17, plain, (gt(X2,X1)|~leq(plus(X1,n1),X2)), inference(rw,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_18, plain, (plus(n0,n1)=n1), inference(rw,[status(thm)],[c_0_13, c_0_12])).
+cnf(c_0_19, plain, (leq(n1,loopcounter)|~epred2_0), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_20, plain, (~gt(loopcounter,n0)), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_14, c_0_15])]), c_0_16])).
+cnf(c_0_21, plain, (gt(X1,n0)|~leq(n1,X1)), inference(pm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_22, plain, (leq(n1,loopcounter)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_19, c_0_15])])).
+cnf(c_0_23, plain, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_20, c_0_21]), c_0_22])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 24
+# Proof object clause steps            : 13
+# Proof object formula steps           : 11
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 7
+# Proof object initial formulas used   : 4
+# Proof object generating inferences   : 2
+# Proof object simplifying inferences  : 9
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 85
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 208
+# Removed in clause preprocessing      : 2
+# Initial clauses in saturation        : 206
+# Processed clauses                    : 882
+# ...of these trivial                  : 87
+# ...subsumed                          : 412
+# ...remaining for further processing  : 383
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 7
+# Generated clauses                    : 4362
+# ...of the previous two non-trivial   : 2849
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 4358
+# Factorizations                       : 4
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 376
+#    Positive orientable unit clauses  : 129
+#    Positive unorientable unit clauses: 1
+#    Negative unit clauses             : 42
+#    Non-unit-clauses                  : 204
+# Current number of unprocessed clauses: 2164
+# ...number of literals in the above   : 5397
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 9
+# Clause-clause subsumption calls (NU) : 9059
+# Rec. Clause-clause subsumption calls : 8700
+# Non-unit clause-clause subsumptions  : 167
+# Unit Clause-clause subsumption calls : 1585
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 15
+# BW rewrite match successes           : 12
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 29771

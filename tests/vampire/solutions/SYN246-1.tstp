@@ -1,0 +1,33 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SYN246-1
+% SZS output start Proof for SYN246-1
+fof(f1739,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f1738,f32])).
+fof(f32,axiom,(
+  k0(b)),
+  file('./p/SYN246-1.tptp',unknown)).
+fof(f1738,plain,(
+  ~k0(b)),
+  inference(subsumption_resolution,[],[f1737,f24])).
+fof(f24,axiom,(
+  l0(c)),
+  file('./p/SYN246-1.tptp',unknown)).
+fof(f1737,plain,(
+  ~l0(c) | ~k0(b)),
+  inference(resolution,[],[f59,f369])).
+fof(f369,axiom,(
+  ~m1(c,b,c)),
+  file('./p/SYN246-1.tptp',unknown)).
+fof(f59,axiom,(
+  ( ! [X2,X3] : (m1(X2,X3,X2) | ~l0(X2) | ~k0(X3)) )),
+  file('./p/SYN246-1.tptp',unknown)).
+% SZS output end Proof for SYN246-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5884
+% Time elapsed: 0.014 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,30 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SET296-6
+% SZS output start Proof for SET296-6
+fof(f181,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f176])).
+fof(f176,plain,(
+  domain_of(domain_of(flip(cross_product(x,universal_class)))) != domain_of(domain_of(flip(cross_product(x,universal_class))))),
+  inference(definition_unfolding,[],[f113,f38,f115])).
+fof(f115,plain,(
+  ( ! [X4] : (range_of(X4) = domain_of(domain_of(flip(cross_product(X4,universal_class))))) )),
+  inference(definition_unfolding,[],[f39,f38])).
+fof(f39,axiom,(
+  ( ! [X4] : (domain_of(inverse(X4)) = range_of(X4)) )),
+  file('./p/SET296-6.tptp',unknown)).
+fof(f38,axiom,(
+  ( ! [X1] : (domain_of(flip(cross_product(X1,universal_class))) = inverse(X1)) )),
+  file('./p/SET296-6.tptp',unknown)).
+fof(f113,axiom,(
+  domain_of(inverse(x)) != range_of(x)),
+  file('./p/SET296-6.tptp',unknown)).
+% SZS output end Proof for SET296-6
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.006 s
+% ------------------------------
+% ------------------------------

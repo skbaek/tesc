@@ -1,0 +1,684 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP223-1
+% SZS output start Proof for GRP223-1
+fof(f600,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f46,f51,f56,f61,f66,f71,f76,f77,f78,f79,f80,f81,f86,f87,f88,f89,f90,f91,f96,f97,f98,f99,f100,f101,f106,f107,f108,f109,f110,f111,f121,f136,f145,f177,f215,f241,f247,f274,f298,f400,f443,f454,f485,f509,f596])).
+fof(f596,plain,(
+  ~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_14 | ~spl0_16 | ~spl0_18),
+  inference(avatar_contradiction_clause,[],[f595])).
+fof(f595,plain,(
+  $false | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_14 | ~spl0_16 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f594,f530])).
+fof(f530,plain,(
+  ( ! [X0] : (multiply(sk_c4,X0) = X0) ) | (~spl0_2 | ~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f529,f527])).
+fof(f527,plain,(
+  ( ! [X0] : (multiply(sk_c4,multiply(sk_c5,X0)) = X0) ) | (~spl0_2 | ~spl0_18)),
+  inference(forward_demodulation,[],[f526,f1])).
+fof(f1,axiom,(
+  ( ! [X0] : (multiply(identity,X0) = X0) )),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f526,plain,(
+  ( ! [X0] : (multiply(identity,X0) = multiply(sk_c4,multiply(sk_c5,X0))) ) | (~spl0_2 | ~spl0_18)),
+  inference(forward_demodulation,[],[f363,f143])).
+fof(f143,plain,(
+  identity = sk_c9 | ~spl0_18),
+  inference(avatar_component_clause,[],[f142])).
+fof(f142,plain,(
+  spl0_18 <=> identity = sk_c9),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_18])])).
+fof(f363,plain,(
+  ( ! [X0] : (multiply(sk_c9,X0) = multiply(sk_c4,multiply(sk_c5,X0))) ) | ~spl0_2),
+  inference(superposition,[],[f3,f45])).
+fof(f45,plain,(
+  sk_c9 = multiply(sk_c4,sk_c5) | ~spl0_2),
+  inference(avatar_component_clause,[],[f43])).
+fof(f43,plain,(
+  spl0_2 <=> sk_c9 = multiply(sk_c4,sk_c5)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (multiply(multiply(X0,X1),X2) = multiply(X0,multiply(X1,X2))) )),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f529,plain,(
+  ( ! [X0] : (multiply(sk_c5,X0) = X0) ) | (~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f528,f1])).
+fof(f528,plain,(
+  ( ! [X0] : (multiply(identity,X0) = multiply(sk_c5,multiply(identity,X0))) ) | (~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f407,f143])).
+fof(f407,plain,(
+  ( ! [X0] : (multiply(sk_c9,X0) = multiply(sk_c5,multiply(sk_c9,X0))) ) | (~spl0_4 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f366])).
+fof(f366,plain,(
+  ( ! [X0] : (multiply(sk_c9,X0) = multiply(sk_c5,multiply(sk_c8,X0))) ) | ~spl0_4),
+  inference(superposition,[],[f3,f55])).
+fof(f55,plain,(
+  sk_c9 = multiply(sk_c5,sk_c8) | ~spl0_4),
+  inference(avatar_component_clause,[],[f53])).
+fof(f53,plain,(
+  spl0_4 <=> sk_c9 = multiply(sk_c5,sk_c8)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_4])])).
+fof(f134,plain,(
+  sk_c9 = sk_c8 | ~spl0_16),
+  inference(avatar_component_clause,[],[f133])).
+fof(f133,plain,(
+  spl0_16 <=> sk_c9 = sk_c8),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_16])])).
+fof(f594,plain,(
+  identity != multiply(sk_c4,identity) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_14 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f593,f553])).
+fof(f553,plain,(
+  identity = inverse(sk_c4) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f552,f50])).
+fof(f50,plain,(
+  sk_c5 = inverse(sk_c4) | ~spl0_3),
+  inference(avatar_component_clause,[],[f48])).
+fof(f48,plain,(
+  spl0_3 <=> sk_c5 = inverse(sk_c4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_3])])).
+fof(f552,plain,(
+  identity = sk_c5 | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f551,f495])).
+fof(f495,plain,(
+  identity = multiply(sk_c5,identity) | (~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f401])).
+fof(f401,plain,(
+  sk_c9 = multiply(sk_c5,sk_c9) | (~spl0_4 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f55])).
+fof(f551,plain,(
+  sk_c5 = multiply(sk_c5,identity) | (~spl0_2 | ~spl0_3 | ~spl0_18)),
+  inference(backward_demodulation,[],[f50,f492])).
+fof(f492,plain,(
+  sk_c5 = multiply(inverse(sk_c4),identity) | (~spl0_2 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f169])).
+fof(f169,plain,(
+  sk_c5 = multiply(inverse(sk_c4),sk_c9) | ~spl0_2),
+  inference(superposition,[],[f157,f45])).
+fof(f157,plain,(
+  ( ! [X6,X7] : (multiply(inverse(X6),multiply(X6,X7)) = X7) )),
+  inference(forward_demodulation,[],[f148,f1])).
+fof(f148,plain,(
+  ( ! [X6,X7] : (multiply(inverse(X6),multiply(X6,X7)) = multiply(identity,X7)) )),
+  inference(superposition,[],[f3,f2])).
+fof(f2,axiom,(
+  ( ! [X0] : (identity = multiply(inverse(X0),X0)) )),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f593,plain,(
+  identity != multiply(sk_c4,inverse(sk_c4)) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_14 | ~spl0_16 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f588,f1])).
+fof(f588,plain,(
+  identity != multiply(identity,identity) | identity != multiply(sk_c4,inverse(sk_c4)) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_14 | ~spl0_16 | ~spl0_18)),
+  inference(superposition,[],[f541,f553])).
+fof(f541,plain,(
+  ( ! [X6] : (identity != multiply(inverse(X6),identity) | identity != multiply(X6,inverse(X6))) ) | (~spl0_14 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f540,f143])).
+fof(f540,plain,(
+  ( ! [X6] : (identity != multiply(inverse(X6),identity) | sk_c9 != multiply(X6,inverse(X6))) ) | (~spl0_14 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f539,f143])).
+fof(f539,plain,(
+  ( ! [X6] : (sk_c9 != multiply(inverse(X6),identity) | sk_c9 != multiply(X6,inverse(X6))) ) | (~spl0_14 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f120,f491])).
+fof(f491,plain,(
+  identity = sk_c8 | (~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f134])).
+fof(f120,plain,(
+  ( ! [X6] : (sk_c9 != multiply(inverse(X6),sk_c8) | sk_c9 != multiply(X6,inverse(X6))) ) | ~spl0_14),
+  inference(avatar_component_clause,[],[f119])).
+fof(f119,plain,(
+  spl0_14 <=> ! [X6] : (sk_c9 != multiply(inverse(X6),sk_c8) | sk_c9 != multiply(X6,inverse(X6)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_14])])).
+fof(f509,plain,(
+  ~spl0_1 | spl0_15 | ~spl0_18),
+  inference(avatar_contradiction_clause,[],[f508])).
+fof(f508,plain,(
+  $false | (~spl0_1 | spl0_15 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f506,f490])).
+fof(f490,plain,(
+  identity != inverse(identity) | (spl0_15 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f131])).
+fof(f131,plain,(
+  sk_c9 != inverse(identity) | spl0_15),
+  inference(avatar_component_clause,[],[f129])).
+fof(f129,plain,(
+  spl0_15 <=> sk_c9 = inverse(identity)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_15])])).
+fof(f506,plain,(
+  identity = inverse(identity) | (~spl0_1 | ~spl0_18)),
+  inference(backward_demodulation,[],[f503,f486])).
+fof(f486,plain,(
+  identity = inverse(sk_c1) | (~spl0_1 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f41])).
+fof(f41,plain,(
+  inverse(sk_c1) = sk_c9 | ~spl0_1),
+  inference(avatar_component_clause,[],[f39])).
+fof(f39,plain,(
+  spl0_1 <=> inverse(sk_c1) = sk_c9),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f503,plain,(
+  identity = sk_c1 | (~spl0_1 | ~spl0_18)),
+  inference(forward_demodulation,[],[f499,f2])).
+fof(f499,plain,(
+  sk_c1 = multiply(inverse(identity),identity) | (~spl0_1 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f445])).
+fof(f445,plain,(
+  sk_c1 = multiply(inverse(sk_c9),identity) | ~spl0_1),
+  inference(superposition,[],[f157,f356])).
+fof(f356,plain,(
+  identity = multiply(sk_c9,sk_c1) | ~spl0_1),
+  inference(superposition,[],[f2,f41])).
+fof(f485,plain,(
+  spl0_18 | ~spl0_1 | ~spl0_8 | ~spl0_9 | ~spl0_10 | ~spl0_11 | ~spl0_16),
+  inference(avatar_split_clause,[],[f467,f133,f103,f93,f83,f73,f39,f142])).
+fof(f73,plain,(
+  spl0_8 <=> sk_c9 = multiply(sk_c1,sk_c8)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_8])])).
+fof(f83,plain,(
+  spl0_9 <=> sk_c8 = multiply(sk_c9,sk_c3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_9])])).
+fof(f93,plain,(
+  spl0_10 <=> sk_c3 = multiply(sk_c2,sk_c9)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_10])])).
+fof(f103,plain,(
+  spl0_11 <=> sk_c9 = inverse(sk_c2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_11])])).
+fof(f467,plain,(
+  identity = sk_c9 | (~spl0_1 | ~spl0_8 | ~spl0_9 | ~spl0_10 | ~spl0_11 | ~spl0_16)),
+  inference(backward_demodulation,[],[f462,f403])).
+fof(f403,plain,(
+  sk_c9 = multiply(sk_c1,sk_c9) | (~spl0_8 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f75])).
+fof(f75,plain,(
+  sk_c9 = multiply(sk_c1,sk_c8) | ~spl0_8),
+  inference(avatar_component_clause,[],[f73])).
+fof(f462,plain,(
+  identity = multiply(sk_c1,sk_c9) | (~spl0_1 | ~spl0_9 | ~spl0_10 | ~spl0_11 | ~spl0_16)),
+  inference(backward_demodulation,[],[f461,f415])).
+fof(f415,plain,(
+  identity = multiply(sk_c2,sk_c9) | (~spl0_9 | ~spl0_10 | ~spl0_16)),
+  inference(backward_demodulation,[],[f412,f95])).
+fof(f95,plain,(
+  sk_c3 = multiply(sk_c2,sk_c9) | ~spl0_10),
+  inference(avatar_component_clause,[],[f93])).
+fof(f412,plain,(
+  identity = sk_c3 | (~spl0_9 | ~spl0_16)),
+  inference(forward_demodulation,[],[f410,f2])).
+fof(f410,plain,(
+  sk_c3 = multiply(inverse(sk_c9),sk_c9) | (~spl0_9 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f380])).
+fof(f380,plain,(
+  sk_c3 = multiply(inverse(sk_c9),sk_c8) | ~spl0_9),
+  inference(superposition,[],[f157,f85])).
+fof(f85,plain,(
+  sk_c8 = multiply(sk_c9,sk_c3) | ~spl0_9),
+  inference(avatar_component_clause,[],[f83])).
+fof(f461,plain,(
+  sk_c1 = sk_c2 | (~spl0_1 | ~spl0_11)),
+  inference(forward_demodulation,[],[f459,f445])).
+fof(f459,plain,(
+  sk_c2 = multiply(inverse(sk_c9),identity) | ~spl0_11),
+  inference(superposition,[],[f157,f358])).
+fof(f358,plain,(
+  identity = multiply(sk_c9,sk_c2) | ~spl0_11),
+  inference(superposition,[],[f2,f105])).
+fof(f105,plain,(
+  sk_c9 = inverse(sk_c2) | ~spl0_11),
+  inference(avatar_component_clause,[],[f103])).
+fof(f454,plain,(
+  ~spl0_1 | ~spl0_8 | ~spl0_14 | ~spl0_16),
+  inference(avatar_contradiction_clause,[],[f453])).
+fof(f453,plain,(
+  $false | (~spl0_1 | ~spl0_8 | ~spl0_14 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f452,f403])).
+fof(f452,plain,(
+  sk_c9 != multiply(sk_c1,sk_c9) | (~spl0_1 | ~spl0_8 | ~spl0_14 | ~spl0_16)),
+  inference(forward_demodulation,[],[f451,f41])).
+fof(f451,plain,(
+  sk_c9 != multiply(sk_c1,inverse(sk_c1)) | (~spl0_1 | ~spl0_8 | ~spl0_14 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f448,f409])).
+fof(f409,plain,(
+  sk_c9 = multiply(sk_c9,sk_c9) | (~spl0_1 | ~spl0_8 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f375])).
+fof(f375,plain,(
+  sk_c8 = multiply(sk_c9,sk_c9) | (~spl0_1 | ~spl0_8)),
+  inference(forward_demodulation,[],[f373,f41])).
+fof(f373,plain,(
+  sk_c8 = multiply(inverse(sk_c1),sk_c9) | ~spl0_8),
+  inference(superposition,[],[f157,f75])).
+fof(f448,plain,(
+  sk_c9 != multiply(sk_c9,sk_c9) | sk_c9 != multiply(sk_c1,inverse(sk_c1)) | (~spl0_1 | ~spl0_14 | ~spl0_16)),
+  inference(superposition,[],[f444,f41])).
+fof(f444,plain,(
+  ( ! [X6] : (sk_c9 != multiply(inverse(X6),sk_c9) | sk_c9 != multiply(X6,inverse(X6))) ) | (~spl0_14 | ~spl0_16)),
+  inference(forward_demodulation,[],[f120,f134])).
+fof(f443,plain,(
+  ~spl0_9 | ~spl0_10 | ~spl0_11 | ~spl0_13 | ~spl0_16),
+  inference(avatar_contradiction_clause,[],[f442])).
+fof(f442,plain,(
+  $false | (~spl0_9 | ~spl0_10 | ~spl0_11 | ~spl0_13 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f441,f105])).
+fof(f441,plain,(
+  sk_c9 != inverse(sk_c2) | (~spl0_9 | ~spl0_10 | ~spl0_11 | ~spl0_13 | ~spl0_16)),
+  inference(subsumption_resolution,[],[f433,f414])).
+fof(f414,plain,(
+  sk_c9 = multiply(sk_c9,identity) | (~spl0_9 | ~spl0_10 | ~spl0_11 | ~spl0_16)),
+  inference(backward_demodulation,[],[f412,f396])).
+fof(f396,plain,(
+  sk_c9 = multiply(sk_c9,sk_c3) | (~spl0_10 | ~spl0_11)),
+  inference(forward_demodulation,[],[f394,f105])).
+fof(f394,plain,(
+  sk_c9 = multiply(inverse(sk_c2),sk_c3) | ~spl0_10),
+  inference(superposition,[],[f157,f95])).
+fof(f433,plain,(
+  sk_c9 != multiply(sk_c9,identity) | sk_c9 != inverse(sk_c2) | (~spl0_9 | ~spl0_10 | ~spl0_13 | ~spl0_16)),
+  inference(superposition,[],[f404,f415])).
+fof(f404,plain,(
+  ( ! [X5] : (sk_c9 != multiply(sk_c9,multiply(X5,sk_c9)) | sk_c9 != inverse(X5)) ) | (~spl0_13 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f117])).
+fof(f117,plain,(
+  ( ! [X5] : (sk_c9 != inverse(X5) | sk_c8 != multiply(sk_c9,multiply(X5,sk_c9))) ) | ~spl0_13),
+  inference(avatar_component_clause,[],[f116])).
+fof(f116,plain,(
+  spl0_13 <=> ! [X5] : (sk_c9 != inverse(X5) | sk_c8 != multiply(sk_c9,multiply(X5,sk_c9)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_13])])).
+fof(f400,plain,(
+  spl0_16 | ~spl0_9 | ~spl0_10 | ~spl0_11),
+  inference(avatar_split_clause,[],[f397,f103,f93,f83,f133])).
+fof(f397,plain,(
+  sk_c9 = sk_c8 | (~spl0_9 | ~spl0_10 | ~spl0_11)),
+  inference(backward_demodulation,[],[f396,f85])).
+fof(f298,plain,(
+  ~spl0_7 | ~spl0_13 | ~spl0_16 | ~spl0_18),
+  inference(avatar_contradiction_clause,[],[f297])).
+fof(f297,plain,(
+  $false | (~spl0_7 | ~spl0_13 | ~spl0_16 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f296,f262])).
+fof(f262,plain,(
+  identity != inverse(identity) | (~spl0_13 | ~spl0_16 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f258,f1])).
+fof(f258,plain,(
+  identity != multiply(identity,identity) | identity != inverse(identity) | (~spl0_13 | ~spl0_16 | ~spl0_18)),
+  inference(superposition,[],[f251,f1])).
+fof(f251,plain,(
+  ( ! [X5] : (identity != multiply(identity,multiply(X5,identity)) | identity != inverse(X5)) ) | (~spl0_13 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f250,f217])).
+fof(f217,plain,(
+  identity = sk_c8 | (~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f134])).
+fof(f250,plain,(
+  ( ! [X5] : (sk_c8 != multiply(identity,multiply(X5,identity)) | identity != inverse(X5)) ) | (~spl0_13 | ~spl0_18)),
+  inference(forward_demodulation,[],[f249,f143])).
+fof(f249,plain,(
+  ( ! [X5] : (identity != inverse(X5) | sk_c8 != multiply(sk_c9,multiply(X5,sk_c9))) ) | (~spl0_13 | ~spl0_18)),
+  inference(forward_demodulation,[],[f117,f143])).
+fof(f296,plain,(
+  identity = inverse(identity) | (~spl0_7 | ~spl0_18)),
+  inference(backward_demodulation,[],[f292,f281])).
+fof(f281,plain,(
+  identity = inverse(sk_c6) | (~spl0_7 | ~spl0_18)),
+  inference(forward_demodulation,[],[f70,f143])).
+fof(f70,plain,(
+  sk_c9 = inverse(sk_c6) | ~spl0_7),
+  inference(avatar_component_clause,[],[f68])).
+fof(f68,plain,(
+  spl0_7 <=> sk_c9 = inverse(sk_c6)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_7])])).
+fof(f292,plain,(
+  identity = sk_c6 | (~spl0_7 | ~spl0_18)),
+  inference(forward_demodulation,[],[f291,f2])).
+fof(f291,plain,(
+  sk_c6 = multiply(inverse(identity),identity) | (~spl0_7 | ~spl0_18)),
+  inference(forward_demodulation,[],[f168,f143])).
+fof(f168,plain,(
+  sk_c6 = multiply(inverse(sk_c9),identity) | ~spl0_7),
+  inference(superposition,[],[f157,f123])).
+fof(f123,plain,(
+  identity = multiply(sk_c9,sk_c6) | ~spl0_7),
+  inference(superposition,[],[f2,f70])).
+fof(f274,plain,(
+  ~spl0_13 | ~spl0_15 | ~spl0_16 | ~spl0_18),
+  inference(avatar_contradiction_clause,[],[f273])).
+fof(f273,plain,(
+  $false | (~spl0_13 | ~spl0_15 | ~spl0_16 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f272,f262])).
+fof(f272,plain,(
+  identity = inverse(identity) | (~spl0_15 | ~spl0_18)),
+  inference(forward_demodulation,[],[f130,f143])).
+fof(f130,plain,(
+  sk_c9 = inverse(identity) | ~spl0_15),
+  inference(avatar_component_clause,[],[f129])).
+fof(f247,plain,(
+  ~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | spl0_17 | ~spl0_18),
+  inference(avatar_contradiction_clause,[],[f246])).
+fof(f246,plain,(
+  $false | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | spl0_17 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f244,f237])).
+fof(f237,plain,(
+  identity = inverse(identity) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f234,f222])).
+fof(f222,plain,(
+  identity = inverse(sk_c4) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f188])).
+fof(f188,plain,(
+  sk_c9 = inverse(sk_c4) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16)),
+  inference(backward_demodulation,[],[f186,f50])).
+fof(f186,plain,(
+  sk_c9 = sk_c5 | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16)),
+  inference(backward_demodulation,[],[f179,f174])).
+fof(f174,plain,(
+  sk_c5 = multiply(sk_c5,sk_c9) | (~spl0_2 | ~spl0_3)),
+  inference(forward_demodulation,[],[f169,f50])).
+fof(f179,plain,(
+  sk_c9 = multiply(sk_c5,sk_c9) | (~spl0_4 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f55])).
+fof(f234,plain,(
+  identity = sk_c4 | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(forward_demodulation,[],[f227,f2])).
+fof(f227,plain,(
+  sk_c4 = multiply(inverse(identity),identity) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f193])).
+fof(f193,plain,(
+  sk_c4 = multiply(inverse(sk_c9),identity) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16)),
+  inference(backward_demodulation,[],[f186,f171])).
+fof(f171,plain,(
+  sk_c4 = multiply(inverse(sk_c5),identity) | ~spl0_3),
+  inference(superposition,[],[f157,f122])).
+fof(f122,plain,(
+  identity = multiply(sk_c5,sk_c4) | ~spl0_3),
+  inference(superposition,[],[f2,f50])).
+fof(f244,plain,(
+  identity != inverse(identity) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16 | spl0_17 | ~spl0_18)),
+  inference(backward_demodulation,[],[f237,f243])).
+fof(f243,plain,(
+  identity != inverse(inverse(identity)) | (~spl0_16 | spl0_17 | ~spl0_18)),
+  inference(forward_demodulation,[],[f242,f143])).
+fof(f242,plain,(
+  sk_c9 != inverse(inverse(identity)) | (~spl0_16 | spl0_17 | ~spl0_18)),
+  inference(forward_demodulation,[],[f140,f217])).
+fof(f140,plain,(
+  sk_c9 != inverse(inverse(sk_c8)) | spl0_17),
+  inference(avatar_component_clause,[],[f138])).
+fof(f138,plain,(
+  spl0_17 <=> sk_c9 = inverse(inverse(sk_c8))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_17])])).
+fof(f241,plain,(
+  ~spl0_2 | ~spl0_3 | ~spl0_4 | spl0_15 | ~spl0_16 | ~spl0_18),
+  inference(avatar_contradiction_clause,[],[f240])).
+fof(f240,plain,(
+  $false | (~spl0_2 | ~spl0_3 | ~spl0_4 | spl0_15 | ~spl0_16 | ~spl0_18)),
+  inference(subsumption_resolution,[],[f237,f216])).
+fof(f216,plain,(
+  identity != inverse(identity) | (spl0_15 | ~spl0_18)),
+  inference(backward_demodulation,[],[f143,f131])).
+fof(f215,plain,(
+  spl0_18 | ~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_5 | ~spl0_6 | ~spl0_7 | ~spl0_16),
+  inference(avatar_split_clause,[],[f207,f133,f68,f63,f58,f53,f48,f43,f142])).
+fof(f58,plain,(
+  spl0_5 <=> sk_c8 = multiply(sk_c9,sk_c7)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_5])])).
+fof(f63,plain,(
+  spl0_6 <=> sk_c7 = multiply(sk_c6,sk_c9)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_6])])).
+fof(f207,plain,(
+  identity = sk_c9 | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_5 | ~spl0_6 | ~spl0_7 | ~spl0_16)),
+  inference(backward_demodulation,[],[f206,f202])).
+fof(f202,plain,(
+  sk_c9 = sk_c7 | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_6 | ~spl0_7 | ~spl0_16)),
+  inference(forward_demodulation,[],[f199,f187])).
+fof(f187,plain,(
+  sk_c9 = multiply(sk_c4,sk_c9) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_16)),
+  inference(backward_demodulation,[],[f186,f45])).
+fof(f199,plain,(
+  sk_c7 = multiply(sk_c4,sk_c9) | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_6 | ~spl0_7 | ~spl0_16)),
+  inference(backward_demodulation,[],[f195,f65])).
+fof(f65,plain,(
+  sk_c7 = multiply(sk_c6,sk_c9) | ~spl0_6),
+  inference(avatar_component_clause,[],[f63])).
+fof(f195,plain,(
+  sk_c4 = sk_c6 | (~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_7 | ~spl0_16)),
+  inference(backward_demodulation,[],[f193,f168])).
+fof(f206,plain,(
+  identity = sk_c7 | (~spl0_5 | ~spl0_16)),
+  inference(forward_demodulation,[],[f184,f2])).
+fof(f184,plain,(
+  sk_c7 = multiply(inverse(sk_c9),sk_c9) | (~spl0_5 | ~spl0_16)),
+  inference(backward_demodulation,[],[f134,f167])).
+fof(f167,plain,(
+  sk_c7 = multiply(inverse(sk_c9),sk_c8) | ~spl0_5),
+  inference(superposition,[],[f157,f60])).
+fof(f60,plain,(
+  sk_c8 = multiply(sk_c9,sk_c7) | ~spl0_5),
+  inference(avatar_component_clause,[],[f58])).
+fof(f177,plain,(
+  spl0_16 | ~spl0_5 | ~spl0_6 | ~spl0_7),
+  inference(avatar_split_clause,[],[f176,f68,f63,f58,f133])).
+fof(f176,plain,(
+  sk_c9 = sk_c8 | (~spl0_5 | ~spl0_6 | ~spl0_7)),
+  inference(backward_demodulation,[],[f175,f60])).
+fof(f175,plain,(
+  sk_c9 = multiply(sk_c9,sk_c7) | (~spl0_6 | ~spl0_7)),
+  inference(forward_demodulation,[],[f172,f70])).
+fof(f172,plain,(
+  sk_c9 = multiply(inverse(sk_c6),sk_c7) | ~spl0_6),
+  inference(superposition,[],[f157,f65])).
+fof(f145,plain,(
+  ~spl0_17 | ~spl0_18 | ~spl0_12),
+  inference(avatar_split_clause,[],[f125,f113,f142,f138])).
+fof(f113,plain,(
+  spl0_12 <=> ! [X3] : (sk_c9 != multiply(X3,sk_c8) | sk_c9 != inverse(X3))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_12])])).
+fof(f125,plain,(
+  identity != sk_c9 | sk_c9 != inverse(inverse(sk_c8)) | ~spl0_12),
+  inference(superposition,[],[f114,f2])).
+fof(f114,plain,(
+  ( ! [X3] : (sk_c9 != multiply(X3,sk_c8) | sk_c9 != inverse(X3)) ) | ~spl0_12),
+  inference(avatar_component_clause,[],[f113])).
+fof(f136,plain,(
+  ~spl0_15 | ~spl0_16 | ~spl0_12),
+  inference(avatar_split_clause,[],[f124,f113,f133,f129])).
+fof(f124,plain,(
+  sk_c9 != sk_c8 | sk_c9 != inverse(identity) | ~spl0_12),
+  inference(superposition,[],[f114,f1])).
+fof(f121,plain,(
+  spl0_12 | spl0_13 | spl0_14 | spl0_13),
+  inference(avatar_split_clause,[],[f37,f116,f119,f116,f113])).
+fof(f37,plain,(
+  ( ! [X6,X5,X3,X9] : (sk_c9 != inverse(X9) | sk_c8 != multiply(sk_c9,multiply(X9,sk_c9)) | sk_c9 != multiply(inverse(X6),sk_c8) | sk_c9 != multiply(X6,inverse(X6)) | sk_c9 != inverse(X5) | sk_c8 != multiply(sk_c9,multiply(X5,sk_c9)) | sk_c9 != multiply(X3,sk_c8) | sk_c9 != inverse(X3)) )),
+  inference(equality_resolution,[],[f36])).
+fof(f36,plain,(
+  ( ! [X6,X4,X5,X3,X9] : (sk_c9 != inverse(X9) | sk_c8 != multiply(sk_c9,multiply(X9,sk_c9)) | sk_c9 != multiply(inverse(X6),sk_c8) | sk_c9 != multiply(X6,inverse(X6)) | sk_c9 != inverse(X5) | multiply(X5,sk_c9) != X4 | sk_c8 != multiply(sk_c9,X4) | sk_c9 != multiply(X3,sk_c8) | sk_c9 != inverse(X3)) )),
+  inference(equality_resolution,[],[f35])).
+fof(f35,plain,(
+  ( ! [X6,X4,X7,X5,X3,X9] : (sk_c9 != inverse(X9) | sk_c8 != multiply(sk_c9,multiply(X9,sk_c9)) | sk_c9 != multiply(X7,sk_c8) | inverse(X6) != X7 | sk_c9 != multiply(X6,X7) | sk_c9 != inverse(X5) | multiply(X5,sk_c9) != X4 | sk_c8 != multiply(sk_c9,X4) | sk_c9 != multiply(X3,sk_c8) | sk_c9 != inverse(X3)) )),
+  inference(equality_resolution,[],[f34])).
+fof(f34,axiom,(
+  ( ! [X6,X4,X8,X7,X5,X3,X9] : (sk_c9 != inverse(X9) | multiply(X9,sk_c9) != X8 | sk_c8 != multiply(sk_c9,X8) | sk_c9 != multiply(X7,sk_c8) | inverse(X6) != X7 | sk_c9 != multiply(X6,X7) | sk_c9 != inverse(X5) | multiply(X5,sk_c9) != X4 | sk_c8 != multiply(sk_c9,X4) | sk_c9 != multiply(X3,sk_c8) | sk_c9 != inverse(X3)) )),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f111,plain,(
+  spl0_11 | spl0_7),
+  inference(avatar_split_clause,[],[f33,f68,f103])).
+fof(f33,axiom,(
+  sk_c9 = inverse(sk_c6) | sk_c9 = inverse(sk_c2)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f110,plain,(
+  spl0_11 | spl0_6),
+  inference(avatar_split_clause,[],[f32,f63,f103])).
+fof(f32,axiom,(
+  sk_c7 = multiply(sk_c6,sk_c9) | sk_c9 = inverse(sk_c2)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f109,plain,(
+  spl0_11 | spl0_5),
+  inference(avatar_split_clause,[],[f31,f58,f103])).
+fof(f31,axiom,(
+  sk_c8 = multiply(sk_c9,sk_c7) | sk_c9 = inverse(sk_c2)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f108,plain,(
+  spl0_11 | spl0_4),
+  inference(avatar_split_clause,[],[f30,f53,f103])).
+fof(f30,axiom,(
+  sk_c9 = multiply(sk_c5,sk_c8) | sk_c9 = inverse(sk_c2)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f107,plain,(
+  spl0_11 | spl0_3),
+  inference(avatar_split_clause,[],[f29,f48,f103])).
+fof(f29,axiom,(
+  sk_c5 = inverse(sk_c4) | sk_c9 = inverse(sk_c2)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f106,plain,(
+  spl0_11 | spl0_2),
+  inference(avatar_split_clause,[],[f28,f43,f103])).
+fof(f28,axiom,(
+  sk_c9 = multiply(sk_c4,sk_c5) | sk_c9 = inverse(sk_c2)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f101,plain,(
+  spl0_10 | spl0_7),
+  inference(avatar_split_clause,[],[f27,f68,f93])).
+fof(f27,axiom,(
+  sk_c9 = inverse(sk_c6) | sk_c3 = multiply(sk_c2,sk_c9)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f100,plain,(
+  spl0_10 | spl0_6),
+  inference(avatar_split_clause,[],[f26,f63,f93])).
+fof(f26,axiom,(
+  sk_c7 = multiply(sk_c6,sk_c9) | sk_c3 = multiply(sk_c2,sk_c9)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f99,plain,(
+  spl0_10 | spl0_5),
+  inference(avatar_split_clause,[],[f25,f58,f93])).
+fof(f25,axiom,(
+  sk_c8 = multiply(sk_c9,sk_c7) | sk_c3 = multiply(sk_c2,sk_c9)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f98,plain,(
+  spl0_10 | spl0_4),
+  inference(avatar_split_clause,[],[f24,f53,f93])).
+fof(f24,axiom,(
+  sk_c9 = multiply(sk_c5,sk_c8) | sk_c3 = multiply(sk_c2,sk_c9)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f97,plain,(
+  spl0_10 | spl0_3),
+  inference(avatar_split_clause,[],[f23,f48,f93])).
+fof(f23,axiom,(
+  sk_c5 = inverse(sk_c4) | sk_c3 = multiply(sk_c2,sk_c9)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f96,plain,(
+  spl0_10 | spl0_2),
+  inference(avatar_split_clause,[],[f22,f43,f93])).
+fof(f22,axiom,(
+  sk_c9 = multiply(sk_c4,sk_c5) | sk_c3 = multiply(sk_c2,sk_c9)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f91,plain,(
+  spl0_9 | spl0_7),
+  inference(avatar_split_clause,[],[f21,f68,f83])).
+fof(f21,axiom,(
+  sk_c9 = inverse(sk_c6) | sk_c8 = multiply(sk_c9,sk_c3)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f90,plain,(
+  spl0_9 | spl0_6),
+  inference(avatar_split_clause,[],[f20,f63,f83])).
+fof(f20,axiom,(
+  sk_c7 = multiply(sk_c6,sk_c9) | sk_c8 = multiply(sk_c9,sk_c3)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f89,plain,(
+  spl0_9 | spl0_5),
+  inference(avatar_split_clause,[],[f19,f58,f83])).
+fof(f19,axiom,(
+  sk_c8 = multiply(sk_c9,sk_c7) | sk_c8 = multiply(sk_c9,sk_c3)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f88,plain,(
+  spl0_9 | spl0_4),
+  inference(avatar_split_clause,[],[f18,f53,f83])).
+fof(f18,axiom,(
+  sk_c9 = multiply(sk_c5,sk_c8) | sk_c8 = multiply(sk_c9,sk_c3)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f87,plain,(
+  spl0_9 | spl0_3),
+  inference(avatar_split_clause,[],[f17,f48,f83])).
+fof(f17,axiom,(
+  sk_c5 = inverse(sk_c4) | sk_c8 = multiply(sk_c9,sk_c3)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f86,plain,(
+  spl0_9 | spl0_2),
+  inference(avatar_split_clause,[],[f16,f43,f83])).
+fof(f16,axiom,(
+  sk_c9 = multiply(sk_c4,sk_c5) | sk_c8 = multiply(sk_c9,sk_c3)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f81,plain,(
+  spl0_8 | spl0_7),
+  inference(avatar_split_clause,[],[f15,f68,f73])).
+fof(f15,axiom,(
+  sk_c9 = inverse(sk_c6) | sk_c9 = multiply(sk_c1,sk_c8)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f80,plain,(
+  spl0_8 | spl0_6),
+  inference(avatar_split_clause,[],[f14,f63,f73])).
+fof(f14,axiom,(
+  sk_c7 = multiply(sk_c6,sk_c9) | sk_c9 = multiply(sk_c1,sk_c8)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f79,plain,(
+  spl0_8 | spl0_5),
+  inference(avatar_split_clause,[],[f13,f58,f73])).
+fof(f13,axiom,(
+  sk_c8 = multiply(sk_c9,sk_c7) | sk_c9 = multiply(sk_c1,sk_c8)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f78,plain,(
+  spl0_8 | spl0_4),
+  inference(avatar_split_clause,[],[f12,f53,f73])).
+fof(f12,axiom,(
+  sk_c9 = multiply(sk_c5,sk_c8) | sk_c9 = multiply(sk_c1,sk_c8)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f77,plain,(
+  spl0_8 | spl0_3),
+  inference(avatar_split_clause,[],[f11,f48,f73])).
+fof(f11,axiom,(
+  sk_c5 = inverse(sk_c4) | sk_c9 = multiply(sk_c1,sk_c8)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f76,plain,(
+  spl0_8 | spl0_2),
+  inference(avatar_split_clause,[],[f10,f43,f73])).
+fof(f10,axiom,(
+  sk_c9 = multiply(sk_c4,sk_c5) | sk_c9 = multiply(sk_c1,sk_c8)),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f71,plain,(
+  spl0_1 | spl0_7),
+  inference(avatar_split_clause,[],[f9,f68,f39])).
+fof(f9,axiom,(
+  sk_c9 = inverse(sk_c6) | inverse(sk_c1) = sk_c9),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f66,plain,(
+  spl0_1 | spl0_6),
+  inference(avatar_split_clause,[],[f8,f63,f39])).
+fof(f8,axiom,(
+  sk_c7 = multiply(sk_c6,sk_c9) | inverse(sk_c1) = sk_c9),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f61,plain,(
+  spl0_1 | spl0_5),
+  inference(avatar_split_clause,[],[f7,f58,f39])).
+fof(f7,axiom,(
+  sk_c8 = multiply(sk_c9,sk_c7) | inverse(sk_c1) = sk_c9),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f56,plain,(
+  spl0_1 | spl0_4),
+  inference(avatar_split_clause,[],[f6,f53,f39])).
+fof(f6,axiom,(
+  sk_c9 = multiply(sk_c5,sk_c8) | inverse(sk_c1) = sk_c9),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f51,plain,(
+  spl0_1 | spl0_3),
+  inference(avatar_split_clause,[],[f5,f48,f39])).
+fof(f5,axiom,(
+  sk_c5 = inverse(sk_c4) | inverse(sk_c1) = sk_c9),
+  file('./p/GRP223-1.tptp',unknown)).
+fof(f46,plain,(
+  spl0_1 | spl0_2),
+  inference(avatar_split_clause,[],[f4,f43,f39])).
+fof(f4,axiom,(
+  sk_c9 = multiply(sk_c4,sk_c5) | inverse(sk_c1) = sk_c9),
+  file('./p/GRP223-1.tptp',unknown)).
+% SZS output end Proof for GRP223-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5117
+% Time elapsed: 0.012 s
+% ------------------------------
+% ------------------------------

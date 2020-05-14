@@ -1,0 +1,39 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SWV594-1
+% SZS output start Proof for SWV594-1
+fof(f11823,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f11822,f1088])).
+fof(f1088,axiom,(
+  c_HOL_Oord__class_Oless(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),v_x,tc_RealDef_Oreal)),
+  file('./p/SWV594-1.tptp',unknown)).
+fof(f11822,plain,(
+  ~c_HOL_Oord__class_Oless(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),v_x,tc_RealDef_Oreal)),
+  inference(subsumption_resolution,[],[f11821,f1090])).
+fof(f1090,axiom,(
+  c_HOL_Oord__class_Oless(v_x,c_Transcendental_Opi,tc_RealDef_Oreal)),
+  file('./p/SWV594-1.tptp',unknown)).
+fof(f11821,plain,(
+  ~c_HOL_Oord__class_Oless(v_x,c_Transcendental_Opi,tc_RealDef_Oreal) | ~c_HOL_Oord__class_Oless(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),v_x,tc_RealDef_Oreal)),
+  inference(subsumption_resolution,[],[f11813,f753])).
+fof(f753,axiom,(
+  ( ! [X4] : (~c_HOL_Oord__class_Oless(X4,X4,tc_RealDef_Oreal)) )),
+  file('./p/SWV594-1.tptp',unknown)).
+fof(f11813,plain,(
+  c_HOL_Oord__class_Oless(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),tc_RealDef_Oreal) | ~c_HOL_Oord__class_Oless(v_x,c_Transcendental_Opi,tc_RealDef_Oreal) | ~c_HOL_Oord__class_Oless(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),v_x,tc_RealDef_Oreal)),
+  inference(superposition,[],[f1074,f1092])).
+fof(f1092,axiom,(
+  c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal) = c_Transcendental_Osin(v_x)),
+  file('./p/SWV594-1.tptp',unknown)).
+fof(f1074,axiom,(
+  ( ! [X4] : (c_HOL_Oord__class_Oless(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),c_Transcendental_Osin(X4),tc_RealDef_Oreal) | ~c_HOL_Oord__class_Oless(X4,c_Transcendental_Opi,tc_RealDef_Oreal) | ~c_HOL_Oord__class_Oless(c_HOL_Ozero__class_Ozero(tc_RealDef_Oreal),X4,tc_RealDef_Oreal)) )),
+  file('./p/SWV594-1.tptp',unknown)).
+% SZS output end Proof for SWV594-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 11129
+% Time elapsed: 0.146 s
+% ------------------------------
+% ------------------------------

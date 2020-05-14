@@ -1,0 +1,360 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for MGT054+1
+% SZS output start Proof for MGT054+1
+fof(f353,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f89,f248,f294,f313,f352])).
+fof(f352,plain,(
+  spl4_12 | spl4_14),
+  inference(avatar_contradiction_clause,[],[f351])).
+fof(f351,plain,(
+  $false | (spl4_12 | spl4_14)),
+  inference(subsumption_resolution,[],[f350,f69])).
+fof(f69,plain,(
+  organization(sK0)),
+  inference(cnf_transformation,[],[f51])).
+fof(f51,plain,(
+  ~greater(hazard_of_mortality(sK0,sK3),hazard_of_mortality(sK0,sK2)) & greater(sigma,zero) & greater(age(sK0,sK3),sigma) & smaller_or_equal(age(sK0,sK2),sigma) & zero = age(sK0,sK1) & ~has_endowment(sK0) & organization(sK0)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2,sK3])],[f46,f50])).
+fof(f50,plain,(
+  ? [X0,X1,X2,X3] : (~greater(hazard_of_mortality(X0,X3),hazard_of_mortality(X0,X2)) & greater(sigma,zero) & greater(age(X0,X3),sigma) & smaller_or_equal(age(X0,X2),sigma) & zero = age(X0,X1) & ~has_endowment(X0) & organization(X0)) => (~greater(hazard_of_mortality(sK0,sK3),hazard_of_mortality(sK0,sK2)) & greater(sigma,zero) & greater(age(sK0,sK3),sigma) & smaller_or_equal(age(sK0,sK2),sigma) & zero = age(sK0,sK1) & ~has_endowment(sK0) & organization(sK0))),
+  introduced(choice_axiom,[])).
+fof(f46,plain,(
+  ? [X0,X1,X2,X3] : (~greater(hazard_of_mortality(X0,X3),hazard_of_mortality(X0,X2)) & greater(sigma,zero) & greater(age(X0,X3),sigma) & smaller_or_equal(age(X0,X2),sigma) & zero = age(X0,X1) & ~has_endowment(X0) & organization(X0))),
+  inference(flattening,[],[f45])).
+fof(f45,plain,(
+  ? [X0,X1,X2,X3] : (~greater(hazard_of_mortality(X0,X3),hazard_of_mortality(X0,X2)) & (greater(sigma,zero) & greater(age(X0,X3),sigma) & smaller_or_equal(age(X0,X2),sigma) & zero = age(X0,X1) & ~has_endowment(X0) & organization(X0)))),
+  inference(ennf_transformation,[],[f23])).
+fof(f23,plain,(
+  ~! [X0,X1,X2,X3] : ((greater(sigma,zero) & greater(age(X0,X3),sigma) & smaller_or_equal(age(X0,X2),sigma) & zero = age(X0,X1) & ~has_endowment(X0) & organization(X0)) => greater(hazard_of_mortality(X0,X3),hazard_of_mortality(X0,X2)))),
+  inference(rectify,[],[f15])).
+fof(f15,negated_conjecture,(
+  ~! [X0,X4,X5,X6] : ((greater(sigma,zero) & greater(age(X0,X6),sigma) & smaller_or_equal(age(X0,X5),sigma) & zero = age(X0,X4) & ~has_endowment(X0) & organization(X0)) => greater(hazard_of_mortality(X0,X6),hazard_of_mortality(X0,X5)))),
+  inference(negated_conjecture,[],[f14])).
+fof(f14,conjecture,(
+  ! [X0,X4,X5,X6] : ((greater(sigma,zero) & greater(age(X0,X6),sigma) & smaller_or_equal(age(X0,X5),sigma) & zero = age(X0,X4) & ~has_endowment(X0) & organization(X0)) => greater(hazard_of_mortality(X0,X6),hazard_of_mortality(X0,X5)))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f350,plain,(
+  ~organization(sK0) | (spl4_12 | spl4_14)),
+  inference(subsumption_resolution,[],[f349,f132])).
+fof(f132,plain,(
+  is_aligned(sK0,sK1)),
+  inference(subsumption_resolution,[],[f131,f69])).
+fof(f131,plain,(
+  is_aligned(sK0,sK1) | ~organization(sK0)),
+  inference(trivial_inequality_removal,[],[f130])).
+fof(f130,plain,(
+  zero != zero | is_aligned(sK0,sK1) | ~organization(sK0)),
+  inference(superposition,[],[f64,f71])).
+fof(f71,plain,(
+  zero = age(sK0,sK1)),
+  inference(cnf_transformation,[],[f51])).
+fof(f64,plain,(
+  ( ! [X0,X1] : (zero != age(X0,X1) | is_aligned(X0,X1) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f38])).
+fof(f38,plain,(
+  ! [X0,X1] : (is_aligned(X0,X1) | zero != age(X0,X1) | ~organization(X0))),
+  inference(flattening,[],[f37])).
+fof(f37,plain,(
+  ! [X0,X1] : (is_aligned(X0,X1) | (zero != age(X0,X1) | ~organization(X0)))),
+  inference(ennf_transformation,[],[f19])).
+fof(f19,plain,(
+  ! [X0,X1] : ((zero = age(X0,X1) & organization(X0)) => is_aligned(X0,X1))),
+  inference(rectify,[],[f10])).
+fof(f10,axiom,(
+  ! [X0,X3] : ((age(X0,X3) = zero & organization(X0)) => is_aligned(X0,X3))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f349,plain,(
+  ~is_aligned(sK0,sK1) | ~organization(sK0) | (spl4_12 | spl4_14)),
+  inference(subsumption_resolution,[],[f348,f292])).
+fof(f292,plain,(
+  ~is_aligned(sK0,sK2) | spl4_12),
+  inference(subsumption_resolution,[],[f291,f202])).
+fof(f202,plain,(
+  ~is_aligned(sK0,sK3)),
+  inference(subsumption_resolution,[],[f199,f132])).
+fof(f199,plain,(
+  ~is_aligned(sK0,sK1) | ~is_aligned(sK0,sK3)),
+  inference(resolution,[],[f195,f61])).
+fof(f61,plain,(
+  ( ! [X2,X0,X1] : (~dissimilar(X0,X1,X2) | ~is_aligned(X0,X1) | ~is_aligned(X0,X2)) )),
+  inference(cnf_transformation,[],[f48])).
+fof(f48,plain,(
+  ! [X0,X1,X2] : ((dissimilar(X0,X1,X2) | ((is_aligned(X0,X1) | ~is_aligned(X0,X2)) & (is_aligned(X0,X2) | ~is_aligned(X0,X1))) | ~organization(X0)) & (((~is_aligned(X0,X2) | ~is_aligned(X0,X1)) & (is_aligned(X0,X2) | is_aligned(X0,X1)) & organization(X0)) | ~dissimilar(X0,X1,X2)))),
+  inference(flattening,[],[f47])).
+fof(f47,plain,(
+  ! [X0,X1,X2] : ((dissimilar(X0,X1,X2) | (((is_aligned(X0,X1) | ~is_aligned(X0,X2)) & (is_aligned(X0,X2) | ~is_aligned(X0,X1))) | ~organization(X0))) & ((((~is_aligned(X0,X2) | ~is_aligned(X0,X1)) & (is_aligned(X0,X2) | is_aligned(X0,X1))) & organization(X0)) | ~dissimilar(X0,X1,X2)))),
+  inference(nnf_transformation,[],[f36])).
+fof(f36,plain,(
+  ! [X0,X1,X2] : (dissimilar(X0,X1,X2) <=> ((is_aligned(X0,X1) <~> is_aligned(X0,X2)) & organization(X0)))),
+  inference(ennf_transformation,[],[f18])).
+fof(f18,plain,(
+  ! [X0,X1,X2] : (dissimilar(X0,X1,X2) <=> (~(is_aligned(X0,X1) <=> is_aligned(X0,X2)) & organization(X0)))),
+  inference(rectify,[],[f9])).
+fof(f9,axiom,(
+  ! [X0,X4,X3] : (dissimilar(X0,X4,X3) <=> (~(is_aligned(X0,X4) <=> is_aligned(X0,X3)) & organization(X0)))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f195,plain,(
+  dissimilar(sK0,sK1,sK3)),
+  inference(resolution,[],[f177,f73])).
+fof(f73,plain,(
+  greater(age(sK0,sK3),sigma)),
+  inference(cnf_transformation,[],[f51])).
+fof(f177,plain,(
+  ( ! [X0] : (~greater(age(sK0,X0),sigma) | dissimilar(sK0,sK1,X0)) )),
+  inference(subsumption_resolution,[],[f176,f69])).
+fof(f176,plain,(
+  ( ! [X0] : (~greater(age(sK0,X0),sigma) | dissimilar(sK0,sK1,X0) | ~organization(sK0)) )),
+  inference(trivial_inequality_removal,[],[f175])).
+fof(f175,plain,(
+  ( ! [X0] : (zero != zero | ~greater(age(sK0,X0),sigma) | dissimilar(sK0,sK1,X0) | ~organization(sK0)) )),
+  inference(superposition,[],[f66,f71])).
+fof(f66,plain,(
+  ( ! [X2,X0,X1] : (zero != age(X0,X1) | ~greater(age(X0,X2),sigma) | dissimilar(X0,X1,X2) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f49])).
+fof(f49,plain,(
+  ! [X0,X1,X2] : (((greater(age(X0,X2),sigma) | ~dissimilar(X0,X1,X2)) & (dissimilar(X0,X1,X2) | ~greater(age(X0,X2),sigma))) | zero != age(X0,X1) | ~organization(X0))),
+  inference(nnf_transformation,[],[f42])).
+fof(f42,plain,(
+  ! [X0,X1,X2] : ((greater(age(X0,X2),sigma) <=> dissimilar(X0,X1,X2)) | zero != age(X0,X1) | ~organization(X0))),
+  inference(flattening,[],[f41])).
+fof(f41,plain,(
+  ! [X0,X1,X2] : ((greater(age(X0,X2),sigma) <=> dissimilar(X0,X1,X2)) | (zero != age(X0,X1) | ~organization(X0)))),
+  inference(ennf_transformation,[],[f21])).
+fof(f21,plain,(
+  ! [X0,X1,X2] : ((zero = age(X0,X1) & organization(X0)) => (greater(age(X0,X2),sigma) <=> dissimilar(X0,X1,X2)))),
+  inference(rectify,[],[f12])).
+fof(f12,axiom,(
+  ! [X0,X4,X3] : ((zero = age(X0,X4) & organization(X0)) => (greater(age(X0,X3),sigma) <=> dissimilar(X0,X4,X3)))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f291,plain,(
+  is_aligned(sK0,sK3) | ~is_aligned(sK0,sK2) | spl4_12),
+  inference(subsumption_resolution,[],[f290,f69])).
+fof(f290,plain,(
+  ~organization(sK0) | is_aligned(sK0,sK3) | ~is_aligned(sK0,sK2) | spl4_12),
+  inference(subsumption_resolution,[],[f282,f169])).
+fof(f169,plain,(
+  ~has_immunity(sK0,sK3) | spl4_12),
+  inference(avatar_component_clause,[],[f168])).
+fof(f168,plain,(
+  spl4_12 <=> has_immunity(sK0,sK3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_12])])).
+fof(f282,plain,(
+  has_immunity(sK0,sK3) | ~organization(sK0) | is_aligned(sK0,sK3) | ~is_aligned(sK0,sK2)),
+  inference(resolution,[],[f181,f75])).
+fof(f75,plain,(
+  ~greater(hazard_of_mortality(sK0,sK3),hazard_of_mortality(sK0,sK2))),
+  inference(cnf_transformation,[],[f51])).
+fof(f181,plain,(
+  ( ! [X2,X0,X1] : (greater(hazard_of_mortality(X0,X1),hazard_of_mortality(X0,X2)) | has_immunity(X0,X1) | ~organization(X0) | is_aligned(X0,X1) | ~is_aligned(X0,X2)) )),
+  inference(duplicate_literal_removal,[],[f179])).
+fof(f179,plain,(
+  ( ! [X2,X0,X1] : (greater(hazard_of_mortality(X0,X1),hazard_of_mortality(X0,X2)) | has_immunity(X0,X1) | ~organization(X0) | is_aligned(X0,X1) | ~is_aligned(X0,X2) | ~organization(X0)) )),
+  inference(resolution,[],[f77,f65])).
+fof(f65,plain,(
+  ( ! [X2,X0,X1] : (greater(capability(X0,X1),capability(X0,X2)) | is_aligned(X0,X2) | ~is_aligned(X0,X1) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f40])).
+fof(f40,plain,(
+  ! [X0,X1,X2] : (greater(capability(X0,X1),capability(X0,X2)) | is_aligned(X0,X2) | ~is_aligned(X0,X1) | ~organization(X0))),
+  inference(flattening,[],[f39])).
+fof(f39,plain,(
+  ! [X0,X1,X2] : (greater(capability(X0,X1),capability(X0,X2)) | (is_aligned(X0,X2) | ~is_aligned(X0,X1) | ~organization(X0)))),
+  inference(ennf_transformation,[],[f20])).
+fof(f20,plain,(
+  ! [X0,X1,X2] : ((~is_aligned(X0,X2) & is_aligned(X0,X1) & organization(X0)) => greater(capability(X0,X1),capability(X0,X2)))),
+  inference(rectify,[],[f11])).
+fof(f11,axiom,(
+  ! [X0,X4,X3] : ((~is_aligned(X0,X3) & is_aligned(X0,X4) & organization(X0)) => greater(capability(X0,X4),capability(X0,X3)))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f77,plain,(
+  ( ! [X2,X0,X1] : (~greater(capability(X0,X2),capability(X0,X1)) | greater(hazard_of_mortality(X0,X1),hazard_of_mortality(X0,X2)) | has_immunity(X0,X1) | ~organization(X0)) )),
+  inference(subsumption_resolution,[],[f68,f58])).
+fof(f58,plain,(
+  ( ! [X2,X0,X1] : (greater(hazard_of_mortality(X0,X2),hazard_of_mortality(X0,X1)) | has_immunity(X0,X2) | ~has_immunity(X0,X1) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f35])).
+fof(f35,plain,(
+  ! [X0,X1,X2] : (greater(hazard_of_mortality(X0,X2),hazard_of_mortality(X0,X1)) | has_immunity(X0,X2) | ~has_immunity(X0,X1) | ~organization(X0))),
+  inference(flattening,[],[f34])).
+fof(f34,plain,(
+  ! [X0,X1,X2] : (greater(hazard_of_mortality(X0,X2),hazard_of_mortality(X0,X1)) | (has_immunity(X0,X2) | ~has_immunity(X0,X1) | ~organization(X0)))),
+  inference(ennf_transformation,[],[f17])).
+fof(f17,plain,(
+  ! [X0,X1,X2] : ((~has_immunity(X0,X2) & has_immunity(X0,X1) & organization(X0)) => greater(hazard_of_mortality(X0,X2),hazard_of_mortality(X0,X1)))),
+  inference(rectify,[],[f8])).
+fof(f8,axiom,(
+  ! [X0,X4,X3] : ((~has_immunity(X0,X3) & has_immunity(X0,X4) & organization(X0)) => greater(hazard_of_mortality(X0,X3),hazard_of_mortality(X0,X4)))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f68,plain,(
+  ( ! [X2,X0,X1] : (greater(hazard_of_mortality(X0,X1),hazard_of_mortality(X0,X2)) | ~greater(capability(X0,X2),capability(X0,X1)) | has_immunity(X0,X2) | has_immunity(X0,X1) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f44])).
+fof(f44,plain,(
+  ! [X0,X1,X2] : (greater(hazard_of_mortality(X0,X1),hazard_of_mortality(X0,X2)) | ~greater(capability(X0,X2),capability(X0,X1)) | has_immunity(X0,X2) | has_immunity(X0,X1) | ~organization(X0))),
+  inference(flattening,[],[f43])).
+fof(f43,plain,(
+  ! [X0,X1,X2] : (greater(hazard_of_mortality(X0,X1),hazard_of_mortality(X0,X2)) | (~greater(capability(X0,X2),capability(X0,X1)) | has_immunity(X0,X2) | has_immunity(X0,X1) | ~organization(X0)))),
+  inference(ennf_transformation,[],[f22])).
+fof(f22,plain,(
+  ! [X0,X1,X2] : ((greater(capability(X0,X2),capability(X0,X1)) & ~has_immunity(X0,X2) & ~has_immunity(X0,X1) & organization(X0)) => greater(hazard_of_mortality(X0,X1),hazard_of_mortality(X0,X2)))),
+  inference(rectify,[],[f13])).
+fof(f13,axiom,(
+  ! [X0,X4,X3] : ((greater(capability(X0,X3),capability(X0,X4)) & ~has_immunity(X0,X3) & ~has_immunity(X0,X4) & organization(X0)) => greater(hazard_of_mortality(X0,X4),hazard_of_mortality(X0,X3)))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f348,plain,(
+  is_aligned(sK0,sK2) | ~is_aligned(sK0,sK1) | ~organization(sK0) | spl4_14),
+  inference(resolution,[],[f305,f62])).
+fof(f62,plain,(
+  ( ! [X2,X0,X1] : (dissimilar(X0,X1,X2) | is_aligned(X0,X2) | ~is_aligned(X0,X1) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f48])).
+fof(f305,plain,(
+  ~dissimilar(sK0,sK1,sK2) | spl4_14),
+  inference(avatar_component_clause,[],[f304])).
+fof(f304,plain,(
+  spl4_14 <=> dissimilar(sK0,sK1,sK2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_14])])).
+fof(f313,plain,(
+  ~spl4_14 | ~spl4_1),
+  inference(avatar_split_clause,[],[f312,f82,f304])).
+fof(f82,plain,(
+  spl4_1 <=> sigma = age(sK0,sK2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_1])])).
+fof(f312,plain,(
+  ~dissimilar(sK0,sK1,sK2) | ~spl4_1),
+  inference(subsumption_resolution,[],[f299,f54])).
+fof(f54,plain,(
+  ( ! [X0,X1] : (~greater(X1,X0) | ~greater(X0,X1)) )),
+  inference(cnf_transformation,[],[f29])).
+fof(f29,plain,(
+  ! [X0,X1] : (~greater(X1,X0) | ~greater(X0,X1))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : ~(greater(X1,X0) & greater(X0,X1))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f299,plain,(
+  greater(sigma,sigma) | ~dissimilar(sK0,sK1,sK2) | ~spl4_1),
+  inference(superposition,[],[f148,f84])).
+fof(f84,plain,(
+  sigma = age(sK0,sK2) | ~spl4_1),
+  inference(avatar_component_clause,[],[f82])).
+fof(f148,plain,(
+  ( ! [X0] : (greater(age(sK0,X0),sigma) | ~dissimilar(sK0,sK1,X0)) )),
+  inference(trivial_inequality_removal,[],[f147])).
+fof(f147,plain,(
+  ( ! [X0] : (zero != zero | ~dissimilar(sK0,sK1,X0) | greater(age(sK0,X0),sigma)) )),
+  inference(superposition,[],[f76,f71])).
+fof(f76,plain,(
+  ( ! [X2,X0,X1] : (zero != age(X0,X1) | ~dissimilar(X0,X1,X2) | greater(age(X0,X2),sigma)) )),
+  inference(subsumption_resolution,[],[f67,f59])).
+fof(f59,plain,(
+  ( ! [X2,X0,X1] : (~dissimilar(X0,X1,X2) | organization(X0)) )),
+  inference(cnf_transformation,[],[f48])).
+fof(f67,plain,(
+  ( ! [X2,X0,X1] : (greater(age(X0,X2),sigma) | ~dissimilar(X0,X1,X2) | zero != age(X0,X1) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f49])).
+fof(f294,plain,(
+  ~spl4_2 | spl4_12),
+  inference(avatar_contradiction_clause,[],[f293])).
+fof(f293,plain,(
+  $false | (~spl4_2 | spl4_12)),
+  inference(subsumption_resolution,[],[f292,f227])).
+fof(f227,plain,(
+  is_aligned(sK0,sK2) | ~spl4_2),
+  inference(subsumption_resolution,[],[f226,f69])).
+fof(f226,plain,(
+  is_aligned(sK0,sK2) | ~organization(sK0) | ~spl4_2),
+  inference(subsumption_resolution,[],[f225,f132])).
+fof(f225,plain,(
+  is_aligned(sK0,sK2) | ~is_aligned(sK0,sK1) | ~organization(sK0) | ~spl4_2),
+  inference(resolution,[],[f187,f62])).
+fof(f187,plain,(
+  ~dissimilar(sK0,sK1,sK2) | ~spl4_2),
+  inference(resolution,[],[f148,f94])).
+fof(f94,plain,(
+  ~greater(age(sK0,sK2),sigma) | ~spl4_2),
+  inference(resolution,[],[f90,f54])).
+fof(f90,plain,(
+  greater(sigma,age(sK0,sK2)) | ~spl4_2),
+  inference(resolution,[],[f88,f53])).
+fof(f53,plain,(
+  ( ! [X0,X1] : (~smaller(X0,X1) | greater(X1,X0)) )),
+  inference(cnf_transformation,[],[f28])).
+fof(f28,plain,(
+  ! [X0,X1] : (greater(X1,X0) | ~smaller(X0,X1))),
+  inference(ennf_transformation,[],[f25])).
+fof(f25,plain,(
+  ! [X0,X1] : (smaller(X0,X1) => greater(X1,X0))),
+  inference(unused_predicate_definition_removal,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1] : (smaller(X0,X1) <=> greater(X1,X0))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f88,plain,(
+  smaller(age(sK0,sK2),sigma) | ~spl4_2),
+  inference(avatar_component_clause,[],[f86])).
+fof(f86,plain,(
+  spl4_2 <=> smaller(age(sK0,sK2),sigma)),
+  introduced(avatar_definition,[new_symbols(naming,[spl4_2])])).
+fof(f248,plain,(
+  ~spl4_12),
+  inference(avatar_contradiction_clause,[],[f247])).
+fof(f247,plain,(
+  $false | ~spl4_12),
+  inference(subsumption_resolution,[],[f246,f69])).
+fof(f246,plain,(
+  ~organization(sK0) | ~spl4_12),
+  inference(subsumption_resolution,[],[f245,f70])).
+fof(f70,plain,(
+  ~has_endowment(sK0)),
+  inference(cnf_transformation,[],[f51])).
+fof(f245,plain,(
+  has_endowment(sK0) | ~organization(sK0) | ~spl4_12),
+  inference(resolution,[],[f170,f57])).
+fof(f57,plain,(
+  ( ! [X0,X1] : (~has_immunity(X0,X1) | has_endowment(X0) | ~organization(X0)) )),
+  inference(cnf_transformation,[],[f33])).
+fof(f33,plain,(
+  ! [X0,X1] : (~has_immunity(X0,X1) | has_endowment(X0) | ~organization(X0))),
+  inference(flattening,[],[f32])).
+fof(f32,plain,(
+  ! [X0,X1] : (~has_immunity(X0,X1) | (has_endowment(X0) | ~organization(X0)))),
+  inference(ennf_transformation,[],[f16])).
+fof(f16,plain,(
+  ! [X0,X1] : ((~has_endowment(X0) & organization(X0)) => ~has_immunity(X0,X1))),
+  inference(rectify,[],[f7])).
+fof(f7,axiom,(
+  ! [X0,X3] : ((~has_endowment(X0) & organization(X0)) => ~has_immunity(X0,X3))),
+  file('./p/MGT054+1.tptp',unknown)).
+fof(f170,plain,(
+  has_immunity(sK0,sK3) | ~spl4_12),
+  inference(avatar_component_clause,[],[f168])).
+fof(f89,plain,(
+  spl4_1 | spl4_2),
+  inference(avatar_split_clause,[],[f80,f86,f82])).
+fof(f80,plain,(
+  smaller(age(sK0,sK2),sigma) | sigma = age(sK0,sK2)),
+  inference(resolution,[],[f52,f72])).
+fof(f72,plain,(
+  smaller_or_equal(age(sK0,sK2),sigma)),
+  inference(cnf_transformation,[],[f51])).
+fof(f52,plain,(
+  ( ! [X0,X1] : (~smaller_or_equal(X0,X1) | smaller(X0,X1) | X0 = X1) )),
+  inference(cnf_transformation,[],[f27])).
+fof(f27,plain,(
+  ! [X0,X1] : (X0 = X1 | smaller(X0,X1) | ~smaller_or_equal(X0,X1))),
+  inference(flattening,[],[f26])).
+fof(f26,plain,(
+  ! [X0,X1] : ((X0 = X1 | smaller(X0,X1)) | ~smaller_or_equal(X0,X1))),
+  inference(ennf_transformation,[],[f24])).
+fof(f24,plain,(
+  ! [X0,X1] : (smaller_or_equal(X0,X1) => (X0 = X1 | smaller(X0,X1)))),
+  inference(unused_predicate_definition_removal,[],[f1])).
+fof(f1,axiom,(
+  ! [X0,X1] : (smaller_or_equal(X0,X1) <=> (X0 = X1 | smaller(X0,X1)))),
+  file('./p/MGT054+1.tptp',unknown)).
+% SZS output end Proof for MGT054+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5117
+% Time elapsed: 0.004 s
+% ------------------------------
+% ------------------------------

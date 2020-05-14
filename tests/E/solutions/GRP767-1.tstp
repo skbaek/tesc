@@ -1,0 +1,1752 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_22, plain, (product(X1,one)=X1)).
+#
+#cnf(i_0_23, plain, (product(one,X1)=X1)).
+#
+#cnf(i_0_24, plain, (product(X1,difference(X1,X2))=X2)).
+#
+#cnf(i_0_42, negated_conjecture, (product(quotient(one,quotient(one,x0)),quotient(one,product(x1,x0)))!=quotient(one,x1))).
+#
+#cnf(i_0_43, plain, (difference(one,X1)=X1)).
+#
+#cnf(i_0_25, plain, (difference(X1,product(X1,X2))=X2)).
+#
+#cnf(i_0_47, plain, (difference(X1,X1)=one)).
+#
+#cnf(i_0_27, plain, (product(quotient(X1,X2),X2)=X1)).
+#
+#cnf(i_0_49, plain, (quotient(X1,one)=X1)).
+#
+#cnf(i_0_26, plain, (quotient(product(X1,X2),X2)=X1)).
+#
+#cnf(i_0_53, plain, (quotient(X1,X1)=one)).
+#
+#cnf(i_0_50, plain, (difference(quotient(X1,X2),X1)=X2)).
+#
+#cnf(i_0_54, plain, (quotient(X2,difference(X1,X2))=X1)).
+#
+#cnf(i_0_32, plain, (product(difference(X1,one),X1)=product(X1,quotient(one,X1)))).
+#
+#cnf(i_0_67, plain, (quotient(product(X1,quotient(one,X1)),X1)=difference(X1,one))).
+#
+#cnf(i_0_66, plain, (difference(difference(X1,one),product(X1,quotient(one,X1)))=X1)).
+##
+#cnf(i_0_28, plain, (quotient(product(X2,product(X3,X1)),X1)=difference(X1,product(product(X1,X2),X3)))).
+#
+#cnf(i_0_88, plain, (product(difference(X3,product(product(X3,X1),X2)),X3)=product(X1,product(X2,X3)))).
+#
+#cnf(i_0_107, plain, (product(difference(X1,product(X2,X3)),X1)=product(difference(X1,X2),product(X3,X1)))).
+#
+#cnf(i_0_120, plain, (product(difference(X1,one),product(X2,X1))=product(difference(X1,X2),X1))).
+#
+#cnf(i_0_134, plain, (product(difference(X1,quotient(X2,X1)),X1)=product(difference(X1,one),X2))).
+#
+#cnf(i_0_145, plain, (quotient(product(difference(X1,one),X2),X1)=difference(X1,quotient(X2,X1)))).
+#
+#cnf(i_0_165, plain, (quotient(difference(X1,one),X1)=difference(X1,quotient(one,X1)))).
+#
+#cnf(i_0_170, plain, (difference(difference(X1,quotient(one,X1)),difference(X1,one))=X1)).
+#
+#cnf(i_0_129, plain, (quotient(product(difference(X1,X2),X1),product(X2,X1))=difference(X1,one))).
+#
+#cnf(i_0_200, plain, (quotient(X1,product(X1,X1))=difference(X1,one))).
+#
+#cnf(i_0_209, plain, (difference(difference(X1,one),X1)=product(X1,X1))).
+#
+#cnf(i_0_199, plain, (quotient(product(X2,X1),product(product(X1,X2),X1))=difference(X1,one))).
+#
+#cnf(i_0_228, plain, (difference(difference(X2,one),product(X1,X2))=product(product(X2,X1),X2))).
+#
+#cnf(i_0_252, plain, (product(product(X1,quotient(X2,X1)),X1)=difference(difference(X1,one),X2))).
+#
+#cnf(i_0_267, plain, (quotient(difference(difference(X1,one),X2),X1)=product(X1,quotient(X2,X1)))).
+#####
+#cnf(i_0_222, plain, (product(product(X1,X1),difference(X1,one))=difference(difference(X1,one),one))).
+#
+#cnf(i_0_224, plain, (product(quotient(one,X1),quotient(one,X1))=difference(X1,quotient(one,X1)))).
+#
+#cnf(i_0_90, plain, (difference(X3,product(product(X3,X1),quotient(X2,X3)))=quotient(product(X1,X2),X3))).
+#
+#cnf(i_0_338, plain, (product(product(X1,X2),quotient(X3,X1))=product(X1,quotient(product(X2,X3),X1)))).
+#
+#cnf(i_0_118, plain, (product(difference(X1,quotient(X2,X3)),product(X3,X1))=product(difference(X1,X2),X1))).
+#
+#cnf(i_0_121, plain, (product(difference(X1,X2),product(difference(X2,X3),X1))=product(difference(X1,X3),X1))).
+#
+#cnf(i_0_144, plain, (difference(difference(X1,quotient(X2,X1)),product(difference(X1,one),X2))=X1)).
+##
+#cnf(i_0_266, plain, (difference(product(X1,quotient(X2,X1)),difference(difference(X1,one),X2))=X1)).
+##
+#cnf(i_0_396, plain, (product(X1,quotient(product(difference(X1,X2),X3),X1))=product(X2,quotient(X3,X1)))).
+#
+#cnf(i_0_560, plain, (product(X1,quotient(difference(X1,X2),X1))=product(X2,quotient(one,X1)))).
+#
+#cnf(i_0_576, plain, (difference(X1,product(X2,quotient(one,X1)))=quotient(difference(X1,X2),X1))).
+#
+#cnf(i_0_536, plain, (quotient(product(difference(X1,X2),X3),X1)=difference(X1,product(X2,quotient(X3,X1))))).
+#
+#cnf(i_0_616, plain, (quotient(difference(X1,quotient(X2,quotient(one,X1))),X1)=difference(X1,X2))).
+#
+#cnf(i_0_657, plain, (difference(X1,quotient(X2,quotient(one,X1)))=product(difference(X1,X2),X1))).
+#
+#cnf(i_0_681, plain, (product(X1,product(difference(X1,X2),X1))=quotient(X2,quotient(one,X1)))).
+#
+#cnf(i_0_727, plain, (quotient(X1,quotient(one,X1))=product(X1,X1))).
+#
+#cnf(i_0_741, plain, (difference(product(X1,X1),X1)=quotient(one,X1))).
+#
+#cnf(i_0_726, plain, (quotient(product(X1,X2),quotient(one,X1))=product(X1,product(X2,X1)))).
+#
+#cnf(i_0_778, plain, (difference(product(X1,product(X2,X1)),product(X1,X2))=quotient(one,X1))).
+#
+#cnf(i_0_835, plain, (difference(product(X1,X2),product(X1,quotient(X2,X1)))=quotient(one,X1))).
+#
+#cnf(i_0_731, plain, (product(X1,product(X1,quotient(one,X1)))=quotient(one,quotient(one,X1)))).
+#
+#cnf(i_0_893, plain, (difference(difference(X1,difference(X1,one)),quotient(one,X1))=X1)).
+#
+#cnf(i_0_925, plain, (quotient(quotient(one,X1),X1)=difference(X1,difference(X1,one)))).
+#
+#cnf(i_0_919, plain, (product(difference(X1,difference(X1,one)),X1)=quotient(one,X1))).
+##
+#cnf(i_0_870, plain, (product(quotient(one,X1),product(X1,X1))=quotient(one,quotient(one,X1)))).
+#
+#cnf(i_0_939, plain, (difference(X1,difference(quotient(one,X1),X1))=difference(difference(X1,one),one))).
+#
+#cnf(i_0_749, plain, (product(difference(X1,one),difference(X1,one))=difference(X1,quotient(one,X1)))).
+#
+#cnf(i_0_946, plain, (difference(difference(X1,one),quotient(one,X1))=product(X1,quotient(one,X1)))).
+##
+#cnf(i_0_975, plain, (quotient(difference(X1,one),quotient(one,X1))=product(X1,quotient(one,X1)))).
+#
+#cnf(i_0_1010, plain, (product(X1,difference(difference(X1,one),one))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_1068, plain, (difference(difference(difference(X1,one),one),X1)=product(X1,quotient(one,X1)))).
+#
+#cnf(i_0_1149, plain, (quotient(X1,product(X1,quotient(one,X1)))=difference(difference(X1,one),one))).
+#
+#cnf(i_0_399, plain, (quotient(product(difference(X1,X2),X1),product(X3,X1))=difference(X1,quotient(X2,X3)))).
+#
+#cnf(i_0_1243, plain, (quotient(X1,product(X2,X1))=difference(X1,quotient(X1,X2)))).
+#
+#cnf(i_0_1267, plain, (difference(difference(X1,quotient(X1,X2)),X1)=product(X2,X1))).
+#
+#cnf(i_0_1337, plain, (difference(difference(X1,X2),X1)=product(difference(X2,X1),X1))).
+#
+#cnf(i_0_1277, plain, (difference(X1,quotient(X1,quotient(X2,X1)))=quotient(X1,X2))).
+#
+#cnf(i_0_1398, plain, (quotient(X1,quotient(X2,X1))=product(X1,quotient(X1,X2)))).
+#
+#cnf(i_0_1393, plain, (product(difference(product(X1,X2),X1),X1)=difference(X2,X1))).
+#
+#cnf(i_0_1474, plain, (quotient(difference(X2,X1),X1)=difference(product(X1,X2),X1))).
+#
+#cnf(i_0_1444, plain, (difference(product(X1,quotient(X1,X2)),X1)=quotient(X2,X1))).
+##
+#cnf(i_0_1462, plain, (quotient(X1,difference(X1,one))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_1473, plain, (difference(difference(product(X1,X2),X1),difference(X2,X1))=X1)).
+##
+#cnf(i_0_1537, plain, (difference(difference(quotient(one,X1),X1),X1)=difference(X1,one))).
+###
+#cnf(i_0_1542, plain, (difference(product(X1,product(X1,X1)),X1)=difference(X1,difference(X1,one)))).
+#
+#cnf(i_0_1388, plain, (difference(quotient(one,X1),product(X1,X1))=product(X1,product(X1,X1)))).
+#
+#cnf(i_0_1454, plain, (quotient(X1,difference(X1,difference(X1,one)))=product(X1,product(X1,X1)))).
+#
+#cnf(i_0_1616, plain, (product(difference(quotient(one,X1),X1),difference(X1,one))=X1)).
+###
+#cnf(i_0_1206, plain, (quotient(product(difference(X1,X2),X1),X3)=difference(X1,quotient(X2,quotient(X3,X1))))).
+##
+#cnf(i_0_1774, plain, (product(quotient(one,X1),product(X1,product(X1,X1)))=product(X1,X1))).
+##
+#cnf(i_0_411, plain, (product(difference(X1,quotient(X2,quotient(X3,X1))),X3)=product(difference(X1,X2),X1))).
+##
+#cnf(i_0_438, plain, (difference(difference(X1,X2),product(difference(X1,X3),X1))=product(difference(X2,X3),X1))).
+#
+#cnf(i_0_2060, plain, (difference(difference(X1,X2),product(X3,X1))=product(difference(X2,product(X1,X3)),X1))).
+#
+#cnf(i_0_474, plain, (product(X2,product(difference(product(X1,X2),X3),X1))=product(difference(X1,X3),X1))).
+#
+#cnf(i_0_2162, plain, (difference(X1,product(difference(X2,X3),X2))=product(difference(product(X2,X1),X3),X2))).
+#
+#cnf(i_0_577, plain, (quotient(product(X2,quotient(one,X1)),quotient(difference(X1,X2),X1))=X1)).
+##
+#cnf(i_0_686, plain, (quotient(quotient(X1,quotient(one,X2)),product(difference(X2,X1),X2))=X2)).
+##
+#cnf(i_0_1292, plain, (difference(difference(X1,X2),quotient(difference(X1,X2),X1))=difference(product(X2,X1),X2))).
+#
+#cnf(i_0_1377, plain, (product(difference(X1,quotient(X1,X2)),quotient(X1,X2))=difference(X2,quotient(X1,X2)))).
+#
+#cnf(i_0_1465, plain, (product(difference(X1,X2),difference(product(X2,X1),X2))=quotient(difference(X1,X2),X1))).
+#
+#cnf(i_0_2607, plain, (product(product(X1,product(X1,X1)),X1)=product(X1,product(product(X1,X1),X1)))).
+#
+#cnf(i_0_2656, plain, (difference(product(product(X1,X1),X1),product(X1,X1))=difference(X1,one))).
+#
+#cnf(i_0_2674, plain, (quotient(product(X1,X1),difference(X1,one))=product(product(X1,X1),X1))).
+#
+#cnf(i_0_2662, plain, (product(product(product(X1,X1),X1),difference(X1,one))=product(X1,X1))).
+##
+#cnf(i_0_1467, plain, (quotient(product(X1,X2),difference(X2,quotient(X2,X1)))=product(product(X1,X2),X1))).
+##
+#cnf(i_0_1547, plain, (difference(product(product(X1,X2),X1),product(X1,X2))=difference(X2,quotient(X2,X1)))).
+#
+#cnf(i_0_1576, plain, (difference(product(X1,product(X1,quotient(X1,X2))),X1)=quotient(quotient(X2,X1),X1))).
+####
+#cnf(i_0_1756, plain, (product(product(X1,product(X1,X1)),difference(X1,difference(X1,one)))=X1)).
+###
+#cnf(i_0_1922, plain, (difference(X1,quotient(product(X1,X2),quotient(X3,X1)))=quotient(product(X2,X1),X3))).
+#
+#cnf(i_0_3030, plain, (quotient(product(X1,X2),quotient(X3,X1))=product(X1,quotient(product(X2,X1),X3)))).
+#
+#cnf(i_0_2112, plain, (product(difference(X2,product(X1,quotient(X3,X1))),X1)=difference(difference(X1,X2),X3))).
+#
+#cnf(i_0_3254, plain, (difference(difference(X1,difference(X1,one)),one)=product(X1,X1))).
+#
+#cnf(i_0_3279, plain, (quotient(one,product(X1,X1))=difference(X1,difference(X1,one)))).
+#
+#cnf(i_0_3267, plain, (product(difference(X1,difference(X1,one)),product(X1,X1))=one)).
+##
+#cnf(i_0_3194, plain, (quotient(difference(difference(X2,X1),X3),X2)=difference(X1,product(X2,quotient(X3,X2))))).
+#
+#cnf(i_0_3310, plain, (difference(difference(quotient(one,X1),X1),one)=difference(X1,quotient(one,X1)))).
+###
+#cnf(i_0_3361, plain, (quotient(one,difference(X1,quotient(one,X1)))=difference(quotient(one,X1),X1))).
+##
+#cnf(i_0_2155, plain, (product(difference(product(X1,X2),product(X1,X3)),X1)=difference(X2,product(X3,X1)))).
+#
+#cnf(i_0_3591, plain, (quotient(difference(X2,product(X3,X1)),X1)=difference(product(X1,X2),product(X1,X3)))).
+#####
+#cnf(i_0_2638, plain, (difference(X1,product(product(X1,X1),product(X1,X1)))=product(X1,product(X1,X1)))).
+#
+#cnf(i_0_3773, plain, (product(product(X1,X1),product(X1,X1))=product(X1,product(X1,product(X1,X1))))).
+##
+#cnf(i_0_3149, plain, (product(X1,quotient(product(X2,X1),product(X3,X1)))=quotient(product(X1,X2),X3))).
+#
+#cnf(i_0_3854, plain, (quotient(product(X2,X1),product(X3,X1))=difference(X1,quotient(product(X1,X2),X3)))).
+#
+#cnf(i_0_3456, plain, (difference(product(X1,X2),product(X1,quotient(X3,X1)))=quotient(difference(X2,X3),X1))).
+##
+#cnf(i_0_3841, plain, (quotient(product(X1,product(X1,product(X1,X1))),X1)=product(product(X1,X1),X1))).
+#
+#cnf(i_0_4140, plain, (product(product(product(X1,X1),X1),X1)=product(X1,product(X1,product(X1,X1))))).
+#
+#cnf(i_0_4014, plain, (difference(X2,quotient(product(X2,quotient(X1,X2)),X3))=quotient(X1,product(X3,X2)))).
+#
+#cnf(i_0_4204, plain, (quotient(product(X1,quotient(X2,X1)),X3)=product(X1,quotient(X2,product(X3,X1))))).
+#
+#cnf(i_0_4283, plain, (product(product(X1,quotient(X2,product(X3,X1))),X3)=product(X1,quotient(X2,X1)))).
+#
+#cnf(i_0_302, plain, (difference(product(X1,X1),difference(difference(X1,one),one))=difference(X1,one))).
+##
+#cnf(i_0_317, plain, (difference(quotient(one,X1),difference(X1,quotient(one,X1)))=quotient(one,X1))).
+##
+#cnf(i_0_587, plain, (difference(difference(X1,one),difference(X1,X2))=product(product(X2,quotient(one,X1)),X1))).
+#
+#cnf(i_0_4552, plain, (difference(difference(product(X1,X1),one),quotient(one,X1))=X1)).
+#
+#cnf(i_0_4586, plain, (difference(product(X1,X1),one)=difference(X1,difference(X1,one)))).
+#
+#cnf(i_0_4616, plain, (quotient(one,difference(X1,difference(X1,one)))=product(X1,X1))).
+###
+#cnf(i_0_4611, plain, (product(product(X1,X1),difference(X1,difference(X1,one)))=one)).
+######
+#cnf(i_0_4662, plain, (difference(difference(X1,quotient(one,X1)),one)=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_4711, plain, (quotient(one,difference(quotient(one,X1),X1))=difference(X1,quotient(one,X1)))).
+####
+#cnf(i_0_617, plain, (quotient(difference(X1,quotient(one,X1)),X1)=difference(X1,difference(X1,quotient(one,X1))))).
+#
+#cnf(i_0_729, plain, (quotient(quotient(X2,X1),quotient(one,X1))=product(X1,product(difference(X1,one),X2)))).
+#
+#cnf(i_0_4990, plain, (product(difference(X1,difference(X1,one)),product(product(X1,X1),X1))=X1)).
+##
+#cnf(i_0_914, plain, (product(difference(X1,one),product(X1,quotient(one,X1)))=quotient(one,X1))).
+#
+#cnf(i_0_972, plain, (difference(product(X1,quotient(one,X1)),difference(X1,one))=quotient(one,X1))).
+#
+#cnf(i_0_984, plain, (quotient(quotient(one,quotient(one,X1)),product(X1,X1))=quotient(one,X1))).
+###
+#cnf(i_0_1025, plain, (quotient(difference(X1,quotient(one,X1)),difference(X1,one))=difference(X1,one))).
+###
+#cnf(i_0_1062, plain, (difference(quotient(one,X1),difference(X1,difference(X1,one)))=difference(X1,one))).
+#
+#cnf(i_0_5238, plain, (product(quotient(one,X1),difference(X1,one))=difference(X1,difference(X1,one)))).
+#
+#cnf(i_0_5311, plain, (product(quotient(one,quotient(one,X1)),X1)=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_5342, plain, (difference(product(X1,quotient(one,X1)),X1)=quotient(one,quotient(one,X1)))).
+###
+#cnf(i_0_5433, plain, (quotient(X1,quotient(one,quotient(one,X1)))=product(X1,quotient(one,X1)))).
+##
+#cnf(i_0_1457, plain, (quotient(X1,difference(X1,quotient(one,X1)))=product(X1,difference(quotient(one,X1),X1)))).
+#
+#cnf(i_0_1928, plain, (difference(X1,quotient(one,quotient(X2,X1)))=product(X1,quotient(one,product(X2,X1))))).
+#
+#cnf(i_0_2121, plain, (difference(difference(X1,X2),quotient(one,X1))=product(difference(X2,difference(X1,one)),X1))).
+#
+#cnf(i_0_2286, plain, (difference(X1,product(X2,quotient(one,X2)))=product(difference(product(X2,X1),one),X2))).
+####
+#cnf(i_0_3227, plain, (difference(difference(X2,X1),difference(X2,one))=product(difference(X1,quotient(one,X2)),X2))).
+#
+#cnf(i_0_3731, plain, (quotient(difference(X1,quotient(one,X2)),X2)=difference(product(X2,X1),difference(X2,one)))).
+#
+#cnf(i_0_4027, plain, (quotient(quotient(one,X1),product(X2,X1))=difference(X1,quotient(difference(X1,one),X2)))).
+#
+#cnf(i_0_5987, plain, (product(X1,difference(quotient(one,X1),X1))=product(product(X1,X1),X1))).
+#
+#cnf(i_0_6039, plain, (difference(X1,product(product(X1,X1),X1))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_1457, plain, (quotient(X1,difference(X1,quotient(one,X1)))=product(product(X1,X1),X1))).
+#
+#cnf(i_0_6158, plain, (difference(product(product(X1,X1),X1),X1)=difference(X1,quotient(one,X1)))).
+#
+#cnf(i_0_6108, plain, (product(difference(quotient(one,X1),X1),X1)=product(X1,product(X1,X1)))).
+#
+#cnf(i_0_6286, plain, (quotient(X1,product(X1,product(X1,X1)))=difference(X1,quotient(one,X1)))).
+###
+#cnf(i_0_6040, plain, (quotient(product(product(X1,X1),X1),difference(quotient(one,X1),X1))=X1)).
+###
+#cnf(i_0_6157, plain, (product(product(product(X1,X1),X1),difference(X1,quotient(one,X1)))=X1)).
+###
+#cnf(i_0_6263, plain, (difference(difference(quotient(one,X1),X1),product(X1,product(X1,X1)))=X1)).
+#
+#cnf(i_0_6291, plain, (product(difference(X1,quotient(one,X1)),product(X1,product(X1,X1)))=X1)).
+###
+#cnf(i_0_4077, plain, (quotient(difference(X2,difference(X1,one)),X1)=difference(product(X1,X2),quotient(one,X1)))).
+#
+#cnf(i_0_4735, plain, (quotient(one,quotient(X2,product(X1,X1)))=product(product(X1,X1),quotient(one,X2)))).
+####
+#cnf(i_0_617, plain, (difference(product(X1,X1),difference(X1,one))=difference(X1,difference(X1,quotient(one,X1))))).
+##
+#cnf(i_0_126, plain, (product(difference(product(X1,X2),X1),product(X2,product(X1,X2)))=product(X1,X2))).
+######
+#cnf(i_0_983, plain, (difference(quotient(one,X1),quotient(one,quotient(one,X1)))=product(X1,X1))).
+#######
+#cnf(i_0_1670, plain, (difference(difference(X1,quotient(X1,X2)),difference(X2,quotient(X1,X2)))=quotient(X1,X2))).
+###
+#cnf(i_0_2423, plain, (quotient(quotient(difference(X1,X2),X1),difference(product(X2,X1),X2))=difference(X1,X2))).
+####
+#cnf(i_0_2754, plain, (product(product(product(X1,X2),X1),difference(X2,quotient(X2,X1)))=product(X1,X2))).
+#####
+#cnf(i_0_3112, plain, (difference(product(X1,quotient(product(X2,X1),X3)),product(X1,X2))=quotient(X3,X1))).
+###
+#cnf(i_0_3802, plain, (difference(product(X1,X1),product(X1,product(X1,product(X1,X1))))=product(X1,X1))).
+############
+#cnf(i_0_2852, plain, (difference(product(X1,X1),product(X1,product(X1,X1)))=quotient(one,quotient(one,X1)))).
+########
+#cnf(i_0_1043, plain, (product(product(X1,X1),difference(X1,quotient(one,X1)))=product(X1,quotient(one,X1)))).
+#
+#cnf(i_0_1081, plain, (product(difference(quotient(one,X1),X1),difference(X1,quotient(one,X1)))=one)).
+#####
+#cnf(i_0_1926, plain, (difference(X1,quotient(difference(X1,one),quotient(X2,X1)))=quotient(quotient(one,X1),X2))).
+#
+#cnf(i_0_7720, plain, (quotient(difference(X1,one),quotient(X2,X1))=product(X1,quotient(quotient(one,X1),X2)))).
+##
+#cnf(i_0_2254, plain, (quotient(difference(X1,difference(quotient(one,X1),X2)),X1)=product(X2,quotient(one,X1)))).
+#
+#cnf(i_0_7896, plain, (difference(X1,difference(quotient(one,X1),X2))=product(product(X2,quotient(one,X1)),X1))).
+#
+#cnf(i_0_7991, plain, (product(product(X2,quotient(one,X1)),X1)=product(product(X2,X1),difference(X1,one)))).
+#
+#cnf(i_0_7896, plain, (difference(X1,difference(quotient(one,X1),X2))=product(product(X2,X1),difference(X1,one)))).
+#
+#cnf(i_0_587, plain, (difference(difference(X1,one),difference(X1,X2))=product(product(X2,X1),difference(X1,one)))).
+#
+#cnf(i_0_2284, plain, (product(difference(product(X2,X1),difference(X2,one)),X2)=difference(X1,quotient(one,X2)))).
+#########
+#cnf(i_0_3767, plain, (product(X1,product(difference(X1,one),difference(X1,X2)))=product(quotient(one,X1),X2))).
+#
+#cnf(i_0_8354, plain, (difference(X1,product(quotient(one,X1),X2))=product(difference(X1,one),difference(X1,X2)))).
+#
+#cnf(i_0_8434, plain, (product(quotient(one,X1),product(X1,X2))=product(X1,product(difference(X1,one),X2)))).
+#
+#cnf(i_0_4030, plain, (product(X1,quotient(one,product(product(X2,X1),X1)))=difference(X1,quotient(one,X2)))).
+#
+#cnf(i_0_8630, plain, (quotient(one,product(product(X2,X1),X1))=difference(X1,difference(X1,quotient(one,X2))))).
+##
+#cnf(i_0_4314, plain, (product(X1,quotient(difference(X1,one),product(X2,X1)))=quotient(quotient(one,X1),X2))).
+#
+#cnf(i_0_8863, plain, (quotient(difference(X1,one),product(X2,X1))=difference(X1,quotient(quotient(one,X1),X2)))).
+#
+#cnf(i_0_4751, plain, (product(difference(X1,quotient(one,X1)),difference(quotient(one,X1),X1))=one)).
+###########
+#cnf(i_0_5614, plain, (product(X1,product(X1,quotient(one,product(X2,X1))))=quotient(one,quotient(X2,X1)))).
+#
+#cnf(i_0_9191, plain, (quotient(one,quotient(quotient(X2,X1),X1))=product(X1,product(X1,quotient(one,X2))))).
+#######
+#cnf(i_0_5777, plain, (product(difference(product(X1,product(X1,X2)),one),X1)=quotient(difference(X2,one),X1))).
+#
+#cnf(i_0_9378, plain, (quotient(quotient(difference(X2,one),X1),X1)=difference(product(X1,product(X1,X2)),one))).
+#
+#cnf(i_0_9546, plain, (difference(product(X1,product(X1,X1)),one)=difference(X1,difference(X1,quotient(one,X1))))).
+#
+#cnf(i_0_5805, plain, (product(product(difference(product(X2,X1),one),X2),X2)=difference(difference(X2,X1),one))).
+#
+#cnf(i_0_9716, plain, (difference(difference(X1,difference(X1,X2)),one)=product(product(difference(X2,one),X1),X1))).
+###
+#cnf(i_0_5897, plain, (product(difference(product(X1,X2),quotient(one,X1)),X1)=difference(X2,difference(X1,one)))).
+#####
+#cnf(i_0_6820, plain, (product(quotient(one,X1),product(product(X1,X1),X1))=difference(quotient(one,X1),X1))).
+###
+#cnf(i_0_7046, plain, (product(product(X1,product(X1,X1)),difference(X1,one))=difference(quotient(one,X1),X1))).
+######
+#cnf(i_0_8021, plain, (quotient(product(product(X1,X2),difference(X2,one)),X2)=product(X1,quotient(one,X2)))).
+#
+#cnf(i_0_10155, plain, (quotient(product(X1,difference(X2,one)),X2)=product(quotient(X1,X2),quotient(one,X2)))).
+##
+#cnf(i_0_8090, plain, (product(product(product(X1,X2),X1),difference(X1,one))=difference(difference(X1,one),X2))).
+#
+#cnf(i_0_8097, plain, (product(X1,product(product(X2,X1),difference(X1,one)))=difference(quotient(one,X1),X2))).
+#
+#cnf(i_0_10490, plain, (difference(quotient(one,X1),quotient(X2,X1))=product(X1,product(X2,difference(X1,one))))).
+#
+#cnf(i_0_10544, plain, (difference(quotient(one,X1),product(X1,X2))=product(X1,difference(difference(X1,one),X2)))).
+#####
+#cnf(i_0_8349, plain, (product(difference(X1,difference(X1,quotient(one,X1))),X1)=difference(X1,quotient(one,X1)))).
+#
+#cnf(i_0_9000, plain, (difference(X1,quotient(quotient(one,X1),quotient(X2,X1)))=quotient(difference(X1,one),X2))).
+#
+#cnf(i_0_10836, plain, (quotient(quotient(one,X1),quotient(X2,X1))=product(X1,quotient(difference(X1,one),X2)))).
+##
+#cnf(i_0_89, plain, (difference(difference(X3,product(product(X3,X1),X2)),product(X1,product(X2,X3)))=X3)).
+#
+#cnf(i_0_114, plain, (difference(difference(X1,product(X2,X3)),product(difference(X1,X2),product(X3,X1)))=X1)).
+#
+#cnf(i_0_612, plain, (quotient(difference(difference(X1,one),X2),difference(X1,one))=product(product(X1,X2),X1))).
+#
+#cnf(i_0_11572, plain, (product(product(X1,product(difference(X1,one),X2)),X1)=quotient(X2,difference(X1,one)))).
+#
+#cnf(i_0_11593, plain, (quotient(quotient(X2,difference(X1,one)),X1)=product(X1,product(difference(X1,one),X2)))).
+#
+#cnf(i_0_11677, plain, (quotient(product(X2,X1),difference(X1,one))=product(quotient(X2,quotient(one,X1)),X1))).
+##
+#cnf(i_0_11686, plain, (quotient(difference(X1,X2),difference(X1,one))=product(product(quotient(one,X1),X2),X1))).
+#
+#cnf(i_0_626, plain, (difference(difference(X1,product(X2,quotient(X3,X1))),product(difference(X1,X2),X3))=X1)).
+####
+#cnf(i_0_1102, plain, (quotient(difference(quotient(one,X1),X1),difference(difference(X1,one),one))=X1)).
+#
+#cnf(i_0_1143, plain, (product(difference(difference(X1,one),one),product(X1,quotient(one,X1)))=X1)).
+##############
+#cnf(i_0_2637, plain, (difference(product(X1,product(X1,X1)),product(X1,product(product(X1,X1),X1)))=X1)).
+###
+#cnf(i_0_3193, plain, (difference(difference(X1,product(X2,quotient(X3,X2))),difference(difference(X2,X1),X3))=X2)).
+##
+#cnf(i_0_3590, plain, (difference(difference(product(X1,X2),product(X1,X3)),difference(X2,product(X3,X1)))=X1)).
+##
+#cnf(i_0_4141, plain, (difference(product(product(X1,X1),X1),product(X1,product(X1,product(X1,X1))))=X1)).
+###
+#cnf(i_0_5258, plain, (difference(quotient(one,quotient(one,X1)),difference(quotient(one,X1),X1))=X1)).
+####
+#cnf(i_0_5419, plain, (product(product(X1,quotient(one,X1)),quotient(one,quotient(one,X1)))=X1)).
+#####
+#cnf(i_0_6641, plain, (difference(product(product(X2,X2),quotient(one,X1)),one)=quotient(X1,product(X2,X2)))).
+#
+#cnf(i_0_13156, plain, (quotient(difference(X2,one),product(X1,X1))=difference(product(product(X1,X1),X2),one))).
+#
+#cnf(i_0_13216, plain, (difference(product(product(X1,X1),X1),one)=difference(X1,difference(X1,difference(X1,one))))).
+#####
+#cnf(i_0_6931, plain, (product(product(X1,X1),quotient(one,quotient(one,X1)))=product(X1,product(X1,X1)))).
+####
+#cnf(i_0_8462, plain, (product(product(quotient(one,X1),X2),quotient(one,X1))=quotient(difference(X1,X2),X1))).
+#
+#cnf(i_0_8518, plain, (difference(quotient(one,X1),difference(quotient(one,X1),X1))=product(product(X1,X1),X1))).
+####
+#cnf(i_0_8994, plain, (quotient(one,difference(X1,difference(X1,difference(X1,one))))=product(product(X1,X1),X1))).
+##
+#cnf(i_0_9247, plain, (difference(product(X2,product(X2,quotient(one,X1))),one)=quotient(quotient(X1,X2),X2))).
+###
+#cnf(i_0_9339, plain, (quotient(one,difference(X1,difference(X1,quotient(one,X1))))=product(X1,product(X1,X1)))).
+#####
+#cnf(i_0_9833, plain, (difference(difference(product(X1,X1),quotient(one,X1)),one)=product(X1,product(X1,X1)))).
+#
+#cnf(i_0_14016, plain, (quotient(one,product(X1,product(X1,X1)))=difference(product(X1,X1),quotient(one,X1)))).
+##
+#cnf(i_0_10037, plain, (quotient(difference(quotient(one,X1),X1),difference(X1,one))=product(X1,product(X1,X1)))).
+#
+#cnf(i_0_10229, plain, (product(difference(X1,one),product(X2,difference(X1,one)))=difference(X1,quotient(X2,X1)))).
+#####
+#cnf(i_0_10730, plain, (difference(quotient(one,X1),quotient(X2,quotient(one,X1)))=product(X1,product(X2,X1)))).
+#################
+#cnf(i_0_13150, plain, (difference(difference(product(X1,X1),quotient(one,X2)),one)=product(X2,product(X1,X1)))).
+#
+#cnf(i_0_14576, plain, (quotient(one,product(X2,product(X1,X1)))=difference(product(X1,X1),quotient(one,X2)))).
+#
+#cnf(i_0_14641, plain, (difference(difference(product(X1,X1),X2),one)=product(difference(X2,one),product(X1,X1)))).
+###########
+#cnf(i_0_14913, plain, (product(difference(difference(X1,one),one),product(X1,X1))=product(product(X1,X1),X1))).
+#
+#cnf(i_0_5114, plain, (quotient(quotient(one,X1),difference(X1,one))=difference(quotient(one,X1),difference(X1,one)))).
+#
+#cnf(i_0_5429, plain, (quotient(quotient(one,quotient(one,X1)),X1)=difference(quotient(one,quotient(one,X1)),X1))).
+##
+#cnf(i_0_5952, plain, (difference(quotient(one,quotient(one,X1)),X1)=difference(quotient(one,X1),difference(X1,one)))).
+#####
+#cnf(i_0_15067, plain, (quotient(X1,difference(difference(X1,one),one))=difference(X1,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_5429, plain, (quotient(quotient(one,quotient(one,X1)),X1)=difference(quotient(one,X1),difference(X1,one)))).
+#
+#cnf(i_0_15244, plain, (difference(quotient(one,X1),difference(X1,one))=difference(X1,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_5952, plain, (difference(quotient(one,quotient(one,X1)),X1)=difference(X1,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_5429, plain, (quotient(quotient(one,quotient(one,X1)),X1)=difference(X1,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_5114, plain, (quotient(quotient(one,X1),difference(X1,one))=difference(X1,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_137, plain, (product(product(difference(X2,X1),X1),difference(X1,X2))=product(difference(difference(X1,X2),one),X2))).
+##
+#cnf(i_0_283, plain, (product(product(difference(X1,X2),X1),difference(X1,X2))=difference(difference(difference(X1,X2),one),X2))).
+#
+#cnf(i_0_589, plain, (product(quotient(X1,X2),product(X2,quotient(X2,X1)))=product(X1,quotient(one,quotient(X1,X2))))).
+#
+#cnf(i_0_715, plain, (difference(X1,product(product(X1,X1),difference(X1,X2)))=quotient(quotient(X2,quotient(one,X1)),X1))).
+#
+#cnf(i_0_716, plain, (product(quotient(X1,X2),product(X2,quotient(X1,X2)))=quotient(X1,quotient(one,quotient(X1,X2))))).
+#
+#cnf(i_0_730, plain, (product(X1,product(difference(X1,X2),product(X3,X1)))=quotient(product(X2,X3),quotient(one,X1)))).
+#
+#cnf(i_0_839, plain, (difference(product(X1,product(difference(X1,one),X2)),quotient(X2,X1))=quotient(one,X1))).
+#
+#cnf(i_0_1282, plain, (difference(X1,quotient(X1,difference(X1,quotient(X2,X1))))=quotient(X1,product(difference(X1,one),X2)))).
+#
+#cnf(i_0_1288, plain, (difference(X1,quotient(X1,product(X1,quotient(X2,X1))))=quotient(X1,difference(difference(X1,one),X2)))).
+#
+#cnf(i_0_1485, plain, (product(difference(X1,difference(product(X1,X2),X1)),X1)=product(difference(X1,one),difference(X2,X1)))).
+##
+#cnf(i_0_1522, plain, (product(product(X1,difference(product(X1,X2),X1)),X1)=difference(difference(X1,one),difference(X2,X1)))).
+#
+#cnf(i_0_1763, plain, (difference(product(X1,product(X1,product(X1,X1))),X1)=difference(product(X1,X1),quotient(one,X1)))).
+##
+#cnf(i_0_1925, plain, (difference(X1,quotient(quotient(X2,X1),quotient(X3,X1)))=quotient(product(difference(X1,one),X2),X3))).
+#
+#cnf(i_0_2282, plain, (product(difference(product(X2,X1),quotient(X3,X2)),X2)=difference(X1,product(difference(X2,one),X3)))).
+#
+#cnf(i_0_3388, plain, (product(difference(X1,difference(X1,quotient(one,X1))),product(X1,X1))=quotient(one,X1))).
+#
+#cnf(i_0_3712, plain, (product(X1,difference(product(X1,X1),product(X1,X2)))=product(product(X2,X1),quotient(one,X1)))).
+#
+#cnf(i_0_4191, plain, (quotient(X1,product(X1,product(X1,product(X1,X1))))=difference(X1,difference(X1,difference(X1,one))))).
+#
+#cnf(i_0_4337, plain, (product(X1,quotient(difference(X1,X2),product(X3,X1)))=quotient(product(X2,quotient(one,X1)),X3))).
+##
+#cnf(i_0_4630, plain, (product(difference(product(product(X2,X2),X1),one),product(X2,X2))=difference(X1,one))).
+###
+#cnf(i_0_5743, plain, (product(difference(X1,difference(X1,difference(X1,one))),product(X1,X1))=difference(X1,one))).
+####
+#cnf(i_0_6062, plain, (quotient(difference(quotient(one,X1),X1),product(product(X1,X1),X1))=quotient(one,X1))).
+#
+#cnf(i_0_6162, plain, (difference(product(X1,product(product(X1,X1),X1)),X1)=difference(X1,difference(X1,quotient(one,X1))))).
+####
+#cnf(i_0_6735, plain, (product(product(X1,X1),difference(X1,difference(X1,quotient(one,X1))))=difference(X1,one))).
+#
+#cnf(i_0_8167, plain, (quotient(difference(X1,X2),product(product(X2,X1),difference(X1,one)))=difference(X1,one))).
+#
+#cnf(i_0_8520, plain, (quotient(product(X1,product(difference(X1,one),X2)),product(X1,X2))=quotient(one,X1))).
+###
+#cnf(i_0_10036, plain, (difference(product(X1,product(X1,X1)),difference(quotient(one,X1),X1))=difference(X1,one))).
+#
+#cnf(i_0_10296, plain, (difference(product(product(X1,X2),X1),difference(difference(X1,one),X2))=difference(X1,one))).
+#
+#cnf(i_0_10566, plain, (quotient(quotient(X1,X2),product(X2,product(X1,difference(X2,one))))=quotient(one,X2))).
+#
+#cnf(i_0_10663, plain, (quotient(product(X1,X2),product(X1,difference(difference(X1,one),X2)))=quotient(one,X1))).
+##
+#cnf(i_0_11765, plain, (difference(product(quotient(X1,quotient(one,X2)),X2),product(X1,X2))=difference(X2,one))).
+#
+#cnf(i_0_11877, plain, (difference(product(product(quotient(one,X1),X2),X1),difference(X1,X2))=difference(X1,one))).
+#
+#cnf(i_0_12720, plain, (difference(product(quotient(one,X1),X2),quotient(difference(X1,X2),X1))=quotient(one,X1))).
+######
+#cnf(i_0_14283, plain, (quotient(difference(X1,quotient(X2,X1)),product(X2,difference(X1,one)))=difference(X1,one))).
+##
+#cnf(i_0_14460, plain, (quotient(quotient(X1,quotient(one,X2)),product(X2,product(X1,X2)))=quotient(one,X2))).
+##################
+#cnf(i_0_281, plain, (difference(difference(X1,one),product(X2,product(X3,X1)))=product(product(product(X1,X2),X3),X1))).
+#
+#cnf(i_0_630, plain, (difference(difference(X1,one),product(difference(X1,X2),X3))=product(product(X2,quotient(X3,X1)),X1))).
+#
+#cnf(i_0_1390, plain, (product(difference(quotient(X2,quotient(one,X1)),X1),X1)=difference(product(difference(X1,X2),X1),X1))).
+#
+#cnf(i_0_1392, plain, (product(difference(product(X2,quotient(one,X1)),X1),X1)=difference(quotient(difference(X1,X2),X1),X1))).
+###
+#cnf(i_0_2119, plain, (difference(difference(X1,X2),product(difference(X1,one),X3))=product(difference(X2,quotient(X3,X1)),X1))).
+#
+#cnf(i_0_2212, plain, (product(difference(X2,difference(difference(X2,one),X1)),X2)=product(quotient(X1,X2),product(X2,X2)))).
+#####
+#cnf(i_0_3182, plain, (quotient(product(X2,quotient(one,X1)),quotient(X3,X1))=product(X1,quotient(difference(X1,X2),X3)))).
+#
+#cnf(i_0_3248, plain, (product(difference(X1,product(X3,quotient(one,X2))),X2)=difference(difference(X2,X1),difference(X2,X3)))).
+#
+#cnf(i_0_3333, plain, (quotient(product(X1,X1),difference(X1,difference(X1,one)))=product(X1,product(X1,product(X1,X1))))).
+##
+#cnf(i_0_3729, plain, (quotient(difference(X1,product(difference(X2,one),X3)),X2)=difference(product(X2,X1),quotient(X3,X2)))).
+#
+#cnf(i_0_4025, plain, (quotient(product(difference(X1,one),X2),product(X3,X1))=difference(X1,quotient(quotient(X2,X1),X3)))).
+#
+#cnf(i_0_4100, plain, (difference(product(X1,X2),product(X3,quotient(one,X1)))=quotient(difference(X2,difference(X1,X3)),X1))).
+#
+#cnf(i_0_4407, plain, (product(X1,quotient(quotient(X2,quotient(one,X1)),X1))=product(product(X1,X1),difference(X1,X2)))).
+#####
+#cnf(i_0_5943, plain, (difference(product(X1,quotient(quotient(one,X1),X2)),difference(X1,one))=quotient(X2,X1))).
+#
+#cnf(i_0_6045, plain, (quotient(product(product(X1,X1),X1),quotient(one,X1))=product(X1,product(X1,product(X1,X1))))).
+##
+#cnf(i_0_6621, plain, (difference(product(X1,quotient(difference(X1,one),X2)),quotient(one,X1))=quotient(X2,X1))).
+#
+#cnf(i_0_6751, plain, (quotient(difference(X1,one),difference(X1,difference(X1,quotient(one,X1))))=product(X1,X1))).
+####
+#cnf(i_0_7566, plain, (quotient(product(X1,product(X1,X1)),quotient(one,quotient(one,X1)))=product(X1,X1))).
+###
+#cnf(i_0_8074, plain, (product(product(quotient(X1,quotient(one,X2)),X2),difference(X2,one))=product(X1,X2))).
+#
+#cnf(i_0_8142, plain, (product(product(product(quotient(one,X1),X2),X1),difference(X1,one))=difference(X1,X2))).
+#######################
+#cnf(i_0_12644, plain, (difference(difference(product(product(X1,X1),X2),one),difference(X2,one))=product(X1,X1))).
+##########
+#cnf(i_0_14919, plain, (difference(difference(difference(X1,one),one),product(product(X1,X1),X1))=product(X1,X1))).
+##########
+#cnf(i_0_16738, plain, (quotient(product(X2,quotient(X3,X1)),quotient(one,X1))=product(X1,product(difference(X1,X2),X3)))).
+#
+#cnf(i_0_16867, plain, (quotient(product(product(X1,X2),X3),quotient(one,X1))=product(X1,product(X2,product(X3,X1))))).
+#
+#cnf(i_0_17039, plain, (product(X1,quotient(X1,product(difference(X1,one),X2)))=quotient(X1,difference(X1,quotient(X2,X1))))).
+#
+#cnf(i_0_17153, plain, (product(X1,quotient(X1,difference(difference(X1,one),X2)))=quotient(X1,product(X1,quotient(X2,X1))))).
+#
+#cnf(i_0_17666, plain, (quotient(X1,difference(product(X1,X1),quotient(one,X1)))=product(X1,product(X1,product(X1,X1))))).
+#
+#cnf(i_0_17700, plain, (product(X1,quotient(product(difference(X1,one),X2),X3))=quotient(quotient(X2,X1),quotient(X3,X1)))).
+####
+#cnf(i_0_18289, plain, (product(product(difference(X1,X2),X1),quotient(one,X1))=product(X1,difference(product(X1,X1),X2)))).
+#
+#cnf(i_0_18447, plain, (difference(X1,quotient(product(X2,quotient(one,X1)),X3))=quotient(difference(X1,X2),product(X3,X1)))).
+####
+#cnf(i_0_19033, plain, (quotient(X1,difference(X1,difference(X1,quotient(one,X1))))=product(X1,product(product(X1,X1),X1)))).
+#########
+#cnf(i_0_24342, plain, (quotient(product(X1,difference(quotient(one,X2),X2)),X2)=product(quotient(X1,X2),product(X2,X2)))).
+#
+#cnf(i_0_25835, plain, (product(product(quotient(X1,X2),product(X2,X2)),X2)=product(X1,difference(quotient(one,X2),X2)))).
+###
+#cnf(i_0_26102, plain, (product(product(X1,X2),difference(quotient(one,X2),X2))=product(product(X1,product(X2,X2)),X2))).
+#
+#cnf(i_0_26285, plain, (product(product(X1,quotient(one,X1)),difference(quotient(one,X1),X1))=product(X1,X1))).
+#
+#cnf(i_0_26333, plain, (difference(product(X1,quotient(one,X1)),product(X1,X1))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_26334, plain, (quotient(product(X1,X1),difference(quotient(one,X1),X1))=product(X1,quotient(one,X1)))).
+##
+#cnf(i_0_26507, plain, (difference(difference(quotient(one,X1),X1),product(X1,X1))=product(X1,quotient(one,X1)))).
+#
+#cnf(i_0_26660, plain, (quotient(product(X1,X1),product(X1,quotient(one,X1)))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_26367, plain, (quotient(product(X1,X1),difference(X1,quotient(one,X1)))=product(X1,product(product(X1,X1),X1)))).
+#
+#cnf(i_0_26397, plain, (product(difference(quotient(one,X1),X1),product(X1,quotient(one,X1)))=product(X1,X1))).
+######
+#cnf(i_0_26810, plain, (product(difference(quotient(one,X1),X1),product(X1,X1))=product(X1,product(product(X1,X1),X1)))).
+###
+#cnf(i_0_977, plain, (product(difference(quotient(one,X1),X1),quotient(one,X1))=quotient(one,quotient(one,X1)))).
+#
+#cnf(i_0_1182, plain, (product(difference(product(X1,quotient(one,X1)),one),X1)=quotient(one,quotient(one,X1)))).
+#
+#cnf(i_0_27302, plain, (difference(product(X1,quotient(one,X1)),one)=difference(X1,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_1278, plain, (quotient(difference(X1,one),difference(X1,quotient(one,X1)))=difference(difference(X1,one),one))).
+#######
+#cnf(i_0_5157, plain, (quotient(product(X1,X1),quotient(one,quotient(one,X1)))=quotient(one,quotient(one,X1)))).
+##
+#cnf(i_0_5309, plain, (product(X1,quotient(one,product(X1,quotient(one,X1))))=difference(difference(X1,one),one))).
+#
+#cnf(i_0_27786, plain, (quotient(one,product(X1,quotient(one,X1)))=difference(X1,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_5361, plain, (product(difference(X1,one),difference(quotient(one,X1),X1))=difference(difference(X1,one),one))).
+##
+#cnf(i_0_6847, plain, (difference(difference(difference(X1,one),one),product(X1,X1))=difference(difference(X1,one),one))).
+###
+#cnf(i_0_7558, plain, (difference(quotient(one,quotient(one,X1)),product(X1,X1))=quotient(one,quotient(one,X1)))).
+#########
+#cnf(i_0_10970, plain, (quotient(quotient(one,X1),difference(X1,difference(X1,one)))=quotient(one,quotient(one,X1)))).
+#############
+#cnf(i_0_14978, plain, (quotient(product(X1,X1),difference(difference(X1,one),one))=difference(difference(X1,one),one))).
+##
+#cnf(i_0_15621, plain, (quotient(X1,difference(X1,difference(difference(X1,one),one)))=quotient(one,quotient(one,X1)))).
+##########################
+#cnf(i_0_68, plain, (product(quotient(one,X1),quotient(one,quotient(one,X1)))=product(X1,quotient(one,X1)))).
+###
+#cnf(i_0_847, plain, (product(difference(product(X1,product(difference(X1,X2),X2)),X2),X1)=quotient(one,difference(X1,X2)))).
+#
+#cnf(i_0_28960, plain, (difference(product(X1,product(difference(X1,X2),X2)),X2)=quotient(quotient(one,difference(X1,X2)),X1))).
+#
+#cnf(i_0_29324, plain, (difference(product(quotient(X1,X2),product(X2,X1)),X1)=product(X2,quotient(difference(X2,one),X1)))).
+#
+#cnf(i_0_29290, plain, (quotient(X1,quotient(quotient(one,difference(X2,X1)),X2))=product(X2,product(difference(X2,X1),X1)))).
+#
+#cnf(i_0_29550, plain, (quotient(X1,product(X2,quotient(difference(X2,one),X1)))=product(quotient(X1,X2),product(X2,X1)))).
+###
+#cnf(i_0_951, plain, (difference(difference(X1,one),difference(difference(X1,one),one))=difference(quotient(one,X1),X1))).
+####
+#cnf(i_0_1628, plain, (difference(quotient(one,quotient(one,X1)),quotient(one,X1))=difference(X1,difference(X1,one)))).
+######
+#cnf(i_0_3356, plain, (difference(product(X1,product(X1,product(X1,X1))),product(X1,X1))=difference(X1,difference(X1,one)))).
+#
+#cnf(i_0_3762, plain, (difference(product(X2,product(X1,product(X2,X1))),product(X2,X1))=quotient(quotient(one,X1),X2))).
+##
+#cnf(i_0_3839, plain, (quotient(product(X1,X1),product(X1,product(X1,product(X1,X1))))=difference(X1,difference(X1,one)))).
+################
+#cnf(i_0_8728, plain, (product(difference(X2,difference(X2,quotient(one,X1))),product(product(X1,X2),X2))=one)).
+#
+#cnf(i_0_9188, plain, (quotient(one,difference(X1,difference(difference(X1,one),one)))=product(X1,quotient(one,X1)))).
+##
+#cnf(i_0_9547, plain, (product(product(X1,product(X1,X1)),difference(X1,difference(X1,quotient(one,X1))))=one)).
+##
+#cnf(i_0_9669, plain, (difference(difference(X1,difference(difference(X1,one),one)),one)=product(X1,quotient(one,X1)))).
+##
+#cnf(i_0_9734, plain, (product(difference(X1,difference(X1,X2)),product(product(difference(X2,one),X1),X1))=one)).
+######
+#cnf(i_0_13240, plain, (product(product(product(X1,X1),X1),difference(X1,difference(X1,difference(X1,one))))=one)).
+#############################
+#cnf(i_0_26129, plain, (difference(product(X1,X2),product(product(X1,product(X2,X2)),X2))=difference(quotient(one,X2),X2))).
+#
+#cnf(i_0_32070, plain, (product(X1,product(difference(quotient(one,X1),X1),X2))=product(product(X1,X1),product(X1,X2)))).
+#
+#cnf(i_0_32258, plain, (difference(X1,product(product(X1,X1),product(X1,X2)))=product(difference(quotient(one,X1),X1),X2))).
+#
+#cnf(i_0_32470, plain, (product(product(difference(quotient(one,X1),X1),X2),X1)=product(X1,product(product(X1,X2),X1)))).
+#
+#cnf(i_0_32569, plain, (product(difference(quotient(one,X1),X1),difference(X1,X2))=difference(X1,product(product(X1,X1),X2)))).
+#
+#cnf(i_0_26368, plain, (difference(product(X1,product(product(X1,X1),X1)),product(X1,X1))=difference(X1,quotient(one,X1)))).
+#####
+#cnf(i_0_27014, plain, (quotient(product(X1,product(product(X1,X1),X1)),product(X1,X1))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_27042, plain, (quotient(product(X1,X1),product(X1,product(product(X1,X1),X1)))=difference(X1,quotient(one,X1)))).
+#####################################
+#cnf(i_0_32079, plain, (difference(product(quotient(X1,product(X2,X2)),X2),product(X1,X2))=difference(quotient(one,X2),X2))).
+#
+#cnf(i_0_33222, plain, (quotient(product(X1,X2),difference(quotient(one,X2),X2))=product(quotient(X1,product(X2,X2)),X2))).
+#
+#cnf(i_0_33478, plain, (product(quotient(quotient(X1,X2),product(X2,X2)),X2)=quotient(X1,difference(quotient(one,X2),X2)))).
+#
+#cnf(i_0_33597, plain, (quotient(quotient(X1,difference(quotient(one,X2),X2)),X2)=quotient(quotient(X1,X2),product(X2,X2)))).
+#
+#cnf(i_0_32125, plain, (difference(product(X1,X1),product(X1,product(product(X1,X1),X1)))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_32766, plain, (quotient(difference(X1,product(product(X1,X1),X2)),difference(X1,X2))=difference(quotient(one,X1),X1))).
+###
+#cnf(i_0_34128, plain, (quotient(difference(X1,X2),difference(X1,difference(product(X1,X1),X2)))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_34159, plain, (difference(difference(quotient(one,X1),X1),difference(X1,X2))=difference(X1,difference(product(X1,X1),X2)))).
+#
+#cnf(i_0_34497, plain, (difference(X1,difference(product(X1,X1),product(X1,X2)))=difference(difference(quotient(one,X1),X1),X2))).
+#
+#cnf(i_0_34546, plain, (product(X1,difference(difference(quotient(one,X1),X1),X2))=difference(product(X1,X1),product(X1,X2)))).
+#
+#cnf(i_0_34710, plain, (difference(difference(quotient(one,X1),X1),quotient(X2,X1))=difference(X1,quotient(difference(X1,X2),X1)))).
+#
+#cnf(i_0_34140, plain, (quotient(quotient(product(X1,X2),X1),difference(X1,quotient(X2,X1)))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_34232, plain, (quotient(quotient(X2,X1),difference(X1,quotient(difference(X1,X2),X1)))=difference(quotient(one,X1),X1))).
+#####
+#cnf(i_0_420, plain, (product(difference(difference(X1,X2),quotient(X3,X1)),X2)=product(difference(difference(X1,X2),X3),difference(X1,X2)))).
+#
+#cnf(i_0_468, plain, (product(difference(quotient(X1,X2),X3),quotient(X1,X2))=product(X2,product(difference(X1,X3),quotient(X1,X2))))).
+#
+#cnf(i_0_588, plain, (difference(product(X2,quotient(one,X1)),product(product(X2,X1),difference(X1,one)))=X1)).
+###
+#cnf(i_0_773, plain, (product(difference(X1,product(X2,X2)),product(quotient(one,X2),X1))=product(difference(X1,X2),X1))).
+#
+#cnf(i_0_1284, plain, (quotient(X1,product(difference(X1,X2),product(X3,X1)))=difference(X1,quotient(X1,difference(X1,product(X2,X3)))))).
+#
+#cnf(i_0_1370, plain, (difference(product(difference(X2,X1),X1),difference(X1,X2))=product(difference(X1,difference(X1,X2)),difference(X1,X2)))).
+#
+#cnf(i_0_1451, plain, (quotient(quotient(X1,X2),product(X2,quotient(X2,X1)))=product(quotient(X1,X2),quotient(quotient(X1,X2),X2)))).
+#
+#cnf(i_0_1461, plain, (quotient(X1,difference(X1,product(X2,quotient(X3,X1))))=product(X1,quotient(X1,product(difference(X1,X2),X3))))).
+#
+#cnf(i_0_1463, plain, (quotient(X1,difference(X1,product(product(X1,X2),X3)))=product(X1,quotient(X1,product(X2,product(X3,X1)))))).
+#
+#cnf(i_0_38383, plain, (product(X1,quotient(X1,product(X1,product(product(X1,X1),X1))))=difference(X1,quotient(one,X1)))).
+#
+#cnf(i_0_38431, plain, (quotient(X1,product(X1,product(product(X1,X1),X1)))=difference(X1,difference(X1,quotient(one,X1))))).
+#
+#cnf(i_0_1526, plain, (product(product(X1,X2),difference(product(X1,X3),X1))=product(X1,quotient(product(X2,difference(X3,X1)),X1)))).
+#
+#cnf(i_0_1575, plain, (difference(quotient(X2,X1),product(X1,quotient(X1,X2)))=product(quotient(X1,X2),product(X1,quotient(X1,X2))))).
+####
+#cnf(i_0_1893, plain, (quotient(X1,difference(X2,quotient(X3,quotient(X1,X2))))=product(X1,quotient(X1,product(difference(X2,X3),X2))))).
+##
+#cnf(i_0_1927, plain, (quotient(product(difference(X1,X2),product(X3,X1)),X4)=difference(X1,quotient(product(X2,X3),quotient(X4,X1))))).
+##
+#cnf(i_0_2169, plain, (difference(product(difference(product(X2,X1),X3),X2),X1)=product(difference(product(difference(X2,X3),X2),X1),X1))).
+###
+#cnf(i_0_2256, plain, (product(product(difference(product(X2,X1),X3),X2),X1)=product(difference(X1,difference(X2,X3)),product(X2,X1)))).
+##
+#cnf(i_0_2285, plain, (difference(X1,product(difference(X2,X3),product(X4,X2)))=product(difference(product(X2,X1),product(X3,X4)),X2))).
+####
+#cnf(i_0_2598, plain, (quotient(product(difference(X2,X1),X1),difference(X1,X2))=product(product(difference(X2,X1),X1),difference(X2,X1)))).
+##
+#cnf(i_0_2650, plain, (product(difference(X1,one),product(X1,product(product(X1,X1),X1)))=product(product(X1,X1),X1))).
+####
+#cnf(i_0_3140, plain, (quotient(product(X1,X2),difference(product(X1,X3),X1))=product(X1,quotient(product(X2,X1),difference(X3,X1))))).
+#
+#cnf(i_0_3234, plain, (difference(difference(X2,X1),product(difference(X2,X3),X4))=product(difference(X1,product(X3,quotient(X4,X2))),X2))).
+#
+#cnf(i_0_3237, plain, (difference(difference(X2,X1),product(X3,product(X4,X2)))=product(difference(X1,product(product(X2,X3),X4)),X2))).
+#
+#cnf(i_0_3255, plain, (difference(difference(X2,difference(quotient(X1,X2),X3)),X1)=product(product(difference(X3,X1),quotient(X1,X2)),X2))).
+#
+#cnf(i_0_3422, plain, (quotient(X1,difference(X2,product(X1,quotient(X3,X1))))=product(X1,quotient(X1,difference(difference(X1,X2),X3))))).
+##
+#cnf(i_0_3705, plain, (quotient(X1,difference(product(X1,X2),product(X1,X3)))=product(X1,quotient(X1,difference(X2,product(X3,X1)))))).
+#
+#cnf(i_0_4067, plain, (quotient(quotient(difference(X2,X3),X1),quotient(X3,X1))=difference(product(quotient(X3,X1),product(X1,X2)),X3))).
+#
+#cnf(i_0_4084, plain, (quotient(difference(X2,product(difference(X1,X3),X4)),X1)=difference(product(X1,X2),product(X3,quotient(X4,X1))))).
+#
+#cnf(i_0_4087, plain, (quotient(difference(X2,product(X3,product(X4,X1))),X1)=difference(product(X1,X2),product(product(X1,X3),X4)))).
+#
+#cnf(i_0_4148, plain, (product(difference(X1,one),product(X1,product(X1,product(X1,X1))))=product(X1,product(X1,X1)))).
+##
+#cnf(i_0_4295, plain, (quotient(X1,product(X2,quotient(X3,product(X1,X2))))=product(X1,quotient(X1,product(X2,quotient(X3,X2)))))).
+#
+#cnf(i_0_4315, plain, (quotient(product(X1,difference(product(X1,X2),X1)),X3)=product(X1,quotient(difference(X2,X1),product(X3,X1))))).
+#
+#cnf(i_0_4401, plain, (product(product(difference(X1,X2),quotient(X3,X2)),X1)=product(difference(X1,X2),quotient(X3,difference(X1,X2))))).
+##
+#cnf(i_0_5628, plain, (quotient(quotient(one,quotient(X1,X2)),product(X2,quotient(one,product(X1,X2))))=X2)).
+###
+#cnf(i_0_5905, plain, (difference(difference(product(X2,X1),difference(X2,one)),difference(X1,quotient(one,X2)))=X2)).
+#
+#cnf(i_0_6275, plain, (quotient(product(X1,product(X1,X1)),product(X2,X1))=difference(X1,quotient(product(product(X1,X1),X1),X2)))).
+###
+#cnf(i_0_6581, plain, (difference(difference(product(X2,X1),quotient(one,X2)),difference(X1,difference(X2,one)))=X2)).
+#
+#cnf(i_0_6744, plain, (product(product(X1,product(product(X1,X1),X1)),X1)=product(product(product(X1,X1),X1),product(X1,X1)))).
+##
+#cnf(i_0_8113, plain, (quotient(difference(quotient(one,X1),X2),product(product(X2,X1),difference(X1,one)))=X1)).
+###
+#cnf(i_0_8355, plain, (quotient(product(quotient(one,X1),X2),product(difference(X1,one),difference(X1,X2)))=X1)).
+#####
+#cnf(i_0_9377, plain, (difference(difference(product(X1,product(X1,X2)),one),quotient(difference(X2,one),X1))=X1)).
+##
+#cnf(i_0_9627, plain, (difference(product(difference(product(X1,X2),one),X1),difference(difference(X1,X2),one))=X1)).
+##
+#cnf(i_0_10218, plain, (difference(product(quotient(X1,X2),quotient(one,X2)),product(X1,difference(X2,one)))=X2)).
+#
+#cnf(i_0_10418, plain, (product(product(X1,product(product(X1,X1),X1)),difference(X1,one))=product(product(X1,X1),X1))).
+####
+#cnf(i_0_10760, plain, (difference(difference(X1,difference(X1,quotient(one,X1))),difference(X1,quotient(one,X1)))=X1)).
+####
+#cnf(i_0_11592, plain, (difference(product(X1,product(difference(X1,one),X2)),quotient(X2,difference(X1,one)))=X1)).
+##########
+#cnf(i_0_17546, plain, (product(product(product(X1,X1),X1),product(X1,X1))=product(product(X1,X1),product(X1,product(X1,X1))))).
+#############
+#cnf(i_0_32406, plain, (product(product(X1,X1),product(X1,product(X1,X1)))=product(X1,product(X1,product(product(X1,X1),X1))))).
+#####
+#cnf(i_0_40603, plain, (product(difference(difference(X1,X2),difference(X1,X3)),X2)=product(product(difference(X2,X3),X1),difference(X1,X2)))).
+#
+#cnf(i_0_42800, plain, (difference(difference(difference(X1,X2),difference(X1,X3)),X2)=product(product(difference(X3,X2),X1),difference(X1,X2)))).
+#
+#cnf(i_0_49878, plain, (difference(product(difference(X2,quotient(one,X1)),X1),X2)=product(product(X2,X1),difference(X1,X2)))).
+#
+#cnf(i_0_50046, plain, (quotient(X1,product(product(X1,X2),difference(X2,X1)))=product(difference(X1,quotient(one,X2)),X2))).
+#
+#cnf(i_0_43797, plain, (quotient(quotient(difference(X1,X2),difference(X3,X2)),X3)=difference(product(X3,product(difference(X3,X2),X1)),X2))).
+##
+#cnf(i_0_44682, plain, (quotient(product(product(X1,X1),X1),quotient(X2,X1))=product(X1,quotient(product(X1,product(X1,X1)),X2)))).
+##
+#cnf(i_0_46403, plain, (quotient(product(X1,product(X1,X1)),product(X1,quotient(one,X1)))=product(product(X1,X1),X1))).
+#
+#cnf(i_0_51117, plain, (difference(product(product(X1,X1),X1),product(X1,product(X1,X1)))=product(X1,quotient(one,X1)))).
+###
+#cnf(i_0_6744, plain, (product(product(X1,product(product(X1,X1),X1)),X1)=product(X1,product(X1,product(product(X1,X1),X1))))).
+#
+#cnf(i_0_17546, plain, (product(product(product(X1,X1),X1),product(X1,X1))=product(X1,product(X1,product(product(X1,X1),X1))))).
+#
+#cnf(i_0_51116, plain, (product(product(product(X1,X1),X1),product(X1,quotient(one,X1)))=product(X1,product(X1,X1)))).
+##
+#cnf(i_0_34, plain, (product(product(X1,quotient(one,X1)),product(X1,X2))=product(difference(difference(X1,one),one),X2))).
+#
+#cnf(i_0_35, plain, (product(X1,product(product(X1,quotient(one,X1)),X2))=product(quotient(one,quotient(one,X1)),X2))).
+##
+#cnf(i_0_945, plain, (product(difference(X1,difference(X1,difference(X1,one))),X1)=product(difference(X1,one),quotient(one,X1)))).
+##
+#cnf(i_0_6089, plain, (product(product(product(X1,X1),X1),quotient(one,X1))=product(X1,quotient(one,quotient(one,X1))))).
+#
+#cnf(i_0_6283, plain, (product(difference(X1,one),product(X1,product(X1,X1)))=product(difference(difference(X1,one),one),X1))).
+#
+#cnf(i_0_6602, plain, (product(X1,difference(product(X1,X1),quotient(one,X1)))=product(difference(X1,one),quotient(one,X1)))).
+####
+#cnf(i_0_18903, plain, (product(difference(difference(X1,one),one),X1)=product(X1,quotient(one,quotient(one,X1))))).
+#
+#cnf(i_0_53004, plain, (quotient(product(X1,quotient(one,quotient(one,X1))),X1)=difference(difference(X1,one),one))).
+#
+#cnf(i_0_19596, plain, (product(product(X1,X1),product(X1,quotient(one,X1)))=product(X1,quotient(one,quotient(one,X1))))).
+######
+#cnf(i_0_46407, plain, (difference(product(X1,X1),difference(quotient(one,X1),X1))=difference(X1,difference(difference(X1,one),one)))).
+####
+#cnf(i_0_6283, plain, (product(difference(X1,one),product(X1,product(X1,X1)))=product(X1,quotient(one,quotient(one,X1))))).
+####
+#cnf(i_0_689, plain, (product(difference(difference(X1,one),X2),difference(X1,one))=difference(difference(X1,one),quotient(X2,X1)))).
+##
+#cnf(i_0_1038, plain, (product(difference(difference(X1,one),one),difference(X1,quotient(one,X1)))=difference(X1,one))).
+#
+#cnf(i_0_1488, plain, (difference(product(X1,difference(X2,X1)),product(X1,difference(product(X1,X2),X1)))=quotient(one,X1))).
+####
+#cnf(i_0_2181, plain, (difference(product(difference(X1,X2),X1),product(X1,difference(product(X1,X1),X2)))=quotient(one,X1))).
+#
+#cnf(i_0_2605, plain, (product(quotient(one,X1),difference(X1,difference(X1,one)))=difference(X1,difference(X1,quotient(one,X1))))).
+###
+#cnf(i_0_2796, plain, (product(difference(X1,quotient(one,X1)),quotient(one,X1))=difference(X1,difference(X1,quotient(one,X1))))).
+####
+#cnf(i_0_4468, plain, (product(difference(X1,quotient(one,X1)),quotient(one,quotient(one,X1)))=quotient(one,X1))).
+###
+#cnf(i_0_5291, plain, (product(difference(X1,difference(X1,one)),quotient(one,X1))=difference(product(X1,X1),quotient(one,X1)))).
+#
+#cnf(i_0_5945, plain, (product(quotient(one,X1),difference(X1,difference(difference(X1,one),one)))=difference(X1,one))).
+#
+#cnf(i_0_6046, plain, (difference(product(X1,product(X1,product(X1,X1))),product(product(X1,X1),X1))=quotient(one,X1))).
+###
+#cnf(i_0_6182, plain, (product(difference(X1,quotient(one,X1)),difference(X1,one))=difference(X1,difference(X1,difference(X1,one))))).
+##
+#cnf(i_0_6830, plain, (product(difference(X1,difference(difference(X1,one),one)),difference(X1,one))=quotient(one,X1))).
+###
+#cnf(i_0_7867, plain, (quotient(difference(difference(X1,one),one),difference(quotient(one,X1),X1))=difference(X1,one))).
+#
+#cnf(i_0_8391, plain, (product(quotient(one,quotient(one,X1)),difference(X1,difference(X1,one)))=quotient(one,X1))).
+#
+#cnf(i_0_8428, plain, (product(quotient(one,X1),quotient(X2,quotient(one,X1)))=quotient(difference(X1,X2),quotient(one,X1)))).
+#
+#cnf(i_0_8484, plain, (product(difference(X1,one),difference(X1,quotient(one,X1)))=difference(X1,difference(X1,quotient(one,X1))))).
+##
+#cnf(i_0_8514, plain, (product(difference(X1,one),difference(X1,difference(X1,one)))=difference(X1,difference(X1,difference(X1,one))))).
+###
+#cnf(i_0_8999, plain, (quotient(difference(X1,one),difference(quotient(one,X1),X1))=difference(X1,difference(X1,quotient(one,X1))))).
+########
+#cnf(i_0_10373, plain, (product(difference(X1,difference(X1,one)),difference(difference(X1,one),one))=difference(X1,one))).
+#####
+#cnf(i_0_11628, plain, (product(difference(X1,one),quotient(X2,difference(X1,one)))=product(product(difference(X1,one),X2),X1))).
+###
+#cnf(i_0_13524, plain, (product(quotient(one,X1),difference(X1,quotient(one,X1)))=difference(product(X1,X1),quotient(one,X1)))).
+##################
+#cnf(i_0_14925, plain, (difference(product(X1,product(product(X1,X1),X1)),product(product(X1,X1),X1))=difference(X1,one))).
+##
+#cnf(i_0_15482, plain, (quotient(difference(X1,one),difference(X1,difference(difference(X1,one),one)))=quotient(one,X1))).
+########
+#cnf(i_0_16555, plain, (product(difference(X1,difference(X1,one)),difference(X1,one))=difference(X1,difference(X1,quotient(one,X1))))).
+#######
+#cnf(i_0_19523, plain, (quotient(product(X1,product(X2,X1)),product(X1,product(product(X1,X2),X1)))=quotient(one,X1))).
+#
+#cnf(i_0_19704, plain, (difference(product(product(X1,product(X2,X1)),X1),product(product(X1,X2),X1))=difference(X1,one))).
+##########
+#cnf(i_0_24196, plain, (difference(product(X3,product(difference(X3,X1),X2)),product(X1,quotient(X2,X3)))=quotient(one,X3))).
+#
+#cnf(i_0_24389, plain, (difference(product(X1,product(X2,product(X3,X1))),product(product(X1,X2),X3))=quotient(one,X1))).
+###########################################################
+#cnf(i_0_52058, plain, (product(difference(difference(X1,one),one),difference(X1,X2))=product(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_52143, plain, (difference(X1,product(quotient(one,quotient(one,X1)),X2))=product(product(X1,quotient(one,X1)),X2))).
+##################
+#cnf(i_0_60407, plain, (product(difference(X1,one),difference(quotient(one,X1),X2))=product(product(X1,quotient(one,X1)),X2))).
+###
+#cnf(i_0_60566, plain, (difference(difference(X1,one),product(quotient(one,X1),X2))=product(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_60828, plain, (product(X1,difference(quotient(one,quotient(one,X1)),X2))=product(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_61093, plain, (difference(X1,product(product(X1,quotient(one,X1)),X2))=difference(quotient(one,quotient(one,X1)),X2))).
+###
+#cnf(i_0_60970, plain, (difference(difference(difference(X1,one),one),product(X1,X2))=product(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_61698, plain, (product(product(X1,quotient(one,X1)),difference(X1,X2))=difference(difference(difference(X1,one),one),X2))).
+#
+#cnf(i_0_61386, plain, (product(difference(quotient(one,quotient(one,X1)),X2),X1)=product(quotient(one,X1),product(X2,X1)))).
+#
+#cnf(i_0_61457, plain, (difference(quotient(one,quotient(one,X1)),quotient(X2,X1))=quotient(product(quotient(one,X1),X2),X1))).
+#
+#cnf(i_0_61543, plain, (difference(difference(X1,difference(difference(X1,one),one)),X2)=product(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_62851, plain, (difference(X1,quotient(X1,product(X2,quotient(one,X2))))=difference(X2,difference(difference(X2,one),one)))).
+#
+#cnf(i_0_62942, plain, (difference(product(X2,product(X1,quotient(one,X1))),X2)=difference(X1,difference(difference(X1,one),one)))).
+##
+#cnf(i_0_62168, plain, (product(quotient(one,X1),difference(difference(X1,one),X2))=difference(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_63648, plain, (difference(product(X1,quotient(one,X1)),product(product(X1,X1),X1))=product(X1,product(X1,X1)))).
+#
+#cnf(i_0_63752, plain, (quotient(product(product(X1,X1),X1),product(X1,product(X1,X1)))=product(X1,quotient(one,X1)))).
+#
+#cnf(i_0_63573, plain, (difference(X1,difference(product(X1,quotient(one,X1)),X2))=difference(difference(difference(X1,one),one),X2))).
+#
+#cnf(i_0_63649, plain, (difference(product(X1,quotient(one,X1)),product(X1,X2))=product(quotient(one,quotient(one,X1)),X2))).
+#
+#cnf(i_0_62205, plain, (product(difference(quotient(one,X1),X2),difference(X1,one))=product(X1,product(X2,difference(X1,one))))).
+#
+#cnf(i_0_62524, plain, (difference(quotient(one,X1),quotient(X2,difference(X1,one)))=quotient(product(X1,X2),difference(X1,one)))).
+#
+#cnf(i_0_62943, plain, (product(difference(X1,difference(difference(X1,one),one)),X2)=difference(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_62952, plain, (product(X1,difference(X2,difference(difference(X2,one),one)))=quotient(X1,product(X2,quotient(one,X2))))).
+#
+#cnf(i_0_63318, plain, (quotient(X1,difference(X2,difference(difference(X2,one),one)))=product(X1,product(X2,quotient(one,X2))))).
+##
+#cnf(i_0_63583, plain, (product(quotient(one,quotient(one,X1)),difference(X1,X2))=difference(product(X1,quotient(one,X1)),X2))).
+###
+#cnf(i_0_63674, plain, (product(X1,difference(difference(difference(X1,one),one),X2))=difference(product(X1,quotient(one,X1)),X2))).
+##
+#cnf(i_0_64187, plain, (product(quotient(one,quotient(one,X1)),quotient(X2,X1))=quotient(difference(quotient(one,X1),X2),X1))).
+#
+#cnf(i_0_64189, plain, (product(product(quotient(one,quotient(one,X1)),X2),X1)=difference(quotient(one,X1),product(X2,X1)))).
+#
+#cnf(i_0_67047, plain, (product(product(product(X1,product(X1,X2)),X1),X1)=product(product(product(X1,X1),X2),product(X1,X1)))).
+###
+#cnf(i_0_64498, plain, (difference(quotient(one,X1),product(difference(X1,one),X2))=difference(product(X1,quotient(one,X1)),X2))).
+#
+#cnf(i_0_67485, plain, (product(X1,difference(product(X1,quotient(one,X1)),X2))=product(difference(difference(X1,one),one),X2))).
+#
+#cnf(i_0_67554, plain, (difference(product(X1,quotient(one,X1)),difference(X1,X2))=difference(quotient(one,quotient(one,X1)),X2))).
+##
+#cnf(i_0_66830, plain, (product(quotient(one,X1),quotient(X2,difference(X1,one)))=product(product(quotient(one,X1),X2),X1))).
+#
+#cnf(i_0_67025, plain, (product(product(quotient(one,X1),X2),difference(X1,one))=difference(X1,product(X2,difference(X1,one))))).
+#
+#cnf(i_0_67492, plain, (difference(quotient(one,quotient(one,X1)),product(X1,X2))=difference(product(X1,quotient(one,X1)),X2))).
+###
+#cnf(i_0_67596, plain, (difference(X1,product(difference(difference(X1,one),one),X2))=difference(product(X1,quotient(one,X1)),X2))).
+###
+#cnf(i_0_68341, plain, (product(X1,quotient(X2,difference(difference(X1,one),one)))=product(product(X1,X2),difference(X1,one)))).
+#
+#cnf(i_0_69149, plain, (difference(X1,product(product(X1,X2),difference(X1,one)))=quotient(X2,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_69463, plain, (product(quotient(X2,difference(difference(X1,one),one)),X1)=product(X2,product(X1,quotient(one,X1))))).
+#
+#cnf(i_0_69695, plain, (quotient(product(X1,product(X2,quotient(one,X2))),X2)=quotient(X1,difference(difference(X2,one),one)))).
+#
+#cnf(i_0_69649, plain, (quotient(difference(X1,X2),difference(difference(X1,one),one))=difference(X1,product(X2,difference(X1,one))))).
+#
+#cnf(i_0_69815, plain, (product(quotient(X1,difference(X2,one)),quotient(one,X2))=product(X1,product(X2,quotient(one,X2))))).
+###
+#cnf(i_0_69890, plain, (product(difference(X1,X2),difference(difference(X1,one),one))=difference(X1,quotient(X2,difference(X1,one))))).
+#
+#cnf(i_0_70916, plain, (difference(X1,quotient(product(X1,X2),difference(X1,one)))=product(X2,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_69983, plain, (product(X1,product(X2,difference(difference(X1,one),one)))=quotient(product(X1,X2),difference(X1,one)))).
+##
+#cnf(i_0_70183, plain, (quotient(difference(quotient(one,X1),X2),difference(X1,one))=difference(quotient(one,X1),product(X2,X1)))).
+###
+#cnf(i_0_70525, plain, (product(quotient(X1,X2),quotient(one,quotient(one,X2)))=product(X1,product(X2,quotient(one,X2))))).
+#
+#cnf(i_0_72006, plain, (product(product(X1,X2),product(X2,quotient(one,X2)))=product(X1,quotient(one,quotient(one,X2))))).
+####
+#cnf(i_0_71221, plain, (product(quotient(X2,X1),difference(difference(X1,one),one))=quotient(X2,product(X1,quotient(one,X1))))).
+#
+#cnf(i_0_72642, plain, (quotient(product(X1,X2),product(X2,quotient(one,X2)))=product(X1,difference(difference(X2,one),one)))).
+#
+#cnf(i_0_71402, plain, (product(quotient(one,X1),product(X2,difference(X1,one)))=quotient(product(quotient(one,X1),X2),X1))).
+###
+#cnf(i_0_72519, plain, (product(quotient(X1,quotient(one,X2)),difference(X2,one))=quotient(X1,product(X2,quotient(one,X2))))).
+###
+#cnf(i_0_73396, plain, (product(quotient(X1,quotient(one,quotient(one,X2))),X2)=quotient(X1,product(X2,quotient(one,X2))))).
+#
+#cnf(i_0_73538, plain, (quotient(quotient(X1,product(X2,quotient(one,X2))),X2)=quotient(X1,quotient(one,quotient(one,X2))))).
+###
+#cnf(i_0_93, plain, (product(difference(X3,product(X2,product(difference(X2,X3),X1))),X2)=quotient(product(X1,X3),difference(X2,X3)))).
+#
+#cnf(i_0_74332, plain, (product(difference(X1,quotient(X1,quotient(one,X2))),X2)=quotient(product(X2,X1),difference(X2,X1)))).
+#
+#cnf(i_0_74380, plain, (quotient(quotient(product(X2,X1),difference(X2,X1)),X2)=difference(X1,quotient(X1,quotient(one,X2))))).
+#
+#cnf(i_0_73956, plain, (quotient(quotient(product(X3,X1),difference(X2,X1)),X2)=difference(X1,product(X2,product(difference(X2,X1),X3))))).
+#
+#cnf(i_0_75133, plain, (quotient(quotient(product(X1,X2),X3),quotient(X2,X3))=difference(X2,product(quotient(X2,X3),product(X3,X1))))).
+#
+#cnf(i_0_74196, plain, (quotient(product(X2,X1),quotient(one,quotient(one,X1)))=product(X2,product(X1,quotient(one,X1))))).
+#
+#cnf(i_0_75905, plain, (product(product(X1,product(X2,quotient(one,X2))),X2)=product(X1,difference(difference(X2,one),one)))).
+###
+#cnf(i_0_76028, plain, (product(quotient(X1,X2),product(X2,quotient(one,X2)))=quotient(X1,quotient(one,quotient(one,X2))))).
+###
+#cnf(i_0_75990, plain, (quotient(product(X1,difference(X2,one)),quotient(one,X2))=product(X1,product(X2,quotient(one,X2))))).
+#
+#cnf(i_0_76214, plain, (quotient(product(X1,difference(difference(X2,one),one)),X2)=product(X1,product(X2,quotient(one,X2))))).
+#
+#cnf(i_0_77045, plain, (quotient(quotient(X1,X2),product(X2,quotient(one,X2)))=quotient(X1,difference(difference(X2,one),one)))).
+##
+#cnf(i_0_77462, plain, (quotient(product(X1,X2),difference(difference(X2,one),one))=quotient(X1,product(X2,quotient(one,X2))))).
+#
+#cnf(i_0_77526, plain, (product(quotient(X1,product(X2,quotient(one,X2))),X2)=product(X1,quotient(one,quotient(one,X2))))).
+###
+#cnf(i_0_77594, plain, (quotient(product(X1,quotient(one,X2)),difference(X2,one))=quotient(X1,product(X2,quotient(one,X2))))).
+###
+#cnf(i_0_77833, plain, (quotient(product(X1,quotient(one,quotient(one,X2))),X2)=quotient(X1,product(X2,quotient(one,X2))))).
+####
+#cnf(i_0_383, plain, (product(difference(X1,X2),quotient(product(X3,X2),difference(X1,X2)))=product(product(difference(X1,X2),X3),X1))).
+#
+#cnf(i_0_388, plain, (product(quotient(X1,X2),product(X2,quotient(product(X3,X2),X1)))=product(X1,quotient(X3,quotient(X1,X2))))).
+#
+#cnf(i_0_79264, plain, (product(quotient(X1,X2),product(X2,quotient(X3,X1)))=product(X1,quotient(quotient(X3,X2),quotient(X1,X2))))).
+#
+#cnf(i_0_526, plain, (difference(product(difference(X1,X2),X1),difference(difference(difference(X1,X2),one),X2))=difference(X1,X2))).
+#
+#cnf(i_0_635, plain, (difference(quotient(X1,X2),product(X1,quotient(X3,quotient(X1,X2))))=product(X2,quotient(product(X3,X2),X1)))).
+##
+#cnf(i_0_1484, plain, (product(difference(X1,difference(product(X2,X3),X2)),product(X2,X1))=product(difference(X1,difference(X3,X2)),X1))).
+#
+#cnf(i_0_1492, plain, (difference(product(X1,X2),product(X1,quotient(X1,product(X1,X2))))=quotient(difference(X2,X1),product(X1,X2)))).
+#
+#cnf(i_0_81554, plain, (difference(X2,product(quotient(X1,product(X1,X2)),X1))=product(quotient(difference(X2,X1),product(X1,X2)),X1))).
+###
+#cnf(i_0_1901, plain, (difference(quotient(X1,X2),quotient(X1,quotient(X3,quotient(X1,X2))))=product(X2,quotient(X1,product(X3,X2))))).
+##
+#cnf(i_0_2105, plain, (product(product(difference(X2,product(X1,X3)),X1),difference(X1,X2))=product(difference(difference(X1,X2),X3),X2))).
+#
+#cnf(i_0_2118, plain, (product(difference(X2,product(X1,difference(product(X1,X3),X1))),X1)=difference(difference(X1,X2),difference(X3,X1)))).
+##
+#cnf(i_0_2130, plain, (product(product(difference(product(X1,X3),X2),X1),difference(X1,X2))=difference(difference(difference(X1,X2),X3),X2))).
+#
+#cnf(i_0_84143, plain, (product(product(X1,product(X1,X1)),product(X1,X1))=product(X1,product(X1,product(X1,product(X1,X1)))))).
+#
+#cnf(i_0_84154, plain, (product(product(X1,product(X1,product(X1,X1))),X1)=product(product(X1,X1),product(product(X1,X1),X1)))).
+#
+#cnf(i_0_2135, plain, (product(difference(X1,product(quotient(X1,X2),X3)),quotient(X1,X2))=difference(X2,product(X3,quotient(X1,X2))))).
+#
+#cnf(i_0_2258, plain, (product(difference(product(quotient(X2,X3),X1),X2),quotient(X2,X3))=difference(X1,product(X3,quotient(X2,X3))))).
+#
+#cnf(i_0_2361, plain, (quotient(quotient(X1,quotient(one,quotient(X1,X2))),product(X2,quotient(X1,X2)))=quotient(X1,X2))).
+#
+#cnf(i_0_2506, plain, (difference(X1,product(quotient(X1,X2),quotient(quotient(X1,X2),X1)))=quotient(difference(X2,quotient(X1,X2)),X1))).
+#
+#cnf(i_0_85919, plain, (product(quotient(X1,X2),quotient(quotient(X1,X2),X1))=product(X1,quotient(difference(X2,quotient(X1,X2)),X1)))).
+#
+#cnf(i_0_2551, plain, (product(difference(product(X2,X1),X2),quotient(difference(X1,X2),X1))=difference(X1,quotient(difference(X1,X2),X1)))).
+#
+#cnf(i_0_2575, plain, (difference(X1,product(X2,quotient(difference(product(X2,X1),X2),X1)))=quotient(quotient(difference(X1,X2),X1),X1))).
+#
+#cnf(i_0_2579, plain, (product(difference(X1,quotient(X2,X1)),difference(X2,quotient(X2,X1)))=quotient(difference(X1,quotient(X2,X1)),X1))).
+#
+#cnf(i_0_2756, plain, (difference(difference(X2,quotient(X2,X1)),product(product(X1,X2),X1))=product(X1,product(product(X1,X2),X1)))).
+##
+#cnf(i_0_2784, plain, (quotient(product(X1,product(X2,X1)),difference(product(X2,X1),X2))=product(product(X1,product(X2,X1)),X1))).
+###
+#cnf(i_0_2947, plain, (difference(product(X1,product(X1,product(X1,quotient(X1,X2)))),X1)=quotient(quotient(quotient(X2,X1),X1),X1))).
+#
+#cnf(i_0_89086, plain, (quotient(quotient(one,X1),difference(quotient(one,X1),X1))=difference(product(X1,X1),quotient(one,X1)))).
+##
+#cnf(i_0_3131, plain, (difference(X1,quotient(X2,quotient(quotient(X3,difference(X1,X2)),X1)))=product(difference(X1,X2),quotient(X2,X3)))).
+#
+#cnf(i_0_89672, plain, (quotient(X2,quotient(quotient(X3,difference(X1,X2)),X1))=product(X1,product(difference(X1,X2),quotient(X2,X3))))).
+#
+#cnf(i_0_90334, plain, (quotient(X1,quotient(quotient(X2,X3),quotient(X1,X3)))=product(quotient(X1,X3),product(X3,quotient(X1,X2))))).
+#
+#cnf(i_0_3132, plain, (product(X1,quotient(product(product(X2,quotient(X3,X1)),X1),X3))=difference(quotient(X3,X1),product(X3,X2)))).
+#
+#cnf(i_0_91545, plain, (product(X1,difference(product(X2,difference(X1,one)),X2))=difference(quotient(X2,X1),product(X2,X1)))).
+#
+#cnf(i_0_91609, plain, (difference(X1,difference(quotient(X2,X1),product(X2,X1)))=difference(product(X2,difference(X1,one)),X2))).
+#
+#cnf(i_0_91166, plain, (quotient(product(product(X2,quotient(X3,X1)),X1),X3)=difference(X1,difference(quotient(X3,X1),product(X3,X2))))).
+#
+#cnf(i_0_92601, plain, (quotient(product(product(X1,X3),difference(X3,X2)),X2)=difference(difference(X3,X2),difference(X3,product(X2,X1))))).
+#
+#cnf(i_0_3153, plain, (product(difference(X1,X2),quotient(product(X3,difference(X1,X2)),X2))=difference(X1,product(X2,quotient(X3,X1))))).
+#
+#cnf(i_0_3161, plain, (product(quotient(X1,X2),product(X2,quotient(X1,product(X3,X2))))=quotient(X1,quotient(X3,quotient(X1,X2))))).
+##
+#cnf(i_0_3221, plain, (difference(X1,product(product(X2,quotient(X3,X2)),quotient(X2,X1)))=quotient(difference(difference(X2,X1),X3),X1))).
+######
+#cnf(i_0_3430, plain, (difference(X1,product(quotient(X1,X2),quotient(X3,quotient(X1,X2))))=quotient(difference(X2,X3),quotient(X1,X2)))).
+#
+#cnf(i_0_94778, plain, (product(quotient(X1,X2),quotient(X3,quotient(X1,X2)))=product(X1,quotient(difference(X2,X3),quotient(X1,X2))))).
+#
+#cnf(i_0_3466, plain, (difference(X2,product(X1,quotient(quotient(difference(X1,X2),X1),X1)))=quotient(difference(product(X2,X1),X2),X1))).
+####
+#cnf(i_0_3728, plain, (difference(product(X2,X1),product(X2,difference(product(X2,X3),X2)))=quotient(difference(X1,difference(X3,X2)),X2))).
+##
+#cnf(i_0_3744, plain, (product(difference(product(X2,product(difference(X2,X3),X1)),X3),X2)=quotient(difference(X1,X3),difference(X2,X3)))).
+#
+#cnf(i_0_3761, plain, (difference(product(X2,product(product(X1,X2),X1)),product(X2,X1))=quotient(difference(X2,quotient(X2,X1)),X2))).
+##
+#cnf(i_0_3835, plain, (product(difference(X1,difference(X1,one)),product(X1,product(X1,product(X1,X1))))=product(X1,X1))).
+##
+#cnf(i_0_4006, plain, (difference(difference(X2,X3),difference(X2,product(X3,quotient(X1,X2))))=quotient(product(X1,difference(X2,X3)),X3))).
+###
+#cnf(i_0_4041, plain, (difference(difference(X1,X2),difference(X1,quotient(X2,quotient(X3,X1))))=quotient(X2,product(X3,difference(X1,X2))))).
+#
+#cnf(i_0_98473, plain, (quotient(X2,product(product(X3,X1),difference(X1,X2)))=difference(difference(X1,X2),difference(X1,quotient(X2,X3))))).
+#
+#cnf(i_0_99042, plain, (quotient(X1,product(product(X2,quotient(X1,X3)),X3))=difference(X3,difference(quotient(X1,X3),quotient(X1,X2))))).
+#####
+#cnf(i_0_4307, plain, (difference(X1,product(X2,quotient(quotient(X3,difference(X1,X2)),X1)))=product(difference(X1,X2),quotient(X3,X2)))).
+#
+#cnf(i_0_4321, plain, (product(X1,quotient(product(difference(X1,X2),X3),product(X4,X1)))=quotient(product(X2,quotient(X3,X1)),X4))).
+#
+#cnf(i_0_100367, plain, (quotient(product(difference(X1,X2),X3),product(X4,X1))=difference(X1,quotient(product(X2,quotient(X3,X1)),X4)))).
+#
+#cnf(i_0_4323, plain, (product(X1,quotient(product(X2,product(X3,X1)),product(X4,X1)))=quotient(product(product(X1,X2),X3),X4))).
+#
+#cnf(i_0_101591, plain, (quotient(product(X2,product(X3,X1)),product(X4,X1))=difference(X1,quotient(product(product(X1,X2),X3),X4)))).
+#
+#cnf(i_0_4331, plain, (product(difference(X1,X2),quotient(X2,product(X3,difference(X1,X2))))=difference(X1,quotient(X2,quotient(X3,X1))))).
+##
+#cnf(i_0_4638, plain, (product(product(X1,product(X1,product(X1,X1))),difference(X1,difference(X1,one)))=product(X1,X1))).
+##############
+#cnf(i_0_15793, plain, (difference(product(difference(X1,X2),X2),product(difference(difference(X2,X1),one),X1))=difference(X2,X1))).
+##############
+#cnf(i_0_23663, plain, (product(difference(X1,quotient(one,X1)),product(X1,product(product(X1,X1),X1)))=product(X1,X1))).
+##
+#cnf(i_0_24156, plain, (product(product(X1,product(product(X1,X1),X1)),difference(X1,quotient(one,X1)))=product(X1,X1))).
+#######
+#cnf(i_0_27013, plain, (difference(difference(quotient(one,X1),X1),product(X1,product(product(X1,X1),X1)))=product(X1,X1))).
+##
+#cnf(i_0_29589, plain, (difference(product(X1,difference(X2,quotient(X1,X2))),product(X1,difference(X2,one)))=quotient(X2,X1))).
+##########
+#cnf(i_0_33553, plain, (quotient(product(X1,product(product(X1,X1),X1)),difference(quotient(one,X1),X1))=product(X1,X1))).
+#
+#cnf(i_0_105084, plain, (quotient(difference(quotient(one,X1),X1),product(X1,X1))=difference(X1,difference(difference(X1,one),one)))).
+############
+#cnf(i_0_39809, plain, (difference(X1,quotient(product(X2,quotient(X3,X1)),quotient(X4,X1)))=quotient(product(difference(X1,X2),X3),X4))).
+#
+#cnf(i_0_105396, plain, (quotient(product(X2,quotient(X3,X1)),quotient(X4,X1))=product(X1,quotient(product(difference(X1,X2),X3),X4)))).
+#
+#cnf(i_0_40015, plain, (difference(X1,quotient(product(product(X1,X2),X3),quotient(X4,X1)))=quotient(product(X2,product(X3,X1)),X4))).
+#
+#cnf(i_0_106393, plain, (quotient(product(product(X1,X2),X3),quotient(X4,X1))=product(X1,quotient(product(X2,product(X3,X1)),X4)))).
+#
+#cnf(i_0_40844, plain, (product(difference(product(X2,X1),product(X3,quotient(X4,X2))),X2)=difference(X1,product(difference(X2,X3),X4)))).
+#
+#cnf(i_0_41051, plain, (product(difference(product(X2,X1),product(product(X2,X3),X4)),X2)=difference(X1,product(X3,product(X4,X2))))).
+########
+#cnf(i_0_43819, plain, (difference(product(quotient(X1,X3),product(X3,quotient(X1,X2))),X1)=quotient(quotient(X2,X3),quotient(X1,X3)))).
+#############
+#cnf(i_0_50802, plain, (difference(product(X3,product(difference(X3,X1),quotient(X1,X2))),X1)=quotient(quotient(X2,difference(X3,X1)),X3))).
+#
+#cnf(i_0_51346, plain, (quotient(product(X1,product(X1,product(product(X1,X1),X1))),X1)=product(X1,product(product(X1,X1),X1)))).
+#######
+#cnf(i_0_67118, plain, (difference(X1,product(product(X1,product(product(X1,X1),X2)),X1))=product(product(X1,product(X1,X2)),X1))).
+#
+#cnf(i_0_110308, plain, (difference(X2,difference(X1,product(product(X1,product(X2,X1)),X1)))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_110432, plain, (difference(X2,product(product(X2,product(X1,X2)),X2))=product(X1,difference(quotient(one,X2),X2)))).
+#
+#cnf(i_0_110784, plain, (product(X1,product(X2,difference(quotient(one,X1),X1)))=product(product(X1,product(X2,X1)),X1))).
+#
+#cnf(i_0_110885, plain, (product(product(X2,difference(quotient(one,X1),X1)),X1)=product(product(X2,X1),product(X1,X1)))).
+#
+#cnf(i_0_110917, plain, (product(quotient(X2,X1),difference(quotient(one,X1),X1))=difference(X1,product(product(X1,X2),X1)))).
+#
+#cnf(i_0_111784, plain, (difference(quotient(X1,X2),difference(X2,product(product(X2,X1),X2)))=difference(quotient(one,X2),X2))).
+#
+#cnf(i_0_112427, plain, (difference(quotient(difference(X1,X2),X1),difference(X1,product(X2,X1)))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_112450, plain, (difference(quotient(quotient(X1,product(X2,X2)),X2),quotient(X1,X2))=difference(quotient(one,X2),X2))).
+#
+#cnf(i_0_113164, plain, (quotient(quotient(X1,X2),difference(quotient(one,X2),X2))=quotient(quotient(X1,product(X2,X2)),X2))).
+#
+#cnf(i_0_113654, plain, (quotient(difference(X2,quotient(product(X2,X1),X2)),X2)=quotient(X1,difference(quotient(one,X2),X2)))).
+#
+#cnf(i_0_113734, plain, (product(quotient(X2,difference(quotient(one,X1),X1)),X1)=difference(X1,quotient(product(X1,X2),X1)))).
+#
+#cnf(i_0_114035, plain, (quotient(difference(X1,X2),difference(quotient(one,X1),X1))=quotient(difference(X1,quotient(X2,X1)),X1))).
+#
+#cnf(i_0_112731, plain, (difference(quotient(difference(X1,quotient(X2,X1)),X1),difference(X1,X2))=difference(quotient(one,X1),X1))).
+####
+#cnf(i_0_110223, plain, (product(product(X1,product(product(X1,X1),X2)),X1)=product(X1,product(product(X1,product(X1,X2)),X1)))).
+#
+#cnf(i_0_115176, plain, (product(difference(quotient(one,X1),X1),product(X1,X2))=product(X1,product(product(X1,X1),X2)))).
+#
+#cnf(i_0_115774, plain, (product(X1,product(product(X1,X1),difference(X1,X2)))=product(difference(quotient(one,X1),X1),X2))).
+#
+#cnf(i_0_115875, plain, (difference(X1,product(difference(quotient(one,X1),X1),X2))=product(product(X1,X1),difference(X1,X2)))).
+#
+#cnf(i_0_111435, plain, (product(product(X1,product(product(X2,X1),X1)),X1)=product(X1,product(product(X2,product(X1,X1)),X1)))).
+#
+#cnf(i_0_111779, plain, (product(product(product(X1,product(X2,X2)),X2),X2)=product(product(product(X1,X2),X2),product(X2,X2)))).
+#
+#cnf(i_0_111938, plain, (difference(product(X2,X2),product(X2,product(X2,X1)))=product(quotient(quotient(X1,X2),X2),product(X2,X2)))).
+##
+#cnf(i_0_113510, plain, (quotient(quotient(quotient(X1,product(X2,X2)),X2),X2)=quotient(quotient(quotient(X1,X2),X2),product(X2,X2)))).
+#
+#cnf(i_0_114372, plain, (difference(X2,difference(X2,product(product(X2,X2),X1)))=product(product(quotient(X1,product(X2,X2)),X2),X2))).
+#
+#cnf(i_0_114495, plain, (quotient(quotient(difference(X1,quotient(X2,X1)),X1),X1)=quotient(quotient(difference(X1,X2),X1),product(X1,X1)))).
+#
+#cnf(i_0_115585, plain, (product(product(X1,X1),product(X1,product(X1,X2)))=product(X1,product(X1,product(product(X1,X1),X2))))).
+#
+#cnf(i_0_116452, plain, (product(product(quotient(X2,product(X1,X1)),X1),X1)=product(product(X1,X1),difference(X1,difference(X1,X2))))).
+#
+#cnf(i_0_114372, plain, (difference(X1,difference(X1,product(product(X1,X1),X2)))=product(product(X1,X1),difference(X1,difference(X1,X2))))).
+#
+#cnf(i_0_67372, plain, (product(product(product(X1,X1),difference(X1,X2)),product(X1,X1))=product(product(product(X1,X2),X1),X1))).
+########
+#cnf(i_0_75276, plain, (difference(X2,product(X3,product(difference(X3,X2),quotient(X1,X2))))=quotient(quotient(X1,difference(X3,X2)),X3))).
+####
+#cnf(i_0_80780, plain, (difference(quotient(X1,X2),product(X1,product(X2,quotient(X2,X1))))=product(X2,quotient(product(X2,X2),X1)))).
+##
+#cnf(i_0_81455, plain, (product(product(X1,X2),quotient(difference(X2,X1),product(X1,X2)))=product(X1,quotient(X1,product(X1,X2))))).
+#
+#cnf(i_0_81549, plain, (product(X1,product(quotient(difference(X1,X2),product(X2,X1)),X2))=product(quotient(X2,product(X2,X1)),X2))).
+#########
+#cnf(i_0_82521, plain, (difference(quotient(X1,X2),quotient(X1,product(X2,quotient(X2,X1))))=product(X2,quotient(X1,product(X2,X2))))).
+#########
+#cnf(i_0_92362, plain, (product(difference(X3,difference(quotient(X2,X3),product(X2,X1))),X2)=product(product(X1,quotient(X2,X3)),X3))).
+#########################
+#cnf(i_0_114070, plain, (quotient(product(product(X1,X1),difference(X1,difference(X1,X2))),X1)=product(quotient(X2,product(X1,X1)),X1))).
+#
+#cnf(i_0_123056, plain, (quotient(product(product(X1,X1),difference(X1,X2)),X1)=product(quotient(product(X1,X2),product(X1,X1)),X1))).
+#
+#cnf(i_0_115401, plain, (difference(difference(quotient(one,X1),X1),product(X1,product(product(X1,X1),X2)))=product(X1,X2))).
+#
+#cnf(i_0_123559, plain, (difference(difference(quotient(one,X1),X1),product(X1,X2))=product(X1,difference(product(X1,X1),X2)))).
+#
+#cnf(i_0_123990, plain, (product(X1,difference(product(X1,X1),difference(X1,X2)))=difference(difference(quotient(one,X1),X1),X2))).
+#
+#cnf(i_0_124095, plain, (difference(X1,difference(difference(quotient(one,X1),X1),X2))=difference(product(X1,X1),difference(X1,X2)))).
+#
+#cnf(i_0_123736, plain, (quotient(product(X1,X2),product(X1,difference(product(X1,X1),X2)))=difference(quotient(one,X1),X1))).
+#
+#cnf(i_0_123799, plain, (product(quotient(quotient(X2,X1),X1),product(X1,X1))=product(X1,product(X1,difference(product(X1,X1),X2))))).
+#
+#cnf(i_0_124649, plain, (difference(product(X1,X1),difference(X1,quotient(X2,X1)))=difference(X1,difference(X1,quotient(difference(X1,X2),X1))))).
+#
+#cnf(i_0_124656, plain, (difference(product(X1,X1),difference(X1,difference(X1,X2)))=difference(X1,difference(X1,difference(product(X1,X1),X2))))).
+#
+#cnf(i_0_111938, plain, (difference(product(X1,X1),product(X1,product(X1,X2)))=product(X1,product(X1,difference(product(X1,X1),X2))))).
+#
+#cnf(i_0_126166, plain, (product(difference(quotient(one,X1),difference(X1,X2)),X1)=product(quotient(X2,X1),product(X1,X1)))).
+#
+#cnf(i_0_126361, plain, (difference(quotient(one,X1),difference(X1,X2))=difference(X1,difference(difference(X1,one),X2)))).
+#
+#cnf(i_0_127014, plain, (difference(X1,difference(difference(X1,one),product(X1,X2)))=difference(quotient(one,X1),X2))).
+#
+#cnf(i_0_127090, plain, (difference(difference(X1,one),product(X1,X2))=product(X1,difference(quotient(one,X1),X2)))).
+#
+#cnf(i_0_126815, plain, (quotient(difference(X1,X2),difference(X1,difference(difference(X1,one),X2)))=quotient(one,X1))).
+#
+#cnf(i_0_127537, plain, (quotient(product(X1,X2),product(X1,difference(quotient(one,X1),X2)))=difference(X1,one))).
+#
+#cnf(i_0_127598, plain, (product(quotient(product(X1,X2),X1),product(X1,X1))=product(difference(quotient(one,X1),X2),X1))).
+#
+#cnf(i_0_128043, plain, (quotient(difference(X1,product(difference(X1,one),X2)),difference(X1,X2))=quotient(one,X1))).
+#
+#cnf(i_0_129076, plain, (difference(X1,product(difference(X1,one),X2))=product(quotient(one,X1),difference(X1,X2)))).
+#
+#cnf(i_0_129532, plain, (product(X1,product(quotient(one,X1),difference(X1,X2)))=product(difference(X1,one),X2))).
+#
+#cnf(i_0_130146, plain, (product(difference(X1,one),product(X1,X2))=product(X1,product(quotient(one,X1),X2)))).
+#
+#cnf(i_0_128438, plain, (difference(X2,quotient(product(product(X2,X1),quotient(one,X1)),X1))=difference(X1,one))).
+#
+#cnf(i_0_130685, plain, (quotient(product(product(X1,X2),quotient(one,X2)),X2)=product(X1,difference(X2,one)))).
+#
+#cnf(i_0_131112, plain, (product(product(X1,difference(X2,one)),X2)=product(product(X1,X2),quotient(one,X2)))).
+#
+#cnf(i_0_131305, plain, (quotient(product(X1,quotient(one,X2)),X2)=product(quotient(X1,X2),difference(X2,one)))).
+##
+#cnf(i_0_132155, plain, (quotient(product(X1,difference(product(X1,X1),X2)),X1)=product(difference(X1,X2),difference(X1,one)))).
+#
+#cnf(i_0_126732, plain, (product(quotient(one,X1),difference(X1,difference(difference(X1,one),X2)))=difference(X1,X2))).
+##
+#cnf(i_0_127593, plain, (quotient(product(X1,difference(quotient(one,X1),X2)),X1)=product(X1,quotient(product(X1,X2),X1)))).
+#
+#cnf(i_0_127603, plain, (product(X1,difference(quotient(one,X1),product(X2,X1)))=product(product(product(X1,X1),X2),X1))).
+#
+#cnf(i_0_133032, plain, (difference(X1,product(product(product(X1,X1),X2),X1))=difference(quotient(one,X1),product(X2,X1)))).
+###
+#cnf(i_0_129665, plain, (product(quotient(one,X1),difference(X1,product(X2,X1)))=product(difference(product(X1,X1),X2),X1))).
+#
+#cnf(i_0_129667, plain, (quotient(product(quotient(one,X1),difference(X1,X2)),X1)=difference(product(X1,X1),quotient(X2,X1)))).
+#
+#cnf(i_0_134467, plain, (difference(product(X1,X1),quotient(product(X1,X2),X1))=quotient(product(quotient(one,X1),X2),X1))).
+####
+#cnf(i_0_130381, plain, (quotient(product(X1,product(quotient(one,X1),X2)),X1)=difference(X1,quotient(product(X1,X2),X1)))).
+#
+#cnf(i_0_131768, plain, (product(product(quotient(X1,difference(X2,one)),X2),quotient(one,X2))=product(X1,X2))).
+#
+#cnf(i_0_135181, plain, (quotient(product(X1,X2),quotient(one,X2))=product(quotient(X1,difference(X2,one)),X2))).
+#
+#cnf(i_0_135733, plain, (product(quotient(quotient(X1,X2),difference(X2,one)),X2)=quotient(X1,quotient(one,X2)))).
+#
+#cnf(i_0_135961, plain, (quotient(quotient(X1,quotient(one,X2)),X2)=quotient(quotient(X1,X2),difference(X2,one)))).
+#
+#cnf(i_0_135180, plain, (difference(product(quotient(X1,difference(X2,one)),X2),product(X1,X2))=quotient(one,X2))).
+###
+#cnf(i_0_715, plain, (difference(X1,product(product(X1,X1),difference(X1,X2)))=quotient(quotient(X2,X1),difference(X1,one)))).
+#
+#cnf(i_0_132038, plain, (difference(X1,product(quotient(X2,X1),difference(X1,one)))=quotient(difference(X1,X2),product(X1,X1)))).
+#
+#cnf(i_0_137665, plain, (quotient(difference(X1,product(X2,X1)),product(X1,X1))=difference(X1,product(X2,difference(X1,one))))).
+##
+#cnf(i_0_132158, plain, (product(quotient(product(X1,X2),X1),difference(X1,one))=product(X1,quotient(X2,product(X1,X1))))).
+#
+#cnf(i_0_135632, plain, (difference(X1,product(quotient(X2,difference(X1,one)),X1))=product(difference(X1,X2),product(X1,X1)))).
+##
+#cnf(i_0_135659, plain, (product(quotient(product(X1,X2),difference(X1,one)),X1)=product(X1,product(X2,product(X1,X1))))).
+#
+#cnf(i_0_138866, plain, (quotient(product(X1,product(X2,product(X1,X1))),X1)=quotient(product(X1,X2),difference(X1,one)))).
+#
+#cnf(i_0_4407, plain, (product(X1,quotient(quotient(X2,X1),difference(X1,one)))=product(product(X1,X1),difference(X1,X2)))).
+#
+#cnf(i_0_139958, plain, (product(product(X1,X1),difference(X1,product(X2,X1)))=product(X1,quotient(X2,difference(X1,one))))).
+#
+#cnf(i_0_136568, plain, (quotient(quotient(product(X1,X2),X1),difference(X1,one))=difference(X1,product(product(X1,X1),X2)))).
+#########
+#cnf(i_0_129616, plain, (quotient(product(difference(X1,one),X2),product(quotient(one,X1),difference(X1,X2)))=X1)).
+###
+#cnf(i_0_131537, plain, (difference(product(X1,difference(X2,one)),product(product(X1,X2),quotient(one,X2)))=X2)).
+#
+#cnf(i_0_131905, plain, (difference(product(quotient(X1,X2),difference(X2,one)),product(X1,quotient(one,X2)))=X2)).
+#
+#cnf(i_0_132107, plain, (product(difference(X1,product(product(X1,X1),X2)),difference(X1,one))=quotient(product(X1,X2),X1))).
+#######
+#cnf(i_0_133633, plain, (difference(quotient(one,X1),product(difference(product(X1,X1),X2),X1))=difference(X1,product(X2,X1)))).
+#######
+#cnf(i_0_135352, plain, (difference(product(X1,X1),product(X1,quotient(X2,difference(X1,one))))=difference(X1,product(X2,X1)))).
+##
+#cnf(i_0_135960, plain, (difference(quotient(quotient(X1,X2),difference(X2,one)),quotient(X1,quotient(one,X2)))=X2)).
+####
+#cnf(i_0_137707, plain, (product(difference(X1,product(X2,difference(X1,one))),product(X1,X1))=difference(X1,product(X2,X1)))).
+###
+#cnf(i_0_138086, plain, (quotient(product(X1,quotient(X2,product(X1,X1))),difference(X1,one))=quotient(product(X1,X2),X1))).
+#############
+#cnf(i_0_128038, plain, (quotient(difference(X1,product(X2,X1)),difference(X1,product(product(X1,X2),X1)))=quotient(one,X1))).
+##
+#cnf(i_0_133690, plain, (quotient(product(difference(product(X1,X1),X2),X1),difference(X1,product(X2,X1)))=quotient(one,X1))).
+#
+#cnf(i_0_138085, plain, (difference(quotient(product(X1,X2),X1),product(X1,quotient(X2,product(X1,X1))))=difference(X1,one))).
+#
+#cnf(i_0_140436, plain, (difference(difference(X1,product(product(X1,X1),X2)),quotient(product(X1,X2),X1))=difference(X1,one))).
+#####
+#cnf(i_0_144501, plain, (quotient(difference(X1,product(quotient(X2,product(X1,X1)),X1)),quotient(X2,X1))=quotient(one,X1))).
+#
+#cnf(i_0_146108, plain, (difference(X1,product(quotient(X2,product(X1,X1)),X1))=product(quotient(one,X1),quotient(X2,X1)))).
+#
+#cnf(i_0_146521, plain, (product(X1,product(quotient(one,X1),quotient(X2,X1)))=product(quotient(X2,product(X1,X1)),X1))).
+####
+#cnf(i_0_146862, plain, (quotient(product(quotient(X2,product(X1,X1)),X1),product(X1,quotient(X2,X1)))=difference(X1,one))).
+######
+#cnf(i_0_116519, plain, (difference(X1,product(product(X1,X1),product(X2,product(X1,X1))))=product(X1,product(product(X2,X1),X1)))).
+#
+#cnf(i_0_147566, plain, (product(product(X1,X1),product(X2,product(X1,X1)))=product(X1,product(X1,product(product(X2,X1),X1))))).
+#
+#cnf(i_0_118209, plain, (quotient(difference(product(X1,X1),product(X1,X2)),product(X1,X1))=quotient(quotient(difference(X1,X2),X1),X1))).
+#
+#cnf(i_0_148541, plain, (quotient(quotient(difference(X1,difference(X1,X2)),X1),X1)=quotient(difference(product(X1,X1),X2),product(X1,X1)))).
+##
+#cnf(i_0_118913, plain, (product(product(X2,X2),difference(X2,difference(X2,quotient(X1,X2))))=difference(X2,quotient(product(X2,X1),X2)))).
+##
+#cnf(i_0_123399, plain, (product(quotient(product(X1,product(X1,X2)),product(X1,X1)),X1)=quotient(product(product(X1,X1),X2),X1))).
+#
+#cnf(i_0_149377, plain, (quotient(quotient(product(product(X1,X1),X2),X1),X1)=quotient(product(X1,product(X1,X2)),product(X1,X1)))).
+#
+#cnf(i_0_125228, plain, (product(product(X2,product(X2,difference(product(X2,X2),X1))),X2)=difference(X2,product(product(X2,X1),X2)))).
+#
+#cnf(i_0_125340, plain, (product(X2,product(X2,difference(product(X2,X2),product(X1,X2))))=product(quotient(X1,X2),product(X2,X2)))).
+#
+#cnf(i_0_150451, plain, (difference(X1,product(quotient(X2,X1),product(X1,X1)))=product(X1,difference(product(X1,X1),product(X2,X1))))).
+##
+#cnf(i_0_128666, plain, (difference(quotient(product(X1,X2),X1),product(difference(quotient(one,X1),X2),X1))=product(X1,X1))).
+#
+#cnf(i_0_134601, plain, (quotient(quotient(product(X1,X2),X1),quotient(product(quotient(one,X1),X2),X1))=product(X1,X1))).
+#
+#cnf(i_0_137708, plain, (difference(difference(X1,product(X2,difference(X1,one))),difference(X1,product(X2,X1)))=product(X1,X1))).
+#
+#cnf(i_0_140001, plain, (quotient(product(X1,quotient(X2,difference(X1,one))),difference(X1,product(X2,X1)))=product(X1,X1))).
+####
+#cnf(i_0_148635, plain, (product(quotient(difference(product(X1,X1),X2),product(X1,X1)),X1)=quotient(difference(X1,difference(X1,X2)),X1))).
+#
+#cnf(i_0_151079, plain, (product(X1,difference(product(X1,X1),quotient(X2,product(X1,X1))))=difference(X1,quotient(quotient(X2,X1),X1)))).
+#
+#cnf(i_0_153647, plain, (difference(product(X1,X1),quotient(X2,product(X1,X1)))=difference(X1,difference(X1,quotient(quotient(X2,X1),X1))))).
+#
+#cnf(i_0_151179, plain, (product(X1,difference(product(X1,X1),product(product(X2,X1),X1)))=difference(X1,product(X2,product(X1,X1))))).
+#
+#cnf(i_0_154222, plain, (difference(product(X1,X1),product(product(X2,X1),X1))=difference(X1,difference(X1,product(X2,product(X1,X1)))))).
+#
+#cnf(i_0_148, plain, (product(difference(X1,difference(X1,quotient(X2,X1))),X1)=product(difference(X1,one),product(difference(X1,one),X2)))).
+###
+#cnf(i_0_10521, plain, (product(difference(X1,difference(X1,one)),product(X1,product(X1,X1)))=quotient(one,quotient(one,X1)))).
+###
+#cnf(i_0_18126, plain, (product(product(X1,product(X1,X1)),difference(X1,quotient(one,X1)))=quotient(one,quotient(one,X1)))).
+###
+#cnf(i_0_25551, plain, (product(quotient(difference(X1,X2),product(X1,X1)),X1)=product(difference(X1,one),product(X2,quotient(one,X1))))).
+###
+#cnf(i_0_33525, plain, (quotient(product(X1,product(X1,X1)),difference(quotient(one,X1),X1))=quotient(one,quotient(one,X1)))).
+##
+#cnf(i_0_34714, plain, (difference(difference(quotient(one,X1),X1),product(product(X1,X1),X1))=difference(difference(X1,one),one))).
+#
+#cnf(i_0_36664, plain, (product(product(product(X1,X1),X1),difference(X1,difference(X1,one)))=difference(difference(X1,one),one))).
+###
+#cnf(i_0_36682, plain, (product(difference(X1,quotient(one,X1)),product(product(X1,X1),X1))=difference(difference(X1,one),one))).
+############
+#cnf(i_0_60149, plain, (quotient(product(product(X1,quotient(one,X1)),X2),difference(X1,X2))=difference(difference(X1,one),one))).
+##
+#cnf(i_0_62319, plain, (quotient(quotient(X1,X2),quotient(product(quotient(one,X2),X1),X2))=quotient(one,quotient(one,X2)))).
+#
+#cnf(i_0_64180, plain, (difference(product(X2,product(X1,quotient(one,X1))),product(X2,X1))=quotient(one,quotient(one,X1)))).
+#
+#cnf(i_0_64510, plain, (difference(quotient(X2,X1),product(X2,product(X1,quotient(one,X1))))=quotient(one,quotient(one,X1)))).
+#
+#cnf(i_0_66034, plain, (quotient(difference(product(X1,quotient(one,X1)),X2),difference(X1,X2))=quotient(one,quotient(one,X1)))).
+####
+#cnf(i_0_68665, plain, (quotient(product(X1,X2),difference(product(X1,quotient(one,X1)),X2))=quotient(one,quotient(one,X1)))).
+#
+#cnf(i_0_70096, plain, (difference(difference(X1,product(X2,difference(X1,one))),difference(X1,X2))=difference(difference(X1,one),one))).
+#
+#cnf(i_0_70603, plain, (difference(difference(X1,X2),difference(X1,quotient(X2,difference(X1,one))))=difference(difference(X1,one),one))).
+######
+#cnf(i_0_72387, plain, (difference(quotient(X1,X2),quotient(X1,product(X2,quotient(one,X2))))=difference(difference(X2,one),one))).
+####
+#cnf(i_0_77502, plain, (difference(quotient(X1,product(X2,quotient(one,X2))),product(X1,X2))=difference(difference(X2,one),one))).
+###
+#cnf(i_0_116355, plain, (product(product(product(X1,X1),difference(X1,X2)),X1)=product(difference(difference(X1,one),one),product(X2,X1)))).
+###################
+#cnf(i_0_36, plain, (product(product(X1,X2),product(X1,quotient(one,X1)))=product(X1,product(X2,product(X1,quotient(one,X1)))))).
+#
+#cnf(i_0_37, plain, (product(product(product(X1,quotient(one,X1)),X2),X3)=product(product(X1,quotient(one,X1)),product(X2,X3)))).
+#
+#cnf(i_0_163600, plain, (product(difference(product(X2,quotient(one,X1)),one),X2)=product(X1,product(X2,quotient(one,X2))))).
+#
+#cnf(i_0_163860, plain, (quotient(X2,difference(difference(X1,one),one))=difference(product(X1,quotient(one,X2)),one))).
+#
+#cnf(i_0_164081, plain, (difference(difference(X1,quotient(one,X2)),one)=product(X2,difference(difference(X1,one),one)))).
+#
+#cnf(i_0_164545, plain, (difference(difference(product(X2,quotient(one,X1)),one),X1)=difference(difference(X2,one),one))).
+#
+#cnf(i_0_165464, plain, (difference(difference(product(X1,X2),one),difference(X2,one))=difference(difference(X1,one),one))).
+#
+#cnf(i_0_165800, plain, (difference(difference(quotient(X1,X2),one),one)=difference(difference(X1,one),difference(X2,one)))).
+#
+#cnf(i_0_165973, plain, (difference(difference(X2,one),difference(difference(X1,X2),one))=difference(difference(X1,one),one))).
+##
+#cnf(i_0_163909, plain, (quotient(one,product(X2,difference(difference(X1,one),one)))=difference(X1,quotient(one,X2)))).
+#
+#cnf(i_0_167278, plain, (quotient(one,product(X1,difference(X2,one)))=difference(quotient(one,X2),quotient(one,X1)))).
+#
+#cnf(i_0_164694, plain, (difference(product(quotient(one,X2),quotient(one,X1)),one)=quotient(X1,difference(X2,one)))).
+#
+#cnf(i_0_168033, plain, (quotient(one,quotient(X2,difference(X1,one)))=product(quotient(one,X1),quotient(one,X2)))).
+#
+#cnf(i_0_168263, plain, (quotient(difference(X2,one),difference(X1,one))=difference(product(quotient(one,X1),X2),one))).
+#####
+#cnf(i_0_165038, plain, (product(difference(X2,one),difference(difference(X1,one),one))=difference(difference(X1,X2),one))).
+#
+#cnf(i_0_169507, plain, (difference(difference(quotient(one,X2),X1),one)=product(difference(X1,one),difference(X2,one)))).
+#####
+#cnf(i_0_166106, plain, (quotient(one,difference(difference(X1,one),difference(X2,one)))=difference(quotient(X1,X2),one))).
+#
+#cnf(i_0_170382, plain, (quotient(one,difference(difference(X1,one),X2))=difference(quotient(X1,quotient(one,X2)),one))).
+##
+#cnf(i_0_167571, plain, (product(quotient(one,quotient(one,X1)),quotient(one,X2))=quotient(one,quotient(X2,X1)))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(sos07, axiom, (difference(X1,product(product(X1,X2),X3))=quotient(product(X2,product(X3,X1)),X1)), file('./p/GRP767-1.tptp', sos07)).
+cnf(sos06, axiom, (product(quotient(X1,X2),X2)=X1), file('./p/GRP767-1.tptp', sos06)).
+cnf(sos03, axiom, (product(X1,difference(X1,X2))=X2), file('./p/GRP767-1.tptp', sos03)).
+cnf(sos01, axiom, (product(X1,one)=X1), file('./p/GRP767-1.tptp', sos01)).
+cnf(sos04, axiom, (difference(X1,product(X1,X2))=X2), file('./p/GRP767-1.tptp', sos04)).
+cnf(sos02, axiom, (product(one,X1)=X1), file('./p/GRP767-1.tptp', sos02)).
+cnf(sos11, axiom, (product(i(X1),X1)=product(X1,j(X1))), file('./p/GRP767-1.tptp', sos11)).
+cnf(sos09, axiom, (i(X1)=difference(X1,one)), file('./p/GRP767-1.tptp', sos09)).
+cnf(sos10, axiom, (j(X1)=quotient(one,X1)), file('./p/GRP767-1.tptp', sos10)).
+cnf(sos05, axiom, (quotient(product(X1,X2),X2)=X1), file('./p/GRP767-1.tptp', sos05)).
+cnf(sos12, axiom, (eta(X1)=product(i(X1),X1)), file('./p/GRP767-1.tptp', sos12)).
+cnf(sos13, axiom, (product(i(i(X1)),X2)=product(eta(X1),product(X1,X2))), file('./p/GRP767-1.tptp', sos13)).
+cnf(sos14, axiom, (product(X1,product(eta(X1),X2))=product(j(j(X1)),X2)), file('./p/GRP767-1.tptp', sos14)).
+cnf(sos16, axiom, (product(eta(X1),product(X2,X3))=product(product(eta(X1),X2),X3)), file('./p/GRP767-1.tptp', sos16)).
+cnf(goals, negated_conjecture, (product(j(j(x0)),j(product(x1,x0)))!=j(x1)), file('./p/GRP767-1.tptp', goals)).
+cnf(c_0_15, axiom, (difference(X1,product(product(X1,X2),X3))=quotient(product(X2,product(X3,X1)),X1)), sos07).
+cnf(c_0_16, axiom, (product(quotient(X1,X2),X2)=X1), sos06).
+cnf(c_0_17, axiom, (product(X1,difference(X1,X2))=X2), sos03).
+cnf(c_0_18, plain, (difference(X1,product(product(X1,X2),quotient(X3,X1)))=quotient(product(X2,X3),X1)), inference(pm,[status(thm)],[c_0_15, c_0_16])).
+cnf(c_0_19, plain, (product(product(X1,X2),quotient(X3,X1))=product(X1,quotient(product(X2,X3),X1))), inference(pm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_20, plain, (product(X1,quotient(product(difference(X1,X2),X3),X1))=product(X2,quotient(X3,X1))), inference(pm,[status(thm)],[c_0_19, c_0_17])).
+cnf(c_0_21, axiom, (product(X1,one)=X1), sos01).
+cnf(c_0_22, axiom, (difference(X1,product(X1,X2))=X2), sos04).
+cnf(c_0_23, plain, (product(X1,quotient(difference(X1,X2),X1))=product(X2,quotient(one,X1))), inference(pm,[status(thm)],[c_0_20, c_0_21])).
+cnf(c_0_24, plain, (product(difference(X1,product(product(X1,X2),X3)),X1)=product(X2,product(X3,X1))), inference(pm,[status(thm)],[c_0_16, c_0_15])).
+cnf(c_0_25, plain, (difference(X1,product(X2,quotient(one,X1)))=quotient(difference(X1,X2),X1)), inference(pm,[status(thm)],[c_0_22, c_0_23])).
+cnf(c_0_26, plain, (product(difference(X1,product(X2,X3)),X1)=product(difference(X1,X2),product(X3,X1))), inference(pm,[status(thm)],[c_0_24, c_0_17])).
+cnf(c_0_27, axiom, (product(one,X1)=X1), sos02).
+cnf(c_0_28, plain, (quotient(difference(X1,quotient(X2,quotient(one,X1))),X1)=difference(X1,X2)), inference(pm,[status(thm)],[c_0_25, c_0_16])).
+cnf(c_0_29, plain, (product(difference(X1,X2),product(difference(X2,X3),X1))=product(difference(X1,X3),X1)), inference(pm,[status(thm)],[c_0_26, c_0_17])).
+cnf(c_0_30, plain, (product(difference(X1,one),product(X2,X1))=product(difference(X1,X2),X1)), inference(pm,[status(thm)],[c_0_26, c_0_27])).
+cnf(c_0_31, plain, (difference(X1,quotient(X2,quotient(one,X1)))=product(difference(X1,X2),X1)), inference(pm,[status(thm)],[c_0_16, c_0_28])).
+cnf(c_0_32, axiom, (product(i(X1),X1)=product(X1,j(X1))), sos11).
+cnf(c_0_33, axiom, (i(X1)=difference(X1,one)), sos09).
+cnf(c_0_34, axiom, (j(X1)=quotient(one,X1)), sos10).
+cnf(c_0_35, plain, (difference(difference(X1,X2),product(difference(X1,X3),X1))=product(difference(X2,X3),X1)), inference(pm,[status(thm)],[c_0_22, c_0_29])).
+cnf(c_0_36, plain, (product(difference(X1,quotient(X2,X1)),X1)=product(difference(X1,one),X2)), inference(pm,[status(thm)],[c_0_30, c_0_16])).
+cnf(c_0_37, plain, (product(X1,product(difference(X1,X2),X1))=quotient(X2,quotient(one,X1))), inference(pm,[status(thm)],[c_0_17, c_0_31])).
+cnf(c_0_38, plain, (product(difference(X1,one),X1)=product(X1,quotient(one,X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_32, c_0_33]), c_0_34])).
+cnf(c_0_39, axiom, (quotient(product(X1,X2),X2)=X1), sos05).
+cnf(c_0_40, axiom, (eta(X1)=product(i(X1),X1)), sos12).
+cnf(c_0_41, plain, (difference(difference(X1,X2),product(X3,X1))=product(difference(X2,product(X1,X3)),X1)), inference(pm,[status(thm)],[c_0_35, c_0_22])).
+cnf(c_0_42, plain, (product(difference(X1,quotient(X2,X3)),product(X3,X1))=product(difference(X1,X2),X1)), inference(pm,[status(thm)],[c_0_26, c_0_16])).
+cnf(c_0_43, plain, (difference(difference(X1,quotient(X2,X1)),product(difference(X1,one),X2))=X1), inference(pm,[status(thm)],[c_0_22, c_0_36])).
+cnf(c_0_44, plain, (product(X1,product(X1,quotient(one,X1)))=quotient(one,quotient(one,X1))), inference(pm,[status(thm)],[c_0_37, c_0_38])).
+cnf(c_0_45, plain, (quotient(X1,difference(X2,X1))=X2), inference(pm,[status(thm)],[c_0_39, c_0_17])).
+cnf(c_0_46, plain, (quotient(product(X1,quotient(one,X1)),X1)=difference(X1,one)), inference(pm,[status(thm)],[c_0_39, c_0_38])).
+cnf(c_0_47, axiom, (product(i(i(X1)),X2)=product(eta(X1),product(X1,X2))), sos13).
+cnf(c_0_48, plain, (eta(X1)=product(difference(X1,one),X1)), inference(rw,[status(thm)],[c_0_40, c_0_33])).
+cnf(c_0_49, plain, (product(difference(product(X1,X2),product(X1,X3)),X1)=difference(X2,product(X3,X1))), inference(pm,[status(thm)],[c_0_41, c_0_22])).
+cnf(c_0_50, plain, (quotient(product(difference(X1,X2),X1),product(X3,X1))=difference(X1,quotient(X2,X3))), inference(pm,[status(thm)],[c_0_39, c_0_42])).
+cnf(c_0_51, plain, (difference(difference(X1,difference(X1,one)),quotient(one,X1))=X1), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_43, c_0_44]), c_0_45]), c_0_38]), c_0_46]), c_0_45])).
+cnf(c_0_52, plain, (product(difference(difference(X1,one),one),X2)=product(product(difference(X1,one),X1),product(X1,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_47, c_0_33]), c_0_33]), c_0_48])).
+cnf(c_0_53, plain, (quotient(difference(X1,product(X2,X3)),X3)=difference(product(X3,X1),product(X3,X2))), inference(pm,[status(thm)],[c_0_39, c_0_49])).
+cnf(c_0_54, plain, (difference(one,X1)=X1), inference(pm,[status(thm)],[c_0_27, c_0_17])).
+cnf(c_0_55, plain, (quotient(quotient(X1,X2),quotient(one,X2))=product(X2,product(difference(X2,one),X1))), inference(pm,[status(thm)],[c_0_37, c_0_36])).
+cnf(c_0_56, plain, (quotient(product(difference(X1,X2),X1),X3)=difference(X1,quotient(X2,quotient(X3,X1)))), inference(pm,[status(thm)],[c_0_50, c_0_16])).
+cnf(c_0_57, plain, (product(difference(X1,difference(X1,one)),X1)=quotient(one,X1)), inference(pm,[status(thm)],[c_0_17, c_0_51])).
+cnf(c_0_58, plain, (product(product(X1,quotient(one,X1)),product(X1,X2))=product(difference(difference(X1,one),one),X2)), inference(rw,[status(thm)],[c_0_52, c_0_38])).
+cnf(c_0_59, plain, (product(X1,product(difference(X1,one),difference(X1,X2)))=product(quotient(one,X1),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_53, c_0_25]), c_0_16]), c_0_54]), c_0_55])).
+cnf(c_0_60, plain, (difference(X1,quotient(difference(X1,one),quotient(X2,X1)))=quotient(quotient(one,X1),X2)), inference(pm,[status(thm)],[c_0_56, c_0_57])).
+cnf(c_0_61, plain, (product(difference(difference(X1,one),one),difference(X1,X2))=product(product(X1,quotient(one,X1)),X2)), inference(pm,[status(thm)],[c_0_58, c_0_17])).
+cnf(c_0_62, plain, (difference(quotient(X1,X2),X1)=X2), inference(pm,[status(thm)],[c_0_22, c_0_16])).
+cnf(c_0_63, plain, (product(quotient(one,X1),quotient(X2,quotient(one,X1)))=quotient(difference(X1,X2),quotient(one,X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_59, c_0_31]), c_0_30]), c_0_37])).
+cnf(c_0_64, plain, (quotient(difference(X1,one),quotient(X2,X1))=product(X1,quotient(quotient(one,X1),X2))), inference(pm,[status(thm)],[c_0_17, c_0_60])).
+cnf(c_0_65, plain, (quotient(X1,one)=X1), inference(pm,[status(thm)],[c_0_21, c_0_16])).
+cnf(c_0_66, axiom, (product(X1,product(eta(X1),X2))=product(j(j(X1)),X2)), sos14).
+cnf(c_0_67, plain, (product(difference(X1,one),difference(quotient(one,X1),X2))=product(product(X1,quotient(one,X1)),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_61, c_0_62]), c_0_63]), c_0_64]), c_0_65])).
+cnf(c_0_68, plain, (quotient(product(difference(X1,X2),X1),product(X2,X1))=difference(X1,one)), inference(pm,[status(thm)],[c_0_39, c_0_30])).
+cnf(c_0_69, plain, (product(X1,product(product(difference(X1,one),X1),X2))=product(quotient(one,quotient(one,X1)),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_66, c_0_34]), c_0_34]), c_0_48])).
+cnf(c_0_70, plain, (product(X1,difference(quotient(one,quotient(one,X1)),X2))=product(product(X1,quotient(one,X1)),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_67, c_0_62]), c_0_63]), c_0_64]), c_0_65])).
+cnf(c_0_71, plain, (quotient(product(X1,X2),product(product(X2,X1),X2))=difference(X2,one)), inference(pm,[status(thm)],[c_0_68, c_0_22])).
+cnf(c_0_72, plain, (product(X1,product(product(X1,quotient(one,X1)),X2))=product(quotient(one,quotient(one,X1)),X2)), inference(rw,[status(thm)],[c_0_69, c_0_38])).
+cnf(c_0_73, plain, (difference(X1,product(product(X1,quotient(one,X1)),X2))=difference(quotient(one,quotient(one,X1)),X2)), inference(pm,[status(thm)],[c_0_22, c_0_70])).
+cnf(c_0_74, plain, (difference(difference(X1,one),product(X2,X1))=product(product(X1,X2),X1)), inference(pm,[status(thm)],[c_0_62, c_0_71])).
+cnf(c_0_75, plain, (difference(X1,product(quotient(one,quotient(one,X1)),X2))=product(product(X1,quotient(one,X1)),X2)), inference(pm,[status(thm)],[c_0_22, c_0_72])).
+cnf(c_0_76, plain, (product(difference(X1,product(X2,quotient(X3,X2))),X2)=difference(difference(X2,X1),X3)), inference(pm,[status(thm)],[c_0_41, c_0_16])).
+cnf(c_0_77, plain, (product(difference(quotient(one,quotient(one,X1)),X2),X1)=product(quotient(one,X1),product(X2,X1))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_26, c_0_73]), c_0_22])).
+cnf(c_0_78, plain, (product(product(X1,quotient(X2,X1)),X1)=difference(difference(X1,one),X2)), inference(pm,[status(thm)],[c_0_74, c_0_16])).
+cnf(c_0_79, plain, (difference(difference(X1,one),product(quotient(one,X1),X2))=product(product(X1,quotient(one,X1)),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_75, c_0_45]), c_0_45]), c_0_38])).
+cnf(c_0_80, plain, (quotient(difference(difference(X1,X2),X3),X1)=difference(X2,product(X1,quotient(X3,X1)))), inference(pm,[status(thm)],[c_0_39, c_0_76])).
+cnf(c_0_81, plain, (product(quotient(one,X1),difference(difference(X1,one),X2))=difference(product(X1,quotient(one,X1)),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_76, c_0_77]), c_0_78]), c_0_31]), c_0_38])).
+cnf(c_0_82, plain, (difference(difference(difference(X1,one),one),product(X1,X2))=product(product(X1,quotient(one,X1)),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_79, c_0_45]), c_0_45]), c_0_38])).
+cnf(c_0_83, plain, (quotient(difference(difference(X1,one),X2),difference(X1,one))=product(product(X1,X2),X1)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_25, c_0_45]), c_0_74])).
+cnf(c_0_84, plain, (difference(product(X1,X2),product(X1,quotient(X3,X1)))=quotient(difference(X2,X3),X1)), inference(pm,[status(thm)],[c_0_80, c_0_22])).
+cnf(c_0_85, plain, (difference(product(X1,quotient(one,X1)),product(X1,X2))=product(quotient(one,quotient(one,X1)),X2)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_81, c_0_82]), c_0_45]), c_0_72]), c_0_45]), c_0_38])).
+cnf(c_0_86, plain, (product(product(X1,product(difference(X1,one),X2)),X1)=quotient(X2,difference(X1,one))), inference(pm,[status(thm)],[c_0_83, c_0_22])).
+cnf(c_0_87, plain, (product(quotient(one,quotient(one,X1)),quotient(X2,X1))=quotient(difference(quotient(one,X1),X2),X1)), inference(pm,[status(thm)],[c_0_84, c_0_85])).
+cnf(c_0_88, plain, (quotient(difference(X1,X2),difference(X1,one))=product(product(quotient(one,X1),X2),X1)), inference(pm,[status(thm)],[c_0_86, c_0_59])).
+cnf(c_0_89, plain, (product(quotient(one,X1),quotient(X2,difference(X1,one)))=product(product(quotient(one,X1),X2),X1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_87, c_0_45]), c_0_45]), c_0_88])).
+cnf(c_0_90, plain, (difference(X1,X1)=one), inference(pm,[status(thm)],[c_0_22, c_0_21])).
+cnf(c_0_91, plain, (product(X1,quotient(X2,difference(difference(X1,one),one)))=product(product(X1,X2),difference(X1,one))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_89, c_0_45]), c_0_45])).
+cnf(c_0_92, plain, (difference(X1,quotient(product(X1,X2),quotient(X3,X1)))=quotient(product(X2,X1),X3)), inference(pm,[status(thm)],[c_0_56, c_0_22])).
+cnf(c_0_93, plain, (product(X1,product(difference(product(X2,X1),X3),X2))=product(difference(X2,X3),X2)), inference(pm,[status(thm)],[c_0_29, c_0_22])).
+cnf(c_0_94, plain, (quotient(quotient(one,X1),X1)=difference(X1,difference(X1,one))), inference(pm,[status(thm)],[c_0_45, c_0_51])).
+cnf(c_0_95, plain, (quotient(X1,product(X2,X1))=difference(X1,quotient(X1,X2))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_50, c_0_90]), c_0_27])).
+cnf(c_0_96, plain, (difference(X1,product(product(X1,X2),difference(X1,one)))=quotient(X2,difference(difference(X1,one),one))), inference(pm,[status(thm)],[c_0_22, c_0_91])).
+cnf(c_0_97, plain, (quotient(product(X1,X2),quotient(X3,X1))=product(X1,quotient(product(X2,X1),X3))), inference(pm,[status(thm)],[c_0_17, c_0_92])).
+cnf(c_0_98, plain, (difference(X1,product(difference(X2,X3),X2))=product(difference(product(X2,X1),X3),X2)), inference(pm,[status(thm)],[c_0_22, c_0_93])).
+cnf(c_0_99, plain, (difference(difference(X1,one),quotient(one,X1))=product(X1,quotient(one,X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_78, c_0_94]), c_0_17]), c_0_38])).
+cnf(c_0_100, plain, (difference(difference(X1,quotient(X1,X2)),X1)=product(X2,X1)), inference(pm,[status(thm)],[c_0_62, c_0_95])).
+cnf(c_0_101, plain, (product(quotient(X1,difference(difference(X2,one),one)),X2)=product(X1,product(X2,quotient(one,X2)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_26, c_0_96]), c_0_22]), c_0_38])).
+cnf(c_0_102, plain, (product(X1,quotient(product(X2,X1),product(X3,X1)))=quotient(product(X1,X2),X3)), inference(pm,[status(thm)],[c_0_97, c_0_39])).
+cnf(c_0_103, plain, (quotient(difference(X1,difference(quotient(one,X1),X2)),X1)=product(X2,quotient(one,X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_25, c_0_98]), c_0_16]), c_0_54])).
+cnf(c_0_104, plain, (difference(quotient(one,X1),difference(X1,difference(X1,one)))=difference(X1,one)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_45, c_0_99]), c_0_95]), c_0_94])).
+cnf(c_0_105, plain, (difference(difference(X1,X2),X1)=product(difference(X2,X1),X1)), inference(pm,[status(thm)],[c_0_100, c_0_45])).
+cnf(c_0_106, plain, (quotient(product(X1,product(X2,quotient(one,X2))),X2)=quotient(X1,difference(difference(X2,one),one))), inference(pm,[status(thm)],[c_0_39, c_0_101])).
+cnf(c_0_107, plain, (quotient(product(X1,X2),product(X3,X2))=difference(X2,quotient(product(X2,X1),X3))), inference(pm,[status(thm)],[c_0_22, c_0_102])).
+cnf(c_0_108, plain, (difference(X1,difference(quotient(one,X1),X2))=product(product(X2,quotient(one,X1)),X1)), inference(pm,[status(thm)],[c_0_16, c_0_103])).
+cnf(c_0_109, plain, (difference(difference(X1,one),difference(X1,X2))=product(product(X2,quotient(one,X1)),X1)), inference(pm,[status(thm)],[c_0_78, c_0_23])).
+cnf(c_0_110, plain, (product(quotient(one,X1),difference(X1,one))=difference(X1,difference(X1,one))), inference(pm,[status(thm)],[c_0_17, c_0_104])).
+cnf(c_0_111, plain, (product(difference(product(X1,X2),X1),X1)=difference(X2,X1)), inference(pm,[status(thm)],[c_0_105, c_0_22])).
+cnf(c_0_112, plain, (product(difference(X1,X2),difference(difference(X1,one),one))=difference(X1,quotient(X2,difference(X1,one)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_31, c_0_106]), c_0_62]), c_0_63]), c_0_64]), c_0_65]), c_0_26]), c_0_78])).
+cnf(c_0_113, plain, (difference(X1,quotient(product(X1,quotient(X2,X1)),X3))=quotient(X2,product(X3,X1))), inference(pm,[status(thm)],[c_0_107, c_0_16])).
+cnf(c_0_114, plain, (product(product(X1,quotient(one,X2)),X2)=product(product(X1,X2),difference(X2,one))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_108, c_0_45]), c_0_109]), c_0_45])).
+cnf(c_0_115, axiom, (product(eta(X1),product(X2,X3))=product(product(eta(X1),X2),X3)), sos16).
+cnf(c_0_116, plain, (product(quotient(one,quotient(one,X1)),X1)=difference(quotient(one,X1),X1)), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_110, c_0_62]), c_0_62])).
+cnf(c_0_117, plain, (quotient(difference(X1,X2),X2)=difference(product(X2,X1),X2)), inference(pm,[status(thm)],[c_0_39, c_0_111])).
+cnf(c_0_118, plain, (difference(X1,quotient(product(X1,X2),difference(X1,one)))=product(X2,difference(difference(X1,one),one))), inference(pm,[status(thm)],[c_0_112, c_0_22])).
+cnf(c_0_119, plain, (quotient(product(X1,quotient(X2,X1)),X3)=product(X1,quotient(X2,product(X3,X1)))), inference(pm,[status(thm)],[c_0_17, c_0_113])).
+cnf(c_0_120, plain, (difference(X1,difference(quotient(one,X1),X2))=product(product(X2,X1),difference(X1,one))), inference(rw,[status(thm)],[c_0_108, c_0_114])).
+cnf(c_0_121, plain, (product(product(difference(X1,one),X1),product(X2,X3))=product(product(product(difference(X1,one),X1),X2),X3)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_115, c_0_48]), c_0_48])).
+cnf(c_0_122, plain, (product(difference(X1,product(X2,product(difference(X2,X1),X3))),X2)=quotient(product(X3,X1),difference(X2,X1))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_17]), c_0_41])).
+cnf(c_0_123, plain, (difference(product(X1,quotient(one,X1)),X1)=quotient(one,quotient(one,X1))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_39, c_0_116]), c_0_117])).
+cnf(c_0_124, plain, (product(quotient(X1,X2),difference(difference(X2,one),one))=quotient(X1,product(X2,quotient(one,X2)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_118, c_0_119]), c_0_38]), c_0_22])).
+cnf(c_0_125, plain, (product(X1,quotient(one,product(product(X2,X1),X1)))=difference(X1,quotient(one,X2))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_107, c_0_38]), c_0_17]), c_0_119])).
+cnf(c_0_126, plain, (product(X1,product(product(X2,X1),difference(X1,one)))=difference(quotient(one,X1),X2)), inference(pm,[status(thm)],[c_0_17, c_0_120])).
+cnf(c_0_127, plain, (product(product(product(X1,quotient(one,X1)),X2),X3)=product(product(X1,quotient(one,X1)),product(X2,X3))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_121, c_0_38]), c_0_38])).
+cnf(c_0_128, plain, (difference(X1,product(X2,quotient(one,X2)))=product(difference(product(X2,X1),one),X2)), inference(pm,[status(thm)],[c_0_98, c_0_38])).
+cnf(c_0_129, plain, (quotient(product(X1,X2),quotient(one,quotient(one,X2)))=product(X1,product(X2,quotient(one,X2)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_122, c_0_123]), c_0_73]), c_0_22]), c_0_123])).
+cnf(c_0_130, plain, (quotient(X1,quotient(one,quotient(one,X1)))=product(X1,quotient(one,X1))), inference(pm,[status(thm)],[c_0_45, c_0_123])).
+cnf(c_0_131, plain, (quotient(product(X1,X2),product(X2,quotient(one,X2)))=product(X1,difference(difference(X2,one),one))), inference(pm,[status(thm)],[c_0_124, c_0_39])).
+cnf(c_0_132, plain, (quotient(one,product(product(X1,X2),X2))=difference(X2,difference(X2,quotient(one,X1)))), inference(pm,[status(thm)],[c_0_22, c_0_125])).
+cnf(c_0_133, plain, (product(difference(product(X1,quotient(one,X2)),one),X1)=product(X2,product(X1,quotient(one,X1)))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_126, c_0_127]), c_0_17]), c_0_21]), c_0_128])).
+cnf(c_0_134, plain, (product(product(X1,product(X2,quotient(one,X2))),X2)=product(X1,difference(difference(X2,one),one))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_124, c_0_129]), c_0_62]), c_0_62]), c_0_63]), c_0_62]), c_0_130]), c_0_131])).
+cnf(c_0_135, plain, (quotient(one,product(X1,difference(difference(X2,one),one)))=difference(X2,quotient(one,X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_132, c_0_133]), c_0_134]), c_0_45]), c_0_22])).
+cnf(c_0_136, negated_conjecture, (product(j(j(x0)),j(product(x1,x0)))!=j(x1)), goals).
+cnf(c_0_137, plain, (product(quotient(X1,X2),product(X2,quotient(X1,product(X3,X2))))=quotient(X1,quotient(X3,quotient(X1,X2)))), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_97, c_0_16]), c_0_119])).
+cnf(c_0_138, plain, (quotient(one,product(X1,difference(X2,one)))=difference(quotient(one,X2),quotient(one,X1))), inference(pm,[status(thm)],[c_0_135, c_0_62])).
+cnf(c_0_139, negated_conjecture, (product(quotient(one,quotient(one,x0)),quotient(one,product(x1,x0)))!=quotient(one,x1)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_136, c_0_34]), c_0_34]), c_0_34]), c_0_34])).
+cnf(c_0_140, plain, (product(quotient(one,quotient(one,X1)),quotient(one,X2))=quotient(one,quotient(X2,X1))), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_137, c_0_138]), c_0_45]), c_0_67]), c_0_72]), c_0_45])).
+cnf(c_0_141, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_139, c_0_140]), c_0_39])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 142
+# Proof object clause steps            : 127
+# Proof object formula steps           : 15
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 3
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 15
+# Proof object initial formulas used   : 15
+# Proof object generating inferences   : 101
+# Proof object simplifying inferences  : 98
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 21
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 21
+# Removed in clause preprocessing      : 5
+# Initial clauses in saturation        : 16
+# Processed clauses                    : 1870
+# ...of these trivial                  : 1099
+# ...subsumed                          : 0
+# ...remaining for further processing  : 771
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 183
+# Generated clauses                    : 171452
+# ...of the previous two non-trivial   : 140301
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 171452
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 588
+#    Positive orientable unit clauses  : 588
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 0
+# Current number of unprocessed clauses: 138003
+# ...number of literals in the above   : 138003
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 188
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 1607
+# BW rewrite match successes           : 176
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 3610512

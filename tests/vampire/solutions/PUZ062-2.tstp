@@ -1,0 +1,120 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for PUZ062-2
+% SZS output start Proof for PUZ062-2
+fof(f69,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f33,f68])).
+fof(f68,plain,(
+  ~spl0_1),
+  inference(avatar_contradiction_clause,[],[f67])).
+fof(f67,plain,(
+  $false | ~spl0_1),
+  inference(trivial_inequality_removal,[],[f66])).
+fof(f66,plain,(
+  c_Suc(c_Finite__Set_Ocard(c_inter(c_Mutil_Ocoloured(c_0),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) != c_Suc(c_Finite__Set_Ocard(c_inter(c_Mutil_Ocoloured(c_0),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) | ~spl0_1),
+  inference(forward_demodulation,[],[f65,f9])).
+fof(f9,axiom,(
+  c_Finite__Set_Ocard(c_inter(c_Mutil_Ocoloured(c_0),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)) = c_Finite__Set_Ocard(c_inter(c_Mutil_Ocoloured(c_Suc(c_0)),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f65,plain,(
+  c_Suc(c_Finite__Set_Ocard(c_inter(c_Mutil_Ocoloured(c_0),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) != c_Suc(c_Finite__Set_Ocard(c_inter(c_Mutil_Ocoloured(c_Suc(c_0)),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) | ~spl0_1),
+  inference(superposition,[],[f57,f56])).
+fof(f56,plain,(
+  ( ! [X1] : (c_Suc(c_Finite__Set_Ocard(c_inter(X1,v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) = c_Finite__Set_Ocard(c_insert(c_Pair(v_m,v_n,tc_nat,tc_nat),c_inter(X1,v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) ) | ~spl0_1),
+  inference(resolution,[],[f53,f46])).
+fof(f46,plain,(
+  ~c_in(c_Pair(v_m,v_n,tc_nat,tc_nat),v_t,tc_prod(tc_nat,tc_nat))),
+  inference(resolution,[],[f40,f27])).
+fof(f27,plain,(
+  ( ! [X0] : (~c_in(X0,v_a,tc_prod(tc_nat,tc_nat)) | ~c_in(X0,v_t,tc_prod(tc_nat,tc_nat))) )),
+  inference(subsumption_resolution,[],[f26,f7])).
+fof(f7,axiom,(
+  ( ! [X6,X1] : (~c_in(X6,c_emptyset,X1)) )),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f26,plain,(
+  ( ! [X0] : (c_in(X0,c_emptyset,tc_prod(tc_nat,tc_nat)) | ~c_in(X0,v_a,tc_prod(tc_nat,tc_nat)) | ~c_in(X0,v_t,tc_prod(tc_nat,tc_nat))) )),
+  inference(superposition,[],[f5,f10])).
+fof(f10,axiom,(
+  c_emptyset = c_inter(v_a,v_t,tc_prod(tc_nat,tc_nat))),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f5,axiom,(
+  ( ! [X6,X0,X7,X1] : (c_in(X6,c_inter(X0,X7,X1),X1) | ~c_in(X6,X0,X1) | ~c_in(X6,X7,X1)) )),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f40,plain,(
+  c_in(c_Pair(v_m,v_n,tc_nat,tc_nat),v_a,tc_prod(tc_nat,tc_nat))),
+  inference(resolution,[],[f34,f4])).
+fof(f4,axiom,(
+  ( ! [X6,X0,X7,X1] : (~c_in(X6,c_inter(X0,X7,X1),X1) | c_in(X6,X7,X1)) )),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f34,plain,(
+  c_in(c_Pair(v_m,v_n,tc_nat,tc_nat),c_inter(c_Mutil_Ocoloured(c_Suc(c_0)),v_a,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))),
+  inference(superposition,[],[f6,f12])).
+fof(f12,axiom,(
+  c_inter(c_Mutil_Ocoloured(c_Suc(c_0)),v_a,tc_prod(tc_nat,tc_nat)) = c_insert(c_Pair(v_m,v_n,tc_nat,tc_nat),c_emptyset,tc_prod(tc_nat,tc_nat))),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f6,axiom,(
+  ( ! [X2,X0,X1] : (c_in(X2,c_insert(X2,X0,X1),X1)) )),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f53,plain,(
+  ( ! [X8,X7] : (c_in(X7,v_t,tc_prod(tc_nat,tc_nat)) | c_Finite__Set_Ocard(c_insert(X7,c_inter(X8,v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)) = c_Suc(c_Finite__Set_Ocard(c_inter(X8,v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)))) ) | ~spl0_1),
+  inference(resolution,[],[f41,f18])).
+fof(f18,plain,(
+  c_in(v_t,c_Finite__Set_OFinites,tc_set(tc_prod(tc_nat,tc_nat))) | ~spl0_1),
+  inference(avatar_component_clause,[],[f17])).
+fof(f17,plain,(
+  spl0_1 <=> c_in(v_t,c_Finite__Set_OFinites,tc_set(tc_prod(tc_nat,tc_nat)))),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f41,plain,(
+  ( ! [X2,X0,X3,X1] : (~c_in(X2,c_Finite__Set_OFinites,tc_set(X3)) | c_Finite__Set_Ocard(c_insert(X0,c_inter(X1,X2,X3),X3),X3) = c_Suc(c_Finite__Set_Ocard(c_inter(X1,X2,X3),X3)) | c_in(X0,X2,X3)) )),
+  inference(resolution,[],[f35,f4])).
+fof(f35,plain,(
+  ( ! [X2,X0,X3,X1] : (c_in(X0,c_inter(X1,X2,X3),X3) | c_Finite__Set_Ocard(c_insert(X0,c_inter(X1,X2,X3),X3),X3) = c_Suc(c_Finite__Set_Ocard(c_inter(X1,X2,X3),X3)) | ~c_in(X2,c_Finite__Set_OFinites,tc_set(X3))) )),
+  inference(resolution,[],[f1,f2])).
+fof(f2,axiom,(
+  ( ! [X4,X3,X1] : (c_in(c_inter(X4,X3,X1),c_Finite__Set_OFinites,tc_set(X1)) | ~c_in(X3,c_Finite__Set_OFinites,tc_set(X1))) )),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f1,axiom,(
+  ( ! [X2,X0,X1] : (~c_in(X0,c_Finite__Set_OFinites,tc_set(X1)) | c_in(X2,X0,X1) | c_Finite__Set_Ocard(c_insert(X2,X0,X1),X1) = c_Suc(c_Finite__Set_Ocard(X0,X1))) )),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f57,plain,(
+  c_Finite__Set_Ocard(c_insert(c_Pair(v_m,v_n,tc_nat,tc_nat),c_inter(c_Mutil_Ocoloured(c_Suc(c_0)),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)) != c_Suc(c_Finite__Set_Ocard(c_inter(c_Mutil_Ocoloured(c_0),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) | ~spl0_1),
+  inference(backward_demodulation,[],[f55,f13])).
+fof(f13,axiom,(
+  c_Finite__Set_Ocard(c_insert(c_Pair(v_i,v_j,tc_nat,tc_nat),c_inter(c_Mutil_Ocoloured(c_0),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)) != c_Finite__Set_Ocard(c_insert(c_Pair(v_m,v_n,tc_nat,tc_nat),c_inter(c_Mutil_Ocoloured(c_Suc(c_0)),v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f55,plain,(
+  ( ! [X0] : (c_Suc(c_Finite__Set_Ocard(c_inter(X0,v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) = c_Finite__Set_Ocard(c_insert(c_Pair(v_i,v_j,tc_nat,tc_nat),c_inter(X0,v_t,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))) ) | ~spl0_1),
+  inference(resolution,[],[f53,f39])).
+fof(f39,plain,(
+  ~c_in(c_Pair(v_i,v_j,tc_nat,tc_nat),v_t,tc_prod(tc_nat,tc_nat))),
+  inference(resolution,[],[f29,f27])).
+fof(f29,plain,(
+  c_in(c_Pair(v_i,v_j,tc_nat,tc_nat),v_a,tc_prod(tc_nat,tc_nat))),
+  inference(resolution,[],[f28,f4])).
+fof(f28,plain,(
+  c_in(c_Pair(v_i,v_j,tc_nat,tc_nat),c_inter(c_Mutil_Ocoloured(c_0),v_a,tc_prod(tc_nat,tc_nat)),tc_prod(tc_nat,tc_nat))),
+  inference(superposition,[],[f6,f11])).
+fof(f11,axiom,(
+  c_inter(c_Mutil_Ocoloured(c_0),v_a,tc_prod(tc_nat,tc_nat)) = c_insert(c_Pair(v_i,v_j,tc_nat,tc_nat),c_emptyset,tc_prod(tc_nat,tc_nat))),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f33,plain,(
+  spl0_1),
+  inference(avatar_split_clause,[],[f30,f17])).
+fof(f30,plain,(
+  c_in(v_t,c_Finite__Set_OFinites,tc_set(tc_prod(tc_nat,tc_nat)))),
+  inference(resolution,[],[f3,f8])).
+fof(f8,axiom,(
+  c_in(v_t,c_Mutil_Otiling(c_Mutil_Odomino,tc_prod(tc_nat,tc_nat)),tc_set(tc_prod(tc_nat,tc_nat)))),
+  file('./p/PUZ062-2.tptp',unknown)).
+fof(f3,axiom,(
+  ( ! [X5] : (~c_in(X5,c_Mutil_Otiling(c_Mutil_Odomino,tc_prod(tc_nat,tc_nat)),tc_set(tc_prod(tc_nat,tc_nat))) | c_in(X5,c_Finite__Set_OFinites,tc_set(tc_prod(tc_nat,tc_nat)))) )),
+  file('./p/PUZ062-2.tptp',unknown)).
+% SZS output end Proof for PUZ062-2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.004 s
+% ------------------------------
+% ------------------------------

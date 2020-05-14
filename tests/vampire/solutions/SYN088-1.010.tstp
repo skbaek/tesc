@@ -1,0 +1,81 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SYN088-1.010
+% SZS output start Proof for SYN088-1.010
+fof(f33,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f32,f21])).
+fof(f21,axiom,(
+  q_10(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f32,plain,(
+  ~q_10(a)),
+  inference(subsumption_resolution,[],[f31,f3])).
+fof(f3,axiom,(
+  q_1(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f31,plain,(
+  ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f30,f5])).
+fof(f5,axiom,(
+  q_2(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f30,plain,(
+  ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f29,f7])).
+fof(f7,axiom,(
+  q_3(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f29,plain,(
+  ~q_3(a) | ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f28,f9])).
+fof(f9,axiom,(
+  q_4(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f28,plain,(
+  ~q_4(a) | ~q_3(a) | ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f27,f11])).
+fof(f11,axiom,(
+  q_5(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f27,plain,(
+  ~q_5(a) | ~q_4(a) | ~q_3(a) | ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f26,f13])).
+fof(f13,axiom,(
+  q_6(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f26,plain,(
+  ~q_6(a) | ~q_5(a) | ~q_4(a) | ~q_3(a) | ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f25,f15])).
+fof(f15,axiom,(
+  q_7(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f25,plain,(
+  ~q_7(a) | ~q_6(a) | ~q_5(a) | ~q_4(a) | ~q_3(a) | ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f24,f17])).
+fof(f17,axiom,(
+  q_8(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f24,plain,(
+  ~q_8(a) | ~q_7(a) | ~q_6(a) | ~q_5(a) | ~q_4(a) | ~q_3(a) | ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(subsumption_resolution,[],[f23,f19])).
+fof(f19,axiom,(
+  q_9(a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f23,plain,(
+  ~q_9(a) | ~q_8(a) | ~q_7(a) | ~q_6(a) | ~q_5(a) | ~q_4(a) | ~q_3(a) | ~q_2(a) | ~q_1(a) | ~q_10(a)),
+  inference(resolution,[],[f2,f1])).
+fof(f1,axiom,(
+  ~p(a,a,a,a,a,a,a,a,a,a)),
+  file('./p/SYN088-1.010.tptp',unknown)).
+fof(f2,axiom,(
+  ( ! [X6,X4,X2,X0,X8,X7,X5,X3,X1,X9] : (p(X0,X1,X2,X3,X4,X5,X6,X7,X8,X9) | ~q_9(X8) | ~q_8(X7) | ~q_7(X6) | ~q_6(X5) | ~q_5(X4) | ~q_4(X3) | ~q_3(X2) | ~q_2(X1) | ~q_1(X0) | ~q_10(X9)) )),
+  file('./p/SYN088-1.010.tptp',unknown)).
+% SZS output end Proof for SYN088-1.010
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

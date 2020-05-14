@@ -1,0 +1,424 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_11, plain, (c_lessequals(c_minus(X1,X2,tc_set(X3)),c_insert(X4,c_minus(X1,c_insert(X4,X2,X3),tc_set(X3)),X3),tc_set(X3)))).
+#
+#cnf(i_0_14, plain, (c_in(X1,c_PropLog_Othms(X4,X3),tc_PropLog_Opl(X3))|~c_lessequals(X2,X4,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_15, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,X1,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_16, negated_conjecture, (~c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_17, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X5,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_19, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X2,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_13, plain, (c_in(X1,c_PropLog_Othms(X3,X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(c_PropLog_Opl_Oop_A_N_62(X2,c_PropLog_Opl_Ofalse,X4),X3,tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(X2,X3,tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4)))).
+#
+#cnf(i_0_20, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_12, plain, (c_lessequals(c_minus(c_insert(X1,c_minus(X2,c_insert(X3,c_emptyset,X4),tc_set(X4)),X4),X5,tc_set(X4)),c_insert(X1,c_minus(X2,c_insert(X3,X5,X4),tc_set(X4)),X4),tc_set(X4)))).
+#
+#cnf(i_0_9, plain, (c_in(X1,c_PropLog_Othms(c_minus(X5,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X2,X5,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4)))).
+#
+#cnf(i_0_38, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(X1,v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X2,t_a),X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_34, negated_conjecture, (~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(X1,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_28, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_22, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X6,X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_46, negated_conjecture, (~c_lessequals(X2,c_minus(X1,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X2,t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_43, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X2,v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_18, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_in(X1,c_PropLog_Othms(c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_24, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X3,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_21, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X2,t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_45, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(X1,v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_49, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(X2,c_minus(c_PropLog_Ohyps(v_p,X3,t_a),c_insert(X2,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_48, negated_conjecture, (~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_35, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X4,X5,tc_set(tc_PropLog_Opl(X3))),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X6,X5,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_37, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(c_minus(X6,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4)))).
+###
+#cnf(i_0_39, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X6,c_minus(X5,X3,tc_set(tc_PropLog_Opl(X4))),tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(X6,X4),tc_PropLog_Opl(X4)))).
+#
+#cnf(i_0_29, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X5,c_insert(c_PropLog_Opl_Oop_A_N_62(X4,c_PropLog_Opl_Ofalse,X3),X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_insert(X4,X2,tc_PropLog_Opl(X3)),X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X5,X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_72, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_23, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_82, negated_conjecture, (~c_lessequals(X2,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X1,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X2,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_26, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X5,X6,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+###
+#cnf(i_0_10, plain, (c_lessequals(c_PropLog_Ohyps(X1,c_insert(X2,X3,X4),X4),c_insert(c_PropLog_Opl_Ovar(X2,X4),c_minus(c_PropLog_Ohyps(X1,X3,X4),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,X4),c_PropLog_Opl_Ofalse,X4),c_emptyset,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))))).
+#
+#cnf(i_0_98, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X2,v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_230, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_27, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X6,X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_129, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(c_minus(X6,X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+##
+#cnf(i_0_47, negated_conjecture, (~c_lessequals(X2,c_minus(X1,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X3,t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_44, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X3,v_F,tc_set(tc_PropLog_Opl(t_a))),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_60, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X4,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_105, negated_conjecture, (~c_lessequals(X3,c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X3,t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_101, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(X1,v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_188, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(X2,c_minus(X3,c_insert(X2,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X3,tc_set(tc_PropLog_Opl(t_a))))).
+###
+#cnf(i_0_36, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X5,X6,tc_set(tc_PropLog_Opl(X3))),X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X5,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X6,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_52, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X3,t_a),tc_PropLog_Opl(t_a)))).
+##
+#cnf(i_0_122, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X4,X5,tc_set(tc_PropLog_Opl(X3))),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X6,X5,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_125, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X4,X5,tc_set(tc_PropLog_Opl(X3))),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X5,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#####
+#cnf(i_0_108, negated_conjecture, (~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(X3,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_50, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(X3,c_minus(c_PropLog_Ohyps(v_p,X4,t_a),c_insert(X3,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_40, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X6,c_minus(X5,X3,tc_set(tc_PropLog_Opl(X4))),tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(X7,X4),tc_PropLog_Opl(X4)))).
+##
+#cnf(i_0_137, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4)))).
+##
+#cnf(i_0_144, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X7,c_minus(X6,X3,tc_set(tc_PropLog_Opl(X4))),tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(X7,X4),tc_PropLog_Opl(X4)))).
+######
+#cnf(i_0_30, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X5,c_insert(c_PropLog_Opl_Oop_A_N_62(X4,c_PropLog_Opl_Ofalse,X3),X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_insert(X4,X2,tc_PropLog_Opl(X3)),X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X6,X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_42, plain, (c_in(X1,c_PropLog_Othms(c_minus(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X6,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5))|~c_in(X1,c_PropLog_Othms(c_minus(c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),X6,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+##
+#cnf(i_0_57, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X8,X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_181, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,c_insert(c_PropLog_Opl_Oop_A_N_62(X5,c_PropLog_Opl_Ofalse,X3),X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,c_insert(X5,X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X4,X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X6,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_83, negated_conjecture, (~c_lessequals(X3,c_minus(X1,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X2,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a))))).
+###
+#cnf(i_0_279, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a))))).
+###
+#cnf(i_0_251, plain, (c_in(X1,c_PropLog_Othms(c_insert(c_PropLog_Opl_Ovar(X2,X3),c_minus(c_PropLog_Ohyps(X4,X5,X3),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,X3),c_PropLog_Opl_Ofalse,X3),c_emptyset,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(c_PropLog_Ohyps(X4,c_insert(X2,X5,X3),X3),X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_66, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X5,c_minus(X6,c_insert(X5,X7,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X6,X7,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_94, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(X2,v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_68, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X5,X6,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+#####
+#cnf(i_0_248, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X5,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X6,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_374, negated_conjecture, (~c_lessequals(X3,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X1,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X3,tc_set(tc_PropLog_Opl(t_a))))).
+#####
+#cnf(i_0_31, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X4,X5,tc_PropLog_Opl(X6)),tc_set(tc_PropLog_Opl(X6))),tc_PropLog_Opl(X6)),X6),tc_PropLog_Opl(X6))|~c_in(X1,c_PropLog_Othms(c_minus(c_insert(X2,c_minus(X3,c_insert(X4,c_emptyset,tc_PropLog_Opl(X6)),tc_set(tc_PropLog_Opl(X6))),tc_PropLog_Opl(X6)),X5,tc_set(tc_PropLog_Opl(X6))),X6),tc_PropLog_Opl(X6)))).
+#
+#cnf(i_0_1194, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_in(X1,c_PropLog_Othms(c_minus(c_minus(X3,c_emptyset,tc_set(tc_PropLog_Opl(X5))),X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_1198, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(c_minus(X5,c_emptyset,tc_set(tc_PropLog_Opl(X3))),X6,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_962, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(X3,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_70, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X7,X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_121, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X2,v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X3,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_92, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_insert(X2,c_minus(c_PropLog_Ohyps(v_p,X3,t_a),c_insert(X2,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_314, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X7,c_minus(X6,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X7,X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_320, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+######
+#cnf(i_0_1053, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X2,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_61, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X4,v_F,tc_set(tc_PropLog_Opl(t_a))),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X5,t_a),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_80, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X4,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X3,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_99, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X3,v_F,tc_set(tc_PropLog_Opl(t_a))),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X3,tc_set(tc_PropLog_Opl(t_a))))).
+###
+#cnf(i_0_53, negated_conjecture, (~c_lessequals(X2,c_minus(X1,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X4,t_a),tc_PropLog_Opl(t_a)))).
+###
+#cnf(i_0_143, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(X1,v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X3,tc_set(tc_PropLog_Opl(t_a))))).
+####
+#cnf(i_0_62, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X6,X7,tc_set(tc_PropLog_Opl(X3))),X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X6,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X8,X7,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_156, negated_conjecture, (~c_lessequals(X3,c_minus(X4,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X3,t_a),tc_PropLog_Opl(t_a)))).
+###
+#cnf(i_0_123, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X4,X5,tc_set(tc_PropLog_Opl(X3))),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X6,X5,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X8,X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_135, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X5,X6,tc_set(tc_PropLog_Opl(X3))),X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X8,X6,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_138, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X4,X5,tc_set(tc_PropLog_Opl(X3))),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X8,X5,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+###
+#cnf(i_0_158, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X5,X6,tc_set(tc_PropLog_Opl(X3))),X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X8,X6,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X5,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_162, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(X4,X5,tc_set(tc_PropLog_Opl(X3))),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X8,X5,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X6,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_90, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X4,t_a),tc_PropLog_Opl(t_a)))).
+####
+#cnf(i_0_97, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(X2,c_insert(X1,X3,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+####
+#cnf(i_0_106, negated_conjecture, (~c_lessequals(X3,c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X4,t_a),tc_PropLog_Opl(t_a)))).
+####
+#cnf(i_0_133, negated_conjecture, (~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(X4,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+###
+#cnf(i_0_963, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(X2,c_minus(X3,c_insert(X2,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X3,tc_set(tc_PropLog_Opl(t_a))))).
+####
+#cnf(i_0_270, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_insert(c_PropLog_Opl_Ovar(X1,t_a),c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X1,t_a),c_PropLog_Opl_Ofalse,t_a),c_emptyset,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+##
+#cnf(i_0_2302, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(c_PropLog_Opl_Ovar(X1,t_a),c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X1,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_2320, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(c_PropLog_Opl_Ovar(X2,t_a),c_minus(c_PropLog_Ohyps(v_p,X3,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_55, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X6,c_minus(X5,X3,tc_set(tc_PropLog_Opl(X4))),tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(X8,X4),tc_PropLog_Opl(X4)))).
+##
+#cnf(i_0_139, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(c_minus(X8,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4)))).
+##
+#cnf(i_0_145, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X7,c_minus(X6,X3,tc_set(tc_PropLog_Opl(X4))),tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(X8,X4),tc_PropLog_Opl(X4)))).
+##
+#cnf(i_0_163, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X7,c_minus(X8,X3,tc_set(tc_PropLog_Opl(X4))),tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X5,X2,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X4)))|~c_lessequals(X8,X6,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(X7,X4),tc_PropLog_Opl(X4)))).
+############
+#cnf(i_0_54, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X5,c_insert(c_PropLog_Opl_Oop_A_N_62(X4,c_PropLog_Opl_Ofalse,X3),X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_insert(X4,X2,tc_PropLog_Opl(X3)),X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_127, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_minus(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X7,tc_set(tc_PropLog_Opl(X3))),X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(c_minus(X5,X6,tc_set(tc_PropLog_Opl(X3))),X7,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+####
+#cnf(i_0_255, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(c_PropLog_Opl_Ovar(X4,X3),c_minus(c_PropLog_Ohyps(X5,X6,X3),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X4,X3),c_PropLog_Opl_Ofalse,X3),c_emptyset,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_PropLog_Ohyps(X5,c_insert(X4,X6,X3),X3),X3),tc_PropLog_Opl(X3)))).
+#####
+#cnf(i_0_59, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(X4,c_minus(c_PropLog_Ohyps(v_p,X5,t_a),c_insert(X4,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_339, negated_conjecture, (~c_lessequals(X1,c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(X3,v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X3,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_189, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(X3,c_minus(X4,c_insert(X3,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X5,t_a),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+#####
+#cnf(i_0_85, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(X2,c_insert(X1,X3,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X4,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),c_minus(X2,X3,tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_150, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(c_insert(X5,c_minus(X6,c_insert(X5,X7,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),tc_PropLog_Opl(X4)),X2,tc_set(tc_PropLog_Opl(X4)))|~c_in(X1,c_PropLog_Othms(c_minus(c_minus(X6,X7,tc_set(tc_PropLog_Opl(X4))),X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4)))).
+#
+#cnf(i_0_375, negated_conjecture, (~c_lessequals(X4,c_minus(X1,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X2,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X4,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_58, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X9,X8,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X9,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_182, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,c_insert(c_PropLog_Opl_Oop_A_N_62(X5,c_PropLog_Opl_Ofalse,X3),X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,c_insert(X5,X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X4,X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+####
+#cnf(i_0_776, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X4,c_insert(c_PropLog_Opl_Oop_A_N_62(X5,c_PropLog_Opl_Ofalse,X3),X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_insert(X5,X2,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X6,X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_111, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(X2,c_insert(X1,X3,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(c_minus(X2,X3,tc_set(tc_PropLog_Opl(t_a))),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+###
+#cnf(i_0_903, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X5,c_insert(c_PropLog_Opl_Oop_A_N_62(X6,c_PropLog_Opl_Ofalse,X3),X4,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_insert(X6,X4,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X5,X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+####
+#cnf(i_0_104, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_insert(X1,c_minus(X2,c_insert(X1,X3,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),c_minus(X2,X3,tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_95, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X3,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_3903, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),c_minus(X2,c_emptyset,tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_3929, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(X2,c_minus(X3,c_insert(X2,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),c_minus(X3,c_emptyset,tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_75, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X6,c_minus(X7,c_insert(X6,X8,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X8,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_102, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(X2,v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_225, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X5,c_minus(X6,c_insert(X5,X7,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,c_minus(X6,X7,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X8,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_227, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X5,X6,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X8,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_109, negated_conjecture, (~c_lessequals(X4,c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X3,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+###
+#cnf(i_0_249, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,X5,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X8,X6,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_465, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(X3,v_F,tc_set(tc_PropLog_Opl(t_a))),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_250, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X8,X6,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X5,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+###
+#cnf(i_0_303, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X5,c_minus(X6,c_insert(X5,X7,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X8,X6,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X8,X7,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#############
+#cnf(i_0_1201, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X5,c_minus(X6,c_insert(X5,X7,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X4,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(c_minus(X6,c_emptyset,tc_set(tc_PropLog_Opl(X3))),X7,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+###
+#cnf(i_0_1246, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(c_minus(X5,c_emptyset,tc_set(tc_PropLog_Opl(X3))),X6,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X7,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_1260, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X4,X6,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_lessequals(X7,c_minus(X5,c_emptyset,tc_set(tc_PropLog_Opl(X3))),tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X6,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+##
+#cnf(i_0_336, negated_conjecture, (~c_lessequals(c_insert(X3,c_minus(c_PropLog_Ohyps(v_p,X4,t_a),c_insert(X3,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a))))).
+########
+#cnf(i_0_3049, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(X3,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_313, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X3,tc_set(tc_PropLog_Opl(t_a))))).
+####
+#cnf(i_0_152, plain, (c_in(X1,c_PropLog_Othms(c_minus(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X6,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5))|~c_lessequals(X7,c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X6,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_5153, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(X3,c_emptyset,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(c_minus(X6,X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+##
+#cnf(i_0_2329, negated_conjecture, (~c_lessequals(c_insert(c_PropLog_Opl_Ovar(X2,t_a),c_minus(c_PropLog_Ohyps(v_p,X3,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a))))).
+###
+#cnf(i_0_5289, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(X3,c_minus(X2,c_emptyset,tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X3,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_192, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_insert(X2,c_minus(X3,c_insert(X2,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X3,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_172, plain, (c_in(X1,c_PropLog_Othms(c_minus(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X6,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5))|~c_lessequals(X7,c_minus(c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),X6,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X7,X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_5419, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(c_minus(X3,c_emptyset,tc_set(tc_PropLog_Opl(X5))),X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X6,X5),tc_PropLog_Opl(X5)))).
+##
+#cnf(i_0_462, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_insert(X3,c_minus(c_PropLog_Ohyps(v_p,X4,t_a),c_insert(X3,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_71, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(X1,c_minus(X2,c_insert(X3,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),c_insert(X1,c_minus(X2,c_insert(X3,c_emptyset,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_271, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_insert(c_PropLog_Opl_Ovar(X2,t_a),c_minus(c_PropLog_Ohyps(v_p,X3,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,t_a),c_PropLog_Opl_Ofalse,t_a),c_emptyset,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_273, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(X1,v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(c_PropLog_Opl_Ovar(X2,t_a),c_minus(c_PropLog_Ohyps(v_p,X3,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,t_a),c_PropLog_Opl_Ofalse,t_a),c_emptyset,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X1,tc_set(tc_PropLog_Opl(t_a))))).
+######
+#cnf(i_0_252, plain, (c_in(X1,c_PropLog_Othms(c_insert(c_PropLog_Opl_Ovar(X2,X3),c_minus(c_PropLog_Ohyps(X4,X5,X3),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,X3),c_PropLog_Opl_Ofalse,X3),c_emptyset,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X3),tc_PropLog_Opl(X3))|~c_lessequals(X6,c_PropLog_Ohyps(X4,c_insert(X2,X5,X3),X3),tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(X6,X3),tc_PropLog_Opl(X3)))).
+#
+#cnf(i_0_229, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X8,X5),tc_PropLog_Opl(X5)))).
+###
+#cnf(i_0_315, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X7,c_minus(X6,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X8,X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_321, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X8,X7,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(c_minus(X8,X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+##
+#cnf(i_0_4069, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(X2,c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X3,t_a),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_322, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X7,c_minus(X8,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X8,X6,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X7,X5),tc_PropLog_Opl(X5)))).
+###
+#cnf(i_0_4325, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(X1,v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(X3,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X4,tc_set(tc_PropLog_Opl(t_a))))).
+#######
+#cnf(i_0_5295, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(X3,c_emptyset,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X7,c_minus(X6,X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X7,X5),tc_PropLog_Opl(X5)))).
+#
+#cnf(i_0_88, negated_conjecture, (~c_lessequals(X1,c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_minus(X2,X3,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(X4,X3,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_5331, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(X3,c_emptyset,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(c_minus(X7,X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5)))).
+##
+#cnf(i_0_5565, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_lessequals(X6,c_minus(c_minus(X3,c_emptyset,tc_set(tc_PropLog_Opl(X5))),X4,tc_set(tc_PropLog_Opl(X5))),tc_set(tc_PropLog_Opl(X5)))|~c_lessequals(X7,X6,tc_set(tc_PropLog_Opl(X5)))|~c_in(X1,c_PropLog_Othms(X7,X5),tc_PropLog_Opl(X5)))).
+##
+#cnf(i_0_2321, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_insert(c_PropLog_Opl_Ovar(X3,t_a),c_minus(c_PropLog_Ohyps(v_p,X4,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X3,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_325, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(c_insert(X3,c_minus(X4,c_insert(X3,X5,tc_PropLog_Opl(X6)),tc_set(tc_PropLog_Opl(X6))),tc_PropLog_Opl(X6)),c_insert(X2,X7,tc_PropLog_Opl(X6)),tc_set(tc_PropLog_Opl(X6))),tc_PropLog_Opl(X6)),X6),tc_PropLog_Opl(X6))|~c_in(X1,c_PropLog_Othms(c_minus(c_minus(X4,X5,tc_set(tc_PropLog_Opl(X6))),X7,tc_set(tc_PropLog_Opl(X6))),X6),tc_PropLog_Opl(X6)))).
+###
+#cnf(i_0_33, plain, (c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(c_insert(X4,c_minus(X5,c_insert(X6,X7,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X2,tc_set(tc_PropLog_Opl(X3)))|~c_in(X1,c_PropLog_Othms(c_minus(c_insert(X4,c_minus(X5,c_insert(X6,c_emptyset,tc_PropLog_Opl(X3)),tc_set(tc_PropLog_Opl(X3))),tc_PropLog_Opl(X3)),X7,tc_set(tc_PropLog_Opl(X3))),X3),tc_PropLog_Opl(X3)))).
+#######
+#cnf(i_0_194, negated_conjecture, (~c_lessequals(X2,c_minus(X1,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X4,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X5,t_a),tc_PropLog_Opl(t_a)))).
+#
+#cnf(i_0_394, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X2,v_F,tc_set(tc_PropLog_Opl(t_a))),X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X6,tc_set(tc_PropLog_Opl(t_a))))).
+#####
+#cnf(i_0_78, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(X1,X2,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X4,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,c_minus(X3,X2,tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X1,tc_set(tc_PropLog_Opl(t_a))))).
+###
+#cnf(i_0_77, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X3,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,c_insert(c_PropLog_Opl_Oop_A_N_62(X2,c_PropLog_Opl_Ofalse,t_a),X1,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_insert(X2,X1,tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a)))).
+##
+#cnf(i_0_81, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(c_PropLog_Ohyps(v_p,X5,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),X6,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_100, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X4,v_F,tc_set(tc_PropLog_Opl(t_a))),X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X5,t_a),X6,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X6,X4,tc_set(tc_PropLog_Opl(t_a))))).
+#
+#cnf(i_0_211, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X5,v_F,tc_set(tc_PropLog_Opl(t_a))),X4,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X6,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,X3,tc_set(tc_PropLog_Opl(t_a))))).
+##
+#cnf(i_0_344, negated_conjecture, (~c_lessequals(c_insert(X1,c_minus(X2,c_insert(X1,X3,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),c_minus(X4,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X4,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+##
+#cnf(i_0_390, negated_conjecture, (c_in(v_p,c_PropLog_Othms(X1,t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_minus(X3,v_F,tc_set(tc_PropLog_Opl(t_a))),X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(c_PropLog_Ohyps(v_p,X4,t_a),X5,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X6,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X6,tc_set(tc_PropLog_Opl(t_a))))).
+######
+#cnf(i_0_561, negated_conjecture, (~c_lessequals(X4,c_minus(X5,c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X1,c_PropLog_Ohyps(v_p,v_t,t_a),tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X2,X1,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X3,X2,tc_set(tc_PropLog_Opl(t_a)))|~c_lessequals(X5,X3,tc_set(tc_PropLog_Opl(t_a)))|~c_in(v_p,c_PropLog_Othms(X4,t_a),tc_PropLog_Opl(t_a)))).
+#####
+#cnf(i_0_76, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(X3,c_PropLog_Opl_Ofalse,X4),X5,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(X3,c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(X3,c_PropLog_Opl_Ofalse,X4),X5,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_minus(X2,X5,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4)))).
+#
+#cnf(i_0_7396, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,X1,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a)))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(cls_PropLog_ODiff__weaken__left_0, axiom, (c_in(X1,c_PropLog_Othms(c_minus(X5,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X2,X5,tc_set(tc_PropLog_Opl(X4)))), file('./p/LCL430-2.tptp', cls_PropLog_ODiff__weaken__left_0)).
+cnf(cls_conjecture_3, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,X1,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))), file('./p/LCL430-2.tptp', cls_conjecture_3)).
+cnf(cls_PropLog_Oweaken__left_0, axiom, (c_in(X1,c_PropLog_Othms(X4,X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X2,X4,tc_set(tc_PropLog_Opl(X3)))), file('./p/LCL430-2.tptp', cls_PropLog_Oweaken__left_0)).
+cnf(cls_PropLog_Oinsert__Diff__same_0, axiom, (c_lessequals(c_minus(X1,X2,tc_set(X3)),c_insert(X4,c_minus(X1,c_insert(X4,X2,X3),tc_set(X3)),X3),tc_set(X3))), file('./p/LCL430-2.tptp', cls_PropLog_Oinsert__Diff__same_0)).
+cnf(cls_PropLog_Oinsert__Diff__subset2_0, axiom, (c_lessequals(c_minus(c_insert(X1,c_minus(X2,c_insert(X3,c_emptyset,X4),tc_set(X4)),X4),X5,tc_set(X4)),c_insert(X1,c_minus(X2,c_insert(X3,X5,X4),tc_set(X4)),X4),tc_set(X4))), file('./p/LCL430-2.tptp', cls_PropLog_Oinsert__Diff__subset2_0)).
+cnf(cls_PropLog_Ohyps__insert_0, axiom, (c_lessequals(c_PropLog_Ohyps(X1,c_insert(X2,X3,X4),X4),c_insert(c_PropLog_Opl_Ovar(X2,X4),c_minus(c_PropLog_Ohyps(X1,X3,X4),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,X4),c_PropLog_Opl_Ofalse,X4),c_emptyset,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4)))), file('./p/LCL430-2.tptp', cls_PropLog_Ohyps__insert_0)).
+cnf(cls_PropLog_Othms__excluded__middle__rule_0, axiom, (c_in(X1,c_PropLog_Othms(X3,X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(X2,X3,tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(c_PropLog_Opl_Oop_A_N_62(X2,c_PropLog_Opl_Ofalse,X4),X3,tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4))), file('./p/LCL430-2.tptp', cls_PropLog_Othms__excluded__middle__rule_0)).
+cnf(cls_conjecture_5, negated_conjecture, (~c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))), file('./p/LCL430-2.tptp', cls_conjecture_5)).
+cnf(c_0_8, axiom, (c_in(X1,c_PropLog_Othms(c_minus(X5,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_minus(X2,X3,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_lessequals(X2,X5,tc_set(tc_PropLog_Opl(X4)))), cls_PropLog_ODiff__weaken__left_0).
+cnf(c_0_9, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,X1,t_a),v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))), cls_conjecture_3).
+cnf(c_0_10, axiom, (c_in(X1,c_PropLog_Othms(X4,X3),tc_PropLog_Opl(X3))|~c_in(X1,c_PropLog_Othms(X2,X3),tc_PropLog_Opl(X3))|~c_lessequals(X2,X4,tc_set(tc_PropLog_Opl(X3)))), cls_PropLog_Oweaken__left_0).
+cnf(c_0_11, axiom, (c_lessequals(c_minus(X1,X2,tc_set(X3)),c_insert(X4,c_minus(X1,c_insert(X4,X2,X3),tc_set(X3)),X3),tc_set(X3))), cls_PropLog_Oinsert__Diff__same_0).
+cnf(c_0_12, axiom, (c_lessequals(c_minus(c_insert(X1,c_minus(X2,c_insert(X3,c_emptyset,X4),tc_set(X4)),X4),X5,tc_set(X4)),c_insert(X1,c_minus(X2,c_insert(X3,X5,X4),tc_set(X4)),X4),tc_set(X4))), cls_PropLog_Oinsert__Diff__subset2_0).
+cnf(c_0_13, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(X1,v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))|~c_lessequals(c_PropLog_Ohyps(v_p,X2,t_a),X1,tc_set(tc_PropLog_Opl(t_a)))), inference(pm,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_14, axiom, (c_lessequals(c_PropLog_Ohyps(X1,c_insert(X2,X3,X4),X4),c_insert(c_PropLog_Opl_Ovar(X2,X4),c_minus(c_PropLog_Ohyps(X1,X3,X4),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,X4),c_PropLog_Opl_Ofalse,X4),c_emptyset,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4)))), cls_PropLog_Ohyps__insert_0).
+cnf(c_0_15, axiom, (c_in(X1,c_PropLog_Othms(X3,X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(X2,X3,tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(c_PropLog_Opl_Oop_A_N_62(X2,c_PropLog_Opl_Ofalse,X4),X3,tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4))), cls_PropLog_Othms__excluded__middle__rule_0).
+cnf(c_0_16, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X2,X4,tc_PropLog_Opl(X5)),tc_set(tc_PropLog_Opl(X5))),tc_PropLog_Opl(X5)),X5),tc_PropLog_Opl(X5))|~c_in(X1,c_PropLog_Othms(c_minus(X3,X4,tc_set(tc_PropLog_Opl(X5))),X5),tc_PropLog_Opl(X5))), inference(pm,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_17, plain, (c_in(X1,c_PropLog_Othms(c_insert(X2,c_minus(X3,c_insert(X4,X5,tc_PropLog_Opl(X6)),tc_set(tc_PropLog_Opl(X6))),tc_PropLog_Opl(X6)),X6),tc_PropLog_Opl(X6))|~c_in(X1,c_PropLog_Othms(c_minus(c_insert(X2,c_minus(X3,c_insert(X4,c_emptyset,tc_PropLog_Opl(X6)),tc_set(tc_PropLog_Opl(X6))),tc_PropLog_Opl(X6)),X5,tc_set(tc_PropLog_Opl(X6))),X6),tc_PropLog_Opl(X6))), inference(pm,[status(thm)],[c_0_10, c_0_12])).
+cnf(c_0_18, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_insert(c_PropLog_Opl_Ovar(X1,t_a),c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X1,t_a),c_PropLog_Opl_Ofalse,t_a),c_emptyset,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),v_F,tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))), inference(pm,[status(thm)],[c_0_13, c_0_14])).
+cnf(c_0_19, plain, (c_in(X1,c_PropLog_Othms(c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(X3,c_PropLog_Opl_Ofalse,X4),X5,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_insert(X3,c_minus(X2,c_insert(c_PropLog_Opl_Oop_A_N_62(X3,c_PropLog_Opl_Ofalse,X4),X5,tc_PropLog_Opl(X4)),tc_set(tc_PropLog_Opl(X4))),tc_PropLog_Opl(X4)),X4),tc_PropLog_Opl(X4))|~c_in(X1,c_PropLog_Othms(c_minus(X2,X5,tc_set(tc_PropLog_Opl(X4))),X4),tc_PropLog_Opl(X4))), inference(pm,[status(thm)],[c_0_15, c_0_16])).
+cnf(c_0_20, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_insert(c_PropLog_Opl_Ovar(X1,t_a),c_minus(c_PropLog_Ohyps(v_p,X2,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X1,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),tc_PropLog_Opl(t_a)),t_a),tc_PropLog_Opl(t_a))), inference(pm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_21, negated_conjecture, (~c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,v_t,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(v_v,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))), cls_conjecture_5).
+cnf(c_0_22, negated_conjecture, (c_in(v_p,c_PropLog_Othms(c_minus(c_PropLog_Ohyps(v_p,X1,t_a),c_insert(c_PropLog_Opl_Oop_A_N_62(c_PropLog_Opl_Ovar(X2,t_a),c_PropLog_Opl_Ofalse,t_a),v_F,tc_PropLog_Opl(t_a)),tc_set(tc_PropLog_Opl(t_a))),t_a),tc_PropLog_Opl(t_a))), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_19, c_0_20]), c_0_9])])).
+cnf(c_0_23, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_21, c_0_22])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 24
+# Proof object clause steps            : 16
+# Proof object formula steps           : 8
+# Proof object conjectures             : 9
+# Proof object clause conjectures      : 7
+# Proof object formula conjectures     : 2
+# Proof object initial clauses used    : 8
+# Proof object initial formulas used   : 8
+# Proof object generating inferences   : 7
+# Proof object simplifying inferences  : 4
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 8
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 8
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 8
+# Processed clauses                    : 362
+# ...of these trivial                  : 0
+# ...subsumed                          : 196
+# ...remaining for further processing  : 166
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 1
+# Generated clauses                    : 7470
+# ...of the previous two non-trivial   : 7417
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 7470
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 165
+#    Positive orientable unit clauses  : 8
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 1
+#    Non-unit-clauses                  : 156
+# Current number of unprocessed clauses: 7063
+# ...number of literals in the above   : 48195
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 1
+# Clause-clause subsumption calls (NU) : 3543
+# Rec. Clause-clause subsumption calls : 1581
+# Non-unit clause-clause subsumptions  : 196
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 23
+# BW rewrite match successes           : 1
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 254500

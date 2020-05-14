@@ -1,0 +1,246 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for GRP639+1
+% SZS output start Proof for GRP639+1
+fof(f479,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f478,f146])).
+fof(f146,plain,(
+  ~v3_struct_0(sK0)),
+  inference(cnf_transformation,[],[f110])).
+fof(f110,plain,(
+  (((~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,sK3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,u1_struct_0(k5_group_4(sK0,sK3)))) & m1_subset_1(sK3,k1_zfmisc_1(u1_struct_0(sK0)))) & m2_relset_1(sK2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_2(sK2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_1(sK2)) & l1_group_1(sK1) & v4_group_1(sK1) & v3_group_1(sK1) & ~v3_struct_0(sK1)) & l1_group_1(sK0) & v4_group_1(sK0) & v3_group_1(sK0) & ~v3_struct_0(sK0)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2,sK3])],[f58,f109,f108,f107,f106])).
+fof(f106,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,X3),k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,u1_struct_0(k5_group_4(X0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(X0)))) & m2_relset_1(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_2(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_1(X2)) & l1_group_1(X1) & v4_group_1(X1) & v3_group_1(X1) & ~v3_struct_0(X1)) & l1_group_1(X0) & v4_group_1(X0) & v3_group_1(X0) & ~v3_struct_0(X0)) => (? [X1] : (? [X2] : (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(X1),X2,X3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(X1),X2,u1_struct_0(k5_group_4(sK0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(sK0)))) & m2_relset_1(X2,u1_struct_0(sK0),u1_struct_0(X1)) & v1_funct_2(X2,u1_struct_0(sK0),u1_struct_0(X1)) & v1_funct_1(X2)) & l1_group_1(X1) & v4_group_1(X1) & v3_group_1(X1) & ~v3_struct_0(X1)) & l1_group_1(sK0) & v4_group_1(sK0) & v3_group_1(sK0) & ~v3_struct_0(sK0))),
+  introduced(choice_axiom,[])).
+fof(f107,plain,(
+  ? [X1] : (? [X2] : (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(X1),X2,X3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(X1),X2,u1_struct_0(k5_group_4(sK0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(sK0)))) & m2_relset_1(X2,u1_struct_0(sK0),u1_struct_0(X1)) & v1_funct_2(X2,u1_struct_0(sK0),u1_struct_0(X1)) & v1_funct_1(X2)) & l1_group_1(X1) & v4_group_1(X1) & v3_group_1(X1) & ~v3_struct_0(X1)) => (? [X2] : (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),X2,X3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),X2,u1_struct_0(k5_group_4(sK0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(sK0)))) & m2_relset_1(X2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_2(X2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_1(X2)) & l1_group_1(sK1) & v4_group_1(sK1) & v3_group_1(sK1) & ~v3_struct_0(sK1))),
+  introduced(choice_axiom,[])).
+fof(f108,plain,(
+  ? [X2] : (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),X2,X3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),X2,u1_struct_0(k5_group_4(sK0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(sK0)))) & m2_relset_1(X2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_2(X2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_1(X2)) => (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,X3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,u1_struct_0(k5_group_4(sK0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(sK0)))) & m2_relset_1(sK2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_2(sK2,u1_struct_0(sK0),u1_struct_0(sK1)) & v1_funct_1(sK2))),
+  introduced(choice_axiom,[])).
+fof(f109,plain,(
+  ? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,X3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,u1_struct_0(k5_group_4(sK0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(sK0)))) => (~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,sK3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,u1_struct_0(k5_group_4(sK0,sK3)))) & m1_subset_1(sK3,k1_zfmisc_1(u1_struct_0(sK0))))),
+  introduced(choice_axiom,[])).
+fof(f58,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,X3),k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,u1_struct_0(k5_group_4(X0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(X0)))) & m2_relset_1(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_2(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_1(X2)) & l1_group_1(X1) & v4_group_1(X1) & v3_group_1(X1) & ~v3_struct_0(X1)) & l1_group_1(X0) & v4_group_1(X0) & v3_group_1(X0) & ~v3_struct_0(X0))),
+  inference(flattening,[],[f57])).
+fof(f57,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (? [X3] : (~r1_tarski(k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,X3),k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,u1_struct_0(k5_group_4(X0,X3)))) & m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(X0)))) & (m2_relset_1(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_2(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_1(X2))) & (l1_group_1(X1) & v4_group_1(X1) & v3_group_1(X1) & ~v3_struct_0(X1))) & (l1_group_1(X0) & v4_group_1(X0) & v3_group_1(X0) & ~v3_struct_0(X0)))),
+  inference(ennf_transformation,[],[f2])).
+fof(f2,negated_conjecture,(
+  ~! [X0] : ((l1_group_1(X0) & v4_group_1(X0) & v3_group_1(X0) & ~v3_struct_0(X0)) => ! [X1] : ((l1_group_1(X1) & v4_group_1(X1) & v3_group_1(X1) & ~v3_struct_0(X1)) => ! [X2] : ((m2_relset_1(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_2(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_1(X2)) => ! [X3] : (m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(X0))) => r1_tarski(k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,X3),k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,u1_struct_0(k5_group_4(X0,X3))))))))),
+  inference(negated_conjecture,[],[f1])).
+fof(f1,conjecture,(
+  ! [X0] : ((l1_group_1(X0) & v4_group_1(X0) & v3_group_1(X0) & ~v3_struct_0(X0)) => ! [X1] : ((l1_group_1(X1) & v4_group_1(X1) & v3_group_1(X1) & ~v3_struct_0(X1)) => ! [X2] : ((m2_relset_1(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_2(X2,u1_struct_0(X0),u1_struct_0(X1)) & v1_funct_1(X2)) => ! [X3] : (m1_subset_1(X3,k1_zfmisc_1(u1_struct_0(X0))) => r1_tarski(k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,X3),k2_funct_2(u1_struct_0(X0),u1_struct_0(X1),X2,u1_struct_0(k5_group_4(X0,X3))))))))),
+  file('./p/GRP639+1.tptp',unknown)).
+fof(f478,plain,(
+  v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f477,f147])).
+fof(f147,plain,(
+  v3_group_1(sK0)),
+  inference(cnf_transformation,[],[f110])).
+fof(f477,plain,(
+  ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f476,f148])).
+fof(f148,plain,(
+  v4_group_1(sK0)),
+  inference(cnf_transformation,[],[f110])).
+fof(f476,plain,(
+  ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f475,f149])).
+fof(f149,plain,(
+  l1_group_1(sK0)),
+  inference(cnf_transformation,[],[f110])).
+fof(f475,plain,(
+  ~l1_group_1(sK0) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f474,f157])).
+fof(f157,plain,(
+  m1_subset_1(sK3,k1_zfmisc_1(u1_struct_0(sK0)))),
+  inference(cnf_transformation,[],[f110])).
+fof(f474,plain,(
+  ~m1_subset_1(sK3,k1_zfmisc_1(u1_struct_0(sK0))) | ~l1_group_1(sK0) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f473,f384])).
+fof(f384,plain,(
+  v1_group_1(k5_group_4(sK0,sK3))),
+  inference(subsumption_resolution,[],[f383,f146])).
+fof(f383,plain,(
+  v1_group_1(k5_group_4(sK0,sK3)) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f382,f147])).
+fof(f382,plain,(
+  v1_group_1(k5_group_4(sK0,sK3)) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f381,f148])).
+fof(f381,plain,(
+  v1_group_1(k5_group_4(sK0,sK3)) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f376,f149])).
+fof(f376,plain,(
+  v1_group_1(k5_group_4(sK0,sK3)) | ~l1_group_1(sK0) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(resolution,[],[f180,f157])).
+fof(f180,plain,(
+  ( ! [X0,X1] : (~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) | v1_group_1(k5_group_4(X0,X1)) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0)) )),
+  inference(cnf_transformation,[],[f76])).
+fof(f76,plain,(
+  ! [X0,X1] : ((m1_group_2(k5_group_4(X0,X1),X0) & v1_group_1(k5_group_4(X0,X1))) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0))),
+  inference(flattening,[],[f75])).
+fof(f75,plain,(
+  ! [X0,X1] : ((m1_group_2(k5_group_4(X0,X1),X0) & v1_group_1(k5_group_4(X0,X1))) | (~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0)))),
+  inference(ennf_transformation,[],[f15])).
+fof(f15,axiom,(
+  ! [X0,X1] : ((m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) & l1_group_1(X0) & v4_group_1(X0) & v3_group_1(X0) & ~v3_struct_0(X0)) => (m1_group_2(k5_group_4(X0,X1),X0) & v1_group_1(k5_group_4(X0,X1))))),
+  file('./p/GRP639+1.tptp',unknown)).
+fof(f473,plain,(
+  ~v1_group_1(k5_group_4(sK0,sK3)) | ~m1_subset_1(sK3,k1_zfmisc_1(u1_struct_0(sK0))) | ~l1_group_1(sK0) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f472,f469])).
+fof(f469,plain,(
+  ~r1_tarski(sK3,u1_struct_0(k5_group_4(sK0,sK3)))),
+  inference(subsumption_resolution,[],[f468,f329])).
+fof(f329,plain,(
+  v1_relat_1(sK2)),
+  inference(resolution,[],[f294,f156])).
+fof(f156,plain,(
+  m2_relset_1(sK2,u1_struct_0(sK0),u1_struct_0(sK1))),
+  inference(cnf_transformation,[],[f110])).
+fof(f294,plain,(
+  ( ! [X2,X0,X1] : (~m2_relset_1(X0,X1,X2) | v1_relat_1(X0)) )),
+  inference(resolution,[],[f186,f163])).
+fof(f163,plain,(
+  ( ! [X2,X0,X1] : (~m1_subset_1(X2,k1_zfmisc_1(k2_zfmisc_1(X0,X1))) | v1_relat_1(X2)) )),
+  inference(cnf_transformation,[],[f64])).
+fof(f64,plain,(
+  ! [X0,X1,X2] : (v1_relat_1(X2) | ~m1_subset_1(X2,k1_zfmisc_1(k2_zfmisc_1(X0,X1))))),
+  inference(ennf_transformation,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X1,X2] : (m1_subset_1(X2,k1_zfmisc_1(k2_zfmisc_1(X0,X1))) => v1_relat_1(X2))),
+  file('./p/GRP639+1.tptp',unknown)).
+fof(f186,plain,(
+  ( ! [X2,X0,X1] : (m1_subset_1(X2,k1_zfmisc_1(k2_zfmisc_1(X0,X1))) | ~m2_relset_1(X2,X0,X1)) )),
+  inference(cnf_transformation,[],[f80])).
+fof(f80,plain,(
+  ! [X0,X1,X2] : (m1_subset_1(X2,k1_zfmisc_1(k2_zfmisc_1(X0,X1))) | ~m2_relset_1(X2,X0,X1))),
+  inference(ennf_transformation,[],[f22])).
+fof(f22,axiom,(
+  ! [X0,X1,X2] : (m2_relset_1(X2,X0,X1) => m1_subset_1(X2,k1_zfmisc_1(k2_zfmisc_1(X0,X1))))),
+  file('./p/GRP639+1.tptp',unknown)).
+fof(f468,plain,(
+  ~r1_tarski(sK3,u1_struct_0(k5_group_4(sK0,sK3))) | ~v1_relat_1(sK2)),
+  inference(resolution,[],[f466,f223])).
+fof(f223,plain,(
+  ( ! [X2,X0,X1] : (r1_tarski(k9_relat_1(X2,X0),k9_relat_1(X2,X1)) | ~r1_tarski(X0,X1) | ~v1_relat_1(X2)) )),
+  inference(cnf_transformation,[],[f96])).
+fof(f96,plain,(
+  ! [X0,X1,X2] : (r1_tarski(k9_relat_1(X2,X0),k9_relat_1(X2,X1)) | ~r1_tarski(X0,X1) | ~v1_relat_1(X2))),
+  inference(flattening,[],[f95])).
+fof(f95,plain,(
+  ! [X0,X1,X2] : ((r1_tarski(k9_relat_1(X2,X0),k9_relat_1(X2,X1)) | ~r1_tarski(X0,X1)) | ~v1_relat_1(X2))),
+  inference(ennf_transformation,[],[f47])).
+fof(f47,axiom,(
+  ! [X0,X1,X2] : (v1_relat_1(X2) => (r1_tarski(X0,X1) => r1_tarski(k9_relat_1(X2,X0),k9_relat_1(X2,X1))))),
+  file('./p/GRP639+1.tptp',unknown)).
+fof(f466,plain,(
+  ~r1_tarski(k9_relat_1(sK2,sK3),k9_relat_1(sK2,u1_struct_0(k5_group_4(sK0,sK3))))),
+  inference(forward_demodulation,[],[f465,f464])).
+fof(f464,plain,(
+  ( ! [X12] : (k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,X12) = k9_relat_1(sK2,X12)) )),
+  inference(subsumption_resolution,[],[f463,f154])).
+fof(f154,plain,(
+  v1_funct_1(sK2)),
+  inference(cnf_transformation,[],[f110])).
+fof(f463,plain,(
+  ( ! [X12] : (k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,X12) = k9_relat_1(sK2,X12) | ~v1_funct_1(sK2)) )),
+  inference(subsumption_resolution,[],[f459,f155])).
+fof(f155,plain,(
+  v1_funct_2(sK2,u1_struct_0(sK0),u1_struct_0(sK1))),
+  inference(cnf_transformation,[],[f110])).
+fof(f459,plain,(
+  ( ! [X12] : (k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,X12) = k9_relat_1(sK2,X12) | ~v1_funct_2(sK2,u1_struct_0(sK0),u1_struct_0(sK1)) | ~v1_funct_1(sK2)) )),
+  inference(resolution,[],[f219,f254])).
+fof(f254,plain,(
+  m1_relset_1(sK2,u1_struct_0(sK0),u1_struct_0(sK1))),
+  inference(resolution,[],[f220,f156])).
+fof(f220,plain,(
+  ( ! [X2,X0,X1] : (~m2_relset_1(X2,X0,X1) | m1_relset_1(X2,X0,X1)) )),
+  inference(cnf_transformation,[],[f144])).
+fof(f144,plain,(
+  ! [X0,X1,X2] : ((m2_relset_1(X2,X0,X1) | ~m1_relset_1(X2,X0,X1)) & (m1_relset_1(X2,X0,X1) | ~m2_relset_1(X2,X0,X1)))),
+  inference(nnf_transformation,[],[f45])).
+fof(f45,axiom,(
+  ! [X0,X1,X2] : (m2_relset_1(X2,X0,X1) <=> m1_relset_1(X2,X0,X1))),
+  file('./p/GRP639+1.tptp',unknown)).
+fof(f219,plain,(
+  ( ! [X2,X0,X3,X1] : (~m1_relset_1(X2,X0,X1) | k2_funct_2(X0,X1,X2,X3) = k9_relat_1(X2,X3) | ~v1_funct_2(X2,X0,X1) | ~v1_funct_1(X2)) )),
+  inference(cnf_transformation,[],[f94])).
+fof(f94,plain,(
+  ! [X0,X1,X2,X3] : (k2_funct_2(X0,X1,X2,X3) = k9_relat_1(X2,X3) | ~m1_relset_1(X2,X0,X1) | ~v1_funct_2(X2,X0,X1) | ~v1_funct_1(X2))),
+  inference(flattening,[],[f93])).
+fof(f93,plain,(
+  ! [X0,X1,X2,X3] : (k2_funct_2(X0,X1,X2,X3) = k9_relat_1(X2,X3) | (~m1_relset_1(X2,X0,X1) | ~v1_funct_2(X2,X0,X1) | ~v1_funct_1(X2)))),
+  inference(ennf_transformation,[],[f44])).
+fof(f44,axiom,(
+  ! [X0,X1,X2,X3] : ((m1_relset_1(X2,X0,X1) & v1_funct_2(X2,X0,X1) & v1_funct_1(X2)) => k2_funct_2(X0,X1,X2,X3) = k9_relat_1(X2,X3))),
+  file('./p/GRP639+1.tptp',unknown)).
+fof(f465,plain,(
+  ~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,sK3),k9_relat_1(sK2,u1_struct_0(k5_group_4(sK0,sK3))))),
+  inference(backward_demodulation,[],[f464,f158])).
+fof(f158,plain,(
+  ~r1_tarski(k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,sK3),k2_funct_2(u1_struct_0(sK0),u1_struct_0(sK1),sK2,u1_struct_0(k5_group_4(sK0,sK3))))),
+  inference(cnf_transformation,[],[f110])).
+fof(f472,plain,(
+  r1_tarski(sK3,u1_struct_0(k5_group_4(sK0,sK3))) | ~v1_group_1(k5_group_4(sK0,sK3)) | ~m1_subset_1(sK3,k1_zfmisc_1(u1_struct_0(sK0))) | ~l1_group_1(sK0) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(resolution,[],[f234,f435])).
+fof(f435,plain,(
+  m1_group_2(k5_group_4(sK0,sK3),sK0)),
+  inference(subsumption_resolution,[],[f434,f146])).
+fof(f434,plain,(
+  m1_group_2(k5_group_4(sK0,sK3),sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f433,f147])).
+fof(f433,plain,(
+  m1_group_2(k5_group_4(sK0,sK3),sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f432,f148])).
+fof(f432,plain,(
+  m1_group_2(k5_group_4(sK0,sK3),sK0) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(subsumption_resolution,[],[f427,f149])).
+fof(f427,plain,(
+  m1_group_2(k5_group_4(sK0,sK3),sK0) | ~l1_group_1(sK0) | ~v4_group_1(sK0) | ~v3_group_1(sK0) | v3_struct_0(sK0)),
+  inference(resolution,[],[f181,f157])).
+fof(f181,plain,(
+  ( ! [X0,X1] : (~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) | m1_group_2(k5_group_4(X0,X1),X0) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0)) )),
+  inference(cnf_transformation,[],[f76])).
+fof(f234,plain,(
+  ( ! [X0,X1] : (~m1_group_2(k5_group_4(X0,X1),X0) | r1_tarski(X1,u1_struct_0(k5_group_4(X0,X1))) | ~v1_group_1(k5_group_4(X0,X1)) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0)) )),
+  inference(equality_resolution,[],[f171])).
+fof(f171,plain,(
+  ( ! [X2,X0,X1] : (r1_tarski(X1,u1_struct_0(X2)) | k5_group_4(X0,X1) != X2 | ~m1_group_2(X2,X0) | ~v1_group_1(X2) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0)) )),
+  inference(cnf_transformation,[],[f115])).
+fof(f115,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (((k5_group_4(X0,X1) = X2 | (~m1_group_2(X2,sK4(X0,X1,X2)) & r1_tarski(X1,u1_struct_0(sK4(X0,X1,X2))) & m1_group_2(sK4(X0,X1,X2),X0) & v1_group_1(sK4(X0,X1,X2))) | ~r1_tarski(X1,u1_struct_0(X2))) & ((! [X4] : (m1_group_2(X2,X4) | ~r1_tarski(X1,u1_struct_0(X4)) | ~m1_group_2(X4,X0) | ~v1_group_1(X4)) & r1_tarski(X1,u1_struct_0(X2))) | k5_group_4(X0,X1) != X2)) | ~m1_group_2(X2,X0) | ~v1_group_1(X2)) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0)))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK4])],[f113,f114])).
+fof(f114,plain,(
+  ! [X2,X1,X0] : (? [X3] : (~m1_group_2(X2,X3) & r1_tarski(X1,u1_struct_0(X3)) & m1_group_2(X3,X0) & v1_group_1(X3)) => (~m1_group_2(X2,sK4(X0,X1,X2)) & r1_tarski(X1,u1_struct_0(sK4(X0,X1,X2))) & m1_group_2(sK4(X0,X1,X2),X0) & v1_group_1(sK4(X0,X1,X2))))),
+  introduced(choice_axiom,[])).
+fof(f113,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (((k5_group_4(X0,X1) = X2 | ? [X3] : (~m1_group_2(X2,X3) & r1_tarski(X1,u1_struct_0(X3)) & m1_group_2(X3,X0) & v1_group_1(X3)) | ~r1_tarski(X1,u1_struct_0(X2))) & ((! [X4] : (m1_group_2(X2,X4) | ~r1_tarski(X1,u1_struct_0(X4)) | ~m1_group_2(X4,X0) | ~v1_group_1(X4)) & r1_tarski(X1,u1_struct_0(X2))) | k5_group_4(X0,X1) != X2)) | ~m1_group_2(X2,X0) | ~v1_group_1(X2)) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0)))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0))),
+  inference(rectify,[],[f112])).
+fof(f112,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (((k5_group_4(X0,X1) = X2 | ? [X3] : (~m1_group_2(X2,X3) & r1_tarski(X1,u1_struct_0(X3)) & m1_group_2(X3,X0) & v1_group_1(X3)) | ~r1_tarski(X1,u1_struct_0(X2))) & ((! [X3] : (m1_group_2(X2,X3) | ~r1_tarski(X1,u1_struct_0(X3)) | ~m1_group_2(X3,X0) | ~v1_group_1(X3)) & r1_tarski(X1,u1_struct_0(X2))) | k5_group_4(X0,X1) != X2)) | ~m1_group_2(X2,X0) | ~v1_group_1(X2)) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0)))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0))),
+  inference(flattening,[],[f111])).
+fof(f111,plain,(
+  ! [X0] : (! [X1] : (! [X2] : (((k5_group_4(X0,X1) = X2 | (? [X3] : (~m1_group_2(X2,X3) & r1_tarski(X1,u1_struct_0(X3)) & m1_group_2(X3,X0) & v1_group_1(X3)) | ~r1_tarski(X1,u1_struct_0(X2)))) & ((! [X3] : (m1_group_2(X2,X3) | ~r1_tarski(X1,u1_struct_0(X3)) | ~m1_group_2(X3,X0) | ~v1_group_1(X3)) & r1_tarski(X1,u1_struct_0(X2))) | k5_group_4(X0,X1) != X2)) | ~m1_group_2(X2,X0) | ~v1_group_1(X2)) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0)))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0))),
+  inference(nnf_transformation,[],[f70])).
+fof(f70,plain,(
+  ! [X0] : (! [X1] : (! [X2] : ((k5_group_4(X0,X1) = X2 <=> (! [X3] : (m1_group_2(X2,X3) | ~r1_tarski(X1,u1_struct_0(X3)) | ~m1_group_2(X3,X0) | ~v1_group_1(X3)) & r1_tarski(X1,u1_struct_0(X2)))) | ~m1_group_2(X2,X0) | ~v1_group_1(X2)) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0)))) | ~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0))),
+  inference(flattening,[],[f69])).
+fof(f69,plain,(
+  ! [X0] : (! [X1] : (! [X2] : ((k5_group_4(X0,X1) = X2 <=> (! [X3] : ((m1_group_2(X2,X3) | ~r1_tarski(X1,u1_struct_0(X3))) | (~m1_group_2(X3,X0) | ~v1_group_1(X3))) & r1_tarski(X1,u1_struct_0(X2)))) | (~m1_group_2(X2,X0) | ~v1_group_1(X2))) | ~m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0)))) | (~l1_group_1(X0) | ~v4_group_1(X0) | ~v3_group_1(X0) | v3_struct_0(X0)))),
+  inference(ennf_transformation,[],[f9])).
+fof(f9,axiom,(
+  ! [X0] : ((l1_group_1(X0) & v4_group_1(X0) & v3_group_1(X0) & ~v3_struct_0(X0)) => ! [X1] : (m1_subset_1(X1,k1_zfmisc_1(u1_struct_0(X0))) => ! [X2] : ((m1_group_2(X2,X0) & v1_group_1(X2)) => (k5_group_4(X0,X1) = X2 <=> (! [X3] : ((m1_group_2(X3,X0) & v1_group_1(X3)) => (r1_tarski(X1,u1_struct_0(X3)) => m1_group_2(X2,X3))) & r1_tarski(X1,u1_struct_0(X2)))))))),
+  file('./p/GRP639+1.tptp',unknown)).
+% SZS output end Proof for GRP639+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5117
+% Time elapsed: 0.006 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,87 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_3, negated_conjecture, (r(esk1_0))).
+#
+#cnf(i_0_4, negated_conjecture, (q(X1)|~p(X1))).
+#
+#cnf(i_0_2, negated_conjecture, (p(X1)|~r(X1))).
+#
+#cnf(i_0_1, negated_conjecture, (~q(esk1_0))).
+#
+#cnf(i_0_5, negated_conjecture, (q(X1)|~r(X1))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(prove_this, conjecture, ![X1]:((![X2]:(p(X2)=>q(X2))&r(X1))=>(![X3]:(r(X3)=>p(X3))=>q(X1))), file('./p/SYN969+1.tptp', prove_this)).
+fof(c_0_1, negated_conjecture, ~(![X1]:((![X2]:(p(X2)=>q(X2))&r(X1))=>(![X3]:(r(X3)=>p(X3))=>q(X1)))), inference(assume_negation,[status(cth)],[prove_this])).
+fof(c_0_2, negated_conjecture, ![X5, X6]:(((~p(X5)|q(X5))&r(esk1_0))&((~r(X6)|p(X6))&~q(esk1_0))), inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_1])])])])).
+cnf(c_0_3, negated_conjecture, (q(X1)|~p(X1)), inference(split_conjunct,[status(thm)],[c_0_2])).
+cnf(c_0_4, negated_conjecture, (p(X1)|~r(X1)), inference(split_conjunct,[status(thm)],[c_0_2])).
+cnf(c_0_5, negated_conjecture, (q(X1)|~r(X1)), inference(pm,[status(thm)],[c_0_3, c_0_4])).
+cnf(c_0_6, negated_conjecture, (r(esk1_0)), inference(split_conjunct,[status(thm)],[c_0_2])).
+cnf(c_0_7, negated_conjecture, (~q(esk1_0)), inference(split_conjunct,[status(thm)],[c_0_2])).
+cnf(c_0_8, negated_conjecture, ($false), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_6]), c_0_7]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 9
+# Proof object clause steps            : 6
+# Proof object formula steps           : 3
+# Proof object conjectures             : 9
+# Proof object clause conjectures      : 6
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 4
+# Proof object initial formulas used   : 1
+# Proof object generating inferences   : 2
+# Proof object simplifying inferences  : 1
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 1
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 4
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 4
+# Processed clauses                    : 5
+# ...of these trivial                  : 0
+# ...subsumed                          : 0
+# ...remaining for further processing  : 5
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 2
+# ...of the previous two non-trivial   : 1
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 2
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 5
+#    Positive orientable unit clauses  : 1
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 1
+#    Non-unit-clauses                  : 3
+# Current number of unprocessed clauses: 0
+# ...number of literals in the above   : 0
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 0
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 242

@@ -1,0 +1,165 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for KRS180+1
+% SZS output start Proof for KRS180+1
+fof(f194,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f111,f127,f174,f193])).
+fof(f193,plain,(
+  ~spl22_5),
+  inference(avatar_contradiction_clause,[],[f192])).
+fof(f192,plain,(
+  $false | ~spl22_5),
+  inference(subsumption_resolution,[],[f191,f88])).
+fof(f88,plain,(
+  isa(sK20,sK21)),
+  inference(cnf_transformation,[],[f61])).
+fof(f61,plain,(
+  ! [X2,X3] : ((xora(sK20,sK21) | nevera(sK20,sK21) | nota(sK20,sK21)) & isa(sK20,sK21) & status(X2,X3,sK20))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK20,sK21])],[f34,f60])).
+fof(f60,plain,(
+  ? [X0,X1] : ! [X2,X3] : ((xora(X0,X1) | nevera(X0,X1) | nota(X0,X1)) & isa(X0,X1) & status(X2,X3,X0)) => ! [X3,X2] : ((xora(sK20,sK21) | nevera(sK20,sK21) | nota(sK20,sK21)) & isa(sK20,sK21) & status(X2,X3,sK20))),
+  introduced(choice_axiom,[])).
+fof(f34,plain,(
+  ? [X0,X1] : ! [X2,X3] : ((xora(X0,X1) | nevera(X0,X1) | nota(X0,X1)) & isa(X0,X1) & status(X2,X3,X0))),
+  inference(flattening,[],[f33])).
+fof(f33,plain,(
+  ? [X0,X1] : ! [X2,X3] : (((xora(X0,X1) | nevera(X0,X1) | nota(X0,X1)) & isa(X0,X1)) & status(X2,X3,X0))),
+  inference(ennf_transformation,[],[f15])).
+fof(f15,negated_conjecture,(
+  ~! [X0,X1] : ? [X2,X3] : (status(X2,X3,X0) => ~((xora(X0,X1) | nevera(X0,X1) | nota(X0,X1)) & isa(X0,X1)))),
+  inference(negated_conjecture,[],[f14])).
+fof(f14,conjecture,(
+  ! [X0,X1] : ? [X2,X3] : (status(X2,X3,X0) => ~((xora(X0,X1) | nevera(X0,X1) | nota(X0,X1)) & isa(X0,X1)))),
+  file('./p/KRS180+1.tptp',unknown)).
+fof(f191,plain,(
+  ~isa(sK20,sK21) | ~spl22_5),
+  inference(resolution,[],[f179,f110])).
+fof(f110,plain,(
+  xora(sK20,sK21) | ~spl22_5),
+  inference(avatar_component_clause,[],[f108])).
+fof(f108,plain,(
+  spl22_5 <=> xora(sK20,sK21)),
+  introduced(avatar_definition,[new_symbols(naming,[spl22_5])])).
+fof(f179,plain,(
+  ( ! [X0] : (~xora(sK20,X0) | ~isa(sK20,X0)) )),
+  inference(resolution,[],[f129,f87])).
+fof(f87,plain,(
+  ( ! [X2,X3] : (status(X2,X3,sK20)) )),
+  inference(cnf_transformation,[],[f61])).
+fof(f129,plain,(
+  ( ! [X6,X4,X5,X3] : (~status(X3,X4,X5) | ~xora(X5,X6) | ~isa(sK20,X6)) )),
+  inference(resolution,[],[f67,f114])).
+fof(f114,plain,(
+  ( ! [X2,X0,X1] : (status(X0,X1,X2) | ~isa(sK20,X2)) )),
+  inference(resolution,[],[f62,f87])).
+fof(f62,plain,(
+  ( ! [X2,X0,X3,X1] : (~status(X2,X3,X0) | status(X2,X3,X1) | ~isa(X0,X1)) )),
+  inference(cnf_transformation,[],[f28])).
+fof(f28,plain,(
+  ! [X0,X1] : (! [X2,X3] : (status(X2,X3,X1) | ~status(X2,X3,X0)) | ~isa(X0,X1))),
+  inference(ennf_transformation,[],[f27])).
+fof(f27,plain,(
+  ! [X0,X1] : (isa(X0,X1) => ! [X2,X3] : (status(X2,X3,X0) => status(X2,X3,X1)))),
+  inference(unused_predicate_definition_removal,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1] : (! [X2,X3] : (status(X2,X3,X0) => status(X2,X3,X1)) <=> isa(X0,X1))),
+  file('./p/KRS180+1.tptp',unknown)).
+fof(f67,plain,(
+  ( ! [X2,X0,X3,X1] : (~status(X2,X3,X1) | ~status(X2,X3,X0) | ~xora(X0,X1)) )),
+  inference(cnf_transformation,[],[f37])).
+fof(f37,plain,(
+  ! [X0,X1] : (! [X2,X3] : ((~status(X2,X3,X1) | ~status(X2,X3,X0)) & (status(X2,X3,X1) | status(X2,X3,X0))) | ~xora(X0,X1))),
+  inference(nnf_transformation,[],[f31])).
+fof(f31,plain,(
+  ! [X0,X1] : (! [X2,X3] : (status(X2,X3,X0) <~> status(X2,X3,X1)) | ~xora(X0,X1))),
+  inference(ennf_transformation,[],[f24])).
+fof(f24,plain,(
+  ! [X0,X1] : (xora(X0,X1) => ! [X2,X3] : (status(X2,X3,X0) <~> status(X2,X3,X1)))),
+  inference(unused_predicate_definition_removal,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X1] : (! [X2,X3] : (status(X2,X3,X0) <~> status(X2,X3,X1)) <=> xora(X0,X1))),
+  file('./p/KRS180+1.tptp',unknown)).
+fof(f174,plain,(
+  ~spl22_4),
+  inference(avatar_contradiction_clause,[],[f173])).
+fof(f173,plain,(
+  $false | ~spl22_4),
+  inference(subsumption_resolution,[],[f172,f88])).
+fof(f172,plain,(
+  ~isa(sK20,sK21) | ~spl22_4),
+  inference(resolution,[],[f167,f106])).
+fof(f106,plain,(
+  nevera(sK20,sK21) | ~spl22_4),
+  inference(avatar_component_clause,[],[f104])).
+fof(f104,plain,(
+  spl22_4 <=> nevera(sK20,sK21)),
+  introduced(avatar_definition,[new_symbols(naming,[spl22_4])])).
+fof(f167,plain,(
+  ( ! [X0] : (~nevera(sK20,X0) | ~isa(sK20,X0)) )),
+  inference(resolution,[],[f123,f87])).
+fof(f123,plain,(
+  ( ! [X6,X4,X5,X3] : (~status(X3,X4,X5) | ~nevera(X5,X6) | ~isa(sK20,X6)) )),
+  inference(resolution,[],[f65,f114])).
+fof(f65,plain,(
+  ( ! [X2,X0,X3,X1] : (~status(X2,X3,X1) | ~status(X2,X3,X0) | ~nevera(X0,X1)) )),
+  inference(cnf_transformation,[],[f30])).
+fof(f30,plain,(
+  ! [X0,X1] : (! [X2,X3] : (~status(X2,X3,X1) | ~status(X2,X3,X0)) | ~nevera(X0,X1))),
+  inference(ennf_transformation,[],[f25])).
+fof(f25,plain,(
+  ! [X0,X1] : (nevera(X0,X1) => ! [X2,X3] : (status(X2,X3,X0) => ~status(X2,X3,X1)))),
+  inference(unused_predicate_definition_removal,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : (! [X2,X3] : (status(X2,X3,X0) => ~status(X2,X3,X1)) <=> nevera(X0,X1))),
+  file('./p/KRS180+1.tptp',unknown)).
+fof(f127,plain,(
+  ~spl22_3),
+  inference(avatar_contradiction_clause,[],[f126])).
+fof(f126,plain,(
+  $false | ~spl22_3),
+  inference(subsumption_resolution,[],[f125,f88])).
+fof(f125,plain,(
+  ~isa(sK20,sK21) | ~spl22_3),
+  inference(resolution,[],[f120,f102])).
+fof(f102,plain,(
+  nota(sK20,sK21) | ~spl22_3),
+  inference(avatar_component_clause,[],[f100])).
+fof(f100,plain,(
+  spl22_3 <=> nota(sK20,sK21)),
+  introduced(avatar_definition,[new_symbols(naming,[spl22_3])])).
+fof(f120,plain,(
+  ( ! [X2,X3] : (~nota(X2,X3) | ~isa(sK20,X3)) )),
+  inference(resolution,[],[f64,f114])).
+fof(f64,plain,(
+  ( ! [X0,X1] : (~status(sK0(X0,X1),sK1(X0,X1),X1) | ~nota(X0,X1)) )),
+  inference(cnf_transformation,[],[f36])).
+fof(f36,plain,(
+  ! [X0,X1] : ((~status(sK0(X0,X1),sK1(X0,X1),X1) & status(sK0(X0,X1),sK1(X0,X1),X0)) | ~nota(X0,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1])],[f29,f35])).
+fof(f35,plain,(
+  ! [X1,X0] : (? [X2,X3] : (~status(X2,X3,X1) & status(X2,X3,X0)) => (~status(sK0(X0,X1),sK1(X0,X1),X1) & status(sK0(X0,X1),sK1(X0,X1),X0)))),
+  introduced(choice_axiom,[])).
+fof(f29,plain,(
+  ! [X0,X1] : (? [X2,X3] : (~status(X2,X3,X1) & status(X2,X3,X0)) | ~nota(X0,X1))),
+  inference(ennf_transformation,[],[f26])).
+fof(f26,plain,(
+  ! [X0,X1] : (nota(X0,X1) => ? [X2,X3] : (~status(X2,X3,X1) & status(X2,X3,X0)))),
+  inference(unused_predicate_definition_removal,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1] : (? [X2,X3] : (~status(X2,X3,X1) & status(X2,X3,X0)) <=> nota(X0,X1))),
+  file('./p/KRS180+1.tptp',unknown)).
+fof(f111,plain,(
+  spl22_3 | spl22_4 | spl22_5),
+  inference(avatar_split_clause,[],[f89,f108,f104,f100])).
+fof(f89,plain,(
+  xora(sK20,sK21) | nevera(sK20,sK21) | nota(sK20,sK21)),
+  inference(cnf_transformation,[],[f61])).
+% SZS output end Proof for KRS180+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.002 s
+% ------------------------------
+% ------------------------------

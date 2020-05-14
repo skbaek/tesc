@@ -1,0 +1,45 @@
+% Refutation found. Thanks to Tanya!
+% SZS status ContradictoryAxioms for PUZ128+2
+% SZS output start Proof for PUZ128+2
+fof(f38,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f28,f33])).
+fof(f33,plain,(
+  ( ! [X9] : (~patricide(X9)) )),
+  inference(equality_resolution,[],[f30])).
+fof(f30,plain,(
+  ( ! [X3,X9] : (X3 != X9 | ~patricide(X9)) )),
+  inference(cnf_transformation,[],[f12])).
+fof(f12,plain,(
+  ! [X0,X1,X2,X3] : (! [X9] : (X3 != X9 | ~patricide(X9)) & sK4(X0,X1,X2,X3) = X2 & patricide(sK4(X0,X1,X2,X3)) & sK3(X0,X1,X2,X3) = X1 & relation(sK3(X0,X1,X2,X3),of,X3) & parent(sK3(X0,X1,X2,X3)) & sK2(X0,X1,X2,X3) = X2 & relation(sK2(X0,X1,X2,X3),of,X1) & parent(sK2(X0,X1,X2,X3)) & sK1(X0,X1,X2,X3) = X0 & relation(sK1(X0,X1,X2,X3),of,X1) & parent(sK1(X0,X1,X2,X3)) & sK0(X0,X1,X2,X3) = X0 & relation(sK0(X0,X1,X2,X3),of,X2) & parent(sK0(X0,X1,X2,X3)))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0,sK1,sK2,sK3,sK4])],[f10,f11])).
+fof(f11,plain,(
+  ! [X3,X2,X1,X0] : (? [X4,X5,X6,X7,X8] : (! [X9] : (X3 != X9 | ~patricide(X9)) & X2 = X8 & patricide(X8) & X1 = X7 & relation(X7,of,X3) & parent(X7) & X2 = X6 & relation(X6,of,X1) & parent(X6) & X0 = X5 & relation(X5,of,X1) & parent(X5) & X0 = X4 & relation(X4,of,X2) & parent(X4)) => (! [X9] : (X3 != X9 | ~patricide(X9)) & sK4(X0,X1,X2,X3) = X2 & patricide(sK4(X0,X1,X2,X3)) & sK3(X0,X1,X2,X3) = X1 & relation(sK3(X0,X1,X2,X3),of,X3) & parent(sK3(X0,X1,X2,X3)) & sK2(X0,X1,X2,X3) = X2 & relation(sK2(X0,X1,X2,X3),of,X1) & parent(sK2(X0,X1,X2,X3)) & sK1(X0,X1,X2,X3) = X0 & relation(sK1(X0,X1,X2,X3),of,X1) & parent(sK1(X0,X1,X2,X3)) & sK0(X0,X1,X2,X3) = X0 & relation(sK0(X0,X1,X2,X3),of,X2) & parent(sK0(X0,X1,X2,X3))))),
+  introduced(choice_axiom,[])).
+fof(f10,plain,(
+  ! [X0,X1,X2,X3] : ? [X4,X5,X6,X7,X8] : (! [X9] : (X3 != X9 | ~patricide(X9)) & X2 = X8 & patricide(X8) & X1 = X7 & relation(X7,of,X3) & parent(X7) & X2 = X6 & relation(X6,of,X1) & parent(X6) & X0 = X5 & relation(X5,of,X1) & parent(X5) & X0 = X4 & relation(X4,of,X2) & parent(X4))),
+  inference(rectify,[],[f8])).
+fof(f8,plain,(
+  ! [X9,X8,X7,X6] : ? [X0,X1,X2,X3,X4] : (! [X5] : (X5 != X6 | ~patricide(X5)) & X4 = X7 & patricide(X4) & X3 = X8 & relation(X3,of,X6) & parent(X3) & X2 = X7 & relation(X2,of,X8) & parent(X2) & X1 = X9 & relation(X1,of,X8) & parent(X1) & X0 = X9 & relation(X0,of,X7) & parent(X0))),
+  inference(ennf_transformation,[],[f5])).
+fof(f5,plain,(
+  ! [X9,X8,X7,X6] : ? [X0,X1,X2,X3,X4] : (~? [X5] : (X5 = X6 & patricide(X5)) & X4 = X7 & patricide(X4) & X3 = X8 & relation(X3,of,X6) & parent(X3) & X2 = X7 & relation(X2,of,X8) & parent(X2) & X1 = X9 & relation(X1,of,X8) & parent(X1) & X0 = X9 & relation(X0,of,X7) & parent(X0))),
+  inference(closure,[],[f4])).
+fof(f4,plain,(
+  ( ! [X6,X8,X7,X9] : (? [X0,X1,X2,X3,X4] : (~? [X5] : (X5 = X6 & patricide(X5)) & X4 = X7 & patricide(X4) & X3 = X8 & relation(X3,of,X6) & parent(X3) & X2 = X7 & relation(X2,of,X8) & parent(X2) & X1 = X9 & relation(X1,of,X8) & parent(X1) & X0 = X9 & relation(X0,of,X7) & parent(X0))) )),
+  inference(rectify,[],[f1])).
+fof(f1,axiom,(
+  ( ! [X6,X8,X7,X5] : (? [X0,X1,X2,X3,X4] : (~? [X9] : (X8 = X9 & patricide(X9)) & X4 = X5 & patricide(X4) & X3 = X7 & relation(X3,of,X8) & parent(X3) & X2 = X5 & relation(X2,of,X7) & parent(X2) & X1 = X6 & relation(X1,of,X7) & parent(X1) & X0 = X6 & relation(X0,of,X5) & parent(X0))) )),
+  file('./p/PUZ128+2.tptp',unknown)).
+fof(f28,plain,(
+  ( ! [X2,X0,X3,X1] : (patricide(sK4(X0,X1,X2,X3))) )),
+  inference(cnf_transformation,[],[f12])).
+% SZS output end Proof for PUZ128+2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

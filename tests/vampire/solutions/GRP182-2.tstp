@@ -1,0 +1,27 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP182-2
+% SZS output start Proof for GRP182-2
+fof(f21,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f20,f10])).
+fof(f10,axiom,(
+  ( ! [X0,X1] : (least_upper_bound(X0,greatest_lower_bound(X0,X1)) = X0) )),
+  file('./p/GRP182-2.tptp',unknown)).
+fof(f20,plain,(
+  identity != least_upper_bound(identity,greatest_lower_bound(identity,a))),
+  inference(forward_demodulation,[],[f19,f4])).
+fof(f4,axiom,(
+  ( ! [X0,X1] : (greatest_lower_bound(X0,X1) = greatest_lower_bound(X1,X0)) )),
+  file('./p/GRP182-2.tptp',unknown)).
+fof(f19,axiom,(
+  identity != least_upper_bound(identity,greatest_lower_bound(a,identity))),
+  file('./p/GRP182-2.tptp',unknown)).
+% SZS output end Proof for GRP182-2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

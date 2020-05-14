@@ -1,0 +1,417 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for NUM476+1
+% SZS output start Proof for NUM476+1
+fof(f1811,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f201,f211,f216,f221,f226,f428,f628,f1636,f1670,f1679,f1707,f1810])).
+fof(f1810,plain,(
+  spl5_1 | ~spl5_6 | spl5_9 | ~spl5_15),
+  inference(avatar_contradiction_clause,[],[f1809])).
+fof(f1809,plain,(
+  $false | (spl5_1 | ~spl5_6 | spl5_9 | ~spl5_15)),
+  inference(subsumption_resolution,[],[f1808,f164])).
+fof(f164,plain,(
+  aNaturalNumber0(xl)),
+  inference(cnf_transformation,[],[f34])).
+fof(f34,axiom,(
+  aNaturalNumber0(xn) & aNaturalNumber0(xm) & aNaturalNumber0(xl)),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f1808,plain,(
+  ~aNaturalNumber0(xl) | (spl5_1 | ~spl5_6 | spl5_9 | ~spl5_15)),
+  inference(subsumption_resolution,[],[f1807,f541])).
+fof(f541,plain,(
+  aNaturalNumber0(sdtpldt0(xm,xn)) | ~spl5_15),
+  inference(avatar_component_clause,[],[f540])).
+fof(f540,plain,(
+  spl5_15 <=> aNaturalNumber0(sdtpldt0(xm,xn))),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_15])])).
+fof(f1807,plain,(
+  ~aNaturalNumber0(sdtpldt0(xm,xn)) | ~aNaturalNumber0(xl) | (spl5_1 | ~spl5_6 | spl5_9)),
+  inference(subsumption_resolution,[],[f1806,f195])).
+fof(f195,plain,(
+  sz00 != xl | spl5_1),
+  inference(avatar_component_clause,[],[f194])).
+fof(f194,plain,(
+  spl5_1 <=> sz00 = xl),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_1])])).
+fof(f1806,plain,(
+  sz00 = xl | ~aNaturalNumber0(sdtpldt0(xm,xn)) | ~aNaturalNumber0(xl) | (~spl5_6 | spl5_9)),
+  inference(subsumption_resolution,[],[f1805,f168])).
+fof(f168,plain,(
+  doDivides0(xl,sdtpldt0(xm,xn))),
+  inference(cnf_transformation,[],[f35])).
+fof(f35,axiom,(
+  doDivides0(xl,sdtpldt0(xm,xn)) & doDivides0(xl,xm)),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f1805,plain,(
+  ~doDivides0(xl,sdtpldt0(xm,xn)) | sz00 = xl | ~aNaturalNumber0(sdtpldt0(xm,xn)) | ~aNaturalNumber0(xl) | (~spl5_6 | spl5_9)),
+  inference(subsumption_resolution,[],[f1804,f353])).
+fof(f353,plain,(
+  ~aNaturalNumber0(sK3) | spl5_9),
+  inference(avatar_component_clause,[],[f351])).
+fof(f351,plain,(
+  spl5_9 <=> aNaturalNumber0(sK3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_9])])).
+fof(f1804,plain,(
+  aNaturalNumber0(sK3) | ~doDivides0(xl,sdtpldt0(xm,xn)) | sz00 = xl | ~aNaturalNumber0(sdtpldt0(xm,xn)) | ~aNaturalNumber0(xl) | ~spl5_6),
+  inference(superposition,[],[f185,f220])).
+fof(f220,plain,(
+  sdtsldt0(sdtpldt0(xm,xn),xl) = sK3 | ~spl5_6),
+  inference(avatar_component_clause,[],[f218])).
+fof(f218,plain,(
+  spl5_6 <=> sdtsldt0(sdtpldt0(xm,xn),xl) = sK3),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_6])])).
+fof(f185,plain,(
+  ( ! [X0,X1] : (aNaturalNumber0(sdtsldt0(X1,X0)) | ~doDivides0(X0,X1) | sz00 = X0 | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(equality_resolution,[],[f159])).
+fof(f159,plain,(
+  ( ! [X2,X0,X1] : (aNaturalNumber0(X2) | sdtsldt0(X1,X0) != X2 | ~doDivides0(X0,X1) | sz00 = X0 | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f105])).
+fof(f105,plain,(
+  ! [X0,X1] : (! [X2] : ((sdtsldt0(X1,X0) = X2 | sdtasdt0(X0,X2) != X1 | ~aNaturalNumber0(X2)) & ((sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2)) | sdtsldt0(X1,X0) != X2)) | ~doDivides0(X0,X1) | sz00 = X0 | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f104])).
+fof(f104,plain,(
+  ! [X0,X1] : (! [X2] : ((sdtsldt0(X1,X0) = X2 | (sdtasdt0(X0,X2) != X1 | ~aNaturalNumber0(X2))) & ((sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2)) | sdtsldt0(X1,X0) != X2)) | ~doDivides0(X0,X1) | sz00 = X0 | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(nnf_transformation,[],[f88])).
+fof(f88,plain,(
+  ! [X0,X1] : (! [X2] : (sdtsldt0(X1,X0) = X2 <=> (sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2))) | ~doDivides0(X0,X1) | sz00 = X0 | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f87])).
+fof(f87,plain,(
+  ! [X0,X1] : ((! [X2] : (sdtsldt0(X1,X0) = X2 <=> (sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2))) | (~doDivides0(X0,X1) | sz00 = X0)) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f31])).
+fof(f31,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => ((doDivides0(X0,X1) & sz00 != X0) => ! [X2] : (sdtsldt0(X1,X0) = X2 <=> (sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2)))))),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f1707,plain,(
+  spl5_1 | spl5_8 | ~spl5_7),
+  inference(avatar_split_clause,[],[f1706,f223,f347,f194])).
+fof(f347,plain,(
+  spl5_8 <=> aNaturalNumber0(sK2)),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_8])])).
+fof(f223,plain,(
+  spl5_7 <=> sdtsldt0(xm,xl) = sK2),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_7])])).
+fof(f1706,plain,(
+  aNaturalNumber0(sK2) | sz00 = xl | ~spl5_7),
+  inference(subsumption_resolution,[],[f1705,f164])).
+fof(f1705,plain,(
+  aNaturalNumber0(sK2) | sz00 = xl | ~aNaturalNumber0(xl) | ~spl5_7),
+  inference(subsumption_resolution,[],[f1704,f165])).
+fof(f165,plain,(
+  aNaturalNumber0(xm)),
+  inference(cnf_transformation,[],[f34])).
+fof(f1704,plain,(
+  aNaturalNumber0(sK2) | sz00 = xl | ~aNaturalNumber0(xm) | ~aNaturalNumber0(xl) | ~spl5_7),
+  inference(subsumption_resolution,[],[f882,f167])).
+fof(f167,plain,(
+  doDivides0(xl,xm)),
+  inference(cnf_transformation,[],[f35])).
+fof(f882,plain,(
+  aNaturalNumber0(sK2) | ~doDivides0(xl,xm) | sz00 = xl | ~aNaturalNumber0(xm) | ~aNaturalNumber0(xl) | ~spl5_7),
+  inference(superposition,[],[f185,f225])).
+fof(f225,plain,(
+  sdtsldt0(xm,xl) = sK2 | ~spl5_7),
+  inference(avatar_component_clause,[],[f223])).
+fof(f1679,plain,(
+  ~spl5_8 | ~spl5_9 | ~spl5_2 | ~spl5_4 | ~spl5_5),
+  inference(avatar_split_clause,[],[f1678,f213,f208,f198,f351,f347])).
+fof(f198,plain,(
+  spl5_2 <=> xn = sdtasdt0(xl,sK4)),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_2])])).
+fof(f208,plain,(
+  spl5_4 <=> sdtmndt0(sK3,sK2) = sK4),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_4])])).
+fof(f213,plain,(
+  spl5_5 <=> sdtlseqdt0(sK2,sK3)),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_5])])).
+fof(f1678,plain,(
+  ~aNaturalNumber0(sK3) | ~aNaturalNumber0(sK2) | (~spl5_2 | ~spl5_4 | ~spl5_5)),
+  inference(subsumption_resolution,[],[f1677,f215])).
+fof(f215,plain,(
+  sdtlseqdt0(sK2,sK3) | ~spl5_5),
+  inference(avatar_component_clause,[],[f213])).
+fof(f1677,plain,(
+  ~sdtlseqdt0(sK2,sK3) | ~aNaturalNumber0(sK3) | ~aNaturalNumber0(sK2) | (~spl5_2 | ~spl5_4)),
+  inference(subsumption_resolution,[],[f935,f294])).
+fof(f294,plain,(
+  ~aNaturalNumber0(sK4) | ~spl5_2),
+  inference(subsumption_resolution,[],[f293,f164])).
+fof(f293,plain,(
+  ~aNaturalNumber0(sK4) | ~aNaturalNumber0(xl) | ~spl5_2),
+  inference(subsumption_resolution,[],[f290,f175])).
+fof(f175,plain,(
+  ~doDivides0(xl,xn)),
+  inference(cnf_transformation,[],[f109])).
+fof(f109,plain,(
+  ~doDivides0(xl,xn) & ((((xn = sdtasdt0(xl,sK4) & sdtpldt0(sdtasdt0(xl,sK2),xn) = sdtpldt0(sdtasdt0(xl,sK2),sdtasdt0(xl,sK4)) & sdtmndt0(sK3,sK2) = sK4) & sdtlseqdt0(sK2,sK3) & sdtsldt0(sdtpldt0(xm,xn),xl) = sK3) & sdtsldt0(xm,xl) = sK2) | sz00 = xl)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK2,sK3,sK4])],[f93,f108,f107,f106])).
+fof(f106,plain,(
+  ? [X0] : (? [X1] : (? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,X0),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,X0),xn) & sdtmndt0(X1,X0) = X2) & sdtlseqdt0(X0,X1) & sdtsldt0(sdtpldt0(xm,xn),xl) = X1) & sdtsldt0(xm,xl) = X0) => (? [X1] : (? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,sK2),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,sK2),xn) & sdtmndt0(X1,sK2) = X2) & sdtlseqdt0(sK2,X1) & sdtsldt0(sdtpldt0(xm,xn),xl) = X1) & sdtsldt0(xm,xl) = sK2)),
+  introduced(choice_axiom,[])).
+fof(f107,plain,(
+  ? [X1] : (? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,sK2),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,sK2),xn) & sdtmndt0(X1,sK2) = X2) & sdtlseqdt0(sK2,X1) & sdtsldt0(sdtpldt0(xm,xn),xl) = X1) => (? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,sK2),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,sK2),xn) & sdtmndt0(sK3,sK2) = X2) & sdtlseqdt0(sK2,sK3) & sdtsldt0(sdtpldt0(xm,xn),xl) = sK3)),
+  introduced(choice_axiom,[])).
+fof(f108,plain,(
+  ? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,sK2),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,sK2),xn) & sdtmndt0(sK3,sK2) = X2) => (xn = sdtasdt0(xl,sK4) & sdtpldt0(sdtasdt0(xl,sK2),xn) = sdtpldt0(sdtasdt0(xl,sK2),sdtasdt0(xl,sK4)) & sdtmndt0(sK3,sK2) = sK4)),
+  introduced(choice_axiom,[])).
+fof(f93,plain,(
+  ~doDivides0(xl,xn) & (? [X0] : (? [X1] : (? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,X0),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,X0),xn) & sdtmndt0(X1,X0) = X2) & sdtlseqdt0(X0,X1) & sdtsldt0(sdtpldt0(xm,xn),xl) = X1) & sdtsldt0(xm,xl) = X0) | sz00 = xl)),
+  inference(ennf_transformation,[],[f37])).
+fof(f37,negated_conjecture,(
+  ~((sz00 != xl => ? [X0] : (? [X1] : (? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,X0),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,X0),xn) & sdtmndt0(X1,X0) = X2) & sdtlseqdt0(X0,X1) & sdtsldt0(sdtpldt0(xm,xn),xl) = X1) & sdtsldt0(xm,xl) = X0)) => doDivides0(xl,xn))),
+  inference(negated_conjecture,[],[f36])).
+fof(f36,conjecture,(
+  (sz00 != xl => ? [X0] : (? [X1] : (? [X2] : (xn = sdtasdt0(xl,X2) & sdtpldt0(sdtasdt0(xl,X0),sdtasdt0(xl,X2)) = sdtpldt0(sdtasdt0(xl,X0),xn) & sdtmndt0(X1,X0) = X2) & sdtlseqdt0(X0,X1) & sdtsldt0(sdtpldt0(xm,xn),xl) = X1) & sdtsldt0(xm,xl) = X0)) => doDivides0(xl,xn)),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f290,plain,(
+  doDivides0(xl,xn) | ~aNaturalNumber0(sK4) | ~aNaturalNumber0(xl) | ~spl5_2),
+  inference(superposition,[],[f190,f200])).
+fof(f200,plain,(
+  xn = sdtasdt0(xl,sK4) | ~spl5_2),
+  inference(avatar_component_clause,[],[f198])).
+fof(f190,plain,(
+  ( ! [X2,X0] : (doDivides0(X0,sdtasdt0(X0,X2)) | ~aNaturalNumber0(X2) | ~aNaturalNumber0(X0)) )),
+  inference(subsumption_resolution,[],[f182,f114])).
+fof(f114,plain,(
+  ( ! [X0,X1] : (aNaturalNumber0(sdtasdt0(X0,X1)) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f44])).
+fof(f44,plain,(
+  ! [X0,X1] : (aNaturalNumber0(sdtasdt0(X0,X1)) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f43])).
+fof(f43,plain,(
+  ! [X0,X1] : (aNaturalNumber0(sdtasdt0(X0,X1)) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => aNaturalNumber0(sdtasdt0(X0,X1)))),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f182,plain,(
+  ( ! [X2,X0] : (doDivides0(X0,sdtasdt0(X0,X2)) | ~aNaturalNumber0(X2) | ~aNaturalNumber0(sdtasdt0(X0,X2)) | ~aNaturalNumber0(X0)) )),
+  inference(equality_resolution,[],[f158])).
+fof(f158,plain,(
+  ( ! [X2,X0,X1] : (doDivides0(X0,X1) | sdtasdt0(X0,X2) != X1 | ~aNaturalNumber0(X2) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f103])).
+fof(f103,plain,(
+  ! [X0,X1] : (((doDivides0(X0,X1) | ! [X2] : (sdtasdt0(X0,X2) != X1 | ~aNaturalNumber0(X2))) & ((sdtasdt0(X0,sK1(X0,X1)) = X1 & aNaturalNumber0(sK1(X0,X1))) | ~doDivides0(X0,X1))) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1])],[f101,f102])).
+fof(f102,plain,(
+  ! [X1,X0] : (? [X3] : (sdtasdt0(X0,X3) = X1 & aNaturalNumber0(X3)) => (sdtasdt0(X0,sK1(X0,X1)) = X1 & aNaturalNumber0(sK1(X0,X1))))),
+  introduced(choice_axiom,[])).
+fof(f101,plain,(
+  ! [X0,X1] : (((doDivides0(X0,X1) | ! [X2] : (sdtasdt0(X0,X2) != X1 | ~aNaturalNumber0(X2))) & (? [X3] : (sdtasdt0(X0,X3) = X1 & aNaturalNumber0(X3)) | ~doDivides0(X0,X1))) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(rectify,[],[f100])).
+fof(f100,plain,(
+  ! [X0,X1] : (((doDivides0(X0,X1) | ! [X2] : (sdtasdt0(X0,X2) != X1 | ~aNaturalNumber0(X2))) & (? [X2] : (sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2)) | ~doDivides0(X0,X1))) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(nnf_transformation,[],[f86])).
+fof(f86,plain,(
+  ! [X0,X1] : ((doDivides0(X0,X1) <=> ? [X2] : (sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2))) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f85])).
+fof(f85,plain,(
+  ! [X0,X1] : ((doDivides0(X0,X1) <=> ? [X2] : (sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2))) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f30])).
+fof(f30,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => (doDivides0(X0,X1) <=> ? [X2] : (sdtasdt0(X0,X2) = X1 & aNaturalNumber0(X2))))),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f935,plain,(
+  aNaturalNumber0(sK4) | ~sdtlseqdt0(sK2,sK3) | ~aNaturalNumber0(sK3) | ~aNaturalNumber0(sK2) | ~spl5_4),
+  inference(superposition,[],[f179,f210])).
+fof(f210,plain,(
+  sdtmndt0(sK3,sK2) = sK4 | ~spl5_4),
+  inference(avatar_component_clause,[],[f208])).
+fof(f179,plain,(
+  ( ! [X0,X1] : (aNaturalNumber0(sdtmndt0(X1,X0)) | ~sdtlseqdt0(X0,X1) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(equality_resolution,[],[f137])).
+fof(f137,plain,(
+  ( ! [X2,X0,X1] : (aNaturalNumber0(X2) | sdtmndt0(X1,X0) != X2 | ~sdtlseqdt0(X0,X1) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f99])).
+fof(f99,plain,(
+  ! [X0,X1] : (! [X2] : ((sdtmndt0(X1,X0) = X2 | sdtpldt0(X0,X2) != X1 | ~aNaturalNumber0(X2)) & ((sdtpldt0(X0,X2) = X1 & aNaturalNumber0(X2)) | sdtmndt0(X1,X0) != X2)) | ~sdtlseqdt0(X0,X1) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f98])).
+fof(f98,plain,(
+  ! [X0,X1] : (! [X2] : ((sdtmndt0(X1,X0) = X2 | (sdtpldt0(X0,X2) != X1 | ~aNaturalNumber0(X2))) & ((sdtpldt0(X0,X2) = X1 & aNaturalNumber0(X2)) | sdtmndt0(X1,X0) != X2)) | ~sdtlseqdt0(X0,X1) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(nnf_transformation,[],[f69])).
+fof(f69,plain,(
+  ! [X0,X1] : (! [X2] : (sdtmndt0(X1,X0) = X2 <=> (sdtpldt0(X0,X2) = X1 & aNaturalNumber0(X2))) | ~sdtlseqdt0(X0,X1) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f68])).
+fof(f68,plain,(
+  ! [X0,X1] : ((! [X2] : (sdtmndt0(X1,X0) = X2 <=> (sdtpldt0(X0,X2) = X1 & aNaturalNumber0(X2))) | ~sdtlseqdt0(X0,X1)) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f19])).
+fof(f19,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => (sdtlseqdt0(X0,X1) => ! [X2] : (sdtmndt0(X1,X0) = X2 <=> (sdtpldt0(X0,X2) = X1 & aNaturalNumber0(X2)))))),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f1670,plain,(
+  ~spl5_1 | spl5_11 | ~spl5_22),
+  inference(avatar_contradiction_clause,[],[f1669])).
+fof(f1669,plain,(
+  $false | (~spl5_1 | spl5_11 | ~spl5_22)),
+  inference(subsumption_resolution,[],[f1668,f402])).
+fof(f402,plain,(
+  sz00 != xm | spl5_11),
+  inference(avatar_component_clause,[],[f401])).
+fof(f401,plain,(
+  spl5_11 <=> sz00 = xm),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_11])])).
+fof(f1668,plain,(
+  sz00 = xm | (~spl5_1 | ~spl5_22)),
+  inference(backward_demodulation,[],[f1663,f916])).
+fof(f916,plain,(
+  xm = sdtasdt0(sz00,sK1(sz00,xm)) | ~spl5_1),
+  inference(backward_demodulation,[],[f196,f881])).
+fof(f881,plain,(
+  xm = sdtasdt0(xl,sK1(xl,xm))),
+  inference(subsumption_resolution,[],[f880,f164])).
+fof(f880,plain,(
+  xm = sdtasdt0(xl,sK1(xl,xm)) | ~aNaturalNumber0(xl)),
+  inference(subsumption_resolution,[],[f877,f165])).
+fof(f877,plain,(
+  xm = sdtasdt0(xl,sK1(xl,xm)) | ~aNaturalNumber0(xm) | ~aNaturalNumber0(xl)),
+  inference(resolution,[],[f167,f157])).
+fof(f157,plain,(
+  ( ! [X0,X1] : (~doDivides0(X0,X1) | sdtasdt0(X0,sK1(X0,X1)) = X1 | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f103])).
+fof(f196,plain,(
+  sz00 = xl | ~spl5_1),
+  inference(avatar_component_clause,[],[f194])).
+fof(f1663,plain,(
+  sz00 = sdtasdt0(sz00,sK1(sz00,xm)) | ~spl5_22),
+  inference(resolution,[],[f1610,f124])).
+fof(f124,plain,(
+  ( ! [X0] : (~aNaturalNumber0(X0) | sz00 = sdtasdt0(sz00,X0)) )),
+  inference(cnf_transformation,[],[f55])).
+fof(f55,plain,(
+  ! [X0] : ((sz00 = sdtasdt0(sz00,X0) & sz00 = sdtasdt0(X0,sz00)) | ~aNaturalNumber0(X0))),
+  inference(ennf_transformation,[],[f12])).
+fof(f12,axiom,(
+  ! [X0] : (aNaturalNumber0(X0) => (sz00 = sdtasdt0(sz00,X0) & sz00 = sdtasdt0(X0,sz00)))),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f1610,plain,(
+  aNaturalNumber0(sK1(sz00,xm)) | ~spl5_22),
+  inference(avatar_component_clause,[],[f1609])).
+fof(f1609,plain,(
+  spl5_22 <=> aNaturalNumber0(sK1(sz00,xm))),
+  introduced(avatar_definition,[new_symbols(naming,[spl5_22])])).
+fof(f1636,plain,(
+  ~spl5_1 | spl5_22),
+  inference(avatar_contradiction_clause,[],[f1635])).
+fof(f1635,plain,(
+  $false | (~spl5_1 | spl5_22)),
+  inference(subsumption_resolution,[],[f1634,f110])).
+fof(f110,plain,(
+  aNaturalNumber0(sz00)),
+  inference(cnf_transformation,[],[f2])).
+fof(f2,axiom,(
+  aNaturalNumber0(sz00)),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f1634,plain,(
+  ~aNaturalNumber0(sz00) | (~spl5_1 | spl5_22)),
+  inference(subsumption_resolution,[],[f1633,f165])).
+fof(f1633,plain,(
+  ~aNaturalNumber0(xm) | ~aNaturalNumber0(sz00) | (~spl5_1 | spl5_22)),
+  inference(subsumption_resolution,[],[f1632,f893])).
+fof(f893,plain,(
+  doDivides0(sz00,xm) | ~spl5_1),
+  inference(backward_demodulation,[],[f196,f167])).
+fof(f1632,plain,(
+  ~doDivides0(sz00,xm) | ~aNaturalNumber0(xm) | ~aNaturalNumber0(sz00) | spl5_22),
+  inference(resolution,[],[f1611,f156])).
+fof(f156,plain,(
+  ( ! [X0,X1] : (aNaturalNumber0(sK1(X0,X1)) | ~doDivides0(X0,X1) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f103])).
+fof(f1611,plain,(
+  ~aNaturalNumber0(sK1(sz00,xm)) | spl5_22),
+  inference(avatar_component_clause,[],[f1609])).
+fof(f628,plain,(
+  spl5_15),
+  inference(avatar_contradiction_clause,[],[f627])).
+fof(f627,plain,(
+  $false | spl5_15),
+  inference(subsumption_resolution,[],[f626,f165])).
+fof(f626,plain,(
+  ~aNaturalNumber0(xm) | spl5_15),
+  inference(subsumption_resolution,[],[f625,f166])).
+fof(f166,plain,(
+  aNaturalNumber0(xn)),
+  inference(cnf_transformation,[],[f34])).
+fof(f625,plain,(
+  ~aNaturalNumber0(xn) | ~aNaturalNumber0(xm) | spl5_15),
+  inference(resolution,[],[f542,f113])).
+fof(f113,plain,(
+  ( ! [X0,X1] : (aNaturalNumber0(sdtpldt0(X0,X1)) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)) )),
+  inference(cnf_transformation,[],[f42])).
+fof(f42,plain,(
+  ! [X0,X1] : (aNaturalNumber0(sdtpldt0(X0,X1)) | ~aNaturalNumber0(X1) | ~aNaturalNumber0(X0))),
+  inference(flattening,[],[f41])).
+fof(f41,plain,(
+  ! [X0,X1] : (aNaturalNumber0(sdtpldt0(X0,X1)) | (~aNaturalNumber0(X1) | ~aNaturalNumber0(X0)))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : ((aNaturalNumber0(X1) & aNaturalNumber0(X0)) => aNaturalNumber0(sdtpldt0(X0,X1)))),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f542,plain,(
+  ~aNaturalNumber0(sdtpldt0(xm,xn)) | spl5_15),
+  inference(avatar_component_clause,[],[f540])).
+fof(f428,plain,(
+  ~spl5_11),
+  inference(avatar_contradiction_clause,[],[f427])).
+fof(f427,plain,(
+  $false | ~spl5_11),
+  inference(subsumption_resolution,[],[f426,f175])).
+fof(f426,plain,(
+  doDivides0(xl,xn) | ~spl5_11),
+  inference(forward_demodulation,[],[f411,f236])).
+fof(f236,plain,(
+  xn = sdtpldt0(sz00,xn)),
+  inference(resolution,[],[f118,f166])).
+fof(f118,plain,(
+  ( ! [X0] : (~aNaturalNumber0(X0) | sdtpldt0(sz00,X0) = X0) )),
+  inference(cnf_transformation,[],[f49])).
+fof(f49,plain,(
+  ! [X0] : ((sdtpldt0(sz00,X0) = X0 & sdtpldt0(X0,sz00) = X0) | ~aNaturalNumber0(X0))),
+  inference(ennf_transformation,[],[f8])).
+fof(f8,axiom,(
+  ! [X0] : (aNaturalNumber0(X0) => (sdtpldt0(sz00,X0) = X0 & sdtpldt0(X0,sz00) = X0))),
+  file('./p/NUM476+1.tptp',unknown)).
+fof(f411,plain,(
+  doDivides0(xl,sdtpldt0(sz00,xn)) | ~spl5_11),
+  inference(backward_demodulation,[],[f403,f168])).
+fof(f403,plain,(
+  sz00 = xm | ~spl5_11),
+  inference(avatar_component_clause,[],[f401])).
+fof(f226,plain,(
+  spl5_1 | spl5_7),
+  inference(avatar_split_clause,[],[f169,f223,f194])).
+fof(f169,plain,(
+  sdtsldt0(xm,xl) = sK2 | sz00 = xl),
+  inference(cnf_transformation,[],[f109])).
+fof(f221,plain,(
+  spl5_1 | spl5_6),
+  inference(avatar_split_clause,[],[f170,f218,f194])).
+fof(f170,plain,(
+  sdtsldt0(sdtpldt0(xm,xn),xl) = sK3 | sz00 = xl),
+  inference(cnf_transformation,[],[f109])).
+fof(f216,plain,(
+  spl5_1 | spl5_5),
+  inference(avatar_split_clause,[],[f171,f213,f194])).
+fof(f171,plain,(
+  sdtlseqdt0(sK2,sK3) | sz00 = xl),
+  inference(cnf_transformation,[],[f109])).
+fof(f211,plain,(
+  spl5_1 | spl5_4),
+  inference(avatar_split_clause,[],[f172,f208,f194])).
+fof(f172,plain,(
+  sdtmndt0(sK3,sK2) = sK4 | sz00 = xl),
+  inference(cnf_transformation,[],[f109])).
+fof(f201,plain,(
+  spl5_1 | spl5_2),
+  inference(avatar_split_clause,[],[f174,f198,f194])).
+fof(f174,plain,(
+  xn = sdtasdt0(xl,sK4) | sz00 = xl),
+  inference(cnf_transformation,[],[f109])).
+% SZS output end Proof for NUM476+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5884
+% Time elapsed: 0.017 s
+% ------------------------------
+% ------------------------------

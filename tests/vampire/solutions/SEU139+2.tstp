@@ -1,0 +1,87 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SEU139+2
+% SZS output start Proof for SEU139+2
+fof(f411,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f402,f241])).
+fof(f241,plain,(
+  ( ! [X1] : (~proper_subset(X1,X1)) )),
+  inference(equality_resolution,[],[f164])).
+fof(f164,plain,(
+  ( ! [X0,X1] : (X0 != X1 | ~proper_subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f115])).
+fof(f115,plain,(
+  ! [X0,X1] : ((proper_subset(X0,X1) | X0 = X1 | ~subset(X0,X1)) & ((X0 != X1 & subset(X0,X1)) | ~proper_subset(X0,X1)))),
+  inference(flattening,[],[f114])).
+fof(f114,plain,(
+  ! [X0,X1] : ((proper_subset(X0,X1) | (X0 = X1 | ~subset(X0,X1))) & ((X0 != X1 & subset(X0,X1)) | ~proper_subset(X0,X1)))),
+  inference(nnf_transformation,[],[f12])).
+fof(f12,axiom,(
+  ! [X0,X1] : (proper_subset(X0,X1) <=> (X0 != X1 & subset(X0,X1)))),
+  file('./p/SEU139+2.tptp',unknown)).
+fof(f402,plain,(
+  proper_subset(sK10,sK10)),
+  inference(backward_demodulation,[],[f400,f206])).
+fof(f206,plain,(
+  proper_subset(sK11,sK10)),
+  inference(cnf_transformation,[],[f130])).
+fof(f130,plain,(
+  proper_subset(sK11,sK10) & subset(sK10,sK11)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK10,sK11])],[f82,f129])).
+fof(f129,plain,(
+  ? [X0,X1] : (proper_subset(X1,X0) & subset(X0,X1)) => (proper_subset(sK11,sK10) & subset(sK10,sK11))),
+  introduced(choice_axiom,[])).
+fof(f82,plain,(
+  ? [X0,X1] : (proper_subset(X1,X0) & subset(X0,X1))),
+  inference(ennf_transformation,[],[f51])).
+fof(f51,negated_conjecture,(
+  ~! [X0,X1] : ~(proper_subset(X1,X0) & subset(X0,X1))),
+  inference(negated_conjecture,[],[f50])).
+fof(f50,conjecture,(
+  ! [X0,X1] : ~(proper_subset(X1,X0) & subset(X0,X1))),
+  file('./p/SEU139+2.tptp',unknown)).
+fof(f400,plain,(
+  sK10 = sK11),
+  inference(backward_demodulation,[],[f390,f317])).
+fof(f317,plain,(
+  sK11 = set_union2(sK10,sK11)),
+  inference(resolution,[],[f178,f205])).
+fof(f205,plain,(
+  subset(sK10,sK11)),
+  inference(cnf_transformation,[],[f130])).
+fof(f178,plain,(
+  ( ! [X0,X1] : (~subset(X0,X1) | set_union2(X0,X1) = X1) )),
+  inference(cnf_transformation,[],[f69])).
+fof(f69,plain,(
+  ! [X0,X1] : (set_union2(X0,X1) = X1 | ~subset(X0,X1))),
+  inference(ennf_transformation,[],[f28])).
+fof(f28,axiom,(
+  ! [X0,X1] : (subset(X0,X1) => set_union2(X0,X1) = X1)),
+  file('./p/SEU139+2.tptp',unknown)).
+fof(f390,plain,(
+  sK10 = set_union2(sK10,sK11)),
+  inference(superposition,[],[f318,f133])).
+fof(f133,plain,(
+  ( ! [X0,X1] : (set_union2(X0,X1) = set_union2(X1,X0)) )),
+  inference(cnf_transformation,[],[f3])).
+fof(f3,axiom,(
+  ! [X0,X1] : set_union2(X0,X1) = set_union2(X1,X0)),
+  file('./p/SEU139+2.tptp',unknown)).
+fof(f318,plain,(
+  sK10 = set_union2(sK11,sK10)),
+  inference(resolution,[],[f178,f257])).
+fof(f257,plain,(
+  subset(sK11,sK10)),
+  inference(resolution,[],[f163,f206])).
+fof(f163,plain,(
+  ( ! [X0,X1] : (~proper_subset(X0,X1) | subset(X0,X1)) )),
+  inference(cnf_transformation,[],[f115])).
+% SZS output end Proof for SEU139+2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

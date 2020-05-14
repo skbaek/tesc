@@ -1,0 +1,177 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for RNG026-7
+% SZS output start Proof for RNG026-7
+fof(f856,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f855,f6])).
+fof(f6,axiom,(
+  ( ! [X0] : (additive_identity = add(X0,additive_inverse(X0))) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f855,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(multiply(a,b),c),d)))),
+  inference(forward_demodulation,[],[f854,f606])).
+fof(f606,plain,(
+  ( ! [X17,X16] : (additive_inverse(X16) = add(X17,additive_inverse(add(X16,X17)))) )),
+  inference(superposition,[],[f508,f508])).
+fof(f508,plain,(
+  ( ! [X0,X1] : (add(add(X0,X1),additive_inverse(X0)) = X1) )),
+  inference(superposition,[],[f424,f7])).
+fof(f7,axiom,(
+  ( ! [X0] : (additive_inverse(additive_inverse(X0)) = X0) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f424,plain,(
+  ( ! [X0,X1] : (add(add(additive_inverse(X0),X1),X0) = X1) )),
+  inference(superposition,[],[f107,f333])).
+fof(f333,plain,(
+  ( ! [X6,X5] : (add(additive_inverse(add(additive_inverse(X5),X6)),X6) = X5) )),
+  inference(superposition,[],[f217,f107])).
+fof(f217,plain,(
+  ( ! [X0,X1] : (add(additive_inverse(X0),add(X1,X0)) = X1) )),
+  inference(superposition,[],[f110,f10])).
+fof(f10,axiom,(
+  ( ! [X0,X1] : (add(X0,X1) = add(X1,X0)) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f110,plain,(
+  ( ! [X17,X16] : (add(additive_inverse(X16),add(X16,X17)) = X17) )),
+  inference(forward_demodulation,[],[f98,f1])).
+fof(f1,axiom,(
+  ( ! [X0] : (add(additive_identity,X0) = X0) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f98,plain,(
+  ( ! [X17,X16] : (add(additive_inverse(X16),add(X16,X17)) = add(additive_identity,X17)) )),
+  inference(superposition,[],[f11,f5])).
+fof(f5,axiom,(
+  ( ! [X0] : (additive_identity = add(additive_inverse(X0),X0)) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f11,axiom,(
+  ( ! [X2,X0,X1] : (add(X0,add(X1,X2)) = add(add(X0,X1),X2)) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f107,plain,(
+  ( ! [X2,X3] : (add(X2,add(additive_inverse(X2),X3)) = X3) )),
+  inference(forward_demodulation,[],[f93,f1])).
+fof(f93,plain,(
+  ( ! [X2,X3] : (add(X2,add(additive_inverse(X2),X3)) = add(additive_identity,X3)) )),
+  inference(superposition,[],[f11,f6])).
+fof(f854,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(a,multiply(b,multiply(c,d))))))))),
+  inference(forward_demodulation,[],[f853,f18])).
+fof(f18,axiom,(
+  ( ! [X0,X1] : (additive_inverse(multiply(X0,X1)) = multiply(X0,additive_inverse(X1))) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f853,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(multiply(multiply(a,b),c),d),multiply(a,additive_inverse(multiply(b,multiply(c,d))))))))),
+  inference(forward_demodulation,[],[f852,f10])).
+fof(f852,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(a,additive_inverse(multiply(b,multiply(c,d)))),multiply(multiply(multiply(a,b),c),d)))))),
+  inference(forward_demodulation,[],[f851,f164])).
+fof(f164,plain,(
+  ( ! [X2,X1] : (add(X1,add(X2,additive_inverse(X1))) = X2) )),
+  inference(superposition,[],[f107,f10])).
+fof(f851,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(a,additive_inverse(multiply(b,multiply(c,d)))),multiply(add(multiply(a,multiply(b,c)),add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c))))),d)))))),
+  inference(forward_demodulation,[],[f850,f10])).
+fof(f850,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(add(multiply(a,multiply(b,c)),add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c))))),d),multiply(a,additive_inverse(multiply(b,multiply(c,d))))))))),
+  inference(forward_demodulation,[],[f849,f164])).
+fof(f849,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(add(multiply(a,multiply(b,c)),add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c))))),d),multiply(a,add(multiply(multiply(b,c),d),add(additive_inverse(multiply(b,multiply(c,d))),additive_inverse(multiply(multiply(b,c),d)))))))))),
+  inference(forward_demodulation,[],[f848,f101])).
+fof(f101,plain,(
+  ( ! [X8,X7,X9] : (add(X7,add(X8,X9)) = add(X9,add(X7,X8))) )),
+  inference(superposition,[],[f11,f10])).
+fof(f848,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(add(multiply(a,multiply(b,c)),add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c))))),d),multiply(a,add(additive_inverse(multiply(b,multiply(c,d))),add(additive_inverse(multiply(multiply(b,c),d)),multiply(multiply(b,c),d))))))))),
+  inference(forward_demodulation,[],[f847,f101])).
+fof(f847,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(add(multiply(a,multiply(b,c)),add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c))))),d),multiply(a,add(additive_inverse(multiply(multiply(b,c),d)),add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))))))))),
+  inference(forward_demodulation,[],[f846,f10])).
+fof(f846,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(add(multiply(a,multiply(b,c)),add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c))))),d),multiply(a,add(add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d)))),additive_inverse(multiply(multiply(b,c),d))))))))),
+  inference(forward_demodulation,[],[f845,f311])).
+fof(f311,plain,(
+  ( ! [X6,X8,X7,X5] : (add(multiply(X5,X6),add(multiply(X7,X6),X8)) = add(multiply(add(X5,X7),X6),X8)) )),
+  inference(superposition,[],[f11,f9])).
+fof(f9,axiom,(
+  ( ! [X2,X0,X1] : (multiply(add(X0,X1),X2) = add(multiply(X0,X2),multiply(X1,X2))) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f845,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),multiply(a,add(add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d)))),additive_inverse(multiply(multiply(b,c),d)))))))))),
+  inference(forward_demodulation,[],[f843,f10])).
+fof(f843,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(multiply(a,add(add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d)))),additive_inverse(multiply(multiply(b,c),d)))),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d))))))),
+  inference(backward_demodulation,[],[f798,f735])).
+fof(f735,plain,(
+  additive_identity != add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d)))))))),
+  inference(superposition,[],[f286,f11])).
+fof(f286,plain,(
+  additive_identity != add(add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(a,multiply(b,multiply(c,d))))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d))))))),
+  inference(backward_demodulation,[],[f274,f119])).
+fof(f119,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d))))))),
+  inference(forward_demodulation,[],[f118,f10])).
+fof(f118,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(multiply(multiply(multiply(a,b),c),d),add(additive_inverse(multiply(multiply(a,b),multiply(c,d))),additive_inverse(multiply(a,multiply(b,multiply(c,d))))))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d))))))),
+  inference(forward_demodulation,[],[f117,f101])).
+fof(f117,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d))))))),
+  inference(forward_demodulation,[],[f116,f10])).
+fof(f116,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))))))))),
+  inference(forward_demodulation,[],[f115,f10])).
+fof(f115,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(multiply(multiply(a,multiply(b,c)),d),add(add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d)))))),additive_inverse(multiply(a,multiply(multiply(b,c),d)))))))),
+  inference(forward_demodulation,[],[f114,f101])).
+fof(f114,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(multiply(a,multiply(b,c)),d),add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))))))))),
+  inference(forward_demodulation,[],[f113,f101])).
+fof(f113,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(multiply(a,multiply(b,c)),d))))))),
+  inference(forward_demodulation,[],[f112,f10])).
+fof(f112,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(multiply(a,multiply(b,c)),d)),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d)))))),
+  inference(forward_demodulation,[],[f111,f101])).
+fof(f111,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),add(additive_inverse(multiply(a,multiply(multiply(b,c),d))),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),multiply(multiply(a,multiply(b,c)),d))))))),
+  inference(backward_demodulation,[],[f101,f30])).
+fof(f30,plain,(
+  additive_identity != add(add(multiply(multiply(a,b),multiply(c,d)),add(additive_inverse(multiply(a,multiply(b,multiply(c,d)))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))))),additive_inverse(add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),add(multiply(multiply(a,multiply(b,c)),d),additive_inverse(multiply(a,multiply(multiply(b,c),d))))))))),
+  inference(forward_demodulation,[],[f29,f11])).
+fof(f29,plain,(
+  additive_identity != add(add(add(multiply(multiply(a,b),multiply(c,d)),additive_inverse(multiply(a,multiply(b,multiply(c,d))))),add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d))))),additive_inverse(add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),add(multiply(multiply(a,multiply(b,c)),d),additive_inverse(multiply(a,multiply(multiply(b,c),d))))))))),
+  inference(forward_demodulation,[],[f28,f10])).
+fof(f28,plain,(
+  additive_identity != add(add(add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))),add(multiply(multiply(a,b),multiply(c,d)),additive_inverse(multiply(a,multiply(b,multiply(c,d)))))),additive_inverse(add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),add(multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d))))),add(multiply(multiply(a,multiply(b,c)),d),additive_inverse(multiply(a,multiply(multiply(b,c),d))))))))),
+  inference(forward_demodulation,[],[f27,f10])).
+fof(f27,plain,(
+  additive_identity != add(add(add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))),add(multiply(multiply(a,b),multiply(c,d)),additive_inverse(multiply(a,multiply(b,multiply(c,d)))))),additive_inverse(add(multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d),add(add(multiply(multiply(a,multiply(b,c)),d),additive_inverse(multiply(a,multiply(multiply(b,c),d)))),multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d)))))))))),
+  inference(forward_demodulation,[],[f24,f10])).
+fof(f24,plain,(
+  additive_identity != add(add(add(multiply(multiply(multiply(a,b),c),d),additive_inverse(multiply(multiply(a,b),multiply(c,d)))),add(multiply(multiply(a,b),multiply(c,d)),additive_inverse(multiply(a,multiply(b,multiply(c,d)))))),additive_inverse(add(add(add(multiply(multiply(a,multiply(b,c)),d),additive_inverse(multiply(a,multiply(multiply(b,c),d)))),multiply(a,add(multiply(multiply(b,c),d),additive_inverse(multiply(b,multiply(c,d)))))),multiply(add(multiply(multiply(a,b),c),additive_inverse(multiply(a,multiply(b,c)))),d))))),
+  inference(definition_unfolding,[],[f23,f14,f14,f14,f14,f14])).
+fof(f14,axiom,(
+  ( ! [X2,X0,X1] : (associator(X0,X1,X2) = add(multiply(multiply(X0,X1),X2),additive_inverse(multiply(X0,multiply(X1,X2))))) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f23,axiom,(
+  additive_identity != add(add(associator(multiply(a,b),c,d),associator(a,b,multiply(c,d))),additive_inverse(add(add(associator(a,multiply(b,c),d),multiply(a,associator(b,c,d))),multiply(associator(a,b,c),d))))),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f274,plain,(
+  ( ! [X6,X8,X7] : (add(X6,X7) = add(X8,add(X6,add(X7,additive_inverse(X8))))) )),
+  inference(superposition,[],[f164,f11])).
+fof(f798,plain,(
+  ( ! [X47,X48,X46,X49] : (add(additive_inverse(multiply(X46,X48)),add(multiply(X46,X47),X49)) = add(multiply(X46,add(X47,additive_inverse(X48))),X49)) )),
+  inference(superposition,[],[f94,f19])).
+fof(f19,axiom,(
+  ( ! [X2,X0,X1] : (multiply(X0,add(X1,additive_inverse(X2))) = add(multiply(X0,X1),additive_inverse(multiply(X0,X2)))) )),
+  file('./p/RNG026-7.tptp',unknown)).
+fof(f94,plain,(
+  ( ! [X6,X4,X5] : (add(X4,add(X5,X6)) = add(add(X5,X4),X6)) )),
+  inference(superposition,[],[f11,f10])).
+% SZS output end Proof for RNG026-7
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5628
+% Time elapsed: 0.010 s
+% ------------------------------
+% ------------------------------

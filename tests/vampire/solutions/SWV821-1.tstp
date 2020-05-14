@@ -1,0 +1,27 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SWV821-1
+% SZS output start Proof for SWV821-1
+fof(f13424,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f13421,f1201])).
+fof(f1201,axiom,(
+  ( ! [X1] : (c_Suc(X1) != c_HOL_Ozero__class_Ozero(tc_nat)) )),
+  file('./p/SWV821-1.tptp',unknown)).
+fof(f13421,plain,(
+  c_HOL_Ozero__class_Ozero(tc_nat) = c_Suc(c_Natural_Osko__Natural__Xevaln__elim__cases__6__1(v_pn,c_HOL_Ozero__class_Ozero(tc_nat),v_xa,v_xb))),
+  inference(resolution,[],[f1251,f1266])).
+fof(f1266,axiom,(
+  c_Natural_Oevaln(c_Com_Ocom_OBODY(v_pn),v_xa,c_HOL_Ozero__class_Ozero(tc_nat),v_xb)),
+  file('./p/SWV821-1.tptp',unknown)).
+fof(f1251,axiom,(
+  ( ! [X47,X10,X32,X42] : (~c_Natural_Oevaln(c_Com_Ocom_OBODY(X32),X47,X10,X42) | c_Suc(c_Natural_Osko__Natural__Xevaln__elim__cases__6__1(X32,X10,X47,X42)) = X10) )),
+  file('./p/SWV821-1.tptp',unknown)).
+% SZS output end Proof for SWV821-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 12025
+% Time elapsed: 0.168 s
+% ------------------------------
+% ------------------------------

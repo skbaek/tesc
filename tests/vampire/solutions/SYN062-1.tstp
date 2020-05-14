@@ -1,0 +1,48 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SYN062-1
+% SZS output start Proof for SYN062-1
+fof(f13,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f12,f10])).
+fof(f10,plain,(
+  big_i(a)),
+  inference(subsumption_resolution,[],[f9,f5])).
+fof(f5,axiom,(
+  big_f(a)),
+  file('./p/SYN062-1.tptp',unknown)).
+fof(f9,plain,(
+  big_i(a) | ~big_f(a)),
+  inference(resolution,[],[f2,f8])).
+fof(f8,plain,(
+  big_h(a)),
+  inference(resolution,[],[f4,f6])).
+fof(f6,axiom,(
+  big_k(a)),
+  file('./p/SYN062-1.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X0] : (~big_k(X0) | big_h(X0)) )),
+  file('./p/SYN062-1.tptp',unknown)).
+fof(f2,axiom,(
+  ( ! [X0] : (~big_h(X0) | big_i(X0) | ~big_f(X0)) )),
+  file('./p/SYN062-1.tptp',unknown)).
+fof(f12,plain,(
+  ~big_i(a)),
+  inference(subsumption_resolution,[],[f11,f7])).
+fof(f7,axiom,(
+  ~big_j(a)),
+  file('./p/SYN062-1.tptp',unknown)).
+fof(f11,plain,(
+  big_j(a) | ~big_i(a)),
+  inference(resolution,[],[f3,f8])).
+fof(f3,axiom,(
+  ( ! [X0] : (~big_h(X0) | big_j(X0) | ~big_i(X0)) )),
+  file('./p/SYN062-1.tptp',unknown)).
+% SZS output end Proof for SYN062-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.001 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,156 @@
+# Initializing proof state
+# Scanning for AC axioms
+# compose is associative
+#
+#cnf(i_0_33, plain, (there_exists(X2)|~equivalent(X1,X2))).
+#
+#cnf(i_0_22, plain, (there_exists(X1)|~equivalent(X1,X2))).
+#
+#cnf(i_0_23, plain, (X1=X2|~equivalent(X1,X2))).
+#
+#cnf(i_0_42, negated_conjecture, (codomain(a)!=d)).
+#
+#cnf(i_0_25, plain, (there_exists(X1)|~there_exists(domain(X1)))).
+#
+#cnf(i_0_26, plain, (there_exists(X1)|~there_exists(codomain(X1)))).
+#
+#cnf(i_0_31, plain, (compose(X1,domain(X1))=X1)).
+#
+#cnf(i_0_32, plain, (compose(codomain(X1),X1)=X1)).
+#
+#cnf(i_0_39, hypothesis, (there_exists(compose(d,a)))).
+#
+#cnf(i_0_36, plain, (X1=X2|there_exists(f1(X1,X2)))).
+#
+#cnf(i_0_24, plain, (equivalent(X1,X2)|X1!=X2|~there_exists(X1))).
+##
+#cnf(i_0_27, plain, (there_exists(domain(X1))|~there_exists(compose(X1,X2)))).
+#
+#cnf(i_0_48, hypothesis, (there_exists(domain(d)))).
+#
+#cnf(i_0_49, hypothesis, (there_exists(d))).
+#
+#cnf(i_0_47, plain, (there_exists(domain(X1))|~there_exists(X1))).
+#
+#cnf(i_0_46, plain, (there_exists(domain(codomain(X1)))|~there_exists(X1))).
+#
+#cnf(i_0_51, plain, (there_exists(codomain(X1))|~there_exists(X1))).
+#
+#cnf(i_0_35, plain, (there_exists(codomain(X1))|~there_exists(compose(X1,X2)))).
+#
+#cnf(i_0_55, hypothesis, (there_exists(codomain(d)))).
+##
+#cnf(i_0_53, plain, (there_exists(codomain(codomain(X1)))|~there_exists(X1))).
+###
+#cnf(i_0_28, plain, (codomain(X2)=domain(X1)|~there_exists(compose(X1,X2)))).
+#
+#cnf(i_0_60, hypothesis, (codomain(a)=domain(d))).
+#
+#cnf(i_0_62, hypothesis, (there_exists(a))).
+#
+#cnf(i_0_42, negated_conjecture, (domain(d)!=d)).
+#
+#cnf(i_0_59, plain, (codomain(domain(X1))=domain(X1)|~there_exists(X1))).
+#
+#cnf(i_0_66, hypothesis, (codomain(domain(a))=domain(a))).
+#
+#cnf(i_0_67, hypothesis, (codomain(domain(d))=domain(d))).
+#
+#cnf(i_0_83, hypothesis, (there_exists(domain(domain(d))))).
+#
+#cnf(i_0_61, hypothesis, (compose(domain(d),a)=a)).
+#
+#cnf(i_0_90, hypothesis, (domain(domain(d))=domain(d))).
+#
+#cnf(i_0_58, plain, (domain(codomain(X1))=codomain(X1)|~there_exists(X1))).
+####
+#cnf(i_0_40, hypothesis, (compose(X1,d)=X1|~there_exists(compose(X1,d)))).
+#
+#cnf(i_0_101, hypothesis, (codomain(d)=d)).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(composition_implies_domain, axiom, (there_exists(domain(X1))|~there_exists(compose(X1,X2))), file('./p/CAT006-3.tptp', composition_implies_domain)).
+cnf(da_exists, hypothesis, (there_exists(compose(d,a))), file('./p/CAT006-3.tptp', da_exists)).
+cnf(domain_has_elements, axiom, (there_exists(X1)|~there_exists(domain(X1))), file('./p/CAT006-3.tptp', domain_has_elements)).
+cnf(domain_codomain_composition1, axiom, (domain(X1)=codomain(X2)|~there_exists(compose(X1,X2))), file('./p/CAT006-3.tptp', domain_codomain_composition1)).
+cnf(compose_codomain, axiom, (compose(codomain(X1),X1)=X1), file('./p/CAT006-3.tptp', compose_codomain)).
+cnf(xd_equals_x, hypothesis, (compose(X1,d)=X1|~there_exists(compose(X1,d))), file('./p/CAT006-3.tptp', xd_equals_x)).
+cnf(prove_codomain_of_a_is_d, negated_conjecture, (codomain(a)!=d), file('./p/CAT006-3.tptp', prove_codomain_of_a_is_d)).
+cnf(c_0_7, axiom, (there_exists(domain(X1))|~there_exists(compose(X1,X2))), composition_implies_domain).
+cnf(c_0_8, hypothesis, (there_exists(compose(d,a))), da_exists).
+cnf(c_0_9, axiom, (there_exists(X1)|~there_exists(domain(X1))), domain_has_elements).
+cnf(c_0_10, hypothesis, (there_exists(domain(d))), inference(pm,[status(thm)],[c_0_7, c_0_8])).
+cnf(c_0_11, axiom, (domain(X1)=codomain(X2)|~there_exists(compose(X1,X2))), domain_codomain_composition1).
+cnf(c_0_12, axiom, (compose(codomain(X1),X1)=X1), compose_codomain).
+cnf(c_0_13, hypothesis, (compose(X1,d)=X1|~there_exists(compose(X1,d))), xd_equals_x).
+cnf(c_0_14, hypothesis, (there_exists(d)), inference(pm,[status(thm)],[c_0_9, c_0_10])).
+cnf(c_0_15, negated_conjecture, (codomain(a)!=d), prove_codomain_of_a_is_d).
+cnf(c_0_16, hypothesis, (codomain(a)=domain(d)), inference(pm,[status(thm)],[c_0_11, c_0_8])).
+cnf(c_0_17, plain, (domain(codomain(X1))=codomain(X1)|~there_exists(X1)), inference(pm,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_18, hypothesis, (codomain(d)=d), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_13, c_0_12]), c_0_12]), c_0_14])])).
+cnf(c_0_19, negated_conjecture, (domain(d)!=d), inference(rw,[status(thm)],[c_0_15, c_0_16])).
+cnf(c_0_20, hypothesis, ($false), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_17, c_0_18]), c_0_18]), c_0_14])]), c_0_19]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 21
+# Proof object clause steps            : 14
+# Proof object formula steps           : 7
+# Proof object conjectures             : 3
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 7
+# Proof object initial formulas used   : 7
+# Proof object generating inferences   : 6
+# Proof object simplifying inferences  : 8
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 21
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 21
+# Removed in clause preprocessing      : 1
+# Initial clauses in saturation        : 20
+# Processed clauses                    : 40
+# ...of these trivial                  : 3
+# ...subsumed                          : 4
+# ...remaining for further processing  : 33
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 3
+# Generated clauses                    : 65
+# ...of the previous two non-trivial   : 40
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 65
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 30
+#    Positive orientable unit clauses  : 12
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 1
+#    Non-unit-clauses                  : 17
+# Current number of unprocessed clauses: 19
+# ...number of literals in the above   : 32
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 3
+# Clause-clause subsumption calls (NU) : 13
+# Rec. Clause-clause subsumption calls : 13
+# Non-unit clause-clause subsumptions  : 4
+# Unit Clause-clause subsumption calls : 0
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 3
+# BW rewrite match successes           : 3
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 833

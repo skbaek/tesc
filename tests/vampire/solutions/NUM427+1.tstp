@@ -1,0 +1,171 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for NUM427+1
+% SZS output start Proof for NUM427+1
+fof(f1163,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f228,f1161])).
+fof(f1161,plain,(
+  ~spl1_3),
+  inference(avatar_contradiction_clause,[],[f1160])).
+fof(f1160,plain,(
+  $false | ~spl1_3),
+  inference(subsumption_resolution,[],[f1159,f93])).
+fof(f93,plain,(
+  aInteger0(xb)),
+  inference(cnf_transformation,[],[f21])).
+fof(f21,axiom,(
+  sz00 != xq & aInteger0(xq) & aInteger0(xb) & aInteger0(xa)),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f1159,plain,(
+  ~aInteger0(xb) | ~spl1_3),
+  inference(subsumption_resolution,[],[f1158,f92])).
+fof(f92,plain,(
+  aInteger0(xa)),
+  inference(cnf_transformation,[],[f21])).
+fof(f1158,plain,(
+  ~aInteger0(xa) | ~aInteger0(xb) | ~spl1_3),
+  inference(subsumption_resolution,[],[f1157,f94])).
+fof(f94,plain,(
+  aInteger0(xq)),
+  inference(cnf_transformation,[],[f21])).
+fof(f1157,plain,(
+  ~aInteger0(xq) | ~aInteger0(xa) | ~aInteger0(xb) | ~spl1_3),
+  inference(subsumption_resolution,[],[f1156,f95])).
+fof(f95,plain,(
+  sz00 != xq),
+  inference(cnf_transformation,[],[f21])).
+fof(f1156,plain,(
+  sz00 = xq | ~aInteger0(xq) | ~aInteger0(xa) | ~aInteger0(xb) | ~spl1_3),
+  inference(subsumption_resolution,[],[f1153,f100])).
+fof(f100,plain,(
+  ~sdteqdtlpzmzozddtrp0(xb,xa,xq)),
+  inference(cnf_transformation,[],[f28])).
+fof(f28,plain,(
+  ~sdteqdtlpzmzozddtrp0(xb,xa,xq)),
+  inference(flattening,[],[f26])).
+fof(f26,negated_conjecture,(
+  ~sdteqdtlpzmzozddtrp0(xb,xa,xq)),
+  inference(negated_conjecture,[],[f25])).
+fof(f25,conjecture,(
+  sdteqdtlpzmzozddtrp0(xb,xa,xq)),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f1153,plain,(
+  sdteqdtlpzmzozddtrp0(xb,xa,xq) | sz00 = xq | ~aInteger0(xq) | ~aInteger0(xa) | ~aInteger0(xb) | ~spl1_3),
+  inference(resolution,[],[f364,f90])).
+fof(f90,plain,(
+  ( ! [X2,X0,X1] : (~aDivisorOf0(X2,sdtpldt0(X0,smndt0(X1))) | sdteqdtlpzmzozddtrp0(X0,X1,X2) | sz00 = X2 | ~aInteger0(X2) | ~aInteger0(X1) | ~aInteger0(X0)) )),
+  inference(cnf_transformation,[],[f61])).
+fof(f61,plain,(
+  ! [X0,X1,X2] : (((sdteqdtlpzmzozddtrp0(X0,X1,X2) | ~aDivisorOf0(X2,sdtpldt0(X0,smndt0(X1)))) & (aDivisorOf0(X2,sdtpldt0(X0,smndt0(X1))) | ~sdteqdtlpzmzozddtrp0(X0,X1,X2))) | sz00 = X2 | ~aInteger0(X2) | ~aInteger0(X1) | ~aInteger0(X0))),
+  inference(nnf_transformation,[],[f53])).
+fof(f53,plain,(
+  ! [X0,X1,X2] : ((sdteqdtlpzmzozddtrp0(X0,X1,X2) <=> aDivisorOf0(X2,sdtpldt0(X0,smndt0(X1)))) | sz00 = X2 | ~aInteger0(X2) | ~aInteger0(X1) | ~aInteger0(X0))),
+  inference(flattening,[],[f52])).
+fof(f52,plain,(
+  ! [X0,X1,X2] : ((sdteqdtlpzmzozddtrp0(X0,X1,X2) <=> aDivisorOf0(X2,sdtpldt0(X0,smndt0(X1)))) | (sz00 = X2 | ~aInteger0(X2) | ~aInteger0(X1) | ~aInteger0(X0)))),
+  inference(ennf_transformation,[],[f19])).
+fof(f19,axiom,(
+  ! [X0,X1,X2] : ((sz00 != X2 & aInteger0(X2) & aInteger0(X1) & aInteger0(X0)) => (sdteqdtlpzmzozddtrp0(X0,X1,X2) <=> aDivisorOf0(X2,sdtpldt0(X0,smndt0(X1)))))),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f364,plain,(
+  aDivisorOf0(xq,sdtpldt0(xb,smndt0(xa))) | ~spl1_3),
+  inference(subsumption_resolution,[],[f363,f94])).
+fof(f363,plain,(
+  aDivisorOf0(xq,sdtpldt0(xb,smndt0(xa))) | ~aInteger0(xq) | ~spl1_3),
+  inference(subsumption_resolution,[],[f362,f95])).
+fof(f362,plain,(
+  aDivisorOf0(xq,sdtpldt0(xb,smndt0(xa))) | sz00 = xq | ~aInteger0(xq) | ~spl1_3),
+  inference(subsumption_resolution,[],[f311,f219])).
+fof(f219,plain,(
+  aInteger0(smndt0(xn)) | ~spl1_3),
+  inference(avatar_component_clause,[],[f218])).
+fof(f218,plain,(
+  spl1_3 <=> aInteger0(smndt0(xn))),
+  introduced(avatar_definition,[new_symbols(naming,[spl1_3])])).
+fof(f311,plain,(
+  aDivisorOf0(xq,sdtpldt0(xb,smndt0(xa))) | ~aInteger0(smndt0(xn)) | sz00 = xq | ~aInteger0(xq)),
+  inference(superposition,[],[f103,f99])).
+fof(f99,plain,(
+  sdtasdt0(xq,smndt0(xn)) = sdtpldt0(xb,smndt0(xa))),
+  inference(cnf_transformation,[],[f24])).
+fof(f24,axiom,(
+  sdtasdt0(xq,smndt0(xn)) = sdtpldt0(xb,smndt0(xa))),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f103,plain,(
+  ( ! [X2,X1] : (aDivisorOf0(X1,sdtasdt0(X1,X2)) | ~aInteger0(X2) | sz00 = X1 | ~aInteger0(X1)) )),
+  inference(subsumption_resolution,[],[f101,f66])).
+fof(f66,plain,(
+  ( ! [X0,X1] : (aInteger0(sdtasdt0(X0,X1)) | ~aInteger0(X1) | ~aInteger0(X0)) )),
+  inference(cnf_transformation,[],[f33])).
+fof(f33,plain,(
+  ! [X0,X1] : (aInteger0(sdtasdt0(X0,X1)) | ~aInteger0(X1) | ~aInteger0(X0))),
+  inference(flattening,[],[f32])).
+fof(f32,plain,(
+  ! [X0,X1] : (aInteger0(sdtasdt0(X0,X1)) | (~aInteger0(X1) | ~aInteger0(X0)))),
+  inference(ennf_transformation,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X1] : ((aInteger0(X1) & aInteger0(X0)) => aInteger0(sdtasdt0(X0,X1)))),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f101,plain,(
+  ( ! [X2,X1] : (aDivisorOf0(X1,sdtasdt0(X1,X2)) | ~aInteger0(X2) | sz00 = X1 | ~aInteger0(X1) | ~aInteger0(sdtasdt0(X1,X2))) )),
+  inference(equality_resolution,[],[f88])).
+fof(f88,plain,(
+  ( ! [X2,X0,X1] : (aDivisorOf0(X1,X0) | sdtasdt0(X1,X2) != X0 | ~aInteger0(X2) | sz00 = X1 | ~aInteger0(X1) | ~aInteger0(X0)) )),
+  inference(cnf_transformation,[],[f60])).
+fof(f60,plain,(
+  ! [X0] : (! [X1] : ((aDivisorOf0(X1,X0) | ! [X2] : (sdtasdt0(X1,X2) != X0 | ~aInteger0(X2)) | sz00 = X1 | ~aInteger0(X1)) & (((sdtasdt0(X1,sK0(X0,X1)) = X0 & aInteger0(sK0(X0,X1))) & sz00 != X1 & aInteger0(X1)) | ~aDivisorOf0(X1,X0))) | ~aInteger0(X0))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f58,f59])).
+fof(f59,plain,(
+  ! [X1,X0] : (? [X3] : (sdtasdt0(X1,X3) = X0 & aInteger0(X3)) => (sdtasdt0(X1,sK0(X0,X1)) = X0 & aInteger0(sK0(X0,X1))))),
+  introduced(choice_axiom,[])).
+fof(f58,plain,(
+  ! [X0] : (! [X1] : ((aDivisorOf0(X1,X0) | ! [X2] : (sdtasdt0(X1,X2) != X0 | ~aInteger0(X2)) | sz00 = X1 | ~aInteger0(X1)) & ((? [X3] : (sdtasdt0(X1,X3) = X0 & aInteger0(X3)) & sz00 != X1 & aInteger0(X1)) | ~aDivisorOf0(X1,X0))) | ~aInteger0(X0))),
+  inference(rectify,[],[f57])).
+fof(f57,plain,(
+  ! [X0] : (! [X1] : ((aDivisorOf0(X1,X0) | ! [X2] : (sdtasdt0(X1,X2) != X0 | ~aInteger0(X2)) | sz00 = X1 | ~aInteger0(X1)) & ((? [X2] : (sdtasdt0(X1,X2) = X0 & aInteger0(X2)) & sz00 != X1 & aInteger0(X1)) | ~aDivisorOf0(X1,X0))) | ~aInteger0(X0))),
+  inference(flattening,[],[f56])).
+fof(f56,plain,(
+  ! [X0] : (! [X1] : ((aDivisorOf0(X1,X0) | (! [X2] : (sdtasdt0(X1,X2) != X0 | ~aInteger0(X2)) | sz00 = X1 | ~aInteger0(X1))) & ((? [X2] : (sdtasdt0(X1,X2) = X0 & aInteger0(X2)) & sz00 != X1 & aInteger0(X1)) | ~aDivisorOf0(X1,X0))) | ~aInteger0(X0))),
+  inference(nnf_transformation,[],[f51])).
+fof(f51,plain,(
+  ! [X0] : (! [X1] : (aDivisorOf0(X1,X0) <=> (? [X2] : (sdtasdt0(X1,X2) = X0 & aInteger0(X2)) & sz00 != X1 & aInteger0(X1))) | ~aInteger0(X0))),
+  inference(ennf_transformation,[],[f18])).
+fof(f18,axiom,(
+  ! [X0] : (aInteger0(X0) => ! [X1] : (aDivisorOf0(X1,X0) <=> (? [X2] : (sdtasdt0(X1,X2) = X0 & aInteger0(X2)) & sz00 != X1 & aInteger0(X1))))),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f228,plain,(
+  spl1_3),
+  inference(avatar_contradiction_clause,[],[f227])).
+fof(f227,plain,(
+  $false | spl1_3),
+  inference(subsumption_resolution,[],[f226,f97])).
+fof(f97,plain,(
+  aInteger0(xn)),
+  inference(cnf_transformation,[],[f23])).
+fof(f23,axiom,(
+  sdtasdt0(xq,xn) = sdtpldt0(xa,smndt0(xb)) & aInteger0(xn)),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f226,plain,(
+  ~aInteger0(xn) | spl1_3),
+  inference(resolution,[],[f220,f64])).
+fof(f64,plain,(
+  ( ! [X0] : (aInteger0(smndt0(X0)) | ~aInteger0(X0)) )),
+  inference(cnf_transformation,[],[f29])).
+fof(f29,plain,(
+  ! [X0] : (aInteger0(smndt0(X0)) | ~aInteger0(X0))),
+  inference(ennf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0] : (aInteger0(X0) => aInteger0(smndt0(X0)))),
+  file('./p/NUM427+1.tptp',unknown)).
+fof(f220,plain,(
+  ~aInteger0(smndt0(xn)) | spl1_3),
+  inference(avatar_component_clause,[],[f218])).
+% SZS output end Proof for NUM427+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5500
+% Time elapsed: 0.011 s
+% ------------------------------
+% ------------------------------

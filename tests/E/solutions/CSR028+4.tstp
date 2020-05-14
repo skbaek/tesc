@@ -1,0 +1,117 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_44197, plain, (mtvisible(c_basekb))).
+#
+#cnf(i_0_43875, plain, (mtvisible(c_corecyclmt))).
+#
+#cnf(i_0_43874, plain, (mtvisible(c_logicaltruthmt))).
+#
+#cnf(i_0_44217, negated_conjecture, (~individual(c_tptptptpcol_16_25985))).
+#
+#cnf(i_0_43729, plain, (mtvisible(c_corecyclimplementationmt))).
+#
+#cnf(i_0_44216, plain, (mtvisible(c_universalvocabularymt))).
+#
+#cnf(i_0_44218, negated_conjecture, (mtvisible(c_tptp_member2089_mt))).
+#
+#cnf(i_0_1544, plain, (~spatiallydisjointobjecttype(c_vulnerabletoactivitymonitoring))).
+#
+#cnf(i_0_38943, plain, (mtvisible(c_universalvocabularyimplementationmt))).
+#
+#cnf(i_0_37687, plain, (mtvisible(c_logicaltruthimplementationmt))).
+#
+#cnf(i_0_17597, plain, (individual(c_georegion_l3_x4_y13))).
+#
+#cnf(i_0_22618, plain, (~spatiallydisjointobjecttype(c_closedlinearobject))).
+#
+#cnf(i_0_93, plain, (individual(c_georegion_l4_x52_y60))).
+#
+#cnf(i_0_149, plain, (individual(c_georegion_l4_x45_y0))).
+#
+#cnf(i_0_320, plain, (individual(c_georegion_l3_x17_y24))).
+#
+#cnf(i_0_43768, plain, (~partiallyoverlappingspaceregions(X1,X1))).
+#
+#cnf(i_0_367, plain, (individual(c_tptpinternational1924spheroid_8))).
+#
+#cnf(i_0_522, plain, (individual(c_tptpnmobfnnapkin_4))).
+#
+#cnf(i_0_21219, plain, (individual(c_tptpnavypersonnel_3))).
+#
+#cnf(i_0_43085, plain, (~borderson(X1,X1))).
+#
+#cnf(i_0_794, plain, (individual(c_tptptptpcol_16_28787))).
+#
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(query178, conjecture, (mtvisible(c_tptp_member2089_mt)=>individual(c_tptptptpcol_16_25985)), file('./p/CSR028+4.tptp', query178)).
+fof(ax3_20281, axiom, individual(c_tptptptpcol_16_25985), file('./p/CSR028+4.tptp', ax3_20281)).
+fof(c_0_2, negated_conjecture, ~((mtvisible(c_tptp_member2089_mt)=>individual(c_tptptptpcol_16_25985))), inference(assume_negation,[status(cth)],[query178])).
+fof(c_0_3, negated_conjecture, (mtvisible(c_tptp_member2089_mt)&~individual(c_tptptptpcol_16_25985)), inference(fof_nnf,[status(thm)],[c_0_2])).
+cnf(c_0_4, plain, (individual(c_tptptptpcol_16_25985)), inference(split_conjunct,[status(thm)],[ax3_20281])).
+cnf(c_0_5, negated_conjecture, (~individual(c_tptptptpcol_16_25985)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_6, plain, ($false), inference(sr,[status(thm)],[c_0_4, c_0_5]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 7
+# Proof object clause steps            : 3
+# Proof object formula steps           : 4
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 1
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 2
+# Proof object initial formulas used   : 2
+# Proof object generating inferences   : 0
+# Proof object simplifying inferences  : 1
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 44217
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 44218
+# Removed in clause preprocessing      : 3
+# Initial clauses in saturation        : 44215
+# Processed clauses                    : 22
+# ...of these trivial                  : 0
+# ...subsumed                          : 0
+# ...remaining for further processing  : 21
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 0
+# ...of the previous two non-trivial   : 0
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 0
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 21
+#    Positive orientable unit clauses  : 16
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 5
+#    Non-unit-clauses                  : 0
+# Current number of unprocessed clauses: 44193
+# ...number of literals in the above   : 65426
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 0
+# Rec. Clause-clause subsumption calls : 0
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 6
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 0
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 1846069

@@ -1,0 +1,117 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for CAT010-1
+% SZS output start Proof for CAT010-1
+fof(f8662,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f8490,f8657])).
+fof(f8657,plain,(
+  ~spl0_33),
+  inference(avatar_contradiction_clause,[],[f8656])).
+fof(f8656,plain,(
+  $false | ~spl0_33),
+  inference(subsumption_resolution,[],[f8655,f20])).
+fof(f20,axiom,(
+  codomain(compose(b,a)) != codomain(b)),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f8655,plain,(
+  codomain(compose(b,a)) = codomain(b) | ~spl0_33),
+  inference(forward_demodulation,[],[f8654,f8198])).
+fof(f8198,plain,(
+  b = compose(codomain(compose(b,a)),b)),
+  inference(resolution,[],[f737,f19])).
+fof(f19,axiom,(
+  defined(b,a)),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f737,plain,(
+  ( ! [X24,X23] : (~defined(X23,X24) | compose(codomain(compose(X23,X24)),X23) = X23) )),
+  inference(subsumption_resolution,[],[f728,f11])).
+fof(f11,axiom,(
+  ( ! [X0] : (identity_map(codomain(X0))) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f728,plain,(
+  ( ! [X24,X23] : (~identity_map(codomain(compose(X23,X24))) | compose(codomain(compose(X23,X24)),X23) = X23 | ~defined(X23,X24)) )),
+  inference(resolution,[],[f154,f198])).
+fof(f198,plain,(
+  ( ! [X4,X3] : (defined(codomain(compose(X3,X4)),X3) | ~defined(X3,X4)) )),
+  inference(resolution,[],[f34,f13])).
+fof(f13,axiom,(
+  ( ! [X0] : (defined(codomain(X0),X0)) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f34,plain,(
+  ( ! [X8,X7,X9] : (~defined(X7,compose(X8,X9)) | defined(X7,X8) | ~defined(X8,X9)) )),
+  inference(resolution,[],[f6,f1])).
+fof(f1,axiom,(
+  ( ! [X0,X1] : (product(X0,X1,compose(X0,X1)) | ~defined(X0,X1)) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f6,axiom,(
+  ( ! [X4,X2,X0,X1] : (~product(X1,X2,X4) | ~defined(X0,X4) | defined(X0,X1)) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f154,plain,(
+  ( ! [X6,X7] : (~defined(X6,X7) | ~identity_map(X6) | compose(X6,X7) = X7) )),
+  inference(resolution,[],[f56,f16])).
+fof(f16,axiom,(
+  ( ! [X0,X1] : (product(X0,X1,X1) | ~identity_map(X0) | ~defined(X0,X1)) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f56,plain,(
+  ( ! [X8,X7,X9] : (~product(X8,X9,X7) | compose(X8,X9) = X7) )),
+  inference(subsumption_resolution,[],[f53,f2])).
+fof(f2,axiom,(
+  ( ! [X2,X0,X1] : (~product(X0,X1,X2) | defined(X0,X1)) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f53,plain,(
+  ( ! [X8,X7,X9] : (compose(X8,X9) = X7 | ~product(X8,X9,X7) | ~defined(X8,X9)) )),
+  inference(resolution,[],[f18,f1])).
+fof(f18,axiom,(
+  ( ! [X6,X2,X0,X1] : (~product(X0,X1,X6) | X2 = X6 | ~product(X0,X1,X2)) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f8654,plain,(
+  codomain(compose(b,a)) = codomain(compose(codomain(compose(b,a)),b)) | ~spl0_33),
+  inference(subsumption_resolution,[],[f8642,f11])).
+fof(f8642,plain,(
+  codomain(compose(b,a)) = codomain(compose(codomain(compose(b,a)),b)) | ~identity_map(codomain(compose(b,a))) | ~spl0_33),
+  inference(resolution,[],[f8408,f708])).
+fof(f708,plain,(
+  ( ! [X24,X23] : (~defined(X23,X24) | codomain(compose(X23,X24)) = X23 | ~identity_map(X23)) )),
+  inference(subsumption_resolution,[],[f694,f11])).
+fof(f694,plain,(
+  ( ! [X24,X23] : (~identity_map(X23) | ~identity_map(codomain(compose(X23,X24))) | codomain(compose(X23,X24)) = X23 | ~defined(X23,X24)) )),
+  inference(resolution,[],[f140,f198])).
+fof(f140,plain,(
+  ( ! [X6,X7] : (~defined(X7,X6) | ~identity_map(X6) | ~identity_map(X7) | X6 = X7) )),
+  inference(resolution,[],[f55,f16])).
+fof(f55,plain,(
+  ( ! [X4,X2,X3] : (~product(X3,X4,X2) | X2 = X3 | ~identity_map(X4)) )),
+  inference(subsumption_resolution,[],[f51,f2])).
+fof(f51,plain,(
+  ( ! [X4,X2,X3] : (X2 = X3 | ~product(X3,X4,X2) | ~identity_map(X4) | ~defined(X3,X4)) )),
+  inference(resolution,[],[f18,f17])).
+fof(f17,axiom,(
+  ( ! [X0,X1] : (product(X0,X1,X0) | ~identity_map(X1) | ~defined(X0,X1)) )),
+  file('./p/CAT010-1.tptp',unknown)).
+fof(f8408,plain,(
+  defined(codomain(compose(b,a)),b) | ~spl0_33),
+  inference(avatar_component_clause,[],[f8407])).
+fof(f8407,plain,(
+  spl0_33 <=> defined(codomain(compose(b,a)),b)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_33])])).
+fof(f8490,plain,(
+  spl0_33),
+  inference(avatar_contradiction_clause,[],[f8489])).
+fof(f8489,plain,(
+  $false | spl0_33),
+  inference(subsumption_resolution,[],[f8486,f19])).
+fof(f8486,plain,(
+  ~defined(b,a) | spl0_33),
+  inference(resolution,[],[f8409,f198])).
+fof(f8409,plain,(
+  ~defined(codomain(compose(b,a)),b) | spl0_33),
+  inference(avatar_component_clause,[],[f8407])).
+% SZS output end Proof for CAT010-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 8187
+% Time elapsed: 0.241 s
+% ------------------------------
+% ------------------------------

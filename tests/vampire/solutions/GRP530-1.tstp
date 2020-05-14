@@ -1,0 +1,69 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP530-1
+% SZS output start Proof for GRP530-1
+fof(f250,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f245,f30])).
+fof(f30,plain,(
+  ( ! [X0,X1] : (multiply(inverse(divide(X0,X0)),X1) = X1) )),
+  inference(superposition,[],[f29,f3])).
+fof(f3,axiom,(
+  ( ! [X0,X1] : (inverse(X0) = divide(divide(X1,X1),X0)) )),
+  file('./p/GRP530-1.tptp',unknown)).
+fof(f29,plain,(
+  ( ! [X0,X1] : (multiply(divide(X0,X0),X1) = X1) )),
+  inference(backward_demodulation,[],[f26,f7])).
+fof(f7,plain,(
+  ( ! [X0,X1] : (inverse(inverse(X1)) = multiply(divide(X0,X0),X1)) )),
+  inference(superposition,[],[f5,f3])).
+fof(f5,plain,(
+  ( ! [X0,X1] : (multiply(X0,X1) = divide(X0,inverse(X1))) )),
+  inference(backward_demodulation,[],[f3,f2])).
+fof(f2,axiom,(
+  ( ! [X2,X0,X1] : (multiply(X0,X1) = divide(X0,divide(divide(X2,X2),X1))) )),
+  file('./p/GRP530-1.tptp',unknown)).
+fof(f26,plain,(
+  ( ! [X0] : (inverse(inverse(X0)) = X0) )),
+  inference(superposition,[],[f18,f3])).
+fof(f18,plain,(
+  ( ! [X4,X3] : (inverse(divide(divide(X3,X4),X3)) = X4) )),
+  inference(superposition,[],[f1,f3])).
+fof(f1,axiom,(
+  ( ! [X2,X0,X1] : (divide(divide(X0,divide(X1,X2)),divide(X0,X1)) = X2) )),
+  file('./p/GRP530-1.tptp',unknown)).
+fof(f245,plain,(
+  a2 != multiply(inverse(divide(b2,b2)),a2)),
+  inference(backward_demodulation,[],[f225,f4])).
+fof(f4,axiom,(
+  a2 != multiply(multiply(inverse(b2),b2),a2)),
+  file('./p/GRP530-1.tptp',unknown)).
+fof(f225,plain,(
+  ( ! [X4,X3] : (inverse(divide(X3,X4)) = multiply(inverse(X3),X4)) )),
+  inference(superposition,[],[f42,f21])).
+fof(f21,plain,(
+  ( ! [X4,X5] : (divide(inverse(divide(X4,X5)),inverse(X4)) = X5) )),
+  inference(forward_demodulation,[],[f14,f3])).
+fof(f14,plain,(
+  ( ! [X4,X5,X3] : (divide(inverse(divide(X4,X5)),divide(divide(X3,X3),X4)) = X5) )),
+  inference(superposition,[],[f1,f3])).
+fof(f42,plain,(
+  ( ! [X4,X5] : (multiply(X4,divide(X5,X4)) = X5) )),
+  inference(superposition,[],[f34,f5])).
+fof(f34,plain,(
+  ( ! [X2,X1] : (divide(X2,inverse(divide(X1,X2))) = X1) )),
+  inference(backward_demodulation,[],[f32,f13])).
+fof(f13,plain,(
+  ( ! [X2,X0,X1] : (divide(X2,divide(divide(X0,divide(X1,X2)),X0)) = X1) )),
+  inference(superposition,[],[f1,f1])).
+fof(f32,plain,(
+  ( ! [X0,X1] : (inverse(X1) = divide(divide(X0,X1),X0)) )),
+  inference(superposition,[],[f26,f18])).
+% SZS output end Proof for GRP530-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5117
+% Time elapsed: 0.003 s
+% ------------------------------
+% ------------------------------

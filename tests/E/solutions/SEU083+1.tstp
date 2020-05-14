@@ -1,0 +1,396 @@
+# Initializing proof state
+# Scanning for AC axioms
+# set_union2 is commutative
+# AC handling enabled
+#
+#cnf(i_0_4, plain, (empty(empty_set))).
+###
+#cnf(i_0_30, plain, (~empty(positive_rationals))).
+##
+#cnf(i_0_78, plain, (empty(esk6_0))).
+#
+#cnf(i_0_98, plain, (empty(esk12_0))).
+#
+#cnf(i_0_61, plain, (~empty(esk2_0))).
+#
+#cnf(i_0_117, plain, (empty(esk17_0))).
+#
+#cnf(i_0_125, plain, (empty(esk19_0))).
+#
+#cnf(i_0_140, plain, (empty(esk24_0))).
+#
+#cnf(i_0_100, plain, (~empty(esk13_0))).
+#
+#cnf(i_0_3, plain, (relation(empty_set))).
+###
+#cnf(i_0_107, plain, (~empty(esk15_0))).
+#
+#cnf(i_0_76, plain, (relation(esk5_0))).
+#
+#cnf(i_0_79, plain, (relation(esk6_0))).
+#
+#cnf(i_0_82, plain, (relation(esk7_0))).
+#
+#cnf(i_0_111, plain, (~empty(esk16_0))).
+#
+#cnf(i_0_85, plain, (relation(esk8_0))).
+#
+#cnf(i_0_88, plain, (relation(esk9_0))).
+#
+#cnf(i_0_96, plain, (relation(esk11_0))).
+#
+#cnf(i_0_132, plain, (~empty(esk20_0))).
+#
+#cnf(i_0_97, plain, (relation(esk12_0))).
+#
+#cnf(i_0_99, plain, (relation(esk13_0))).
+#
+#cnf(i_0_102, plain, (relation(esk14_0))).
+#
+#cnf(i_0_141, plain, (~empty(esk25_0))).
+#
+#cnf(i_0_128, plain, (relation(esk19_0))).
+#
+#cnf(i_0_135, plain, (relation(esk21_0))).
+#
+#cnf(i_0_144, plain, (relation(esk26_0))).
+#
+#cnf(i_0_48, plain, (~empty(powerset(X1)))).
+#
+#cnf(i_0_5, plain, (relation_empty_yielding(empty_set))).
+##
+#cnf(i_0_84, plain, (relation_empty_yielding(esk8_0))).
+#
+#cnf(i_0_55, plain, (~empty(X2)|~in(X1,X2))).
+#
+#cnf(i_0_101, plain, (relation_empty_yielding(esk14_0))).
+#
+#cnf(i_0_13, plain, (function(empty_set))).
+#
+#cnf(i_0_75, plain, (function(esk5_0))).
+#
+#cnf(i_0_145, negated_conjecture, (~finite(set_union2(esk27_0,esk28_0)))).
+#
+#cnf(i_0_77, plain, (function(esk6_0))).
+#
+#cnf(i_0_81, plain, (function(esk7_0))).
+#
+#cnf(i_0_83, plain, (function(esk8_0))).
+#
+#cnf(i_0_2, plain, (~in(X2,X1)|~in(X1,X2))).
+#
+#cnf(i_0_86, plain, (function(esk9_0))).
+#
+#cnf(i_0_95, plain, (function(esk11_0))).
+#
+#cnf(i_0_127, plain, (function(esk19_0))).
+#
+#cnf(i_0_20, plain, (~element(X2,powerset(X3))|~empty(X3)|~in(X1,X2))).
+#
+#cnf(i_0_134, plain, (function(esk21_0))).
+#
+#cnf(i_0_143, plain, (function(esk26_0))).
+#
+#cnf(i_0_12, plain, (one_to_one(empty_set))).
+#
+#cnf(i_0_80, plain, (one_to_one(esk7_0))).
+#
+#cnf(i_0_126, plain, (one_to_one(esk19_0))).
+#
+#cnf(i_0_10, plain, (epsilon_transitive(empty_set))).
+#
+#cnf(i_0_92, plain, (epsilon_transitive(esk10_0))).
+#
+#cnf(i_0_106, plain, (epsilon_transitive(esk15_0))).
+#
+#cnf(i_0_110, plain, (epsilon_transitive(esk16_0))).
+#
+#cnf(i_0_116, plain, (epsilon_transitive(esk17_0))).
+#
+#cnf(i_0_121, plain, (epsilon_transitive(esk18_0))).
+#
+#cnf(i_0_124, plain, (epsilon_transitive(esk19_0))).
+#
+#cnf(i_0_131, plain, (epsilon_transitive(esk20_0))).
+#
+#cnf(i_0_9, plain, (epsilon_connected(empty_set))).
+#
+#cnf(i_0_91, plain, (epsilon_connected(esk10_0))).
+#
+#cnf(i_0_105, plain, (epsilon_connected(esk15_0))).
+#
+#cnf(i_0_109, plain, (epsilon_connected(esk16_0))).
+#
+#cnf(i_0_115, plain, (epsilon_connected(esk17_0))).
+#
+#cnf(i_0_120, plain, (epsilon_connected(esk18_0))).
+#
+#cnf(i_0_123, plain, (epsilon_connected(esk19_0))).
+#
+#cnf(i_0_130, plain, (epsilon_connected(esk20_0))).
+#
+#cnf(i_0_8, plain, (ordinal(empty_set))).
+#
+#cnf(i_0_90, plain, (ordinal(esk10_0))).
+#
+#cnf(i_0_104, plain, (ordinal(esk15_0))).
+#
+#cnf(i_0_108, plain, (ordinal(esk16_0))).
+#
+#cnf(i_0_114, plain, (ordinal(esk17_0))).
+#
+#cnf(i_0_119, plain, (ordinal(esk18_0))).
+#
+#cnf(i_0_122, plain, (ordinal(esk19_0))).
+#
+#cnf(i_0_129, plain, (ordinal(esk20_0))).
+#
+#cnf(i_0_60, plain, (finite(esk2_0))).
+#
+#cnf(i_0_147, negated_conjecture, (finite(esk27_0))).
+#
+#cnf(i_0_146, negated_conjecture, (finite(esk28_0))).
+#
+#cnf(i_0_103, plain, (natural(esk15_0))).
+#
+#cnf(i_0_113, plain, (natural(esk17_0))).
+#
+#cnf(i_0_87, plain, (relation_non_empty(esk9_0))).
+#
+#cnf(i_0_89, plain, (being_limit_ordinal(esk10_0))).
+#
+#cnf(i_0_94, plain, (transfinite_sequence(esk11_0))).
+#
+#cnf(i_0_133, plain, (transfinite_sequence(esk21_0))).
+#
+#cnf(i_0_93, plain, (ordinal_yielding(esk11_0))).
+#
+#cnf(i_0_142, plain, (function_yielding(esk26_0))).
+#
+#cnf(i_0_1, plain, (subset(X1,X1))).
+#
+#cnf(i_0_70, plain, (empty(esk3_1(X1)))).
+#
+#cnf(i_0_138, plain, (empty(esk23_1(X1)))).
+#
+#cnf(i_0_69, plain, (relation(esk3_1(X1)))).
+#
+#cnf(i_0_68, plain, (function(esk3_1(X1)))).
+#
+#cnf(i_0_67, plain, (one_to_one(esk3_1(X1)))).
+#
+#cnf(i_0_66, plain, (epsilon_transitive(esk3_1(X1)))).
+#
+#cnf(i_0_65, plain, (epsilon_connected(esk3_1(X1)))).
+#
+#cnf(i_0_64, plain, (ordinal(esk3_1(X1)))).
+#
+#cnf(i_0_62, plain, (finite(esk3_1(X1)))).
+#
+#cnf(i_0_63, plain, (natural(esk3_1(X1)))).
+#
+#cnf(i_0_29, plain, (relation(X1)|~empty(X1))).
+#
+#cnf(i_0_43, plain, (epsilon_transitive(X1)|~ordinal(X1))).
+#
+#cnf(i_0_42, plain, (epsilon_connected(X1)|~ordinal(X1))).
+#
+#cnf(i_0_24, plain, (function(X1)|~empty(X1))).
+#
+#cnf(i_0_47, plain, (epsilon_transitive(X1)|~empty(X1))).
+#
+#cnf(i_0_46, plain, (epsilon_connected(X1)|~empty(X1))).
+#
+#cnf(i_0_45, plain, (ordinal(X1)|~empty(X1))).
+#
+#cnf(i_0_22, plain, (finite(X1)|~empty(X1))).
+#
+#cnf(i_0_169, negated_conjecture, (~empty(set_union2(esk27_0,esk28_0)))).
+###
+#cnf(i_0_112, plain, (element(esk16_0,positive_rationals))).
+#
+#cnf(i_0_118, plain, (element(esk17_0,positive_rationals))).
+#
+#cnf(i_0_58, plain, (set_union2(X1,X1)=X1)).
+#
+#cnf(i_0_21, plain, (element(esk1_1(X1),X1))).
+#
+#cnf(i_0_54, plain, (X1=empty_set|~empty(X1))).
+#
+#cnf(i_0_170, plain, (~empty(X1)|~in(X2,esk1_1(powerset(X1))))).
+#
+#cnf(i_0_171, plain, (esk24_0=empty_set)).
+#
+#cnf(i_0_173, plain, (esk19_0=empty_set)).
+#
+#cnf(i_0_174, plain, (esk17_0=empty_set)).
+#
+#cnf(i_0_113, plain, (natural(empty_set))).
+#
+#cnf(i_0_175, plain, (esk12_0=empty_set)).
+#
+#cnf(i_0_176, plain, (esk6_0=empty_set)).
+#
+#cnf(i_0_172, plain, (esk23_1(X1)=empty_set)).
+#
+#cnf(i_0_177, plain, (esk3_1(X1)=empty_set)).
+#
+#cnf(i_0_62, plain, (finite(empty_set))).
+#
+#cnf(i_0_118, plain, (element(empty_set,positive_rationals))).
+#
+#cnf(i_0_17, plain, (set_union2(X1,empty_set)=X1)).
+#
+#cnf(i_0_18, plain, (element(X1,X2)|~in(X1,X2))).
+#
+#cnf(i_0_73, plain, (empty(X1)|~empty(esk4_1(X1)))).
+#
+#cnf(i_0_136, plain, (empty(X1)|~empty(esk22_1(X1)))).
+#
+#cnf(i_0_72, plain, (finite(esk4_1(X1))|empty(X1))).
+#
+#cnf(i_0_71, plain, (element(empty_set,powerset(X1)))).
+###
+#cnf(i_0_44, plain, (ordinal(X1)|~epsilon_connected(X1)|~epsilon_transitive(X1))).
+#
+#cnf(i_0_178, plain, (~empty(X1)|~in(X2,empty_set))).
+#
+#cnf(i_0_34, plain, (natural(X1)|~ordinal(X1)|~empty(X1))).
+##
+#cnf(i_0_50, plain, (empty(X1)|~empty(set_union2(X2,X1)))).
+#
+#cnf(i_0_49, plain, (empty(X1)|~empty(set_union2(X1,X2)))).
+#
+#cnf(i_0_56, plain, (X1=X2|~empty(X2)|~empty(X1))).
+##############
+#cnf(i_0_33, plain, (epsilon_transitive(X1)|~element(X1,X2)|~ordinal(X2))).
+##
+#cnf(i_0_222, plain, (epsilon_transitive(esk1_1(X1))|~ordinal(X1))).
+#
+#cnf(i_0_32, plain, (epsilon_connected(X1)|~element(X1,X2)|~ordinal(X2))).
+#
+#cnf(i_0_228, plain, (epsilon_connected(esk1_1(X1))|~ordinal(X1))).
+##
+#cnf(i_0_31, plain, (ordinal(X1)|~element(X1,X2)|~ordinal(X2))).
+#
+#cnf(i_0_234, plain, (ordinal(esk1_1(X1))|~ordinal(X1))).
+####
+#cnf(i_0_53, plain, (subset(X1,X2)|~element(X1,powerset(X2)))).
+#
+#cnf(i_0_244, plain, (subset(empty_set,X1))).
+##
+#cnf(i_0_243, plain, (subset(esk1_1(powerset(X1)),X1))).
+#
+#cnf(i_0_52, plain, (element(X1,powerset(X2))|~subset(X1,X2))).
+#
+#cnf(i_0_57, plain, (set_union2(X1,X2)=set_union2(X2,X1))).
+#
+#cnf(i_0_253, plain, (~empty(X2)|~in(X3,X1)|~subset(X1,X2))).
+#
+#cnf(i_0_256, plain, (set_union2(empty_set,X1)=X1)).
+##########
+#cnf(i_0_38, plain, (natural(X1)|~element(X1,positive_rationals)|~ordinal(X1))).
+##
+#cnf(i_0_271, plain, (natural(esk16_0))).
+######
+#cnf(i_0_51, plain, (empty(X2)|in(X1,X2)|~element(X1,X2))).
+##
+#cnf(i_0_277, plain, (empty(X2)|~element(X1,X2)|~in(X2,X1))).
+##
+#cnf(i_0_25, plain, (one_to_one(X1)|~function(X1)|~relation(X1)|~empty(X1))).
+##
+#cnf(i_0_23, plain, (finite(X2)|~finite(X1)|~element(X2,powerset(X1)))).
+#
+#cnf(i_0_287, plain, (finite(X1)|~finite(X2)|~subset(X1,X2))).
+#
+#cnf(i_0_285, plain, (finite(esk1_1(powerset(X1)))|~finite(X1))).
+###
+#cnf(i_0_74, plain, (element(esk4_1(X1),powerset(X1))|empty(X1))).
+#
+#cnf(i_0_299, plain, (empty(X1)|subset(esk4_1(X1),X1))).
+####
+#cnf(i_0_137, plain, (element(esk22_1(X1),powerset(X1))|empty(X1))).
+#
+#cnf(i_0_313, plain, (empty(X1)|subset(esk22_1(X1),X1))).
+#
+#cnf(i_0_312, plain, (finite(esk22_1(X1))|empty(X1)|~finite(X1))).
+###
+#cnf(i_0_28, plain, (relation(set_union2(X1,X2))|~relation(X2)|~relation(X1))).
+####
+#cnf(i_0_59, plain, (finite(set_union2(X1,X2))|~finite(X2)|~finite(X1))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(t14_finset_1, conjecture, ![X1, X2]:((finite(X1)&finite(X2))=>finite(set_union2(X1,X2))), file('./p/SEU083+1.tptp', t14_finset_1)).
+fof(fc9_finset_1, axiom, ![X1, X2]:((finite(X1)&finite(X2))=>finite(set_union2(X1,X2))), file('./p/SEU083+1.tptp', fc9_finset_1)).
+fof(c_0_2, negated_conjecture, ~(![X1, X2]:((finite(X1)&finite(X2))=>finite(set_union2(X1,X2)))), inference(assume_negation,[status(cth)],[t14_finset_1])).
+fof(c_0_3, negated_conjecture, ((finite(esk27_0)&finite(esk28_0))&~finite(set_union2(esk27_0,esk28_0))), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_2])])])).
+fof(c_0_4, plain, ![X50, X51]:(~finite(X50)|~finite(X51)|finite(set_union2(X50,X51))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[fc9_finset_1])])).
+cnf(c_0_5, negated_conjecture, (~finite(set_union2(esk27_0,esk28_0))), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_6, plain, (finite(set_union2(X1,X2))|~finite(X1)|~finite(X2)), inference(split_conjunct,[status(thm)],[c_0_4])).
+cnf(c_0_7, negated_conjecture, (finite(esk28_0)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_8, negated_conjecture, (finite(esk27_0)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_9, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_5, c_0_6]), c_0_7]), c_0_8])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 10
+# Proof object clause steps            : 5
+# Proof object formula steps           : 5
+# Proof object conjectures             : 7
+# Proof object clause conjectures      : 4
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 4
+# Proof object initial formulas used   : 2
+# Proof object generating inferences   : 1
+# Proof object simplifying inferences  : 3
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 62
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 148
+# Removed in clause preprocessing      : 4
+# Initial clauses in saturation        : 144
+# Processed clauses                    : 216
+# ...of these trivial                  : 8
+# ...subsumed                          : 50
+# ...remaining for further processing  : 158
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 29
+# Generated clauses                    : 191
+# ...of the previous two non-trivial   : 132
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 191
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 129
+#    Positive orientable unit clauses  : 72
+#    Positive unorientable unit clauses: 1
+#    Negative unit clauses             : 10
+#    Non-unit-clauses                  : 46
+# Current number of unprocessed clauses: 60
+# ...number of literals in the above   : 222
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 29
+# Clause-clause subsumption calls (NU) : 310
+# Rec. Clause-clause subsumption calls : 229
+# Non-unit clause-clause subsumptions  : 40
+# Unit Clause-clause subsumption calls : 62
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 18
+# BW rewrite match successes           : 17
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 6106

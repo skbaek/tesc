@@ -1,0 +1,114 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for ANA015-2
+% SZS output start Proof for ANA015-2
+fof(f323,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f281,f309,f317])).
+fof(f317,plain,(
+  ~spl0_3),
+  inference(avatar_contradiction_clause,[],[f310])).
+fof(f310,plain,(
+  $false | ~spl0_3),
+  inference(resolution,[],[f280,f5])).
+fof(f5,axiom,(
+  ( ! [X4] : (c_lessequals(c_HOL_Oabs(v_g(X4),t_a),c_times(v_d,c_HOL_Oabs(v_f(X4),t_a),t_a),t_a)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f280,plain,(
+  ( ! [X0] : (~c_lessequals(c_HOL_Oabs(v_g(v_x(c_times(c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),X0,t_a))),t_a),c_times(X0,c_HOL_Oabs(v_f(v_x(c_times(c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),X0,t_a))),t_a),t_a),t_a)) ) | ~spl0_3),
+  inference(avatar_component_clause,[],[f279])).
+fof(f279,plain,(
+  spl0_3 <=> ! [X0] : ~c_lessequals(c_HOL_Oabs(v_g(v_x(c_times(c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),X0,t_a))),t_a),c_times(X0,c_HOL_Oabs(v_f(v_x(c_times(c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),X0,t_a))),t_a),t_a),t_a)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_3])])).
+fof(f309,plain,(
+  spl0_2),
+  inference(avatar_contradiction_clause,[],[f308])).
+fof(f308,plain,(
+  $false | spl0_2),
+  inference(subsumption_resolution,[],[f307,f17])).
+fof(f17,plain,(
+  class_OrderedGroup_Olordered__ab__group__abs(t_a)),
+  inference(resolution,[],[f11,f12])).
+fof(f12,axiom,(
+  class_Ring__and__Field_Oordered__field(t_a)),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f11,axiom,(
+  ( ! [X5] : (~class_Ring__and__Field_Oordered__field(X5) | class_OrderedGroup_Olordered__ab__group__abs(X5)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f307,plain,(
+  ~class_OrderedGroup_Olordered__ab__group__abs(t_a) | spl0_2),
+  inference(resolution,[],[f61,f1])).
+fof(f1,axiom,(
+  ( ! [X0,X1] : (c_lessequals(c_0,c_HOL_Oabs(X1,X0),X0) | ~class_OrderedGroup_Olordered__ab__group__abs(X0)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f61,plain,(
+  ~c_lessequals(c_0,c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),t_a) | spl0_2),
+  inference(avatar_component_clause,[],[f59])).
+fof(f59,plain,(
+  spl0_2 <=> c_lessequals(c_0,c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),t_a)),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f281,plain,(
+  spl0_3 | ~spl0_2),
+  inference(avatar_split_clause,[],[f264,f59,f279])).
+fof(f264,plain,(
+  ( ! [X0] : (~c_lessequals(c_0,c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),t_a) | ~c_lessequals(c_HOL_Oabs(v_g(v_x(c_times(c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),X0,t_a))),t_a),c_times(X0,c_HOL_Oabs(v_f(v_x(c_times(c_HOL_Oabs(c_HOL_Oinverse(v_c,t_a),t_a),X0,t_a))),t_a),t_a),t_a)) )),
+  inference(resolution,[],[f24,f32])).
+fof(f32,plain,(
+  ( ! [X6,X4,X5] : (c_lessequals(c_HOL_Oabs(c_times(X4,X5,t_a),t_a),c_times(c_HOL_Oabs(X4,t_a),X6,t_a),t_a) | ~c_lessequals(c_0,c_HOL_Oabs(X4,t_a),t_a) | ~c_lessequals(c_HOL_Oabs(X5,t_a),X6,t_a)) )),
+  inference(subsumption_resolution,[],[f27,f16])).
+fof(f16,plain,(
+  class_Ring__and__Field_Opordered__semiring(t_a)),
+  inference(resolution,[],[f10,f12])).
+fof(f10,axiom,(
+  ( ! [X5] : (~class_Ring__and__Field_Oordered__field(X5) | class_Ring__and__Field_Opordered__semiring(X5)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f27,plain,(
+  ( ! [X6,X4,X5] : (c_lessequals(c_HOL_Oabs(c_times(X4,X5,t_a),t_a),c_times(c_HOL_Oabs(X4,t_a),X6,t_a),t_a) | ~c_lessequals(c_0,c_HOL_Oabs(X4,t_a),t_a) | ~c_lessequals(c_HOL_Oabs(X5,t_a),X6,t_a) | ~class_Ring__and__Field_Opordered__semiring(t_a)) )),
+  inference(superposition,[],[f4,f22])).
+fof(f22,plain,(
+  ( ! [X0,X1] : (c_HOL_Oabs(c_times(X0,X1,t_a),t_a) = c_times(c_HOL_Oabs(X0,t_a),c_HOL_Oabs(X1,t_a),t_a)) )),
+  inference(resolution,[],[f3,f14])).
+fof(f14,plain,(
+  class_Ring__and__Field_Oordered__idom(t_a)),
+  inference(resolution,[],[f9,f12])).
+fof(f9,axiom,(
+  ( ! [X5] : (~class_Ring__and__Field_Oordered__field(X5) | class_Ring__and__Field_Oordered__idom(X5)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f3,axiom,(
+  ( ! [X2,X0,X1] : (~class_Ring__and__Field_Oordered__idom(X0) | c_HOL_Oabs(c_times(X1,X2,X0),X0) = c_times(c_HOL_Oabs(X1,X0),c_HOL_Oabs(X2,X0),X0)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X2,X0,X3,X1] : (c_lessequals(c_times(X3,X1,X0),c_times(X3,X2,X0),X0) | ~c_lessequals(c_0,X3,X0) | ~c_lessequals(X1,X2,X0) | ~class_Ring__and__Field_Opordered__semiring(X0)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f24,plain,(
+  ( ! [X0,X1] : (~c_lessequals(c_HOL_Oabs(c_times(c_HOL_Oinverse(v_c,t_a),v_g(v_x(c_times(X0,X1,t_a))),t_a),t_a),c_times(X0,c_times(X1,c_HOL_Oabs(v_f(v_x(c_times(X0,X1,t_a))),t_a),t_a),t_a),t_a)) )),
+  inference(superposition,[],[f6,f18])).
+fof(f18,plain,(
+  ( ! [X2,X0,X1] : (c_times(c_times(X0,X1,t_a),X2,t_a) = c_times(X0,c_times(X1,X2,t_a),t_a)) )),
+  inference(resolution,[],[f2,f15])).
+fof(f15,plain,(
+  class_OrderedGroup_Osemigroup__mult(t_a)),
+  inference(resolution,[],[f13,f7])).
+fof(f7,axiom,(
+  ( ! [X5] : (~class_Ring__and__Field_Ofield(X5) | class_OrderedGroup_Osemigroup__mult(X5)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f13,plain,(
+  class_Ring__and__Field_Ofield(t_a)),
+  inference(resolution,[],[f8,f12])).
+fof(f8,axiom,(
+  ( ! [X5] : (~class_Ring__and__Field_Oordered__field(X5) | class_Ring__and__Field_Ofield(X5)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f2,axiom,(
+  ( ! [X2,X0,X3,X1] : (~class_OrderedGroup_Osemigroup__mult(X0) | c_times(c_times(X1,X2,X0),X3,X0) = c_times(X1,c_times(X2,X3,X0),X0)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+fof(f6,axiom,(
+  ( ! [X4] : (~c_lessequals(c_HOL_Oabs(c_times(c_HOL_Oinverse(v_c,t_a),v_g(v_x(X4)),t_a),t_a),c_times(X4,c_HOL_Oabs(v_f(v_x(X4)),t_a),t_a),t_a)) )),
+  file('./p/ANA015-2.tptp',unknown)).
+% SZS output end Proof for ANA015-2
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 5373
+% Time elapsed: 0.012 s
+% ------------------------------
+% ------------------------------

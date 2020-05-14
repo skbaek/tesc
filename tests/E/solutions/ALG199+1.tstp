@@ -1,0 +1,284 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_516, plain, (op(e5,e5)=e1)).
+#
+#cnf(i_0_513, plain, (op(e5,e1)=e4)).
+#
+#cnf(i_0_196, plain, (op(op(op(e0,e0),e0),e0)=e0)).
+#
+#cnf(i_0_511, plain, (e1!=e0)).
+#
+#cnf(i_0_189, plain, (op(op(op(e0,e1),e0),e0)=e1)).
+#
+#cnf(i_0_182, plain, (op(op(op(e0,e2),e0),e0)=e2)).
+#
+#cnf(i_0_175, plain, (op(op(op(e0,e3),e0),e0)=e3)).
+#
+#cnf(i_0_510, plain, (e2!=e0)).
+#
+#cnf(i_0_168, plain, (op(op(op(e0,e4),e0),e0)=e4)).
+#
+#cnf(i_0_161, plain, (op(op(op(e0,e5),e0),e0)=e5)).
+#
+#cnf(i_0_154, plain, (op(op(op(e0,e6),e0),e0)=e6)).
+#
+#cnf(i_0_505, plain, (e2!=e1)).
+#
+#cnf(i_0_195, plain, (op(op(op(e1,e0),e1),e1)=e0)).
+#
+#cnf(i_0_188, plain, (op(op(op(e1,e1),e1),e1)=e1)).
+#
+#cnf(i_0_181, plain, (op(op(op(e1,e2),e1),e1)=e2)).
+#
+#cnf(i_0_509, plain, (e3!=e0)).
+#
+#cnf(i_0_174, plain, (op(op(op(e1,e3),e1),e1)=e3)).
+#
+#cnf(i_0_167, plain, (op(op(op(e1,e4),e1),e1)=e4)).
+#
+#cnf(i_0_160, plain, (op(op(op(e1,e5),e1),e1)=e5)).
+#
+#cnf(i_0_504, plain, (e3!=e1)).
+#
+#cnf(i_0_153, plain, (op(op(op(e1,e6),e1),e1)=e6)).
+#
+#cnf(i_0_194, plain, (op(op(op(e2,e0),e2),e2)=e0)).
+#
+#cnf(i_0_187, plain, (op(op(op(e2,e1),e2),e2)=e1)).
+#
+#cnf(i_0_500, plain, (e3!=e2)).
+#
+#cnf(i_0_180, plain, (op(op(op(e2,e2),e2),e2)=e2)).
+#
+#cnf(i_0_173, plain, (op(op(op(e2,e3),e2),e2)=e3)).
+#
+#cnf(i_0_166, plain, (op(op(op(e2,e4),e2),e2)=e4)).
+#
+#cnf(i_0_508, plain, (e0!=e4)).
+#
+#cnf(i_0_159, plain, (op(op(op(e2,e5),e2),e2)=e5)).
+#
+#cnf(i_0_152, plain, (op(op(op(e2,e6),e2),e2)=e6)).
+#
+#cnf(i_0_193, plain, (op(op(op(e3,e0),e3),e3)=e0)).
+#
+#cnf(i_0_503, plain, (e1!=e4)).
+#
+#cnf(i_0_186, plain, (op(op(op(e3,e1),e3),e3)=e1)).
+#
+#cnf(i_0_179, plain, (op(op(op(e3,e2),e3),e3)=e2)).
+#
+#cnf(i_0_172, plain, (op(op(op(e3,e3),e3),e3)=e3)).
+#
+#cnf(i_0_499, plain, (e2!=e4)).
+#
+#cnf(i_0_165, plain, (op(op(op(e3,e4),e3),e3)=e4)).
+#
+#cnf(i_0_158, plain, (op(op(op(e3,e5),e3),e3)=e5)).
+#
+#cnf(i_0_151, plain, (op(op(op(e3,e6),e3),e3)=e6)).
+#
+#cnf(i_0_496, plain, (e3!=e4)).
+#
+#cnf(i_0_192, plain, (op(op(op(e4,e0),e4),e4)=e0)).
+#
+#cnf(i_0_185, plain, (op(op(op(e4,e1),e4),e4)=e1)).
+#
+#cnf(i_0_178, plain, (op(op(op(e4,e2),e4),e4)=e2)).
+#
+#cnf(i_0_507, plain, (e0!=e5)).
+#
+#cnf(i_0_171, plain, (op(op(op(e4,e3),e4),e4)=e3)).
+#
+#cnf(i_0_164, plain, (op(op(op(e4,e4),e4),e4)=e4)).
+#
+#cnf(i_0_157, plain, (op(op(op(e4,e5),e4),e4)=e5)).
+#
+#cnf(i_0_502, plain, (e1!=e5)).
+#
+#cnf(i_0_150, plain, (op(op(op(e4,e6),e4),e4)=e6)).
+#
+#cnf(i_0_191, plain, (op(op(op(e5,e0),e5),e5)=e0)).
+#
+#cnf(i_0_184, plain, (op(op(e4,e5),e5)=e1)).
+#
+#cnf(i_0_498, plain, (e2!=e5)).
+#
+#cnf(i_0_177, plain, (op(op(op(e5,e2),e5),e5)=e2)).
+#
+#cnf(i_0_170, plain, (op(op(op(e5,e3),e5),e5)=e3)).
+#
+#cnf(i_0_163, plain, (op(op(op(e5,e4),e5),e5)=e4)).
+#
+#cnf(i_0_495, plain, (e3!=e5)).
+#
+#cnf(i_0_156, plain, (op(op(e1,e5),e5)=e5)).
+#
+#cnf(i_0_149, plain, (op(op(op(e5,e6),e5),e5)=e6)).
+#
+#cnf(i_0_190, plain, (op(op(op(e6,e0),e6),e6)=e0)).
+#
+#cnf(i_0_493, plain, (e4!=e5)).
+#
+#cnf(i_0_183, plain, (op(op(op(e6,e1),e6),e6)=e1)).
+#
+#cnf(i_0_176, plain, (op(op(op(e6,e2),e6),e6)=e2)).
+#
+#cnf(i_0_169, plain, (op(op(op(e6,e3),e6),e6)=e3)).
+#
+#cnf(i_0_506, plain, (e6!=e0)).
+#
+#cnf(i_0_162, plain, (op(op(op(e6,e4),e6),e6)=e4)).
+#
+#cnf(i_0_155, plain, (op(op(op(e6,e5),e6),e6)=e5)).
+#
+#cnf(i_0_148, plain, (op(op(op(e6,e6),e6),e6)=e6)).
+#
+#cnf(i_0_501, plain, (e6!=e1)).
+#
+#cnf(i_0_515, plain, (op(e4,e4)=e2)).
+#
+#cnf(i_0_164, plain, (op(op(e2,e4),e4)=e4)).
+#
+#cnf(i_0_514, plain, (op(e2,e5)=e3)).
+#
+#cnf(i_0_497, plain, (e6!=e2)).
+#
+#cnf(i_0_159, plain, (op(op(e3,e2),e2)=e5)).
+#
+#cnf(i_0_517, plain, (op(e2,e4)=e0)).
+#
+#cnf(i_0_164, plain, (op(e0,e4)=e4)).
+#
+#cnf(i_0_494, plain, (e6!=e3)).
+#
+#cnf(i_0_166, plain, (op(op(e0,e2),e2)=e4)).
+#
+#cnf(i_0_168, plain, (op(op(e4,e0),e0)=e4)).
+#
+#cnf(i_0_512, plain, (op(e3,e4)=e6)).
+#
+#cnf(i_0_492, plain, (e6!=e4)).
+#
+#cnf(i_0_165, plain, (op(op(e6,e3),e3)=e4)).
+#
+#cnf(i_0_49, plain, (op(e0,e0)=e0|op(e0,e0)=e1|op(e0,e0)=e2|op(e0,e0)=e3|op(e0,e0)=e4|op(e0,e0)=e5|op(e0,e0)=e6)).
+##
+#cnf(i_0_491, plain, (e6!=e5)).
+####
+#cnf(i_0_526, negated_conjecture, (op(e0,e0)!=e0)).
+#
+#cnf(i_0_49, plain, (op(e0,e0)=e1|op(e0,e0)=e2|op(e0,e0)=e3|op(e0,e0)=e4|op(e0,e0)=e5|op(e0,e0)=e6)).
+###
+#cnf(i_0_525, negated_conjecture, (op(e1,e1)!=e1)).
+####
+#cnf(i_0_524, negated_conjecture, (op(e2,e2)!=e2)).
+##
+#cnf(i_0_540, plain, (op(op(e6,e0),e0)=e0|op(e0,e0)=e1|op(e0,e0)=e2|op(e0,e0)=e3|op(e0,e0)=e4|op(e0,e0)=e5)).
+#
+#cnf(i_0_147, plain, (op(e0,e1)=e0|op(e0,e2)=e0|op(e0,e3)=e0|op(e0,e5)=e0|op(e0,e6)=e0)).
+#
+#cnf(i_0_523, negated_conjecture, (op(e3,e3)!=e3)).
+#
+#cnf(i_0_541, plain, (op(op(e0,e0),e0)=e6|op(e0,e1)=e0|op(e0,e2)=e0|op(e0,e3)=e0|op(e0,e5)=e0)).
+#
+#cnf(i_0_542, plain, (op(e6,e0)=e0|op(e0,e1)=e0|op(e0,e2)=e0|op(e0,e3)=e0|op(e0,e5)=e0)).
+#
+#cnf(i_0_544, plain, (op(op(e0,e6),e6)=e0|op(e0,e1)=e0|op(e0,e2)=e0|op(e0,e3)=e0|op(e0,e5)=e0)).
+###
+#cnf(i_0_146, plain, (op(e1,e0)=e0|op(e2,e0)=e0|op(e3,e0)=e0|op(e4,e0)=e0|op(e5,e0)=e0|op(e6,e0)=e0)).
+#
+#cnf(i_0_547, plain, (op(op(e0,e6),e6)=e0|op(e1,e0)=e0|op(e2,e0)=e0|op(e3,e0)=e0|op(e4,e0)=e0|op(e5,e0)=e0)).
+##
+#cnf(i_0_519, negated_conjecture, (op(e6,e6)=e6)).
+#
+#cnf(i_0_145, plain, (op(e0,e0)=e1|op(e0,e1)=e1|op(e0,e2)=e1|op(e0,e3)=e1|op(e0,e5)=e1|op(e0,e6)=e1)).
+#
+#cnf(i_0_550, plain, (op(op(e1,e0),e0)=e6|op(e0,e0)=e1|op(e0,e1)=e1|op(e0,e2)=e1|op(e0,e3)=e1|op(e0,e5)=e1)).
+#
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(co1, conjecture, ~(((((((((op(e0,e0)!=e0&op(e1,e1)!=e1)&op(e2,e2)!=e2)&op(e3,e3)!=e3)&op(e4,e4)!=e4)&op(e5,e5)!=e5)&op(e6,e6)!=e6)&(op(e0,e0)=e0|op(e1,e1)=e1|op(e2,e2)=e2|op(e3,e3)=e3|op(e4,e4)=e4|op(e5,e5)=e5|op(e6,e6)=e6))&(op(e0,e0)!=e0|op(e1,e1)!=e1|op(e2,e2)!=e2|op(e3,e3)!=e3|op(e4,e4)!=e4|op(e5,e5)!=e5|op(e6,e6)!=e6))), file('./p/ALG199+1.tptp', co1)).
+fof(ax6, axiom, (((((e0=op(op(op(e5,op(e5,e5)),op(e5,op(e5,e5))),op(e5,op(e5,e5)))&e1=op(e5,e5))&e2=op(op(e5,op(e5,e5)),op(e5,op(e5,e5))))&e3=op(op(op(e5,op(e5,e5)),op(e5,op(e5,e5))),e5))&e4=op(e5,op(e5,e5)))&e6=op(op(op(op(e5,op(e5,e5)),op(e5,op(e5,e5))),e5),op(e5,op(e5,e5)))), file('./p/ALG199+1.tptp', ax6)).
+fof(ax5, axiom, ((((((((((((((((((((e0!=e1&e0!=e2)&e0!=e3)&e0!=e4)&e0!=e5)&e0!=e6)&e1!=e2)&e1!=e3)&e1!=e4)&e1!=e5)&e1!=e6)&e2!=e3)&e2!=e4)&e2!=e5)&e2!=e6)&e3!=e4)&e3!=e5)&e3!=e6)&e4!=e5)&e4!=e6)&e5!=e6), file('./p/ALG199+1.tptp', ax5)).
+fof(c_0_3, negated_conjecture, ~(~(((((((((op(e0,e0)!=e0&op(e1,e1)!=e1)&op(e2,e2)!=e2)&op(e3,e3)!=e3)&op(e4,e4)!=e4)&op(e5,e5)!=e5)&op(e6,e6)!=e6)&(op(e0,e0)=e0|op(e1,e1)=e1|op(e2,e2)=e2|op(e3,e3)=e3|op(e4,e4)=e4|op(e5,e5)=e5|op(e6,e6)=e6))&(op(e0,e0)!=e0|op(e1,e1)!=e1|op(e2,e2)!=e2|op(e3,e3)!=e3|op(e4,e4)!=e4|op(e5,e5)!=e5|op(e6,e6)!=e6)))), inference(assume_negation,[status(cth)],[co1])).
+cnf(c_0_4, plain, (e4=op(e5,op(e5,e5))), inference(split_conjunct,[status(thm)],[ax6])).
+cnf(c_0_5, plain, (e1=op(e5,e5)), inference(split_conjunct,[status(thm)],[ax6])).
+fof(c_0_6, negated_conjecture, ((((((((op(e0,e0)!=e0&op(e1,e1)!=e1)&op(e2,e2)!=e2)&op(e3,e3)!=e3)&op(e4,e4)!=e4)&op(e5,e5)!=e5)&op(e6,e6)!=e6)&(op(e0,e0)=e0|op(e1,e1)=e1|op(e2,e2)=e2|op(e3,e3)=e3|op(e4,e4)=e4|op(e5,e5)=e5|op(e6,e6)=e6))&(op(e0,e0)!=e0|op(e1,e1)!=e1|op(e2,e2)!=e2|op(e3,e3)!=e3|op(e4,e4)!=e4|op(e5,e5)!=e5|op(e6,e6)!=e6)), inference(fof_nnf,[status(thm)],[c_0_3])).
+cnf(c_0_7, plain, (e2=op(op(e5,op(e5,e5)),op(e5,op(e5,e5)))), inference(split_conjunct,[status(thm)],[ax6])).
+cnf(c_0_8, plain, (op(e5,e1)=e4), inference(rw,[status(thm)],[c_0_4, c_0_5])).
+cnf(c_0_9, negated_conjecture, (op(e0,e0)=e0|op(e1,e1)=e1|op(e2,e2)=e2|op(e3,e3)=e3|op(e4,e4)=e4|op(e5,e5)=e5|op(e6,e6)=e6), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (op(e4,e4)=e2), inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_7, c_0_5]), c_0_8]), c_0_5]), c_0_8])).
+cnf(c_0_11, negated_conjecture, (op(e0,e0)!=e0), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_12, negated_conjecture, (op(e1,e1)!=e1), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_13, negated_conjecture, (op(e2,e2)!=e2), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_14, negated_conjecture, (op(e3,e3)!=e3), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_15, plain, (e2!=e4), inference(split_conjunct,[status(thm)],[ax5])).
+cnf(c_0_16, plain, (e1!=e5), inference(split_conjunct,[status(thm)],[ax5])).
+cnf(c_0_17, negated_conjecture, (op(e6,e6)!=e6), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_18, negated_conjecture, (op(e6,e6)=e6), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_9, c_0_10]), c_0_5]), c_0_11]), c_0_12]), c_0_13]), c_0_14]), c_0_15]), c_0_16])).
+cnf(c_0_19, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_17, c_0_18])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 20
+# Proof object clause steps            : 15
+# Proof object formula steps           : 5
+# Proof object conjectures             : 11
+# Proof object clause conjectures      : 8
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 11
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 0
+# Proof object simplifying inferences  : 15
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 7
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 526
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 526
+# Processed clauses                    : 112
+# ...of these trivial                  : 0
+# ...subsumed                          : 13
+# ...remaining for further processing  : 98
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 7
+# Generated clauses                    : 28
+# ...of the previous two non-trivial   : 34
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 16
+# Factorizations                       : 11
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 90
+#    Positive orientable unit clauses  : 55
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 25
+#    Non-unit-clauses                  : 10
+# Current number of unprocessed clauses: 446
+# ...number of literals in the above   : 1378
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 8
+# Clause-clause subsumption calls (NU) : 28
+# Rec. Clause-clause subsumption calls : 1
+# Non-unit clause-clause subsumptions  : 1
+# Unit Clause-clause subsumption calls : 30
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 142
+# BW rewrite match successes           : 6
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 42469

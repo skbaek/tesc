@@ -1,0 +1,487 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_101, negated_conjecture, (epred1_0)).
+#
+#cnf(i_0_68, negated_conjecture, (h(j(e20))=e20)).
+#
+#cnf(i_0_67, negated_conjecture, (h(j(e21))=e21)).
+#
+#cnf(i_0_6, plain, (e11!=e10)).
+#
+#cnf(i_0_66, negated_conjecture, (h(j(e22))=e22)).
+#
+#cnf(i_0_65, negated_conjecture, (h(j(e23))=e23)).
+#
+#cnf(i_0_64, negated_conjecture, (j(h(e10))=e10)).
+#
+#cnf(i_0_5, plain, (e12!=e10)).
+#
+#cnf(i_0_63, negated_conjecture, (j(h(e11))=e11)).
+#
+#cnf(i_0_62, negated_conjecture, (j(h(e12))=e12)).
+#
+#cnf(i_0_61, negated_conjecture, (j(h(e13))=e13)).
+#
+#cnf(i_0_3, plain, (e12!=e11)).
+#
+#cnf(i_0_44, plain, (op1(e10,e10)=e10)).
+#
+#cnf(i_0_43, plain, (op1(e10,e11)=e11)).
+#
+#cnf(i_0_42, plain, (op1(e10,e12)=e12)).
+#
+#cnf(i_0_4, plain, (e13!=e10)).
+#
+#cnf(i_0_41, plain, (op1(e10,e13)=e13)).
+#
+#cnf(i_0_40, plain, (op1(e11,e10)=e11)).
+#
+#cnf(i_0_39, plain, (op1(e11,e11)=e10)).
+#
+#cnf(i_0_2, plain, (e13!=e11)).
+#
+#cnf(i_0_38, plain, (op1(e11,e12)=e13)).
+#
+#cnf(i_0_37, plain, (op1(e11,e13)=e12)).
+#
+#cnf(i_0_36, plain, (op1(e12,e10)=e12)).
+#
+#cnf(i_0_1, plain, (e13!=e12)).
+#
+#cnf(i_0_35, plain, (op1(e12,e11)=e13)).
+#
+#cnf(i_0_34, plain, (op1(e12,e12)=e10)).
+#
+#cnf(i_0_33, plain, (op1(e12,e13)=e11)).
+#
+#cnf(i_0_28, plain, (e10!=e20)).
+#
+#cnf(i_0_32, plain, (op1(e13,e10)=e13)).
+#
+#cnf(i_0_31, plain, (op1(e13,e11)=e12)).
+#
+#cnf(i_0_30, plain, (op1(e13,e12)=e11)).
+#
+#cnf(i_0_24, plain, (e11!=e20)).
+#
+#cnf(i_0_29, plain, (op1(e13,e13)=e10)).
+#
+#cnf(i_0_60, plain, (op2(e20,e20)=e20)).
+#
+#cnf(i_0_59, plain, (op2(e20,e21)=e21)).
+#
+#cnf(i_0_20, plain, (e12!=e20)).
+#
+#cnf(i_0_58, plain, (op2(e20,e22)=e22)).
+#
+#cnf(i_0_57, plain, (op2(e20,e23)=e23)).
+#
+#cnf(i_0_56, plain, (op2(e21,e20)=e21)).
+#
+#cnf(i_0_16, plain, (e13!=e20)).
+#
+#cnf(i_0_55, plain, (op2(e21,e21)=e23)).
+#
+#cnf(i_0_54, plain, (op2(e21,e22)=e20)).
+#
+#cnf(i_0_53, plain, (op2(e21,e23)=e22)).
+#
+#cnf(i_0_27, plain, (e10!=e21)).
+#
+#cnf(i_0_52, plain, (op2(e22,e20)=e22)).
+#
+#cnf(i_0_51, plain, (op2(e22,e21)=e20)).
+#
+#cnf(i_0_50, plain, (op2(e22,e22)=e23)).
+#
+#cnf(i_0_23, plain, (e11!=e21)).
+#
+#cnf(i_0_49, plain, (op2(e22,e23)=e21)).
+#
+#cnf(i_0_48, plain, (op2(e23,e20)=e23)).
+#
+#cnf(i_0_47, plain, (op2(e23,e21)=e22)).
+#
+#cnf(i_0_19, plain, (e12!=e21)).
+#
+#cnf(i_0_46, plain, (op2(e23,e22)=e21)).
+#
+#cnf(i_0_45, plain, (op2(e23,e23)=e20)).
+#
+#cnf(i_0_100, negated_conjecture, (op2(h(e10),h(e10))=h(e10))).
+#
+#cnf(i_0_15, plain, (e13!=e21)).
+#
+#cnf(i_0_99, negated_conjecture, (op2(h(e10),h(e11))=h(e11))).
+#
+#cnf(i_0_98, negated_conjecture, (op2(h(e10),h(e12))=h(e12))).
+#
+#cnf(i_0_97, negated_conjecture, (op2(h(e10),h(e13))=h(e13))).
+#
+#cnf(i_0_12, plain, (e21!=e20)).
+#
+#cnf(i_0_96, negated_conjecture, (op2(h(e11),h(e10))=h(e11))).
+#
+#cnf(i_0_95, negated_conjecture, (op2(h(e11),h(e11))=h(e10))).
+#
+#cnf(i_0_94, negated_conjecture, (op2(h(e11),h(e12))=h(e13))).
+#
+#cnf(i_0_26, plain, (e10!=e22)).
+#
+#cnf(i_0_93, negated_conjecture, (op2(h(e11),h(e13))=h(e12))).
+#
+#cnf(i_0_92, negated_conjecture, (op2(h(e12),h(e10))=h(e12))).
+#
+#cnf(i_0_91, negated_conjecture, (op2(h(e12),h(e11))=h(e13))).
+#
+#cnf(i_0_22, plain, (e11!=e22)).
+#
+#cnf(i_0_90, negated_conjecture, (op2(h(e12),h(e12))=h(e10))).
+#
+#cnf(i_0_89, negated_conjecture, (op2(h(e12),h(e13))=h(e11))).
+#
+#cnf(i_0_88, negated_conjecture, (op2(h(e13),h(e10))=h(e13))).
+#
+#cnf(i_0_18, plain, (e12!=e22)).
+#
+#cnf(i_0_87, negated_conjecture, (op2(h(e13),h(e11))=h(e12))).
+#
+#cnf(i_0_86, negated_conjecture, (op2(h(e13),h(e12))=h(e11))).
+#
+#cnf(i_0_85, negated_conjecture, (op2(h(e13),h(e13))=h(e10))).
+#
+#cnf(i_0_14, plain, (e13!=e22)).
+#
+#cnf(i_0_84, negated_conjecture, (op1(j(e20),j(e20))=j(e20))).
+#
+#cnf(i_0_83, negated_conjecture, (op1(j(e20),j(e21))=j(e21))).
+#
+#cnf(i_0_82, negated_conjecture, (op1(j(e20),j(e22))=j(e22))).
+#
+#cnf(i_0_11, plain, (e22!=e20)).
+#
+#cnf(i_0_81, negated_conjecture, (op1(j(e20),j(e23))=j(e23))).
+#
+#cnf(i_0_80, negated_conjecture, (op1(j(e21),j(e20))=j(e21))).
+#
+#cnf(i_0_79, negated_conjecture, (op1(j(e21),j(e21))=j(e23))).
+#
+#cnf(i_0_9, plain, (e22!=e21)).
+#
+#cnf(i_0_78, negated_conjecture, (op1(j(e21),j(e22))=j(e20))).
+#
+#cnf(i_0_77, negated_conjecture, (op1(j(e21),j(e23))=j(e22))).
+#
+#cnf(i_0_76, negated_conjecture, (op1(j(e22),j(e20))=j(e22))).
+#
+#cnf(i_0_25, plain, (e10!=e23)).
+#
+#cnf(i_0_75, negated_conjecture, (op1(j(e22),j(e21))=j(e20))).
+#
+#cnf(i_0_74, negated_conjecture, (op1(j(e22),j(e22))=j(e23))).
+#
+#cnf(i_0_73, negated_conjecture, (op1(j(e22),j(e23))=j(e21))).
+#
+#cnf(i_0_21, plain, (e11!=e23)).
+#
+#cnf(i_0_72, negated_conjecture, (op1(j(e23),j(e20))=j(e23))).
+#
+#cnf(i_0_71, negated_conjecture, (op1(j(e23),j(e21))=j(e22))).
+#
+#cnf(i_0_70, negated_conjecture, (op1(j(e23),j(e22))=j(e21))).
+#
+#cnf(i_0_17, plain, (e12!=e23)).
+#
+#cnf(i_0_69, negated_conjecture, (op1(j(e23),j(e23))=j(e20))).
+#
+#cnf(i_0_109, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22|h(e10)=e23)).
+#
+#cnf(i_0_110, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22|e23!=e20)).
+#
+#cnf(i_0_13, plain, (e13!=e23)).
+###
+#cnf(i_0_111, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22|e23!=e21)).
+#
+#cnf(i_0_10, plain, (e23!=e20)).
+###
+#cnf(i_0_112, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22|e23!=e22)).
+#
+#cnf(i_0_8, plain, (e23!=e21)).
+####
+#cnf(i_0_7, plain, (e23!=e22)).
+###
+#cnf(i_0_113, negated_conjecture, (j(e23)=e10|h(e10)=e20|h(e10)=e21|h(e10)=e22)).
+##
+#cnf(i_0_108, plain, (h(e11)=e20|h(e11)=e21|h(e11)=e22|h(e11)=e23)).
+####
+#cnf(i_0_170, negated_conjecture, (j(e23)=e11|h(e11)=e20|h(e11)=e21|h(e11)=e22)).
+##
+#cnf(i_0_107, plain, (h(e12)=e20|h(e12)=e21|h(e12)=e22|h(e12)=e23)).
+####
+#cnf(i_0_192, negated_conjecture, (j(e23)=e12|h(e12)=e20|h(e12)=e21|h(e12)=e22)).
+##
+#cnf(i_0_106, plain, (h(e13)=e20|h(e13)=e21|h(e13)=e22|h(e13)=e23)).
+####
+#cnf(i_0_215, negated_conjecture, (j(e23)=e13|h(e13)=e20|h(e13)=e21|h(e13)=e22)).
+##
+#cnf(i_0_105, plain, (j(e20)=e10|j(e20)=e11|j(e20)=e12|j(e20)=e13)).
+####
+#cnf(i_0_239, negated_conjecture, (h(e13)=e20|j(e20)=e10|j(e20)=e11|j(e20)=e12)).
+###
+#cnf(i_0_250, negated_conjecture, (h(e12)=e20|h(e13)=e20|j(e20)=e10|j(e20)=e11)).
+###
+#cnf(i_0_261, negated_conjecture, (h(e11)=e20|h(e12)=e20|h(e13)=e20|j(e20)=e10)).
+##
+#cnf(i_0_272, negated_conjecture, (h(e10)=e20|h(e11)=e20|h(e12)=e20|h(e13)=e20)).
+##
+#cnf(i_0_284, negated_conjecture, (j(e20)=e13|h(e10)=e20|h(e11)=e20|h(e12)=e20)).
+###
+#cnf(i_0_104, plain, (j(e21)=e10|j(e21)=e11|j(e21)=e12|j(e21)=e13)).
+####
+#cnf(i_0_309, negated_conjecture, (h(e13)=e21|j(e21)=e10|j(e21)=e11|j(e21)=e12)).
+###
+#cnf(i_0_320, negated_conjecture, (h(e12)=e21|h(e13)=e21|j(e21)=e10|j(e21)=e11)).
+###
+#cnf(i_0_331, negated_conjecture, (h(e11)=e21|h(e12)=e21|h(e13)=e21|j(e21)=e10)).
+##
+#cnf(i_0_342, negated_conjecture, (h(e10)=e21|h(e11)=e21|h(e12)=e21|h(e13)=e21)).
+##
+#cnf(i_0_354, negated_conjecture, (j(e21)=e13|h(e10)=e21|h(e11)=e21|h(e12)=e21)).
+###
+#cnf(i_0_103, plain, (j(e22)=e10|j(e22)=e11|j(e22)=e12|j(e22)=e13)).
+####
+#cnf(i_0_380, negated_conjecture, (h(e13)=e22|j(e22)=e10|j(e22)=e11|j(e22)=e12)).
+###
+#cnf(i_0_391, negated_conjecture, (h(e12)=e22|h(e13)=e22|j(e22)=e10|j(e22)=e11)).
+###
+#cnf(i_0_402, negated_conjecture, (h(e11)=e22|h(e12)=e22|h(e13)=e22|j(e22)=e10)).
+##
+#cnf(i_0_413, negated_conjecture, (h(e10)=e22|h(e11)=e22|h(e12)=e22|h(e13)=e22)).
+##
+#cnf(i_0_425, negated_conjecture, (j(e22)=e13|h(e10)=e22|h(e11)=e22|h(e12)=e22)).
+###
+#cnf(i_0_102, plain, (j(e23)=e10|j(e23)=e11|j(e23)=e12|j(e23)=e13)).
+####
+#cnf(i_0_452, negated_conjecture, (h(e13)=e23|j(e23)=e10|j(e23)=e11|j(e23)=e12)).
+###
+#cnf(i_0_466, negated_conjecture, (h(e12)=e23|h(e13)=e23|j(e23)=e10|j(e23)=e11)).
+###
+#cnf(i_0_480, negated_conjecture, (h(e11)=e23|h(e12)=e23|h(e13)=e23|j(e23)=e10)).
+##
+#cnf(i_0_494, negated_conjecture, (h(e10)=e23|h(e11)=e23|h(e12)=e23|h(e13)=e23)).
+##
+#cnf(i_0_509, negated_conjecture, (j(e23)=e13|h(e10)=e23|h(e11)=e23|h(e12)=e23)).
+#############################
+#cnf(i_0_114, negated_conjecture, (op2(e23,h(e10))=h(e10)|h(e10)=e20|h(e10)=e21|h(e10)=e22)).
+#
+#cnf(i_0_536, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22)).
+###
+#cnf(i_0_542, negated_conjecture, (j(e22)=e10|h(e10)=e20|h(e10)=e21)).
+##
+#cnf(i_0_543, negated_conjecture, (op2(e22,h(e10))=h(e10)|h(e10)=e20|h(e10)=e21)).
+#
+#cnf(i_0_564, plain, (h(e10)=e23|h(e10)=e20|h(e10)=e21)).
+#
+#cnf(i_0_576, plain, (h(e10)=e20|h(e10)=e21)).
+##
+#cnf(i_0_579, negated_conjecture, (j(e21)=e10|h(e10)=e20)).
+##
+#cnf(i_0_580, negated_conjecture, (op2(e21,h(e10))=h(e10)|h(e10)=e20)).
+#
+#cnf(i_0_601, plain, (h(e10)=e23|h(e10)=e20)).
+#
+#cnf(i_0_612, plain, (h(e10)=e20)).
+#
+#cnf(i_0_64, negated_conjecture, (j(e20)=e10)).
+#
+#cnf(i_0_88, negated_conjecture, (op2(h(e13),e20)=h(e13))).
+#
+#cnf(i_0_92, negated_conjecture, (op2(h(e12),e20)=h(e12))).
+#
+#cnf(i_0_96, negated_conjecture, (op2(h(e11),e20)=h(e11))).
+#
+#cnf(i_0_97, negated_conjecture, (op2(e20,h(e13))=h(e13))).
+#
+#cnf(i_0_98, negated_conjecture, (op2(e20,h(e12))=h(e12))).
+#
+#cnf(i_0_99, negated_conjecture, (op2(e20,h(e11))=h(e11))).
+#
+#cnf(i_0_72, negated_conjecture, (op1(j(e23),e10)=j(e23))).
+#
+#cnf(i_0_76, negated_conjecture, (op1(j(e22),e10)=j(e22))).
+#
+#cnf(i_0_80, negated_conjecture, (op1(j(e21),e10)=j(e21))).
+#
+#cnf(i_0_81, negated_conjecture, (op1(e10,j(e23))=j(e23))).
+#
+#cnf(i_0_82, negated_conjecture, (op1(e10,j(e22))=j(e22))).
+#
+#cnf(i_0_83, negated_conjecture, (op1(e10,j(e21))=j(e21))).
+#
+#cnf(i_0_85, negated_conjecture, (op2(h(e13),h(e13))=e20)).
+#
+#cnf(i_0_90, negated_conjecture, (op2(h(e12),h(e12))=e20)).
+#
+#cnf(i_0_95, negated_conjecture, (op2(h(e11),h(e11))=e20)).
+#
+#cnf(i_0_69, negated_conjecture, (op1(j(e23),j(e23))=e10)).
+#
+#cnf(i_0_75, negated_conjecture, (op1(j(e22),j(e21))=e10)).
+#
+#cnf(i_0_78, negated_conjecture, (op1(j(e21),j(e22))=e10)).
+#
+#cnf(i_0_509, negated_conjecture, (j(e23)=e13|h(e11)=e23|h(e12)=e23)).
+#
+#cnf(i_0_494, negated_conjecture, (h(e11)=e23|h(e12)=e23|h(e13)=e23)).
+#
+#cnf(i_0_425, negated_conjecture, (j(e22)=e13|h(e11)=e22|h(e12)=e22)).
+#
+#cnf(i_0_413, negated_conjecture, (h(e11)=e22|h(e12)=e22|h(e13)=e22)).
+#
+#cnf(i_0_354, negated_conjecture, (j(e21)=e13|h(e11)=e21|h(e12)=e21)).
+#
+#cnf(i_0_342, negated_conjecture, (h(e11)=e21|h(e12)=e21|h(e13)=e21)).
+###################
+#cnf(i_0_697, negated_conjecture, (op1(e13,j(e23))=e10|h(e11)=e23|h(e12)=e23)).
+#
+#cnf(i_0_698, negated_conjecture, (op1(j(e23),e13)=e10|h(e11)=e23|h(e12)=e23)).
+#
+#cnf(i_0_705, negated_conjecture, (op2(e23,h(e13))=e20|h(e11)=e23|h(e12)=e23)).
+#
+#cnf(i_0_706, negated_conjecture, (op2(h(e13),e23)=e20|h(e11)=e23|h(e12)=e23)).
+#
+#cnf(i_0_714, negated_conjecture, (op1(j(e21),e13)=e10|h(e11)=e22|h(e12)=e22)).
+#
+#cnf(i_0_719, negated_conjecture, (op1(e13,j(e21))=e10|h(e11)=e22|h(e12)=e22)).
+#
+#cnf(i_0_728, negated_conjecture, (op2(e22,h(e13))=e20|h(e11)=e22|h(e12)=e22)).
+#
+#cnf(i_0_788, negated_conjecture, (h(e11)=e22|h(e12)=e22)).
+#
+#cnf(i_0_790, negated_conjecture, (j(e22)=e12|h(e11)=e22)).
+######
+#cnf(i_0_796, negated_conjecture, (op2(e22,h(e12))=e20|h(e11)=e22)).
+#
+#cnf(i_0_812, negated_conjecture, (h(e11)=e22)).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(co1, conjecture, (((((((((h(e10)=e20|h(e10)=e21|h(e10)=e22|h(e10)=e23)&(h(e11)=e20|h(e11)=e21|h(e11)=e22|h(e11)=e23))&(h(e12)=e20|h(e12)=e21|h(e12)=e22|h(e12)=e23))&(h(e13)=e20|h(e13)=e21|h(e13)=e22|h(e13)=e23))&(j(e20)=e10|j(e20)=e11|j(e20)=e12|j(e20)=e13))&(j(e21)=e10|j(e21)=e11|j(e21)=e12|j(e21)=e13))&(j(e22)=e10|j(e22)=e11|j(e22)=e12|j(e22)=e13))&(j(e23)=e10|j(e23)=e11|j(e23)=e12|j(e23)=e13))=>~((((((((((((((((((((((((((((((((((((((((h(op1(e10,e10))=op2(h(e10),h(e10))&h(op1(e10,e11))=op2(h(e10),h(e11)))&h(op1(e10,e12))=op2(h(e10),h(e12)))&h(op1(e10,e13))=op2(h(e10),h(e13)))&h(op1(e11,e10))=op2(h(e11),h(e10)))&h(op1(e11,e11))=op2(h(e11),h(e11)))&h(op1(e11,e12))=op2(h(e11),h(e12)))&h(op1(e11,e13))=op2(h(e11),h(e13)))&h(op1(e12,e10))=op2(h(e12),h(e10)))&h(op1(e12,e11))=op2(h(e12),h(e11)))&h(op1(e12,e12))=op2(h(e12),h(e12)))&h(op1(e12,e13))=op2(h(e12),h(e13)))&h(op1(e13,e10))=op2(h(e13),h(e10)))&h(op1(e13,e11))=op2(h(e13),h(e11)))&h(op1(e13,e12))=op2(h(e13),h(e12)))&h(op1(e13,e13))=op2(h(e13),h(e13)))&j(op2(e20,e20))=op1(j(e20),j(e20)))&j(op2(e20,e21))=op1(j(e20),j(e21)))&j(op2(e20,e22))=op1(j(e20),j(e22)))&j(op2(e20,e23))=op1(j(e20),j(e23)))&j(op2(e21,e20))=op1(j(e21),j(e20)))&j(op2(e21,e21))=op1(j(e21),j(e21)))&j(op2(e21,e22))=op1(j(e21),j(e22)))&j(op2(e21,e23))=op1(j(e21),j(e23)))&j(op2(e22,e20))=op1(j(e22),j(e20)))&j(op2(e22,e21))=op1(j(e22),j(e21)))&j(op2(e22,e22))=op1(j(e22),j(e22)))&j(op2(e22,e23))=op1(j(e22),j(e23)))&j(op2(e23,e20))=op1(j(e23),j(e20)))&j(op2(e23,e21))=op1(j(e23),j(e21)))&j(op2(e23,e22))=op1(j(e23),j(e22)))&j(op2(e23,e23))=op1(j(e23),j(e23)))&h(j(e20))=e20)&h(j(e21))=e21)&h(j(e22))=e22)&h(j(e23))=e23)&j(h(e10))=e10)&j(h(e11))=e11)&j(h(e12))=e12)&j(h(e13))=e13))), file('./p/ALG042+1.tptp', co1)).
+fof(ax4, axiom, (((((((((((((((op1(e10,e10)=e10&op1(e10,e11)=e11)&op1(e10,e12)=e12)&op1(e10,e13)=e13)&op1(e11,e10)=e11)&op1(e11,e11)=e10)&op1(e11,e12)=e13)&op1(e11,e13)=e12)&op1(e12,e10)=e12)&op1(e12,e11)=e13)&op1(e12,e12)=e10)&op1(e12,e13)=e11)&op1(e13,e10)=e13)&op1(e13,e11)=e12)&op1(e13,e12)=e11)&op1(e13,e13)=e10), file('./p/ALG042+1.tptp', ax4)).
+fof(ax5, axiom, (((((((((((((((op2(e20,e20)=e20&op2(e20,e21)=e21)&op2(e20,e22)=e22)&op2(e20,e23)=e23)&op2(e21,e20)=e21)&op2(e21,e21)=e23)&op2(e21,e22)=e20)&op2(e21,e23)=e22)&op2(e22,e20)=e22)&op2(e22,e21)=e20)&op2(e22,e22)=e23)&op2(e22,e23)=e21)&op2(e23,e20)=e23)&op2(e23,e21)=e22)&op2(e23,e22)=e21)&op2(e23,e23)=e20), file('./p/ALG042+1.tptp', ax5)).
+fof(ax2, axiom, (((((e20!=e21&e20!=e22)&e20!=e23)&e21!=e22)&e21!=e23)&e22!=e23), file('./p/ALG042+1.tptp', ax2)).
+fof(c_0_4, plain, (epred1_0<=>((((((((h(e10)=e20|h(e10)=e21|h(e10)=e22|h(e10)=e23)&(h(e11)=e20|h(e11)=e21|h(e11)=e22|h(e11)=e23))&(h(e12)=e20|h(e12)=e21|h(e12)=e22|h(e12)=e23))&(h(e13)=e20|h(e13)=e21|h(e13)=e22|h(e13)=e23))&(j(e20)=e10|j(e20)=e11|j(e20)=e12|j(e20)=e13))&(j(e21)=e10|j(e21)=e11|j(e21)=e12|j(e21)=e13))&(j(e22)=e10|j(e22)=e11|j(e22)=e12|j(e22)=e13))&(j(e23)=e10|j(e23)=e11|j(e23)=e12|j(e23)=e13))), introduced(definition)).
+fof(c_0_5, negated_conjecture, ~((epred1_0=>~((((((((((((((((((((((((((((((((((((((((h(op1(e10,e10))=op2(h(e10),h(e10))&h(op1(e10,e11))=op2(h(e10),h(e11)))&h(op1(e10,e12))=op2(h(e10),h(e12)))&h(op1(e10,e13))=op2(h(e10),h(e13)))&h(op1(e11,e10))=op2(h(e11),h(e10)))&h(op1(e11,e11))=op2(h(e11),h(e11)))&h(op1(e11,e12))=op2(h(e11),h(e12)))&h(op1(e11,e13))=op2(h(e11),h(e13)))&h(op1(e12,e10))=op2(h(e12),h(e10)))&h(op1(e12,e11))=op2(h(e12),h(e11)))&h(op1(e12,e12))=op2(h(e12),h(e12)))&h(op1(e12,e13))=op2(h(e12),h(e13)))&h(op1(e13,e10))=op2(h(e13),h(e10)))&h(op1(e13,e11))=op2(h(e13),h(e11)))&h(op1(e13,e12))=op2(h(e13),h(e12)))&h(op1(e13,e13))=op2(h(e13),h(e13)))&j(op2(e20,e20))=op1(j(e20),j(e20)))&j(op2(e20,e21))=op1(j(e20),j(e21)))&j(op2(e20,e22))=op1(j(e20),j(e22)))&j(op2(e20,e23))=op1(j(e20),j(e23)))&j(op2(e21,e20))=op1(j(e21),j(e20)))&j(op2(e21,e21))=op1(j(e21),j(e21)))&j(op2(e21,e22))=op1(j(e21),j(e22)))&j(op2(e21,e23))=op1(j(e21),j(e23)))&j(op2(e22,e20))=op1(j(e22),j(e20)))&j(op2(e22,e21))=op1(j(e22),j(e21)))&j(op2(e22,e22))=op1(j(e22),j(e22)))&j(op2(e22,e23))=op1(j(e22),j(e23)))&j(op2(e23,e20))=op1(j(e23),j(e20)))&j(op2(e23,e21))=op1(j(e23),j(e21)))&j(op2(e23,e22))=op1(j(e23),j(e22)))&j(op2(e23,e23))=op1(j(e23),j(e23)))&h(j(e20))=e20)&h(j(e21))=e21)&h(j(e22))=e22)&h(j(e23))=e23)&j(h(e10))=e10)&j(h(e11))=e11)&j(h(e12))=e12)&j(h(e13))=e13)))), inference(apply_def,[status(thm)],[inference(assume_negation,[status(cth)],[co1]), c_0_4])).
+fof(c_0_6, plain, (epred1_0=>((((((((h(e10)=e20|h(e10)=e21|h(e10)=e22|h(e10)=e23)&(h(e11)=e20|h(e11)=e21|h(e11)=e22|h(e11)=e23))&(h(e12)=e20|h(e12)=e21|h(e12)=e22|h(e12)=e23))&(h(e13)=e20|h(e13)=e21|h(e13)=e22|h(e13)=e23))&(j(e20)=e10|j(e20)=e11|j(e20)=e12|j(e20)=e13))&(j(e21)=e10|j(e21)=e11|j(e21)=e12|j(e21)=e13))&(j(e22)=e10|j(e22)=e11|j(e22)=e12|j(e22)=e13))&(j(e23)=e10|j(e23)=e11|j(e23)=e12|j(e23)=e13))), inference(split_equiv,[status(thm)],[c_0_4])).
+fof(c_0_7, negated_conjecture, (epred1_0&(((((((((((((((((((((((((((((((((((((((h(op1(e10,e10))=op2(h(e10),h(e10))&h(op1(e10,e11))=op2(h(e10),h(e11)))&h(op1(e10,e12))=op2(h(e10),h(e12)))&h(op1(e10,e13))=op2(h(e10),h(e13)))&h(op1(e11,e10))=op2(h(e11),h(e10)))&h(op1(e11,e11))=op2(h(e11),h(e11)))&h(op1(e11,e12))=op2(h(e11),h(e12)))&h(op1(e11,e13))=op2(h(e11),h(e13)))&h(op1(e12,e10))=op2(h(e12),h(e10)))&h(op1(e12,e11))=op2(h(e12),h(e11)))&h(op1(e12,e12))=op2(h(e12),h(e12)))&h(op1(e12,e13))=op2(h(e12),h(e13)))&h(op1(e13,e10))=op2(h(e13),h(e10)))&h(op1(e13,e11))=op2(h(e13),h(e11)))&h(op1(e13,e12))=op2(h(e13),h(e12)))&h(op1(e13,e13))=op2(h(e13),h(e13)))&j(op2(e20,e20))=op1(j(e20),j(e20)))&j(op2(e20,e21))=op1(j(e20),j(e21)))&j(op2(e20,e22))=op1(j(e20),j(e22)))&j(op2(e20,e23))=op1(j(e20),j(e23)))&j(op2(e21,e20))=op1(j(e21),j(e20)))&j(op2(e21,e21))=op1(j(e21),j(e21)))&j(op2(e21,e22))=op1(j(e21),j(e22)))&j(op2(e21,e23))=op1(j(e21),j(e23)))&j(op2(e22,e20))=op1(j(e22),j(e20)))&j(op2(e22,e21))=op1(j(e22),j(e21)))&j(op2(e22,e22))=op1(j(e22),j(e22)))&j(op2(e22,e23))=op1(j(e22),j(e23)))&j(op2(e23,e20))=op1(j(e23),j(e20)))&j(op2(e23,e21))=op1(j(e23),j(e21)))&j(op2(e23,e22))=op1(j(e23),j(e22)))&j(op2(e23,e23))=op1(j(e23),j(e23)))&h(j(e20))=e20)&h(j(e21))=e21)&h(j(e22))=e22)&h(j(e23))=e23)&j(h(e10))=e10)&j(h(e11))=e11)&j(h(e12))=e12)&j(h(e13))=e13)), inference(fof_nnf,[status(thm)],[c_0_5])).
+fof(c_0_8, plain, ((((((((h(e10)=e20|h(e10)=e21|h(e10)=e22|h(e10)=e23|~epred1_0)&(h(e11)=e20|h(e11)=e21|h(e11)=e22|h(e11)=e23|~epred1_0))&(h(e12)=e20|h(e12)=e21|h(e12)=e22|h(e12)=e23|~epred1_0))&(h(e13)=e20|h(e13)=e21|h(e13)=e22|h(e13)=e23|~epred1_0))&(j(e20)=e10|j(e20)=e11|j(e20)=e12|j(e20)=e13|~epred1_0))&(j(e21)=e10|j(e21)=e11|j(e21)=e12|j(e21)=e13|~epred1_0))&(j(e22)=e10|j(e22)=e11|j(e22)=e12|j(e22)=e13|~epred1_0))&(j(e23)=e10|j(e23)=e11|j(e23)=e12|j(e23)=e13|~epred1_0)), inference(distribute,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_6])])).
+cnf(c_0_9, negated_conjecture, (h(op1(e10,e10))=op2(h(e10),h(e10))), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_10, plain, (op1(e10,e10)=e10), inference(split_conjunct,[status(thm)],[ax4])).
+cnf(c_0_11, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22|h(e10)=e23|~epred1_0), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_12, negated_conjecture, (epred1_0), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_13, negated_conjecture, (op2(h(e10),h(e10))=h(e10)), inference(rw,[status(thm)],[c_0_9, c_0_10])).
+cnf(c_0_14, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22|h(e10)=e23), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_11, c_0_12])])).
+cnf(c_0_15, negated_conjecture, (op2(e23,h(e10))=h(e10)|h(e10)=e20|h(e10)=e21|h(e10)=e22), inference(pm,[status(thm)],[c_0_13, c_0_14])).
+cnf(c_0_16, plain, (op2(e23,e23)=e20), inference(split_conjunct,[status(thm)],[ax5])).
+cnf(c_0_17, plain, (h(e10)=e20|h(e10)=e21|h(e10)=e22), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_15, c_0_14]), c_0_16])])).
+cnf(c_0_18, negated_conjecture, (op2(e22,h(e10))=h(e10)|h(e10)=e20|h(e10)=e21), inference(pm,[status(thm)],[c_0_13, c_0_17])).
+cnf(c_0_19, plain, (op2(e22,e22)=e23), inference(split_conjunct,[status(thm)],[ax5])).
+cnf(c_0_20, plain, (j(e22)=e10|j(e22)=e11|j(e22)=e12|j(e22)=e13|~epred1_0), inference(split_conjunct,[status(thm)],[c_0_8])).
+cnf(c_0_21, plain, (h(e10)=e23|h(e10)=e20|h(e10)=e21), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_18, c_0_17]), c_0_19])).
+cnf(c_0_22, plain, (e22!=e23), inference(split_conjunct,[status(thm)],[ax2])).
+cnf(c_0_23, negated_conjecture, (h(j(e22))=e22), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_24, plain, (j(e22)=e10|j(e22)=e11|j(e22)=e12|j(e22)=e13), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_20, c_0_12])])).
+cnf(c_0_25, plain, (h(e10)=e20|h(e10)=e21), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_17, c_0_21]), c_0_22])).
+cnf(c_0_26, negated_conjecture, (h(e13)=e22|j(e22)=e10|j(e22)=e11|j(e22)=e12), inference(pm,[status(thm)],[c_0_23, c_0_24])).
+cnf(c_0_27, negated_conjecture, (op2(e21,h(e10))=h(e10)|h(e10)=e20), inference(pm,[status(thm)],[c_0_13, c_0_25])).
+cnf(c_0_28, plain, (op2(e21,e21)=e23), inference(split_conjunct,[status(thm)],[ax5])).
+cnf(c_0_29, negated_conjecture, (h(e12)=e22|h(e13)=e22|j(e22)=e10|j(e22)=e11), inference(pm,[status(thm)],[c_0_23, c_0_26])).
+cnf(c_0_30, negated_conjecture, (h(op1(e13,e13))=op2(h(e13),h(e13))), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_31, plain, (op1(e13,e13)=e10), inference(split_conjunct,[status(thm)],[ax4])).
+cnf(c_0_32, plain, (h(e10)=e23|h(e10)=e20), inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_27, c_0_25]), c_0_28])).
+cnf(c_0_33, plain, (e21!=e23), inference(split_conjunct,[status(thm)],[ax2])).
+cnf(c_0_34, negated_conjecture, (h(e11)=e22|h(e12)=e22|h(e13)=e22|j(e22)=e10), inference(pm,[status(thm)],[c_0_23, c_0_29])).
+cnf(c_0_35, negated_conjecture, (op2(h(e13),h(e13))=h(e10)), inference(rw,[status(thm)],[c_0_30, c_0_31])).
+cnf(c_0_36, plain, (h(e10)=e20), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_25, c_0_32]), c_0_33])).
+cnf(c_0_37, negated_conjecture, (h(e10)=e22|h(e11)=e22|h(e12)=e22|h(e13)=e22), inference(pm,[status(thm)],[c_0_23, c_0_34])).
+cnf(c_0_38, plain, (e20!=e22), inference(split_conjunct,[status(thm)],[ax2])).
+cnf(c_0_39, negated_conjecture, (h(op1(e12,e12))=op2(h(e12),h(e12))), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_40, plain, (op1(e12,e12)=e10), inference(split_conjunct,[status(thm)],[ax4])).
+cnf(c_0_41, negated_conjecture, (op2(h(e13),h(e13))=e20), inference(rw,[status(thm)],[c_0_35, c_0_36])).
+cnf(c_0_42, negated_conjecture, (h(e11)=e22|h(e12)=e22|h(e13)=e22), inference(sr,[status(thm)],[inference(rw,[status(thm)],[c_0_37, c_0_36]), c_0_38])).
+cnf(c_0_43, negated_conjecture, (op2(h(e12),h(e12))=h(e10)), inference(rw,[status(thm)],[c_0_39, c_0_40])).
+cnf(c_0_44, negated_conjecture, (op2(e22,h(e13))=e20|h(e11)=e22|h(e12)=e22), inference(pm,[status(thm)],[c_0_41, c_0_42])).
+cnf(c_0_45, plain, (e20!=e23), inference(split_conjunct,[status(thm)],[ax2])).
+cnf(c_0_46, negated_conjecture, (h(op1(e11,e11))=op2(h(e11),h(e11))), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_47, plain, (op1(e11,e11)=e10), inference(split_conjunct,[status(thm)],[ax4])).
+cnf(c_0_48, negated_conjecture, (op2(h(e12),h(e12))=e20), inference(rw,[status(thm)],[c_0_43, c_0_36])).
+cnf(c_0_49, negated_conjecture, (h(e11)=e22|h(e12)=e22), inference(sr,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_44, c_0_42]), c_0_19]), c_0_45])).
+cnf(c_0_50, negated_conjecture, (op2(h(e11),h(e11))=h(e10)), inference(rw,[status(thm)],[c_0_46, c_0_47])).
+cnf(c_0_51, negated_conjecture, (op2(e22,h(e12))=e20|h(e11)=e22), inference(pm,[status(thm)],[c_0_48, c_0_49])).
+cnf(c_0_52, negated_conjecture, (op2(h(e11),h(e11))=e20), inference(rw,[status(thm)],[c_0_50, c_0_36])).
+cnf(c_0_53, negated_conjecture, (h(e11)=e22), inference(sr,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_51, c_0_49]), c_0_19]), c_0_45])).
+cnf(c_0_54, negated_conjecture, ($false), inference(sr,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_52, c_0_53]), c_0_53]), c_0_19]), c_0_45]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 55
+# Proof object clause steps            : 46
+# Proof object formula steps           : 9
+# Proof object conjectures             : 29
+# Proof object clause conjectures      : 26
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 19
+# Proof object initial formulas used   : 4
+# Proof object generating inferences   : 16
+# Proof object simplifying inferences  : 27
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 6
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 109
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 109
+# Processed clauses                    : 302
+# ...of these trivial                  : 0
+# ...subsumed                          : 120
+# ...remaining for further processing  : 182
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 19
+# Backward-rewritten                   : 60
+# Generated clauses                    : 703
+# ...of the previous two non-trivial   : 712
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 655
+# Factorizations                       : 48
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 103
+#    Positive orientable unit clauses  : 62
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 28
+#    Non-unit-clauses                  : 13
+# Current number of unprocessed clauses: 483
+# ...number of literals in the above   : 1968
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 79
+# Clause-clause subsumption calls (NU) : 105
+# Rec. Clause-clause subsumption calls : 69
+# Non-unit clause-clause subsumptions  : 67
+# Unit Clause-clause subsumption calls : 317
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 3
+# BW rewrite match successes           : 3
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 6890

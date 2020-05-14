@@ -1,0 +1,538 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_35, plain, (injection(alpha))).
+#
+#cnf(i_0_36, plain, (injection(gamma))).
+#
+#cnf(i_0_37, plain, (surjection(beta))).
+#
+#cnf(i_0_59, negated_conjecture, (~surjection(g))).
+#
+#cnf(i_0_38, plain, (surjection(delta))).
+#
+#cnf(i_0_43, hypothesis, (surjection(f))).
+#
+#cnf(i_0_44, hypothesis, (surjection(h))).
+#
+#cnf(i_0_39, plain, (exact(alpha,beta))).
+#
+#cnf(i_0_40, plain, (exact(gammma,delta))).
+#
+#cnf(i_0_28, plain, (morphism(alpha,a,b))).
+#
+#cnf(i_0_29, plain, (morphism(beta,b,c))).
+#
+#cnf(i_0_30, plain, (morphism(gamma,d,e))).
+#
+#cnf(i_0_31, plain, (morphism(delta,e,r))).
+#
+#cnf(i_0_32, plain, (morphism(f,a,d))).
+#
+#cnf(i_0_33, plain, (morphism(g,b,e))).
+#
+#cnf(i_0_34, plain, (morphism(h,c,r))).
+#
+#cnf(i_0_41, plain, (commute(alpha,g,f,gamma))).
+#
+#cnf(i_0_42, plain, (commute(beta,h,g,delta))).
+#
+#cnf(i_0_49, plain, (element(esk9_1(X1),r)|~element(X1,e))).
+#
+#cnf(i_0_47, plain, (element(esk10_1(X1),b)|~element(X1,e))).
+#
+#cnf(i_0_55, plain, (element(esk11_1(X1),b)|~element(X1,e))).
+#
+#cnf(i_0_54, plain, (element(esk12_1(X1),e)|~element(X1,e))).
+#
+#cnf(i_0_52, plain, (element(esk13_1(X1),a)|~element(X1,e))).
+#
+#cnf(i_0_58, plain, (element(esk14_1(X1),b)|~element(X1,e))).
+#
+#cnf(i_0_57, plain, (element(esk15_1(X1),b)|~element(X1,e))).
+#
+#cnf(i_0_25, plain, (subtract(X2,X1,X1)=zero(X2)|~element(X1,X2))).
+#
+#cnf(i_0_48, plain, (apply(delta,X1)=esk9_1(X1)|~element(X1,e))).
+#
+#cnf(i_0_1, plain, (apply(X1,zero(X2))=zero(X3)|~morphism(X1,X2,X3))).
+#
+#cnf(i_0_60, plain, (apply(h,zero(c))=zero(r))).
+#
+#cnf(i_0_61, plain, (apply(g,zero(b))=zero(e))).
+#
+#cnf(i_0_62, plain, (apply(f,zero(a))=zero(d))).
+#
+#cnf(i_0_63, plain, (apply(delta,zero(e))=zero(r))).
+#
+#cnf(i_0_64, plain, (apply(gamma,zero(d))=zero(e))).
+#
+#cnf(i_0_65, plain, (apply(beta,zero(b))=zero(c))).
+#
+#cnf(i_0_66, plain, (apply(alpha,zero(a))=zero(b))).
+#
+#cnf(i_0_7, plain, (injection(X1)|element(esk1_2(X1,X2),X2)|~morphism(X1,X2,X3))).
+#
+#cnf(i_0_4, plain, (injection(X1)|esk2_2(X1,X2)!=esk1_2(X1,X2)|~morphism(X1,X2,X3))).
+#
+#cnf(i_0_68, plain, (injection(h)|esk2_2(h,c)!=esk1_2(h,c))).
+#
+#cnf(i_0_69, plain, (injection(g)|esk2_2(g,b)!=esk1_2(g,b))).
+#
+#cnf(i_0_6, plain, (injection(X1)|element(esk2_2(X1,X2),X2)|~morphism(X1,X2,X3))).
+#
+#cnf(i_0_70, plain, (injection(f)|esk2_2(f,a)!=esk1_2(f,a))).
+#
+#cnf(i_0_71, plain, (injection(delta)|esk2_2(delta,e)!=esk1_2(delta,e))).
+#
+#cnf(i_0_73, plain, (injection(beta)|esk2_2(beta,b)!=esk1_2(beta,b))).
+#
+#cnf(i_0_24, plain, (element(subtract(X2,X1,X3),X2)|~element(X3,X2)|~element(X1,X2))).
+#
+#cnf(i_0_75, plain, (element(zero(X1),X1)|~element(X2,X1))).
+##
+#cnf(i_0_77, plain, (element(zero(b),b)|~element(X1,e))).
+##
+#cnf(i_0_79, plain, (element(zero(a),a)|~element(X1,e))).
+####
+#cnf(i_0_83, plain, (element(zero(r),r)|~element(X1,e))).
+#########
+#cnf(i_0_84, plain, (injection(X2)|element(zero(X1),X1)|~morphism(X2,X1,X3))).
+#
+#cnf(i_0_105, plain, (injection(h)|element(zero(c),c))).
+#
+#cnf(i_0_106, plain, (injection(g)|element(zero(b),b))).
+#
+#cnf(i_0_107, plain, (injection(f)|element(zero(a),a))).
+#
+#cnf(i_0_108, plain, (injection(delta)|element(zero(e),e))).
+#
+#cnf(i_0_110, plain, (injection(beta)|element(zero(b),b))).
+#####
+#cnf(i_0_116, plain, (injection(delta)|element(zero(b),b))).
+#
+#cnf(i_0_117, plain, (injection(delta)|element(zero(a),a))).
+#######
+#cnf(i_0_11, plain, (surjection(X1)|element(esk4_3(X1,X2,X3),X3)|~morphism(X1,X2,X3))).
+#
+#cnf(i_0_124, plain, (surjection(X2)|element(zero(X1),X1)|~morphism(X2,X3,X1))).
+#
+#cnf(i_0_127, plain, (element(zero(e),e))).
+#
+#cnf(i_0_134, plain, (element(zero(b),b))).
+#
+#cnf(i_0_135, plain, (element(zero(a),a))).
+####
+#cnf(i_0_2, plain, (element(apply(X3,X1),X4)|~element(X1,X2)|~morphism(X3,X2,X4))).
+#
+#cnf(i_0_139, plain, (element(zero(X1),X1)|~element(X3,X4)|~morphism(X2,X4,X1))).
+#
+#cnf(i_0_159, plain, (element(zero(r),r)|~element(X1,c))).
+#
+#cnf(i_0_161, plain, (element(zero(d),d)|~element(X1,a))).
+##
+#cnf(i_0_164, plain, (element(zero(c),c)|~element(X1,b))).
+###
+#cnf(i_0_188, plain, (element(zero(d),d)|~element(X1,e))).
+#
+#cnf(i_0_211, plain, (element(zero(d),d))).
+##
+#cnf(i_0_195, plain, (element(zero(c),c)|~element(X1,e))).
+#
+#cnf(i_0_221, plain, (element(zero(c),c))).
+###
+#cnf(i_0_101, plain, (injection(X1)|element(zero(r),r)|~morphism(X1,e,X2))).
+#
+#cnf(i_0_224, plain, (injection(delta)|element(zero(r),r))).
+###
+#cnf(i_0_123, plain, (surjection(X1)|element(zero(r),r)|~morphism(X1,X2,e))).
+#
+#cnf(i_0_226, plain, (element(zero(r),r))).
+#
+#cnf(i_0_166, plain, (element(zero(X1),X1)|~element(X2,e)|~morphism(X3,b,X1))).
+##
+#cnf(i_0_168, plain, (element(zero(X1),X1)|~element(X2,e)|~morphism(X3,a,X1))).
+####
+#cnf(i_0_172, plain, (element(zero(X1),X1)|~element(X2,e)|~morphism(X3,r,X1))).
+#######
+#cnf(i_0_67, plain, (esk9_1(zero(e))=zero(r))).
+#
+#cnf(i_0_145, plain, (element(apply(X1,zero(X2)),X3)|~element(X4,X2)|~morphism(X1,X2,X3))).
+###
+#cnf(i_0_287, plain, (element(zero(r),X1)|~element(X2,c)|~morphism(h,c,X1))).
+#
+#cnf(i_0_288, plain, (element(zero(e),X1)|~element(X2,b)|~morphism(g,b,X1))).
+#
+#cnf(i_0_26, plain, (subtract(X2,X1,subtract(X2,X1,X3))=X3|~element(X3,X2)|~element(X1,X2))).
+#
+#cnf(i_0_314, plain, (subtract(X1,X2,zero(X1))=X2|~element(X2,X1))).
+##
+#cnf(i_0_289, plain, (element(zero(d),X1)|~element(X2,a)|~morphism(f,a,X1))).
+#
+#cnf(i_0_291, plain, (element(zero(r),X1)|~element(X2,e)|~morphism(delta,e,X1))).
+#
+#cnf(i_0_292, plain, (element(zero(e),X1)|~element(X2,d)|~morphism(gamma,d,X1))).
+#
+#cnf(i_0_293, plain, (element(zero(c),X1)|~element(X2,b)|~morphism(beta,b,X1))).
+#
+#cnf(i_0_294, plain, (element(zero(b),X1)|~element(X2,a)|~morphism(alpha,a,X1))).
+#
+#cnf(i_0_303, plain, (element(zero(e),X1)|~element(X2,e)|~morphism(g,b,X1))).
+####
+#cnf(i_0_318, plain, (element(zero(d),X1)|~element(X2,e)|~morphism(f,a,X1))).
+##
+#cnf(i_0_341, plain, (element(zero(c),X1)|~element(X2,e)|~morphism(beta,b,X1))).
+####
+#cnf(i_0_352, plain, (element(zero(b),X1)|~element(X2,e)|~morphism(alpha,a,X1))).
+#####
+#cnf(i_0_148, plain, (element(zero(r),X1)|~element(zero(c),X2)|~morphism(h,X2,X1))).
+#
+#cnf(i_0_149, plain, (element(zero(e),X1)|~element(zero(b),X2)|~morphism(g,X2,X1))).
+#
+#cnf(i_0_150, plain, (element(zero(d),X1)|~element(zero(a),X2)|~morphism(f,X2,X1))).
+#
+#cnf(i_0_151, plain, (element(zero(r),X1)|~element(zero(e),X2)|~morphism(delta,X2,X1))).
+#
+#cnf(i_0_153, plain, (element(zero(e),X1)|~element(zero(d),X2)|~morphism(gamma,X2,X1))).
+#
+#cnf(i_0_154, plain, (element(zero(c),X1)|~element(zero(b),X2)|~morphism(beta,X2,X1))).
+#
+#cnf(i_0_155, plain, (element(zero(b),X1)|~element(zero(a),X2)|~morphism(alpha,X2,X1))).
+#
+#cnf(i_0_173, plain, (surjection(X2)|element(zero(X1),X1)|~morphism(X5,X4,X1)|~morphism(X2,X3,X4))).
+#
+#cnf(i_0_403, plain, (element(zero(X1),X1)|~morphism(X2,e,X1))).
+###
+#cnf(i_0_408, plain, (surjection(alpha)|element(zero(X1),X1)|~morphism(X2,b,X1))).
+##
+#cnf(i_0_419, plain, (element(zero(X1),X1)|~morphism(X4,e,X2)|~morphism(X3,X2,X1))).
+#
+#cnf(i_0_438, plain, (element(zero(X1),X1)|~morphism(X2,r,X1))).
+###
+#cnf(i_0_442, plain, (element(zero(X1),X1)|~morphism(X4,r,X2)|~morphism(X3,X2,X1))).
+##
+#cnf(i_0_174, plain, (injection(X2)|element(zero(X1),X1)|~morphism(X4,X3,X1)|~morphism(X2,X3,X5))).
+#
+#cnf(i_0_458, plain, (injection(h)|element(zero(X1),X1)|~morphism(X2,c,X1))).
+#
+#cnf(i_0_459, plain, (injection(g)|element(zero(X1),X1)|~morphism(X2,b,X1))).
+#
+#cnf(i_0_460, plain, (injection(f)|element(zero(X1),X1)|~morphism(X2,a,X1))).
+##
+#cnf(i_0_463, plain, (injection(beta)|element(zero(X1),X1)|~morphism(X2,b,X1))).
+###########
+#cnf(i_0_51, plain, (apply(gamma,apply(f,esk13_1(X1)))=esk12_1(X1)|~element(X1,e))).
+#
+#cnf(i_0_45, plain, (apply(delta,apply(g,esk10_1(X1)))=esk9_1(X1)|~element(X1,e))).
+#
+#cnf(i_0_50, plain, (apply(g,apply(alpha,esk13_1(X1)))=esk12_1(X1)|~element(X1,e))).
+#
+#cnf(i_0_46, plain, (apply(h,apply(beta,esk10_1(X1)))=esk9_1(X1)|~element(X1,e))).
+#
+#cnf(i_0_416, plain, (element(apply(X1,zero(X2)),X3)|~morphism(X4,e,X2)|~morphism(X1,X2,X3))).
+###
+#cnf(i_0_439, plain, (element(apply(X1,zero(X2)),X3)|~morphism(X4,r,X2)|~morphism(X1,X2,X3))).
+###
+#cnf(i_0_53, plain, (subtract(e,apply(g,esk11_1(X1)),X1)=esk12_1(X1)|~element(X1,e))).
+#
+#cnf(i_0_158, plain, (element(zero(X1),X1)|~element(X4,X5)|~morphism(X3,X2,X1)|~morphism(X6,X5,X2))).
+###
+#cnf(i_0_560, plain, (element(zero(X1),X1)|~element(X2,a)|~morphism(X3,d,X1))).
+###
+#cnf(i_0_563, plain, (element(zero(X1),X1)|~element(X2,b)|~morphism(X3,c,X1))).
+#
+#cnf(i_0_564, plain, (element(zero(X1),X1)|~element(X2,a)|~morphism(X3,b,X1))).
+##
+#cnf(i_0_610, plain, (element(zero(X1),X1)|~element(X2,e)|~morphism(X3,d,X1))).
+##
+#cnf(i_0_625, plain, (element(zero(X1),X1)|~element(X2,e)|~morphism(X3,c,X1))).
+############
+#cnf(i_0_9, plain, (element(esk3_4(X1,X2,X3,X4),X2)|~surjection(X1)|~element(X4,X3)|~morphism(X1,X2,X3))).
+#
+#cnf(i_0_702, plain, (element(zero(X1),X1)|~surjection(X2)|~element(X4,X3)|~morphism(X2,X1,X3))).
+###
+#cnf(i_0_719, plain, (element(zero(X1),X1)|~surjection(X2)|~element(X3,e)|~morphism(X2,X1,b))).
+##
+#cnf(i_0_721, plain, (element(zero(X1),X1)|~surjection(X2)|~element(X3,e)|~morphism(X2,X1,a))).
+####
+#cnf(i_0_725, plain, (element(zero(X1),X1)|~surjection(X2)|~element(X3,e)|~morphism(X2,X1,r))).
+#
+#cnf(i_0_736, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X4,e,X3)|~morphism(X2,X1,X3))).
+#
+#cnf(i_0_822, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,r))).
+##
+#cnf(i_0_740, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X4,r,X3)|~morphism(X2,X1,X3))).
+######
+#cnf(i_0_827, plain, (element(zero(X1),X1)|~surjection(X4)|~morphism(X4,X2,r)|~morphism(X3,X2,X1))).
+#
+#cnf(i_0_857, plain, (element(zero(X1),X1)|~morphism(X2,c,X1))).
+###
+#cnf(i_0_863, plain, (element(zero(X1),X1)|~morphism(X4,c,X2)|~morphism(X3,X2,X1))).
+####
+#cnf(i_0_859, plain, (element(apply(X1,zero(X2)),X3)|~morphism(X4,c,X2)|~morphism(X1,X2,X3))).
+###
+#cnf(i_0_860, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X4,c,X3)|~morphism(X2,X1,X3))).
+######
+#cnf(i_0_517, plain, (element(zero(r),X1)|~morphism(X2,e,c)|~morphism(h,c,X1))).
+#
+#cnf(i_0_518, plain, (element(zero(e),X1)|~morphism(X2,e,b)|~morphism(g,b,X1))).
+#
+#cnf(i_0_519, plain, (element(zero(d),X1)|~morphism(X2,e,a)|~morphism(f,a,X1))).
+#
+#cnf(i_0_521, plain, (element(zero(r),X1)|~morphism(X2,e,e)|~morphism(delta,e,X1))).
+#
+#cnf(i_0_522, plain, (element(zero(e),X1)|~morphism(X2,e,d)|~morphism(gamma,d,X1))).
+#
+#cnf(i_0_523, plain, (element(zero(c),X1)|~morphism(X2,e,b)|~morphism(beta,b,X1))).
+#
+#cnf(i_0_524, plain, (element(zero(b),X1)|~morphism(X2,e,a)|~morphism(alpha,a,X1))).
+#
+#cnf(i_0_542, plain, (element(zero(r),X1)|~morphism(X2,r,c)|~morphism(h,c,X1))).
+#
+#cnf(i_0_543, plain, (element(zero(e),X1)|~morphism(X2,r,b)|~morphism(g,b,X1))).
+#
+#cnf(i_0_544, plain, (element(zero(d),X1)|~morphism(X2,r,a)|~morphism(f,a,X1))).
+#
+#cnf(i_0_546, plain, (element(zero(r),X1)|~morphism(X2,r,e)|~morphism(delta,e,X1))).
+#
+#cnf(i_0_547, plain, (element(zero(e),X1)|~morphism(X2,r,d)|~morphism(gamma,d,X1))).
+#
+#cnf(i_0_548, plain, (element(zero(c),X1)|~morphism(X2,r,b)|~morphism(beta,b,X1))).
+#
+#cnf(i_0_549, plain, (element(zero(b),X1)|~morphism(X2,r,a)|~morphism(alpha,a,X1))).
+#
+#cnf(i_0_904, plain, (element(zero(r),X1)|~morphism(X2,c,c)|~morphism(h,c,X1))).
+#
+#cnf(i_0_905, plain, (element(zero(e),X1)|~morphism(X2,c,b)|~morphism(g,b,X1))).
+#
+#cnf(i_0_906, plain, (element(zero(d),X1)|~morphism(X2,c,a)|~morphism(f,a,X1))).
+#
+#cnf(i_0_908, plain, (element(zero(r),X1)|~morphism(X2,c,e)|~morphism(delta,e,X1))).
+#
+#cnf(i_0_909, plain, (element(zero(e),X1)|~morphism(X2,c,d)|~morphism(gamma,d,X1))).
+#
+#cnf(i_0_910, plain, (element(zero(c),X1)|~morphism(X2,c,b)|~morphism(beta,b,X1))).
+#
+#cnf(i_0_911, plain, (element(zero(b),X1)|~morphism(X2,c,a)|~morphism(alpha,a,X1))).
+#
+#cnf(i_0_152, plain, (element(esk9_1(X1),X2)|~element(X1,e)|~element(X1,X3)|~morphism(delta,X3,X2))).
+###
+#cnf(i_0_268, plain, (element(apply(X1,zero(b)),X2)|~element(X3,e)|~morphism(X1,b,X2))).
+#####
+#cnf(i_0_270, plain, (element(apply(X1,zero(a)),X2)|~element(X3,e)|~morphism(X1,a,X2))).
+#######
+#cnf(i_0_274, plain, (element(apply(X1,zero(r)),X2)|~element(X3,e)|~morphism(X1,r,X2))).
+#####
+#cnf(i_0_235, plain, (surjection(X2)|element(zero(X1),X1)|~morphism(X4,b,X1)|~morphism(X2,X3,e))).
+#
+#cnf(i_0_1148, plain, (element(zero(X1),X1)|~morphism(X2,b,X1))).
+##
+#cnf(i_0_1156, plain, (element(zero(X1),X1)|~morphism(X4,b,X2)|~morphism(X3,X2,X1))).
+####
+#cnf(i_0_1153, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X4,b,X3)|~morphism(X2,X1,X3))).
+#
+#cnf(i_0_1191, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,e))).
+#
+#cnf(i_0_1192, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,c))).
+####
+#cnf(i_0_1197, plain, (element(zero(X1),X1)|~surjection(X4)|~morphism(X4,X2,e)|~morphism(X3,X2,X1))).
+##
+#cnf(i_0_1225, plain, (element(zero(X1),X1)|~surjection(gamma)|~morphism(X2,d,X1))).
+##
+#cnf(i_0_1206, plain, (element(zero(X1),X1)|~surjection(X4)|~morphism(X4,X2,c)|~morphism(X3,X2,X1))).
+####
+#cnf(i_0_1152, plain, (element(apply(X1,zero(X2)),X3)|~morphism(X4,b,X2)|~morphism(X1,X2,X3))).
+###
+#cnf(i_0_1275, plain, (element(zero(r),X1)|~morphism(X2,b,c)|~morphism(h,c,X1))).
+#
+#cnf(i_0_1276, plain, (element(zero(e),X1)|~morphism(X2,b,b)|~morphism(g,b,X1))).
+#
+#cnf(i_0_1277, plain, (element(zero(d),X1)|~morphism(X2,b,a)|~morphism(f,a,X1))).
+#
+#cnf(i_0_1279, plain, (element(zero(r),X1)|~morphism(X2,b,e)|~morphism(delta,e,X1))).
+#
+#cnf(i_0_1287, plain, (element(zero(r),X1)|~morphism(delta,e,X1))).
+#
+#cnf(i_0_1280, plain, (element(zero(e),X1)|~morphism(X2,b,d)|~morphism(gamma,d,X1))).
+#
+#cnf(i_0_1281, plain, (element(zero(c),X1)|~morphism(X2,b,b)|~morphism(beta,b,X1))).
+#
+#cnf(i_0_1282, plain, (element(zero(b),X1)|~morphism(X2,b,a)|~morphism(alpha,a,X1))).
+#
+#cnf(i_0_1230, plain, (element(zero(X1),X1)|~surjection(gamma)|~morphism(X4,d,X2)|~morphism(X3,X2,X1))).
+##
+#cnf(i_0_56, plain, (apply(g,subtract(b,esk14_1(X1),esk15_1(X1)))=X1|~element(X1,e))).
+##
+#cnf(i_0_246, plain, (surjection(X2)|element(zero(X1),X1)|~morphism(X4,a,X1)|~morphism(X2,X3,e))).
+#
+#cnf(i_0_1315, plain, (element(zero(X1),X1)|~morphism(X2,a,X1))).
+##
+#cnf(i_0_1323, plain, (element(zero(X1),X1)|~morphism(X4,a,X2)|~morphism(X3,X2,X1))).
+#
+#cnf(i_0_1342, plain, (element(zero(X1),X1)|~morphism(X2,d,X1))).
+####
+#cnf(i_0_1348, plain, (element(zero(X1),X1)|~morphism(X4,d,X2)|~morphism(X3,X2,X1))).
+###
+#cnf(i_0_1320, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X4,a,X3)|~morphism(X2,X1,X3))).
+#
+#cnf(i_0_1381, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,d))).
+#
+#cnf(i_0_1382, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,b))).
+###
+#cnf(i_0_1345, plain, (element(zero(X1),X1)|~surjection(X2)|~morphism(X4,d,X3)|~morphism(X2,X1,X3))).
+##
+#cnf(i_0_1319, plain, (element(apply(X1,zero(X2)),X3)|~morphism(X4,a,X2)|~morphism(X1,X2,X3))).
+###
+#cnf(i_0_1387, plain, (element(zero(X1),X1)|~surjection(X4)|~morphism(X4,X2,d)|~morphism(X3,X2,X1))).
+##
+#cnf(i_0_1395, plain, (element(zero(X1),X1)|~surjection(X4)|~morphism(X4,X2,b)|~morphism(X3,X2,X1))).
+######
+#cnf(i_0_1344, plain, (element(apply(X1,zero(X2)),X3)|~morphism(X4,d,X2)|~morphism(X1,X2,X3))).
+###
+#cnf(i_0_1435, plain, (element(zero(r),X1)|~morphism(X2,a,c)|~morphism(h,c,X1))).
+#
+#cnf(i_0_1436, plain, (element(zero(e),X1)|~morphism(X2,a,b)|~morphism(g,b,X1))).
+#
+#cnf(i_0_1437, plain, (element(zero(d),X1)|~morphism(X2,a,a)|~morphism(f,a,X1))).
+##
+#cnf(i_0_1440, plain, (element(zero(e),X1)|~morphism(X2,a,d)|~morphism(gamma,d,X1))).
+#
+#cnf(i_0_1506, plain, (element(zero(e),X1)|~morphism(gamma,d,X1))).
+#
+#cnf(i_0_1441, plain, (element(zero(c),X1)|~morphism(X2,a,b)|~morphism(beta,b,X1))).
+#
+#cnf(i_0_1509, plain, (element(zero(c),X1)|~morphism(beta,b,X1))).
+#
+#cnf(i_0_1442, plain, (element(zero(b),X1)|~morphism(X2,a,a)|~morphism(alpha,a,X1))).
+#
+#cnf(i_0_1494, plain, (element(zero(r),X1)|~morphism(X2,d,c)|~morphism(h,c,X1))).
+#
+#cnf(i_0_1495, plain, (element(zero(e),X1)|~morphism(X2,d,b)|~morphism(g,b,X1))).
+#
+#cnf(i_0_1496, plain, (element(zero(d),X1)|~morphism(X2,d,a)|~morphism(f,a,X1))).
+####
+#cnf(i_0_1501, plain, (element(zero(b),X1)|~morphism(X2,d,a)|~morphism(alpha,a,X1))).
+##
+#cnf(i_0_10, plain, (surjection(X3)|apply(X3,X1)!=esk4_3(X3,X2,X4)|~element(X1,X2)|~morphism(X3,X2,X4))).
+#
+#cnf(i_0_1572, plain, (esk12_1(X1)!=esk4_3(g,X2,X3)|~element(apply(alpha,esk13_1(X1)),X2)|~element(X1,e)|~morphism(g,X2,X3))).
+#
+#cnf(i_0_1522, plain, (surjection(X1)|esk4_3(X1,X2,X3)!=apply(X1,zero(X2))|~element(X4,X2)|~morphism(X1,X2,X3))).
+##
+#cnf(i_0_5, plain, (apply(X1,esk2_2(X1,X2))=apply(X1,esk1_2(X1,X2))|injection(X1)|~morphism(X1,X2,X3))).
+#
+#cnf(i_0_1571, plain, (X1!=esk4_3(g,X2,X3)|~element(subtract(b,esk14_1(X1),esk15_1(X1)),X2)|~element(X1,e)|~morphism(g,X2,X3))).
+#
+#cnf(i_0_726, plain, (surjection(X3)|element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,X5)|~morphism(X3,X4,X5))).
+###
+#cnf(i_0_1576, plain, (esk12_1(X1)!=esk4_3(g,X2,X3)|~element(esk13_1(X1),X4)|~element(X1,e)|~morphism(g,X2,X3)|~morphism(alpha,X4,X2))).
+##
+#cnf(i_0_728, plain, (injection(X3)|element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,X4)|~morphism(X3,X4,X5))).
+##
+#cnf(i_0_1666, plain, (esk12_1(X1)!=esk4_3(g,X2,X3)|~element(X1,e)|~morphism(alpha,a,X2)|~morphism(g,X2,X3))).
+##
+#cnf(i_0_1678, plain, (injection(f)|element(zero(X1),X1)|~surjection(X2)|~morphism(X2,X1,a))).
+##
+#cnf(i_0_1690, plain, (esk12_1(esk12_1(X1))!=esk4_3(g,X2,X3)|~element(X1,e)|~morphism(alpha,a,X2)|~morphism(g,X2,X3))).
+####
+#cnf(i_0_1642, plain, (X1!=esk4_3(g,b,X2)|~element(esk15_1(X1),b)|~element(esk14_1(X1),b)|~element(X1,e)|~morphism(g,b,X2))).
+####
+#cnf(i_0_1718, plain, (X1!=esk4_3(g,b,X2)|~element(esk15_1(X1),b)|~element(X1,e)|~morphism(g,b,X2))).
+###
+#cnf(i_0_146, plain, (surjection(X4)|element(apply(X1,zero(X2)),X3)|~morphism(X1,X2,X3)|~morphism(X4,X5,X2))).
+#
+#cnf(i_0_1720, plain, (X1!=esk4_3(g,b,X2)|~element(X1,e)|~morphism(g,b,X2))).
+##
+#cnf(i_0_147, plain, (injection(X4)|element(apply(X1,zero(X2)),X3)|~morphism(X1,X2,X3)|~morphism(X4,X2,X5))).
+##
+#cnf(i_0_1750, plain, (~element(esk4_3(g,b,X1),e)|~morphism(g,b,X1))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(g_surjection, conjecture, surjection(g), file('./p/HAL003+3.tptp', g_surjection)).
+fof(properties_for_surjection, axiom, ![X1, X2, X3]:((morphism(X1,X2,X3)&![X7]:(element(X7,X3)=>?[X8]:(element(X8,X2)&apply(X1,X8)=X7)))=>surjection(X1)), file('./p/HAL003+3.tptp', properties_for_surjection)).
+fof(lemma12, axiom, ![X19]:(element(X19,e)=>?[X21, X24]:((element(X21,b)&element(X24,b))&apply(g,subtract(b,X21,X24))=X19)), file('./p/HAL003+3.tptp', lemma12)).
+fof(subtract_in_domain, axiom, ![X2, X5, X6]:((element(X5,X2)&element(X6,X2))=>element(subtract(X2,X5,X6),X2)), file('./p/HAL003+3.tptp', subtract_in_domain)).
+fof(g_morphism, axiom, morphism(g,b,e), file('./p/HAL003+3.tptp', g_morphism)).
+fof(c_0_5, negated_conjecture, ~(surjection(g)), inference(assume_negation,[status(cth)],[g_surjection])).
+fof(c_0_6, plain, ![X44, X45, X46, X48]:((element(esk4_3(X44,X45,X46),X46)|~morphism(X44,X45,X46)|surjection(X44))&(~element(X48,X45)|apply(X44,X48)!=esk4_3(X44,X45,X46)|~morphism(X44,X45,X46)|surjection(X44))), inference(distribute,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(shift_quantors,[status(thm)],[inference(fof_nnf,[status(thm)],[properties_for_surjection])])])])])])).
+fof(c_0_7, plain, ![X104]:(((element(esk14_1(X104),b)|~element(X104,e))&(element(esk15_1(X104),b)|~element(X104,e)))&(apply(g,subtract(b,esk14_1(X104),esk15_1(X104)))=X104|~element(X104,e))), inference(distribute,[status(thm)],[inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[lemma12])])])])).
+fof(c_0_8, negated_conjecture, ~surjection(g), inference(fof_simplification,[status(thm)],[c_0_5])).
+cnf(c_0_9, plain, (surjection(X3)|~element(X1,X2)|apply(X3,X1)!=esk4_3(X3,X2,X4)|~morphism(X3,X2,X4)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_10, plain, (apply(g,subtract(b,esk14_1(X1),esk15_1(X1)))=X1|~element(X1,e)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_11, negated_conjecture, (~surjection(g)), inference(split_conjunct,[status(thm)],[c_0_8])).
+fof(c_0_12, plain, ![X84, X85, X86]:(~element(X85,X84)|~element(X86,X84)|element(subtract(X84,X85,X86),X84)), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[subtract_in_domain])])).
+cnf(c_0_13, plain, (X1!=esk4_3(g,X2,X3)|~element(subtract(b,esk14_1(X1),esk15_1(X1)),X2)|~element(X1,e)|~morphism(g,X2,X3)), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_9, c_0_10]), c_0_11])).
+cnf(c_0_14, plain, (element(subtract(X2,X1,X3),X2)|~element(X1,X2)|~element(X3,X2)), inference(split_conjunct,[status(thm)],[c_0_12])).
+cnf(c_0_15, plain, (X1!=esk4_3(g,b,X2)|~element(esk15_1(X1),b)|~element(esk14_1(X1),b)|~element(X1,e)|~morphism(g,b,X2)), inference(pm,[status(thm)],[c_0_13, c_0_14])).
+cnf(c_0_16, plain, (element(esk14_1(X1),b)|~element(X1,e)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_17, plain, (X1!=esk4_3(g,b,X2)|~element(esk15_1(X1),b)|~element(X1,e)|~morphism(g,b,X2)), inference(pm,[status(thm)],[c_0_15, c_0_16])).
+cnf(c_0_18, plain, (element(esk15_1(X1),b)|~element(X1,e)), inference(split_conjunct,[status(thm)],[c_0_7])).
+cnf(c_0_19, plain, (X1!=esk4_3(g,b,X2)|~element(X1,e)|~morphism(g,b,X2)), inference(pm,[status(thm)],[c_0_17, c_0_18])).
+cnf(c_0_20, plain, (~element(esk4_3(g,b,X1),e)|~morphism(g,b,X1)), inference(er,[status(thm)],[c_0_19])).
+cnf(c_0_21, plain, (element(esk4_3(X1,X2,X3),X3)|surjection(X1)|~morphism(X1,X2,X3)), inference(split_conjunct,[status(thm)],[c_0_6])).
+cnf(c_0_22, plain, (morphism(g,b,e)), inference(split_conjunct,[status(thm)],[g_morphism])).
+cnf(c_0_23, plain, ($false), inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_20, c_0_21]), c_0_22])]), c_0_11]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 24
+# Proof object clause steps            : 14
+# Proof object formula steps           : 10
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 1
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 8
+# Proof object initial formulas used   : 5
+# Proof object generating inferences   : 6
+# Proof object simplifying inferences  : 4
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 34
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 59
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 59
+# Processed clauses                    : 416
+# ...of these trivial                  : 2
+# ...subsumed                          : 191
+# ...remaining for further processing  : 223
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 55
+# Backward-rewritten                   : 2
+# Generated clauses                    : 1741
+# ...of the previous two non-trivial   : 1437
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 1737
+# Factorizations                       : 0
+# Equation resolutions                 : 4
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 166
+#    Positive orientable unit clauses  : 31
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 1
+#    Non-unit-clauses                  : 134
+# Current number of unprocessed clauses: 1002
+# ...number of literals in the above   : 4700
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 57
+# Clause-clause subsumption calls (NU) : 2898
+# Rec. Clause-clause subsumption calls : 2274
+# Non-unit clause-clause subsumptions  : 229
+# Unit Clause-clause subsumption calls : 38
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 6
+# BW rewrite match successes           : 6
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 16527

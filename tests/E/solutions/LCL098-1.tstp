@@ -1,0 +1,523 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_4, plain, (is_a_theorem(X2)|~is_a_theorem(equivalent(X1,X2))|~is_a_theorem(X1))).
+#
+#cnf(i_0_5, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(X1,X3)),X4),equivalent(equivalent(X2,X3),X4)),X5),X5)))).
+#
+#cnf(i_0_7, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),X5),equivalent(equivalent(X3,X4),X5)),X1)))).
+#
+#cnf(i_0_6, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),c),e),equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e)))))).
+#
+#cnf(i_0_8, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X1,X4),X3)))))).
+#
+#cnf(i_0_9, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),X4)))|~is_a_theorem(equivalent(equivalent(X3,X2),X4)))).
+#
+#cnf(i_0_11, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(X1,X4),X3))|~is_a_theorem(equivalent(X2,X4)))).
+#
+#cnf(i_0_15, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),c),X1),equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e))))|~is_a_theorem(equivalent(e,X1)))).
+#
+#cnf(i_0_13, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X4),X1))|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X3,X4)))).
+#
+#cnf(i_0_36, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X5),X1))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X3))|~is_a_theorem(equivalent(X3,X5)))).
+#
+#cnf(i_0_17, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(X1,X5),X3))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X5)))).
+#
+#cnf(i_0_24, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),c),X2),equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e))))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X1,X2)))).
+###
+#cnf(i_0_22, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),X4)))|~is_a_theorem(equivalent(equivalent(X3,X5),X4))|~is_a_theorem(equivalent(X2,X5)))).
+###
+#cnf(i_0_33, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),X4)))|~is_a_theorem(equivalent(equivalent(X3,X2),X5))|~is_a_theorem(equivalent(X5,X4)))).
+#
+#cnf(i_0_115, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(X1,X4),X5))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X5,X3)))).
+#
+#cnf(i_0_160, negated_conjecture, (~is_a_theorem(equivalent(X2,equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e))))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),c),X1),X2))|~is_a_theorem(equivalent(e,X1)))).
+#
+#cnf(i_0_146, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X4),X5))|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X5,X1)))).
+#
+#cnf(i_0_21, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X1,X4),X5))))|~is_a_theorem(equivalent(X3,X5)))).
+##
+#cnf(i_0_192, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,c),equivalent(equivalent(equivalent(a,b),X1),X2)),equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e))))|~is_a_theorem(equivalent(e,X2)))).
+#
+#cnf(i_0_10, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(equivalent(equivalent(X3,X4),equivalent(X3,X5)),X1),equivalent(equivalent(X4,X5),X2)))))).
+#
+#cnf(i_0_268, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(X1,X3)),X4),equivalent(equivalent(X2,X3),X5)))|~is_a_theorem(equivalent(X4,X5)))).
+#
+#cnf(i_0_313, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),X4))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X1,X5),X3)),X4)))).
+#
+#cnf(i_0_203, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(a,falsehood),X1),equivalent(equivalent(b,falsehood),e)))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),c),X2),equivalent(c,X1)))|~is_a_theorem(equivalent(e,X2)))).
+#
+#cnf(i_0_295, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(X4,X1),equivalent(X4,X2)),X5))|~is_a_theorem(equivalent(X5,X3)))).
+#
+#cnf(i_0_340, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X4,X2),equivalent(X4,X3)),X5))|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X5,X1)))).
+#
+#cnf(i_0_409, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),equivalent(X2,X4))),X1))|~is_a_theorem(equivalent(X3,X4)))).
+#
+#cnf(i_0_358, negated_conjecture, (~is_a_theorem(equivalent(X2,equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e))))|~is_a_theorem(equivalent(equivalent(equivalent(X1,equivalent(equivalent(a,b),c)),equivalent(X1,e)),X2)))).
+#
+#cnf(i_0_386, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X1),equivalent(equivalent(X4,X5),equivalent(X4,X2))),X3)))).
+#
+#cnf(i_0_421, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(equivalent(X4,X3),equivalent(X4,X5)))))|~is_a_theorem(equivalent(X2,X5)))).
+#
+#cnf(i_0_466, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(X3,X4))))|~is_a_theorem(equivalent(X2,X5))|~is_a_theorem(equivalent(X5,X4)))).
+#
+#cnf(i_0_440, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X1,a),equivalent(X1,b)),c),e),equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e)))))).
+#
+#cnf(i_0_501, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(X1,X3)))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(equivalent(X5,X3)))).
+#
+#cnf(i_0_568, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X1,X3))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(equivalent(X5,X2)))).
+#
+#cnf(i_0_679, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(equivalent(X5,X1))|~is_a_theorem(X2))).
+#
+#cnf(i_0_610, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),equivalent(a,falsehood)),X1),X2))|~is_a_theorem(equivalent(X3,equivalent(equivalent(b,falsehood),e)))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X2,X3)))).
+#
+#cnf(i_0_322, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X5,X4),equivalent(equivalent(X1,X5),X3))))))).
+#
+#cnf(i_0_872, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(equivalent(X4,X3),X5))))|~is_a_theorem(equivalent(equivalent(X4,X2),X5)))).
+##
+#cnf(i_0_864, negated_conjecture, (~is_a_theorem(equivalent(X3,equivalent(equivalent(b,falsehood),e)))|~is_a_theorem(equivalent(equivalent(equivalent(b,falsehood),X2),X3))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X1,X2)))).
+#
+#cnf(i_0_454, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(equivalent(X4,X3),equivalent(equivalent(X5,X4),equivalent(X5,X2)))))))).
+##
+#cnf(i_0_16, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),X5),X6),X1))|~is_a_theorem(equivalent(equivalent(equivalent(X3,X4),X5),X6)))).
+#
+#cnf(i_0_1011, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,falsehood),X2),equivalent(falsehood,X1)))|~is_a_theorem(equivalent(equivalent(b,X1),e))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X3,X2)))).
+#
+#cnf(i_0_1083, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X2,X4),X5),equivalent(equivalent(X3,X4),equivalent(equivalent(X2,X3),X5))),X1)))).
+##
+#cnf(i_0_1114, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(equivalent(X3,X4),X1),equivalent(equivalent(X5,X4),equivalent(equivalent(X3,X5),X2))))))).
+#
+#cnf(i_0_992, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,falsehood),equivalent(equivalent(b,X1),X2)),equivalent(equivalent(b,falsehood),e)))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X3,X2)))).
+##
+#cnf(i_0_25, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,equivalent(equivalent(X3,X4),equivalent(equivalent(X5,X3),X6))),X1))|~is_a_theorem(equivalent(X2,equivalent(equivalent(X5,X4),X6))))).
+##
+#cnf(i_0_1212, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,b),X1),X3))|~is_a_theorem(equivalent(e,X2))|~is_a_theorem(equivalent(X4,e))|~is_a_theorem(equivalent(X2,X1))|~is_a_theorem(equivalent(X3,X4)))).
+#
+#cnf(i_0_917, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X6,X5),equivalent(equivalent(X2,X6),equivalent(X2,X4)))),X1))|~is_a_theorem(equivalent(X3,X4)))).
+#
+#cnf(i_0_18, plain, (is_a_theorem(equivalent(equivalent(X1,equivalent(equivalent(X2,X3),X4)),X5))|~is_a_theorem(equivalent(equivalent(X1,equivalent(equivalent(X6,X3),equivalent(equivalent(X2,X6),X4))),X5)))).
+#
+#cnf(i_0_26, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,equivalent(equivalent(X3,X4),X5)),X1))|~is_a_theorem(equivalent(X2,equivalent(X4,X6)))|~is_a_theorem(equivalent(equivalent(X3,X6),X5)))).
+#
+#cnf(i_0_1280, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,b),equivalent(equivalent(b,X2),X1)),X4))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X4,e))|~is_a_theorem(equivalent(X3,X1)))).
+#
+#cnf(i_0_28, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X3),X1))|~is_a_theorem(equivalent(X2,equivalent(X4,X5)))|~is_a_theorem(equivalent(equivalent(X4,X6),X3))|~is_a_theorem(equivalent(X5,X6)))).
+#
+#cnf(i_0_29, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X6,X3),equivalent(equivalent(X2,X6),X4)),X5))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X2,X3),X4),X5),X1)))).
+#
+#cnf(i_0_30, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),X4),X1))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),X6),X4))|~is_a_theorem(equivalent(equivalent(X5,X3),X6)))).
+#
+#cnf(i_0_1419, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X3,b),equivalent(equivalent(X1,X3),equivalent(equivalent(b,X1),X2))),e))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X4,X2)))).
+#
+#cnf(i_0_1577, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X5,X4),X6))),X1))|~is_a_theorem(equivalent(equivalent(X5,X3),X6)))).
+#
+#cnf(i_0_32, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),X4),X1))|~is_a_theorem(equivalent(equivalent(X2,X6),X5))|~is_a_theorem(equivalent(X5,X4))|~is_a_theorem(equivalent(X3,X6)))).
+#
+#cnf(i_0_35, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),X5),equivalent(equivalent(X3,X4),X5)),X6))|~is_a_theorem(equivalent(X6,X1)))).
+#
+#cnf(i_0_1638, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,X1),equivalent(equivalent(b,X2),X3)),X5))|~is_a_theorem(equivalent(equivalent(equivalent(X1,b),X5),e))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X4,X3)))).
+##
+#cnf(i_0_52, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X6),X1))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(equivalent(X5,X3))|~is_a_theorem(equivalent(X3,X6)))).
+##
+#cnf(i_0_1281, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,equivalent(b,b)),X3),X5))|~is_a_theorem(equivalent(equivalent(X2,X1),X3))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X5,e))|~is_a_theorem(equivalent(X4,X1)))).
+#
+#cnf(i_0_167, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X5),X6))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X3))|~is_a_theorem(equivalent(X3,X5))|~is_a_theorem(equivalent(X6,X1)))).
+#
+#cnf(i_0_230, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),X4)),X1))|~is_a_theorem(equivalent(equivalent(X2,X3),X6))|~is_a_theorem(equivalent(X6,X4)))).
+#
+#cnf(i_0_231, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X4,X2),X5),X1))|~is_a_theorem(equivalent(equivalent(X4,X3),X5))|~is_a_theorem(equivalent(X2,X6))|~is_a_theorem(equivalent(X6,X3)))).
+#
+#cnf(i_0_1285, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,b),equivalent(equivalent(b,X2),X3)),X5))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X5,e))|~is_a_theorem(equivalent(X4,X1))|~is_a_theorem(equivalent(X1,X3)))).
+##
+#cnf(i_0_367, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(X5,X3)),X6))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X3))|~is_a_theorem(equivalent(X6,X1)))).
+#
+#cnf(i_0_393, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),X3),X4),X5))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X6,X1),equivalent(X6,X2)),X3),X4),X5)))).
+#
+#cnf(i_0_1287, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,b),equivalent(equivalent(X3,X2),equivalent(equivalent(b,X3),X1))),X5))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X5,e))|~is_a_theorem(equivalent(X4,X1)))).
+#
+#cnf(i_0_2376, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X1,X2),X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X1,X4),X3))),X5),X5)))).
+#
+#cnf(i_0_2490, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(equivalent(X4,X3),equivalent(X4,X2))))))).
+#
+#cnf(i_0_2532, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(X3,X4))))|~is_a_theorem(equivalent(X2,X4)))).
+#
+#cnf(i_0_1432, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,b),X5),X3))|~is_a_theorem(equivalent(equivalent(equivalent(b,X1),X2),X5))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X3,e))|~is_a_theorem(equivalent(X4,X2)))).
+#
+#cnf(i_0_2648, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(X1,X3)))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X3)))).
+#
+#cnf(i_0_2828, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X1,X3))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X4,X2)))).
+#
+#cnf(i_0_3083, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X4,X1))|~is_a_theorem(X2))).
+#
+#cnf(i_0_2954, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,b),X1),X3))|~is_a_theorem(equivalent(e,X2))|~is_a_theorem(equivalent(X3,e))|~is_a_theorem(equivalent(X2,X1)))).
+##
+#cnf(i_0_2493, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X3,X4),equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),equivalent(X2,X4)))),X1)))).
+##
+#cnf(i_0_3328, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,b),equivalent(equivalent(b,X2),X1)),e))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X3,X1)))).
+####
+#cnf(i_0_3344, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,b),X4),X2))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X2,e))|~is_a_theorem(equivalent(X3,X1))|~is_a_theorem(equivalent(X1,X4)))).
+####
+#cnf(i_0_3329, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,equivalent(b,b)),X3),e))|~is_a_theorem(equivalent(equivalent(X2,X1),X3))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X4,X1)))).
+#
+#cnf(i_0_2518, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(equivalent(X4,X3),equivalent(X4,X2)))),X5),X5)))).
+##
+#cnf(i_0_3620, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,equivalent(X4,X1)),equivalent(equivalent(X5,X3),equivalent(X5,equivalent(X4,X2)))))))).
+#
+#cnf(i_0_3333, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,b),equivalent(equivalent(b,X2),X3)),e))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X4,X1))|~is_a_theorem(equivalent(X1,X3)))).
+#
+#cnf(i_0_3664, plain, (is_a_theorem(equivalent(equivalent(X1,equivalent(X2,X3)),equivalent(equivalent(X4,X1),equivalent(X4,equivalent(X2,X5)))))|~is_a_theorem(equivalent(X3,X5)))).
+#
+#cnf(i_0_3861, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(X1,equivalent(X3,X4))))|~is_a_theorem(equivalent(X2,equivalent(X3,X5)))|~is_a_theorem(equivalent(X5,X4)))).
+#
+#cnf(i_0_3999, plain, (is_a_theorem(equivalent(X1,equivalent(X2,X3)))|~is_a_theorem(equivalent(X4,equivalent(X2,X5)))|~is_a_theorem(equivalent(X1,X4))|~is_a_theorem(equivalent(X5,X3)))).
+##
+#cnf(i_0_4264, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X4,equivalent(X1,X5)))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X5,X2))|~is_a_theorem(X3))).
+#
+#cnf(i_0_4533, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X3,equivalent(X2,X4)))|~is_a_theorem(equivalent(X5,X3))|~is_a_theorem(equivalent(X4,X1))|~is_a_theorem(X2)|~is_a_theorem(X5))).
+#
+#cnf(i_0_2562, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,equivalent(equivalent(X3,X4),equivalent(equivalent(X5,X3),equivalent(X5,X6)))),X1))|~is_a_theorem(equivalent(X2,equivalent(X4,X6))))).
+#
+#cnf(i_0_3339, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,equivalent(b,b)),equivalent(X2,X3)),e))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X4,X1))|~is_a_theorem(equivalent(X1,X3)))).
+#
+#cnf(i_0_3274, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),X4)),X6))|~is_a_theorem(equivalent(equivalent(X2,X3),X4))|~is_a_theorem(equivalent(X6,X1)))).
+##
+#cnf(i_0_2627, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,equivalent(X2,X3)),equivalent(equivalent(X6,X5),equivalent(X6,equivalent(X2,X4)))),X1))|~is_a_theorem(equivalent(X3,X4)))).
+#
+#cnf(i_0_3341, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,b),X2),e))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X3,X1))|~is_a_theorem(equivalent(X1,X4))|~is_a_theorem(equivalent(X4,X2)))).
+#
+#cnf(i_0_3290, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X4,X2),equivalent(equivalent(X5,X4),equivalent(X5,X3))),X6))|~is_a_theorem(equivalent(X6,X1))|~is_a_theorem(equivalent(X2,X3)))).
+#
+#cnf(i_0_4790, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X5,equivalent(X2,X3)))|~is_a_theorem(equivalent(X4,X1))|~is_a_theorem(equivalent(X3,X6))|~is_a_theorem(equivalent(X6,X4))|~is_a_theorem(X2)|~is_a_theorem(X5))).
+##
+#cnf(i_0_3343, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,equivalent(b,b)),equivalent(equivalent(X3,X2),equivalent(X3,X1))),e))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X4,X1)))).
+#
+#cnf(i_0_3242, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X3,equivalent(X4,X5)))|~is_a_theorem(equivalent(equivalent(X4,X6),X1))|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X5,X6))|~is_a_theorem(X2))).
+#
+#cnf(i_0_3248, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(equivalent(X5,X6))|~is_a_theorem(equivalent(X6,X1))|~is_a_theorem(X2))).
+#
+#cnf(i_0_3249, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X6,X4),equivalent(equivalent(X3,X6),X5)),X1))|~is_a_theorem(equivalent(X2,equivalent(equivalent(X3,X4),X5)))|~is_a_theorem(X2))).
+#
+#cnf(i_0_3402, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,b),X4),e))|~is_a_theorem(equivalent(equivalent(equivalent(b,X1),X2),X4))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X3,X2)))).
+###
+#cnf(i_0_3250, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),X6),X1))|~is_a_theorem(equivalent(X2,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X5,X4),X6))|~is_a_theorem(X2))).
+##
+#cnf(i_0_3261, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(X5,X6)),X1))|~is_a_theorem(equivalent(X2,equivalent(X3,X4)))|~is_a_theorem(equivalent(X4,X6))|~is_a_theorem(X2))).
+#
+#cnf(i_0_3263, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X2,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X3,X5),X1))|~is_a_theorem(equivalent(X4,X6))|~is_a_theorem(equivalent(X6,X5))|~is_a_theorem(X2))).
+#
+#cnf(i_0_3265, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X6,X5),equivalent(X6,X4))),X1))|~is_a_theorem(equivalent(X2,equivalent(X3,X4)))|~is_a_theorem(X2))).
+##
+#cnf(i_0_3267, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X2,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X3,X6),X5))|~is_a_theorem(equivalent(X5,X1))|~is_a_theorem(equivalent(X4,X6))|~is_a_theorem(X2))).
+###
+#cnf(i_0_2953, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),equivalent(a,falsehood)),X1),X2))|~is_a_theorem(equivalent(X2,equivalent(equivalent(b,falsehood),e)))|~is_a_theorem(equivalent(e,X1)))).
+#
+#cnf(i_0_4776, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X6,equivalent(equivalent(X2,X3),X4)))|~is_a_theorem(equivalent(equivalent(equivalent(X2,X5),X4),X1))|~is_a_theorem(equivalent(X5,X3))|~is_a_theorem(X6))).
+#
+#cnf(i_0_4777, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X6,equivalent(X2,X3)))|~is_a_theorem(equivalent(equivalent(X4,X3),X5))|~is_a_theorem(equivalent(X5,X1))|~is_a_theorem(equivalent(X4,X2))|~is_a_theorem(X6))).
+#
+#cnf(i_0_4788, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X6,equivalent(X2,X3)))|~is_a_theorem(equivalent(equivalent(X4,X5),X1))|~is_a_theorem(equivalent(X4,X2))|~is_a_theorem(equivalent(X3,X5))|~is_a_theorem(X6))).
+#
+#cnf(i_0_6234, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,falsehood),X2),equivalent(equivalent(b,falsehood),e)))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X1,X2)))).
+#
+#cnf(i_0_4793, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X4),equivalent(X5,X3)),X1))|~is_a_theorem(equivalent(X6,equivalent(X2,X3)))|~is_a_theorem(equivalent(X4,X2))|~is_a_theorem(X6))).
+#
+#cnf(i_0_410, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,equivalent(X2,X3)),X6),X1))|~is_a_theorem(equivalent(equivalent(X5,equivalent(X2,X4)),X6))|~is_a_theorem(equivalent(X3,X4)))).
+#
+#cnf(i_0_6819, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X2,X3),X4),equivalent(equivalent(X5,X3),X6)),X1))|~is_a_theorem(equivalent(equivalent(equivalent(X2,X5),X4),X6)))).
+#
+#cnf(i_0_6634, negated_conjecture, (~is_a_theorem(equivalent(e,X2))|~is_a_theorem(equivalent(X3,e))|~is_a_theorem(equivalent(X2,X1))|~is_a_theorem(equivalent(X1,X3)))).
+#
+#cnf(i_0_6814, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),X5),equivalent(equivalent(X3,X4),X6)),X1))|~is_a_theorem(equivalent(X5,X6)))).
+###
+#cnf(i_0_6633, negated_conjecture, (~is_a_theorem(equivalent(e,X2))|~is_a_theorem(equivalent(X4,e))|~is_a_theorem(equivalent(X2,X1))|~is_a_theorem(equivalent(X1,X3))|~is_a_theorem(equivalent(X3,X4)))).
+#
+#cnf(i_0_414, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),X6)),X1))|~is_a_theorem(equivalent(equivalent(X2,X4),X6))|~is_a_theorem(equivalent(X3,X4)))).
+##
+#cnf(i_0_417, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),X6),X5))|~is_a_theorem(equivalent(equivalent(X2,X4),X6))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X5,X1)))).
+#
+#cnf(i_0_6883, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X1,X5),X3)),X4))|~is_a_theorem(equivalent(e,equivalent(equivalent(X1,X2),X3)))|~is_a_theorem(equivalent(X4,e)))).
+#
+#cnf(i_0_429, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X4,X2),equivalent(X4,X5)),X6))|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),X6),X1))|~is_a_theorem(equivalent(X3,X5)))).
+##
+#cnf(i_0_915, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X1),equivalent(equivalent(X6,X5),equivalent(equivalent(X4,X6),equivalent(X4,X2)))),X3)))).
+#
+#cnf(i_0_6900, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X4,X1),equivalent(equivalent(X5,X4),equivalent(X5,X2))),X3))|~is_a_theorem(equivalent(e,equivalent(X1,X2)))|~is_a_theorem(equivalent(X3,e)))).
+###
+#cnf(i_0_1531, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(equivalent(equivalent(X4,X5),equivalent(X4,X6)),X2),equivalent(equivalent(X5,X6),X3))),X1)))).
+#
+#cnf(i_0_6873, negated_conjecture, (~is_a_theorem(equivalent(X1,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X3,X5),X2))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X2,e))|~is_a_theorem(equivalent(X4,X5)))).
+#
+#cnf(i_0_1537, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X4,X3),X5),equivalent(equivalent(X6,X3),equivalent(equivalent(X2,X6),equivalent(equivalent(X4,X2),X5)))),X1)))).
+###
+#cnf(i_0_7281, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X1,X5),equivalent(equivalent(X3,X1),X4))),e))|~is_a_theorem(equivalent(e,equivalent(equivalent(X3,X2),X4))))).
+#
+#cnf(i_0_2342, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),equivalent(X2,X4))),X1))|~is_a_theorem(equivalent(X3,X6))|~is_a_theorem(equivalent(X6,X4)))).
+#
+#cnf(i_0_2497, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X2,X3),X4),equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),X4))),X6))|~is_a_theorem(equivalent(X6,X1)))).
+##
+#cnf(i_0_7436, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X1,X5),equivalent(equivalent(X3,X1),equivalent(X3,X4)))),e))|~is_a_theorem(equivalent(e,equivalent(X2,X4))))).
+#
+#cnf(i_0_2529, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(equivalent(X4,X5),X2),equivalent(equivalent(X6,X5),equivalent(equivalent(X4,X6),X3)))),X1)))).
+#
+#cnf(i_0_2534, plain, (is_a_theorem(equivalent(equivalent(X1,equivalent(X2,X3)),X4))|~is_a_theorem(equivalent(equivalent(X1,equivalent(equivalent(X5,X2),equivalent(equivalent(X6,X5),equivalent(X6,X3)))),X4)))).
+#
+#cnf(i_0_2535, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X6,X5),equivalent(X6,X3))),X4))|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),X4),X1)))).
+#
+#cnf(i_0_6852, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),X5)),e))|~is_a_theorem(equivalent(X1,equivalent(equivalent(X4,X3),X5)))|~is_a_theorem(equivalent(e,X1)))).
+##
+#cnf(i_0_2624, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(X5,equivalent(X4,X1)),equivalent(equivalent(X6,X5),equivalent(X6,equivalent(X4,X2)))),X3)))).
+###
+#cnf(i_0_2678, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,equivalent(equivalent(X3,X4),equivalent(X3,X5))),X1))|~is_a_theorem(equivalent(X2,equivalent(X4,X6)))|~is_a_theorem(equivalent(X6,X5)))).
+#
+#cnf(i_0_2738, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X4,X2),equivalent(X4,X5)),X1))|~is_a_theorem(equivalent(X2,X6))|~is_a_theorem(equivalent(X6,X3))|~is_a_theorem(equivalent(X3,X5)))).
+#
+#cnf(i_0_2743, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,equivalent(X2,X3)),equivalent(X5,X6)),X1))|~is_a_theorem(equivalent(equivalent(X2,X4),X6))|~is_a_theorem(equivalent(X3,X4)))).
+###
+#cnf(i_0_2859, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,equivalent(X3,X4)),X1))|~is_a_theorem(equivalent(X2,equivalent(X3,X5)))|~is_a_theorem(equivalent(X5,X6))|~is_a_theorem(equivalent(X6,X4)))).
+##
+#cnf(i_0_6853, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),X4),e))|~is_a_theorem(equivalent(X1,equivalent(X3,X5)))|~is_a_theorem(equivalent(equivalent(X2,X5),X4))|~is_a_theorem(equivalent(e,X1)))).
+##
+#cnf(i_0_3030, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X3),X5))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X3))|~is_a_theorem(equivalent(X5,X6))|~is_a_theorem(equivalent(X6,X1)))).
+##
+#cnf(i_0_6864, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),e))|~is_a_theorem(equivalent(X1,equivalent(X3,X5)))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X5,X4)))).
+####
+#cnf(i_0_6866, negated_conjecture, (~is_a_theorem(equivalent(equivalent(X2,X3),e))|~is_a_theorem(equivalent(X1,equivalent(X2,X4)))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(equivalent(X5,X3)))).
+####
+#cnf(i_0_6869, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),equivalent(X4,X5))),e))|~is_a_theorem(equivalent(X1,equivalent(X3,X5)))|~is_a_theorem(equivalent(e,X1)))).
+###
+#cnf(i_0_3623, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X3,X4),equivalent(equivalent(X5,equivalent(X2,X3)),equivalent(equivalent(X6,X5),equivalent(X6,equivalent(X2,X4))))),X1)))).
+#
+#cnf(i_0_6884, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X4,X1),X5),X3))|~is_a_theorem(equivalent(e,equivalent(X1,X2)))|~is_a_theorem(equivalent(equivalent(X4,X2),X5))|~is_a_theorem(equivalent(X3,e)))).
+#
+#cnf(i_0_3627, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X5,X4),equivalent(X5,X3)))),X6))|~is_a_theorem(equivalent(X6,X1)))).
+###
+#cnf(i_0_6895, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X4,X1),equivalent(X4,X5)),X3))|~is_a_theorem(equivalent(e,equivalent(X1,X2)))|~is_a_theorem(equivalent(X3,e))|~is_a_theorem(equivalent(X2,X5)))).
+#
+#cnf(i_0_3660, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X5,X4),equivalent(equivalent(X6,X5),equivalent(X6,X3))))),X1)))).
+#
+#cnf(i_0_3973, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,equivalent(X2,X3)),equivalent(X5,equivalent(X2,X6))),X1))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X4,X6)))).
+##
+#cnf(i_0_6897, negated_conjecture, (~is_a_theorem(equivalent(e,equivalent(X1,X2)))|~is_a_theorem(equivalent(equivalent(X1,X4),X3))|~is_a_theorem(equivalent(X3,e))|~is_a_theorem(equivalent(X2,X5))|~is_a_theorem(equivalent(X5,X4)))).
+####
+#cnf(i_0_6881, negated_conjecture, (~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X2,e))|~is_a_theorem(equivalent(X1,X3))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(equivalent(X5,X2)))).
+###
+#cnf(i_0_6820, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),X6)),X1))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X4),equivalent(X5,X3)),X6)))).
+#
+#cnf(i_0_6904, negated_conjecture, (~is_a_theorem(equivalent(e,equivalent(X1,X2)))|~is_a_theorem(equivalent(equivalent(X1,X5),X4))|~is_a_theorem(equivalent(X3,e))|~is_a_theorem(equivalent(X4,X3))|~is_a_theorem(equivalent(X2,X5)))).
+#
+#cnf(i_0_6845, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X4,X5),equivalent(X4,X6)),X1),equivalent(equivalent(X5,X6),X2)),X3)))).
+#
+#cnf(i_0_9609, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),X4)),X5),equivalent(equivalent(equivalent(X3,X2),X4),X5))))).
+###
+#cnf(i_0_9614, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(X3,X4))),X5),equivalent(equivalent(X2,X4),X5))))).
+##
+#cnf(i_0_9801, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,equivalent(X2,X3)),X4),equivalent(equivalent(X5,X3),equivalent(equivalent(X1,equivalent(X2,X5)),X4)))))).
+#
+#cnf(i_0_6915, negated_conjecture, (~is_a_theorem(equivalent(equivalent(X2,X5),e))|~is_a_theorem(equivalent(X4,equivalent(X2,X3)))|~is_a_theorem(equivalent(e,X1))|~is_a_theorem(equivalent(X1,X4))|~is_a_theorem(equivalent(X3,X5)))).
+#
+#cnf(i_0_10193, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,equivalent(X4,X1)),X5)))|~is_a_theorem(equivalent(equivalent(X3,equivalent(X4,X2)),X5)))).
+#
+#cnf(i_0_10597, plain, (is_a_theorem(equivalent(equivalent(X1,equivalent(X2,X3)),X4))|~is_a_theorem(equivalent(equivalent(X1,equivalent(X2,X5)),X4))|~is_a_theorem(equivalent(X3,X5)))).
+#
+#cnf(i_0_10936, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,equivalent(X3,X5)),X1))|~is_a_theorem(equivalent(X2,equivalent(X3,X4)))|~is_a_theorem(equivalent(X4,X5)))).
+##
+#cnf(i_0_10091, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X5,equivalent(X1,X4)),equivalent(X5,X3))))))).
+#
+#cnf(i_0_11416, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,equivalent(X4,X1)),equivalent(X3,X5))))|~is_a_theorem(equivalent(equivalent(X4,X2),X5)))).
+#
+#cnf(i_0_11724, plain, (is_a_theorem(equivalent(equivalent(X1,equivalent(X2,X3)),equivalent(X1,X4)))|~is_a_theorem(equivalent(equivalent(X2,X5),X4))|~is_a_theorem(equivalent(X3,X5)))).
+#
+#cnf(i_0_12348, negated_conjecture, (~is_a_theorem(equivalent(equivalent(X1,X4),e))|~is_a_theorem(equivalent(X3,equivalent(X1,X2)))|~is_a_theorem(equivalent(e,X3))|~is_a_theorem(equivalent(X2,X4)))).
+#
+#cnf(i_0_12032, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X1,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X3,X5),X2))|~is_a_theorem(equivalent(X4,X5)))).
+#
+#cnf(i_0_12677, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X2,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X3,X5),X1))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(X2))).
+##
+#cnf(i_0_12347, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,b),X3),e))|~is_a_theorem(equivalent(e,X2))|~is_a_theorem(equivalent(X2,X1))|~is_a_theorem(equivalent(X1,X3)))).
+###
+#cnf(i_0_10421, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X6,X4),equivalent(equivalent(X2,equivalent(X3,X6)),equivalent(X2,X5))),X1))|~is_a_theorem(equivalent(equivalent(X3,X4),X5)))).
+###
+#cnf(i_0_11651, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X6,equivalent(X2,X5)),equivalent(X6,equivalent(X2,X4)))),X1))|~is_a_theorem(equivalent(X3,X4)))).
+###
+#cnf(i_0_6850, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X4,X5),X1),equivalent(equivalent(X6,X5),equivalent(equivalent(X4,X6),X2))),X3)))).
+###
+#cnf(i_0_7915, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),X4)),e))|~is_a_theorem(equivalent(e,equivalent(X2,X5)))|~is_a_theorem(equivalent(equivalent(X3,X5),X4)))).
+####
+#cnf(i_0_7926, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),equivalent(X3,X4))),e))|~is_a_theorem(equivalent(e,equivalent(X2,X5)))|~is_a_theorem(equivalent(X5,X4)))).
+##########
+#cnf(i_0_9804, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,equivalent(X2,X3)),X4),X5))|~is_a_theorem(equivalent(equivalent(equivalent(X6,X3),equivalent(equivalent(X1,equivalent(X2,X6)),X4)),X5)))).
+#
+#cnf(i_0_9825, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X5,equivalent(X2,X4)),X6),equivalent(equivalent(X3,X4),equivalent(equivalent(X5,equivalent(X2,X3)),X6))),X1)))).
+#
+#cnf(i_0_12472, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),e))|~is_a_theorem(equivalent(e,equivalent(equivalent(X4,X2),X5)))|~is_a_theorem(equivalent(equivalent(equivalent(X4,X1),X5),X3)))).
+#
+#cnf(i_0_9843, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),X3),X4),X5))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X6),X3),equivalent(equivalent(X2,X6),X4)),X5)))).
+##
+#cnf(i_0_9872, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),X4))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X6,X5),equivalent(equivalent(X1,X6),X3))),X4)))).
+##
+#cnf(i_0_10094, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),X4))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X6,equivalent(X1,X5)),equivalent(X6,X3))),X4)))).
+#
+#cnf(i_0_10115, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X2,X4),X6),equivalent(equivalent(X3,X4),equivalent(equivalent(X5,equivalent(X2,X3)),equivalent(X5,X6)))),X1)))).
+##
+#cnf(i_0_12473, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),e))|~is_a_theorem(equivalent(e,equivalent(X2,X4)))|~is_a_theorem(equivalent(equivalent(X1,X4),X5))|~is_a_theorem(equivalent(X5,X3)))).
+####
+#cnf(i_0_12485, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),e))|~is_a_theorem(equivalent(e,equivalent(X2,X4)))|~is_a_theorem(equivalent(equivalent(X1,X5),X3))|~is_a_theorem(equivalent(X4,X5)))).
+#
+#cnf(i_0_11129, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,equivalent(X3,X6)),X1))|~is_a_theorem(equivalent(X5,equivalent(X3,X4)))|~is_a_theorem(equivalent(X2,X5))|~is_a_theorem(equivalent(X4,X6)))).
+###
+#cnf(i_0_12487, negated_conjecture, (~is_a_theorem(equivalent(equivalent(X1,X2),e))|~is_a_theorem(equivalent(e,equivalent(X1,X3)))|~is_a_theorem(equivalent(X4,X2))|~is_a_theorem(equivalent(X3,X5))|~is_a_theorem(equivalent(X5,X4)))).
+####
+#cnf(i_0_12492, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X5,X1),equivalent(X5,X4)),X3))|~is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),e))|~is_a_theorem(equivalent(e,equivalent(X2,X4))))).
+######
+#cnf(i_0_11648, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X1),equivalent(equivalent(X6,equivalent(X4,X5)),equivalent(X6,equivalent(X4,X2)))),X3)))).
+######
+#cnf(i_0_11676, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X2,b),equivalent(equivalent(X3,equivalent(b,X2)),equivalent(X3,X1))),e))|~is_a_theorem(equivalent(e,X4))|~is_a_theorem(equivalent(X4,X1)))).
+######
+#cnf(i_0_3238, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X4,equivalent(X1,X5)))|~is_a_theorem(equivalent(X3,X4))|~is_a_theorem(equivalent(X5,X6))|~is_a_theorem(equivalent(X6,X2))|~is_a_theorem(X3))).
+#
+#cnf(i_0_14525, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X3,equivalent(X2,X4)))|~is_a_theorem(equivalent(X5,X3))|~is_a_theorem(equivalent(X4,X6))|~is_a_theorem(equivalent(X6,X1))|~is_a_theorem(X2)|~is_a_theorem(X5))).
+#
+#cnf(i_0_8476, negated_conjecture, (~is_a_theorem(equivalent(X5,equivalent(equivalent(equivalent(X4,X2),equivalent(equivalent(X1,X4),X3)),X6)))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),X3),X6),e))|~is_a_theorem(equivalent(e,X5)))).
+#
+#cnf(i_0_4698, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X5,equivalent(X1,X3)))|~is_a_theorem(equivalent(X4,X2))|~is_a_theorem(equivalent(X3,X6))|~is_a_theorem(equivalent(X6,X4))|~is_a_theorem(X5))).
+###
+#cnf(i_0_8927, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(X1,X3)),X4),X6),X5))|~is_a_theorem(equivalent(e,equivalent(equivalent(equivalent(X2,X3),X4),X6)))|~is_a_theorem(equivalent(X5,e)))).
+#
+#cnf(i_0_598, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X1,X4))|~is_a_theorem(equivalent(X4,X3))|~is_a_theorem(equivalent(X3,X5))|~is_a_theorem(equivalent(X5,X6))|~is_a_theorem(equivalent(X6,X2)))).
+###
+#cnf(i_0_15679, negated_conjecture, (~is_a_theorem(equivalent(e,equivalent(equivalent(equivalent(equivalent(X1,X3),X4),equivalent(equivalent(X2,X3),equivalent(equivalent(X1,X2),X4))),X5)))|~is_a_theorem(equivalent(X5,e)))).
+####
+#cnf(i_0_15685, negated_conjecture, (~is_a_theorem(equivalent(e,equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X1,X4),equivalent(X1,X3)))),X5)))|~is_a_theorem(equivalent(X5,e)))).
+#
+#cnf(i_0_3170, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X3,equivalent(X4,X5)))|~is_a_theorem(equivalent(equivalent(X4,X6),X2))|~is_a_theorem(equivalent(X1,X3))|~is_a_theorem(equivalent(X5,X6)))).
+##
+#cnf(i_0_3176, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(equivalent(equivalent(X6,X4),equivalent(equivalent(X3,X6),X5)),X2))|~is_a_theorem(equivalent(X1,equivalent(equivalent(X3,X4),X5))))).
+#####
+#cnf(i_0_10310, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X6,X3),equivalent(equivalent(X1,equivalent(X2,X6)),X4)),X5))|~is_a_theorem(equivalent(e,equivalent(equivalent(X1,equivalent(X2,X3)),X4)))|~is_a_theorem(equivalent(X5,e)))).
+#
+#cnf(i_0_3177, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),X6),X2))|~is_a_theorem(equivalent(X1,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X5,X4),X6)))).
+##
+#cnf(i_0_3188, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(X5,X6)),X2))|~is_a_theorem(equivalent(X1,equivalent(X3,X4)))|~is_a_theorem(equivalent(X4,X6)))).
+###
+#cnf(i_0_3190, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X1,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X3,X5),X2))|~is_a_theorem(equivalent(X4,X6))|~is_a_theorem(equivalent(X6,X5)))).
+##
+#cnf(i_0_6630, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(b,falsehood),X3),equivalent(equivalent(b,falsehood),e)))|~is_a_theorem(equivalent(e,X2))|~is_a_theorem(equivalent(X2,X1))|~is_a_theorem(equivalent(X1,X3)))).
+#
+#cnf(i_0_3192, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X3),equivalent(equivalent(X6,X5),equivalent(X6,X4))),X2))|~is_a_theorem(equivalent(X1,equivalent(X3,X4))))).
+##
+#cnf(i_0_3194, plain, (is_a_theorem(equivalent(X1,X2))|~is_a_theorem(equivalent(X1,equivalent(X3,X4)))|~is_a_theorem(equivalent(equivalent(X3,X6),X5))|~is_a_theorem(equivalent(X5,X2))|~is_a_theorem(equivalent(X4,X6)))).
+########
+#cnf(i_0_3225, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(X5,equivalent(X2,X6)))|~is_a_theorem(equivalent(equivalent(X1,X6),X3))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(X4))).
+##
+#cnf(i_0_20415, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X4,equivalent(X3,X5)))|~is_a_theorem(equivalent(equivalent(X2,X5),X1))|~is_a_theorem(equivalent(X2,X3))|~is_a_theorem(equivalent(X6,X4))|~is_a_theorem(X6))).
+#
+#cnf(i_0_4684, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(X6,equivalent(equivalent(X4,X2),X5)))|~is_a_theorem(equivalent(equivalent(equivalent(X4,X1),X5),X3))|~is_a_theorem(X6))).
+##
+#cnf(i_0_6891, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X6,X5),equivalent(equivalent(X1,X6),X3))),X4))|~is_a_theorem(equivalent(e,equivalent(equivalent(X1,X2),X3)))|~is_a_theorem(equivalent(X4,e)))).
+#
+#cnf(i_0_4685, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(X6,equivalent(X2,X4)))|~is_a_theorem(equivalent(equivalent(X1,X4),X5))|~is_a_theorem(equivalent(X5,X3))|~is_a_theorem(X6))).
+##
+#cnf(i_0_4696, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(X6,equivalent(X2,X4)))|~is_a_theorem(equivalent(equivalent(X1,X5),X3))|~is_a_theorem(equivalent(X4,X5))|~is_a_theorem(X6))).
+#
+#cnf(i_0_8477, negated_conjecture, (~is_a_theorem(equivalent(X5,equivalent(equivalent(equivalent(X3,X1),equivalent(equivalent(X4,X3),equivalent(X4,X2))),X6)))|~is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X6),e))|~is_a_theorem(equivalent(e,X5)))).
+##
+#cnf(i_0_4701, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(equivalent(X5,X1),equivalent(X5,X4)),X3))|~is_a_theorem(equivalent(X6,equivalent(X2,X4)))|~is_a_theorem(X6))).
+####
+#cnf(i_0_12, plain, (is_a_theorem(equivalent(equivalent(X1,equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),X5)),X6))|~is_a_theorem(equivalent(equivalent(X1,equivalent(equivalent(X3,X4),X5)),X6)))).
+###
+#cnf(i_0_23936, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X2,X3),X4),equivalent(equivalent(X5,X3),equivalent(equivalent(X2,X5),X6))),X1))|~is_a_theorem(equivalent(X4,X6)))).
+##
+#cnf(i_0_23642, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(X2,equivalent(equivalent(equivalent(X3,X4),equivalent(X3,X5)),X6)))|~is_a_theorem(equivalent(equivalent(X2,equivalent(equivalent(X4,X5),X6)),X1)))).
+#
+#cnf(i_0_24007, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),X3),equivalent(equivalent(X4,X2),X5)),X6))|~is_a_theorem(equivalent(e,equivalent(equivalent(equivalent(X1,X4),X3),X5)))|~is_a_theorem(equivalent(X6,e)))).
+####
+#cnf(i_0_11536, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(X5,X2),equivalent(equivalent(X6,equivalent(X1,X5)),equivalent(X6,X3))),X4))|~is_a_theorem(equivalent(e,equivalent(equivalent(X1,X2),X3)))|~is_a_theorem(equivalent(X4,e)))).
+#
+#cnf(i_0_23878, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,equivalent(X3,X4)),equivalent(X2,equivalent(X3,X5))),X6),equivalent(equivalent(X4,X5),X6)),X1)))).
+#####
+#cnf(i_0_23975, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,X3),X4),X5),equivalent(equivalent(equivalent(X2,X6),X4),equivalent(equivalent(X3,X6),X5))),X1)))).
+#
+#cnf(i_0_24408, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),X3),X4),equivalent(equivalent(equivalent(X1,X5),X3),equivalent(equivalent(X2,X5),X4)))))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(condensed_detachment, axiom, (is_a_theorem(X2)|~is_a_theorem(equivalent(X1,X2))|~is_a_theorem(X1)), file('./p/LCL098-1.tptp', condensed_detachment)).
+cnf(lg_3, axiom, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(X1,X3)),X4),equivalent(equivalent(X2,X3),X4)),X5),X5))), file('./p/LCL098-1.tptp', lg_3)).
+cnf(prove_lg_4, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),c),e),equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e))))), file('./p/LCL098-1.tptp', prove_lg_4)).
+cnf(c_0_3, axiom, (is_a_theorem(X2)|~is_a_theorem(equivalent(X1,X2))|~is_a_theorem(X1)), condensed_detachment).
+cnf(c_0_4, axiom, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(equivalent(X1,X2),equivalent(X1,X3)),X4),equivalent(equivalent(X2,X3),X4)),X5),X5))), lg_3).
+cnf(c_0_5, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),X5),equivalent(equivalent(X3,X4),X5)),X1))), inference(pm,[status(thm)],[c_0_3, c_0_4])).
+cnf(c_0_6, plain, (is_a_theorem(equivalent(equivalent(equivalent(X1,X2),X3),equivalent(equivalent(X4,X2),equivalent(equivalent(X1,X4),X3))))), inference(pm,[status(thm)],[c_0_5, c_0_4])).
+cnf(c_0_7, plain, (is_a_theorem(equivalent(equivalent(X1,X2),equivalent(equivalent(X3,X1),X4)))|~is_a_theorem(equivalent(equivalent(X3,X2),X4))), inference(pm,[status(thm)],[c_0_3, c_0_6])).
+cnf(c_0_8, plain, (is_a_theorem(equivalent(equivalent(X1,X2),X3))|~is_a_theorem(equivalent(equivalent(X1,X4),X3))|~is_a_theorem(equivalent(X2,X4))), inference(pm,[status(thm)],[c_0_3, c_0_7])).
+cnf(c_0_9, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(X2,X3),X1))|~is_a_theorem(equivalent(X2,X4))|~is_a_theorem(equivalent(X4,X3))), inference(pm,[status(thm)],[c_0_3, c_0_8])).
+cnf(c_0_10, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(X4,X2),X5)),X6))|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(X4,X3),X5),X6),X1))), inference(pm,[status(thm)],[c_0_9, c_0_6])).
+cnf(c_0_11, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(X2,X3),equivalent(equivalent(equivalent(equivalent(X4,X5),equivalent(X4,X6)),X2),equivalent(equivalent(X5,X6),X3))),X1))), inference(pm,[status(thm)],[c_0_10, c_0_4])).
+cnf(c_0_12, plain, (is_a_theorem(equivalent(equivalent(X1,equivalent(equivalent(equivalent(X2,X3),equivalent(X2,X4)),X5)),X6))|~is_a_theorem(equivalent(equivalent(X1,equivalent(equivalent(X3,X4),X5)),X6))), inference(pm,[status(thm)],[c_0_5, c_0_7])).
+cnf(c_0_13, plain, (is_a_theorem(X1)|~is_a_theorem(equivalent(equivalent(equivalent(equivalent(equivalent(X2,X3),X4),X5),equivalent(equivalent(equivalent(X2,X6),X4),equivalent(equivalent(X3,X6),X5))),X1))), inference(pm,[status(thm)],[c_0_11, c_0_12])).
+cnf(c_0_14, negated_conjecture, (~is_a_theorem(equivalent(equivalent(equivalent(equivalent(a,b),c),e),equivalent(equivalent(equivalent(a,falsehood),c),equivalent(equivalent(b,falsehood),e))))), prove_lg_4).
+cnf(c_0_15, plain, (is_a_theorem(equivalent(equivalent(equivalent(equivalent(X1,X2),X3),X4),equivalent(equivalent(equivalent(X1,X5),X3),equivalent(equivalent(X2,X5),X4))))), inference(pm,[status(thm)],[c_0_13, c_0_4])).
+cnf(c_0_16, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_14, c_0_15])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 17
+# Proof object clause steps            : 14
+# Proof object formula steps           : 3
+# Proof object conjectures             : 3
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 3
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 10
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 3
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 3
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 3
+# Processed clauses                    : 375
+# ...of these trivial                  : 0
+# ...subsumed                          : 156
+# ...remaining for further processing  : 219
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 1
+# Generated clauses                    : 24828
+# ...of the previous two non-trivial   : 24406
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 24828
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 218
+#    Positive orientable unit clauses  : 15
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 1
+#    Non-unit-clauses                  : 202
+# Current number of unprocessed clauses: 24034
+# ...number of literals in the above   : 129791
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 1
+# Clause-clause subsumption calls (NU) : 3883
+# Rec. Clause-clause subsumption calls : 2257
+# Non-unit clause-clause subsumptions  : 156
+# Unit Clause-clause subsumption calls : 8
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 389
+# BW rewrite match successes           : 1
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 448923

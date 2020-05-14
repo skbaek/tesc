@@ -1,0 +1,117 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for KRS257+1
+% SZS output start Proof for KRS257+1
+fof(f26148,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f26107,f298])).
+fof(f298,plain,(
+  ~mighta(sat,thm)),
+  inference(cnf_transformation,[],[f59])).
+fof(f59,plain,(
+  ~mighta(sat,thm)),
+  inference(flattening,[],[f34])).
+fof(f34,negated_conjecture,(
+  ~mighta(sat,thm)),
+  inference(negated_conjecture,[],[f33])).
+fof(f33,conjecture,(
+  mighta(sat,thm)),
+  file('./p/KRS257+1.tptp',unknown)).
+fof(f26107,plain,(
+  mighta(sat,thm)),
+  inference(resolution,[],[f868,f1770])).
+fof(f1770,plain,(
+  status(sK41,sK41,sat)),
+  inference(resolution,[],[f488,f283])).
+fof(f283,plain,(
+  ( ! [X1] : (model(X1,sK41)) )),
+  inference(cnf_transformation,[],[f186])).
+fof(f186,plain,(
+  ! [X1] : model(X1,sK41)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK41])],[f53,f185])).
+fof(f185,plain,(
+  ? [X0] : ! [X1] : model(X1,X0) => ! [X1] : model(X1,sK41)),
+  introduced(choice_axiom,[])).
+fof(f53,plain,(
+  ? [X0] : ! [X1] : model(X1,X0)),
+  inference(rectify,[],[f27])).
+fof(f27,axiom,(
+  ? [X9] : ! [X8] : model(X8,X9)),
+  file('./p/KRS257+1.tptp',unknown)).
+fof(f488,plain,(
+  ( ! [X0,X1] : (~model(X1,X0) | status(X0,sK41,sat)) )),
+  inference(resolution,[],[f215,f283])).
+fof(f215,plain,(
+  ( ! [X0,X3,X1] : (~model(X3,X1) | status(X0,X1,sat) | ~model(X3,X0)) )),
+  inference(cnf_transformation,[],[f94])).
+fof(f94,plain,(
+  ! [X0,X1] : (((model(sK8(X0,X1),X1) & model(sK8(X0,X1),X0)) | ~status(X0,X1,sat)) & (status(X0,X1,sat) | ! [X3] : (~model(X3,X1) | ~model(X3,X0))))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK8])],[f92,f93])).
+fof(f93,plain,(
+  ! [X1,X0] : (? [X2] : (model(X2,X1) & model(X2,X0)) => (model(sK8(X0,X1),X1) & model(sK8(X0,X1),X0)))),
+  introduced(choice_axiom,[])).
+fof(f92,plain,(
+  ! [X0,X1] : ((? [X2] : (model(X2,X1) & model(X2,X0)) | ~status(X0,X1,sat)) & (status(X0,X1,sat) | ! [X3] : (~model(X3,X1) | ~model(X3,X0))))),
+  inference(rectify,[],[f91])).
+fof(f91,plain,(
+  ! [X0,X1] : ((? [X2] : (model(X2,X1) & model(X2,X0)) | ~status(X0,X1,sat)) & (status(X0,X1,sat) | ! [X2] : (~model(X2,X1) | ~model(X2,X0))))),
+  inference(nnf_transformation,[],[f4])).
+fof(f4,axiom,(
+  ! [X0,X1] : (? [X2] : (model(X2,X1) & model(X2,X0)) <=> status(X0,X1,sat))),
+  file('./p/KRS257+1.tptp',unknown)).
+fof(f868,plain,(
+  ( ! [X21,X20] : (~status(X21,X21,X20) | mighta(X20,thm)) )),
+  inference(resolution,[],[f278,f417])).
+fof(f417,plain,(
+  ( ! [X0] : (status(X0,X0,thm)) )),
+  inference(duplicate_literal_removal,[],[f414])).
+fof(f414,plain,(
+  ( ! [X0] : (status(X0,X0,thm) | status(X0,X0,thm)) )),
+  inference(resolution,[],[f219,f218])).
+fof(f218,plain,(
+  ( ! [X0,X1] : (model(sK9(X0,X1),X0) | status(X0,X1,thm)) )),
+  inference(cnf_transformation,[],[f98])).
+fof(f98,plain,(
+  ! [X0,X1] : ((! [X2] : (model(X2,X1) | ~model(X2,X0)) | ~status(X0,X1,thm)) & (status(X0,X1,thm) | (~model(sK9(X0,X1),X1) & model(sK9(X0,X1),X0))))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK9])],[f96,f97])).
+fof(f97,plain,(
+  ! [X1,X0] : (? [X3] : (~model(X3,X1) & model(X3,X0)) => (~model(sK9(X0,X1),X1) & model(sK9(X0,X1),X0)))),
+  introduced(choice_axiom,[])).
+fof(f96,plain,(
+  ! [X0,X1] : ((! [X2] : (model(X2,X1) | ~model(X2,X0)) | ~status(X0,X1,thm)) & (status(X0,X1,thm) | ? [X3] : (~model(X3,X1) & model(X3,X0))))),
+  inference(rectify,[],[f95])).
+fof(f95,plain,(
+  ! [X0,X1] : ((! [X2] : (model(X2,X1) | ~model(X2,X0)) | ~status(X0,X1,thm)) & (status(X0,X1,thm) | ? [X2] : (~model(X2,X1) & model(X2,X0))))),
+  inference(nnf_transformation,[],[f63])).
+fof(f63,plain,(
+  ! [X0,X1] : (! [X2] : (model(X2,X1) | ~model(X2,X0)) <=> status(X0,X1,thm))),
+  inference(ennf_transformation,[],[f5])).
+fof(f5,axiom,(
+  ! [X0,X1] : (! [X2] : (model(X2,X0) => model(X2,X1)) <=> status(X0,X1,thm))),
+  file('./p/KRS257+1.tptp',unknown)).
+fof(f219,plain,(
+  ( ! [X0,X1] : (~model(sK9(X0,X1),X1) | status(X0,X1,thm)) )),
+  inference(cnf_transformation,[],[f98])).
+fof(f278,plain,(
+  ( ! [X2,X0,X3,X1] : (~status(X2,X3,X1) | mighta(X0,X1) | ~status(X2,X3,X0)) )),
+  inference(cnf_transformation,[],[f70])).
+fof(f70,plain,(
+  ! [X0,X1] : (mighta(X0,X1) | ! [X2,X3] : (~status(X2,X3,X1) | ~status(X2,X3,X0)))),
+  inference(ennf_transformation,[],[f60])).
+fof(f60,plain,(
+  ! [X0,X1] : (? [X2,X3] : (status(X2,X3,X1) & status(X2,X3,X0)) => mighta(X0,X1))),
+  inference(unused_predicate_definition_removal,[],[f46])).
+fof(f46,plain,(
+  ! [X0,X1] : (? [X2,X3] : (status(X2,X3,X1) & status(X2,X3,X0)) <=> mighta(X0,X1))),
+  inference(rectify,[],[f20])).
+fof(f20,axiom,(
+  ! [X6,X7] : (? [X0,X1] : (status(X0,X1,X7) & status(X0,X1,X6)) <=> mighta(X6,X7))),
+  file('./p/KRS257+1.tptp',unknown)).
+% SZS output end Proof for KRS257+1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 19701
+% Time elapsed: 1.273 s
+% ------------------------------
+% ------------------------------

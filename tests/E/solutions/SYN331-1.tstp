@@ -1,0 +1,98 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_9, negated_conjecture, (f(X1,z(X2,X1)))).
+#
+#cnf(i_0_8, negated_conjecture, (f(X1,z(X1,X2)))).
+#
+#cnf(i_0_10, negated_conjecture, (f(X1,X2)|~f(z(X1,X2),z(X1,X2)))).
+#
+#cnf(i_0_14, negated_conjecture, (~f(z(X1,X2),X2))).
+#
+#cnf(i_0_11, negated_conjecture, (f(z(X1,X2),z(X1,X2))|~f(X1,X2))).
+#
+#cnf(i_0_12, negated_conjecture, (f(z(X2,X1),z(X2,X1))|f(X1,X2))).
+#
+#cnf(i_0_16, negated_conjecture, (f(X1,X2)|f(X2,X1))).
+#
+#cnf(i_0_13, negated_conjecture, (~f(z(X1,X2),X1))).
+#
+#cnf(i_0_17, negated_conjecture, (f(X3,X3))).
+##
+#cnf(i_0_10, negated_conjecture, (f(X1,X2))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(clause3, negated_conjecture, (f(X1,X2)|~f(z(X1,X2),z(X1,X2))), file('./p/SYN331-1.tptp', clause3)).
+cnf(clause5, negated_conjecture, (f(X1,X2)|f(z(X2,X1),z(X2,X1))), file('./p/SYN331-1.tptp', clause5)).
+cnf(clause7, negated_conjecture, (~f(z(X1,X2),X2)), file('./p/SYN331-1.tptp', clause7)).
+cnf(c_0_3, negated_conjecture, (f(X1,X2)|~f(z(X1,X2),z(X1,X2))), clause3).
+cnf(c_0_4, negated_conjecture, (f(X1,X2)|f(z(X2,X1),z(X2,X1))), clause5).
+cnf(c_0_5, negated_conjecture, (f(X1,X2)|f(X2,X1)), inference(pm,[status(thm)],[c_0_3, c_0_4])).
+cnf(c_0_6, negated_conjecture, (f(X1,X1)), inference(ef,[status(thm)],[c_0_5])).
+cnf(c_0_7, negated_conjecture, (~f(z(X1,X2),X2)), clause7).
+cnf(c_0_8, negated_conjecture, (f(X1,X2)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_3, c_0_6])])).
+cnf(c_0_9, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_7, c_0_8])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 10
+# Proof object clause steps            : 7
+# Proof object formula steps           : 3
+# Proof object conjectures             : 10
+# Proof object clause conjectures      : 7
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 3
+# Proof object initial formulas used   : 3
+# Proof object generating inferences   : 2
+# Proof object simplifying inferences  : 4
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 7
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 7
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 7
+# Processed clauses                    : 11
+# ...of these trivial                  : 1
+# ...subsumed                          : 0
+# ...remaining for further processing  : 10
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 1
+# Backward-rewritten                   : 8
+# Generated clauses                    : 8
+# ...of the previous two non-trivial   : 4
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 6
+# Factorizations                       : 2
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 1
+#    Positive orientable unit clauses  : 1
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 0
+#    Non-unit-clauses                  : 0
+# Current number of unprocessed clauses: 0
+# ...number of literals in the above   : 0
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 9
+# Clause-clause subsumption calls (NU) : 1
+# Rec. Clause-clause subsumption calls : 1
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 5
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 15
+# BW rewrite match successes           : 8
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 197

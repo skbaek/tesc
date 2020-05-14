@@ -1,0 +1,222 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for SYN001-1.005
+% SZS output start Proof for SYN001-1.005
+fof(f85,plain,(
+  $false),
+  inference(avatar_sat_refutation,[],[f53,f54,f55,f56,f57,f58,f59,f60,f61,f62,f63,f64,f65,f66,f67,f68,f69,f70,f71,f72,f73,f74,f75,f76,f77,f78,f79,f80,f81,f82,f83,f84])).
+fof(f84,plain,(
+  ~spl0_1 | ~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f32,f50,f46,f42,f38,f34])).
+fof(f34,plain,(
+  spl0_1 <=> p_1),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_1])])).
+fof(f38,plain,(
+  spl0_2 <=> p_2),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_2])])).
+fof(f42,plain,(
+  spl0_3 <=> p_3),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_3])])).
+fof(f46,plain,(
+  spl0_4 <=> p_4),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_4])])).
+fof(f50,plain,(
+  spl0_5 <=> p_5),
+  introduced(avatar_definition,[new_symbols(naming,[spl0_5])])).
+fof(f32,axiom,(
+  ~p_5 | ~p_4 | ~p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f83,plain,(
+  ~spl0_1 | ~spl0_2 | ~spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f31,f50,f46,f42,f38,f34])).
+fof(f31,axiom,(
+  p_5 | ~p_4 | ~p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f82,plain,(
+  ~spl0_1 | ~spl0_2 | ~spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f30,f50,f46,f42,f38,f34])).
+fof(f30,axiom,(
+  ~p_5 | p_4 | ~p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f81,plain,(
+  ~spl0_1 | ~spl0_2 | ~spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f29,f50,f46,f42,f38,f34])).
+fof(f29,axiom,(
+  p_5 | p_4 | ~p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f80,plain,(
+  ~spl0_1 | ~spl0_2 | spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f28,f50,f46,f42,f38,f34])).
+fof(f28,axiom,(
+  ~p_5 | ~p_4 | p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f79,plain,(
+  ~spl0_1 | ~spl0_2 | spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f27,f50,f46,f42,f38,f34])).
+fof(f27,axiom,(
+  p_5 | ~p_4 | p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f78,plain,(
+  ~spl0_1 | ~spl0_2 | spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f26,f50,f46,f42,f38,f34])).
+fof(f26,axiom,(
+  ~p_5 | p_4 | p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f77,plain,(
+  ~spl0_1 | ~spl0_2 | spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f25,f50,f46,f42,f38,f34])).
+fof(f25,axiom,(
+  p_5 | p_4 | p_3 | ~p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f76,plain,(
+  ~spl0_1 | spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f24,f50,f46,f42,f38,f34])).
+fof(f24,axiom,(
+  ~p_5 | ~p_4 | ~p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f75,plain,(
+  ~spl0_1 | spl0_2 | ~spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f23,f50,f46,f42,f38,f34])).
+fof(f23,axiom,(
+  p_5 | ~p_4 | ~p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f74,plain,(
+  ~spl0_1 | spl0_2 | ~spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f22,f50,f46,f42,f38,f34])).
+fof(f22,axiom,(
+  ~p_5 | p_4 | ~p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f73,plain,(
+  ~spl0_1 | spl0_2 | ~spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f21,f50,f46,f42,f38,f34])).
+fof(f21,axiom,(
+  p_5 | p_4 | ~p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f72,plain,(
+  ~spl0_1 | spl0_2 | spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f20,f50,f46,f42,f38,f34])).
+fof(f20,axiom,(
+  ~p_5 | ~p_4 | p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f71,plain,(
+  ~spl0_1 | spl0_2 | spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f19,f50,f46,f42,f38,f34])).
+fof(f19,axiom,(
+  p_5 | ~p_4 | p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f70,plain,(
+  ~spl0_1 | spl0_2 | spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f18,f50,f46,f42,f38,f34])).
+fof(f18,axiom,(
+  ~p_5 | p_4 | p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f69,plain,(
+  ~spl0_1 | spl0_2 | spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f17,f50,f46,f42,f38,f34])).
+fof(f17,axiom,(
+  p_5 | p_4 | p_3 | p_2 | ~p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f68,plain,(
+  spl0_1 | ~spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f16,f50,f46,f42,f38,f34])).
+fof(f16,axiom,(
+  ~p_5 | ~p_4 | ~p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f67,plain,(
+  spl0_1 | ~spl0_2 | ~spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f15,f50,f46,f42,f38,f34])).
+fof(f15,axiom,(
+  p_5 | ~p_4 | ~p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f66,plain,(
+  spl0_1 | ~spl0_2 | ~spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f14,f50,f46,f42,f38,f34])).
+fof(f14,axiom,(
+  ~p_5 | p_4 | ~p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f65,plain,(
+  spl0_1 | ~spl0_2 | ~spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f13,f50,f46,f42,f38,f34])).
+fof(f13,axiom,(
+  p_5 | p_4 | ~p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f64,plain,(
+  spl0_1 | ~spl0_2 | spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f12,f50,f46,f42,f38,f34])).
+fof(f12,axiom,(
+  ~p_5 | ~p_4 | p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f63,plain,(
+  spl0_1 | ~spl0_2 | spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f11,f50,f46,f42,f38,f34])).
+fof(f11,axiom,(
+  p_5 | ~p_4 | p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f62,plain,(
+  spl0_1 | ~spl0_2 | spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f10,f50,f46,f42,f38,f34])).
+fof(f10,axiom,(
+  ~p_5 | p_4 | p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f61,plain,(
+  spl0_1 | ~spl0_2 | spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f9,f50,f46,f42,f38,f34])).
+fof(f9,axiom,(
+  p_5 | p_4 | p_3 | ~p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f60,plain,(
+  spl0_1 | spl0_2 | ~spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f8,f50,f46,f42,f38,f34])).
+fof(f8,axiom,(
+  ~p_5 | ~p_4 | ~p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f59,plain,(
+  spl0_1 | spl0_2 | ~spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f7,f50,f46,f42,f38,f34])).
+fof(f7,axiom,(
+  p_5 | ~p_4 | ~p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f58,plain,(
+  spl0_1 | spl0_2 | ~spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f6,f50,f46,f42,f38,f34])).
+fof(f6,axiom,(
+  ~p_5 | p_4 | ~p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f57,plain,(
+  spl0_1 | spl0_2 | ~spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f5,f50,f46,f42,f38,f34])).
+fof(f5,axiom,(
+  p_5 | p_4 | ~p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f56,plain,(
+  spl0_1 | spl0_2 | spl0_3 | ~spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f4,f50,f46,f42,f38,f34])).
+fof(f4,axiom,(
+  ~p_5 | ~p_4 | p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f55,plain,(
+  spl0_1 | spl0_2 | spl0_3 | ~spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f3,f50,f46,f42,f38,f34])).
+fof(f3,axiom,(
+  p_5 | ~p_4 | p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f54,plain,(
+  spl0_1 | spl0_2 | spl0_3 | spl0_4 | ~spl0_5),
+  inference(avatar_split_clause,[],[f2,f50,f46,f42,f38,f34])).
+fof(f2,axiom,(
+  ~p_5 | p_4 | p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+fof(f53,plain,(
+  spl0_1 | spl0_2 | spl0_3 | spl0_4 | spl0_5),
+  inference(avatar_split_clause,[],[f1,f50,f46,f42,f38,f34])).
+fof(f1,axiom,(
+  p_5 | p_4 | p_3 | p_2 | p_1),
+  file('./p/SYN001-1.005.tptp',unknown)).
+% SZS output end Proof for SYN001-1.005
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

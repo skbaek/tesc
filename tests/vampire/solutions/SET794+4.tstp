@@ -1,0 +1,159 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Theorem for SET794+4
+% SZS output start Proof for SET794+4
+fof(f131,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f127,f54])).
+fof(f54,plain,(
+  member(sK3,sK2)),
+  inference(resolution,[],[f48,f51])).
+fof(f51,plain,(
+  min(sK3,sK1,sK2)),
+  inference(cnf_transformation,[],[f40])).
+fof(f40,plain,(
+  ~least(sK3,sK1,sK2) & min(sK3,sK1,sK2) & total_order(sK1,sK2)),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK1,sK2,sK3])],[f36,f39])).
+fof(f39,plain,(
+  ? [X0,X1,X2] : (~least(X2,X0,X1) & min(X2,X0,X1) & total_order(X0,X1)) => (~least(sK3,sK1,sK2) & min(sK3,sK1,sK2) & total_order(sK1,sK2))),
+  introduced(choice_axiom,[])).
+fof(f36,plain,(
+  ? [X0,X1,X2] : (~least(X2,X0,X1) & min(X2,X0,X1) & total_order(X0,X1))),
+  inference(flattening,[],[f35])).
+fof(f35,plain,(
+  ? [X0,X1,X2] : (~least(X2,X0,X1) & (min(X2,X0,X1) & total_order(X0,X1)))),
+  inference(ennf_transformation,[],[f22])).
+fof(f22,plain,(
+  ~! [X0,X1,X2] : ((min(X2,X0,X1) & total_order(X0,X1)) => least(X2,X0,X1))),
+  inference(rectify,[],[f12])).
+fof(f12,negated_conjecture,(
+  ~! [X0,X1,X5] : ((min(X5,X0,X1) & total_order(X0,X1)) => least(X5,X0,X1))),
+  inference(negated_conjecture,[],[f11])).
+fof(f11,conjecture,(
+  ! [X0,X1,X5] : ((min(X5,X0,X1) & total_order(X0,X1)) => least(X5,X0,X1))),
+  file('./p/SET794+4.tptp',unknown)).
+fof(f48,plain,(
+  ( ! [X2,X0,X1] : (~min(X2,X0,X1) | member(X2,X1)) )),
+  inference(cnf_transformation,[],[f34])).
+fof(f34,plain,(
+  ! [X0,X1,X2] : ((! [X3] : (X2 = X3 | ~apply(X0,X3,X2) | ~member(X3,X1)) & member(X2,X1)) | ~min(X2,X0,X1))),
+  inference(flattening,[],[f33])).
+fof(f33,plain,(
+  ! [X0,X1,X2] : ((! [X3] : (X2 = X3 | (~apply(X0,X3,X2) | ~member(X3,X1))) & member(X2,X1)) | ~min(X2,X0,X1))),
+  inference(ennf_transformation,[],[f23])).
+fof(f23,plain,(
+  ! [X0,X1,X2] : (min(X2,X0,X1) => (! [X3] : ((apply(X0,X3,X2) & member(X3,X1)) => X2 = X3) & member(X2,X1)))),
+  inference(unused_predicate_definition_removal,[],[f19])).
+fof(f19,plain,(
+  ! [X0,X1,X2] : (min(X2,X0,X1) <=> (! [X3] : ((apply(X0,X3,X2) & member(X3,X1)) => X2 = X3) & member(X2,X1)))),
+  inference(rectify,[],[f8])).
+fof(f8,axiom,(
+  ! [X0,X1,X5] : (min(X5,X0,X1) <=> (! [X2] : ((apply(X0,X2,X5) & member(X2,X1)) => X2 = X5) & member(X5,X1)))),
+  file('./p/SET794+4.tptp',unknown)).
+fof(f127,plain,(
+  ~member(sK3,sK2)),
+  inference(resolution,[],[f109,f65])).
+fof(f65,plain,(
+  ( ! [X0] : (apply(sK1,X0,X0) | ~member(X0,sK2)) )),
+  inference(duplicate_literal_removal,[],[f64])).
+fof(f64,plain,(
+  ( ! [X0] : (apply(sK1,X0,X0) | ~member(X0,sK2) | ~member(X0,sK2)) )),
+  inference(factoring,[],[f59])).
+fof(f59,plain,(
+  ( ! [X0,X1] : (apply(sK1,X1,X0) | apply(sK1,X0,X1) | ~member(X0,sK2) | ~member(X1,sK2)) )),
+  inference(resolution,[],[f45,f50])).
+fof(f50,plain,(
+  total_order(sK1,sK2)),
+  inference(cnf_transformation,[],[f40])).
+fof(f45,plain,(
+  ( ! [X2,X0,X3,X1] : (~total_order(X0,X1) | apply(X0,X2,X3) | ~member(X3,X1) | ~member(X2,X1) | apply(X0,X3,X2)) )),
+  inference(cnf_transformation,[],[f30])).
+fof(f30,plain,(
+  ! [X0,X1] : ((! [X2,X3] : (apply(X0,X3,X2) | apply(X0,X2,X3) | ~member(X3,X1) | ~member(X2,X1)) & order(X0,X1)) | ~total_order(X0,X1))),
+  inference(flattening,[],[f29])).
+fof(f29,plain,(
+  ! [X0,X1] : ((! [X2,X3] : ((apply(X0,X3,X2) | apply(X0,X2,X3)) | (~member(X3,X1) | ~member(X2,X1))) & order(X0,X1)) | ~total_order(X0,X1))),
+  inference(ennf_transformation,[],[f25])).
+fof(f25,plain,(
+  ! [X0,X1] : (total_order(X0,X1) => (! [X2,X3] : ((member(X3,X1) & member(X2,X1)) => (apply(X0,X3,X2) | apply(X0,X2,X3))) & order(X0,X1)))),
+  inference(unused_predicate_definition_removal,[],[f2])).
+fof(f2,axiom,(
+  ! [X0,X1] : (total_order(X0,X1) <=> (! [X2,X3] : ((member(X3,X1) & member(X2,X1)) => (apply(X0,X3,X2) | apply(X0,X2,X3))) & order(X0,X1)))),
+  file('./p/SET794+4.tptp',unknown)).
+fof(f109,plain,(
+  ~apply(sK1,sK3,sK3)),
+  inference(subsumption_resolution,[],[f108,f54])).
+fof(f108,plain,(
+  ~apply(sK1,sK3,sK3) | ~member(sK3,sK2)),
+  inference(subsumption_resolution,[],[f104,f52])).
+fof(f52,plain,(
+  ~least(sK3,sK1,sK2)),
+  inference(cnf_transformation,[],[f40])).
+fof(f104,plain,(
+  ~apply(sK1,sK3,sK3) | least(sK3,sK1,sK2) | ~member(sK3,sK2)),
+  inference(superposition,[],[f47,f96])).
+fof(f96,plain,(
+  sK3 = sK0(sK1,sK2,sK3)),
+  inference(subsumption_resolution,[],[f95,f54])).
+fof(f95,plain,(
+  sK3 = sK0(sK1,sK2,sK3) | ~member(sK3,sK2)),
+  inference(subsumption_resolution,[],[f94,f52])).
+fof(f94,plain,(
+  sK3 = sK0(sK1,sK2,sK3) | least(sK3,sK1,sK2) | ~member(sK3,sK2)),
+  inference(duplicate_literal_removal,[],[f93])).
+fof(f93,plain,(
+  sK3 = sK0(sK1,sK2,sK3) | least(sK3,sK1,sK2) | ~member(sK3,sK2) | least(sK3,sK1,sK2) | ~member(sK3,sK2)),
+  inference(resolution,[],[f84,f46])).
+fof(f46,plain,(
+  ( ! [X2,X0,X1] : (member(sK0(X0,X1,X2),X1) | least(X2,X0,X1) | ~member(X2,X1)) )),
+  inference(cnf_transformation,[],[f38])).
+fof(f38,plain,(
+  ! [X0,X1,X2] : (least(X2,X0,X1) | (~apply(X0,X2,sK0(X0,X1,X2)) & member(sK0(X0,X1,X2),X1)) | ~member(X2,X1))),
+  inference(skolemisation,[status(esa),new_symbols(skolem,[sK0])],[f32,f37])).
+fof(f37,plain,(
+  ! [X2,X1,X0] : (? [X3] : (~apply(X0,X2,X3) & member(X3,X1)) => (~apply(X0,X2,sK0(X0,X1,X2)) & member(sK0(X0,X1,X2),X1)))),
+  introduced(choice_axiom,[])).
+fof(f32,plain,(
+  ! [X0,X1,X2] : (least(X2,X0,X1) | ? [X3] : (~apply(X0,X2,X3) & member(X3,X1)) | ~member(X2,X1))),
+  inference(flattening,[],[f31])).
+fof(f31,plain,(
+  ! [X0,X1,X2] : (least(X2,X0,X1) | (? [X3] : (~apply(X0,X2,X3) & member(X3,X1)) | ~member(X2,X1)))),
+  inference(ennf_transformation,[],[f24])).
+fof(f24,plain,(
+  ! [X0,X1,X2] : ((! [X3] : (member(X3,X1) => apply(X0,X2,X3)) & member(X2,X1)) => least(X2,X0,X1))),
+  inference(unused_predicate_definition_removal,[],[f17])).
+fof(f17,plain,(
+  ! [X0,X1,X2] : (least(X2,X0,X1) <=> (! [X3] : (member(X3,X1) => apply(X0,X2,X3)) & member(X2,X1)))),
+  inference(rectify,[],[f6])).
+fof(f6,axiom,(
+  ! [X0,X1,X5] : (least(X5,X0,X1) <=> (! [X2] : (member(X2,X1) => apply(X0,X5,X2)) & member(X5,X1)))),
+  file('./p/SET794+4.tptp',unknown)).
+fof(f84,plain,(
+  ( ! [X0] : (~member(sK0(sK1,X0,sK3),sK2) | sK3 = sK0(sK1,X0,sK3) | least(sK3,sK1,X0) | ~member(sK3,X0)) )),
+  inference(resolution,[],[f68,f47])).
+fof(f68,plain,(
+  ( ! [X0] : (apply(sK1,sK3,X0) | ~member(X0,sK2) | sK3 = X0) )),
+  inference(subsumption_resolution,[],[f67,f54])).
+fof(f67,plain,(
+  ( ! [X0] : (apply(sK1,sK3,X0) | ~member(sK3,sK2) | ~member(X0,sK2) | sK3 = X0) )),
+  inference(duplicate_literal_removal,[],[f60])).
+fof(f60,plain,(
+  ( ! [X0] : (apply(sK1,sK3,X0) | ~member(sK3,sK2) | ~member(X0,sK2) | ~member(X0,sK2) | sK3 = X0) )),
+  inference(resolution,[],[f59,f57])).
+fof(f57,plain,(
+  ( ! [X0] : (~apply(sK1,X0,sK3) | ~member(X0,sK2) | sK3 = X0) )),
+  inference(resolution,[],[f49,f51])).
+fof(f49,plain,(
+  ( ! [X2,X0,X3,X1] : (~min(X2,X0,X1) | ~apply(X0,X3,X2) | ~member(X3,X1) | X2 = X3) )),
+  inference(cnf_transformation,[],[f34])).
+fof(f47,plain,(
+  ( ! [X2,X0,X1] : (~apply(X0,X2,sK0(X0,X1,X2)) | least(X2,X0,X1) | ~member(X2,X1)) )),
+  inference(cnf_transformation,[],[f38])).
+% SZS output end Proof for SET794+4
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.006 s
+% ------------------------------
+% ------------------------------

@@ -1,0 +1,585 @@
+# Initializing proof state
+# Scanning for AC axioms
+# addition is AC
+# multiplication is associative
+# AC handling enabled
+#
+#cnf(i_0_26, negated_conjecture, (test(esk3_0))).
+#
+#cnf(i_0_4, plain, (addition(X1,X1)=X1)).
+#
+#cnf(i_0_14, plain, (test(X2)|~complement(X1,X2))).
+#
+#cnf(i_0_25, negated_conjecture, (~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))|~leq(addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))),esk2_0))).
+#
+#cnf(i_0_3, plain, (addition(X1,zero)=X1)).
+#
+#cnf(i_0_6, plain, (multiplication(X1,one)=X1)).
+#
+#cnf(i_0_7, plain, (multiplication(one,X1)=X1)).
+#
+#cnf(i_0_10, plain, (multiplication(X1,zero)=zero)).
+#
+#cnf(i_0_11, plain, (multiplication(zero,X1)=zero)).
+#
+#cnf(i_0_22, plain, (c(X1)=zero|test(X1))).
+#
+#cnf(i_0_15, plain, (complement(esk1_1(X1),X1)|~test(X1))).
+#
+#cnf(i_0_1, plain, (addition(X1,X2)=addition(X2,X1))).
+#
+#cnf(i_0_29, plain, (addition(zero,X1)=X1)).
+##
+#cnf(i_0_12, plain, (leq(X1,X2)|addition(X1,X2)!=X2)).
+#
+#cnf(i_0_35, negated_conjecture, (addition(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))!=esk2_0|~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0)))))).
+#
+#cnf(i_0_13, plain, (addition(X1,X2)=X2|~leq(X1,X2))).
+#
+#cnf(i_0_17, plain, (addition(X1,X2)=one|~complement(X2,X1))).
+#
+#cnf(i_0_19, plain, (multiplication(X1,X2)=zero|~complement(X2,X1))).
+#
+#cnf(i_0_37, negated_conjecture, (addition(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))!=addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0)))|addition(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))!=esk2_0)).
+#
+#cnf(i_0_18, plain, (multiplication(X1,X2)=zero|~complement(X1,X2))).
+#
+#cnf(i_0_21, plain, (complement(X1,X2)|c(X1)!=X2|~test(X1))).
+#
+#cnf(i_0_44, plain, (test(X1)|c(X2)!=X1|~test(X2))).
+#
+#cnf(i_0_47, plain, (test(c(X1))|~test(X1))).
+#
+#cnf(i_0_20, plain, (c(X1)=X2|~complement(X1,X2)|~test(X1))).
+#
+#cnf(i_0_39, plain, (addition(X1,esk1_1(X1))=one|~test(X1))).
+#
+#cnf(i_0_52, plain, (esk1_1(zero)=one|~test(zero))).
+#
+#cnf(i_0_40, plain, (multiplication(X1,esk1_1(X1))=zero|~test(X1))).
+#
+#cnf(i_0_53, plain, (esk1_1(one)=zero|~test(one))).
+#
+#cnf(i_0_42, plain, (multiplication(esk1_1(X1),X1)=zero|~test(X1))).
+##
+#cnf(i_0_2, plain, (addition(addition(X1,X2),X3)=addition(X1,addition(X2,X3)))).
+#
+#cnf(i_0_66, plain, (addition(X1,addition(X1,X2))=addition(X1,X2))).
+#
+#cnf(i_0_72, plain, (addition(X1,addition(X2,X1))=addition(X1,X2))).
+##
+#cnf(i_0_5, plain, (multiplication(multiplication(X1,X2),X3)=multiplication(X1,multiplication(X2,X3)))).
+#
+#cnf(i_0_70, plain, (addition(X1,esk1_1(X1))=addition(X1,one)|~test(X1))).
+##
+#cnf(i_0_100, plain, (addition(X1,one)=one|~test(X1))).
+#
+#cnf(i_0_102, plain, (addition(one,X1)=one|~test(X1))).
+#######
+#cnf(i_0_107, plain, (addition(one,X1)=one|~test(addition(one,X1)))).
+#
+#cnf(i_0_108, plain, (addition(one,X1)=one|~test(addition(X1,one)))).
+##########
+#cnf(i_0_43, plain, (multiplication(X1,X2)=zero|c(X1)!=X2|~test(X1))).
+#
+#cnf(i_0_140, plain, (zero=X1|c(X1)!=one|~test(X1))).
+#
+#cnf(i_0_135, negated_conjecture, (c(esk2_0)!=c(esk3_0)|~test(esk2_0)|~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+#
+#cnf(i_0_138, plain, (zero=X1|c(one)!=X1|~test(one))).
+#
+#cnf(i_0_147, plain, (c(one)=zero|~test(one))).
+#
+#cnf(i_0_149, plain, (test(zero)|~test(one))).
+#
+#cnf(i_0_144, negated_conjecture, (c(esk2_0)!=c(esk3_0)|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+#
+#cnf(i_0_151, plain, (test(X1)|zero!=X1|~test(one))).
+#
+#cnf(i_0_45, plain, (addition(X1,X2)=one|c(X2)!=X1|~test(X2))).
+#
+#cnf(i_0_175, plain, (one=X1|c(X1)!=X1|~test(X1))).
+#
+#cnf(i_0_153, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0))|~leq(zero,esk2_0))).
+#
+#cnf(i_0_163, plain, (one=X1|c(X1)!=zero|~test(X1))).
+#
+#cnf(i_0_167, plain, (one=X1|c(zero)!=X1|~test(zero))).
+#
+#cnf(i_0_180, plain, (c(zero)=one|~test(zero))).
+#
+#cnf(i_0_177, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,zero)|~leq(zero,esk2_0))).
+#
+#cnf(i_0_183, plain, (test(one)|~test(zero))).
+#
+#cnf(i_0_189, plain, (esk1_1(one)=zero|~test(zero))).
+#
+#cnf(i_0_186, plain, (test(X1)|one!=X1|~test(zero))).
+#
+#cnf(i_0_188, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|esk2_0!=zero|~test(esk2_0)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_197, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|esk2_0!=zero|~test(esk2_0))).
+#
+#cnf(i_0_46, plain, (multiplication(X1,X2)=zero|c(X2)!=X1|~test(X2))).
+###
+#cnf(i_0_154, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+#
+#cnf(i_0_170, plain, (addition(X2,X1)=one|c(X2)!=X1|~test(X2))).
+###
+#cnf(i_0_202, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0))|~leq(zero,esk2_0))).
+####
+#cnf(i_0_236, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,zero)|~leq(zero,esk2_0))).
+##
+#cnf(i_0_50, plain, (c(esk1_1(X1))=X1|~test(esk1_1(X1))|~test(X1))).
+##
+#cnf(i_0_238, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|esk2_0!=zero|~test(esk2_0)|~leq(zero,esk2_0))).
+###
+#cnf(i_0_89, plain, (multiplication(esk1_1(X1),multiplication(X1,X2))=zero|~test(X1))).
+#
+#cnf(i_0_245, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|esk2_0!=zero|~test(esk2_0))).
+##
+#cnf(i_0_249, plain, (multiplication(esk1_1(one),X1)=zero|~test(one))).
+###
+#cnf(i_0_92, plain, (multiplication(X1,multiplication(esk1_1(X1),X2))=zero|~test(X1))).
+####
+#cnf(i_0_103, plain, (addition(X1,addition(one,X2))=addition(one,X2)|~test(X1))).
+###
+#cnf(i_0_213, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,zero))).
+###
+#cnf(i_0_110, plain, (addition(one,addition(X1,X2))=addition(one,X2)|~test(X1))).
+#
+#cnf(i_0_297, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,zero))).
+###
+#cnf(i_0_313, plain, (addition(one,esk1_1(X1))=one|~test(X1))).
+####
+#cnf(i_0_314, plain, (addition(one,esk1_1(X1))=addition(one,X1)|~test(X1))).
+#
+#cnf(i_0_214, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,zero))).
+####
+#cnf(i_0_340, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,zero))).
+#
+#cnf(i_0_309, plain, (addition(one,X2)=one|~test(addition(X1,X2))|~test(X1))).
+#####
+#cnf(i_0_357, plain, (addition(one,X1)=one|~test(addition(X1,X2))|~test(X2))).
+##
+#cnf(i_0_199, negated_conjecture, (c(esk3_0)!=esk2_0|~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0))).
+#
+#cnf(i_0_376, plain, (addition(one,X1)=one|~test(addition(X1,X2)))).
+###
+#cnf(i_0_390, negated_conjecture, (c(esk3_0)!=esk2_0|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0))).
+###
+#cnf(i_0_407, plain, (addition(one,X1)=one|~test(addition(X2,X1)))).
+#
+#cnf(i_0_418, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(esk3_0)!=esk2_0|~leq(esk2_0,multiplication(esk2_0,c(esk3_0))))).
+####
+#cnf(i_0_416, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(zero,esk2_0))).
+#######
+#cnf(i_0_319, plain, (addition(one,X2)=one|c(X1)!=X2|~test(X1))).
+#
+#cnf(i_0_417, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(zero,esk2_0))).
+#
+#cnf(i_0_448, plain, (addition(one,c(X1))=one|~test(X1))).
+###
+#cnf(i_0_467, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,zero)|~leq(zero,esk2_0))).
+#
+#cnf(i_0_453, plain, (addition(X1,one)=one|c(X2)!=X1|~test(X2))).
+#######
+#cnf(i_0_178, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(zero,esk2_0))).
+##
+#cnf(i_0_278, plain, (addition(one,addition(X2,X1))=addition(one,X2)|~test(X1))).
+##
+#cnf(i_0_492, negated_conjecture, (multiplication(esk2_0,esk3_0)!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_526, negated_conjecture, (multiplication(esk2_0,esk3_0)!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0))).
+##############
+#cnf(i_0_291, plain, (addition(X1,addition(X2,one))=addition(one,X2)|~test(X1))).
+##
+#cnf(i_0_215, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|~test(esk2_0))).
+########
+#cnf(i_0_560, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|multiplication(esk2_0,esk3_0)!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0))).
+####
+#cnf(i_0_564, negated_conjecture, (multiplication(esk2_0,esk3_0)!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0))).
+#####
+#cnf(i_0_535, plain, (addition(X2,addition(one,X1))=addition(one,X2)|~test(X1))).
+#######
+#cnf(i_0_237, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(zero,esk2_0))).
+#######
+#cnf(i_0_544, plain, (addition(X1,addition(one,X2))=addition(X1,one)|~test(X2))).
+#####
+#cnf(i_0_145, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+########
+#cnf(i_0_203, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+##
+#cnf(i_0_601, plain, (addition(X1,addition(X2,one))=addition(one,X1)|~test(X2))).
+######
+#cnf(i_0_387, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+########
+#cnf(i_0_443, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=multiplication(esk2_0,c(esk3_0))|addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(esk3_0)!=esk2_0)).
+###
+#cnf(i_0_625, plain, (addition(one,addition(X2,X1))=addition(X1,one)|~test(X2))).
+#####
+#cnf(i_0_442, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,zero))).
+####
+#cnf(i_0_754, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,zero))).
+####
+#cnf(i_0_200, negated_conjecture, (addition(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))!=esk2_0|c(esk3_0)!=esk2_0|~leq(esk2_0,multiplication(esk2_0,c(esk3_0))))).
+########
+#cnf(i_0_495, negated_conjecture, (multiplication(esk2_0,esk3_0)!=c(esk2_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(zero,esk2_0))).
+#
+#cnf(i_0_724, plain, (addition(X2,one)=one|~test(addition(X1,X2))|~test(X1))).
+###
+#cnf(i_0_768, negated_conjecture, (multiplication(esk2_0,esk3_0)!=c(esk2_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0))).
+##
+#cnf(i_0_791, plain, (addition(X1,one)=one|~test(addition(X1,X2))|~test(X2))).
+##
+#cnf(i_0_799, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=zero|c(esk2_0)!=esk3_0|~test(esk2_0))).
+#
+#cnf(i_0_821, plain, (addition(X1,one)=one|~test(addition(X1,X2)))).
+###
+#cnf(i_0_831, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=zero|c(esk2_0)!=esk3_0|one!=zero|~test(esk2_0))).
+###
+#cnf(i_0_855, plain, (addition(X1,one)=one|~test(addition(X2,X1)))).
+#########
+#cnf(i_0_616, negated_conjecture, (multiplication(esk2_0,esk3_0)!=c(esk2_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_894, negated_conjecture, (multiplication(esk2_0,esk3_0)!=c(esk2_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0))).
+###
+#cnf(i_0_647, plain, (addition(X1,addition(X2,one))=addition(X1,one)|~test(X2))).
+#
+#cnf(i_0_896, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=zero|c(esk3_0)!=esk2_0|~test(esk2_0))).
+####
+#cnf(i_0_929, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=zero|c(esk3_0)!=esk2_0|one!=zero|~test(esk2_0))).
+############
+#cnf(i_0_388, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+##
+#cnf(i_0_747, plain, (addition(one,addition(X2,X1))=addition(X2,one)|~test(X1))).
+##
+#cnf(i_0_933, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,esk3_0))|~leq(zero,esk2_0))).
+########
+#cnf(i_0_988, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(zero,esk2_0))).
+####
+#cnf(i_0_990, negated_conjecture, (multiplication(esk2_0,esk3_0)!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(zero,esk2_0))).
+####
+#cnf(i_0_760, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0))))).
+########
+#cnf(i_0_562, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|multiplication(esk2_0,esk3_0)!=c(esk2_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|~test(esk2_0))).
+###
+#cnf(i_0_905, plain, (addition(X2,addition(one,X1))=addition(X1,one)|~test(X2))).
+#
+#cnf(i_0_1002, negated_conjecture, (multiplication(esk2_0,esk3_0)!=c(esk2_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|esk2_0!=one|~test(esk2_0))).
+####################
+#cnf(i_0_132, negated_conjecture, (c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0))).
+####
+#cnf(i_0_1068, negated_conjecture, (c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0))).
+####
+#cnf(i_0_1074, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(zero,esk2_0))).
+###
+#cnf(i_0_1049, plain, (addition(X1,addition(X2,one))=addition(X2,one)|~test(X1))).
+#####
+#cnf(i_0_1076, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0))))).
+########
+#cnf(i_0_1066, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+###########
+#cnf(i_0_424, plain, (addition(one,X1)=one|~test(addition(X2,addition(X3,X1))))).
+#
+#cnf(i_0_1075, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(zero,esk2_0))).
+####
+#cnf(i_0_1188, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(esk2_0,zero)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_699, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+#
+#cnf(i_0_873, plain, (addition(X1,one)=one|~test(addition(X2,addition(X3,X1))))).
+###
+#cnf(i_0_1193, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+######
+#cnf(i_0_1155, plain, (addition(one,X1)=one|~test(addition(X2,addition(X1,X3))))).
+######
+#cnf(i_0_1256, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0))).
+#######
+#cnf(i_0_1223, plain, (addition(X1,one)=one|~test(addition(X2,addition(X1,X3))))).
+#########
+#cnf(i_0_1128, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+####
+#cnf(i_0_1376, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+############
+#cnf(i_0_1382, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0))).
+#####
+#cnf(i_0_227, plain, (addition(X1,X2)=one|addition(X1,X2)!=c(X1)|~test(X1))).
+#########
+#cnf(i_0_57, plain, (addition(X1,addition(X2,X3))=addition(X3,addition(X1,X2)))).
+######
+#cnf(i_0_447, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=multiplication(esk2_0,c(esk3_0))|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_1581, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(zero,esk2_0))).
+################
+#cnf(i_0_1080, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=multiplication(esk2_0,c(esk3_0))|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_1589, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(zero,esk2_0))).
+############
+#cnf(i_0_701, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|multiplication(esk2_0,c(esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0))).
+####
+#cnf(i_0_1597, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0))).
+############
+#cnf(i_0_1124, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=multiplication(esk2_0,c(esk3_0))|addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(esk2_0)!=esk3_0|~test(esk2_0))).
+####
+#cnf(i_0_1605, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|multiplication(esk2_0,c(esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0))).
+####
+#cnf(i_0_1610, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0))).
+##
+#cnf(i_0_64, plain, (addition(X2,addition(X1,X3))=addition(X1,addition(X2,X3)))).
+##########################
+#cnf(i_0_205, negated_conjecture, (c(c(esk3_0))!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+####
+#cnf(i_0_1791, negated_conjecture, (c(c(esk3_0))!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,esk3_0))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+########
+#cnf(i_0_1799, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(c(esk3_0))!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+########
+#cnf(i_0_1797, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0))|~leq(zero,esk2_0))).
+########
+#cnf(i_0_1802, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(c(esk3_0))!=esk2_0|~test(c(esk3_0)))).
+####
+#cnf(i_0_1807, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|multiplication(esk2_0,esk3_0)!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0)))).
+####
+#cnf(i_0_1811, negated_conjecture, (multiplication(esk2_0,esk3_0)!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0)))).
+####
+#cnf(i_0_1793, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+#####
+#cnf(i_0_1544, plain, (addition(X3,addition(X2,X1))=addition(X1,addition(X2,X3)))).
+#######
+#cnf(i_0_1800, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(esk2_0,zero))).
+####
+#cnf(i_0_2004, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(esk2_0,zero))).
+####
+#cnf(i_0_136, negated_conjecture, (addition(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))!=esk2_0|c(esk2_0)!=c(esk3_0)|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+################
+#cnf(i_0_1316, negated_conjecture, (c(multiplication(esk2_0,esk3_0))!=esk2_0|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(multiplication(esk2_0,esk3_0))|~test(esk2_0))).
+####
+#cnf(i_0_2020, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|~test(multiplication(esk2_0,esk3_0))|~test(esk2_0))).
+####
+#cnf(i_0_2023, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|~test(zero)|~test(esk2_0))).
+####
+#cnf(i_0_2028, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|one!=zero|~test(zero)|~test(esk2_0))).
+################
+#cnf(i_0_1385, negated_conjecture, (c(multiplication(esk2_0,esk3_0))!=esk2_0|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(multiplication(esk2_0,esk3_0))|~test(esk2_0))).
+####
+#cnf(i_0_2030, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|~test(multiplication(esk2_0,esk3_0))|~test(esk2_0))).
+####
+#cnf(i_0_2033, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|~test(zero)|~test(esk2_0))).
+####
+#cnf(i_0_2038, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|one!=zero|~test(zero)|~test(esk2_0))).
+################
+#cnf(i_0_761, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,c(esk3_0))))).
+########
+#cnf(i_0_934, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+####
+#cnf(i_0_2047, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+########
+#cnf(i_0_2052, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0)))).
+################
+#cnf(i_0_2056, negated_conjecture, (multiplication(esk2_0,esk3_0)!=c(esk2_0)|multiplication(esk2_0,esk3_0)!=one|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~test(esk2_0))).
+#######
+#cnf(i_0_101, plain, (addition(X1,addition(X2,one))=one|~test(addition(X1,X2)))).
+#
+#cnf(i_0_2025, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|multiplication(esk2_0,esk3_0)!=zero|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|~test(esk2_0)|~test(one))).
+####
+#cnf(i_0_2125, negated_conjecture, (c(esk2_0)!=c(esk3_0)|multiplication(esk2_0,esk3_0)!=zero|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|one!=zero|~test(esk2_0)|~test(one))).
+####
+#cnf(i_0_2127, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|one!=zero|~test(esk2_0)|~test(one))).
+####
+#cnf(i_0_2036, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|multiplication(esk2_0,esk3_0)!=zero|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|~test(esk2_0)|~test(one))).
+####
+#cnf(i_0_2129, negated_conjecture, (c(esk2_0)!=c(esk3_0)|multiplication(esk2_0,esk3_0)!=zero|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|one!=zero|~test(esk2_0)|~test(one))).
+###
+#cnf(i_0_431, plain, (addition(one,addition(X1,X2))=one|~test(addition(X2,X1)))).
+#
+#cnf(i_0_2131, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|one!=zero|~test(esk2_0)|~test(one))).
+####
+#cnf(i_0_133, negated_conjecture, (addition(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))!=esk2_0|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0))))).
+########
+#cnf(i_0_2220, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0))))).
+##
+#cnf(i_0_885, plain, (addition(X1,addition(X2,one))=one|~test(addition(X2,X1)))).
+##################
+#cnf(i_0_468, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=multiplication(esk2_0,c(esk3_0))|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(zero,esk2_0))).
+##
+#cnf(i_0_1472, plain, (addition(X2,addition(one,X1))=one|~test(addition(X1,X2)))).
+##
+#cnf(i_0_2300, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0))|~leq(zero,esk2_0))).
+####
+#cnf(i_0_2399, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|esk2_0!=zero|~test(c(esk3_0))|~leq(zero,esk2_0))).
+########
+#cnf(i_0_1806, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=esk2_0|multiplication(esk2_0,esk3_0)!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0))).
+####
+#cnf(i_0_2402, negated_conjecture, (multiplication(esk2_0,esk3_0)!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0))).
+#
+#cnf(i_0_1621, plain, (addition(X1,addition(one,X2))=one|~test(addition(X1,X2)))).
+###
+#cnf(i_0_702, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,c(esk3_0)))!=esk2_0|multiplication(esk2_0,c(esk3_0))!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0)))).
+####
+#cnf(i_0_2506, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=esk2_0|c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|~test(c(esk3_0)))).
+####
+#cnf(i_0_2511, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk3_0)!=esk2_0|esk2_0!=zero|~test(c(esk3_0)))).
+########
+#cnf(i_0_1805, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(zero,esk2_0))).
+############
+#cnf(i_0_2024, negated_conjecture, (c(X1)!=multiplication(esk2_0,esk3_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|~test(esk2_0)|~test(X1))).
+####
+#cnf(i_0_2519, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|c(X1)!=zero|~test(esk2_0)|~test(X1))).
+####
+#cnf(i_0_2525, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|c(X1)!=zero|one!=zero|~test(esk2_0)|~test(X1))).
+####
+#cnf(i_0_2526, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|one!=zero|X1!=zero|~test(esk1_1(X1))|~test(esk2_0)|~test(X1))).
+########
+#cnf(i_0_2522, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk3_0)!=esk2_0|X1!=zero|~test(esk1_1(X1))|~test(esk2_0)|~test(X1))).
+################
+#cnf(i_0_2035, negated_conjecture, (c(X1)!=multiplication(esk2_0,esk3_0)|multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|~test(esk2_0)|~test(X1))).
+####
+#cnf(i_0_2538, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|c(X1)!=zero|~test(esk2_0)|~test(X1))).
+####
+#cnf(i_0_2544, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|c(X1)!=zero|one!=zero|~test(esk2_0)|~test(X1))).
+####
+#cnf(i_0_2546, negated_conjecture, (c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|one!=zero|X1!=zero|~test(esk1_1(X1))|~test(esk2_0)|~test(X1))).
+########
+#cnf(i_0_2542, negated_conjecture, (multiplication(esk2_0,esk3_0)!=one|c(esk2_0)!=c(esk3_0)|c(zero)!=esk2_0|c(esk2_0)!=esk3_0|X1!=zero|~test(esk1_1(X1))|~test(esk2_0)|~test(X1))).
+################
+#cnf(i_0_392, negated_conjecture, (c(multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,c(esk3_0))|c(esk3_0)!=esk2_0|~test(multiplication(esk2_0,esk3_0))|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0)|~leq(esk2_0,one))).
+####
+#cnf(i_0_1067, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(multiplication(esk2_0,c(esk3_0)),esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+########
+#cnf(i_0_1584, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=c(esk2_0)|multiplication(esk2_0,c(esk3_0))!=one|c(esk2_0)!=c(esk3_0)|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_2567, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=zero|c(esk3_0)!=esk2_0|~test(esk2_0)|~leq(zero,esk2_0))).
+########
+#cnf(i_0_1592, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=c(esk2_0)|multiplication(esk2_0,c(esk3_0))!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(zero,esk2_0))).
+####
+#cnf(i_0_2573, negated_conjecture, (multiplication(esk2_0,c(esk3_0))!=one|c(esk2_0)!=c(esk3_0)|c(esk2_0)!=zero|c(esk2_0)!=esk3_0|~test(esk2_0)|~leq(zero,esk2_0))).
+##
+#cnf(i_0_241, plain, (esk1_1(X1)=zero|X1!=one|~test(esk1_1(X1))|~test(X1))).
+#
+#cnf(i_0_242, plain, (esk1_1(X1)=one|X1!=zero|~test(esk1_1(X1))|~test(X1))).
+##
+#cnf(i_0_228, plain, (addition(X1,X2)=one|addition(X2,X1)!=c(X1)|~test(X1))).
+###
+#cnf(i_0_1792, negated_conjecture, (c(c(esk3_0))!=esk2_0|c(esk2_0)!=esk3_0|~test(c(esk3_0))|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,c(esk3_0)))|~leq(multiplication(esk2_0,esk3_0),esk2_0))).
+######
+#cnf(i_0_2615, plain, (addition(X2,X1)=one|addition(X2,X1)!=c(X1)|~test(X1))).
+##
+#cnf(i_0_2018, negated_conjecture, (addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0)))!=c(esk2_0)|c(esk2_0)!=c(esk3_0)|esk2_0!=one|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+####
+#cnf(i_0_2719, negated_conjecture, (multiplication(esk2_0,esk3_0)!=c(esk2_0)|c(esk2_0)!=c(esk3_0)|esk2_0!=one|~test(esk2_0)|~leq(esk2_0,multiplication(esk2_0,esk3_0)))).
+##########
+#cnf(i_0_2712, plain, (addition(X1,X2)=one|addition(X2,X1)!=c(X2)|~test(X2))).
+##
+#cnf(i_0_2727, negated_conjecture, (addition(esk2_0,multiplication(esk2_0,esk3_0))!=multiplication(esk2_0,esk3_0)|multiplication(esk2_0,esk3_0)!=c(esk2_0)|c(esk2_0)!=c(esk3_0)|esk2_0!=one|~test(esk2_0))).
+#################
+#cnf(i_0_8, plain, (addition(multiplication(X1,X2),multiplication(X1,X3))=multiplication(X1,addition(X2,X3)))).
+###
+#cnf(i_0_25, negated_conjecture, (~leq(esk2_0,multiplication(esk2_0,addition(esk3_0,c(esk3_0))))|~leq(multiplication(esk2_0,addition(esk3_0,c(esk3_0))),esk2_0))).
+#
+#cnf(i_0_2861, plain, (multiplication(X1,addition(X2,esk1_1(X1)))=multiplication(X1,X2)|~test(X1))).
+#
+#cnf(i_0_2905, plain, (multiplication(X1,X1)=X1|~test(X1))).
+#
+#cnf(i_0_2912, plain, (X1=zero|c(X1)!=X1|~test(X1))).
+#
+#cnf(i_0_2881, negated_conjecture, (~leq(esk2_0,multiplication(esk2_0,addition(esk3_0,c(esk3_0))))|~leq(esk2_0,esk2_0))).
+####
+#cnf(i_0_2921, negated_conjecture, (~leq(esk2_0,esk2_0))).
+
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(goals, conjecture, ![X4, X5]:(test(X5)=>(leq(X4,addition(multiplication(X4,X5),multiplication(X4,c(X5))))&leq(addition(multiplication(X4,X5),multiplication(X4,c(X5))),X4))), file('./p/KLE022+4.tptp', goals)).
+fof(test_2, axiom, ![X4, X5]:(complement(X5,X4)<=>((multiplication(X4,X5)=zero&multiplication(X5,X4)=zero)&addition(X4,X5)=one)), file('./p/KLE022+4.tptp', test_2)).
+fof(test_3, axiom, ![X4, X5]:(test(X4)=>(c(X4)=X5<=>complement(X4,X5))), file('./p/KLE022+4.tptp', test_3)).
+fof(right_distributivity, axiom, ![X1, X2, X3]:multiplication(X1,addition(X2,X3))=addition(multiplication(X1,X2),multiplication(X1,X3)), file('./p/KLE022+4.tptp', right_distributivity)).
+fof(additive_commutativity, axiom, ![X1, X2]:addition(X1,X2)=addition(X2,X1), file('./p/KLE022+4.tptp', additive_commutativity)).
+fof(multiplicative_right_identity, axiom, ![X1]:multiplication(X1,one)=X1, file('./p/KLE022+4.tptp', multiplicative_right_identity)).
+fof(order, axiom, ![X1, X2]:(leq(X1,X2)<=>addition(X1,X2)=X2), file('./p/KLE022+4.tptp', order)).
+fof(additive_idempotence, axiom, ![X1]:addition(X1,X1)=X1, file('./p/KLE022+4.tptp', additive_idempotence)).
+fof(c_0_8, negated_conjecture, ~(![X4, X5]:(test(X5)=>(leq(X4,addition(multiplication(X4,X5),multiplication(X4,c(X5))))&leq(addition(multiplication(X4,X5),multiplication(X4,c(X5))),X4)))), inference(assume_negation,[status(cth)],[goals])).
+fof(c_0_9, plain, ![X32, X33]:((((multiplication(X32,X33)=zero|~complement(X33,X32))&(multiplication(X33,X32)=zero|~complement(X33,X32)))&(addition(X32,X33)=one|~complement(X33,X32)))&(multiplication(X32,X33)!=zero|multiplication(X33,X32)!=zero|addition(X32,X33)!=one|complement(X33,X32))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[test_2])])])).
+fof(c_0_10, plain, ![X34, X35]:((c(X34)!=X35|complement(X34,X35)|~test(X34))&(~complement(X34,X35)|c(X34)=X35|~test(X34))), inference(distribute,[status(thm)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[test_3])])])).
+fof(c_0_11, negated_conjecture, (test(esk3_0)&(~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))|~leq(addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))),esk2_0))), inference(skolemize,[status(esa)],[inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[c_0_8])])])).
+fof(c_0_12, plain, ![X18, X19, X20]:multiplication(X18,addition(X19,X20))=addition(multiplication(X18,X19),multiplication(X18,X20)), inference(variable_rename,[status(thm)],[right_distributivity])).
+fof(c_0_13, plain, ![X6, X7]:addition(X6,X7)=addition(X7,X6), inference(variable_rename,[status(thm)],[additive_commutativity])).
+cnf(c_0_14, plain, (addition(X1,X2)=one|~complement(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_9])).
+cnf(c_0_15, plain, (complement(X1,X2)|c(X1)!=X2|~test(X1)), inference(split_conjunct,[status(thm)],[c_0_10])).
+cnf(c_0_16, negated_conjecture, (~leq(esk2_0,addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))))|~leq(addition(multiplication(esk2_0,esk3_0),multiplication(esk2_0,c(esk3_0))),esk2_0)), inference(split_conjunct,[status(thm)],[c_0_11])).
+cnf(c_0_17, plain, (multiplication(X1,addition(X2,X3))=addition(multiplication(X1,X2),multiplication(X1,X3))), inference(split_conjunct,[status(thm)],[c_0_12])).
+cnf(c_0_18, plain, (addition(X1,X2)=addition(X2,X1)), inference(split_conjunct,[status(thm)],[c_0_13])).
+cnf(c_0_19, plain, (addition(X1,X2)=one|c(X2)!=X1|~test(X2)), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+fof(c_0_20, plain, ![X16]:multiplication(X16,one)=X16, inference(variable_rename,[status(thm)],[multiplicative_right_identity])).
+cnf(c_0_21, negated_conjecture, (~leq(esk2_0,multiplication(esk2_0,addition(esk3_0,c(esk3_0))))|~leq(multiplication(esk2_0,addition(esk3_0,c(esk3_0))),esk2_0)), inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_16, c_0_17]), c_0_17])).
+cnf(c_0_22, plain, (addition(X1,X2)=one|c(X1)!=X2|~test(X1)), inference(pm,[status(thm)],[c_0_18, c_0_19])).
+cnf(c_0_23, plain, (multiplication(X1,one)=X1), inference(split_conjunct,[status(thm)],[c_0_20])).
+cnf(c_0_24, negated_conjecture, (test(esk3_0)), inference(split_conjunct,[status(thm)],[c_0_11])).
+cnf(c_0_25, negated_conjecture, (~leq(esk2_0,multiplication(esk2_0,addition(esk3_0,c(esk3_0))))|~leq(esk2_0,esk2_0)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_21, c_0_22]), c_0_23]), c_0_24])])).
+fof(c_0_26, plain, ![X26, X27]:((~leq(X26,X27)|addition(X26,X27)=X27)&(addition(X26,X27)!=X27|leq(X26,X27))), inference(variable_rename,[status(thm)],[inference(fof_nnf,[status(thm)],[order])])).
+fof(c_0_27, plain, ![X12]:addition(X12,X12)=X12, inference(variable_rename,[status(thm)],[additive_idempotence])).
+cnf(c_0_28, negated_conjecture, (~leq(esk2_0,esk2_0)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_25, c_0_22]), c_0_23]), c_0_24])])).
+cnf(c_0_29, plain, (leq(X1,X2)|addition(X1,X2)!=X2), inference(split_conjunct,[status(thm)],[c_0_26])).
+cnf(c_0_30, plain, (addition(X1,X1)=X1), inference(split_conjunct,[status(thm)],[c_0_27])).
+cnf(c_0_31, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_28, c_0_29]), c_0_30])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 32
+# Proof object clause steps            : 15
+# Proof object formula steps           : 17
+# Proof object conjectures             : 9
+# Proof object clause conjectures      : 6
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 9
+# Proof object initial formulas used   : 8
+# Proof object generating inferences   : 5
+# Proof object simplifying inferences  : 10
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 19
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 26
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 26
+# Processed clauses                    : 1016
+# ...of these trivial                  : 43
+# ...subsumed                          : 732
+# ...remaining for further processing  : 241
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 44
+# Backward-rewritten                   : 11
+# Generated clauses                    : 2899
+# ...of the previous two non-trivial   : 2540
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 2894
+# Factorizations                       : 0
+# Equation resolutions                 : 5
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 186
+#    Positive orientable unit clauses  : 13
+#    Positive unorientable unit clauses: 4
+#    Negative unit clauses             : 1
+#    Non-unit-clauses                  : 168
+# Current number of unprocessed clauses: 1510
+# ...number of literals in the above   : 4759
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 55
+# Clause-clause subsumption calls (NU) : 6980
+# Rec. Clause-clause subsumption calls : 4661
+# Non-unit clause-clause subsumptions  : 706
+# Unit Clause-clause subsumption calls : 46
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 70
+# BW rewrite match successes           : 65
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 19440

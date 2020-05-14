@@ -1,0 +1,522 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_198, plain, (equalelemsP(nil))).
+#
+#cnf(i_0_199, plain, (duplicatefreeP(nil))).
+#
+#cnf(i_0_200, plain, (strictorderedP(nil))).
+#
+#cnf(i_0_208, plain, (~singletonP(nil))).
+#
+#cnf(i_0_201, plain, (totalorderedP(nil))).
+#
+#cnf(i_0_202, plain, (strictorderP(nil))).
+#
+#cnf(i_0_203, plain, (totalorderP(nil))).
+#
+#cnf(i_0_251, plain, (skac2!=skac3)).
+#
+#cnf(i_0_204, plain, (cyclefreeP(nil))).
+#
+#cnf(i_0_205, plain, (ssList(nil))).
+#
+#cnf(i_0_383, negated_conjecture, (ssList(sk1))).
+#
+#cnf(i_0_390, negated_conjecture, (~neq(sk1,nil))).
+#
+#cnf(i_0_384, negated_conjecture, (ssList(sk2))).
+#
+#cnf(i_0_385, negated_conjecture, (ssList(sk3))).
+#
+#cnf(i_0_386, negated_conjecture, (ssList(sk4))).
+#
+#cnf(i_0_260, plain, (~lt(X1,X1)|~ssItem(X1))).
+#
+#cnf(i_0_206, plain, (ssItem(skac3))).
+#
+#cnf(i_0_207, plain, (ssItem(skac2))).
+#
+#cnf(i_0_388, negated_conjecture, (sk3=sk1)).
+#
+#cnf(i_0_268, plain, (~memberP(nil,X1)|~ssItem(X1))).
+#
+#cnf(i_0_387, negated_conjecture, (sk2=sk4)).
+#
+#cnf(i_0_210, plain, (ssList(skaf82(X1)))).
+#
+#cnf(i_0_211, plain, (ssList(skaf81(X1)))).
+#
+#cnf(i_0_296, plain, (cons(X1,X2)!=X2|~ssItem(X1)|~ssList(X2))).
+#
+#cnf(i_0_212, plain, (ssList(skaf80(X1)))).
+#
+#cnf(i_0_215, plain, (ssList(skaf77(X1)))).
+#
+#cnf(i_0_216, plain, (ssList(skaf76(X1)))).
+#
+#cnf(i_0_295, plain, (cons(X1,X2)!=nil|~ssItem(X1)|~ssList(X2))).
+#
+#cnf(i_0_217, plain, (ssList(skaf75(X1)))).
+#
+#cnf(i_0_219, plain, (ssList(skaf73(X1)))).
+#
+#cnf(i_0_220, plain, (ssList(skaf72(X1)))).
+#
+#cnf(i_0_312, plain, (X1!=X2|~neq(X1,X2)|~ssList(X2)|~ssList(X1))).
+#
+#cnf(i_0_221, plain, (ssList(skaf71(X1)))).
+#
+#cnf(i_0_224, plain, (ssList(skaf68(X1)))).
+#
+#cnf(i_0_225, plain, (ssList(skaf67(X1)))).
+#
+#cnf(i_0_308, plain, (X1!=X2|~lt(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_226, plain, (ssList(skaf66(X1)))).
+#
+#cnf(i_0_229, plain, (ssList(skaf63(X1)))).
+#
+#cnf(i_0_230, plain, (ssList(skaf62(X1)))).
+#
+#cnf(i_0_314, plain, (X1!=X2|~neq(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_231, plain, (ssList(skaf61(X1)))).
+#
+#cnf(i_0_234, plain, (ssList(skaf58(X1)))).
+#
+#cnf(i_0_235, plain, (ssList(skaf57(X1)))).
+#
+#cnf(i_0_311, plain, (~lt(X2,X1)|~lt(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_236, plain, (ssList(skaf56(X1)))).
+#
+#cnf(i_0_239, plain, (ssList(skaf53(X1)))).
+#
+#cnf(i_0_240, plain, (ssList(skaf52(X1)))).
+#
+#cnf(i_0_307, plain, (~gt(X2,X1)|~gt(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_241, plain, (ssList(skaf51(X1)))).
+#
+#cnf(i_0_209, plain, (ssItem(skaf83(X1)))).
+#
+#cnf(i_0_213, plain, (ssItem(skaf79(X1)))).
+#
+#cnf(i_0_376, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=X5|~ssItem(X2)|~ssList(X5)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(X5))).
+#
+#cnf(i_0_214, plain, (ssItem(skaf78(X1)))).
+#
+#cnf(i_0_218, plain, (ssItem(skaf74(X1)))).
+#
+#cnf(i_0_222, plain, (ssItem(skaf70(X1)))).
+#
+#cnf(i_0_396, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf51(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf51(X5)))).
+#
+#cnf(i_0_223, plain, (ssItem(skaf69(X1)))).
+#
+#cnf(i_0_227, plain, (ssItem(skaf65(X1)))).
+#
+#cnf(i_0_228, plain, (ssItem(skaf64(X1)))).
+#
+#cnf(i_0_397, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf52(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf52(X5)))).
+#
+#cnf(i_0_232, plain, (ssItem(skaf60(X1)))).
+#
+#cnf(i_0_233, plain, (ssItem(skaf59(X1)))).
+#
+#cnf(i_0_237, plain, (ssItem(skaf55(X1)))).
+#
+#cnf(i_0_398, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf53(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf53(X5)))).
+#
+#cnf(i_0_238, plain, (ssItem(skaf54(X1)))).
+#
+#cnf(i_0_242, plain, (ssItem(skaf50(X1)))).
+#
+#cnf(i_0_243, plain, (ssItem(skaf49(X1)))).
+#
+#cnf(i_0_399, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf56(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf56(X5)))).
+#
+#cnf(i_0_244, plain, (ssItem(skaf44(X1)))).
+#
+#cnf(i_0_389, negated_conjecture, (neq(sk4,nil))).
+#
+#cnf(i_0_245, plain, (ssList(skaf48(X1,X2)))).
+#
+#cnf(i_0_417, negated_conjecture, (nil!=sk4)).
+#
+#cnf(i_0_246, plain, (ssList(skaf47(X1,X2)))).
+#
+#cnf(i_0_247, plain, (ssList(skaf46(X1,X2)))).
+#
+#cnf(i_0_248, plain, (ssList(skaf45(X1,X2)))).
+##
+#cnf(i_0_249, plain, (ssList(skaf43(X1,X2)))).
+#
+#cnf(i_0_250, plain, (ssList(skaf42(X1,X2)))).
+#
+#cnf(i_0_252, plain, (geq(X1,X1)|~ssItem(X1))).
+#
+#cnf(i_0_400, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf57(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf57(X5)))).
+#
+#cnf(i_0_254, plain, (segmentP(X1,X1)|~ssList(X1))).
+#
+#cnf(i_0_256, plain, (rearsegP(X1,X1)|~ssList(X1))).
+#
+#cnf(i_0_258, plain, (frontsegP(X1,X1)|~ssList(X1))).
+#
+#cnf(i_0_401, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf58(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf58(X5)))).
+#
+#cnf(i_0_259, plain, (leq(X1,X1)|~ssItem(X1))).
+#
+#cnf(i_0_253, plain, (segmentP(X1,nil)|~ssList(X1))).
+#
+#cnf(i_0_255, plain, (rearsegP(X1,nil)|~ssList(X1))).
+#
+#cnf(i_0_402, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf61(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf61(X5)))).
+#
+#cnf(i_0_257, plain, (frontsegP(X1,nil)|~ssList(X1))).
+#
+#cnf(i_0_269, plain, (ssItem(X2)|duplicatefreeP(X1)|~ssList(X1))).
+#
+#cnf(i_0_431, plain, (ssItem(X1)|duplicatefreeP(skaf51(X2)))).
+#
+#cnf(i_0_403, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf62(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf62(X5)))).
+#
+#cnf(i_0_432, plain, (ssItem(X1)|duplicatefreeP(skaf52(X2)))).
+#
+#cnf(i_0_433, plain, (ssItem(X1)|duplicatefreeP(skaf53(X2)))).
+#
+#cnf(i_0_434, plain, (ssItem(X1)|duplicatefreeP(skaf56(X2)))).
+#
+#cnf(i_0_404, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf63(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf63(X5)))).
+#
+#cnf(i_0_435, plain, (ssItem(X1)|duplicatefreeP(skaf57(X2)))).
+#
+#cnf(i_0_436, plain, (ssItem(X1)|duplicatefreeP(skaf58(X2)))).
+#
+#cnf(i_0_437, plain, (ssItem(X1)|duplicatefreeP(skaf61(X2)))).
+#
+#cnf(i_0_405, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf66(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf66(X5)))).
+#
+#cnf(i_0_438, plain, (ssItem(X1)|duplicatefreeP(skaf62(X2)))).
+#
+#cnf(i_0_439, plain, (ssItem(X1)|duplicatefreeP(skaf63(X2)))).
+#
+#cnf(i_0_440, plain, (ssItem(X1)|duplicatefreeP(skaf66(X2)))).
+#
+#cnf(i_0_406, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf67(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf67(X5)))).
+#
+#cnf(i_0_441, plain, (ssItem(X1)|duplicatefreeP(skaf67(X2)))).
+#
+#cnf(i_0_442, plain, (ssItem(X1)|duplicatefreeP(skaf68(X2)))).
+#
+#cnf(i_0_443, plain, (ssItem(X1)|duplicatefreeP(skaf71(X2)))).
+#
+#cnf(i_0_407, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf68(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf68(X5)))).
+#
+#cnf(i_0_444, plain, (ssItem(X1)|duplicatefreeP(skaf72(X2)))).
+#
+#cnf(i_0_445, plain, (ssItem(X1)|duplicatefreeP(skaf73(X2)))).
+#
+#cnf(i_0_446, plain, (ssItem(X1)|duplicatefreeP(skaf75(X2)))).
+#
+#cnf(i_0_408, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf71(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf71(X5)))).
+#
+#cnf(i_0_447, plain, (ssItem(X1)|duplicatefreeP(skaf76(X2)))).
+#
+#cnf(i_0_448, plain, (ssItem(X1)|duplicatefreeP(skaf77(X2)))).
+#
+#cnf(i_0_449, plain, (ssItem(X1)|duplicatefreeP(skaf80(X2)))).
+#
+#cnf(i_0_409, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf72(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf72(X5)))).
+#
+#cnf(i_0_450, plain, (ssItem(X1)|duplicatefreeP(skaf81(X2)))).
+#
+#cnf(i_0_451, plain, (ssItem(X1)|duplicatefreeP(skaf82(X2)))).
+##
+#cnf(i_0_410, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf73(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf73(X5)))).
+#
+#cnf(i_0_425, plain, (ssItem(X1)|duplicatefreeP(skaf42(X2,X3)))).
+#
+#cnf(i_0_426, plain, (ssItem(X1)|duplicatefreeP(skaf43(X2,X3)))).
+#
+#cnf(i_0_427, plain, (ssItem(X1)|duplicatefreeP(skaf45(X2,X3)))).
+#
+#cnf(i_0_411, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf75(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf75(X5)))).
+#
+#cnf(i_0_428, plain, (ssItem(X1)|duplicatefreeP(skaf46(X2,X3)))).
+#
+#cnf(i_0_429, plain, (ssItem(X1)|duplicatefreeP(skaf47(X2,X3)))).
+#
+#cnf(i_0_430, plain, (ssItem(X1)|duplicatefreeP(skaf48(X2,X3)))).
+#
+#cnf(i_0_412, plain, (app(app(X1,cons(X2,X3)),cons(X2,X4))!=skaf76(X5)|~ssItem(X2)|~ssList(X4)|~ssList(X3)|~ssList(X1)|~duplicatefreeP(skaf76(X5)))).
+#
+#cnf(i_0_392, negated_conjecture, (ssItem(sk5))).
+#
+#cnf(i_0_270, plain, (app(X1,nil)=X1|~ssList(X1))).
+#
+#cnf(i_0_271, plain, (app(nil,X1)=X1|~ssList(X1))).
+#
+#cnf(i_0_469, plain, (app(cons(X1,X2),cons(X1,X3))!=X4|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X4)|~ssList(X3)|~ssList(X2)|~duplicatefreeP(X4))).
+#
+#cnf(i_0_261, plain, (equalelemsP(cons(X1,nil))|~ssItem(X1))).
+#
+#cnf(i_0_262, plain, (duplicatefreeP(cons(X1,nil))|~ssItem(X1))).
+#
+#cnf(i_0_263, plain, (strictorderedP(cons(X1,nil))|~ssItem(X1))).
+#
+#cnf(i_0_470, plain, (app(cons(X1,X2),cons(X1,X3))!=skaf51(X4)|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X3)|~ssList(X2)|~duplicatefreeP(skaf51(X4)))).
+#
+#cnf(i_0_264, plain, (totalorderedP(cons(X1,nil))|~ssItem(X1))).
+#
+#cnf(i_0_265, plain, (strictorderP(cons(X1,nil))|~ssItem(X1))).
+#
+#cnf(i_0_266, plain, (totalorderP(cons(X1,nil))|~ssItem(X1))).
+#
+#cnf(i_0_471, plain, (app(cons(X1,X2),cons(X1,X3))!=skaf52(X4)|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X3)|~ssList(X2)|~duplicatefreeP(skaf52(X4)))).
+#
+#cnf(i_0_267, plain, (cyclefreeP(cons(X1,nil))|~ssItem(X1))).
+#
+#cnf(i_0_394, negated_conjecture, (memberP(sk4,sk5))).
+#
+#cnf(i_0_283, plain, (ssList(cons(X1,X2))|~ssItem(X1)|~ssList(X2))).
+#
+#cnf(i_0_472, plain, (app(cons(X1,X2),cons(X1,X3))!=skaf53(X4)|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X3)|~ssList(X2)|~duplicatefreeP(skaf53(X4)))).
+#
+#cnf(i_0_282, plain, (ssList(app(X2,X1))|~ssList(X2)|~ssList(X1))).
+#
+#cnf(i_0_286, plain, (equalelemsP(X1)|skaf78(X1)!=skaf79(X1)|~ssList(X1))).
+#
+#cnf(i_0_277, plain, (nil=X1|~segmentP(nil,X1)|~ssList(X1))).
+#
+#cnf(i_0_473, plain, (app(cons(X1,X2),cons(X1,X3))!=skaf56(X4)|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X3)|~ssList(X2)|~duplicatefreeP(skaf56(X4)))).
+#
+#cnf(i_0_279, plain, (nil=X1|~rearsegP(nil,X1)|~ssList(X1))).
+#
+#cnf(i_0_281, plain, (nil=X1|~frontsegP(nil,X1)|~ssList(X1))).
+#
+#cnf(i_0_276, plain, (segmentP(nil,X1)|nil!=X1|~ssList(X1))).
+#
+#cnf(i_0_474, plain, (app(cons(X1,X2),cons(X1,X3))!=skaf57(X4)|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X3)|~ssList(X2)|~duplicatefreeP(skaf57(X4)))).
+#
+#cnf(i_0_278, plain, (rearsegP(nil,X1)|nil!=X1|~ssList(X1))).
+#
+#cnf(i_0_280, plain, (frontsegP(nil,X1)|nil!=X1|~ssList(X1))).
+#
+#cnf(i_0_272, plain, (nil=X1|ssList(tl(X1))|~ssList(X1))).
+#
+#cnf(i_0_475, plain, (app(cons(X1,X2),cons(X1,X3))!=skaf58(X4)|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X3)|~ssList(X2)|~duplicatefreeP(skaf58(X4)))).
+##
+#cnf(i_0_273, plain, (nil=X1|ssItem(hd(X1))|~ssList(X1))).
+##
+#cnf(i_0_476, plain, (app(cons(X1,X2),cons(X1,X3))!=skaf61(X4)|~ssItem(X1)|~ssList(cons(X1,X2))|~ssList(X3)|~ssList(X2)|~duplicatefreeP(skaf61(X4)))).
+#
+#cnf(i_0_297, plain, (X1=X2|neq(X2,X1)|~ssList(X2)|~ssList(X1))).
+#
+#cnf(i_0_536, negated_conjecture, (nil=sk1)).
+#
+#cnf(i_0_204, plain, (cyclefreeP(sk1))).
+#
+#cnf(i_0_208, plain, (~singletonP(sk1))).
+#
+#cnf(i_0_203, plain, (totalorderP(sk1))).
+#
+#cnf(i_0_202, plain, (strictorderP(sk1))).
+#
+#cnf(i_0_201, plain, (totalorderedP(sk1))).
+#
+#cnf(i_0_417, negated_conjecture, (sk4!=sk1)).
+#
+#cnf(i_0_200, plain, (strictorderedP(sk1))).
+#
+#cnf(i_0_199, plain, (duplicatefreeP(sk1))).
+#
+#cnf(i_0_198, plain, (equalelemsP(sk1))).
+#
+#cnf(i_0_390, negated_conjecture, (~neq(sk1,sk1))).
+#
+#cnf(i_0_389, negated_conjecture, (neq(sk4,sk1))).
+#
+#cnf(i_0_257, plain, (frontsegP(X1,sk1)|~ssList(X1))).
+#
+#cnf(i_0_255, plain, (rearsegP(X1,sk1)|~ssList(X1))).
+##
+#cnf(i_0_253, plain, (segmentP(X1,sk1)|~ssList(X1))).
+#
+#cnf(i_0_267, plain, (cyclefreeP(cons(X1,sk1))|~ssItem(X1))).
+#
+#cnf(i_0_266, plain, (totalorderP(cons(X1,sk1))|~ssItem(X1))).
+#
+#cnf(i_0_268, plain, (~memberP(sk1,X1)|~ssItem(X1))).
+#
+#cnf(i_0_265, plain, (strictorderP(cons(X1,sk1))|~ssItem(X1))).
+#
+#cnf(i_0_264, plain, (totalorderedP(cons(X1,sk1))|~ssItem(X1))).
+#
+#cnf(i_0_263, plain, (strictorderedP(cons(X1,sk1))|~ssItem(X1))).
+##
+#cnf(i_0_262, plain, (duplicatefreeP(cons(X1,sk1))|~ssItem(X1))).
+#
+#cnf(i_0_261, plain, (equalelemsP(cons(X1,sk1))|~ssItem(X1))).
+#
+#cnf(i_0_271, plain, (app(sk1,X1)=X1|~ssList(X1))).
+#
+#cnf(i_0_295, plain, (cons(X1,X2)!=sk1|~ssItem(X1)|~ssList(X2))).
+#
+#cnf(i_0_270, plain, (app(X1,sk1)=X1|~ssList(X1))).
+#
+#cnf(i_0_281, plain, (sk1=X1|~frontsegP(sk1,X1)|~ssList(X1))).
+#
+#cnf(i_0_279, plain, (sk1=X1|~rearsegP(sk1,X1)|~ssList(X1))).
+##
+#cnf(i_0_277, plain, (sk1=X1|~segmentP(sk1,X1)|~ssList(X1))).
+#
+#cnf(i_0_280, plain, (frontsegP(sk1,X1)|sk1!=X1|~ssList(X1))).
+#
+#cnf(i_0_278, plain, (rearsegP(sk1,X1)|sk1!=X1|~ssList(X1))).
+##
+#cnf(i_0_276, plain, (segmentP(sk1,X1)|sk1!=X1|~ssList(X1))).
+#
+#cnf(i_0_273, plain, (sk1=X1|ssItem(hd(X1))|~ssList(X1))).
+#
+#cnf(i_0_272, plain, (sk1=X1|ssList(tl(X1))|~ssList(X1))).
+##
+#cnf(i_0_299, plain, (X1=X2|neq(X2,X1)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_305, plain, (geq(X2,X1)|~leq(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+###
+#cnf(i_0_300, plain, (leq(X1,X2)|~lt(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_302, plain, (lt(X2,X1)|~gt(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_304, plain, (leq(X2,X1)|~geq(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+##
+#cnf(i_0_303, plain, (gt(X2,X1)|~lt(X1,X2)|~ssItem(X2)|~ssItem(X1))).
+#
+#cnf(i_0_287, plain, (strictorderedP(X1)|~lt(skaf69(X1),skaf70(X1))|~ssList(X1))).
+#
+#cnf(i_0_288, plain, (totalorderedP(X1)|~leq(skaf64(X1),skaf65(X1))|~ssList(X1))).
+#
+#cnf(i_0_571, plain, (~gt(X2,X1)|~lt(X2,X1)|~ssItem(X1)|~ssItem(X2))).
+#
+#cnf(i_0_289, plain, (strictorderP(X1)|~lt(skaf60(X1),skaf59(X1))|~ssList(X1))).
+#
+#cnf(i_0_290, plain, (strictorderP(X1)|~lt(skaf59(X1),skaf60(X1))|~ssList(X1))).
+#
+#cnf(i_0_291, plain, (totalorderP(X1)|~leq(skaf55(X1),skaf54(X1))|~ssList(X1))).
+##
+#cnf(i_0_292, plain, (totalorderP(X1)|~leq(skaf54(X1),skaf55(X1))|~ssList(X1))).
+#
+#cnf(i_0_574, plain, (totalorderedP(X1)|~geq(skaf65(X1),skaf64(X1))|~ssList(X1))).
+#
+#cnf(i_0_576, plain, (totalorderP(X1)|~geq(skaf54(X1),skaf55(X1))|~ssList(X1))).
+##
+#cnf(i_0_577, plain, (totalorderP(X1)|~geq(skaf55(X1),skaf54(X1))|~ssList(X1))).
+#
+#cnf(i_0_293, plain, (tl(cons(X1,X2))=X2|~ssItem(X1)|~ssList(X2))).
+#
+#cnf(i_0_294, plain, (hd(cons(X1,X2))=X1|~ssItem(X1)|~ssList(X2))).
+##
+#cnf(i_0_284, plain, (leq(skaf50(X1),skaf49(X1))|cyclefreeP(X1)|~ssList(X1))).
+#
+#cnf(i_0_285, plain, (leq(skaf49(X1),skaf50(X1))|cyclefreeP(X1)|~ssList(X1))).
+#
+#cnf(i_0_580, plain, (geq(skaf49(X1),skaf50(X1))|cyclefreeP(X1)|~ssList(X1))).
+##
+#cnf(i_0_581, plain, (geq(skaf50(X1),skaf49(X1))|cyclefreeP(X1)|~ssList(X1))).
+#
+#cnf(i_0_393, negated_conjecture, (cons(sk5,sk1)=sk1)).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(co1_7, negated_conjecture, (neq(sk2,nil)), file('./p/SWC217-1.tptp', co1_7)).
+cnf(co1_5, negated_conjecture, (sk2=sk4), file('./p/SWC217-1.tptp', co1_5)).
+cnf(co1_8, negated_conjecture, (~neq(sk1,nil)), file('./p/SWC217-1.tptp', co1_8)).
+cnf(clause100, axiom, (neq(X2,X1)|X2=X1|~ssList(X1)|~ssList(X2)), file('./p/SWC217-1.tptp', clause100)).
+cnf(co1_1, negated_conjecture, (ssList(sk1)), file('./p/SWC217-1.tptp', co1_1)).
+cnf(clause8, axiom, (ssList(nil)), file('./p/SWC217-1.tptp', clause8)).
+cnf(co1_11, negated_conjecture, (cons(sk5,nil)=sk3|~neq(sk4,nil)), file('./p/SWC217-1.tptp', co1_11)).
+cnf(co1_6, negated_conjecture, (sk1=sk3), file('./p/SWC217-1.tptp', co1_6)).
+cnf(co1_10, negated_conjecture, (ssItem(sk5)|~neq(sk4,nil)), file('./p/SWC217-1.tptp', co1_10)).
+cnf(clause99, axiom, (cons(X1,X2)!=X2|~ssItem(X1)|~ssList(X2)), file('./p/SWC217-1.tptp', clause99)).
+cnf(c_0_10, negated_conjecture, (neq(sk2,nil)), co1_7).
+cnf(c_0_11, negated_conjecture, (sk2=sk4), co1_5).
+cnf(c_0_12, negated_conjecture, (~neq(sk1,nil)), co1_8).
+cnf(c_0_13, axiom, (neq(X2,X1)|X2=X1|~ssList(X1)|~ssList(X2)), clause100).
+cnf(c_0_14, negated_conjecture, (ssList(sk1)), co1_1).
+cnf(c_0_15, axiom, (ssList(nil)), clause8).
+cnf(c_0_16, negated_conjecture, (neq(sk4,nil)), inference(rw,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_17, negated_conjecture, (nil=sk1), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_12, c_0_13]), c_0_14]), c_0_15])])).
+cnf(c_0_18, negated_conjecture, (cons(sk5,nil)=sk3|~neq(sk4,nil)), co1_11).
+cnf(c_0_19, negated_conjecture, (sk1=sk3), co1_6).
+cnf(c_0_20, negated_conjecture, (neq(sk4,sk1)), inference(rw,[status(thm)],[c_0_16, c_0_17])).
+cnf(c_0_21, negated_conjecture, (ssItem(sk5)|~neq(sk4,nil)), co1_10).
+cnf(c_0_22, axiom, (cons(X1,X2)!=X2|~ssItem(X1)|~ssList(X2)), clause99).
+cnf(c_0_23, negated_conjecture, (cons(sk5,sk1)=sk1), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[c_0_18, c_0_17]), c_0_19]), c_0_17]), c_0_20])])).
+cnf(c_0_24, negated_conjecture, (ssItem(sk5)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[c_0_21, c_0_16])])).
+cnf(c_0_25, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_22, c_0_23]), c_0_24]), c_0_14])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 26
+# Proof object clause steps            : 16
+# Proof object formula steps           : 10
+# Proof object conjectures             : 20
+# Proof object clause conjectures      : 13
+# Proof object formula conjectures     : 7
+# Proof object initial clauses used    : 10
+# Proof object initial formulas used   : 10
+# Proof object generating inferences   : 2
+# Proof object simplifying inferences  : 15
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 197
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 197
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 197
+# Processed clauses                    : 230
+# ...of these trivial                  : 0
+# ...subsumed                          : 16
+# ...remaining for further processing  : 214
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 36
+# Generated clauses                    : 251
+# ...of the previous two non-trivial   : 202
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 249
+# Factorizations                       : 0
+# Equation resolutions                 : 2
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 178
+#    Positive orientable unit clauses  : 60
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 4
+#    Non-unit-clauses                  : 114
+# Current number of unprocessed clauses: 159
+# ...number of literals in the above   : 903
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 36
+# Clause-clause subsumption calls (NU) : 1009
+# Rec. Clause-clause subsumption calls : 516
+# Non-unit clause-clause subsumptions  : 12
+# Unit Clause-clause subsumption calls : 92
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 3
+# BW rewrite match successes           : 3
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 10567

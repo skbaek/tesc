@@ -1,0 +1,21 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for LCL853-1
+% SZS output start Proof for LCL853-1
+fof(f48,plain,(
+  $false),
+  inference(subsumption_resolution,[],[f44,f39])).
+fof(f39,axiom,(
+  c_InductTermi_OIT(v_s____)),
+  file('./p/LCL853-1.tptp',unknown)).
+fof(f44,axiom,(
+  ~c_InductTermi_OIT(v_s____)),
+  file('./p/LCL853-1.tptp',unknown)).
+% SZS output end Proof for LCL853-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4861
+% Time elapsed: 0.0000 s
+% ------------------------------
+% ------------------------------

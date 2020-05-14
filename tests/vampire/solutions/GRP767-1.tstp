@@ -1,0 +1,222 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP767-1
+% SZS output start Proof for GRP767-1
+fof(f210111,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f210110])).
+fof(f210110,plain,(
+  quotient(one,x1) != quotient(one,x1)),
+  inference(forward_demodulation,[],[f209962,f5])).
+fof(f5,axiom,(
+  ( ! [X0,X1] : (quotient(product(X0,X1),X1) = X0) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f209962,plain,(
+  quotient(one,x1) != quotient(one,quotient(product(x1,x0),x0))),
+  inference(superposition,[],[f30,f133197])).
+fof(f133197,plain,(
+  ( ! [X66,X67] : (product(quotient(one,quotient(one,X66)),quotient(one,X67)) = quotient(one,quotient(X67,X66))) )),
+  inference(backward_demodulation,[],[f133107,f91770])).
+fof(f91770,plain,(
+  ( ! [X66,X67] : (product(quotient(one,quotient(one,X66)),quotient(one,X67)) = product(X66,product(X66,quotient(one,product(X67,X66))))) )),
+  inference(backward_demodulation,[],[f91479,f5804])).
+fof(f5804,plain,(
+  ( ! [X66,X67] : (product(X66,quotient(product(X66,quotient(one,X66)),X67)) = product(quotient(one,quotient(one,X66)),quotient(one,X67))) )),
+  inference(forward_demodulation,[],[f5717,f5650])).
+fof(f5650,plain,(
+  ( ! [X8,X7] : (quotient(one,X8) = quotient(product(X7,quotient(one,X7)),product(X8,product(X7,quotient(one,X7))))) )),
+  inference(forward_demodulation,[],[f5649,f1339])).
+fof(f1339,plain,(
+  ( ! [X2,X3] : (quotient(one,X3) = difference(product(X3,product(X2,X3)),product(X3,X2))) )),
+  inference(superposition,[],[f202,f39])).
+fof(f39,plain,(
+  ( ! [X0] : (one = difference(X0,X0)) )),
+  inference(superposition,[],[f4,f1])).
+fof(f1,axiom,(
+  ( ! [X0] : (product(X0,one) = X0) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f4,axiom,(
+  ( ! [X0,X1] : (difference(X0,product(X0,X1)) = X1) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f202,plain,(
+  ( ! [X4,X2,X3] : (difference(product(X4,X2),product(X4,X3)) = quotient(difference(X2,product(X3,X4)),X4)) )),
+  inference(superposition,[],[f31,f3])).
+fof(f3,axiom,(
+  ( ! [X0,X1] : (product(X0,difference(X0,X1)) = X1) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f31,plain,(
+  ( ! [X2,X0,X1] : (difference(product(X0,X1),product(X0,product(X1,X2))) = quotient(difference(X1,product(product(X1,X2),X0)),X0)) )),
+  inference(forward_demodulation,[],[f8,f7])).
+fof(f7,axiom,(
+  ( ! [X2,X0,X1] : (difference(X0,product(product(X0,X1),X2)) = quotient(product(X1,product(X2,X0)),X0)) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f8,axiom,(
+  ( ! [X2,X0,X1] : (difference(product(X0,X1),product(X0,product(X1,X2))) = quotient(quotient(product(X2,product(X0,X1)),X1),X0)) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f5649,plain,(
+  ( ! [X8,X7] : (quotient(product(X7,quotient(one,X7)),product(X8,product(X7,quotient(one,X7)))) = difference(product(X8,product(difference(difference(X7,one),one),X8)),product(X8,difference(difference(X7,one),one)))) )),
+  inference(forward_demodulation,[],[f5636,f32])).
+fof(f32,plain,(
+  ( ! [X0,X1] : (product(difference(difference(X0,one),one),X1) = product(product(X0,quotient(one,X0)),product(X0,X1))) )),
+  inference(forward_demodulation,[],[f24,f23])).
+fof(f23,plain,(
+  ( ! [X0] : (product(difference(X0,one),X0) = product(X0,quotient(one,X0))) )),
+  inference(definition_unfolding,[],[f11,f9,f10])).
+fof(f10,axiom,(
+  ( ! [X0] : (j(X0) = quotient(one,X0)) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f9,axiom,(
+  ( ! [X0] : (i(X0) = difference(X0,one)) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f11,axiom,(
+  ( ! [X0] : (product(i(X0),X0) = product(X0,j(X0))) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f24,plain,(
+  ( ! [X0,X1] : (product(difference(difference(X0,one),one),X1) = product(product(difference(X0,one),X0),product(X0,X1))) )),
+  inference(definition_unfolding,[],[f13,f9,f9,f22])).
+fof(f22,plain,(
+  ( ! [X0] : (eta(X0) = product(difference(X0,one),X0)) )),
+  inference(definition_unfolding,[],[f12,f9])).
+fof(f12,axiom,(
+  ( ! [X0] : (product(i(X0),X0) = eta(X0)) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f13,axiom,(
+  ( ! [X0,X1] : (product(i(i(X0)),X1) = product(eta(X0),product(X0,X1))) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f5636,plain,(
+  ( ! [X8,X7] : (quotient(product(X7,quotient(one,X7)),product(X8,product(X7,quotient(one,X7)))) = difference(product(X8,product(product(X7,quotient(one,X7)),product(X7,X8))),product(X8,difference(difference(X7,one),one)))) )),
+  inference(backward_demodulation,[],[f5515,f3838])).
+fof(f3838,plain,(
+  ( ! [X8,X7] : (quotient(product(X7,quotient(one,X7)),product(X8,product(X7,quotient(one,X7)))) = difference(product(product(X8,product(X7,quotient(one,X7))),product(X7,X8)),product(X8,difference(difference(X7,one),one)))) )),
+  inference(forward_demodulation,[],[f3705,f1257])).
+fof(f1257,plain,(
+  ( ! [X4,X5] : (product(product(X5,product(X4,quotient(one,X4))),X4) = product(X5,difference(difference(X4,one),one))) )),
+  inference(forward_demodulation,[],[f1256,f120])).
+fof(f120,plain,(
+  ( ! [X0] : (difference(difference(X0,one),one) = product(product(X0,quotient(one,X0)),X0)) )),
+  inference(forward_demodulation,[],[f100,f1])).
+fof(f100,plain,(
+  ( ! [X0] : (product(difference(difference(X0,one),one),one) = product(product(X0,quotient(one,X0)),X0)) )),
+  inference(superposition,[],[f32,f1])).
+fof(f1256,plain,(
+  ( ! [X4,X5] : (product(X5,product(product(X4,quotient(one,X4)),X4)) = product(product(X5,product(X4,quotient(one,X4))),X4)) )),
+  inference(forward_demodulation,[],[f1225,f4])).
+fof(f1225,plain,(
+  ( ! [X4,X5] : (product(X5,product(product(X4,quotient(one,X4)),X4)) = product(difference(X4,product(X4,product(X5,product(X4,quotient(one,X4))))),X4)) )),
+  inference(superposition,[],[f78,f34])).
+fof(f34,plain,(
+  ( ! [X0,X1] : (product(X0,product(X1,product(X0,quotient(one,X0)))) = product(product(X0,X1),product(X0,quotient(one,X0)))) )),
+  inference(forward_demodulation,[],[f26,f23])).
+fof(f26,plain,(
+  ( ! [X0,X1] : (product(X0,product(X1,product(difference(X0,one),X0))) = product(product(X0,X1),product(difference(X0,one),X0))) )),
+  inference(definition_unfolding,[],[f15,f22,f22])).
+fof(f15,axiom,(
+  ( ! [X0,X1] : (product(X0,product(X1,eta(X0))) = product(product(X0,X1),eta(X0))) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f78,plain,(
+  ( ! [X2,X0,X1] : (product(X0,product(X1,X2)) = product(difference(X2,product(product(X2,X0),X1)),X2)) )),
+  inference(superposition,[],[f6,f7])).
+fof(f6,axiom,(
+  ( ! [X0,X1] : (product(quotient(X0,X1),X1) = X0) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f3705,plain,(
+  ( ! [X8,X7] : (difference(product(product(X8,product(X7,quotient(one,X7))),product(X7,X8)),product(product(X8,product(X7,quotient(one,X7))),X7)) = quotient(product(X7,quotient(one,X7)),product(X8,product(X7,quotient(one,X7))))) )),
+  inference(superposition,[],[f202,f292])).
+fof(f292,plain,(
+  ( ! [X17,X16] : (product(X16,quotient(one,X16)) = difference(product(X16,X17),product(X16,product(X17,product(X16,quotient(one,X16)))))) )),
+  inference(superposition,[],[f4,f34])).
+fof(f5515,plain,(
+  ( ! [X19,X17,X18] : (product(X17,product(product(X18,quotient(one,X18)),X19)) = product(product(X17,product(X18,quotient(one,X18))),X19)) )),
+  inference(superposition,[],[f3,f419])).
+fof(f419,plain,(
+  ( ! [X6,X7,X5] : (difference(product(X7,product(X5,quotient(one,X5))),product(X7,product(product(X5,quotient(one,X5)),X6))) = X6) )),
+  inference(forward_demodulation,[],[f418,f5])).
+fof(f418,plain,(
+  ( ! [X6,X7,X5] : (difference(product(X7,product(X5,quotient(one,X5))),product(X7,product(product(X5,quotient(one,X5)),X6))) = quotient(product(X6,X7),X7)) )),
+  inference(forward_demodulation,[],[f370,f4])).
+fof(f370,plain,(
+  ( ! [X6,X7,X5] : (difference(product(X7,product(X5,quotient(one,X5))),product(X7,product(product(X5,quotient(one,X5)),X6))) = quotient(difference(product(X5,quotient(one,X5)),product(product(X5,quotient(one,X5)),product(X6,X7))),X7)) )),
+  inference(superposition,[],[f31,f35])).
+fof(f35,plain,(
+  ( ! [X2,X0,X1] : (product(product(X0,quotient(one,X0)),product(X1,X2)) = product(product(product(X0,quotient(one,X0)),X1),X2)) )),
+  inference(forward_demodulation,[],[f27,f23])).
+fof(f27,plain,(
+  ( ! [X2,X0,X1] : (product(product(difference(X0,one),X0),product(X1,X2)) = product(product(product(difference(X0,one),X0),X1),X2)) )),
+  inference(definition_unfolding,[],[f16,f22,f22])).
+fof(f16,axiom,(
+  ( ! [X2,X0,X1] : (product(eta(X0),product(X1,X2)) = product(product(eta(X0),X1),X2)) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f5717,plain,(
+  ( ! [X66,X67] : (product(quotient(one,quotient(one,X66)),quotient(product(X66,quotient(one,X66)),product(X67,product(X66,quotient(one,X66))))) = product(X66,quotient(product(X66,quotient(one,X66)),X67))) )),
+  inference(superposition,[],[f33,f3070])).
+fof(f3070,plain,(
+  ( ! [X8,X9] : (quotient(X9,X8) = product(X9,quotient(X9,product(X8,X9)))) )),
+  inference(superposition,[],[f1914,f5])).
+fof(f1914,plain,(
+  ( ! [X4,X5] : (product(X4,quotient(X4,X5)) = quotient(X4,quotient(X5,X4))) )),
+  inference(superposition,[],[f45,f1382])).
+fof(f1382,plain,(
+  ( ! [X8,X7] : (difference(product(X7,quotient(X7,X8)),X7) = quotient(X8,X7)) )),
+  inference(superposition,[],[f1354,f50])).
+fof(f50,plain,(
+  ( ! [X4,X3] : (difference(quotient(X3,X4),X3) = X4) )),
+  inference(superposition,[],[f4,f6])).
+fof(f1354,plain,(
+  ( ! [X10,X11] : (quotient(difference(X11,X10),X10) = difference(product(X10,X11),X10)) )),
+  inference(forward_demodulation,[],[f1326,f1])).
+fof(f1326,plain,(
+  ( ! [X10,X11] : (difference(product(X10,X11),product(X10,one)) = quotient(difference(X11,X10),X10)) )),
+  inference(superposition,[],[f202,f2])).
+fof(f2,axiom,(
+  ( ! [X0] : (product(one,X0) = X0) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f45,plain,(
+  ( ! [X2,X1] : (quotient(X2,difference(X1,X2)) = X1) )),
+  inference(superposition,[],[f5,f3])).
+fof(f33,plain,(
+  ( ! [X0,X1] : (product(quotient(one,quotient(one,X0)),X1) = product(X0,product(product(X0,quotient(one,X0)),X1))) )),
+  inference(forward_demodulation,[],[f25,f23])).
+fof(f25,plain,(
+  ( ! [X0,X1] : (product(X0,product(product(difference(X0,one),X0),X1)) = product(quotient(one,quotient(one,X0)),X1)) )),
+  inference(definition_unfolding,[],[f14,f22,f10,f10])).
+fof(f14,axiom,(
+  ( ! [X0,X1] : (product(X0,product(eta(X0),X1)) = product(j(j(X0)),X1)) )),
+  file('./p/GRP767-1.tptp',unknown)).
+fof(f91479,plain,(
+  ( ! [X52,X50,X51] : (product(X50,quotient(X51,product(X52,X50))) = quotient(product(X50,quotient(X51,X50)),X52)) )),
+  inference(superposition,[],[f5,f1120])).
+fof(f1120,plain,(
+  ( ! [X6,X8,X7] : (product(product(X6,quotient(X7,product(X8,X6))),X8) = product(X6,quotient(X7,X6))) )),
+  inference(superposition,[],[f3,f76])).
+fof(f76,plain,(
+  ( ! [X6,X4,X5] : (difference(X6,product(product(X6,quotient(X4,product(X5,X6))),X5)) = quotient(X4,X6)) )),
+  inference(superposition,[],[f7,f6])).
+fof(f133107,plain,(
+  ( ! [X212,X213] : (product(X212,product(X212,quotient(one,product(X213,X212)))) = quotient(one,quotient(X213,X212))) )),
+  inference(superposition,[],[f45,f104674])).
+fof(f104674,plain,(
+  ( ! [X146,X147] : (quotient(X147,X146) = difference(product(X146,product(X146,quotient(one,product(X147,X146)))),one)) )),
+  inference(forward_demodulation,[],[f104673,f91479])).
+fof(f104673,plain,(
+  ( ! [X146,X147] : (quotient(X147,X146) = difference(product(X146,quotient(product(X146,quotient(one,X146)),X147)),one)) )),
+  inference(forward_demodulation,[],[f104371,f3])).
+fof(f104371,plain,(
+  ( ! [X146,X147] : (quotient(X147,X146) = difference(product(X146,quotient(product(X146,quotient(one,X146)),X147)),product(X146,difference(X146,one)))) )),
+  inference(superposition,[],[f1342,f23])).
+fof(f1342,plain,(
+  ( ! [X8,X7,X9] : (quotient(X9,X8) = difference(product(X8,quotient(product(X7,X8),X9)),product(X8,X7))) )),
+  inference(superposition,[],[f202,f50])).
+fof(f30,plain,(
+  product(quotient(one,quotient(one,x0)),quotient(one,product(x1,x0))) != quotient(one,x1)),
+  inference(definition_unfolding,[],[f21,f10,f10,f10,f10])).
+fof(f21,axiom,(
+  product(j(j(x0)),j(product(x1,x0))) != j(x1)),
+  file('./p/GRP767-1.tptp',unknown)).
+% SZS output end Proof for GRP767-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 183451
+% Time elapsed: 7.801 s
+% ------------------------------
+% ------------------------------

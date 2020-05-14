@@ -1,0 +1,1341 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_21, plain, (group_element(e_1))).
+#
+#cnf(i_0_22, plain, (group_element(e_2))).
+#
+#cnf(i_0_23, plain, (group_element(e_3))).
+#
+#cnf(i_0_24, plain, (~equalish(e_1,e_2))).
+#
+#cnf(i_0_34, plain, (product(X1,X1,X1))).
+#
+#cnf(i_0_31, plain, (equalish(X3,X4)|~product(X1,X2,X4)|~product(X1,X2,X3))).
+#
+#cnf(i_0_37, plain, (equalish(X1,X2)|~product(X1,X1,X2))).
+#
+#cnf(i_0_25, plain, (~equalish(e_1,e_3))).
+#
+#cnf(i_0_39, plain, (equalish(X1,X1))).
+#
+#cnf(i_0_38, plain, (equalish(X1,X2)|~product(X2,X2,X1))).
+#
+#cnf(i_0_32, plain, (equalish(X2,X4)|~product(X1,X4,X3)|~product(X1,X2,X3))).
+#
+#cnf(i_0_26, plain, (~equalish(e_2,e_1))).
+#
+#cnf(i_0_41, plain, (equalish(X1,X2)|~product(X1,X2,X1))).
+#
+#cnf(i_0_42, plain, (equalish(X1,X2)|~product(X2,X1,X2))).
+#
+#cnf(i_0_33, plain, (equalish(X1,X4)|~product(X4,X2,X3)|~product(X1,X2,X3))).
+#
+#cnf(i_0_27, plain, (~equalish(e_2,e_3))).
+#
+#cnf(i_0_45, plain, (equalish(X1,X2)|~product(X2,X1,X1))).
+#
+#cnf(i_0_46, plain, (equalish(X1,X2)|~product(X1,X2,X2))).
+#
+#cnf(i_0_30, plain, (product(X1,X2,e_1)|product(X1,X2,e_2)|product(X1,X2,e_3)|~group_element(X2)|~group_element(X1))).
+#
+#cnf(i_0_28, plain, (~equalish(e_3,e_1))).
+#
+#cnf(i_0_51, plain, (equalish(X1,e_1)|product(X1,X1,e_2)|product(X1,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_63, plain, (equalish(X1,e_3)|equalish(X1,e_1)|product(X1,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_75, plain, (equalish(X1,e_2)|equalish(X1,e_3)|equalish(X1,e_1)|~group_element(X1))).
+#
+#cnf(i_0_29, plain, (~equalish(e_3,e_2))).
+#
+#cnf(i_0_76, plain, (equalish(e_2,X1)|equalish(X1,e_3)|equalish(X1,e_1)|~group_element(X1))).
+#
+#cnf(i_0_64, plain, (equalish(e_3,X1)|equalish(X1,e_1)|product(X1,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_91, plain, (equalish(X1,e_2)|equalish(e_3,X1)|equalish(X1,e_1)|~group_element(X1))).
+#
+#cnf(i_0_92, plain, (equalish(e_2,X1)|equalish(e_3,X1)|equalish(X1,e_1)|~group_element(X1))).
+#
+#cnf(i_0_52, plain, (equalish(e_1,X1)|product(X1,X1,e_2)|product(X1,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_107, plain, (equalish(X1,e_3)|equalish(e_1,X1)|product(X1,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_119, plain, (equalish(X1,e_2)|equalish(X1,e_3)|equalish(e_1,X1)|~group_element(X1))).
+#
+#cnf(i_0_120, plain, (equalish(e_2,X1)|equalish(X1,e_3)|equalish(e_1,X1)|~group_element(X1))).
+#
+#cnf(i_0_108, plain, (equalish(e_3,X1)|equalish(e_1,X1)|product(X1,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_136, plain, (equalish(e_2,X1)|equalish(e_3,X1)|equalish(e_1,X1)|~group_element(X1))).
+#
+#cnf(i_0_135, plain, (equalish(X1,e_2)|equalish(e_3,X1)|equalish(e_1,X1)|~group_element(X1))).
+#
+#cnf(i_0_55, plain, (equalish(e_1,X1)|product(e_1,X1,e_2)|product(e_1,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_157, plain, (product(e_1,e_3,e_2))).
+##
+#cnf(i_0_159, plain, (equalish(X1,e_2)|~product(e_1,e_3,X1))).
+#
+#cnf(i_0_160, plain, (equalish(e_2,X1)|~product(e_1,e_3,X1))).
+#
+#cnf(i_0_161, plain, (equalish(X1,e_3)|~product(e_1,X1,e_2))).
+#
+#cnf(i_0_162, plain, (equalish(e_3,X1)|~product(e_1,X1,e_2))).
+#
+#cnf(i_0_163, plain, (equalish(X1,e_1)|~product(X1,e_3,e_2))).
+#
+#cnf(i_0_164, plain, (equalish(e_1,X1)|~product(X1,e_3,e_2))).
+#
+#cnf(i_0_56, plain, (equalish(X1,e_1)|product(e_1,X1,e_2)|product(e_1,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_59, plain, (equalish(e_1,X1)|product(X1,e_1,e_2)|product(X1,e_1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_209, plain, (product(e_3,e_1,e_2))).
+##
+#cnf(i_0_213, plain, (equalish(X1,e_2)|~product(e_3,e_1,X1))).
+#
+#cnf(i_0_214, plain, (equalish(e_2,X1)|~product(e_3,e_1,X1))).
+#
+#cnf(i_0_215, plain, (equalish(X1,e_1)|~product(e_3,X1,e_2))).
+#
+#cnf(i_0_216, plain, (equalish(e_1,X1)|~product(e_3,X1,e_2))).
+#
+#cnf(i_0_217, plain, (equalish(X1,e_3)|~product(X1,e_1,e_2))).
+#
+#cnf(i_0_218, plain, (equalish(e_3,X1)|~product(X1,e_1,e_2))).
+#
+#cnf(i_0_60, plain, (equalish(X1,e_1)|product(X1,e_1,e_2)|product(X1,e_1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_73, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_74, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_77, plain, (equalish(X2,e_3)|equalish(X2,e_1)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+#
+#cnf(i_0_78, plain, (equalish(X1,e_3)|equalish(X1,e_1)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X1))).
+#
+#cnf(i_0_89, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_81, plain, (equalish(X2,e_3)|equalish(X2,e_1)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+#
+#cnf(i_0_90, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_82, plain, (equalish(X1,e_3)|equalish(X1,e_1)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_117, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_93, plain, (equalish(e_3,X2)|equalish(X2,e_1)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+#
+#cnf(i_0_118, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_94, plain, (equalish(e_3,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X1))).
+#
+#cnf(i_0_133, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_97, plain, (equalish(e_3,X2)|equalish(X2,e_1)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+#
+#cnf(i_0_134, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_98, plain, (equalish(e_3,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_121, plain, (equalish(X2,e_3)|equalish(e_1,X2)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+#
+#cnf(i_0_122, plain, (equalish(X1,e_3)|equalish(e_1,X1)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X1))).
+#
+#cnf(i_0_125, plain, (equalish(X2,e_3)|equalish(e_1,X2)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+#
+#cnf(i_0_126, plain, (equalish(X1,e_3)|equalish(e_1,X1)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_137, plain, (equalish(e_3,X2)|equalish(e_1,X2)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+#
+#cnf(i_0_138, plain, (equalish(e_3,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X1))).
+#
+#cnf(i_0_141, plain, (equalish(e_3,X2)|equalish(e_1,X2)|equalish(X1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+#
+#cnf(i_0_142, plain, (equalish(e_3,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(X2,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_20, plain, (product(X1,e_1,X2)|product(X1,e_2,X2)|product(X1,e_3,X2)|~group_element(X2)|~group_element(X1))).
+#
+#cnf(i_0_493, plain, (equalish(X1,e_1)|product(X1,e_2,X1)|product(X1,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_533, plain, (equalish(X1,e_3)|equalish(X1,e_1)|product(X1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_534, plain, (equalish(e_3,X1)|equalish(X1,e_1)|product(X1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_494, plain, (equalish(e_1,X1)|product(X1,e_2,X1)|product(X1,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_645, plain, (equalish(X1,e_3)|equalish(e_1,X1)|product(X1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_646, plain, (equalish(e_3,X1)|equalish(e_1,X1)|product(X1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_467, plain, (equalish(X1,e_2)|product(e_3,e_2,X1)|product(e_3,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_743, plain, (equalish(e_3,X1)|equalish(X1,e_2)|product(e_3,e_2,X1)|~group_element(X1))).
+#
+#cnf(i_0_744, plain, (equalish(X1,e_3)|equalish(X1,e_2)|product(e_3,e_2,X1)|~group_element(X1))).
+#
+#cnf(i_0_468, plain, (equalish(e_2,X1)|product(e_3,e_2,X1)|product(e_3,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_839, plain, (equalish(e_3,X1)|equalish(e_2,X1)|product(e_3,e_2,X1)|~group_element(X1))).
+#
+#cnf(i_0_840, plain, (equalish(X1,e_3)|equalish(e_2,X1)|product(e_3,e_2,X1)|~group_element(X1))).
+#
+#cnf(i_0_481, plain, (equalish(e_1,X1)|product(e_1,e_2,X1)|product(e_1,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_941, plain, (product(e_1,e_2,e_3))).
+##
+#cnf(i_0_957, plain, (equalish(X1,e_3)|~product(e_1,e_2,X1))).
+#
+#cnf(i_0_958, plain, (equalish(e_3,X1)|~product(e_1,e_2,X1))).
+#
+#cnf(i_0_959, plain, (equalish(X1,e_2)|~product(e_1,X1,e_3))).
+#
+#cnf(i_0_960, plain, (equalish(e_2,X1)|~product(e_1,X1,e_3))).
+#
+#cnf(i_0_961, plain, (equalish(X1,e_1)|~product(X1,e_2,e_3))).
+#
+#cnf(i_0_962, plain, (equalish(e_1,X1)|~product(X1,e_2,e_3))).
+#
+#cnf(i_0_955, plain, (equalish(X1,e_2)|equalish(e_1,X1)|product(e_1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_956, plain, (equalish(e_2,X1)|equalish(e_1,X1)|product(e_1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_986, plain, (equalish(X1,e_2)|equalish(e_1,X1)|product(e_1,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_987, plain, (equalish(X1,e_2)|equalish(X1,e_1)|product(e_1,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_995, plain, (equalish(e_2,X1)|equalish(e_1,X1)|product(e_1,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_996, plain, (equalish(e_2,X1)|equalish(X1,e_1)|product(e_1,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_482, plain, (equalish(X1,e_1)|product(e_1,e_2,X1)|product(e_1,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_1299, plain, (equalish(X1,e_2)|equalish(X1,e_1)|product(e_1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_1300, plain, (equalish(e_2,X1)|equalish(X1,e_1)|product(e_1,e_2,X1)|~group_element(X1))).
+###
+#cnf(i_0_497, plain, (equalish(e_1,X1)|product(X1,e_2,e_1)|product(X1,e_3,e_1)|~group_element(X1))).
+#
+#cnf(i_0_1373, plain, (product(e_3,e_2,e_1))).
+##
+#cnf(i_0_1389, plain, (equalish(X1,e_1)|~product(e_3,e_2,X1))).
+#
+#cnf(i_0_1390, plain, (equalish(e_1,X1)|~product(e_3,e_2,X1))).
+#
+#cnf(i_0_1391, plain, (equalish(X1,e_2)|~product(e_3,X1,e_1))).
+#
+#cnf(i_0_1392, plain, (equalish(e_2,X1)|~product(e_3,X1,e_1))).
+#
+#cnf(i_0_1393, plain, (equalish(X1,e_3)|~product(X1,e_2,e_1))).
+#
+#cnf(i_0_1394, plain, (equalish(e_3,X1)|~product(X1,e_2,e_1))).
+#########
+#cnf(i_0_498, plain, (equalish(X1,e_1)|product(X1,e_2,e_1)|product(X1,e_3,e_1)|~group_element(X1))).
+#
+#cnf(i_0_507, plain, (equalish(X1,e_3)|product(X1,e_2,e_2)|product(X1,e_3,e_2)|~group_element(X1))).
+#
+#cnf(i_0_1492, plain, (equalish(X1,e_3)|equalish(X1,e_1)|product(X1,e_2,e_2)|~group_element(X1))).
+#############
+#cnf(i_0_1496, plain, (equalish(X1,e_3)|equalish(e_1,X1)|product(X1,e_2,e_2)|~group_element(X1))).
+###############
+#cnf(i_0_508, plain, (equalish(e_3,X1)|product(X1,e_2,e_2)|product(X1,e_3,e_2)|~group_element(X1))).
+#
+#cnf(i_0_1623, plain, (equalish(e_3,X1)|equalish(X1,e_1)|product(X1,e_2,e_2)|~group_element(X1))).
+#############
+#cnf(i_0_1627, plain, (equalish(e_3,X1)|equalish(e_1,X1)|product(X1,e_2,e_2)|~group_element(X1))).
+###############
+#cnf(i_0_1417, plain, (equalish(X1,e_2)|product(e_3,X1,e_2)|product(e_3,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_1761, plain, (equalish(e_3,X1)|equalish(X1,e_2)|product(e_3,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_1762, plain, (equalish(X1,e_3)|equalish(X1,e_2)|product(e_3,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_1427, plain, (equalish(e_2,X1)|product(e_3,X1,e_2)|product(e_3,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_1875, plain, (equalish(e_3,X1)|equalish(e_2,X1)|product(e_3,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_1876, plain, (equalish(X1,e_3)|equalish(e_2,X1)|product(e_3,X1,e_2)|~group_element(X1))).
+#####
+#cnf(i_0_1444, plain, (equalish(X1,e_3)|product(X1,e_2,e_2)|product(X1,e_2,e_3)|~group_element(X1))).
+###
+#cnf(i_0_1458, plain, (equalish(e_3,X1)|product(X1,e_2,e_2)|product(X1,e_2,e_3)|~group_element(X1))).
+###
+#cnf(i_0_557, plain, (equalish(X2,e_3)|equalish(X2,e_1)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+##
+#cnf(i_0_558, plain, (equalish(X1,e_3)|equalish(X1,e_1)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X1))).
+###
+#cnf(i_0_569, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_570, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_573, plain, (equalish(X2,e_3)|equalish(X2,e_1)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#####
+#cnf(i_0_574, plain, (equalish(X1,e_3)|equalish(X1,e_1)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X1))).
+#########
+#cnf(i_0_605, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_593, plain, (equalish(e_3,X2)|equalish(X2,e_1)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_594, plain, (equalish(e_3,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X1))).
+##
+#cnf(i_0_606, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_609, plain, (equalish(e_3,X2)|equalish(X2,e_1)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_610, plain, (equalish(e_3,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X1))).
+#######
+#cnf(i_0_669, plain, (equalish(X2,e_3)|equalish(e_1,X2)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+##
+#cnf(i_0_670, plain, (equalish(X1,e_3)|equalish(e_1,X1)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X1))).
+###
+#cnf(i_0_681, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_682, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_717, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_685, plain, (equalish(X2,e_3)|equalish(e_1,X2)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_686, plain, (equalish(X1,e_3)|equalish(e_1,X1)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X1))).
+#######
+#cnf(i_0_705, plain, (equalish(e_3,X2)|equalish(e_1,X2)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_718, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_706, plain, (equalish(e_3,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X1))).
+##
+#cnf(i_0_721, plain, (equalish(e_3,X2)|equalish(e_1,X2)|equalish(X1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#########
+#cnf(i_0_722, plain, (equalish(e_3,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(X2,e_2,X1)|~group_element(X1))).
+#####
+#cnf(i_0_783, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_784, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_787, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,e_2,X2)|~group_element(X2))).
+####
+#cnf(i_0_788, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,e_2,X2)|~group_element(X2))).
+######
+#cnf(i_0_811, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_812, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_815, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,e_2,X2)|~group_element(X2))).
+######
+#cnf(i_0_816, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,e_2,X2)|~group_element(X2))).
+####
+#cnf(i_0_879, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_880, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_883, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+####
+#cnf(i_0_884, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+######
+#cnf(i_0_907, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_908, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_3,X1,X2)|~group_element(X2))).
+###
+#cnf(i_0_911, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+######
+#cnf(i_0_912, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+####
+#cnf(i_0_1033, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1034, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1037, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+######
+#cnf(i_0_1038, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+########
+#cnf(i_0_1067, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1068, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1071, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#####
+#cnf(i_0_1072, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_1103, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1104, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1117, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+#####
+#cnf(i_0_1118, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+###########
+#cnf(i_0_1147, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1148, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1161, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+########
+#cnf(i_0_1162, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+##########
+#cnf(i_0_1191, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1192, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1205, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+######
+#cnf(i_0_1206, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+############
+#cnf(i_0_1235, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1236, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_1,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1249, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+########
+#cnf(i_0_1250, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+##########
+#cnf(i_0_1311, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1312, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1315, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_1316, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+#####
+#cnf(i_0_1345, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1346, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_1,X1,X2)|~group_element(X2))).
+####
+#cnf(i_0_1349, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_1350, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+#########
+#cnf(i_0_1543, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1544, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1555, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+####
+#cnf(i_0_1556, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+######
+#cnf(i_0_1587, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1588, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1599, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+####
+#cnf(i_0_1600, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+######
+#cnf(i_0_1673, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1674, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1685, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+####
+#cnf(i_0_1686, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+######
+#cnf(i_0_1717, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1718, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1729, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+####
+#cnf(i_0_1730, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+####
+#cnf(i_0_1783, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_3,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1784, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_3,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1797, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,X2,e_2)|~group_element(X2))).
+####
+#cnf(i_0_1798, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,X2,e_2)|~group_element(X2))).
+########
+#cnf(i_0_1827, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_3,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1828, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_3,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1841, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,X2,e_2)|~group_element(X2))).
+######
+#cnf(i_0_1842, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,X2,e_2)|~group_element(X2))).
+########
+#cnf(i_0_1897, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_3,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1898, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_3,X2,X1)|~group_element(X2))).
+###
+#cnf(i_0_1911, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+####
+#cnf(i_0_1912, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+############
+#cnf(i_0_1941, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_3,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1942, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_3,X2,X1)|~group_element(X2))).
+####
+#cnf(i_0_1955, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+######
+#cnf(i_0_1956, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+########################################################################################################################################################################################################################################################################
+#cnf(i_0_19, plain, (product(e_1,X1,X2)|product(e_2,X1,X2)|product(e_3,X1,X2)|~group_element(X2)|~group_element(X1))).
+#
+#cnf(i_0_6323, plain, (equalish(X1,e_1)|product(e_2,X1,X1)|product(e_3,X1,X1)|~group_element(X1))).
+#
+#cnf(i_0_6455, plain, (equalish(X1,e_3)|equalish(X1,e_1)|product(e_2,X1,X1)|~group_element(X1))).
+###
+#cnf(i_0_6456, plain, (equalish(e_3,X1)|equalish(X1,e_1)|product(e_2,X1,X1)|~group_element(X1))).
+###
+#cnf(i_0_6324, plain, (equalish(e_1,X1)|product(e_2,X1,X1)|product(e_3,X1,X1)|~group_element(X1))).
+#
+#cnf(i_0_6803, plain, (equalish(X1,e_3)|equalish(e_1,X1)|product(e_2,X1,X1)|~group_element(X1))).
+###
+#cnf(i_0_6804, plain, (equalish(e_3,X1)|equalish(e_1,X1)|product(e_2,X1,X1)|~group_element(X1))).
+###
+#cnf(i_0_6299, plain, (equalish(e_1,X1)|product(e_2,e_1,X1)|product(e_3,e_1,X1)|~group_element(X1))).
+#
+#cnf(i_0_7089, plain, (product(e_2,e_1,e_3))).
+##
+#cnf(i_0_7143, plain, (equalish(X1,e_3)|~product(e_2,e_1,X1))).
+#
+#cnf(i_0_7144, plain, (equalish(e_3,X1)|~product(e_2,e_1,X1))).
+#
+#cnf(i_0_7145, plain, (equalish(X1,e_1)|~product(e_2,X1,e_3))).
+#
+#cnf(i_0_7146, plain, (equalish(e_1,X1)|~product(e_2,X1,e_3))).
+#
+#cnf(i_0_7147, plain, (equalish(X1,e_2)|~product(X1,e_1,e_3))).
+#
+#cnf(i_0_7148, plain, (equalish(e_2,X1)|~product(X1,e_1,e_3))).
+#
+#cnf(i_0_7133, plain, (equalish(X1,e_2)|equalish(e_1,X1)|product(e_2,e_1,X1)|~group_element(X1))).
+###
+#cnf(i_0_7134, plain, (equalish(e_2,X1)|equalish(e_1,X1)|product(e_2,e_1,X1)|~group_element(X1))).
+###########
+#cnf(i_0_7201, plain, (equalish(X1,e_2)|equalish(e_1,X1)|product(X1,e_1,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_7202, plain, (equalish(X1,e_2)|equalish(X1,e_1)|product(X1,e_1,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_7213, plain, (equalish(e_2,X1)|equalish(e_1,X1)|product(X1,e_1,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_7214, plain, (equalish(e_2,X1)|equalish(X1,e_1)|product(X1,e_1,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_6300, plain, (equalish(X1,e_1)|product(e_2,e_1,X1)|product(e_3,e_1,X1)|~group_element(X1))).
+#
+#cnf(i_0_7853, plain, (equalish(X1,e_2)|equalish(X1,e_1)|product(e_2,e_1,X1)|~group_element(X1))).
+###
+#cnf(i_0_7854, plain, (equalish(e_2,X1)|equalish(X1,e_1)|product(e_2,e_1,X1)|~group_element(X1))).
+###########
+#cnf(i_0_6311, plain, (equalish(e_1,X1)|product(e_2,X1,e_1)|product(e_3,X1,e_1)|~group_element(X1))).
+#
+#cnf(i_0_8039, plain, (product(e_2,e_3,e_1))).
+##
+#cnf(i_0_8077, plain, (equalish(X1,e_1)|~product(e_2,e_3,X1))).
+#
+#cnf(i_0_8078, plain, (equalish(e_1,X1)|~product(e_2,e_3,X1))).
+#
+#cnf(i_0_8079, plain, (equalish(X1,e_3)|~product(e_2,X1,e_1))).
+#
+#cnf(i_0_8080, plain, (equalish(e_3,X1)|~product(e_2,X1,e_1))).
+#
+#cnf(i_0_8081, plain, (equalish(X1,e_2)|~product(X1,e_3,e_1))).
+#
+#cnf(i_0_8082, plain, (equalish(e_2,X1)|~product(X1,e_3,e_1))).
+#
+#cnf(i_0_8059, plain, (equalish(X1,e_2)|equalish(e_1,X1)|product(e_2,X1,e_1)|~group_element(X1))).
+###
+#cnf(i_0_8060, plain, (equalish(e_2,X1)|equalish(e_1,X1)|product(e_2,X1,e_1)|~group_element(X1))).
+###########
+#cnf(i_0_8143, plain, (equalish(X1,e_2)|equalish(e_1,X1)|product(X1,e_2,e_1)|~group_element(X1))).
+#################
+#cnf(i_0_8144, plain, (equalish(X1,e_2)|equalish(X1,e_1)|product(X1,e_2,e_1)|~group_element(X1))).
+#################
+#cnf(i_0_8155, plain, (equalish(e_2,X1)|equalish(e_1,X1)|product(X1,e_2,e_1)|~group_element(X1))).
+#################
+#cnf(i_0_8156, plain, (equalish(e_2,X1)|equalish(X1,e_1)|product(X1,e_2,e_1)|~group_element(X1))).
+#################
+#cnf(i_0_6312, plain, (equalish(X1,e_1)|product(e_2,X1,e_1)|product(e_3,X1,e_1)|~group_element(X1))).
+#
+#cnf(i_0_8791, plain, (equalish(X1,e_2)|equalish(X1,e_1)|product(e_2,X1,e_1)|~group_element(X1))).
+###
+#cnf(i_0_8792, plain, (equalish(e_2,X1)|equalish(X1,e_1)|product(e_2,X1,e_1)|~group_element(X1))).
+###########
+#cnf(i_0_6341, plain, (equalish(X1,e_2)|product(e_2,e_3,X1)|product(e_3,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_8971, plain, (equalish(e_3,X1)|equalish(X1,e_2)|product(e_2,e_3,X1)|~group_element(X1))).
+###
+#cnf(i_0_8972, plain, (equalish(X1,e_3)|equalish(X1,e_2)|product(e_2,e_3,X1)|~group_element(X1))).
+#######
+#cnf(i_0_6342, plain, (equalish(e_2,X1)|product(e_2,e_3,X1)|product(e_3,e_3,X1)|~group_element(X1))).
+#
+#cnf(i_0_9199, plain, (equalish(e_3,X1)|equalish(e_2,X1)|product(e_2,e_3,X1)|~group_element(X1))).
+###
+#cnf(i_0_9200, plain, (equalish(X1,e_3)|equalish(e_2,X1)|product(e_2,e_3,X1)|~group_element(X1))).
+#######
+#cnf(i_0_6343, plain, (equalish(e_3,X1)|product(e_2,e_2,X1)|product(e_3,e_2,X1)|~group_element(X1))).
+#
+#cnf(i_0_9487, plain, (equalish(e_3,X1)|equalish(X1,e_1)|product(e_2,e_2,X1)|~group_element(X1))).
+#####################################
+#cnf(i_0_9491, plain, (equalish(e_3,X1)|equalish(e_1,X1)|product(e_2,e_2,X1)|~group_element(X1))).
+#######################################
+#cnf(i_0_6344, plain, (equalish(X1,e_3)|product(e_2,e_2,X1)|product(e_3,e_2,X1)|~group_element(X1))).
+#
+#cnf(i_0_9842, plain, (equalish(X1,e_3)|equalish(X1,e_1)|product(e_2,e_2,X1)|~group_element(X1))).
+#####################################
+#cnf(i_0_9846, plain, (equalish(X1,e_3)|equalish(e_1,X1)|product(e_2,e_2,X1)|~group_element(X1))).
+#######################################
+#cnf(i_0_6353, plain, (equalish(X1,e_3)|product(e_2,X1,e_2)|product(e_3,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_10200, plain, (equalish(X1,e_3)|equalish(X1,e_1)|product(e_2,X1,e_2)|~group_element(X1))).
+#####################################
+#cnf(i_0_10204, plain, (equalish(X1,e_3)|equalish(e_1,X1)|product(e_2,X1,e_2)|~group_element(X1))).
+#######################################
+#cnf(i_0_6354, plain, (equalish(e_3,X1)|product(e_2,X1,e_2)|product(e_3,X1,e_2)|~group_element(X1))).
+#
+#cnf(i_0_10557, plain, (equalish(e_3,X1)|equalish(X1,e_1)|product(e_2,X1,e_2)|~group_element(X1))).
+#####################################
+#cnf(i_0_10561, plain, (equalish(e_3,X1)|equalish(e_1,X1)|product(e_2,X1,e_2)|~group_element(X1))).
+#######################################
+#cnf(i_0_6355, plain, (equalish(e_2,X1)|product(e_2,X1,e_3)|product(e_3,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_10883, plain, (equalish(e_3,X1)|equalish(e_2,X1)|product(e_2,X1,e_3)|~group_element(X1))).
+###
+#cnf(i_0_10884, plain, (equalish(X1,e_3)|equalish(e_2,X1)|product(e_2,X1,e_3)|~group_element(X1))).
+#######
+#cnf(i_0_6356, plain, (equalish(X1,e_2)|product(e_2,X1,e_3)|product(e_3,X1,e_3)|~group_element(X1))).
+#
+#cnf(i_0_11111, plain, (equalish(e_3,X1)|equalish(X1,e_2)|product(e_2,X1,e_3)|~group_element(X1))).
+###
+#cnf(i_0_11112, plain, (equalish(X1,e_3)|equalish(X1,e_2)|product(e_2,X1,e_3)|~group_element(X1))).
+#######
+#cnf(i_0_7150, plain, (equalish(X1,e_3)|product(e_2,e_2,X1)|product(e_2,e_3,X1)|~group_element(X1))).
+###
+#cnf(i_0_7159, plain, (equalish(e_3,X1)|product(e_2,e_2,X1)|product(e_2,e_3,X1)|~group_element(X1))).
+###
+#cnf(i_0_7200, plain, (equalish(X1,e_2)|product(X1,e_2,e_3)|product(X1,e_3,e_3)|~group_element(X1))).
+#
+#cnf(i_0_11483, plain, (equalish(e_3,X1)|equalish(X1,e_2)|product(X1,e_2,e_3)|~group_element(X1))).
+#################
+#cnf(i_0_11484, plain, (equalish(X1,e_3)|equalish(X1,e_2)|product(X1,e_2,e_3)|~group_element(X1))).
+#################
+#cnf(i_0_7212, plain, (equalish(e_2,X1)|product(X1,e_2,e_3)|product(X1,e_3,e_3)|~group_element(X1))).
+#
+#cnf(i_0_11767, plain, (equalish(e_3,X1)|equalish(e_2,X1)|product(X1,e_2,e_3)|~group_element(X1))).
+#################
+#cnf(i_0_11768, plain, (equalish(X1,e_3)|equalish(e_2,X1)|product(X1,e_2,e_3)|~group_element(X1))).
+#################
+#cnf(i_0_8110, plain, (equalish(X1,e_3)|product(e_2,X1,e_2)|product(e_2,X1,e_3)|~group_element(X1))).
+###
+#cnf(i_0_8123, plain, (equalish(e_3,X1)|product(e_2,X1,e_2)|product(e_2,X1,e_3)|~group_element(X1))).
+###
+#cnf(i_0_8140, plain, (equalish(X1,e_2)|product(X1,e_3,e_2)|product(X1,e_3,e_3)|~group_element(X1))).
+#
+#cnf(i_0_12187, plain, (equalish(e_3,X1)|equalish(X1,e_2)|product(X1,e_3,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_12188, plain, (equalish(X1,e_3)|equalish(X1,e_2)|product(X1,e_3,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_8152, plain, (equalish(e_2,X1)|product(X1,e_3,e_2)|product(X1,e_3,e_3)|~group_element(X1))).
+#
+#cnf(i_0_12471, plain, (equalish(e_3,X1)|equalish(e_2,X1)|product(X1,e_3,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_12472, plain, (equalish(X1,e_3)|equalish(e_2,X1)|product(X1,e_3,e_2)|~group_element(X1))).
+#################
+#cnf(i_0_6561, plain, (equalish(X2,e_3)|equalish(X2,e_1)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+######
+#cnf(i_0_6585, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_6562, plain, (equalish(X1,e_3)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X1))).
+###########
+#cnf(i_0_6573, plain, (equalish(X2,e_3)|equalish(X2,e_1)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+######
+#cnf(i_0_6586, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_6574, plain, (equalish(X1,e_3)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X1))).
+###########
+#cnf(i_0_6669, plain, (equalish(e_3,X2)|equalish(X2,e_1)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+#########
+#cnf(i_0_6670, plain, (equalish(e_3,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X1))).
+########
+#cnf(i_0_6681, plain, (equalish(e_3,X2)|equalish(X2,e_1)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+#########
+#cnf(i_0_6693, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_6682, plain, (equalish(e_3,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X1))).
+########
+#cnf(i_0_6694, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_6909, plain, (equalish(X2,e_3)|equalish(e_1,X2)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+########
+#cnf(i_0_6910, plain, (equalish(X1,e_3)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X1))).
+#########
+#cnf(i_0_6921, plain, (equalish(X2,e_3)|equalish(e_1,X2)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+########
+#cnf(i_0_6922, plain, (equalish(X1,e_3)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X1))).
+#########
+#cnf(i_0_6933, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_6934, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_7017, plain, (equalish(e_3,X2)|equalish(e_1,X2)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_7018, plain, (equalish(e_3,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X1))).
+######
+#cnf(i_0_7029, plain, (equalish(e_3,X2)|equalish(e_1,X2)|equalish(X1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_7030, plain, (equalish(e_3,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_2,X2,X1)|~group_element(X1))).
+######
+#cnf(i_0_7041, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_7042, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X1,X2,X2)|~group_element(X2))).
+#######
+#cnf(i_0_7241, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_7242, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+#############
+#cnf(i_0_7253, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,e_1,X2)|~group_element(X2))).
+####
+#cnf(i_0_7254, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,e_1,X2)|~group_element(X2))).
+####
+#cnf(i_0_7307, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_7308, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+#############
+#cnf(i_0_7319, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,e_1,X2)|~group_element(X2))).
+####
+#cnf(i_0_7320, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,e_1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_7411, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7412, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7423, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+############
+#cnf(i_0_7424, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+#####################
+#cnf(i_0_7519, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7520, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7531, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+#############
+#cnf(i_0_7532, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+######################
+#cnf(i_0_7627, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7628, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7639, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+############
+#cnf(i_0_7640, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+#####################
+#cnf(i_0_7735, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7736, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,e_1,X1)|~group_element(X2))).
+####
+#cnf(i_0_7747, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+#############
+#cnf(i_0_7748, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,X1,e_2)|~group_element(X2))).
+###############
+#cnf(i_0_7889, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+#############
+#cnf(i_0_7890, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_7901, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,e_1,X2)|~group_element(X2))).
+####
+#cnf(i_0_7902, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,e_1,X2)|~group_element(X2))).
+####
+#cnf(i_0_7955, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+#############
+#cnf(i_0_7956, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_7967, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,e_1,X2)|~group_element(X2))).
+####
+#cnf(i_0_7968, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,e_1,X2)|~group_element(X2))).
+####
+#cnf(i_0_8201, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8202, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8215, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8216, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8269, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8270, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8283, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8284, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8333, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8334, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8345, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,X1,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8346, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(e_1,X2)|~product(X2,X1,e_1)|~group_element(X2))).
+###############
+#cnf(i_0_8441, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8442, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8453, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,X1,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8454, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X2,X1,e_1)|~group_element(X2))).
+#############
+#cnf(i_0_8549, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8550, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8561, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,X1,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8562, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(e_1,X2)|~product(X2,X1,e_1)|~group_element(X2))).
+###############
+#cnf(i_0_8657, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8658, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,e_2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8669, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,X1,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8670, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X2,X1,e_1)|~group_element(X2))).
+#############
+#cnf(i_0_8853, plain, (equalish(X1,e_1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8854, plain, (equalish(e_1,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8867, plain, (equalish(X1,e_2)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8868, plain, (equalish(e_2,X1)|equalish(X2,e_2)|equalish(X2,e_1)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8921, plain, (equalish(X1,e_1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_8922, plain, (equalish(e_1,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_8935, plain, (equalish(X1,e_2)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_8936, plain, (equalish(e_2,X1)|equalish(e_2,X2)|equalish(X2,e_1)|~product(X1,X2,e_1)|~group_element(X2))).
+####
+#cnf(i_0_9063, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_9064, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_2,X1,X2)|~group_element(X2))).
+############
+#cnf(i_0_9075, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9076, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9131, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_2,X1,X2)|~group_element(X2))).
+############
+#cnf(i_0_9132, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_2,X1,X2)|~group_element(X2))).
+##########
+#cnf(i_0_9143, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9144, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9291, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+##########
+#cnf(i_0_9292, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+############
+#cnf(i_0_9303, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9304, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9359, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+############
+#cnf(i_0_9360, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+##########
+#cnf(i_0_9371, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9372, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,e_3,X2)|~group_element(X2))).
+######
+#cnf(i_0_9561, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_9562, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_9573, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+############
+#cnf(i_0_9574, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+#####################
+#cnf(i_0_9677, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_9678, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+############
+#cnf(i_0_9689, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+############
+#cnf(i_0_9690, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#####################
+#cnf(i_0_9917, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_9918, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(e_2,X1,X2)|~group_element(X2))).
+############
+#cnf(i_0_9929, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+############
+#cnf(i_0_9930, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X1,e_2,X2)|~group_element(X2))).
+#####################
+#cnf(i_0_10033, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+###########
+#cnf(i_0_10034, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(e_2,X1,X2)|~group_element(X2))).
+############
+#cnf(i_0_10045, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+############
+#cnf(i_0_10046, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X1,e_2,X2)|~group_element(X2))).
+#############################
+#cnf(i_0_10305, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_10306, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_10329, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+############
+#cnf(i_0_10330, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+#####################
+#cnf(i_0_10421, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_10422, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_10445, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+############
+#cnf(i_0_10446, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+#####################
+#cnf(i_0_10661, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_10662, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_10685, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+############
+#cnf(i_0_10686, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_1)|~product(X1,X2,e_2)|~group_element(X2))).
+#####################
+#cnf(i_0_10777, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_10778, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_10801, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+############
+#cnf(i_0_10802, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_1,X2)|~product(X1,X2,e_2)|~group_element(X2))).
+#############
+#cnf(i_0_10961, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_10962, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_10975, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_10976, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11029, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_11030, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(e_2,X2,X1)|~group_element(X2))).
+##########
+#cnf(i_0_11043, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11044, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11189, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_2,X2,X1)|~group_element(X2))).
+##########
+#cnf(i_0_11190, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_11203, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11204, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11257, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_2,X2,X1)|~group_element(X2))).
+############
+#cnf(i_0_11258, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(e_2,X2,X1)|~group_element(X2))).
+##########
+#cnf(i_0_11271, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11272, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X1,X2,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11525, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,e_2,X1)|~group_element(X2))).
+##########
+#cnf(i_0_11526, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,e_2,X1)|~group_element(X2))).
+############
+#cnf(i_0_11537, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,X1,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11538, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,X1,e_3)|~group_element(X2))).
+###############
+#cnf(i_0_11633, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,e_2,X1)|~group_element(X2))).
+############
+#cnf(i_0_11634, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,e_2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_11645, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,X1,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11646, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,X1,e_3)|~group_element(X2))).
+###############
+#cnf(i_0_11809, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_11810, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+############
+#cnf(i_0_11821, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,X1,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11822, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,X1,e_3)|~group_element(X2))).
+###############
+#cnf(i_0_11917, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+############
+#cnf(i_0_11918, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,e_2,X1)|~group_element(X2))).
+###########
+#cnf(i_0_11929, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,X1,e_3)|~group_element(X2))).
+######
+#cnf(i_0_11930, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,X1,e_3)|~group_element(X2))).
+######################
+#cnf(i_0_12253, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12254, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12265, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,X1,e_2)|~group_element(X2))).
+##########
+#cnf(i_0_12266, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(X2,e_2)|~product(X2,X1,e_2)|~group_element(X2))).
+######################
+#cnf(i_0_12361, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12362, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12373, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,X1,e_2)|~group_element(X2))).
+############
+#cnf(i_0_12374, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(X2,e_2)|~product(X2,X1,e_2)|~group_element(X2))).
+####################
+#cnf(i_0_12537, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12538, plain, (equalish(e_2,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12549, plain, (equalish(X1,e_3)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+##########
+#cnf(i_0_12550, plain, (equalish(e_3,X1)|equalish(e_3,X2)|equalish(e_2,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+######################
+#cnf(i_0_12645, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12646, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,e_3,X1)|~group_element(X2))).
+######
+#cnf(i_0_12657, plain, (equalish(X1,e_3)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+############
+#cnf(i_0_12658, plain, (equalish(e_3,X1)|equalish(X2,e_3)|equalish(e_2,X2)|~product(X2,X1,e_2)|~group_element(X2))).
+#############################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_61, plain, (equalish(X1,e_3)|equalish(X2,e_1)|product(X2,X2,e_2)|~product(X2,X2,X1)|~group_element(X2))).
+#########
+#cnf(i_0_27107, plain, (equalish(X1,e_1)|equalish(X1,e_2)|equalish(X2,e_3)|~product(X1,X1,X2)|~group_element(X1))).
+########
+#cnf(i_0_27111, plain, (equalish(X1,e_1)|equalish(e_2,X1)|equalish(X2,e_3)|~product(X1,X1,X2)|~group_element(X1))).
+##################
+#cnf(i_0_62, plain, (equalish(e_3,X1)|equalish(X2,e_1)|product(X2,X2,e_2)|~product(X2,X2,X1)|~group_element(X2))).
+#########
+#cnf(i_0_27692, plain, (equalish(X1,e_1)|equalish(X1,e_2)|equalish(e_3,X2)|~product(X1,X1,X2)|~group_element(X1))).
+########
+#cnf(i_0_27696, plain, (equalish(X1,e_1)|equalish(e_2,X1)|equalish(e_3,X2)|~product(X1,X1,X2)|~group_element(X1))).
+#######################
+#cnf(i_0_65, plain, (equalish(X2,e_1)|equalish(X1,X2)|product(X2,X2,e_2)|~product(X2,X1,e_3)|~group_element(X2))).
+#####
+#cnf(i_0_28283, plain, (equalish(X1,e_1)|equalish(X1,e_2)|equalish(X2,X1)|~product(X1,X2,e_3)|~group_element(X1))).
+#####
+#cnf(i_0_28287, plain, (equalish(X1,e_1)|equalish(e_2,X1)|equalish(X2,X1)|~product(X1,X2,e_3)|~group_element(X1))).
+######################
+#cnf(i_0_66, plain, (equalish(X1,e_1)|equalish(X1,X2)|product(X1,X1,e_2)|~product(X1,X2,e_3)|~group_element(X1))).
+#####
+#cnf(i_0_28947, plain, (equalish(X1,e_1)|product(X1,e_1,e_2)|product(X1,X1,e_2)|~group_element(X1))).
+#############################
+#cnf(i_0_28797, plain, (equalish(X1,e_1)|equalish(X1,e_2)|equalish(X1,X2)|~product(X1,X2,e_3)|~group_element(X1))).
+########
+#cnf(i_0_28801, plain, (equalish(X1,e_1)|equalish(e_2,X1)|equalish(X1,X2)|~product(X1,X2,e_3)|~group_element(X1))).
+####################
+#cnf(i_0_69, plain, (equalish(X2,e_1)|equalish(X1,X2)|product(X2,X2,e_2)|~product(X1,X2,e_3)|~group_element(X2))).
+#####
+#cnf(i_0_29583, plain, (equalish(X1,e_1)|equalish(X1,e_2)|equalish(X2,X1)|~product(X2,X1,e_3)|~group_element(X1))).
+#####
+#cnf(i_0_29587, plain, (equalish(X1,e_1)|equalish(e_2,X1)|equalish(X2,X1)|~product(X2,X1,e_3)|~group_element(X1))).
+#####################
+#cnf(i_0_70, plain, (equalish(X1,e_1)|equalish(X1,X2)|product(X1,X1,e_2)|~product(X2,X1,e_3)|~group_element(X1))).
+#####
+#cnf(i_0_30228, plain, (equalish(X1,e_1)|product(e_1,X1,e_2)|product(X1,X1,e_2)|~group_element(X1))).
+#############################
+#cnf(i_0_30097, plain, (equalish(X1,e_1)|equalish(X1,e_2)|equalish(X1,X2)|~product(X2,X1,e_3)|~group_element(X1))).
+########
+#cnf(i_0_30101, plain, (equalish(X1,e_1)|equalish(e_2,X1)|equalish(X1,X2)|~product(X2,X1,e_3)|~group_element(X1))).
+#####################
+#cnf(i_0_105, plain, (equalish(X1,e_3)|equalish(e_1,X2)|product(X2,X2,e_2)|~product(X2,X2,X1)|~group_element(X2))).
+#########
+#cnf(i_0_30882, plain, (equalish(e_1,X1)|equalish(X1,e_2)|equalish(X2,e_3)|~product(X1,X1,X2)|~group_element(X1))).
+########
+#cnf(i_0_30886, plain, (equalish(e_1,X1)|equalish(e_2,X1)|equalish(X2,e_3)|~product(X1,X1,X2)|~group_element(X1))).
+###################
+#cnf(i_0_106, plain, (equalish(e_3,X1)|equalish(e_1,X2)|product(X2,X2,e_2)|~product(X2,X2,X1)|~group_element(X2))).
+#########
+#cnf(i_0_31497, plain, (equalish(e_1,X1)|equalish(X1,e_2)|equalish(e_3,X2)|~product(X1,X1,X2)|~group_element(X1))).
+########
+#cnf(i_0_31501, plain, (equalish(e_1,X1)|equalish(e_2,X1)|equalish(e_3,X2)|~product(X1,X1,X2)|~group_element(X1))).
+#######################
+#cnf(i_0_109, plain, (equalish(e_1,X2)|equalish(X1,X2)|product(X2,X2,e_2)|~product(X2,X1,e_3)|~group_element(X2))).
+#####
+#cnf(i_0_32274, plain, (equalish(e_1,X1)|product(X1,e_1,e_2)|product(X1,X1,e_2)|~group_element(X1))).
+#############################
+#cnf(i_0_32118, plain, (equalish(e_1,X1)|equalish(X1,e_2)|equalish(X2,X1)|~product(X1,X2,e_3)|~group_element(X1))).
+######
+#cnf(i_0_32122, plain, (equalish(e_1,X1)|equalish(e_2,X1)|equalish(X2,X1)|~product(X1,X2,e_3)|~group_element(X1))).
+######################
+#cnf(i_0_110, plain, (equalish(e_1,X1)|equalish(X1,X2)|product(X1,X1,e_2)|~product(X1,X2,e_3)|~group_element(X1))).
+#####
+#cnf(i_0_32916, plain, (equalish(e_1,X1)|equalish(X1,e_2)|equalish(X1,X2)|~product(X1,X2,e_3)|~group_element(X1))).
+#######
+#cnf(i_0_32920, plain, (equalish(e_1,X1)|equalish(e_2,X1)|equalish(X1,X2)|~product(X1,X2,e_3)|~group_element(X1))).
+###################
+#cnf(i_0_113, plain, (equalish(e_1,X2)|equalish(X1,X2)|product(X2,X2,e_2)|~product(X1,X2,e_3)|~group_element(X2))).
+#####
+#cnf(i_0_33573, plain, (equalish(e_1,X1)|product(e_1,X1,e_2)|product(X1,X1,e_2)|~group_element(X1))).
+#############################
+#cnf(i_0_33436, plain, (equalish(e_1,X1)|equalish(X1,e_2)|equalish(X2,X1)|~product(X2,X1,e_3)|~group_element(X1))).
+######
+#cnf(i_0_33440, plain, (equalish(e_1,X1)|equalish(e_2,X1)|equalish(X2,X1)|~product(X2,X1,e_3)|~group_element(X1))).
+#######################
+#cnf(i_0_114, plain, (equalish(e_1,X1)|equalish(X1,X2)|product(X1,X1,e_2)|~product(X2,X1,e_3)|~group_element(X1))).
+#####
+#cnf(i_0_34234, plain, (equalish(e_1,X1)|equalish(X1,e_2)|equalish(X1,X2)|~product(X2,X1,e_3)|~group_element(X1))).
+#######
+#cnf(i_0_34238, plain, (equalish(e_1,X1)|equalish(e_2,X1)|equalish(X1,X2)|~product(X2,X1,e_3)|~group_element(X1))).
+#####################
+#cnf(i_0_519, plain, (equalish(X2,e_1)|equalish(X1,X2)|product(X2,e_2,X2)|~product(X2,e_3,X1)|~group_element(X2))).
+#############
+#cnf(i_0_34549, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X2,X1)|~product(X1,e_3,X2)|~group_element(X1))).
+#################
+#cnf(i_0_34550, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X2,X1)|~product(X1,e_3,X2)|~group_element(X1))).
+#############################
+#cnf(i_0_520, plain, (equalish(X1,e_1)|equalish(X1,X2)|product(X1,e_2,X1)|~product(X1,e_3,X2)|~group_element(X1))).
+#############
+#cnf(i_0_35056, plain, (equalish(X1,e_1)|product(X1,e_2,e_1)|product(X1,e_2,X1)|~group_element(X1))).
+#######################
+#cnf(i_0_34896, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X1,X2)|~product(X1,e_3,X2)|~group_element(X1))).
+####################
+#cnf(i_0_34897, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(X1,e_3,X2)|~group_element(X1))).
+############################
+#cnf(i_0_531, plain, (equalish(X1,e_3)|equalish(X2,e_1)|product(X2,e_2,X2)|~product(X2,X1,X2)|~group_element(X2))).
+##################
+#cnf(i_0_35699, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X1,e_1)|~product(X1,X2,X1)|~group_element(X1))).
+#########
+#cnf(i_0_35700, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X1,e_1)|~product(X1,X2,X1)|~group_element(X1))).
+#######################
+#cnf(i_0_532, plain, (equalish(e_3,X1)|equalish(X2,e_1)|product(X2,e_2,X2)|~product(X2,X1,X2)|~group_element(X2))).
+##################
+#cnf(i_0_36367, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X1,e_1)|~product(X1,X2,X1)|~group_element(X1))).
+##########
+#cnf(i_0_36369, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(e_3,X2)|~product(X1,X2,X1)|~group_element(X1))).
+##########################
+#cnf(i_0_535, plain, (equalish(X2,e_1)|equalish(X1,X2)|product(X2,e_2,X2)|~product(X1,e_3,X2)|~group_element(X2))).
+#############
+#cnf(i_0_37041, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X2,X1)|~product(X2,e_3,X1)|~group_element(X1))).
+######
+#cnf(i_0_37043, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X2,X1)|~product(X2,e_3,X1)|~group_element(X1))).
+#####################
+#cnf(i_0_536, plain, (equalish(X1,e_1)|equalish(X1,X2)|product(X1,e_2,X1)|~product(X2,e_3,X1)|~group_element(X1))).
+#############
+#cnf(i_0_37822, plain, (equalish(X1,e_1)|product(e_1,e_2,X1)|product(X1,e_2,X1)|~group_element(X1))).
+#############################
+#cnf(i_0_37629, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X1,X2)|~product(X2,e_3,X1)|~group_element(X1))).
+#########
+#cnf(i_0_37631, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(X2,e_3,X1)|~group_element(X1))).
+###################
+#cnf(i_0_631, plain, (equalish(e_1,X2)|equalish(X1,X2)|product(X2,e_2,X2)|~product(X2,e_3,X1)|~group_element(X2))).
+#############
+#cnf(i_0_38496, plain, (equalish(e_1,X1)|product(X1,e_2,e_1)|product(X1,e_2,X1)|~group_element(X1))).
+#######################
+#cnf(i_0_38331, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X2,X1)|~product(X1,e_3,X2)|~group_element(X1))).
+##################
+#cnf(i_0_38336, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X2,X1)|~product(X1,e_3,X2)|~group_element(X1))).
+##############################
+#cnf(i_0_632, plain, (equalish(e_1,X1)|equalish(X1,X2)|product(X1,e_2,X1)|~product(X1,e_3,X2)|~group_element(X1))).
+#############
+#cnf(i_0_38968, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X1,X2)|~product(X1,e_3,X2)|~group_element(X1))).
+###################
+#cnf(i_0_38973, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(X1,e_3,X2)|~group_element(X1))).
+###########################
+#cnf(i_0_643, plain, (equalish(X1,e_3)|equalish(e_1,X2)|product(X2,e_2,X2)|~product(X2,X1,X2)|~group_element(X2))).
+##################
+#cnf(i_0_39499, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X1)|~product(X1,X2,X1)|~group_element(X1))).
+#########
+#cnf(i_0_39504, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X1)|~product(X1,X2,X1)|~group_element(X1))).
+########################
+#cnf(i_0_644, plain, (equalish(e_3,X1)|equalish(e_1,X2)|product(X2,e_2,X2)|~product(X2,X1,X2)|~group_element(X2))).
+##################
+#cnf(i_0_40197, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X1)|~product(X1,X2,X1)|~group_element(X1))).
+##########
+#cnf(i_0_40203, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(e_3,X2)|~product(X1,X2,X1)|~group_element(X1))).
+##########################
+#cnf(i_0_647, plain, (equalish(e_1,X2)|equalish(X1,X2)|product(X2,e_2,X2)|~product(X1,e_3,X2)|~group_element(X2))).
+#############
+#cnf(i_0_41099, plain, (equalish(e_1,X1)|product(e_1,e_2,X1)|product(X1,e_2,X1)|~group_element(X1))).
+#############################
+#cnf(i_0_40901, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X2,X1)|~product(X2,e_3,X1)|~group_element(X1))).
+#######
+#cnf(i_0_40907, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X2,X1)|~product(X2,e_3,X1)|~group_element(X1))).
+#####################
+#cnf(i_0_648, plain, (equalish(e_1,X1)|equalish(X1,X2)|product(X1,e_2,X1)|~product(X2,e_3,X1)|~group_element(X1))).
+#############
+#cnf(i_0_41793, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X1,X2)|~product(X2,e_3,X1)|~group_element(X1))).
+########
+#cnf(i_0_41799, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(X2,e_3,X1)|~group_element(X1))).
+########################
+#cnf(i_0_6429, plain, (equalish(X2,e_1)|equalish(X1,X2)|product(e_2,X2,X2)|~product(e_3,X2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_42211, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X2,X1)|~product(e_3,X1,X2)|~group_element(X1))).
+#################
+#cnf(i_0_42212, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X2,X1)|~product(e_3,X1,X2)|~group_element(X1))).
+#############################
+#cnf(i_0_6430, plain, (equalish(X1,e_1)|equalish(X1,X2)|product(e_2,X1,X1)|~product(e_3,X1,X2)|~group_element(X1))).
+#############
+#cnf(i_0_42754, plain, (equalish(X1,e_1)|product(e_2,X1,e_1)|product(e_2,X1,X1)|~group_element(X1))).
+#######################
+#cnf(i_0_42588, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_3,X1,X2)|~group_element(X1))).
+####################
+#cnf(i_0_42589, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_3,X1,X2)|~group_element(X1))).
+############################
+#cnf(i_0_6441, plain, (equalish(X2,e_1)|equalish(X1,X2)|product(e_2,X2,X2)|~product(e_3,X1,X2)|~group_element(X2))).
+#########
+#cnf(i_0_43263, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X2,X1)|~product(e_3,X2,X1)|~group_element(X1))).
+#############
+#cnf(i_0_43264, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X2,X1)|~product(e_3,X2,X1)|~group_element(X1))).
+##########################
+#cnf(i_0_6442, plain, (equalish(X1,e_1)|equalish(X1,X2)|product(e_2,X1,X1)|~product(e_3,X2,X1)|~group_element(X1))).
+#########
+#cnf(i_0_43797, plain, (equalish(X1,e_1)|product(e_2,e_1,X1)|product(e_2,X1,X1)|~group_element(X1))).
+#######################
+#cnf(i_0_43640, plain, (equalish(X1,e_2)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_3,X2,X1)|~group_element(X1))).
+################
+#cnf(i_0_43641, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(X1,X2)|~product(e_3,X2,X1)|~group_element(X1))).
+########################
+#cnf(i_0_6453, plain, (equalish(X1,e_3)|equalish(X2,e_1)|product(e_2,X2,X2)|~product(X1,X2,X2)|~group_element(X2))).
+###########################
+#cnf(i_0_44535, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(X1,e_1)|~product(X2,X1,X1)|~group_element(X1))).
+##########
+#cnf(i_0_44536, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(X1,e_1)|~product(X2,X1,X1)|~group_element(X1))).
+############################
+#cnf(i_0_6454, plain, (equalish(e_3,X1)|equalish(X2,e_1)|product(e_2,X2,X2)|~product(X1,X2,X2)|~group_element(X2))).
+###########################
+#cnf(i_0_45274, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(X1,e_1)|~product(X2,X1,X1)|~group_element(X1))).
+###########
+#cnf(i_0_45276, plain, (equalish(e_2,X1)|equalish(X1,e_1)|equalish(e_3,X2)|~product(X2,X1,X1)|~group_element(X1))).
+######################################
+#cnf(i_0_6777, plain, (equalish(e_1,X2)|equalish(X1,X2)|product(e_2,X2,X2)|~product(e_3,X2,X1)|~group_element(X2))).
+#############
+#cnf(i_0_45970, plain, (equalish(e_1,X1)|product(e_2,X1,e_1)|product(e_2,X1,X1)|~group_element(X1))).
+#######################
+#cnf(i_0_45799, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X2,X1)|~product(e_3,X1,X2)|~group_element(X1))).
+##################
+#cnf(i_0_45804, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X2,X1)|~product(e_3,X1,X2)|~group_element(X1))).
+##############################
+#cnf(i_0_6778, plain, (equalish(e_1,X1)|equalish(X1,X2)|product(e_2,X1,X1)|~product(e_3,X1,X2)|~group_element(X1))).
+#############
+#cnf(i_0_46486, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_3,X1,X2)|~group_element(X1))).
+###################
+#cnf(i_0_46491, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_3,X1,X2)|~group_element(X1))).
+###########################
+#cnf(i_0_6789, plain, (equalish(e_1,X2)|equalish(X1,X2)|product(e_2,X2,X2)|~product(e_3,X1,X2)|~group_element(X2))).
+#########
+#cnf(i_0_47033, plain, (equalish(e_1,X1)|product(e_2,e_1,X1)|product(e_2,X1,X1)|~group_element(X1))).
+#######################
+#cnf(i_0_46869, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X2,X1)|~product(e_3,X2,X1)|~group_element(X1))).
+##############
+#cnf(i_0_46874, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X2,X1)|~product(e_3,X2,X1)|~group_element(X1))).
+##########################
+#cnf(i_0_6790, plain, (equalish(e_1,X1)|equalish(X1,X2)|product(e_2,X1,X1)|~product(e_3,X2,X1)|~group_element(X1))).
+#########
+#cnf(i_0_47556, plain, (equalish(X1,e_2)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_3,X2,X1)|~group_element(X1))).
+###############
+#cnf(i_0_47561, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(X1,X2)|~product(e_3,X2,X1)|~group_element(X1))).
+########################
+#cnf(i_0_6801, plain, (equalish(X1,e_3)|equalish(e_1,X2)|product(e_2,X2,X2)|~product(X1,X2,X2)|~group_element(X2))).
+###########################
+#cnf(i_0_48159, plain, (equalish(X1,e_2)|equalish(X2,e_3)|equalish(e_1,X1)|~product(X2,X1,X1)|~group_element(X1))).
+##########
+#cnf(i_0_48164, plain, (equalish(e_2,X1)|equalish(X2,e_3)|equalish(e_1,X1)|~product(X2,X1,X1)|~group_element(X1))).
+############################
+#cnf(i_0_6802, plain, (equalish(e_3,X1)|equalish(e_1,X2)|product(e_2,X2,X2)|~product(X1,X2,X2)|~group_element(X2))).
+###########################
+#cnf(i_0_48928, plain, (equalish(X1,e_2)|equalish(e_3,X2)|equalish(e_1,X1)|~product(X2,X1,X1)|~group_element(X1))).
+###########
+#cnf(i_0_48934, plain, (equalish(e_2,X1)|equalish(e_1,X1)|equalish(e_3,X2)|~product(X2,X1,X1)|~group_element(X1))).
+######################################################################################################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_36, negated_conjecture, (equalish(X2,X5)|~product(X6,X5,X4)|~product(X6,X2,X1)|~product(X4,X5,X3)|~product(X1,X2,X3))).
+#
+#cnf(i_0_49638, negated_conjecture, (equalish(X1,X2)|~product(X3,X2,X4)|~product(X3,X1,X1)|~product(X4,X2,X1))).
+#
+#cnf(i_0_50189, negated_conjecture, (~product(X1,e_2,e_3)|~product(X1,e_1,e_1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(product_left_cancellation, axiom, (equalish(X1,X4)|~product(X1,X2,X3)|~product(X4,X2,X3)), file('./p/GRP123-4.003.tptp', product_left_cancellation)).
+cnf(product_idempotence, axiom, (product(X1,X1,X1)), file('./p/GRP123-4.003.tptp', product_idempotence)).
+cnf(product_total_function2, axiom, (equalish(X3,X4)|~product(X1,X2,X3)|~product(X1,X2,X4)), file('./p/GRP123-4.003.tptp', product_total_function2)).
+cnf(column_surjectivity, axiom, (product(X1,e_1,X2)|product(X1,e_2,X2)|product(X1,e_3,X2)|~group_element(X1)|~group_element(X2)), file('./p/GRP123-4.003.tptp', column_surjectivity)).
+cnf(element_1, axiom, (group_element(e_1)), file('./p/GRP123-4.003.tptp', element_1)).
+cnf(qg1_2, negated_conjecture, (equalish(X2,X5)|~product(X1,X2,X3)|~product(X4,X5,X3)|~product(X6,X2,X1)|~product(X6,X5,X4)), file('./p/GRP123-4.003.tptp', qg1_2)).
+cnf(element_3, axiom, (group_element(e_3)), file('./p/GRP123-4.003.tptp', element_3)).
+cnf(e_3_is_not_e_1, axiom, (~equalish(e_3,e_1)), file('./p/GRP123-4.003.tptp', e_3_is_not_e_1)).
+cnf(e_1_is_not_e_3, axiom, (~equalish(e_1,e_3)), file('./p/GRP123-4.003.tptp', e_1_is_not_e_3)).
+cnf(e_1_is_not_e_2, axiom, (~equalish(e_1,e_2)), file('./p/GRP123-4.003.tptp', e_1_is_not_e_2)).
+cnf(c_0_10, axiom, (equalish(X1,X4)|~product(X1,X2,X3)|~product(X4,X2,X3)), product_left_cancellation).
+cnf(c_0_11, axiom, (product(X1,X1,X1)), product_idempotence).
+cnf(c_0_12, axiom, (equalish(X3,X4)|~product(X1,X2,X3)|~product(X1,X2,X4)), product_total_function2).
+cnf(c_0_13, plain, (equalish(X1,X2)|~product(X2,X1,X1)), inference(pm,[status(thm)],[c_0_10, c_0_11])).
+cnf(c_0_14, axiom, (product(X1,e_1,X2)|product(X1,e_2,X2)|product(X1,e_3,X2)|~group_element(X1)|~group_element(X2)), column_surjectivity).
+cnf(c_0_15, axiom, (group_element(e_1)), element_1).
+cnf(c_0_16, negated_conjecture, (equalish(X2,X5)|~product(X1,X2,X3)|~product(X4,X5,X3)|~product(X6,X2,X1)|~product(X6,X5,X4)), qg1_2).
+cnf(c_0_17, plain, (equalish(X1,X2)|~product(X1,X1,X2)), inference(pm,[status(thm)],[c_0_12, c_0_11])).
+cnf(c_0_18, plain, (equalish(e_1,X1)|product(X1,e_2,e_1)|product(X1,e_3,e_1)|~group_element(X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_13, c_0_14]), c_0_15])])).
+cnf(c_0_19, axiom, (group_element(e_3)), element_3).
+cnf(c_0_20, axiom, (~equalish(e_3,e_1)), e_3_is_not_e_1).
+cnf(c_0_21, axiom, (~equalish(e_1,e_3)), e_1_is_not_e_3).
+cnf(c_0_22, negated_conjecture, (equalish(X1,X2)|~product(X3,X2,X4)|~product(X3,X1,X1)|~product(X4,X2,X1)), inference(pm,[status(thm)],[c_0_16, c_0_11])).
+cnf(c_0_23, plain, (product(e_3,e_2,e_1)), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_17, c_0_18]), c_0_19])]), c_0_20]), c_0_21])).
+cnf(c_0_24, axiom, (~equalish(e_1,e_2)), e_1_is_not_e_2).
+cnf(c_0_25, plain, (equalish(e_1,X1)|product(e_1,e_2,X1)|product(e_1,e_3,X1)|~group_element(X1)), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_17, c_0_14]), c_0_15])])).
+cnf(c_0_26, negated_conjecture, (~product(X1,e_2,e_3)|~product(X1,e_1,e_1)), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_22, c_0_23]), c_0_24])).
+cnf(c_0_27, plain, (product(e_1,e_2,e_3)), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_13, c_0_25]), c_0_19])]), c_0_20]), c_0_21])).
+cnf(c_0_28, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_26, c_0_11]), c_0_27])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 29
+# Proof object clause steps            : 19
+# Proof object formula steps           : 10
+# Proof object conjectures             : 5
+# Proof object clause conjectures      : 4
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 10
+# Proof object initial formulas used   : 10
+# Proof object generating inferences   : 9
+# Proof object simplifying inferences  : 15
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 18
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 18
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 18
+# Processed clauses                    : 6832
+# ...of these trivial                  : 6
+# ...subsumed                          : 6204
+# ...remaining for further processing  : 622
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 50653
+# ...of the previous two non-trivial   : 12773
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 50629
+# Factorizations                       : 24
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 622
+#    Positive orientable unit clauses  : 11
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 6
+#    Non-unit-clauses                  : 605
+# Current number of unprocessed clauses: 5957
+# ...number of literals in the above   : 35020
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 78020
+# Rec. Clause-clause subsumption calls : 10228
+# Non-unit clause-clause subsumptions  : 6204
+# Unit Clause-clause subsumption calls : 177
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 6
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 414390

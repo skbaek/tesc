@@ -1,0 +1,30 @@
+% Refutation found. Thanks to Tanya!
+% SZS status Unsatisfiable for GRP158-1
+% SZS output start Proof for GRP158-1
+fof(f151,plain,(
+  $false),
+  inference(trivial_inequality_removal,[],[f150])).
+fof(f150,plain,(
+  multiply(c,a) != multiply(c,a)),
+  inference(forward_demodulation,[],[f137,f16])).
+fof(f16,axiom,(
+  a = greatest_lower_bound(a,b)),
+  file('./p/GRP158-1.tptp',unknown)).
+fof(f137,plain,(
+  multiply(c,a) != multiply(c,greatest_lower_bound(a,b))),
+  inference(superposition,[],[f17,f13])).
+fof(f13,axiom,(
+  ( ! [X2,X0,X1] : (multiply(X0,greatest_lower_bound(X1,X2)) = greatest_lower_bound(multiply(X0,X1),multiply(X0,X2))) )),
+  file('./p/GRP158-1.tptp',unknown)).
+fof(f17,axiom,(
+  multiply(c,a) != greatest_lower_bound(multiply(c,a),multiply(c,b))),
+  file('./p/GRP158-1.tptp',unknown)).
+% SZS output end Proof for GRP158-1
+% ------------------------------
+% Version: Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100)
+% Termination reason: Refutation
+
+% Memory used [KB]: 4989
+% Time elapsed: 0.004 s
+% ------------------------------
+% ------------------------------

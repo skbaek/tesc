@@ -1,0 +1,1285 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_968, plain, (rdn_non_zero_digit(rdnn(n7)))).
+#
+#cnf(i_0_965, plain, (rdn_non_zero_digit(rdnn(n4)))).
+#
+#cnf(i_0_964, plain, (rdn_non_zero_digit(rdnn(n3)))).
+#
+#cnf(i_0_704, plain, (~accept_city(muslimcountrybhumanitarianorganization,towna))).
+#
+#cnf(i_0_962, plain, (rdn_non_zero_digit(rdnn(n1)))).
+#
+#cnf(i_0_970, plain, (rdn_non_zero_digit(rdnn(n9)))).
+#
+#cnf(i_0_969, plain, (rdn_non_zero_digit(rdnn(n8)))).
+#
+#cnf(i_0_351, plain, (~accept_city(countryamedicalorganization,coastvillage))).
+#
+#cnf(i_0_963, plain, (rdn_non_zero_digit(rdnn(n2)))).
+#
+#cnf(i_0_966, plain, (rdn_non_zero_digit(rdnn(n5)))).
+#
+#cnf(i_0_967, plain, (rdn_non_zero_digit(rdnn(n6)))).
+#
+#cnf(i_0_420, plain, (~accept_leader(christiansufferterrahumanitarianorganization,sufferterragovernment))).
+#
+#cnf(i_0_365, plain, (accept_city(countryahumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_589, plain, (accept_city(countryahumanitarianorganization,towna))).
+#
+#cnf(i_0_575, plain, (accept_city(countryahumanitarianorganization,cityb))).
+#
+#cnf(i_0_396, plain, (~accept_number(countryccivilorganization,n5))).
+#
+#cnf(i_0_410, plain, (accept_city(countryacivilorganization,coastvillage))).
+#
+#cnf(i_0_658, plain, (accept_city(countryacivilorganization,towna))).
+#
+#cnf(i_0_569, plain, (accept_city(countryacivilorganization,cityb))).
+#
+#cnf(i_0_400, plain, (~accept_number(countryccivilorganization,n6))).
+#
+#cnf(i_0_417, plain, (accept_city(countryacivilorganization,townc))).
+#
+#cnf(i_0_441, plain, (accept_city(countryafirstaidorganization,coastvillage))).
+#
+#cnf(i_0_617, plain, (accept_city(countryafirstaidorganization,towna))).
+#
+#cnf(i_0_990, plain, (X1!=X2|~less(X2,X1))).
+#
+#cnf(i_0_453, plain, (accept_city(countryafirstaidorganization,cityb))).
+#
+#cnf(i_0_448, plain, (accept_city(countryafirstaidorganization,townc))).
+#
+#cnf(i_0_690, plain, (accept_city(christiancountrychumanitarianorganization,towna))).
+#
+#cnf(i_0_991, plain, (~less(X2,X1)|~less(X1,X2))).
+#
+#cnf(i_0_350, plain, (accept_city(christiancountrychumanitarianorganization,cityb))).
+#
+#cnf(i_0_345, plain, (accept_city(christiancountrychumanitarianorganization,townc))).
+#
+#cnf(i_0_603, plain, (accept_city(countryccivilorganization,towna))).
+#
+#cnf(i_0_160, plain, (~accept_team(countryccivilorganization,christiancountrychumanitarianorganization,coastvillage,n5))).
+#
+#cnf(i_0_402, plain, (accept_city(countryccivilorganization,cityb))).
+#
+#cnf(i_0_519, plain, (accept_city(countryccivilorganization,townc))).
+#
+#cnf(i_0_460, plain, (accept_city(countrybhumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_161, plain, (~accept_team(countryccivilorganization,christiancountrychumanitarianorganization,coastvillage,n6))).
+#
+#cnf(i_0_477, plain, (accept_city(countrybhumanitarianorganization,towna))).
+#
+#cnf(i_0_466, plain, (accept_city(countrybhumanitarianorganization,townc))).
+#
+#cnf(i_0_436, plain, (accept_city(muslimcountrybhumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_307, plain, (~accept_team(countryccivilorganization,christiancountrychumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_546, plain, (accept_city(muslimcountrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_538, plain, (accept_city(muslimcountrybhumanitarianorganization,townc))).
+#
+#cnf(i_0_374, plain, (accept_city(countrycmedicalorganization,coastvillage))).
+#
+#cnf(i_0_207, plain, (~accept_team(countryccivilorganization,christiancountrychumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_627, plain, (accept_city(countrycmedicalorganization,towna))).
+#
+#cnf(i_0_531, plain, (accept_city(countrycmedicalorganization,cityb))).
+#
+#cnf(i_0_526, plain, (accept_city(countrycmedicalorganization,townc))).
+#
+#cnf(i_0_306, plain, (~accept_team(countryccivilorganization,countrybhumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_565, plain, (accept_city(countryamedicalorganization,towna))).
+#
+#cnf(i_0_551, plain, (accept_city(countryamedicalorganization,cityb))).
+#
+#cnf(i_0_358, plain, (accept_city(countryamedicalorganization,townc))).
+#
+#cnf(i_0_232, plain, (~accept_team(countryccivilorganization,countrybhumanitarianorganization,cityb,n5))).
+#
+#cnf(i_0_380, plain, (accept_city(countrybcivilorganization,coastvillage))).
+#
+#cnf(i_0_638, plain, (accept_city(countrybcivilorganization,towna))).
+#
+#cnf(i_0_391, plain, (accept_city(countrybcivilorganization,cityb))).
+#
+#cnf(i_0_233, plain, (~accept_team(countryccivilorganization,countrybhumanitarianorganization,cityb,n6))).
+#
+#cnf(i_0_386, plain, (accept_city(countrybcivilorganization,townc))).
+#
+#cnf(i_0_428, plain, (accept_city(christiansufferterrahumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_421, plain, (accept_city(christiansufferterrahumanitarianorganization,towna))).
+#
+#cnf(i_0_206, plain, (~accept_team(countryccivilorganization,countrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_513, plain, (accept_city(christiansufferterrahumanitarianorganization,cityb))).
+#
+#cnf(i_0_500, plain, (accept_city(christiansufferterrahumanitarianorganization,townc))).
+#
+#cnf(i_0_485, plain, (accept_city(sufferterragovernment,coastvillage))).
+#
+#cnf(i_0_204, plain, (~accept_team(countryccivilorganization,muslimcountrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_395, plain, (accept_city(sufferterragovernment,towna))).
+#
+#cnf(i_0_596, plain, (accept_city(sufferterragovernment,cityb))).
+#
+#cnf(i_0_492, plain, (accept_city(sufferterragovernment,townc))).
+#
+#cnf(i_0_129, plain, (~accept_team(countryccivilorganization,countrycmedicalorganization,towna,n5))).
+#
+#cnf(i_0_571, plain, (accept_leader(countryahumanitarianorganization,countryacivilorganization))).
+#
+#cnf(i_0_360, plain, (accept_leader(countryahumanitarianorganization,countryafirstaidorganization))).
+#
+#cnf(i_0_366, plain, (accept_leader(countryahumanitarianorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_308, plain, (~accept_team(countryccivilorganization,countrycmedicalorganization,towna,n6))).
+#
+#cnf(i_0_576, plain, (accept_leader(countryahumanitarianorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_359, plain, (accept_leader(countryahumanitarianorganization,countryamedicalorganization))).
+#
+#cnf(i_0_588, plain, (accept_leader(countryahumanitarianorganization,sufferterragovernment))).
+#
+#cnf(i_0_208, plain, (~accept_team(countryccivilorganization,countrycmedicalorganization,townc,n6))).
+#
+#cnf(i_0_416, plain, (accept_leader(countryacivilorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_405, plain, (accept_leader(countryacivilorganization,countryafirstaidorganization))).
+#
+#cnf(i_0_411, plain, (accept_leader(countryacivilorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_305, plain, (~accept_team(countryccivilorganization,countrybcivilorganization,towna,n6))).
+#
+#cnf(i_0_570, plain, (accept_leader(countryacivilorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_404, plain, (accept_leader(countryacivilorganization,countryamedicalorganization))).
+#
+#cnf(i_0_657, plain, (accept_leader(countryacivilorganization,sufferterragovernment))).
+#
+#cnf(i_0_205, plain, (~accept_team(countryccivilorganization,countrybcivilorganization,townc,n6))).
+#
+#cnf(i_0_447, plain, (accept_leader(countryafirstaidorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_449, plain, (accept_leader(countryafirstaidorganization,countryacivilorganization))).
+#
+#cnf(i_0_442, plain, (accept_leader(countryafirstaidorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_268, plain, (~accept_team(muslimcountrybhumanitarianorganization,christiancountrychumanitarianorganization,towna,n3))).
+#
+#cnf(i_0_454, plain, (accept_leader(countryafirstaidorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_367, plain, (accept_leader(countryafirstaidorganization,countryamedicalorganization))).
+#
+#cnf(i_0_616, plain, (accept_leader(countryafirstaidorganization,sufferterragovernment))).
+#
+#cnf(i_0_265, plain, (~accept_team(muslimcountrybhumanitarianorganization,christiancountrychumanitarianorganization,towna,n2))).
+#
+#cnf(i_0_346, plain, (accept_leader(christiancountrychumanitarianorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_339, plain, (accept_leader(christiancountrychumanitarianorganization,countryacivilorganization))).
+#
+#cnf(i_0_663, plain, (accept_leader(christiancountrychumanitarianorganization,countryccivilorganization))).
+#
+#cnf(i_0_276, plain, (~accept_team(muslimcountrybhumanitarianorganization,christiancountrychumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_677, plain, (accept_leader(christiancountrychumanitarianorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_340, plain, (accept_leader(christiancountrychumanitarianorganization,muslimcountrybhumanitarianorganization))).
+#
+#cnf(i_0_678, plain, (accept_leader(christiancountrychumanitarianorganization,countrycmedicalorganization))).
+#
+#cnf(i_0_273, plain, (~accept_team(muslimcountrybhumanitarianorganization,countryccivilorganization,towna,n4))).
+#
+#cnf(i_0_670, plain, (accept_leader(christiancountrychumanitarianorganization,countrybcivilorganization))).
+#
+#cnf(i_0_691, plain, (accept_leader(christiancountrychumanitarianorganization,sufferterragovernment))).
+#
+#cnf(i_0_520, plain, (accept_leader(countryccivilorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_270, plain, (~accept_team(muslimcountrybhumanitarianorganization,countryccivilorganization,towna,n3))).
+#
+#cnf(i_0_403, plain, (accept_leader(countryccivilorganization,countryacivilorganization))).
+#
+#cnf(i_0_401, plain, (accept_leader(countryccivilorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_604, plain, (accept_leader(countryccivilorganization,sufferterragovernment))).
+#
+#cnf(i_0_266, plain, (~accept_team(muslimcountrybhumanitarianorganization,countryccivilorganization,towna,n2))).
+#
+#cnf(i_0_467, plain, (accept_leader(countrybhumanitarianorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_455, plain, (accept_leader(countrybhumanitarianorganization,countryacivilorganization))).
+#
+#cnf(i_0_470, plain, (accept_leader(countrybhumanitarianorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_271, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,towna,n2))).
+#
+#cnf(i_0_468, plain, (accept_leader(countrybhumanitarianorganization,countryccivilorganization))).
+#
+#cnf(i_0_461, plain, (accept_leader(countrybhumanitarianorganization,muslimcountrybhumanitarianorganization))).
+#
+#cnf(i_0_471, plain, (accept_leader(countrybhumanitarianorganization,countrycmedicalorganization))).
+#
+#cnf(i_0_275, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_469, plain, (accept_leader(countrybhumanitarianorganization,countrybcivilorganization))).
+#
+#cnf(i_0_478, plain, (accept_leader(countrybhumanitarianorganization,sufferterragovernment))).
+#
+#cnf(i_0_539, plain, (accept_leader(muslimcountrybhumanitarianorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_98, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrycmedicalorganization,towna,n4))).
+#
+#cnf(i_0_430, plain, (accept_leader(muslimcountrybhumanitarianorganization,countryacivilorganization))).
+#
+#cnf(i_0_533, plain, (accept_leader(muslimcountrybhumanitarianorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_493, plain, (accept_leader(muslimcountrybhumanitarianorganization,countryccivilorganization))).
+#
+#cnf(i_0_269, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrycmedicalorganization,towna,n3))).
+#
+#cnf(i_0_545, plain, (accept_leader(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_532, plain, (accept_leader(muslimcountrybhumanitarianorganization,countrycmedicalorganization))).
+#
+#cnf(i_0_494, plain, (accept_leader(muslimcountrybhumanitarianorganization,countrybcivilorganization))).
+#
+#cnf(i_0_264, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrycmedicalorganization,towna,n2))).
+#
+#cnf(i_0_705, plain, (accept_leader(muslimcountrybhumanitarianorganization,sufferterragovernment))).
+#
+#cnf(i_0_527, plain, (accept_leader(countrycmedicalorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_369, plain, (accept_leader(countrycmedicalorganization,countryacivilorganization))).
+#
+#cnf(i_0_99, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrycmedicalorganization,towna,n5))).
+#
+#cnf(i_0_621, plain, (accept_leader(countrycmedicalorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_618, plain, (accept_leader(countrycmedicalorganization,countryccivilorganization))).
+#
+#cnf(i_0_620, plain, (accept_leader(countrycmedicalorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_335, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrycmedicalorganization,towna,n6))).
+#
+#cnf(i_0_521, plain, (accept_leader(countrycmedicalorganization,muslimcountrybhumanitarianorganization))).
+#
+#cnf(i_0_619, plain, (accept_leader(countrycmedicalorganization,countrybcivilorganization))).
+#
+#cnf(i_0_628, plain, (accept_leader(countrycmedicalorganization,sufferterragovernment))).
+#
+#cnf(i_0_267, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrybcivilorganization,towna,n3))).
+#
+#cnf(i_0_357, plain, (accept_leader(countryamedicalorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_547, plain, (accept_leader(countryamedicalorganization,countryacivilorganization))).
+#
+#cnf(i_0_352, plain, (accept_leader(countryamedicalorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_263, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrybcivilorganization,towna,n2))).
+#
+#cnf(i_0_552, plain, (accept_leader(countryamedicalorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_564, plain, (accept_leader(countryamedicalorganization,sufferterragovernment))).
+#
+#cnf(i_0_387, plain, (accept_leader(countrybcivilorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_274, plain, (~accept_team(muslimcountrybhumanitarianorganization,countrybcivilorganization,towna,n6))).
+#
+#cnf(i_0_375, plain, (accept_leader(countrybcivilorganization,countryacivilorganization))).
+#
+#cnf(i_0_631, plain, (accept_leader(countrybcivilorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_629, plain, (accept_leader(countrybcivilorganization,countryccivilorganization))).
+#
+#cnf(i_0_118, plain, (~accept_team(countryamedicalorganization,countryahumanitarianorganization,coastvillage,n2))).
+#
+#cnf(i_0_630, plain, (accept_leader(countrybcivilorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_381, plain, (accept_leader(countrybcivilorganization,muslimcountrybhumanitarianorganization))).
+#
+#cnf(i_0_632, plain, (accept_leader(countrybcivilorganization,countrycmedicalorganization))).
+#
+#cnf(i_0_123, plain, (~accept_team(countryamedicalorganization,countryahumanitarianorganization,coastvillage,n6))).
+#
+#cnf(i_0_639, plain, (accept_leader(countrybcivilorganization,sufferterragovernment))).
+#
+#cnf(i_0_499, plain, (accept_leader(christiansufferterrahumanitarianorganization,countryahumanitarianorganization))).
+#
+#cnf(i_0_501, plain, (accept_leader(christiansufferterrahumanitarianorganization,countryacivilorganization))).
+#
+#cnf(i_0_120, plain, (~accept_team(countryamedicalorganization,countryacivilorganization,coastvillage,n2))).
+#
+#cnf(i_0_422, plain, (accept_leader(christiansufferterrahumanitarianorganization,countryafirstaidorganization))).
+#
+#cnf(i_0_429, plain, (accept_leader(christiansufferterrahumanitarianorganization,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_514, plain, (accept_leader(christiansufferterrahumanitarianorganization,countrybhumanitarianorganization))).
+#
+#cnf(i_0_124, plain, (~accept_team(countryamedicalorganization,countryacivilorganization,coastvillage,n6))).
+#
+#cnf(i_0_368, plain, (accept_leader(christiansufferterrahumanitarianorganization,countryamedicalorganization))).
+#
+#cnf(i_0_491, plain, (accept_leader(sufferterragovernment,countryahumanitarianorganization))).
+#
+#cnf(i_0_590, plain, (accept_leader(sufferterragovernment,countryacivilorganization))).
+#
+#cnf(i_0_996, negated_conjecture, (~accept_team(countryamedicalorganization,countryacivilorganization,towna,n6))).
+#
+#cnf(i_0_479, plain, (accept_leader(sufferterragovernment,countryafirstaidorganization))).
+#
+#cnf(i_0_486, plain, (accept_leader(sufferterragovernment,christiancountrychumanitarianorganization))).
+#
+#cnf(i_0_597, plain, (accept_leader(sufferterragovernment,countrybhumanitarianorganization))).
+#
+#cnf(i_0_119, plain, (~accept_team(countryamedicalorganization,countryafirstaidorganization,coastvillage,n2))).
+#
+#cnf(i_0_392, plain, (accept_leader(sufferterragovernment,countryamedicalorganization))).
+#
+#cnf(i_0_578, plain, (accept_number(countryahumanitarianorganization,n4))).
+#
+#cnf(i_0_579, plain, (accept_number(countryahumanitarianorganization,n3))).
+#
+#cnf(i_0_125, plain, (~accept_team(countryamedicalorganization,countryafirstaidorganization,coastvillage,n6))).
+#
+#cnf(i_0_581, plain, (accept_number(countryahumanitarianorganization,n1))).
+#
+#cnf(i_0_117, plain, (accept_number(countryahumanitarianorganization,n2))).
+##
+#cnf(i_0_121, plain, (~accept_team(countryamedicalorganization,christiansufferterrahumanitarianorganization,coastvillage,n2))).
+#
+#cnf(i_0_178, plain, (accept_number(countryahumanitarianorganization,n5))).
+##
+#cnf(i_0_255, plain, (accept_number(countryahumanitarianorganization,n6))).
+#
+#cnf(i_0_122, plain, (~accept_team(countryamedicalorganization,sufferterragovernment,coastvillage,n2))).
+##
+#cnf(i_0_647, plain, (accept_number(countryacivilorganization,n4))).
+#
+#cnf(i_0_648, plain, (accept_number(countryacivilorganization,n3))).
+#
+#cnf(i_0_301, plain, (~accept_team(christiansufferterrahumanitarianorganization,sufferterragovernment,towna,n2))).
+#
+#cnf(i_0_650, plain, (accept_number(countryacivilorganization,n1))).
+#
+#cnf(i_0_148, plain, (accept_number(countryacivilorganization,n2))).
+##
+#cnf(i_0_302, plain, (~accept_team(christiansufferterrahumanitarianorganization,sufferterragovernment,towna,n6))).
+#
+#cnf(i_0_646, plain, (accept_number(countryacivilorganization,n5))).
+#
+#cnf(i_0_257, plain, (accept_number(countryacivilorganization,n6))).
+##
+#cnf(i_0_10, plain, (~the_agent_not_in_any_proposed_teams(X1,X2,X3)|~accept_leader(X1,X2)|~accept_city(X1,X3))).
+#
+#cnf(i_0_606, plain, (accept_number(countryafirstaidorganization,n4))).
+#
+#cnf(i_0_607, plain, (accept_number(countryafirstaidorganization,n3))).
+#
+#cnf(i_0_609, plain, (accept_number(countryafirstaidorganization,n1))).
+#
+#cnf(i_0_154, plain, (accept_number(countryafirstaidorganization,n2))).
+##
+#cnf(i_0_605, plain, (accept_number(countryafirstaidorganization,n5))).
+#
+#cnf(i_0_238, plain, (accept_number(countryafirstaidorganization,n6))).
+##
+#cnf(i_0_680, plain, (accept_number(christiancountrychumanitarianorganization,n4))).
+#
+#cnf(i_0_323, plain, (accept_number(christiancountrychumanitarianorganization,n3))).
+##
+#cnf(i_0_683, plain, (accept_number(christiancountrychumanitarianorganization,n1))).
+#
+#cnf(i_0_281, plain, (accept_number(christiancountrychumanitarianorganization,n2))).
+##
+#cnf(i_0_162, plain, (accept_number(christiancountrychumanitarianorganization,n5))).
+##
+#cnf(i_0_331, plain, (accept_number(christiancountrychumanitarianorganization,n6))).
+##
+#cnf(i_0_324, plain, (accept_number(countryccivilorganization,n4))).
+##
+#cnf(i_0_304, plain, (accept_number(countryccivilorganization,n3))).
+##
+#cnf(i_0_661, plain, (accept_number(countryccivilorganization,n1))).
+#
+#cnf(i_0_303, plain, (accept_number(countryccivilorganization,n2))).
+##
+#cnf(i_0_106, plain, (accept_number(countrybhumanitarianorganization,n4))).
+##
+#cnf(i_0_673, plain, (accept_number(countrybhumanitarianorganization,n3))).
+#
+#cnf(i_0_110, plain, (accept_number(countrybhumanitarianorganization,n1))).
+##
+#cnf(i_0_286, plain, (accept_number(countrybhumanitarianorganization,n2))).
+##
+#cnf(i_0_260, plain, (accept_number(countrybhumanitarianorganization,n5))).
+##
+#cnf(i_0_328, plain, (accept_number(countrybhumanitarianorganization,n6))).
+##
+#cnf(i_0_699, plain, (accept_number(muslimcountrybhumanitarianorganization,n4))).
+#
+#cnf(i_0_187, plain, (accept_number(muslimcountrybhumanitarianorganization,n3))).
+##
+#cnf(i_0_702, plain, (accept_number(muslimcountrybhumanitarianorganization,n1))).
+#
+#cnf(i_0_272, plain, (accept_number(muslimcountrybhumanitarianorganization,n2))).
+##
+#cnf(i_0_698, plain, (accept_number(muslimcountrybhumanitarianorganization,n5))).
+#
+#cnf(i_0_336, plain, (accept_number(muslimcountrybhumanitarianorganization,n6))).
+##
+#cnf(i_0_141, plain, (accept_number(countrycmedicalorganization,n4))).
+##
+#cnf(i_0_316, plain, (accept_number(countrycmedicalorganization,n3))).
+##
+#cnf(i_0_696, plain, (accept_number(countrycmedicalorganization,n1))).
+#
+#cnf(i_0_315, plain, (accept_number(countrycmedicalorganization,n2))).
+##
+#cnf(i_0_143, plain, (accept_number(countrycmedicalorganization,n5))).
+##
+#cnf(i_0_334, plain, (accept_number(countrycmedicalorganization,n6))).
+##
+#cnf(i_0_554, plain, (accept_number(countryamedicalorganization,n4))).
+#
+#cnf(i_0_555, plain, (accept_number(countryamedicalorganization,n3))).
+#
+#cnf(i_0_557, plain, (accept_number(countryamedicalorganization,n1))).
+#
+#cnf(i_0_556, plain, (accept_number(countryamedicalorganization,n2))).
+#
+#cnf(i_0_553, plain, (accept_number(countryamedicalorganization,n5))).
+#
+#cnf(i_0_246, plain, (accept_number(countryamedicalorganization,n6))).
+##
+#cnf(i_0_665, plain, (accept_number(countrybcivilorganization,n4))).
+#
+#cnf(i_0_293, plain, (accept_number(countrybcivilorganization,n3))).
+##
+#cnf(i_0_668, plain, (accept_number(countrybcivilorganization,n1))).
+#
+#cnf(i_0_292, plain, (accept_number(countrybcivilorganization,n2))).
+##
+#cnf(i_0_134, plain, (accept_number(countrybcivilorganization,n5))).
+##
+#cnf(i_0_326, plain, (accept_number(countrybcivilorganization,n6))).
+##
+#cnf(i_0_503, plain, (accept_number(christiansufferterrahumanitarianorganization,n4))).
+#
+#cnf(i_0_504, plain, (accept_number(christiansufferterrahumanitarianorganization,n3))).
+#
+#cnf(i_0_506, plain, (accept_number(christiansufferterrahumanitarianorganization,n1))).
+#
+#cnf(i_0_177, plain, (accept_number(christiansufferterrahumanitarianorganization,n2))).
+##
+#cnf(i_0_502, plain, (accept_number(christiansufferterrahumanitarianorganization,n5))).
+#
+#cnf(i_0_229, plain, (accept_number(christiansufferterrahumanitarianorganization,n6))).
+##
+#cnf(i_0_641, plain, (accept_number(sufferterragovernment,n4))).
+#
+#cnf(i_0_642, plain, (accept_number(sufferterragovernment,n3))).
+#
+#cnf(i_0_644, plain, (accept_number(sufferterragovernment,n1))).
+#
+#cnf(i_0_300, plain, (accept_number(sufferterragovernment,n2))).
+##
+#cnf(i_0_311, plain, (accept_number(sufferterragovernment,n5))).
+##
+#cnf(i_0_313, plain, (accept_number(sufferterragovernment,n6))).
+##
+#cnf(i_0_992, plain, (less_or_equal(X1,X2)|X1!=X2)).
+#
+#cnf(i_0_11, plain, (accept_number(X1,X2)|~min_number_of_proposed_agents(X1,X2))).
+#
+#cnf(i_0_993, plain, (less_or_equal(X1,X2)|~less(X1,X2))).
+#
+#cnf(i_0_364, plain, (accept_population(countryahumanitarianorganization,atheist,n12))).
+#
+#cnf(i_0_586, plain, (accept_population(countryahumanitarianorganization,atheist,n75))).
+#
+#cnf(i_0_574, plain, (accept_population(countryahumanitarianorganization,atheist,n78))).
+#
+#cnf(i_0_573, plain, (accept_population(countryahumanitarianorganization,christian,n20))).
+#
+#cnf(i_0_363, plain, (accept_population(countryahumanitarianorganization,christian,n3))).
+#
+#cnf(i_0_585, plain, (accept_population(countryahumanitarianorganization,christian,n24))).
+#
+#cnf(i_0_584, plain, (accept_population(countryahumanitarianorganization,muslim,n1))).
+#
+#cnf(i_0_362, plain, (accept_population(countryahumanitarianorganization,muslim,n0))).
+#
+#cnf(i_0_583, plain, (accept_population(countryahumanitarianorganization,native,n0))).
+#
+#cnf(i_0_361, plain, (accept_population(countryahumanitarianorganization,native,n85))).
+#
+#cnf(i_0_572, plain, (accept_population(countryahumanitarianorganization,other,n1))).
+#
+#cnf(i_0_582, plain, (accept_population(countryahumanitarianorganization,other,n0))).
+#
+#cnf(i_0_415, plain, (accept_population(countryacivilorganization,atheist,n30))).
+#
+#cnf(i_0_409, plain, (accept_population(countryacivilorganization,atheist,n12))).
+#
+#cnf(i_0_655, plain, (accept_population(countryacivilorganization,atheist,n75))).
+#
+#cnf(i_0_568, plain, (accept_population(countryacivilorganization,atheist,n78))).
+#
+#cnf(i_0_567, plain, (accept_population(countryacivilorganization,christian,n20))).
+#
+#cnf(i_0_408, plain, (accept_population(countryacivilorganization,christian,n3))).
+#
+#cnf(i_0_414, plain, (accept_population(countryacivilorganization,christian,n0))).
+#
+#cnf(i_0_654, plain, (accept_population(countryacivilorganization,christian,n24))).
+#
+#cnf(i_0_413, plain, (accept_population(countryacivilorganization,muslim,n65))).
+#
+#cnf(i_0_653, plain, (accept_population(countryacivilorganization,muslim,n1))).
+#
+#cnf(i_0_407, plain, (accept_population(countryacivilorganization,muslim,n0))).
+#
+#cnf(i_0_652, plain, (accept_population(countryacivilorganization,native,n0))).
+#
+#cnf(i_0_406, plain, (accept_population(countryacivilorganization,native,n85))).
+#
+#cnf(i_0_566, plain, (accept_population(countryacivilorganization,other,n1))).
+#
+#cnf(i_0_651, plain, (accept_population(countryacivilorganization,other,n0))).
+#
+#cnf(i_0_412, plain, (accept_population(countryacivilorganization,other,n5))).
+#
+#cnf(i_0_446, plain, (accept_population(countryafirstaidorganization,atheist,n30))).
+#
+#cnf(i_0_440, plain, (accept_population(countryafirstaidorganization,atheist,n12))).
+#
+#cnf(i_0_614, plain, (accept_population(countryafirstaidorganization,atheist,n75))).
+#
+#cnf(i_0_452, plain, (accept_population(countryafirstaidorganization,atheist,n78))).
+#
+#cnf(i_0_451, plain, (accept_population(countryafirstaidorganization,christian,n20))).
+#
+#cnf(i_0_439, plain, (accept_population(countryafirstaidorganization,christian,n3))).
+#
+#cnf(i_0_445, plain, (accept_population(countryafirstaidorganization,christian,n0))).
+#
+#cnf(i_0_613, plain, (accept_population(countryafirstaidorganization,christian,n24))).
+#
+#cnf(i_0_444, plain, (accept_population(countryafirstaidorganization,muslim,n65))).
+#
+#cnf(i_0_612, plain, (accept_population(countryafirstaidorganization,muslim,n1))).
+#
+#cnf(i_0_438, plain, (accept_population(countryafirstaidorganization,muslim,n0))).
+#
+#cnf(i_0_611, plain, (accept_population(countryafirstaidorganization,native,n0))).
+#
+#cnf(i_0_437, plain, (accept_population(countryafirstaidorganization,native,n85))).
+#
+#cnf(i_0_450, plain, (accept_population(countryafirstaidorganization,other,n1))).
+#
+#cnf(i_0_610, plain, (accept_population(countryafirstaidorganization,other,n0))).
+#
+#cnf(i_0_443, plain, (accept_population(countryafirstaidorganization,other,n5))).
+#
+#cnf(i_0_344, plain, (accept_population(christiancountrychumanitarianorganization,atheist,n30))).
+#
+#cnf(i_0_689, plain, (accept_population(christiancountrychumanitarianorganization,atheist,n75))).
+#
+#cnf(i_0_349, plain, (accept_population(christiancountrychumanitarianorganization,atheist,n78))).
+#
+#cnf(i_0_348, plain, (accept_population(christiancountrychumanitarianorganization,christian,n20))).
+#
+#cnf(i_0_343, plain, (accept_population(christiancountrychumanitarianorganization,christian,n0))).
+#
+#cnf(i_0_688, plain, (accept_population(christiancountrychumanitarianorganization,christian,n24))).
+#
+#cnf(i_0_342, plain, (accept_population(christiancountrychumanitarianorganization,muslim,n65))).
+#
+#cnf(i_0_687, plain, (accept_population(christiancountrychumanitarianorganization,muslim,n1))).
+#
+#cnf(i_0_686, plain, (accept_population(christiancountrychumanitarianorganization,native,n0))).
+#
+#cnf(i_0_347, plain, (accept_population(christiancountrychumanitarianorganization,other,n1))).
+#
+#cnf(i_0_685, plain, (accept_population(christiancountrychumanitarianorganization,other,n0))).
+#
+#cnf(i_0_341, plain, (accept_population(christiancountrychumanitarianorganization,other,n5))).
+#
+#cnf(i_0_518, plain, (accept_population(countryccivilorganization,atheist,n30))).
+#
+#cnf(i_0_602, plain, (accept_population(countryccivilorganization,atheist,n75))).
+#
+#cnf(i_0_399, plain, (accept_population(countryccivilorganization,atheist,n78))).
+#
+#cnf(i_0_398, plain, (accept_population(countryccivilorganization,christian,n20))).
+#
+#cnf(i_0_517, plain, (accept_population(countryccivilorganization,christian,n0))).
+#
+#cnf(i_0_601, plain, (accept_population(countryccivilorganization,christian,n24))).
+#
+#cnf(i_0_516, plain, (accept_population(countryccivilorganization,muslim,n65))).
+#
+#cnf(i_0_600, plain, (accept_population(countryccivilorganization,muslim,n1))).
+#
+#cnf(i_0_599, plain, (accept_population(countryccivilorganization,native,n0))).
+#
+#cnf(i_0_397, plain, (accept_population(countryccivilorganization,other,n1))).
+#
+#cnf(i_0_598, plain, (accept_population(countryccivilorganization,other,n0))).
+#
+#cnf(i_0_515, plain, (accept_population(countryccivilorganization,other,n5))).
+#
+#cnf(i_0_465, plain, (accept_population(countrybhumanitarianorganization,atheist,n30))).
+#
+#cnf(i_0_459, plain, (accept_population(countrybhumanitarianorganization,atheist,n12))).
+#
+#cnf(i_0_476, plain, (accept_population(countrybhumanitarianorganization,atheist,n75))).
+#
+#cnf(i_0_458, plain, (accept_population(countrybhumanitarianorganization,christian,n3))).
+#
+#cnf(i_0_464, plain, (accept_population(countrybhumanitarianorganization,christian,n0))).
+#
+#cnf(i_0_475, plain, (accept_population(countrybhumanitarianorganization,christian,n24))).
+#
+#cnf(i_0_463, plain, (accept_population(countrybhumanitarianorganization,muslim,n65))).
+#
+#cnf(i_0_474, plain, (accept_population(countrybhumanitarianorganization,muslim,n1))).
+#
+#cnf(i_0_457, plain, (accept_population(countrybhumanitarianorganization,muslim,n0))).
+#
+#cnf(i_0_473, plain, (accept_population(countrybhumanitarianorganization,native,n0))).
+#
+#cnf(i_0_456, plain, (accept_population(countrybhumanitarianorganization,native,n85))).
+#
+#cnf(i_0_472, plain, (accept_population(countrybhumanitarianorganization,other,n0))).
+#
+#cnf(i_0_462, plain, (accept_population(countrybhumanitarianorganization,other,n5))).
+#
+#cnf(i_0_537, plain, (accept_population(muslimcountrybhumanitarianorganization,atheist,n30))).
+#
+#cnf(i_0_435, plain, (accept_population(muslimcountrybhumanitarianorganization,atheist,n12))).
+#
+#cnf(i_0_544, plain, (accept_population(muslimcountrybhumanitarianorganization,atheist,n78))).
+#
+#cnf(i_0_543, plain, (accept_population(muslimcountrybhumanitarianorganization,christian,n20))).
+#
+#cnf(i_0_434, plain, (accept_population(muslimcountrybhumanitarianorganization,christian,n3))).
+#
+#cnf(i_0_536, plain, (accept_population(muslimcountrybhumanitarianorganization,christian,n0))).
+#
+#cnf(i_0_535, plain, (accept_population(muslimcountrybhumanitarianorganization,muslim,n65))).
+#
+#cnf(i_0_542, plain, (accept_population(muslimcountrybhumanitarianorganization,muslim,n1))).
+#
+#cnf(i_0_433, plain, (accept_population(muslimcountrybhumanitarianorganization,muslim,n0))).
+#
+#cnf(i_0_541, plain, (accept_population(muslimcountrybhumanitarianorganization,native,n0))).
+#
+#cnf(i_0_432, plain, (accept_population(muslimcountrybhumanitarianorganization,native,n85))).
+#
+#cnf(i_0_540, plain, (accept_population(muslimcountrybhumanitarianorganization,other,n1))).
+#
+#cnf(i_0_431, plain, (accept_population(muslimcountrybhumanitarianorganization,other,n0))).
+#
+#cnf(i_0_534, plain, (accept_population(muslimcountrybhumanitarianorganization,other,n5))).
+#
+#cnf(i_0_525, plain, (accept_population(countrycmedicalorganization,atheist,n30))).
+#
+#cnf(i_0_373, plain, (accept_population(countrycmedicalorganization,atheist,n12))).
+#
+#cnf(i_0_626, plain, (accept_population(countrycmedicalorganization,atheist,n75))).
+#
+#cnf(i_0_530, plain, (accept_population(countrycmedicalorganization,atheist,n78))).
+#
+#cnf(i_0_529, plain, (accept_population(countrycmedicalorganization,christian,n20))).
+#
+#cnf(i_0_372, plain, (accept_population(countrycmedicalorganization,christian,n3))).
+#
+#cnf(i_0_524, plain, (accept_population(countrycmedicalorganization,christian,n0))).
+#
+#cnf(i_0_625, plain, (accept_population(countrycmedicalorganization,christian,n24))).
+#
+#cnf(i_0_523, plain, (accept_population(countrycmedicalorganization,muslim,n65))).
+#
+#cnf(i_0_624, plain, (accept_population(countrycmedicalorganization,muslim,n1))).
+#
+#cnf(i_0_371, plain, (accept_population(countrycmedicalorganization,muslim,n0))).
+#
+#cnf(i_0_623, plain, (accept_population(countrycmedicalorganization,native,n0))).
+#
+#cnf(i_0_370, plain, (accept_population(countrycmedicalorganization,native,n85))).
+#
+#cnf(i_0_528, plain, (accept_population(countrycmedicalorganization,other,n1))).
+#
+#cnf(i_0_622, plain, (accept_population(countrycmedicalorganization,other,n0))).
+#
+#cnf(i_0_522, plain, (accept_population(countrycmedicalorganization,other,n5))).
+#
+#cnf(i_0_356, plain, (accept_population(countryamedicalorganization,atheist,n30))).
+#
+#cnf(i_0_562, plain, (accept_population(countryamedicalorganization,atheist,n75))).
+#
+#cnf(i_0_550, plain, (accept_population(countryamedicalorganization,atheist,n78))).
+#
+#cnf(i_0_549, plain, (accept_population(countryamedicalorganization,christian,n20))).
+#
+#cnf(i_0_355, plain, (accept_population(countryamedicalorganization,christian,n0))).
+#
+#cnf(i_0_561, plain, (accept_population(countryamedicalorganization,christian,n24))).
+#
+#cnf(i_0_354, plain, (accept_population(countryamedicalorganization,muslim,n65))).
+#
+#cnf(i_0_560, plain, (accept_population(countryamedicalorganization,muslim,n1))).
+#
+#cnf(i_0_559, plain, (accept_population(countryamedicalorganization,native,n0))).
+#
+#cnf(i_0_548, plain, (accept_population(countryamedicalorganization,other,n1))).
+#
+#cnf(i_0_558, plain, (accept_population(countryamedicalorganization,other,n0))).
+#
+#cnf(i_0_353, plain, (accept_population(countryamedicalorganization,other,n5))).
+#
+#cnf(i_0_385, plain, (accept_population(countrybcivilorganization,atheist,n30))).
+#
+#cnf(i_0_379, plain, (accept_population(countrybcivilorganization,atheist,n12))).
+#
+#cnf(i_0_637, plain, (accept_population(countrybcivilorganization,atheist,n75))).
+#
+#cnf(i_0_390, plain, (accept_population(countrybcivilorganization,atheist,n78))).
+#
+#cnf(i_0_389, plain, (accept_population(countrybcivilorganization,christian,n20))).
+#
+#cnf(i_0_378, plain, (accept_population(countrybcivilorganization,christian,n3))).
+#
+#cnf(i_0_384, plain, (accept_population(countrybcivilorganization,christian,n0))).
+#
+#cnf(i_0_636, plain, (accept_population(countrybcivilorganization,christian,n24))).
+#
+#cnf(i_0_383, plain, (accept_population(countrybcivilorganization,muslim,n65))).
+#
+#cnf(i_0_635, plain, (accept_population(countrybcivilorganization,muslim,n1))).
+#
+#cnf(i_0_377, plain, (accept_population(countrybcivilorganization,muslim,n0))).
+#
+#cnf(i_0_634, plain, (accept_population(countrybcivilorganization,native,n0))).
+#
+#cnf(i_0_376, plain, (accept_population(countrybcivilorganization,native,n85))).
+#
+#cnf(i_0_388, plain, (accept_population(countrybcivilorganization,other,n1))).
+#
+#cnf(i_0_633, plain, (accept_population(countrybcivilorganization,other,n0))).
+#
+#cnf(i_0_382, plain, (accept_population(countrybcivilorganization,other,n5))).
+#
+#cnf(i_0_498, plain, (accept_population(christiansufferterrahumanitarianorganization,atheist,n30))).
+#
+#cnf(i_0_427, plain, (accept_population(christiansufferterrahumanitarianorganization,atheist,n12))).
+#
+#cnf(i_0_419, plain, (accept_population(christiansufferterrahumanitarianorganization,atheist,n75))).
+#
+#cnf(i_0_512, plain, (accept_population(christiansufferterrahumanitarianorganization,atheist,n78))).
+#
+#cnf(i_0_511, plain, (accept_population(christiansufferterrahumanitarianorganization,christian,n20))).
+#
+#cnf(i_0_426, plain, (accept_population(christiansufferterrahumanitarianorganization,christian,n3))).
+#
+#cnf(i_0_497, plain, (accept_population(christiansufferterrahumanitarianorganization,christian,n0))).
+#
+#cnf(i_0_418, plain, (accept_population(christiansufferterrahumanitarianorganization,christian,n24))).
+#
+#cnf(i_0_496, plain, (accept_population(christiansufferterrahumanitarianorganization,muslim,n65))).
+#
+#cnf(i_0_510, plain, (accept_population(christiansufferterrahumanitarianorganization,muslim,n1))).
+#
+#cnf(i_0_425, plain, (accept_population(christiansufferterrahumanitarianorganization,muslim,n0))).
+#
+#cnf(i_0_509, plain, (accept_population(christiansufferterrahumanitarianorganization,native,n0))).
+#
+#cnf(i_0_424, plain, (accept_population(christiansufferterrahumanitarianorganization,native,n85))).
+#
+#cnf(i_0_508, plain, (accept_population(christiansufferterrahumanitarianorganization,other,n1))).
+#
+#cnf(i_0_423, plain, (accept_population(christiansufferterrahumanitarianorganization,other,n0))).
+#
+#cnf(i_0_495, plain, (accept_population(christiansufferterrahumanitarianorganization,other,n5))).
+#
+#cnf(i_0_490, plain, (accept_population(sufferterragovernment,atheist,n30))).
+#
+#cnf(i_0_484, plain, (accept_population(sufferterragovernment,atheist,n12))).
+#
+#cnf(i_0_394, plain, (accept_population(sufferterragovernment,atheist,n75))).
+#
+#cnf(i_0_595, plain, (accept_population(sufferterragovernment,atheist,n78))).
+#
+#cnf(i_0_594, plain, (accept_population(sufferterragovernment,christian,n20))).
+#
+#cnf(i_0_483, plain, (accept_population(sufferterragovernment,christian,n3))).
+#
+#cnf(i_0_489, plain, (accept_population(sufferterragovernment,christian,n0))).
+#
+#cnf(i_0_393, plain, (accept_population(sufferterragovernment,christian,n24))).
+#
+#cnf(i_0_488, plain, (accept_population(sufferterragovernment,muslim,n65))).
+#
+#cnf(i_0_593, plain, (accept_population(sufferterragovernment,muslim,n1))).
+#
+#cnf(i_0_482, plain, (accept_population(sufferterragovernment,muslim,n0))).
+#
+#cnf(i_0_592, plain, (accept_population(sufferterragovernment,native,n0))).
+#
+#cnf(i_0_481, plain, (accept_population(sufferterragovernment,native,n85))).
+#
+#cnf(i_0_591, plain, (accept_population(sufferterragovernment,other,n1))).
+#
+#cnf(i_0_480, plain, (accept_population(sufferterragovernment,other,n0))).
+#
+#cnf(i_0_487, plain, (accept_population(sufferterragovernment,other,n5))).
+#
+#cnf(i_0_94, plain, (the_agent_in_all_proposed_teams(countryahumanitarianorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_253, plain, (the_agent_in_all_proposed_teams(countryahumanitarianorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_152, plain, (the_agent_in_all_proposed_teams(countryacivilorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_258, plain, (the_agent_in_all_proposed_teams(countryacivilorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_158, plain, (the_agent_in_all_proposed_teams(countryafirstaidorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_239, plain, (the_agent_in_all_proposed_teams(countryafirstaidorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_202, plain, (the_agent_in_all_proposed_teams(christiancountrychumanitarianorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_145, plain, (the_agent_in_all_proposed_teams(christiancountrychumanitarianorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_332, plain, (the_agent_in_all_proposed_teams(christiancountrychumanitarianorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_209, plain, (the_agent_in_all_proposed_teams(countryccivilorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_130, plain, (the_agent_in_all_proposed_teams(countryccivilorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_309, plain, (the_agent_in_all_proposed_teams(countryccivilorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_226, plain, (the_agent_in_all_proposed_teams(countrybhumanitarianorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_111, plain, (the_agent_in_all_proposed_teams(countrybhumanitarianorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_290, plain, (the_agent_in_all_proposed_teams(countrybhumanitarianorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_193, plain, (the_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_221, plain, (the_agent_in_all_proposed_teams(countrycmedicalorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_138, plain, (the_agent_in_all_proposed_teams(countrycmedicalorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_321, plain, (the_agent_in_all_proposed_teams(countrycmedicalorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_247, plain, (the_agent_in_all_proposed_teams(countryamedicalorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_169, plain, (the_agent_in_all_proposed_teams(countrybcivilorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_135, plain, (the_agent_in_all_proposed_teams(countrybcivilorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_298, plain, (the_agent_in_all_proposed_teams(countrybcivilorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_183, plain, (the_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_230, plain, (the_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_175, plain, (the_agent_in_all_proposed_teams(sufferterragovernment,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_235, plain, (the_agent_in_all_proposed_teams(sufferterragovernment,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_95, plain, (any_agent_in_all_proposed_teams(countryahumanitarianorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_254, plain, (any_agent_in_all_proposed_teams(countryahumanitarianorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_153, plain, (any_agent_in_all_proposed_teams(countryacivilorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_259, plain, (any_agent_in_all_proposed_teams(countryacivilorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_159, plain, (any_agent_in_all_proposed_teams(countryafirstaidorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_240, plain, (any_agent_in_all_proposed_teams(countryafirstaidorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_203, plain, (any_agent_in_all_proposed_teams(christiancountrychumanitarianorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_146, plain, (any_agent_in_all_proposed_teams(christiancountrychumanitarianorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_333, plain, (any_agent_in_all_proposed_teams(christiancountrychumanitarianorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_210, plain, (any_agent_in_all_proposed_teams(countryccivilorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_131, plain, (any_agent_in_all_proposed_teams(countryccivilorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_310, plain, (any_agent_in_all_proposed_teams(countryccivilorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_227, plain, (any_agent_in_all_proposed_teams(countrybhumanitarianorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_112, plain, (any_agent_in_all_proposed_teams(countrybhumanitarianorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_291, plain, (any_agent_in_all_proposed_teams(countrybhumanitarianorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_194, plain, (any_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_101, plain, (any_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_338, plain, (any_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_222, plain, (any_agent_in_all_proposed_teams(countrycmedicalorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_139, plain, (any_agent_in_all_proposed_teams(countrycmedicalorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_322, plain, (any_agent_in_all_proposed_teams(countrycmedicalorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_127, plain, (any_agent_in_all_proposed_teams(countryamedicalorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_248, plain, (any_agent_in_all_proposed_teams(countryamedicalorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_170, plain, (any_agent_in_all_proposed_teams(countrybcivilorganization,countryahumanitarianorganization,townc))).
+#
+#cnf(i_0_136, plain, (any_agent_in_all_proposed_teams(countrybcivilorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_299, plain, (any_agent_in_all_proposed_teams(countrybcivilorganization,sufferterragovernment,towna))).
+#
+#cnf(i_0_184, plain, (any_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_231, plain, (any_agent_in_all_proposed_teams(christiansufferterrahumanitarianorganization,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_176, plain, (any_agent_in_all_proposed_teams(sufferterragovernment,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_236, plain, (any_agent_in_all_proposed_teams(sufferterragovernment,countrybhumanitarianorganization,cityb))).
+#
+#cnf(i_0_100, plain, (the_agent_not_in_any_proposed_teams(muslimcountrybhumanitarianorganization,countryacivilorganization,towna))).
+#
+#cnf(i_0_337, plain, (the_agent_not_in_any_proposed_teams(muslimcountrybhumanitarianorganization,sufferterragovernment,towna))).
+##
+#cnf(i_0_126, plain, (the_agent_not_in_any_proposed_teams(countryamedicalorganization,christiancountrychumanitarianorganization,coastvillage))).
+#
+#cnf(i_0_7, plain, (accept_city(X1,X2)|~the_agent_in_all_proposed_teams(X1,X3,X2))).
+#
+#cnf(i_0_8, plain, (accept_leader(X1,X2)|~the_agent_in_all_proposed_teams(X1,X2,X3))).
+##
+#cnf(i_0_9, plain, (accept_leader(X1,X2)|~any_agent_in_all_proposed_teams(X1,X2,X3))).
+#
+#cnf(i_0_984, plain, (rdn_non_zero(rdnn(X1))|~rdn_non_zero_digit(rdnn(X1)))).
+#
+#cnf(i_0_1084, plain, (rdn_non_zero(rdnn(n6)))).
+##
+#cnf(i_0_1085, plain, (rdn_non_zero(rdnn(n5)))).
+#
+#cnf(i_0_1086, plain, (rdn_non_zero(rdnn(n2)))).
+#
+#cnf(i_0_1087, plain, (rdn_non_zero(rdnn(n8)))).
+#
+#cnf(i_0_1088, plain, (rdn_non_zero(rdnn(n9)))).
+#
+#cnf(i_0_1089, plain, (rdn_non_zero(rdnn(n1)))).
+#
+#cnf(i_0_1090, plain, (rdn_non_zero(rdnn(n3)))).
+#
+#cnf(i_0_1091, plain, (rdn_non_zero(rdnn(n4)))).
+#
+#cnf(i_0_1092, plain, (rdn_non_zero(rdnn(n7)))).
+#
+#cnf(i_0_4, plain, (accept_city(X1,X2)|~accept_team(X1,X3,X2,X4))).
+#
+#cnf(i_0_3, plain, (accept_leader(X1,X2)|~accept_team(X1,X2,X3,X4))).
+#
+#cnf(i_0_2, plain, (accept_number(X1,X2)|~accept_team(X1,X3,X4,X2))).
+#
+#cnf(i_0_978, plain, (rdn_positive_less(rdnn(n7),rdnn(n8)))).
+#
+#cnf(i_0_975, plain, (rdn_positive_less(rdnn(n4),rdnn(n5)))).
+#
+#cnf(i_0_974, plain, (rdn_positive_less(rdnn(n3),rdnn(n4)))).
+#
+#cnf(i_0_972, plain, (rdn_positive_less(rdnn(n1),rdnn(n2)))).
+#
+#cnf(i_0_979, plain, (rdn_positive_less(rdnn(n8),rdnn(n9)))).
+#
+#cnf(i_0_971, plain, (rdn_positive_less(rdnn(n0),rdnn(n1)))).
+#
+#cnf(i_0_973, plain, (rdn_positive_less(rdnn(n2),rdnn(n3)))).
+#
+#cnf(i_0_976, plain, (rdn_positive_less(rdnn(n5),rdnn(n6)))).
+#
+#cnf(i_0_977, plain, (rdn_positive_less(rdnn(n6),rdnn(n7)))).
+#
+#cnf(i_0_713, plain, (rdn_translate(n7,rdn_pos(rdnn(n7))))).
+#
+#cnf(i_0_710, plain, (rdn_translate(n4,rdn_pos(rdnn(n4))))).
+#
+#cnf(i_0_709, plain, (rdn_translate(n3,rdn_pos(rdnn(n3))))).
+#
+#cnf(i_0_707, plain, (rdn_translate(n1,rdn_pos(rdnn(n1))))).
+#
+#cnf(i_0_715, plain, (rdn_translate(n9,rdn_pos(rdnn(n9))))).
+#
+#cnf(i_0_714, plain, (rdn_translate(n8,rdn_pos(rdnn(n8))))).
+#
+#cnf(i_0_706, plain, (rdn_translate(n0,rdn_pos(rdnn(n0))))).
+#
+#cnf(i_0_708, plain, (rdn_translate(n2,rdn_pos(rdnn(n2))))).
+#
+#cnf(i_0_711, plain, (rdn_translate(n5,rdn_pos(rdnn(n5))))).
+#
+#cnf(i_0_712, plain, (rdn_translate(n6,rdn_pos(rdnn(n6))))).
+#
+#cnf(i_0_834, plain, (rdn_translate(nn1,rdn_neg(rdnn(n1))))).
+#
+#cnf(i_0_835, plain, (rdn_translate(nn2,rdn_neg(rdnn(n2))))).
+#
+#cnf(i_0_836, plain, (rdn_translate(nn3,rdn_neg(rdnn(n3))))).
+#
+#cnf(i_0_837, plain, (rdn_translate(nn4,rdn_neg(rdnn(n4))))).
+#
+#cnf(i_0_838, plain, (rdn_translate(nn5,rdn_neg(rdnn(n5))))).
+#
+#cnf(i_0_839, plain, (rdn_translate(nn6,rdn_neg(rdnn(n6))))).
+#
+#cnf(i_0_840, plain, (rdn_translate(nn7,rdn_neg(rdnn(n7))))).
+#
+#cnf(i_0_841, plain, (rdn_translate(nn8,rdn_neg(rdnn(n8))))).
+#
+#cnf(i_0_842, plain, (rdn_translate(nn9,rdn_neg(rdnn(n9))))).
+#
+#cnf(i_0_92, plain, (accept_team(countryahumanitarianorganization,countryacivilorganization,coastvillage,n6))).
+#
+#cnf(i_0_91, plain, (accept_team(countryahumanitarianorganization,countryacivilorganization,towna,n6))).
+#
+#cnf(i_0_90, plain, (accept_team(countryahumanitarianorganization,countryacivilorganization,cityb,n6))).
+#
+#cnf(i_0_93, plain, (accept_team(countryahumanitarianorganization,countryafirstaidorganization,coastvillage,n6))).
+#
+#cnf(i_0_279, plain, (accept_team(countryahumanitarianorganization,sufferterragovernment,towna,n5))).
+#
+#cnf(i_0_280, plain, (accept_team(countryahumanitarianorganization,sufferterragovernment,towna,n6))).
+#
+#cnf(i_0_149, plain, (accept_team(countryacivilorganization,countryahumanitarianorganization,coastvillage,n5))).
+#
+#cnf(i_0_150, plain, (accept_team(countryacivilorganization,countryahumanitarianorganization,coastvillage,n6))).
+#
+#cnf(i_0_256, plain, (accept_team(countryacivilorganization,countryahumanitarianorganization,cityb,n6))).
+#
+#cnf(i_0_195, plain, (accept_team(countryacivilorganization,countryahumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_151, plain, (accept_team(countryacivilorganization,countryafirstaidorganization,coastvillage,n6))).
+#
+#cnf(i_0_312, plain, (accept_team(countryacivilorganization,sufferterragovernment,towna,n5))).
+#
+#cnf(i_0_314, plain, (accept_team(countryacivilorganization,sufferterragovernment,towna,n6))).
+#
+#cnf(i_0_155, plain, (accept_team(countryafirstaidorganization,countryahumanitarianorganization,coastvillage,n5))).
+#
+#cnf(i_0_156, plain, (accept_team(countryafirstaidorganization,countryahumanitarianorganization,coastvillage,n6))).
+#
+#cnf(i_0_237, plain, (accept_team(countryafirstaidorganization,countryahumanitarianorganization,cityb,n6))).
+#
+#cnf(i_0_196, plain, (accept_team(countryafirstaidorganization,countryahumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_157, plain, (accept_team(countryafirstaidorganization,countryacivilorganization,coastvillage,n6))).
+#
+#cnf(i_0_147, plain, (accept_team(countryafirstaidorganization,countryacivilorganization,towna,n6))).
+#
+#cnf(i_0_105, plain, (accept_team(countryafirstaidorganization,countryacivilorganization,cityb,n6))).
+#
+#cnf(i_0_241, plain, (accept_team(countryafirstaidorganization,sufferterragovernment,towna,n5))).
+#
+#cnf(i_0_242, plain, (accept_team(countryafirstaidorganization,sufferterragovernment,towna,n6))).
+#
+#cnf(i_0_325, plain, (accept_team(christiancountrychumanitarianorganization,countryccivilorganization,towna,n4))).
+#
+#cnf(i_0_197, plain, (accept_team(christiancountrychumanitarianorganization,countryccivilorganization,townc,n4))).
+#
+#cnf(i_0_329, plain, (accept_team(christiancountrychumanitarianorganization,countrybhumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_104, plain, (accept_team(christiancountrychumanitarianorganization,countrybhumanitarianorganization,cityb,n4))).
+#
+#cnf(i_0_251, plain, (accept_team(christiancountrychumanitarianorganization,countrybhumanitarianorganization,cityb,n5))).
+#
+#cnf(i_0_252, plain, (accept_team(christiancountrychumanitarianorganization,countrybhumanitarianorganization,cityb,n6))).
+#
+#cnf(i_0_200, plain, (accept_team(christiancountrychumanitarianorganization,countrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_198, plain, (accept_team(christiancountrychumanitarianorganization,muslimcountrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_142, plain, (accept_team(christiancountrychumanitarianorganization,countrycmedicalorganization,towna,n4))).
+#
+#cnf(i_0_144, plain, (accept_team(christiancountrychumanitarianorganization,countrycmedicalorganization,towna,n5))).
+#
+#cnf(i_0_330, plain, (accept_team(christiancountrychumanitarianorganization,countrycmedicalorganization,towna,n6))).
+#
+#cnf(i_0_201, plain, (accept_team(christiancountrychumanitarianorganization,countrycmedicalorganization,townc,n6))).
+#
+#cnf(i_0_327, plain, (accept_team(christiancountrychumanitarianorganization,countrybcivilorganization,towna,n6))).
+#
+#cnf(i_0_199, plain, (accept_team(christiancountrychumanitarianorganization,countrybcivilorganization,townc,n6))).
+#
+#cnf(i_0_96, plain, (accept_team(countryccivilorganization,countrybhumanitarianorganization,cityb,n2))).
+#
+#cnf(i_0_128, plain, (accept_team(countryccivilorganization,countrycmedicalorganization,towna,n4))).
+#
+#cnf(i_0_1206, plain, (accept_leader(countryccivilorganization,countrycmedicalorganization))).
+#
+#cnf(i_0_113, plain, (accept_team(countrybhumanitarianorganization,christiancountrychumanitarianorganization,coastvillage,n5))).
+#
+#cnf(i_0_114, plain, (accept_team(countrybhumanitarianorganization,christiancountrychumanitarianorganization,coastvillage,n6))).
+#
+#cnf(i_0_283, plain, (accept_team(countrybhumanitarianorganization,christiancountrychumanitarianorganization,towna,n3))).
+#
+#cnf(i_0_288, plain, (accept_team(countrybhumanitarianorganization,christiancountrychumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_224, plain, (accept_team(countrybhumanitarianorganization,christiancountrychumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_285, plain, (accept_team(countrybhumanitarianorganization,countryccivilorganization,towna,n3))).
+#
+#cnf(i_0_212, plain, (accept_team(countrybhumanitarianorganization,muslimcountrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_284, plain, (accept_team(countrybhumanitarianorganization,countrycmedicalorganization,towna,n3))).
+#
+#cnf(i_0_289, plain, (accept_team(countrybhumanitarianorganization,countrycmedicalorganization,towna,n6))).
+#
+#cnf(i_0_225, plain, (accept_team(countrybhumanitarianorganization,countrycmedicalorganization,townc,n6))).
+#
+#cnf(i_0_282, plain, (accept_team(countrybhumanitarianorganization,countrybcivilorganization,towna,n3))).
+#
+#cnf(i_0_287, plain, (accept_team(countrybhumanitarianorganization,countrybcivilorganization,towna,n6))).
+#
+#cnf(i_0_211, plain, (accept_team(countrybhumanitarianorganization,countrybcivilorganization,townc,n2))).
+#
+#cnf(i_0_223, plain, (accept_team(countrybhumanitarianorganization,countrybcivilorganization,townc,n6))).
+#
+#cnf(i_0_102, plain, (accept_team(muslimcountrybhumanitarianorganization,christiancountrychumanitarianorganization,coastvillage,n5))).
+#
+#cnf(i_0_186, plain, (accept_team(muslimcountrybhumanitarianorganization,christiancountrychumanitarianorganization,coastvillage,n6))).
+#
+#cnf(i_0_191, plain, (accept_team(muslimcountrybhumanitarianorganization,christiancountrychumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_188, plain, (accept_team(muslimcountrybhumanitarianorganization,countryccivilorganization,townc,n4))).
+#
+#cnf(i_0_97, plain, (accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,cityb,n4))).
+#
+#cnf(i_0_261, plain, (accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,cityb,n5))).
+#
+#cnf(i_0_262, plain, (accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,cityb,n6))).
+#
+#cnf(i_0_190, plain, (accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_192, plain, (accept_team(muslimcountrybhumanitarianorganization,countrycmedicalorganization,townc,n6))).
+#
+#cnf(i_0_189, plain, (accept_team(muslimcountrybhumanitarianorganization,countrybcivilorganization,townc,n6))).
+#
+#cnf(i_0_140, plain, (accept_team(countrycmedicalorganization,christiancountrychumanitarianorganization,coastvillage,n5))).
+#
+#cnf(i_0_185, plain, (accept_team(countrycmedicalorganization,christiancountrychumanitarianorganization,coastvillage,n6))).
+#
+#cnf(i_0_320, plain, (accept_team(countrycmedicalorganization,christiancountrychumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_220, plain, (accept_team(countrycmedicalorganization,christiancountrychumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_317, plain, (accept_team(countrycmedicalorganization,countryccivilorganization,towna,n4))).
+#
+#cnf(i_0_216, plain, (accept_team(countrycmedicalorganization,countryccivilorganization,townc,n4))).
+#
+#cnf(i_0_319, plain, (accept_team(countrycmedicalorganization,countrybhumanitarianorganization,towna,n6))).
+#
+#cnf(i_0_243, plain, (accept_team(countrycmedicalorganization,countrybhumanitarianorganization,cityb,n5))).
+#
+#cnf(i_0_244, plain, (accept_team(countrycmedicalorganization,countrybhumanitarianorganization,cityb,n6))).
+#
+#cnf(i_0_219, plain, (accept_team(countrycmedicalorganization,countrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_217, plain, (accept_team(countrycmedicalorganization,muslimcountrybhumanitarianorganization,townc,n6))).
+#
+#cnf(i_0_318, plain, (accept_team(countrycmedicalorganization,countrybcivilorganization,towna,n6))).
+#
+#cnf(i_0_218, plain, (accept_team(countrycmedicalorganization,countrybcivilorganization,townc,n6))).
+#
+#cnf(i_0_245, plain, (accept_team(countryamedicalorganization,countryahumanitarianorganization,cityb,n6))).
+#
+#cnf(i_0_215, plain, (accept_team(countryamedicalorganization,countryahumanitarianorganization,townc,n6))).
+#
+# Proof found!
+# SZS status Theorem
+# SZS output start CNFRefutation
+fof(query_1, conjecture, accept_team(countryamedicalorganization,countryacivilorganization,towna,n6), file('./p/AGT001+2.tptp', query_1)).
+fof(event_27, axiom, accept_team(countryamedicalorganization,countryacivilorganization,towna,n6), file('./p/AGT001+2.tptp', event_27)).
+fof(c_0_2, negated_conjecture, ~(accept_team(countryamedicalorganization,countryacivilorganization,towna,n6)), inference(assume_negation,[status(cth)],[query_1])).
+fof(c_0_3, negated_conjecture, ~accept_team(countryamedicalorganization,countryacivilorganization,towna,n6), inference(fof_simplification,[status(thm)],[c_0_2])).
+cnf(c_0_4, plain, (accept_team(countryamedicalorganization,countryacivilorganization,towna,n6)), inference(split_conjunct,[status(thm)],[event_27])).
+cnf(c_0_5, negated_conjecture, (~accept_team(countryamedicalorganization,countryacivilorganization,towna,n6)), inference(split_conjunct,[status(thm)],[c_0_3])).
+cnf(c_0_6, plain, ($false), inference(sr,[status(thm)],[c_0_4, c_0_5]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 7
+# Proof object clause steps            : 3
+# Proof object formula steps           : 4
+# Proof object conjectures             : 4
+# Proof object clause conjectures      : 1
+# Proof object formula conjectures     : 3
+# Proof object initial clauses used    : 2
+# Proof object initial formulas used   : 2
+# Proof object generating inferences   : 0
+# Proof object simplifying inferences  : 1
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 923
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 996
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 996
+# Processed clauses                    : 646
+# ...of these trivial                  : 37
+# ...subsumed                          : 3
+# ...remaining for further processing  : 605
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 0
+# Backward-rewritten                   : 0
+# Generated clauses                    : 327
+# ...of the previous two non-trivial   : 13
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 327
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 605
+#    Positive orientable unit clauses  : 546
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 46
+#    Non-unit-clauses                  : 13
+# Current number of unprocessed clauses: 363
+# ...number of literals in the above   : 521
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 0
+# Clause-clause subsumption calls (NU) : 17
+# Rec. Clause-clause subsumption calls : 11
+# Non-unit clause-clause subsumptions  : 0
+# Unit Clause-clause subsumption calls : 845
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 298
+# BW rewrite match successes           : 0
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 36874

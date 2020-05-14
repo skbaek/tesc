@@ -1,0 +1,313 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_80, plain, (monday(X1)|~sunday(yesterday(X1)))).
+#
+#cnf(i_0_74, plain, (tuesday(X1)|~monday(yesterday(X1)))).
+#
+#cnf(i_0_75, plain, (wednesday(X1)|~tuesday(yesterday(X1)))).
+#
+#cnf(i_0_102, negated_conjecture, (~thursday(today))).
+#
+#cnf(i_0_76, plain, (thursday(X1)|~wednesday(yesterday(X1)))).
+#
+#cnf(i_0_77, plain, (friday(X1)|~thursday(yesterday(X1)))).
+#
+#cnf(i_0_78, plain, (saturday(X1)|~friday(yesterday(X1)))).
+#
+#cnf(i_0_53, plain, (~tuesday(X1)|~monday(X1))).
+#
+#cnf(i_0_79, plain, (sunday(X1)|~saturday(yesterday(X1)))).
+#
+#cnf(i_0_81, plain, (monday(yesterday(X1))|~tuesday(X1))).
+#
+#cnf(i_0_82, plain, (tuesday(yesterday(X1))|~wednesday(X1))).
+#
+#cnf(i_0_54, plain, (~wednesday(X1)|~monday(X1))).
+#
+#cnf(i_0_83, plain, (wednesday(yesterday(X1))|~thursday(X1))).
+#
+#cnf(i_0_84, plain, (thursday(yesterday(X1))|~friday(X1))).
+#
+#cnf(i_0_85, plain, (friday(yesterday(X1))|~saturday(X1))).
+#
+#cnf(i_0_55, plain, (~thursday(X1)|~monday(X1))).
+#
+#cnf(i_0_86, plain, (saturday(yesterday(X1))|~sunday(X1))).
+#
+#cnf(i_0_87, plain, (sunday(yesterday(X1))|~monday(X1))).
+#
+#cnf(i_0_90, plain, (member(X1,lying_days(lion))|~monday(X1))).
+#
+#cnf(i_0_56, plain, (~friday(X1)|~monday(X1))).
+#
+#cnf(i_0_91, plain, (member(X1,lying_days(lion))|~tuesday(X1))).
+#
+#cnf(i_0_92, plain, (member(X1,lying_days(lion))|~wednesday(X1))).
+#
+#cnf(i_0_93, plain, (member(X1,lying_days(unicorn))|~thursday(X1))).
+#
+#cnf(i_0_57, plain, (~saturday(X1)|~monday(X1))).
+#
+#cnf(i_0_94, plain, (member(X1,lying_days(unicorn))|~friday(X1))).
+#
+#cnf(i_0_95, plain, (member(X1,lying_days(unicorn))|~saturday(X1))).
+#
+#cnf(i_0_100, plain, (admits(lion,today,yesterday(today)))).
+#
+#cnf(i_0_58, plain, (~sunday(X1)|~monday(X1))).
+#
+#cnf(i_0_101, plain, (admits(unicorn,today,yesterday(today)))).
+#
+#cnf(i_0_88, plain, (wednesday(X1)|tuesday(X1)|monday(X1)|~member(X1,lying_days(lion)))).
+#
+#cnf(i_0_89, plain, (saturday(X1)|friday(X1)|thursday(X1)|~member(X1,lying_days(unicorn)))).
+#
+#cnf(i_0_59, plain, (~wednesday(X1)|~tuesday(X1))).
+#
+#cnf(i_0_99, plain, (admits(X2,X1,X3)|member(X3,lying_days(X2))|~member(X1,lying_days(X2)))).
+#
+#cnf(i_0_97, plain, (admits(X2,X1,X3)|member(X1,lying_days(X2))|~member(X3,lying_days(X2)))).
+#
+#cnf(i_0_96, plain, (member(X3,lying_days(X2))|member(X1,lying_days(X2))|~admits(X2,X1,X3))).
+#
+#cnf(i_0_60, plain, (~thursday(X1)|~tuesday(X1))).
+#
+#cnf(i_0_123, plain, (member(yesterday(today),lying_days(unicorn))|member(today,lying_days(unicorn)))).
+#
+#cnf(i_0_124, plain, (member(yesterday(today),lying_days(lion))|member(today,lying_days(lion)))).
+#
+#cnf(i_0_52, plain, (sunday(X1)|saturday(X1)|friday(X1)|thursday(X1)|wednesday(X1)|tuesday(X1)|monday(X1))).
+#
+#cnf(i_0_61, plain, (~friday(X1)|~tuesday(X1))).
+#
+#cnf(i_0_128, plain, (member(today,lying_days(unicorn))|saturday(yesterday(today))|friday(yesterday(today))|thursday(yesterday(today)))).
+#
+#cnf(i_0_134, plain, (member(today,lying_days(unicorn))|sunday(today)|friday(yesterday(today))|thursday(yesterday(today)))).
+#
+#cnf(i_0_137, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|thursday(yesterday(today)))).
+#
+#cnf(i_0_62, plain, (~saturday(X1)|~tuesday(X1))).
+#
+#cnf(i_0_140, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|friday(today))).
+#
+#cnf(i_0_143, plain, (sunday(today)|saturday(today)|friday(today))).
+#
+#cnf(i_0_144, plain, (saturday(today)|friday(today)|~monday(today))).
+#
+#cnf(i_0_63, plain, (~sunday(X1)|~tuesday(X1))).
+#
+#cnf(i_0_145, plain, (friday(today)|~monday(today))).
+#
+#cnf(i_0_147, plain, (saturday(today)|friday(today)|~tuesday(today))).
+#
+#cnf(i_0_153, plain, (friday(today)|~tuesday(today))).
+#
+#cnf(i_0_150, plain, (~monday(today))).
+#
+#cnf(i_0_138, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|~monday(yesterday(today)))).
+#
+#cnf(i_0_156, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|~tuesday(today))).
+##
+#cnf(i_0_155, plain, (~tuesday(today))).
+#
+#cnf(i_0_139, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|~tuesday(yesterday(today)))).
+#
+#cnf(i_0_158, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|~wednesday(today))).
+##
+#cnf(i_0_64, plain, (~thursday(X1)|~wednesday(X1))).
+#
+#cnf(i_0_160, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|~wednesday(yesterday(today)))).
+##
+#cnf(i_0_135, plain, (member(today,lying_days(unicorn))|sunday(today)|thursday(yesterday(today))|~monday(yesterday(today)))).
+#
+#cnf(i_0_65, plain, (~friday(X1)|~wednesday(X1))).
+#
+#cnf(i_0_163, plain, (member(today,lying_days(unicorn))|sunday(today)|~monday(yesterday(today)))).
+##
+#cnf(i_0_136, plain, (member(today,lying_days(unicorn))|sunday(today)|thursday(yesterday(today))|~tuesday(yesterday(today)))).
+#
+#cnf(i_0_66, plain, (~saturday(X1)|~wednesday(X1))).
+#
+#cnf(i_0_173, plain, (member(today,lying_days(unicorn))|sunday(today)|~tuesday(yesterday(today)))).
+#
+#cnf(i_0_178, plain, (member(today,lying_days(unicorn))|sunday(today)|~wednesday(today))).
+##
+#cnf(i_0_67, plain, (~sunday(X1)|~wednesday(X1))).
+#
+#cnf(i_0_180, plain, (saturday(today)|friday(today)|~wednesday(today))).
+#
+#cnf(i_0_185, plain, (friday(today)|~wednesday(today))).
+#
+#cnf(i_0_169, plain, (member(today,lying_days(unicorn))|sunday(today)|thursday(yesterday(today))|~wednesday(yesterday(today)))).
+#
+#cnf(i_0_188, plain, (~wednesday(today))).
+#
+#cnf(i_0_191, plain, (member(today,lying_days(unicorn))|sunday(today)|~wednesday(yesterday(today)))).
+##
+#cnf(i_0_133, plain, (member(today,lying_days(unicorn))|friday(yesterday(today))|thursday(yesterday(today))|~monday(yesterday(today)))).
+#
+#cnf(i_0_68, plain, (~friday(X1)|~thursday(X1))).
+#
+#cnf(i_0_194, plain, (member(today,lying_days(unicorn))|thursday(yesterday(today))|~monday(yesterday(today)))).
+#
+#cnf(i_0_204, plain, (member(today,lying_days(unicorn))|~monday(yesterday(today)))).
+##
+#cnf(i_0_69, plain, (~saturday(X1)|~thursday(X1))).
+#
+#cnf(i_0_141, plain, (member(today,lying_days(unicorn))|friday(yesterday(today))|thursday(yesterday(today))|~tuesday(yesterday(today)))).
+#
+#cnf(i_0_212, plain, (member(today,lying_days(unicorn))|thursday(yesterday(today))|~tuesday(yesterday(today)))).
+#
+#cnf(i_0_217, plain, (member(today,lying_days(unicorn))|~tuesday(yesterday(today)))).
+#
+#cnf(i_0_70, plain, (~sunday(X1)|~thursday(X1))).
+###
+#cnf(i_0_176, plain, (member(today,lying_days(unicorn))|friday(yesterday(today))|thursday(yesterday(today))|~wednesday(yesterday(today)))).
+#
+#cnf(i_0_71, plain, (~saturday(X1)|~friday(X1))).
+#
+#cnf(i_0_226, plain, (member(today,lying_days(unicorn))|thursday(yesterday(today))|~wednesday(yesterday(today)))).
+#
+#cnf(i_0_233, plain, (member(today,lying_days(unicorn))|~wednesday(yesterday(today)))).
+##
+#cnf(i_0_72, plain, (~sunday(X1)|~friday(X1))).
+#
+#cnf(i_0_129, plain, (member(today,lying_days(lion))|wednesday(yesterday(today))|tuesday(yesterday(today))|monday(yesterday(today)))).
+#
+#cnf(i_0_241, plain, (member(today,lying_days(lion))|tuesday(yesterday(today))|monday(yesterday(today)))).
+#
+#cnf(i_0_244, plain, (member(today,lying_days(lion))|monday(yesterday(today)))).
+#
+#cnf(i_0_73, plain, (~sunday(X1)|~saturday(X1))).
+#
+#cnf(i_0_246, plain, (member(today,lying_days(lion)))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(admissions1, axiom, (member(X1,lying_days(X2))|member(X3,lying_days(X2))|~admits(X2,X1,X3)), file('./p/PUZ005-1.tptp', admissions1)).
+cnf(admissions6, axiom, (admits(unicorn,today,yesterday(today))), file('./p/PUZ005-1.tptp', admissions6)).
+cnf(unicorns_lying_days, axiom, (thursday(X1)|friday(X1)|saturday(X1)|~member(X1,lying_days(unicorn))), file('./p/PUZ005-1.tptp', unicorns_lying_days)).
+cnf(saturday_yesterday, axiom, (sunday(X1)|~saturday(yesterday(X1))), file('./p/PUZ005-1.tptp', saturday_yesterday)).
+cnf(friday_yesterday, axiom, (saturday(X1)|~friday(yesterday(X1))), file('./p/PUZ005-1.tptp', friday_yesterday)).
+cnf(thursday_yesterday, axiom, (friday(X1)|~thursday(yesterday(X1))), file('./p/PUZ005-1.tptp', thursday_yesterday)).
+cnf(prove_today_is_thursday, negated_conjecture, (~thursday(today)), file('./p/PUZ005-1.tptp', prove_today_is_thursday)).
+cnf(admissions5, axiom, (admits(lion,today,yesterday(today))), file('./p/PUZ005-1.tptp', admissions5)).
+cnf(wednesday_not_sunday, axiom, (~wednesday(X1)|~sunday(X1)), file('./p/PUZ005-1.tptp', wednesday_not_sunday)).
+cnf(lions_lying_days, axiom, (monday(X1)|tuesday(X1)|wednesday(X1)|~member(X1,lying_days(lion))), file('./p/PUZ005-1.tptp', lions_lying_days)).
+cnf(wednesday_not_saturday, axiom, (~wednesday(X1)|~saturday(X1)), file('./p/PUZ005-1.tptp', wednesday_not_saturday)).
+cnf(tuesday_not_sunday, axiom, (~tuesday(X1)|~sunday(X1)), file('./p/PUZ005-1.tptp', tuesday_not_sunday)).
+cnf(wednesday_yesterday, axiom, (thursday(X1)|~wednesday(yesterday(X1))), file('./p/PUZ005-1.tptp', wednesday_yesterday)).
+cnf(wednesday_not_friday, axiom, (~wednesday(X1)|~friday(X1)), file('./p/PUZ005-1.tptp', wednesday_not_friday)).
+cnf(tuesday_not_saturday, axiom, (~tuesday(X1)|~saturday(X1)), file('./p/PUZ005-1.tptp', tuesday_not_saturday)).
+cnf(monday_not_sunday, axiom, (~monday(X1)|~sunday(X1)), file('./p/PUZ005-1.tptp', monday_not_sunday)).
+cnf(tuesday_yesterday, axiom, (wednesday(X1)|~tuesday(yesterday(X1))), file('./p/PUZ005-1.tptp', tuesday_yesterday)).
+cnf(tuesday_not_friday, axiom, (~tuesday(X1)|~friday(X1)), file('./p/PUZ005-1.tptp', tuesday_not_friday)).
+cnf(monday_not_saturday, axiom, (~monday(X1)|~saturday(X1)), file('./p/PUZ005-1.tptp', monday_not_saturday)).
+cnf(monday_yesterday, axiom, (tuesday(X1)|~monday(yesterday(X1))), file('./p/PUZ005-1.tptp', monday_yesterday)).
+cnf(monday_not_friday, axiom, (~monday(X1)|~friday(X1)), file('./p/PUZ005-1.tptp', monday_not_friday)).
+cnf(c_0_21, axiom, (member(X1,lying_days(X2))|member(X3,lying_days(X2))|~admits(X2,X1,X3)), admissions1).
+cnf(c_0_22, axiom, (admits(unicorn,today,yesterday(today))), admissions6).
+cnf(c_0_23, axiom, (thursday(X1)|friday(X1)|saturday(X1)|~member(X1,lying_days(unicorn))), unicorns_lying_days).
+cnf(c_0_24, plain, (member(yesterday(today),lying_days(unicorn))|member(today,lying_days(unicorn))), inference(pm,[status(thm)],[c_0_21, c_0_22])).
+cnf(c_0_25, axiom, (sunday(X1)|~saturday(yesterday(X1))), saturday_yesterday).
+cnf(c_0_26, plain, (member(today,lying_days(unicorn))|saturday(yesterday(today))|friday(yesterday(today))|thursday(yesterday(today))), inference(pm,[status(thm)],[c_0_23, c_0_24])).
+cnf(c_0_27, axiom, (saturday(X1)|~friday(yesterday(X1))), friday_yesterday).
+cnf(c_0_28, plain, (member(today,lying_days(unicorn))|sunday(today)|friday(yesterday(today))|thursday(yesterday(today))), inference(pm,[status(thm)],[c_0_25, c_0_26])).
+cnf(c_0_29, axiom, (friday(X1)|~thursday(yesterday(X1))), thursday_yesterday).
+cnf(c_0_30, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|thursday(yesterday(today))), inference(pm,[status(thm)],[c_0_27, c_0_28])).
+cnf(c_0_31, plain, (member(today,lying_days(unicorn))|sunday(today)|saturday(today)|friday(today)), inference(pm,[status(thm)],[c_0_29, c_0_30])).
+cnf(c_0_32, negated_conjecture, (~thursday(today)), prove_today_is_thursday).
+cnf(c_0_33, axiom, (admits(lion,today,yesterday(today))), admissions5).
+cnf(c_0_34, axiom, (~wednesday(X1)|~sunday(X1)), wednesday_not_sunday).
+cnf(c_0_35, plain, (sunday(today)|saturday(today)|friday(today)), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_23, c_0_31]), c_0_32])).
+cnf(c_0_36, axiom, (monday(X1)|tuesday(X1)|wednesday(X1)|~member(X1,lying_days(lion))), lions_lying_days).
+cnf(c_0_37, plain, (member(yesterday(today),lying_days(lion))|member(today,lying_days(lion))), inference(pm,[status(thm)],[c_0_21, c_0_33])).
+cnf(c_0_38, axiom, (~wednesday(X1)|~saturday(X1)), wednesday_not_saturday).
+cnf(c_0_39, plain, (saturday(today)|friday(today)|~wednesday(today)), inference(pm,[status(thm)],[c_0_34, c_0_35])).
+cnf(c_0_40, axiom, (~tuesday(X1)|~sunday(X1)), tuesday_not_sunday).
+cnf(c_0_41, axiom, (thursday(X1)|~wednesday(yesterday(X1))), wednesday_yesterday).
+cnf(c_0_42, plain, (member(today,lying_days(lion))|wednesday(yesterday(today))|tuesday(yesterday(today))|monday(yesterday(today))), inference(pm,[status(thm)],[c_0_36, c_0_37])).
+cnf(c_0_43, axiom, (~wednesday(X1)|~friday(X1)), wednesday_not_friday).
+cnf(c_0_44, plain, (friday(today)|~wednesday(today)), inference(pm,[status(thm)],[c_0_38, c_0_39])).
+cnf(c_0_45, axiom, (~tuesday(X1)|~saturday(X1)), tuesday_not_saturday).
+cnf(c_0_46, plain, (saturday(today)|friday(today)|~tuesday(today)), inference(pm,[status(thm)],[c_0_40, c_0_35])).
+cnf(c_0_47, axiom, (~monday(X1)|~sunday(X1)), monday_not_sunday).
+cnf(c_0_48, axiom, (wednesday(X1)|~tuesday(yesterday(X1))), tuesday_yesterday).
+cnf(c_0_49, plain, (member(today,lying_days(lion))|tuesday(yesterday(today))|monday(yesterday(today))), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_41, c_0_42]), c_0_32])).
+cnf(c_0_50, plain, (~wednesday(today)), inference(pm,[status(thm)],[c_0_43, c_0_44])).
+cnf(c_0_51, axiom, (~tuesday(X1)|~friday(X1)), tuesday_not_friday).
+cnf(c_0_52, plain, (friday(today)|~tuesday(today)), inference(pm,[status(thm)],[c_0_45, c_0_46])).
+cnf(c_0_53, axiom, (~monday(X1)|~saturday(X1)), monday_not_saturday).
+cnf(c_0_54, plain, (saturday(today)|friday(today)|~monday(today)), inference(pm,[status(thm)],[c_0_47, c_0_35])).
+cnf(c_0_55, axiom, (tuesday(X1)|~monday(yesterday(X1))), monday_yesterday).
+cnf(c_0_56, plain, (member(today,lying_days(lion))|monday(yesterday(today))), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_48, c_0_49]), c_0_50])).
+cnf(c_0_57, plain, (~tuesday(today)), inference(pm,[status(thm)],[c_0_51, c_0_52])).
+cnf(c_0_58, axiom, (~monday(X1)|~friday(X1)), monday_not_friday).
+cnf(c_0_59, plain, (friday(today)|~monday(today)), inference(pm,[status(thm)],[c_0_53, c_0_54])).
+cnf(c_0_60, plain, (member(today,lying_days(lion))), inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_55, c_0_56]), c_0_57])).
+cnf(c_0_61, plain, (~monday(today)), inference(pm,[status(thm)],[c_0_58, c_0_59])).
+cnf(c_0_62, plain, ($false), inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(sr,[status(thm)],[inference(pm,[status(thm)],[c_0_36, c_0_60]), c_0_50]), c_0_57]), c_0_61]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 63
+# Proof object clause steps            : 42
+# Proof object formula steps           : 21
+# Proof object conjectures             : 2
+# Proof object clause conjectures      : 1
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 21
+# Proof object initial formulas used   : 21
+# Proof object generating inferences   : 21
+# Proof object simplifying inferences  : 7
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 51
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 51
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 51
+# Processed clauses                    : 101
+# ...of these trivial                  : 0
+# ...subsumed                          : 10
+# ...remaining for further processing  : 91
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 22
+# Backward-rewritten                   : 2
+# Generated clauses                    : 149
+# ...of the previous two non-trivial   : 116
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 149
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 67
+#    Positive orientable unit clauses  : 3
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 4
+#    Non-unit-clauses                  : 60
+# Current number of unprocessed clauses: 35
+# ...number of literals in the above   : 79
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 24
+# Clause-clause subsumption calls (NU) : 149
+# Rec. Clause-clause subsumption calls : 70
+# Non-unit clause-clause subsumptions  : 25
+# Unit Clause-clause subsumption calls : 48
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 1
+# BW rewrite match successes           : 1
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 1928

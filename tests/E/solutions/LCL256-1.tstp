@@ -1,0 +1,2278 @@
+# Initializing proof state
+# Scanning for AC axioms
+#
+#cnf(i_0_6, plain, (is_a_theorem(X2)|~is_a_theorem(implies(X1,X2))|~is_a_theorem(X1))).
+#
+#cnf(i_0_9, plain, (is_a_theorem(implies(X1,implies(not(X1),X2))))).
+#
+#cnf(i_0_11, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(X1))).
+#
+#cnf(i_0_10, negated_conjecture, (~is_a_theorem(not(not(implies(p,p)))))).
+#
+#cnf(i_0_12, plain, (is_a_theorem(X1)|~is_a_theorem(not(X2))|~is_a_theorem(X2))).
+#
+#cnf(i_0_8, plain, (is_a_theorem(implies(implies(not(X1),X1),X1)))).
+#
+#cnf(i_0_16, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X1)))).
+#
+#cnf(i_0_13, negated_conjecture, (~is_a_theorem(not(X1))|~is_a_theorem(X1))).
+#
+#cnf(i_0_7, plain, (is_a_theorem(implies(implies(X1,X2),implies(implies(X2,X3),implies(X1,X3)))))).
+#
+#cnf(i_0_19, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X2)))|~is_a_theorem(implies(X3,X1)))).
+#
+#cnf(i_0_20, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(implies(X1,X3)))).
+#
+#cnf(i_0_28, plain, (is_a_theorem(implies(implies(not(X1),X1),X2))|~is_a_theorem(implies(X1,X2)))).
+#
+#cnf(i_0_21, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(X2,X1)))).
+#
+#cnf(i_0_38, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(X2)))|~is_a_theorem(X2))).
+#
+#cnf(i_0_40, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(not(X1),X1))))).
+#
+#cnf(i_0_29, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(not(X1),X3),X2)))).
+#
+#cnf(i_0_53, plain, (is_a_theorem(implies(X1,X1)))).
+##
+#cnf(i_0_33, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(not(X2),X2))))).
+##
+#cnf(i_0_35, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X2),X2))|~is_a_theorem(implies(X2,X1)))).
+##
+#cnf(i_0_72, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(not(X1),X1)))).
+####
+#cnf(i_0_77, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X2),X2))|~is_a_theorem(not(X2)))).
+#
+#cnf(i_0_87, negated_conjecture, (~is_a_theorem(implies(not(X1),X1))|~is_a_theorem(not(X1)))).
+###
+#cnf(i_0_52, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X2,not(X1))))).
+##
+#cnf(i_0_112, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(not(X1)))))).
+##
+#cnf(i_0_119, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(X1))))).
+#
+#cnf(i_0_105, negated_conjecture, (~is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(X2,X1))|~is_a_theorem(not(X1)))).
+#
+#cnf(i_0_135, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(X2))).
+##
+#cnf(i_0_152, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(X1))))).
+####
+#cnf(i_0_153, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(X1)))).
+############
+#cnf(i_0_171, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(X2))))).
+#####
+#cnf(i_0_156, negated_conjecture, (~is_a_theorem(implies(X2,X1))|~is_a_theorem(not(X1))|~is_a_theorem(X2))).
+##
+#cnf(i_0_188, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(not(X1))))))).
+#
+#cnf(i_0_136, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),X2)))).
+###########
+#cnf(i_0_189, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(X1)))))).
+######
+#cnf(i_0_211, negated_conjecture, (~is_a_theorem(not(implies(not(X1),X2)))|~is_a_theorem(X1))).
+#
+#cnf(i_0_190, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),X1)))))).
+#
+#cnf(i_0_187, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(X2))))|~is_a_theorem(X2))).
+##
+#cnf(i_0_258, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(X1))).
+#####
+#cnf(i_0_168, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(X3))).
+##########
+#cnf(i_0_312, plain, (is_a_theorem(implies(X1,implies(not(X2),X3)))|~is_a_theorem(X2))).
+############
+#cnf(i_0_178, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(X2)))|~is_a_theorem(implies(X2,X1)))).
+###########
+#cnf(i_0_182, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X2))|~is_a_theorem(not(X2)))).
+#####
+#cnf(i_0_358, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(not(X1)),X2))))).
+####
+#cnf(i_0_286, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(X1))))|~is_a_theorem(X2))).
+#
+#cnf(i_0_192, negated_conjecture, (~is_a_theorem(not(not(X2)))|~is_a_theorem(implies(X2,X1))|~is_a_theorem(not(X1)))).
+############
+#cnf(i_0_391, negated_conjecture, (~is_a_theorem(not(implies(not(X1),X2)))|~is_a_theorem(not(not(X1))))).
+####
+#cnf(i_0_389, negated_conjecture, (~is_a_theorem(not(not(implies(not(X1),X1))))|~is_a_theorem(not(X1)))).
+#
+#cnf(i_0_179, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(not(X1),X3))))).
+########
+#cnf(i_0_240, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(not(X2))))))).
+########
+#cnf(i_0_288, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,implies(not(X1),X1)))|~is_a_theorem(X2))).
+#######
+#cnf(i_0_137, negated_conjecture, (~is_a_theorem(implies(not(X1),not(X2)))|~is_a_theorem(not(X1))|~is_a_theorem(X2))).
+#####
+#cnf(i_0_322, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(X2),X3),X1))|~is_a_theorem(X2))).
+############
+#cnf(i_0_285, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,not(X2)))|~is_a_theorem(X2)|~is_a_theorem(X3))).
+###
+#cnf(i_0_503, negated_conjecture, (~is_a_theorem(implies(X1,not(X2)))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+##########
+#cnf(i_0_325, plain, (is_a_theorem(implies(not(implies(not(X1),X2)),X3))|~is_a_theorem(X1))).
+##############
+#cnf(i_0_560, negated_conjecture, (~is_a_theorem(implies(not(not(X1)),not(X1)))|~is_a_theorem(X1))).
+######
+#cnf(i_0_185, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,X3))|~is_a_theorem(not(X3)))).
+################
+#cnf(i_0_643, plain, (is_a_theorem(implies(implies(not(X1),X1),X2))|~is_a_theorem(not(X1)))).
+############
+#cnf(i_0_64, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(implies(not(X2),X1)))).
+#####
+#cnf(i_0_30, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,not(X3)))|~is_a_theorem(X3))).
+#########
+#cnf(i_0_602, negated_conjecture, (~is_a_theorem(not(not(not(not(not(X1))))))|~is_a_theorem(X1))).
+#######
+#cnf(i_0_287, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,not(X1)))|~is_a_theorem(X3))).
+#################
+#cnf(i_0_605, negated_conjecture, (~is_a_theorem(not(implies(not(not(not(X1))),X2)))|~is_a_theorem(X1))).
+#####
+#cnf(i_0_292, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(X3,X1))|~is_a_theorem(X3))).
+###################
+#cnf(i_0_611, negated_conjecture, (~is_a_theorem(implies(not(not(X1)),X2))|~is_a_theorem(not(X2))|~is_a_theorem(X1))).
+######
+#cnf(i_0_34, plain, (is_a_theorem(implies(X1,implies(not(X2),X3)))|~is_a_theorem(implies(X1,X2)))).
+#####
+#cnf(i_0_49, plain, (is_a_theorem(implies(X1,implies(not(implies(not(X1),X2)),X3))))).
+######
+#cnf(i_0_22, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,X1))|~is_a_theorem(implies(X2,X3))|~is_a_theorem(X2))).
+#############################
+#cnf(i_0_429, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(not(not(not(X1))))))))).
+##
+#cnf(i_0_563, negated_conjecture, (~is_a_theorem(implies(not(not(X2)),not(X1)))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+##############
+#cnf(i_0_430, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(not(not(X1)))))))).
+#########
+#cnf(i_0_198, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(not(X2),X2)))))).
+####
+#cnf(i_0_220, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(not(X1)),not(X1))))).
+#########
+#cnf(i_0_745, negated_conjecture, (~is_a_theorem(implies(X2,not(not(not(X1)))))|~is_a_theorem(X1)|~is_a_theorem(X2))).
+#######
+#cnf(i_0_405, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(not(not(X2)),X3))))).
+###############
+#cnf(i_0_51, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),implies(not(X1),X3)))))).
+###############
+#cnf(i_0_204, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(X3)))|~is_a_theorem(implies(X3,X2)))).
+##########
+#cnf(i_0_1228, plain, (is_a_theorem(implies(X1,implies(not(X2),X3)))|~is_a_theorem(not(not(X2))))).
+################
+#cnf(i_0_108, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,not(not(implies(X1,X2))))))).
+#########
+#cnf(i_0_1182, negated_conjecture, (~is_a_theorem(implies(X2,not(X1)))|~is_a_theorem(not(not(X2)))|~is_a_theorem(X1))).
+###############
+#cnf(i_0_247, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(not(X2)))))|~is_a_theorem(implies(X2,X1)))).
+#####
+#cnf(i_0_140, negated_conjecture, (~is_a_theorem(implies(not(X1),implies(not(X1),X1)))|~is_a_theorem(not(X1)))).
+##
+#cnf(i_0_374, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(not(not(X1))),not(not(X1)))))).
+############
+#cnf(i_0_431, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(not(implies(not(X1),X1)))))))).
+#####
+#cnf(i_0_1124, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(not(not(not(X1)))),X2))))).
+##############
+#cnf(i_0_610, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),X3))|~is_a_theorem(not(X3)))).
+###################
+#cnf(i_0_1380, negated_conjecture, (~is_a_theorem(implies(not(X1),not(not(X1))))|~is_a_theorem(not(X1)))).
+#####
+#cnf(i_0_253, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(X2))))|~is_a_theorem(implies(not(X1),X2)))).
+#####
+#cnf(i_0_1499, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(implies(not(not(X1)),X2))))))).
+###
+#cnf(i_0_726, plain, (is_a_theorem(implies(implies(not(not(X1)),not(X1)),X2))|~is_a_theorem(X1))).
+##########
+#cnf(i_0_315, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(X3)))|~is_a_theorem(X3))).
+#######################
+#cnf(i_0_744, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,not(not(X2))))|~is_a_theorem(X3))).
+#############################
+#cnf(i_0_1179, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(X1))))|~is_a_theorem(not(not(X2))))).
+##########
+#cnf(i_0_254, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(X2))))|~is_a_theorem(implies(not(X2),X2)))).
+###
+#cnf(i_0_1741, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(implies(not(X1),X1)))).
+#######
+#cnf(i_0_1397, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(not(not(X1))),X2))|~is_a_theorem(not(X2)))).
+#############
+#cnf(i_0_1838, negated_conjecture, (~is_a_theorem(not(not(not(implies(not(X1),X2)))))|~is_a_theorem(X1))).
+########
+#cnf(i_0_1847, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(implies(X2,X1))|~is_a_theorem(X2))).
+##########
+#cnf(i_0_123, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(not(X2)),not(not(X1))))|~is_a_theorem(X2))).
+###############
+#cnf(i_0_377, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(not(not(X1))),not(X2)))|~is_a_theorem(X2))).
+##################
+#cnf(i_0_1390, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(not(not(X1))))))|~is_a_theorem(X2))).
+#############
+#cnf(i_0_902, negated_conjecture, (~is_a_theorem(not(implies(not(implies(not(X1),X2)),X3)))|~is_a_theorem(X1))).
+############################
+#cnf(i_0_323, negated_conjecture, (~is_a_theorem(implies(implies(not(X2),X3),X1))|~is_a_theorem(not(X1))|~is_a_theorem(X2))).
+#############
+#cnf(i_0_124, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(not(X1)),not(not(X2)))))).
+#############
+#cnf(i_0_897, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(implies(not(not(X1)),X2)),X3))))).
+###
+#cnf(i_0_1129, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(not(implies(not(X1),X1))),X2))))).
+###################################
+#cnf(i_0_1372, negated_conjecture, (~is_a_theorem(implies(X2,implies(not(X1),X1)))|~is_a_theorem(not(X1))|~is_a_theorem(X2))).
+###
+#cnf(i_0_990, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(not(not(not(X2))))))))).
+##########
+#cnf(i_0_129, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(X2)))|~is_a_theorem(implies(not(X1),X2)))).
+#########
+#cnf(i_0_685, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(X2,X1))))|~is_a_theorem(implies(not(X1),X2)))).
+#
+#cnf(i_0_297, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,implies(not(X2),X2)))|~is_a_theorem(X3))).
+##############################
+#cnf(i_0_338, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(not(X3),X4),X2))|~is_a_theorem(X3))).
+##########################
+#cnf(i_0_908, plain, (is_a_theorem(implies(X1,implies(not(implies(not(X2),X3)),X4)))|~is_a_theorem(X2))).
+####################
+#cnf(i_0_1184, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,implies(not(X1),X1)))|~is_a_theorem(not(not(X2))))).
+#################
+#cnf(i_0_2295, negated_conjecture, (~is_a_theorem(implies(implies(not(X2),X3),not(X1)))|~is_a_theorem(X1)|~is_a_theorem(X2))).
+#########
+#cnf(i_0_1252, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(X2),X3),X1))|~is_a_theorem(not(not(X2))))).
+##############################
+#cnf(i_0_125, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X2),not(not(X1))))|~is_a_theorem(implies(X2,X1)))).
+#########
+#cnf(i_0_210, negated_conjecture, (~is_a_theorem(implies(not(X1),X1))|~is_a_theorem(implies(X1,X2))|~is_a_theorem(not(X2)))).
+#############
+#cnf(i_0_666, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(not(X2),X2)))|~is_a_theorem(not(X2)))).
+###############
+#cnf(i_0_2576, negated_conjecture, (~is_a_theorem(not(implies(not(X1),X2)))|~is_a_theorem(implies(not(X1),X1)))).
+######
+#cnf(i_0_1411, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X1),X1)),X2))|~is_a_theorem(not(X2)))).
+####################################
+#cnf(i_0_231, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X3),X3))|~is_a_theorem(implies(X3,X2)))).
+#############
+#cnf(i_0_2817, plain, (is_a_theorem(implies(X1,implies(not(X2),X3)))|~is_a_theorem(implies(not(X2),X2)))).
+#########################
+#cnf(i_0_212, negated_conjecture, (~is_a_theorem(not(implies(X2,X3)))|~is_a_theorem(implies(X2,not(X1)))|~is_a_theorem(X1))).
+##
+#cnf(i_0_233, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),X3))|~is_a_theorem(implies(X3,X2)))).
+######
+#cnf(i_0_2969, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(not(X1))|~is_a_theorem(X3))).
+####
+#cnf(i_0_3148, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(not(X1)))).
+###
+#cnf(i_0_3072, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),implies(not(X2),X2))))).
+#############
+#cnf(i_0_561, negated_conjecture, (~is_a_theorem(implies(not(X1),X1))|~is_a_theorem(implies(X1,not(X2)))|~is_a_theorem(X2))).
+#######
+#cnf(i_0_3273, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(not(X2)))))).
+#####################################
+#cnf(i_0_884, negated_conjecture, (~is_a_theorem(not(implies(not(X2),X3)))|~is_a_theorem(implies(X1,X2))|~is_a_theorem(X1))).
+#######
+#cnf(i_0_249, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(implies(not(X1),X3))))))).
+##############
+#cnf(i_0_1092, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(not(not(not(X1))),X3))))).
+###########################
+#cnf(i_0_1167, negated_conjecture, (~is_a_theorem(not(implies(implies(X2,X3),implies(not(X1),X3))))|~is_a_theorem(X1))).
+##
+#cnf(i_0_313, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X2,not(X4)))|~is_a_theorem(X4))).
+#####
+#cnf(i_0_3718, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(X2))|~is_a_theorem(X4))).
+####
+#cnf(i_0_3803, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(X2)))).
+####################
+#cnf(i_0_3851, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(not(X2)))).
+#####
+#cnf(i_0_3860, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,X2)))))|~is_a_theorem(not(X1)))).
+####
+#cnf(i_0_3861, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,X2)),X3)))|~is_a_theorem(not(X1)))).
+####
+#cnf(i_0_3852, negated_conjecture, (~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(not(X1))|~is_a_theorem(not(X2)))).
+#####
+#cnf(i_0_3856, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(not(X1)))).
+########################################################################
+#cnf(i_0_3864, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,X3)),X4)))|~is_a_theorem(not(X2)))).
+######################
+#cnf(i_0_3865, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X4),X2))|~is_a_theorem(not(X3)))).
+#################
+#cnf(i_0_3859, negated_conjecture, (~is_a_theorem(implies(implies(X1,X2),not(X3)))|~is_a_theorem(not(X1))|~is_a_theorem(X3))).
+#####################
+#cnf(i_0_4256, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X2,X4))|~is_a_theorem(not(X4)))).
+#############
+#cnf(i_0_4368, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(implies(not(X2),X4))))).
+##########
+#cnf(i_0_4417, negated_conjecture, (~is_a_theorem(not(implies(not(X1),X3)))|~is_a_theorem(not(implies(X1,X2))))).
+#####
+#cnf(i_0_4363, plain, (is_a_theorem(implies(X1,implies(implies(not(X2),X2),X3)))|~is_a_theorem(not(X2)))).
+###
+#cnf(i_0_4475, negated_conjecture, (~is_a_theorem(not(implies(implies(not(X1),X1),X2)))|~is_a_theorem(not(X1)))).
+###########
+#cnf(i_0_3919, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(X2,X3))))|~is_a_theorem(not(X2)))).
+#####
+#cnf(i_0_3995, negated_conjecture, (~is_a_theorem(not(implies(implies(X2,X3),implies(X1,X3))))|~is_a_theorem(not(X1)))).
+####
+#cnf(i_0_3996, negated_conjecture, (~is_a_theorem(not(implies(X3,X2)))|~is_a_theorem(implies(X3,X1))|~is_a_theorem(not(X1)))).
+#########
+#cnf(i_0_4129, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),not(not(X1))))|~is_a_theorem(not(X2)))).
+######################
+#cnf(i_0_459, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X1),X1)),not(X2)))|~is_a_theorem(X2))).
+#
+#cnf(i_0_1306, negated_conjecture, (~is_a_theorem(not(not(implies(not(not(X1)),not(X1)))))|~is_a_theorem(X1))).
+##################
+#cnf(i_0_489, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(not(X2),X3))))|~is_a_theorem(X2))).
+############################
+#cnf(i_0_1639, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(implies(not(X1),X1)))))|~is_a_theorem(X2))).
+##########
+#cnf(i_0_2970, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(X3))).
+####
+#cnf(i_0_4770, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(not(implies(X1,X2))))).
+########
+#cnf(i_0_213, negated_conjecture, (~is_a_theorem(implies(X3,X2))|~is_a_theorem(implies(X1,X3))|~is_a_theorem(not(X2))|~is_a_theorem(X1))).
+######
+#cnf(i_0_2288, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(X2),X3),not(not(X1))))|~is_a_theorem(X2))).
+####################################
+#cnf(i_0_256, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(X3))))|~is_a_theorem(implies(X1,X3)))).
+################
+#cnf(i_0_5080, plain, (is_a_theorem(implies(implies(not(X1),X1),X2))|~is_a_theorem(not(not(not(X1)))))).
+#############################
+#cnf(i_0_892, plain, (is_a_theorem(implies(X1,implies(not(X2),X3)))|~is_a_theorem(implies(X4,X2))|~is_a_theorem(X4))).
+#####################
+#cnf(i_0_207, negated_conjecture, (~is_a_theorem(not(implies(implies(X2,X3),implies(X1,X3))))|~is_a_theorem(implies(X1,X2)))).
+####
+#cnf(i_0_562, negated_conjecture, (~is_a_theorem(implies(X3,not(X2)))|~is_a_theorem(implies(X1,X3))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+###################
+#cnf(i_0_1180, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,not(X1)))|~is_a_theorem(not(not(X3))))).
+########################
+#cnf(i_0_78, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(X2)))|~is_a_theorem(implies(not(X2),X2)))).
+#######################
+#cnf(i_0_120, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(X1))))|~is_a_theorem(implies(not(X1),X2)))).
+###################
+#cnf(i_0_126, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(implies(not(X1),X3)))))).
+####################
+#cnf(i_0_127, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(implies(not(X2),X2)),not(X1))))).
+##################
+#cnf(i_0_345, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X2),X2))))|~is_a_theorem(implies(X2,X1)))).
+###
+#cnf(i_0_5826, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(not(not(implies(not(X1),X1)))))).
+#######################
+#cnf(i_0_359, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(X1))))|~is_a_theorem(not(implies(X2,X3))))).
+##########
+#cnf(i_0_375, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(X1))))|~is_a_theorem(implies(not(X2),X2)))).
+#############
+#cnf(i_0_991, negated_conjecture, (~is_a_theorem(not(not(not(not(not(not(not(X1))))))))|~is_a_theorem(X1))).
+######
+#cnf(i_0_413, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(not(X2)),X3)))|~is_a_theorem(implies(X2,X1)))).
+########
+#cnf(i_0_421, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(X2),X3)))|~is_a_theorem(implies(not(X1),X2)))).
+#############
+#cnf(i_0_455, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X1),X1)),implies(not(X1),X1))))).
+###################
+#cnf(i_0_6234, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X1),X1)),X1)))).
+######
+#cnf(i_0_2958, negated_conjecture, (~is_a_theorem(not(implies(implies(not(not(X1)),not(X1)),X2)))|~is_a_theorem(X1))).
+###############################################
+#cnf(i_0_6229, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(not(implies(not(X1),X1))))))).
+#########################
+#cnf(i_0_208, negated_conjecture, (~is_a_theorem(not(implies(X3,X2)))|~is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,X1)))).
+############
+#cnf(i_0_6358, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(X3))).
+####
+#cnf(i_0_6513, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(X2))).
+#####
+#cnf(i_0_874, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(not(implies(not(X1),X2)),X1)))).
+#######
+#cnf(i_0_6465, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(X2),X3))))|~is_a_theorem(X2))).
+########
+#cnf(i_0_6459, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(implies(not(X2),X2)))).
+##
+#cnf(i_0_6556, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(not(X1),not(not(X1)))))).
+##########
+#cnf(i_0_6578, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(not(not(X2))))).
+########
+#cnf(i_0_6564, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(not(X2)))).
+#########################
+#cnf(i_0_1162, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(implies(X2,X3),implies(not(not(X1)),X3)))))).
+###########
+#cnf(i_0_6579, negated_conjecture, (~is_a_theorem(not(not(not(not(X2)))))|~is_a_theorem(not(implies(X1,X2))))).
+#####
+#cnf(i_0_3357, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X2),not(not(X2))))|~is_a_theorem(implies(X2,X1)))).
+###
+#cnf(i_0_6339, negated_conjecture, (~is_a_theorem(implies(implies(not(X1),X3),X2))|~is_a_theorem(not(implies(X1,X2))))).
+####
+#cnf(i_0_6866, negated_conjecture, (~is_a_theorem(not(implies(X1,X1))))).
+################
+#cnf(i_0_6863, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(X1),X2)))))).
+#####################
+#cnf(i_0_4255, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),implies(X4,X3))))|~is_a_theorem(not(X4)))).
+#########
+#cnf(i_0_3719, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(not(not(X2))))|~is_a_theorem(X4))).
+##
+#cnf(i_0_6870, negated_conjecture, (~is_a_theorem(implies(not(X2),not(X1)))|~is_a_theorem(not(implies(X1,X2))))).
+####
+#cnf(i_0_6815, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(implies(not(X1),X2)),X3)))))).
+#
+#cnf(i_0_7028, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(not(not(X2)))))).
+###################
+#cnf(i_0_6396, negated_conjecture, (~is_a_theorem(implies(X1,implies(not(X2),X2)))|~is_a_theorem(not(implies(X1,X2))))).
+#####
+#cnf(i_0_7086, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(not(not(not(X2)))))).
+###############
+#cnf(i_0_7212, negated_conjecture, (~is_a_theorem(not(implies(implies(not(X1),X1),X1))))).
+#
+#cnf(i_0_7093, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(not(not(not(X1)))))).
+########################################################
+#cnf(i_0_107, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(X1))))|~is_a_theorem(implies(implies(X2,X3),X1)))).
+##############
+#cnf(i_0_1093, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(not(X1)),X3))|~is_a_theorem(not(X3)))).
+#########
+#cnf(i_0_6865, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X3,X2))))|~is_a_theorem(implies(X3,not(X1))))).
+####
+#cnf(i_0_7178, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),X2)))|~is_a_theorem(implies(not(X2),X1)))).
+####
+#cnf(i_0_6333, negated_conjecture, (~is_a_theorem(not(implies(implies(not(X1),X1),X2)))|~is_a_theorem(implies(X1,X2)))).
+####
+#cnf(i_0_6402, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(X2),X3))))|~is_a_theorem(implies(X1,X2)))).
+###############
+#cnf(i_0_889, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(not(not(X3)))|~is_a_theorem(implies(X3,X1)))).
+#################################################
+#cnf(i_0_7181, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(implies(X3,not(X1)))|~is_a_theorem(X3))).
+##
+#cnf(i_0_47, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,implies(not(X1),X1)))|~is_a_theorem(implies(not(X1),X2)))).
+######################
+#cnf(i_0_6864, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(X2,X3),implies(not(X1),X3))))))).
+###
+#cnf(i_0_683, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(X2,X1)))|~is_a_theorem(implies(not(X1),X2)))).
+#
+#cnf(i_0_7104, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(not(not(not(X2)))))).
+###########
+#cnf(i_0_7977, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(not(not(X1)),X2)))))).
+#######################################
+#cnf(i_0_7998, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,not(implies(not(not(X1)),X2))))|~is_a_theorem(X3))).
+##########
+#cnf(i_0_7204, negated_conjecture, (~is_a_theorem(not(not(not(not(not(X1))))))|~is_a_theorem(not(implies(X1,X2))))).
+####################
+#cnf(i_0_6583, negated_conjecture, (~is_a_theorem(not(implies(not(not(X2)),X3)))|~is_a_theorem(not(implies(X1,X2))))).
+########
+#cnf(i_0_6843, negated_conjecture, (~is_a_theorem(not(not(implies(not(X3),X3))))|~is_a_theorem(not(implies(X1,X3))))).
+#####
+#cnf(i_0_871, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(X2),X3),X1))|~is_a_theorem(implies(not(X1),X2)))).
+###
+#cnf(i_0_6861, negated_conjecture, (~is_a_theorem(implies(not(X3),not(not(X3))))|~is_a_theorem(not(implies(X1,X3))))).
+###############################
+#cnf(i_0_305, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(implies(X4,X3))|~is_a_theorem(X4))).
+########################
+#cnf(i_0_731, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(not(X3)),not(X1)))|~is_a_theorem(X3))).
+#
+#cnf(i_0_7194, negated_conjecture, (~is_a_theorem(implies(not(not(X1)),not(X1)))|~is_a_theorem(not(implies(X1,X2))))).
+##########################
+#cnf(i_0_783, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(not(X1)),not(X3)))|~is_a_theorem(X3))).
+#############################
+#cnf(i_0_1086, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,not(not(not(X1)))))|~is_a_theorem(X3))).
+#####################################################
+#cnf(i_0_7097, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,X2)))))|~is_a_theorem(not(not(not(X1)))))).
+########
+#cnf(i_0_110, negated_conjecture, (~is_a_theorem(implies(X1,not(not(implies(X1,X2)))))|~is_a_theorem(not(implies(X1,X2))))).
+##########################
+#cnf(i_0_349, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(X2)))|~is_a_theorem(implies(X3,X1))|~is_a_theorem(implies(X2,X3)))).
+#######################################
+#cnf(i_0_1175, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),implies(not(X4),X3))))|~is_a_theorem(X4))).
+#############
+#cnf(i_0_41, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(not(X2),X2)))|~is_a_theorem(implies(X2,X1)))).
+#######
+#cnf(i_0_9366, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(not(X1)),X2),X1)))).
+#######################################################
+#cnf(i_0_6362, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(not(not(X3)))|~is_a_theorem(implies(X3,X2)))).
+#################
+#cnf(i_0_9405, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(not(X1)),X2),X3))|~is_a_theorem(not(X3)))).
+################################
+#cnf(i_0_9394, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(not(X1)),X2),not(X3)))|~is_a_theorem(X3))).
+#######################################
+#cnf(i_0_5376, negated_conjecture, (~is_a_theorem(implies(X2,implies(not(not(X1)),not(X1))))|~is_a_theorem(X1)|~is_a_theorem(X2))).
+###
+#cnf(i_0_6256, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X1),X1)),X2))|~is_a_theorem(implies(X2,X1)))).
+##################
+#cnf(i_0_9685, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(not(implies(not(X1),X1))),X2),X1)))).
+##########################################################
+#cnf(i_0_9393, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(not(X1)),X2),X3))|~is_a_theorem(implies(X3,X1)))).
+####################
+#cnf(i_0_9809, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(not(not(X1)),X2)),X3),X1)))).
+##############################################################################
+#cnf(i_0_361, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X3))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(not(X2)))).
+##################
+#cnf(i_0_619, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X2),X3))|~is_a_theorem(implies(X2,X1))|~is_a_theorem(not(X3)))).
+#########
+#cnf(i_0_433, negated_conjecture, (~is_a_theorem(not(not(not(not(X2)))))|~is_a_theorem(implies(X2,X1))|~is_a_theorem(not(X1)))).
+###################
+#cnf(i_0_4071, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(X2,X3)),X4),X1))|~is_a_theorem(not(X2)))).
+#
+#cnf(i_0_1377, negated_conjecture, (~is_a_theorem(not(not(not(not(implies(not(X1),X1))))))|~is_a_theorem(not(X1)))).
+########
+#cnf(i_0_1850, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(not(not(X2)))|~is_a_theorem(implies(X2,X1)))).
+############
+#cnf(i_0_10360, negated_conjecture, (~is_a_theorem(not(not(implies(not(X1),X1))))|~is_a_theorem(not(not(not(X1)))))).
+###########
+#cnf(i_0_4142, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),implies(not(X1),X1)))|~is_a_theorem(not(X2)))).
+#######################################
+#cnf(i_0_4469, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(not(X2),X2),X3),X1))|~is_a_theorem(not(X2)))).
+#####################################################################
+#cnf(i_0_3918, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X4,not(implies(X2,X3))))|~is_a_theorem(not(X2))|~is_a_theorem(X4))).
+#
+#cnf(i_0_10612, negated_conjecture, (~is_a_theorem(implies(X4,not(implies(X5,X6))))|~is_a_theorem(not(X5))|~is_a_theorem(X4))).
+###################
+#cnf(i_0_415, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(not(implies(not(X1),X3)),X4))))).
+#########################################################
+#cnf(i_0_6572, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(implies(X2,X3)),X4))))|~is_a_theorem(not(X2)))).
+####
+#cnf(i_0_6573, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(not(X2),X2),X3))))|~is_a_theorem(not(X2)))).
+####
+#cnf(i_0_6584, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(implies(not(X2),X3))|~is_a_theorem(not(X3)))).
+###
+#cnf(i_0_689, plain, (is_a_theorem(implies(implies(X1,X2),X3))|~is_a_theorem(implies(not(X2),X1))|~is_a_theorem(not(X2)))).
+##############
+#cnf(i_0_45, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,not(X2)))|~is_a_theorem(implies(not(X1),X3))|~is_a_theorem(X2))).
+##############
+#cnf(i_0_376, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,not(not(X1))))|~is_a_theorem(implies(X2,X3))|~is_a_theorem(X2))).
+######################
+#cnf(i_0_703, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X2),not(X3)))|~is_a_theorem(implies(X2,X1))|~is_a_theorem(X3))).
+######################
+#cnf(i_0_753, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,not(not(X2))))|~is_a_theorem(implies(X2,X1))|~is_a_theorem(X3))).
+###################
+#cnf(i_0_766, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(X3,not(X2)))|~is_a_theorem(X3))).
+##########
+#cnf(i_0_599, negated_conjecture, (~is_a_theorem(implies(not(not(X1)),X2))|~is_a_theorem(implies(X2,not(X1)))|~is_a_theorem(X1))).
+#####
+#cnf(i_0_803, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(X2)))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(X3))).
+#####################
+#cnf(i_0_927, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(not(X2),X3)),X4),X1))|~is_a_theorem(X2))).
+#################################################################
+#cnf(i_0_2299, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(X2),X3),implies(not(X1),X1)))|~is_a_theorem(X2))).
+#################
+#cnf(i_0_3328, negated_conjecture, (~is_a_theorem(not(not(not(not(X1)))))|~is_a_theorem(implies(X1,not(X2)))|~is_a_theorem(X2))).
+############################
+#cnf(i_0_3492, negated_conjecture, (~is_a_theorem(not(not(not(implies(not(not(not(X1))),X2)))))|~is_a_theorem(X1))).
+####
+#cnf(i_0_3575, negated_conjecture, (~is_a_theorem(not(implies(not(not(not(not(not(X1))))),X2)))|~is_a_theorem(X1))).
+############################
+#cnf(i_0_6475, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(implies(not(X2),X3)),X4))))|~is_a_theorem(X2))).
+####
+#cnf(i_0_6483, negated_conjecture, (~is_a_theorem(implies(not(X2),not(X3)))|~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(X3))).
+#############################
+#cnf(i_0_756, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X4,not(implies(not(X2),X3))))|~is_a_theorem(X2)|~is_a_theorem(X4))).
+###
+#cnf(i_0_12414, negated_conjecture, (~is_a_theorem(implies(X4,not(implies(not(X5),X6))))|~is_a_theorem(X5)|~is_a_theorem(X4))).
+##########################
+#cnf(i_0_6555, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(not(X1),implies(not(X1),X1))))).
+########################################################################################################
+#cnf(i_0_309, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X4,X3))|~is_a_theorem(implies(X2,X4)))).
+#############
+#cnf(i_0_13070, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X4,X3))|~is_a_theorem(X4))).
+####
+#cnf(i_0_13383, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(X3))).
+#####################
+#cnf(i_0_13405, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(X3))).
+##############
+#cnf(i_0_13384, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(X3))).
+######
+#cnf(i_0_13398, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,X2)))))|~is_a_theorem(X2))).
+####
+#cnf(i_0_13399, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,X2)),X3)))|~is_a_theorem(X2))).
+##########
+#cnf(i_0_13394, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(X2))).
+###############################################################
+#cnf(i_0_13568, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X2)))|~is_a_theorem(X1))).
+######
+#cnf(i_0_13779, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(X1))).
+#################################
+#cnf(i_0_13781, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),X2)))|~is_a_theorem(X1))).
+#
+#cnf(i_0_13784, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(X2,X1))))|~is_a_theorem(X2))).
+##############
+#cnf(i_0_13782, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(X2,X1)))|~is_a_theorem(X2))).
+#
+#cnf(i_0_13387, negated_conjecture, (~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(not(X1))|~is_a_theorem(X3))).
+#######################################
+#cnf(i_0_13879, plain, (is_a_theorem(implies(implies(X1,X2),X3))|~is_a_theorem(not(X2))|~is_a_theorem(X1))).
+#######################################
+#cnf(i_0_13850, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,implies(X2,X1)))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+#########################
+#cnf(i_0_13809, plain, (is_a_theorem(implies(implies(X1,not(X2)),X3))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+#################################
+#cnf(i_0_13397, negated_conjecture, (~is_a_theorem(implies(implies(X1,X2),not(X3)))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+##########
+#cnf(i_0_13866, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(X3,X2)))|~is_a_theorem(X3))).
+###############################
+#cnf(i_0_13318, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(not(X3),X3)))).
+#####################
+#cnf(i_0_14646, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(X4))).
+#####################################
+#cnf(i_0_14659, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(not(X3))))).
+#####################################################
+#cnf(i_0_14042, negated_conjecture, (~is_a_theorem(not(implies(implies(X2,X3),implies(X1,X3))))|~is_a_theorem(X2))).
+############
+#cnf(i_0_14715, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,X4)))))|~is_a_theorem(X4))).
+###
+#cnf(i_0_14694, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X4)),X1))|~is_a_theorem(X4))).
+#########################
+#cnf(i_0_13844, negated_conjecture, (~is_a_theorem(not(not(implies(X1,X2))))|~is_a_theorem(not(X2))|~is_a_theorem(X1))).
+#####
+#cnf(i_0_14641, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(not(X3)))).
+###################
+#cnf(i_0_14843, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(not(not(X3))))).
+########################
+#cnf(i_0_13823, negated_conjecture, (~is_a_theorem(not(not(implies(X1,not(X2)))))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+#####################################
+#cnf(i_0_13877, plain, (is_a_theorem(implies(implies(X1,X2),X3))|~is_a_theorem(implies(X2,X3))|~is_a_theorem(X1))).
+##########
+#cnf(i_0_13325, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X3),X4))))|~is_a_theorem(X3))).
+#####################
+#cnf(i_0_14708, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(X2,X3))))))|~is_a_theorem(X3))).
+############
+#cnf(i_0_13851, negated_conjecture, (~is_a_theorem(implies(not(X1),implies(X2,X1)))|~is_a_theorem(not(X1))|~is_a_theorem(X2))).
+#
+#cnf(i_0_13404, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,X3)),X4)))|~is_a_theorem(X3))).
+####################################
+#cnf(i_0_13836, plain, (is_a_theorem(implies(implies(X1,implies(not(X2),X2)),X2))|~is_a_theorem(X1))).
+##################################
+#cnf(i_0_14704, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,X3))),X4))|~is_a_theorem(X3))).
+##################################################################
+#cnf(i_0_13406, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X4),X2))|~is_a_theorem(X4))).
+#################################################################
+#cnf(i_0_14822, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(not(not(X3))))).
+##############
+#cnf(i_0_13881, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),X3)))|~is_a_theorem(not(X2))|~is_a_theorem(X1))).
+###############
+#cnf(i_0_14832, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(not(not(X2))))).
+########################################################################
+#cnf(i_0_14445, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(implies(X3,X1))|~is_a_theorem(X3))).
+###################
+#cnf(i_0_16522, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(implies(not(X1),X1)))).
+########
+#cnf(i_0_16725, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X3))|~is_a_theorem(X2))).
+#############
+#cnf(i_0_16742, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(not(not(X1))))).
+##########################
+#cnf(i_0_16719, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X3))|~is_a_theorem(not(X1)))).
+######################
+#cnf(i_0_16534, plain, (is_a_theorem(implies(implies(implies(not(X1),X2),X3),X3))|~is_a_theorem(X1))).
+##############################
+#cnf(i_0_14441, plain, (is_a_theorem(implies(implies(X1,implies(X2,X3)),X3))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+############################
+#cnf(i_0_14444, plain, (is_a_theorem(implies(implies(X1,X2),implies(X1,X3)))|~is_a_theorem(implies(X2,X3)))).
+########
+#cnf(i_0_17361, plain, (is_a_theorem(implies(implies(not(X1),X2),X1))|~is_a_theorem(implies(X2,X1)))).
+########################
+#cnf(i_0_13386, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),not(not(X1))))|~is_a_theorem(X3))).
+#######################
+#cnf(i_0_14836, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,X2)))))|~is_a_theorem(not(not(X2))))).
+###
+#cnf(i_0_13401, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(X2,X3))))|~is_a_theorem(X3))).
+#####
+#cnf(i_0_13810, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,not(X2)),X3)))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+################################################
+#cnf(i_0_17363, negated_conjecture, (~is_a_theorem(not(implies(implies(not(X1),X2),X1)))|~is_a_theorem(implies(X2,X1)))).
+##
+#cnf(i_0_16827, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,X3),X1))))|~is_a_theorem(X3))).
+######
+#cnf(i_0_15047, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,X4)))))|~is_a_theorem(not(X3)))).
+####################################################################################
+#cnf(i_0_13838, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,implies(not(X2),X2)),X2)))|~is_a_theorem(X1))).
+#######
+#cnf(i_0_14721, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,X5)))))|~is_a_theorem(X5))).
+#############################
+#cnf(i_0_14709, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,implies(X2,X3))),X4)))|~is_a_theorem(X3))).
+#####
+#cnf(i_0_15015, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),implies(X4,X3)))|~is_a_theorem(X2))).
+###############
+#cnf(i_0_17808, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X2),X3),X3)))|~is_a_theorem(X2))).
+####
+#cnf(i_0_15298, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(not(X3),X4)))))|~is_a_theorem(X3))).
+##
+#cnf(i_0_16138, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),implies(X4,X3))))|~is_a_theorem(X2))).
+###################
+#cnf(i_0_16736, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X3)),X4),X4))|~is_a_theorem(X3))).
+#######################
+#cnf(i_0_15494, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(implies(X2,X3)),X4))))|~is_a_theorem(X3))).
+###########
+#cnf(i_0_13741, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(X3,X2))))|~is_a_theorem(X3))).
+###############################
+#cnf(i_0_16926, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(X2,X1))))|~is_a_theorem(not(not(X2))))).
+#############
+#cnf(i_0_15026, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X4)),X1))|~is_a_theorem(not(X3)))).
+#############################
+#cnf(i_0_13846, negated_conjecture, (~is_a_theorem(implies(X3,implies(X1,X2)))|~is_a_theorem(not(X2))|~is_a_theorem(X3)|~is_a_theorem(X1))).
+#################
+#cnf(i_0_14849, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(not(not(X4))))).
+#################################
+#cnf(i_0_16219, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X2)))|~is_a_theorem(not(not(X1))))).
+####################
+#cnf(i_0_16726, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X3))|~is_a_theorem(not(not(X2))))).
+##########
+#cnf(i_0_18644, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),X2)))|~is_a_theorem(not(not(X1))))).
+####################################################
+#cnf(i_0_13868, negated_conjecture, (~is_a_theorem(implies(X1,implies(X3,X2)))|~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(X3))).
+###############
+#cnf(i_0_13817, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(X2,not(not(X1))))))|~is_a_theorem(X2))).
+###
+#cnf(i_0_13853, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(not(implies(X2,X1))))))|~is_a_theorem(X2))).
+###
+#cnf(i_0_14182, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(X2,X1)),implies(X2,X1)))|~is_a_theorem(X2))).
+#############################################
+#cnf(i_0_18927, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(implies(X2,X1)))))|~is_a_theorem(X2))).
+##########
+#cnf(i_0_14529, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(implies(not(X3),X3)))).
+#############################
+#cnf(i_0_15277, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(not(X3),X4)),X1))|~is_a_theorem(X3))).
+###########################################################
+#cnf(i_0_13825, negated_conjecture, (~is_a_theorem(implies(X3,implies(X1,not(X2))))|~is_a_theorem(X2)|~is_a_theorem(X3)|~is_a_theorem(X1))).
+#############
+#cnf(i_0_15473, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(X2,X3)),X4),X1))|~is_a_theorem(X3))).
+#####################################################################
+#cnf(i_0_15904, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),implies(not(X1),X1)))|~is_a_theorem(X3))).
+##############################
+#cnf(i_0_13878, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),X3)))|~is_a_theorem(implies(X2,X3))|~is_a_theorem(X1))).
+#######################################
+#cnf(i_0_16822, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,X3),X1)))|~is_a_theorem(X3))).
+#####
+#cnf(i_0_14697, negated_conjecture, (~is_a_theorem(implies(implies(X2,implies(X3,X4)),X1))|~is_a_theorem(not(X1))|~is_a_theorem(X4))).
+###################################################################
+#cnf(i_0_13392, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X4,not(implies(X2,X3))))|~is_a_theorem(X4)|~is_a_theorem(X3))).
+#############
+#cnf(i_0_19726, negated_conjecture, (~is_a_theorem(implies(X4,not(implies(X5,X6))))|~is_a_theorem(X4)|~is_a_theorem(X6))).
+###################################################################
+#cnf(i_0_14660, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(not(not(not(X3))))))).
+########################################
+#cnf(i_0_16743, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(not(not(not(not(X1))))))).
+##################
+#cnf(i_0_15036, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,X3))),X4))|~is_a_theorem(not(X2)))).
+#########################################################################
+#cnf(i_0_14508, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(implies(not(X3),X3)))).
+####################################################################################################################
+#cnf(i_0_14518, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(implies(not(X2),X2)))).
+######################################################################
+#cnf(i_0_14837, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,X2)),X3)))|~is_a_theorem(not(not(X2))))).
+######################
+#cnf(i_0_13509, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,not(implies(X3,X4))))|~is_a_theorem(X4))).
+####################################
+#cnf(i_0_13522, plain, (is_a_theorem(implies(not(implies(not(implies(X1,X2)),X3)),X4))|~is_a_theorem(X2))).
+##############################################
+#cnf(i_0_14707, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(X2,X3)),not(X4)))|~is_a_theorem(X4)|~is_a_theorem(X3))).
+######
+#cnf(i_0_13872, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),implies(X3,X2)))|~is_a_theorem(X3))).
+###############################################################################
+#cnf(i_0_15287, plain, (is_a_theorem(implies(not(implies(X1,implies(not(X2),X3))),X4))|~is_a_theorem(X2))).
+###################################################
+#cnf(i_0_18802, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,implies(X2,X3)),X3)))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+####
+#cnf(i_0_18816, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),implies(X1,X3))))|~is_a_theorem(implies(X2,X3)))).
+#####
+#cnf(i_0_15881, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X4),not(X1)))|~is_a_theorem(X4))).
+###################################
+#cnf(i_0_20070, negated_conjecture, (~is_a_theorem(implies(implies(X1,X2),not(implies(X3,X4))))|~is_a_theorem(X4)|~is_a_theorem(X2))).
+###########################################################
+#cnf(i_0_16921, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(X2,X1)))|~is_a_theorem(not(not(X2))))).
+###########################################################
+#cnf(i_0_15911, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,X4),implies(X2,X1)))|~is_a_theorem(X2)|~is_a_theorem(X4))).
+#################################################################
+#cnf(i_0_16823, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X4,implies(implies(X2,X3),X1)))|~is_a_theorem(X4)|~is_a_theorem(X3))).
+#
+#cnf(i_0_15040, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(X2,X3))))))|~is_a_theorem(not(X2)))).
+############################################
+#cnf(i_0_13204, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(implies(X4,X3))|~is_a_theorem(X4))).
+#####
+#cnf(i_0_17366, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),X2))))|~is_a_theorem(implies(X2,X1)))).
+############
+#cnf(i_0_13889, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),X4)))|~is_a_theorem(not(X3))|~is_a_theorem(X2))).
+############################
+#cnf(i_0_16853, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X4))|~is_a_theorem(not(X3))|~is_a_theorem(X2))).
+####################################
+#cnf(i_0_13518, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(implies(X3,X4),X1))|~is_a_theorem(X4))).
+###################################################################
+#cnf(i_0_13487, negated_conjecture, (~is_a_theorem(implies(implies(X3,X4),X2))|~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(X4))).
+#############################################
+#cnf(i_0_17042, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,X3),X1))))|~is_a_theorem(not(X2)))).
+####
+#cnf(i_0_18938, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X2),X1)),X2))|~is_a_theorem(not(X2)))).
+##################################################################################
+#cnf(i_0_13768, plain, (is_a_theorem(implies(implies(X1,X2),X3))|~is_a_theorem(not(implies(X4,X2)))|~is_a_theorem(X1))).
+#########################################
+#cnf(i_0_15291, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(not(X2),X3))))))|~is_a_theorem(X2))).
+####
+#cnf(i_0_15487, negated_conjecture, (~is_a_theorem(not(not(not(implies(not(implies(X1,X2)),X3)))))|~is_a_theorem(X2))).
+######
+#cnf(i_0_13183, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(implies(X4,X3))|~is_a_theorem(X4))).
+##################
+#cnf(i_0_17642, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,implies(X4,X5))))))|~is_a_theorem(X5))).
+############################
+#cnf(i_0_17850, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(X2,X3),implies(X4,X3)))))|~is_a_theorem(X2))).
+#########
+#cnf(i_0_13528, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X4))|~is_a_theorem(implies(X4,X1))|~is_a_theorem(X3))).
+###################################
+#cnf(i_0_18817, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),X2)))|~is_a_theorem(implies(X3,X1))|~is_a_theorem(X3))).
+################
+#cnf(i_0_24094, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(not(X1),X2),X3),X3)))|~is_a_theorem(X1))).
+#
+#cnf(i_0_13813, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(X2,not(not(X1)))))|~is_a_theorem(X2))).
+#######
+#cnf(i_0_24069, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),X2)))|~is_a_theorem(implies(not(X1),X1)))).
+############################
+#cnf(i_0_24251, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X2),X3),X3)))|~is_a_theorem(not(X1)))).
+##########################
+#cnf(i_0_13815, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(implies(X2,not(not(X1))),X3)))|~is_a_theorem(X2))).
+####
+#cnf(i_0_13841, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(X2,implies(not(X1),X1)))))|~is_a_theorem(X2))).
+#
+#cnf(i_0_13852, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(not(implies(X2,X1))),X3)))|~is_a_theorem(X2))).
+##########################
+#cnf(i_0_16840, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(implies(X3,X4),X2)))|~is_a_theorem(X4))).
+###########
+#cnf(i_0_19604, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X2,X3),X4),implies(X1,X4))))|~is_a_theorem(X3))).
+#########################################
+#cnf(i_0_17141, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(not(X2),X3),X1))))|~is_a_theorem(X2))).
+##
+#cnf(i_0_17620, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,implies(X4,X5))),X1))|~is_a_theorem(X5))).
+#########################################################################
+#cnf(i_0_24271, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,implies(X2,X3)),X4),X4)))|~is_a_theorem(X3))).
+##################
+#cnf(i_0_17828, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(X2,X3),implies(X4,X3)),X1))|~is_a_theorem(X2))).
+######
+#cnf(i_0_14825, negated_conjecture, (~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(not(not(X3)))|~is_a_theorem(not(X1)))).
+################################################################################################################################
+#cnf(i_0_15928, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(X3))).
+###########################
+#cnf(i_0_13880, plain, (is_a_theorem(implies(implies(X1,X2),X3))|~is_a_theorem(not(not(not(X2))))|~is_a_theorem(X1))).
+##########################
+#cnf(i_0_16952, plain, (is_a_theorem(implies(implies(X1,X2),X3))|~is_a_theorem(not(not(X1)))|~is_a_theorem(not(X2)))).
+################################
+#cnf(i_0_13193, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(implies(X4,X2))|~is_a_theorem(X4))).
+#############################################################################################
+#cnf(i_0_13041, plain, (is_a_theorem(implies(X1,implies(implies(not(X2),X2),X3)))|~is_a_theorem(implies(X2,X3)))).
+################################
+#cnf(i_0_13125, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X3),X4))))|~is_a_theorem(implies(X2,X3)))).
+#############################
+#cnf(i_0_13818, plain, (is_a_theorem(implies(X1,implies(implies(X2,not(X3)),X4)))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+###################################
+#cnf(i_0_16780, plain, (is_a_theorem(implies(implies(implies(X1,X2),not(X3)),X4))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+###############################
+#cnf(i_0_21211, plain, (is_a_theorem(implies(implies(X1,not(implies(X2,X3))),X4))|~is_a_theorem(X3)|~is_a_theorem(X1))).
+#############################################################
+#cnf(i_0_13048, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(not(X2),X4),X3)))).
+#
+#cnf(i_0_26481, plain, (is_a_theorem(implies(X1,implies(X2,X2))))).
+################
+#cnf(i_0_26503, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),X1)))).
+#####
+#cnf(i_0_26526, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X2)))))).
+############################
+#cnf(i_0_26517, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,X1))))))).
+#
+#cnf(i_0_26513, plain, (is_a_theorem(implies(not(implies(X1,X1)),X2)))).
+#############################
+#cnf(i_0_26519, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),X2)))).
+###########################
+#cnf(i_0_26533, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X3)))))).
+##################################################
+#cnf(i_0_26534, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X3)),X1)))).
+#
+#cnf(i_0_26518, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,X1)),X2))))).
+####################################
+#cnf(i_0_26506, negated_conjecture, (~is_a_theorem(implies(implies(X2,X2),X1))|~is_a_theorem(not(X1)))).
+##################################
+#cnf(i_0_26475, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X2),X3)))))).
+############
+#cnf(i_0_26525, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,X2)),X3))))).
+###############
+#cnf(i_0_26527, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,X2))),X3)))).
+########################
+#cnf(i_0_26528, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X3),X2)))).
+##########################################################################################
+#cnf(i_0_26505, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),not(not(X1)))))).
+#####################
+#cnf(i_0_26516, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(X2)))|~is_a_theorem(X2))).
+#####
+#cnf(i_0_26522, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(X2,X2)))))).
+##############################################
+#cnf(i_0_26995, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,X2),X1)))))).
+########################################
+#cnf(i_0_27085, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X2)),X3),X3)))).
+###########################
+#cnf(i_0_27099, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,X4))))))).
+#####
+#cnf(i_0_27319, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),implies(X3,X2))))).
+#############################
+#cnf(i_0_26520, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X1),X2),X2))))).
+####
+#cnf(i_0_26535, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,X3))))))).
+#######################################################
+#cnf(i_0_26976, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),implies(not(X1),X1))))).
+###################################################################
+#cnf(i_0_26990, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,X2),X1))))).
+###############################################################
+#cnf(i_0_27461, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(not(X2),X3)),X1)))).
+###############
+#cnf(i_0_27083, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(X2,X2)))))))).
+#######################################################
+#cnf(i_0_27615, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(X2,X2)),X3),X1)))).
+#################################################
+#cnf(i_0_27084, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,implies(X2,X2))),X3))))).
+############
+#cnf(i_0_27484, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(not(X2),X3))))))).
+############################
+#cnf(i_0_27638, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(implies(X2,X2)),X3)))))).
+##########
+#cnf(i_0_26511, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,not(implies(X2,X2))))|~is_a_theorem(X3))).
+##
+#cnf(i_0_29388, negated_conjecture, (~is_a_theorem(implies(X2,not(implies(X3,X3))))|~is_a_theorem(X2))).
+##########################################
+#cnf(i_0_28502, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,X3),not(implies(X2,X2)))))).
+##############################################
+#cnf(i_0_29902, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(X2,X2)))))).
+#########################################################################
+#cnf(i_0_26658, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,not(implies(X3,X3)))))).
+##############################################
+#cnf(i_0_26675, plain, (is_a_theorem(implies(not(implies(not(implies(X1,X1)),X2)),X3)))).
+###################
+#cnf(i_0_26951, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X3),not(X1))))).
+################################################
+#cnf(i_0_27471, plain, (is_a_theorem(implies(not(implies(X1,implies(not(X1),X2))),X3)))).
+################################################
+#cnf(i_0_26980, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),implies(X3,X1)))|~is_a_theorem(X3))).
+##########################################################################
+#cnf(i_0_30438, negated_conjecture, (~is_a_theorem(not(not(not(not(not(implies(X2,X2))))))))).
+#
+#cnf(i_0_26991, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,implies(implies(X2,X2),X1)))|~is_a_theorem(X3))).
+##########################################################################
+#cnf(i_0_27022, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),X3))|~is_a_theorem(not(X2)))).
+#######################################################
+#cnf(i_0_26671, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(implies(X3,X3),X1)))).
+##############################################################
+#cnf(i_0_27072, negated_conjecture, (~is_a_theorem(implies(implies(X2,implies(X3,X3)),X1))|~is_a_theorem(not(X1)))).
+#################################################
+#cnf(i_0_26691, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),X3))|~is_a_theorem(implies(X3,X1)))).
+##############################################################
+#cnf(i_0_27009, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(implies(X3,X3),X2))))).
+######################################################
+#cnf(i_0_27100, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,implies(X4,X4))),X1)))).
+######################################################################################################
+#cnf(i_0_29073, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,X3),implies(implies(X2,X2),X1))))).
+#####################################################################
+#cnf(i_0_26967, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(X2,X3))))|~is_a_theorem(X3))).
+######################################
+#cnf(i_0_26941, plain, (is_a_theorem(implies(implies(implies(X1,X1),not(X2)),X3))|~is_a_theorem(X2))).
+########################################
+#cnf(i_0_30781, plain, (is_a_theorem(implies(implies(X1,not(implies(X2,X2))),X3))|~is_a_theorem(X1))).
+##########################################################################################
+#cnf(i_0_27082, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(X2,X2)),not(X3)))|~is_a_theorem(X3))).
+#################################################
+#cnf(i_0_27094, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,X4)),X2)))).
+###########################################################################################################
+#cnf(i_0_29894, negated_conjecture, (~is_a_theorem(implies(implies(X1,X2),not(implies(X3,X3))))|~is_a_theorem(X2))).
+##########
+#cnf(i_0_27020, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),X3))|~is_a_theorem(implies(X2,X3)))).
+###############################################
+#cnf(i_0_26972, plain, (is_a_theorem(implies(implies(implies(X1,X1),implies(not(X2),X2)),X2)))).
+######################
+#cnf(i_0_27091, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,implies(X3,X3))),X4))))).
+################
+#cnf(i_0_27093, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,implies(X3,X3)))),X4)))).
+################
+#cnf(i_0_27477, plain, (is_a_theorem(implies(implies(implies(X1,implies(not(X1),X2)),X3),X3)))).
+##############################
+#cnf(i_0_27491, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(not(X3),X4))))))).
+#####
+#cnf(i_0_27631, plain, (is_a_theorem(implies(implies(implies(not(implies(X1,X1)),X2),X3),X3)))).
+###############################
+#cnf(i_0_27645, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(implies(X3,X3)),X4)))))).
+##########
+#cnf(i_0_29206, plain, (is_a_theorem(implies(implies(implies(not(X1),X2),X3),implies(X1,X3))))).
+##############################
+#cnf(i_0_35343, plain, (is_a_theorem(implies(implies(implies(not(not(X1)),X2),X1),X1)))).
+############################
+#cnf(i_0_30799, plain, (is_a_theorem(implies(implies(implies(X1,X1),not(implies(X2,X2))),X3)))).
+########################################################
+#cnf(i_0_26647, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(X4,X4),X3)))).
+##################################################################################################
+#cnf(i_0_27008, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(implies(implies(X3,X3),X1)))).
+################################################################################################
+#cnf(i_0_26491, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(not(X3),not(X2))))).
+######################################################
+#cnf(i_0_27071, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X3)),not(not(X1)))))).
+##############################
+#cnf(i_0_27088, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(X2,implies(X3,X3))))))).
+############################################################################
+#cnf(i_0_28579, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,implies(X3,X3)),X1)))))).
+####################################################################################
+#cnf(i_0_26979, plain, (is_a_theorem(implies(implies(implies(X1,X1),implies(X2,X3)),X3))|~is_a_theorem(X2))).
+###################################################
+#cnf(i_0_32705, plain, (is_a_theorem(implies(implies(X1,implies(implies(X2,X2),X3)),X3))|~is_a_theorem(X1))).
+##################################################################################################################################################
+#cnf(i_0_26633, negated_conjecture, (~is_a_theorem(implies(implies(X3,X3),X2))|~is_a_theorem(not(implies(X1,X2))))).
+###########################
+#cnf(i_0_26280, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(not(not(X2)),X3),X2)))).
+##############################################################################################
+#cnf(i_0_26849, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(implies(X3,X3)))))).
+##############################################################
+#cnf(i_0_26959, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X3),not(not(X2)))))).
+#########
+#cnf(i_0_27086, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,implies(X2,X2)),X3),X3))))).
+########
+#cnf(i_0_27101, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,implies(X4,X4)))))))).
+####################
+#cnf(i_0_27475, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(not(X1),X2)))))))).
+########
+#cnf(i_0_27629, negated_conjecture, (~is_a_theorem(not(not(not(implies(not(implies(X1,X1)),X2))))))).
+##########
+#cnf(i_0_27013, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(implies(X3,X3),X2)))))).
+##################################################################
+#cnf(i_0_29903, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(X2,X2)),not(implies(X3,X3)))))).
+########################################################################################################
+#cnf(i_0_38456, negated_conjecture, (~is_a_theorem(implies(X4,not(implies(X1,implies(X2,X2)))))|~is_a_theorem(X4))).
+##################
+#cnf(i_0_28673, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,implies(X3,X3))),X4),X4)))).
+############################
+#cnf(i_0_28687, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,implies(X5,X5)))))))).
+#####
+#cnf(i_0_32723, plain, (is_a_theorem(implies(implies(implies(X1,X1),implies(implies(X2,X2),X3)),X3)))).
+############################
+#cnf(i_0_32896, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X2)),X3),implies(X4,X3))))).
+################################
+#cnf(i_0_33838, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X2),X3),implies(X4,X3)))))).
+########################################################################################
+#cnf(i_0_26949, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,X2),not(not(X1)))))))).
+###
+#cnf(i_0_26962, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),not(not(not(not(X1)))))))).
+########################################
+#cnf(i_0_26994, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(not(implies(implies(X2,X2),X1)))))))).
+####
+#cnf(i_0_27492, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,implies(not(X3),X4))),X1)))).
+###################################################################################################
+#cnf(i_0_27646, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(not(implies(X3,X3)),X4)),X1)))).
+################################################################################################################
+#cnf(i_0_28335, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(not(not(X1))),not(implies(X2,X2)))))).
+#########################
+#cnf(i_0_28461, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(not(implies(X2,X2))),not(not(X1)))))).
+#############################
+#cnf(i_0_28560, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X3)),implies(not(X1),X1))))).
+#####
+#cnf(i_0_30446, negated_conjecture, (~is_a_theorem(not(implies(not(not(not(implies(X2,X2)))),X3))))).
+####################################
+#cnf(i_0_32363, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X2,X2),X3),implies(X1,X3)))))).
+#############################
+#cnf(i_0_28574, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,implies(X3,X3)),X1))))).
+#####################################################################################################################
+#cnf(i_0_34255, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(X2,implies(X3,X3))),X4),X1)))).
+##############################
+#cnf(i_0_38501, negated_conjecture, (~is_a_theorem(implies(implies(X4,X4),not(implies(X1,implies(X2,X2))))))).
+##########################################################################################
+#cnf(i_0_35348, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(not(not(X1)),X2),X1)))))).
+#####
+#cnf(i_0_35511, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(not(X1)),X2),not(not(X1)))))).
+#########################################################################################################################################################################
+#cnf(i_0_26998, negated_conjecture, (~is_a_theorem(not(not(not(X1))))|~is_a_theorem(implies(implies(X2,X2),X1)))).
+########################################################################################################################################################################################################################################################
+#cnf(i_0_29887, negated_conjecture, (~is_a_theorem(implies(X1,not(implies(X2,X2))))|~is_a_theorem(not(not(X1))))).
+###################################################################################
+#cnf(i_0_26477, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(implies(X3,not(X2))))).
+###################################################################################################
+#cnf(i_0_26978, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X3),implies(not(X2),X2))))).
+######
+#cnf(i_0_26270, negated_conjecture, (~is_a_theorem(implies(implies(not(not(X1)),X2),X1))|~is_a_theorem(not(X1)))).
+#########################################################################################################
+#cnf(i_0_27015, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),implies(implies(X3,X3),X2))))).
+##################################################################################################
+#cnf(i_0_27240, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,not(implies(X3,implies(X4,X4))))))).
+#############################################################
+#cnf(i_0_26985, negated_conjecture, (~is_a_theorem(not(not(implies(implies(X1,X1),X2))))|~is_a_theorem(not(X2)))).
+#####################
+#cnf(i_0_27486, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(not(X3),X4)),X2)))).
+###########
+#cnf(i_0_30450, negated_conjecture, (~is_a_theorem(implies(not(not(implies(X2,X2))),X3))|~is_a_theorem(not(X3)))).
+#################################################################################################################
+#cnf(i_0_27640, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(not(implies(X3,X3)),X4),X2)))).
+#########################################################################################################################################
+#cnf(i_0_28535, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,X4)),not(X1))))).
+##############################################################################################################################
+#cnf(i_0_26768, negated_conjecture, (~is_a_theorem(implies(not(not(X1)),not(implies(X2,X2))))|~is_a_theorem(X1))).
+########################################################################
+#cnf(i_0_26955, negated_conjecture, (~is_a_theorem(not(not(implies(implies(X1,X1),not(X2)))))|~is_a_theorem(X2))).
+########
+#cnf(i_0_26961, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(not(not(X2)))))|~is_a_theorem(X2))).
+#########################################################
+#cnf(i_0_26493, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X4,not(X2)))|~is_a_theorem(X4))).
+#######################################################################
+#cnf(i_0_29907, negated_conjecture, (~is_a_theorem(implies(not(not(implies(X2,X2))),not(X1)))|~is_a_theorem(X1))).
+###########################################################
+#cnf(i_0_26981, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),implies(implies(X3,X4),X1)))|~is_a_theorem(X4))).
+#################################
+#cnf(i_0_30451, negated_conjecture, (~is_a_theorem(implies(X3,not(not(not(implies(X2,X2))))))|~is_a_theorem(X3))).
+##############################################################
+#cnf(i_0_27034, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),implies(implies(X4,X4),X1)))|~is_a_theorem(X3))).
+###########################################################################################################
+#cnf(i_0_28564, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X3)),implies(X4,X1)))|~is_a_theorem(X4))).
+#####################################################################################
+#cnf(i_0_28575, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X4,implies(implies(X2,implies(X3,X3)),X1)))|~is_a_theorem(X4))).
+######################
+#cnf(i_0_30461, negated_conjecture, (~is_a_theorem(not(not(implies(X3,not(implies(X2,X2))))))|~is_a_theorem(X3))).
+##########################################################################################################################################################################
+#cnf(i_0_27253, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(implies(X3,implies(X4,X4)),X1)))).
+##################################################################
+#cnf(i_0_27369, negated_conjecture, (~is_a_theorem(not(implies(not(implies(not(implies(X1,X1)),X2)),X3))))).
+############
+#cnf(i_0_27476, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,implies(not(X1),X2))),X3))))).
+########################
+#cnf(i_0_28671, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(X2,implies(X3,X3))))))))).
+########
+#cnf(i_0_29873, negated_conjecture, (~is_a_theorem(implies(not(not(implies(X1,X1))),not(implies(X1,X1)))))).
+############################################################################################################
+#cnf(i_0_30425, negated_conjecture, (~is_a_theorem(implies(not(not(implies(X2,X2))),not(implies(X1,X1)))))).
+#################################
+#cnf(i_0_13118, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X2,implies(not(X3),X3))))).
+########
+#cnf(i_0_45694, plain, (is_a_theorem(implies(X1,implies(implies(not(X2),X2),X2))))).
+##############
+#cnf(i_0_45629, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),X3)))|~is_a_theorem(X2))).
+#############################################
+#cnf(i_0_45757, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(not(X2),X2),X2)))))).
+##############################
+#cnf(i_0_45633, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X2),X3),X3))))).
+###########################################
+#cnf(i_0_45734, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(not(X2),X2),X2),X1)))).
+###########
+#cnf(i_0_45940, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(X2,X3),X3))))|~is_a_theorem(X2))).
+########################################################
+#cnf(i_0_45748, negated_conjecture, (~is_a_theorem(not(not(not(implies(implies(not(X1),X1),X1))))))).
+############
+#cnf(i_0_46130, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(implies(X2,X2),X3),X3)))))).
+###################################################
+#cnf(i_0_45744, plain, (is_a_theorem(implies(not(implies(implies(not(X1),X1),X1)),X2)))).
+##############################
+#cnf(i_0_45917, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(X2,X3),X3),X1))|~is_a_theorem(X2))).
+#######################################################################
+#cnf(i_0_45931, negated_conjecture, (~is_a_theorem(not(not(not(implies(implies(X1,X2),X2)))))|~is_a_theorem(X1))).
+#############
+#cnf(i_0_46107, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(implies(X2,X2),X3),X3),X1)))).
+###########################################################################################################################
+#cnf(i_0_35345, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(not(not(X1)),X2),X1),X1))))).
+##################
+#cnf(i_0_45927, plain, (is_a_theorem(implies(not(implies(implies(X1,X2),X2)),X3))|~is_a_theorem(X1))).
+######################################################################
+#cnf(i_0_37916, negated_conjecture, (~is_a_theorem(implies(implies(X3,X3),not(not(not(implies(X2,X2)))))))).
+###########
+#cnf(i_0_45750, plain, (is_a_theorem(implies(implies(implies(implies(not(X1),X1),X1),X2),X2)))).
+################################
+#cnf(i_0_45764, plain, (is_a_theorem(implies(X1,implies(X2,implies(implies(not(X3),X3),X3)))))).
+########
+#cnf(i_0_46117, plain, (is_a_theorem(implies(not(implies(implies(implies(X1,X1),X2),X2)),X3)))).
+#######################
+#cnf(i_0_46408, plain, (is_a_theorem(implies(implies(X1,X2),implies(implies(not(X1),X1),X2))))).
+#############
+#cnf(i_0_47908, plain, (is_a_theorem(implies(implies(not(X1),X1),implies(not(X1),X2))))).
+###################################################################################
+#cnf(i_0_45632, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X3),X4),X4)))|~is_a_theorem(X3))).
+###########################################################
+#cnf(i_0_45933, plain, (is_a_theorem(implies(implies(implies(implies(X1,X2),X2),X3),X3))|~is_a_theorem(X1))).
+#####################################
+#cnf(i_0_45947, plain, (is_a_theorem(implies(X1,implies(X2,implies(implies(X3,X4),X4))))|~is_a_theorem(X3))).
+#####################################################################################
+#cnf(i_0_46752, plain, (is_a_theorem(implies(implies(X1,X2),implies(implies(X3,X1),X2)))|~is_a_theorem(X3))).
+####################
+#cnf(i_0_48680, plain, (is_a_theorem(implies(X1,implies(implies(X2,not(X1)),X3)))|~is_a_theorem(X2))).
+########################
+#cnf(i_0_48725, plain, (is_a_theorem(implies(implies(X1,X2),implies(not(X2),X3)))|~is_a_theorem(X1))).
+##########################################################################################################
+#cnf(i_0_45630, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),X3)))|~is_a_theorem(not(not(X2))))).
+###############################################################################################################
+#cnf(i_0_38280, negated_conjecture, (~is_a_theorem(not(not(implies(implies(X3,X3),not(implies(X2,X2)))))))).
+#########
+#cnf(i_0_45635, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,implies(X3,X3)),X4),X4))))).
+################
+#cnf(i_0_46123, plain, (is_a_theorem(implies(implies(implies(implies(implies(X1,X1),X2),X2),X3),X3)))).
+################################
+#cnf(i_0_46137, plain, (is_a_theorem(implies(X1,implies(X2,implies(implies(implies(X3,X3),X4),X4)))))).
+#########
+#cnf(i_0_46913, plain, (is_a_theorem(implies(implies(X1,X2),implies(implies(implies(X3,X3),X1),X2))))).
+################
+#cnf(i_0_49869, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X2),not(X1)),X3))))).
+###############
+#cnf(i_0_49914, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),implies(not(X2),X3))))).
+##############################################
+#cnf(i_0_47863, plain, (is_a_theorem(implies(X1,implies(implies(not(not(X1)),not(X1)),X2))))).
+################################################
+#cnf(i_0_45765, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(implies(not(X3),X3),X3)),X1)))).
+#########################################################################################################################################
+#cnf(i_0_45749, negated_conjecture, (~is_a_theorem(not(implies(not(implies(implies(not(X1),X1),X1)),X2))))).
+############
+#cnf(i_0_46121, negated_conjecture, (~is_a_theorem(not(not(not(implies(implies(implies(X1,X1),X2),X2))))))).
+###########################################################################################
+#cnf(i_0_45628, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),X3)))|~is_a_theorem(implies(not(X3),X2)))).
+################################################################################
+#cnf(i_0_45759, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(implies(not(X3),X3),X3),X2)))).
+####################################################################################################################################################################################################
+#cnf(i_0_45948, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(implies(X3,X4),X4)),X1))|~is_a_theorem(X3))).
+#################################
+#cnf(i_0_26966, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(X2,X3))))|~is_a_theorem(not(X2)))).
+############################################################################################
+#cnf(i_0_26973, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),implies(not(X2),X2)))|~is_a_theorem(not(X2)))).
+#########################
+#cnf(i_0_48043, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(implies(X2,X3),X4),X4),X1))|~is_a_theorem(X3))).
+##########################################################################################################################################################################
+#cnf(i_0_45631, plain, (is_a_theorem(implies(X1,implies(implies(not(X2),X3),X2)))|~is_a_theorem(implies(X3,X2)))).
+########################################################################################################
+#cnf(i_0_26398, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(implies(not(X2),X3)),X4)))))).
+################
+#cnf(i_0_26864, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X2,not(implies(X4,X4)))))).
+#########################################################
+#cnf(i_0_26992, negated_conjecture, (~is_a_theorem(implies(not(X1),implies(implies(X2,X2),X1)))|~is_a_theorem(not(X1)))).
+#############################################
+#cnf(i_0_27257, plain, (is_a_theorem(implies(not(implies(not(implies(X1,implies(X2,X2))),X3)),X4)))).
+####################
+#cnf(i_0_27483, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,implies(not(X2),X3))),X4))))).
+#################
+#cnf(i_0_27485, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,implies(not(X2),X3)))),X4)))).
+#################
+#cnf(i_0_27637, plain, (is_a_theorem(implies(X1,implies(not(implies(not(implies(X2,X2)),X3)),X4))))).
+##################
+#cnf(i_0_27639, plain, (is_a_theorem(implies(not(implies(X1,implies(not(implies(X2,X2)),X3))),X4)))).
+############################################
+#cnf(i_0_36147, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(X4,X4),not(X2))))).
+##############################################################################################################################################
+#cnf(i_0_45634, plain, (is_a_theorem(implies(X1,implies(implies(implies(not(not(X2)),X3),X2),X2))))).
+##################
+#cnf(i_0_45756, plain, (is_a_theorem(implies(X1,implies(not(implies(implies(not(X2),X2),X2)),X3))))).
+#################
+#cnf(i_0_45758, plain, (is_a_theorem(implies(not(implies(X1,implies(implies(not(X2),X2),X2))),X3)))).
+############################
+#cnf(i_0_47909, plain, (is_a_theorem(implies(X1,implies(implies(not(X2),X2),implies(not(X2),X3)))))).
+################################################################################################################################
+#cnf(i_0_16647, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(X2,X1))))|~is_a_theorem(implies(not(X2),X2)))).
+#############################################################
+#cnf(i_0_26945, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,X2),not(not(X1))))))).
+#########################################
+#cnf(i_0_54586, negated_conjecture, (~is_a_theorem(not(implies(implies(not(X1),X1),implies(not(X1),X2)))))).
+############################
+#cnf(i_0_27024, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X1),X2),X3)))|~is_a_theorem(not(X2)))).
+####################
+#cnf(i_0_27464, negated_conjecture, (~is_a_theorem(implies(implies(X2,implies(not(X2),X3)),X1))|~is_a_theorem(not(X1)))).
+######
+#cnf(i_0_26947, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(implies(implies(X2,X2),not(not(X1))),X3))))).
+###
+#cnf(i_0_26963, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),not(not(implies(not(X1),X1))))))).
+####################################################
+#cnf(i_0_26965, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),not(implies(not(not(X1)),X3)))))).
+####################################################
+#cnf(i_0_26977, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,X2),implies(not(X1),X1))))))).
+##
+#cnf(i_0_26993, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(not(implies(implies(X2,X2),X1))),X3))))).
+###
+#cnf(i_0_27031, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(implies(implies(X4,X4),X3)))).
+#################################################################################################################################################
+#cnf(i_0_27274, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X3)),X4))|~is_a_theorem(implies(X4,X1)))).
+####################################################################################################################
+#cnf(i_0_27463, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(not(X2),X3)),not(not(X1)))))).
+############################################
+#cnf(i_0_27480, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(X2,implies(not(X2),X3))))))).
+#############################
+#cnf(i_0_27618, negated_conjecture, (~is_a_theorem(implies(implies(not(implies(X2,X2)),X3),X1))|~is_a_theorem(not(X1)))).
+######################################
+#cnf(i_0_27617, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(X2,X2)),X3),not(not(X1)))))).
+#########################################################
+#cnf(i_0_27634, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(not(implies(X2,X2)),X3)))))).
+############################################################################
+#cnf(i_0_28593, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(implies(X3,implies(X4,X4)),X2))))).
+#######################################################################################################
+#cnf(i_0_28688, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,implies(X4,implies(X5,X5)))),X1)))).
+#######################################################################################################################
+#cnf(i_0_28933, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X1),X1)),not(implies(X2,X2)))))).
+###################################
+#cnf(i_0_29893, negated_conjecture, (~is_a_theorem(implies(implies(X1,X2),not(implies(X3,X3))))|~is_a_theorem(not(X1)))).
+#############################
+#cnf(i_0_30624, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(not(X1)),X2),not(implies(X3,X3)))))).
+#########################################################################
+#cnf(i_0_31717, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X3)),implies(implies(X4,X4),X1))))).
+################################################################################################
+#cnf(i_0_32460, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),implies(implies(X3,implies(X4,X4)),X1))))).
+################################################################################################################################
+#cnf(i_0_34683, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,implies(not(X2),X3)),X1)))))).
+#####
+#cnf(i_0_35014, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(not(implies(X2,X2)),X3),X1)))))).
+####
+#cnf(i_0_35298, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(implies(not(X1),X3),X2)))))).
+###
+#cnf(i_0_35346, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(not(not(X1)),X2),X1))))).
+##########################################################################
+#cnf(i_0_45737, negated_conjecture, (~is_a_theorem(implies(implies(implies(not(X2),X2),X2),X1))|~is_a_theorem(not(X1)))).
+###################################################################################
+#cnf(i_0_39249, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(implies(X2,X2),X3),implies(X4,X3)),X1)))).
+###################################################################################################################################################################################
+#cnf(i_0_45736, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(not(X2),X2),X2),not(not(X1)))))).
+################################################
+#cnf(i_0_45753, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(implies(not(X2),X2),X2)))))).
+#################################################################
+#cnf(i_0_46138, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(implies(implies(X3,X3),X4),X4)),X1)))).
+######################################################################################################################################
+#cnf(i_0_47295, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(implies(not(X2),X2),X2),X1)))))).
+########
+#cnf(i_0_49232, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(implies(X2,implies(X3,X3)),X4),X4),X1)))).
+#######################################################################################################################################################
+#cnf(i_0_26942, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X1),not(X2)),X3)))|~is_a_theorem(X2))).
+########
+#cnf(i_0_26969, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(not(X2),X3))))|~is_a_theorem(X2))).
+####################################################################################################################################
+#cnf(i_0_27474, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(not(X1),X2)),not(X3)))|~is_a_theorem(X3))).
+####################################################################################################################
+#cnf(i_0_27628, negated_conjecture, (~is_a_theorem(implies(implies(not(implies(X1,X1)),X2),not(X3)))|~is_a_theorem(X3))).
+###
+#cnf(i_0_15053, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,X5)))))|~is_a_theorem(not(X4)))).
+################################################################################################
+#cnf(i_0_16735, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X3)),X4),X4))|~is_a_theorem(not(X2)))).
+##########################################################
+#cnf(i_0_18321, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),implies(X4,X3)))|~is_a_theorem(not(X1)))).
+######################################################################
+#cnf(i_0_27036, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X2),X3),X4)))|~is_a_theorem(not(X3)))).
+###############################################################################
+#cnf(i_0_28606, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X2)),X3),X4))|~is_a_theorem(not(X3)))).
+###############################################################################################################################
+#cnf(i_0_59427, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X3),X4),X4)))|~is_a_theorem(not(X2)))).
+#######################################################################
+#cnf(i_0_28432, negated_conjecture, (~is_a_theorem(implies(not(not(X2)),not(not(not(X2)))))|~is_a_theorem(X2))).
+#############################
+#cnf(i_0_13735, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X4,implies(X3,X2)))|~is_a_theorem(X4)|~is_a_theorem(X3))).
+#######################################################
+#cnf(i_0_29892, negated_conjecture, (~is_a_theorem(implies(implies(not(X1),X2),not(implies(X3,X3))))|~is_a_theorem(X1))).
+##############################################################
+#cnf(i_0_13861, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,implies(X3,X1)))|~is_a_theorem(not(not(X2)))|~is_a_theorem(X3))).
+############################################
+#cnf(i_0_16922, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,implies(X2,X1)))|~is_a_theorem(not(not(X2)))|~is_a_theorem(X3))).
+################################################
+#cnf(i_0_36297, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X3),not(X2)))|~is_a_theorem(implies(implies(X2,X3),X1)))).
+######################################
+#cnf(i_0_33056, negated_conjecture, (~is_a_theorem(not(not(not(not(not(implies(X2,X3)))))))|~is_a_theorem(X3))).
+#################
+#cnf(i_0_27027, plain, (is_a_theorem(implies(X1,implies(not(X2),X3)))|~is_a_theorem(implies(implies(X4,X4),X2)))).
+#######################################
+#cnf(i_0_33253, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,not(implies(X2,X2))),X3)))|~is_a_theorem(X1))).
+#################################################################################
+#cnf(i_0_27028, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(implies(implies(X4,X4),X2)))).
+###########################################################################################################################################
+#cnf(i_0_45747, negated_conjecture, (~is_a_theorem(implies(implies(implies(not(X1),X1),X1),not(X2)))|~is_a_theorem(X2))).
+#########################################################################################################
+#cnf(i_0_16879, plain, (is_a_theorem(implies(implies(X1,not(X2)),X3))|~is_a_theorem(not(not(X1)))|~is_a_theorem(X2))).
+####################################################################
+#cnf(i_0_36307, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(implies(not(X2),not(X1))))).
+######################################################################
+#cnf(i_0_47807, plain, (is_a_theorem(implies(implies(not(X1),X1),X2))|~is_a_theorem(not(not(implies(X1,X2)))))).
+###############
+#cnf(i_0_63068, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),not(not(X1)))))))).
+###########
+#cnf(i_0_63108, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),X2))))|~is_a_theorem(not(X2)))).
+######
+#cnf(i_0_63055, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),not(X2)))))|~is_a_theorem(X2))).
+####
+#cnf(i_0_63067, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),not(implies(X2,X2)))))))).
+####
+#cnf(i_0_63109, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(implies(not(X1),X1)),X1)))))).
+#################
+#cnf(i_0_45932, negated_conjecture, (~is_a_theorem(not(implies(not(implies(implies(X1,X2),X2)),X3)))|~is_a_theorem(X1))).
+#########
+#cnf(i_0_61516, plain, (is_a_theorem(implies(implies(not(X1),X1),X2))|~is_a_theorem(implies(not(X2),not(X1))))).
+#############################################################################
+#cnf(i_0_14535, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(implies(not(X4),X4)))).
+######################################
+#cnf(i_0_48697, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(X3,not(X1)),X2))))|~is_a_theorem(X3))).
+#####################################################################
+#cnf(i_0_16724, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X3))|~is_a_theorem(implies(not(X2),X2)))).
+#####################################################################
+#cnf(i_0_20697, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X2)))|~is_a_theorem(implies(not(X1),X1)))).
+##############
+#cnf(i_0_55159, negated_conjecture, (~is_a_theorem(not(implies(implies(X3,X1),implies(not(X1),X2))))|~is_a_theorem(X3))).
+###########################################
+#cnf(i_0_28871, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),X3))|~is_a_theorem(not(implies(X4,X2))))).
+######################################################################################################################
+#cnf(i_0_64157, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),X3)))|~is_a_theorem(implies(not(X2),X2)))).
+####################################################################################################################
+#cnf(i_0_13855, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(X2,X1)),X3))|~is_a_theorem(not(X3))|~is_a_theorem(X2))).
+######################################################
+#cnf(i_0_13882, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(X2,X3)))|~is_a_theorem(not(X3))|~is_a_theorem(X2))).
+#####
+#cnf(i_0_26844, negated_conjecture, (~is_a_theorem(implies(X1,not(implies(X3,X3))))|~is_a_theorem(not(implies(X1,X2))))).
+############################################################################################################################
+#cnf(i_0_26953, negated_conjecture, (~is_a_theorem(implies(implies(X3,X3),not(X1)))|~is_a_theorem(not(implies(X1,X2))))).
+########################################################################
+#cnf(i_0_26974, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X1),implies(not(X2),X2)),X2))))).
+########
+#cnf(i_0_27005, negated_conjecture, (~is_a_theorem(not(implies(not(X1),X2)))|~is_a_theorem(implies(implies(X3,X3),X1)))).
+###################################################################################
+#cnf(i_0_13820, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(X3,not(X1)))))|~is_a_theorem(X3))).
+################################################
+#cnf(i_0_14716, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,X5)),X2))|~is_a_theorem(X5))).
+#####################################################################################################################################
+#cnf(i_0_27478, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,implies(not(X1),X2)),X3),X3))))).
+########
+#cnf(i_0_27493, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,implies(not(X3),X4)))))))).
+################
+#cnf(i_0_27632, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(not(implies(X1,X1)),X2),X3),X3))))).
+########
+#cnf(i_0_27647, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(not(implies(X3,X3)),X4))))))).
+##
+#cnf(i_0_27017, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X4,implies(implies(X3,X3),X2)))|~is_a_theorem(X4))).
+##################################################
+#cnf(i_0_28672, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,implies(X2,implies(X3,X3)))),X4))))).
+############
+#cnf(i_0_29880, negated_conjecture, (~is_a_theorem(implies(X1,not(implies(X2,X2))))|~is_a_theorem(implies(not(X1),X1)))).
+#################################################################################
+#cnf(i_0_28010, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X4,X4),implies(X3,X2)))|~is_a_theorem(X3))).
+###########
+#cnf(i_0_67604, negated_conjecture, (~is_a_theorem(implies(not(X1),X1))|~is_a_theorem(implies(X3,not(X1)))|~is_a_theorem(X3))).
+########################################################################################
+#cnf(i_0_68452, negated_conjecture, (~is_a_theorem(implies(X3,not(implies(X1,implies(not(X1),X2)))))|~is_a_theorem(X3))).
+#########################################################################################################################################
+#cnf(i_0_45942, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(implies(X3,X4),X4),X2))|~is_a_theorem(X3))).
+###############################################################################################################################################################################################
+#cnf(i_0_68454, negated_conjecture, (~is_a_theorem(implies(X3,not(implies(not(implies(X1,X1)),X2))))|~is_a_theorem(X3))).
+#######################################################################
+#cnf(i_0_16939, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(X3,X2)))|~is_a_theorem(not(not(X3))))).
+####################################
+#cnf(i_0_18453, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X4)),X1))|~is_a_theorem(not(not(X4))))).
+#######################################################################################
+#cnf(i_0_27002, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,implies(implies(X3,X3),X1)))|~is_a_theorem(not(not(X2))))).
+#############################################################################################
+#cnf(i_0_28009, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,X3),implies(X2,X1)))|~is_a_theorem(not(not(X2))))).
+#########################################
+#cnf(i_0_68475, negated_conjecture, (~is_a_theorem(implies(X2,not(implies(implies(not(X1),X1),X1))))|~is_a_theorem(X2))).
+###################################################################################################################
+#cnf(i_0_49039, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(X2,X3),X3),X1))|~is_a_theorem(not(not(X2))))).
+########################################################################################################
+#cnf(i_0_13888, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),X4)))|~is_a_theorem(implies(X3,X4))|~is_a_theorem(X2))).
+##################################################################################
+#cnf(i_0_14644, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(not(not(not(X3)))))).
+####################################################################################################
+#cnf(i_0_16722, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X3))|~is_a_theorem(not(not(not(X1)))))).
+##############################################################
+#cnf(i_0_16851, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X4))|~is_a_theorem(implies(X3,X4))|~is_a_theorem(X2))).
+######################################################################################
+#cnf(i_0_27023, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),X3))|~is_a_theorem(not(not(not(X2)))))).
+#########################################################################################################################################################
+#cnf(i_0_14434, plain, (is_a_theorem(implies(implies(not(implies(X1,X2)),implies(X1,X2)),X2))|~is_a_theorem(X1))).
+###################################################################
+#cnf(i_0_72076, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(X2,X1)),not(not(X1))))|~is_a_theorem(X2))).
+###########################################
+#cnf(i_0_34278, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(not(implies(X2,implies(X3,X3))),X4)))))).
+###
+#cnf(i_0_14714, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,implies(X3,X4))),X5)))|~is_a_theorem(X4))).
+###################################################################################
+#cnf(i_0_15304, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(not(X4),X5)))))|~is_a_theorem(X4))).
+######################################################################################
+#cnf(i_0_34655, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(not(X1),X2)),not(implies(X3,X3)))))).
+#############
+#cnf(i_0_15500, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(implies(X3,X4)),X5))))|~is_a_theorem(X4))).
+####################################################################################################
+#cnf(i_0_16733, plain, (is_a_theorem(implies(implies(implies(not(implies(X1,X2)),X3),X4),X4))|~is_a_theorem(X2))).
+########################################################
+#cnf(i_0_16737, plain, (is_a_theorem(implies(implies(implies(X1,implies(not(X2),X3)),X4),X4))|~is_a_theorem(X2))).
+#################################################################
+#cnf(i_0_16807, plain, (is_a_theorem(implies(implies(implies(X1,X2),implies(not(X3),X3)),X3))|~is_a_theorem(X2))).
+#########################################################################
+#cnf(i_0_17630, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,implies(X3,X4)))),X5))|~is_a_theorem(X4))).
+##########################################################################
+#cnf(i_0_17838, plain, (is_a_theorem(implies(not(implies(implies(X1,X2),implies(X3,X2))),X4))|~is_a_theorem(X1))).
+##############################################################
+#cnf(i_0_19154, plain, (is_a_theorem(implies(implies(implies(not(X1),X2),X3),implies(X4,X3)))|~is_a_theorem(X1))).
+########################################################################################
+#cnf(i_0_26950, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X2),not(X3)),X4)))|~is_a_theorem(X3))).
+##################################################################
+#cnf(i_0_26964, plain, (is_a_theorem(implies(implies(implies(X1,X1),not(implies(X2,X3))),X4))|~is_a_theorem(X3))).
+#########################################
+#cnf(i_0_28525, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X2)),not(X3)),X4))|~is_a_theorem(X3))).
+#######################################
+#cnf(i_0_30791, plain, (is_a_theorem(implies(implies(implies(X1,X2),not(implies(X3,X3))),X4))|~is_a_theorem(X2))).
+############################################################
+#cnf(i_0_42077, plain, (is_a_theorem(implies(implies(X1,not(implies(X2,implies(X3,X3)))),X4))|~is_a_theorem(X1))).
+######################################################################################################
+#cnf(i_0_45594, plain, (is_a_theorem(implies(X1,implies(implies(X2,implies(not(X3),X3)),X3)))|~is_a_theorem(X2))).
+################################################################################
+#cnf(i_0_45623, plain, (is_a_theorem(implies(X1,implies(implies(X2,not(implies(X3,X3))),X4)))|~is_a_theorem(X2))).
+################################################################################
+#cnf(i_0_45939, plain, (is_a_theorem(implies(X1,implies(not(implies(implies(X2,X3),X3)),X4)))|~is_a_theorem(X2))).
+#############################################################
+#cnf(i_0_34986, negated_conjecture, (~is_a_theorem(implies(implies(not(implies(X1,X1)),X2),not(implies(X3,X3)))))).
+######################
+#cnf(i_0_45941, plain, (is_a_theorem(implies(not(implies(X1,implies(implies(X2,X3),X3))),X4))|~is_a_theorem(X2))).
+###############################################################################
+#cnf(i_0_48053, plain, (is_a_theorem(implies(not(implies(implies(implies(X1,X2),X3),X3)),X4))|~is_a_theorem(X2))).
+########################################################################
+#cnf(i_0_48705, plain, (is_a_theorem(implies(X1,implies(X2,implies(implies(X3,not(X2)),X4))))|~is_a_theorem(X3))).
+####################################################################
+#cnf(i_0_48726, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),implies(not(X3),X4))))|~is_a_theorem(X2))).
+############################################################################################################################
+#cnf(i_0_64888, plain, (is_a_theorem(implies(X1,implies(implies(implies(not(X2),X3),X4),X4)))|~is_a_theorem(X2))).
+###################################################################################
+#cnf(i_0_35545, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X1),not(implies(X2,X2))),X3))))).
+################################################
+#cnf(i_0_38480, negated_conjecture, (~is_a_theorem(not(not(not(not(not(implies(X1,implies(X2,X2)))))))))).
+####################################################################################################
+#cnf(i_0_45751, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(implies(not(X1),X1),X1),X2),X2))))).
+########
+#cnf(i_0_45766, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(implies(not(X3),X3),X3))))))).
+################
+#cnf(i_0_46122, negated_conjecture, (~is_a_theorem(not(implies(not(implies(implies(implies(X1,X1),X2),X2)),X3))))).
+############################
+#cnf(i_0_47262, negated_conjecture, (~is_a_theorem(implies(implies(implies(not(X1),X1),X1),not(implies(X2,X2)))))).
+###################
+#cnf(i_0_13816, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,implies(X2,not(not(X1)))))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+################################################################################################################
+#cnf(i_0_13822, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(X2,not(X3))))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+##################################################################################################
+#cnf(i_0_13856, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(X2,X1)),not(X3)))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+###################################
+#cnf(i_0_49886, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(implies(X3,X3),not(X1)),X2)))))).
+#########
+#cnf(i_0_13863, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X2,not(not(implies(X3,X1)))))|~is_a_theorem(X2)|~is_a_theorem(X3))).
+##########################################################
+#cnf(i_0_17240, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(X2,implies(X3,X1)))))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+##
+#cnf(i_0_17364, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(not(X1),X2)))|~is_a_theorem(implies(X2,X1)))).
+#########################################################################################################################################
+#cnf(i_0_13865, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(not(not(implies(X3,X1))))|~is_a_theorem(X3))).
+####################################################################################################################
+#cnf(i_0_17037, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,X3),X1)))|~is_a_theorem(not(X2)))).
+##############
+#cnf(i_0_55150, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(not(X1),X2),X3),implies(X1,X3)))))).
+############
+#cnf(i_0_55161, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X3,X3),X1),implies(not(X1),X2)))))).
+############################################################################
+#cnf(i_0_57930, negated_conjecture, (~is_a_theorem(not(implies(implies(X1,X2),implies(implies(not(X1),X1),X2)))))).
+#####################
+#cnf(i_0_26996, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(implies(X2,X2),X1)),X3))|~is_a_theorem(not(X3)))).
+#####################################################################################################################
+#cnf(i_0_27025, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,X2),X3)))|~is_a_theorem(not(X3)))).
+##########################################################################################################################################################################################################
+#cnf(i_0_67655, negated_conjecture, (~is_a_theorem(implies(implies(X3,X3),not(X1)))|~is_a_theorem(implies(not(X1),X1)))).
+###############################################################
+#cnf(i_0_26952, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(implies(X3,X3),not(X1))))))).
+##############################################
+#cnf(i_0_26960, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X3),not(not(not(X1))))))).
+#########################################################################################
+#cnf(i_0_27029, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X4,X4),X3))|~is_a_theorem(implies(X3,X2)))).
+##############
+#cnf(i_0_68636, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(X2,implies(not(X2),X3))))))).
+###########################################################################################################################
+#cnf(i_0_28682, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,implies(X5,X5))),X2)))).
+#########################################################################################
+#cnf(i_0_69389, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(not(implies(X2,X2)),X3)))))).
+#########################################################################################################
+#cnf(i_0_30496, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(not(X1)),not(implies(X3,X3)))))).
+######################################################################
+#cnf(i_0_30804, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(not(implies(X3,X3))),not(X1))))).
+##############################################################################
+#cnf(i_0_32428, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X3),implies(implies(X4,X4),X2))))).
+###############################################
+#cnf(i_0_70433, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(implies(not(X2),X2),X2)))))).
+#################################################################################################################################################################################################
+#cnf(i_0_46132, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(implies(implies(X3,X3),X4),X4),X2)))).
+###########################################################################################################################################################################################################################################################################################################################################################################################
+#cnf(i_0_26970, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),implies(X2,X3)))|~is_a_theorem(not(X3))|~is_a_theorem(X2))).
+#############################################
+#cnf(i_0_13497, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(X4,X5),X3))|~is_a_theorem(X5))).
+#####################################################################################################################################################################################################
+#cnf(i_0_13754, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X1,implies(X4,X3)))|~is_a_theorem(X4))).
+################################################################################################
+#cnf(i_0_85463, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X4)))|~is_a_theorem(implies(X2,X4))|~is_a_theorem(X1))).
+#############################################################
+#cnf(i_0_85578, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X1),X3))))|~is_a_theorem(implies(X4,X3)))).
+##
+#cnf(i_0_86073, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X1),X3)))))).
+############################
+#cnf(i_0_86338, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,implies(not(not(X1)),X3)))))).
+##########
+#cnf(i_0_86503, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X3,implies(not(X1),X4)))))).
+########################################################
+#cnf(i_0_86501, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(not(X1),X4)),X2)))).
+########################################################################################################################
+#cnf(i_0_86490, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X3),X4))))|~is_a_theorem(implies(X1,X3)))).
+######################################
+#cnf(i_0_86363, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(implies(not(X1),X3)),X4)))))).
+####################
+#cnf(i_0_86974, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,implies(not(X1),X3))),X4))))).
+##########
+#cnf(i_0_87887, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(not(X2),X4))))))).
+#########
+#cnf(i_0_87879, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(not(X1),X3))))))).
+##########
+#cnf(i_0_87708, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(not(not(X1)),X3)),X1)))).
+##################################################################################################################################################
+#cnf(i_0_87919, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,implies(not(X2),X4)))))))).
+#####################################
+#cnf(i_0_87893, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,implies(not(X2),X4))),X1)))).
+###########
+#cnf(i_0_26987, negated_conjecture, (~is_a_theorem(implies(X3,implies(implies(X1,X1),X2)))|~is_a_theorem(not(X2))|~is_a_theorem(X3))).
+##############################################################################################################################################################################
+#cnf(i_0_87145, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(not(X1),X4),X3)))).
+#
+#cnf(i_0_89293, plain, (is_a_theorem(implies(X1,implies(X2,X1))))).
+############################
+#cnf(i_0_89324, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,not(X1)))))).
+################
+#cnf(i_0_89493, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X3,X1))))).
+###########################################################
+#cnf(i_0_89491, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X1),X2)))).
+################
+#cnf(i_0_90069, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X1)))))).
+##############
+#cnf(i_0_90423, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X1)))))).
+######
+#cnf(i_0_90431, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X2)))))).
+###################
+#cnf(i_0_90248, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(X1)),X1)))).
+##############################################################################
+#cnf(i_0_90445, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X2)),X1)))).
+#########
+#cnf(i_0_90471, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,X2))))))).
+###############################################################
+#cnf(i_0_89300, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X1,X3)))).
+#############################
+#cnf(i_0_89332, negated_conjecture, (~is_a_theorem(not(implies(X2,not(not(X1)))))|~is_a_theorem(X1))).
+##################
+#cnf(i_0_89973, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,X1)),X3))))).
+#####################
+#cnf(i_0_90455, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,X1))),X3)))).
+##############################
+#cnf(i_0_91085, plain, (is_a_theorem(implies(implies(not(X1),X1),implies(X2,X1))))).
+#######################################################################################################
+#cnf(i_0_89339, negated_conjecture, (~is_a_theorem(not(implies(X2,not(not(implies(X1,X1)))))))).
+####################
+#cnf(i_0_90459, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(X2,X1)))))))).
+#######
+#cnf(i_0_90232, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,implies(X3,not(X1))))))).
+##############################################
+#cnf(i_0_90146, plain, (is_a_theorem(implies(X1,implies(implies(X1,X2),implies(X3,X2)))))).
+####################
+#cnf(i_0_90341, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,X1))))))).
+###############
+#cnf(i_0_92419, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,X1))))))).
+#####
+#cnf(i_0_90461, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X1)),X3),X3)))).
+################################################
+#cnf(i_0_90482, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,X3))))))).
+#############
+#cnf(i_0_91071, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),implies(X2,X3))))).
+################################
+#cnf(i_0_92995, plain, (is_a_theorem(implies(implies(implies(X1,not(X2)),X2),X2)))).
+#############################################
+#cnf(i_0_92427, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,X2))))))).
+########################
+#cnf(i_0_89329, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X3,not(X2)))))).
+##############################################################################################################
+#cnf(i_0_91206, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(X2,X1)),X1))|~is_a_theorem(X2))).
+##############################################################
+#cnf(i_0_89325, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(implies(X2,not(X1)))))))).
+##
+#cnf(i_0_89333, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,not(not(not(X1)))))))).
+####
+#cnf(i_0_90424, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(implies(X1,X2)),X2)))).
+###########
+#cnf(i_0_92996, negated_conjecture, (~is_a_theorem(implies(implies(X1,not(X2)),X2))|~is_a_theorem(not(X2)))).
+###########################################################################
+#cnf(i_0_92243, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,not(X1))),X1)))).
+#############################################################################################################################################################################
+#cnf(i_0_89495, negated_conjecture, (~is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(not(implies(X3,X1))))).
+############################################
+#cnf(i_0_90460, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,implies(X2,X1))),X3))))).
+##############################################
+#cnf(i_0_90144, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X4,implies(X3,X1)))))).
+#####################################################################
+#cnf(i_0_93001, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,not(X2)),X2)))).
+#############################################
+#cnf(i_0_92997, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,not(X2)),X2),X2))))).
+################
+#cnf(i_0_93069, negated_conjecture, (~is_a_theorem(not(implies(X2,implies(not(implies(X1,X2)),X3)))))).
+####################################################
+#cnf(i_0_89492, negated_conjecture, (~is_a_theorem(implies(implies(X3,X1),X2))|~is_a_theorem(not(implies(X1,X2))))).
+##########################################################################################################
+#cnf(i_0_89509, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(implies(X4,X2))))).
+################################################################################################################################################
+#cnf(i_0_89327, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(implies(X2,not(X1))),X3))))).
+###
+#cnf(i_0_89334, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,not(implies(not(X1),X1))))))).
+######################
+#cnf(i_0_90399, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,X1)),X2)))).
+######################################
+#cnf(i_0_90483, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,implies(X4,X3))),X1)))).
+#######################################################################################
+#cnf(i_0_89482, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(implies(X1,X3)))).
+############################################
+#cnf(i_0_90448, negated_conjecture, (~is_a_theorem(implies(implies(X2,implies(X3,X2)),X1))|~is_a_theorem(not(X1)))).
+##########
+#cnf(i_0_90791, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(X2,not(X1))))))).
+#############################################################################################
+#cnf(i_0_93000, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,not(X1)),X1)))))).
+########
+#cnf(i_0_93254, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(X1)),not(not(X1)))))).
+####################################
+#cnf(i_0_93292, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,implies(X4,X2))),X1)))).
+#################################################################################################
+#cnf(i_0_97094, negated_conjecture, (~is_a_theorem(not(implies(implies(not(X1),X1),implies(X2,X1)))))).
+########################################################################################################################################################################
+#cnf(i_0_90458, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(X2,X1)),not(X3)))|~is_a_theorem(X3))).
+################################################################
+#cnf(i_0_90465, negated_conjecture, (~is_a_theorem(implies(X3,not(implies(X1,implies(X2,X1)))))|~is_a_theorem(X3))).
+######################################################################
+#cnf(i_0_89326, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(X1)),X3))|~is_a_theorem(not(X3)))).
+############################################################################################################
+#cnf(i_0_89336, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X3,not(not(X1))))))).
+###################################################
+#cnf(i_0_89494, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(implies(X3,X1))))))).
+#########################################################
+#cnf(i_0_90477, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,X3)),X2)))).
+###################################################################################################################################################################################################################################
+#cnf(i_0_89502, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(implies(X2,X4)))).
+####################################################################################
+#cnf(i_0_90388, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(implies(X1,X4)))).
+##############################################################
+#cnf(i_0_89431, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(not(X1),X4))))))).
+######################
+#cnf(i_0_90066, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(implies(X3,X1)),X4)))))).
+#####################
+#cnf(i_0_90470, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,implies(X3,X2))),X4))))).
+#######################
+#cnf(i_0_90472, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,implies(X3,X2)))),X4)))).
+#####################
+#cnf(i_0_91536, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,implies(X3,X1))),X4))))).
+#######################################
+#cnf(i_0_93005, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,not(X3)),X3),X3))))).
+#####################
+#cnf(i_0_93070, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(implies(X3,X2)),X4)))))).
+####################
+#cnf(i_0_93302, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,implies(X3,X1)))),X4)))).
+###################################
+#cnf(i_0_97565, plain, (is_a_theorem(implies(implies(not(X1),X1),implies(X2,implies(X3,X1)))))).
+#################################################
+#cnf(i_0_99722, plain, (is_a_theorem(implies(X1,implies(implies(not(X2),X2),implies(X3,X2)))))).
+#########################
+#cnf(i_0_89323, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(X1)),not(X3)))|~is_a_theorem(X3))).
+############################
+#cnf(i_0_89328, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,not(implies(X2,not(X1)))))|~is_a_theorem(X3))).
+###########################################################
+#cnf(i_0_89337, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X3,not(implies(X2,X1)))))|~is_a_theorem(X2))).
+############################################################################
+#cnf(i_0_89508, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(X4,X2),X3)))).
+######################################################################################################################################
+#cnf(i_0_90463, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,implies(X2,X1)),X3),X3))))).
+########
+#cnf(i_0_90464, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(X2,X1)),not(implies(X3,X3)))))).
+###
+#cnf(i_0_91309, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(X4,X1),X3)))).
+#############################################################################################################################################
+#cnf(i_0_90476, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),not(implies(X2,implies(X3,X2))))))).
+#############################
+#cnf(i_0_89303, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(not(implies(X1,X3)))))).
+#############################
+#cnf(i_0_89304, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(not(X3),not(X1))))).
+###################################################
+#cnf(i_0_89330, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X3,not(X2))))|~is_a_theorem(implies(X2,X1)))).
+############
+#cnf(i_0_89335, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(implies(not(X1),X1))),X1)))).
+###################################################################
+#cnf(i_0_90484, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,implies(X4,X3)))))))).
+######################################################################################################
+#cnf(i_0_89338, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X3,not(implies(implies(X2,X2),X1))))))).
+####
+#cnf(i_0_89496, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X2))|~is_a_theorem(not(implies(X3,X2))))).
+######
+#cnf(i_0_93318, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(X3,implies(X4,X2)))))))).
+#########################
+#cnf(i_0_90073, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(implies(X3,X1)))))).
+########################################
+#cnf(i_0_90447, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X2)),not(not(X1)))))).
+#######################
+#cnf(i_0_95900, negated_conjecture, (~is_a_theorem(not(implies(X2,implies(X3,implies(X4,implies(X1,X2)))))))).
+##########
+#cnf(i_0_90467, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(implies(X2,implies(X3,X2))))))).
+##########
+#cnf(i_0_95988, negated_conjecture, (~is_a_theorem(not(implies(X2,implies(implies(X2,X3),implies(X1,X3))))))).
+####################################################
+#cnf(i_0_97080, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X2,X1),X3),implies(X1,X3)))))).
+###
+#cnf(i_0_90473, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(implies(X2,implies(X3,X2)),X1)))))).
+###
+#cnf(i_0_90836, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(X1)),not(implies(X3,X3)))))).
+########################################
+#cnf(i_0_90841, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,X3),not(implies(X2,not(X1))))))).
+#################################################################
+#cnf(i_0_92023, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(implies(not(X1),X2),implies(X3,X2)))))).
+####
+#cnf(i_0_92227, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,implies(X3,implies(X4,not(X1)))))))).
+##########
+#cnf(i_0_92947, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(implies(X3,X1),X2)))))).
+#
+#cnf(i_0_92998, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,not(X1)),X1))))).
+#########################################################################################################################################################################################################################
+#cnf(i_0_100592, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(X2,not(X1))),X3),X1)))).
+#############################################################################################################################################################################################################################################################################
+#cnf(i_0_90240, negated_conjecture, (~is_a_theorem(not(implies(X2,implies(X3,not(not(X1))))))|~is_a_theorem(X1))).
+################
+#cnf(i_0_93010, negated_conjecture, (~is_a_theorem(implies(implies(X1,not(not(X2))),not(X2)))|~is_a_theorem(X2))).
+#######################################################
+#cnf(i_0_97564, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,implies(X4,X2))))|~is_a_theorem(X1))).
+#######################################################################################################
+#cnf(i_0_91136, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(implies(not(X1),X3)))).
+##################################################
+#cnf(i_0_93699, negated_conjecture, (~is_a_theorem(not(implies(X4,not(not(implies(X2,X3))))))|~is_a_theorem(X3))).
+##############################################################################################################################################################################################
+#cnf(i_0_90788, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(X1)),X3))|~is_a_theorem(implies(X3,X1)))).
+##########################################
+#cnf(i_0_89331, negated_conjecture, (~is_a_theorem(not(implies(X3,not(X2))))|~is_a_theorem(not(implies(X1,X2))))).
+####################
+#cnf(i_0_90247, negated_conjecture, (~is_a_theorem(not(implies(X2,implies(X3,not(not(implies(X1,X1))))))))).
+################################
+#cnf(i_0_92673, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(X2,implies(X3,X2))))))))).
+############
+#cnf(i_0_93306, negated_conjecture, (~is_a_theorem(not(not(not(implies(X1,implies(X2,implies(X3,X1))))))))).
+############################
+#cnf(i_0_93719, negated_conjecture, (~is_a_theorem(not(implies(X4,not(not(implies(X2,implies(X3,X3))))))))).
+##################################################################
+#cnf(i_0_90081, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(not(implies(X3,X1)),X4))))).
+#########################################################
+#cnf(i_0_90237, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X3,implies(X4,not(X2))))))).
+###################################################################################################################################################################################
+#cnf(i_0_93187, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X3,implies(implies(X2,not(X1)),X1)))|~is_a_theorem(X3))).
+##################################
+#cnf(i_0_103701, negated_conjecture, (~is_a_theorem(not(implies(X4,not(not(implies(X1,implies(X2,X1))))))))).
+############################################################################################################################
+#cnf(i_0_91147, negated_conjecture, (~is_a_theorem(implies(not(implies(X1,X2)),X2))|~is_a_theorem(not(implies(X1,X2))))).
+#################
+#cnf(i_0_103796, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,not(implies(X2,X1))),X1))|~is_a_theorem(X2))).
+############################################################################################################################################################
+#cnf(i_0_90462, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X1)),X3),implies(X4,X3))))).
+#####################################################
+#cnf(i_0_90474, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,implies(X3,X2))),X4),X4)))).
+#########################################
+#cnf(i_0_90475, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,implies(X3,X2)),X4),X4))))).
+######################
+#cnf(i_0_90485, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,implies(X5,X4)))))))).
+#############
+#cnf(i_0_92137, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X1),X3),implies(X4,X3)))))).
+#####################
+#cnf(i_0_92336, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,implies(X5,X1)))))))).
+###############################
+#cnf(i_0_93196, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(implies(X3,not(X1)),X1)))).
+#######################################################################################################
+#cnf(i_0_93308, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,implies(X3,X1))),X4),X4)))).
+####################################################
+#cnf(i_0_93329, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,implies(X5,X3)))))))).
+########################
+#cnf(i_0_97551, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,X3)),X4),implies(X3,X4))))).
+############################################
+#cnf(i_0_111903, plain, (is_a_theorem(implies(implies(implies(X1,implies(X2,not(X3))),X3),X3)))).
+########################################
+#cnf(i_0_97566, plain, (is_a_theorem(implies(implies(implies(X1,X1),X2),implies(X3,implies(X4,X2)))))).
+#########################################################
+#cnf(i_0_99708, plain, (is_a_theorem(implies(X1,implies(implies(implies(X2,X3),X4),implies(X3,X4)))))).
+################################
+#cnf(i_0_103437, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,implies(X4,implies(X5,X2)))))))).
+#####################
+#cnf(i_0_103534, plain, (is_a_theorem(implies(X1,implies(X2,implies(implies(X2,X3),implies(X4,X3))))))).
+########################
+#cnf(i_0_104221, plain, (is_a_theorem(implies(X1,implies(X2,implies(implies(X1,X3),implies(X4,X3))))))).
+########################################################################################
+#cnf(i_0_89633, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(not(implies(X3,not(X1)))))).
+##########################################
+#cnf(i_0_89654, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(implies(X4,not(X3)))))).
+#################################################################################################################################################################################################
+#cnf(i_0_93219, plain, (is_a_theorem(implies(implies(implies(X1,not(X2)),X2),X3))|~is_a_theorem(not(X2)))).
+#######################################################################################################################################
+#cnf(i_0_90233, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(implies(X2,implies(X3,not(X1))))))))).
+##
+#cnf(i_0_90241, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,implies(X3,not(not(not(X1))))))))).
+######
+#cnf(i_0_91310, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,not(implies(X1,X2))),X2)))).
+##########################################################################################
+#cnf(i_0_91589, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(not(implies(X3,X1)),X4),X2)))).
+######################################################################################################
+#cnf(i_0_92491, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X2)),implies(not(X1),X1))))).
+############################################################################################################################################
+#cnf(i_0_92518, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),implies(implies(X2,implies(X3,X2)),X1))))).
+#################################################################################################################################################
+#cnf(i_0_93205, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X2),implies(implies(X3,not(X1)),X1))))).
+######################################
+#cnf(i_0_111904, negated_conjecture, (~is_a_theorem(implies(implies(X1,implies(X2,not(X3))),X3))|~is_a_theorem(not(X3)))).
+#######################################################################################
+#cnf(i_0_115324, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,not(X1)),implies(not(X1),X1))))).
+######################################################################################################################################
+#cnf(i_0_115760, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,not(X1)),implies(X3,X1)))|~is_a_theorem(X3))).
+#############################################################################################################################################################################
+#cnf(i_0_93206, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(implies(X3,not(X2)),X2))))).
+####################################################################################################
+#cnf(i_0_116318, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,not(X2)),not(X1))))).
+########################################################
+#cnf(i_0_93207, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,not(X2)),X2))|~is_a_theorem(implies(X2,X1)))).
+##############################################################################
+#cnf(i_0_93576, negated_conjecture, (~is_a_theorem(not(implies(X2,not(not(not(not(X1)))))))|~is_a_theorem(X1))).
+###################################
+#cnf(i_0_96077, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(not(implies(X4,X2))))).
+##############################################################################################
+#cnf(i_0_97211, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X3,not(not(implies(X2,not(X1))))))))).
+##############################################
+#cnf(i_0_100796, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(not(implies(X2,implies(X3,X2))),X4),X1)))).
+#####################################
+#cnf(i_0_98638, negated_conjecture, (~is_a_theorem(not(not(not(implies(X2,not(not(X1)))))))|~is_a_theorem(X1))).
+#####################################################################################################################################################
+#cnf(i_0_101528, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(implies(X2,not(X3)),X3),X3),X1)))).
+#######################################################################################################################
+#cnf(i_0_90276, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X3,implies(X4,implies(not(X1),X2)))))))).
+############################
+#cnf(i_0_90403, negated_conjecture, (~is_a_theorem(not(implies(X3,implies(X4,X1))))|~is_a_theorem(not(implies(X1,X2))))).
+#########################################
+#cnf(i_0_101785, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(not(implies(X3,X2)),X4)),X1)))).
+###################
+#cnf(i_0_92674, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,implies(X2,implies(X3,X2)))),X4))))).
+################
+#cnf(i_0_93215, negated_conjecture, (~is_a_theorem(implies(implies(X3,not(X2)),X2))|~is_a_theorem(not(implies(X1,X2))))).
+#############################################################################################################################################
+#cnf(i_0_102449, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(not(X2),X2),implies(X3,X2)),X1)))).
+###################################################################
+#cnf(i_0_93307, negated_conjecture, (~is_a_theorem(not(implies(not(implies(X1,implies(X2,implies(X3,X1)))),X4))))).
+################
+#cnf(i_0_93721, negated_conjecture, (~is_a_theorem(not(implies(X3,not(not(not(not(implies(X2,X2)))))))))).
+########################################################################################################
+#cnf(i_0_95898, negated_conjecture, (~is_a_theorem(not(implies(X2,implies(X3,implies(not(implies(X1,X2)),X4))))))).
+############
+#cnf(i_0_95902, negated_conjecture, (~is_a_theorem(not(implies(X2,implies(not(implies(X3,implies(X1,X2))),X4)))))).
+################################
+#cnf(i_0_96103, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,X3))))|~is_a_theorem(not(implies(X4,X2))))).
+##############################
+#cnf(i_0_107539, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,implies(X4,implies(X2,not(X1)))),X1)))).
+##################################
+#cnf(i_0_96990, negated_conjecture, (~is_a_theorem(not(implies(X3,implies(not(implies(X1,implies(X2,X1))),X4)))))).
+################################################
+#cnf(i_0_98657, negated_conjecture, (~is_a_theorem(not(not(not(implies(X2,not(not(implies(X1,X1)))))))))).
+###########################################################################################
+#cnf(i_0_107636, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(implies(not(X1),X3),implies(X2,X3)),X1)))).
+#################################
+#cnf(i_0_101554, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(implies(X2,not(X3)),X3),X3)))))).
+############################################
+#cnf(i_0_101811, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(X2,implies(not(implies(X3,X2)),X4))))))).
+########################################################################################
+#cnf(i_0_102475, negated_conjecture, (~is_a_theorem(not(implies(X1,implies(implies(not(X2),X2),implies(X3,X2))))))).
+########################################################
+#cnf(i_0_103652, negated_conjecture, (~is_a_theorem(not(not(not(not(not(implies(X1,implies(X2,X1)))))))))).
+##########################################################################
+#cnf(i_0_115827, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),implies(not(X1),X1))))))).
+###
+#cnf(i_0_115828, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(not(X1),X1)),not(not(X1)))))).
+#########################################################
+#cnf(i_0_116488, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(not(X2),not(X1))))))).
+##################
+#cnf(i_0_111905, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,implies(X2,not(X3))),X3),X3))))).
+############################################################################################################################
+#cnf(i_0_93194, negated_conjecture, (~is_a_theorem(implies(implies(X2,not(X1)),X1))|~is_a_theorem(not(not(not(X1)))))).
+#############################
+#cnf(i_0_91907, plain, (is_a_theorem(implies(implies(not(X1),X1),X2))|~is_a_theorem(not(implies(X3,X1))))).
+####################################################################################################################################
+#cnf(i_0_96087, plain, (is_a_theorem(implies(not(implies(X1,X2)),X3))|~is_a_theorem(not(implies(X4,X1))))).
+######################################################################################################################################
+#cnf(i_0_90082, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X1),X4))|~is_a_theorem(not(X4)))).
+#####################################################################################################################################################################################################################################################################
+#cnf(i_0_27011, negated_conjecture, (~is_a_theorem(implies(X1,implies(implies(X3,X3),X2)))|~is_a_theorem(not(implies(X1,X2))))).
+#################################################################################################################################################################################
+#cnf(i_0_90071, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X1),not(X4)))|~is_a_theorem(X4))).
+################################################################################################################################
+#cnf(i_0_90072, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X4,not(implies(X3,X1))))|~is_a_theorem(X4))).
+#########################################################################################################################################################################################################################################################
+#cnf(i_0_99774, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X4)),X1))|~is_a_theorem(implies(X2,X4)))).
+############################################################################
+#cnf(i_0_89282, plain, (is_a_theorem(implies(X1,implies(X2,implies(X3,X4))))|~is_a_theorem(implies(X3,not(X1))))).
+#####################################
+#cnf(i_0_92975, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X4))|~is_a_theorem(not(implies(X2,X3))))).
+#################################################################################################################################################################################################################################################
+#cnf(i_0_45920, negated_conjecture, (~is_a_theorem(implies(implies(implies(X2,X3),X3),X1))|~is_a_theorem(not(X1))|~is_a_theorem(X2))).
+###########
+#cnf(i_0_89940, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X4,X3)))|~is_a_theorem(implies(X1,X3)))).
+##########################################################################
+#cnf(i_0_90119, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X1),not(implies(X4,X4)))))).
+##########################################################################################################
+#cnf(i_0_90124, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X4,X4),not(implies(X3,X1)))))).
+########################################################################################################
+#cnf(i_0_90898, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,not(implies(X3,implies(X4,X3))))))).
+#######################################################################################################################################
+#cnf(i_0_92191, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(implies(X1,X3),implies(X4,X3)))))).
+#######################################################
+#cnf(i_0_92397, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X3,implies(X4,implies(X5,X1))))))).
+######################################################
+#cnf(i_0_92452, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,X3)),not(X1))))).
+######################################################################################
+#cnf(i_0_93558, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(implies(X3,not(not(not(X2)))))))).
+############################################################################################################
+#cnf(i_0_95699, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(not(implies(X3,not(X2)))))))).
+################################################################################################################################################################################
+#cnf(i_0_111909, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(X4,not(X2))),X2)))).
+###################################################################################################################################################################################################################################################################################
+#cnf(i_0_67544, negated_conjecture, (~is_a_theorem(implies(not(not(X1)),not(X1)))|~is_a_theorem(implies(not(X1),X1)))).
+####################################################################################################################################################################################################
+#cnf(i_0_90400, negated_conjecture, (~is_a_theorem(implies(implies(X3,implies(X4,X1)),X2))|~is_a_theorem(not(implies(X1,X2))))).
+###########################################################################################
+#cnf(i_0_92498, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X2)),implies(X4,X1)))|~is_a_theorem(X4))).
+######################################################################################################################################################################################################################
+#cnf(i_0_92519, plain, (is_a_theorem(X1)|~is_a_theorem(implies(X4,implies(implies(X2,implies(X3,X2)),X1)))|~is_a_theorem(X4))).
+#################################################################################################################################################################################################################################################
+#cnf(i_0_92943, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X4,implies(implies(X3,X1),X2)))|~is_a_theorem(X4))).
+#############################################################################################################################
+#cnf(i_0_94078, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(not(implies(X2,X1)))))|~is_a_theorem(X2))).
+#########################################
+#cnf(i_0_26957, negated_conjecture, (~is_a_theorem(implies(X3,implies(implies(X1,X1),not(X2))))|~is_a_theorem(X2)|~is_a_theorem(X3))).
+##########################################
+#cnf(i_0_104496, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(implies(X2,X1)),X1))))|~is_a_theorem(X2))).
+#############################################
+#cnf(i_0_116065, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(implies(not(X1),implies(X2,X1)))))|~is_a_theorem(X2))).
+##################################################################
+#cnf(i_0_90920, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(implies(X3,implies(X4,X3)),X1)))).
+#####################################################################################################################################################################################################################################################################
+#cnf(i_0_91578, plain, (is_a_theorem(implies(X1,implies(not(implies(X2,X3)),X4)))|~is_a_theorem(implies(X1,X3)))).
+################################
+#cnf(i_0_93217, plain, (is_a_theorem(implies(implies(implies(X1,not(X2)),X2),X3))|~is_a_theorem(implies(X2,X3)))).
+#################################################################################################################
+#cnf(i_0_99784, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,X3))),X4))|~is_a_theorem(implies(X1,X3)))).
+#####################################################################################
+#cnf(i_0_26984, negated_conjecture, (~is_a_theorem(implies(implies(X1,X1),implies(X2,not(X3))))|~is_a_theorem(X3)|~is_a_theorem(X2))).
+#########################
+#cnf(i_0_116216, plain, (is_a_theorem(implies(implies(implies(X1,not(X2)),X3),X2))|~is_a_theorem(implies(X3,X2)))).
+##############################################################################################################################
+#cnf(i_0_122786, plain, (is_a_theorem(implies(implies(not(X1),X1),implies(X2,X3)))|~is_a_theorem(implies(X1,X3)))).
+##########################################################################################################################
+#cnf(i_0_87903, plain, (is_a_theorem(implies(not(implies(X1,implies(X2,implies(not(X1),X3)))),X4)))).
+##################################
+#cnf(i_0_88513, plain, (is_a_theorem(implies(implies(not(X1),X1),implies(X2,implies(not(X1),X3)))))).
+################################################################
+#cnf(i_0_89975, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X2,not(implies(X4,X1)))))).
+####################################################
+#cnf(i_0_90002, plain, (is_a_theorem(implies(X1,implies(not(implies(not(implies(X2,X1)),X3)),X4))))).
+######################
+#cnf(i_0_90417, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(not(implies(X4,implies(X5,X2)))))).
+################################################################################################################################
+#cnf(i_0_90925, plain, (is_a_theorem(implies(not(implies(not(implies(X1,implies(X2,X1))),X3)),X4)))).
+#############################
+#cnf(i_0_91159, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(not(implies(X2,X3)),X3)))).
+######################################################
+#cnf(i_0_136036, negated_conjecture, (~is_a_theorem(implies(not(implies(not(X2),X2)),X2))|~is_a_theorem(not(X2)))).
+#####################
+#cnf(i_0_136046, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(implies(X3,X3),X1)),X1)))).
+#################################################################################################################################################################################################################
+#cnf(i_0_136053, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(implies(X3,not(X1)),X1)),X1)))).
+#############################################################################################################################################################################################
+#cnf(i_0_136038, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(implies(not(X2),X2)),X2)))).
+######################################################################################################################################################################################
+#cnf(i_0_136041, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(implies(X3,X4),X1)),X1))|~is_a_theorem(X4))).
+###############################
+#cnf(i_0_136035, negated_conjecture, (~is_a_theorem(implies(not(implies(X2,X3)),X3))|~is_a_theorem(not(X3))|~is_a_theorem(X2))).
+###########################################################################################################
+#cnf(i_0_136050, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(implies(X3,implies(X4,X4)),X1)),X1)))).
+########################################################################################################################################################################################################################
+#cnf(i_0_136048, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(implies(X4,X2)),X2))|~is_a_theorem(X4))).
+#######################################################################################################################################################################
+#cnf(i_0_136040, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(implies(X3,X1)),X1))|~is_a_theorem(not(not(X3))))).
+########################################################################
+#cnf(i_0_136049, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(implies(implies(X4,X4),X2)),X2)))).
+##
+#cnf(i_0_139627, negated_conjecture, (~is_a_theorem(implies(not(implies(implies(X2,X2),X1)),X1))|~is_a_theorem(not(X1)))).
+###########################################################################################################################################################################################################################################################################################################
+#cnf(i_0_91893, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X1,implies(not(X3),X3))))).
+########################################################
+#cnf(i_0_140994, plain, (is_a_theorem(implies(implies(implies(X1,not(X2)),X2),implies(X3,X2))))).
+############################################################################################################
+#cnf(i_0_140976, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X2)))|~is_a_theorem(implies(not(X2),X1)))).
+################################################################################
+#cnf(i_0_140980, plain, (is_a_theorem(implies(implies(not(X1),X2),implies(X3,X1)))|~is_a_theorem(implies(X2,X1)))).
+############################################################################################################
+#cnf(i_0_93204, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(implies(implies(X3,not(X1)),X1)))).
+#######################################################################
+#cnf(i_0_93230, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(X4,not(X3)),X3)))).
+#############################################################################################################################################################################################################################################################
+#cnf(i_0_101538, plain, (is_a_theorem(implies(not(implies(implies(implies(X1,not(X2)),X2),X2)),X3)))).
+####################################
+#cnf(i_0_101795, plain, (is_a_theorem(implies(not(implies(X1,implies(not(implies(X2,X1)),X3))),X4)))).
+#######################################
+#cnf(i_0_102459, plain, (is_a_theorem(implies(not(implies(implies(not(X1),X1),implies(X2,X1))),X3)))).
+#############################################################################
+#cnf(i_0_116212, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(implies(implies(X3,not(X2)),X1)))).
+######################################################################
+#cnf(i_0_144124, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X3,not(X1)),implies(implies(X2,X2),X1))))).
+############################################################################################################################################################
+#cnf(i_0_144396, plain, (is_a_theorem(implies(implies(implies(X1,X2),X3),X3))|~is_a_theorem(implies(not(X3),X2)))).
+#############################################################
+#cnf(i_0_144427, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(not(not(implies(not(X2),X1)))))).
+###################
+#cnf(i_0_144428, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(implies(not(X1),not(not(X2)))))).
+##################
+#cnf(i_0_116222, plain, (is_a_theorem(implies(implies(implies(not(implies(X1,not(X2))),X3),X2),X2)))).
+#######################################################
+#cnf(i_0_118157, plain, (is_a_theorem(implies(implies(not(X1),X1),implies(not(implies(X2,X1)),X3))))).
+#########################################################################################################################################################################
+#cnf(i_0_140986, plain, (is_a_theorem(implies(implies(implies(not(not(X1)),X2),X1),implies(X3,X1))))).
+##########################################################################################################################################################################################
+#cnf(i_0_89831, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X4,implies(X2,implies(not(not(X1)),X3))))))).
+##
+#cnf(i_0_90235, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(not(implies(X2,implies(X3,not(X1)))),X4))))).
+###
+#cnf(i_0_90242, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X2,implies(X3,not(implies(not(X1),X1)))))))).
+########
+#cnf(i_0_90813, plain, (is_a_theorem(X1)|~is_a_theorem(not(not(not(not(not(implies(X2,not(X1)))))))))).
+###
+#cnf(i_0_90860, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X3,implies(not(implies(X2,not(X1))),X4)))))).
+##
+#cnf(i_0_90995, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(X3,X2)),X4))|~is_a_theorem(implies(X4,X1)))).
+#####################################################
+#cnf(i_0_27021, negated_conjecture, (~is_a_theorem(not(implies(implies(implies(X1,X1),X2),X3)))|~is_a_theorem(implies(X2,X3)))).
+########
+#cnf(i_0_29897, negated_conjecture, (~is_a_theorem(implies(X1,implies(X2,not(implies(X3,X3)))))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+#####################################################################
+#cnf(i_0_91958, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(not(implies(X1,X2))))))).
+##################################################################
+#cnf(i_0_92042, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(not(not(implies(not(implies(X1,X2)),X2)))))).
+####
+#cnf(i_0_92189, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(implies(X1,X3),implies(X4,X3)),X2)))).
+####################
+#cnf(i_0_147676, plain, (is_a_theorem(implies(not(X1),implies(X1,implies(X2,X3)))))).
+####
+#cnf(i_0_147841, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X1,implies(X2,X3)))))).
+########################
+#cnf(i_0_147846, plain, (is_a_theorem(X1)|~is_a_theorem(not(implies(X4,implies(X1,implies(X2,X3))))))).
+############
+#cnf(i_0_147738, plain, (is_a_theorem(implies(not(not(implies(X1,X2))),implies(X1,X2))))).
+###
+#cnf(i_0_147990, plain, (is_a_theorem(not(implies(not(X1),X1)))|~is_a_theorem(not(X1)))).
+###############################################
+#cnf(i_0_147992, plain, (is_a_theorem(not(implies(X1,X2)))|~is_a_theorem(not(X2))|~is_a_theorem(X1))).
+############
+#cnf(i_0_147991, plain, (is_a_theorem(not(implies(X1,not(X2))))|~is_a_theorem(X2)|~is_a_theorem(X1))).
+######################
+#cnf(i_0_147937, plain, (is_a_theorem(implies(not(not(implies(not(X1),X1))),X1)))).
+###########
+#cnf(i_0_147993, plain, (is_a_theorem(not(implies(implies(X1,X1),X2)))|~is_a_theorem(not(X2)))).
+#################################################
+#cnf(i_0_147945, plain, (is_a_theorem(implies(not(not(implies(X1,X2))),X2))|~is_a_theorem(X1))).
+##########
+#cnf(i_0_149028, plain, (is_a_theorem(implies(X1,not(implies(X2,not(X1)))))|~is_a_theorem(X2))).
+####################
+#cnf(i_0_149125, plain, (is_a_theorem(implies(not(not(X1)),X1))|~is_a_theorem(X2))).
+#
+#cnf(i_0_149576, plain, (is_a_theorem(implies(not(not(X1)),X1)))).
+#####
+#cnf(i_0_150130, plain, (is_a_theorem(not(not(X1)))|~is_a_theorem(X1))).
+
+# Proof found!
+# SZS status Unsatisfiable
+# SZS output start CNFRefutation
+cnf(condensed_detachment, axiom, (is_a_theorem(X2)|~is_a_theorem(implies(X1,X2))|~is_a_theorem(X1)), file('./p/LCL256-1.tptp', condensed_detachment)).
+cnf(cn_1, axiom, (is_a_theorem(implies(implies(X1,X2),implies(implies(X2,X3),implies(X1,X3))))), file('./p/LCL256-1.tptp', cn_1)).
+cnf(cn_3, axiom, (is_a_theorem(implies(X1,implies(not(X1),X2)))), file('./p/LCL256-1.tptp', cn_3)).
+cnf(cn_2, axiom, (is_a_theorem(implies(implies(not(X1),X1),X1))), file('./p/LCL256-1.tptp', cn_2)).
+cnf(prove_not_not_implies, negated_conjecture, (~is_a_theorem(not(not(implies(p,p))))), file('./p/LCL256-1.tptp', prove_not_not_implies)).
+cnf(c_0_5, axiom, (is_a_theorem(X2)|~is_a_theorem(implies(X1,X2))|~is_a_theorem(X1)), condensed_detachment).
+cnf(c_0_6, axiom, (is_a_theorem(implies(implies(X1,X2),implies(implies(X2,X3),implies(X1,X3))))), cn_1).
+cnf(c_0_7, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X2)))|~is_a_theorem(implies(X3,X1))), inference(pm,[status(thm)],[c_0_5, c_0_6])).
+cnf(c_0_8, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(implies(X1,X3))), inference(pm,[status(thm)],[c_0_5, c_0_7])).
+cnf(c_0_9, axiom, (is_a_theorem(implies(X1,implies(not(X1),X2)))), cn_3).
+cnf(c_0_10, axiom, (is_a_theorem(implies(implies(not(X1),X1),X1))), cn_2).
+cnf(c_0_11, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(not(X1),X3),X2))), inference(pm,[status(thm)],[c_0_8, c_0_9])).
+cnf(c_0_12, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(not(X2),X2)))), inference(pm,[status(thm)],[c_0_8, c_0_10])).
+cnf(c_0_13, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X2,not(X1)))), inference(pm,[status(thm)],[c_0_11, c_0_7])).
+cnf(c_0_14, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(X1)))), inference(pm,[status(thm)],[c_0_12, c_0_13])).
+cnf(c_0_15, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(X1)), inference(pm,[status(thm)],[c_0_5, c_0_9])).
+cnf(c_0_16, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(X2)), inference(pm,[status(thm)],[c_0_14, c_0_15])).
+cnf(c_0_17, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X3,X2))|~is_a_theorem(X3)), inference(pm,[status(thm)],[c_0_8, c_0_16])).
+cnf(c_0_18, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X4,X3))|~is_a_theorem(implies(X2,X4))), inference(pm,[status(thm)],[c_0_17, c_0_7])).
+cnf(c_0_19, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X1))), inference(pm,[status(thm)],[c_0_5, c_0_10])).
+cnf(c_0_20, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X4,X3))|~is_a_theorem(X4)), inference(pm,[status(thm)],[c_0_18, c_0_16])).
+cnf(c_0_21, plain, (is_a_theorem(implies(X1,X1))), inference(pm,[status(thm)],[c_0_11, c_0_10])).
+cnf(c_0_22, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(X2,X1))), inference(pm,[status(thm)],[c_0_19, c_0_8])).
+cnf(c_0_23, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(X3)), inference(pm,[status(thm)],[c_0_20, c_0_21])).
+cnf(c_0_24, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,X3),X1))|~is_a_theorem(X3)), inference(pm,[status(thm)],[c_0_22, c_0_23])).
+cnf(c_0_25, plain, (is_a_theorem(implies(implies(not(X1),X1),X2))|~is_a_theorem(implies(X1,X2))), inference(pm,[status(thm)],[c_0_8, c_0_10])).
+cnf(c_0_26, plain, (is_a_theorem(implies(implies(X1,X2),implies(X3,X2)))|~is_a_theorem(X1)), inference(pm,[status(thm)],[c_0_24, c_0_6])).
+cnf(c_0_27, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X2),X2))|~is_a_theorem(implies(X2,X1))), inference(pm,[status(thm)],[c_0_5, c_0_25])).
+cnf(c_0_28, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(not(X2),X4),X3))), inference(pm,[status(thm)],[c_0_18, c_0_9])).
+cnf(c_0_29, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(X1,implies(X4,X3)))|~is_a_theorem(X4)), inference(pm,[status(thm)],[c_0_8, c_0_26])).
+cnf(c_0_30, plain, (is_a_theorem(implies(X1,implies(implies(X2,X3),implies(not(X1),X3))))), inference(pm,[status(thm)],[c_0_11, c_0_6])).
+cnf(c_0_31, plain, (is_a_theorem(implies(not(X1),X2))|~is_a_theorem(implies(not(X1),X1))), inference(pm,[status(thm)],[c_0_27, c_0_9])).
+cnf(c_0_32, plain, (is_a_theorem(implies(X1,implies(X2,X2)))), inference(pm,[status(thm)],[c_0_28, c_0_10])).
+cnf(c_0_33, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X1),X3))))|~is_a_theorem(implies(X4,X3))), inference(pm,[status(thm)],[c_0_29, c_0_30])).
+cnf(c_0_34, plain, (is_a_theorem(implies(not(implies(X1,X1)),X2))), inference(pm,[status(thm)],[c_0_31, c_0_32])).
+cnf(c_0_35, plain, (is_a_theorem(implies(implies(X1,X2),X2))|~is_a_theorem(X1)), inference(pm,[status(thm)],[c_0_12, c_0_26])).
+cnf(c_0_36, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X1),X3))))), inference(pm,[status(thm)],[c_0_33, c_0_34])).
+cnf(c_0_37, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(X1,implies(X3,X2)))|~is_a_theorem(X3)), inference(pm,[status(thm)],[c_0_8, c_0_35])).
+cnf(c_0_38, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,implies(not(X1),X4)),X2))), inference(pm,[status(thm)],[c_0_8, c_0_36])).
+cnf(c_0_39, plain, (is_a_theorem(implies(implies(X1,X2),implies(X1,X3)))|~is_a_theorem(implies(X2,X3))), inference(pm,[status(thm)],[c_0_37, c_0_6])).
+cnf(c_0_40, plain, (is_a_theorem(implies(X1,implies(X2,X3)))|~is_a_theorem(implies(implies(not(X1),X4),X3))), inference(pm,[status(thm)],[c_0_38, c_0_39])).
+cnf(c_0_41, plain, (is_a_theorem(implies(X1,implies(X2,X1)))), inference(pm,[status(thm)],[c_0_40, c_0_10])).
+cnf(c_0_42, plain, (is_a_theorem(implies(X1,implies(X2,implies(not(X2),X3))))), inference(pm,[status(thm)],[c_0_28, c_0_21])).
+cnf(c_0_43, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(X3,X1),X2))), inference(pm,[status(thm)],[c_0_8, c_0_41])).
+cnf(c_0_44, plain, (is_a_theorem(X1)|~is_a_theorem(implies(implies(X2,implies(not(X2),X3)),X1))), inference(pm,[status(thm)],[c_0_22, c_0_42])).
+cnf(c_0_45, plain, (is_a_theorem(implies(X1,implies(implies(X1,X2),implies(X3,X2))))), inference(pm,[status(thm)],[c_0_43, c_0_6])).
+cnf(c_0_46, plain, (is_a_theorem(implies(implies(implies(not(X1),X2),X3),implies(X1,X3)))), inference(pm,[status(thm)],[c_0_44, c_0_6])).
+cnf(c_0_47, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(implies(implies(X1,X3),implies(X4,X3)),X2))), inference(pm,[status(thm)],[c_0_8, c_0_45])).
+cnf(c_0_48, plain, (is_a_theorem(implies(implies(implies(not(not(X1)),X2),X1),X1))), inference(pm,[status(thm)],[c_0_12, c_0_46])).
+cnf(c_0_49, plain, (is_a_theorem(implies(not(not(implies(X1,X2))),implies(X1,X2)))), inference(pm,[status(thm)],[c_0_47, c_0_48])).
+cnf(c_0_50, plain, (is_a_theorem(implies(not(not(implies(X1,X2))),X2))|~is_a_theorem(X1)), inference(pm,[status(thm)],[c_0_37, c_0_49])).
+cnf(c_0_51, plain, (is_a_theorem(implies(X1,X2))|~is_a_theorem(implies(not(X2),not(implies(X3,X1))))), inference(pm,[status(thm)],[c_0_43, c_0_14])).
+cnf(c_0_52, plain, (is_a_theorem(implies(X1,not(implies(X2,not(X1)))))|~is_a_theorem(X2)), inference(pm,[status(thm)],[c_0_14, c_0_50])).
+cnf(c_0_53, plain, (is_a_theorem(implies(not(not(X1)),X1))|~is_a_theorem(X2)), inference(pm,[status(thm)],[c_0_51, c_0_52])).
+cnf(c_0_54, plain, (is_a_theorem(implies(not(X1),implies(X1,implies(X2,X3))))), inference(pm,[status(thm)],[c_0_47, c_0_46])).
+cnf(c_0_55, plain, (is_a_theorem(X1)|~is_a_theorem(implies(not(X1),not(X2)))|~is_a_theorem(X2)), inference(pm,[status(thm)],[c_0_22, c_0_15])).
+cnf(c_0_56, plain, (is_a_theorem(implies(not(not(X1)),X1))), inference(pm,[status(thm)],[c_0_53, c_0_54])).
+cnf(c_0_57, negated_conjecture, (~is_a_theorem(not(not(implies(p,p))))), prove_not_not_implies).
+cnf(c_0_58, plain, (is_a_theorem(not(not(X1)))|~is_a_theorem(X1)), inference(pm,[status(thm)],[c_0_55, c_0_56])).
+cnf(c_0_59, negated_conjecture, ($false), inference(cn,[status(thm)],[inference(rw,[status(thm)],[inference(pm,[status(thm)],[c_0_57, c_0_58]), c_0_21])]), ['proof']).
+# SZS output end CNFRefutation
+# Proof object total steps             : 60
+# Proof object clause steps            : 55
+# Proof object formula steps           : 5
+# Proof object conjectures             : 3
+# Proof object clause conjectures      : 2
+# Proof object formula conjectures     : 1
+# Proof object initial clauses used    : 5
+# Proof object initial formulas used   : 5
+# Proof object generating inferences   : 50
+# Proof object simplifying inferences  : 2
+# Training examples: 0 positive, 0 negative
+# Parsed axioms                        : 5
+# Removed by relevancy pruning/SinE    : 0
+# Initial clauses                      : 5
+# Removed in clause preprocessing      : 0
+# Initial clauses in saturation        : 5
+# Processed clauses                    : 47367
+# ...of these trivial                  : 257
+# ...subsumed                          : 46035
+# ...remaining for further processing  : 1075
+# Other redundant clauses eliminated   : 0
+# Clauses deleted for lack of memory   : 0
+# Backward-subsumed                    : 24
+# Backward-rewritten                   : 2
+# Generated clauses                    : 150271
+# ...of the previous two non-trivial   : 139292
+# Contextual simplify-reflections      : 0
+# Paramodulations                      : 150271
+# Factorizations                       : 0
+# Equation resolutions                 : 0
+# Propositional unsat checks           : 0
+#    Propositional check models        : 0
+#    Propositional check unsatisfiable : 0
+#    Propositional clauses             : 0
+#    Propositional clauses after purity: 0
+#    Propositional unsat core size     : 0
+#    Propositional preprocessing time  : 0.000
+#    Propositional encoding time       : 0.000
+#    Propositional solver time         : 0.000
+#    Success case prop preproc time    : 0.000
+#    Success case prop encoding time   : 0.000
+#    Success case prop solver time     : 0.000
+# Current number of processed clauses  : 1049
+#    Positive orientable unit clauses  : 113
+#    Positive unorientable unit clauses: 0
+#    Negative unit clauses             : 98
+#    Non-unit-clauses                  : 838
+# Current number of unprocessed clauses: 91261
+# ...number of literals in the above   : 269783
+# Current number of archived formulas  : 0
+# Current number of archived clauses   : 26
+# Clause-clause subsumption calls (NU) : 593898
+# Rec. Clause-clause subsumption calls : 535026
+# Non-unit clause-clause subsumptions  : 39575
+# Unit Clause-clause subsumption calls : 5778
+# Rewrite failures with RHS unbound    : 0
+# BW rewrite match attempts            : 10211
+# BW rewrite match successes           : 4
+# Condensation attempts                : 0
+# Condensation successes               : 0
+# Termbank termtop insertions          : 1388546
