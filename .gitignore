@@ -4,3 +4,14 @@ vs/
 ve/
 es/
 ee/
+probgen.pl
+solgen.pl
+proofgen.pl
+checkall.pl
+soltime.pl
+trim.pl
+mv_nc.pl
+debug.pl
+sol_debug.pl
+ttc
+ttv
