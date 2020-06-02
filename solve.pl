@@ -728,7 +728,7 @@ is_skm_pair((SKM, _)) :-
   atom_concat(skolemFOFtoCNF, _, SKM).
 
 report_sol_failure(CTX, ANT) :- 
-  write("\nSolution failed, annotaition : "), 
+  write("\nSolution failed, annotation : "), 
   write(ANT), nl, nl,
   % write("\nInference failed, premises :\n\n"),
   % write_list(PREMS), 
@@ -757,6 +757,13 @@ m_tup_insts(
     INSTS = [inf([parac], PIDS, CID, FORM)]
   ).
 
+m_tup_insts(
+ _,
+ _,
+ (CID, definition, (PRD <=> DEF), none),
+ [add([def, PRD], CID, PRD <=> DEF)]
+).
+  
 m_tup_insts(
   _,
   CTX,
@@ -797,7 +804,6 @@ m_tup_insts(
   mk_dels(SIZE, DELS), 
   append(PFX, [inf([rnm], [NID], CID, FORM) | DELS], INSTS).
   
-
 m_tup_insts(
   _,
   _,
@@ -824,7 +830,7 @@ metis_rul_hint(strip, strip).
 metis_rul_hint(canonicalize, cnn).
 metis_rul_hint(specialize, rnm).
 metis_rul_hint(negate, neg).
-metis_rul_hint(simplify, res).
+metis_rul_hint(simplify, simplify).
 metis_rul_hint(resolve, res).
 metis_rul_hint(conjunct, mscj).
 

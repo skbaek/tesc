@@ -61,7 +61,17 @@ check(PROB, _, x(PID, NID)) :-
   get_assoc(PID, PROB, + FORM_P),
   get_assoc(NID, PROB, - FORM_N),
   FORM_P == FORM_N.
+
+check(TPTP, TESC) :- 
+  style_check(-singleton),
+  pose(TPTP, _, PROB),
+  open(TESC, read, STRM, [encoding(octet)]), 
+  get_prf(STRM, PRF),
+  check(PROB, 0, PRF),
+  write("Proof verified.\n"),
+  close(STRM).
 */
+
 
 /*
 check(PROB, FP, a(PID, DIR, CID, PRF)) :- 
@@ -150,14 +160,9 @@ check(PROB, _, x(PID, NID)) :-
   */
 
 
-% check(TPTP, TESC) :- 
-%   style_check(-singleton),
-%   pose(TPTP, _, PROB),
-%   open(TESC, read, STRM, [encoding(octet)]), 
-%   get_prf(STRM, PRF),
-%   check(PROB, 0, PRF),
-%   write("Proof verified.\n"),
-%   close(STRM).
+
+
+% ---------------------------------------------------
 
 check(TPTP, TESC) :- 
   style_check(-singleton),

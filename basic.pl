@@ -2477,6 +2477,8 @@ para_s((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :-
   
 para_s((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
   sp(HYP_B, GOAL, HYP_BN, GOAL_N). 
+
+bfs(TRP_I, TRP_O) :- para_s(TRP_I, TRP_O).
   
 para_c_((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_B, GOAL_N)) :- 
   cp(HYP_A, _, GOAL, HYP_NA, GOAL_N).
@@ -2723,16 +2725,27 @@ parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
     parac_b(HYP_A, GOAL_T, HGS)
   ).
 
-%bfm(H2G) :- 
-%  para_m(H2G) -> true ;
-%  para_s(H2G, H2G_N) -> bfm(H2G_N) ;
-%  paras_ab(H2G, H2G_L, H2G_R) *-> 
-%  bfm(H2G_L), 
-%  bfm(H2G_R)
-%; 
-%  bfd(H2G, H2G_N) -> bfm(H2G_N) 
-%;
-%  bfc(H2G, H2G_N) -> bfm(H2G_N).
+bf_metis(H2G) :- 
+  bfm(H2G) -> true ;
+  bfs(H2G, H2G_N) -> bf_metis(H2G_N) ;
+  paras_ab(H2G, H2G_L, H2G_R) *-> 
+  bf_metis(H2G_L), 
+  bf_metis(H2G_R)
+; 
+  bf__d(H2G, H2G_N) -> bf_metis(H2G_N) 
+;
+  bf_c_(H2G, H2G_N) -> bf_metis(H2G_N).
+
+% bf_metis(H2G) :- 
+%   para_m(H2G) -> true ;
+%   para_s(H2G, H2G_N) -> bf_metis(H2G_N) ;
+%   paras_ab(H2G, H2G_L, H2G_R) *-> 
+%   bf_metis(H2G_L), 
+%   bf_metis(H2G_R)
+% ; 
+%   bfd(H2G, H2G_N) -> bf_metis(H2G_N) 
+% ;
+%   bfc(H2G, H2G_N) -> bf_metis(H2G_N).
 
 bf_push(TRP) :- 
   para_m(TRP) -> true 
@@ -2939,5 +2952,6 @@ names_from_e(PRVR, NAMES) :-
   maplist_cut(tesc_name(PRVR), PATHS, NAMES).
 
 abrv_prover(vampire, v).
+abrv_prover(metis, m).
 abrv_prover(e, e).
 

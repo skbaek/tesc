@@ -31,7 +31,26 @@ pmt_cla(PREM, CONC, GOAL) :-
   many([b, c, s], ([PREM], GOAL_T), HGS), 
   maplist(pick_mate(HYPS), HGS).
 
-res(PYP0, PYP1, HYPS, GOAL) :- 
+pmt_clas(PREM, CONC, GOAL) :- 
+  many_nb([a], [PREM], GOAL, HYPS, GOAL_T), 
+  many([b], ([CONC], GOAL_T), HGS), 
+  maplist(pick_mate(HYPS), HGS).
+
+cnn(PREM, CONC, GOAL) :- 
+  hyp_sf(PREM, + FORM),
+  push_qtf(FORM, NORM), 
+  fp(NORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P), 
+  bf_push((PREM, HYP_N, GOAL_N)), 
+  bf_metis((HYP_P, CONC, GOAL_P)). 
+
+res(PYP0, PYP1, NYP, GOAL) :- 
+  many_nb([a, d, s], [NYP], GOAL, HYPS, GOAL_T), 
+  (
+    res_core(PYP0, PYP1, HYPS, GOAL_T) ;
+    res_core(PYP1, PYP0, HYPS, GOAL_T)
+  ), !.
+
+res_core(PYP0, PYP1, HYPS, GOAL) :- 
   fp(_, GOAL, NPVT, PPVT, GOAL_N, GOAL_P), 
   many([b, c, s], ([PYP0], GOAL_N), HGS0), 
   many([b, c, s], ([PYP1], GOAL_P), HGS1), !, 
@@ -904,19 +923,20 @@ infer(v, gaoc, AOCS, GAOC, GOAL) :-
   paral((TEMP, CONS, GOAL2)).
   
 infer(PRVR, res, [PYP0, PYP1], NYP, GOAL) :- 
-  member(PRVR, [m, v, e]),
-  many_nb([a, d, s], [NYP], GOAL, HYPS, GOAL_T), 
-  (
-    res(PYP0, PYP1, HYPS, GOAL_T) ;
-    res(PYP1, PYP0, HYPS, GOAL_T)
-  ), !.
+  member(PRVR, [v, e]),
+  res(PYP0, PYP1, NYP, GOAL).
 
 infer(_, pmt, [PREM], CONC, GOAL) :- pmt_cla(PREM, CONC, GOAL).
 
-% infer(m, cnn, [PREM], CONC, GOAL) :- 
-%   pmt_cla(PREM, CONC, GOAL) ;
-%   dtrx(PREM, CONC, GOAL) ; 
-%   bfm((PREM, CONC, GOAL)). 
+infer(m, simplify, [PREM_A, PREM_B], CONC, GOAL) :- 
+  res(PREM_A, PREM_B, CONC, GOAL) ; 
+  expand(PREM_B, (PREM_A, CONC, GOAL)).
+  
+infer(m, cnn, [PREM], CONC, GOAL) :- 
+  pmt_cla(PREM, CONC, GOAL) ;
+  pmt_clas(PREM, CONC, GOAL) ;
+  cnn(PREM, CONC, GOAL) ;
+  dtrx(PREM, CONC, GOAL).
 
 infer(_, eqf, [PREM], CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
@@ -1042,7 +1062,7 @@ report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
   write_list(PREMS), 
   format("\nInference failed, conclusion : ~w\n\n", CONC), 
   open("debug_trace.pl", write, Stream), 
-  write(Stream, ":- [main].\n\n"), 
+  write(Stream, ":- [basic].\n\n"), 
   format(Stream, '~w.\n\n', debug_prvr(PRVR)), 
   format(Stream, '~w.\n\n', debug_hints(HINTS)), 
   format(Stream, '~w.\n\n', debug_ctx(PREMS)), 
@@ -1052,7 +1072,7 @@ report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
   format(Stream, '~w.\n\n', debug_prf(PRF)), 
   close(Stream), 
   % throw(compilation_failure),
-  true.
+  false.
 
 subprove(STRM, HINTS, PIDS, CID, FORM, PROB_I, PROB_O) :-   
   % format("Adding lemma ~w\n\n", CID),
