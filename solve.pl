@@ -1,20 +1,4 @@
-:- [basic].
-
-% id_sid(ID, s(ID)).
-  % atom_concat('s', ID, SID).
-
-%rul_hint(cnf_transformation, v_cnf).
-% rul_hint(flattening, flt).  
-% rul_hint(skolemisation, skm).  
-% rul_hint(ennf_transformation, ennf).  
-% rul_hint(nnf_transformation, nnf).  
-% rul_hint(avatar_component_clause, acmp).
-% rul_hint(rectify, rtf).
-% rul_hint(factoring, wkn).
-% rul_hint(duplicate_literal_removal, wkn).
-% rul_hint(true_and_false_elimination, tfe).
-% rul_hint(pure_predicate_removal, ppr).
-% rul_hint(distinct_equality_removal, der).
+:- [tstp].
 
 rul_hint(superposition, (sup, l)).  
 rul_hint(forward_demodulation, (sup, l)).
@@ -58,61 +42,54 @@ rul_hint(RUL, _) :-
 rul_hints(RUL, [HINT]) :-
   rul_hint(RUL, HINT).
 
-pred_def_norm(! Xs : TPTP, ! Xs : NewTPTP) :- 
-  pred_def_norm(TPTP, NewTPTP).
-
-pred_def_norm((TPTP | ~ Atom), (Atom <=> TPTP)).
-pred_def_norm((Atom <=> TPTP), (Atom <=> TPTP)).
+pred_def_norm($fa(FORM), $fa(NORM)) :- 
+  pred_def_norm(FORM, NORM).
+pred_def_norm($or(FORM, $not(ATOM)), $iff(ATOM, FORM)).
+pred_def_norm($iff(ATOM, FORM), $iff(ATOM, FORM)).
 
 v_tup_inst(
   PIDS,
-  (ID, conjecture, TF, _),
-  inf([parac, dtrx], PIDS, ID, (~ FORM))
-) :- 
-  fof_form([], TF, FORM).
+  (ID, conjecture, FORM, _),
+  inf([parac, pmt], PIDS, ID, $not(FORM) )
+). 
   
 v_tup_inst(
  PIDS,
- (ID, axiom, TF, _),
- inf([parac, dtrx], PIDS, ID, FORM) 
-) :-
-  fof_form([], TF, FORM).
+ (ID, axiom, FORM, _),
+ inf([parac, pmt], PIDS, ID, FORM) 
+).
 
 v_tup_inst(
   _,
-  (ID, plain, (PRD <=> TF), introduced(avatar_definition,[new_symbols(naming,[PRD])])), 
-  add([def, PRD], ID, FORM)
+  (ID, plain, $iff(PRD, FORM), introduced(avatar_definition,[new_symbols(naming,[PRD])])), 
+  add([def, PRD], ID, $iff(PRD, FORM))
 ) :- 
-  PRD \= (~ _),
-  fof_form([], (PRD <=> TF), FORM).
+  PRD \= $not(_).
   
 v_tup_inst(
   _,
-  (ID, plain, TF, introduced(predicate_definition_introduction,[new_symbols(naming, [PRD])])),
-  add([def, PRD], ID, FORM)
+  (ID, plain, FORM, introduced(predicate_definition_introduction,[new_symbols(naming, [PRD])])),
+  add([def, PRD], ID, NORM)
 ) :- 
-  pred_def_norm(TF, TEMP),
-  fof_form([], TEMP, FORM).
+  pred_def_norm(FORM, NORM).
 
 v_tup_inst(
   _, 
-  (ID, _, TF, introduced(RUL, _)),
+  (ID, _, FORM, introduced(RUL, _)),
   add(HINTS, ID, FORM)
 ) :- 
   RUL \= predicate_definition_introduction,
   RUL \= avatar_definition,
-  rul_hints(RUL, HINTS),
-  fof_form([], TF, FORM).
+  rul_hints(RUL, HINTS).
   
 v_tup_inst(
   _, 
-  (ID, _, TF, inference(RUL, _, IDS)),
+  (ID, _, FORM, inference(RUL, _, IDS)),
   inf(HINTS, IDS, ID, FORM)
 ) :-
-  rul_hints(RUL, HINTS),
-  fof_form([], TF, FORM).
+  rul_hints(RUL, HINTS).
 
-vampire_cmp_hints(ORD, (ID_A, _, _, _), (ID_B, _, _, _)) :- 
+v_cmp_sclas(ORD, (ID_A, _, _, _), (ID_B, _, _, _)) :- 
   atom_concat('f', TEMP_A, ID_A),
   atom_number(TEMP_A, NUM_A),
   atom_concat('f', TEMP_B, ID_B),
@@ -175,14 +152,14 @@ maxpar(EXP, MAX) :-
 bind_vars(FORM_I, FORM_O) :-
   minvar(FORM_I, IDX) ->
   map_form(bind_var_term(IDX), 0, FORM_I, TEMP), 
-  bind_vars(! TEMP, FORM_O)
+  bind_vars($fa(TEMP), FORM_O)
 ;
   FORM_O = FORM_I.
 
 bind_pars(FORM_I, FORM_O) :-
   maxpar(FORM_I, IDX) -> 
   map_form(bind_par_term(IDX), 0, FORM_I, TEMP), 
-  bind_pars(! TEMP, FORM_O)
+  bind_pars($fa(TEMP), FORM_O)
 ;
   FORM_O = FORM_I.
 
@@ -201,18 +178,19 @@ get_fun(TERM, FUN) :-
   TERM =.. [FUN | _].
 
 get_aocs(FORM, SKMS, AOCS) :- 
-  inst_with_pars(0, FORM, CNT, ANTE => CONS), 
+  inst_with_pars(0, FORM, CNT, $imp(ANTE, CONS)), 
   mk_pars(desc, CNT, PARS),
   get_aocs_aux(PARS, CNT, ANTE, CONS, SKM_TERMS, FORMS),
   maplist_cut(get_fun, SKM_TERMS, SKMS),
   maplist_cut(revert_pars(CNT), FORMS, AOCS).
 
-get_aocs_aux(ARGS, FP, ? ANTE, CONS, [TERM | TERMS], [(? ANTE) => ANTE_O | AOCS]) :- !,
+get_aocs_aux(ARGS, FP, $ex(ANTE), CONS, [TERM | TERMS], [$imp($ex(ANTE), ANTE_O) | AOCS]) :- !,
   subst_form(TERM, ANTE, ANTE_O), 
-  get_aocs_aux(ARGS, FP, ANTE_O, CONS, TERMS, AOCS).
+  get_aocs_aux(ARGS, FP, ANTE_O, CONS, TERMS, AOCS),
+  no_fp_term(FP, TERM).
 
 get_aocs_aux(_, FP, ANTE, CONS, [], []) :- 
-  paral(((0, (+ ANTE)), (1, (- CONS)), (_, FP, 2))).
+  paral(((0, $pos(ANTE)), (1, $neg(CONS)), (_, FP, 2))).
 
 id_skm_aoc_inst(ID, SKM, AOC, add([aoc, SKM], ID, AOC)).
 
@@ -240,10 +218,10 @@ reduce_gaocs([INST | INSTS], SOL) :-
 axiomatic(TYPE) :- 
   member(TYPE, [lemma, axiom, hypothesis, conjecture, negated_conjecture]).
 
-mk_rw_form(LHS, RHS, ~ FORM, ~ RW) :- !,
+mk_rw_form(LHS, RHS, $not(FORM), $not(RW)) :- !,
   mk_rw_form(LHS, RHS, FORM, RW).
 
-mk_rw_form(LHS, RHS, (FORM_L | FORM_R), (RW_L | RW_R)) :- !,
+mk_rw_form(LHS, RHS, $or(FORM_L, FORM_R), $or(RW_L, RW_R)) :- !,
   (
     mk_rw_form(LHS, RHS, FORM_L, RW_L),
     FORM_R = RW_R
@@ -285,7 +263,7 @@ nst_orient(sr, HYP_L, HYP_R, HYP_R, HYP_L).
 pull_ovs(_, [], FORM, FORM).
 pull_ovs(CNT, [NUM | NUMS], FORM, NORM) :- 
   safe_subst_form(NUM, #(CNT), FORM, TEMP), 
-  SUCC is CNT + 1,
+  num_succ(CNT, SUCC),
   pull_ovs(SUCC, NUMS, TEMP, NORM).
 
 pull_ovs(FORM, NORM) :- 
@@ -294,8 +272,7 @@ pull_ovs(FORM, NORM) :-
   pull_ovs(0, REV, FORM, NORM).
 
 skolemize(SYMBS, DTH, FORM, SKM, AOC, NORM) :- 
-  FORM =.. [BCT, FORM_A, FORM_B],
-  bct(BCT), !, 
+  decom_bct(BCT, FORM_A, FORM_B, FORM), !,
   (
     skolemize(SYMBS, DTH, FORM_A, SKM, AOC, NORM_A) -> 
     NORM_B = FORM_B
@@ -303,16 +280,16 @@ skolemize(SYMBS, DTH, FORM, SKM, AOC, NORM) :-
     skolemize(SYMBS, DTH, FORM_B, SKM, AOC, NORM_B), 
     NORM_A = FORM_A
   ), 
-  NORM =.. [BCT, NORM_A, NORM_B].
+  apply_bop(BCT, NORM_A, NORM_B, NORM).
 
-skolemize(SYMBS, DTH, ~ FORM, SKM, AOC, ~ NORM) :- !,
+skolemize(SYMBS, DTH, $not(FORM), SKM, AOC, $not(NORM)) :- !,
   skolemize(SYMBS, DTH, FORM, SKM, AOC, NORM).
 
-skolemize(SYMBS, DTH, ! FORM, SKM, AOC, ! NORM) :- !,
-  SUCC is DTH + 1,
+skolemize(SYMBS, DTH, $fa(FORM), SKM, AOC, $fa(NORM)) :- !,
+  num_succ(DTH, SUCC),
   skolemize(SYMBS, SUCC, FORM, SKM, AOC, NORM).
 
-skolemize((SKM, LTH), DTH, ? FORM, SKM, AOC, NORM) :-  
+skolemize((SKM, LTH), DTH, $ex(FORM), SKM, AOC, NORM) :-  
   % ovs(FORM, NUMS), 
   % sort(NUMS, [0 | SORTED]), 
   % length(SORTED, LTH),
@@ -323,7 +300,7 @@ skolemize((SKM, LTH), DTH, ? FORM, SKM, AOC, NORM) :-
   LTH =< DTH,
   e_skm_term(SKM, LTH, SKM_TERM),
   safe_subst_form(SKM_TERM, FORM, NORM),
-  bind_vars((? FORM) => NORM, AOC), !.
+  bind_vars($imp($ex(FORM), NORM), AOC), !.
 
 e_skm_term(SKM, NUM, TERM) :- 
   range(desc, NUM, NUMS), 
@@ -332,7 +309,7 @@ e_skm_term(SKM, NUM, TERM) :-
 
 pairs_insts(FI, [], FI, [], []).
 pairs_insts(FI_I, [(SKM, AOC) | PAIRS], FI_O, [t(FI_I) | IDS], [add([aoc, SKM], t(FI_I), AOC) | INSTS]) :- 
-  FI_T is FI_I + 1, 
+  num_succ(FI_I, FI_T), 
   pairs_insts(FI_T, PAIRS, FI_O, IDS, INSTS).
   
 unroll_hint(
@@ -340,14 +317,14 @@ unroll_hint(
   [inf([skm], [PID | IDS], t(FI_T), SF) | INSTS]
 ) :- !, 
   pairs_insts(FI_I, PAIRS, FI_T, IDS, REV_INSTS),
-  FI_O is FI_T + 1,
+  num_succ(FI_T, FI_O),
   reverse(REV_INSTS, INSTS).
 
 unroll_hint(
   HINT, FI_I, PID, SF, FI_O, t(FI_I), 
   [inf([HINT], [PID], t(FI_I), SF)]
 ) :- 
-  FI_O is FI_I + 1.
+  num_succ(FI_I, FI_O).
 
 unroll_hint(HINT, FI_T, PID, SF, FI_O, CID, PFX) :- 
   format("Cannot unroll hint : ~w\n\n", unroll_hint(HINT, FI_T, PID, SF, FI_O, CID, PFX)).
@@ -355,7 +332,7 @@ unroll_hint(HINT, FI_T, PID, SF, FI_O, CID, PFX) :-
 unroll_hint(HINT, FI_I, SID, MID, SF, FI_O, t(FI_I), 
   [inf([HINT], [SID, MID], t(FI_I), SF)]
 ) :- 
-  FI_O is FI_I + 1.
+  num_succ(FI_I, FI_O).
 
 unroll_tree(FI, ntr(ID, _), FI, ID, []).
 
@@ -390,16 +367,16 @@ perm_cla(CLA_I, CLA_O) :-
 eq_resolve(FORM_I, FORM_O) :- 
   inst_fas(FORM_I, BODY_I), 
   cf_lits(BODY_I, LITS),
-  pluck(LITS, ~ (LHS = RHS), REST), 
+  pluck(LITS, $not(LHS = RHS), REST), 
   unify_with_occurs_check(LHS, RHS), 
   mk_cf(REST, BODY_O),
   close_lvs(BODY_O, FORM_O).
   
 split_equiv(EQV, IMP) :- 
-  inst_fas(EQV, LHS <=> RHS), 
+  inst_fas(EQV, $iff(LHS, RHS)), 
   (
-    BODY = (LHS => RHS) ;
-    BODY = (RHS => LHS) 
+    BODY = $imp(LHS, RHS) ;
+    BODY = $imp(RHS, LHS) 
   ),
   close_lvs(BODY, IMP).
 
@@ -409,7 +386,7 @@ conjunct(FORM, CONJ) :-
   perm_cla(TEMP, PERM), 
   close_lvs(PERM, CONJ).
 
-conjunct_core(FORM_A & FORM_B, NORM) :- !, 
+conjunct_core($and(FORM_A, FORM_B), NORM) :- !, 
   (
     conjunct_core(FORM_A, NORM) ;
     conjunct_core(FORM_B, NORM)
@@ -436,12 +413,12 @@ compute_eqn_term(TERM_A, TERM_B, some((TERM_A, TERM_B))) :- \+ TERM_A == TERM_B.
 
 compute_eqn_form(FORM_A, FORM_B, none) :- FORM_A == FORM_B, !.
 compute_eqn_form(FORM_A, FORM_B, EQN) :- 
-  uct_break(FORM_A, UCT, SUB_A), !,
-  uct_break(FORM_B, UCT, SUB_B), 
+  decom_uct(FORM_A, UCT, SUB_A), !,
+  decom_uct(FORM_B, UCT, SUB_B), 
   compute_eqn_form(SUB_A, SUB_B, EQN).
 compute_eqn_form(FORM_A, FORM_B, EQN) :- 
-  bct_break(FORM_A, BCT, SUB_LA, SUB_RA), !, 
-  bct_break(FORM_B, BCT, SUB_LB, SUB_RB),
+  decom_bct(FORM_A, BCT, SUB_LA, SUB_RA), !, 
+  decom_bct(FORM_B, BCT, SUB_LB, SUB_RB),
   compute_eqn_form(SUB_LA, SUB_LB, EQN_L),
   compute_eqn_form(SUB_RA, SUB_RB, EQN_R),
   combine_opts(EQN_L, EQN_R, EQN).
@@ -451,7 +428,7 @@ compute_eqn_form(FORM_A, FORM_B, EQN) :-
   maplist(compute_eqn_term, TERMS_A, TERMS_B, EQNS), 
   foldl(combine_opts, EQNS, none, EQN).
 
-mk_root(_, assume_negation, ~ FORM, rnm, ~ FORM).
+mk_root(_, assume_negation, $not(FORM), rnm, $not(FORM)).
 % mk_root(_, shift_quantors, FORM, upnf, NORM) :- upnf(FORM, NORM).
 mk_root(_, shift_quantors, FORM, bf_push, NORM) :- push_qtf(FORM, NORM).
 mk_root(_, fof_nnf, FORM, fnnf, NORM) :- fnnf(FORM, NORM), !.
@@ -529,10 +506,10 @@ mk_root(_, RUL, FORM_A, FORM_B, res, FORM) :-
   nst_orient(RUL, BODY_A, BODY_B, BODY_L, BODY_R),
   cf_lits(BODY_L, LITS_L), 
   cf_lits(BODY_R, LITS_R), 
-  pluck(LITS_L, ~ ATOM_L, REST_L),
+  pluck(LITS_L, $not(ATOM_L), REST_L),
   pluck(LITS_R, ATOM_R, REST_R),
   unify_atom(ATOM_L, ATOM_R),
-  exclude(syeq_lit(~ ATOM_L), REST_L, FILT_L),
+  exclude(syeq_lit($not(ATOM_L)), REST_L, FILT_L),
   exclude(syeq_atom(ATOM_R), REST_R, FILT_R), 
   syunion_lits(FILT_L, FILT_R, LITS),
   mk_cf(LITS, CF),
@@ -548,7 +525,7 @@ target_tree(TGT, TREE, utr(TREE, HINT, CONC)) :-
 
 mk_tree_fwd(CTX, _, ID, ntr(ID, FORM)) :- 
   atom(ID), !,
-  get_assoc(ID, CTX, + FORM).
+  get_assoc(ID, CTX, $pos(FORM)).
 
 mk_tree_fwd(CTX, FAS, inference(distribute, _, [ANT]), utr(utr(TREE, bf_pull, NORM), bf_dist, CONC)) :- !, 
   mk_tree_fwd(CTX, FAS, ANT, TREE), 
@@ -590,41 +567,33 @@ mk_tree_bwd(CTX, TGT, FAS, ANT, TREE) :-
   mk_tree_fwd(CTX, FAS, ANT, SUB), 
   target_tree(TGT, SUB, TREE).
 
-m_tuplize(TERM, (ID, TYPE, FORM, none)) :- 
-  TERM =.. [LNG, ID, TYPE, TF], 
-  tf_form(LNG, TF, TEMP), 
-  (
-    TYPE = conjecture -> 
-    FORM = (~ TEMP) ;
-    FORM = TEMP
-  ).
+m_tuplize((ID, TYPE, FORM), (ID, TYPE, NORM, none)) :- 
+  % TERM =.. [LNG, ID, TYPE, FORM].
+  % tf_form(LNG, TF, TEMP), 
+  % (
+  TYPE = conjecture -> 
+  NORM = $not(FORM) ;
+  NORM = FORM.
+  % ).
 
-e_tuplize(TERM, (ID, TYPE, FORM, ANT)) :- 
+e_tuplize(TERM, (ID, TYPE, NORM, ANT)) :- 
   (
-    TERM =.. [LNG, ID, TYPE, TF], ANT = none ;
-    TERM =.. [LNG, ID, TYPE, TF, ANT] ;
-    TERM =.. [LNG, ID, TYPE, TF, ANT, [_]]
+    TERM =.. (ID, TYPE, FORM), ANT = none ;
+    TERM =.. (ID, TYPE, FORM, ANT) ;
+    TERM =.. (ID, TYPE, FORM, ANT, [_])
   ), 
-  tf_form(LNG, TF, TEMP), 
   (
     TYPE = conjecture -> 
-    FORM = (~ TEMP) ;
-    FORM = TEMP
+    NORM = $not(FORM) ;
+    NORM = FORM
   ).
-
-% e_tuplize(TERM, (ID, TYPE, FORM, ANT)) :- 
-%   (
-%     TERM =.. [LNG, ID, TYPE, TF, ANT] ;
-%     TERM =.. [LNG, ID, TYPE, TF, ANT, [_]]
-%   ), 
-%   tf_form(LNG, TF, FORM).
 
 cperm_aux([], _).
 cperm_aux([LIT | LITS_A], LITS_B) :- 
   (
     LIT = $false ;
-    LIT = (~ $true) ; 
-    LIT = (~ TERM_A = TERM_B), 
+    LIT = $not($true) ; 
+    LIT = ($not(TERM_A) = TERM_B), 
     unify_with_occurs_check(TERM_A, TERM_B)
   ; 
     erient_lit(LIT, EQV),
@@ -641,13 +610,12 @@ cperm(FORM_A, FORM_B) :-
 
 entails(SF, SF, rnm).
 entails(PREM, CONC, para) :- syeq_form(PREM, CONC).
-entails(PREM, CONC, bf) :- bfe(((0, (+ PREM)), (1, (- CONC)), (_, 0, 2))).
-entails(PREM, CONC, bf2) :- bfe2(((0, (+ PREM)), (1, (- CONC)), (_, 0, 2))).
-% entails(PREM, CONC, bf_push) :- bf_push((unr((0, (+ PREM))), unr((1, (- CONC))), (_, 0, 2))).
+entails(PREM, CONC, bf) :- bfe(((0, $pos(PREM)), (1, $neg(CONC)), (_, 0, 2))).
+entails(PREM, CONC, bf2) :- bfe2(((0, $pos(PREM)), (1, $neg(CONC)), (_, 0, 2))).
 entails(FORM_A, FORM_B, cperm) :- cperm(FORM_A, FORM_B).
 
 def_pred(FORM, PRED) :- 
-  strip_fas(FORM, _, ATOM <=> _), 
+  strip_fas(FORM, _, $iff(ATOM, _)), 
   ATOM =.. [PRED | _].
 
 e_tup_insts(
@@ -751,7 +719,7 @@ m_tup_insts(
   axiomatic(TYPE), !, 
   (
     get_assoc(CID, CTX, TEMP) -> 
-    TEMP = (+ FORM), 
+    TEMP = $pos(FORM), 
     INSTS = [] 
   ;
     INSTS = [inf([parac], PIDS, CID, FORM)]
@@ -760,8 +728,8 @@ m_tup_insts(
 m_tup_insts(
  _,
  _,
- (CID, definition, (PRD <=> DEF), none),
- [add([def, PRD], CID, PRD <=> DEF)]
+ (CID, definition, $iff(PRD, DEF), none),
+ [add([def, PRD], CID, $iff(PRD, DEF))]
 ).
   
 m_tup_insts(
@@ -835,16 +803,17 @@ metis_rul_hint(resolve, res).
 metis_rul_hint(conjunct, mscj).
 
 tup_ctx((ID, _, FORM, _), CTX_I, CTX_O) :- 
-  put_assoc(ID, CTX_I, + FORM, CTX_O).
+  put_assoc(ID, CTX_I, $pos(FORM), CTX_O).
 
 tups_ctx(TUPS, CTX) :- 
   empty_assoc(EMP), 
   foldl(tup_ctx, TUPS, EMP, CTX).
 
 solve(v, PIDS, TSTP, SOL) :- 
-  trim_consult(TSTP),
-  findall((ID, IDS, TF, RUL), fof(ID, IDS, TF, RUL), UNSORTED),
-  predsort(vampire_cmp_hints, UNSORTED, SORTED), 
+  % trim_consult(TSTP),
+  % findall((ID, IDS, TF, RUL), fof(ID, IDS, TF, RUL), UNSORTED),
+  tstp_sclas(TSTP, UNSORTED),
+  predsort(v_cmp_sclas, UNSORTED, SORTED), 
   maplist_cut(v_tup_inst(PIDS), SORTED, INSTS), 
   % write("Computing deletions...\n"),
   insert_dels(INSTS, _, DELETED),
@@ -853,25 +822,18 @@ solve(v, PIDS, TSTP, SOL) :-
   % write("Solution found.\n"),
   true.
 
-solve(e, _, TSTP, SOL) :- 
-  trim_read(TSTP, TEMP), 
-  maplist_cut(e_tuplize, TEMP, TUPS),
-  tups_ctx(TUPS, CTX),
-  maplist_cut(e_tup_insts(CTX), TUPS, INSTSS),
-  append(INSTSS, SOL),
-  true.
-
-solve(m, PIDS, TSTP, SOL) :- 
-  trim_read(TSTP, TEMP), 
-  maplist_cut(e_tuplize, TEMP, TUPS),
-  tups_ctx(TUPS, CTX),
-  maplist_cut(m_tup_insts(PIDS, CTX), TUPS, INSTSS),
-  append(INSTSS, SOL),
-  true.
-
+% solve(e, _, TSTP, SOL) :- 
+%   trim_read(TSTP, TEMP), 
+%   maplist_cut(e_tuplize, TEMP, TUPS),
+%   tups_ctx(TUPS, CTX),
+%   maplist_cut(e_tup_insts(CTX), TUPS, INSTSS),
+%   append(INSTSS, SOL),
+%   true.
+% 
 % solve(m, PIDS, TSTP, SOL) :- 
-%   trim_read(TSTP, TEMP),
-%   maplist_cut(m_tuplize, TEMP, TUPS),
-%   maplist_cut(metis_tuple_insts(PIDS), TUPS, INSTSS),
+%   trim_read(TSTP, TEMP), 
+%   maplist_cut(e_tuplize, TEMP, TUPS),
+%   tups_ctx(TUPS, CTX),
+%   maplist_cut(m_tup_insts(PIDS, CTX), TUPS, INSTSS),
 %   append(INSTSS, SOL),
 %   true.

@@ -1,12 +1,12 @@
 #!/usr/bin/env swipl
 :- initialization(main, main).
 
-:- [prove, solve].
+:- [tptp, prove, solve].
 
 main([PROVER, TPTP, TSTP, TXTX]) :-  
-  abrv_prover(PROVER, PRVR),
   set_prolog_flag(stack_limit, 2_147_483_648),
   style_check(-singleton),
+  prover_abrv(PROVER, PRVR),
   pose(TPTP, PIDS, PROB),
   solve(PRVR, PIDS, TSTP, SOL),
   open(TXTX, write, STRM, [encoding(octet)]),
@@ -15,7 +15,7 @@ main([PROVER, TPTP, TSTP, TXTX]) :-
 
 % main :- 
 %   current_prolog_flag(argv, [_, PROVER, TPTP, TSTP, TXTX]), 
-%   abrv_prover(PROVER, PRVR),
+%   prover_abrv(PROVER, PRVR),
 %   set_prolog_flag(stack_limit, 2_147_483_648),
 %   style_check(-singleton),
 %   pose(TPTP, PIDS, PROB),

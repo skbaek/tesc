@@ -1,4 +1,4 @@
-:- [basic].
+:- [tptp].
 
 /*
 check(PROB, FP, a(PID, DIR, CID, PRF)) :- 
@@ -28,16 +28,16 @@ check(PROB, FP, d(PID, CID, PRF)) :-
   get_assoc(PID, PROB, PREM),
   db(FP, PREM, CONC), 
   put_assoc(CID, PROB, CONC, PROB_N),
-  FP_N is FP + 1, !,
+  num_succ(FP, FP_N), !,
   check(PROB_N, FP_N, PRF).
 
 check(PROB, FP, f(FORM, CID, PRF_L, PRF_R)) :- 
   ground(FORM), % No logic variables in Form
   no_fv_form(0, FORM), % No free object variables in Form
   no_fp_form(FP, FORM), % No new parameters in Form
-  put_assoc(CID, PROB, (- FORM), PROB_L), !,
+  put_assoc(CID, PROB, $neg(FORM), PROB_L), !,
   check(PROB_L, FP, PRF_L),
-  put_assoc(CID, PROB, (+ FORM), PROB_R), !,
+  put_assoc(CID, PROB, $pos(FORM), PROB_R), !,
   check(PROB_R, FP, PRF_R).
 
 check(PROB, FP, s(PID, CID, PRF)) :- 
@@ -58,8 +58,8 @@ check(PROB, FP, w(PID, PRF)) :-
   check(PROB_N, FP, PRF).
 
 check(PROB, _, x(PID, NID)) :- 
-  get_assoc(PID, PROB, + FORM_P),
-  get_assoc(NID, PROB, - FORM_N),
+  get_assoc(PID, PROB, $pos(FORM_P)),
+  get_assoc(NID, PROB, $neg(FORM_N)),
   FORM_P == FORM_N.
 
 check(TPTP, TESC) :- 
@@ -114,7 +114,7 @@ check(PROB, FP, d(PID, CID, PRF)) :-
   % get_assoc(PID, PROB, PREM),
   % db(FP, PREM, CONC), 
   % put_assoc(CID, PROB, CONC, PROB_N),
-  % FP_N is FP + 1, !,
+  % num_succ(FP, FP_N), !,
   % check(PROB_N, FP_N, PRF).
 
 check(PROB, FP, f(FORM, CID, PRF_L, PRF_R)) :- 
@@ -123,9 +123,9 @@ check(PROB, FP, f(FORM, CID, PRF_L, PRF_R)) :-
   % ground(FORM), % No logic variables in Form
   % no_fv_form(0, FORM), % No free object variables in Form
   % no_fp_form(FP, FORM), % No new parameters in Form
-  % put_assoc(CID, PROB, (- FORM), PROB_L), !,
+  % put_assoc(CID, PROB, $neg(FORM), PROB_L), !,
   % check(PROB_L, FP, PRF_L),
-  % put_assoc(CID, PROB, (+ FORM), PROB_R), !,
+  % put_assoc(CID, PROB, $pos(FORM), PROB_R), !,
   % check(PROB_R, FP, PRF_R).
 
 check(PROB, FP, s(PID, CID, PRF)) :- 
@@ -154,8 +154,8 @@ check(PROB, FP, w(PID, PRF)) :-
 check(PROB, _, x(PID, NID)) :- 
   write("X-fail\n"),
   throw(check_failure).
-  % get_assoc(PID, PROB, + FORM_P),
-  % get_assoc(NID, PROB, - FORM_N),
+  % get_assoc(PID, PROB, $pos(FORM_P)),
+  % get_assoc(NID, PROB, $neg(FORM_N)),
   % FORM_P == FORM_N.
   */
 
@@ -212,7 +212,7 @@ check(STRM, PROB, FP) :-
     get_assoc(PID, PROB, PREM),
     db(FP, PREM, CONC), 
     put_assoc(CID, PROB, CONC, PROB_N),
-    FP_N is FP + 1, !,
+    num_succ(FP, FP_N), !,
     check(STRM, PROB_N, FP_N) ;
 
     CH = 'F' -> 
@@ -221,9 +221,9 @@ check(STRM, PROB, FP) :-
     ground(FORM), % No logic variables in Form
     no_fv_form(0, FORM), % No free object variables in Form
     no_fp_form(FP, FORM), % No new parameters in Form
-    put_assoc(CID, PROB, (- FORM), PROB_N), !,
+    put_assoc(CID, PROB, $neg(FORM), PROB_N), !,
     check(STRM, PROB_N, FP),
-    put_assoc(CID, PROB, (+ FORM), PROB_P), !,
+    put_assoc(CID, PROB, $pos(FORM), PROB_P), !,
     check(STRM, PROB_P, FP) ;
 
     CH = 'S' -> 
@@ -252,8 +252,8 @@ check(STRM, PROB, FP) :-
     CH = 'X' -> 
     get_id(STRM, PID), 
     get_id(STRM, NID), 
-    get_assoc(PID, PROB, + FORM_P),
-    get_assoc(NID, PROB, - FORM_N),
+    get_assoc(PID, PROB, $pos(FORM_P)),
+    get_assoc(NID, PROB, $neg(FORM_N)),
     FORM_P == FORM_N
   ).
   

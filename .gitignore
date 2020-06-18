@@ -4,6 +4,7 @@ vs/
 ve/
 es/
 ee/
+tests/
 vampire_rel
 eprover
 probgen.pl

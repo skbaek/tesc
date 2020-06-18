@@ -37,7 +37,7 @@ pmt_clas(PREM, CONC, GOAL) :-
   maplist(pick_mate(HYPS), HGS).
 
 cnn(PREM, CONC, GOAL) :- 
-  hyp_sf(PREM, + FORM),
+  hyp_sf(PREM, $pos(FORM)),
   push_qtf(FORM, NORM), 
   fp(NORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P), 
   bf_push((PREM, HYP_N, GOAL_N)), 
@@ -73,7 +73,7 @@ eqr_aux(_, ([HYP], GOAL)) :-
   use_lc(HYP, GOAL).
 
 eqr_aux(_, ([HYP], GOAL)) :- 
-  HYP = (_, (- _ = _)),
+  HYP = (_, $neg(_ = _)),
   eq_refl(HYP, GOAL).
 
 eqr_aux(HYPS, HG) :- 
@@ -112,22 +112,22 @@ dff(Defs, HYP0, HYP1, GOAL) :-
   dff(Defs, HYP0R, HYP1R, GOAL_R).
 
 dff(Defs, HYP0, HYP1, DFP) :-
-  HYP1 = (_, (+ Atom)), 
+  HYP1 = (_, $pos(Atom)), 
   uatom(Atom), 
   member(Def, Defs), 
   many_nb([c], [Def], DFP, [IFF], DFP0), 
-  IFF = (_, (+ Atom <=> _)), !,
+  IFF = (_, $pos($iff(Atom, _))), !,
   ap(IFF, l, DFP0, IMP, DFP1), 
   bp(IMP, DFP1, Ante, Cons, DFP2, DFP3), 
   mate(HYP1, Ante, DFP2), 
   dff(Defs, HYP0, Cons, DFP3).
 
 dff(Defs, HYP0, HYP1, DFP) :-
-  HYP1 = (_, (- Atom)), 
+  HYP1 = (_, $neg(Atom)), 
   uatom(Atom), 
   member(Def, Defs), 
   many_nb([c], [Def], DFP, [IFF], DFP0), 
-  IFF = (_, (+ Atom <=> _)), !,
+  IFF = (_, $pos($iff(Atom, _))), !,
   ap(IFF, r, DFP0, IMP, DFP1), 
   bp(IMP, DFP1, Ante, Cons, DFP2, DFP3), 
   mate(HYP1, Cons, DFP3), 
@@ -137,9 +137,9 @@ dff(Defs, HYP0, HYP1, DFP) :-
 
 %%%%%%%%%%%%%%%% SAT SOLVER %%%%%%%%%%%%%%%% 
 
-lit_num(ANA, ~ ATOM, NEG) :- !,
+lit_num(ANA, $not(ATOM), NEG) :- !,
   get_assoc(ATOM, ANA, NUM), 
-  NEG is (- NUM).
+  NEG is - NUM.
 
 lit_num(ANA, ATOM, NUM) :- !,
   get_assoc(ATOM, ANA, NUM).
@@ -148,7 +148,7 @@ cla_nums(ANA, CH, NUMS) :-
   cla_lits(CH, LITS), 
   maplist_cut(lit_num(ANA), LITS, NUMS). 
 
-cla_lits((_, (+ CF)), LITS) :- 
+cla_lits((_, $pos(CF)), LITS) :- 
   cf_lits(CF, LITS).
 
 cla_atoms(CH, ATOMS) :- 
@@ -163,7 +163,7 @@ atom_table(ATOM, (NUM_I, ANA_I, NAA_I), TBL_O) :-
   get_assoc(ATOM, ANA_I, _) -> 
   TBL_O = (NUM_I, ANA_I, NAA_I)
 ;
-  NUM_O is NUM_I + 1, 
+  num_succ(NUM_I, NUM_O),
   put_assoc(ATOM, ANA_I, NUM_I, ANA_O),
   put_assoc(NUM_I, NAA_I, ATOM, NAA_O),
   TBL_O = (NUM_O, ANA_O, NAA_O).
@@ -173,7 +173,7 @@ mk_sat_tables(CHS, ANA, NAA) :-
   foldl(cla_table, CHS, (1, EMP, EMP), (_, ANA, NAA)).
   
 cla_ctx(CLA, (NUM_I, CTX_I), (NUM_O, CTX_O)) :- 
-  NUM_O is NUM_I + 1, 
+  num_succ(NUM_I, NUM_O), 
   put_assoc(NUM_I, CTX_I, CLA, CTX_O).
 
 mk_sat_ctx(CLAS, CTX) :- 
@@ -191,9 +191,9 @@ nums_dimacs(NUMS, Str) :-
 
 num_lit(NAA, NUM, LIT) :- 
   NUM < 0 -> 
-  NEG is (- NUM), 
+  NEG is - NUM, 
   get_assoc(NEG, NAA, ATOM),
-  LIT = (~ ATOM)
+  LIT = $not(ATOM)
 ;
   get_assoc(NUM, NAA, LIT).
 
@@ -204,7 +204,7 @@ lits_cla(Lits, Cla) :-
 
 lits_cla_core([Lit], Lit).
 
-lits_cla_core([Lit | Lits], Lit | Cla) :- 
+lits_cla_core([Lit | Lits], $or(Lit, Cla)) :- 
   lits_cla_core(Lits, Cla).
 
 nums_cla(NAA, NUMS, CLA) :- 
@@ -245,16 +245,6 @@ numss_dimacs(NUMSs, DIMACS) :-
   strings_concat(["p cnf ", MaxVarStr, " ", NumClaStr], Str),
   maplist(nums_dimacs, NUMSs, Strs),
   strings_concat_with("\n", [Str | Strs], DIMACS).
-
-% line_rup(_, LINE, del(SID)) :-
-%   split_string(LINE, " ", "", ["d", NUM_STR]),
-%   number_string(SID, NUM_STR).
-% 
-% line_rup(NAA, LINE, rup(SIDS, SID, CLA)) :- 
-%   string_numbers(LINE, [SID | NUMS]),
-%   append(CLA_NUMS, [0 | REST], NUMS), 
-%   nums_cla(NAA, CLA_NUMS, CLA),
-%   append(SIDS, [0], REST).
 
 unit_propagate(PREM, (HYPS_I, GOAL_I), ([HYP | HYPS_I], GOAL_O)) :- 
   many([b, s], ([PREM], GOAL_I), HGS), 
@@ -342,7 +332,7 @@ matrixify(VARS, (FI, SF), (FO, c(VAR, MAT))) :-
 matrixify(VARS, (FI, SF), (FO, d(SKM, MAT))) :- 
   type_sf(d, SF), !,
   atom_concat(skm, FI, SKM), 
-  FT is FI + 1, 
+  num_succ(FI, FT), 
   SKM_TERM =.. [SKM | VARS],
   dt(SKM_TERM, SF, SF_N), 
   matrixify(VARS, (FT, SF_N), (FO, MAT)). 
@@ -370,8 +360,8 @@ startable(b(MAT_L, MAT_R)) :-
 
 startable(c(_, MAT)) :- startable(MAT).
 startable(d(_, MAT)) :- startable(MAT).
-startable(+ _). 
-startable(SF) :- lc(SF). 
+startable($pos(_)). 
+startable(SF) :- falsity(SF). 
 
 mem_mod_symm(SF, SFS) :- 
   erient_stom(SF, SF_N), 
@@ -548,7 +538,7 @@ ditrixify(DIR, VARS, (FI, SF), (FO, c(VAR, DIT))) :-
 ditrixify(DIR, VARS, (FI, SF), (FO, d(SKM, DIT))) :- 
   type_sf(d, SF), !,
   atom_concat(skm, FI, SKM), 
-  FT is FI + 1, 
+  num_succ(FI, FT), 
   SKM_TERM =.. [SKM | VARS],
   dt(SKM_TERM, SF, SF_N), 
   ditrixify(DIR, VARS, (FT, SF_N), (FO, DIT)). 
@@ -570,8 +560,8 @@ dtrx_startable(b(MAT_L, MAT_R)) :-
 
 dtrx_startable(c(_, MAT)) :- dtrx_startable(MAT).
 dtrx_startable(d(_, MAT)) :- dtrx_startable(MAT).
-dtrx_startable((_, (+ _))). 
-dtrx_startable((_, SF)) :- lc(SF). 
+dtrx_startable((_, $pos(_))). 
+dtrx_startable((_, SF)) :- falsity(SF). 
 
 dtrx_solve(DITS) :- 
   pluck(DITS, (GD, DIT), REST), 
@@ -760,6 +750,8 @@ skm(AOCS, H2G) :-
   xp(PREM, HYP_L, GOAL_L),
   skm(REST, (HYP_R, CONC, GOAL_R)).
 
+
+
 spl_exp([], [], GOAL, [], GOAL).
 
 spl_exp([PREM | PREMS], HYPS_I, GOAL_I, [HYP | HYPS_O], GOAL_O) :- 
@@ -812,7 +804,7 @@ mscj(H2G) :-
   mscj(H2G_N).
 
 bf_dist_aux(ANTE, CONS, GOAL_I, HYP_O, GOAL_O) :- 
-  fp(ANTE => CONS, GOAL_I, HYP_T, HYP_O, GOAL_T, GOAL_O), 
+  fp($imp(ANTE, CONS), GOAL_I, HYP_T, HYP_O, GOAL_T, GOAL_O), 
   aap(HYP_T, GOAL_T, PREM, CONC, GOAL_N),
   bf_dist(PREM, CONC, GOAL_N), !. 
 
@@ -822,25 +814,25 @@ bf_dist(PREM, CONC, GOAL) :-
   cdp(PREM, CONC, GOAL, PREM_N, CONC_N, GOAL_N) ->
   bf_dist(PREM_N, CONC_N, GOAL_N), !
 ;
-  hyp_sf(PREM, + (_ & _)) -> 
+  hyp_sf(PREM, $pos($and(_, _))) -> 
   abpl(PREM, CONC, GOAL, PREM_L, CONC_L, GOAL_L, PREM_R, CONC_R, GOAL_R), 
   bf_dist(PREM_L, CONC_L, GOAL_L),
   bf_dist(PREM_R, CONC_R, GOAL_R), ! 
 ; 
-  hyp_sf(PREM, + (FORM_A | FORM_B)),
+  hyp_sf(PREM, $pos($or(FORM_A, FORM_B))),
   distribute(FORM_A, TEMP_A),  
   distribute(FORM_B, TEMP_B),
   bf_dist_aux(FORM_A, TEMP_A, GOAL, HYP_A, GOAL_A), 
   bf_dist_aux(FORM_B, TEMP_B, GOAL_A, HYP_B, GOAL_B), 
   (
-    TEMP_A = (FORM_L & FORM_R) -> 
-    fp((FORM_L | TEMP_B) & (FORM_R | TEMP_B), GOAL_B, HYP_T, HYP_C, GOAL_T, GOAL_C), 
+    TEMP_A = $and(FORM_L, FORM_R) -> 
+    fp($and($or(FORM_L, TEMP_B), $or(FORM_R, TEMP_B)), GOAL_B, HYP_T, HYP_C, GOAL_T, GOAL_C), 
     [FORM_A, FORM_B, FORM_L, FORM_R, TEMP_B] = PAS, 
     ablx(PAS, [PREM, HYP_A, HYP_B, HYP_T], GOAL_T), 
     bf_dist(HYP_C, CONC, GOAL_C), !
   ;
-    TEMP_B = (FORM_L & FORM_R) -> 
-    fp((FORM_L | TEMP_A) & (FORM_R | TEMP_A), GOAL_B, HYP_T, HYP_C, GOAL_T, GOAL_C), 
+    TEMP_B = $and(FORM_L, FORM_R) -> 
+    fp($and($or(FORM_L, TEMP_A), $or(FORM_R, TEMP_A)), GOAL_B, HYP_T, HYP_C, GOAL_T, GOAL_C), 
     [FORM_A, FORM_B, TEMP_A, FORM_L, FORM_R] = PAS,
     ablx(PAS, [PREM, HYP_A, HYP_B, HYP_T], GOAL_T), 
     bf_dist(HYP_C, CONC, GOAL_C), !
@@ -895,7 +887,7 @@ infer(m, subst, [PREM], CONC, GOAL) :-
 infer(m, eq, [], CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, EQ, [HYP_A, HYP_B]),
-  EQ = (_, (+ _ = _)), 
+  EQ = (_, $pos(_ = _)), 
   subst_rel_mul(HYP_A, [EQ], HYP_B, GOAL_T, []). 
 
 infer(m, refl, [], CONC, GOAL) :-
@@ -917,7 +909,7 @@ infer(_, rwa, [PREM_A, PREM_B], CONC, GOAL) :-
 
 infer(v, gaoc, AOCS, GAOC, GOAL) :- 
   many_nb([d], [GAOC], GOAL, [IMP], GOAL0), 
-  IMP = (_, (- (_ => _))),
+  IMP = (_, $neg($imp(_, _))),
   aap(IMP, GOAL0, ANTE, CONS, GOAL1), 
   apply_aocs(ANTE, AOCS, GOAL1, TEMP, GOAL2), 
   paral((TEMP, CONS, GOAL2)).
@@ -926,11 +918,13 @@ infer(PRVR, res, [PYP0, PYP1], NYP, GOAL) :-
   member(PRVR, [v, e]),
   res(PYP0, PYP1, NYP, GOAL).
 
-infer(_, pmt, [PREM], CONC, GOAL) :- pmt_cla(PREM, CONC, GOAL).
+infer(_, pmt, PREMS, CONC, GOAL) :-
+  member(PREM, PREMS),
+  pmt_cla(PREM, CONC, GOAL), !.
 
 infer(m, simplify, [PREM_A, PREM_B], CONC, GOAL) :- 
-  res(PREM_A, PREM_B, CONC, GOAL) ; 
-  expand(PREM_B, (PREM_A, CONC, GOAL)).
+  res(PREM_A, PREM_B, CONC, GOAL).
+  % expand(PREM_B, (PREM_A, CONC, GOAL)).
   
 infer(m, cnn, [PREM], CONC, GOAL) :- 
   pmt_cla(PREM, CONC, GOAL) ;
@@ -941,7 +935,7 @@ infer(m, cnn, [PREM], CONC, GOAL) :-
 infer(_, eqf, [PREM], CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, HYP, REST), 
-  HYP = (_, (+ _ = _)), 
+  HYP = (_, $pos(_ = _)), 
   many([b, c, s], ([PREM], GOAL_T), HGS), 
   maplist(eqf(REST, HYP), HGS).
 
@@ -972,7 +966,7 @@ infer(_, rwe, [PREM_L, PREM_R], CONC, GOAL) :-
   many_nb([a, s], [BODY_C], GOAL4, HYPS, GOAL5), 
   pick_pivot_prop(HYPS, BODY_L, GOAL5, SRC, GOAL6), 
   pick_pivot_prop(HYPS, BODY_R, GOAL6, PRE_EQN, GOAL7), 
-  PRE_EQN = (_, (+ _ = _)),
+  PRE_EQN = (_, $pos(_ = _)),
   erient_hyp(PRE_EQN, GOAL7, EQN, GOAL8),
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL8). 
@@ -982,7 +976,7 @@ infer(_, (sup, DIR), [PREM_A, PREM_B], CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL0), 
   pick_pivot(HYPS, PREM_L, GOAL0, SRC, GOAL1), 
   pick_pivot(HYPS, PREM_R, GOAL1, PRE_EQN, GOAL2), 
-  PRE_EQN = (_, (+ _ = _)),
+  PRE_EQN = (_, $pos(_ = _)),
   erient_hyp(PRE_EQN, GOAL2, EQN, GOAL3),
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL3). 
@@ -1071,7 +1065,7 @@ report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
   format(Stream, '~w.\n\n', debug_prob(PROB)), 
   format(Stream, '~w.\n\n', debug_prf(PRF)), 
   close(Stream), 
-  % throw(compilation_failure),
+  throw(compilation_failure),
   false.
 
 subprove(STRM, HINTS, PIDS, CID, FORM, PROB_I, PROB_O) :-   
@@ -1083,8 +1077,8 @@ subprove(STRM, HINTS, PIDS, CID, FORM, PROB_I, PROB_O) :-
   GOAL = (PRF, 0, 0), 
   timed_call(
     60,
-    infers(PRVR, HINTS, CTX, (CID, (- FORM)), GOAL), 
-    (report_failure(PRVR, HINTS, CTX, (CID, (- FORM)), none, none, GOAL), false)
+    infers(PRVR, HINTS, CTX, (CID, $neg(FORM)), GOAL), 
+    (report_failure(PRVR, HINTS, CTX, (CID, $neg(FORM)), none, none, GOAL), false)
   ), !,
   ground_all(c, PRF),
   % put_assoc(CID, PROB_I, - FORM, SUB_PROB),
@@ -1092,10 +1086,10 @@ subprove(STRM, HINTS, PIDS, CID, FORM, PROB_I, PROB_O) :-
   %   check(SUB_PROB, 0, PRF) ->  true ; 
   %   format("ID at error = ~w\n\n", CID),
   %   format("Prob at error = ~w\n\n", SUB_PROB),
-  %   report_failure(PRVR, HINTS, CTX, (CID, (- FORM)), SUB_PROB, PRF, GOAL)
+  %   report_failure(PRVR, HINTS, CTX, (CID, $neg(FORM)), SUB_PROB, PRF, GOAL)
   % ),
   put_prf(STRM, PRF), 
-  put_assoc(CID, PROB_I, + FORM, PROB_O).
+  put_assoc(CID, PROB_I, $pos(FORM), PROB_O).
 
 prove(STRM, LAST, PRVR, [del(PID) | SOL], PROB) :- 
   % format("Deleting lemma ~w\n\n", PID),
@@ -1112,19 +1106,20 @@ prove(STRM, _, PRVR, [add(JST, CID, CONC) | SOL], PROB) :-
   % format("With context : ~w\n", PROB),
   % justified(PROB, CONC, JST),
   % write("Justified.\n\n"),
-  put_sf(STRM, + CONC), 
+  put_sf(STRM, $pos(CONC)), 
   put_atoms(STRM, JST),
   put_id(STRM, CID), 
-  put_assoc(CID, PROB, + CONC, PROB_N),
+  put_assoc(CID, PROB, $pos(CONC), PROB_N),
   prove(STRM, CID, PRVR, SOL, PROB_N). 
 
 prove(STRM, _, PRVR, [inf(HINTS, PIDS, CID, FORM) | SOL], PROB) :- 
   get_assoc(CID, PROB, SF) -> 
-  SF = (+ FORM), 
+  SF = $pos(FORM), 
   prove(STRM, CID, PRVR, SOL, PROB)
 ;
   subprove(STRM, HINTS, PIDS, CID, FORM, PROB, PROB_N),
   prove(STRM, CID, PRVR, SOL, PROB_N).
 
 prove(STRM, LAST, _, [], _) :- 
-  put_prf(STRM, t(- $false, [neg_false], x(0), x(LAST, x(0)))).
+  put_prf(STRM, t($neg($false), [neg_false], x(0), x(LAST, x(0)))).
+
