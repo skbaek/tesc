@@ -26,9 +26,29 @@ apply_aocs(ANTE, [AOC | AOCS], GOAL_I, CONS, GOAL_O) :-
 
 apply_aocs(HYP, [], GOAL, HYP, GOAL). 
 
+mate_candidate(HYP_A, HYP_B) :- 
+  (
+    HYP_A = (_, $pos(FORM_A)), 
+    HYP_B = (_, $neg(FORM_B))
+  ;
+    HYP_A = (_, $neg(FORM_A)), 
+    HYP_B = (_, $pos(FORM_B))
+  ), 
+  unsigned_atom(FORM_A),
+  unsigned_atom(FORM_B),
+  FORM_A =.. [REL | ARGS_A], 
+  FORM_B =.. [REL | ARGS_B], 
+  length(ARGS_A, LTH),
+  length(ARGS_B, LTH).
+
+pmt_candidate(HYPS, ([HYP], _)) :- 
+  member(CMP, HYPS), 
+  mate_candidate(CMP, HYP), !.
+
 pmt_cla(PREM, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   many([b, c, s], ([PREM], GOAL_T), HGS), 
+  maplist_cut(pmt_candidate(HYPS), HGS),
   maplist(pick_mate(HYPS), HGS).
 
 pmt_clas(PREM, CONC, GOAL) :- 
@@ -918,6 +938,10 @@ infer(PRVR, res, [PYP0, PYP1], NYP, GOAL) :-
   member(PRVR, [v, e]),
   res(PYP0, PYP1, NYP, GOAL).
 
+infer(_, id, PREMS, CONC, GOAL) :-
+  member(PREM, PREMS),
+  mate(PREM, CONC, GOAL), !.
+
 infer(_, pmt, PREMS, CONC, GOAL) :-
   member(PREM, PREMS),
   pmt_cla(PREM, CONC, GOAL), !.
@@ -1047,7 +1071,10 @@ infer(v, mtrx, PREMS, CONC, GOAL) :-
 
 infers(PRVR, [TAC | TACS], PREMS, CONC, GOAL) :- 
   infer(PRVR, TAC, PREMS, CONC, GOAL) -> true ;  
-  infers(PRVR, TACS, PREMS, CONC, GOAL).
+  (
+    format("Tactic ~w failed, trying next...\n\n", TAC),
+    infers(PRVR, TACS, PREMS, CONC, GOAL)
+  ).
 
 report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :- 
   write("\nInference failed, hints : "), 
@@ -1069,14 +1096,14 @@ report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
   false.
 
 subprove(STRM, HINTS, PIDS, CID, FORM, PROB_I, PROB_O) :-   
-  % format("Adding lemma ~w\n\n", CID),
+  format("Adding lemma ~w\n\n", CID),
   put_char(STRM, 'F'), 
   put_form(STRM, FORM), 
   put_id(STRM, CID), 
   get_context(PROB_I, PIDS, CTX),
   GOAL = (PRF, 0, 0), 
   timed_call(
-    60,
+    30,
     infers(PRVR, HINTS, CTX, (CID, $neg(FORM)), GOAL), 
     (report_failure(PRVR, HINTS, CTX, (CID, $neg(FORM)), none, none, GOAL), false)
   ), !,

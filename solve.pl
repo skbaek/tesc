@@ -50,13 +50,13 @@ pred_def_norm($iff(ATOM, FORM), $iff(ATOM, FORM)).
 v_tup_inst(
   PIDS,
   (ID, conjecture, FORM, _),
-  inf([parac, pmt], PIDS, ID, $not(FORM) )
+  inf([id, pmt, parac, dtrx], PIDS, ID, $not(FORM) )
 ). 
   
 v_tup_inst(
  PIDS,
  (ID, axiom, FORM, _),
- inf([parac, pmt], PIDS, ID, FORM) 
+ inf([id, pmt, parac, dtrx], PIDS, ID, FORM) 
 ).
 
 v_tup_inst(
@@ -810,8 +810,6 @@ tups_ctx(TUPS, CTX) :-
   foldl(tup_ctx, TUPS, EMP, CTX).
 
 solve(v, PIDS, TSTP, SOL) :- 
-  % trim_consult(TSTP),
-  % findall((ID, IDS, TF, RUL), fof(ID, IDS, TF, RUL), UNSORTED),
   tstp_sclas(TSTP, UNSORTED),
   predsort(v_cmp_sclas, UNSORTED, SORTED), 
   maplist_cut(v_tup_inst(PIDS), SORTED, INSTS), 
