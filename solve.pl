@@ -42,39 +42,41 @@ rul_hint(RUL, _) :-
 rul_hints(RUL, [HINT]) :-
   rul_hint(RUL, HINT).
 
+pred_def_norm_or($or(FORM, $not(ATOM)), FORM, ATOM) :- unsigned_atom(ATOM).
+pred_def_norm_or($or(FORM_A, FORM_B), $or(FORM_A, FORM_C), ATOM) :- 
+  pred_def_norm_or(FORM_B, FORM_C, ATOM).
+
 pred_def_norm($fa(FORM), $fa(NORM)) :- 
   pred_def_norm(FORM, NORM).
-pred_def_norm($or(FORM, $not(ATOM)), $iff(ATOM, FORM)).
+% pred_def_norm($or(FORM, $not(ATOM)), $iff(ATOM, FORM)).
+pred_def_norm($or(FORM_A, FORM_B), $iff(ATOM, FORM)) :- 
+  pred_def_norm_or($or(FORM_A, FORM_B), FORM, ATOM).
+
 pred_def_norm($iff(ATOM, FORM), $iff(ATOM, FORM)).
 
 v_tup_inst(
-  PIDS,
   (ID, conjecture, FORM, _),
-  inf([id, pmt, parac, dtrx], PIDS, ID, $not(FORM) )
+  inf([id, pmt, parac], $orig, ID, $not(FORM) )
 ). 
   
 v_tup_inst(
- PIDS,
  (ID, axiom, FORM, _),
- inf([id, pmt, parac, dtrx], PIDS, ID, FORM) 
+ inf([id, pmt, parac], $orig, ID, FORM) 
 ).
 
 v_tup_inst(
-  _,
   (ID, plain, $iff(PRD, FORM), introduced(avatar_definition,[new_symbols(naming,[PRD])])), 
   add([def, PRD], ID, $iff(PRD, FORM))
 ) :- 
   PRD \= $not(_).
   
 v_tup_inst(
-  _,
   (ID, plain, FORM, introduced(predicate_definition_introduction,[new_symbols(naming, [PRD])])),
   add([def, PRD], ID, NORM)
 ) :- 
   pred_def_norm(FORM, NORM).
 
 v_tup_inst(
-  _, 
   (ID, _, FORM, introduced(RUL, _)),
   add(HINTS, ID, FORM)
 ) :- 
@@ -83,7 +85,6 @@ v_tup_inst(
   rul_hints(RUL, HINTS).
   
 v_tup_inst(
-  _, 
   (ID, _, FORM, inference(RUL, _, IDS)),
   inf(HINTS, IDS, ID, FORM)
 ) :-
@@ -120,9 +121,15 @@ insert_dels([INST | INSTS_I], SEEN, INSTS_O) :-
     INSTS_O = [INST | INSTS_T]
   ;
     INST = inf(_, IDS, _, _), 
-    sort(IDS, IDS_S), 
-    update_seen(SEEN_T, IDS_S, SEEN, DELS), 
-    append([INST | DELS], INSTS_T, INSTS_O)
+    (
+      IDS == $orig -> 
+      SEEN = SEEN_T,
+      INSTS_O = [INST | INSTS_T]
+    ; 
+      sort(IDS, IDS_S), 
+      update_seen(SEEN_T, IDS_S, SEEN, DELS), 
+      append([INST | DELS], INSTS_T, INSTS_O)
+    )
   ).
 
 bind_par(IDX, CNT, IDX, #(CNT)).
@@ -809,15 +816,12 @@ tups_ctx(TUPS, CTX) :-
   empty_assoc(EMP), 
   foldl(tup_ctx, TUPS, EMP, CTX).
 
-solve(v, PIDS, TSTP, SOL) :- 
+solve(v, TSTP, SOL) :- 
   tstp_sclas(TSTP, UNSORTED),
   predsort(v_cmp_sclas, UNSORTED, SORTED), 
-  maplist_cut(v_tup_inst(PIDS), SORTED, INSTS), 
-  % write("Computing deletions...\n"),
+  maplist_cut(v_tup_inst, SORTED, INSTS), 
   insert_dels(INSTS, _, DELETED),
-  % write("Deletions found.\n"),
   reduce_gaocs(DELETED, SOL),
-  % write("Solution found.\n"),
   true.
 
 % solve(e, _, TSTP, SOL) :- 

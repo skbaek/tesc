@@ -26,29 +26,29 @@ apply_aocs(ANTE, [AOC | AOCS], GOAL_I, CONS, GOAL_O) :-
 
 apply_aocs(HYP, [], GOAL, HYP, GOAL). 
 
-mate_candidate(HYP_A, HYP_B) :- 
-  (
-    HYP_A = (_, $pos(FORM_A)), 
-    HYP_B = (_, $neg(FORM_B))
-  ;
-    HYP_A = (_, $neg(FORM_A)), 
-    HYP_B = (_, $pos(FORM_B))
-  ), 
-  unsigned_atom(FORM_A),
-  unsigned_atom(FORM_B),
-  FORM_A =.. [REL | ARGS_A], 
-  FORM_B =.. [REL | ARGS_B], 
-  length(ARGS_A, LTH),
-  length(ARGS_B, LTH).
-
-pmt_candidate(HYPS, ([HYP], _)) :- 
-  member(CMP, HYPS), 
-  mate_candidate(CMP, HYP), !.
+% mate_candidate(HYP_A, HYP_B) :- 
+%   (
+%     HYP_A = (_, $pos(FORM_A)), 
+%     HYP_B = (_, $neg(FORM_B))
+%   ;
+%     HYP_A = (_, $neg(FORM_A)), 
+%     HYP_B = (_, $pos(FORM_B))
+%   ), 
+%   unsigned_atom(FORM_A),
+%   unsigned_atom(FORM_B),
+%   FORM_A =.. [REL | ARGS_A], 
+%   FORM_B =.. [REL | ARGS_B], 
+%   length(ARGS_A, LTH),
+%   length(ARGS_B, LTH).
+% 
+% pmt_candidate(HYPS, ([HYP], _)) :- 
+%   member(CMP, HYPS), 
+%   mate_candidate(CMP, HYP), !.
 
 pmt_cla(PREM, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   many([b, c, s], ([PREM], GOAL_T), HGS), 
-  maplist_cut(pmt_candidate(HYPS), HGS),
+  % maplist_cut(pmt_candidate(HYPS), HGS),
   maplist(pick_mate(HYPS), HGS).
 
 pmt_clas(PREM, CONC, GOAL) :- 
@@ -266,10 +266,36 @@ numss_dimacs(NUMSs, DIMACS) :-
   maplist(nums_dimacs, NUMSs, Strs),
   strings_concat_with("\n", [Str | Strs], DIMACS).
 
+lit_sl($not(ATOM), $neg(ATOM)) :- !.
+lit_sl(ATOM, $pos(ATOM)).
+
+form_sls($or(LIT, FORM), [SL | SLS]) :- !,
+  lit_sl(LIT, SL),
+  form_sls(FORM, SLS). 
+  
+form_sls(LIT, [SL]) :- lit_sl(LIT, SL).
+
+find_new_unit_core([SL], _, SL) :- !.
+find_new_unit_core([SL_I | SLS_A], SLS_B, SL) :- 
+  (
+    member(SL_B, SLS_B), 
+    complements(SL_I, SL_B)
+  ) -> 
+  find_new_unit_core(SLS_A, SLS_B, SL) 
+;
+  SL = SL_I.
+
+find_new_unit((_, $pos(FORM)), HYPS, SL) :- 
+  form_sls(FORM, SLS_A),
+  maplist_cut(snd, HYPS, SLS_B), 
+  find_new_unit_core(SLS_A, SLS_B, SL).
+
 unit_propagate(PREM, (HYPS_I, GOAL_I), ([HYP | HYPS_I], GOAL_O)) :- 
-  many([b, s], ([PREM], GOAL_I), HGS), 
-  pluck(HGS, ([HYP], GOAL_O), REST),
-  maplist_cut(pick_mate(HYPS_I), REST).
+  find_new_unit(PREM, HYPS_I, SL), 
+  fps(SL, GOAL_I, HYP_T, HYP, GOAL_T, GOAL_O),
+  many([b, s], ([PREM], GOAL_T), HGS), 
+  % pluck(HGS, ([HYP], GOAL_O), REST),
+  maplist_cut(pick_mate([HYP_T | HYPS_I]), HGS).
 
 get_sat_cla(CTX, SID, CLA) :- 
   get_assoc(SID, CTX, CLA).
@@ -311,12 +337,14 @@ sat(CLAS, GOAL) :-
   write_file("temp.cnf", DIMACS), !,
   shell("cadical -q temp.cnf temp.drat", _), !,
   shell("drat-trim temp.cnf temp.drat -L temp.lrat", _), !,
+
   file_sat_insts(NAA, "temp.lrat", SIS), 
   mk_sat_ctx(CLAS, CTX), 
   use_sat_insts(CTX, SIS, GOAL),
-  delete_file("temp.cnf"),
-  delete_file("temp.drat"),
-  delete_file("temp.lrat").
+  % delete_file("temp.cnf"),
+  %delete_file("temp.drat"),
+  %delete_file("temp.lrat"),
+  true.
 
 
 
@@ -861,42 +889,87 @@ bf_dist(PREM, CONC, GOAL) :-
     ablx(PAS, [PREM, HYP_A, HYP_B, CONC], GOAL_B), !
   ).  
 
+lit_map_lit(LIT, LIT).
+lit_map_lit(TERM_A = TERM_B, TERM_B = TERM_A).
+lit_map_lit($not(TERM_A = TERM_B), $not(TERM_B = TERM_A)).
+
+lit_mappable_lit(LIT_A, LIT_B) :- unifiable(LIT_A, LIT_B, _).
+lit_mappable_lit(TERM_A = TERM_B, LIT) :- unifiable(TERM_B = TERM_A, LIT, _).
+lit_mappable_lit($not(TERM_A = TERM_B), LIT) :- unifiable($not(TERM_B = TERM_A), LIT, _).
+
+lits_map_lits([], _).
+
+lits_map_lits([LIT | LITS_A], LITS_B) :- 
+  lit_map_lits(LIT, LITS_B), 
+  lits_map_lits(LITS_A, LITS_B).
+
+lit_map_lits(LIT_A, [LIT_B | _]) :- 
+  lit_map_lit(LIT_A, LIT_B).
+
+lit_map_lits(LIT_A, [LIT_B | LITS]) :- 
+  lit_mappable_lit(LIT_A, LIT_B) -> 
+  nonground(LIT_A, _), 
+  lit_map_lits(LIT_A, LITS) 
+;
+  lit_map_lits(LIT_A, LITS).
+
+% report_success(X) :- 
+%   format("FOUND : ~w\n\n", X).
+
+subsume_cla(LITS_A, (ID, LITS_B), ID) :- 
+  copy_term(LITS_B, LITS_C),
+  lits_map_lits(LITS_C, LITS_A), 
+  % report_success(LITS_C), 
+  !.
+
+find_subsumer(CLAS, (_, $neg(FORM)), ID) :- 
+  inst_with_pars(0, FORM, _, BODY), 
+  body_lits(BODY, LITS),
+  try(subsume_cla(LITS), CLAS, ID).
+
+% find_subsumer(CLAS, (_, $neg(FORM)), ID) :- 
+%   inst_with_pars(0, FORM, _, BODY), 
+%   body_lits(BODY, LITS_A),
+%   % try(subsume_cla(LITS), CLAS, ID).
+%   ID = cls_sup__eq__bot__eq2_0,
+%   member((ID, LITS_B), CLAS), 
+%   subsume_cla(LITS_A, (ID, LITS_B), ID).
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
 
-infer(_, rnm, [PREM | _], CONC, GOAL) :- 
+infer(_, rnm, [PREM | _], _, CONC, GOAL) :- 
   mate(PREM, CONC, GOAL).
 
-infer(PRVR, skm, [PREM | AOCS], CONC, GOAL) :- 
+infer(PRVR, skm, [PREM | AOCS], _, CONC, GOAL) :- 
   PRVR = e -> 
   eskm(AOCS, (PREM, CONC, GOAL)) 
 ;
   skm(AOCS, (PREM, CONC, GOAL)).
 
-infer(_, ngt, [PREM], CONC, GOAL) :- 
+infer(_, ngt, [PREM], _, CONC, GOAL) :- 
   sp(CONC, GOAL, TEMP, GOAL_T), 
   mate(PREM, TEMP, GOAL_T).
 
-infer(v, aft, PREMS, CONC, GOAL) :- 
-  tblx([CONC | PREMS], GOAL).
-
-infer(v, daft, [PREM], CONC, GOAL) :- 
-  tblx(PREM, CONC, GOAL).
+% infer(v, aft, PREMS, _, CONC, GOAL) :- 
+%   tblx([CONC | PREMS], GOAL).
+% 
+% infer(v, daft, [PREM], _, CONC, GOAL) :- 
+%   tblx(PREM, CONC, GOAL).
   
-infer(_, dff, [PREM | PREMS], CONC, GOAL) :- 
+infer(_, dff, [PREM | PREMS], _, CONC, GOAL) :- 
   sort(PREMS, DEFS),
   dff(DEFS, PREM, CONC, GOAL).
 
-infer(_, dfu, [PREM | PREMS], CONC, GOAL) :- 
+infer(_, dfu, [PREM | PREMS], _, CONC, GOAL) :- 
   dfu(PREMS, PREM, CONC, GOAL).
 
-infer(v, sat, PREMS, _, GOAL) :-
+infer(v, sat, PREMS, _, _, GOAL) :-
   sat(PREMS, GOAL).
   
-infer(v, pblx, PREMS, CONC, GOAL) :-
+infer(v, pblx, PREMS, _, CONC, GOAL) :-
   pblx(p, [CONC | PREMS], GOAL).
 
-infer(m, subst, [PREM], CONC, GOAL) :-
+infer(m, subst, [PREM], _, CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP_C], GOAL0), 
   many_nb([c], [PREM], GOAL0, [HYP_P], GOAL1), 
   ( 
@@ -904,72 +977,74 @@ infer(m, subst, [PREM], CONC, GOAL) :-
     pblx(p, [HYP_P, HYP_C], GOAL1)
   ).
 
-infer(m, eq, [], CONC, GOAL) :-
+infer(m, eq, [], _, CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, EQ, [HYP_A, HYP_B]),
   EQ = (_, $pos(_ = _)), 
   subst_rel_mul(HYP_A, [EQ], HYP_B, GOAL_T, []). 
 
-infer(m, refl, [], CONC, GOAL) :-
+infer(m, refl, [], _, CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP], GOAL_T), 
   eq_refl(HYP, GOAL_T).
 
-infer(_, bf_pull, [PREM], CONC, GOAL) :-
+infer(_, bf_pull, [PREM], _, CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP], GOAL_T), 
   bf_pull((PREM, HYP, GOAL_T)).
 
-infer(_, bf_push, [PREM], CONC, GOAL) :-
+infer(_, bf_push, [PREM], _, CONC, GOAL) :-
   bf_push((PREM, CONC, GOAL)).
 
-infer(_, rwa, [PREM_A, PREM_B], CONC, GOAL) :-
+infer(_, rwa, [PREM_A, PREM_B], _, CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP_C], GOAL_C), 
   many_nb([c], [PREM_B], GOAL_C, [HYP_B], GOAL_B), 
   many_nb([c], [PREM_A], GOAL_B, [HYP_A], GOAL_A), 
   rwa(HYP_B, (HYP_A, HYP_C, GOAL_A)).
 
-infer(v, gaoc, AOCS, GAOC, GOAL) :- 
+infer(v, gaoc, AOCS, _, GAOC, GOAL) :- 
   many_nb([d], [GAOC], GOAL, [IMP], GOAL0), 
   IMP = (_, $neg($imp(_, _))),
   aap(IMP, GOAL0, ANTE, CONS, GOAL1), 
   apply_aocs(ANTE, AOCS, GOAL1, TEMP, GOAL2), 
   paral((TEMP, CONS, GOAL2)).
   
-infer(PRVR, res, [PYP0, PYP1], NYP, GOAL) :- 
+infer(PRVR, res, [PYP0, PYP1], _, NYP, GOAL) :- 
   member(PRVR, [v, e]),
   res(PYP0, PYP1, NYP, GOAL).
 
-infer(_, id, PREMS, CONC, GOAL) :-
+infer(_, id, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   mate(PREM, CONC, GOAL), !.
 
-infer(_, pmt, PREMS, CONC, GOAL) :-
-  member(PREM, PREMS),
-  pmt_cla(PREM, CONC, GOAL), !.
+infer(_, pmt, PREMS, CLAS, CONC, GOAL) :-
+  find_subsumer(CLAS, CONC, ID),
+  % ID = cls_sup__eq__bot__eq2_0,
+  member((ID, HYP), PREMS), 
+  pmt_cla((ID, HYP), CONC, GOAL), !.
 
-infer(m, simplify, [PREM_A, PREM_B], CONC, GOAL) :- 
+infer(m, simplify, [PREM_A, PREM_B], _, CONC, GOAL) :- 
   res(PREM_A, PREM_B, CONC, GOAL).
   % expand(PREM_B, (PREM_A, CONC, GOAL)).
   
-infer(m, cnn, [PREM], CONC, GOAL) :- 
+infer(m, cnn, [PREM], _, CONC, GOAL) :- 
   pmt_cla(PREM, CONC, GOAL) ;
   pmt_clas(PREM, CONC, GOAL) ;
   cnn(PREM, CONC, GOAL) ;
   dtrx(PREM, CONC, GOAL).
 
-infer(_, eqf, [PREM], CONC, GOAL) :- 
+infer(_, eqf, [PREM], _, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, HYP, REST), 
   HYP = (_, $pos(_ = _)), 
   many([b, c, s], ([PREM], GOAL_T), HGS), 
   maplist(eqf(REST, HYP), HGS).
 
-infer(_, cperm, [PREM], CONC, GOAL) :- 
+infer(_, cperm, [PREM], _, CONC, GOAL) :- 
   eqr(PREM, CONC, GOAL).
 
-infer(_, eqr, [PREM], CONC, GOAL) :- 
+infer(_, eqr, [PREM], _, CONC, GOAL) :- 
   eqr(PREM, CONC, GOAL).
 
-infer(v, updr, [PREM], CONC, GOAL) :- 
+infer(v, updr, [PREM], _, CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [CONC_N], GOAL0),
   many_nb([c], [PREM], GOAL0, [PREM_N], GOAL1),
   (
@@ -978,10 +1053,10 @@ infer(v, updr, [PREM], CONC, GOAL) :-
   ),
   mate(PREM_D, CONC_N, GOAL2).
 
-infer(e, fnnf, [PREM], CONC, GOAL) :- 
+infer(e, fnnf, [PREM], _, CONC, GOAL) :- 
   fnnf((PREM, CONC, GOAL)).
 
-infer(_, rwe, [PREM_L, PREM_R], CONC, GOAL) :- 
+infer(_, rwe, [PREM_L, PREM_R], _, CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [TEMP_C], GOAL0), 
   many_nb([c], [PREM_L], GOAL0, [TEMP_L], GOAL1), 
   many_nb([d], [TEMP_L], GOAL1, [BODY_L], GOAL2), 
@@ -995,7 +1070,7 @@ infer(_, rwe, [PREM_L, PREM_R], CONC, GOAL) :-
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL8). 
   
-infer(_, (sup, DIR), [PREM_A, PREM_B], CONC, GOAL) :- 
+infer(_, (sup, DIR), [PREM_A, PREM_B], _, CONC, GOAL) :- 
   orient_dir(PREM_A, PREM_B, DIR, PREM_L, PREM_R),
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL0), 
   pick_pivot(HYPS, PREM_L, GOAL0, SRC, GOAL1), 
@@ -1005,78 +1080,78 @@ infer(_, (sup, DIR), [PREM_A, PREM_B], CONC, GOAL) :-
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL3). 
 
-infer(v, spl, [PREM | PREMS], CONC, GOAL) :- 
+infer(v, spl, [PREM | PREMS], _, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS0, GOAL0), 
   spl_exp(PREMS, HYPS0, GOAL0, HYPS1, GOAL1),
   append(HYPS0, HYPS1, HYPS),
   pblx(q, [PREM | HYPS], GOAL1).
   
-infer(e, bf_dist, [PREM], CONC, GOAL) :- 
+infer(e, bf_dist, [PREM], _, CONC, GOAL) :- 
   bf_dist(PREM, CONC, GOAL).
 
-infer(e, simp, [PREM], CONC, GOAL) :- 
+infer(e, simp, [PREM], _, CONC, GOAL) :- 
   esimp((PREM, CONC, GOAL)).
 
-% infer(m, bf, [PREM], CONC, GOAL) :- 
+% infer(m, bf, [PREM], _, CONC, GOAL) :- 
 %   bfe((PREM, CONC, GOAL)).
 
-infer(e, bf, [PREM], CONC, GOAL) :- 
+infer(e, bf, [PREM], _, CONC, GOAL) :- 
   bfe((PREM, CONC, GOAL)).
 
-infer(e, bf2, [PREM], CONC, GOAL) :- 
+infer(e, bf2, [PREM], _, CONC, GOAL) :- 
   bfe2((PREM, CONC, GOAL)).
 
-infer(_, para, PREMS, CONC, GOAL) :- 
+infer(_, para, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   para((PREM, CONC, GOAL)).
 
-infer(v, parad, PREMS, CONC, GOAL) :- 
+infer(v, parad, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   parad((PREM, CONC, GOAL)).
 
-infer(v, paras, PREMS, CONC, GOAL) :- 
+infer(v, paras, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   paras((PREM, CONC, GOAL)).
 
-infer(v, paral, PREMS, CONC, GOAL) :- 
+infer(v, paral, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   paral((PREM, CONC, GOAL)).
 
-infer(_, mscj, [PREM], CONC, GOAL) :- 
+infer(_, mscj, [PREM], _, CONC, GOAL) :- 
   mscj((PREM, CONC, GOAL)).
 
-infer(_, scj, [PREM], CONC, GOAL) :- 
+infer(_, scj, [PREM], _, CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [HYP0], GOAL0), 
   many_nb([c], [PREM], GOAL0, [HYP1], GOAL1), 
   scj((HYP1, HYP0, GOAL1)).
 
-infer(v, vnnf, PREMS, CONC, GOAL) :- 
+infer(v, vnnf, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   vnnf((PREM, CONC, GOAL)).
 
-infer(_, parac, PREMS, CONC, GOAL) :- 
+infer(_, parac, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   parac((PREM, CONC, GOAL)).
 
-infer(_, paratf, PREMS, CONC, GOAL) :- 
+infer(_, paratf, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   paratf((PREM, CONC, GOAL)).
 
-infer(_, dtrx, PREMS, CONC, GOAL) :- 
+infer(_, dtrx, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   dtrx(PREM, CONC, GOAL).
 
-infer(v, mtrx, PREMS, CONC, GOAL) :- 
+infer(v, mtrx, PREMS, _, _, CONC, GOAL) :- 
   mtrx([CONC | PREMS], GOAL).
 
-infers(PRVR, [TAC | TACS], PREMS, CONC, GOAL) :- 
-  infer(PRVR, TAC, PREMS, CONC, GOAL) -> true ;  
+infers(PRVR, [TAC | TACS], PREMS, CLAS, CONC, GOAL) :- 
+  infer(PRVR, TAC, PREMS, CLAS, CONC, GOAL) -> true ;  
   (
     format("Tactic ~w failed, trying next...\n\n", TAC),
-    infers(PRVR, TACS, PREMS, CONC, GOAL)
+    infers(PRVR, TACS, PREMS, CLAS, CONC, GOAL)
   ).
 
-report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :- 
+report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :- 
   write("\nInference failed, hints : "), 
   write(HINTS), nl, nl,
   write("\nInference failed, premises :\n\n"),
@@ -1087,6 +1162,7 @@ report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
   format(Stream, '~w.\n\n', debug_prvr(PRVR)), 
   format(Stream, '~w.\n\n', debug_hints(HINTS)), 
   format(Stream, '~w.\n\n', debug_ctx(PREMS)), 
+  format(Stream, '~w.\n\n', debug_clas(CLAS)), 
   format(Stream, '~w.\n\n', debug_hyp(CONC)), 
   format(Stream, '~w.\n\n', debug_goal(GOAL)), 
   format(Stream, '~w.\n\n', debug_prob(PROB)), 
@@ -1095,17 +1171,21 @@ report_failure(PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
   throw(compilation_failure),
   false.
 
-subprove(STRM, HINTS, PIDS, CID, FORM, PROB_I, PROB_O) :-   
-  format("Adding lemma ~w\n\n", CID),
+subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB_I, PROB_O) :-   
+  % format("Adding lemma ~w\n\n", CID),
   put_char(STRM, 'F'), 
   put_form(STRM, FORM), 
   put_id(STRM, CID), 
-  get_context(PROB_I, PIDS, CTX),
+  (
+    PIDS == $orig -> 
+    get_context(PROB_I, ORIG, CTX) ;
+    get_context(PROB_I, PIDS, CTX)
+  ),
   GOAL = (PRF, 0, 0), 
   timed_call(
-    30,
-    infers(PRVR, HINTS, CTX, (CID, $neg(FORM)), GOAL), 
-    (report_failure(PRVR, HINTS, CTX, (CID, $neg(FORM)), none, none, GOAL), false)
+    60,
+    infers(PRVR, HINTS, CTX, CLAS, (CID, $neg(FORM)), GOAL), 
+    (report_failure(PRVR, HINTS, CTX, CLAS, (CID, $neg(FORM)), none, none, GOAL), false)
   ), !,
   ground_all(c, PRF),
   % put_assoc(CID, PROB_I, - FORM, SUB_PROB),
@@ -1118,14 +1198,14 @@ subprove(STRM, HINTS, PIDS, CID, FORM, PROB_I, PROB_O) :-
   put_prf(STRM, PRF), 
   put_assoc(CID, PROB_I, $pos(FORM), PROB_O).
 
-prove(STRM, LAST, PRVR, [del(PID) | SOL], PROB) :- 
+prove(STRM, LAST, PRVR, [del(PID) | SOL], ORIG, CLAS, PROB) :- 
   % format("Deleting lemma ~w\n\n", PID),
   put_char(STRM, 'W'), 
   put_id(STRM, PID), 
   del_assoc(PID, PROB, _, PROB_N),
-  prove(STRM, LAST, PRVR, SOL, PROB_N). 
+  prove(STRM, LAST, PRVR, SOL, ORIG, CLAS, PROB_N). 
 
-prove(STRM, _, PRVR, [add(JST, CID, CONC) | SOL], PROB) :- 
+prove(STRM, _, PRVR, [add(JST, CID, CONC) | SOL], ORIG, CLAS, PROB) :- 
   % format("Adding lemma ~w\n\n", CID),
   put_char(STRM, 'T'), 
   % write("Justification : "), write(JST), nl,
@@ -1137,16 +1217,16 @@ prove(STRM, _, PRVR, [add(JST, CID, CONC) | SOL], PROB) :-
   put_atoms(STRM, JST),
   put_id(STRM, CID), 
   put_assoc(CID, PROB, $pos(CONC), PROB_N),
-  prove(STRM, CID, PRVR, SOL, PROB_N). 
+  prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB_N). 
 
-prove(STRM, _, PRVR, [inf(HINTS, PIDS, CID, FORM) | SOL], PROB) :- 
+prove(STRM, _, PRVR, [inf(HINTS, PIDS, CID, FORM) | SOL], ORIG, CLAS, PROB) :- 
   get_assoc(CID, PROB, SF) -> 
   SF = $pos(FORM), 
-  prove(STRM, CID, PRVR, SOL, PROB)
+  prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB)
 ;
-  subprove(STRM, HINTS, PIDS, CID, FORM, PROB, PROB_N),
-  prove(STRM, CID, PRVR, SOL, PROB_N).
+  subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB, PROB_N),
+  prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB_N).
 
-prove(STRM, LAST, _, [], _) :- 
+prove(STRM, LAST, _, [], _, _, _) :- 
   put_prf(STRM, t($neg($false), [neg_false], x(0), x(LAST, x(0)))).
 

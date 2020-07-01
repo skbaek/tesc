@@ -57,6 +57,8 @@ signed_atom(Satom) :- neg_atom(Satom).
 neg_atom($neg(ATOM)) :- unsigned_atom(ATOM).
 pos_atom($pos(ATOM)) :- unsigned_atom(ATOM).
 unsigned_atom(ATOM) :- \+ molecular(ATOM).
+literal(LIT) :- unsigned_atom(LIT).
+literal($not(ATOM)) :- unsigned_atom(ATOM).
 
 complements($pos(FORM), $neg(FORM)).
 complements($neg(FORM), $pos(FORM)).
@@ -804,12 +806,17 @@ orient_sign(ONF, OPF, OPF, ONF) :-
   OPF = (_, $pos(_)),
   ONF = (_, $neg(_)).
 
-strip_fas(Form, 0, Form) :-
-  Form \= $fa(_).
+strip_fas($fa(FORM), NUM, BODY) :- !,
+  strip_fas(FORM, PRED, BODY), 
+  num_succ(PRED, NUM).
 
-strip_fas($fa(Form), NUM, BODY) :-
-  strip_fas(Form, Pred, BODY), 
-  num_succ(Pred, NUM).
+strip_fas(Form, 0, Form).
+
+inst_with_lvs($fa(FORM), BODY) :- !,
+  subst_form(_, FORM, TEMP), 
+  inst_with_lvs(TEMP, BODY).
+
+inst_with_lvs(FORM, FORM).
 
 inst_with_pars(NUM, $fa(FORM), CNT, BODY) :- !,
   subst_form(@(NUM), FORM, TEMP), 
@@ -824,6 +831,7 @@ add_fas(NUM, Form, $fa(NewForm)) :-
   add_fas(Pred, Form, NewForm).
 
 fst((X, _), X).
+snd((_, X), X).
 
 range(desc, 0, []). 
 range(desc, NUM, [Pred | NUMs]) :- 
@@ -1716,6 +1724,12 @@ bool_and($true, FORM, FORM) :- !.
 bool_and(FORM, $true, FORM) :- !.
 bool_and(FORM_L, FORM_R, $and(FORM_L, FORM_R)).
 
+bool_imp($false, _, $true) :- !.
+bool_imp(_, $true, $true) :- !.
+bool_imp($true, FORM, FORM) :- !.
+bool_imp(FORM, $false, $not(FORM)) :- !.
+bool_imp(FORM_L, FORM_R, $imp(FORM_L, FORM_R)).
+
 bool_norm($not(FORM), NORM) :- !, 
   bool_norm(FORM, TEMP), 
   bool_not(TEMP, NORM). 
@@ -1729,6 +1743,11 @@ bool_norm($and(FORM_L, FORM_R), NORM) :- !,
   bool_norm(FORM_L, NORM_L), 
   bool_norm(FORM_R, NORM_R),
   bool_and(NORM_L, NORM_R, NORM).
+
+bool_norm($imp(FORM_L, FORM_R), NORM) :- !, 
+  bool_norm(FORM_L, NORM_L), 
+  bool_norm(FORM_R, NORM_R),
+  bool_imp(NORM_L, NORM_R, NORM).
 
 bool_norm(FORM, FORM).
 
@@ -2781,4 +2800,22 @@ tptp_name(TPTP, NAME) :-
   \+ member(47, TEMP1), 
   append(TEMP2, [46, 112], TEMP1),
   string_codes(NAME, TEMP2).
+
+max_list_zero(LIST, MAX) :- 
+  max_list([0 | LIST], MAX).
+
+body_lits($or(LIT, FORM), [LIT | LITS]) :- !, 
+  literal(LIT),
+  body_lits(FORM, LITS).
+
+body_lits(LIT, [LIT]) :- literal(LIT).
+
+try(PRED, [ELEM | LIST], RST) :- 
+  call(PRED, ELEM, RST) -> 
+  true ;
+  try(PRED, LIST, RST).
+  
+
+
+  
 
