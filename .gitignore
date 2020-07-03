@@ -15,6 +15,7 @@ soltime.pl
 trim.pl
 mv_nc.pl
 debug.pl
+debug_trace.pl
 sol_debug.pl
 ttc
 ttv

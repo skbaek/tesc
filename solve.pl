@@ -20,7 +20,7 @@ rul_hint(duplicate_literal_removal, dtrx).
 rul_hint(negated_conjecture, parac).  
 rul_hint(flattening, parac).  
 rul_hint(ennf_transformation, paras).  
-rul_hint(rectify, paral).
+rul_hint(rectify, parav).
 rul_hint(true_and_false_elimination, paratf).
 rul_hint(pure_predicate_removal, parad).
 rul_hint(nnf_transformation, vnnf).  
@@ -39,9 +39,6 @@ rul_hint(RUL, _) :-
   format('Rule not found : ~w', RUL), 
   throw(no_tactic_for_rule). 
 
-rul_hints(RUL, [HINT]) :-
-  rul_hint(RUL, HINT).
-
 pred_def_norm_or($or(FORM, $not(ATOM)), FORM, ATOM) :- unsigned_atom(ATOM).
 pred_def_norm_or($or(FORM_A, FORM_B), $or(FORM_A, FORM_C), ATOM) :- 
   pred_def_norm_or(FORM_B, FORM_C, ATOM).
@@ -56,12 +53,12 @@ pred_def_norm($iff(ATOM, FORM), $iff(ATOM, FORM)).
 
 v_tup_inst(
   (ID, conjecture, FORM, _),
-  inf([id, pmt, parac], $orig, ID, $not(FORM) )
+  inf(orig, $orig, ID, $not(FORM) )
 ). 
   
 v_tup_inst(
  (ID, axiom, FORM, _),
- inf([id, pmt, parac], $orig, ID, FORM) 
+ inf(orig, $orig, ID, FORM) 
 ).
 
 v_tup_inst(
@@ -78,17 +75,17 @@ v_tup_inst(
 
 v_tup_inst(
   (ID, _, FORM, introduced(RUL, _)),
-  add(HINTS, ID, FORM)
+  add([HINT], ID, FORM)
 ) :- 
   RUL \= predicate_definition_introduction,
   RUL \= avatar_definition,
-  rul_hints(RUL, HINTS).
+  rul_hint(RUL, HINT).
   
 v_tup_inst(
   (ID, _, FORM, inference(RUL, _, IDS)),
-  inf(HINTS, IDS, ID, FORM)
+  inf(HINT, IDS, ID, FORM)
 ) :-
-  rul_hints(RUL, HINTS).
+  rul_hint(RUL, HINT).
 
 v_cmp_sclas(ORD, (ID_A, _, _, _), (ID_B, _, _, _)) :- 
   atom_concat('f', TEMP_A, ID_A),
@@ -216,10 +213,10 @@ reduce_gaocs([INST | INSTS], SOL) :-
     range(asc, LTH, NUMS),
     maplist_cut(atom_concat(t), NUMS, IDS),
     maplist_cut(id_skm_aoc_inst, IDS, SKMS, AOCS, ADDS), 
-    append(ADDS, [inf([gaoc], IDS, ID, FORM)], PFX) ;
+    append(ADDS, [inf(gaoc, IDS, ID, FORM)], PFX) ;
     PFX = [INST]
-  ),
-  reduce_gaocs(INSTS, SFX),
+  ), !,
+  reduce_gaocs(INSTS, SFX), !,
   append(PFX, SFX, SOL). 
 
 axiomatic(TYPE) :- 
@@ -817,10 +814,10 @@ tups_ctx(TUPS, CTX) :-
   foldl(tup_ctx, TUPS, EMP, CTX).
 
 solve(v, TSTP, SOL) :- 
-  tstp_sclas(TSTP, UNSORTED),
-  predsort(v_cmp_sclas, UNSORTED, SORTED), 
-  maplist_cut(v_tup_inst, SORTED, INSTS), 
-  insert_dels(INSTS, _, DELETED),
+  tstp_sclas(TSTP, UNSORTED), !, 
+  predsort(v_cmp_sclas, UNSORTED, SORTED), !,
+  maplist_cut(v_tup_inst, SORTED, INSTS), !,
+  insert_dels(INSTS, _, DELETED), !,
   reduce_gaocs(DELETED, SOL),
   true.
 

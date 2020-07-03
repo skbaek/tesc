@@ -317,9 +317,11 @@ use_sat_inst(CTX, rup(SIDS, SID, CLA), GOAL, CTX_N, GOAL_N) :-
   maplist_cut(get_sat_cla(CTX), SIDS, PREMS), !,
   foldl_cut(unit_propagate, PREMS, (HYPS_I, GOAL_I), ([HYP | HYPS_O], GOAL_O)), !,
   member(CMP, HYPS_O),
-  mate(HYP, CMP, GOAL_O).
+  mate(HYP, CMP, GOAL_O), !.
 
 use_sat_insts(CTX, [SI | SIS], GOAL) :- 
+  % write("Using SAT step : "), 
+  % write(SI), nl, nl,
   use_sat_inst(CTX, SI, GOAL, CTX_N, GOAL_N), 
   (
     SIS = [] -> 
@@ -338,12 +340,16 @@ sat(CLAS, GOAL) :-
   shell("cadical -q temp.cnf temp.drat", _), !,
   shell("drat-trim temp.cnf temp.drat -L temp.lrat", _), !,
 
+  write("Reading LRAT file...\n\n"),
   file_sat_insts(NAA, "temp.lrat", SIS), 
+
+  write("Constructing SAT context...\n\n"),
   mk_sat_ctx(CLAS, CTX), 
+
   use_sat_insts(CTX, SIS, GOAL),
-  % delete_file("temp.cnf"),
-  %delete_file("temp.drat"),
-  %delete_file("temp.lrat"),
+  delete_file("temp.cnf"),
+  delete_file("temp.drat"),
+  delete_file("temp.lrat"),
   true.
 
 
@@ -923,8 +929,8 @@ subsume_cla(LITS_A, (ID, LITS_B), ID) :-
   !.
 
 find_subsumer(CLAS, (_, $neg(FORM)), ID) :- 
-  inst_with_pars(0, FORM, _, BODY), 
-  body_lits(BODY, LITS),
+  inst_with_pars(0, FORM, _, BODY), !, 
+  body_lits(BODY, LITS), !, 
   try(subsume_cla(LITS), CLAS, ID).
 
 % find_subsumer(CLAS, (_, $neg(FORM)), ID) :- 
@@ -1025,6 +1031,11 @@ infer(m, simplify, [PREM_A, PREM_B], _, CONC, GOAL) :-
   res(PREM_A, PREM_B, CONC, GOAL).
   % expand(PREM_B, (PREM_A, CONC, GOAL)).
   
+infer(_, orig, PREMS, CLAS, CONC, GOAL) :- 
+  infer(_, id, PREMS, CLAS, CONC, GOAL) ;
+  infer(_, pmt, PREMS, CLAS, CONC, GOAL) ;
+  infer(_, parac, PREMS, CLAS, CONC, GOAL). 
+
 infer(m, cnn, [PREM], _, CONC, GOAL) :- 
   pmt_cla(PREM, CONC, GOAL) ;
   pmt_clas(PREM, CONC, GOAL) ;
@@ -1117,6 +1128,10 @@ infer(v, paral, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   paral((PREM, CONC, GOAL)).
 
+infer(v, parav, PREMS, _, CONC, GOAL) :- 
+  member(PREM, PREMS),
+  parav((PREM, CONC, GOAL)).
+
 infer(_, mscj, [PREM], _, CONC, GOAL) :- 
   mscj((PREM, CONC, GOAL)).
 
@@ -1144,12 +1159,12 @@ infer(_, dtrx, PREMS, _, CONC, GOAL) :-
 infer(v, mtrx, PREMS, _, _, CONC, GOAL) :- 
   mtrx([CONC | PREMS], GOAL).
 
-infers(PRVR, [TAC | TACS], PREMS, CLAS, CONC, GOAL) :- 
-  infer(PRVR, TAC, PREMS, CLAS, CONC, GOAL) -> true ;  
-  (
-    format("Tactic ~w failed, trying next...\n\n", TAC),
-    infers(PRVR, TACS, PREMS, CLAS, CONC, GOAL)
-  ).
+% infers(PRVR, [TAC | TACS], PREMS, CLAS, CONC, GOAL) :- 
+%   infer(PRVR, TAC, PREMS, CLAS, CONC, GOAL) -> true ;  
+%   (
+%     format("Tactic ~w failed, trying next...\n\n", TAC),
+%     infers(PRVR, TACS, PREMS, CLAS, CONC, GOAL)
+%   ).
 
 report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :- 
   write("\nInference failed, hints : "), 
@@ -1168,10 +1183,10 @@ report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
   format(Stream, '~w.\n\n', debug_prob(PROB)), 
   format(Stream, '~w.\n\n', debug_prf(PRF)), 
   close(Stream), 
-  throw(compilation_failure),
+  throw(compilation_timeout),
   false.
 
-subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB_I, PROB_O) :-   
+subprove(STRM, HINT, PIDS, CID, FORM, ORIG, CLAS, PROB_I, PROB_O) :-   
   % format("Adding lemma ~w\n\n", CID),
   put_char(STRM, 'F'), 
   put_form(STRM, FORM), 
@@ -1182,10 +1197,11 @@ subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB_I, PROB_O) :-
     get_context(PROB_I, PIDS, CTX)
   ),
   GOAL = (PRF, 0, 0), 
+  format("Constructing subproof with ID = ~w, hint = ~w\n\n", [CID, HINT]),
   timed_call(
-    60,
-    infers(PRVR, HINTS, CTX, CLAS, (CID, $neg(FORM)), GOAL), 
-    (report_failure(PRVR, HINTS, CTX, CLAS, (CID, $neg(FORM)), none, none, GOAL), false)
+    100,
+    infer(PRVR, HINT, CTX, CLAS, (CID, $neg(FORM)), GOAL), 
+    (report_failure(PRVR, HINT, CTX, CLAS, (CID, $neg(FORM)), none, none, GOAL), false)
   ), !,
   ground_all(c, PRF),
   % put_assoc(CID, PROB_I, - FORM, SUB_PROB),
@@ -1202,7 +1218,7 @@ prove(STRM, LAST, PRVR, [del(PID) | SOL], ORIG, CLAS, PROB) :-
   % format("Deleting lemma ~w\n\n", PID),
   put_char(STRM, 'W'), 
   put_id(STRM, PID), 
-  del_assoc(PID, PROB, _, PROB_N),
+  del_assoc(PID, PROB, _, PROB_N), !, 
   prove(STRM, LAST, PRVR, SOL, ORIG, CLAS, PROB_N). 
 
 prove(STRM, _, PRVR, [add(JST, CID, CONC) | SOL], ORIG, CLAS, PROB) :- 
@@ -1216,7 +1232,7 @@ prove(STRM, _, PRVR, [add(JST, CID, CONC) | SOL], ORIG, CLAS, PROB) :-
   put_sf(STRM, $pos(CONC)), 
   put_atoms(STRM, JST),
   put_id(STRM, CID), 
-  put_assoc(CID, PROB, $pos(CONC), PROB_N),
+  put_assoc(CID, PROB, $pos(CONC), PROB_N), !, 
   prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB_N). 
 
 prove(STRM, _, PRVR, [inf(HINTS, PIDS, CID, FORM) | SOL], ORIG, CLAS, PROB) :- 
@@ -1224,7 +1240,7 @@ prove(STRM, _, PRVR, [inf(HINTS, PIDS, CID, FORM) | SOL], ORIG, CLAS, PROB) :-
   SF = $pos(FORM), 
   prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB)
 ;
-  subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB, PROB_N),
+  subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB, PROB_N), !,
   prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB_N).
 
 prove(STRM, LAST, _, [], _, _, _) :- 

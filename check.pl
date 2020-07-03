@@ -160,6 +160,13 @@ check(PROB, _, x(PID, NID)) :-
   */
 
 
+put_assoc_write(CID, PROB, CONC, PROB_N) :- 
+  %   ( 
+  %     CID = x(_) -> 
+  %     true ; 
+  %     format("Adding ID : ~w\n\n", CID)
+  %   ),
+  put_assoc(CID, PROB, CONC, PROB_N).
 
 
 % ---------------------------------------------------
@@ -181,7 +188,7 @@ check(STRM, PROB, FP) :-
     get_id(STRM, CID), 
     get_assoc(PID, PROB, PREM),
     ab(DIR, PREM, CONC), 
-    put_assoc(CID, PROB, CONC, PROB_N), !,
+    put_assoc_write(CID, PROB, CONC, PROB_N), !,
     check(STRM, PROB_N, FP) ;
 
     CH = 'B' -> 
@@ -189,8 +196,8 @@ check(STRM, PROB, FP) :-
     get_id(STRM, CID), 
     get_assoc(PID, PROB, PREM),
     bb(PREM, CONC_L, CONC_R),
-    put_assoc(CID, PROB, CONC_L, PROB_L),
-    put_assoc(CID, PROB, CONC_R, PROB_R), !, 
+    put_assoc_write(CID, PROB, CONC_L, PROB_L),
+    put_assoc_write(CID, PROB, CONC_R, PROB_R), !, 
     check(STRM, PROB_L, FP), !,
     check(STRM, PROB_R, FP) ;
 
@@ -203,7 +210,7 @@ check(STRM, PROB, FP) :-
     no_fv_term(0, TERM),
     no_fp_term(FP, TERM),
     cb(TERM, PREM, CONC), 
-    put_assoc(CID, PROB, CONC, PROB_N), !,
+    put_assoc_write(CID, PROB, CONC, PROB_N), !,
     check(STRM, PROB_N, FP) ;
 
     CH = 'D' -> 
@@ -211,7 +218,7 @@ check(STRM, PROB, FP) :-
     get_id(STRM, CID), 
     get_assoc(PID, PROB, PREM),
     db(FP, PREM, CONC), 
-    put_assoc(CID, PROB, CONC, PROB_N),
+    put_assoc_write(CID, PROB, CONC, PROB_N),
     num_succ(FP, FP_N), !,
     check(STRM, PROB_N, FP_N) ;
 
@@ -221,9 +228,9 @@ check(STRM, PROB, FP) :-
     ground(FORM), % No logic variables in Form
     no_fv_form(0, FORM), % No free object variables in Form
     no_fp_form(FP, FORM), % No new parameters in Form
-    put_assoc(CID, PROB, $neg(FORM), PROB_N), !,
+    put_assoc_write(CID, PROB, $neg(FORM), PROB_N), !,
     check(STRM, PROB_N, FP),
-    put_assoc(CID, PROB, $pos(FORM), PROB_P), !,
+    put_assoc_write(CID, PROB, $pos(FORM), PROB_P), !,
     check(STRM, PROB_P, FP) ;
 
     CH = 'S' -> 
@@ -231,7 +238,7 @@ check(STRM, PROB, FP) :-
     get_id(STRM, CID), 
     get_assoc(PID, PROB, PREM),
     sb(PREM, CONC), 
-    put_assoc(CID, PROB, CONC, PROB_N), !,
+    put_assoc_write(CID, PROB, CONC, PROB_N), !,
     check(STRM, PROB_N, FP) ;
 
     CH = 'T' -> 
@@ -241,7 +248,7 @@ check(STRM, PROB, FP) :-
     no_fv_sf(0, SF),  
     no_fp_sf(FP, SF), 
     justified(PROB, SF, JST),
-    put_assoc(CID, PROB, SF, PROB_N), !,
+    put_assoc_write(CID, PROB, SF, PROB_N), !,
     check(STRM, PROB_N, FP) ;
     
     CH = 'W' -> 

@@ -17,5 +17,5 @@ tstp_sclas(TSTP, SCLAS) :-
   % cd(TPTP_DIR),
   % name_cat(NAME, CAT),
   % atomic_list_concat(["Problems/", CAT, "/", NAME, ".p"], PATH),
-  tptp_terms(TSTP, TERMS),
-  maplist(term_scla, TERMS, SCLAS).
+  tptp_terms(TSTP, TERMS), !,
+  maplist_cut(term_scla, TERMS, SCLAS).

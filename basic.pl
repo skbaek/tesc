@@ -423,6 +423,14 @@ dp_lax(CNT_I, HYP_I, GOAL_I, CNT_O, HYP_O, GOAL_O) :-
   HYP_O = HYP_I, 
   GOAL_O = GOAL_I. 
   
+cp_vac(HYP_I, GOAL_I, HYP_O, GOAL_O) :-  
+  vac_qtf(HYP_I),
+  cp(HYP_I, _, GOAL_I, HYP_O, GOAL_O).
+
+dp_vac(HYP_I, GOAL_I, HYP_O, GOAL_O) :-  
+  vac_qtf(HYP_I),
+  dp(HYP_I, GOAL_I, HYP_O, GOAL_O).
+
 cp_lax(CNT, HYP_I, GOAL_I, HYP_O, GOAL_O) :-  
   vac_qtf(HYP_I) ->  
   (
@@ -2426,6 +2434,23 @@ paratf(H2G) :-
   paratf(H2G_L),  
   paratf(H2G_R).
 
+parav_cd((HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- 
+  cp_vac(HYP_A, GOAL_I, HYP_NA, GOAL_O) ;
+  dp_vac(HYP_A, GOAL_I, HYP_NA, GOAL_O).
+
+parav_cd((HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- 
+  cp_vac(HYP_B, GOAL_I, HYP_NB, GOAL_O) ;
+  dp_vac(HYP_B, GOAL_I, HYP_NB, GOAL_O).
+
+parav(H2G) :- 
+  para_m(H2G) *-> true ;
+  para_s(H2G, H2G_N) -> parav(H2G_N) ;
+  parav_cd(H2G, H2G_N) -> parav(H2G_N) ;
+  para_cd(H2G, H2G_N) -> parav(H2G_N) ;
+  para_ab(H2G, H2G_L, H2G_R), !,
+  parav(H2G_L), !, 
+  parav(H2G_R).
+
 paral_cd((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_NB, GOAL_N)) :- 
   cdp_lax(HYP_A, HYP_B, GOAL, HYP_NA, HYP_NB, GOAL_N) ;
   cdp_lax(HYP_B, HYP_A, GOAL, HYP_NB, HYP_NA, GOAL_N).
@@ -2433,7 +2458,6 @@ paral_cd((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_NB, GOAL_N)) :-
 paral(H2G) :- 
   para_m(H2G) *-> true ;
   para_s(H2G, H2G_N) -> paral(H2G_N) ;
-  % parav_cd(H2G, H2G_N) -> paral(H2G_N) ;
   paral_cd(H2G, H2G_N) -> paral(H2G_N) ;
   para_ab(H2G, H2G_L, H2G_R), !,
   paral(H2G_L), !, 
@@ -2442,7 +2466,6 @@ paral(H2G) :-
 parad(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> parad(H2G_N) ;
-  % parav_cd(H2G, H2G_N) -> paral(H2G_N) ;
   para_cd(H2G, H2G_N) -> parad(H2G_N) ;
   para_ab(H2G, H2G_L, H2G_R), 
   parad(H2G_L), 
@@ -2815,6 +2838,9 @@ try(PRED, [ELEM | LIST], RST) :-
   true ;
   try(PRED, LIST, RST).
   
+path_cat(PATH, CAT) :- 
+  atom_codes(PATH, [C0, C1, C2 | _]), 
+  string_codes(CAT, [C0, C1, C2]).
 
 
   
