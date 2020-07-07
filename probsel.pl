@@ -28,15 +28,6 @@ is_fol_thm(PATH) :-
   % split_string(STR, ":", " %", ["Status", STAT_STR]), 
   % member(STAT_STR, ["Theorem", "Unsatisfiable"]).
   
-% call_tptp2x(PATH) :- 
-%   path_cat_id(PATH, CAT, ID), 
-%   atomics_to_string([CAT, ID, ".tptp"], TPTP),
-%   atomics_to_string(["tptp2X -ftptp -dtemp ~/programs/TPTP/Problems/", CAT, "/", CAT, ID, ".p"], CMD), 
-%   shell(CMD, _),
-%   atomics_to_string(["temp/", CAT, "/", TPTP], OLD_PATH),
-%   atomics_to_string(["p/", TPTP], NEW_PATH),
-%   mv(OLD_PATH, NEW_PATH),
-%   shell("rm -r temp", _).
 
 mv_concat(FILE, LIST) :- 
   atomic_list_concat(LIST, PATH),
