@@ -1,8 +1,5 @@
 :- [basic].
 
-get_context(PROB, PIDS, CTX) :- 
-  maplist(prob_id_hyp(PROB), PIDS, CTX).
-
 pick_mate(HYPS_A, (HYPS_B, GOAL)) :- 
   member(HYP_A, HYPS_A), 
   member(HYP_B, HYPS_B), 
@@ -44,6 +41,48 @@ apply_aocs(HYP, [], GOAL, HYP, GOAL).
 % pmt_candidate(HYPS, ([HYP], _)) :- 
 %   member(CMP, HYPS), 
 %   mate_candidate(CMP, HYP), !.
+
+vcnf(PREM, HYPS, GOAL) :- 
+  sp(PREM, GOAL, PREM_N, GOAL_N), !,
+  vcnf(PREM_N, HYPS, GOAL_N).
+ 
+vcnf(PREM, HYPS, GOAL) :- 
+  bp(PREM, GOAL, PREM_A, PREM_B, GOAL_A, GOAL_B), !,
+  vcnf(PREM_A, HYPS, GOAL_A),
+  vcnf(PREM_B, HYPS, GOAL_B).
+
+vcnf(PREM, HYPS, GOAL) :- 
+  cp(PREM, _, GOAL, PREM_N, GOAL_N), !, 
+  vcnf(PREM_N, HYPS, GOAL_N).
+
+vcnf(PREM, HYPS, GOAL) :- 
+  member(DIR, [l, r]),
+  ap(PREM, DIR, GOAL, PREM_N, GOAL_N),
+  vcnf(PREM_N, HYPS, GOAL_N).
+
+vcnf(PREM, HYPS, GOAL) :- 
+  member(HYP, HYPS), 
+  mate(PREM, HYP, GOAL).
+
+vacc_aux(TRP) :- 
+  bf__s(TRP, TRP_N) ->
+  bfm(TRP_N) ; 
+  bfm(TRP).
+
+vacc_aux((PREM, CONC, GOAL)) :- 
+  pmt_cla(PREM, CONC, GOAL).
+
+vacc(PREM, CONC, GOAL) :- 
+  many_nb([d], [CONC], GOAL, [CONC_N], GOAL1), 
+  many_nb([c], [PREM], GOAL1, [PREM_T], GOAL2), 
+  member(DIR, [l,r]),
+  ap(PREM_T, DIR, GOAL2, PREM_N, GOAL3), 
+  paras_ab((PREM_N, CONC_N, GOAL3), TRP_A, TRP_B), 
+  % sp(HYP_AT, GOAL_L, HYP_AL, GOAL_L1), 
+  % mate(HYP_AL, HYP_BL, GOAL_L1), 
+  % mate(HYP_AR, HYP_BR, GOAL_R).
+  vacc_aux(TRP_A),
+  vacc_aux(TRP_B).
 
 pmt_cla(PREM, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
@@ -354,6 +393,7 @@ sat(CLAS, GOAL) :-
 
 
 
+/* 
 %%%%%%%%%%%%%%%% UNDIRECTED MATRIX %%%%%%%%%%%%%%%%
 
 replace_skm(SKMS, TERM_I, TERM_O) :- 
@@ -363,7 +403,7 @@ replace_skm(SKMS, TERM_I, TERM_O) :-
   (
     atom_concat(skm, _, FUN) -> 
     get_assoc(FUN, SKMS, NUM), 
-    TERM_O = @(NUM)
+    TERM_O = @(NUM,[])
   ;  
     maplist_cut(replace_skm(SKMS), TERMS_I, TERMS_O), 
     TERM_O =.. [FUN | TERMS_O]
@@ -767,6 +807,8 @@ dtrx(HYP_L, HYP_R, GOAL) :-
   empty_assoc(EMP), 
   dtrx(([(GD_L, HYP_L), (GD_R, HYP_R)], EMP, EMP, GOAL)).
 
+*/
+
 eskm(AOCS, H2G) :- 
   para_m(H2G) -> true 
 ;
@@ -1022,10 +1064,10 @@ infer(_, id, PREMS, _, CONC, GOAL) :-
   mate(PREM, CONC, GOAL), !.
 
 infer(_, pmt, PREMS, CLAS, CONC, GOAL) :-
-  find_subsumer(CLAS, CONC, ID),
+  find_subsumer(CLAS, CONC, NAME),
   % ID = cls_sup__eq__bot__eq2_0,
-  member((ID, HYP), PREMS), 
-  pmt_cla((ID, HYP), CONC, GOAL), !.
+  member((o(NAME), HYP), PREMS), 
+  pmt_cla((o(NAME), HYP), CONC, GOAL), !.
 
 infer(m, simplify, [PREM_A, PREM_B], _, CONC, GOAL) :- 
   res(PREM_A, PREM_B, CONC, GOAL).
@@ -1036,11 +1078,11 @@ infer(_, orig, PREMS, CLAS, CONC, GOAL) :-
   infer(_, pmt, PREMS, CLAS, CONC, GOAL) ;
   infer(_, parac, PREMS, CLAS, CONC, GOAL). 
 
-infer(m, cnn, [PREM], _, CONC, GOAL) :- 
-  pmt_cla(PREM, CONC, GOAL) ;
-  pmt_clas(PREM, CONC, GOAL) ;
-  cnn(PREM, CONC, GOAL) ;
-  dtrx(PREM, CONC, GOAL).
+% infer(m, cnn, [PREM], _, CONC, GOAL) :- 
+%   pmt_cla(PREM, CONC, GOAL) ;
+%   pmt_clas(PREM, CONC, GOAL) ;
+%   cnn(PREM, CONC, GOAL) ;
+%   dtrx(PREM, CONC, GOAL).
 
 infer(_, eqf, [PREM], _, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
@@ -1116,6 +1158,18 @@ infer(_, para, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   para((PREM, CONC, GOAL)).
 
+infer(v, dlr, [PREM], _, CONC, GOAL) :- 
+  many_nb([a, d, s], [CONC], GOAL, HYPS, TEMP), 
+  many([b, c, s], ([PREM], TEMP), HGS),
+  maplist(pick_mate(HYPS), HGS). 
+
+infer(v, cnf, [PREM], _, CONC, GOAL) :- 
+  many_nb([a, d, s], [CONC], GOAL, HYPS, TEMP), 
+  vcnf(PREM, HYPS, TEMP).
+
+infer(v, acc, [PREM], _, CONC, GOAL) :- 
+  vacc(PREM, CONC, GOAL).
+
 infer(v, parad, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   parad((PREM, CONC, GOAL)).
@@ -1152,13 +1206,13 @@ infer(_, paratf, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   paratf((PREM, CONC, GOAL)).
 
-infer(_, dtrx, PREMS, _, CONC, GOAL) :- 
-  member(PREM, PREMS),
-  dtrx(PREM, CONC, GOAL).
-
-infer(v, mtrx, PREMS, _, _, CONC, GOAL) :- 
-  mtrx([CONC | PREMS], GOAL).
-
+% infer(_, dtrx, PREMS, _, CONC, GOAL) :- 
+%   member(PREM, PREMS),
+%   dtrx(PREM, CONC, GOAL).
+% 
+% infer(v, mtrx, PREMS, _, _, CONC, GOAL) :- 
+%   mtrx([CONC | PREMS], GOAL).
+% 
 % infers(PRVR, [TAC | TACS], PREMS, CLAS, CONC, GOAL) :- 
 %   infer(PRVR, TAC, PREMS, CLAS, CONC, GOAL) -> true ;  
 %   (
@@ -1186,22 +1240,16 @@ report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
   throw(compilation_timeout),
   false.
 
-subprove(STRM, HINT, PIDS, CID, FORM, ORIG, CLAS, PROB_I, PROB_O) :-   
+subprove(STRM, OCLAS, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
   put_char(STRM, 'F'), 
   put_form(STRM, FORM), 
-  put_id(STRM, CID), 
-  (
-    PIDS == $orig -> 
-    get_context(PROB_I, ORIG, CTX) ;
-    get_context(PROB_I, PIDS, CTX)
-  ),
-  GOAL = (PRF, 0, 0), 
-  format("Constructing subproof with ID = ~w, hint = ~w\n\n", [CID, HINT]),
+  num_succ(CNT, SCNT),
+  GOAL = (PRF, SCNT), 
   timed_call(
     100,
-    infer(PRVR, HINT, CTX, CLAS, (CID, $neg(FORM)), GOAL), 
-    (report_failure(PRVR, HINT, CTX, CLAS, (CID, $neg(FORM)), none, none, GOAL), false)
+    infer(PRVR, HINT, PREMS, OCLAS, (n(CNT), $neg(FORM)), GOAL), 
+    (report_failure(PRVR, HINT, PREMS, OCLAS, (n(CNT), $neg(FORM)), none, none, GOAL), false)
   ), !,
   ground_all(c, PRF),
   % put_assoc(CID, PROB_I, - FORM, SUB_PROB),
@@ -1211,38 +1259,147 @@ subprove(STRM, HINT, PIDS, CID, FORM, ORIG, CLAS, PROB_I, PROB_O) :-
   %   format("Prob at error = ~w\n\n", SUB_PROB),
   %   report_failure(PRVR, HINTS, CTX, (CID, $neg(FORM)), SUB_PROB, PRF, GOAL)
   % ),
-  put_prf(STRM, PRF), 
-  put_assoc(CID, PROB_I, $pos(FORM), PROB_O).
+  put_prf(STRM, PRF). 
 
-prove(STRM, LAST, PRVR, [del(PID) | SOL], ORIG, CLAS, PROB) :- 
-  % format("Deleting lemma ~w\n\n", PID),
-  put_char(STRM, 'W'), 
-  put_id(STRM, PID), 
-  del_assoc(PID, PROB, _, PROB_N), !, 
-  prove(STRM, LAST, PRVR, SOL, ORIG, CLAS, PROB_N). 
+set_tup_nth(0, (_, Y), X, (X, Y)) :- !.
+set_tup_nth(NUM, (X, T0), Y, (X, T1)) :- 
+  num_pred(NUM, PRED), 
+  set_tup_nth(PRED, T0, Y, T1).
 
-prove(STRM, _, PRVR, [add(JST, CID, CONC) | SOL], ORIG, CLAS, PROB) :- 
+get_tup_nth(0, (X, _), X) :- !.
+get_tup_nth(NUM, (_, TUP), ELEM) :- 
+  num_pred(NUM, PRED), 
+  get_tup_nth(PRED, TUP, ELEM).
+
+% PS = (PROB, SOL, LAST, CNT, STRM, PRVR, OHYPS, OCLAS, nil)
+get_ps_prob(PS, PROB)  :- get_tup_nth(0, PS, PROB).
+get_ps_sol(PS, SOL)    :- get_tup_nth(1, PS, SOL).
+get_ps_last(PS, LAST)  :- get_tup_nth(2, PS, LAST).
+get_ps_cnt(PS, CNT)    :- get_tup_nth(3, PS, CNT).
+get_ps_strm(PS, STRM)  :- get_tup_nth(4, PS, STRM).
+get_ps_ohyps(PS, HYPS) :- get_tup_nth(6, PS, HYPS).
+get_ps_oclas(PS, CLAS) :- get_tup_nth(7, PS, CLAS).
+
+set_ps_prob(PS_O, PROB, PS_N)  :- set_tup_nth(0, PS_O, PROB, PS_N).
+set_ps_sol(PS_O, SOL, PS_N)    :- set_tup_nth(1, PS_O, SOL, PS_N).
+set_ps_last(PS_O, LAST, PS_N)  :- set_tup_nth(2, PS_O, LAST, PS_N).
+set_ps_cnt(PS_O, CNT, PS_N)    :- set_tup_nth(3, PS_O, CNT, PS_N).
+
+
+use_inst(PS, add(FORM), PS_N) :- 
   % format("Adding lemma ~w\n\n", CID),
-  put_char(STRM, 'T'), 
   % write("Justification : "), write(JST), nl,
   % format("Adding axiom : ~w\n", CONC),
   % format("With context : ~w\n", PROB),
-  % justified(PROB, CONC, JST),
   % write("Justified.\n\n"),
-  put_sf(STRM, $pos(CONC)), 
-  put_atoms(STRM, JST),
-  put_id(STRM, CID), 
-  put_assoc(CID, PROB, $pos(CONC), PROB_N), !, 
-  prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB_N). 
+  write("C0\n\n"),
+  get_ps_prob(PS, PROB),
+  write("C1\n\n"),
+  get_ps_strm(PS, STRM),
+  write("C2\n\n"),
+  get_ps_cnt(PS, CNT),
+  write("C3\n\n"),
+  num_succ(CNT, SCNT),
+  write("C4\n\n"),
+  format("SCNT = ~w, FORM = ~w\n\n", [SCNT, FORM]),
 
-prove(STRM, _, PRVR, [inf(HINTS, PIDS, CID, FORM) | SOL], ORIG, CLAS, PROB) :- 
-  get_assoc(CID, PROB, SF) -> 
-  SF = $pos(FORM), 
-  prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB)
-;
-  subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB, PROB_N), !,
-  prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB_N).
+  justified(SCNT, $pos(FORM), CNT_N),
+  write("JUSTIFIED.\n\n"),
 
-prove(STRM, LAST, _, [], _, _, _) :- 
-  put_prf(STRM, t($neg($false), [neg_false], x(0), x(LAST, x(0)))).
+  put_char(STRM, 'T'), 
+
+  put_sf(STRM, $pos(FORM)), 
+
+  put_assoc(n(CNT), PROB, $pos(FORM), PROB_N), 
+
+  set_ps_prob(PS, PROB_N, PS1), 
+  set_ps_last(PS1, n(CNT), PS2), 
+  set_ps_cnt(PS2, CNT_N, PS_N), 
+  % set_ps_name_id(PS3, NI_N, PS_N),
+  true.
+  
+use_inst(PS, inf(HINT, IDS, FORM), PS_N) :- 
+  write("B0\n\n"),
+  get_ps_strm(PS, STRM),
+  write("B1\n\n"),
+  get_ps_prob(PS, PROB),
+  write("B2\n\n"),
+  get_ps_cnt(PS, CNT),
+  format("Constructing subproof with ID = ~w, hint = ~w\n\n", [CNT, HINT]),
+  % get_ps_name_id(PS, NI),
+  get_ps_oclas(PS, OCLAS),
+  (
+    IDS == $orig -> 
+    get_ps_ohyps(PS, PREMS) ;
+    get_context(PROB, IDS, PREMS)
+  ),
+  num_succ(CNT, SCNT),
+  % subprove(HINT, PREMS, OCLAS, CNT, FORM),
+  subprove(STRM, OCLAS, CNT, HINT, PREMS, FORM),
+
+  put_assoc(n(CNT), PROB, $pos(FORM), PROB_N),
+  % put_assoc(NAME, NI, CNT, NI_N),
+
+  set_ps_prob(PS, PROB_N, PS1), 
+  set_ps_last(PS1, n(CNT), PS2), 
+  set_ps_cnt(PS2, SCNT, PS_N), 
+  % set_ps_name_id(PS3, NI_N, PS_N),
+  format("Exit : ~w\n\n", CNT),
+  true.
+
+
+% PS = (PROB, SOL, LAST, CNT, NAME_ID, STRM, PRVR, ORIG, CLAS, nil)
+
+
+
+  
+%   get_ps_prob(PS_O, PROB),
+%   get_ps_name_id(PS_O, NI),
+%   name_id(NI, NAME, ID),
+%   maplist_cut(name_id(NI), NAMES, IDS),
+%   (
+%     get_assoc(ID, PROB, SF) -> 
+%     SF = $pos(FORM), 
+%     set_ps_last(PS_O, ID, PS_N)
+%   ;
+%     subprove(HINT, CTX, CLAS, ID, FORM),
+%     put_assoc(CID, PROB_I, $pos(FORM), PROB_O)
+%     % subprove(STRM, HINTS, PIDS, CID, FORM, ORIG, CLAS, PROB, PROB_N), !,
+%     % prove(STRM, CID, PRVR, SOL, ORIG, CLAS, PROB_N).
+%   ).
+
+% prove(STRM, LAST, PRVR, [del(PID) | SOL], ORIG, CLAS, PROB) :- 
+use_inst(PS, del(ID), PS_N) :- 
+  % format("Deleting lemma ~w\n\n", PID),
+  write("D0\n\n"),
+  get_ps_strm(PS, STRM),
+  write("D1\n\n"),
+  get_ps_prob(PS, PROB_O),
+  write("D2\n\n"),
+  put_char(STRM, 'W'), 
+  write("D3\n\n"),
+  put_id(STRM, ID), 
+  write("D4\n\n"),
+  del_assoc(ID, PROB_O, _, PROB_N), !, 
+  write("D5\n\n"),
+  set_ps_prob(PS, PROB_N, PS_N),
+  write("D6\n\n").
+  % prove(STRM, LAST, PRVR, SOL, ORIG, CLAS, PROB_N). 
+  
+use_sol(PS0) :- 
+  write("A0\n\n"),
+  get_ps_sol(PS0, [INST | SOL]), 
+  write("A1\n\n"),
+  set_ps_sol(PS0, SOL, PS1), !, 
+  write("A2\n\n"),
+  use_inst(PS1, INST, PS2), !, 
+  write("A3\n\n"),
+  use_sol(PS2).
+
+use_sol(PS) :- 
+  get_ps_sol(PS, []), 
+  get_ps_strm(PS, STRM), 
+  get_ps_last(PS, LAST),
+  get_ps_cnt(PS, CNT),
+  put_prf(STRM, t($neg($false), x(LAST, n(CNT)))).
 

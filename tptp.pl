@@ -37,8 +37,11 @@ tptp_pclas(TPTP, PCLAS) :-
   maplist(precla_pcla, PRECLAS, PCLAS), 
   true.
 
-add_pcla((ID, FORM), PROB_IN, PROB_OUT) :- !, 
-  put_assoc(ID, PROB_IN, $pos(FORM), PROB_OUT).
+% add_pcla((ID, FORM), PROB_IN, PROB_OUT) :- !, 
+%   put_assoc(o(ID), PROB_IN, $pos(FORM), PROB_OUT).
+
+add_hyp((ID, SF), PROB, PROB_N) :- !, 
+  put_assoc(ID, PROB, SF, PROB_N).
 
 % lit_cmp_gnd((>), LIT_A, LIT_B) :-
 %   no_fv_form(0, LIT_A), 
@@ -105,20 +108,22 @@ atom_cmp(ORD, ATOM_A, ATOM_B) :-
     compare(ORD, ATOM_A, ATOM_B) 
   ), !.
 
+pcla_hyp((ID, FORM), (o(ID), $pos(FORM))).
+
 pcla_cla((ID, FORM), (ID, NORM)) :- 
   inst_with_lvs(FORM, BODY), !,
   body_lits(BODY, LITS), !, 
   predsort(lit_cmp, LITS, TEMP), !,
   reverse(TEMP, NORM), !.
 
-pose(MODE, TPTP, PIDS, CLAS, PROB) :- 
-  empty_assoc(EMP), 
+pose(MODE, TPTP, HYPS, CLAS, PROB) :- 
   tptp_pclas(TPTP, PCLAS),
+  maplist_cut(pcla_hyp, PCLAS, HYPS),
   ( 
     MODE = verbose ->
-    maplist_cut(fst, PCLAS, PIDS),
     convlist(pcla_cla, PCLAS, CLAS) 
   ;
     true
   ),
-  foldl(add_pcla, PCLAS, EMP, PROB).
+  empty_assoc(EMP), 
+  foldl(add_hyp, HYPS, EMP, PROB).

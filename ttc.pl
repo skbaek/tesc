@@ -3,17 +3,17 @@
 
 :- [tptp, prove, solve].
 
-main([PROVER, TPTP, TSTP, TXTX]) :-  
+main([PROVER, TPTP, TSTP, TESC]) :-  
   set_prolog_flag(stack_limit, 4_294_967_296),
   style_check(-singleton),
   prover_abrv(PROVER, PRVR),
   write("Posing...\n\n"),
-  pose(verbose, TPTP, PIDS, CLAS, PROB), !,
+  pose(verbose, TPTP, OHYPS, OCLAS, PROB), !,
   write("Solving...\n\n"),
   solve(PRVR, TSTP, SOL), !,
-  open(TXTX, write, STRM, [encoding(octet)]),
+  open(TESC, write, STRM, [encoding(octet)]),
   write("Proving...\n\n"),
-  prove(STRM, none, PRVR, SOL, PIDS, CLAS, PROB),
+  use_sol((PROB, SOL, _, 0, STRM, PRVR, OHYPS, OCLAS, nil)),
   close(STRM),
   true.
 

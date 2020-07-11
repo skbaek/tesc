@@ -9,11 +9,11 @@ rul_hint(trivial_inequality_removal, eqr).
 rul_hint(equality_resolution, eqr).
 rul_hint(equality_factoring, eqf).
 
-rul_hint(cnf_transformation, dtrx).
-rul_hint(factoring, dtrx).
-rul_hint(avatar_component_clause, dtrx).
+rul_hint(cnf_transformation, cnf).
+rul_hint(factoring, dtrx1).
+rul_hint(avatar_component_clause, acc).
 rul_hint(avatar_contradiction_clause, pblx).
-rul_hint(duplicate_literal_removal, dtrx).
+rul_hint(duplicate_literal_removal, dlr).
 
 % axiom
 % conjecture
@@ -43,13 +43,22 @@ pred_def_norm_or($or(FORM, $not(ATOM)), FORM, ATOM) :- unsigned_atom(ATOM).
 pred_def_norm_or($or(FORM_A, FORM_B), $or(FORM_A, FORM_C), ATOM) :- 
   pred_def_norm_or(FORM_B, FORM_C, ATOM).
 
-pred_def_norm($fa(FORM), $fa(NORM)) :- 
-  pred_def_norm(FORM, NORM).
+pred_def_norm(PRD, $fa(FORM), ARI, $fa(NORM)) :- 
+  pred_def_norm(PRD, FORM, ARI, NORM).
 % pred_def_norm($or(FORM, $not(ATOM)), $iff(ATOM, FORM)).
-pred_def_norm($or(FORM_A, FORM_B), $iff(ATOM, FORM)) :- 
-  pred_def_norm_or($or(FORM_A, FORM_B), FORM, ATOM).
+pred_def_norm(PRD, $or(FORM_A, FORM_B), ARI, $iff(ATOM, FORM)) :- 
+  pred_def_norm_or($or(FORM_A, FORM_B), FORM, ATOM), 
+  ATOM =.. [PRD | TERMS],
+  length(TERMS, ARI).
 
-pred_def_norm($iff(ATOM, FORM), $iff(ATOM, FORM)).
+pred_def_norm(PRD, $iff(ATOM, FORM), ARI, $iff(ATOM, FORM)) :- 
+  ATOM =.. [PRD | TERMS],
+  length(TERMS, ARI).
+
+% new_rel_ari(REL, FORM, ARI) :-
+%   strip_fas(FORM, ARI, $iff(ATOM, _)), 
+%   ATOM =.. [REL | TERMS], 
+%   length(TERMS, ARI).
 
 v_tup_inst(
   (ID, conjecture, FORM, _),
@@ -63,15 +72,15 @@ v_tup_inst(
 
 v_tup_inst(
   (ID, plain, $iff(PRD, FORM), introduced(avatar_definition,[new_symbols(naming,[PRD])])), 
-  add([def, PRD], ID, $iff(PRD, FORM))
+  add([def, PRD, 0], ID, $iff(PRD, FORM))
 ) :- 
   PRD \= $not(_).
-  
+
 v_tup_inst(
-  (ID, plain, FORM, introduced(predicate_definition_introduction,[new_symbols(naming, [PRD])])),
-  add([def, PRD], ID, NORM)
+  (NAME, plain, FORM, introduced(predicate_definition_introduction,[new_symbols(naming, [PRD])])),
+  add([def, PRD, ARI], NAME, NORM)
 ) :- 
-  pred_def_norm(FORM, NORM).
+  pred_def_norm(PRD, FORM, ARI, NORM).
 
 v_tup_inst(
   (ID, _, FORM, introduced(RUL, _)),
@@ -86,6 +95,11 @@ v_tup_inst(
   inf(HINT, IDS, ID, FORM)
 ) :-
   rul_hint(RUL, HINT).
+
+v_tup_inst(X, _) :-
+  write("Cannot process : "),
+  write(X), nl, nl,
+  throw(solution_failure).
 
 v_cmp_sclas(ORD, (ID_A, _, _, _), (ID_B, _, _, _)) :- 
   atom_concat('f', TEMP_A, ID_A),
@@ -147,7 +161,7 @@ bind_var_term(IDX, CNT, TERM_I, TERM_O) :-
 par_in(NUM, EXP) :- 
   sub_term(TERM, EXP), 
   \+ var(TERM),
-  TERM = @(NUM).
+  TERM = @(NUM, []).
 
 maxpar(EXP, MAX) :- 
   findall(NUM, par_in(NUM, EXP), NUMS), 
@@ -181,20 +195,25 @@ revert_pars(CNT, FORM, AOC) :-
 get_fun(TERM, FUN) :-
   TERM =.. [FUN | _].
 
-get_aocs(FORM, SKMS, AOCS) :- 
-  inst_with_pars(0, FORM, CNT, $imp(ANTE, CONS)), 
-  mk_pars(desc, CNT, PARS),
-  get_aocs_aux(PARS, CNT, ANTE, CONS, SKM_TERMS, FORMS),
-  maplist_cut(get_fun, SKM_TERMS, SKMS),
-  maplist_cut(revert_pars(CNT), FORMS, AOCS).
+  
+% get_aocs(FORM, SKMS, AOCS) :- 
+%   strip_fa(FORM, NUM, $imp(ANTE, CONS)), 
+%   mk_vars(desc, NUM, VARS),
+%   get_aocs_aux(PARS, CNT, ANTE, CONS, SKM_TERMS, FORMS),
+%   maplist_cut(get_fun, SKM_TERMS, SKMS),
+%   % maplist_cut(revert_pars(CNT), FORMS, AOCS).
+%   true.
 
-get_aocs_aux(ARGS, FP, $ex(ANTE), CONS, [TERM | TERMS], [$imp($ex(ANTE), ANTE_O) | AOCS]) :- !,
-  subst_form(TERM, ANTE, ANTE_O), 
-  get_aocs_aux(ARGS, FP, ANTE_O, CONS, TERMS, AOCS),
-  no_fp_term(FP, TERM).
 
-get_aocs_aux(_, FP, ANTE, CONS, [], []) :- 
-  paral(((0, $pos(ANTE)), (1, $neg(CONS)), (_, FP, 2))).
+% get_aocs_aux(ARGS, FP, $ex(ANTE), CONS, [TERM | TERMS], [$imp($ex(ANTE), ANTE_O) | AOCS]) :- !,
+%   subst_form(TERM, ANTE, ANTE_O), 
+%   get_aocs_aux(ARGS, FP, ANTE_O, CONS, TERMS, AOCS),
+%   no_fp_term(FP, TERM).
+% 
+% get_aocs_aux(_, CNT, ANTE, CONS, [], []) :- 
+%   num_succ(CNT, SCNT),
+%   num_succ(SCNT, SSCNT),
+%   paral(((n(CNT), $pos(ANTE)), (n(SCNT), $neg(CONS)), (_, SSCNT))).
 
 id_skm_aoc_inst(ID, SKM, AOC, add([aoc, SKM], ID, AOC)).
 
@@ -205,19 +224,51 @@ mk_dels(NUM, DELS) :-
 
 reduce_gaocs([], []).
 
-reduce_gaocs([INST | INSTS], SOL) :- 
-  (
-    INST = add([gaoc], ID, FORM) -> 
-    get_aocs(FORM, SKMS, AOCS),
-    length(SKMS, LTH),
-    range(asc, LTH, NUMS),
-    maplist_cut(atom_concat(t), NUMS, IDS),
-    maplist_cut(id_skm_aoc_inst, IDS, SKMS, AOCS, ADDS), 
-    append(ADDS, [inf(gaoc, IDS, ID, FORM)], PFX) ;
-    PFX = [INST]
-  ), !,
-  reduce_gaocs(INSTS, SFX), !,
-  append(PFX, SFX, SOL). 
+reduce_gaocs([INST | SOL], [INST | SOL_N]) :- 
+  INST \= add([gaoc], _, _), 
+  reduce_gaocs(SOL, SOL_N).
+  
+reduce_gaocs([add([gaoc], NAME, FORM) | SOL], SOL_N) :- 
+  get_adds(FORM, NAMES, ADDS), 
+  maplist(mk(del), NAMES, DELS), !,
+  reduce_gaocs(SOL, SOL_T), !,
+  append([ADDS, [inf(gaoc, NAMES, NAME, FORM) | DELS], SOL_T], SOL_N). 
+
+get_adds(FORM, NAMES, ADDS) :- 
+  format("ADD for : ~w\n\n", FORM),
+  strip_fas(FORM, ARI, $imp(ANTE, CONS)), 
+  form_funaris(CONS, FAS),
+  write("Fun-aris : "), write(FAS), nl, nl,
+  mk_vars(asc, ARI, VARS), !, 
+  get_adds(FAS, ARI, VARS, 0, ANTE, CONS, NAMES, ADDS),
+%   maplist_cut(get_fun, SKM_TERMS, SKMS),
+%   % maplist_cut(revert_pars(CNT), FORMS, AOCS).
+  true.
+
+get_adds(FAS, ARI, VARS, NUM, $ex(ANTE), CONS, [aoc(NUM) | NAMES], [skm(FUN, ARI, aoc(NUM), AOC) | ADDS]) :- !, 
+  num_succ(NUM, SUCC),
+  member((FUN, ARI), FAS), 
+  SKM =.. [FUN | VARS], 
+  safe_subst_form(SKM, ANTE, TEMP), 
+  add_fas(ARI, $imp($ex(ANTE), TEMP), AOC), 
+  get_adds(FAS, ARI, VARS, SUCC, TEMP, CONS, NAMES, ADDS).
+  
+get_adds(_, ARI, _, _, ANTE, CONS, [], []) :- 
+  add_fas(ARI, ANTE, ANTE_N), 
+  add_fas(ARI, CONS, CONS_N), 
+  paral(((n(0), $pos(ANTE_N)), (n(1), $neg(CONS_N)), (_, 2))).
+  % (
+  %   INST = add([gaoc], NAME, FORM) -> 
+  %   get_aocs(FORM, SKMS, AOCS),
+  %   length(SKMS, LTH),
+  %   range(asc, LTH, NUMS),
+  %   maplist_cut(atom_concat(t), NUMS, IDS),
+  %   maplist_cut(id_skm_aoc_inst, IDS, SKMS, AOCS, ADDS), 
+  %   append(ADDS, [inf(gaoc, IDS, ID, FORM)], PFX) ;
+  %   PFX = [INST]
+  % ), !,
+  % reduce_gaocs(INSTS, SFX), !,
+  % append(PFX, SFX, SOL). 
 
 axiomatic(TYPE) :- 
   member(TYPE, [lemma, axiom, hypothesis, conjecture, negated_conjecture]).
@@ -813,13 +864,56 @@ tups_ctx(TUPS, CTX) :-
   empty_assoc(EMP), 
   foldl(tup_ctx, TUPS, EMP, CTX).
 
-solve(v, TSTP, SOL) :- 
-  tstp_sclas(TSTP, UNSORTED), !, 
-  predsort(v_cmp_sclas, UNSORTED, SORTED), !,
-  maplist_cut(v_tup_inst, SORTED, INSTS), !,
-  insert_dels(INSTS, _, DELETED), !,
-  reduce_gaocs(DELETED, SOL),
-  true.
+relabel(SOL_I, SOL_O) :- 
+  empty_assoc(EMP),  
+  relabel_sol((EMP, EMP), EMP, 0, SOL_I, SOL_O).
+
+try_del_assoc(KEY, ASC_I, ASC_O) :- 
+  del_assoc(KEY, ASC_I, _, ASC_O) ->
+  true   
+;
+  ASC_O = ASC_I.
+
+relabel_inst(DICT, NI, CNT, del(NAME), DICT, NI_N, CNT, del(ID)) :-    
+  name_id(NI, NAME, ID), 
+  try_del_assoc(NAME, NI, NI_N).
+
+relabel_inst(DICT, NI, CNT, add(NAME, FORM), DICT, NI_N, CNT_N, add(NORM)) :-    
+  resymb_form(DICT, FORM, NORM),
+  num_succ(CNT, CNT_N),
+  put_assoc(NAME, NI, CNT, NI_N).
+
+relabel_inst((RDICT, FDICT), NI, CNT, add([def, REL, ARI], NAME, FORM), (RDICT_N, FDICT), NI_N, SSCNT, add(NORM)) :-    
+  num_succ(CNT, SCNT),
+  num_succ(SCNT, SSCNT),
+  put_assoc(NAME, NI, CNT, NI_N), 
+  put_assoc((REL, ARI), RDICT, SCNT, RDICT_N),
+  resymb_form((RDICT_N, FDICT), FORM, NORM).
+
+relabel_inst((RDICT, FDICT), NI, CNT, skm(FUN, ARI, NAME, FORM), (RDICT, FDICT_N), NI_N, SSCNT, add(NORM)) :-    
+  num_succ(CNT, SCNT),
+  num_succ(SCNT, SSCNT),
+  put_assoc(NAME, NI, CNT, NI_N), 
+  put_assoc((FUN, ARI), FDICT, SCNT, FDICT_N),
+  resymb_form((RDICT, FDICT_N), FORM, NORM).
+
+relabel_inst(DICT, NI, CNT, inf(HINT, NAMES, NAME, FORM), DICT, NI_N, CNT_N, inf(HINT, IDS, NORM)) :-    
+  num_succ(CNT, CNT_N),
+  (
+    NAMES = $orig -> 
+    IDS = $orig 
+  ;
+    maplist_cut(name_id(NI), NAMES, IDS)
+  ),
+  put_assoc(NAME, NI, CNT, NI_N),
+  resymb_form(DICT, FORM, NORM).
+
+relabel_sol(DICT, NI, CNT, [INST | SOL], [INST_N | SOL_N]) :- 
+  relabel_inst(DICT, NI, CNT, INST, DICT_N, NI_N, CNT_N, INST_N),   
+  relabel_sol(DICT_N, NI_N, CNT_N, SOL, SOL_N). 
+
+relabel_sol(_, _, _, [], []).
+  
 
 % solve(e, _, TSTP, SOL) :- 
 %   trim_read(TSTP, TEMP), 
@@ -836,3 +930,13 @@ solve(v, TSTP, SOL) :-
 %   maplist_cut(m_tup_insts(PIDS, CTX), TUPS, INSTSS),
 %   append(INSTSS, SOL),
 %   true.
+
+solve(v, TSTP, SOL) :- 
+  tstp_sclas(TSTP, UNSORTED), !, 
+  predsort(v_cmp_sclas, UNSORTED, SORTED), !,
+  maplist_cut(v_tup_inst, SORTED, INSTS), !,
+  insert_dels(INSTS, _, DELETED), !,
+  reduce_gaocs(DELETED, REDUCED),
+  relabel(REDUCED, SOL),
+  true.
+
