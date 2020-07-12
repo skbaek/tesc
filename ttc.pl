@@ -13,7 +13,7 @@ main([PROVER, TPTP, TSTP, TESC]) :-
   solve(PRVR, TSTP, SOL), !,
   open(TESC, write, STRM, [encoding(octet)]),
   write("Proving...\n\n"),
-  use_sol((PROB, SOL, _, 0, STRM, PRVR, OHYPS, OCLAS, nil)),
+  prove((PROB, SOL, _, 0, STRM, PRVR, OHYPS, OCLAS, nil)),
   close(STRM),
   true.
 

@@ -37,19 +37,8 @@ tptp_pclas(TPTP, PCLAS) :-
   maplist(precla_pcla, PRECLAS, PCLAS), 
   true.
 
-% add_pcla((ID, FORM), PROB_IN, PROB_OUT) :- !, 
-%   put_assoc(o(ID), PROB_IN, $pos(FORM), PROB_OUT).
-
 add_hyp((ID, SF), PROB, PROB_N) :- !, 
   put_assoc(ID, PROB, SF, PROB_N).
-
-% lit_cmp_gnd((>), LIT_A, LIT_B) :-
-%   no_fv_form(0, LIT_A), 
-%   \+ no_fv_form(0, LIT_B).
-  
-%  lit_cmp_gnd((<), LIT_A, LIT_B) :-
-%    no_fv_form(0, LIT_B), 
-%    \+ no_fv_form(0, LIT_A).
 
 form_gnd(FORM, NUM) :- 
   ground(FORM) ->

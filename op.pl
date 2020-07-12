@@ -165,10 +165,6 @@ fof_form(VARS, TF_A <= TF_B, FORM) :- !,
 fof_form(VARS, TF_A <~> TF_B, FORM) :- !,
   fof_form(VARS, ~ (TF_A <=> TF_B), FORM).
 
-% fof_form(VARS, TT_A != TT_B, $not(TERM_A = TERM_B)) :- !, 
-%   tt_term(VARS, TT_A, TERM_A),
-%   tt_term(VARS, TT_B, TERM_B).
-
 fof_form(VARS, TF, FORM) :- 
   TF =.. [REL | TTS], 
   maplist_cut(tt_term(VARS), TTS, TERMS),

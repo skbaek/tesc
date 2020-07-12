@@ -53,10 +53,10 @@ is_thm(PATH) :-
   open(PATH, read, STRM), 
   is_thm_core(STRM).
 
-prob_ext(PATH) :- 
-  call_tptp2x(PATH) -> true ;
-  atomics_to_string(["echo ", PATH, " >> ", "failed.txt"], CMD),
-  shell(CMD, _).
+% prob_ext(PATH) :- 
+%   call_tptp2x(PATH) -> true ;
+%   atomics_to_string(["echo ", PATH, " >> ", "failed.txt"], CMD),
+%   shell(CMD, _).
 
 drop(0, X, X).
 drop(NUM, [_ | Y], Z) :-
