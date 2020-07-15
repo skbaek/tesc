@@ -8,9 +8,9 @@ steps (e.g. Skolemization).
 The TPTP-TSTP Compiler (TTC) accepts a TPTP problem and its TSTP solution 
 as input and constructs a corresponding TESC proof. The current version of 
 TTC can compile TSTP solutions in first-order logic with equality generated 
-by Vampire and E. More specifically, it has been tested with Vampire 4.4.0 
-(commit d98a3d53 on 2020-01-14 21:02:12 +0100) and E 2.4 Sandakphu 
-(1fa8840d748f8781007680abbfdab27e96fa5648).
+by Vampire 4.4.0 (commit d98a3d53 on 2020-01-14 21:02:12 +0100). 
+Compilation support for E and Metis has been temporarily suspended 
+due to changes in proof calculus and syntax, but will be added shortly.
 
 The TPTP-TESC Verifier (TTV) accepts a TPTP problem and a TESC proof as 
 input and verifies that the latter is a correct proof of the former.
@@ -28,12 +28,14 @@ Installation and usage was only tested on Linux.
 
 `./ttc [PROVER] [PROBLEM] [SOLUTION] [PROOF]` uses a TPTP problem `[PROBLEM]` 
 and a TSTP solution `[SOLUTION]` to compile a new TESC proof `[PROOF]`, where 
-`[PROVER]` is the ATP that generated `[SOLUTION]`. The currently supported 
-options for `[PROVER]` are `vampire` and `e`.
+`[PROVER]` is the ATP that generated `[SOLUTION]`. The only supported option
+for `[PROVER]` at the moment is `vampire`.
 
 `./ttv [PROBLEM] [PROOF]` verifies that the TESC proof `[PROOF]` is a 
 correct proof of the TPTP problem `[PROBLEM]`. 
 
 ## Notes 
 
-The older version of TESC on which the PAAR extended abstract was based, including test problems and solutions, can be found in the branch `PAAR`.
+The older version of TESC on which the PAAR extended abstract was based, 
+which supports E solution compilation and includes test problems and solutions, 
+can be found on the branch `PAAR`.
