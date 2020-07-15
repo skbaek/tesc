@@ -97,7 +97,7 @@ atom_cmp(ORD, ATOM_A, ATOM_B) :-
     compare(ORD, ATOM_A, ATOM_B) 
   ), !.
 
-pcla_hyp((ID, FORM), (o(ID), $pos(FORM))).
+pcla_hyp((ID, FORM), (ID, $pos(FORM))).
 
 pcla_cla((ID, FORM), (ID, NORM)) :- 
   inst_with_lvs(FORM, BODY), !,

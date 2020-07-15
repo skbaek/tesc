@@ -8,6 +8,7 @@ tests/
 vampire_rel
 eprover
 probgen.pl
+probsel.pl
 solgen.pl
 proofgen.pl
 checkall.pl

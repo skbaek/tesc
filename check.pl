@@ -1,5 +1,6 @@
 :- [tptp].
 
+/*
 check_debug(PROB, CNT, a(PID, DIR, PRF)) :- 
   num_succ(CNT, SCNT),
   get_assoc(PID, PROB, PREM),
@@ -75,6 +76,7 @@ check_debug(TPTP, TESC) :-
   check_debug(PROB, 0, PRF),
   write("Proof verified.\n"),
   close(STRM).
+*/
 
 
 /*
@@ -163,7 +165,6 @@ check(PROB, _, x(PID, NID)) :-
   % FORM_P == FORM_N.
   */
 
-
 put_assoc_write(CID, PROB, CONC, PROB_N) :- 
   %   ( 
   %     CID = x(_) -> 
@@ -172,40 +173,38 @@ put_assoc_write(CID, PROB, CONC, PROB_N) :-
   %   ),
   put_assoc(CID, PROB, CONC, PROB_N).
 
-
-% ---------------------------------------------------
-
 check(TPTP, TESC) :- 
   style_check(-singleton),
   pose(none, TPTP, _, _, PROB),
   open(TESC, read, STRM, [encoding(octet)]), !, 
   check(STRM, PROB, 0), 
-  write("Proof verified.\n"),
+  write("Proof verified.\n\n"),
   close(STRM).
 
 check(STRM, PROB, C) :- 
+  mk_par(C, [], CID),
   num_succ(C, SC),
   get_char(STRM, CH), !,
-  check(STRM, PROB, C, SC, CH).
+  check(STRM, PROB, CID, SC, CH).
   
-check(STRM, PROB, C, SC, 'A') :- 
+check(STRM, PROB, CID, SC, 'A') :- 
   get_id(STRM, ID),  
   get_dir(STRM, DIR),
   get_assoc(ID, PROB, PREM),
   ab(DIR, PREM, CONC), 
-  put_assoc_write(n(C), PROB, CONC, PROB_N), !,
+  put_assoc_write(CID, PROB, CONC, PROB_N), !,
   check(STRM, PROB_N, SC). 
     
-check(STRM, PROB, C, SC, 'B') :- 
+check(STRM, PROB, CID, SC, 'B') :- 
   get_id(STRM, ID), 
   get_assoc(ID, PROB, PREM),
   bb(PREM, CONC_L, CONC_R),
-  put_assoc_write(n(C), PROB, CONC_L, PROB_L),
-  put_assoc_write(n(C), PROB, CONC_R, PROB_R), !, 
+  put_assoc_write(CID, PROB, CONC_L, PROB_L),
+  put_assoc_write(CID, PROB, CONC_R, PROB_R), !, 
   check(STRM, PROB_L, SC), !,
   check(STRM, PROB_R, SC).
 
-check(STRM, PROB, C, SC, 'C') :- 
+check(STRM, PROB, CID, SC, 'C') :- 
   get_id(STRM, ID), 
   get_term(STRM, TERM), 
   get_assoc(ID, PROB, PREM),
@@ -213,42 +212,44 @@ check(STRM, PROB, C, SC, 'C') :-
   no_fv_term(0, TERM),
   counter_safe(SC, TERM),
   cb(TERM, PREM, CONC), 
-  put_assoc_write(n(C), PROB, CONC, PROB_N), !,
+  put_assoc_write(CID, PROB, CONC, PROB_N), !,
   check(STRM, PROB_N, SC).
 
-check(STRM, PROB, C, SC, 'D') :- 
+check(STRM, PROB, CID, SC, 'D') :- 
   num_succ(SC, SSC),
   get_id(STRM, ID), 
   get_assoc(ID, PROB, PREM),
   db(SC, PREM, CONC), 
-  put_assoc_write(n(C), PROB, CONC, PROB_N), !,
+  put_assoc_write(CID, PROB, CONC, PROB_N), !,
   check(STRM, PROB_N, SSC).
 
-check(STRM, PROB, C, SC, 'F') :- 
+check(STRM, PROB, CID, SC, 'F') :- 
   get_form(STRM, FORM), 
   ground(FORM), % No logic variables in Form
   no_fv_form(0, FORM), % No free object variables in Form
   counter_safe(SC, FORM), % No new parameters in Form
-  put_assoc_write(n(C), PROB, $neg(FORM), PROB_N), !,
+  put_assoc_write(CID, PROB, $neg(FORM), PROB_N), !,
   check(STRM, PROB_N, SC),
-  put_assoc_write(n(C), PROB, $pos(FORM), PROB_P), !,
+  put_assoc_write(CID, PROB, $pos(FORM), PROB_P), !,
   check(STRM, PROB_P, SC).
 
-check(STRM, PROB, C, SC, 'S') :- 
+check(STRM, PROB, CID, SC, 'S') :- 
   get_id(STRM, ID), 
   get_assoc(ID, PROB, PREM),
   sb(PREM, CONC), 
-  put_assoc_write(n(C), PROB, CONC, PROB_N), !,
+  put_assoc_write(CID, PROB, CONC, PROB_N), !,
   check(STRM, PROB_N, SC).
     
-check(STRM, PROB, C, SC, 'T') :- 
+check(STRM, PROB, CID, SC, 'T') :- 
   get_sf(STRM, SF),
   no_fv_sf(0, SF),  
   justified(SC, SF, C_N),
-  put_assoc(n(C), PROB, SF, PROB_N), !,
+  put_assoc(CID, PROB, SF, PROB_N), !,
   check(STRM, PROB_N, C_N).
 
-check(STRM, PROB, C, _, 'W') :- 
+check(STRM, PROB, CID, _, 'W') :- 
+  atom_concat('@', ATOM, CID),
+  atom_number(ATOM, C),
   get_id(STRM, ID), 
   del_assoc(ID, PROB, _, PROB_N), !,
   check(STRM, PROB_N, C).

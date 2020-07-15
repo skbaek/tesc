@@ -82,4 +82,3 @@ probsel(PATHS) :-
   % PATHS = (['/home/sk/programs/TPTP/Problems/CSR/CSR054+6.p' | REST]),
   % maplist_cut(prob_ext, PATHS),
   true.
-  

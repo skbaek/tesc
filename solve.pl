@@ -166,21 +166,21 @@ get_adds(ARI, VARS, NUM, $ex(ANTE), CONS, [aoc(NUM) | NAMES], [skm(FUN, ARI, aoc
 get_adds(ARI, _, _, ANTE, CONS, [], []) :- 
   add_fas(ARI, ANTE, ANTE_N), 
   add_fas(ARI, CONS, CONS_N), 
-  paral(((n(0), $pos(ANTE_N)), (n(1), $neg(CONS_N)), (_, 2))).
+  paral((('@0', $pos(ANTE_N)), ('@1', $neg(CONS_N)), (_, 2))).
 
 % axiomatic(TYPE) :- member(TYPE, [lemma, axiom, hypothesis, conjecture, negated_conjecture]).
 
-pull_ovs(_, [], FORM, FORM).
-pull_ovs(CNT, [NUM | NUMS], FORM, NORM) :- 
-  safe_subst_form(NUM, #(CNT), FORM, TEMP), 
-  num_succ(CNT, SUCC),
-  pull_ovs(SUCC, NUMS, TEMP, NORM).
-
-pull_ovs(FORM, NORM) :- 
-  ovs(FORM, OVS), 
-  reverse(OVS, REV),
-  pull_ovs(0, REV, FORM, NORM).
-
+% pull_ovs(_, [], FORM, FORM).
+% pull_ovs(CNT, [NUM | NUMS], FORM, NORM) :- 
+%   safe_subst_form(NUM, #(CNT), FORM, TEMP), 
+%   num_succ(CNT, SUCC),
+%   pull_ovs(SUCC, NUMS, TEMP, NORM).
+% 
+% pull_ovs(FORM, NORM) :- 
+%   ovs(FORM, OVS), 
+%   reverse(OVS, REV),
+%   pull_ovs(0, REV, FORM, NORM).
+% 
 % report_sol_failure(CTX, ANT) :- 
 %   write("\nSolution failed, annotation : "), 
 %   write(ANT), nl, nl,
@@ -204,7 +204,7 @@ try_del_assoc(KEY, ASC_I, ASC_O) :-
   ASC_O = ASC_I.
 
 relabel_inst(DICT, NI, CNT, del(NAME), DICT, NI_N, CNT, del(ID)) :-    
-  name_id(NI, NAME, ID), 
+  redirect_id(NI, NAME, ID), 
   try_del_assoc(NAME, NI, NI_N).
 
 relabel_inst(DICT, NI, CNT, add(NAME, FORM), DICT, NI_N, CNT_N, add(NORM)) :-    
@@ -232,7 +232,7 @@ relabel_inst(DICT, NI, CNT, inf(HINT, NAMES, NAME, FORM), DICT, NI_N, CNT_N, inf
     NAMES = $orig -> 
     IDS = $orig 
   ;
-    maplist_cut(name_id(NI), NAMES, IDS)
+    maplist_cut(redirect_id(NI), NAMES, IDS)
   ),
   put_assoc(NAME, NI, CNT, NI_N),
   resymb_form(DICT, FORM, NORM).

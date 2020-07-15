@@ -59,15 +59,14 @@ complements($neg(FORM), $pos(FORM)).
 
 hyp_sf((_, SF), SF).
 
-incr_ov_term(_, VAR, _) :- var(VAR), !, false.
-incr_ov_term(NUM, #(NUM_I), #(NUM_O)) :- !,
-  NUM_I < NUM -> NUM_O = NUM_I ; 
-  num_succ(NUM_I, NUM_O).
-incr_ov_term(NUM, ^(FUN, TERMS_I), ^(FUN, TERMS_O)) :- 
-  maplist_cut(incr_ov_term(NUM), TERMS_I, TERMS_O).
-incr_ov_term(NUM, TERM_I, TERM_O) :- 
+incr_idx_term(VAR, _) :- var(VAR), !, false.
+incr_idx_term(#(NUM), #(SUCC)) :- !,
+  num_succ(NUM, SUCC).
+incr_idx_term(^(FUN, TERMS_I), ^(FUN, TERMS_O)) :- 
+  maplist_cut(incr_idx_term, TERMS_I, TERMS_O).
+incr_idx_term(TERM_I, TERM_O) :- 
   TERM_I =.. [FUN | TERMS_I], 
-  maplist_cut(incr_ov_term(NUM), TERMS_I, TERMS_O), 
+  maplist_cut(incr_idx_term, TERMS_I, TERMS_O), 
   TERM_O =.. [FUN | TERMS_O]. 
 
 safe_subst_term(_, _, VAR, _) :- var(VAR), !, false.
@@ -162,7 +161,7 @@ safe_subst_form(NUM, TERM, $not(FORM_I), $not(FORM_O)) :- !,
 safe_subst_form(NUM, TERM, FORM_I, FORM_O) :-
   decom_qtf(FORM_I, QTF, SUB_I), !, 
   num_succ(NUM, SUCC),
-  incr_ov_term(0, TERM, TERM_N),
+  incr_idx_term(TERM, TERM_N),
   safe_subst_form(SUCC, TERM_N, SUB_I, SUB_O), 
   apply_uop(QTF, SUB_O, FORM_O). 
 
@@ -285,20 +284,22 @@ ap(
   (PID, SF),
   DIR, 
   (a(PID, DIR, PRF), C), 
-  (n(C), SF_N), 
+  (CID, SF_N), 
   (PRF, SC)
 ) :- 
+  mk_par(C, [], CID),
   num_succ(C, SC), 
   ab(DIR, SF, SF_N), !.
 
 bp(
   (PID, SF), 
   (b(PID, PRF_A, PRF_B), C), 
-  (n(C), SF_L),
-  (n(C), SF_R),
+  (CID, SF_L),
+  (CID, SF_R),
   (PRF_A, SC),
   (PRF_B, SC)
 ) :- 
+  mk_par(C, [], CID),
   num_succ(C, SC), 
   bb(SF, SF_L, SF_R), !.
 
@@ -306,18 +307,20 @@ cp(
   (PID, SF), 
   TERM, 
   (c(PID, TERM, PRF), C), 
-  (n(C), SF_N),
+  (CID, SF_N),
   (PRF, SC)
 ) :- 
+  mk_par(C, [], CID),
   num_succ(C, SC),
   cb(TERM, SF, SF_N), !.
 
 dp(
   (PID, SF),
   (d(PID, PRF), C), 
-  (n(C), SF_N),
+  (CID, SF_N),
   (PRF, SSC)
 ) :-
+  mk_par(C, [], CID),
   num_succ(C, SC),
   num_succ(SC, SSC),
   db(SC, SF, SF_N), !.
@@ -325,27 +328,30 @@ dp(
 fp(
   FORM,
   (f(FORM, PRF_A, PRF_B), C), 
-  (n(C), $neg(FORM)),
-  (n(C), $pos(FORM)),
+  (CID, $neg(FORM)),
+  (CID, $pos(FORM)),
   (PRF_A, SC), 
   (PRF_B, SC)
 ) :-
+  mk_par(C, [], CID),
   num_succ(C, SC),!.
 
 tp(
   SF,
   (t(SF, PRF), C),
-  (n(C), SF),
+  (CID, SF),
   (PRF, SC)
 ) :- 
-  num_succ(C, SC),!.
+  mk_par(C, [], CID),
+  num_succ(C, SC), !.
 
 sp(
   (PID, SF),
   (s(PID, PRF), C), 
-  (n(C), SF_N),
+  (CID, SF_N),
   (PRF, SC)
 ) :- 
+  mk_par(C, [], CID),
   num_succ(C, SC),
   sb(SF, SF_N), !.
 
@@ -1013,21 +1019,8 @@ put_num(STRM, NUM) :-
   number_codes(NUM, BYTES),
   put_bytes_dot(STRM, BYTES).
  
-% nums_id([NUM], NUM) :- !.
-% nums_id([NUM | NUMS], l(NUM, ID)) :- 
-%   nums_id(NUMS, ID).
-% 
-% id_nums(l(NUM, ID), [NUM | LIST]) :- !, 
-%   id_nums(ID, LIST).
-% id_nums(NUM, [NUM]) :- number(NUM).
-
-put_id(STRM, n(NUM)) :- !,
-  put_char(STRM, 'n'),
-  put_num(STRM, NUM).
-put_id(STRM, o(NAME)) :- 
-  atom(NAME), 
-  put_char(STRM, 'o'),
-  put_atom(STRM, NAME).
+put_id(STRM, ID) :- !,
+  put_atom(STRM, ID).
   
 put_term(STRM, #(NUM)) :- !, put_char(STRM, '#'), put_num(STRM, NUM).
 put_term(STRM, TERM) :- 
@@ -1509,16 +1502,7 @@ get_sf(STRM, SF) :-
   apply_uop(SIGN, FORM, SF).
 
 get_id(STRM, ID) :- 
-  get_char(STRM, CH),
-  (
-    CH = 'n' -> 
-    get_num(STRM, NUM), 
-    ID = n(NUM)
-  ;
-    CH = 'o' -> 
-    get_atom(STRM, NAME),
-    ID = o(NAME)
-  ).
+  get_atom(STRM, ID).
 
 get_prf(STRM, PRF) :- 
   get_char(STRM, CH), !, 
@@ -2031,8 +2015,8 @@ path_cat(PATH, CAT) :-
 get_context(PROB, IDS, CTX) :- 
   maplist(prob_id_hyp(PROB), IDS, CTX).
 
-name_id(NMID, NAME, ID) :- 
-  get_assoc(NAME, NMID, NUM) -> 
-  ID = n(NUM) 
+redirect_id(ON, OLD, NEW) :- 
+  get_assoc(OLD, ON, NUM) -> 
+  mk_par(NUM, [], NEW)
 ;
-  ID = o(NAME).
+  NEW = OLD.

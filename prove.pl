@@ -554,9 +554,9 @@ infer(_, id, PREMS, _, CONC, GOAL) :-
 
 infer(_, opmt, PREMS, CLAS, CONC, GOAL) :-
   snd(GOAL, CNT),
-  find_subsumer(CNT, CLAS, CONC, NAME),
-  member((o(NAME), HYP), PREMS), 
-  pmt_cla((o(NAME), HYP), CONC, GOAL), !.
+  find_subsumer(CNT, CLAS, CONC, ID),
+  member((ID, HYP), PREMS), 
+  pmt_cla((ID, HYP), CONC, GOAL), !.
 
 infer(m, simplify, [PREM_A, PREM_B], _, CONC, GOAL) :- 
   res(PREM_A, PREM_B, CONC, GOAL).
@@ -703,14 +703,15 @@ report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
 
 subprove(STRM, OCLAS, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
+  mk_par(CNT, [], CID),
   put_char(STRM, 'F'), 
   put_form(STRM, FORM), 
   num_succ(CNT, SCNT),
   GOAL = (PRF, SCNT), 
   timed_call(
     100,
-    infer(PRVR, HINT, PREMS, OCLAS, (n(CNT), $neg(FORM)), GOAL), 
-    (report_failure(PRVR, HINT, PREMS, OCLAS, (n(CNT), $neg(FORM)), none, none, GOAL), false)
+    infer(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), GOAL), 
+    (report_failure(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), false)
   ), !,
   ground_all(c, PRF),
   % put_assoc(CID, PROB_I, - FORM, SUB_PROB),
@@ -750,13 +751,14 @@ use_inst(PS, add(FORM), PS_N) :-
   get_ps_prob(PS, PROB),
   get_ps_strm(PS, STRM),
   get_ps_cnt(PS, CNT),
+  mk_par(CNT, [], CID),
   num_succ(CNT, SCNT),
   justified(SCNT, $pos(FORM), CNT_N),
   put_char(STRM, 'T'), 
   put_sf(STRM, $pos(FORM)), 
-  put_assoc(n(CNT), PROB, $pos(FORM), PROB_N), 
+  put_assoc(CID, PROB, $pos(FORM), PROB_N), 
   set_ps_prob(PS, PROB_N, PS1), 
-  set_ps_last(PS1, n(CNT), PS2), 
+  set_ps_last(PS1, CID, PS2), 
   set_ps_cnt(PS2, CNT_N, PS_N), 
   true.
   
@@ -764,7 +766,7 @@ use_inst(PS, inf(HINT, IDS, FORM), PS_N) :-
   get_ps_strm(PS, STRM),
   get_ps_prob(PS, PROB),
   get_ps_cnt(PS, CNT),
-  format("Constructing subproof with ID = ~w, hint = ~w\n\n", [CNT, HINT]),
+  % format("Constructing subproof with ID = ~w, hint = ~w\n\n", [CNT, HINT]),
   get_ps_oclas(PS, OCLAS),
   (
     IDS == $orig -> 
@@ -773,9 +775,10 @@ use_inst(PS, inf(HINT, IDS, FORM), PS_N) :-
   ),
   num_succ(CNT, SCNT),
   subprove(STRM, OCLAS, CNT, HINT, PREMS, FORM),
-  put_assoc(n(CNT), PROB, $pos(FORM), PROB_N),
+  mk_par(CNT, [], CID),
+  put_assoc(CID, PROB, $pos(FORM), PROB_N),
   set_ps_prob(PS, PROB_N, PS1), 
-  set_ps_last(PS1, n(CNT), PS2), 
+  set_ps_last(PS1, CID, PS2), 
   set_ps_cnt(PS2, SCNT, PS_N), 
   true.
 
@@ -799,7 +802,8 @@ prove(PS) :-
   get_ps_strm(PS, STRM), 
   get_ps_last(PS, LAST),
   get_ps_cnt(PS, CNT),
-  put_prf(STRM, t($neg($false), x(LAST, n(CNT)))).
+  mk_par(CNT, [], CID),
+  put_prf(STRM, t($neg($false), x(LAST, CID))).
 
 % dummy :- 
 %   prove(_),
