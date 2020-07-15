@@ -33,3 +33,7 @@ options for `[PROVER]` are `vampire` and `e`.
 
 `./ttv [PROBLEM] [PROOF]` verifies that the TESC proof `[PROOF]` is a 
 correct proof of the TPTP problem `[PROBLEM]`. 
+
+## Notes 
+
+The older version of TESC on which the PAAR extended abstract was based, including test problems and solutions, can be found in the branch `PAAR`.
