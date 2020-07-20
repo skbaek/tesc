@@ -1,9 +1,152 @@
 :- [basic].
 
-pick_mate(HYPS_A, (HYPS_B, GOAL)) :- 
-  member(HYP_A, HYPS_A), 
-  member(HYP_B, HYPS_B), 
-  mate(HYP_A, HYP_B, GOAL).
+
+term_poseq_term(Var, _) :- 
+  var(Var).
+
+term_poseq_term(_, Var) :- 
+  var(Var).
+
+term_poseq_term(TERM_A, TERM_B) :- 
+  \+ var(TERM_A),
+  \+ var(TERM_B),
+  TERM_A =.. [FUN | TERMS_A],
+  TERM_B =.. [FUN | TERMS_B],
+  length(TERMS_A, LTH),
+  length(TERMS_B, LTH).
+
+term_poseq_term(_, TERM_A, TERM_B) :- 
+  term_poseq_term(TERM_A, TERM_B).
+
+term_poseq_term(OPQEs, TERM_A, TERM_B) :- 
+  member((_, $pos(QE)), OPQEs), 
+  inst_fas(QE, TERM_L = TERM_R), 
+  ( 
+    term_poseq_term(TERM_A, TERM_L) ; 
+    term_poseq_term(TERM_A, TERM_R) ; 
+    term_poseq_term(TERM_B, TERM_R) ; 
+    term_poseq_term(TERM_B, TERM_L) 
+  ).
+
+%%%%%%% Decomposition to Equational GOALs %%%%%%%
+
+intro_eqs(MONO, [], [], GOAL, MONO, [], GOAL).
+
+intro_eqs(MONO, [TERM_A | TERMS_A], [TERM_B | TERMS_B], GOAL, Iff, [(ONE, SubGOAL) | HGS], GOAL_N) :-
+  cp(MONO, TERM_A, GOAL, MONOA, GOAL_A), 
+  cp(MONOA, TERM_B, GOAL_A, MONOAB, GOAL_AB), 
+  bp(MONOAB, GOAL_AB, ONE, TempMONO, SubGOAL, GOAL_T), 
+  intro_eqs(TempMONO, TERMS_A, TERMS_B, GOAL_T, Iff, HGS, GOAL_N). 
+
+break_eq_fun(OPEs, ONE, GOAL, HGS) :- 
+  ONE = (_, $neg(TERM_A = TERM_B)),
+  \+ var(TERM_A),
+  \+ var(TERM_B),
+  TERM_A =.. [FUN | TERMS_A],
+  TERM_B =.. [FUN | TERMS_B],
+  length(TERMS_A, LTH),
+  length(TERMS_B, LTH),
+  maplist_cut(term_poseq_term(OPEs), TERMS_A, TERMS_B),
+  mk_mono_fun(LTH, FUN, MONOForm),
+  % atom_number(LTH_ATOM, LTH),
+  tp($pos(MONOForm), GOAL, MONO, GOAL0),
+  intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, OPE, HGS, GOAL1),
+  xp(OPE, ONE, GOAL1).
+
+break_eq_rel(OPEs, OPA, ONA, GOAL, HGS) :- 
+  OPA = (_, $pos(ATOM_A)),
+  ONA = (_, $neg(ATOM_B)),
+  ATOM_A =.. [REL | TERMS_A], 
+  ATOM_B =.. [REL | TERMS_B], 
+  length(TERMS_A, LTH),
+  length(TERMS_B, LTH),
+  maplist_cut(term_poseq_term(OPEs), TERMS_A, TERMS_B),
+  mk_mono_rel(LTH, REL, MONOForm),
+  % atom_number(LTH_ATOM, LTH),
+  tp($pos(MONOForm), GOAL, MONO, GOAL0),
+  intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, IMP, HGS, GOAL1),
+  bp(IMP, GOAL1, HYP_L, HYP_R, GOAL_L, GOAL_R), 
+  xp(OPA, HYP_L, GOAL_L), 
+  xp(HYP_R, ONA, GOAL_R). 
+
+subst_fun_mul(OPEs, ONE, GOAL, NewOPEs) :-
+  ONE = (_, $neg(TERM_A = TERM_B)), 
+  (
+    TERM_A == TERM_B -> 
+    (eq_refl(ONE, GOAL), NewOPEs = OPEs) ;
+    subst_fun_mul_0(OPEs, ONE, GOAL, NewOPEs)
+  ).
+
+subst_fun_mul_0(OPEs, ONF, GOAL, OPEs) :- 
+  ONF = (_, $neg(TERM_A = TERM_B)), 
+  unify_with_occurs_check(TERM_A, TERM_B),
+  eq_refl(ONF, GOAL).
+
+subst_fun_mul_0(OPEs, ONE, GOAL, NewOPEs) :-
+  break_eq_fun(OPEs, ONE, GOAL, HGS),
+  subst_fun_mul_aux(OPEs, HGS, NewOPEs). 
+
+subst_fun_mul_0(OPQEs, ONE, GOAL, NewOPQEs) :- 
+  ONE = (_, $neg(TERM_A0 = TERM_C)), 
+  pluck_uniq(OPQEs, OPQE, REST),
+  many_nb([c], [OPQE], GOAL, [PRE_OPE], GOAL_T), 
+  PRE_OPE = (_, $pos(_ = _)),
+  erient_hyp(PRE_OPE, GOAL_T, OPE, GOAL0),
+  OPE = (_, $pos(TERM_A1 = TERM_B)),
+  unify_with_occurs_check(TERM_A0, TERM_A1), 
+  fp(TERM_B = TERM_C, GOAL0, NewONE, NewOPE, GOAL1, GOAL2), 
+  subst_fun_mul(REST, NewONE, GOAL1, NewOPQEs), 
+  eq_trans(OPE, NewOPE, ONE, GOAL2).
+
+subst_fun_mul_aux(OPEs, [], OPEs).
+
+subst_fun_mul_aux(OPEs, [(ONE, GOAL) | HGS], NewOPEs) :-
+  subst_fun_mul(OPEs, ONE, GOAL, TempOPEs),
+  subst_fun_mul_aux(TempOPEs, HGS, NewOPEs).
+
+subst_rel_mul(HYP_L, OPEs, HYP_R, GOAL, NewOPEs) :-  
+  orient_sign(HYP_L, HYP_R, PreOPA, ONA),
+  erient_hyp(PreOPA, GOAL, OPA, GOAL_T),
+  break_eq_rel(OPEs, OPA, ONA, GOAL_T, HGS),
+  subst_fun_mul_aux(OPEs, HGS, NewOPEs). 
+
+subst_fun_add(EQNS, (HYP, GOAL)) :-
+  subst_fun_add(EQNS, HYP, GOAL).
+
+subst_fun_add(EQNS, ONE, GOAL) :-
+  ONE = (_, $neg(TERM_A = TERM_B)), 
+  (
+    TERM_A == TERM_B -> 
+    eq_refl(ONE, GOAL) ;
+    subst_fun_add_0(EQNS, ONE, GOAL)
+  ).
+
+subst_fun_add_0(_, ONF, GOAL) :- 
+  ONF = (_, $neg(TERM_A = TERM_B)), 
+  unify_with_occurs_check(TERM_A, TERM_B),
+  eq_refl(ONF, GOAL).
+
+subst_fun_add_0(EQNS, ONE, GOAL) :-
+  break_eq_fun(EQNS, ONE, GOAL, HGS),
+  maplist(subst_fun_add(EQNS), HGS). 
+
+subst_fun_add_0(OPQEs, ONE, GOAL) :- 
+  ONE = (_, $neg(TERM_A0 = TERM_C)), 
+  pluck_uniq(OPQEs, OPQE, REST),
+  many_nb([c], [OPQE], GOAL, [PRE_OPE], GOAL_T), 
+  PRE_OPE = (_, $pos(_ = _)),
+  erient_hyp(PRE_OPE, GOAL_T, OPE, GOAL0),
+  OPE = (_, $pos(TERM_A1 = TERM_B)),
+  unify_with_occurs_check(TERM_A0, TERM_A1), 
+  fp(TERM_B = TERM_C, GOAL0, NewONE, NewOPE, GOAL1, GOAL2), 
+  subst_fun_add(REST, NewONE, GOAL1), 
+  eq_trans(OPE, NewOPE, ONE, GOAL2).
+
+subst_rel_add(EQNS, HYP_L, HYP_R, GOAL) :-  
+  orient_sign(HYP_L, HYP_R, PreOPA, ONA),
+  erient_hyp(PreOPA, GOAL, OPA, GOAL_T),
+  break_eq_rel(EQNS, OPA, ONA, GOAL_T, HGS),
+  maplist(subst_fun_add(EQNS), HGS).
 
 pick_pivot(HYPS, HYP, GOAL, HYP_N, GOAL_N) :-
   many([b, c, s], ([HYP], GOAL), HGS),
@@ -16,7 +159,7 @@ pick_pivot_prop(HYPS, HYP, GOAL, HYP_N, GOAL_N) :-
   maplist(pick_mate(HYPS), REST). 
 
 apply_aocs(ANTE, [AOC | AOCS], GOAL_I, CONS, GOAL_O) :-  
-  many_nb([c], [AOC], GOAL_I, [IMP], GOAL_T), 
+  many_nb([c], [AOC], GOAL_I, [IMP], GOAL_T),
   bp(IMP, GOAL_T, HYP_L, HYP_R, GOAL_L, GOAL_R), 
   mate(ANTE, HYP_L, GOAL_L), 
   apply_aocs(HYP_R, AOCS, GOAL_R, CONS, GOAL_O).
@@ -46,8 +189,8 @@ vcnf(PREM, HYPS, GOAL) :-
   mate(PREM, HYP, GOAL).
 
 vacc_aux(TRP) :- 
-  bf__s(TRP, TRP_N) ->
-  mate(TRP_N) ; 
+  para__s(TRP, TRP_N) ->
+  mate(TRP_N) ;
   mate(TRP).
 
 vacc_aux((PREM, CONC, GOAL)) :- 
@@ -477,16 +620,6 @@ find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :-
   body_lits(BODY, LITS), !, 
   try(subsume_cla(LITS), CLAS, ID).
 
-map_signed_atoms(_, []).
-
-map_signed_atoms(HYPS, [([HYP], GOAL) | HGS]) :- 
-  use_lc(HYP, GOAL) ->
-  map_signed_atoms(HYPS, HGS) ;
-  ground(HYP) -> 
-  (pick_mate(HYPS, ([HYP], GOAL)), !, map_signed_atoms(HYPS, HGS)) ;
-  (pick_mate(HYPS, ([HYP], GOAL)),  map_signed_atoms(HYPS, HGS)). 
-  
-
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
 
@@ -625,15 +758,9 @@ infer(_, para, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   para((PREM, CONC, GOAL)).
 
-infer(v, sbsm, [PREM], _, CONC, GOAL) :- 
-  many_nb([a, d, s], [CONC], GOAL, HYPS, TEMP), 
-  (
-    (member(HYP, HYPS), use_lc(HYP, TEMP)) -> 
-    true
-  ;
-    many([b, c, s], ([PREM], TEMP), HGS), 
-    map_signed_atoms(HYPS, HGS)
-  ).
+infer(_, sbsm, [PREM], _, CONC, GOAL) :- 
+  sbsm(PREM, CONC, GOAL).
+
 
 
   %  maplist(pick_mate(HYPS), HGS). 

@@ -1,4 +1,7 @@
-:- [op].
+:- module(tptp, [pose/5]).
+
+:- use_module(basic).
+:- use_module(op).
 
 tptp_directory("/home/sk/programs/TPTP/").
 
@@ -83,7 +86,7 @@ measure_cmp(MSR, EXP_A, EXP_B, ORD) :-
     NUM_B > NUM_A, ORD = (<)
   ).
 
-lit_cmp(ORD, LIT_A, LIT_B) :- 
+lit_cmp(ORD, LIT_A, LIT_B) :-
   lit_atom(LIT_A, ATOM_A),
   lit_atom(LIT_B, ATOM_B),
   atom_cmp(ORD, ATOM_A, ATOM_B).

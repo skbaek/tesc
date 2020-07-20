@@ -1,3 +1,4 @@
+:- module(op, [declare_TPTP_operators/0, tf_form/3, tptp_terms/2]).
 :-[basic].
 
 :-op(70,fx,'$$').
