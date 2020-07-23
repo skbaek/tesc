@@ -1,61 +1,61 @@
-:- module(basic, 
-  [
-    sbsm/3,
-    eqr/3,
-    para/1,
-    para_e1/1,
-    para_e2/1,
-    mate/1,
-    axiomatic/1,
-    write_list/1,
-    unsigned_atom/1,
-    paral/1,
-    no_fv_form/2,
-    num_succ/2,
-    num_pred/2,
-    lit_atom/2,
-    body_lits/2,
-    ground_all/2,
-    para__s/2,
-    first_char/2,
-    erient_form/2,
-    inst_with_lvs/2,
-    explicate_form/2,
-    implicate_form/2,
-    relabel/2,
-    fnnf/2,
-    decom_uct/3,
-    decom_qtf/3,
-    mate/3,
-    many/3,
-    range/3,
-    pluck/3,
-    mk_par/3,
-    apply_uop/3,
-    timed_call/3,
-    maplist_cut/3, 
-    redirect_id/3, 
-    resymb_form/3, 
-    tt_term/3,
-    add_fas/3,
-    strip_fas/3,
-    mk_vars/3,
-    mk/3,
-    pluck/4,
-    substitute_form/4,
-    decom_bct/4,
-    apply_bop/4,
-    map_form/4,
-    maplist_cut/4,
-    sp/4,
-    many_nb/5,
-    ap/5,
-    cp/5,
-    bp/6
-  ]
-).
+% % :- module(basic, 
+%   [
+%     sbsm/3,
+%     eqr/3,
+%     para/1,
+%     para_e1/1,
+%     para_e2/1,
+%     mate/1,
+%     axiomatic/1,
+%     write_list/1,
+%     unsigned_atom/1,
+%     paral/1,
+%     no_fv_form/2,
+%     num_succ/2,
+%     num_pred/2,
+%     lit_atom/2,
+%     body_lits/2,
+%     ground_all/2,
+%     para__s/2,
+%     first_char/2,
+%     erient_form/2,
+%     inst_with_lvs/2,
+%     explicate_form/2,
+%     implicate_form/2,
+%     relabel/2,
+%     fnnf/2,
+%     decom_uct/3,
+%     decom_qtf/3,
+%     mate/3,
+%     many/3,
+%     range/3,
+%     pluck/3,
+%     mk_par/3,
+%     apply_uop/3,
+%     timed_call/3,
+%     maplist_cut/3, 
+%     redirect_id/3, 
+%     resymb_form/3, 
+%     tt_term/3,
+%     add_fas/3,
+%     strip_fas/3,
+%     mk_vars/3,
+%     mk/3,
+%     pluck/4,
+%     substitute_form/4,
+%     decom_bct/4,
+%     apply_bop/4,
+%     map_form/4,
+%     maplist_cut/4,
+%     sp/4,
+%     many_nb/5,
+%     ap/5,
+%     cp/5,
+%     bp/6
+%   ]
+% ).
 
-:- meta_predicate maplist_cut(2, ?, ?), maplist_cut(3, ?, ?, ?), timed_call(+, 0, 0).
+% :- meta_predicate maplist_cut(2, ?, ?), maplist_cut(3, ?, ?, ?), timed_call(+, 0, 0).
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
@@ -243,6 +243,9 @@ explicate_form(FORM, FORM_N) :-
   maplist_cut(explicate_term, TERMS, TERMS_N), !,  
   FORM_N =.. [REL | TERMS_N].
 
+implicate_sf($pos(FORM), $pos(NORM)) :- implicate_form(FORM, NORM).
+implicate_sf($neg(FORM), $neg(NORM)) :- implicate_form(FORM, NORM).
+
 implicate_form(FORM, FORM) :- log_const(FORM), !.
 implicate_form(FORM, FORM_N) :-
   decom_uct(FORM, UCT, SUB), !, 
@@ -418,7 +421,8 @@ justified(C, $pos(FORM), SC) :-
   num_succ(C, SC), 
   strip_fas(FORM, ARI, $imp($ex(ANTE), CONS)), 
   counter_safe(C, ANTE),
-  mk_vars(asc, ARI, VARS),
+  member(DIR, [asc, desc]),
+  mk_vars(DIR, ARI, VARS), 
   mk_par(C, VARS, TERM),
   substitute_form(safe, TERM, ANTE, TEMP),
   TEMP == CONS.
@@ -647,13 +651,6 @@ molecular(Exp) :-
     [ $fa(_), $ex(_), $not(_), 
       $or(_, _), $and(_, _), $imp(_, _), $iff(_, _) ]).
 
-cf_lits($or(CLA_L, CLA_R), LITS) :- !, 
-  cf_lits(CLA_L, LITS_L), 
-  cf_lits(CLA_R, LITS_R), 
-  append(LITS_L, LITS_R, LITS).
-  
-cf_lits(LIT, [LIT]). 
-
 lit_atom(LIT, ATOM) :- 
   LIT = $not(ATOM) -> true ;
   LIT = ATOM.
@@ -681,23 +678,6 @@ apply_uop(UCT, FORM, $SUB) :-
 
 apply_bop(BCT, FORM_A, FORM_B, $SUB) :- 
   SUB =.. [BCT, FORM_A, FORM_B].
-  
-positive(NUM) :- 0 < NUM.
-
-ovs($not(FORM), OVS) :- !, ovs(FORM, OVS).
-ovs(FORM, OVS) :- 
-  decom_qtf(FORM, _, SUB), !, 
-  ovs(SUB, TEMP),
-  include(positive, TEMP, FILT), 
-  maplist(num_pred, FILT, OVS).
-ovs(FORM, OVS) :- 
-  decom_bct(FORM, _, FORM_A, FORM_B), !, 
-  ovs(FORM_A, BND_A),
-  ovs(FORM_B, BND_B),
-  union(BND_A, BND_B, OVS).
-ovs(FORM, OVS) :- 
-  findall(NUM, sub_term(#(NUM), FORM), TEMP), 
-  sort(TEMP, OVS), !.
 
 maplist_cut(_, []).
 
@@ -1233,52 +1213,6 @@ use_contra(HYP, GOAL) :-
 falsity($pos($false)).
 falsity($neg($true)).
 
-bool_not($false, $true) :- !.
-bool_not($true, $false) :- !.
-bool_not(FORM, $not(FORM)).
-
-bool_or($true, _, $true) :- !.
-bool_or(_, $true, $true) :- !.
-bool_or($false, FORM, FORM) :- !.
-bool_or(FORM, $false, FORM) :- !.
-bool_or(FORM_L, FORM_R, FORM_L | FORM_R).
-
-bool_and($false, _, $false) :- !.
-bool_and(_, $false, $false) :- !.
-bool_and($true, FORM, FORM) :- !.
-bool_and(FORM, $true, FORM) :- !.
-bool_and(FORM_L, FORM_R, $and(FORM_L, FORM_R)).
-
-bool_imp($false, _, $true) :- !.
-bool_imp(_, $true, $true) :- !.
-bool_imp($true, FORM, FORM) :- !.
-bool_imp(FORM, $false, $not(FORM)) :- !.
-bool_imp(FORM_L, FORM_R, $imp(FORM_L, FORM_R)).
-
-bool_norm($not(FORM), NORM) :- !, 
-  bool_norm(FORM, TEMP), 
-  bool_not(TEMP, NORM). 
- 
-bool_norm($or(FORM_L, FORM_R), NORM) :- !, 
-  bool_norm(FORM_L, NORM_L), 
-  bool_norm(FORM_R, NORM_R),
-  bool_or(NORM_L, NORM_R, NORM).
-
-bool_norm($and(FORM_L, FORM_R), NORM) :- !, 
-  bool_norm(FORM_L, NORM_L), 
-  bool_norm(FORM_R, NORM_R),
-  bool_and(NORM_L, NORM_R, NORM).
-
-bool_norm($imp(FORM_L, FORM_R), NORM) :- !, 
-  bool_norm(FORM_L, NORM_L), 
-  bool_norm(FORM_R, NORM_R),
-  bool_imp(NORM_L, NORM_R, NORM).
-
-bool_norm(FORM, FORM).
-
-tauto($pos(FORM))  :- bool_norm(FORM, $true).
-tauto($neg(FORM))  :- bool_norm(FORM, $false).
-
 mate(HYP0, HYP1, GOAL) :- 
   orient_sign(HYP0, HYP1, OPF, ONF),
   mate_pn(OPF, ONF, GOAL).
@@ -1529,6 +1463,18 @@ e_iff_conv((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :-
 
 %%%%%%%%%%%%%%%% PARALLEL DECOMPOSITION PREDICATES %%%%%%%%%%%%%%%%
   
+para_a_(DIR, (HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
+  ap(HYP_A, DIR, GOAL, HYP_AN, GOAL_N). 
+  
+para__a(DIR, (HYP_A, HYP_B, GOAL), (HYP_A, HYP_NB, GOAL_N)) :- 
+  ap(HYP_B, DIR, GOAL, HYP_NB, GOAL_N). 
+
+para_b_((HYP_A, HYP_B, GOAL), (HYP_L, HYP_B, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
+  bp(HYP_A, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R). 
+
+para__b((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_A, HYP_R, GOAL_R)) :- 
+  bp(HYP_B, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R). 
+
 para_c_term(TERM, (HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- cp(HYP_A, TERM, GOAL_I, HYP_NA, GOAL_O).
 para_c_term(TERM, (HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- cp(HYP_B, TERM, GOAL_I, HYP_NB, GOAL_O).
 
@@ -1536,48 +1482,55 @@ para_c(TRP_I, TRP_O) :- para_c_term(_, TRP_I, TRP_O).
 
 para_c(TRP_I, TRP_O) :- para_c_term(_, TRP_I, TRP_O).
 
-para__s((HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- 
-  sp(HYP_B, GOAL_I, HYP_NB, GOAL_O).
-
-bf__d((HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- 
+para__d((HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- 
   dp(HYP_B, GOAL_I, HYP_NB, GOAL_O).
 
-bf_d_((HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- 
+para_d_((HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- 
   dp(HYP_A, GOAL_I, HYP_NA, GOAL_O).
 
-bfd(TRP_I, TRP_O) :- 
-  bf_d_(TRP_I, TRP_O) ;
-  bf__d(TRP_I, TRP_O).
+parad(TRP_I, TRP_O) :- 
+  para_d_(TRP_I, TRP_O) ;
+  para__d(TRP_I, TRP_O).
 
 mate((HYP_A, HYP_B, GOAL)) :- mate(HYP_A, HYP_B, GOAL).
 
 para_m((HYP_A, HYP_B, GOAL)) :- mate(HYP_A, HYP_B, GOAL).
 
-para_s((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
+para_s_((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
   sp(HYP_A, GOAL, HYP_AN, GOAL_N). 
   
-para_s((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
+para__s((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
   sp(HYP_B, GOAL, HYP_BN, GOAL_N). 
+
+para_s(X, Y) :- para_s_(X, Y) ; para__s(X, Y).
 
 para_c_((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_B, GOAL_N)) :- 
   cp(HYP_A, _, GOAL, HYP_NA, GOAL_N).
 
-para__d((HYP_A, HYP_B, GOAL), (HYP_A, HYP_NB, GOAL_N)) :- 
-  dp(HYP_B, GOAL, HYP_NB, GOAL_N).
+para__c((HYP_A, HYP_B, GOAL), (HYP_A, HYP_NB, GOAL_N)) :- 
+  cp(HYP_B, _, GOAL, HYP_NB, GOAL_N).
+
+paracd(X, Y) :- para_cd(X, Y) ; para_dc(X, Y).
 
 para_cd((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_NB, GOAL_N)) :- 
-  cdp(HYP_A, HYP_B, GOAL, HYP_NA, HYP_NB, GOAL_N) ;
+  cdp(HYP_A, HYP_B, GOAL, HYP_NA, HYP_NB, GOAL_N).
+
+para_dc((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_NB, GOAL_N)) :- 
   cdp(HYP_B, HYP_A, GOAL, HYP_NB, HYP_NA, GOAL_N).
 
+paraab(X, Y, Z) :- para_ab(X, Y, Z) ; para_ba(X, Y, Z).
+
 para_ab((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
-  abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
+  abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R).
+
+para_ba((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
   abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
 para(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> para(H2G_N) ;
-  para_cd(H2G, H2G_N) -> para(H2G_N) ;
-  para_ab(H2G, H2G_L, H2G_R) ->
+  paracd(H2G, H2G_N) -> para(H2G_N) ;
+  paraab(H2G, H2G_L, H2G_R) ->
   para(H2G_L), !, 
   para(H2G_R).
 
@@ -1594,7 +1547,7 @@ paras_ab((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R
 paras(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> paras(H2G_N) ;
-  para_cd(H2G, H2G_N) -> paras(H2G_N) ;
+  paracd(H2G, H2G_N) -> paras(H2G_N) ;
   paras_ab(H2G, H2G_L, H2G_R),
   paras(H2G_L),  
   paras(H2G_R).
@@ -1625,7 +1578,7 @@ paratf(H2G) :-
   para_m(H2G) -> true ;
   paratf_zero(H2G) -> true ;
   para_s(H2G, H2G_N) -> paratf(H2G_N) ;
-  para_cd(H2G, H2G_N) -> paratf(H2G_N) ;
+  paracd(H2G, H2G_N) -> paratf(H2G_N) ;
   paratf_one(H2G, H2G_N) -> paratf(H2G_N) ;
   paras_ab(H2G, H2G_L, H2G_R),
   paratf(H2G_L),  
@@ -1643,8 +1596,8 @@ parav(H2G) :-
   para_m(H2G) *-> true ;
   para_s(H2G, H2G_N) -> parav(H2G_N) ;
   parav_cd(H2G, H2G_N) -> parav(H2G_N) ;
-  para_cd(H2G, H2G_N) -> parav(H2G_N) ;
-  para_ab(H2G, H2G_L, H2G_R), !,
+  paracd(H2G, H2G_N) -> parav(H2G_N) ;
+  paraab(H2G, H2G_L, H2G_R), !,
   parav(H2G_L), !, 
   parav(H2G_R).
 
@@ -1656,20 +1609,20 @@ paral(H2G) :-
   para_m(H2G) *-> true ;
   para_s(H2G, H2G_N) -> paral(H2G_N) ;
   paral_cd(H2G, H2G_N) -> paral(H2G_N) ;
-  para_ab(H2G, H2G_L, H2G_R), !,
+  paraab(H2G, H2G_L, H2G_R), !,
   paral(H2G_L), !, 
   paral(H2G_R).
 
-parad(H2G) :- 
+ppr(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> parad(H2G_N) ;
-  para_cd(H2G, H2G_N) -> parad(H2G_N) ;
-  para_ab(H2G, H2G_L, H2G_R), 
-  parad(H2G_L), 
-  parad(H2G_R)
+  para_s(H2G, H2G_N) -> ppr(H2G_N) ;
+  paracd(H2G, H2G_N) -> ppr(H2G_N) ;
+  paraab(H2G, H2G_L, H2G_R), 
+  ppr(H2G_L), 
+  ppr(H2G_R)
 ;
-  parad_a(H2G, H2G_N),
-  parad(H2G_N).
+  ppr_a(H2G, H2G_N),
+  ppr(H2G_N).
 
 
 
@@ -1679,19 +1632,19 @@ a_para((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :-
   ap(HYP_A, l, GOAL, HYP_AN, GOAL_N) ;
   ap(HYP_A, r, GOAL, HYP_AN, GOAL_N).
   
-parad_a((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
+ppr_a((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
   ap(HYP_A, l, GOAL, HYP_AN, GOAL_N) ;
   ap(HYP_A, r, GOAL, HYP_AN, GOAL_N).
 
-parad_a((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
+ppr_a((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
   ap(HYP_B, l, GOAL, HYP_BN, GOAL_N) ;
   ap(HYP_B, r, GOAL, HYP_BN, GOAL_N).
 
 fnnf(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> fnnf(H2G_N) ;
-  para_ab(H2G, H2G_L, H2G_R) -> fnnf(H2G_L), !, fnnf(H2G_R) ;
-  para_cd(H2G, H2G_N) -> fnnf(H2G_N) ;
+  paraab(H2G, H2G_L, H2G_R) -> fnnf(H2G_L), !, fnnf(H2G_R) ;
+  paracd(H2G, H2G_N) -> fnnf(H2G_N) ;
   H2G = (PREM, CONC, GOAL), 
   (
     type_hyp(c, PREM),
@@ -1700,7 +1653,7 @@ fnnf(H2G) :-
     fnnf((PREM, CONC_R, GOAL_R))
   ;
     imp_hyp(PREM),
-    parad_a(H2G, H2G_N),
+    ppr_a(H2G, H2G_N),
     fnnf(H2G_N)
   ;  
     e_iff_conv(H2G, H2G_N), 
@@ -1710,8 +1663,8 @@ fnnf(H2G) :-
 vnnf(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> vnnf(H2G_N) ;
-  para_cd(H2G, H2G_N) -> vnnf(H2G_N) ;
-  parad_a(H2G, H2G_N),
+  paracd(H2G, H2G_N) -> vnnf(H2G_N) ;
+  ppr_a(H2G, H2G_N),
   vnnf(H2G_N) 
 ;
   paras_ab(H2G, H2G_L, H2G_R),
@@ -1784,7 +1737,7 @@ parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
 parac(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> parac(H2G_N) ;
-  para_cd(H2G, H2G_N) -> parac(H2G_N) ;
+  paracd(H2G, H2G_N) -> parac(H2G_N) ;
   parac_two(H2G, H2G_L, H2G_R) -> parac(H2G_L), !, parac(H2G_R) ;
   parac_many(H2G, HS, HGS) -> parac_aux(HS, HGS).
 
@@ -1910,18 +1863,10 @@ map_form(GOAL, DTH, FORM_I, FORM_O) :-
   maplist_cut(call(GOAL, DTH), TERMS_I, TERMS_O),
   FORM_O =.. [REL | TERMS_O]. 
 
-  
-para_d_((HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- 
-  dp(HYP_A, GOAL_I, HYP_NA, GOAL_O).
-  
-para_d(TRP_I, TRP_O) :- 
-  bf_d_(TRP_I, TRP_O) ;
-  bf__d(TRP_I, TRP_O).
-
 para_e1(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> para_e1(H2G_N) ;
-  para_d(H2G, H2G_N) -> para_e1(H2G_N) ;
+  parad(H2G, H2G_N) -> para_e1(H2G_N) ;
   parac_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
   parac_many(H2G, HS, HGS) -> para_e1_aux(HS, HGS) ;
   para_c(H2G, H2G_N) -> para_e1(H2G_N).
@@ -1935,9 +1880,9 @@ para_e1_aux(HYPS, [([HYP], GOAL) | HGS]) :-
 para_e2(H2G) :- 
   para_m(H2G) -> true ;
   para_s(H2G, H2G_N) -> para_e2(H2G_N) ;
-  para_d(H2G, H2G_N) -> para_e2(H2G_N) ;
+  parad(H2G, H2G_N) -> para_e2(H2G_N) ;
   para_c_(H2G, H2G_N) -> para_e2(H2G_N) ;
-  para_ab(H2G, H2G_L, H2G_R) ->
+  paraab(H2G, H2G_L, H2G_R) ->
   para_e2(H2G_L), !, 
   para_e2(H2G_R).
 
@@ -2025,3 +1970,187 @@ eqr(PREM, CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   many([b, c, s], ([PREM], GOAL_T), HGS), !,
   maplist(eqr_aux(HYPS), HGS).
+
+cf_lits($or(CLA_L, CLA_R), LITS) :- !, 
+  cf_lits(CLA_L, LITS_L), 
+  cf_lits(CLA_R, LITS_R), 
+  append(LITS_L, LITS_R, LITS).
+  
+cf_lits(LIT, [LIT]). 
+
+bool_not($false, $true) :- !.
+bool_not($true, $false) :- !.
+bool_not(FORM, $not(FORM)).
+
+bool_or($true, _, $true) :- !.
+bool_or(_, $true, $true) :- !.
+bool_or($false, FORM, FORM) :- !.
+bool_or(FORM, $false, FORM) :- !.
+bool_or(FORM_L, FORM_R, $or(FORM_L, FORM_R)).
+
+bool_and($false, _, $false) :- !.
+bool_and(_, $false, $false) :- !.
+bool_and($true, FORM, FORM) :- !.
+bool_and(FORM, $true, FORM) :- !.
+bool_and(FORM_L, FORM_R, $and(FORM_L, FORM_R)).
+
+bool_imp($false, _, $true) :- !.
+bool_imp(_, $true, $true) :- !.
+bool_imp($true, FORM, FORM) :- !.
+bool_imp(FORM, $false, $not(FORM)) :- !.
+bool_imp(FORM_L, FORM_R, $imp(FORM_L, FORM_R)).
+
+bool_norm($not(FORM), NORM) :- !, 
+  bool_norm(FORM, TEMP), 
+  bool_not(TEMP, NORM). 
+ 
+bool_norm($or(FORM_L, FORM_R), NORM) :- !, 
+  bool_norm(FORM_L, NORM_L), 
+  bool_norm(FORM_R, NORM_R),
+  bool_or(NORM_L, NORM_R, NORM).
+
+bool_norm($and(FORM_L, FORM_R), NORM) :- !, 
+  bool_norm(FORM_L, NORM_L), 
+  bool_norm(FORM_R, NORM_R),
+  bool_and(NORM_L, NORM_R, NORM).
+
+bool_norm($imp(FORM_L, FORM_R), NORM) :- !, 
+  bool_norm(FORM_L, NORM_L), 
+  bool_norm(FORM_R, NORM_R),
+  bool_imp(NORM_L, NORM_R, NORM).
+
+bool_norm(FORM, FORM).
+
+tauto(FORM) :- bool_norm(FORM, $true).
+
+esimp_not($false, $true) :- !.
+esimp_not($true, $false) :- !.
+esimp_not($not(FORM), FORM) :- !.
+esimp_not(FORM, $not(FORM)).
+
+esimp_qtf(_, $true, $true) :- !.
+esimp_qtf(_, $false, $false) :- !.
+esimp_qtf(QTF, FORM_I, FORM_O) :-
+  no_fv_form(0, FORM_I) -> 
+  FORM_O = FORM_I 
+;
+  apply_uop(QTF, FORM_I, FORM_O).
+
+esimp_bct(iff, FORM, $true, FORM) :- !.
+esimp_bct(iff, FORM, $false, $not(FORM)) :- !.
+esimp_bct(iff, $true, FORM, FORM) :- !.
+esimp_bct(iff, $false, FORM, $not(FORM)) :- !.
+esimp_bct(iff, FORM_A, FORM_B, FORM) :- !, 
+(
+  FORM_A == FORM_B -> 
+  FORM = $true
+;
+  FORM = $iff(FORM_A, FORM_B) 
+).
+
+% esimp_bct(imp, FORM, $true, FORM) :- !.
+% esimp_bct(imp, FORM, $false, $not(FORM)) :- !.
+% esimp_bct(imp, $true, FORM, FORM) :- !.
+% esimp_bct(imp, $false, FORM, $not(FORM)) :- !.
+esimp_bct(imp, FORM_A, FORM_B, FORM) :- !, 
+(
+  FORM_A == FORM_B -> 
+  FORM = $true
+;
+  FORM = $imp(FORM_A, FORM_B) 
+).
+
+esimp_bct(BCT, FORM_A, FORM_B, FORM) :- 
+  apply_bop(BCT, FORM_A, FORM_B, FORM).
+  
+esimp($not(FORM), NORM) :- !, 
+  esimp(FORM, TEMP), 
+  esimp_not(TEMP, NORM). 
+ 
+esimp(FORM, NORM) :- 
+  decom_bct(FORM, BCT, FORM_A, FORM_B), !,
+  esimp(FORM_A, NORM_A), 
+  esimp(FORM_B, NORM_B),
+  esimp_bct(BCT, NORM_A, NORM_B, NORM).
+
+esimp(FORM, NORM) :- 
+  decom_qtf(FORM, QTF, BODY), !, 
+  esimp(BODY, TEMP),
+  esimp_qtf(QTF, TEMP, NORM).
+
+esimp(FORM, FORM).
+
+quote_par_aux(IN, OUT) :- 
+  re_replace("([^'])@([0-9]+)([^'])"/g, "$1'@$2'$3", IN, TEMP),
+  (
+    IN = TEMP -> 
+    OUT = TEMP   
+  ;
+    quote_par_aux(TEMP, OUT)
+  ).
+
+quote_par(SRC, TGT) :- 
+  read_line_to_string(SRC, LINE), 
+  (
+    LINE = end_of_file -> true 
+  ; 
+    quote_par_aux(LINE, NORM),
+    write(TGT, NORM), 
+    write(TGT, "\n"), 
+    quote_par(SRC, TGT)
+  ).
+
+map_var(GOAL, #(NUM), TERM) :- !, 
+  call(GOAL, NUM, TERM).
+map_var(GOAL, ^(FUN, TERMS_I), ^(FUN, TERMS_O)) :- !, 
+  maplist_cut(map_var(GOAL), TERMS_I, TERMS_O).
+map_var(GOAL, TERM_I, TERM_O) :- 
+  TERM_I =.. [FUN | TERMS_I], 
+  maplist_cut(map_var(GOAL), TERMS_I, TERMS_O),
+  TERM_O =.. [FUN | TERMS_O]. 
+  
+decr_vdx_form(FORM, NORM) :- 
+  map_form(decr_vdx_term, 0, FORM, NORM).
+decr_vdx_term(DEP, TERM_I, TERM_O) :- 
+  map_var(decr_vdx(DEP), TERM_I, TERM_O).
+
+decr_vdx(DTH, NUM, #(NUM)) :- NUM < DTH.
+decr_vdx(DTH, NUM, #(PRED)) :- 
+  DTH < NUM, num_pred(NUM, PRED). 
+
+dist_qtf_bct(fa, and).
+dist_qtf_bct(ex, or).
+
+dist_qtf(_, FORM, NORM) :-
+  decr_vdx_form(FORM, NORM), !.
+
+dist_qtf(QTF, FORM, NORM) :- 
+  decom_bct(FORM, BCT, FORM_A, FORM_B), 
+  (
+    dist_qtf_bct(QTF, BCT) ; 
+    decr_vdx_form(FORM_A, _) ;
+    decr_vdx_form(FORM_B, _) 
+  ), !, 
+  dist_qtf(QTF, FORM_A, NORM_A), 
+  dist_qtf(QTF, FORM_B, NORM_B), 
+  apply_bop(BCT, NORM_A, NORM_B, NORM).
+
+dist_qtf(QTF, FORM, NORM) :- 
+  apply_uop(QTF, FORM, NORM).
+
+push_qtf(FORM, NORM) :- 
+  decom_qtf(FORM, QTF, BODY), !,
+  push_qtf(BODY, TEMP),
+  dist_qtf(QTF, TEMP, NORM).
+
+push_qtf(FORM, NORM) :- 
+  decom_bct(FORM, BCT, FORM_A, FORM_B), !,
+  push_qtf(FORM_A, NORM_A),
+  push_qtf(FORM_B, NORM_B),
+  apply_bop(BCT, NORM_A, NORM_B, NORM).
+
+push_qtf(FORM, FORM).
+
+prover_abrv(vampire, v).
+prover_abrv(metis, m).
+prover_abrv(e, e).

@@ -1,7 +1,7 @@
-:- module(vsolve, [vsolve/2]).
+% :- module(vsolve, [vsolve/2]).
 
-:- use_module(basic).
-:- use_module(tstp).
+:- [basic].
+:- [tstp].
 
 rul_hint(superposition, (sup, l)).  
 rul_hint(forward_demodulation, (sup, l)).
@@ -23,7 +23,7 @@ rul_hint(flattening, parac).
 rul_hint(ennf_transformation, paras).  
 rul_hint(rectify, parav).
 rul_hint(true_and_false_elimination, paratf).
-rul_hint(pure_predicate_removal, parad).
+rul_hint(pure_predicate_removal, ppr).
 rul_hint(nnf_transformation, vnnf).  
 
 rul_hint(avatar_sat_refutation, sat).

@@ -1,4 +1,4 @@
-:- use_module(tptp).
+:- [tptp].
 
 /*
 check_debug(PROB, CNT, a(PID, DIR, PRF)) :- 

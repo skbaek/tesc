@@ -1,7 +1,7 @@
-:- module(tptp, [pose/5]).
+% :- module(tptp, [pose/5]).
 
-:- use_module(basic).
-:- use_module(op).
+:- [basic].
+:- [op].
 
 tptp_directory("/home/sk/programs/TPTP/").
 

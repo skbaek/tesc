@@ -1,14 +1,11 @@
 #!/usr/bin/env swipl
 :- initialization(main, main).
 
-:- use_module(basic).
-:- use_module(tptp).
-:- use_module(solve).
+:- [basic].
+:- [tptp].
+:- [solve].
+:- [prove].
 
-
-prover_abrv(vampire, v).
-prover_abrv(metis, m).
-prover_abrv(e, e).
 
 main([PROVER, TPTP, TSTP, TESC]) :-
   set_prolog_flag(stack_limit, 4_294_967_296),
@@ -18,11 +15,10 @@ main([PROVER, TPTP, TSTP, TESC]) :-
   pose(verbose, TPTP, OHYPS, OCLAS, PROB), !,
   write("Solving...\n\n"),
   solve(PRVR, TSTP, SOL), !,
-  write_list(SOL),
-  % open(TESC, write, STRM, [encoding(octet)]),
-  % write("Proving...\n\n"),
-  % prove((PROB, SOL, _, 0, STRM, PRVR, OHYPS, OCLAS, nil)),
-  % close(STRM),
+  open(TESC, write, STRM, [encoding(octet)]),
+  write("Proving...\n\n"),
+  prove((PROB, SOL, _, 0, STRM, PRVR, OHYPS, OCLAS, nil)),
+  close(STRM),
   true.
 
 % main :- 
