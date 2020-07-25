@@ -19,5 +19,6 @@ debug.pl
 proof_trace.pl
 sol_trace.pl
 sol_debug.pl
+test.pl
 ttc
 ttv

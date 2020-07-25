@@ -19,10 +19,10 @@
 :-op(400,fx,^).
 :-op(400,fx,'!>').
 :-op(400,fx,'?*').
-% :-op(400,fx,'@-').   % Disabled for TESC
-% :-op(400,fx,'@+').   % Disabled for TESC
-% :-op(401,fx,'@@-').   % Disabled for TESC
-% :-op(401,fx,'@@+').   % Disabled for TESC
+:-op(400,fx,'@-').   
+:-op(400,fx,'@+').   
+:-op(401,fx,'@@-').  
+:-op(401,fx,'@@+').  
 :-op(402,fx,'!!').
 :-op(402,fx,'??').
 :-op(403,yfx,*).     %----X product
@@ -47,7 +47,7 @@
 %----Need ~ and : equal and right-assoc for ![X] : ~p and for ~![X] : ...
 :-op(450,fy,~).      %----Logical negation
 :-op(450,xfy,:).
-% :-op(501,yfx,@).   % Disabled for TESC
+:-op(501,yfx,@).   
 % :-op(502,xfy,'|').
 :-(system_mode(true),op(502,xfy,'|'),system_mode(false)).
 :-op(502,xfx,'~|').
@@ -82,10 +82,10 @@ declare_TPTP_operators:-
     op(400,fx,^),
     op(400,fx,'!>'),
     op(400,fx,'?*'),
-    % op(400,fx,'@-'),  % Disabled for TESC
-    % op(400,fx,'@+'),  % Disabled for TESC
-    % op(400,fx,'@@-'),  % Disabled for TESC
-    % op(400,fx,'@@+'),  % Disabled for TESC
+    op(400,fx,'@-'),  
+    op(400,fx,'@+'),  
+    op(400,fx,'@@-'), 
+    op(400,fx,'@@+'), 
     op(402,fx,'!!'),
     op(402,fx,'??'),
     op(403,yfx,*),
@@ -102,7 +102,7 @@ declare_TPTP_operators:-
     op(450,xfx,'>>'),
     op(450,fy,~),
     op(450,xfy,:),
-%   op(501,yfx,@),   % Disabled for TESC
+    op(501,yfx,@),   
 %    op(502,xfy,'|'),
     (system_mode(true),op(502,xfy,'|'),system_mode(false)),
     op(502,xfx,'~|'),

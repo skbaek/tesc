@@ -421,8 +421,7 @@ justified(C, $pos(FORM), SC) :-
   num_succ(C, SC), 
   strip_fas(FORM, ARI, $imp($ex(ANTE), CONS)), 
   counter_safe(C, ANTE),
-  member(DIR, [asc, desc]),
-  mk_vars(DIR, ARI, VARS), 
+  mk_vars(ARI, VARS), 
   mk_par(C, VARS, TERM),
   substitute_form(safe, TERM, ANTE, TEMP),
   TEMP == CONS.
@@ -431,7 +430,7 @@ justified(C, $pos(FORM), SC) :-
   num_succ(C, SC), 
   strip_fas(FORM, ARI, $iff(ATOM, BODY)), 
   counter_safe(C, BODY),
-  mk_vars(desc, ARI, VARS),
+  mk_vars(ARI, VARS),
   mk_par(C, VARS, ATOM).
 
 is_mono_rel(N, $fa($fa($imp(#(1) = #(0), F)))) :- !,
@@ -724,6 +723,10 @@ mk_par(CNT, TERMS, PAR) :-
   atomic_concat('@', CNT, FUN), 
   PAR =.. [FUN | TERMS].
   
+mk_vars(NUM, VARS) :- 
+  mk_vars(asc, NUM, VARS) ;
+  mk_vars(desc, NUM, VARS).
+
 mk_vars(DIR, NUM, VARS) :- 
   range(DIR, NUM, NUMS), 
   maplist(mk('#'), NUMS, VARS).
@@ -1171,6 +1174,41 @@ eq_trans(IPF0, IPF1, INF, GOAL) :-
   mate(IPF1, MONO6, GOAL6), !,
   mate(INF, MONO7, GOAL7), !.
 
+terms_size([], 0).
+terms_size([TERM | TERMS], SIZE) :- 
+  term_size(TERM, SIZE_A), 
+  terms_size(TERMS, SIZE_B), 
+  SIZE is SIZE_A + SIZE_B.
+
+term_size(VAR, 1) :- var(VAR), !.
+term_size(^(_, TERMS), SIZE) :- !,
+  terms_size(TERMS, TEMP), 
+  num_succ(TEMP, SIZE).
+term_size(_, 1).
+
+orient_equation(TERM_A = TERM_B, TERM_L = TERM_R) :- !, 
+  term_size(TERM_A, SIZE_A),
+  term_size(TERM_B, SIZE_B),
+  (
+    SIZE_A < SIZE_B ->
+    (
+      TERM_L = TERM_B,
+      TERM_R = TERM_A
+    ;
+      TERM_L = TERM_A,
+      TERM_R = TERM_B
+    )
+  ;
+    (
+      TERM_L = TERM_A,
+      TERM_R = TERM_B
+    ;
+      TERM_L = TERM_B,
+      TERM_R = TERM_A
+    )
+  ).
+orient_equation(FORM, FORM).
+
 erient_form(FORM, FORM).
 erient_form(TERM_A = TERM_B, TERM_B = TERM_A).
 
@@ -1475,12 +1513,12 @@ para_b_((HYP_A, HYP_B, GOAL), (HYP_L, HYP_B, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :-
 para__b((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_A, HYP_R, GOAL_R)) :- 
   bp(HYP_B, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R). 
 
-para_c_term(TERM, (HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- cp(HYP_A, TERM, GOAL_I, HYP_NA, GOAL_O).
-para_c_term(TERM, (HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- cp(HYP_B, TERM, GOAL_I, HYP_NB, GOAL_O).
+para_c_(TERM, (HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- cp(HYP_A, TERM, GOAL_I, HYP_NA, GOAL_O).
+para__c(TERM, (HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- cp(HYP_B, TERM, GOAL_I, HYP_NB, GOAL_O).
 
-para_c(TRP_I, TRP_O) :- para_c_term(_, TRP_I, TRP_O).
+para_c_(TRP_I, TRP_O) :- para_c_(_, TRP_I, TRP_O).
 
-para_c(TRP_I, TRP_O) :- para_c_term(_, TRP_I, TRP_O).
+para__c(TRP_I, TRP_O) :- para__c(_, TRP_I, TRP_O).
 
 para__d((HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :- 
   dp(HYP_B, GOAL_I, HYP_NB, GOAL_O).
@@ -1502,13 +1540,13 @@ para_s_((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :-
 para__s((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
   sp(HYP_B, GOAL, HYP_BN, GOAL_N). 
 
-para_s(X, Y) :- para_s_(X, Y) ; para__s(X, Y).
+paras(X, Y) :- para_s_(X, Y) ; para__s(X, Y).
 
-para_c_((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_B, GOAL_N)) :- 
-  cp(HYP_A, _, GOAL, HYP_NA, GOAL_N).
-
-para__c((HYP_A, HYP_B, GOAL), (HYP_A, HYP_NB, GOAL_N)) :- 
-  cp(HYP_B, _, GOAL, HYP_NB, GOAL_N).
+%para_c_((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_B, GOAL_N)) :- 
+%  cp(HYP_A, _, GOAL, HYP_NA, GOAL_N).
+%
+%para__c((HYP_A, HYP_B, GOAL), (HYP_A, HYP_NB, GOAL_N)) :- 
+%  cp(HYP_B, _, GOAL, HYP_NB, GOAL_N).
 
 paracd(X, Y) :- para_cd(X, Y) ; para_dc(X, Y).
 
@@ -1528,7 +1566,7 @@ para_ba((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)
 
 para(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> para(H2G_N) ;
+  paras(H2G, H2G_N) -> para(H2G_N) ;
   paracd(H2G, H2G_N) -> para(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R) ->
   para(H2G_L), !, 
@@ -1538,19 +1576,19 @@ para(H2G) :-
 
 %%%%%%%%%%%%%%%% PARALLEL SWITCH DECOMPOSITION %%%%%%%%%%%%%%%%
 
-paras_ab((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
+para_switch_ab((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
   abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
   abpr(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
   abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R) ;
   abpr(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
-paras(H2G) :- 
+para_switch(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> paras(H2G_N) ;
-  paracd(H2G, H2G_N) -> paras(H2G_N) ;
-  paras_ab(H2G, H2G_L, H2G_R),
-  paras(H2G_L),  
-  paras(H2G_R).
+  paras(H2G, H2G_N) -> para_switch(H2G_N) ;
+  paracd(H2G, H2G_N) -> para_switch(H2G_N) ;
+  para_switch_ab(H2G, H2G_L, H2G_R),
+  para_switch(H2G_L),  
+  para_switch(H2G_R).
 
 
 
@@ -1577,12 +1615,22 @@ paratf_one((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :-
 paratf(H2G) :- 
   para_m(H2G) -> true ;
   paratf_zero(H2G) -> true ;
-  para_s(H2G, H2G_N) -> paratf(H2G_N) ;
+  paras(H2G, H2G_N) -> paratf(H2G_N) ;
   paracd(H2G, H2G_N) -> paratf(H2G_N) ;
   paratf_one(H2G, H2G_N) -> paratf(H2G_N) ;
-  paras_ab(H2G, H2G_L, H2G_R),
+  para_switch_ab(H2G, H2G_L, H2G_R),
   paratf(H2G_L),  
   paratf(H2G_R).
+
+newsimp(H2G) :- 
+  para_m(H2G) -> true ;
+  paratf_zero(H2G) -> true ;
+  paras(H2G, H2G_N) -> newsimp(H2G_N) ;
+  paracd(H2G, H2G_N) -> newsimp(H2G_N) ;
+  paratf_one(H2G, H2G_N) -> newsimp(H2G_N) ;
+  para_switch_ab(H2G, H2G_L, H2G_R),
+  newsimp(H2G_L),  
+  newsimp(H2G_R).
 
 parav_cd((HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- 
   cp_vac(HYP_A, GOAL_I, HYP_NA, GOAL_O) ;
@@ -1594,7 +1642,7 @@ parav_cd((HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :-
 
 parav(H2G) :- 
   para_m(H2G) *-> true ;
-  para_s(H2G, H2G_N) -> parav(H2G_N) ;
+  paras(H2G, H2G_N) -> parav(H2G_N) ;
   parav_cd(H2G, H2G_N) -> parav(H2G_N) ;
   paracd(H2G, H2G_N) -> parav(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R), !,
@@ -1607,7 +1655,7 @@ paral_cd((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_NB, GOAL_N)) :-
 
 paral(H2G) :- 
   para_m(H2G) *-> true ;
-  para_s(H2G, H2G_N) -> paral(H2G_N) ;
+  paras(H2G, H2G_N) -> paral(H2G_N) ;
   paral_cd(H2G, H2G_N) -> paral(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R), !,
   paral(H2G_L), !, 
@@ -1615,7 +1663,7 @@ paral(H2G) :-
 
 ppr(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> ppr(H2G_N) ;
+  paras(H2G, H2G_N) -> ppr(H2G_N) ;
   paracd(H2G, H2G_N) -> ppr(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R), 
   ppr(H2G_L), 
@@ -1642,7 +1690,7 @@ ppr_a((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :-
 
 fnnf(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> fnnf(H2G_N) ;
+  paras(H2G, H2G_N) -> fnnf(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R) -> fnnf(H2G_L), !, fnnf(H2G_R) ;
   paracd(H2G, H2G_N) -> fnnf(H2G_N) ;
   H2G = (PREM, CONC, GOAL), 
@@ -1662,12 +1710,12 @@ fnnf(H2G) :-
 
 vnnf(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> vnnf(H2G_N) ;
+  paras(H2G, H2G_N) -> vnnf(H2G_N) ;
   paracd(H2G, H2G_N) -> vnnf(H2G_N) ;
   ppr_a(H2G, H2G_N),
   vnnf(H2G_N) 
 ;
-  paras_ab(H2G, H2G_L, H2G_R),
+  para_switch_ab(H2G, H2G_L, H2G_R),
   vnnf(H2G_L),  
   vnnf(H2G_R)
 ;
@@ -1736,7 +1784,7 @@ parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
 
 parac(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> parac(H2G_N) ;
+  paras(H2G, H2G_N) -> parac(H2G_N) ;
   paracd(H2G, H2G_N) -> parac(H2G_N) ;
   parac_two(H2G, H2G_L, H2G_R) -> parac(H2G_L), !, parac(H2G_R) ;
   parac_many(H2G, HS, HGS) -> parac_aux(HS, HGS).
@@ -1865,21 +1913,24 @@ map_form(GOAL, DTH, FORM_I, FORM_O) :-
 
 para_e1(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> para_e1(H2G_N) ;
+  paras(H2G, H2G_N) -> para_e1(H2G_N) ;
   parad(H2G, H2G_N) -> para_e1(H2G_N) ;
   parac_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
-  parac_many(H2G, HS, HGS) -> para_e1_aux(HS, HGS) ;
-  para_c(H2G, H2G_N) -> para_e1(H2G_N).
+  parac_many(H2G, HS, HGS) -> maplist_cut(para_e1_aux, HS, HGS) ;
+  para_c_(H2G, H2G_N) -> para_e1(H2G_N).
 
-para_e1_aux(_, []).
-para_e1_aux(HYPS, [([HYP], GOAL) | HGS]) :- 
-  member(CMP, HYPS), 
-  para_e1((HYP, CMP, GOAL)), !,
-  para_e1_aux(HYPS, HGS).
+para_e1_aux(HYP_A, ([HYP_B], GOAL)) :- para_e1((HYP_A, HYP_B, GOAL)).
+  
+
+% para_e1_aux(_, []).
+% para_e1_aux(HYPS, [([HYP], GOAL) | HGS]) :- 
+%   member(CMP, HYPS), 
+%   para_e1((HYP, CMP, GOAL)), !,
+%   para_e1_aux(HYPS, HGS).
 
 para_e2(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> para_e2(H2G_N) ;
+  paras(H2G, H2G_N) -> para_e2(H2G_N) ;
   parad(H2G, H2G_N) -> para_e2(H2G_N) ;
   para_c_(H2G, H2G_N) -> para_e2(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R) ->
@@ -1971,15 +2022,21 @@ eqr(PREM, CONC, GOAL) :-
   many([b, c, s], ([PREM], GOAL_T), HGS), !,
   maplist(eqr_aux(HYPS), HGS).
 
-cf_lits($or(CLA_L, CLA_R), LITS) :- !, 
-  cf_lits(CLA_L, LITS_L), 
-  cf_lits(CLA_R, LITS_R), 
+cf_lits_core($or(CLA_L, CLA_R), LITS) :- !, 
+  cf_lits_core(CLA_L, LITS_L), 
+  cf_lits_core(CLA_R, LITS_R), 
   append(LITS_L, LITS_R, LITS).
   
-cf_lits(LIT, [LIT]). 
+cf_lits_core(LIT, [LIT]). 
+
+cf_lits($false, []) :- !. 
+cf_lits(FORM, LITS) :-  
+  cf_lits_core(FORM, LITS).
+
 
 bool_not($false, $true) :- !.
 bool_not($true, $false) :- !.
+bool_not($not(FORM), FORM) :- !.
 bool_not(FORM, $not(FORM)).
 
 bool_or($true, _, $true) :- !.
@@ -2021,7 +2078,8 @@ bool_norm($imp(FORM_L, FORM_R), NORM) :- !,
 
 bool_norm(FORM, FORM).
 
-tauto(FORM) :- bool_norm(FORM, $true).
+tauto($pos(FORM)) :- bool_norm(FORM, $true).
+tauto($neg(FORM)) :- bool_norm(FORM, $false).
 
 esimp_not($false, $true) :- !.
 esimp_not($true, $false) :- !.
@@ -2048,20 +2106,27 @@ esimp_bct(iff, FORM_A, FORM_B, FORM) :- !,
   FORM = $iff(FORM_A, FORM_B) 
 ).
 
-% esimp_bct(imp, FORM, $true, FORM) :- !.
-% esimp_bct(imp, FORM, $false, $not(FORM)) :- !.
-% esimp_bct(imp, $true, FORM, FORM) :- !.
-% esimp_bct(imp, $false, FORM, $not(FORM)) :- !.
-esimp_bct(imp, FORM_A, FORM_B, FORM) :- !, 
-(
-  FORM_A == FORM_B -> 
-  FORM = $true
-;
-  FORM = $imp(FORM_A, FORM_B) 
-).
+esimp_bct(imp, $false, _, $true) :- !.
+esimp_bct(imp, $true, FORM, FORM) :- !.
+esimp_bct(imp, _, $true, $true) :- !.
+esimp_bct(imp, FORM, $false, $not(FORM)) :- !.
+esimp_bct(imp, FORM_A, FORM_B, $true) :- FORM_A == FORM_B, !.
+esimp_bct(imp, FORM_A, FORM_B, $imp(FORM_A, FORM_B)) :- !.
 
-esimp_bct(BCT, FORM_A, FORM_B, FORM) :- 
-  apply_bop(BCT, FORM_A, FORM_B, FORM).
+esimp_bct(and, $false, _, $false) :- !.
+esimp_bct(and, _, $false, $false) :- !.
+esimp_bct(and, $true, FORM, FORM) :- !.
+esimp_bct(and, FORM, $true, FORM) :- !.
+esimp_bct(and, FORM_L, FORM_R, $and(FORM_L, FORM_R)) :- !.
+
+esimp_bct(or, $true, _, $true) :- !.
+esimp_bct(or, _, $true, $true) :- !.
+esimp_bct(or, $false, FORM, FORM) :- !.
+esimp_bct(or, FORM, $false, FORM) :- !.
+esimp_bct(or, FORM_L, FORM_R, $or(FORM_L, FORM_R)) :- !.
+
+% esimp_bct(BCT, FORM_A, FORM_B, FORM) :- 
+%   apply_bop(BCT, FORM_A, FORM_B, FORM).
   
 esimp($not(FORM), NORM) :- !, 
   esimp(FORM, TEMP), 
@@ -2154,3 +2219,41 @@ push_qtf(FORM, FORM).
 prover_abrv(vampire, v).
 prover_abrv(metis, m).
 prover_abrv(e, e).
+
+msg(PTRN, ARGS) :-
+  % write(" ────────────────────────────────────────────────────────────────── "), 
+  write("                                                                      > "), 
+  format(PTRN, ARGS),
+  write("\n\n").
+
+msg(STR) :-
+  % write(" ────────────────────────────────────────────────────────────────── "), 
+  write("                                                                      > "), 
+  write(STR),
+  write("\n\n").
+
+distribute($fa(FORM), $fa(NORM)) :- !, 
+  distribute(FORM, NORM).
+
+distribute($and(FORM_A, FORM_B), $and(NORM_A, NORM_B)) :- !, 
+  distribute(FORM_A, NORM_A),
+  distribute(FORM_B, NORM_B).
+
+distribute($or(FORM_A, FORM_B), NORM) :- !, 
+  distribute(FORM_A, TEMP_A),  
+  distribute(FORM_B, TEMP_B),
+  (
+    TEMP_A = $and(FORM_L, FORM_R) -> 
+    distribute($or(FORM_L, TEMP_B), CONJ_L), 
+    distribute($or(FORM_R, TEMP_B), CONJ_R), 
+    NORM = $and(CONJ_L, CONJ_R)
+  ;
+    TEMP_B = $and(FORM_L, FORM_R) -> 
+    distribute($or(FORM_L, TEMP_A), CONJ_L), 
+    distribute($or(FORM_R, TEMP_A), CONJ_R), 
+    NORM = $and(CONJ_L, CONJ_R) 
+  ;
+    NORM = $or(TEMP_A, TEMP_B)
+  ).  
+
+distribute(FORM, FORM).

@@ -201,7 +201,7 @@ vacc(PREM, CONC, GOAL) :-
   many_nb([c], [PREM], GOAL1, [PREM_T], GOAL2), 
   member(DIR, [l,r]),
   ap(PREM_T, DIR, GOAL2, PREM_N, GOAL3), 
-  paras_ab((PREM_N, CONC_N, GOAL3), TRP_A, TRP_B), 
+  para_switch_ab((PREM_N, CONC_N, GOAL3), TRP_A, TRP_B), 
   vacc_aux(TRP_A),
   vacc_aux(TRP_B).
 
@@ -245,7 +245,7 @@ dff(_, HYP0, HYP1, DFP) :-
 
 dff(Defs, HYP0, HYP1, DFP) :- 
   (
-    para_s((HYP0, HYP1, DFP), (NewHYP0, NewHYP1, NewDFP)) ;
+    paras((HYP0, HYP1, DFP), (NewHYP0, NewHYP1, NewDFP)) ;
     paracd((HYP0, HYP1, DFP), (NewHYP0, NewHYP1, NewDFP))
   ), !,
   dff(Defs, NewHYP0, NewHYP1, NewDFP).
@@ -540,7 +540,7 @@ rwa(AYP, TRP) :-
   TRP = (PREM, _, GOAL), 
   (
     para_m(TRP) -> true ; 
-    para_s(TRP, TRP_N) -> rwa(AYP, TRP_N) ; 
+    paras(TRP, TRP_N) -> rwa(AYP, TRP_N) ; 
     paraab(TRP, TRP_L, TRP_R), 
     rwa(AYP, TRP_L), 
     rwa(AYP, TRP_R)
@@ -555,7 +555,7 @@ pmt((PREM, CONC, GOAL)) :-
 
 scj(H2G) :- 
   pmt(H2G) -> true ;
-  para_s(H2G, H2G_N) -> scj(H2G_N) ;
+  paras(H2G, H2G_N) -> scj(H2G_N) ;
   a_para(H2G, H2G_N),
   scj(H2G_N).
 
@@ -576,7 +576,7 @@ esimp_fork_not((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL
 esimp_not(X) :- 
   para_lc(X) -> true ;
   para_m(X) -> true ;
-  para_s(X, Y), 
+  paras(X, Y), 
   esimp_not(Y).
   
 esimp_bct(X) :- para_lc(X).
@@ -635,7 +635,7 @@ esimp(X) :-
 
 mscj(H2G) :- 
   para_m(H2G) -> true ;
-  para_s(H2G, H2G_N) -> mscj(H2G_N) ;
+  paras(H2G, H2G_N) -> mscj(H2G_N) ;
   para__d(H2G, H2G_N) -> mscj(H2G_N) ;
   para_c_(H2G, H2G_N) -> mscj(H2G_N) ;
   a_para(H2G, H2G_N),
@@ -682,6 +682,13 @@ find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :-
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
 
+infer(e, bf_dist, [PREM], _, CONC, GOAL) :- 
+  bf_dist(PREM, CONC, GOAL).
+
+infer(_, bf_pull, [PREM], _, CONC, GOAL) :-
+  many_nb([d], [CONC], GOAL, [HYP], GOAL_T), 
+  bf_pull((PREM, HYP, GOAL_T)).
+
 infer(e, para_e1, [PREM], _, CONC, GOAL) :- 
   para_e1((PREM, CONC, GOAL)).
 
@@ -691,11 +698,12 @@ infer(e, para_e2, [PREM], _, CONC, GOAL) :-
 infer(e, bf_push, [PREM], _, CONC, GOAL) :-
   bf_push((PREM, CONC, GOAL)). 
 
-infer(_, rnm, [PREM | _], _, CONC, GOAL) :- 
+infer(_, RNM, [PREM | _], _, CONC, GOAL) :- 
+  member(RNM, [rnm, rnm, rnm, rnm, rnm, rnm, rnm]),
   mate(PREM, CONC, GOAL).
 
 infer(e, simp, [PREM | _], _, CONC, GOAL) :- 
-  esimp((PREM, CONC, GOAL)).
+  newsimp((PREM, CONC, GOAL)).
 
 infer(PRVR, skm, [PREM | AOCS], _, CONC, GOAL) :- 
   PRVR = e -> 
@@ -852,9 +860,9 @@ infer(v, ppr, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   ppr((PREM, CONC, GOAL)).
 
-infer(v, paras, PREMS, _, CONC, GOAL) :- 
-  member(PREM, PREMS),
-  paras((PREM, CONC, GOAL)).
+% infer(v, paras, PREMS, _, CONC, GOAL) :- 
+%   member(PREM, PREMS),
+%   para_switch((PREM, CONC, GOAL)).
 
 infer(v, paral, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
@@ -1115,7 +1123,7 @@ bf_dist_fa((PREM, CONC, GOAL)) :-
 bf_dist_fa((PREM, CONC, GOAL)) :- 
   PREM = (_, $pos($fa($or(FORM_A, FORM_B)))), 
   decr_vdx_form(FORM_A, _), !, 
-  fp(FORM_A | $fa(FORM_B), GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B), 
+  fp($or(FORM_A, $fa(FORM_B)), GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B), 
   aap(HYP_A, GOAL_A, HYP_L, HYP_R, GOAL_0), 
   dp(HYP_R, GOAL_0, HYP_NR, GOAL_1), 
   cp(PREM, _, GOAL_1, PREM_N, GOAL_2), 
@@ -1129,7 +1137,7 @@ bf_dist_fa((PREM, CONC, GOAL)) :-
 bf_dist_fa((PREM, CONC, GOAL)) :- 
   PREM = (_, $pos($fa($or(FORM_A, FORM_B)))), 
   decr_vdx_form(FORM_B, _), !, 
-  fp($fa(FORM_A) | FORM_B, GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B), 
+  fp($or($fa(FORM_A), FORM_B), GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B), 
   aap(HYP_A, GOAL_A, HYP_L, HYP_R, GOAL_0), 
   dp(HYP_L, GOAL_0, HYP_NL, GOAL_1), 
   cp(PREM, _, GOAL_1, PREM_N, GOAL_2), 
@@ -1139,6 +1147,96 @@ bf_dist_fa((PREM, CONC, GOAL)) :-
   para_ba((HYP_B, CONC, GOAL_B), TRP_A, TRP_B), 
   bf_dist_fa(TRP_A),
   bf_dist_fa(TRP_B).
+
+bf_pull(H2G) :- 
+  para_m(H2G) -> true ;
+  paras(H2G, H2G_N) -> bf_pull(H2G_N) ;
+  paraab(H2G, H2G_L, H2G_R) -> 
+  bf_pull(H2G_L), !, bf_pull(H2G_R) ;
+  para_c_(H2G, H2G_N),
+  bf_pull(H2G_N).
+
+bf_dist_aux(ANTE, CONS, GOAL_I, HYP_O, GOAL_O) :- 
+  fp($imp(ANTE, CONS), GOAL_I, HYP_T, HYP_O, GOAL_T, GOAL_O), 
+  aap(HYP_T, GOAL_T, PREM, CONC, GOAL_N),
+  bf_dist(PREM, CONC, GOAL_N), !. 
+
+bf_dist_help(A_OR_B, A_TO_P, B_TO_Q, GOAL, P, Q, GOAL_P, GOAL_Q) :- 
+  bp(A_OR_B, GOAL, A, B, GOAL_A, GOAL_B),
+  bp(A_TO_P, GOAL_A, NA, P, GOAL_ANA, GOAL_P),
+  mate(A, NA, GOAL_ANA), 
+  bp(B_TO_Q, GOAL_B, NB, Q, GOAL_BNB, GOAL_Q),
+  mate(B, NB, GOAL_BNB). 
+
+bf_dist_close(DIR, HYP_P, HYP_Q, CONC, GOAL) :- 
+  bp(CONC, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R),
+  ap(HYP_L, DIR, GOAL_L, HYP_NP, GOAL_NP), 
+  mate(HYP_P, HYP_NP, GOAL_NP),
+  ap(HYP_R, DIR, GOAL_R, HYP_NQ, GOAL_NQ), 
+  mate(HYP_Q, HYP_NQ, GOAL_NQ).
+
+bf_dist(PREM, CONC, GOAL) :- 
+  mate(PREM, CONC, GOAL) -> true  
+;
+  cdp(PREM, CONC, GOAL, PREM_N, CONC_N, GOAL_N) ->
+  bf_dist(PREM_N, CONC_N, GOAL_N), !
+;
+  hyp_sf(PREM, $pos($and(_, _))) -> 
+  abpl(PREM, CONC, GOAL, PREM_L, CONC_L, GOAL_L, PREM_R, CONC_R, GOAL_R), 
+  bf_dist(PREM_L, CONC_L, GOAL_L),
+  bf_dist(PREM_R, CONC_R, GOAL_R), ! 
+; 
+  hyp_sf(PREM, $pos($or(FORM_A, FORM_B))),
+  distribute(FORM_A, TEMP_A),  
+  distribute(FORM_B, TEMP_B),
+  bf_dist_aux(FORM_A, TEMP_A, GOAL, HYP_A, GOAL_A), 
+  bf_dist_aux(FORM_B, TEMP_B, GOAL_A, HYP_B, GOAL_B), 
+  (
+    TEMP_A = $and(FORM_L, FORM_R) -> 
+    fp($and($or(FORM_L, TEMP_B), $or(FORM_R, TEMP_B)), GOAL_B, HYP_T, HYP_C, GOAL_T, GOAL_C), 
+
+    % [FORM_A, FORM_B, FORM_L, FORM_R, TEMP_B] = PAS, 
+    % ablx(PAS, [PREM, HYP_A, HYP_B, HYP_T], GOAL_T), 
+
+    bf_dist_help(PREM, HYP_A, HYP_B, GOAL_T, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
+    aap(HYP_TA, GOAL_TA, HYP_FL, HYP_FR, GOAL_FLR), 
+    bf_dist_close(l, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
+    bf_dist_close(r, HYP_TB, HYP_TB, HYP_T, GOAL_TB), 
+    bf_dist(HYP_C, CONC, GOAL_C), !
+
+    % PREM : FA | FB, 
+    % HYP_A : FA => (FL & FR), 
+    % HYP_B : FB => TB, 
+    % |- HYP_T : (FL | TB) & (FR | TB)
+    
+  ;
+    TEMP_B = $and(FORM_L, FORM_R) -> 
+    fp($and($or(FORM_L, TEMP_A), $or(FORM_R, TEMP_A)), GOAL_B, HYP_T, HYP_C, GOAL_T, GOAL_C), 
+
+    % [FORM_A, FORM_B, TEMP_A, FORM_L, FORM_R] = PAS,
+    % ablx(PAS, [PREM, HYP_A, HYP_B, HYP_T], GOAL_T), 
+
+    bf_dist_help(PREM, HYP_A, HYP_B, GOAL_T, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
+    aap(HYP_TB, GOAL_TB, HYP_FL, HYP_FR, GOAL_FLR), 
+    bf_dist_close(l, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
+    bf_dist_close(r, HYP_TA, HYP_TA, HYP_T, GOAL_TA), 
+    bf_dist(HYP_C, CONC, GOAL_C), !
+
+    % PREM : FA | FB, 
+    % HYP_A : FA => TA, 
+    % HYP_B : FB => (FL & FR), 
+    % |- HYP_T : (FL | TA) & (FR | TA)
+    
+  ;
+    % bf_dist_help(A_OR_B, A_TO_P, B_TO_Q, GOAL, P, Q, GOAL_P, GOAL_Q) :- 
+    % [FORM_A, FORM_B, TEMP_A, TEMP_B] = PAS,
+    % ablx(PAS, [PREM, HYP_A, HYP_B, CONC], GOAL_B), !
+    bf_dist_help(PREM, HYP_A, HYP_B, GOAL_B, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
+    ap(CONC, l, GOAL_TA, HYP_NTA, GOAL_NTA), 
+    mate(HYP_TA, HYP_NTA, GOAL_NTA), 
+    ap(CONC, r, GOAL_TB, HYP_NTB, GOAL_NTB), 
+    mate(HYP_TB, HYP_NTB, GOAL_NTB)
+  ).  
 
 % dummy :- 
 %   prove(_),

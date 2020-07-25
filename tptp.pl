@@ -17,7 +17,7 @@ is_include(include(_)).
 include_terms(include(AXIOM), TERMS) :- 
   tptp_directory(TPTP), 
   atomics_to_string([TPTP, AXIOM], PATH),
-  read_file_to_terms(PATH, TERMS, []).
+  tptp_terms(PATH, TERMS).
   
 precla_pcla(PRECLA, (ID, FORM)) :- 
   PRECLA =.. [LNG, ID, TYPE, TF], 
