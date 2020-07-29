@@ -559,10 +559,6 @@ scj(H2G) :-
   a_para(H2G, H2G_N),
   scj(H2G_N).
 
-para_lc((HYP_A, HYP_B, GOAL)) :- 
-  use_lc(HYP_A, GOAL) ;
-  use_lc(HYP_B, GOAL).
-
 sf_sign_form($pos(FORM), pos, FORM).
 sf_sign_form($neg(FORM), neg, FORM).
 hyp_sign_form((_, SF), SIGN, FORM) :- sf_sign_form(SF, SIGN, FORM).
@@ -679,6 +675,12 @@ find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :-
   body_lits(BODY, LITS), !, 
   try(subsume_cla(LITS), CLAS, ID).
 
+orig_aux(PREM, GOAL, CONC) :- 
+  infer(_, id, [PREM], _, CONC, GOAL) ;
+  pmt_cla(PREM, CONC, GOAL) ;
+  para((PREM, CONC, GOAL)).
+
+
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
 
@@ -773,10 +775,9 @@ infer(_, opmt, PREMS, CLAS, CONC, GOAL) :-
 infer(m, simplify, [PREM_A, PREM_B], _, CONC, GOAL) :- 
   res(PREM_A, PREM_B, CONC, GOAL).
   
-infer(e, orig, [PREM], _, CONC, GOAL) :- 
-  infer(_, id, [PREM], _, CONC, GOAL) ;
-  pmt_cla(PREM, CONC, GOAL).
-  %infer(_, parac, [PREM], CLAS, CONC, GOAL). 
+infer(e, orig, PREMS, _, CONC, GOAL) :- 
+  member(PREM, PREMS),
+  orig_aux(PREM, GOAL, CONC).
 
 infer(v, orig, PREMS, CLAS, CONC, GOAL) :- 
   infer(_, id, PREMS, CLAS, CONC, GOAL) ;
@@ -919,7 +920,7 @@ report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
   throw(compilation_timeout),
   false.
 
-subprove(STRM, OCLAS, CNT, HINT, PREMS, FORM) :-   
+subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
   mk_par(CNT, [], CID),
   put_char(STRM, 'F'), 
@@ -957,6 +958,7 @@ get_ps_sol(PS, SOL)    :- get_tup_nth(1, PS, SOL).
 get_ps_last(PS, LAST)  :- get_tup_nth(2, PS, LAST).
 get_ps_cnt(PS, CNT)    :- get_tup_nth(3, PS, CNT).
 get_ps_strm(PS, STRM)  :- get_tup_nth(4, PS, STRM).
+get_ps_prvr(PS, PRVR)  :- get_tup_nth(5, PS, PRVR).
 get_ps_ohyps(PS, HYPS) :- get_tup_nth(6, PS, HYPS).
 get_ps_oclas(PS, CLAS) :- get_tup_nth(7, PS, CLAS).
 
@@ -981,6 +983,7 @@ use_inst(PS, add(FORM), PS_N) :-
   true.
   
 use_inst(PS, inf(HINT, IDS, FORM), PS_N) :- 
+  get_ps_prvr(PS, PRVR),
   get_ps_strm(PS, STRM),
   get_ps_prob(PS, PROB),
   get_ps_cnt(PS, CNT),
@@ -992,7 +995,7 @@ use_inst(PS, inf(HINT, IDS, FORM), PS_N) :-
     get_context(PROB, IDS, PREMS)
   ),
   num_succ(CNT, SCNT),
-  subprove(STRM, OCLAS, CNT, HINT, PREMS, FORM),
+  subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM),
   mk_par(CNT, [], CID),
   put_assoc(CID, PROB, $pos(FORM), PROB_N),
   set_ps_prob(PS, PROB_N, PS1), 

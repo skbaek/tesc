@@ -1565,6 +1565,7 @@ para_ba((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)
   abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
 para(H2G) :- 
+  para_lc(H2G) -> true ;
   para_m(H2G) -> true ;
   paras(H2G, H2G_N) -> para(H2G_N) ;
   paracd(H2G, H2G_N) -> para(H2G_N) ;
@@ -1572,6 +1573,9 @@ para(H2G) :-
   para(H2G_L), !, 
   para(H2G_R).
 
+para_lc((HYP_A, HYP_B, GOAL)) :- 
+  use_lc(HYP_A, GOAL) ;
+  use_lc(HYP_B, GOAL).
 
 
 %%%%%%%%%%%%%%%% PARALLEL SWITCH DECOMPOSITION %%%%%%%%%%%%%%%%
