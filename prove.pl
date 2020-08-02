@@ -553,6 +553,11 @@ pmt((PREM, CONC, GOAL)) :-
   many([b, s], ([PREM], GOAL_T), HGS), 
   maplist(pick_mate(HYPS), HGS).
 
+speq(TRP) :- 
+  para_cd(TRP, TEMP) -> speq(TEMP) ;
+  a_para(TRP, TEMP),
+  para_m(TEMP). 
+
 scj(H2G) :- 
   pmt(H2G) -> true ;
   paras(H2G, H2G_N) -> scj(H2G_N) ;
@@ -577,12 +582,30 @@ esimp_not(X) :-
   
 esimp_bct(X) :- para_lc(X).
 esimp_bct(X) :- 
+  para_b_(X, Y, Z), 
+  para_mlc(Y),
+  para_mlc(Z).
+esimp_bct(X) :- 
   paraab(X, Y, Z), 
   para_m(Y),
   para_m(Z).
-esimp_bct((HYP, _, GOAL)) :- 
-  aap(HYP, GOAL, HYP_L, HYP_R, GOAL_T), 
-  mate(HYP_L, HYP_R, GOAL_T).
+esimp_bct((PREM, CONC, GOAL)) :- 
+  aap(PREM, GOAL, HYP_L, HYP_R, GOAL_T), 
+  (
+    use_lc(HYP_L, GOAL_T) ; 
+    use_lc(HYP_R, GOAL_T) ; 
+    mate(HYP_L, CONC, GOAL_T) ;
+    mate(HYP_R, CONC, GOAL_T) ;
+    mate(HYP_L, HYP_R, GOAL_T) ;
+    (
+      (HYP = HYP_L ; HYP = HYP_R),
+      TRP = (HYP, CONC, GOAL_T),
+      (para_b_(TRP, TRP_A, TRP_B) ; para_b_(TRP, TRP_B, TRP_A)), 
+      para_lc(TRP_A),
+      (para__s(TRP_B, TRP_C) ; true),
+      para_m(TRP_C)
+    )
+  ).
 
 esimp_fork_bct((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
   hyp_sign_form(HYP_A, SIGN, FORM), 
@@ -678,7 +701,7 @@ find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :-
 orig_aux(PREM, GOAL, CONC) :- 
   infer(_, id, [PREM], _, CONC, GOAL) ;
   pmt_cla(PREM, CONC, GOAL) ;
-  para((PREM, CONC, GOAL)).
+  parac((PREM, CONC, GOAL)).
 
 
 
@@ -705,7 +728,7 @@ infer(_, RNM, [PREM | _], _, CONC, GOAL) :-
   mate(PREM, CONC, GOAL).
 
 infer(e, simp, [PREM | _], _, CONC, GOAL) :- 
-  newsimp((PREM, CONC, GOAL)).
+  esimp((PREM, CONC, GOAL)).
 
 infer(PRVR, skm, [PREM | AOCS], _, CONC, GOAL) :- 
   PRVR = e -> 
@@ -861,9 +884,9 @@ infer(v, ppr, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   ppr((PREM, CONC, GOAL)).
 
-% infer(v, paras, PREMS, _, CONC, GOAL) :- 
-%   member(PREM, PREMS),
-%   para_switch((PREM, CONC, GOAL)).
+infer(v, paras, PREMS, _, CONC, GOAL) :- 
+  member(PREM, PREMS),
+  para_switch((PREM, CONC, GOAL)).
 
 infer(v, paral, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),

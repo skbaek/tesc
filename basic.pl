@@ -1207,6 +1207,7 @@ orient_equation(TERM_A = TERM_B, TERM_L = TERM_R) :- !,
       TERM_R = TERM_A
     )
   ).
+
 orient_equation(FORM, FORM).
 
 erient_form(FORM, FORM).
@@ -1565,7 +1566,7 @@ para_ba((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)
   abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
 para(H2G) :- 
-  para_lc(H2G) -> true ;
+  % para_lc(H2G) -> true ;
   para_m(H2G) -> true ;
   paras(H2G, H2G_N) -> para(H2G_N) ;
   paracd(H2G, H2G_N) -> para(H2G_N) ;
@@ -1577,6 +1578,7 @@ para_lc((HYP_A, HYP_B, GOAL)) :-
   use_lc(HYP_A, GOAL) ;
   use_lc(HYP_B, GOAL).
 
+para_mlc(X) :- para_m(X) ; para_lc(X). 
 
 %%%%%%%%%%%%%%%% PARALLEL SWITCH DECOMPOSITION %%%%%%%%%%%%%%%%
 
@@ -1767,6 +1769,12 @@ parac_two((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_
     abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R) 
   ).
 
+parac_many_aux(HYP_A, ([HYP_B], GOAL), (HYP_A, HYP_B, GOAL)).
+
+parac_many(TRP, TRPS) :- 
+  parac_many(TRP, HYPS, HGS), 
+  maplist_cut(parac_many_aux, HYPS, HGS, TRPS). 
+
 parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :- 
   \+ imp_hyp(HYP_A),
   \+ imp_hyp(HYP_B),
@@ -1787,6 +1795,7 @@ parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
 %   bfe_aux(HYPS, HGS).
 
 parac(H2G) :- 
+  para_lc(H2G) -> true ;
   para_m(H2G) -> true ;
   paras(H2G, H2G_N) -> parac(H2G_N) ;
   paracd(H2G, H2G_N) -> parac(H2G_N) ;
@@ -1920,10 +1929,9 @@ para_e1(H2G) :-
   paras(H2G, H2G_N) -> para_e1(H2G_N) ;
   parad(H2G, H2G_N) -> para_e1(H2G_N) ;
   parac_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
-  parac_many(H2G, HS, HGS) -> maplist_cut(para_e1_aux, HS, HGS) ;
+  parac_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
   para_c_(H2G, H2G_N) -> para_e1(H2G_N).
 
-para_e1_aux(HYP_A, ([HYP_B], GOAL)) :- para_e1((HYP_A, HYP_B, GOAL)).
   
 
 % para_e1_aux(_, []).

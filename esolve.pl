@@ -136,8 +136,10 @@ bind_lvs(NUM, [#(NUM) | VARS]) :-
   num_succ(NUM, SUCC),
   bind_lvs(SUCC, VARS).
 
+
 close_lvs(BODY, FORM) :-
   term_variables(BODY, VARS), 
+  % replace_lvs_form(VARS, 0, BODY, TEMP), 
   bind_lvs(0, VARS),
   length(VARS, NUM), 
   add_fas(NUM, BODY, FORM).
@@ -156,12 +158,18 @@ conjunct_core($and(FORM_A, FORM_B), NORM) :- !,
 conjunct_core(FORM, FORM).
 
 split_equiv(EQV, IMP) :- 
-  inst_with_lvs(EQV, $iff(LHS, RHS)), 
+  strip_fas(EQV, NUM, $iff(LHS, RHS)), 
   (
     BODY = $imp(LHS, RHS) ;
     BODY = $imp(RHS, LHS) 
   ),
-  close_lvs(BODY, IMP).
+  add_fas(NUM, BODY, IMP).
+  % inst_with_lvs(EQV, $iff(LHS, RHS)), 
+  % (
+  %   BODY = $imp(LHS, RHS) ;
+  %   BODY = $imp(RHS, LHS) 
+  % ),
+  % close_lvs(BODY, IMP).
 
 eq_resolve(FORM_I, FORM_O) :- 
   inst_with_lvs(FORM_I, BODY_I), 
@@ -314,38 +322,63 @@ syunion_lits([LIT | LITS_A], LITS_B, LITS) :-
   syunion_lits(LITS_A, LITS_B, TEMP), 
   syinsert_lit(LIT, TEMP, LITS).
 
-mk_rw_form(LHS, RHS, $not(FORM), $not(RW)) :- !,
-  mk_rw_form(LHS, RHS, FORM, RW).
+mk_rw_form(NUM, LHS, RHS, $not(FORM), $not(RW)) :- !,
+  mk_rw_form(NUM, LHS, RHS, FORM, RW).
 
-mk_rw_form(LHS, RHS, $or(FORM_L, FORM_R), $or(RW_L, RW_R)) :- !,
+mk_rw_form(NUM, LHS, RHS, $or(FORM_L, FORM_R), $or(RW_L, RW_R)) :- !,
   (
-    mk_rw_form(LHS, RHS, FORM_L, RW_L),
+    mk_rw_form(NUM, LHS, RHS, FORM_L, RW_L),
     FORM_R = RW_R
   ;
-    mk_rw_form(LHS, RHS, FORM_R, RW_R),
+    mk_rw_form(NUM, LHS, RHS, FORM_R, RW_R),
     FORM_L = RW_L
   ).
 
-mk_rw_form(LHS, RHS, FORM_I, FORM_O) :- 
+mk_rw_form(NUM, LHS, RHS, FORM_I, FORM_O) :- 
   FORM_I =.. [REL | TERMS_I], 
-  mk_rw_terms(LHS, RHS, TERMS_I, TERMS_O), 
+  mk_rw_terms(NUM, LHS, RHS, TERMS_I, TERMS_O), 
   FORM_O =.. [REL | TERMS_O]. 
 
-mk_rw_terms(LHS, RHS, [TERM_I | TERMS_I], [TERM_O | TERMS_O]) :-  
-  mk_rw_term(LHS, RHS, TERM_I, TERM_O),
+mk_rw_form(NUM, LHS, RHS, FORM_I, FORM_O) :- 
+  % 1 < NUM,
+  num_pred(NUM, PRED),
+  mk_rw_form(PRED, LHS, RHS, FORM_I, FORM_O).
+  
+count_matching_funs(TERM_A, TERM_B, 0) :- 
+  (var(TERM_A) ; var(TERM_B)), !.
+
+count_matching_funs(^(FUN, TERMS_A), ^(FUN, TERMS_B), CNT) :-
+  maplist_cut(count_matching_funs, TERMS_A, TERMS_B, CNTS),
+  sum_list(CNTS, PRED),
+  num_succ(PRED, CNT).
+
+unify_terms_count(TERM_A, TERM_B, CNT) :- 
+  count_matching_funs(TERM_A, TERM_B, NUM),
+  NUM == CNT, 
+  unify_with_occurs_check(TERM_A, TERM_B).
+  
+mk_rw_terms(NUM, LHS, RHS, [TERM_I | TERMS_I], [TERM_O | TERMS_O]) :-  
+  mk_rw_term(NUM, LHS, RHS, TERM_I, TERM_O),
   TERMS_I = TERMS_O 
 ;
   TERM_I = TERM_O, 
-  mk_rw_terms(LHS, RHS, TERMS_I, TERMS_O).
+  mk_rw_terms(NUM, LHS, RHS, TERMS_I, TERMS_O).
 
-mk_rw_term(LHS, RHS, TERM_I, TERM_O) :- 
-  unify_with_occurs_check(LHS, TERM_I),
-  unify_with_occurs_check(RHS, TERM_O)
-; 
+mk_rw_term(NUM, LHS, RHS, TERM_I, TERM_O) :- 
   \+ var(TERM_I),
-  TERM_I =.. [FUN | TERMS_I], 
-  mk_rw_terms(LHS, RHS, TERMS_I, TERMS_O), 
-  TERM_O =.. [FUN | TERMS_O].
+  (
+    FROM = LHS, TO = RHS 
+  ;
+    FROM = RHS, TO = LHS 
+  ),
+  (
+    unify_terms_count(FROM, TERM_I, NUM),
+    TO = TERM_O
+  ; 
+    TERM_I = ^(FUN, TERMS_I), 
+    mk_rw_terms(NUM, FROM, TO, TERMS_I, TERMS_O), 
+    TERM_O = ^(FUN, TERMS_O) 
+  ).
 
 nst_orient(pm, HYP_L, HYP_R, HYP_L, HYP_R).
 nst_orient(rw, HYP_L, HYP_R, HYP_L, HYP_R).
@@ -361,32 +394,46 @@ form_lits(FORM, LITS) :-
 
 includes(X, Y) :- member(Y, X).
 
-unfold_definition(ATOM, BODY, $not(FORM), $not(NORM)) :- 
-  unfold_definition(ATOM, BODY, FORM, NORM).
+% unfold_definition(ATOM, BODY, $not(FORM), $not(NORM)) :- 
+%   unfold_definition(ATOM, BODY, FORM, NORM).
+% 
+% unfold_definition(ATOM, BODY, FORM, NORM) :- 
+%   decom_uct(FORM, UCT, SUB_FORM), 
+%   unfold_definition(ATOM, BODY, SUB_FORM, SUB_NORM),
+%   apply_uop(UCT, SUB_NORM, NORM).
+%   
+% unfold_definition(ATOM, BODY, FORM, NORM) :- 
+%   decom_bct(FORM, BCT, FORM_A, FORM_B), 
+%   (
+%     unfold_definition(ATOM, BODY, FORM_A, NORM_A), 
+%     NORM_B = FORM_B 
+%   ;
+%     unfold_definition(ATOM, BODY, FORM_B, NORM_B), 
+%     NORM_A = FORM_A 
+%   ),
+%   apply_bop(BCT, NORM_A, NORM_B, NORM).
 
-unfold_definition(ATOM, BODY, FORM, NORM) :- 
-  decom_uct(FORM, UCT, SUB_FORM), 
-  unfold_definition(ATOM, BODY, SUB_FORM, SUB_NORM),
-  apply_uop(UCT, SUB_NORM, NORM).
+fold_definition(ATOM, BODY, $not(FORM), $not(NORM)) :- 
+  fold_definition(ATOM, BODY, FORM, NORM).
   
-unfold_definition(ATOM, BODY, FORM, NORM) :- 
+fold_definition(ATOM, BODY, FORM, NORM) :- 
   decom_bct(FORM, BCT, FORM_A, FORM_B), 
   (
-    unfold_definition(ATOM, BODY, FORM_A, NORM_A), 
+    fold_definition(ATOM, BODY, FORM_A, NORM_A), 
     NORM_B = FORM_B 
   ;
-    unfold_definition(ATOM, BODY, FORM_B, NORM_B), 
+    fold_definition(ATOM, BODY, FORM_B, NORM_B), 
     NORM_A = FORM_A 
   ),
   apply_bop(BCT, NORM_A, NORM_B, NORM).
 
-unfold_definition(ATOM, BODY, ATOM, BODY).
+fold_definition(ATOM, BODY, BODY, ATOM).
 
 mk_right_prem(_, _, _, _, _) :- false. 
 
-mk_left_prem(apply_def, PREM_A, CONC, dff, PREM_B) :- 
-  inst_with_lvs(PREM_A, $iff(ATOM, BODY)), 
-  unfold_definition(ATOM, BODY, CONC, PREM_B).
+%  mk_left_prem(apply_def, PREM_A, CONC, dff, PREM_B) :- 
+%    inst_with_lvs(PREM_A, $iff(ATOM, BODY)), 
+%    unfold_definition(ATOM, BODY, CONC, PREM_B).
 
 mk_left_prem(sr, PREM_B, CONC, res, PREM_A) :- 
   cf_lits(CONC, LITS_C), 
@@ -400,13 +447,25 @@ mk_left_prem(RUL, PREM_B, CONC, (sup, l), PREM_A) :-
   member(RUL, [pm, rw]),
   cf_lits(CONC, LITS_C), 
   form_lits(PREM_B, LITS_B), 
-  pluck(LITS_B, LIT_B, REST_B), 
-  orient_equation(LIT_B, LHS = RHS), 
+  pluck(LITS_B, (LHS = RHS), REST_B), 
+  % orient_equation(LIT_B, LHS = RHS),
   pluck(LITS_C, LIT_C, REST_C),
   mk_rw_form(LHS, RHS, LIT_C, LIT_A), 
   maplist(includes(REST_C), REST_B), 
   syinsert_lit(LIT_A, REST_C, TEMP),
   mk_cf(TEMP, PREM_A).
+
+count_funs(VAR, 0) :- var(VAR), !.
+count_funs(^(_, TERMS), CNT) :- 
+  maplist_cut(count_funs, TERMS, CNTS), 
+  sum_list(CNTS, PRED),
+  num_succ(PRED, CNT).
+
+mk_rw_form(LHS, RHS, LIT_C, LIT_A) :-
+  count_funs(LHS, NUM_L),
+  count_funs(RHS, NUM_R),
+  max_list([NUM_L, NUM_R], NUM), !,
+  mk_rw_form(NUM, LHS, RHS, LIT_C, LIT_A). 
 
 mk_root(assume_negation, $not(FORM), rnm, $not(FORM)).
 % mk_root(shift_quantors, FORM, upnf, NORM) :- upnf(FORM, NORM).
@@ -416,7 +475,7 @@ mk_root(evalgc, FORM, rnm, FORM).
 mk_root(variable_rename, FORM, rnm, FORM).
 mk_root(fof_simplification, FORM, simp, NORM) :- esimp(FORM, NORM), !.
 mk_root(split_conjunct, FORM, scj, NORM) :- conjunct(FORM, NORM).
-mk_root(split_equiv, FORM, scj, NORM) :- split_equiv(FORM, NORM).
+mk_root(split_equiv, FORM, speq, NORM) :- split_equiv(FORM, NORM).
 mk_root(cn, FORM, paratf, NORM) :- bool_norm(FORM, NORM), !.
 % mk_root(distribute, FORM, dist, NORM) :- distribute(FORM, NORM), !.
 mk_root(er, FORM, eqr, NORM) :- eq_resolve(FORM, NORM).
@@ -441,15 +500,20 @@ mk_root(ef, FORM_I, sbsm, FORM_O) :-
 mk_root(skolemize, FORM, skm(PAIRS), NORM) :- 
   skolemize_many(FORM, PAIRS, NORM).
 
+% mk_root(apply_def, FORM_A, $iff(ATOM, BODY), dff, FORM) :- !, 
+%   % inst_with_lvs(FORM_A, BODY_A),
+%   % inst_with_lvs(PREM_B, $iff(ATOM, BODY)), 
+%   fold_definition(ATOM, BODY, FORM_A, FORM).
+
 mk_root(RUL, FORM_A, FORM_B, (sup, l), FORM) :- 
   member(RUL, [pm, rw, sr]),
   inst_with_lvs(FORM_A, BODY_A),
   cf_lits(BODY_A, LITS_A), 
-  pluck(LITS_A, LIT_A, REST_A),
   inst_with_lvs(FORM_B, BODY_B),
-  cf_lits(BODY_B, LITS_B), 
-  pluck(LITS_B, LIT_B, REST_B),
-  orient_equation(LIT_B, LHS = RHS),
+  cf_lits(BODY_B, LITS_B),  
+  pluck(LITS_B, (LHS = RHS), REST_B),
+  % orient_equation(LIT_B, LHS = RHS),
+  pluck(LITS_A, LIT_A, REST_A),
   mk_rw_form(LHS, RHS, LIT_A, LIT_N), 
   syunion_lits([LIT_N | REST_A], REST_B, LITS),
   mk_cf(LITS, BODY_N),
@@ -503,7 +567,7 @@ mk_tree_bwd(_, CTX, TGT, inference(RUL, _, [ANT_A, ANT_B]), btr(TREE_A, TREE_B, 
    bind_all_pars(TGT, CONC).
 
 mk_tree_bwd(_, CTX, TGT, inference(RUL, _, [ANT_A, ANT_B]), btr(TREE_A, TREE_B, HINT, CONC)) :- 
-   member(RUL, [sr, pm, rw, apply_def]),
+   member(RUL, [sr, pm, rw]),
    mk_tree_fwd(CTX, ANT_B, TREE_B), 
    tree_conc(TREE_B, CONC_B), 
    mk_left_prem(RUL, CONC_B, TGT, HINT, TGT_A),
@@ -620,15 +684,15 @@ tup_insts(
   (CID, TYPE, FORM, ANT),
   INSTS 
 ) :- 
-  % e_skm_pairs(FORM, FAS),
+  format("Solving for ID : ~w\n\n", CID),
   inst_fas(0, FORM, TGT), 
-  timed_call( 
-    10,
-    mk_tree_bwd(new, CTX, TGT, ANT, TREE),
-    (
-      write("Backward search failed, switch to forward search\n"),
+  % timed_call( 
+  %   10,
+  %   mk_tree_bwd(new, CTX, TGT, ANT, TREE),
+  %   (
+  %     write("Backward search failed, switch to forward search\n"),
       timed_call(
-        60, 
+        20, 
         mk_tree_fwd(CTX, TGT, ANT, TREE),
         (
           write("Forward search failed, print failure trace\n"),
@@ -637,8 +701,9 @@ tup_insts(
           false
         )
       )
-    )
-  ),
+  %   )
+  % )
+  ,
   unroll_tree(0, TREE, SIZE, PID, REV), 
   reverse(REV, PFX),
   mk_dels(SIZE, DELS), 
