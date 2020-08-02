@@ -322,27 +322,22 @@ syunion_lits([LIT | LITS_A], LITS_B, LITS) :-
   syunion_lits(LITS_A, LITS_B, TEMP), 
   syinsert_lit(LIT, TEMP, LITS).
 
-mk_rw_form(NUM, LHS, RHS, $not(FORM), $not(RW)) :- !,
-  mk_rw_form(NUM, LHS, RHS, FORM, RW).
+mk_rw_form(LHS, RHS, $not(FORM), $not(RW)) :- !,
+  mk_rw_form(LHS, RHS, FORM, RW).
 
-mk_rw_form(NUM, LHS, RHS, $or(FORM_L, FORM_R), $or(RW_L, RW_R)) :- !,
+mk_rw_form(LHS, RHS, $or(FORM_L, FORM_R), $or(RW_L, RW_R)) :- !,
   (
-    mk_rw_form(NUM, LHS, RHS, FORM_L, RW_L),
+    mk_rw_form(LHS, RHS, FORM_L, RW_L),
     FORM_R = RW_R
   ;
-    mk_rw_form(NUM, LHS, RHS, FORM_R, RW_R),
+    mk_rw_form(LHS, RHS, FORM_R, RW_R),
     FORM_L = RW_L
   ).
 
-mk_rw_form(NUM, LHS, RHS, FORM_I, FORM_O) :- 
+mk_rw_form(LHS, RHS, FORM_I, FORM_O) :- 
   FORM_I =.. [REL | TERMS_I], 
-  mk_rw_terms(NUM, LHS, RHS, TERMS_I, TERMS_O), 
+  mk_rw_terms(LHS, RHS, TERMS_I, TERMS_O), 
   FORM_O =.. [REL | TERMS_O]. 
-
-mk_rw_form(NUM, LHS, RHS, FORM_I, FORM_O) :- 
-  % 1 < NUM,
-  num_pred(NUM, PRED),
-  mk_rw_form(PRED, LHS, RHS, FORM_I, FORM_O).
   
 count_matching_funs(TERM_A, TERM_B, 0) :- 
   (var(TERM_A) ; var(TERM_B)), !.
@@ -357,26 +352,21 @@ unify_terms_count(TERM_A, TERM_B, CNT) :-
   NUM == CNT, 
   unify_with_occurs_check(TERM_A, TERM_B).
   
-mk_rw_terms(NUM, LHS, RHS, [TERM_I | TERMS_I], [TERM_O | TERMS_O]) :-  
-  mk_rw_term(NUM, LHS, RHS, TERM_I, TERM_O),
+mk_rw_terms(LHS, RHS, [TERM_I | TERMS_I], [TERM_O | TERMS_O]) :-  
+  mk_rw_term(LHS, RHS, TERM_I, TERM_O),
   TERMS_I = TERMS_O 
 ;
   TERM_I = TERM_O, 
-  mk_rw_terms(NUM, LHS, RHS, TERMS_I, TERMS_O).
+  mk_rw_terms(LHS, RHS, TERMS_I, TERMS_O).
 
-mk_rw_term(NUM, LHS, RHS, TERM_I, TERM_O) :- 
+mk_rw_term(FROM, TO, TERM_I, TERM_O) :- 
   \+ var(TERM_I),
   (
-    FROM = LHS, TO = RHS 
-  ;
-    FROM = RHS, TO = LHS 
-  ),
-  (
-    unify_terms_count(FROM, TERM_I, NUM),
+    unify_with_occurs_check(FROM, TERM_I),
     TO = TERM_O
   ; 
     TERM_I = ^(FUN, TERMS_I), 
-    mk_rw_terms(NUM, FROM, TO, TERMS_I, TERMS_O), 
+    mk_rw_terms(FROM, TO, TERMS_I, TERMS_O), 
     TERM_O = ^(FUN, TERMS_O) 
   ).
 
@@ -394,40 +384,30 @@ form_lits(FORM, LITS) :-
 
 includes(X, Y) :- member(Y, X).
 
-% unfold_definition(ATOM, BODY, $not(FORM), $not(NORM)) :- 
-%   unfold_definition(ATOM, BODY, FORM, NORM).
-% 
-% unfold_definition(ATOM, BODY, FORM, NORM) :- 
-%   decom_uct(FORM, UCT, SUB_FORM), 
-%   unfold_definition(ATOM, BODY, SUB_FORM, SUB_NORM),
-%   apply_uop(UCT, SUB_NORM, NORM).
-%   
-% unfold_definition(ATOM, BODY, FORM, NORM) :- 
-%   decom_bct(FORM, BCT, FORM_A, FORM_B), 
-%   (
-%     unfold_definition(ATOM, BODY, FORM_A, NORM_A), 
-%     NORM_B = FORM_B 
-%   ;
-%     unfold_definition(ATOM, BODY, FORM_B, NORM_B), 
-%     NORM_A = FORM_A 
-%   ),
-%   apply_bop(BCT, NORM_A, NORM_B, NORM).
+fold_definition(NUM, ATOM, BODY, $not(FORM), $not(NORM)) :- 
+  fold_definition(NUM, ATOM, BODY, FORM, NORM).
 
-fold_definition(ATOM, BODY, $not(FORM), $not(NORM)) :- 
-  fold_definition(ATOM, BODY, FORM, NORM).
-  
-fold_definition(ATOM, BODY, FORM, NORM) :- 
+fold_definition(NUM, ATOM, BODY, FORM, NORM) :- 
+  decom_qtf(FORM, QTF, SUB_FORM), 
+  mk_par(NUM, [], PAR),
+  substitute_form(fast, PAR, SUB_FORM, TEMP_FORM), 
+  num_succ(NUM, SUCC), 
+  fold_definition(SUCC, ATOM, BODY, TEMP_FORM, TEMP_NORM), 
+  map_form(bind_pars_term(NUM), 0, TEMP_NORM, SUB_NORM), 
+  apply_uop(QTF, SUB_NORM, NORM).
+
+fold_definition(NUM, ATOM, BODY, FORM, NORM) :- 
   decom_bct(FORM, BCT, FORM_A, FORM_B), 
   (
-    fold_definition(ATOM, BODY, FORM_A, NORM_A), 
+    fold_definition(NUM, ATOM, BODY, FORM_A, NORM_A), 
     NORM_B = FORM_B 
   ;
-    fold_definition(ATOM, BODY, FORM_B, NORM_B), 
+    fold_definition(NUM, ATOM, BODY, FORM_B, NORM_B), 
     NORM_A = FORM_A 
   ),
   apply_bop(BCT, NORM_A, NORM_B, NORM).
 
-fold_definition(ATOM, BODY, BODY, ATOM).
+fold_definition(_, ATOM, BODY, BODY, ATOM).
 
 mk_right_prem(_, _, _, _, _) :- false. 
 
@@ -461,14 +441,13 @@ count_funs(^(_, TERMS), CNT) :-
   sum_list(CNTS, PRED),
   num_succ(PRED, CNT).
 
-mk_rw_form(LHS, RHS, LIT_C, LIT_A) :-
-  count_funs(LHS, NUM_L),
-  count_funs(RHS, NUM_R),
-  max_list([NUM_L, NUM_R], NUM), !,
-  mk_rw_form(NUM, LHS, RHS, LIT_C, LIT_A). 
+% mk_rw_form(LHS, RHS, LIT_C, LIT_A) :-
+%   count_funs(LHS, NUM_L),
+%   count_funs(RHS, NUM_R),
+%   max_list([NUM_L, NUM_R], NUM), !,
+%   mk_rw_form(LHS, RHS, LIT_C, LIT_A). 
 
 mk_root(assume_negation, $not(FORM), rnm, $not(FORM)).
-% mk_root(shift_quantors, FORM, upnf, NORM) :- upnf(FORM, NORM).
 mk_root(shift_quantors, FORM, bf_push, NORM) :- push_qtf(FORM, NORM).
 mk_root(fof_nnf, FORM, fnnf, NORM) :- fnnf(FORM, NORM), !.
 mk_root(evalgc, FORM, rnm, FORM).
@@ -477,7 +456,6 @@ mk_root(fof_simplification, FORM, simp, NORM) :- esimp(FORM, NORM), !.
 mk_root(split_conjunct, FORM, scj, NORM) :- conjunct(FORM, NORM).
 mk_root(split_equiv, FORM, speq, NORM) :- split_equiv(FORM, NORM).
 mk_root(cn, FORM, paratf, NORM) :- bool_norm(FORM, NORM), !.
-% mk_root(distribute, FORM, dist, NORM) :- distribute(FORM, NORM), !.
 mk_root(er, FORM, eqr, NORM) :- eq_resolve(FORM, NORM).
 
 mk_root(ef, FORM_I, eqf, FORM_O) :- 
@@ -500,10 +478,13 @@ mk_root(ef, FORM_I, sbsm, FORM_O) :-
 mk_root(skolemize, FORM, skm(PAIRS), NORM) :- 
   skolemize_many(FORM, PAIRS, NORM).
 
-% mk_root(apply_def, FORM_A, $iff(ATOM, BODY), dff, FORM) :- !, 
-%   % inst_with_lvs(FORM_A, BODY_A),
-%   % inst_with_lvs(PREM_B, $iff(ATOM, BODY)), 
-%   fold_definition(ATOM, BODY, FORM_A, FORM).
+mk_root(apply_def, FORM_A, FORM_B, dff, FORM_C) :- !, 
+  % inst_with_pars(0, FORM_A, _, BODY_A),
+  inst_with_lvs(FORM_B, $iff(ATOM, BODY_B)), 
+  fold_definition(0, ATOM, BODY_B, FORM_A, FORM_C),
+  ground(FORM_C),
+  % bind_all_pars(TEMP, FORM_C).
+  true.
 
 mk_root(RUL, FORM_A, FORM_B, (sup, l), FORM) :- 
   member(RUL, [pm, rw, sr]),
@@ -511,8 +492,8 @@ mk_root(RUL, FORM_A, FORM_B, (sup, l), FORM) :-
   cf_lits(BODY_A, LITS_A), 
   inst_with_lvs(FORM_B, BODY_B),
   cf_lits(BODY_B, LITS_B),  
-  pluck(LITS_B, (LHS = RHS), REST_B),
-  % orient_equation(LIT_B, LHS = RHS),
+  pluck(LITS_B, LIT_B, REST_B),
+  orient_equation(LIT_B, LHS = RHS),
   pluck(LITS_A, LIT_A, REST_A),
   mk_rw_form(LHS, RHS, LIT_A, LIT_N), 
   syunion_lits([LIT_N | REST_A], REST_B, LITS),

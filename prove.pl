@@ -899,6 +899,9 @@ infer(v, parav, PREMS, _, CONC, GOAL) :-
 infer(_, mscj, [PREM], _, CONC, GOAL) :- 
   mscj((PREM, CONC, GOAL)).
 
+infer(e, speq, [PREM], _, CONC, GOAL) :- 
+  speq((PREM, CONC, GOAL)).
+
 infer(_, scj, [PREM], _, CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [HYP0], GOAL0), 
   many_nb([c], [PREM], GOAL0, [HYP1], GOAL1), 

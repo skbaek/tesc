@@ -800,6 +800,7 @@ inst_with_lvs(FORM, FORM).
 %   substitute_form(fast, _, FORM, TEMP),
 %   inst_fas(TEMP, BODY).
 
+
 inst_with_pars(NUM, $fa(FORM), CNT, BODY) :- !,
   mk_par(NUM, [], PAR),
   substitute_form(fast, PAR, FORM, TEMP), 
@@ -1186,9 +1187,9 @@ term_size(^(_, TERMS), SIZE) :- !,
   num_succ(TEMP, SIZE).
 term_size(_, 1).
 
-orient_equation(TERM_A = TERM_B, TERM_L = TERM_R) :- !, 
+orient_equation(TERM_A = TERM_B, TERM_L = TERM_R) :- 
   term_size(TERM_A, SIZE_A),
-  term_size(TERM_B, SIZE_B),
+  term_size(TERM_B, SIZE_B), !,
   (
     SIZE_A < SIZE_B ->
     (
@@ -1207,8 +1208,6 @@ orient_equation(TERM_A = TERM_B, TERM_L = TERM_R) :- !,
       TERM_R = TERM_A
     )
   ).
-
-orient_equation(FORM, FORM).
 
 erient_form(FORM, FORM).
 erient_form(TERM_A = TERM_B, TERM_B = TERM_A).
