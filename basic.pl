@@ -243,9 +243,6 @@ explicate_form(FORM, FORM_N) :-
   maplist_cut(explicate_term, TERMS, TERMS_N), !,  
   FORM_N =.. [REL | TERMS_N].
 
-implicate_sf($pos(FORM), $pos(NORM)) :- implicate_form(FORM, NORM).
-implicate_sf($neg(FORM), $neg(NORM)) :- implicate_form(FORM, NORM).
-
 implicate_form(FORM, FORM) :- log_const(FORM), !.
 implicate_form(FORM, FORM_N) :-
   decom_uct(FORM, UCT, SUB), !, 
@@ -1627,16 +1624,6 @@ paratf(H2G) :-
   paratf(H2G_L),  
   paratf(H2G_R).
 
-newsimp(H2G) :- 
-  para_m(H2G) -> true ;
-  paratf_zero(H2G) -> true ;
-  paras(H2G, H2G_N) -> newsimp(H2G_N) ;
-  paracd(H2G, H2G_N) -> newsimp(H2G_N) ;
-  paratf_one(H2G, H2G_N) -> newsimp(H2G_N) ;
-  para_switch_ab(H2G, H2G_L, H2G_R),
-  newsimp(H2G_L),  
-  newsimp(H2G_R).
-
 parav_cd((HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- 
   cp_vac(HYP_A, GOAL_I, HYP_NA, GOAL_O) ;
   dp_vac(HYP_A, GOAL_I, HYP_NA, GOAL_O).
@@ -1735,16 +1722,16 @@ imp_hyp(HYP) :-
   hyp_form(HYP, FORM),
   member(FORM, [$imp(_, _), $iff(_, _)]).
 
-parac_a_aux(HYP, GOAL, HYP_L, HYP_R, NEW_GOAL) :- 
+ap_repeat_aux(HYP, GOAL, HYP_L, HYP_R, NEW_GOAL) :- 
   \+ imp_hyp(HYP), 
   ap(HYP, l, GOAL, HYP_L, TEMP_GOAL),
   ap(HYP, r, TEMP_GOAL, HYP_R, NEW_GOAL).
 
-parac_a(HYP, GOAL, HYPS, GOAL_N) :- 
-  parac_a_aux(HYP, GOAL, HYP_L, HYP_R, GOAL0) -> 
+ap_repeat(HYP, GOAL, HYPS, GOAL_N) :- 
+  ap_repeat_aux(HYP, GOAL, HYP_L, HYP_R, GOAL0) -> 
   (
-    parac_a(HYP_L, GOAL0, HYPS_L, GOAL1),
-    parac_a(HYP_R, GOAL1, HYPS_R, GOAL_N), 
+    ap_repeat(HYP_L, GOAL0, HYPS_L, GOAL1),
+    ap_repeat(HYP_R, GOAL1, HYPS_R, GOAL_N), 
     append(HYPS_L, HYPS_R, HYPS)
   ) ;
   (HYPS = [HYP], GOAL_N = GOAL).
@@ -1779,11 +1766,11 @@ parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
   \+ imp_hyp(HYP_B),
   (
     type_hyp(a, HYP_A),
-    parac_a(HYP_A, GOAL, HYPS, GOAL_T), 
+    ap_repeat(HYP_A, GOAL, HYPS, GOAL_T), 
     parac_b(HYP_B, GOAL_T, HGS)
   ;
     type_hyp(a, HYP_B),
-    parac_a(HYP_B, GOAL, HYPS, GOAL_T), 
+    ap_repeat(HYP_B, GOAL, HYPS, GOAL_T), 
     parac_b(HYP_A, GOAL_T, HGS)
   ).
 
@@ -1799,14 +1786,14 @@ parac(H2G) :-
   paras(H2G, H2G_N) -> parac(H2G_N) ;
   paracd(H2G, H2G_N) -> parac(H2G_N) ;
   parac_two(H2G, H2G_L, H2G_R) -> parac(H2G_L), !, parac(H2G_R) ;
-  parac_many(H2G, HS, HGS) -> parac_aux(HS, HGS).
+  parac_many(H2G, HS, HGS) -> ap_repeatux(HS, HGS).
 
-parac_aux(_, []).
+ap_repeatux(_, []).
 
-parac_aux(HYPS, [([HYP], GOAL) | HGS]) :- 
+ap_repeatux(HYPS, [([HYP], GOAL) | HGS]) :- 
   member(CMP, HYPS), 
   parac((HYP, CMP, GOAL)), !,
-  parac_aux(HYPS, HGS).
+  ap_repeatux(HYPS, HGS).
 
 dir_files(Dir, Entries) :- 
   directory_files(Dir, TempA), 
@@ -1839,27 +1826,41 @@ maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :-
     maplist_count(GOAL, CNT_I, TTL_T, LIST, CNT_O, TTL_O)
   ).
 
-tstp_name(PRVR, TSTP, NAME) :- 
-  atom_concat(PRVR, TEMP0, TSTP), 
-  atom_concat('s/', TEMP1, TEMP0), 
-  atom_concat(NAME, '.tstp', TEMP1).
+% tstp_name(PRVR, TSTP, NAME) :- 
+%   atom_concat(PRVR, TEMP0, TSTP), 
+%   atom_concat('s/', TEMP1, TEMP0), 
+%   atom_concat(NAME, '.tstp', TEMP1).
+% 
+% tesc_name(PRVR, TESC, NAME) :- 
+%   atom_concat(PRVR, TEMP0, TESC), 
+%   atom_concat('e/', TEMP1, TEMP0), 
+%   atom_concat(NAME, '.tesc', TEMP1).
 
-tesc_name(PRVR, TESC, NAME) :- 
-  atom_concat(PRVR, TEMP0, TESC), 
-  atom_concat('e/', TEMP1, TEMP0), 
-  atom_concat(NAME, '.tesc', TEMP1).
+names_failed(PRVR, NAMES) :- 
+  atom_concat(PRVR, f, PATH),
+  file_strings(PATH, STRS),
+  maplist_cut(string_to_atom, STRS, NAMES).
 
-names_from_s(PRVR, NAMES) :- 
+names_archived(PRVR, NAMES) :- 
+  atom_concat(PRVR, a, PATH),
+  rec_dir_files(PATH, PATHS),
+  maplist_cut(path_name, PATHS, NAMES).
+
+names_stashed(PRVR, NAMES) :- 
   atom_concat(PRVR, s, PATH),
   rec_dir_files(PATH, PATHS),
-  maplist_cut(tstp_name(PRVR), PATHS, NAMES).
+  maplist_cut(path_name, PATHS, NAMES).
 
-names_from_e(PRVR, NAMES) :- 
+names_proven(PRVR, NAMES) :- 
   atom_concat(PRVR, e, PATH),
   rec_dir_files(PATH, PATHS),
-  maplist_cut(tesc_name(PRVR), PATHS, NAMES).
+  maplist_cut(path_name, PATHS, NAMES).
 
-
+name_tptp(NAME, TPTP) :- 
+  atom_codes(NAME, [C0, C1, C2 | _]),
+  atom_codes(CAT, [C0, C1, C2]),  
+  atomic_list_concat(["/home/sk/programs/TPTP/Problems/", CAT, "/", NAME, ".p"], TPTP).
+  
 path_cat_id(Path, Cat, ID) :- 
   atom_codes(Path, Codes0), 
   append(_, [47 | Codes1], Codes0),
@@ -1868,12 +1869,13 @@ path_cat_id(Path, Cat, ID) :-
   string_codes(Cat, [C0, C1, C2]),
   string_codes(ID, Rest).
 
-tptp_name(TPTP, NAME) :- 
-  atom_codes(TPTP, TEMP0), 
+path_name(PATH, NAME) :- 
+  atom_codes(PATH, TEMP0), 
   append(_, [47 | TEMP1], TEMP0),
-  \+ member(47, TEMP1), 
-  append(TEMP2, [46, 112], TEMP1),
-  string_codes(NAME, TEMP2).
+  \+ member(47, TEMP1), !, 
+  append(TEMP2, [46 | TEMP3], TEMP1),
+  \+ member(46, TEMP3), !, 
+  atom_codes(NAME, TEMP2).
 
 body_lits($or(LIT, FORM), [LIT | LITS]) :- !, 
   literal(LIT),
@@ -1928,16 +1930,39 @@ para_e1(H2G) :-
   paras(H2G, H2G_N) -> para_e1(H2G_N) ;
   parad(H2G, H2G_N) -> para_e1(H2G_N) ;
   parac_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
-  parac_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
-  para_c_(H2G, H2G_N) -> para_e1(H2G_N).
+  % parac_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
+  para_c_(H2G, H2G_N) -> para_e1(H2G_N) ;
+  member(DIR, [l, r]),
+  clause_ab(para_e1, DIR, H2G).
+  % -> true ; 
 
+clause_ab(PARA, l, (HYP_A, HYP_B, GOAL)) :- clause_ab(PARA, l, HYP_A, HYP_B, GOAL). 
+clause_ab(PARA, r, (HYP_A, HYP_B, GOAL)) :- clause_ab(PARA, l, HYP_B, HYP_A, GOAL). 
+
+clause_ab(PARA, DIR, HYP_A, HYP_B, GOAL) :- 
+  type_hyp(a, HYP_A),
+  ap_repeat(HYP_A, GOAL, HYPS, TEMP), 
+  clause_ab_aux(PARA, DIR, HYPS, HYP_B, TEMP, []).
   
+clause_ab_aux(PARA, DIR, HYPS, HYP, GOAL, REM) :-
+  cp(HYP, _, GOAL, HYP_N, GOAL_N), !, 
+  clause_ab_aux(PARA, DIR, HYPS, HYP_N, GOAL_N, REM).
 
-% para_e1_aux(_, []).
-% para_e1_aux(HYPS, [([HYP], GOAL) | HGS]) :- 
-%   member(CMP, HYPS), 
-%   para_e1((HYP, CMP, GOAL)), !,
-%   para_e1_aux(HYPS, HGS).
+clause_ab_aux(PARA, l, [HYP_A | HYPS], HYP_B, GOAL, HYPS) :-
+  call(PARA, (HYP_A, HYP_B, GOAL)), !. 
+  
+clause_ab_aux(PARA, r, [HYP_A | HYPS], HYP_B, GOAL, HYPS) :-
+  call(PARA, (HYP_B, HYP_A, GOAL)), !. 
+
+clause_ab_aux(PARA, DIR, HYPS, HYP_B, GOAL, REM) :-
+  bp(HYP_B, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R), 
+  clause_ab_aux(PARA, DIR, HYPS, HYP_L, GOAL_L, TEMP), !, 
+  clause_ab_aux(PARA, DIR, TEMP, HYP_R, GOAL_R, REM).
+   
+   % (HYP_A, HYP_B, GOAL)).
+
+
+
 
 para_e2(H2G) :- 
   para_m(H2G) -> true ;
@@ -2128,12 +2153,14 @@ esimp_bct(and, $false, _, $false) :- !.
 esimp_bct(and, _, $false, $false) :- !.
 esimp_bct(and, $true, FORM, FORM) :- !.
 esimp_bct(and, FORM, $true, FORM) :- !.
+esimp_bct(and, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
 esimp_bct(and, FORM_L, FORM_R, $and(FORM_L, FORM_R)) :- !.
 
 esimp_bct(or, $true, _, $true) :- !.
 esimp_bct(or, _, $true, $true) :- !.
 esimp_bct(or, $false, FORM, FORM) :- !.
 esimp_bct(or, FORM, $false, FORM) :- !.
+esimp_bct(or, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
 esimp_bct(or, FORM_L, FORM_R, $or(FORM_L, FORM_R)) :- !.
 
 % esimp_bct(BCT, FORM_A, FORM_B, FORM) :- 

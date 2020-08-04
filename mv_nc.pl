@@ -11,8 +11,8 @@ mv_temp(PRVR, NAME) :-
   mv(OLD, NEW). 
 
 main([PRVR]) :- 
-  names_from_s(PRVR, X), 
-  names_from_e(PRVR, Y), 
+  names_stashed(PRVR, X), 
+  names_proven(PRVR, Y), 
   subtract(X, Y, Z), 
   length(Z, NUM),
   format("Moving ~w solutions\n", NUM), 

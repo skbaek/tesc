@@ -49,9 +49,9 @@
 :-op(450,xfy,:).
 :-op(501,yfx,@).   
 % :-op(502,xfy,'|').
-:-(system_mode(true),op(502,xfy,'|'),system_mode(false)).
+:-(system_mode(true),op(502,yfx,'|'),system_mode(false)).
 :-op(502,xfx,'~|').
-:-op(503,xfy,&).
+:-op(503,yfx,&).
 :-op(503,xfx,~&).
 :-op(504,xfx,=>).
 :-op(504,xfx,<=).
@@ -104,9 +104,9 @@ declare_TPTP_operators:-
     op(450,xfy,:),
     op(501,yfx,@),   
 %    op(502,xfy,'|'),
-    (system_mode(true),op(502,xfy,'|'),system_mode(false)),
+    (system_mode(true),op(502,yfx,'|'),system_mode(false)),
     op(502,xfx,'~|'),
-    op(503,xfy,&),
+    op(503,yfx,&),
     op(503,xfx,~&),
     op(504,xfx,=>),
     op(504,xfx,<=),

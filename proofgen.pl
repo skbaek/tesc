@@ -24,7 +24,7 @@ bench(PROVER, PRVR, NAME) :-
 main([PROVER]) :- 
   prover_abrv(PROVER, PRVR),
   set_prolog_flag(stack_limit, 4_294_967_296),
-  names_from_s(PRVR, NAMES),
+  names_stashed(PRVR, NAMES),
   length(NAMES, NUM), 
   format("Proving ~w problems\n", NUM),
   maplist_count(bench(PROVER, PRVR), 0, 0, NAMES, CNT, TTL), 

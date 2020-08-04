@@ -69,7 +69,7 @@ solve_time(PRVR, NAME) :-
 
 main([PROVER]) :- 
   prover_abrv(PROVER, PRVR),
-  names_from_s(PRVR, NAMES),
+  names_stashed(PRVR, NAMES),
   length(NAMES, NUM), 
   format("Solving ~w problems\n", NUM),
   maplist_cut(solve_time(PRVR), NAMES), 

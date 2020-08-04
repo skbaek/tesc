@@ -75,10 +75,19 @@ probsel(PATHS) :-
   msg("Generating paths"),
   rec_dir_files("/home/sk/programs/TPTP/Problems", ALL), 
   partition_cut(is_fol_thm, ALL, PATHS, _), !, 
-  % append(_, ['/home/sk/programs/TPTP/Problems/CSR/CSR054+6.p' | REST], TEMP),
-  % PATHS = (['/home/sk/programs/TPTP/Problems/CSR/CSR054+6.p' | REST]),
-  % maplist_cut(prob_ext, PATHS),
   true.
+
+record_problems :- 
+  probsel(PATHS), 
+  maplist(path_name, PATHS, NAMES), 
+  open(problems, write, STRM), 
+  write_list(STRM, NAMES),
+  close(STRM).
+
+get_problem_names(NAMES) :- 
+  open(problems, read, STRM), 
+  stream_strings(STRM, STRS),
+  maplist_cut(string_to_atom, STRS, NAMES).
   
 create_symlink(PATH, NAME) :- 
   atomic_list_concat([PATH, "/", NAME], DIR), 
