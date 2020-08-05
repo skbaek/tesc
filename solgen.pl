@@ -61,14 +61,12 @@ gen_sol(PRVR, NAME) :-
     % record_failure(PRVR, NAME)
   ).
 
-gen_sols(_, 0, _) :- !.
-gen_sols(PROVER, NUM, NAMES) :- 
-  num_pred(NUM, PRED), 
+gen_sols(_, []). 
+gen_sols(PRVR, [NAME | NAMES]) :- 
+  length(NAMES, NUM),
   msg('Solution generation : ~w more problems to go', NUM),
-  msg("Choosing random problem"), 
-  random_pluck(NAMES, NAME, REST), 
-  gen_sol(PROVER, NAME),
-  gen_sols(PROVER, PRED, REST).
+  gen_sol(PRVR, NAME),
+  gen_sols(PRVR, NAMES).
 
 main([PROVER, DROP_ATOM, TAKE_ATOM]) :- 
   prover_abrv(PROVER, PRVR),
@@ -77,7 +75,7 @@ main([PROVER, DROP_ATOM, TAKE_ATOM]) :-
   atom_number(TAKE_ATOM, TAKE),
   slice(DROP, TAKE, ALL, NAMES),
   write_list(NAMES),
-  maplist_cut(gen_sol(PRVR), NAMES),
+  gen_sols(PRVR, NAMES),
   true.
 
 % main([PROVER, NUM_ATOM | OPTS]) :- 
