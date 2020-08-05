@@ -63,7 +63,7 @@ gen_sol(PRVR, NAME) :-
 
 gen_sols(_, []). 
 gen_sols(PRVR, [NAME | NAMES]) :- 
-  length(NAMES, NUM),
+  length([NAME | NAMES], NUM),
   msg('Solution generation : ~w more problems to go', NUM),
   gen_sol(PRVR, NAME),
   gen_sols(PRVR, NAMES).
