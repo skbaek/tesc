@@ -73,7 +73,9 @@ partition_cut(PRED, [ELEM | LIST], INC, EXC) :-
 probsel(PATHS) :- 
   set_prolog_flag(stack_limit, 4_294_967_296),
   msg("Generating paths"),
-  rec_dir_files("/home/sk/programs/TPTP/Problems", ALL), 
+  tptp_directory(TPTP),
+  atomic_list_concat([TPTP, "Problems"], PATH),
+  rec_dir_files(PATH, ALL), 
   partition_cut(is_fol_thm, ALL, PATHS, _), !, 
   true.
 
@@ -92,10 +94,13 @@ get_problem_names(NAMES) :-
 create_symlink(PATH, NAME) :- 
   atomic_list_concat([PATH, "/", NAME], DIR), 
   cd(DIR), 
-  shell("ln -s /home/sk/programs/TPTP/Axioms/ Axioms", _).
+  tptp_directory(TPTP),
+  atomic_concat(["ln -s ", TPTP, "Axioms/ Axioms"], CMD), 
+  shell(CMD, _).
 
 symlink :- 
-  PATH = "/home/sk/programs/TPTP/Problems",
+  tptp_directory(TPTP),
+  atomic_concat(TPTP, "Problems", PATH),
   dir_files(PATH, X), 
   write_list(X),
   maplist_cut(create_symlink(PATH), X).

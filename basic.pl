@@ -1857,9 +1857,10 @@ names_proven(PRVR, NAMES) :-
   maplist_cut(path_name, PATHS, NAMES).
 
 name_tptp(NAME, TPTP) :- 
+  tptp_directory(PATH),
   atom_codes(NAME, [C0, C1, C2 | _]),
   atom_codes(CAT, [C0, C1, C2]),  
-  atomic_list_concat(["/home/sk/programs/TPTP/Problems/", CAT, "/", NAME, ".p"], TPTP).
+  atomic_list_concat([PATH, CAT, "/", NAME, ".p"], TPTP).
   
 path_cat_id(Path, Cat, ID) :- 
   atom_codes(Path, Codes0), 

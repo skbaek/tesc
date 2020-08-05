@@ -5,13 +5,14 @@
 :- [check].
 
 check_proof(PRVR, TESC) :- 
+  tptp_directory(PATH),
   atom_concat(PRVR, TEMP0, TESC), 
   atom_concat('e/', TEMP1, TEMP0), 
   atom_concat(NAME, '.tesc', TEMP1), 
   write(" ────────────────────────────────────────────────────────────────── "), 
   format("Verifying proof : ~w\n", NAME),
   path_cat(NAME, CAT),
-  atomic_list_concat(["/home/sk/programs/TPTP/Problems/", CAT, "/", NAME, ".p"], TPTP), 
+  atomic_list_concat([PATH, CAT, "/", NAME, ".p"], TPTP), 
   check(TPTP, TESC).
 
 main([PROVER]) :- 
