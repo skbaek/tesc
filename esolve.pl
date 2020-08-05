@@ -172,7 +172,13 @@ eq_resolve(FORM_I, FORM_O) :-
   close_lvs(BODY_O, FORM_O).
 combine_opts(none, OPT, OPT).
 combine_opts(OPT, none, OPT).
-combine_opts(some(VAL_A), some(VAL_B), some(VAL_A)) :- VAL_A == VAL_B.
+combine_opts(some((X, Y)), some((Z, W)), some((X, Y))) :- 
+  (
+    X == Z, Y == W ;
+    X == W, Y == W
+  ), !.
+combine_opts(some((X, Y)), some((Z, W)), some((X, Y))) :- unify_with_occurs_check(Z, W).
+combine_opts(some((X, Y)), some((Z, W)), some((Z, W))) :- unify_with_occurs_check(X, Y).
 
 compute_eqn_term(TERM_A, TERM_B, none) :- TERM_A == TERM_B, !.
 compute_eqn_term(TERM_A, TERM_B, EQN) :-
@@ -181,7 +187,7 @@ compute_eqn_term(TERM_A, TERM_B, EQN) :-
   TERM_A = ^(FUN, TERMS_A),
   TERM_B = ^(FUN, TERMS_B),
   maplist(compute_eqn_term, TERMS_A, TERMS_B, EQNS), 
-  foldl(combine_opts, EQNS, none, EQN), !.
+  foldl(combine_opts, EQNS, none, EQN).
 compute_eqn_term(TERM_A, TERM_B, some((TERM_A, TERM_B))) :- \+ TERM_A == TERM_B.
 
 compute_eqn_form(FORM_A, FORM_B, none) :- FORM_A == FORM_B, !.
@@ -352,6 +358,7 @@ mk_rw_term(FROM, TO, TERM_I, TERM_O) :-
 nst_orient(pm, HYP_L, HYP_R, HYP_L, HYP_R).
 nst_orient(rw, HYP_L, HYP_R, HYP_L, HYP_R).
 nst_orient(sr, HYP_L, HYP_R, HYP_R, HYP_L).
+nst_orient(sr, HYP_L, HYP_R, HYP_L, HYP_R).
 
 unify_atom(ATOM_A, ATOM_B) :- 
   erient_form(ATOM_A, TEMP), 
@@ -382,6 +389,7 @@ fold_definition(NUM, ATOM, BODY, FORM, NORM) :-
 
 fold_definition(_, ATOM, BODY, BODY, ATOM).
 
+mk_root(_, $false, rnm, $false) :- !.
 mk_root(assume_negation, $not(FORM), rnm, $not(FORM)).
 mk_root(shift_quantors, FORM, para_push, NORM) :- push_qtf(FORM, NORM).
 mk_root(fof_nnf, FORM, fnnf, NORM) :- fnnf(FORM, NORM), !.
@@ -398,7 +406,8 @@ mk_root(ef, FORM_I, eqf, FORM_O) :-
   cf_lits(BODY_I, LITS), 
   pluck(2, LITS, [LIT_L, LIT_R], REST),
   permutation([LIT_L, LIT_R], [LIT_A, LIT_B]),
-  compute_eqn_form(LIT_A, LIT_B, some((LHS, RHS))), 
+  erient_form(LIT_A, LIT_AT),
+  compute_eqn_form(LIT_AT, LIT_B, some((LHS, RHS))), 
   mk_cf([$not(LHS = RHS), LIT_B | REST], BODY_O), 
   close_lvs(BODY_O, FORM_O).
   
@@ -412,6 +421,9 @@ mk_root(ef, FORM_I, sbsm, FORM_O) :-
 
 mk_root(skolemize, FORM, skm(PAIRS), NORM) :- 
   skolemize_many(FORM, PAIRS, NORM).
+
+mk_root(_, $false, _, rnm, $false) :- !.
+mk_root(_, _, $false, rnm, $false) :- !.
 
 mk_root(apply_def, FORM_A, FORM_B, dff, FORM_C) :- !, 
   % inst_with_pars(0, FORM_A, _, BODY_A),

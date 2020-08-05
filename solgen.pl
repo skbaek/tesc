@@ -20,14 +20,14 @@ e_check(STRM) :-
   ).
   
 call_prover(e, TPTP, TSTP) :- 
-  atomic_list_concat(["eprover --cpu-limit=60 -p ", TPTP, " > ", TSTP], CMD), 
+  atomic_list_concat(["./eprover --cpu-limit=60 -p ", TPTP, " > ", TSTP], CMD), 
   shell(CMD, _), 
   open(TSTP, read, STRM), 
   e_check(STRM), 
   close(STRM).
 
 call_prover(v, TPTP, TSTP) :- 
-  atomic_list_concat(["vampire_rel --proof tptp ", TPTP, " > ", TSTP], CMD),  
+  atomic_list_concat(["./vampire_rel --proof tptp ", TPTP, " > ", TSTP], CMD),  
   shell(CMD, _), 
   open(TSTP, read, STRM), 
   read_line_to_string(STRM, LINE), 
@@ -42,29 +42,6 @@ call_prover(m, TPTP, TSTP) :-
   read_line_to_string(STRM, LINE), 
   close(STRM), 
   string_concat("% SZS status Unsatisfiable for", _, LINE).
-
-solution_archived(PRVR, NAME) :-
-  names_archived(PRVR, NAMES),
-  member(NAME, NAMES).
-
-solution_failed(PRVR, NAME) :-
-  names_failed(PRVR, NAMES),
-  member(NAME, NAMES).
-
-check_solution_attempt(PRVR, NAME) :-
-  names_archived(PRVR, NAS),
-  names_failed(PRVR, NFS),
-  (
-    member(NAME, NAS) -> 
-    msg("Solution already archived"),
-    false
-  ;
-    member(NAME, NFS) -> 
-    msg("Solution already attmpted and failed"),
-    false
-  ; 
-    true
-  ).
 
 record_failure(PRVR, NAME) :-
   atomic_list_concat(["echo ", NAME, " >> ", PRVR, f], CMD),
@@ -81,23 +58,19 @@ gen_sol(PRVR, NAME) :-
   ;
     msg("Proof search failed, deleting solution file, recording failure"),
     delete_file(TSTP),
-    record_failure(PRVR, NAME),
-    false
+    record_failure(PRVR, NAME)
   ).
 
-gen_sols(_, 0, _).
+gen_sols(_, 0, _) :- !.
 gen_sols(PROVER, NUM, NAMES) :- 
-  msg('Starting bench : ~w more problems to go', NUM),
   num_pred(NUM, PRED), 
+  msg('Solution generation : ~w more problems to go', NUM),
   msg("Choosing random problem"), 
   random_pluck(NAMES, NAME, REST), 
-  (
-    gen_sol(PROVER, NAME) ->
-    gen_sols(PROVER, PRED, REST) ; 
-    gen_sols(PROVER, NUM, REST)  
-  ).
+  gen_sol(PROVER, NAME),
+  gen_sols(PROVER, PRED, REST).
 
-main([PROVER, NUM_ATOM]) :- 
+main([PROVER, NUM_ATOM | OPTS]) :- 
   prover_abrv(PROVER, PRVR),
   get_problem_names(ALL),
   length(ALL, ALL_NUM),
@@ -113,8 +86,12 @@ main([PROVER, NUM_ATOM]) :-
   write("---------------------------------------\n"),
   length(NEW, NEW_NUM),
   format("Number of unattempted problems = ~w\n", NEW_NUM),
-  atom_number(NUM_ATOM, NUM),
-  msg("Enter solution genaration loop"),
-  gen_sols(PRVR, NUM, NEW), 
-  msg("Exit solution generation loop"),
-  true.
+  (
+    member('-count', OPTS) -> 
+    true
+  ;
+    atom_number(NUM_ATOM, NUM),
+    msg("Enter solution genaration loop"),
+    gen_sols(PRVR, NUM, NEW), 
+    msg("Exit solution generation loop")
+  ).

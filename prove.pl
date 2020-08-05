@@ -605,6 +605,13 @@ esimp_bct((PREM, CONC, GOAL)) :-
     )
   ).
 
+esimp_bct((PREM, _, GOAL)) :- 
+  bp(PREM, GOAL, PREM_L, PREM_R, GOAL_L, GOAL_R), 
+  aap(PREM_L, GOAL_L, PREM_LL, PREM_LR, GOAL_LT), 
+  mate(PREM_LL, PREM_LR, GOAL_LT),
+  aap(PREM_R, GOAL_R, PREM_RL, PREM_RR, GOAL_RT), 
+  mate(PREM_RL, PREM_RR, GOAL_RT).
+
 esimp_fork_bct((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
   hyp_sign_form(HYP_A, SIGN, FORM), 
   decom_bct(FORM, BCT, FORM_A, FORM_B), 
@@ -973,41 +980,35 @@ get_tup_nth(NUM, (_, TUP), ELEM) :-
   num_pred(NUM, PRED), 
   get_tup_nth(PRED, TUP, ELEM).
 
-% PS = (PROB, SOL, LAST, CNT, STRM, PRVR, OHYPS, OCLAS, nil)
+% PS = (PROB, SOL, LAST, STRM, PRVR, OHYPS, OCLAS, nil)
 get_ps_prob(PS, PROB)  :- get_tup_nth(0, PS, PROB).
 get_ps_sol(PS, SOL)    :- get_tup_nth(1, PS, SOL).
 get_ps_last(PS, LAST)  :- get_tup_nth(2, PS, LAST).
-get_ps_cnt(PS, CNT)    :- get_tup_nth(3, PS, CNT).
-get_ps_strm(PS, STRM)  :- get_tup_nth(4, PS, STRM).
-get_ps_prvr(PS, PRVR)  :- get_tup_nth(5, PS, PRVR).
-get_ps_ohyps(PS, HYPS) :- get_tup_nth(6, PS, HYPS).
-get_ps_oclas(PS, CLAS) :- get_tup_nth(7, PS, CLAS).
+get_ps_strm(PS, STRM)  :- get_tup_nth(3, PS, STRM).
+get_ps_prvr(PS, PRVR)  :- get_tup_nth(4, PS, PRVR).
+get_ps_ohyps(PS, HYPS) :- get_tup_nth(5, PS, HYPS).
+get_ps_oclas(PS, CLAS) :- get_tup_nth(6, PS, CLAS).
 
 set_ps_prob(PS_O, PROB, PS_N)  :- set_tup_nth(0, PS_O, PROB, PS_N).
 set_ps_sol(PS_O, SOL, PS_N)    :- set_tup_nth(1, PS_O, SOL, PS_N).
 set_ps_last(PS_O, LAST, PS_N)  :- set_tup_nth(2, PS_O, LAST, PS_N).
-set_ps_cnt(PS_O, CNT, PS_N)    :- set_tup_nth(3, PS_O, CNT, PS_N).
 
-use_inst(PS, add(FORM), PS_N) :- 
+use_inst(PS, CNT, add(FORM), PS_N) :- 
   get_ps_prob(PS, PROB),
   get_ps_strm(PS, STRM),
-  get_ps_cnt(PS, CNT),
   mk_par(CNT, [], CID),
-  num_succ(CNT, SCNT),
-  justified(SCNT, $pos(FORM), CNT_N),
+  justified(CNT, $pos(FORM)),
   put_char(STRM, 'T'), 
   put_sf(STRM, $pos(FORM)), 
   put_assoc(CID, PROB, $pos(FORM), PROB_N), 
   set_ps_prob(PS, PROB_N, PS1), 
-  set_ps_last(PS1, CID, PS2), 
-  set_ps_cnt(PS2, CNT_N, PS_N), 
+  set_ps_last(PS1, CID, PS_N), 
   true.
   
-use_inst(PS, inf(HINT, IDS, FORM), PS_N) :- 
+use_inst(PS, CNT, inf(HINT, IDS, FORM), PS_N) :- 
   get_ps_prvr(PS, PRVR),
   get_ps_strm(PS, STRM),
   get_ps_prob(PS, PROB),
-  get_ps_cnt(PS, CNT),
   % format("Constructing subproof with ID = ~w, hint = ~w\n\n", [CNT, HINT]),
   get_ps_oclas(PS, OCLAS),
   (
@@ -1015,16 +1016,14 @@ use_inst(PS, inf(HINT, IDS, FORM), PS_N) :-
     get_ps_ohyps(PS, PREMS) ;
     get_context(PROB, IDS, PREMS)
   ),
-  num_succ(CNT, SCNT),
   subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM),
   mk_par(CNT, [], CID),
   put_assoc(CID, PROB, $pos(FORM), PROB_N),
   set_ps_prob(PS, PROB_N, PS1), 
-  set_ps_last(PS1, CID, PS2), 
-  set_ps_cnt(PS2, SCNT, PS_N), 
+  set_ps_last(PS1, CID, PS_N), 
   true.
 
-use_inst(PS, del(ID), PS_N) :- 
+use_inst(PS, _, del(ID), PS_N) :- 
   % format("Deleting lemma ~w\n\n", PID),
   get_ps_strm(PS, STRM),
   get_ps_prob(PS, PROB_O),
@@ -1033,18 +1032,18 @@ use_inst(PS, del(ID), PS_N) :-
   del_assoc(ID, PROB_O, _, PROB_N), !, 
   set_ps_prob(PS, PROB_N, PS_N).
   
-prove(PS0) :- 
+prove(PS0, NUM) :- 
   get_ps_sol(PS0, [INST | SOL]), 
   set_ps_sol(PS0, SOL, PS1), !, 
-  use_inst(PS1, INST, PS2), !, 
-  prove(PS2).
+  use_inst(PS1, NUM, INST, PS2), !, 
+  num_succ(NUM, SUCC),
+  prove(PS2, SUCC).
 
-prove(PS) :- 
+prove(PS, NUM) :- 
   get_ps_sol(PS, []), 
   get_ps_strm(PS, STRM), 
   get_ps_last(PS, LAST),
-  get_ps_cnt(PS, CNT),
-  mk_par(CNT, [], CID),
+  mk_par(NUM, [], CID),
   put_prf(STRM, t($neg($false), x(LAST, CID))).
 
 para_push(TRP) :- 

@@ -393,14 +393,14 @@ xp(
 ) :-
   unify_with_occurs_check(FORM_P, FORM_N), !.
 
-justified(C, $neg($false), C). 
-justified(C, $pos($true), C). 
+justified(_, $neg($false)). 
+justified(_, $pos($true)). 
 
-justified(C, $pos($fa(#(0) = #(0))), C).
-justified(C, $pos($fa($fa($imp(#(1) = #(0), #(0) = #(1))))), C).
-justified(C, $pos($fa($fa($fa($imp(#(2) = #(1), $imp(#(1) = #(0), #(2) = #(0))))))), C).
+justified(_, $pos($fa(#(0) = #(0)))).
+justified(_, $pos($fa($fa($imp(#(1) = #(0), #(0) = #(1)))))).
+justified(_, $pos($fa($fa($fa($imp(#(2) = #(1), $imp(#(1) = #(0), #(2) = #(0)))))))).
 
-justified(C, $pos(FORM), C) :- 
+justified(_, $pos(FORM)) :- 
   is_mono_rel(0, FORM) ; 
   is_mono_fun(0, FORM). 
 
@@ -414,8 +414,7 @@ justified(C, $pos(FORM), C) :-
 %   atom_number(FUNB, NUMB),
 %   NUMA \= NUMB.
 
-justified(C, $pos(FORM), SC) :- 
-  num_succ(C, SC), 
+justified(C, $pos(FORM)) :- 
   strip_fas(FORM, ARI, $imp($ex(ANTE), CONS)), 
   counter_safe(C, ANTE),
   mk_vars(ARI, VARS), 
@@ -423,8 +422,7 @@ justified(C, $pos(FORM), SC) :-
   substitute_form(safe, TERM, ANTE, TEMP),
   TEMP == CONS.
 
-justified(C, $pos(FORM), SC) :- 
-  num_succ(C, SC), 
+justified(C, $pos(FORM)) :- 
   strip_fas(FORM, ARI, $iff(ATOM, BODY)), 
   counter_safe(C, BODY),
   mk_vars(ARI, VARS),
@@ -2007,31 +2005,25 @@ try_del_assoc(KEY, ASC_I, ASC_O) :-
 ;
   ASC_O = ASC_I.
 
-relabel_inst(DICT, NI, CNT, del(NAME), DICT, NI_N, CNT, del(ID)) :-    
+relabel_inst(DICT, NI, _, del(NAME), DICT, NI_N, del(ID)) :-    
   redirect_id(NI, NAME, ID), 
   try_del_assoc(NAME, NI, NI_N).
 
-relabel_inst(DICT, NI, CNT, add(NAME, FORM), DICT, NI_N, CNT_N, add(NORM)) :-    
+relabel_inst(DICT, NI, CNT, add(NAME, FORM), DICT, NI_N, add(NORM)) :-    
   resymb_form(DICT, FORM, NORM),
-  num_succ(CNT, CNT_N),
   put_assoc(NAME, NI, CNT, NI_N).
 
-relabel_inst((RDICT, FDICT), NI, CNT, add([def, REL, ARI], NAME, FORM), (RDICT_N, FDICT), NI_N, SSCNT, add(NORM)) :-    
-  num_succ(CNT, SCNT),
-  num_succ(SCNT, SSCNT),
+relabel_inst((RDICT, FDICT), NI, CNT, add([def, REL, ARI], NAME, FORM), (RDICT_N, FDICT), NI_N, add(NORM)) :-    
   put_assoc(NAME, NI, CNT, NI_N), 
-  put_assoc((REL, ARI), RDICT, SCNT, RDICT_N),
+  put_assoc((REL, ARI), RDICT, CNT, RDICT_N),
   resymb_form((RDICT_N, FDICT), FORM, NORM).
 
-relabel_inst((RDICT, FDICT), NI, CNT, skm(FUN, ARI, NAME, FORM), (RDICT, FDICT_N), NI_N, SSCNT, add(NORM)) :-    
-  num_succ(CNT, SCNT),
-  num_succ(SCNT, SSCNT),
+relabel_inst((RDICT, FDICT), NI, CNT, skm(FUN, ARI, NAME, FORM), (RDICT, FDICT_N), NI_N, add(NORM)) :-    
   put_assoc(NAME, NI, CNT, NI_N), 
-  put_assoc((FUN, ARI), FDICT, SCNT, FDICT_N),
+  put_assoc((FUN, ARI), FDICT, CNT, FDICT_N),
   resymb_form((RDICT, FDICT_N), FORM, NORM).
 
-relabel_inst(DICT, NI, CNT, inf(HINT, NAMES, NAME, FORM), DICT, NI_N, CNT_N, inf(HINT, IDS, NORM)) :-    
-  num_succ(CNT, CNT_N),
+relabel_inst(DICT, NI, CNT, inf(HINT, NAMES, NAME, FORM), DICT, NI_N, inf(HINT, IDS, NORM)) :-    
   (
     NAMES = $orig -> 
     IDS = $orig 
@@ -2042,8 +2034,9 @@ relabel_inst(DICT, NI, CNT, inf(HINT, NAMES, NAME, FORM), DICT, NI_N, CNT_N, inf
   resymb_form(DICT, FORM, NORM).
 
 relabel_sol(DICT, NI, CNT, [INST | SOL], [INST_N | SOL_N]) :- 
-  relabel_inst(DICT, NI, CNT, INST, DICT_N, NI_N, CNT_N, INST_N),   
-  relabel_sol(DICT_N, NI_N, CNT_N, SOL, SOL_N). 
+  relabel_inst(DICT, NI, CNT, INST, DICT_N, NI_N, INST_N),   
+  num_succ(CNT, SCNT),
+  relabel_sol(DICT_N, NI_N, SCNT, SOL, SOL_N). 
 
 relabel_sol(_, _, _, [], []).
 

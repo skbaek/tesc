@@ -240,19 +240,18 @@ check(STRM, PROB, CID, SC, 'S') :-
   put_assoc_write(CID, PROB, CONC, PROB_N), !,
   check(STRM, PROB_N, SC).
     
-check(STRM, PROB, CID, SC, 'T') :- 
+check(STRM, PROB, CID, SC, 'T') :-
   get_sf(STRM, SF),
   no_fv_sf(0, SF),  
-  justified(SC, SF, C_N),
+  num_pred(SC, C),
+  justified(C, SF),
   put_assoc(CID, PROB, SF, PROB_N), !,
-  check(STRM, PROB_N, C_N).
+  check(STRM, PROB_N, SC).
 
-check(STRM, PROB, CID, _, 'W') :- 
-  atom_concat('@', ATOM, CID),
-  atom_number(ATOM, C),
+check(STRM, PROB, _, SC, 'W') :- 
   get_id(STRM, ID), 
   del_assoc(ID, PROB, _, PROB_N), !,
-  check(STRM, PROB_N, C).
+  check(STRM, PROB_N, SC).
 
 check(STRM, PROB, _, _, 'X') :- 
   get_id(STRM, PID), 

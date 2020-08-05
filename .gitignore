@@ -8,8 +8,6 @@ es/
 ee/
 ea/
 tests/
-vampire_rel
-eprover
 proof_trace.pl
 sol_trace.pl
 test.pl
