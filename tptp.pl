@@ -3,10 +3,7 @@
 :- [basic].
 :- [op].
 
-tptp_directory("/home/sk/programs/TPTP/").
-
-current_directory(X) :-
-  working_directory(X, X).
+current_directory(X) :- working_directory(X, X).
 
 name_cat(NAME, CAT) :- 
   atom_chars(NAME, [A, B, C | _]), 
@@ -15,7 +12,7 @@ name_cat(NAME, CAT) :-
 is_include(include(_)).
 
 include_terms(include(AXIOM), TERMS) :- 
-  tptp_directory(TPTP), 
+  tptp_directory(TPTP),
   atomics_to_string([TPTP, AXIOM], PATH),
   tptp_terms(PATH, TERMS).
   

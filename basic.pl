@@ -59,6 +59,8 @@
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
+tptp_directory("/home/sk/programs/TPTP/").
+
 random_pluck(LIST, ELEM, REST) :- 
   random_member(ELEM, LIST), 
   delete(LIST, ELEM, REST).
