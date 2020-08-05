@@ -54,12 +54,6 @@ prob_ext(PATH) :-
   call_tptp2x(PATH) -> true ;
   atomics_to_string(["echo ", PATH, " >> ", "failed.txt"], CMD),
   shell(CMD, _).
-
-drop(0, X, X).
-drop(NUM, [_ | Y], Z) :-
-  0 < NUM,
-  PRED is NUM - 1,  
-  drop(PRED, Y, Z).
   
 partition_cut(_, [], [], []). 
 partition_cut(PRED, [ELEM | LIST], INC, EXC) :- 
@@ -95,7 +89,7 @@ create_symlink(PATH, NAME) :-
   atomic_list_concat([PATH, "/", NAME], DIR), 
   cd(DIR), 
   tptp_directory(TPTP),
-  atomic_concat(["ln -s ", TPTP, "Axioms/ Axioms"], CMD), 
+  atomic_list_concat(["ln -s ", TPTP, "Axioms/ Axioms"], CMD), 
   shell(CMD, _).
 
 symlink :- 

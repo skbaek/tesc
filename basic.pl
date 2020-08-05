@@ -675,6 +675,20 @@ apply_uop(UCT, FORM, $SUB) :-
 apply_bop(BCT, FORM_A, FORM_B, $SUB) :- 
   SUB =.. [BCT, FORM_A, FORM_B].
 
+drop(0, LIST, LIST). 
+drop(NUM, [_ | LIST], REM) :- 
+  num_pred(NUM, PRED),
+  drop(PRED, LIST, REM).
+
+take(0, _, []). 
+take(NUM, [ELEM | LIST], [ELEM | REM]) :- 
+  num_pred(NUM, PRED),
+  take(PRED, LIST, REM).
+
+slice(DROP, TAKE, LIST, SLICE) :- 
+  drop(DROP, LIST, TEMP), 
+  take(TAKE, TEMP, SLICE). 
+
 maplist_cut(_, []).
 
 maplist_cut(GOAL, [Elem | List]) :- 
@@ -1860,7 +1874,7 @@ name_tptp(NAME, TPTP) :-
   tptp_directory(PATH),
   atom_codes(NAME, [C0, C1, C2 | _]),
   atom_codes(CAT, [C0, C1, C2]),  
-  atomic_list_concat([PATH, CAT, "/", NAME, ".p"], TPTP).
+  atomic_list_concat([PATH, 'Problems/', CAT, "/", NAME, ".p"], TPTP).
   
 path_cat_id(Path, Cat, ID) :- 
   atom_codes(Path, Codes0), 

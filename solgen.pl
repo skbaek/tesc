@@ -56,9 +56,9 @@ gen_sol(PRVR, NAME) :-
     call_prover(PRVR, TPTP, TSTP) -> 
     msg("Proof search successful.")
   ;
-    msg("Proof search failed, deleting solution file, recording failure"),
-    delete_file(TSTP),
-    record_failure(PRVR, NAME)
+    msg("Proof search failed, deleting solution file"),
+    delete_file(TSTP)
+    % record_failure(PRVR, NAME)
   ).
 
 gen_sols(_, 0, _) :- !.
@@ -70,28 +70,38 @@ gen_sols(PROVER, NUM, NAMES) :-
   gen_sol(PROVER, NAME),
   gen_sols(PROVER, PRED, REST).
 
-main([PROVER, NUM_ATOM | OPTS]) :- 
+main([PROVER, DROP_ATOM, TAKE_ATOM]) :- 
   prover_abrv(PROVER, PRVR),
   get_problem_names(ALL),
-  length(ALL, ALL_NUM),
-  format("+ Total number of problems = ~w\n", ALL_NUM), 
-  names_archived(PRVR, NAS),
-  length(NAS, NAS_NUM),
-  format("- Number of archived problems = ~w\n", NAS_NUM), 
-  names_failed(PRVR, NFS),
-  length(NFS, NFS_NUM),
-  format("- Number of failed problems = ~w\n", NFS_NUM), 
-  subtract(ALL, NAS, TEMP),
-  subtract(TEMP, NFS, NEW),
-  write("---------------------------------------\n"),
-  length(NEW, NEW_NUM),
-  format("Number of unattempted problems = ~w\n", NEW_NUM),
-  (
-    member('-count', OPTS) -> 
-    true
-  ;
-    atom_number(NUM_ATOM, NUM),
-    msg("Enter solution genaration loop"),
-    gen_sols(PRVR, NUM, NEW), 
-    msg("Exit solution generation loop")
-  ).
+  atom_number(DROP_ATOM, DROP),
+  atom_number(TAKE_ATOM, TAKE),
+  slice(DROP, TAKE, ALL, NAMES),
+  write_list(NAMES),
+  maplist_cut(gen_sol(PRVR), NAMES),
+  true.
+
+% main([PROVER, NUM_ATOM | OPTS]) :- 
+%   prover_abrv(PROVER, PRVR),
+%   get_problem_names(ALL),
+%   length(ALL, ALL_NUM),
+%   format("+ Total number of problems = ~w\n", ALL_NUM), 
+%   names_archived(PRVR, NAS),
+%   length(NAS, NAS_NUM),
+%   format("- Number of archived problems = ~w\n", NAS_NUM), 
+%   names_failed(PRVR, NFS),
+%   length(NFS, NFS_NUM),
+%   format("- Number of failed problems = ~w\n", NFS_NUM), 
+%   subtract(ALL, NAS, TEMP),
+%   subtract(TEMP, NFS, NEW),
+%   write("---------------------------------------\n"),
+%   length(NEW, NEW_NUM),
+%   format("Number of unattempted problems = ~w\n", NEW_NUM),
+%   (
+%     member('-count', OPTS) -> 
+%     true
+%   ;
+%     atom_number(NUM_ATOM, NUM),
+%     msg("Enter solution genaration loop"),
+%     gen_sols(PRVR, NUM, NEW), 
+%     msg("Exit solution generation loop")
+%   ).
