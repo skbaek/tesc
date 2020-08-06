@@ -459,8 +459,8 @@ sat(CLAS, GOAL) :-
   maplist_cut(cla_nums(ANA), CLAS, NUMSS),
   numss_dimacs(NUMSS, DIMACS),
   write_file("temp.cnf", DIMACS), !,
-  shell("cadical -q temp.cnf temp.drat", _), !,
-  shell("drat-trim temp.cnf temp.drat -L temp.lrat", _), !,
+  shell("./cadical -q temp.cnf temp.drat", _), !,
+  shell("./drat-trim temp.cnf temp.drat -L temp.lrat", _), !,
 
   write("Reading LRAT file...\n\n"),
   file_sat_insts(NAA, "temp.lrat", SIS), 
