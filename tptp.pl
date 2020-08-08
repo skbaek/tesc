@@ -101,7 +101,7 @@ pcla_hyp((ID, FORM), (ID, $pos(FORM))).
 
 pcla_cla((ID, FORM), (ID, NORM)) :- 
   inst_with_lvs(FORM, BODY), !,
-  body_lits(BODY, LITS), !, 
+  body_lits(BODY, LITS, []), !, 
   predsort(lit_cmp, LITS, TEMP), !,
   reverse(TEMP, NORM), !.
 

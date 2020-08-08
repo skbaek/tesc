@@ -391,11 +391,15 @@ numss_dimacs(NUMSs, DIMACS) :-
 lit_sl($not(ATOM), $neg(ATOM)) :- !.
 lit_sl(ATOM, $pos(ATOM)).
 
-form_sls($or(LIT, FORM), [SL | SLS]) :- !,
-  lit_sl(LIT, SL),
-  form_sls(FORM, SLS). 
-  
-form_sls(LIT, [SL]) :- lit_sl(LIT, SL).
+form_sls(FORM, SLS) :- 
+  body_lits(FORM, LITS, []), 
+  maplist_cut(lit_sl, LITS, SLS).
+
+% form_sls($or(LIT, FORM), [SL | SLS]) :- !,
+%   lit_sl(LIT, SL),
+%   form_sls(FORM, SLS). 
+%   
+% form_sls(LIT, [SL]) :- lit_sl(LIT, SL).
 
 find_new_unit_core([SL], _, SL) :- !.
 find_new_unit_core([SL_I | SLS_A], SLS_B, SL) :- 
@@ -700,7 +704,7 @@ subsume_cla(LITS_A, (ID, LITS_B), ID) :-
 
 find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :- 
   inst_with_pars(CNT, FORM, _, BODY), !, 
-  body_lits(BODY, LITS), !, 
+  body_lits(BODY, LITS, []), !, 
   try(subsume_cla(LITS), CLAS, ID).
 
 orig_aux(PREM, GOAL, CONC) :- 
@@ -728,8 +732,7 @@ infer(e, para_e2, [PREM], _, CONC, GOAL) :-
 infer(e, para_push, [PREM], _, CONC, GOAL) :-
   para_push((PREM, CONC, GOAL)). 
 
-infer(_, RNM, [PREM | _], _, CONC, GOAL) :- 
-  member(RNM, [rnm, rnm, rnm, rnm, rnm, rnm, rnm]),
+infer(_, rnm, [PREM | _], _, CONC, GOAL) :- 
   mate(PREM, CONC, GOAL).
 
 infer(e, simp, [PREM | _], _, CONC, GOAL) :- 
@@ -913,9 +916,15 @@ infer(v, vnnf, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   vnnf((PREM, CONC, GOAL)).
 
-infer(_, parac, PREMS, _, CONC, GOAL) :- 
+infer(e, parac, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
   parac((PREM, CONC, GOAL)).
+
+infer(v, parac, PREMS, _, CONC, GOAL) :- 
+  many_nb([d], [CONC], GOAL, [HYP_C], GOAL_C), 
+  member(PREM, PREMS),
+  many_nb([c], [PREM], GOAL_C, [HYP_P], GOAL_P), 
+  parac((HYP_P, HYP_C, GOAL_P)).
 
 infer(_, paratf, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),

@@ -1850,23 +1850,23 @@ maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :-
 %   atom_concat('e/', TEMP1, TEMP0), 
 %   atom_concat(NAME, '.tesc', TEMP1).
 
-names_failed(PRVR, NAMES) :- 
-  atom_concat(PRVR, f, PATH),
-  file_strings(PATH, STRS),
-  maplist_cut(string_to_atom, STRS, NAMES).
-
-names_archived(PRVR, NAMES) :- 
-  atom_concat(PRVR, a, PATH),
-  rec_dir_files(PATH, PATHS),
-  maplist_cut(path_name, PATHS, NAMES).
+% names_failed(PRVR, NAMES) :- 
+%   atom_concat(PRVR, f, PATH),
+%   file_strings(PATH, STRS),
+%   maplist_cut(string_to_atom, STRS, NAMES).
+% 
+% names_archived(PRVR, NAMES) :- 
+%   atom_concat(PRVR, a, PATH),
+%   rec_dir_files(PATH, PATHS),
+%   maplist_cut(path_name, PATHS, NAMES).
 
 names_stashed(PRVR, NAMES) :- 
-  atom_concat(PRVR, s, PATH),
+  atom_concat(PRVR, sol, PATH),
   rec_dir_files(PATH, PATHS),
   maplist_cut(path_name, PATHS, NAMES).
 
 names_proven(PRVR, NAMES) :- 
-  atom_concat(PRVR, e, PATH),
+  atom_concat(PRVR, prf, PATH),
   rec_dir_files(PATH, PATHS),
   maplist_cut(path_name, PATHS, NAMES).
 
@@ -1892,11 +1892,22 @@ path_name(PATH, NAME) :-
   \+ member(46, TEMP3), !, 
   atom_codes(NAME, TEMP2).
 
-body_lits($or(LIT, FORM), [LIT | LITS]) :- !, 
-  literal(LIT),
-  body_lits(FORM, LITS).
+body_lits($or(FORM_L, FORM_R), LITS, TAIL) :- !, 
+  body_lits(FORM_L, LITS, TEMP), 
+  body_lits(FORM_R, TEMP, TAIL).
 
-body_lits(LIT, [LIT]) :- literal(LIT).
+body_lits(LIT, [LIT | TAIL], TAIL) :- literal(LIT).
+
+print_size(PATH) :- 
+  atomic_concat("wc -c ", PATH, CMD),
+  shell(CMD, _).
+
+trace_if_debug(OPTS) :-
+  member('-debug', OPTS) ->
+  guitracer,
+  trace 
+;
+  true.
 
 try(PRED, [ELEM | LIST], RST) :- 
   call(PRED, ELEM, RST) -> 

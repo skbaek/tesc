@@ -178,7 +178,6 @@ check(TPTP, TESC) :-
   pose(none, TPTP, _, _, PROB),
   open(TESC, read, STRM, [encoding(octet)]), !, 
   check(STRM, PROB, 0), 
-  write("Proof verified.\n\n"),
   close(STRM).
 
 check(STRM, PROB, C) :- 

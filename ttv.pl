@@ -3,6 +3,7 @@
 
 :- [check].
   
-main([TPTP, TESC]) :-
+main([TPTP, TESC | OPTS]) :-
   set_prolog_flag(stack_limit, 4_294_967_296),
+  trace_if_debug(OPTS),
   check(TPTP, TESC).
