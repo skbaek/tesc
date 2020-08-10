@@ -1,3 +1,4 @@
+:- [paths].
 % % :- module(basic, 
 %   [
 %     sbsm/3,
@@ -58,8 +59,6 @@
 % :- meta_predicate maplist_cut(2, ?, ?), maplist_cut(3, ?, ?, ?), timed_call(+, 0, 0).
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
-
-tptp_directory("/home/sk/programs/TPTP/").
 
 random_pluck(LIST, ELEM, REST) :- 
   random_member(ELEM, LIST), 
@@ -1852,16 +1851,11 @@ rec_dir_files(Dir, Files) :-
 
 maplist_count(_, CNT, TTL, [], CNT, TTL).
 maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :- 
-  format("PASSED/TOTAL = ~w/~w\n\n", [CNT_I, TTL_I]),
-  (
-    call(GOAL, ELEM) ->  
-    num_succ(CNT_I, CNT_T), 
-    num_succ(TTL_I, TTL_T), 
-    maplist_count(GOAL, CNT_T, TTL_T, LIST, CNT_O, TTL_O)
-  ;
-    num_succ(TTL_I, TTL_T), 
-    maplist_count(GOAL, CNT_I, TTL_T, LIST, CNT_O, TTL_O)
-  ).
+  atomics_to_string(["PASSED/TOTAL = ", CNT_I, "/", TTL_I, "\n"], STRING),
+  write(STRING),
+  (call(GOAL, ELEM) -> num_succ(CNT_I, CNT_T) ; CNT_I = CNT_T),
+  num_succ(TTL_I, TTL_T), 
+  maplist_count(GOAL, CNT_T, TTL_T, LIST, CNT_O, TTL_O).
 
 % tstp_name(PRVR, TSTP, NAME) :- 
 %   atom_concat(PRVR, TEMP0, TSTP), 

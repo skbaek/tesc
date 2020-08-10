@@ -502,8 +502,11 @@ eskm(AOCS, H2G) :-
 skm(AOCS, H2G) :- 
   para_m(H2G) -> true 
 ;
-  paral_cd(H2G, H2G_N), 
+  para_c_(H2G, H2G_N), 
   %paracd(H2G, H2G_N), 
+  skm(AOCS, H2G_N)
+;
+  paracd(H2G, H2G_N), 
   skm(AOCS, H2G_N)
 ;
   paraab(H2G, H2G_L, H2G_R),
@@ -743,7 +746,9 @@ infer(PRVR, skm, [PREM | AOCS], _, CONC, GOAL) :-
   PRVR = e -> 
   eskm(AOCS, (PREM, CONC, GOAL)) 
 ;
-  skm(AOCS, (PREM, CONC, GOAL)).
+  many_nb([d], [CONC], GOAL, [CONC_N], GOAL1), 
+  % many_nb([c], [PREM], GOAL1, [PREM_N], GOAL2), 
+  skm(AOCS, (PREM, CONC_N, GOAL1)).
 
 infer(_, ngt, [PREM], _, CONC, GOAL) :- 
   sp(CONC, GOAL, TEMP, GOAL_T), 
@@ -930,10 +935,14 @@ infer(_, paratf, PREMS, _, CONC, GOAL) :-
 
 report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :- 
   write("\nInference failed, hints : "), 
-  write(HINTS), nl, nl,
+  write(HINTS), 
+  write("\n\n"), 
   write("\nInference failed, premises :\n\n"),
   write_list(PREMS), 
-  format("\nInference failed, conclusion : ~w\n\n", CONC), 
+  write("Inference failed, conclusion = "), 
+  write(CONC), 
+  write("\n\n"),
+  
   open("temp_trace", write, Stream), 
   write(Stream, ":- [basic].\n\n"), 
   format(Stream, '~w.\n\n', debug_prvr(PRVR)), 
@@ -945,7 +954,6 @@ report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
   format(Stream, '~w.\n\n', debug_prob(PROB)), 
   format(Stream, '~w.\n\n', debug_prf(PRF)), 
   close(Stream), 
-  
   open("temp_trace", read, STRM_R), 
   open("proof_trace.pl", write, STRM_W), 
   quote_par(STRM_R, STRM_W), 
@@ -953,7 +961,7 @@ report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
   close(STRM_W),
   delete_file("temp_trace"),
   throw(compilation_timeout),
-  false.
+  true.
 
 subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
@@ -965,7 +973,10 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
   timed_call(
     30,
     infer(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), GOAL), 
-    (report_failure(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), false)
+    (
+      report_failure(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
+      false
+    )
   ), !,
   ground_all(c, PRF),
   % put_assoc(CID, PROB_I, - FORM, SUB_PROB),

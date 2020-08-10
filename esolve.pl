@@ -562,7 +562,6 @@ tup_insts(
     20, 
     mk_tree_fwd(CTX, TGT, ANT, TREE),
     (
-      write("Forward search failed, print failure trace\n"),
       report_sol_failure(CTX, (CID, TYPE, FORM, ANT)),
       false
     )
@@ -577,16 +576,19 @@ mk_dels(NUM, DELS) :-
   maplist_cut(mk(t), NUMS, IDS),
   maplist_cut(mk(del), IDS, DELS).
 
-report_sol_failure(CTX, ANT) :- 
-  write("\nSolution failed, annotation : "), 
-  write(ANT), nl, nl,
+% report_sol_failure(CTX, ANT) :- 
+report_sol_failure(_, ANT) :- 
+  write("\nSolution failed, annotation = ", log), 
+  write(ANT, log),
+  write("\n", log),
   % write("\nInference failed, premises :\n\n"),
   % write_list(PREMS), 
   % format("\nInference failed, conclusion : ~w\n\n", CONC), 
-  open("sol_trace.pl", write, Stream), 
-  format(Stream, '~w.\n\n', debug_ctx(CTX)), 
-  format(Stream, '~w.\n\n', debug_ant(ANT)), 
-  close(Stream).
+  % open("sol_trace.pl", write, Stream), 
+  % format(Stream, '~w.\n\n', debug_ctx(CTX)), 
+  % format(Stream, '~w.\n\n', debug_ant(ANT)), 
+  % close(Stream),
+  true.
 
 tup_ctx((ID, _, FORM, _), CTX_I, CTX_O) :- 
   put_assoc(ID, CTX_I, $pos(FORM), CTX_O).

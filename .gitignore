@@ -5,6 +5,8 @@ esol/
 esol.tar.xz
 eprf/
 tests/
+temp.tesc
+paths.pl
 proof_trace.pl
 sol_trace.pl
 test.pl

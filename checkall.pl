@@ -4,7 +4,7 @@
 :- [basic].
 :- [check].
 
-check_proof(PRVR, TESC) :- 
+check_proof(PRVR, TESC) :-
   tptp_directory(PATH),
   atom_concat(PRVR, TEMP0, TESC), 
   atom_concat('prf/', TEMP1, TEMP0), 
@@ -12,16 +12,9 @@ check_proof(PRVR, TESC) :-
   write(" ────────────────────────────────────────────────────────────────── "), 
   format("Verifying proof : ~w\n", NAME),
   path_cat(NAME, CAT),
-  atomic_list_concat([PATH, 'Problems/', CAT, "/", NAME, ".p"], TPTP), 
-  (
-    check_term(TPTP, TESC) -> 
-    write("Proof verified\n")
-  ;
-    size_file(TESC, SIZE),
-    write("\n>>>>>>> Proof invalid, file size = "),
-    write(SIZE), nl,
-    false
-  ).
+  atomic_list_concat([PATH, 'Problems/', CAT, "/", NAME, ".p"], TPTP),
+  check_strm(TPTP, TESC),
+  write("Proof verified\n").
 
 main([PROVER]) :- 
   prover_abrv(PROVER, PRVR),

@@ -113,6 +113,11 @@ check_term(PROB, _, _, _, x(PID, NID)) :-
   get_assoc(NID, PROB, $neg(FORM_N)),
   FORM_P == FORM_N.
 
+check_term(_, CNT, _, _, PRF) :- 
+  format("Count = ~w\n\n", CNT),
+  format("Proof = ~w\n\n", PRF),
+  throw(invalid_proof).
+
 check_term(PROB, CNT, PRF) :- 
   mk_par(CNT, [], CID),
   num_succ(CNT, SUCC),
@@ -130,14 +135,14 @@ check_strm(TPTP, TESC) :-
   style_check(-singleton),
   pose(none, TPTP, _, _, PROB),
   open(TESC, read, STRM, [encoding(octet)]), !, 
-  check_strm(STRM, PROB, 0), 
+  check_strm(STRM, PROB, 0),  
   close(STRM).
 
 check_strm(STRM, PROB, CNT) :- 
   mk_par(CNT, [], CID),
   num_succ(CNT, SUCC),
   get_char(STRM, CH), !,
-  check_strm(STRM, PROB, CNT, SUCC, CID, CH).
+  check_strm(STRM, PROB, CNT, SUCC, CID, CH), !.
 
 check_strm(STRM, PROB, _, SUCC, CID, 'A') :- 
   get_id(STRM, ID),  
@@ -145,16 +150,16 @@ check_strm(STRM, PROB, _, SUCC, CID, 'A') :-
   get_assoc(ID, PROB, PREM),
   ab(DIR, PREM, CONC), 
   put_assoc(CID, PROB, CONC, PROB_N), !,
-  check_strm(STRM, PROB_N, SUCC). 
+  check_strm(STRM, PROB_N, SUCC), !. 
     
 check_strm(STRM, PROB, _, SUCC, CID, 'B') :- 
   get_id(STRM, ID), 
   get_assoc(ID, PROB, PREM),
   bb(PREM, CONC_L, CONC_R),
-  put_assoc(CID, PROB, CONC_L, PROB_L),
+  put_assoc(CID, PROB, CONC_L, PROB_L), !,
   put_assoc(CID, PROB, CONC_R, PROB_R), !, 
   check_strm(STRM, PROB_L, SUCC), !,
-  check_strm(STRM, PROB_R, SUCC).
+  check_strm(STRM, PROB_R, SUCC), !.
 
 check_strm(STRM, PROB, CNT, SUCC, CID, 'C') :- 
   get_id(STRM, ID), 
@@ -165,14 +170,14 @@ check_strm(STRM, PROB, CNT, SUCC, CID, 'C') :-
   counter_safe(CNT, TERM),
   cb(TERM, PREM, CONC), 
   put_assoc(CID, PROB, CONC, PROB_N), !,
-  check_strm(STRM, PROB_N, SUCC).
+  check_strm(STRM, PROB_N, SUCC), !.
 
 check_strm(STRM, PROB, CNT, SUCC, CID, 'D') :- 
   get_id(STRM, ID), 
   get_assoc(ID, PROB, PREM),
   db(CNT, PREM, CONC), 
   put_assoc(CID, PROB, CONC, PROB_N), !,
-  check_strm(STRM, PROB_N, SUCC).
+  check_strm(STRM, PROB_N, SUCC), !.
 
 check_strm(STRM, PROB, CNT, SUCC, CID, 'F') :- 
   get_form(STRM, FORM), 
@@ -180,33 +185,32 @@ check_strm(STRM, PROB, CNT, SUCC, CID, 'F') :-
   no_fv_form(0, FORM), % No free object variables in Form
   counter_safe(CNT, FORM), % No new parameters in Form
   put_assoc(CID, PROB, $neg(FORM), PROB_N), !,
-  check_strm(STRM, PROB_N, SUCC),
+  check_strm(STRM, PROB_N, SUCC), !,
   put_assoc(CID, PROB, $pos(FORM), PROB_P), !,
-  check_strm(STRM, PROB_P, SUCC).
+  check_strm(STRM, PROB_P, SUCC), !.
 
-check_strm(STRM, PROB, CID, SC, 'S') :- 
+check_strm(STRM, PROB, _, SUCC, CID, 'S') :- 
   get_id(STRM, ID), 
   get_assoc(ID, PROB, PREM),
   sb(PREM, CONC), 
   put_assoc(CID, PROB, CONC, PROB_N), !,
-  check_strm(STRM, PROB_N, SC).
+  check_strm(STRM, PROB_N, SUCC), !.
     
-check_strm(STRM, PROB, CID, SC, 'T') :-
+check_strm(STRM, PROB, CNT, SUCC, CID, 'T') :-
   get_sf(STRM, SF),
   no_fv_sf(0, SF),  
-  num_pred(SC, C),
-  justified(C, SF),
+  justified(CNT, SF),
   put_assoc(CID, PROB, SF, PROB_N), !,
-  check_strm(STRM, PROB_N, SC).
+  check_strm(STRM, PROB_N, SUCC), !.
 
-check_strm(STRM, PROB, _, SC, 'W') :- 
+check_strm(STRM, PROB, _, SUCC, _, 'W') :- 
   get_id(STRM, ID), 
   del_assoc(ID, PROB, _, PROB_N), !,
-  check_strm(STRM, PROB_N, SC).
+  check_strm(STRM, PROB_N, SUCC), !.
 
-check_strm(STRM, PROB, _, _, 'X') :- 
+check_strm(STRM, PROB, _, _, _, 'X') :- 
   get_id(STRM, PID), 
   get_id(STRM, NID), 
   get_assoc(PID, PROB, $pos(FORM_P)),
   get_assoc(NID, PROB, $neg(FORM_N)),
-  FORM_P == FORM_N.
+  FORM_P == FORM_N, !.

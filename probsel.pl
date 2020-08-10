@@ -87,7 +87,7 @@ get_problem_names(NAMES) :-
   
 create_symlink(PATH, NAME) :- 
   atomic_list_concat([PATH, "/", NAME], DIR), 
-  cd(DIR), 
+  cd(DIR),
   tptp_directory(TPTP),
   atomic_list_concat(["ln -s ", TPTP, "Axioms/ Axioms"], CMD), 
   shell(CMD, _).
