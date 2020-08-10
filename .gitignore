@@ -1,6 +1,8 @@
 vsol/
+vsol.tar.xz
 vprf/
 esol/
+esol.tar.xz
 eprf/
 tests/
 proof_trace.pl

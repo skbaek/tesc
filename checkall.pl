@@ -14,11 +14,13 @@ check_proof(PRVR, TESC) :-
   path_cat(NAME, CAT),
   atomic_list_concat([PATH, 'Problems/', CAT, "/", NAME, ".p"], TPTP), 
   (
-    check(TPTP, TESC) -> 
+    check_term(TPTP, TESC) -> 
     write("Proof verified\n")
   ;
-    write("!!! Proof invalid, proof size = "),
-    print_size(TESC), nl
+    size_file(TESC, SIZE),
+    write("\n>>>>>>> Proof invalid, file size = "),
+    write(SIZE), nl,
+    false
   ).
 
 main([PROVER]) :- 

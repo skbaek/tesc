@@ -503,6 +503,7 @@ skm(AOCS, H2G) :-
   para_m(H2G) -> true 
 ;
   paral_cd(H2G, H2G_N), 
+  %paracd(H2G, H2G_N), 
   skm(AOCS, H2G_N)
 ;
   paraab(H2G, H2G_L, H2G_R),
@@ -710,7 +711,7 @@ find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :-
 orig_aux(PREM, GOAL, CONC) :- 
   infer(_, id, [PREM], _, CONC, GOAL) ;
   pmt_cla(PREM, CONC, GOAL) ;
-  parac((PREM, CONC, GOAL)).
+  para_clausal(v, (PREM, CONC, GOAL)).
 
 
 
@@ -813,7 +814,7 @@ infer(e, orig, PREMS, _, CONC, GOAL) :-
 infer(v, orig, PREMS, CLAS, CONC, GOAL) :- 
   infer(_, id, PREMS, CLAS, CONC, GOAL) ;
   infer(_, opmt, PREMS, CLAS, CONC, GOAL) ;
-  infer(_, parac, PREMS, CLAS, CONC, GOAL). 
+  infer(v, para_clausal, PREMS, CLAS, CONC, GOAL). 
 
 infer(_, eqf, [PREM], _, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
@@ -916,15 +917,12 @@ infer(v, vnnf, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   vnnf((PREM, CONC, GOAL)).
 
-infer(e, parac, PREMS, _, CONC, GOAL) :- 
-  member(PREM, PREMS),
-  parac((PREM, CONC, GOAL)).
 
-infer(v, parac, PREMS, _, CONC, GOAL) :- 
+infer(PRVR, para_clausal, PREMS, _, CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [HYP_C], GOAL_C), 
   member(PREM, PREMS),
   many_nb([c], [PREM], GOAL_C, [HYP_P], GOAL_P), 
-  parac((HYP_P, HYP_C, GOAL_P)).
+  para_clausal(PRVR, (HYP_P, HYP_C, GOAL_P)).
 
 infer(_, paratf, PREMS, _, CONC, GOAL) :- 
   member(PREM, PREMS),
@@ -965,7 +963,7 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
   num_succ(CNT, SCNT),
   GOAL = (PRF, SCNT), 
   timed_call(
-    100,
+    30,
     infer(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), GOAL), 
     (report_failure(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), false)
   ), !,

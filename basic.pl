@@ -345,12 +345,11 @@ dp(
   (PID, SF),
   (d(PID, PRF), C), 
   (CID, SF_N),
-  (PRF, SSC)
+  (PRF, SC)
 ) :-
   mk_par(C, [], CID),
   num_succ(C, SC),
-  num_succ(SC, SSC),
-  db(SC, SF, SF_N), !.
+  db(C, SF, SF_N), !.
 
 fp(
   FORM,
@@ -361,7 +360,7 @@ fp(
   (PRF_B, SC)
 ) :-
   mk_par(C, [], CID),
-  num_succ(C, SC),!.
+  num_succ(C, SC), !.
 
 tp(
   SF,
@@ -385,8 +384,9 @@ sp(
 wp(
   (PID, _),
   (w(PID, PRF), C), 
-  (PRF, C)
-).
+  (PRF, SC)
+) :-
+  num_succ(C, SC).
 
 xp(
   (PID, $pos(FORM_P)), 
@@ -516,9 +516,8 @@ fps($neg(FORM), GOAL, HYP_P, HYP_N, GOAL_P, GOAL_N) :-
 
 cdp(HYP_C, HYP_D, GOAL, HYP_N_C, HYP_N_D, GOAL_N) :- 
   GOAL = (_, CNT), 
-  num_succ(CNT, SCNT),
   dp(HYP_D, GOAL, HYP_N_D, GOAL_T), 
-  mk_par(SCNT, [], PAR),
+  mk_par(CNT, [], PAR),
   cp(HYP_C, PAR, GOAL_T, HYP_N_C, GOAL_N). 
 
 dp_lax(CNT_I, HYP_I, GOAL_I, CNT_O, HYP_O, GOAL_O) :-  
@@ -1024,6 +1023,16 @@ put_bytes_dot(STRM, BYTES) :-
   put_bytes(STRM, BYTES), 
   put_dot(STRM). 
 
+put_functor(STRM, FUN) :- 
+  put_atom(STRM, FUN) ;
+  put_string(STRM, FUN).
+
+put_string(STRM, STR) :- 
+  string(STR), 
+  put_byte(STRM, 34), 
+  string_codes(STR, BYTES), 
+  put_bytes_dot(STRM, BYTES).
+
 put_atom(STRM, ATOM) :- 
   atom(ATOM), 
   atom_codes(ATOM, BYTES),
@@ -1047,7 +1056,7 @@ put_term(STRM, #(NUM)) :- !, put_char(STRM, '#'), put_num(STRM, NUM).
 put_term(STRM, TERM) :- 
   TERM =.. [FUN | TERMS],
   put_char(STRM, '^'), 
-  put_atom(STRM, FUN), 
+  put_functor(STRM, FUN), 
   put_terms(STRM, TERMS). 
 
 put_terms(STRM, TERMS) :- 
@@ -1297,6 +1306,15 @@ get_string(STRM, STR) :-
   get_until_dot(STRM, BYTES), 
   string_codes(STR, BYTES).
   
+get_functor(STRM, FUN) :- 
+  get_until_dot(STRM, [BYTE | BYTES]), 
+  (
+    BYTE = 34 -> 
+    string_codes(FUN, BYTES) 
+  ;
+    atom_codes(FUN, [BYTE | BYTES])
+  ).
+
 get_atom(STRM, ATOM) :- 
   get_string(STRM, STR),
   atom_string(ATOM, STR).
@@ -1325,7 +1343,7 @@ get_term(STRM, TERM) :-
 
 get_term(STRM, '#', #(NUM)) :- get_num(STRM, NUM).
 get_term(STRM, '^', TERM) :- 
-  get_atom(STRM, FUN), 
+  get_functor(STRM, FUN), 
   get_terms(STRM, TERMS),
   TERM =.. [FUN | TERMS].
 
@@ -1762,20 +1780,20 @@ parac_b(HYP, GOAL, HGS) :-
   ) ;
   HGS = [([HYP], GOAL)].
 
-parac_two((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
+para_clausal_two((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
   (imp_hyp(HYP_A) ; imp_hyp(HYP_B)),
   (
     abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ;
     abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R) 
   ).
 
-parac_many_aux(HYP_A, ([HYP_B], GOAL), (HYP_A, HYP_B, GOAL)).
+% para_clausal_many_aux(HYP_A, ([HYP_B], GOAL), (HYP_A, HYP_B, GOAL)).
 
-parac_many(TRP, TRPS) :- 
-  parac_many(TRP, HYPS, HGS), 
-  maplist_cut(parac_many_aux, HYPS, HGS, TRPS). 
+% para_clausal_many(TRP, TRPS) :- 
+  % para_clausal_many(TRP, HYPS, HGS), 
+  % maplist_cut(para_clausal_many_aux, HYPS, HGS, TRPS). 
 
-parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :- 
+para_clausal_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :- 
   \+ imp_hyp(HYP_A),
   \+ imp_hyp(HYP_B),
   (
@@ -1794,20 +1812,25 @@ parac_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
 %   bfe((HYP, CMP, GOAL)), !,
 %   bfe_aux(HYPS, HGS).
 
-parac(H2G) :- 
+para_clausal(PRVR, H2G) :- 
   para_lc(H2G) -> true ;
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> parac(H2G_N) ;
-  paracd(H2G, H2G_N) -> parac(H2G_N) ;
-  parac_two(H2G, H2G_L, H2G_R) -> parac(H2G_L), !, parac(H2G_R) ;
-  parac_many(H2G, HS, HGS) -> ap_repeatux(HS, HGS).
+  para_m(H2G) 
+;
+  paras(H2G, H2G_N) -> para_clausal(PRVR, H2G_N) ;
+  paracd(H2G, H2G_N) -> para_clausal(PRVR, H2G_N) ;
+  para_clausal_two(H2G, H2G_L, H2G_R) -> 
+  para_clausal(PRVR, H2G_L), 
+  para_clausal(PRVR, H2G_R)
+;
+  para_clausal_many(H2G, HS, HGS) -> 
+  para_clausal_aux(PRVR, HS, HGS).
 
-ap_repeatux(_, []).
+para_clausal_aux(_, _, []).
 
-ap_repeatux(HYPS, [([HYP], GOAL) | HGS]) :- 
+para_clausal_aux(PRVR, HYPS, [([HYP], GOAL) | HGS]) :- 
   member(CMP, HYPS), 
-  parac((HYP, CMP, GOAL)), !,
-  ap_repeatux(HYPS, HGS).
+  para_clausal(PRVR, (HYP, CMP, GOAL)),
+  para_clausal_aux(PRVR, HYPS, HGS).
 
 dir_files(Dir, Entries) :- 
   directory_files(Dir, TempA), 
@@ -1955,8 +1978,8 @@ para_e1(H2G) :-
   para_m(H2G) -> true ;
   paras(H2G, H2G_N) -> para_e1(H2G_N) ;
   parad(H2G, H2G_N) -> para_e1(H2G_N) ;
-  parac_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
-  % parac_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
+  para_clausal_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
+  % para_clausal_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
   para_c_(H2G, H2G_N) -> para_e1(H2G_N) ;
   member(DIR, [l, r]),
   clause_ab(para_e1, DIR, H2G).

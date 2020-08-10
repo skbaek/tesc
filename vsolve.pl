@@ -18,8 +18,8 @@ rul_hint(avatar_component_clause, acc).
 rul_hint(avatar_contradiction_clause, sbsm).
 rul_hint(duplicate_literal_removal, sbsm).
 
-rul_hint(negated_conjecture, parac).  
-rul_hint(flattening, parac).  
+rul_hint(negated_conjecture, para_clausal).  
+rul_hint(flattening, para_clausal).  
 rul_hint(ennf_transformation, paras).  
 rul_hint(rectify, parav).
 rul_hint(true_and_false_elimination, paratf).
@@ -148,8 +148,7 @@ reduce_gaocs([add([gaoc], NAME, FORM) | SOL], SOL_N) :-
   append([ADDS, [inf(gaoc, NAMES, NAME, FORM) | DELS], SOL_T], SOL_N). 
 
 get_adds(FORM, NAMES, ADDS) :- 
-  format("ADD for : ~w\n\n", FORM),
-  strip_fas(FORM, ARI, $imp(ANTE, CONC)),
+    strip_fas(FORM, ARI, $imp(ANTE, CONC)),
   mk_vars(asc, ARI, VARS), !, 
   explicate_form(ANTE, ANTE_N),
   explicate_form(CONC, CONC_N),
