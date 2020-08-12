@@ -148,7 +148,7 @@ reduce_gaocs([add([gaoc], NAME, FORM) | SOL], SOL_N) :-
   append([ADDS, [inf(gaoc, NAMES, NAME, FORM) | DELS], SOL_T], SOL_N). 
 
 get_adds(FORM, NAMES, ADDS) :- 
-    strip_fas(FORM, ARI, $imp(ANTE, CONC)),
+  strip_fas(FORM, ARI, $imp(ANTE, CONC)),
   mk_vars(asc, ARI, VARS), !, 
   explicate_form(ANTE, ANTE_N),
   explicate_form(CONC, CONC_N),

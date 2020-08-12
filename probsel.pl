@@ -3,7 +3,7 @@
 :- initialization(main, main).
 % :- use_module(library(shell)).
 
-:- [basic].
+:- [basic, tptp].
 
 is_fol_thm(PATH) :- 
   string_concat(_, ".p", PATH),
@@ -64,27 +64,40 @@ partition_cut(PRED, [ELEM | LIST], INC, EXC) :-
   EXC = [ELEM | EXC_TAIL], 
   partition_cut(PRED, LIST, INC, EXC_TAIL). 
 
-probsel(PATHS) :- 
+probsel(PATHS) :-
   set_prolog_flag(stack_limit, 4_294_967_296),
   msg("Generating paths"),
   tptp_directory(TPTP),
   atomic_list_concat([TPTP, "Problems"], PATH),
-  rec_dir_files(PATH, ALL), 
+  rec_path_filenames(PATH, ALL), 
   partition_cut(is_fol_thm, ALL, PATHS, _), !, 
   true.
 
-record_problems :- 
-  probsel(PATHS), 
-  maplist(path_name, PATHS, NAMES), 
-  open(problems, write, STRM), 
-  write_list(STRM, NAMES),
-  close(STRM).
+loadable(NAME) :- 
+  format("Testing : ~w, ", NAME),
+  (
+    ids_from_name(NAME, _) ->
+    true
+  ;
+    format("~w is non-unique, not loadable\n\n", NAME),
+    false
+  ).
 
-get_problem_names(NAMES) :- 
-  open(problems, read, STRM), 
-  stream_strings(STRM, STRS),
-  maplist_cut(string_to_atom, STRS, NAMES).
-  
+include_count(_, _, [], []) :- write("Finish inclusion.\n\n").
+
+include_count(GOAL, CNT, [ELEM | IN], OUT) :-
+  format("count = ~w\n\n", CNT), !,
+  num_succ(CNT, SUCC), !,
+  (
+    call(GOAL, ELEM) -> 
+    OUT = [ELEM | TAIL], 
+    include_count(GOAL, SUCC, IN, TAIL) 
+  ; 
+    include_count(GOAL, SUCC, IN, OUT) 
+  ).
+
+get_problem_names(NAMES) :- path_atoms(problems, NAMES).
+
 create_symlink(PATH, NAME) :- 
   atomic_list_concat([PATH, "/", NAME], DIR), 
   cd(DIR),
@@ -95,6 +108,30 @@ create_symlink(PATH, NAME) :-
 symlink :- 
   tptp_directory(TPTP),
   atomic_concat(TPTP, "Problems", PATH),
-  dir_files(PATH, X), 
+  path_filenames(PATH, X), 
   write_list(X),
   maplist_cut(create_symlink(PATH), X).
+
+
+main([PATH, DA, TA]) :- 
+  set_prolog_flag(stack_limit, 4_294_967_296),
+  atom_number(DA, DROP),
+  atom_number(TA, TAKE),
+  get_problem_names(ALL), 
+  slice(DROP, TAKE, ALL, NAMES),
+   % maplist(path_name, PATHS, TEMP), 
+  % open(problems, write, STRM), 
+  % write_list(STRM, NAMES),
+  % close(STRM).
+  include_count(loadable, 0, NAMES, GOOD),
+  record_list(PATH, GOOD).
+
+
+record_assoc(AXIOM) :- 
+  include_terms(include(AXIOM), TERMS),
+  maplist(precla_pcla, TERMS, PCLAS), 
+  maplist_cut(fst, PCLAS, IDS), !,
+  empty_assoc(EMP),
+  foldl_cut(try_add, IDS, EMP, ASSOC),
+  write_file(csr_large, ASSOC).
+

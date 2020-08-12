@@ -62,7 +62,7 @@ pred_used(PRED, TERM) :-
 
 
 main :- 
-  %dir_files(".", X),
+  %path_filenames(".", X),
   %delete(X, 'ttv.pl', Y),
   %delete(Y, 'ttc.pl', Z),
   %delete(Z, 'mv_nc.pl', A),

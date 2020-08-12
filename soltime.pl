@@ -68,7 +68,7 @@ solve_time(PRVR, NAME) :-
 % is_temp(NAME) :- atom_concat(_, ".temp", NAME).
 
 main([PROVER]) :- 
-  prover_abrv(PROVER, PRVR),
+  atom_firstchar(PROVER, PRVR),
   names_stashed(PRVR, NAMES),
   length(NAMES, NUM), 
   format("Solving ~w problems\n", NUM),

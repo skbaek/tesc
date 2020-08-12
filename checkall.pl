@@ -17,9 +17,9 @@ check_proof(PRVR, TESC) :-
   write("Proof verified\n").
 
 main([PROVER]) :- 
-  prover_abrv(PROVER, PRVR),
+  atom_firstchar(PROVER, PRVR),
   set_prolog_flag(stack_limit, 4_294_967_296),
   atom_concat(PRVR, prf, PATH),
-  rec_dir_files(PATH, PATHS),
+  rec_path_filenames(PATH, PATHS),
   maplist_count(check_proof(PRVR), 0, 0, PATHS, CNT, TTL), 
   format("VERFIED/TOTAL = ~w/~w\n", [CNT, TTL]).

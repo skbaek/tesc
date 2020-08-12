@@ -199,7 +199,7 @@ vacc(PREM, CONC, GOAL) :-
   many_nb([c], [PREM], GOAL1, [PREM_T], GOAL2), 
   member(DIR, [l,r]),
   ap(PREM_T, DIR, GOAL2, PREM_N, GOAL3), 
-  para_switch_ab((PREM_N, CONC_N, GOAL3), TRP_A, TRP_B), 
+  paraab_choose((PREM_N, CONC_N, GOAL3), TRP_A, TRP_B), 
   vacc_aux(TRP_A),
   vacc_aux(TRP_B).
 
@@ -368,7 +368,7 @@ line_sat_insts(NAA, LINE, [rup(SIDS, SID, CLA) | SIS], SIS) :-
   append(SIDS, [0], REST). 
   
 file_sat_insts(NAA, FILE, SIS) :-
-  file_strings(FILE, LINES), 
+  read_file_strings(FILE, LINES), 
   foldl(line_sat_insts(NAA), LINES, SIS, []).
 
 nums_maxvar(NUMS, MaxVar) :-
@@ -506,7 +506,7 @@ skm(AOCS, H2G) :-
   %paracd(H2G, H2G_N), 
   skm(AOCS, H2G_N)
 ;
-  paracd(H2G, H2G_N), 
+  paral_cd(H2G, H2G_N), 
   skm(AOCS, H2G_N)
 ;
   paraab(H2G, H2G_L, H2G_R),
@@ -891,8 +891,9 @@ infer(v, cnf, [PREM], _, CONC, GOAL) :-
 infer(v, acc, [PREM], _, CONC, GOAL) :- 
   vacc(PREM, CONC, GOAL).
 
-infer(v, ppr, PREMS, _, CONC, GOAL) :-
-  member(PREM, PREMS),
+infer(v, ppr, [PREM], _, CONC, GOAL) :-
+  % member(PREM, PREMS),
+  ppr(PREM, CONC, GOAL) ;
   ppr((PREM, CONC, GOAL)).
 
 infer(v, paras, PREMS, _, CONC, GOAL) :- 
@@ -924,9 +925,9 @@ infer(v, vnnf, PREMS, _, CONC, GOAL) :-
 
 
 infer(PRVR, para_clausal, PREMS, _, CONC, GOAL) :- 
-  many_nb([d], [CONC], GOAL, [HYP_C], GOAL_C), 
+  many_nb([d, s], [CONC], GOAL, [HYP_C], GOAL_C), 
   member(PREM, PREMS),
-  many_nb([c], [PREM], GOAL_C, [HYP_P], GOAL_P), 
+  many_nb([c, s], [PREM], GOAL_C, [HYP_P], GOAL_P), 
   para_clausal(PRVR, (HYP_P, HYP_C, GOAL_P)).
 
 infer(_, paratf, PREMS, _, CONC, GOAL) :- 
@@ -961,6 +962,7 @@ report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
   close(STRM_W),
   delete_file("temp_trace"),
   throw(compilation_timeout),
+
   true.
 
 subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-   
@@ -1280,7 +1282,7 @@ para_dist(PREM, CONC, GOAL) :-
 %   random_pluck(_, _, _),
 %   tt_term(_, _, _),
 %   maplist_count(_, _, _, _, _, _),
-%   prover_abrv(_, _),
+%   atom_firstchar(_, _),
 %   inst_with_lvs(_, _),
 %   names_from_e(_, _),
 %   names_from_s(_, _),

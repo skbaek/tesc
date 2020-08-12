@@ -16,7 +16,7 @@ main([PROVER, TPTP, TSTP, TESC | OPTS]) :-
   ),
   set_prolog_flag(stack_limit, 4_294_967_296),
   style_check(-singleton),
-  prover_abrv(PROVER, PRVR),
+  atom_firstchar(PROVER, PRVR),
   % write("Posing...\n\n"),
   pose(verbose, TPTP, OHYPS, OCLAS, PROB), !,
   % write("Solving...\n\n"),
@@ -29,7 +29,7 @@ main([PROVER, TPTP, TSTP, TESC | OPTS]) :-
 
 % main :- 
 %   current_prolog_flag(argv, [_, PROVER, TPTP, TSTP, TXTX]), 
-%   prover_abrv(PROVER, PRVR),
+%   atom_firstchar(PROVER, PRVR),
 %   set_prolog_flag(stack_limit, 2_147_483_648),
 %   style_check(-singleton),
 %   pose(TPTP, PIDS, PROB),

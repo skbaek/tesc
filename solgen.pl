@@ -69,7 +69,7 @@ gen_sols(PRVR, [NAME | NAMES]) :-
   gen_sols(PRVR, NAMES).
 
 main([PROVER, DROP_ATOM, TAKE_ATOM]) :- 
-  prover_abrv(PROVER, PRVR),
+  atom_firstchar(PROVER, PRVR),
   get_problem_names(ALL),
   atom_number(DROP_ATOM, DROP),
   atom_number(TAKE_ATOM, TAKE),
@@ -79,7 +79,7 @@ main([PROVER, DROP_ATOM, TAKE_ATOM]) :-
   true.
 
 % main([PROVER, NUM_ATOM | OPTS]) :- 
-%   prover_abrv(PROVER, PRVR),
+%   atom_firstchar(PROVER, PRVR),
 %   get_problem_names(ALL),
 %   length(ALL, ALL_NUM),
 %   format("+ Total number of problems = ~w\n", ALL_NUM), 

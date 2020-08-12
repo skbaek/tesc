@@ -571,10 +571,10 @@ union([List | Lists], Set) :-
   union(List, TempSet, Set).
 
 write_list(_, []).
-
-write_list(Stream, [Elem | List]) :- 
-  format(Stream, '~w\n', Elem),
-  write_list(Stream, List).
+write_list(STRM, [ELEM]) :- format(STRM, '~w', ELEM).
+write_list(STRM, [ELEM | List]) :- 
+  format(STRM, '~w\n', ELEM),
+  write_list(STRM, List).
 
 write_list([]).
 write_list([Elem | List]) :- 
@@ -603,10 +603,10 @@ where(Elem, [_ | List], NUM) :-
   where(Elem, List, Pred),
   num_succ(Pred, NUM).
 
-write_file(Target, TERM) :-
-  open(Target, write, Stream),
-  write(Stream, TERM),
-  close(Stream).
+write_file(FILE, TERM) :-
+  open(FILE, write, STRM),
+  write(STRM, TERM),
+  close(STRM).
 
 pluck_uniq(List, Elem, REST) :- 
   pluck_uniq([], List, Elem, REST).
@@ -844,7 +844,7 @@ stream_strings(STRM, STRS) :-
     stream_strings(STRM, REST)
   ).
 
-file_strings(FILE, STRS) :-
+read_file_strings(FILE, STRS) :-
   open(FILE, read, STRM), 
   stream_strings(STRM, STRS), 
   close(STRM).
@@ -1512,14 +1512,57 @@ pblx((block, PQ), HYPS, PATH, HYP, GOAL) :-
   pluck(HYPS, HYP_N, REST), 
   pblx((match, PQ), REST, [HYP | PATH], HYP_N, GOAL). 
 
-iff_sf_conv($pos($iff(FORM_A, FORM_B)), $neg($and($or(FORM_A, FORM_B), $or($not(FORM_A), $not(FORM_B))))).
-iff_sf_conv($neg($iff(FORM_A, FORM_B)), $pos($and($or(FORM_A, FORM_B), $or($not(FORM_A), $not(FORM_B))))).
+% iff_sf_conv($pos($iff(FORM_A, FORM_B)), $neg($and($or(FORM_A, FORM_B), $or($not(FORM_A), $not(FORM_B))))).
+% iff_sf_conv($neg($iff(FORM_A, FORM_B)), $pos($and($or(FORM_A, FORM_B), $or($not(FORM_A), $not(FORM_B))))).
 
-iff_conv((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
-  hyp_sf(HYP_A, SF_A),
-  iff_sf_conv(SF_A, SF_N), 
-  fps(SF_N, GOAL, HYP_T, HYP_N, GOAL_T, GOAL_N),
-  pblx(p, [HYP_A, HYP_T], GOAL_T).
+iff_conv_pos_aux(TRP) :- 
+  para_ba_swap(TRP, TRP_A, TRP_B), 
+  mate(TRP_B),
+  para__s(TRP_A, TRP_C), 
+  mate(TRP_C). 
+
+iff_conv_neg_aux(TRP) :- 
+  para__b(TRP, TRP_2, TRP_1),
+  para_a_(l, TRP_1, TRP_1A), 
+
+  (D1 = l, D2 = r ; D1 = r, D2 = l),
+
+  para__a(D1, TRP_1A, TRP_1B), 
+  mate(TRP_1B),
+  para_a_(r, TRP_2, TRP_2A), 
+  para__a(D2, TRP_2A, TRP_2B), 
+  para__s(TRP_2B, TRP_2C), 
+  mate(TRP_2C).
+
+iff_conv(TRP_I, TRP_O) :- 
+  trp_prem(TRP_I, PREM), 
+  hyp_sf(PREM, $neg($iff(FORM_A, FORM_B))),
+  para_f_($and($or($not(FORM_B), $not(FORM_A)), $or(FORM_B, FORM_A)), TRP_I, TRP_T, TRP_O), 
+% TRP_T : - (FORM_A <=> FORM_B), - ((~ FORM_B \/ ~ FORM_A) & (FORM_B \/ FORM_A))
+  para_b_(TRP_T, TRP_A, TRP_B),
+
+% TRP_A : - (FORM_A => FORM_B), - ((~ FORM_B \/ ~ FORM_A) & (FORM_B \/ FORM_A))
+% TRP_B : - (FORM_B => FORM_A), - ((~ FORM_B \/ ~ FORM_A) & (FORM_B \/ FORM_A))
+
+  iff_conv_neg_aux(TRP_A),
+  iff_conv_neg_aux(TRP_B).
+
+iff_conv(TRP_I, TRP_O) :- 
+  trp_prem(TRP_I, PREM), 
+  hyp_sf(PREM, $pos($iff(FORM_A, FORM_B))),
+  % fp($and($or(FORM_A, $not(FORM_B)), $or(FORM_B, $not(FORM_A))), GOAL, CONC_N, PREM_N, GOAL_T, GOAL_N),
+  para_f_($and($or(FORM_A, $not(FORM_B)), $or(FORM_B, $not(FORM_A))), TRP_I, TRP_T, TRP_O), 
+  para_ab_swap(TRP_T, TRP_A, TRP_B), 
+  iff_conv_pos_aux(TRP_A), 
+  iff_conv_pos_aux(TRP_B). 
+
+
+% iff_conv((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
+%   hyp_sf(HYP_A, SF_A),
+%   iff_sf_conv(SF_A, SF_N), 
+%   fps(SF_N, GOAL, HYP_T, HYP_N, GOAL_T, GOAL_N),
+%   %pblx(p, [HYP_A, HYP_T], GOAL_T).
+%   true.
 
 e_iff_conv((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
   hyp_sf(HYP_A, $neg($iff(FORM_A, FORM_B))),
@@ -1609,17 +1652,37 @@ para_mlc(X) :- para_m(X) ; para_lc(X).
 
 %%%%%%%%%%%%%%%% PARALLEL SWITCH DECOMPOSITION %%%%%%%%%%%%%%%%
 
-para_switch_ab((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
-  abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
-  abpr(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
-  abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R) ;
+para_f_(FORM, (PREM, CONC, GOAL), (PREM, HYP_N, GOAL_N), (HYP_P, CONC, GOAL_P)) :- 
+  fp(FORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P).
+
+para__f(FORM, (PREM, CONC, GOAL), (PREM, HYP_P, GOAL_P), (HYP_N, CONC, GOAL_N)) :- 
+  fp(FORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P).
+
+paraab_choose(TRP, TRP_B, TRP_A) :- 
+  paraab(TRP, TRP_B, TRP_A) ;
+  paraab_swap(TRP, TRP_B, TRP_A).
+
+paraab_swap(TRP, TRP_B, TRP_A) :- 
+  para_ab_swap(TRP, TRP_B, TRP_A) ;
+  para_ba_swap(TRP, TRP_B, TRP_A).
+  
+para_ab_swap((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
+  abpr(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R).
+
+para_ba_swap((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
   abpr(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
+
+% paraab_choose((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
+%   abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
+%   abpr(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
+%   abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R) ;
+%   abpr(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
 para_switch(H2G) :- 
   para_m(H2G) -> true ;
   paras(H2G, H2G_N) -> para_switch(H2G_N) ;
   paracd(H2G, H2G_N) -> para_switch(H2G_N) ;
-  para_switch_ab(H2G, H2G_L, H2G_R),
+  paraab_choose(H2G, H2G_L, H2G_R),
   para_switch(H2G_L),  
   para_switch(H2G_R).
 
@@ -1651,7 +1714,7 @@ paratf(H2G) :-
   paras(H2G, H2G_N) -> paratf(H2G_N) ;
   paracd(H2G, H2G_N) -> paratf(H2G_N) ;
   paratf_one(H2G, H2G_N) -> paratf(H2G_N) ;
-  para_switch_ab(H2G, H2G_L, H2G_R),
+  paraab_choose(H2G, H2G_L, H2G_R),
   paratf(H2G_L),  
   paratf(H2G_R).
 
@@ -1735,19 +1798,34 @@ vnnf(H2G) :-
   para_m(H2G) -> true ;
   paras(H2G, H2G_N) -> vnnf(H2G_N) ;
   paracd(H2G, H2G_N) -> vnnf(H2G_N) ;
+  iff_conv(H2G, H2G_N) -> vnnf(H2G_N) ;
+  paraab(H2G, TRP_A, TRP_B), 
+  vnnf(TRP_A), !,
+  vnnf(TRP_B)
+;
   ppr_a(H2G, H2G_N),
-  vnnf(H2G_N) 
-;
-  para_switch_ab(H2G, H2G_L, H2G_R),
-  vnnf(H2G_L),  
-  vnnf(H2G_R)
-;
-  iff_conv(H2G, H2G_N), 
-  vnnf(H2G_N).
+  vnnf(H2G_N). 
+
+
+% vnnf(H2G) :- 
+%   para_m(H2G) -> true ;
+%   paras(H2G, H2G_N) -> vnnf(H2G_N) ;
+%   paracd(H2G, H2G_N) -> vnnf(H2G_N) ;
+%   ppr_a(H2G, H2G_N),
+%   vnnf(H2G_N) 
+% ;
+%   paraab_choose(H2G, H2G_L, H2G_R),
+%   vnnf(H2G_L),  
+%   vnnf(H2G_R)
+% ;
+%   iff_conv(H2G, H2G_N), 
+%   vnnf(H2G_N).
 
 
 
 %%%%%%%%%%%%%%%% PARALLEL CLAUSAL DECOMPOSITION %%%%%%%%%%%%%%%%
+
+prem_is_imp((PREM, _, _)) :- imp_hyp(PREM).
 
 imp_hyp(HYP) :- 
   hyp_form(HYP, FORM),
@@ -1805,6 +1883,22 @@ para_clausal_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :-
     parac_b(HYP_A, GOAL_T, HGS)
   ).
 
+ppr(PREM, CONC, GOAL) :- 
+  ap_repeat(PREM, GOAL, PREMS, TEMP), 
+  parac_b(CONC, TEMP, HGS), 
+  ppr(PREMS, HGS).
+
+ppr(_, []) :- !. 
+
+ppr([PREM | PREMS], [([CONC], GOAL) | HGS]) :- 
+  mate(PREM, CONC, GOAL) -> 
+  ppr(PREMS, HGS) 
+;
+  ppr(PREMS, [([CONC], GOAL) | HGS]).
+  
+
+
+
 % bfe_aux(_, []).
 % bfe_aux(HYPS, [([HYP], GOAL) | HGS]) :- 
 %   member(CMP, HYPS), 
@@ -1831,7 +1925,7 @@ para_clausal_aux(PRVR, HYPS, [([HYP], GOAL) | HGS]) :-
   para_clausal(PRVR, (HYP, CMP, GOAL)),
   para_clausal_aux(PRVR, HYPS, HGS).
 
-dir_files(Dir, Entries) :- 
+path_filenames(Dir, Entries) :- 
   directory_files(Dir, TempA), 
   delete(TempA, '.', TempB),
   delete(TempB, '..', Entries).
@@ -1841,10 +1935,10 @@ rec_path_files(Path, [Path]) :-
 
 rec_path_files(Path, Files) :- 
   exists_directory(Path), 
-  rec_dir_files(Path, Files).
+  rec_path_filenames(Path, Files).
 
-rec_dir_files(Dir, Files) :- 
-  dir_files(Dir, Entries), 
+rec_path_filenames(Dir, Files) :- 
+  path_filenames(Dir, Entries), 
   maplist(directory_file_path(Dir), Entries, Paths),
   maplist(rec_path_files, Paths, Filess),
   append(Filess, Files).
@@ -1874,17 +1968,17 @@ maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :-
 % 
 % names_archived(PRVR, NAMES) :- 
 %   atom_concat(PRVR, a, PATH),
-%   rec_dir_files(PATH, PATHS),
+%   rec_path_filenames(PATH, PATHS),
 %   maplist_cut(path_name, PATHS, NAMES).
 
-names_stashed(PRVR, NAMES) :- 
+get_solution_names(PRVR, NAMES) :- 
   atom_concat(PRVR, sol, PATH),
-  rec_dir_files(PATH, PATHS),
+  rec_path_filenames(PATH, PATHS),
   maplist_cut(path_name, PATHS, NAMES).
 
 names_proven(PRVR, NAMES) :- 
   atom_concat(PRVR, prf, PATH),
-  rec_dir_files(PATH, PATHS),
+  rec_path_filenames(PATH, PATHS),
   maplist_cut(path_name, PATHS, NAMES).
 
 name_tptp(NAME, TPTP) :- 
@@ -2292,10 +2386,6 @@ push_qtf(FORM, NORM) :-
 
 push_qtf(FORM, FORM).
 
-prover_abrv(vampire, v).
-prover_abrv(metis, m).
-prover_abrv(e, e).
-
 msg(PTRN, ARGS) :-
   % write(" ────────────────────────────────────────────────────────────────── "), 
   write("                                                                      > "), 
@@ -2333,3 +2423,27 @@ distribute($or(FORM_A, FORM_B), NORM) :- !,
   ).  
 
 distribute(FORM, FORM).
+
+trp_prem((PREM, _, _), PREM).
+
+path_atoms(PATH, ATOMS) :- 
+  open(PATH, read, STRM), 
+  stream_strings(STRM, STRS),
+  maplist_cut(string_to_atom, STRS, ATOMS).
+
+record_list(PATH, LIST) :- 
+  open(PATH, write, STRM), 
+  write_list(STRM, LIST),
+  close(STRM).
+
+record_paths(PATH, PATHS) :- 
+  maplist_cut(path_name, PATHS, NAMES), 
+  record_list(PATH, NAMES).
+
+atom_firstchar(ATOM, CH) :-
+  atom_codes(ATOM, [CODE | _]), 
+  char_code(CH, CODE).
+
+write_term_punct(STRM, TERM) :-
+  write_term(STRM, TERM, [fullstop(true), nl(true), quoted(true)]).
+
