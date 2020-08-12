@@ -578,9 +578,9 @@ mk_dels(NUM, DELS) :-
 
 % report_sol_failure(CTX, ANT) :- 
 report_sol_failure(_, ANT) :- 
-  write("\nSolution failed, annotation = ", log), 
-  write(ANT, log),
-  write("\n", log),
+  write("\nSolution failed, annotation = "), 
+  write(ANT),
+  write("\n"),
   % write("\nInference failed, premises :\n\n"),
   % write_list(PREMS), 
   % format("\nInference failed, conclusion : ~w\n\n", CONC), 
