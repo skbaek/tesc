@@ -1,59 +1,5 @@
 :- [tptp].
 
-/*
-
-
-check_term(PROB, CNT, d(PID, PRF)) :- 
-  num_succ(CNT, SCNT),
-  num_succ(SCNT, SSCNT),
-  get_assoc(PID, PROB, PREM),
-  db(SCNT, PREM, CONC), 
-  put_assoc(n(CNT), PROB, CONC, PROB_N), !,
-  check_term(PROB_N, SSCNT, PRF).
-
-check_term(PROB, CNT, f(FORM, PRF_L, PRF_R)) :- 
-  num_succ(CNT, SCNT),
-  ground(FORM), % No logic variables in Form
-  no_fv_form(0, FORM), % No free object variables in Form
-  counter_safe(CNT, FORM), % No new parameters in Form
-  put_assoc(n(CNT), PROB, $neg(FORM), PROB_L), !,
-  check_term(PROB_L, SCNT, PRF_L),
-  put_assoc(n(CNT), PROB, $pos(FORM), PROB_R), !,
-  check_term(PROB_R, SCNT, PRF_R).
-
-check_term(PROB, CNT, s(PID, PRF)) :- 
-  num_succ(CNT, SCNT),
-  get_assoc(PID, PROB, PREM),
-  sb(PREM, CONC), 
-  put_assoc(n(CNT), PROB, CONC, PROB_N), !,
-  check_term(PROB_N, SCNT, PRF).
-
-check_term(PROB, CNT, t(SF, PRF)) :- 
-  num_succ(CNT, SCNT),
-  no_fv_sf(0, SF),  
-  justified(SCNT, SF, CNT_N),
-  put_assoc(n(CNT), PROB, SF, PROB_N), !,
-  check_term(PROB_N, CNT_N, PRF).
-    
-check_term(PROB, CNT, w(PID, PRF)) :- 
-  del_assoc(PID, PROB, _, PROB_N), !,
-  check_term(PROB_N, CNT, PRF).
-
-check_term(PROB, _, x(PID, NID)) :- 
-  get_assoc(PID, PROB, $pos(FORM_P)),
-  get_assoc(NID, PROB, $neg(FORM_N)),
-  FORM_P == FORM_N.
-
-check_term(TPTP, TESC) :- 
-  style_check(-singleton),
-  pose(none, TPTP, _, _, PROB),
-  open(TESC, read, STRM, [encoding(octet)]), 
-  get_prf(STRM, PRF),
-  check_term(PROB, 0, PRF),
-  write("Proof verified.\n"),
-  close(STRM).
-*/
-
 check_term(PROB, _, SUCC, CID, a(PID, DIR, PRF)) :- 
   get_assoc(PID, PROB, PREM),
   ab(DIR, PREM, CONC), 
@@ -112,11 +58,6 @@ check_term(PROB, _, _, _, x(PID, NID)) :-
   get_assoc(PID, PROB, $pos(FORM_P)),
   get_assoc(NID, PROB, $neg(FORM_N)),
   FORM_P == FORM_N.
-
-check_term(_, CNT, _, _, PRF) :- 
-  format("Count = ~w\n\n", CNT),
-  format("Proof = ~w\n\n", PRF),
-  throw(invalid_proof).
 
 check_term(PROB, CNT, PRF) :- 
   mk_par(CNT, [], CID),

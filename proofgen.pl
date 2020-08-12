@@ -28,6 +28,7 @@ bench(SLVR, NAME) :-
 
 main([SLVR | ARGS]) :- 
   set_prolog_flag(stack_limit, 4_294_967_296),
+  trace_if_debug(ARGS),
   valid_sol_names(SLVR, ALL),
   (
     ARGS = [DROP_ATOM, TAKE_ATOM] -> 

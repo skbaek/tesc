@@ -1019,7 +1019,7 @@ put_list(STRM, PTR, [ELEM | LIST]) :-
   put_list(STRM, PTR, LIST), !.
 
 put_dot(STRM) :-
-  put_char(STRM, '.').
+  put_char(STRM, '$').
 
 put_bytes(_, []).
 
@@ -1305,7 +1305,7 @@ get_list(STRM, GTR, LIST) :-
 get_until_dot(STRM, BYTES) :- 
   get_byte(STRM, BYTE), 
   (
-    BYTE = 46 -> BYTES = [] ;
+    BYTE = 36 -> BYTES = [] ;
     get_until_dot(STRM, TAIL),
     BYTES = [BYTE | TAIL] 
   ).

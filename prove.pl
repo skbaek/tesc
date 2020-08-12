@@ -988,12 +988,13 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
     )
   ), !,
   ground_all(c, PRF),
-  % put_assoc(CID, PROB_I, - FORM, SUB_PROB),
+  % put_assoc(CID, PROB, $neg(FORM), SUB_PROB),
   % (
-  %   check(SUB_PROB, 0, PRF) ->  true ; 
+  %   check_term(SUB_PROB, SCNT, PRF) ->  true ; 
   %   format("ID at error = ~w\n\n", CID),
   %   format("Prob at error = ~w\n\n", SUB_PROB),
-  %   report_failure(fast, PRVR, HINTS, CTX, (CID, $neg(FORM)), SUB_PROB, PRF, GOAL)
+  %   throw(invalid_subproof)
+  %   % report_failure(fast, PRVR, HINTS, CTX, (CID, $neg(FORM)), SUB_PROB, PRF, GOAL)
   % ),
   put_prf(STRM, PRF). 
 
