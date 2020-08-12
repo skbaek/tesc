@@ -41,6 +41,9 @@ main([SLVR | ARGS]) :-
   ;
     NAMES = ALL
   ),
+  proofgen(SLVR, NAMES).
+
+proofgen(SLVR, NAMES) :-
   length(NAMES, NUM), 
   format("Proving ~w problems\n", NUM),
   maplist_count(bench(SLVR), 0, 0, NAMES, CNT, TTL),

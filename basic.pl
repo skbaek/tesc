@@ -60,9 +60,18 @@
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
+
+
 random_pluck(LIST, ELEM, REST) :- 
   random_member(ELEM, LIST), 
   delete(LIST, ELEM, REST).
+
+random_n(0, _, []).
+random_n(NUM, LIST, [ELEM | SEL]) :-
+  num_pred(NUM, PRED), 
+  random_pluck(LIST, ELEM, REST),
+  random_n(PRED, REST, SEL).
+
   
 timed_call(Time, GOAL, ALT_GOAL) :- 
   catch(

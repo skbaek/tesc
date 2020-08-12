@@ -576,7 +576,6 @@ mk_dels(NUM, DELS) :-
   maplist_cut(mk(t), NUMS, IDS),
   maplist_cut(mk(del), IDS, DELS).
 
-% report_sol_failure(CTX, ANT) :- 
 report_sol_failure(_, ANT) :- 
   write("\nSolution failed, annotation = "), 
   write(ANT),

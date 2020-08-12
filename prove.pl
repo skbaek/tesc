@@ -934,36 +934,43 @@ infer(_, paratf, PREMS, _, CONC, GOAL) :-
   member(PREM, PREMS),
   paratf((PREM, CONC, GOAL)).
 
-report_failure(PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :- 
+report_failure(MODE, PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :- 
   write("\nInference failed, hints : "), 
   write(HINTS), 
   write("\n\n"), 
-  write("\nInference failed, premises :\n\n"),
-  write_list(PREMS), 
+  (
+    MODE = verbose ->
+    write("\nInference failed, premises :\n\n"),
+    write_list(PREMS)
+  ;
+    true
+  ),
   write("Inference failed, conclusion = "), 
   write(CONC), 
   write("\n\n"),
-  
-  open("temp_trace", write, Stream), 
-  write(Stream, ":- [basic].\n\n"), 
-  format(Stream, '~w.\n\n', debug_prvr(PRVR)), 
-  format(Stream, '~w.\n\n', debug_hints(HINTS)), 
-  format(Stream, '~w.\n\n', debug_ctx(PREMS)), 
-  format(Stream, '~w.\n\n', debug_clas(CLAS)), 
-  format(Stream, '~w.\n\n', debug_hyp(CONC)), 
-  format(Stream, '~w.\n\n', debug_goal(GOAL)), 
-  format(Stream, '~w.\n\n', debug_prob(PROB)), 
-  format(Stream, '~w.\n\n', debug_prf(PRF)), 
-  close(Stream), 
-  open("temp_trace", read, STRM_R), 
-  open("proof_trace.pl", write, STRM_W), 
-  quote_par(STRM_R, STRM_W), 
-  close(STRM_R),
-  close(STRM_W),
-  delete_file("temp_trace"),
-  throw(compilation_timeout),
-
-  true.
+  (
+    MODE = verbose ->
+    open("temp_trace", write, Stream), 
+    write(Stream, ":- [basic].\n\n"), 
+    format(Stream, '~w.\n\n', debug_prvr(PRVR)), 
+    format(Stream, '~w.\n\n', debug_hints(HINTS)), 
+    format(Stream, '~w.\n\n', debug_ctx(PREMS)), 
+    format(Stream, '~w.\n\n', debug_clas(CLAS)), 
+    format(Stream, '~w.\n\n', debug_hyp(CONC)), 
+    format(Stream, '~w.\n\n', debug_goal(GOAL)), 
+    format(Stream, '~w.\n\n', debug_prob(PROB)), 
+    format(Stream, '~w.\n\n', debug_prf(PRF)), 
+    close(Stream), 
+    open("temp_trace", read, STRM_R), 
+    open("proof_trace.pl", write, STRM_W), 
+    quote_par(STRM_R, STRM_W), 
+    close(STRM_R),
+    close(STRM_W),
+    delete_file("temp_trace"),
+    throw(compilation_timeout)
+  ;
+    true
+  ).
 
 subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
@@ -976,7 +983,7 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
     30,
     infer(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), GOAL), 
     (
-      report_failure(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
+      report_failure(fast, PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
       false
     )
   ), !,
@@ -986,7 +993,7 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
   %   check(SUB_PROB, 0, PRF) ->  true ; 
   %   format("ID at error = ~w\n\n", CID),
   %   format("Prob at error = ~w\n\n", SUB_PROB),
-  %   report_failure(PRVR, HINTS, CTX, (CID, $neg(FORM)), SUB_PROB, PRF, GOAL)
+  %   report_failure(fast, PRVR, HINTS, CTX, (CID, $neg(FORM)), SUB_PROB, PRF, GOAL)
   % ),
   put_prf(STRM, PRF). 
 
