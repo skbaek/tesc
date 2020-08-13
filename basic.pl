@@ -33,7 +33,7 @@
 %     pluck/3,
 %     mk_par/3,
 %     apply_uop/3,
-%     timed_call/3,
+%     timed_call/4,
 %     maplist_cut/3, 
 %     redirect_id/3, 
 %     resymb_form/3, 
@@ -73,21 +73,41 @@ random_n(NUM, LIST, [ELEM | SEL]) :-
   random_n(PRED, REST, SEL).
 
   
-timed_call(Time, GOAL, ALT_GOAL) :- 
+timed_call(TIME, GOAL, EARLY, LATE) :- 
   catch(
     call_with_time_limit(
-      Time, 
+      TIME, 
       (
         call(GOAL) -> 
         true 
       ;
-        write("Premature failure in timed call.\n"),
-        throw(time_limit_exceeded)
+        throw(premature_failure)
       )
     ),
-    time_limit_exceeded, 
-    call(ALT_GOAL)
+    ERROR, 
+    (
+      ERROR = premature_failure ->
+      call(EARLY) 
+    ;
+      call(LATE) 
+    )
   ).  
+
+% timed_call(TIME, GOAL, ALT_GOAL) :- 
+%   catch(
+%     call_with_time_limit(
+%       TIME, 
+%       (
+%         call(GOAL) -> 
+%         true 
+%       ;
+%         write("Premature failure in timed call.\n"),
+%         throw(time_limit_exceeded)
+%       )
+%     ),
+%     time_limit_exceeded, 
+%     call(ALT_GOAL)
+%   ).  
 
 ground_all(TERM, EXP) :- 
   term_variables(EXP, VARS),
@@ -2456,3 +2476,6 @@ atom_firstchar(ATOM, CH) :-
 write_term_punct(STRM, TERM) :-
   write_term(STRM, TERM, [fullstop(true), nl(true), quoted(true)]).
 
+countall(TMP, GOAL, CNT) :- 
+  findall(TMP, GOAL, BAG),
+  length(BAG, CNT).

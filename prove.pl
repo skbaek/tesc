@@ -983,6 +983,12 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
     30,
     infer(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), GOAL), 
     (
+      write("Subproof failed prematurely. "),
+      report_failure(fast, PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
+      false
+    ),
+    (
+      write("Subproof timed out. "),
       report_failure(fast, PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
       false
     )

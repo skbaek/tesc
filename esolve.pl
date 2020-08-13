@@ -531,9 +531,10 @@ unroll_tree(
 
 tup_insts(
   _,
-  (CID, TYPE, FORM, file(_, _)),
-  [inf(orig, $orig, CID, FORM)]
-) :- !,
+  (CID, TYPE, FORM, file(_, PID)),
+  [inf(orig, [PID], CID, FORM)]
+) :- 
+  atom(PID), !,
   axiomatic(TYPE).
 
 tup_insts(
@@ -556,12 +557,17 @@ tup_insts(
   (CID, TYPE, FORM, ANT),
   INSTS 
 ) :- 
-  % format("Solving for ID : ~w\n\n", CID),
   inst_fas(0, FORM, TGT), 
   timed_call(
-    20, 
+    30, 
     mk_tree_fwd(CTX, TGT, ANT, TREE),
     (
+      write("Solution failed prematurely. "), 
+      report_sol_failure(CTX, (CID, TYPE, FORM, ANT)),
+      false
+    ),
+    (
+      write("Solution timed out. "), 
       report_sol_failure(CTX, (CID, TYPE, FORM, ANT)),
       false
     )
@@ -577,12 +583,7 @@ mk_dels(NUM, DELS) :-
   maplist_cut(mk(del), IDS, DELS).
 
 report_sol_failure(_, ANT) :- 
-  write("\nSolution failed, annotation = "), 
-  write(ANT),
-  write("\n"),
-  % write("\nInference failed, premises :\n\n"),
-  % write_list(PREMS), 
-  % format("\nInference failed, conclusion : ~w\n\n", CONC), 
+  format("Annotation = ~w\n", ANT), 
   % open("sol_trace.pl", write, Stream), 
   % format(Stream, '~w.\n\n', debug_ctx(CTX)), 
   % format(Stream, '~w.\n\n', debug_ant(ANT)), 
