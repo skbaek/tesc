@@ -463,8 +463,8 @@ sat(CLAS, GOAL) :-
   maplist_cut(cla_nums(ANA), CLAS, NUMSS),
   numss_dimacs(NUMSS, DIMACS),
   write_file("temp.cnf", DIMACS), !,
-  shell("./cadical -q temp.cnf temp.drat", _), !,
-  shell("./drat-trim temp.cnf temp.drat -L temp.lrat", _), !,
+  shell("cadical -q temp.cnf temp.drat", _), !,
+  shell("drat-trim temp.cnf temp.drat -L temp.lrat", _), !,
 
   write("Reading LRAT file...\n\n"),
   file_sat_insts(NAA, "temp.lrat", SIS), 
@@ -1290,19 +1290,3 @@ para_dist(PREM, CONC, GOAL) :-
     ap(CONC, r, GOAL_TB, HYP_NTB, GOAL_NTB), 
     mate(HYP_TB, HYP_NTB, GOAL_NTB)
   ).  
-
-% dummy :- 
-%   prove(_),
-%   random_pluck(_, _, _),
-%   tt_term(_, _, _),
-%   maplist_count(_, _, _, _, _, _),
-%   atom_firstchar(_, _),
-%   inst_with_lvs(_, _),
-%   names_from_e(_, _),
-%   names_from_s(_, _),
-%   tptp_name(_, _),
-%   first_char(_, _),
-%   path_cat(_, _),
-%   path_cat_id(_, _, _),
-%   solve(_, _, _),
-%   true.

@@ -1,4 +1,3 @@
-:- [paths].
 % % :- module(basic, 
 %   [
 %     sbsm/3,
@@ -60,19 +59,6 @@
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
-
-
-random_pluck(LIST, ELEM, REST) :- 
-  random_member(ELEM, LIST), 
-  delete(LIST, ELEM, REST).
-
-random_n(0, _, []).
-random_n(NUM, LIST, [ELEM | SEL]) :-
-  num_pred(NUM, PRED), 
-  random_pluck(LIST, ELEM, REST),
-  random_n(PRED, REST, SEL).
-
-  
 timed_call(TIME, GOAL, EARLY, LATE) :- 
   catch(
     call_with_time_limit(
@@ -701,20 +687,6 @@ apply_uop(UCT, FORM, $SUB) :-
 
 apply_bop(BCT, FORM_A, FORM_B, $SUB) :- 
   SUB =.. [BCT, FORM_A, FORM_B].
-
-drop(0, LIST, LIST). 
-drop(NUM, [_ | LIST], REM) :- 
-  num_pred(NUM, PRED),
-  drop(PRED, LIST, REM).
-
-take(0, _, []). 
-take(NUM, [ELEM | LIST], [ELEM | REM]) :- 
-  num_pred(NUM, PRED),
-  take(PRED, LIST, REM).
-
-slice(DROP, TAKE, LIST, SLICE) :- 
-  drop(DROP, LIST, TEMP), 
-  take(TAKE, TEMP, SLICE). 
 
 maplist_cut(_, []).
 
@@ -1541,9 +1513,6 @@ pblx((block, PQ), HYPS, PATH, HYP, GOAL) :-
   pluck(HYPS, HYP_N, REST), 
   pblx((match, PQ), REST, [HYP | PATH], HYP_N, GOAL). 
 
-% iff_sf_conv($pos($iff(FORM_A, FORM_B)), $neg($and($or(FORM_A, FORM_B), $or($not(FORM_A), $not(FORM_B))))).
-% iff_sf_conv($neg($iff(FORM_A, FORM_B)), $pos($and($or(FORM_A, FORM_B), $or($not(FORM_A), $not(FORM_B))))).
-
 iff_conv_pos_aux(TRP) :- 
   para_ba_swap(TRP, TRP_A, TRP_B), 
   mate(TRP_B),
@@ -1567,37 +1536,25 @@ iff_conv(TRP_I, TRP_O) :-
   trp_prem(TRP_I, PREM), 
   hyp_sf(PREM, $neg($iff(FORM_A, FORM_B))),
   para_f_($and($or($not(FORM_B), $not(FORM_A)), $or(FORM_B, FORM_A)), TRP_I, TRP_T, TRP_O), 
-% TRP_T : - (FORM_A <=> FORM_B), - ((~ FORM_B \/ ~ FORM_A) & (FORM_B \/ FORM_A))
   para_b_(TRP_T, TRP_A, TRP_B),
-
-% TRP_A : - (FORM_A => FORM_B), - ((~ FORM_B \/ ~ FORM_A) & (FORM_B \/ FORM_A))
-% TRP_B : - (FORM_B => FORM_A), - ((~ FORM_B \/ ~ FORM_A) & (FORM_B \/ FORM_A))
-
   iff_conv_neg_aux(TRP_A),
   iff_conv_neg_aux(TRP_B).
 
 iff_conv(TRP_I, TRP_O) :- 
   trp_prem(TRP_I, PREM), 
   hyp_sf(PREM, $pos($iff(FORM_A, FORM_B))),
-  % fp($and($or(FORM_A, $not(FORM_B)), $or(FORM_B, $not(FORM_A))), GOAL, CONC_N, PREM_N, GOAL_T, GOAL_N),
   para_f_($and($or(FORM_A, $not(FORM_B)), $or(FORM_B, $not(FORM_A))), TRP_I, TRP_T, TRP_O), 
   para_ab_swap(TRP_T, TRP_A, TRP_B), 
   iff_conv_pos_aux(TRP_A), 
   iff_conv_pos_aux(TRP_B). 
-
-
-% iff_conv((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
-%   hyp_sf(HYP_A, SF_A),
-%   iff_sf_conv(SF_A, SF_N), 
-%   fps(SF_N, GOAL, HYP_T, HYP_N, GOAL_T, GOAL_N),
-%   %pblx(p, [HYP_A, HYP_T], GOAL_T).
-%   true.
 
 e_iff_conv((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
   hyp_sf(HYP_A, $neg($iff(FORM_A, FORM_B))),
   FORM = $and($or($not(FORM_A), $not(FORM_B)), $or(FORM_A, FORM_B)),
   fp(FORM, GOAL, HYP_T, HYP_N, GOAL_T, GOAL_N),
   pblx(p, [HYP_A, HYP_T], GOAL_T).
+
+
 
 %%%%%%%%%%%%%%%% PARALLEL DECOMPOSITION PREDICATES %%%%%%%%%%%%%%%%
   
@@ -1682,9 +1639,6 @@ para_mlc(X) :- para_m(X) ; para_lc(X).
 %%%%%%%%%%%%%%%% PARALLEL SWITCH DECOMPOSITION %%%%%%%%%%%%%%%%
 
 para_f_(FORM, (PREM, CONC, GOAL), (PREM, HYP_N, GOAL_N), (HYP_P, CONC, GOAL_P)) :- 
-  fp(FORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P).
-
-para__f(FORM, (PREM, CONC, GOAL), (PREM, HYP_P, GOAL_P), (HYP_N, CONC, GOAL_N)) :- 
   fp(FORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P).
 
 paraab_choose(TRP, TRP_B, TRP_A) :- 
@@ -1854,8 +1808,6 @@ vnnf(H2G) :-
 
 %%%%%%%%%%%%%%%% PARALLEL CLAUSAL DECOMPOSITION %%%%%%%%%%%%%%%%
 
-prem_is_imp((PREM, _, _)) :- imp_hyp(PREM).
-
 imp_hyp(HYP) :- 
   hyp_form(HYP, FORM),
   member(FORM, [$imp(_, _), $iff(_, _)]).
@@ -1972,75 +1924,13 @@ rec_path_filenames(Dir, Files) :-
   maplist(rec_path_files, Paths, Filess),
   append(Filess, Files).
 
-maplist_count(_, CNT, TTL, [], CNT, TTL).
-maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :- 
-  atomics_to_string(["PASSED/TOTAL = ", CNT_I, "/", TTL_I, "\n"], STRING),
-  write(STRING),
-  (call(GOAL, ELEM) -> num_succ(CNT_I, CNT_T) ; CNT_I = CNT_T),
-  num_succ(TTL_I, TTL_T), 
-  maplist_count(GOAL, CNT_T, TTL_T, LIST, CNT_O, TTL_O).
-
-% tstp_name(PRVR, TSTP, NAME) :- 
-%   atom_concat(PRVR, TEMP0, TSTP), 
-%   atom_concat('s/', TEMP1, TEMP0), 
-%   atom_concat(NAME, '.tstp', TEMP1).
-% 
-% tesc_name(PRVR, TESC, NAME) :- 
-%   atom_concat(PRVR, TEMP0, TESC), 
-%   atom_concat('e/', TEMP1, TEMP0), 
-%   atom_concat(NAME, '.tesc', TEMP1).
-
-% names_failed(PRVR, NAMES) :- 
-%   atom_concat(PRVR, f, PATH),
-%   file_strings(PATH, STRS),
-%   maplist_cut(string_to_atom, STRS, NAMES).
-% 
-% names_archived(PRVR, NAMES) :- 
-%   atom_concat(PRVR, a, PATH),
-%   rec_path_filenames(PATH, PATHS),
-%   maplist_cut(path_name, PATHS, NAMES).
-
-get_solution_names(PRVR, NAMES) :- 
-  atom_concat(PRVR, sol, PATH),
-  rec_path_filenames(PATH, PATHS),
-  maplist_cut(path_name, PATHS, NAMES).
-
-names_proven(PRVR, NAMES) :- 
-  atom_concat(PRVR, prf, PATH),
-  rec_path_filenames(PATH, PATHS),
-  maplist_cut(path_name, PATHS, NAMES).
-
-name_tptp(NAME, TPTP) :- 
-  tptp_directory(PATH),
-  atom_codes(NAME, [C0, C1, C2 | _]),
-  atom_codes(CAT, [C0, C1, C2]),  
-  atomic_list_concat([PATH, 'Problems/', CAT, "/", NAME, ".p"], TPTP).
-  
-path_cat_id(Path, Cat, ID) :- 
-  atom_codes(Path, Codes0), 
-  append(_, [47 | Codes1], Codes0),
-  \+ member(47, Codes1), 
-  append([C0, C1, C2 | Rest], [46, 112], Codes1),
-  string_codes(Cat, [C0, C1, C2]),
-  string_codes(ID, Rest).
-
-path_name(PATH, NAME) :- 
-  atom_codes(PATH, TEMP0), 
-  append(_, [47 | TEMP1], TEMP0),
-  \+ member(47, TEMP1), !, 
-  append(TEMP2, [46 | TEMP3], TEMP1),
-  \+ member(46, TEMP3), !, 
-  atom_codes(NAME, TEMP2).
+tptp_directory('/home/sk/programs/TPTP'). % Modify this to TPTP directory on system
 
 body_lits($or(FORM_L, FORM_R), LITS, TAIL) :- !, 
   body_lits(FORM_L, LITS, TEMP), 
   body_lits(FORM_R, TEMP, TAIL).
 
 body_lits(LIT, [LIT | TAIL], TAIL) :- literal(LIT).
-
-print_size(PATH) :- 
-  atomic_concat("wc -c ", PATH, CMD),
-  shell(CMD, _).
 
 trace_if_debug(OPTS) :-
   member('-debug', OPTS) ->
@@ -2053,11 +1943,6 @@ try(PRED, [ELEM | LIST], RST) :-
   call(PRED, ELEM, RST) -> 
   true ;
   try(PRED, LIST, RST).
-  
-path_cat(PATH, CAT) :- 
-  atom_codes(PATH, [C0, C1, C2 | _]), 
-  string_codes(CAT, [C0, C1, C2]).
-
 get_context(PROB, IDS, CTX) :- 
   maplist(prob_id_hyp(PROB), IDS, CTX).
 
@@ -2415,17 +2300,6 @@ push_qtf(FORM, NORM) :-
 
 push_qtf(FORM, FORM).
 
-msg(PTRN, ARGS) :-
-  % write(" ────────────────────────────────────────────────────────────────── "), 
-  write("                                                                      > "), 
-  format(PTRN, ARGS),
-  write("\n\n").
-
-msg(STR) :-
-  % write(" ────────────────────────────────────────────────────────────────── "), 
-  write("                                                                      > "), 
-  write(STR),
-  write("\n\n").
 
 distribute($fa(FORM), $fa(NORM)) :- !, 
   distribute(FORM, NORM).
@@ -2454,28 +2328,3 @@ distribute($or(FORM_A, FORM_B), NORM) :- !,
 distribute(FORM, FORM).
 
 trp_prem((PREM, _, _), PREM).
-
-path_atoms(PATH, ATOMS) :- 
-  open(PATH, read, STRM), 
-  stream_strings(STRM, STRS),
-  maplist_cut(string_to_atom, STRS, ATOMS).
-
-wf_list(PATH, LIST) :- 
-  open(PATH, write, STRM), 
-  write_list(STRM, LIST),
-  close(STRM).
-
-record_paths(PATH, PATHS) :- 
-  maplist_cut(path_name, PATHS, NAMES), 
-  wf_list(PATH, NAMES).
-
-atom_firstchar(ATOM, CH) :-
-  atom_codes(ATOM, [CODE | _]), 
-  char_code(CH, CODE).
-
-write_term_punct(STRM, TERM) :-
-  write_term(STRM, TERM, [fullstop(true), nl(true), quoted(true)]).
-
-countall(TMP, GOAL, CNT) :- 
-  findall(TMP, GOAL, BAG),
-  length(BAG, CNT).

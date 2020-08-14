@@ -2,7 +2,6 @@ vsol/
 vprf/
 esol/
 eprf/
-tests/
 temp.tesc
 paths.pl
 proof_trace.pl
