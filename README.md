@@ -31,3 +31,9 @@ options for `[PROVER]` are `e` and `vampire`.
 `./ttv [PROBLEM] [PROOF]` verifies that the TESC proof `[PROOF]` is a 
 correct proof of the TPTP problem `[PROBLEM]`. 
 
+## Test Results
+
+The tests using solutions produced by E and Vampire, referred to in the 
+extended abstract submitted to PAAR, has been superceded with a more
+comprehensive test using all eligible problems in the TPTP library.
+You can read the [summary](https://github.com/skbaek/tesc/blob/master/Test%20Results/Summary.md) for more details.

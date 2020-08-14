@@ -49,7 +49,7 @@ there is slight difference between the result of rewriting and the desired concl
 permutation in the quantifier order. 
 
 - There are a number of other inferences (pure predicate removal, avatar split clause, etc.) 
-that caused 3 or less compilation failures, but they do not seem worth prioritizing at the moment.
+that caused 3 or less compilation failures each, but they do not seem worth prioritizing at the moment.
 
 # Note on Versions 
 
