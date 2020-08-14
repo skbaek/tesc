@@ -14,7 +14,7 @@ input and verifies that the latter is a correct proof of the former.
 
 ## Installation & Usage 
 
-TTC and TTV can be compiled using `make`.
+TTC and TTV can be compiled using `make`. To enable loading of axiom files, modify the `tptp_directory/1` predicate in `basic.pl` to match the TPTP directory on your system. 
 
 [SWI-Prolog](https://www.swi-prolog.org/) is required for compilation of TTC and TTV.
 TTC also requires `cadical` (https://github.com/arminbiere/cadical) and `drat-trim`

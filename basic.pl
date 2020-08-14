@@ -1924,7 +1924,7 @@ rec_path_filenames(Dir, Files) :-
   maplist(rec_path_files, Paths, Filess),
   append(Filess, Files).
 
-tptp_directory('/home/sk/programs/TPTP'). % Modify this to TPTP directory on system
+tptp_directory('/home/sk/programs/TPTP/'). % Modify this to TPTP directory on system
 
 body_lits($or(FORM_L, FORM_R), LITS, TAIL) :- !, 
   body_lits(FORM_L, LITS, TEMP), 
@@ -2328,3 +2328,8 @@ distribute($or(FORM_A, FORM_B), NORM) :- !,
 distribute(FORM, FORM).
 
 trp_prem((PREM, _, _), PREM).
+
+atom_firstchar(ATOM, CH) :-
+  atom_codes(ATOM, [CODE | _]), 
+  char_code(CH, CODE).
+  
