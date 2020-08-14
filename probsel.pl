@@ -124,7 +124,7 @@ main([PATH, DA, TA]) :-
   % write_list(STRM, NAMES),
   % close(STRM).
   include_count(loadable, 0, NAMES, GOOD),
-  record_list(PATH, GOOD).
+  wf_list(PATH, GOOD).
 
 
 record_assoc(AXIOM) :- 

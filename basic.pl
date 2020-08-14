@@ -2460,14 +2460,14 @@ path_atoms(PATH, ATOMS) :-
   stream_strings(STRM, STRS),
   maplist_cut(string_to_atom, STRS, ATOMS).
 
-record_list(PATH, LIST) :- 
+wf_list(PATH, LIST) :- 
   open(PATH, write, STRM), 
   write_list(STRM, LIST),
   close(STRM).
 
 record_paths(PATH, PATHS) :- 
   maplist_cut(path_name, PATHS, NAMES), 
-  record_list(PATH, NAMES).
+  wf_list(PATH, NAMES).
 
 atom_firstchar(ATOM, CH) :-
   atom_codes(ATOM, [CODE | _]), 
