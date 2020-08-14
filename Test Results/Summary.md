@@ -13,18 +13,6 @@ the following tests. The full list of problems, annotated with their test result
 can be found in [probs.csv](https://github.com/skbaek/tesc/blob/master/Test%20Results/probs.csv). The tarballs of all TSTP solutions and TESC proofs used in the test 
 can also be found in the same [directory](https://github.com/skbaek/tesc/blob/master/Test%20Results/). 
 
-# E Test Results
-
-Out of the 13075 problems in the problem set, E produced TSTP solutions for 4887 problems. 
-TTC compiled 4587 E-produced TSTP solutions to TESC proofs, with a success rate of 93.86%.
-All of the TESC proofs were succefully verified with TTV. An overwhelming majority of 
-compilation failures (270 out of 300) were caused by timeouts in the 'solution phase', 
-where TTC tries to guess the implicit intermediate formulas in chains of inferences.
-Almost all of the solution phase failures involved long chains of `rw` steps, where the 
-number of candidate intermediate formulas can quickly explode depending on the position 
-and direction of rewriting. Breaking down the length of `rw`-chains will have the single 
-largest impact on increasing the compilation success rate for E.
-
 # Vampire Test Results
 
 Out of the 13075 problems in the problem set, Vampire produced TSTP solutions for 7882 problems. 
@@ -50,6 +38,18 @@ permutation in the quantifier order.
 
 - There are a number of other inferences (pure predicate removal, avatar split clause, etc.) 
 that caused 3 or less compilation failures each, but they do not seem worth prioritizing at the moment.
+
+# E Test Results
+
+Out of the 13075 problems in the problem set, E produced TSTP solutions for 4887 problems. 
+TTC compiled 4587 E-produced TSTP solutions to TESC proofs, with a success rate of 93.86%.
+All of the TESC proofs were succefully verified with TTV. An overwhelming majority of 
+compilation failures (270 out of 300) were caused by timeouts in the 'solution phase', 
+where TTC tries to guess the implicit intermediate formulas in chains of inferences.
+Almost all of the solution phase failures involved long chains of `rw` steps, where the 
+number of candidate intermediate formulas can quickly explode depending on the position 
+and direction of rewriting. Breaking down the length of `rw`-chains will have the single 
+largest impact on increasing the compilation success rate for E.
 
 # Note on Versions 
 

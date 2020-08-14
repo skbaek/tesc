@@ -1010,7 +1010,7 @@ put_list(STRM, PTR, [ELEM | LIST]) :-
   call(PTR, STRM, ELEM),
   put_list(STRM, PTR, LIST), !.
 
-put_dot(STRM) :-
+put_dollar(STRM) :-
   put_char(STRM, '$').
 
 put_bytes(_, []).
@@ -1019,9 +1019,9 @@ put_bytes(STRM, [BYTE | BYTES]) :-
   put_byte(STRM, BYTE),
   put_bytes(STRM, BYTES).
 
-put_bytes_dot(STRM, BYTES) :- 
+put_bytes_dollar(STRM, BYTES) :- 
   put_bytes(STRM, BYTES), 
-  put_dot(STRM). 
+  put_dollar(STRM). 
 
 put_functor(STRM, FUN) :- 
   put_atom(STRM, FUN) ;
@@ -1031,12 +1031,12 @@ put_string(STRM, STR) :-
   string(STR), 
   put_byte(STRM, 34), 
   string_codes(STR, BYTES), 
-  put_bytes_dot(STRM, BYTES).
+  put_bytes_dollar(STRM, BYTES).
 
 put_atom(STRM, ATOM) :- 
   atom(ATOM), 
   atom_codes(ATOM, BYTES),
-  put_bytes_dot(STRM, BYTES).
+  put_bytes_dollar(STRM, BYTES).
 
 put_dir(STRM, l) :- 
   put_char(STRM, "<").
@@ -1047,7 +1047,7 @@ put_dir(STRM, r) :-
 put_num(STRM, NUM) :- 
   number(NUM),
   number_codes(NUM, BYTES),
-  put_bytes_dot(STRM, BYTES).
+  put_bytes_dollar(STRM, BYTES).
  
 put_id(STRM, ID) :- !,
   put_atom(STRM, ID).
@@ -1294,20 +1294,20 @@ get_list(STRM, GTR, LIST) :-
     LIST = []
   ).
 
-get_until_dot(STRM, BYTES) :- 
+get_until_dollar(STRM, BYTES) :- 
   get_byte(STRM, BYTE), 
   (
     BYTE = 36 -> BYTES = [] ;
-    get_until_dot(STRM, TAIL),
+    get_until_dollar(STRM, TAIL),
     BYTES = [BYTE | TAIL] 
   ).
   
 get_string(STRM, STR) :- 
-  get_until_dot(STRM, BYTES), 
+  get_until_dollar(STRM, BYTES), 
   string_codes(STR, BYTES).
   
 get_functor(STRM, FUN) :- 
-  get_until_dot(STRM, [BYTE | BYTES]), 
+  get_until_dollar(STRM, [BYTE | BYTES]), 
   (
     BYTE = 34 -> 
     string_codes(FUN, BYTES) 

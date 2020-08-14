@@ -1,7 +1,7 @@
 # The TESC proof format & toolchain for first-order ATPs
 
-Theory Extensible Sequent Calculus (TESC) is a low-level 
-proof format for first-order ATPs. 
+Theory Extensible Sequent Calculus (TESC) is a low-level proof format for 
+first-order ATPs. 
 
 The TPTP-TSTP Compiler (TTC) accepts a TPTP problem and its TSTP solution 
 as input and constructs a corresponding TESC proof. The current version of 
