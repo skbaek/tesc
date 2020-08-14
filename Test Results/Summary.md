@@ -8,9 +8,10 @@ there are 13191 such problems. Out of these problems, the TESC toolchain rejects
 are from the LCL domain, and are caused by the use of the `substitution_of_equivalents` axiom.
 I believe it is reasonable to require unique formula names since the issue can be easily 
 fixed, and allowing duplicates makes it significantly more difficult to unambiguously
-refer to hypotheses in proofs.) The remaining 13075 problems are the problem set used in this test.
-The full list of problems, annotated with their test results data, can be found in [probs.csv](https://github.com/skbaek/tesc/blob/master/Test%20Results/probs.csv).
-The tarballs of all TSTP solutions and TESC proofs used in the test can also be found in the same [directory](https://github.com/skbaek/tesc/blob/master/Test%20Results/). 
+refer to hypotheses in proofs.) The remaining 13075 problems are the problem set used in 
+the following tests. The full list of problems, annotated with their test results data, 
+can be found in [probs.csv](https://github.com/skbaek/tesc/blob/master/Test%20Results/probs.csv). The tarballs of all TSTP solutions and TESC proofs used in the test 
+can also be found in the same [directory](https://github.com/skbaek/tesc/blob/master/Test%20Results/). 
 
 # E Test Results
 
@@ -30,7 +31,7 @@ Out of the 13075 problems in the problem set, Vampire produced TSTP solutions fo
 4 of those solutions were excluded as they contained (what I believe to be) errors. The remaining 
 7878 problems were used for testing the TESC toolchain. TTC successfully compiled 7815 of these
 TSTP solutions to TESC proofs, with a success rate of 99.20%. All of the TESC proofs were 
-succefully verified with TTV. The breakdown of compilation failure patterns are as follows:
+successfully verified with TTV. The breakdown of compilation failure patterns are as follows:
 
 - Timeouts from reconstruction of large AVATAR steps was the leading cause (26 problems) of 
 compilation failures. Unless Vampire can be modified to use smaller AVATAR steps, there 

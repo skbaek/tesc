@@ -25,8 +25,8 @@ Installation and usage was only tested on Linux.
 
 `./ttc [PROVER] [PROBLEM] [SOLUTION] [PROOF]` uses a TPTP problem `[PROBLEM]` 
 and a TSTP solution `[SOLUTION]` to compile a new TESC proof `[PROOF]`, where 
-`[PROVER]` is the ATP that generated `[SOLUTION]`. The supported option for 
-`[PROVER]` are `e` and `vampire`.
+`[PROVER]` is the ATP that generated `[SOLUTION]`. The currently supported 
+options for `[PROVER]` are `e` and `vampire`.
 
 `./ttv [PROBLEM] [PROOF]` verifies that the TESC proof `[PROOF]` is a 
 correct proof of the TPTP problem `[PROBLEM]`. 
