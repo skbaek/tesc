@@ -1283,6 +1283,10 @@ mate_pn(PYP, NYP, GOAL) :-
 
 %%%%%%%% GET %%%%%%%%
 
+get_id_form(STRM, (ID, FORM)) :- 
+  get_id(STRM, ID),
+  get_form(STRM, FORM).
+
 get_list(STRM, GTR, LIST) :- 
   get_char(STRM, CH), 
   (

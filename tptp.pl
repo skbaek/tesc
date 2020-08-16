@@ -20,18 +20,6 @@ precla_pcla(PRECLA, (ID, FORM)) :-
     FORM = TEMP
   ).
 
-% tptp_pclas_without_large(TPTP, PCLAS) :- 
-%   style_check(-singleton),
-%   declare_TPTP_operators,
-%   tptp_terms(TPTP, TERMS),
-%   partition(is_include, TERMS, INCLS, ORIG),
-%   delete(INCLS, include('Axioms/CSR002+5.ax'), INCLS_NEW),
-%   maplist(include_terms, INCLS_NEW, AXIOMSS),
-%   append([ORIG | AXIOMSS], PRECLAS),
-%   maplist(precla_pcla, PRECLAS, PCLAS), 
-%   true.
-
-
 tptp_pclas(TPTP, PCLAS) :- 
   style_check(-singleton),
   declare_TPTP_operators,
@@ -125,3 +113,47 @@ pose(MODE, TPTP, HYPS, CLAS, PROB) :-
   ),
   empty_assoc(EMP), 
   foldl_cut(add_hyp, HYPS, EMP, PROB).
+
+pose_path(TPTP, TTP) :- 
+  open(TTP, write, WS, [encoding(octet)]), !, 
+  empty_assoc(EMP), 
+  pose_path(WS, TPTP, EMP, _),
+  put_char(WS, '.'),
+  close(WS).
+  
+pose_path(WS, PATH, IDS_I, IDS_O) :- 
+  style_check(-singleton),
+  declare_TPTP_operators,
+  tptp_terms(PATH, TERMS),
+  foldl(pose_term(WS), TERMS, IDS_I, IDS_O),
+  %  partition(is_include, TERMS, INCLS, ORIG),
+  %  maplist(include_terms, INCLS, AXIOMSS),
+  %  append([ORIG | AXIOMSS], PRECLAS),
+  %  maplist(precla_pcla, PRECLAS, PCLAS), 
+  true.
+
+pose_term(WS, include(AX), IDS_I, IDS_O) :- !, 
+  tptp_directory(TPTP),
+  atomics_to_string([TPTP, AX], PATH),
+  pose_path(WS, PATH, IDS_I, IDS_O).
+
+pose_term(WS, TERM, IDS_I, IDS_O) :- 
+  TERM =.. [LNG, ID, TYPE, TF], 
+  (
+    get_assoc(ID, IDS_I, _) ->
+    format("Duplicate ID found = ~w\n", ID), false 
+  ; 
+    true
+  ),
+  put_assoc(ID, IDS_I, c, IDS_O), 
+  tf_form(LNG, TF, TEMP),
+  (
+    TYPE = conjecture -> 
+    FORM = $not(TEMP) 
+  ;
+    FORM = TEMP
+  ),
+  put_char(WS, ';'),
+  put_id(WS, ID),
+  put_form(WS, FORM).
+
