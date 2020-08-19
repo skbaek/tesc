@@ -1023,9 +1023,9 @@ put_bytes_dollar(STRM, BYTES) :-
   put_bytes(STRM, BYTES), 
   put_dollar(STRM). 
 
-put_functor(STRM, FUN) :- 
-  put_atom(STRM, FUN) ;
-  put_string(STRM, FUN).
+% put_functor(STRM, FUN) :- 
+%   put_atom(STRM, FUN) ;
+%   put_string(STRM, FUN).
 
 put_string(STRM, STR) :- 
   string(STR), 
@@ -1034,7 +1034,6 @@ put_string(STRM, STR) :-
   put_bytes_dollar(STRM, BYTES).
 
 put_atom(STRM, ATOM) :- 
-  atom(ATOM), 
   atom_codes(ATOM, BYTES),
   put_bytes_dollar(STRM, BYTES).
 
@@ -1045,18 +1044,28 @@ put_dir(STRM, r) :-
   put_char(STRM, ">").
 
 put_num(STRM, NUM) :- 
-  number(NUM),
   number_codes(NUM, BYTES),
   put_bytes_dollar(STRM, BYTES).
  
-put_id(STRM, ID) :- !,
+put_id(STRM, ID) :- 
+  atom(ID), !, 
   put_atom(STRM, ID).
+
+put_id(STRM, ID) :- 
+  number(ID), !,
+  put_char(STRM, '#'), 
+  put_num(STRM, ID).
   
-put_term(STRM, #(NUM)) :- !, put_char(STRM, '#'), put_num(STRM, NUM).
+put_term(STRM, #(NUM)) :- !, 
+  put_char(STRM, '#'), 
+  put_num(STRM, NUM).
+put_term(STRM, STR) :- 
+  string(STR), !, 
+  put_string(STRM, STR). 
 put_term(STRM, TERM) :- 
   TERM =.. [FUN | TERMS],
   put_char(STRM, '^'), 
-  put_functor(STRM, FUN), 
+  put_atom(STRM, FUN), 
   put_terms(STRM, TERMS). 
 
 put_terms(STRM, TERMS) :- 
@@ -1310,14 +1319,14 @@ get_string(STRM, STR) :-
   get_until_dollar(STRM, BYTES), 
   string_codes(STR, BYTES).
   
-get_functor(STRM, FUN) :- 
-  get_until_dollar(STRM, [BYTE | BYTES]), 
-  (
-    BYTE = 34 -> 
-    string_codes(FUN, BYTES) 
-  ;
-    atom_codes(FUN, [BYTE | BYTES])
-  ).
+% get_functor(STRM, FUN) :- 
+%   get_until_dollar(STRM, [BYTE | BYTES]), 
+%   (
+%     BYTE = 34 -> 
+%     string_codes(FUN, BYTES) 
+%   ;
+%     atom_codes(FUN, [BYTE | BYTES])
+%   ).
 
 get_atom(STRM, ATOM) :- 
   get_string(STRM, STR),
@@ -1346,8 +1355,9 @@ get_term(STRM, TERM) :-
   get_term(STRM, CH, TERM).
 
 get_term(STRM, '#', #(NUM)) :- get_num(STRM, NUM).
+get_term(STRM, '"', STR) :- get_string(STRM, STR).
 get_term(STRM, '^', TERM) :- 
-  get_functor(STRM, FUN), 
+  get_atom(STRM, FUN), 
   get_terms(STRM, TERMS),
   TERM =.. [FUN | TERMS].
 
@@ -1383,7 +1393,13 @@ get_sf(STRM, SF) :-
   apply_uop(SIGN, FORM, SF).
 
 get_id(STRM, ID) :- 
-  get_atom(STRM, ID).
+  get_until_dollar(STRM, [BYTE | BYTES]),
+  (
+    BYTE = 35 -> 
+    number_codes(ID, BYTES) 
+  ;
+    atom_codes(ID, [BYTE | BYTES]) 
+  ).
 
 get_prf(STRM, PRF) :- 
   get_char(STRM, CH), !, 

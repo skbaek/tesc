@@ -104,6 +104,8 @@ pcla_cla((ID, FORM), (ID, NORM)) :-
 
 pose(MODE, TPTP, HYPS, CLAS, PROB) :- 
   tptp_pclas(TPTP, PCLAS),
+    length(PCLAS, LTH),
+    format("Number of clauses = ~w\n", LTH),
   maplist_cut(pcla_hyp, PCLAS, HYPS),
   ( 
     MODE = verbose ->
