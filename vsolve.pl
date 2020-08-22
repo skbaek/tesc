@@ -44,12 +44,11 @@ pred_def_norm_or($or(FORM_A, FORM_B), $or(FORM_A, FORM_C), ATOM) :-
 
 pred_def_norm(PRD, $fa(FORM), ARI, $fa(NORM)) :- 
   pred_def_norm(PRD, FORM, ARI, NORM).
-pred_def_norm(PRD, $or(FORM_A, FORM_B), ARI, $iff(ATOM, FORM)) :- 
-  pred_def_norm_or($or(FORM_A, FORM_B), FORM, ATOM), 
-  ATOM =.. [PRD | TERMS],
+pred_def_norm(PRD, $or(FORM_A, FORM_B), ARI, $iff($rel(PRD, TERMS), FORM)) :- 
+  pred_def_norm_or($or(FORM_A, FORM_B), FORM, $rel(PRD, TERMS)), 
   length(TERMS, ARI).
 pred_def_norm(PRD, $iff(ATOM, FORM), ARI, $iff(ATOM, FORM)) :- 
-  ATOM =.. [PRD | TERMS],
+  ATOM = $rel(PRD, TERMS),
   length(TERMS, ARI).
 
 tup_inst(
@@ -63,8 +62,8 @@ tup_inst(
 ).
 
 tup_inst(
-  (ID, plain, $iff(PRD, FORM), introduced(avatar_definition,[new_symbols(naming,[PRD])])), 
-  add([def, PRD, 0], ID, $iff(PRD, FORM))
+  (ID, plain, $iff($rel(PRD, []), FORM), introduced(avatar_definition,[new_symbols(naming,[PRD])])), 
+  add([def, PRD, 0], ID, $iff($rel(PRD, []), FORM))
 ) :- 
   PRD \= $not(_).
 
@@ -150,23 +149,24 @@ reduce_gaocs([add([gaoc], NAME, FORM) | SOL], SOL_N) :-
 get_adds(FORM, NAMES, ADDS) :- 
   strip_fas(FORM, ARI, $imp(ANTE, CONC)),
   mk_vars(asc, ARI, VARS), !, 
-  explicate_form(ANTE, ANTE_N),
-  explicate_form(CONC, CONC_N),
-  get_adds(ARI, VARS, 0, ANTE_N, CONC_N, NAMES, ADDS),
+  % explicate_form(ANTE, ANTE_N),
+  % explicate_form(CONC, CONC_N),
+  get_adds(ARI, VARS, 0, ANTE, CONC, NAMES, ADDS),
   true.
 
 get_adds(ARI, VARS, NUM, $ex(ANTE), CONS, [aoc(NUM) | NAMES], [skm(FUN, ARI, aoc(NUM), AOC) | ADDS]) :- !, 
   num_succ(NUM, SUCC),
-  SKM = ^(FUN, VARS), 
+  SKM = $fun(FUN, VARS), 
   substitute_form(safe, SKM, ANTE, ANTE_N), 
-  add_fas(ARI, $imp($ex(ANTE), ANTE_N), TEMP), 
+  add_fas(ARI, $imp($ex(ANTE), ANTE_N), AOC), 
   get_adds(ARI, VARS, SUCC, ANTE_N, CONS, NAMES, ADDS), 
-  implicate_form(TEMP, AOC).
+  % implicate_form(TEMP, AOC),
+  true.
   
 get_adds(ARI, _, _, ANTE, CONS, [], []) :- 
   add_fas(ARI, ANTE, ANTE_N), 
   add_fas(ARI, CONS, CONS_N), 
-  paral((('@0', $pos(ANTE_N)), ('@1', $neg(CONS_N)), (_, 2))).
+  paral((($par(0), $pos(ANTE_N)), ($par(1), $neg(CONS_N)), (_, 2))).
 
 vsolve(TSTP, SOL) :- 
   tstp_sclas(TSTP, UNSORTED), !,

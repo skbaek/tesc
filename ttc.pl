@@ -1,14 +1,14 @@
-% #!/usr/bin/env swipl
-% :- initialization(main, main).
+#!/usr/bin/env swipl
+:- initialization(main, main).
 
 :- [basic].
 :- [tptp].
 :- [solve].
 :- [prove].
 
-% main([PROVER, TPTP, TSTP, TESC | OPTS]) :-
-main :- 
-  current_prolog_flag(argv, [_, PROVER, TPTP, TSTP, TESC | OPTS]), 
+main([PROVER, TPTP, TSTP, TESC | OPTS]) :-
+% main :- 
+%   current_prolog_flag(argv, [_, PROVER, TPTP, TSTP, TESC | OPTS]), 
   (
     member('-debug', OPTS) -> 
     guitracer,

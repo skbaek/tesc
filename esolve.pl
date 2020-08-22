@@ -2,37 +2,21 @@
 :- [basic].
 :- [tstp].
 
-par_pdx_args(PAR, PDX, ARGS) :- 
-  \+ var(PAR),
-  PAR =.. [FUN | ARGS],
-  atom(FUN),
-  atom_concat('@', TEMP, FUN),
-  atom_number(TEMP, PDX).
-
-pdx_in(EXP, PDX) :- 
-  sub_term(TERM, EXP), 
-  % TERM = @(NUM).
-  par_pdx_args(TERM, PDX, _).
-
 maxpdx(EXP, MAX) :- 
-  findall(NUM, pdx_in(EXP, NUM), NUMS), 
+  findall(NUM, sub_term($par(NUM), EXP), NUMS), 
   max_list(NUMS, MAX).
 
-map_par(_, #(NUM), #(NUM)) :- !.
-map_par(GOAL, ^(FUN, TERMS_I), ^(FUN, TERMS_O)) :- !, 
+map_par(_, $var(NUM), $var(NUM)) :- !.
+map_par(GOAL, $fun($par(NUM), []), TERM) :- !, 
+  call(GOAL, NUM, TERM). 
+map_par(GOAL, $fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- 
   maplist_cut(map_par(GOAL), TERMS_I, TERMS_O).
-map_par(GOAL, TERM_I, TERM_O) :- 
-  par_pdx_args(TERM_I, PDX, []) -> 
-  call(GOAL, PDX, TERM_O) 
-;
-  TERM_I =.. [FUN | TERMS_I], 
-  maplist_cut(map_par(GOAL), TERMS_I, TERMS_O),
-  TERM_O =.. [FUN | TERMS_O]. 
 
-bind_par(DEP, IDX, IDX, #(DEP)).
-bind_par(_, IDX_A, IDX_B, PAR) :- 
+bind_par(DEP, IDX, IDX, $var(DEP)).
+bind_par(_, IDX_A, IDX_B, $par(IDX_B)) :- 
   IDX_A \= IDX_B,
-  mk_par(IDX_B, [], PAR).
+  % mk_par(IDX_B, [], PAR),
+  true.
 
 bind_pars_term(IDX, DEP, TERM_I, TERM_O) :-
   map_par(bind_par(DEP, IDX), TERM_I, TERM_O).
@@ -54,7 +38,7 @@ tree_conc(ntr(_, SF), SF).
 tree_conc(utr(_, _, SF), SF).
 tree_conc(btr(_, _, _, SF), SF).
 
-incr_vdx(DEP, IDX, #(NEW)) :- 
+incr_vdx(DEP, IDX, $var(NEW)) :- 
   IDX < DEP -> 
   NEW = IDX ;
   num_succ(IDX, NEW). 
@@ -88,7 +72,7 @@ pull_qtf(FORM, FORM).
 target_tree(TGT, TREE, utr(TREE, HINT, CONC)) :-
   tree_conc(TREE, SUB),
   entails(SUB, TGT, HINT), 
-  ground_all(^(c,[]), TGT),
+  ground_all($fun(c,[]), TGT),
   bind_all_pars(TGT, CONC), !.
 
 mk_tree_fwd(CTX, inference(distribute, _, [ANT]), utr(utr(TREE, para_pull, NORM), para_dist, CONC)) :- !, 
@@ -125,7 +109,7 @@ mk_cf([LIT | LITS], $or(LIT, CLA)) :-
   mk_cf(LITS, CLA).
 
 bind_lvs(_, []).
-bind_lvs(NUM, [#(NUM) | VARS]) :- 
+bind_lvs(NUM, [$var(NUM) | VARS]) :- 
   num_succ(NUM, SUCC),
   bind_lvs(SUCC, VARS).
 
@@ -166,7 +150,7 @@ split_equiv(EQV, IMP) :-
 eq_resolve(FORM_I, FORM_O) :- 
   inst_with_lvs(FORM_I, BODY_I), 
   cf_lits(BODY_I, LITS),
-  pluck(LITS, $not(LHS = RHS), REST), 
+  pluck(LITS, $not($rel('=', [LHS, RHS])), REST), 
   unify_with_occurs_check(LHS, RHS), 
   mk_cf(REST, BODY_O),
   close_lvs(BODY_O, FORM_O).
@@ -184,8 +168,8 @@ compute_eqn_term(TERM_A, TERM_B, none) :- TERM_A == TERM_B, !.
 compute_eqn_term(TERM_A, TERM_B, EQN) :-
   \+ var(TERM_A),
   \+ var(TERM_B),
-  TERM_A = ^(FUN, TERMS_A),
-  TERM_B = ^(FUN, TERMS_B),
+  TERM_A = $fun(FUN, TERMS_A),
+  TERM_B = $fun(FUN, TERMS_B),
   maplist(compute_eqn_term, TERMS_A, TERMS_B, EQNS), 
   foldl(combine_opts, EQNS, none, EQN).
 compute_eqn_term(TERM_A, TERM_B, some((TERM_A, TERM_B))) :- \+ TERM_A == TERM_B.
@@ -201,9 +185,7 @@ compute_eqn_form(FORM_A, FORM_B, EQN) :-
   compute_eqn_form(SUB_LA, SUB_LB, EQN_L),
   compute_eqn_form(SUB_RA, SUB_RB, EQN_R),
   combine_opts(EQN_L, EQN_R, EQN).
-compute_eqn_form(FORM_A, FORM_B, EQN) :- 
-  FORM_A =.. [REL | TERMS_A],
-  FORM_B =.. [REL | TERMS_B],
+compute_eqn_form($rel(REL, TERMS_A), $rel(REL, TERMS_B), EQN) :- 
   maplist(compute_eqn_term, TERMS_A, TERMS_B, EQNS), 
   foldl(combine_opts, EQNS, none, EQN).
 
@@ -226,14 +208,6 @@ skolemize(DTH, $fa(FORM), SKM, ARI, AOC, $fa(NORM)) :- !,
   skolemize(SUCC, FORM, SKM, ARI, AOC, NORM).
 
 skolemize(DTH, $ex(FORM), SKM, DTH, AOC, NORM) :-  
-  % ovs(FORM, NUMS), 
-  % sort(NUMS, [0 | SORTED]), 
-  % length(SORTED, LTH),
-  % maplist(num_pred, SORTED, PREDS),
-  % reverse(PREDS, REV), 
-  % maplist_cut(mk('#'), REV, VARS), 
-  % SKM_TERM =.. [SKM | VARS], 
-  % LTH =< DTH,
   e_skm_term(SKM, DTH, SKM_TERM),
   substitute_form(safe, SKM_TERM, FORM, NORM),
   bind_vars($imp($ex(FORM), NORM), AOC), !.
@@ -258,7 +232,7 @@ ovs(FORM, OVS) :-
 is_vdx_in(NUM, EXP) :- 
   sub_term(X, EXP),
   \+ var(X),
-  X = #(NUM).
+  X = $var(NUM).
 
 minvar(FORM, MIN) :- 
   ovs(FORM, NUMS),
@@ -272,17 +246,16 @@ bind_vars(FORM_I, FORM_O) :-
 
 bind_var(IDX, CNT, NUM, TERM) :- 
   NUM is IDX + CNT -> 
-  TERM = #(CNT)
+  TERM = $var(CNT)
 ;
-  TERM = #(NUM).
+  TERM = $var(NUM).
 
 bind_var_term(IDX, CNT, TERM_I, TERM_O) :-
   map_var(bind_var(IDX, CNT), TERM_I, TERM_O).
 
-e_skm_term(SKM, NUM, ^(SKM, VARS)) :-
+e_skm_term(SKM, NUM, $fun(SKM, VARS)) :-
   range(desc, NUM, NUMS), 
-  maplist_cut(mk('#'), NUMS, VARS), 
-  % TERM =.. [SKM | VARS],
+  maplist_cut([X, $var(X)]>>true, NUMS, VARS), 
   true.
 
 has_exists($ex(_)).
@@ -301,7 +274,7 @@ syeq_lit(LIT_A, LIT_B) :-
   syeq_atom(LIT_A, LIT_B).
 
 syeq_atom(FORM_A, FORM_B) :- FORM_A == FORM_B.
-syeq_atom(LHS_A = RHS_A, LHS_B = RHS_B) :- 
+syeq_atom($rel('=', [LHS_A, RHS_A]), $rel('=', [LHS_B, RHS_B])) :- 
   LHS_A == RHS_B, 
   RHS_A == LHS_B.
 
@@ -332,10 +305,8 @@ mk_rw_form(LHS, RHS, $or(FORM_L, FORM_R), $or(RW_L, RW_R)) :- !,
     FORM_L = RW_L
   ).
 
-mk_rw_form(LHS, RHS, FORM_I, FORM_O) :- 
-  FORM_I =.. [REL | TERMS_I], 
-  mk_rw_terms(LHS, RHS, TERMS_I, TERMS_O), 
-  FORM_O =.. [REL | TERMS_O]. 
+mk_rw_form(LHS, RHS, $rel(REL, TERMS_I), $rel(REL, TERMS_O)) :- 
+  mk_rw_terms(LHS, RHS, TERMS_I, TERMS_O).
   
 mk_rw_terms(LHS, RHS, [TERM_I | TERMS_I], [TERM_O | TERMS_O]) :-  
   mk_rw_term(LHS, RHS, TERM_I, TERM_O),
@@ -350,9 +321,9 @@ mk_rw_term(FROM, TO, TERM_I, TERM_O) :-
     unify_with_occurs_check(FROM, TERM_I),
     TO = TERM_O
   ; 
-    TERM_I = ^(FUN, TERMS_I), 
+    TERM_I = $fun(FUN, TERMS_I), 
     mk_rw_terms(FROM, TO, TERMS_I, TERMS_O), 
-    TERM_O = ^(FUN, TERMS_O) 
+    TERM_O = $fun(FUN, TERMS_O) 
   ).
 
 nst_orient(pm, HYP_L, HYP_R, HYP_L, HYP_R).
@@ -369,8 +340,8 @@ fold_definition(NUM, ATOM, BODY, $not(FORM), $not(NORM)) :-
 
 fold_definition(NUM, ATOM, BODY, FORM, NORM) :- 
   decom_qtf(FORM, QTF, SUB_FORM), 
-  mk_par(NUM, [], PAR),
-  substitute_form(fast, PAR, SUB_FORM, TEMP_FORM), 
+  % mk_par(NUM, [], PAR),
+  substitute_form(fast, $fun($par(NUM), []), SUB_FORM, TEMP_FORM), 
   num_succ(NUM, SUCC), 
   fold_definition(SUCC, ATOM, BODY, TEMP_FORM, TEMP_NORM), 
   map_form(bind_pars_term(NUM), 0, TEMP_NORM, SUB_NORM), 
@@ -408,7 +379,7 @@ mk_root(ef, FORM_I, eqf, FORM_O) :-
   permutation([LIT_L, LIT_R], [LIT_A, LIT_B]),
   erient_form(LIT_A, LIT_AT),
   compute_eqn_form(LIT_AT, LIT_B, some((LHS, RHS))), 
-  mk_cf([$not(LHS = RHS), LIT_B | REST], BODY_O), 
+  mk_cf([$not($rel('=', [LHS, RHS])), LIT_B | REST], BODY_O), 
   close_lvs(BODY_O, FORM_O).
   
 mk_root(ef, FORM_I, sbsm, FORM_O) :- 
@@ -440,7 +411,7 @@ mk_root(RUL, FORM_A, FORM_B, (sup, l), FORM) :-
   inst_with_lvs(FORM_B, BODY_B),
   cf_lits(BODY_B, LITS_B),  
   pluck(LITS_B, LIT_B, REST_B),
-  orient_equation(LIT_B, LHS = RHS),
+  orient_equation(LIT_B, $rel('=', [LHS, RHS])),
   pluck(LITS_A, LIT_A, REST_A),
   mk_rw_form(LHS, RHS, LIT_A, LIT_N), 
   syunion_lits([LIT_N | REST_A], REST_B, LITS),
@@ -466,14 +437,13 @@ mk_root(RUL, FORM_A, FORM_B, res, FORM) :-
 mk_root(rw, FORM, _, rnm, FORM).
 
 def_pred_ari(FORM, PRED, ARI) :- 
-  strip_fas(FORM, _, $iff(ATOM, _)), 
-  ATOM =.. [PRED | TERMS],
+  strip_fas(FORM, _, $iff($rel(PRED, TERMS), _)), 
   length(TERMS, ARI).
 
 inst_fas(NUM, $fa(FORM), BODY) :- !,
   num_succ(NUM, SUCC),
-  mk_par(NUM, [], PAR),
-  substitute_form(fast, PAR, FORM, TEMP),
+  % mk_par(NUM, [], PAR),
+  substitute_form(fast, $fun($par(NUM), []), FORM, TEMP),
   inst_fas(SUCC, TEMP, BODY).
 inst_fas(_, FORM, FORM) :- FORM \= $fa(_).
 
@@ -606,6 +576,7 @@ invert_conjecture([TUP_I | TUPS_I], [TUP_O | TUPS_O]) :-
   TUP_O = TUP_I,
   invert_conjecture(TUPS_I, TUPS_O).
 
+/*
 explicate_scla((ID, TYPE, FORM, INFO), (ID, TYPE, NORM, INFO)) :- 
   explicate_form(FORM, NORM).
 
@@ -621,14 +592,13 @@ implicate_inst(X, _) :-
   write("Error : cannot implicate "),
   write(X),
   false.
+*/
   
 esolve(TSTP, SOL) :- 
   tstp_sclas(TSTP, TEMP), !, 
-  maplist_cut(explicate_scla, TEMP, EXPL),
-  invert_conjecture(EXPL, TUPS),
+  invert_conjecture(TEMP, TUPS),
   tups_ctx(TUPS, CTX),
   maplist_cut(tup_insts(CTX), TUPS, INSTSS),
   append(INSTSS, APPENDED),
-  maplist_cut(implicate_inst, APPENDED, IMPL),
-  relabel(IMPL, SOL),
+  relabel(APPENDED, SOL),
   true.

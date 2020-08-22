@@ -60,8 +60,8 @@
 :-op(510,xfx,-->).
 
 %----DLF separators, very weak, but stronger than :=
-% :-op(525,xfx,#).   % Disabled for TESC
-% :-op(525,xf,#).   % Disabled for TESC
+:-op(525,xfx,#).  
+:-op(525,xf,#).  
 
 :-op(550,xfx,:=).
 
@@ -113,8 +113,8 @@ declare_TPTP_operators:-
     op(505,xfx,<=>),
     op(505,xfx,<~>),
     op(510,xfx,-->),
-%   op(525,xfx,#),   % Disabled for TESC
-%   op(525,xf,#),   % Disabled for TESC
+    op(525,xfx,#),   
+    op(525,xf,#),   
     op(550,xfx,':=').
 
 fof_form(_, $true, $true).
@@ -166,10 +166,9 @@ fof_form(VARS, TF_A <= TF_B, FORM) :- !,
 fof_form(VARS, TF_A <~> TF_B, FORM) :- !,
   fof_form(VARS, ~ (TF_A <=> TF_B), FORM).
 
-fof_form(VARS, TF, FORM) :- 
+fof_form(VARS, TF, $rel(REL, TERMS)) :- 
   TF =.. [REL | TTS], 
-  maplist_cut(tt_term(VARS), TTS, TERMS),
-  FORM =.. [REL | TERMS], !.
+  maplist_cut(tt_term(VARS), TTS, TERMS), !.
 
 tf_form(fof, TF, FORM) :-
   fof_form([], TF, FORM).

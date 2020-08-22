@@ -1,24 +1,17 @@
 :- [basic].
 
 
-term_poseq_term(Var, _) :- var(Var).
-
-term_poseq_term(_, Var) :- var(Var).
-
-term_poseq_term(TERM_A, TERM_B) :- 
-  \+ var(TERM_A),
-  \+ var(TERM_B),
-  TERM_A =.. [FUN | TERMS_A],
-  TERM_B =.. [FUN | TERMS_B],
+term_poseq_term(Var, _) :- var(Var), !.
+term_poseq_term(_, Var) :- var(Var), !.
+term_poseq_term($fun(FUN, TERMS_A), $fun(FUN, TERMS_B)) :- 
   length(TERMS_A, LTH),
   length(TERMS_B, LTH).
 
 term_poseq_term(_, TERM_A, TERM_B) :- 
   term_poseq_term(TERM_A, TERM_B).
-
 term_poseq_term(OPQEs, TERM_A, TERM_B) :- 
   member((_, $pos(QE)), OPQEs), 
-  inst_with_lvs(QE, TERM_L = TERM_R),
+  inst_with_lvs(QE, $rel('=', [TERM_L, TERM_R])),
   ( 
     term_poseq_term(TERM_A, TERM_L) ; 
     term_poseq_term(TERM_A, TERM_R) ; 
@@ -37,25 +30,22 @@ intro_eqs(MONO, [TERM_A | TERMS_A], [TERM_B | TERMS_B], GOAL, Iff, [(ONE, SubGOA
   intro_eqs(TempMONO, TERMS_A, TERMS_B, GOAL_T, Iff, HGS, GOAL_N). 
 
 break_eq_fun(OPEs, ONE, GOAL, HGS) :- 
-  ONE = (_, $neg(TERM_A = TERM_B)),
+  ONE = (_, $neg($rel('=', [TERM_A, TERM_B]))),
   \+ var(TERM_A),
   \+ var(TERM_B),
-  TERM_A =.. [FUN | TERMS_A],
-  TERM_B =.. [FUN | TERMS_B],
+  TERM_A = $fun(FUN, TERMS_A),
+  TERM_B = $fun(FUN, TERMS_B),
   length(TERMS_A, LTH),
   length(TERMS_B, LTH),
   maplist_cut(term_poseq_term(OPEs), TERMS_A, TERMS_B),
   mk_mono_fun(LTH, FUN, MONOForm),
-  % atom_number(LTH_ATOM, LTH),
   tp($pos(MONOForm), GOAL, MONO, GOAL0),
   intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, OPE, HGS, GOAL1),
   xp(OPE, ONE, GOAL1).
 
 break_eq_rel(OPEs, OPA, ONA, GOAL, HGS) :- 
-  OPA = (_, $pos(ATOM_A)),
-  ONA = (_, $neg(ATOM_B)),
-  ATOM_A =.. [REL | TERMS_A], 
-  ATOM_B =.. [REL | TERMS_B], 
+  OPA = (_, $pos($rel(REL, TERMS_A))),
+  ONA = (_, $neg($rel(REL, TERMS_B))),
   length(TERMS_A, LTH),
   length(TERMS_B, LTH),
   maplist_cut(term_poseq_term(OPEs), TERMS_A, TERMS_B),
@@ -68,7 +58,7 @@ break_eq_rel(OPEs, OPA, ONA, GOAL, HGS) :-
   xp(HYP_R, ONA, GOAL_R). 
 
 subst_fun_mul(OPEs, ONE, GOAL, NewOPEs) :-
-  ONE = (_, $neg(TERM_A = TERM_B)), 
+  ONE = (_, $neg($rel('=', [TERM_A, TERM_B]))), 
   (
     TERM_A == TERM_B -> 
     (eq_refl(ONE, GOAL), NewOPEs = OPEs) ;
@@ -76,7 +66,7 @@ subst_fun_mul(OPEs, ONE, GOAL, NewOPEs) :-
   ).
 
 subst_fun_mul_0(OPEs, ONF, GOAL, OPEs) :- 
-  ONF = (_, $neg(TERM_A = TERM_B)), 
+  ONF = (_, $neg($rel('=', [TERM_A, TERM_B]))), 
   unify_with_occurs_check(TERM_A, TERM_B),
   eq_refl(ONF, GOAL).
 
@@ -85,14 +75,14 @@ subst_fun_mul_0(OPEs, ONE, GOAL, NewOPEs) :-
   subst_fun_mul_aux(OPEs, HGS, NewOPEs). 
 
 subst_fun_mul_0(OPQEs, ONE, GOAL, NewOPQEs) :- 
-  ONE = (_, $neg(TERM_A0 = TERM_C)), 
+  ONE = (_, $neg($rel('=', [TERM_A0, TERM_C]))), 
   pluck_uniq(OPQEs, OPQE, REST),
   many_nb([c], [OPQE], GOAL, [PRE_OPE], GOAL_T), 
-  PRE_OPE = (_, $pos(_ = _)),
+  PRE_OPE = (_, $pos($rel('=', [_, _]))),
   erient_hyp(PRE_OPE, GOAL_T, OPE, GOAL0),
-  OPE = (_, $pos(TERM_A1 = TERM_B)),
+  OPE = (_, $pos($rel('=', [TERM_A1, TERM_B]))),
   unify_with_occurs_check(TERM_A0, TERM_A1), 
-  fp(TERM_B = TERM_C, GOAL0, NewONE, NewOPE, GOAL1, GOAL2), 
+  fp($rel('=', [TERM_B, TERM_C]), GOAL0, NewONE, NewOPE, GOAL1, GOAL2), 
   subst_fun_mul(REST, NewONE, GOAL1, NewOPQEs), 
   eq_trans(OPE, NewOPE, ONE, GOAL2).
 
@@ -112,7 +102,7 @@ subst_fun_add(EQNS, (HYP, GOAL)) :-
   subst_fun_add(EQNS, HYP, GOAL).
 
 subst_fun_add(EQNS, ONE, GOAL) :-
-  ONE = (_, $neg(TERM_A = TERM_B)), 
+  ONE = (_, $neg($rel('=', [TERM_A, TERM_B]))), 
   (
     TERM_A == TERM_B -> 
     eq_refl(ONE, GOAL) ;
@@ -120,7 +110,7 @@ subst_fun_add(EQNS, ONE, GOAL) :-
   ).
 
 subst_fun_add_0(_, ONF, GOAL) :- 
-  ONF = (_, $neg(TERM_A = TERM_B)), 
+  ONF = (_, $neg($rel('=', [TERM_A, TERM_B]))), 
   unify_with_occurs_check(TERM_A, TERM_B),
   eq_refl(ONF, GOAL).
 
@@ -129,14 +119,14 @@ subst_fun_add_0(EQNS, ONE, GOAL) :-
   maplist(subst_fun_add(EQNS), HGS). 
 
 subst_fun_add_0(OPQEs, ONE, GOAL) :- 
-  ONE = (_, $neg(TERM_A0 = TERM_C)), 
+  ONE = (_, $neg($rel('=', [TERM_A0, TERM_C]))), 
   pluck_uniq(OPQEs, OPQE, REST),
   many_nb([c], [OPQE], GOAL, [PRE_OPE], GOAL_T), 
-  PRE_OPE = (_, $pos(_ = _)),
+  PRE_OPE = (_, $pos($rel('=', [_, _]))),
   erient_hyp(PRE_OPE, GOAL_T, OPE, GOAL0),
-  OPE = (_, $pos(TERM_A1 = TERM_B)),
+  OPE = (_, $pos($rel('=', [TERM_A1, TERM_B]))),
   unify_with_occurs_check(TERM_A0, TERM_A1), 
-  fp(TERM_B = TERM_C, GOAL0, NewONE, NewOPE, GOAL1, GOAL2), 
+  fp($rel('=', [TERM_B, TERM_C]), GOAL0, NewONE, NewOPE, GOAL1, GOAL2), 
   subst_fun_add(REST, NewONE, GOAL1), 
   eq_trans(OPE, NewOPE, ONE, GOAL2).
 
@@ -674,12 +664,12 @@ mscj(H2G) :-
   mscj(H2G_N).
 
 lit_map_lit(LIT, LIT).
-lit_map_lit(TERM_A = TERM_B, TERM_B = TERM_A).
-lit_map_lit($not(TERM_A = TERM_B), $not(TERM_B = TERM_A)).
+lit_map_lit($rel('=', [TERM_A, TERM_B]), $rel('=', [TERM_B, TERM_A])).
+lit_map_lit($not($rel('=', [TERM_A, TERM_B])), $not($rel('=', [TERM_B, TERM_A]))).
 
 lit_mappable_lit(LIT_A, LIT_B) :- unifiable(LIT_A, LIT_B, _).
-lit_mappable_lit(TERM_A = TERM_B, LIT) :- unifiable(TERM_B = TERM_A, LIT, _).
-lit_mappable_lit($not(TERM_A = TERM_B), LIT) :- unifiable($not(TERM_B = TERM_A), LIT, _).
+lit_mappable_lit($rel('=', [TERM_A, TERM_B]), LIT) :- unifiable($rel('=', [TERM_B, TERM_A]), LIT, _).
+lit_mappable_lit($not($rel('=', [TERM_A, TERM_B])), LIT) :- unifiable($not($rel('=', [TERM_B, TERM_A])), LIT, _).
 
 lits_map_lits([], _).
 
@@ -775,7 +765,7 @@ infer(m, subst, [PREM], _, CONC, GOAL) :-
 infer(m, eq, [], _, CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, EQ, [HYP_A, HYP_B]),
-  EQ = (_, $pos(_ = _)), 
+  EQ = (_, $pos($rel('=', [_, _]))), 
   subst_rel_mul(HYP_A, [EQ], HYP_B, GOAL_T, []). 
 
 infer(m, refl, [], _, CONC, GOAL) :-
@@ -824,7 +814,7 @@ infer(v, orig, PREMS, CLAS, CONC, GOAL) :-
 infer(_, eqf, [PREM], _, CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, HYP, REST), 
-  HYP = (_, $pos(_ = _)), 
+  HYP = (_, $pos($rel('=', [_, _]))), 
   many([b, c, s], ([PREM], GOAL_T), HGS), 
   maplist(eqf(REST, HYP), HGS).
 
@@ -852,7 +842,7 @@ infer(_, rwe, [PREM_L, PREM_R], _, CONC, GOAL) :-
   many_nb([a, s], [BODY_C], GOAL4, HYPS, GOAL5), 
   pick_pivot_prop(HYPS, BODY_L, GOAL5, SRC, GOAL6), 
   pick_pivot_prop(HYPS, BODY_R, GOAL6, PRE_EQN, GOAL7), 
-  PRE_EQN = (_, $pos(_ = _)),
+  PRE_EQN = (_, $pos($rel('=', [_, _]))),
   erient_hyp(PRE_EQN, GOAL7, EQN, GOAL8),
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL8). 
@@ -862,7 +852,7 @@ infer(_, (sup, DIR), [PREM_A, PREM_B], _, CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL0), 
   pick_pivot(HYPS, PREM_L, GOAL0, SRC, GOAL1), 
   pick_pivot(HYPS, PREM_R, GOAL1, PRE_EQN, GOAL2), 
-  PRE_EQN = (_, $pos(_ = _)),
+  PRE_EQN = (_, $pos($rel('=', [_, _]))),
   erient_hyp(PRE_EQN, GOAL2, EQN, GOAL3),
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL3). 
@@ -950,23 +940,17 @@ report_failure(MODE, PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
   write("\n\n"),
   (
     MODE = verbose ->
-    open("temp_trace", write, Stream), 
-    write(Stream, ":- [basic].\n\n"), 
-    format(Stream, '~w.\n\n', debug_prvr(PRVR)), 
-    format(Stream, '~w.\n\n', debug_hints(HINTS)), 
-    format(Stream, '~w.\n\n', debug_ctx(PREMS)), 
-    format(Stream, '~w.\n\n', debug_clas(CLAS)), 
-    format(Stream, '~w.\n\n', debug_hyp(CONC)), 
-    format(Stream, '~w.\n\n', debug_goal(GOAL)), 
-    format(Stream, '~w.\n\n', debug_prob(PROB)), 
-    format(Stream, '~w.\n\n', debug_prf(PRF)), 
-    close(Stream), 
-    open("temp_trace", read, STRM_R), 
-    open("proof_trace.pl", write, STRM_W), 
-    quote_par(STRM_R, STRM_W), 
-    close(STRM_R),
-    close(STRM_W),
-    delete_file("temp_trace"),
+    open("proof_trace.pl", write, STRM), 
+    write(STRM, ":- [basic].\n\n"), 
+    write_term_punct(STRM, debug_prvr(PRVR)),
+    write_term_punct(STRM, debug_hints(HINTS)), 
+    write_term_punct(STRM, debug_ctx(PREMS)), 
+    write_term_punct(STRM, debug_clas(CLAS)), 
+    write_term_punct(STRM, debug_hyp(CONC)), 
+    write_term_punct(STRM, debug_goal(GOAL)), 
+    write_term_punct(STRM, debug_prob(PROB)), 
+    write_term_punct(STRM, debug_prf(PRF)), 
+    close(STRM), 
     throw(compilation_timeout)
   ;
     true
@@ -974,7 +958,8 @@ report_failure(MODE, PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
 
 subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
-  mk_par(CNT, [], CID),
+  % mk_par(CNT, [], CID),
+  CID = $par(CNT),
   put_char(STRM, 'F'), 
   put_form(STRM, FORM), 
   num_succ(CNT, SCNT),
@@ -984,7 +969,7 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
     infer(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), GOAL), 
     (
       write("Subproof failed prematurely. "),
-      report_failure(fast, PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
+      report_failure(verbose, PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
       false
     ),
     (
@@ -993,7 +978,7 @@ subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-
       false
     )
   ), !,
-  ground_all(c, PRF),
+  ground_all($fun(c,[]), PRF),
   % put_assoc(CID, PROB, $neg(FORM), SUB_PROB),
   % (
   %   check_term(SUB_PROB, SCNT, PRF) ->  true ; 
@@ -1030,7 +1015,8 @@ set_ps_last(PS_O, LAST, PS_N)  :- set_tup_nth(2, PS_O, LAST, PS_N).
 use_inst(PS, CNT, add(FORM), PS_N) :- 
   get_ps_prob(PS, PROB),
   get_ps_strm(PS, STRM),
-  mk_par(CNT, [], CID),
+  % mk_par(CNT, [], CID),
+  CID = $par(CNT),
   justified(CNT, $pos(FORM)),
   put_char(STRM, 'T'), 
   put_sf(STRM, $pos(FORM)), 
@@ -1051,7 +1037,8 @@ use_inst(PS, CNT, inf(HINT, IDS, FORM), PS_N) :-
     get_context(PROB, IDS, PREMS)
   ),
   subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM),
-  mk_par(CNT, [], CID),
+  % mk_par(CNT, [], CID),
+  CID = $par(CNT),
   put_assoc(CID, PROB, $pos(FORM), PROB_N),
   set_ps_prob(PS, PROB_N, PS1), 
   set_ps_last(PS1, CID, PS_N), 
@@ -1077,8 +1064,7 @@ prove(PS, NUM) :-
   get_ps_sol(PS, []), 
   get_ps_strm(PS, STRM), 
   get_ps_last(PS, LAST),
-  mk_par(NUM, [], CID),
-  put_prf(STRM, t($neg($false), x(LAST, CID))).
+  put_prf(STRM, t($neg($false), x(LAST, $par(NUM)))).
 
 para_push(TRP) :- 
   para_m(TRP) -> true 

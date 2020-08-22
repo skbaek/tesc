@@ -37,40 +37,71 @@ add_hyp((ID, SF), PROB, PROB_N) :- !,
 ;
   put_assoc(ID, PROB, SF, PROB_N).
 
+nonfun($var(_)).
+nonfun($dst(_)).
+
 form_gnd(FORM, NUM) :- 
   ground(FORM) ->
   NUM = 1 
 ;
   NUM = 0.
 
-exp_size(VAR, 1) :- var(VAR), !.
-exp_size(EXP, SIZE) :- 
-  EXP =.. [_ | ARGS], 
-  maplist_cut(exp_size, ARGS, SIZES),
-  sum_list([1 | SIZES], SIZE).
+term_node_count(TERM, 1) :- (var(TERM) ; nonfun(TERM)), !.
+term_node_count($fun(_, TERMS), NUM) :- 
+  maplist_cut(term_node_count, TERMS, NUMS),
+  sum_list([1 | NUMS], NUM).
 
-exp_depth(VAR, 0) :- var(VAR), !.
-exp_depth(EXP, DEPTH) :- 
-  EXP =.. [_ | ARGS], 
-  (
-    ARGS == [] -> 
-    DEPTH = 0 
-  ;
-    maplist_cut(exp_depth, ARGS, DEPTHS),
-    max_list(DEPTHS, PRED),
-    num_succ(PRED, DEPTH)
-  ).
+form_node_count(FORM, CNT) :- 
+  decom_uct(FORM, _, SUB),
+  form_node_count(SUB, PRED),
+  num_succ(PRED, CNT).
+form_node_count(FORM, CNT) :- 
+  decom_bct(FORM, _, FORM_A, FORM_B),
+  form_node_count(FORM_A, CNT_A),
+  form_node_count(FORM_B, CNT_B),
+  CNT is CNT_A + CNT_B + 1.
+form_node_count($rel(_, TERMS), NUM) :- 
+  maplist_cut(term_node_count, TERMS, NUMS),
+  sum_list([1 | NUMS], NUM).
 
-exp_cnum(VAR, 0) :- var(VAR), !.
-exp_cnum(EXP, CNUM) :- 
-  EXP =.. [_ | ARGS], 
-  (
-    ARGS == [] -> 
-    CNUM = 1 
-  ;
-    maplist_cut(exp_cnum, ARGS, CNUMS),
-    sum_list(CNUMS, CNUM)
-  ).
+term_depth(TERM, 0) :- (var(TERM) ; nonfun(TERM)), !.
+term_depth($fun(_, TERMS), DEP) :- 
+  maplist_cut(term_depth, TERMS, DEPS),
+  max_list(DEPS, PRED),
+  num_succ(PRED, DEP).
+
+form_depth(FORM, DEP) :- 
+  decom_uct(FORM, _, SUB),
+  form_depth(SUB, PRED),
+  num_succ(PRED, DEP).
+form_depth(FORM, DEP) :- 
+  decom_bct(FORM, _, FORM_A, FORM_B),
+  form_depth(FORM_A, NUM_A),
+  form_depth(FORM_B, NUM_B),
+  max(NUM_A, NUM_B, MAX),
+  num_succ(MAX, DEP).
+form_depth($rel(_, TERMS), DEP) :- 
+  maplist_cut(term_depth, TERMS, DEPS),
+  max_list(DEPS, PRED),
+  num_succ(PRED, DEP).
+
+term_cnum(TERM, 0) :- (var(TERM) ; nonfun(TERM)), !.
+term_cnum($fun(_, TERMS), NUM) :- 
+  maplist_cut(term_cnum, TERMS, NUMS),
+  sum_list([1 | NUMS], NUM). 
+
+form_cnum(FORM, NUM) :- !, 
+  decom_bct(FORM, _, FORM_A, FORM_B),
+  form_cnum(FORM_A, NUM_A),
+  form_cnum(FORM_B, NUM_B),
+  NUM is NUM_A + NUM_B.
+form_cnum(FORM, NUM) :- 
+  decom_uct(FORM, _, SUB), !,
+  form_cnum(SUB, NUM).
+form_cnum($rel(_, TERMS), NUM) :- 
+  maplist_cut(term_cnum, TERMS, NUMS),
+  sum_list(NUMS, PRED), 
+  num_succ(PRED, NUM).
 
 measure_cmp(MSR, EXP_A, EXP_B, ORD) :- 
   call(MSR, EXP_A, NUM_A),
@@ -88,9 +119,9 @@ lit_cmp(ORD, LIT_A, LIT_B) :-
 atom_cmp(ORD, ATOM_A, ATOM_B) :- 
   (
     measure_cmp(form_gnd, ATOM_A, ATOM_B, ORD) ;
-    measure_cmp(exp_depth, ATOM_A, ATOM_B, ORD) ;
-    measure_cmp(exp_size, ATOM_A, ATOM_B, ORD) ;
-    measure_cmp(exp_cnum, ATOM_A, ATOM_B, ORD) ;
+    measure_cmp(form_depth, ATOM_A, ATOM_B, ORD) ;
+    measure_cmp(form_node_count, ATOM_A, ATOM_B, ORD) ;
+    measure_cmp(form_cnum, ATOM_A, ATOM_B, ORD) ;
     compare(ORD, ATOM_A, ATOM_B) 
   ), !.
 

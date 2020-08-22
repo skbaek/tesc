@@ -60,9 +60,9 @@ check_term(PROB, _, _, _, x(PID, NID)) :-
   FORM_P == FORM_N.
 
 check_term(PROB, CNT, PRF) :- 
-  mk_par(CNT, [], CID),
+  % mk_par(CNT, [], CID),
   num_succ(CNT, SUCC),
-  check_term(PROB, CNT, SUCC, CID, PRF).
+  check_term(PROB, CNT, SUCC, $par(CNT), PRF).
   
 check_term(TPTP, TESC) :- 
   style_check(-singleton),
@@ -80,10 +80,10 @@ check_strm(TPTP, TESC) :-
   close(STRM).
 
 check_strm(STRM, PROB, CNT) :- 
-  mk_par(CNT, [], CID),
+  % mk_par(CNT, [], CID),
   num_succ(CNT, SUCC),
   get_char(STRM, CH), !,
-  check_strm(STRM, PROB, CNT, SUCC, CID, CH), !.
+  check_strm(STRM, PROB, CNT, SUCC, $par(CNT), CH), !.
 
 check_strm(STRM, PROB, _, SUCC, CID, 'A') :- 
   get_id(STRM, ID),  
