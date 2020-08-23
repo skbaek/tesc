@@ -41,6 +41,19 @@ enum Form {
   Rel(Rc<Functor>, Vec<Term>)
 } 
 
+enum FormPart {
+  True, 
+  False,
+  Not,
+  Fa,
+  Ex,
+  And,
+  Or,
+  Imp,
+  Iff,
+  Rel(Rc<Functor>, Vec<Term>)
+} 
+
 #[derive(PartialEq, Eq, std::hash::Hash, Clone, Debug)]
 enum Name {
   Atm(String),
@@ -55,7 +68,9 @@ fn err_str<T>(s: &str) -> Result<T, String> {
 }
 
 fn get_char(bs: FileBytes) -> Result<char, String> { 
-  Ok(char::from(get_byte(bs)?))
+  let c = char::from(get_byte(bs)?);
+  // print!("{}", c);
+  Ok(c)
 }
 
 fn get_byte(bs : FileBytes) -> Result<u8, String> {
@@ -68,15 +83,15 @@ fn get_byte(bs : FileBytes) -> Result<u8, String> {
   }
 }
 
-fn get_bytes(bs : FileBytes) -> Result<Vec<u8>, String> {
-  let mut v: Vec<u8> = vec![];
-  let mut b = get_byte(bs)?;
-  while b != 36 {
-    v.push(b);
-    b = get_byte(bs)?;
-  }
-  Ok(v)
-}
+// fn get_bytes(bs : FileBytes) -> Result<Vec<u8>, String> {
+//   let mut v: Vec<u8> = vec![];
+//   let mut b = get_byte(bs)?;
+//   while b != 36 {
+//     v.push(b);
+//     b = get_byte(bs)?;
+//   }
+//   Ok(v)
+// }
 
 fn is_eq(t: Term, s: Term, f: &Form) -> bool { 
   match f {
@@ -314,6 +329,7 @@ fn ground_term(k: u64, t: &Term) -> bool {
   }
 }
 
+
 fn get_functor(bs: FileBytes) -> Result<Functor, String> {
   match get_char(bs)? {
     '\'' => {
@@ -376,9 +392,9 @@ fn get_u64(bs : FileBytes) -> Result<u64, String> {
 
 fn get_dir(bs: FileBytes) -> Result<Dir, String> { 
   match get_char(bs)? {
-    'l' => Ok(Dir::Lft),
-    'r' => Ok(Dir::Rgt),
-    _ => err_str("Cannot parse direction")
+    '<' => Ok(Dir::Lft),
+    '>' => Ok(Dir::Rgt),
+     c  => Err(format!("Cannot parse direction from char = {}", c))
   }
 }
 
@@ -399,18 +415,6 @@ fn get_name(bs: FileBytes) -> Result<Name, String> {
     _ => err_str("Cannot parse name")
   }
 }
-
-// impl Get for Name {
-//   fn get(bs: FileBytes) -> Name { 
-//     match get_byte(bs) {
-//       35 => Name::Num(get_u64(bs)?),
-//       b => {
-//         let x = get_bytes(bs, vec![b]);
-//         Name::Atm(str::from_utf8(&x).unwrap().to_string())
-//       }
-//     }
-//   }
-// }
 
 fn get_term(bs : FileBytes) -> Result<Term, String> {
   match get_char(bs)? {
@@ -436,21 +440,122 @@ impl Get for Term {
 }
 
 fn get_string(bs : FileBytes) -> Result<String, String> {
-  let v = get_bytes(bs)?;
-  match str::from_utf8(&v) {
-    Ok(s) => Ok(s.to_string()),
-    _ => err_str("Cannot convert Vec<u8> to &str")
+  let mut c = get_char(bs)?;
+  let mut s = String::from("");
+  while c != '$' {
+    s.push(c);
+    c = get_char(bs)?;
   }
+  Ok(s)
 }
 
-// impl Get for (String, Form) {
-//   fn get(bs : FileBytes) -> (String, Form) {
-//     let s = get_string(bs)?;
-//     let f = get_form(bs)?;
-//     (s, f)
+// fn get_string(bs : FileBytes) -> Result<String, String> {
+//   let v = get_bytes(bs)?;
+//   match str::from_utf8(&v) {
+//     Ok(s) => Ok(s.to_string()),
+//     _ => err_str("Cannot convert Vec<u8> to &str")
 //   }
 // }
 
+fn build_form(mut ps: Vec<FormPart>) -> Option<Form> {
+  let mut fs: Vec<Form> = vec![];
+  loop {
+    match ps.pop() {
+      Some(p) => {
+        match p {
+          FormPart::True => fs.push(Form::True),
+          FormPart::False => fs.push(Form::False),
+          FormPart::Not => {
+            let f = fs.pop()?;
+            fs.push(Form::Not(Rc::new(f)));
+          },
+          FormPart::Or => {
+            let f = fs.pop()?;
+            let g = fs.pop()?;
+            fs.push(Form::Or(Rc::new(f),Rc::new(g)));
+          },
+          FormPart::And => {
+            let f = fs.pop()?;
+            let g = fs.pop()?;
+            fs.push(Form::And(Rc::new(f),Rc::new(g)));
+          },
+          FormPart::Imp => {
+            let f = fs.pop()?;
+            let g = fs.pop()?;
+            fs.push(Form::Imp(Rc::new(f),Rc::new(g)));
+          },
+          FormPart::Iff => {
+            let f = fs.pop()?;
+            let g = fs.pop()?;
+            fs.push(Form::Iff(Rc::new(f),Rc::new(g)));
+          },
+          FormPart::Fa => {
+            let f = fs.pop()?;
+            fs.push(Form::Fa(Rc::new(f)));
+          },
+          FormPart::Ex => {
+            let f = fs.pop()?;
+            fs.push(Form::Ex(Rc::new(f)));
+          },
+          FormPart::Rel(ft,ts) => fs.push(Form::Rel(ft,ts))
+        }
+      },
+      None => {
+        if fs.len() == 1 { return Some(fs.pop()?) }
+        else { return None }
+      }
+    }
+  }
+}
+
+fn get_form(bs: FileBytes) -> Result<Form, String> {
+  let mut rem: u64 = 1;
+  let mut stk: Vec<FormPart> = vec![];
+  while 0 < rem {
+    match get_char(bs)? {
+      'T' => {
+         stk.push(FormPart::True);
+         rem = rem - 1; 
+      }, 
+      'F' => {
+         stk.push(FormPart::False);
+         rem = rem - 1; 
+      }, 
+      '~' => stk.push(FormPart::Not),
+      '!' => stk.push(FormPart::Fa),
+      '?' => stk.push(FormPart::Ex),
+      '|' => {
+         stk.push(FormPart::Or);
+         rem = rem + 1; 
+      },
+      '&' => {
+         stk.push(FormPart::And);
+         rem = rem + 1; 
+      },
+      '>' => {
+         stk.push(FormPart::Imp);
+         rem = rem + 1; 
+      },
+      '=' => {
+         stk.push(FormPart::Iff);
+         rem = rem + 1; 
+      },
+      '^' => {
+        let f = get_functor(bs)?; 
+        let ts: Vec<Term> = get_vec(bs)?; 
+        stk.push(FormPart::Rel(Rc::new(f), ts));
+        rem = rem - 1; 
+      },
+      _ => return err_str("Ill-formed formula")
+    }
+  };
+  match build_form(stk) {
+    Some(f) => Ok(f),
+    _ => err_str("Cannot build formula from parts stack.")
+  }
+}
+
+/*
 fn get_form(bs : FileBytes) -> Result<Form, String> {
   match get_char(bs)? {
     'T' => Ok(Form::True),
@@ -486,6 +591,7 @@ fn get_form(bs : FileBytes) -> Result<Form, String> {
     _ => err_str("Cannot get formula")
   }
 }
+*/
 
 fn mk_par_term(n: u64, ts: Vec<Term>) -> Term {
   Term::Fun(Rc::new(Functor::Par(n)), ts)
@@ -557,7 +663,6 @@ fn get_prob(bs : FileBytes) -> Result<HashMap<Name, SignForm>, String> {
   while c != '.' {
     if c != ';' { return err_str("Ill-formed input problem.") };
     let n = get_name(bs)?;
-    println!("Name of original formula = {:?}", n);
     let f = get_form(bs)?;
     h.insert(n, (true, Rc::new(f)));
     c = get_char(bs)?;
@@ -637,7 +742,7 @@ fn check(bs: FileBytes, mut prob: HashMap<Name, SignForm>, cnt: u64) -> Result<(
       let trm = get_term(bs)?; 
       let prem = get_prem(&prob,&pnm)?;
       if !ground_term(0, &trm) { return err_str("Instantiation term contains free variables.") };
-      if !term_below(cnt, &trm) { return err_str("Instantiation term contains OOB parameter.") }
+      if !term_below(cnt, &trm) { return err_str("Instantiation term contains OOB parameter.") };
       let conc = cb(trm,prem);
       prob.insert(cnm, conc);
       check(bs, prob, succ)
@@ -651,8 +756,8 @@ fn check(bs: FileBytes, mut prob: HashMap<Name, SignForm>, cnt: u64) -> Result<(
     },
     'F' => {
       let frm = get_form(bs)?;
-      assert!(ground_form(0, &frm), "Cut formula is not ground.");
-      assert!(form_below(cnt, &frm), "Cut formula contains OOB parameter.");
+      if !ground_form(0, &frm)  { return err_str("Cut formula is not ground.") };
+      if !form_below(cnt+1, &frm) { return err_str("Cut formula contains OOB parameter.") };
       let x = Rc::new(frm);
       let mut prob_alt = prob.clone();
       prob.insert(cnm.clone(), (false, x.clone()));
@@ -670,9 +775,9 @@ fn check(bs: FileBytes, mut prob: HashMap<Name, SignForm>, cnt: u64) -> Result<(
     'T' => {
       let sgn = get_sign(bs)?;
       let frm = get_form(bs)?;
-      assert!(ground_form(0,&frm), "Cut formula is not ground.");
-      assert!(form_below(cnt,&frm), "Cut formula contains OOB parameter.");
-      assert!(justified(cnt,sgn,&frm), "Axiom introduction unjustified.");
+      if !ground_form(0,&frm) { return err_str("Axiom is not ground.") };
+      if !form_below(cnt+1,&frm) { return Err(format!("{:?} =< Parameter in axiom = {:?}", cnt, frm)) };
+      if !justified(cnt,sgn,&frm) { return err_str("Axiom unjustified.") };
       prob.insert(cnm, (sgn, Rc::new(frm)));
       check(bs, prob, succ)
     },
@@ -724,6 +829,8 @@ fn body() -> Result<(), String> {
     _ => return err_str("Cannot open TESC file.")
   };
   let mut prbs = prf.bytes();
+
+  println!("\n\n\n-----Begin proofcheck here!!------\n\n\n");
   check(&mut prbs, pb, 0) 
 }
  

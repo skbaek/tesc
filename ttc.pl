@@ -6,16 +6,10 @@
 :- [solve].
 :- [prove].
 
-main([PROVER, TPTP, TSTP, TESC | OPTS]) :-
 % main :- 
 %   current_prolog_flag(argv, [_, PROVER, TPTP, TSTP, TESC | OPTS]), 
-  (
-    member('-debug', OPTS) -> 
-    guitracer,
-    trace 
-  ;
-    true 
-  ),
+main([PROVER, TPTP, TSTP, TESC | OPTS]) :-
+  trace_if_debug(OPTS),
   set_prolog_flag(stack_limit, 4_294_967_296),
   style_check(-singleton),
   atom_firstchar(PROVER, PRVR),
