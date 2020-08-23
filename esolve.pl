@@ -7,13 +7,14 @@ maxpdx(EXP, MAX) :-
   max_list(NUMS, MAX).
 
 map_par(_, $var(NUM), $var(NUM)) :- !.
+map_par(_, $dst(STR), $dst(STR)) :- !.
 map_par(GOAL, $fun($par(NUM), []), TERM) :- !, 
   call(GOAL, NUM, TERM). 
 map_par(GOAL, $fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- 
   maplist_cut(map_par(GOAL), TERMS_I, TERMS_O).
 
 bind_par(DEP, IDX, IDX, $var(DEP)).
-bind_par(_, IDX_A, IDX_B, $par(IDX_B)) :- 
+bind_par(_, IDX_A, IDX_B, $fun($par(IDX_B), [])) :- 
   IDX_A \= IDX_B,
   % mk_par(IDX_B, [], PAR),
   true.

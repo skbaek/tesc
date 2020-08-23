@@ -133,12 +133,13 @@ complements($neg(FORM), $pos(FORM)).
 hyp_sf((_, SF), SF).
 
 incr_var_term(VAR, _) :- var(VAR), !, false.
-incr_var_term($var(NUM), $var(SUCC)) :- !,
-  num_succ(NUM, SUCC).
+incr_var_term($var(NUM), $var(SUCC)) :- !, num_succ(NUM, SUCC).
+incr_var_term($dst(STR), $dst(STR)) :- !.
 incr_var_term($fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- 
   maplist_cut(incr_var_term, TERMS_I, TERMS_O).
 
 substitute_term(fast, _, _, VAR, VAR) :- var(VAR), !.
+substitute_term(_, _, _, $dst(STR), $dst(STR)) :- !.
 substitute_term(safe, _, _, VAR, _) :- var(VAR), !, false.
 substitute_term(_, CNT, TERM_S, $var(NUM), TERM_O) :- !, 
   CNT = NUM -> TERM_O = TERM_S 
@@ -153,6 +154,7 @@ substitute_term(MODE, NUM, TERM, $fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- !,
 
 resymb_term(_, VAR, VAR) :- var(VAR), !.
 resymb_term(_, $var(NUM), $var(NUM)) :- !.
+resymb_term(_, $dst(STR), $dst(STR)) :- !.
 resymb_term(DICT, $fun(FUN_I, TERMS_I), $fun(FUN_O, TERMS_O)) :- 
   length(TERMS_I, ARI),
   maplist_cut(resymb_term(DICT), TERMS_I, TERMS_O), !, 
@@ -162,19 +164,6 @@ resymb_term(DICT, $fun(FUN_I, TERMS_I), $fun(FUN_O, TERMS_O)) :-
   ;    
     FUN_O = FUN_I
   ).
-
-
-% qtf('!').
-% qtf('?').
-% 
-% uct('~').
-% uct('!').
-% uct('?').
-% 
-% bct('|').
-% bct('&').
-% bct('=>').
-% bct('<=>').
 
 log_const($true).
 log_const($false).
@@ -793,6 +782,7 @@ first_char(STR, CHAR) :-
 
 no_bv_term(_, VAR) :- var(VAR), !.
 no_bv_term(CNT, $var(NUM)) :- !, NUM \= CNT.
+no_bv_term(_, $dst(_)) :- !.
 no_bv_term(CNT, $fun(_, TERMS)) :- 
   maplist_cut(no_bv_term(CNT), TERMS).
 
@@ -817,6 +807,7 @@ vac_qtf(HYP) :-
   no_bv_form(0, SUB).
 
 no_fv_term(_, VAR) :- var(VAR), !, false.
+no_fv_term(_, $dst(_)) :- !.
 no_fv_term(CNT, $var(NUM)) :- !, NUM < CNT.
 no_fv_term(CNT, $fun(_, TERMS)) :- 
   maplist_cut(no_fv_term(CNT), TERMS).
@@ -2170,8 +2161,8 @@ esimp(FORM, NORM) :-
 
 esimp(FORM, FORM).
 
-map_var(GOAL, $var(NUM), TERM) :- !, 
-  call(GOAL, NUM, TERM).
+map_var(GOAL, $var(NUM), TERM) :- !, call(GOAL, NUM, TERM).
+map_var(_, $dst(STR), $dst(STR)) :- !.
 map_var(GOAL, $fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- !, 
   maplist_cut(map_var(GOAL), TERMS_I, TERMS_O).
   
@@ -2252,3 +2243,8 @@ atom_firstchar(ATOM, CH) :-
   
 max(X, Y, X) :- Y =< X, !.
 max(_, Y, Y). 
+
+concat_shell(LIST, RST) :- 
+  atomic_list_concat(LIST, CMD),
+  shell(CMD, RST).
+  

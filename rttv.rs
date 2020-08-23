@@ -48,21 +48,34 @@ enum Name {
   Par(u64)
 } 
 
-trait Get { fn get(FileBytes) -> Self; }
+trait Get { fn get(FileBytes) -> Result<Self, String> where Self: std::marker::Sized; }
 
-impl Get for char {
-  fn get(bs: FileBytes) -> char { 
-    char::from(bs.next().unwrap().unwrap())
+fn err_str<T>(s: &str) -> Result<T, String> { 
+  Err(s.to_string())
+}
+
+fn get_char(bs: FileBytes) -> Result<char, String> { 
+  Ok(char::from(get_byte(bs)?))
+}
+
+fn get_byte(bs : FileBytes) -> Result<u8, String> {
+  match bs.next() {
+    Some(x) => match x {
+      Ok(b) => Ok(b),
+      _ => err_str("Cannot read next byte")
+    },
+    None => err_str("Cannot read next byte")
   }
 }
 
-fn get_bytes(bs : FileBytes, mut v: Vec<u8>) -> Vec<u8> {
-  let mut b = bs.next().unwrap().unwrap();
+fn get_bytes(bs : FileBytes) -> Result<Vec<u8>, String> {
+  let mut v: Vec<u8> = vec![];
+  let mut b = get_byte(bs)?;
   while b != 36 {
     v.push(b);
-    b = bs.next().unwrap().unwrap();
+    b = get_byte(bs)?;
   }
-  v
+  Ok(v)
 }
 
 fn is_eq(t: Term, s: Term, f: &Form) -> bool { 
@@ -301,25 +314,25 @@ fn ground_term(k: u64, t: &Term) -> bool {
   }
 }
 
-fn get_functor(bs: FileBytes) -> Functor {
-  match char::get(bs) {
+fn get_functor(bs: FileBytes) -> Result<Functor, String> {
+  match get_char(bs)? {
     '\'' => {
-      let a = String::get(bs);
-      Functor::Atm(a)
+      let a = get_string(bs)?;
+      Ok(Functor::Atm(a))
     },
     '@' => {
-      let k = u64::get(bs);
-      Functor::Par(k)
+      let k = get_u64(bs)?;
+      Ok(Functor::Par(k))
     },
-    _ => panic!("Cannot parse functor")
+    _ => err_str("Cannot parse functor")
   }
 }
 
-fn get_sign(bs: FileBytes) -> bool {
-  match char::get(bs) {
-    '+' => true,
-    '-' => false,
-    _ => panic!("Cannot parse sign")
+fn get_sign(bs: FileBytes) -> Result<bool, String> {
+  match get_char(bs)? {
+    '+' => Ok(true),
+    '-' => Ok(false),
+    _ => err_str("Cannot parse sign")
   }
 }
 
@@ -353,44 +366,44 @@ fn form_below(k: u64, f: &Form) -> bool {
   }
 }
 
-impl Get for u64 {
-  fn get(bs : FileBytes) -> u64 {
-    let s = String::get(bs);
-    s.parse::<u64>().unwrap()
+fn get_u64(bs : FileBytes) -> Result<u64, String> {
+  let s = get_string(bs)?;
+  match s.parse::<u64>() {
+    Ok(k) => Ok(k),
+    _ => err_str("Cannot parse String to u64")
   }
 }
 
-impl Get for Dir {
-  fn get(bs: FileBytes) -> Dir { 
-    match char::get(bs) {
-      'l' => Dir::Lft,
-      'r' => Dir::Rgt,
-      _ => panic!("Cannot parse direction")
-    }
+fn get_dir(bs: FileBytes) -> Result<Dir, String> { 
+  match get_char(bs)? {
+    'l' => Ok(Dir::Lft),
+    'r' => Ok(Dir::Rgt),
+    _ => err_str("Cannot parse direction")
   }
 }
 
-fn get_name(bs: FileBytes) -> Name { 
-  match char::get(bs) {
+fn get_name(bs: FileBytes) -> Result<Name, String> { 
+  match get_char(bs)? {
     '\'' => {
-      let a = String::get(bs);
-      Name::Atm(a)
+      let a = get_string(bs)?;
+      Ok(Name::Atm(a))
     }
     '@' => {
-      let k = u64::get(bs);
-      Name::Par(k)
+      let k = get_u64(bs)?;
+      Ok(Name::Par(k))
     },
     '#' => {
-      let k = u64::get(bs);
-      Name::Num(k)
+      let k = get_u64(bs)?;
+      Ok(Name::Num(k))
     },
-    _ => panic!("Cannot parse name")
+    _ => err_str("Cannot parse name")
   }
 }
+
 // impl Get for Name {
 //   fn get(bs: FileBytes) -> Name { 
 //     match get_byte(bs) {
-//       35 => Name::Num(u64::get(bs)),
+//       35 => Name::Num(get_u64(bs)?),
 //       b => {
 //         let x = get_bytes(bs, vec![b]);
 //         Name::Atm(str::from_utf8(&x).unwrap().to_string())
@@ -399,78 +412,78 @@ fn get_name(bs: FileBytes) -> Name {
 //   }
 // }
 
+fn get_term(bs : FileBytes) -> Result<Term, String> {
+  match get_char(bs)? {
+    '#' => {
+      let n = get_u64(bs)?;
+      Ok(Term::Var(n))
+    },
+    '^' => {
+      let f = get_functor(bs)?;
+      let ts = get_vec::<Term>(bs)?; 
+      Ok(Term::Fun(Rc::new(f), ts))
+    },
+    '"' => {
+      let s = get_string(bs)?;
+      Ok(Term::Dst(Rc::new(s)))
+    },
+    _ => err_str("Cannot parse term")
+  }
+}
+
 impl Get for Term {
-  fn get(bs : FileBytes) -> Term {
-    match char::get(bs) {
-      '#' => {
-        let n = u64::get(bs);
-        Term::Var(n)
-      },
-      '^' => {
-        let f = get_functor(bs);
-        let ts = get_vec::<Term>(bs); 
-        Term::Fun(Rc::new(f), ts)
-      },
-      '"' => {
-        let s = String::get(bs);
-        Term::Dst(Rc::new(s))
-      },
-      _ => panic!("Cannot parse term")
-    }
+  fn get(bs: FileBytes) -> Result<Term, String> { get_term(bs) }
+}
+
+fn get_string(bs : FileBytes) -> Result<String, String> {
+  let v = get_bytes(bs)?;
+  match str::from_utf8(&v) {
+    Ok(s) => Ok(s.to_string()),
+    _ => err_str("Cannot convert Vec<u8> to &str")
   }
 }
 
-impl Get for String {
-  fn get(bs : FileBytes) -> String {
-    let v = get_bytes(bs, vec![]);
-    str::from_utf8(&v).unwrap().to_string() 
-  }
-}
+// impl Get for (String, Form) {
+//   fn get(bs : FileBytes) -> (String, Form) {
+//     let s = get_string(bs)?;
+//     let f = get_form(bs)?;
+//     (s, f)
+//   }
+// }
 
-impl Get for (String, Form) {
-  fn get(bs : FileBytes) -> (String, Form) {
-    let s = String::get(bs);
-    let f = Form::get(bs);
-    (s, f)
-  }
-}
-
-impl Get for Form {
-
-  fn get(bs : FileBytes) -> Form {
-    match char::get(bs) {
-      'T' => Form::True,
-      'F' => Form::False,
-      '~' => Form::Not(Rc::new(Form::get(bs))),
-      '!' => Form::Fa(Rc::new(Form::get(bs))),
-      '?' => Form::Ex(Rc::new(Form::get(bs))),
-      '>' => {
-        let f = Form::get(bs); 
-        let g = Form::get(bs); 
-        Form::Imp(Rc::new(f), Rc::new(g))
-      },
-      '&' => {
-        let f = Form::get(bs); 
-        let g = Form::get(bs); 
-        return Form::And(Rc::new(f), Rc::new(g)); 
-      },
-      '|' => {
-        let f = Form::get(bs); 
-        let g = Form::get(bs); 
-        return Form::Or(Rc::new(f), Rc::new(g)); 
-      },
-      '=' => {
-        let f = Form::get(bs); 
-        let g = Form::get(bs); 
-        return Form::Iff(Rc::new(f), Rc::new(g)); 
-      },
-      '^' => {
-        let f = get_functor(bs); 
-        let ts: Vec<Term> = get_vec(bs); 
-        return Form::Rel(Rc::new(f), ts); 
-      },
-      _ => panic!("Cannot parse formula")
-    }
+fn get_form(bs : FileBytes) -> Result<Form, String> {
+  match get_char(bs)? {
+    'T' => Ok(Form::True),
+    'F' => Ok(Form::False),
+    '~' => Ok(Form::Not(Rc::new(get_form(bs)?))),
+    '!' => Ok(Form::Fa(Rc::new(get_form(bs)?))),
+    '?' => Ok(Form::Ex(Rc::new(get_form(bs)?))),
+    '>' => {
+      let f = get_form(bs)?; 
+      let g = get_form(bs)?; 
+      Ok(Form::Imp(Rc::new(f), Rc::new(g)))
+    },
+    '&' => {
+      let f = get_form(bs)?; 
+      let g = get_form(bs)?; 
+      Ok(Form::And(Rc::new(f), Rc::new(g)))
+    },
+    '|' => {
+      let f = get_form(bs)?; 
+      let g = get_form(bs)?; 
+      Ok(Form::Or(Rc::new(f), Rc::new(g))) 
+    },
+    '=' => {
+      let f = get_form(bs)?; 
+      let g = get_form(bs)?; 
+      Ok(Form::Iff(Rc::new(f), Rc::new(g)))
+    },
+    '^' => {
+      let f = get_functor(bs)?; 
+      let ts: Vec<Term> = get_vec(bs)?; 
+      Ok(Form::Rel(Rc::new(f), ts)) 
+    },
+    _ => err_str("Cannot get formula")
   }
 }
 
@@ -479,14 +492,13 @@ fn mk_par_term(n: u64, ts: Vec<Term>) -> Term {
 }
 
 fn ab(d: Dir, x: &SignForm) -> SignForm {
-  // let (s, f) = &*x;
   match (d, x.0, &*x.1) {
-    (Dir::Lft, false, Form::Or(f,_))) => (false, f.clone()),
-    (Dir::Rgt, false, Form::Or(_,f))) => (false, f.clone()),
+    (Dir::Lft, false, Form::Or(f,_)) => (false, f.clone()),
+    (Dir::Rgt, false, Form::Or(_,f)) => (false, f.clone()),
     (Dir::Lft, true, Form::And(f,_)) => (true, f.clone()),
     (Dir::Rgt, true, Form::And(_,f)) => (true, f.clone()),
-    (Dir::Lft, false, Form::Imp(f,_))) => (true, f.clone()),
-    (Dir::Rgt, false, Form::Imp(_,f))) => (false, f.clone()),
+    (Dir::Lft, false, Form::Imp(f,_)) => (true, f.clone()),
+    (Dir::Rgt, false, Form::Imp(_,f)) => (false, f.clone()),
     (Dir::Lft, true, Form::Iff(f,g)) => (true, Rc::new(Form::Imp(f.clone(),g.clone()))),
     (Dir::Rgt, true, Form::Iff(f,g)) => (true, Rc::new(Form::Imp(g.clone(),f.clone()))),
     _ => panic!("Not an A-formula")
@@ -527,29 +539,30 @@ fn sb(x: &SignForm) -> SignForm {
   }
 }
 
-fn get_vec<F: Get + std::fmt::Debug>(bs : FileBytes) -> Vec<F> {
-  let mut c = char::get(bs); 
-  let mut v = Vec::new();
+fn get_vec<F: Get>(bs : FileBytes) -> Result<Vec<F>, String> {
+  let mut c = get_char(bs)?; 
+  let mut v = vec![];
   while c != '.' {
-    assert!(c == ';');
-    let x = F::get(bs);
+    if c != ';' { return err_str("Cannot get vector.") };
+    let x = F::get(bs)?;
     v.push(x);
-    c = char::get(bs);
+    c = get_char(bs)?;
   };
-  v
+  Ok(v)
 }
 
-fn get_prob(bs : FileBytes) -> HashMap<Name, SignForm> {
-  let mut c = char::get(bs); 
+fn get_prob(bs : FileBytes) -> Result<HashMap<Name, SignForm>, String> {
+  let mut c = get_char(bs)?; 
   let mut h = HashMap::new();
   while c != '.' {
-    assert!(c == ';');
-    let n = get_name(bs);
-    let f = Form::get(bs);
+    if c != ';' { return err_str("Ill-formed input problem.") };
+    let n = get_name(bs)?;
+    println!("Name of original formula = {:?}", n);
+    let f = get_form(bs)?;
     h.insert(n, (true, Rc::new(f)));
-    c = char::get(bs);
+    c = get_char(bs)?;
   };
-  h
+  Ok(h)
 }
 
 fn substterm(k: u64, t: &Term, s: &Term) -> Term {
@@ -587,10 +600,10 @@ fn substform(n: u64, t: &Term, f: &Form) -> Form {
   }
 }
 
-fn get_prem<'a>(p: &'a HashMap<Name, SignForm>, n: &Name) -> &'a SignForm {
+fn get_prem<'a>(p: &'a HashMap<Name, SignForm>, n: &Name) -> Result<&'a SignForm, String> {
   match p.get(n) {
-    Some(f) => f,
-    None => panic!("No premise with name = {:?}", n)
+    Some(f) => Ok(f),
+    None => Err(format!("No premise with name = {:?}", n))
   }
 }
 
@@ -600,67 +613,63 @@ fn check(bs: FileBytes, mut prob: HashMap<Name, SignForm>, cnt: u64) -> Result<(
   let cnm = Name::Par(cnt);
   let succ = cnt + 1;
 
-  match char::get(bs) {
+  match get_char(bs)? {
     'A' => {
-      let pnm = get_name(bs); 
-      let d = Dir::get(bs); 
-      let prem = get_prem(&prob,&pnm);
+      let pnm = get_name(bs)?; 
+      let d = get_dir(bs)?;
+      let prem = get_prem(&prob,&pnm)?;
       let conc = ab(d,prem);
       prob.insert(cnm,conc);
       check(bs, prob, succ)
     },
     'B' => {
-      let pnm = get_name(bs); 
-      let prem = get_prem(&prob,&pnm);
+      let pnm = get_name(bs)?; 
+      let prem = get_prem(&prob,&pnm)?;
       let (conc_l, conc_r) = bb(prem);
       let mut prob_alt = prob.clone();
       prob.insert(cnm.clone(), conc_l);
       prob_alt.insert(cnm, conc_r);
-      check(bs, prob, succ).unwrap();
+      check(bs, prob, succ)?;
       check(bs, prob_alt, succ)
     },
     'C' => {
-      let pnm = get_name(bs); 
-      let trm = Term::get(bs); 
-      let prem = get_prem(&prob,&pnm);
-      if !ground_term(0, &trm) { 
-        return Err("Instantiation term contains free variables.")
-      };
-      if !term_below(cnt, &trm) {
-        return Err("Instantiation term contains OOB parameter.")
-      }
+      let pnm = get_name(bs)?; 
+      let trm = get_term(bs)?; 
+      let prem = get_prem(&prob,&pnm)?;
+      if !ground_term(0, &trm) { return err_str("Instantiation term contains free variables.") };
+      if !term_below(cnt, &trm) { return err_str("Instantiation term contains OOB parameter.") }
       let conc = cb(trm,prem);
       prob.insert(cnm, conc);
       check(bs, prob, succ)
     },
     'D' => {
-      let pnm = get_name(bs); 
-      let prem = get_prem(&prob,&pnm);
+      let pnm = get_name(bs)?; 
+      let prem = get_prem(&prob,&pnm)?;
       let conc = db(cnt,prem);
       prob.insert(cnm, conc);
       check(bs, prob, succ)
     },
     'F' => {
-      let frm = Form::get(bs);
+      let frm = get_form(bs)?;
       assert!(ground_form(0, &frm), "Cut formula is not ground.");
       assert!(form_below(cnt, &frm), "Cut formula contains OOB parameter.");
       let x = Rc::new(frm);
       let mut prob_alt = prob.clone();
       prob.insert(cnm.clone(), (false, x.clone()));
       prob_alt.insert(cnm, (true, x));
-      check(bs, prob, succ).unwrap();
+      check(bs, prob, succ)?;
       check(bs, prob_alt, succ)
     },
     'S' => {
-      let pnm = get_name(bs); 
-      let prem = get_prem(&prob,&pnm);
+      let pnm = get_name(bs)?; 
+      let prem = get_prem(&prob,&pnm)?;
       let conc = sb(prem);
       prob.insert(cnm, conc);
       check(bs, prob, succ)
     },
     'T' => {
-      let sgn = get_sign(bs);
-      let frm = Form::get(bs);
+      let sgn = get_sign(bs)?;
+      let frm = get_form(bs)?;
       assert!(ground_form(0,&frm), "Cut formula is not ground.");
       assert!(form_below(cnt,&frm), "Cut formula contains OOB parameter.");
       assert!(justified(cnt,sgn,&frm), "Axiom introduction unjustified.");
@@ -668,52 +677,67 @@ fn check(bs: FileBytes, mut prob: HashMap<Name, SignForm>, cnt: u64) -> Result<(
       check(bs, prob, succ)
     },
     'W' => {
-      let pnm = get_name(bs); 
+      let pnm = get_name(bs)?; 
       match prob.remove(&pnm) {
         Some(_) => (),
-        None => panic!("Deletion failed.")
+        None => return err_str("Deletion failed.")
       };
       check(bs, prob, succ)
     },
     'X' => { 
-      let pnm = get_name(bs); 
-      let nnm = get_name(bs); 
-      match get_prem(&prob,&pnm) {
+      let pnm = get_name(bs)?; 
+      let nnm = get_name(bs)?; 
+      match get_prem(&prob,&pnm)? {
         (true,pfrm) => {
-          match get_prem(&prob,&nnm) {
+          match get_prem(&prob,&nnm)? {
             (false,nfrm) => {
-              assert_eq!(**pfrm, **nfrm, "Unequal positive and negative formulas.");
-              Ok(())
+              if **pfrm == **nfrm { Ok(()) }
+              else { return err_str("Unequal positive and negative formulas.") }
             }
-            _ => panic!("Second premise of X-rule not negative")
+            _ => err_str("Second premise of X-rule not negative.")
           }
         },
-        _ => panic!("First premise of X-rule not positive")
+        _ => err_str("First premise of X-rule not positive.")
       }
     },
-    _ => panic!("Invalid head character of subproof.")
+    _ => err_str("Invalid head character of subproof.")
   }
 }
 
-fn main() -> io::Result<()> 
-{
+fn body() -> Result<(), String> {
   let args: Vec<String> = env::args().collect();
   let tesc = &args[1];
   
   println!("Checking proof = {}", tesc);
+  let pbf = match File::open("temp.ttp") {
+    Ok(file) => BufReader::new(file),
+    _ => return err_str("Cannot open TTP file.")
+  };
+  let mut pbbs = pbf.bytes();
+  let pb: HashMap<Name, SignForm> = get_prob(&mut pbbs)?;
 
-  let f = BufReader::new(File::open("temp.ttp")?);
-  let mut prob_bytes = f.bytes();
-  let prob: HashMap<Name, SignForm> = get_prob(&mut prob_bytes);
-
-  let size = prob.keys().len();
+  let size = pb.keys().len();
   println!("Problem size = {}", size);
 
-  let g = BufReader::new(File::open(tesc)?);
-  let mut proof_bytes = g.bytes();
-  match check(&mut proof_bytes, prob, 0) {
-    Ok(()) => println!("Proof verified."),
-    _ => println!("Verification failed, invalid proof.")
-  }
-  Ok(())
+  let prf = match File::open(tesc) {
+    Ok(tesc_file) => BufReader::new(tesc_file), 
+    _ => return err_str("Cannot open TESC file.")
+  };
+  let mut prbs = prf.bytes();
+  check(&mut prbs, pb, 0) 
+}
+ 
+fn main() {
+  std::process::exit(
+    match body() {
+      Ok(()) => {
+        println!("Proof verified.");
+        0
+      },
+      Err(msg) => {
+        println!("Invalid proof : {:?}", msg);
+        1
+      }
+    }
+  );
 }
