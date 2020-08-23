@@ -176,8 +176,8 @@ resymb_term(DICT, $fun(FUN_I, TERMS_I), $fun(FUN_O, TERMS_O)) :-
 % bct('=>').
 % bct('<=>').
 
-log_const(($true)).
-log_const(($false)).
+log_const($true).
+log_const($false).
 
 substitute_form(_, _, _, FORM, FORM) :- log_const(FORM), !.
 
@@ -357,9 +357,8 @@ justified(_, $pos($fa($fa($fa(
       $rel('=', [$var(2), $var(0)])
     ))))))).
 
-justified(_, $pos(FORM)) :- 
-  is_mono_rel(0, FORM) ; 
-  is_mono_fun(0, FORM). 
+justified(_, $pos(FORM)) :- is_mono_rel(0, FORM). 
+justified(_, $pos(FORM)) :- is_mono_fun(0, FORM). 
 
 % justified(_, + ((FUNA ^ []) = (FUNB ^ [])), [ne_eval]) :- 
 %   atom_number(FUNA, NUMA),
@@ -677,8 +676,8 @@ mk_mono_args(0, [], []).
 mk_mono_args(NUM, [$var(NUMA) | VARSA], [$var(NUMB) | VARSB]) :-
   NUMA is (NUM * 2) - 1, 
   NUMB is (NUM * 2) - 2, 
-  Pred is NUM - 1,
-  mk_mono_args(Pred, VARSA, VARSB).
+  num_pred(NUM, PRED),
+  mk_mono_args(PRED, VARSA, VARSB).
 
 mk_mono_eq(NUM, FUN, $rel('=', [$fun(FUN, VARS_A), $fun(FUN, VARS_B)])) :- 
   mk_mono_args(NUM, VARS_A, VARS_B).
