@@ -298,24 +298,12 @@ fn build_form(mut ps: Vec<FormPart>) -> Option<Form> {
   }
 }
 
-
-// fn tptp_clauses(tptp: &str) -> impl Iterator<Item = tptp::syntax::AnnotatedFormula> {
-//   
-//    let bytes = to_boxed_slice(tptp).expect("Cannot open file");
-//    let mut is = TPTPIterator::<()>::new(&bytes);
-//    true
-// 
-//   // BufReader::new(file)
-//   //     .lines()
-//   //     .map(Result::unwrap)
-//   //     .filter(|s| !s.contains("blah"))
-// }
-
 struct ProbStack<'a> {
   top: TPTPIterator<'a,()>,
   rest: Vec<TPTPIterator<'a,()>>
 }
 
+/*
 impl<'a> Iterator for ProbStack<'a> {
   type Item = AnnotatedFormula<'a>;
   fn next(&mut self) -> Option<AnnotatedFormula<'a>> {
@@ -344,3 +332,4 @@ impl<'a> Iterator for ProbStack<'a> {
     }
   }
 }
+*/
