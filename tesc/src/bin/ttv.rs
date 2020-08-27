@@ -1,10 +1,6 @@
-use std::io;
-// use std::io::Read;
 use tptp::parsers::TPTPIterator;
 use tptp::syntax::*;
-// use tptp::syntax::TPTPInput;
-use std::{fmt, env};
-use std::str;
+use std::{str, env};
 use std::io::prelude::*;
 use std::fs::File;
 use std::collections::HashMap;
@@ -12,85 +8,13 @@ use std::io::BufReader;
 use std::rc::Rc;
 use std::convert::TryFrom;
 
+mod basic;
+use basic::*;
+
 const TPTPPATH: &str = "/home/sk/programs/TPTP/";
 
-type FileBytes<'a> = &'a mut io::Bytes<io::BufReader<File>>;
 type SignForm = (bool, Rc<Form>);
 type Problem = HashMap<ID, SignForm>;
-type Rst<T> = Result<T, String>;
-
-#[derive(Debug)]
-enum Dir {Lft, Rgt}
-
-#[derive(PartialEq, Clone, Debug)]
-enum Term {
-  Var(u64),
-  Fun(Rc<FS>, Vec<Term>),
-  Dst(Rc<String>),
-  Num(Rc<String>)
-}
-
-#[derive(PartialEq, Clone, Debug)]
-enum FS {
-  Par(u64),
-  Atm(String),
-}
-
-#[derive(PartialEq, Clone, Debug, Copy)]
-enum Bct {Or, And, Imp, Iff}
-
-#[derive(PartialEq, Clone, Debug, Copy)]
-enum Qtf {Fa, Ex}
-
-#[derive(PartialEq, Clone, Debug)]
-enum Form {
-  Cst(bool),
-  Not(Rc<Form>),
-  Bct(Bct, Rc<Form>, Rc<Form>),
-  Qtf(Qtf, Rc<Form>),
-  Rel(Rc<FS>, Vec<Term>)
-} 
-
-enum FormPart {
-  Cst(bool),
-  Not,
-  Qtf(Qtf),
-  Bct(Bct),
-  Rel(Rc<FS>, Vec<Term>)
-} 
-
-#[derive(PartialEq, Eq, std::hash::Hash, Clone, Debug)]
-enum ID {
-  Atm(String),
-  Num(u64),
-  Par(u64)
-} 
-
-// impl fmt::Display for Form {
-//   
-// }
-
-trait Get { fn get(_: FileBytes) -> Rst<Self> where Self: std::marker::Sized; }
-
-fn err_str<T>(s: &str) -> Rst<T> { 
-  Err(s.to_string())
-}
-
-fn get_char(bs: FileBytes) -> Rst<char> { 
-  let c = char::from(get_byte(bs)?);
-  // print!("{}", c);
-  Ok(c)
-}
-
-fn get_byte(bs : FileBytes) -> Result<u8, String> {
-  match bs.next() {
-    Some(x) => match x {
-      Ok(b) => Ok(b),
-      _ => err_str("Cannot read next byte")
-    },
-    None => err_str("Cannot read next byte")
-  }
-}
 
 fn mk_eq(t: Term, s: Term) -> Form { 
   Form::Rel(Rc::new(FS::Atm("=".to_string())), vec![t,s])
@@ -117,40 +41,6 @@ fn mk_vars_asc(k: u64) -> Vec<Term> {
 fn mk_vars_desc(k: u64) -> Vec<Term> {
   (0..k).rev().map(|x| Term::Var(x)).collect()
 }
-
-// fn is_vars_desc(k: u64, ts: &Vec<Term>) -> bool {
-//   let mut x: u64 = k;
-//   for t in ts {
-//     match t {
-//       Term::Var(m) => {
-//         if *m == (x-1) && 0 < x {
-//           x = x - 1;
-//         } else { 
-//           return false;
-//         }
-//       },
-//       _ => return false
-//     }
-//   };
-//   x == 0
-// }
-// 
-// fn is_vars_asc(k: u64, ts: &Vec<Term>) -> bool {
-//   let mut x: u64 = 0;
-//   for t in ts {
-//     match t {
-//       Term::Var(m) => {
-//         if *m == x && x < k {
-//           x = x + 1;
-//         } else { 
-//           return false;
-//         }
-//       },
-//       _ => return false
-//     }
-//   };
-//   x == k
-// }
 
 fn is_vars(k: u64, ts: &Vec<Term>) -> bool {
   *ts == mk_vars_asc(k) || *ts == mk_vars_desc(k)
@@ -195,7 +85,6 @@ fn pred_def(k: u64, f: &Form) -> bool {
     _ => false
   }
 }
-
 
 fn remove_fas(c: u64, f: &Form) -> (u64, &Form) {
   match f { 
@@ -331,28 +220,6 @@ fn ground_term(k: u64, t: &Term) -> bool {
   }
 }
 
-fn get_fs(bs: FileBytes) -> Rst<FS> {
-  match get_char(bs)? {
-    '\'' => {
-      let a = get_string(bs)?;
-      Ok(FS::Atm(a))
-    },
-    '@' => {
-      let k = get_u64(bs)?;
-      Ok(FS::Par(k))
-    },
-    _ => err_str("Cannot parse functor")
-  }
-}
-
-fn get_sign(bs: FileBytes) -> Rst<bool> {
-  match get_char(bs)? {
-    '+' => Ok(true),
-    '-' => Ok(false),
-    _ => err_str("Cannot parse sign")
-  }
-}
-
 fn ground_form(k: u64, f: &Form) -> bool {
   match f {
     Form::Cst(_) => true,
@@ -373,138 +240,6 @@ fn form_below(k: u64, f: &Form) -> bool {
   }
 }
 
-fn get_u64(bs : FileBytes) -> Result<u64, String> {
-  let s = get_string(bs)?;
-  match s.parse::<u64>() {
-    Ok(k) => Ok(k),
-    _ => err_str("Cannot parse String to u64")
-  }
-}
-
-fn get_dir(bs: FileBytes) -> Rst<Dir> { 
-  match get_char(bs)? {
-    '<' => Ok(Dir::Lft),
-    '>' => Ok(Dir::Rgt),
-     c  => Err(format!("Cannot parse direction from char = {}", c))
-  }
-}
-
-fn get_id(bs: FileBytes) -> Rst<ID> { 
-  match get_char(bs)? {
-    '\'' => {
-      let a = get_string(bs)?;
-      Ok(ID::Atm(a))
-    }
-    '@' => {
-      let k = get_u64(bs)?;
-      Ok(ID::Par(k))
-    },
-    '#' => {
-      let k = get_u64(bs)?;
-      Ok(ID::Num(k))
-    },
-    _ => err_str("Cannot parse name")
-  }
-}
-
-fn get_term(bs : FileBytes) -> Rst<Term> {
-  match get_char(bs)? {
-    '#' => {
-      let n = get_u64(bs)?;
-      Ok(Term::Var(n))
-    },
-    '^' => {
-      let f = get_fs(bs)?;
-      let ts = get_vec::<Term>(bs)?; 
-      Ok(Term::Fun(Rc::new(f), ts))
-    },
-    '"' => {
-      let s = get_string(bs)?;
-      Ok(Term::Dst(Rc::new(s)))
-    },
-    _ => err_str("Cannot parse term")
-  }
-}
-
-impl Get for Term {
-  fn get(bs: FileBytes) -> Rst<Term> { get_term(bs) }
-}
-
-fn get_string(bs : FileBytes) -> Rst<String> {
-  let mut c = get_char(bs)?;
-  let mut s = String::from("");
-  while c != '$' {
-    s.push(c);
-    c = get_char(bs)?;
-  }
-  Ok(s)
-}
-
-fn build_form(mut ps: Vec<FormPart>) -> Option<Form> {
-  let mut fs: Vec<Form> = vec![];
-  loop {
-    match ps.pop() {
-      Some(p) => {
-        match p {
-          FormPart::Cst(b) => fs.push(Form::Cst(b)),
-          FormPart::Not => {
-            let f = fs.pop()?;
-            fs.push(Form::Not(Rc::new(f)));
-          },
-          FormPart::Bct(b) => {
-            let f = fs.pop()?;
-            let g = fs.pop()?;
-            fs.push(Form::Bct(b,Rc::new(f),Rc::new(g)));
-          },
-          FormPart::Qtf(q) => {
-            let f = fs.pop()?;
-            fs.push(Form::Qtf(q,Rc::new(f)));
-          },
-          FormPart::Rel(ft,ts) => fs.push(Form::Rel(ft,ts))
-        }
-      },
-      None => {
-        if fs.len() == 1 { return Some(fs.pop()?) }
-        else { return None }
-      }
-    }
-  }
-}
-
-fn get_form(bs: FileBytes) -> Rst<Form> {
-  let mut rem: u64 = 1;
-  let mut stk: Vec<FormPart> = vec![];
-  while 0 < rem {
-    match get_char(bs)? {
-      'T' => {
-         stk.push(FormPart::Cst(true));
-         rem = rem - 1; 
-      }, 
-      'F' => {
-         stk.push(FormPart::Cst(false));
-         rem = rem - 1; 
-      }, 
-      '~' => stk.push(FormPart::Not),
-      '!' => stk.push(FormPart::Qtf(Qtf::Fa)),
-      '?' => stk.push(FormPart::Qtf(Qtf::Ex)),
-      '|' => { stk.push(FormPart::Bct(Bct::Or)); rem = rem + 1; },
-      '&' => { stk.push(FormPart::Bct(Bct::And)); rem = rem + 1; },
-      '>' => { stk.push(FormPart::Bct(Bct::Imp)); rem = rem + 1; },
-      '=' => { stk.push(FormPart::Bct(Bct::Iff)); rem = rem + 1; },
-      '^' => {
-        let f = get_fs(bs)?; 
-        let ts: Vec<Term> = get_vec(bs)?; 
-        stk.push(FormPart::Rel(Rc::new(f), ts));
-        rem = rem - 1; 
-      },
-      _ => return err_str("Ill-formed formula")
-    }
-  };
-  match build_form(stk) {
-    Some(f) => Ok(f),
-    _ => err_str("Cannot build formula from parts stack.")
-  }
-}
 
 fn mk_par_term(n: u64, ts: Vec<Term>) -> Term {
   Term::Fun(Rc::new(FS::Par(n)), ts)
@@ -556,18 +291,6 @@ fn sb(x: &SignForm) -> SignForm {
     (true, Form::Not(g)) => (false,g.clone()),
     _ => panic!("Not an S-formula")
   }
-}
-
-fn get_vec<F: Get>(bs : FileBytes) -> Result<Vec<F>, String> {
-  let mut c = get_char(bs)?; 
-  let mut v = vec![];
-  while c != '.' {
-    if c != ';' { return err_str("Cannot get vector.") };
-    let x = F::get(bs)?;
-    v.push(x);
-    c = get_char(bs)?;
-  };
-  Ok(v)
 }
 
 /*
@@ -880,15 +603,6 @@ fn conv_variable(v: &Variable) -> String {
   match v { Variable {0: UpperWord {0: s}} => s.to_string() }
 }
 
-// fn rec_fof_variable_list(vs: &mut Vec<String>, fvl: FofVariableList) -> () {
-//   match fvl {
-//     FofVariableList {0: vv} => {
-//       let nvs: Vec<String> = vv.iter().map(|x| conv_variable(x)).collect();
-//       vs.extend(nvs);
-//     }
-//   }
-// }
-
 fn conv_functor(f: Functor) -> FS {
   match f { Functor(a) => FS::Atm(conv_atomic_word(a)) }
 }
@@ -983,7 +697,6 @@ fn conv_fof_atomic_formula(vs: &Vec<String>, f: FofAtomicFormula) -> Rst<Form> {
   }
 }
   
-
 fn apply_qtf(q: Qtf, f: Form) -> Form {
   Form::Qtf(q, Rc::new(f))
 }
@@ -1170,7 +883,7 @@ fn add_tptp_input(t: TPTPInput, pb: &mut Problem) -> Rst<()> {
 
 fn add_tptp_file(tptp: &str, p: &mut Problem) -> Rst<()> {
     
-   let bytes = read_tptp(tptp)?;
+   let bytes = to_boxed_slice(tptp)?;
    let mut is = TPTPIterator::<()>::new(&bytes);
    // let mut h = HashMap::new();
 
@@ -1185,20 +898,8 @@ fn add_tptp_file(tptp: &str, p: &mut Problem) -> Rst<()> {
    Ok(())
 }
 
-fn read_tptp(tptp: &str) -> Result<Box<[u8]>, String> {
-    let mut buffer = vec![];
-    let mut file = match File::open(tptp) {
-      Ok(x) => x,
-       _ => return err_str("Cannot open TPTP file.")
-    };
-    match file.read_to_end(&mut buffer) {
-      Ok(_) => (),
-      _ => return err_str("Cannot read TPTP file to end")
-    };
-    Ok(buffer.into_boxed_slice())
-}
 
-fn main() -> Result<(), String> {
+fn main() -> Rst<()> {
   let args: Vec<String> = env::args().collect();
   let tptp = &args[1];
   let tesc = &args[2];
@@ -1219,17 +920,6 @@ fn main() -> Result<(), String> {
   let size = pb.keys().len();
   println!("Problem size = {}", size);
 
-  
-//  let cbf = match File::open(ttp) {
-//    Ok(file) => BufReader::new(file),
-//    _ => return err_str("Cannot open TTP file.")
-//  };
-//  let mut cbbs = cbf.bytes();
-//
-//  check_prob(pb, &mut cbbs)?;
-//
-//  println!("Check successful");
-
   let prf = match File::open(tesc) {
     Ok(tesc_file) => BufReader::new(tesc_file), 
     _ => return err_str("Cannot open TESC file.")
@@ -1245,19 +935,3 @@ fn main() -> Result<(), String> {
 
   Ok(())
 }
-
-// fn read_stdin() -> io::Result<Box<[u8]>> {
-//     let mut buffer = vec![];
-//     io::stdin().lock().read_to_end(&mut buffer)?;
-//     Ok(buffer.into_boxed_slice())
-// }
-// 
-// fn main() -> io::Result<()> {
-//     let bytes = read_stdin()?;
-//     let mut parser = TPTPIterator::<()>::new(&bytes);
-//     for input in &mut parser {
-//         println!("{}", input.expect("syntax error"));
-//     }
-//     assert!(parser.remaining.is_empty());
-//     Ok(())
-// }// use std::env;

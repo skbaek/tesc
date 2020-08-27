@@ -101,18 +101,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "tesc"
+version = "0.1.0"
+dependencies = [
+ "tptp",
+]
+
+[[package]]
 name = "tptp"
 version = "0.23.0"
 dependencies = [
  "derive_more",
  "nom",
-]
-
-[[package]]
-name = "ttv"
-version = "0.1.0"
-dependencies = [
- "tptp",
 ]
 
 [[package]]

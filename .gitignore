@@ -4,8 +4,8 @@ esol/
 eprf/
 tpstp/src/snapshots/
 tpstp/target/
-ttv/target/
-ttv/src/snapshots/
+tesc/target/
+tesc/src/snapshots/
 temp.tesc
 temp.ttp
 paths.pl
