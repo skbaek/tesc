@@ -255,76 +255,69 @@ sb($neg($not(FORM)), $pos(FORM)).
 ap(
   (PID, SF),
   DIR, 
-  (a(PID, DIR, PRF), C), 
-  ($par(C), SF_N), 
-  (PRF, SC)
+  (a(PID, DIR, PRF), CNT), 
+  (CNT, SF_N), 
+  (PRF, SUCC)
 ) :- 
-  num_succ(C, SC), 
+  num_succ(CNT, SUCC), 
   ab(DIR, SF, SF_N), !.
 
 bp(
   (PID, SF), 
-  (b(PID, PRF_A, PRF_B), C), 
-  ($par(C), SF_L),
-  ($par(C), SF_R),
-  (PRF_A, SC),
-  (PRF_B, SC)
+  (b(PID, PRF_A, PRF_B), CNT), 
+  (CNT, SF_L),
+  (CNT, SF_R),
+  (PRF_A, SUCC),
+  (PRF_B, SUCC)
 ) :- 
-  num_succ(C, SC), 
+  num_succ(CNT, SUCC), 
   bb(SF, SF_L, SF_R), !.
 
 cp(
   (PID, SF), 
   TERM, 
-  (c(PID, TERM, PRF), C), 
-  ($par(C), SF_N),
-  (PRF, SC)
+  (c(PID, TERM, PRF), CNT), 
+  (CNT, SF_N),
+  (PRF, SUCC)
 ) :- 
-  num_succ(C, SC),
+  num_succ(CNT, SUCC),
   cb(TERM, SF, SF_N), !.
 
 dp(
   (PID, SF),
-  (d(PID, PRF), C), 
-  ($par(C), SF_N),
-  (PRF, SC)
+  (d(PID, PRF), CNT), 
+  (CNT, SF_N),
+  (PRF, SUCC)
 ) :-
-  num_succ(C, SC),
-  db(C, SF, SF_N), !.
+  num_succ(CNT, SUCC),
+  db(CNT, SF, SF_N), !.
 
 fp(
   FORM,
-  (f(FORM, PRF_A, PRF_B), C), 
-  ($par(C), $neg(FORM)),
-  ($par(C), $pos(FORM)),
-  (PRF_A, SC), 
-  (PRF_B, SC)
+  (f(FORM, PRF_A, PRF_B), CNT), 
+  (CNT, $neg(FORM)),
+  (CNT, $pos(FORM)),
+  (PRF_A, SUCC), 
+  (PRF_B, SUCC)
 ) :-
-  num_succ(C, SC), !.
+  num_succ(CNT, SUCC), !.
 
 tp(
   SF,
-  (t(SF, PRF), C),
-  ($par(C), SF),
-  (PRF, SC)
+  (t(SF, PRF), CNT),
+  (CNT, SF),
+  (PRF, SUCC)
 ) :- 
-  num_succ(C, SC), !.
+  num_succ(CNT, SUCC), !.
 
 sp(
   (PID, SF),
-  (s(PID, PRF), C), 
-  ($par(C), SF_N),
-  (PRF, SC)
+  (s(PID, PRF), CNT), 
+  (CNT, SF_N),
+  (PRF, SUCC)
 ) :- 
-  num_succ(C, SC),
+  num_succ(CNT, SUCC),
   sb(SF, SF_N), !.
-
-wp(
-  (PID, _),
-  (w(PID, PRF), C), 
-  (PRF, SC)
-) :-
-  num_succ(C, SC).
 
 xp(
   (PID, $pos(FORM_P)), 
@@ -945,17 +938,26 @@ put_num(STRM, NUM) :-
   number_codes(NUM, BYTES),
   put_bytes_dollar(STRM, BYTES).
  
-put_id(STRM, $par(NUM)) :- !, 
-  put_char(STRM, '@'), 
-  put_num(STRM, NUM).
-put_id(STRM, ID) :- 
-  atom(ID), !, 
+put_name(STRM, NAME) :- 
+  atom(NAME), !, 
   put_char(STRM, '\''), 
-  put_atom(STRM, ID).
-put_id(STRM, ID) :- 
-  number(ID), !,
+  put_atom(STRM, NAME).
+put_name(STRM, NAME) :- 
+  number(NAME), !,
   put_char(STRM, '#'), 
-  put_num(STRM, ID).
+  put_num(STRM, NAME).
+  
+% put_id(STRM, $par(NUM)) :- !, 
+%   put_char(STRM, '@'), 
+%   put_num(STRM, NUM).
+% put_id(STRM, ID) :- 
+%   atom(ID), !, 
+%   put_char(STRM, '\''), 
+%   put_atom(STRM, ID).
+% put_id(STRM, ID) :- 
+%   number(ID), !,
+%   put_char(STRM, '#'), 
+%   put_num(STRM, ID).
   
 put_term(STRM, $var(NUM)) :- !, 
   put_char(STRM, '#'), 
@@ -1005,25 +1007,25 @@ put_sf(STRM, $neg(FORM)) :-
 
 put_prf(STRM, a(ID, DIR, PRF)) :- 
   put_char(STRM, 'A'), 
-  put_id(STRM, ID), 
+  put_num(STRM, ID), 
   put_dir(STRM, DIR),
   put_prf(STRM, PRF).
   
 put_prf(STRM, b(ID, PRF_L, PRF_R)) :- 
   put_char(STRM, 'B'), 
-  put_id(STRM, ID), 
+  put_num(STRM, ID), 
   put_prf(STRM, PRF_L),
   put_prf(STRM, PRF_R).
 
 put_prf(STRM, c(ID, TERM, PRF)) :- 
   put_char(STRM, 'C'), 
-  put_id(STRM, ID), 
+  put_num(STRM, ID), 
   put_term(STRM, TERM),
   put_prf(STRM, PRF).
 
 put_prf(STRM, d(ID, PRF)) :- 
   put_char(STRM, 'D'), 
-  put_id(STRM, ID), 
+  put_num(STRM, ID), 
   put_prf(STRM, PRF).
 
 put_prf(STRM, f(FORM, PRF_L, PRF_R)) :- 
@@ -1034,7 +1036,7 @@ put_prf(STRM, f(FORM, PRF_L, PRF_R)) :-
 
 put_prf(STRM, s(ID, PRF)) :- 
   put_char(STRM, 'S'), 
-  put_id(STRM, ID), 
+  put_num(STRM, ID), 
   put_prf(STRM, PRF).
 
 put_prf(STRM, t(SF, PRF)) :- 
@@ -1042,15 +1044,10 @@ put_prf(STRM, t(SF, PRF)) :-
   put_sf(STRM, SF), 
   put_prf(STRM, PRF).
 
-put_prf(STRM, w(ID, PRF)) :- 
-  put_char(STRM, 'W'), 
-  put_id(STRM, ID), 
-  put_prf(STRM, PRF).
-
 put_prf(STRM, x(PID, NID)) :- 
   put_char(STRM, 'X'), 
-  put_id(STRM, PID), 
-  put_id(STRM, NID).
+  put_num(STRM, PID), 
+  put_num(STRM, NID).
 
 
 %%%%%%%%%%%%%%%% TACTICS  %%%%%%%%%%%%%%%%
@@ -1186,9 +1183,9 @@ mate_pn(PYP, NYP, GOAL) :-
 
 %%%%%%%% GET %%%%%%%%
 
-get_id_form(STRM, (ID, FORM)) :- 
-  get_id(STRM, ID),
-  get_form(STRM, FORM).
+% get_id_form(STRM, (ID, FORM)) :- 
+%   get_id(STRM, ID),
+%   get_form(STRM, FORM).
 
 get_list(STRM, GTR, LIST) :- 
   get_char(STRM, CH), 
@@ -1196,7 +1193,8 @@ get_list(STRM, GTR, LIST) :-
     CH = ';' -> 
     call(GTR, STRM, ELEM), 
     get_list(STRM, GTR, TAIL),
-    LIST = [ELEM | TAIL] ;
+    LIST = [ELEM | TAIL] 
+  ;
     CH = '.', 
     LIST = []
   ).
@@ -1292,49 +1290,36 @@ get_sf(STRM, SF) :-
   get_form(STRM, FORM),
   apply_uop(SIGN, FORM, SF).
 
-get_id(STRM, ID) :- 
+get_name(STRM, ID) :- 
   get_char(STRM, CH), !, 
-  get_id(STRM, CH, ID).
-
-get_id(STRM, '@', $par(NUM)) :- 
+  get_name(STRM, CH, ID).
+get_name(STRM, '#', NUM) :- 
   get_num(STRM, NUM).
-get_id(STRM, '#', NUM) :- 
-  get_num(STRM, NUM).
-get_id(STRM, '\'', ATOM) :- 
+get_name(STRM, '\'', ATOM) :- 
   get_atom(STRM, ATOM).
   
 
-
-% get_id(STRM, ID) :- 
-%   get_until_dollar(STRM, [BYTE | BYTES]),
-%   (
-%     BYTE = 35 -> 
-%     number_codes(ID, BYTES) 
-%   ;
-%     atom_codes(ID, [BYTE | BYTES]) 
-%   ).
-% 
 get_prf(STRM, PRF) :- 
   get_char(STRM, CH), !, 
   get_prf(STRM, CH, PRF).
 
 get_prf(STRM, 'A', a(PID, DIR, SUB)) :- 
-  get_id(STRM, PID),  
+  get_num(STRM, PID),  
   get_dir(STRM, DIR),
   get_prf(STRM, SUB).  
   
 get_prf(STRM, 'B', b(PID, SUB_L, SUB_R)) :- 
-  get_id(STRM, PID), 
+  get_num(STRM, PID), 
   get_prf(STRM, SUB_L), 
   get_prf(STRM, SUB_R).
 
 get_prf(STRM, 'C', c(PID, TERM, SUB)) :- 
-  get_id(STRM, PID), 
+  get_num(STRM, PID), 
   get_term(STRM, TERM), 
   get_prf(STRM, SUB).
   
 get_prf(STRM, 'D', d(PID, SUB)) :- 
-  get_id(STRM, PID), 
+  get_num(STRM, PID), 
   get_prf(STRM, SUB).
 
 get_prf(STRM, 'F', f(FORM, SUB_L, SUB_R)) :-
@@ -1342,21 +1327,21 @@ get_prf(STRM, 'F', f(FORM, SUB_L, SUB_R)) :-
   get_prf(STRM, SUB_L), 
   get_prf(STRM, SUB_R). 
 
+get_prf(STRM, 'N', n(NAME, SUB)) :- 
+  get_name(STRM, NAME), 
+  get_prf(STRM, SUB). 
+
 get_prf(STRM, 'S', s(PID, SUB)) :- 
-  get_id(STRM, PID), 
+  get_num(STRM, PID), 
   get_prf(STRM, SUB). 
 
 get_prf(STRM, 'T', t(SF, SUB)) :- 
   get_sf(STRM, SF), 
   get_prf(STRM, SUB). 
-
-get_prf(STRM, 'W', w(PID, SUB)) :-
-  get_id(STRM, PID), 
-  get_prf(STRM, SUB). 
   
 get_prf(STRM, 'X', x(PID, NID)) :- 
-  get_id(STRM, PID), 
-  get_id(STRM, NID).
+  get_num(STRM, PID), 
+  get_num(STRM, NID).
 
 
 %%%%%%%%%%%%%%%% PROPOSITIONAL CONNECTION TABLEAUX %%%%%%%%%%%%%%%%
@@ -1880,11 +1865,14 @@ try(PRED, [ELEM | LIST], RST) :-
 get_context(PROB, IDS, CTX) :- 
   maplist(prob_id_hyp(PROB), IDS, CTX).
 
-redirect_id(ON, OLD, NEW) :- 
-  get_assoc(OLD, ON, NUM) -> 
-  NEW = $par(NUM)
-;
-  NEW = OLD.
+redirect_id(NI, OLD, NEW) :- 
+  get_assoc(OLD, NI, NEW).
+
+% redirect_id(NI, OLD, NEW) :- 
+%   get_assoc(OLD, NI, NUM) -> 
+%   NEW = $par(NUM)
+% ;
+%   NEW = OLD.
 
 axiomatic(TYPE) :- member(TYPE, [lemma, axiom, hypothesis, conjecture, negated_conjecture]).
 
@@ -1990,10 +1978,6 @@ try_del_assoc(KEY, ASC_I, ASC_O) :-
 ;
   ASC_O = ASC_I.
 
-relabel_inst(DICT, NI, _, del(NAME), DICT, NI_N, del(ID)) :-    
-  redirect_id(NI, NAME, ID), 
-  try_del_assoc(NAME, NI, NI_N).
-
 relabel_inst(DICT, NI, CNT, add(NAME, FORM), DICT, NI_N, add(NORM)) :-    
   resymb_form(DICT, FORM, NORM),
   put_assoc(NAME, NI, CNT, NI_N).
@@ -2009,13 +1993,12 @@ relabel_inst((RDICT, FDICT), NI, CNT, skm(FUN, ARI, NAME, FORM), (RDICT, FDICT_N
   resymb_form((RDICT, FDICT_N), FORM, NORM).
 
 relabel_inst(DICT, NI, CNT, inf(HINT, NAMES, NAME, FORM), DICT, NI_N, inf(HINT, IDS, NORM)) :-    
-  (
-    NAMES = $orig -> 
-    IDS = $orig 
-  ;
-    maplist_cut(redirect_id(NI), NAMES, IDS)
-  ),
+  maplist_cut(redirect_id(NI), NAMES, IDS),
   put_assoc(NAME, NI, CNT, NI_N),
+  resymb_form(DICT, FORM, NORM).
+
+relabel_inst(DICT, NI, CNT, orig(NAME, VID, FORM), DICT, NI_N, orig(NAME, NORM)) :-    
+  put_assoc(VID, NI, CNT, NI_N),
   resymb_form(DICT, FORM, NORM).
 
 relabel_sol(DICT, NI, CNT, [INST | SOL], [INST_N | SOL_N]) :- 

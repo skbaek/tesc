@@ -345,11 +345,14 @@ nums_cla(NAA, NUMS, CLA) :-
 
 add_del_inst(ID, [del(ID) | SIS], SIS).
 
-line_sat_insts(_, LINE, SIS_I, SIS_O) :- 
-  split_string(LINE, " ", "", [_, "d" | NUMS]), 
-  append(ID_STRS, ["0"], NUMS), 
-  maplist_cut(number_string, IDS, ID_STRS), 
-  foldl(add_del_inst, IDS, SIS_I, SIS_O).
+line_sat_insts(_, LINE, SIS, SIS) :- 
+  split_string(LINE, " ", "", [_, "d" | _]), !.
+
+% line_sat_insts(_, LINE, SIS_I, SIS_O) :- 
+%   split_string(LINE, " ", "", [_, "d" | NUMS]), 
+%   append(ID_STRS, ["0"], NUMS), 
+%   maplist_cut(number_string, IDS, ID_STRS), 
+%   foldl(add_del_inst, IDS, SIS_I, SIS_O).
 
 line_sat_insts(NAA, LINE, [rup(SIDS, SID, CLA) | SIS], SIS) :- 
   string_numbers(LINE, [SID | NUMS]),
@@ -422,9 +425,11 @@ put_sat_cla(CTX_I, SID, CLA, CTX_O) :-
 del_sat_cla(CTX_I, SID, CLA, CTX_O) :- 
   del_assoc(SID, CTX_I, CLA, CTX_O).
 
-use_sat_inst(CTX, del(SID), GOAL, CTX_N, GOAL_N) :-
-  del_sat_cla(CTX, SID, CLA, CTX_N), 
-  wp(CLA, GOAL, GOAL_N). 
+use_sat_inst(CTX, del(_), GOAL, CTX, GOAL).
+
+% use_sat_inst(CTX, del(SID), GOAL, CTX_N, GOAL_N) :-
+%   del_sat_cla(CTX, SID, CLA, CTX_N), 
+%   wp(CLA, GOAL, GOAL_N). 
 
 use_sat_inst(CTX, rup(SIDS, SID, CLA), GOAL, CTX_N, GOAL_N) :- 
   fp(CLA, GOAL, NYP, PYP, GOAL_T, GOAL_N), 
@@ -702,7 +707,7 @@ find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :-
   try(subsume_cla(LITS), CLAS, ID).
 
 orig_aux(PREM, GOAL, CONC) :- 
-  infer(_, id, [PREM], _, CONC, GOAL) ;
+  mate(PREM, CONC, GOAL) ;
   pmt_cla(PREM, CONC, GOAL) ;
   para_clausal(v, (PREM, CONC, GOAL)).
 
@@ -710,29 +715,29 @@ orig_aux(PREM, GOAL, CONC) :-
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
 
-infer(e, para_dist, [PREM], _, CONC, GOAL) :- 
+infer(e, para_dist, [PREM], CONC, GOAL) :- 
   para_dist(PREM, CONC, GOAL).
 
-infer(_, para_pull, [PREM], _, CONC, GOAL) :-
+infer(_, para_pull, [PREM], CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP], GOAL_T), 
   para_pull((PREM, HYP, GOAL_T)).
 
-infer(e, para_e1, [PREM], _, CONC, GOAL) :- 
+infer(e, para_e1, [PREM], CONC, GOAL) :- 
   para_e1((PREM, CONC, GOAL)).
 
-infer(e, para_e2, [PREM], _, CONC, GOAL) :- 
+infer(e, para_e2, [PREM], CONC, GOAL) :- 
   para_e2((PREM, CONC, GOAL)).
 
-infer(e, para_push, [PREM], _, CONC, GOAL) :-
+infer(e, para_push, [PREM], CONC, GOAL) :-
   para_push((PREM, CONC, GOAL)). 
 
-infer(_, rnm, [PREM | _], _, CONC, GOAL) :- 
+infer(_, rnm, [PREM | _], CONC, GOAL) :- 
   mate(PREM, CONC, GOAL).
 
-infer(e, simp, [PREM | _], _, CONC, GOAL) :- 
+infer(e, simp, [PREM | _], CONC, GOAL) :- 
   esimp((PREM, CONC, GOAL)).
 
-infer(PRVR, skm, [PREM | AOCS], _, CONC, GOAL) :- 
+infer(PRVR, skm, [PREM | AOCS], CONC, GOAL) :- 
   PRVR = e -> 
   eskm(AOCS, (PREM, CONC, GOAL)) 
 ;
@@ -740,21 +745,21 @@ infer(PRVR, skm, [PREM | AOCS], _, CONC, GOAL) :-
   % many_nb([c], [PREM], GOAL1, [PREM_N], GOAL2), 
   skm(AOCS, (PREM, CONC_N, GOAL1)).
 
-infer(_, ngt, [PREM], _, CONC, GOAL) :- 
+infer(_, ngt, [PREM], CONC, GOAL) :- 
   sp(CONC, GOAL, TEMP, GOAL_T), 
   mate(PREM, TEMP, GOAL_T).
   
-infer(_, dff, [PREM | PREMS], _, CONC, GOAL) :- 
+infer(_, dff, [PREM | PREMS], CONC, GOAL) :- 
   sort(PREMS, DEFS),
   dff(DEFS, PREM, CONC, GOAL).
 
-infer(_, dfu, [PREM | PREMS], _, CONC, GOAL) :- 
+infer(_, dfu, [PREM | PREMS], CONC, GOAL) :- 
   dfu(PREMS, PREM, CONC, GOAL).
 
-infer(v, sat, PREMS, _, _, GOAL) :-
+infer(v, sat, PREMS, _, GOAL) :-
   sat(PREMS, GOAL).
   
-infer(m, subst, [PREM], _, CONC, GOAL) :-
+infer(m, subst, [PREM], CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP_C], GOAL0), 
   many_nb([c], [PREM], GOAL0, [HYP_P], GOAL1), 
   ( 
@@ -762,66 +767,56 @@ infer(m, subst, [PREM], _, CONC, GOAL) :-
     pblx(p, [HYP_P, HYP_C], GOAL1)
   ).
 
-infer(m, eq, [], _, CONC, GOAL) :-
+infer(m, eq, [], CONC, GOAL) :-
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, EQ, [HYP_A, HYP_B]),
   EQ = (_, $pos($rel('=', [_, _]))), 
   subst_rel_mul(HYP_A, [EQ], HYP_B, GOAL_T, []). 
 
-infer(m, refl, [], _, CONC, GOAL) :-
+infer(m, refl, [], CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP], GOAL_T), 
   eq_refl(HYP, GOAL_T).
 
-infer(_, rwa, [PREM_A, PREM_B], _, CONC, GOAL) :-
+infer(_, rwa, [PREM_A, PREM_B], CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP_C], GOAL_C), 
   many_nb([c], [PREM_B], GOAL_C, [HYP_B], GOAL_B), 
   many_nb([c], [PREM_A], GOAL_B, [HYP_A], GOAL_A), 
   rwa(HYP_B, (HYP_A, HYP_C, GOAL_A)).
 
-infer(v, gaoc, AOCS, _, GAOC, GOAL) :- 
+infer(v, gaoc, AOCS, GAOC, GOAL) :- 
   many_nb([d], [GAOC], GOAL, [IMP], GOAL0), 
   IMP = (_, $neg($imp(_, _))),
   aap(IMP, GOAL0, ANTE, CONS, GOAL1), 
   apply_aocs(ANTE, AOCS, GOAL1, TEMP, GOAL2), 
   paral((TEMP, CONS, GOAL2)).
   
-infer(PRVR, res, [PYP0, PYP1], _, NYP, GOAL) :- 
+infer(PRVR, res, [PYP0, PYP1], NYP, GOAL) :- 
   member(PRVR, [v, e]),
   res(PYP0, PYP1, NYP, GOAL).
 
-infer(_, id, PREMS, _, CONC, GOAL) :-
-  member(PREM, PREMS),
-  mate(PREM, CONC, GOAL), !.
-
-infer(_, opmt, PREMS, CLAS, CONC, GOAL) :-
-  snd(GOAL, CNT),
-  find_subsumer(CNT, CLAS, CONC, ID),
-  member((ID, HYP), PREMS), 
-  pmt_cla((ID, HYP), CONC, GOAL), !.
-
-infer(m, simplify, [PREM_A, PREM_B], _, CONC, GOAL) :- 
+infer(m, simplify, [PREM_A, PREM_B], CONC, GOAL) :- 
   res(PREM_A, PREM_B, CONC, GOAL).
   
-infer(e, orig, PREMS, _, CONC, GOAL) :- 
+infer(e, orig, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
   orig_aux(PREM, GOAL, CONC).
 
-infer(v, orig, PREMS, CLAS, CONC, GOAL) :- 
-  infer(_, id, PREMS, CLAS, CONC, GOAL) ;
-  infer(_, opmt, PREMS, CLAS, CONC, GOAL) ;
-  infer(v, para_clausal, PREMS, CLAS, CONC, GOAL). 
+infer(v, orig, [PREM], CONC, GOAL) :- 
+  mate(PREM, CONC, GOAL) ;
+  pmt_cla(PREM, CONC, GOAL) ;
+  infer(v, para_clausal, [PREM], CONC, GOAL). 
 
-infer(_, eqf, [PREM], _, CONC, GOAL) :- 
+infer(_, eqf, [PREM], CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, HYP, REST), 
   HYP = (_, $pos($rel('=', [_, _]))), 
   many([b, c, s], ([PREM], GOAL_T), HGS), 
   maplist(eqf(REST, HYP), HGS).
 
-infer(_, eqr, [PREM], _, CONC, GOAL) :- 
+infer(_, eqr, [PREM], CONC, GOAL) :- 
   eqr(PREM, CONC, GOAL).
 
-infer(v, updr, [PREM], _, CONC, GOAL) :- 
+infer(v, updr, [PREM], CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [CONC_N], GOAL0),
   many_nb([c], [PREM], GOAL0, [PREM_N], GOAL1),
   (
@@ -830,10 +825,10 @@ infer(v, updr, [PREM], _, CONC, GOAL) :-
   ),
   mate(PREM_D, CONC_N, GOAL2).
 
-infer(e, fnnf, [PREM], _, CONC, GOAL) :- 
+infer(e, fnnf, [PREM], CONC, GOAL) :- 
   fnnf((PREM, CONC, GOAL)).
 
-infer(_, rwe, [PREM_L, PREM_R], _, CONC, GOAL) :- 
+infer(_, rwe, [PREM_L, PREM_R], CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [TEMP_C], GOAL0), 
   many_nb([c], [PREM_L], GOAL0, [TEMP_L], GOAL1), 
   many_nb([d], [TEMP_L], GOAL1, [BODY_L], GOAL2), 
@@ -847,7 +842,7 @@ infer(_, rwe, [PREM_L, PREM_R], _, CONC, GOAL) :-
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL8). 
   
-infer(_, (sup, DIR), [PREM_A, PREM_B], _, CONC, GOAL) :- 
+infer(_, (sup, DIR), [PREM_A, PREM_B], CONC, GOAL) :- 
   orient_dir(PREM_A, PREM_B, DIR, PREM_L, PREM_R),
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL0), 
   pick_pivot(HYPS, PREM_L, GOAL0, SRC, GOAL1), 
@@ -857,74 +852,68 @@ infer(_, (sup, DIR), [PREM_A, PREM_B], _, CONC, GOAL) :-
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL3). 
 
-infer(v, spl, [PREM | PREMS], _, CONC, GOAL) :- 
+infer(v, spl, [PREM | PREMS], CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS0, GOAL0), 
   spl_exp(PREMS, HYPS0, GOAL0, HYPS1, GOAL1),
   append(HYPS0, HYPS1, HYPS),
   pblx(q, [PREM | HYPS], GOAL1).
 
-infer(_, para, PREMS, _, CONC, GOAL) :- 
+infer(_, para, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
   para((PREM, CONC, GOAL)).
 
-infer(_, sbsm, [PREM], _, CONC, GOAL) :- 
+infer(_, sbsm, [PREM], CONC, GOAL) :- 
   sbsm(PREM, CONC, GOAL).
 
-
-
-  %  maplist(pick_mate(HYPS), HGS). 
-
-infer(v, cnf, [PREM], _, CONC, GOAL) :- 
+infer(v, cnf, [PREM], CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, TEMP), 
   vcnf(PREM, HYPS, TEMP).
 
-infer(v, acc, [PREM], _, CONC, GOAL) :- 
+infer(v, acc, [PREM], CONC, GOAL) :- 
   vacc(PREM, CONC, GOAL).
 
-infer(v, ppr, [PREM], _, CONC, GOAL) :-
-  % member(PREM, PREMS),
+infer(v, ppr, [PREM], CONC, GOAL) :-
   ppr(PREM, CONC, GOAL) ;
   ppr((PREM, CONC, GOAL)).
 
-infer(v, paras, PREMS, _, CONC, GOAL) :- 
+infer(v, paras, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
   para_switch((PREM, CONC, GOAL)).
 
-infer(v, paral, PREMS, _, CONC, GOAL) :- 
+infer(v, paral, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
   paral((PREM, CONC, GOAL)).
 
-infer(v, parav, PREMS, _, CONC, GOAL) :- 
+infer(v, parav, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
   parav((PREM, CONC, GOAL)).
 
-infer(_, mscj, [PREM], _, CONC, GOAL) :- 
+infer(_, mscj, [PREM], CONC, GOAL) :- 
   mscj((PREM, CONC, GOAL)).
 
-infer(e, speq, [PREM], _, CONC, GOAL) :- 
+infer(e, speq, [PREM], CONC, GOAL) :- 
   speq((PREM, CONC, GOAL)).
 
-infer(_, scj, [PREM], _, CONC, GOAL) :- 
+infer(_, scj, [PREM], CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [HYP0], GOAL0), 
   many_nb([c], [PREM], GOAL0, [HYP1], GOAL1), 
   scj((HYP1, HYP0, GOAL1)).
 
-infer(v, vnnf, PREMS, _, CONC, GOAL) :- 
+infer(v, vnnf, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
   vnnf((PREM, CONC, GOAL)).
 
-
-infer(PRVR, para_clausal, PREMS, _, CONC, GOAL) :- 
+infer(PRVR, para_clausal, PREMS, CONC, GOAL) :- 
   many_nb([d, s], [CONC], GOAL, [HYP_C], GOAL_C), 
   member(PREM, PREMS),
   many_nb([c, s], [PREM], GOAL_C, [HYP_P], GOAL_P), 
   para_clausal(PRVR, (HYP_P, HYP_C, GOAL_P)).
 
-infer(_, paratf, PREMS, _, CONC, GOAL) :- 
+infer(_, paratf, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
   paratf((PREM, CONC, GOAL)).
 
-report_failure(MODE, PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :- 
+report_failure(MODE, PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :- 
   write("\nInference failed, hints : "), 
   write(HINTS), 
   write("\n\n"), 
@@ -945,7 +934,6 @@ report_failure(MODE, PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
     write_term_punct(STRM, debug_prvr(PRVR)),
     write_term_punct(STRM, debug_hints(HINTS)), 
     write_term_punct(STRM, debug_ctx(PREMS)), 
-    write_term_punct(STRM, debug_clas(CLAS)), 
     write_term_punct(STRM, debug_hyp(CONC)), 
     write_term_punct(STRM, debug_goal(GOAL)), 
     write_term_punct(STRM, debug_prob(PROB)), 
@@ -956,25 +944,49 @@ report_failure(MODE, PRVR, HINTS, PREMS, CLAS, CONC, PROB, PRF, GOAL) :-
     true
   ).
 
-subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM) :-   
+originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C) :-
+  put_char(STRM, 'F'), 
+  put_form(STRM, FORM_C), 
+  put_char(STRM, 'N'), 
+  put_name(STRM, NAME),
+  num_succ(CNT, SCNT),
+  num_succ(SCNT, SSCNT),
+  GOAL = (PRF, SSCNT), 
+  timed_call(
+    30,
+    infer(PRVR, orig, [(SCNT, $pos(FORM_P))], (CNT, $neg(FORM_C)), GOAL), 
+    (
+      write("Subproof failed prematurely. "),
+      report_failure(verbose, PRVR, HINT, PREMS, (CNT, $neg(FORM)), none, none, GOAL), 
+      false
+    ),
+    (
+      write("Subproof timed out. "),
+      report_failure(fast, PRVR, HINT, PREMS, (CNT, $neg(FORM)), none, none, GOAL), 
+      false
+    )
+  ), !,
+  ground_all($fun(c,[]), PRF),
+  put_prf(STRM, PRF). 
+
+subprove(STRM, PRVR, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
   % mk_par(CNT, [], CID),
-  CID = $par(CNT),
   put_char(STRM, 'F'), 
   put_form(STRM, FORM), 
   num_succ(CNT, SCNT),
   GOAL = (PRF, SCNT), 
   timed_call(
     30,
-    infer(PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), GOAL), 
+    infer(PRVR, HINT, PREMS, (CNT, $neg(FORM)), GOAL), 
     (
       write("Subproof failed prematurely. "),
-      report_failure(verbose, PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
+      report_failure(verbose, PRVR, HINT, PREMS, (CNT, $neg(FORM)), none, none, GOAL), 
       false
     ),
     (
       write("Subproof timed out. "),
-      report_failure(fast, PRVR, HINT, PREMS, OCLAS, (CID, $neg(FORM)), none, none, GOAL), 
+      report_failure(fast, PRVR, HINT, PREMS, (CNT, $neg(FORM)), none, none, GOAL), 
       false
     )
   ), !,
@@ -999,59 +1011,46 @@ get_tup_nth(NUM, (_, TUP), ELEM) :-
   num_pred(NUM, PRED), 
   get_tup_nth(PRED, TUP, ELEM).
 
-% PS = (PROB, SOL, LAST, STRM, PRVR, OHYPS, OCLAS, nil)
-get_ps_prob(PS, PROB)  :- get_tup_nth(0, PS, PROB).
+% PS = (CTX, SOL, PROB, STRM, PRVR, nil)
+get_ps_ctx(PS, CTX)    :- get_tup_nth(0, PS, CTX).
 get_ps_sol(PS, SOL)    :- get_tup_nth(1, PS, SOL).
-get_ps_last(PS, LAST)  :- get_tup_nth(2, PS, LAST).
+get_ps_prob(PS, PROB)  :- get_tup_nth(2, PS, PROB).
 get_ps_strm(PS, STRM)  :- get_tup_nth(3, PS, STRM).
 get_ps_prvr(PS, PRVR)  :- get_tup_nth(4, PS, PRVR).
-get_ps_ohyps(PS, HYPS) :- get_tup_nth(5, PS, HYPS).
-get_ps_oclas(PS, CLAS) :- get_tup_nth(6, PS, CLAS).
 
-set_ps_prob(PS_O, PROB, PS_N)  :- set_tup_nth(0, PS_O, PROB, PS_N).
-set_ps_sol(PS_O, SOL, PS_N)    :- set_tup_nth(1, PS_O, SOL, PS_N).
-set_ps_last(PS_O, LAST, PS_N)  :- set_tup_nth(2, PS_O, LAST, PS_N).
+set_ps_ctx(PS_O, CTX, PS_N) :- set_tup_nth(0, PS_O, CTX, PS_N).
+set_ps_sol(PS_O, SOL, PS_N) :- set_tup_nth(1, PS_O, SOL, PS_N).
 
 use_inst(PS, CNT, add(FORM), PS_N) :- 
-  get_ps_prob(PS, PROB),
+  get_ps_ctx(PS, CTX),
   get_ps_strm(PS, STRM),
-  % mk_par(CNT, [], CID),
-  CID = $par(CNT),
   justified(CNT, $pos(FORM)),
   put_char(STRM, 'T'), 
   put_sf(STRM, $pos(FORM)), 
-  put_assoc(CID, PROB, $pos(FORM), PROB_N), 
-  set_ps_prob(PS, PROB_N, PS1), 
-  set_ps_last(PS1, CID, PS_N), 
+  put_assoc(CNT, CTX, $pos(FORM), CTX_N), 
+  set_ps_ctx(PS, CTX_N, PS_N), 
   true.
   
+use_inst(PS, CNT, orig(NAME, FORM_C), PS_N) :- 
+  get_ps_prvr(PS, PRVR),
+  get_ps_strm(PS, STRM),
+  get_ps_ctx(PS, CTX),
+  get_ps_prob(PS, PROB),
+  get_assoc(NAME, PROB, FORM_P),
+  originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C),
+  put_assoc(CNT, CTX, $pos(FORM_C), CTX_N),
+  set_ps_ctx(PS, CTX_N, PS_N), 
+  true.
+
 use_inst(PS, CNT, inf(HINT, IDS, FORM), PS_N) :- 
   get_ps_prvr(PS, PRVR),
   get_ps_strm(PS, STRM),
-  get_ps_prob(PS, PROB),
-  % format("Constructing subproof with ID = ~w, hint = ~w\n\n", [CNT, HINT]),
-  get_ps_oclas(PS, OCLAS),
-  (
-    IDS == $orig -> 
-    get_ps_ohyps(PS, PREMS) ;
-    get_context(PROB, IDS, PREMS)
-  ),
-  subprove(STRM, PRVR, OCLAS, CNT, HINT, PREMS, FORM),
-  % mk_par(CNT, [], CID),
-  CID = $par(CNT),
-  put_assoc(CID, PROB, $pos(FORM), PROB_N),
-  set_ps_prob(PS, PROB_N, PS1), 
-  set_ps_last(PS1, CID, PS_N), 
+  get_ps_ctx(PS, CTX),
+  get_context(CTX, IDS, PREMS),
+  subprove(STRM, PRVR, CNT, HINT, PREMS, FORM),
+  put_assoc(CNT, CTX, $pos(FORM), CTX_N),
+  set_ps_ctx(PS, CTX_N, PS_N), 
   true.
-
-use_inst(PS, _, del(ID), PS_N) :- 
-  % format("Deleting lemma ~w\n\n", PID),
-  get_ps_strm(PS, STRM),
-  get_ps_prob(PS, PROB_O),
-  put_char(STRM, 'W'), 
-  put_id(STRM, ID), 
-  del_assoc(ID, PROB_O, _, PROB_N), !, 
-  set_ps_prob(PS, PROB_N, PS_N).
   
 prove(PS0, NUM) :- 
   get_ps_sol(PS0, [INST | SOL]), 
@@ -1063,8 +1062,8 @@ prove(PS0, NUM) :-
 prove(PS, NUM) :- 
   get_ps_sol(PS, []), 
   get_ps_strm(PS, STRM), 
-  get_ps_last(PS, LAST),
-  put_prf(STRM, t($neg($false), x(LAST, $par(NUM)))).
+  num_pred(NUM, PRED),
+  put_prf(STRM, t($neg($false), x(PRED, NUM))).
 
 para_push(TRP) :- 
   para_m(TRP) -> true 

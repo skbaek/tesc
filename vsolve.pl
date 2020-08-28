@@ -52,13 +52,13 @@ pred_def_norm(PRD, $iff(ATOM, FORM), ARI, $iff(ATOM, FORM)) :-
   length(TERMS, ARI).
 
 tup_inst(
-  (ID, conjecture, FORM, _),
-  inf(orig, $orig, ID, $not(FORM) )
+  (ID, conjecture, FORM, file(_, NAME)),
+  orig(NAME, ID, $not(FORM))
 ). 
   
 tup_inst(
- (ID, axiom, FORM, _),
- inf(orig, $orig, ID, FORM) 
+ (ID, axiom, FORM, file(_, NAME)),
+ orig(NAME, ID, FORM) 
 ).
 
 tup_inst(
@@ -99,40 +99,6 @@ compare_tups(ORD, (ID_A, _, _, _), (ID_B, _, _, _)) :-
   atom_number(TEMP_B, NUM_B),
   compare(ORD, NUM_A, NUM_B).
 
-update_seen(SEEN, [], SEEN, []).
-
-update_seen(SEEN_I, [ID | IDS], SEEN_O, DELS) :- 
-  get_assoc(ID, SEEN_I, c) -> 
-  update_seen(SEEN_I, IDS, SEEN_O, DELS) 
-;
-  put_assoc(ID, SEEN_I, c, SEEN_T),
-  DELS = [del(ID) | DELS_T], 
-  update_seen(SEEN_T, IDS, SEEN_O, DELS_T). 
-
-insert_dels([], EMP, []) :- 
-  empty_assoc(EMP).
-  
-insert_dels([INST | INSTS_I], SEEN, INSTS_O) :- 
-  insert_dels(INSTS_I, SEEN_T, INSTS_T), 
-  (
-    INST = del(_) -> 
-    throw(invalid_deletion)
-  ; 
-    INST = add(_, _, _) -> 
-    SEEN = SEEN_T,
-    INSTS_O = [INST | INSTS_T]
-  ;
-    INST = inf(_, IDS, _, _), 
-    (
-      IDS == $orig -> 
-      SEEN = SEEN_T,
-      INSTS_O = [INST | INSTS_T]
-    ; 
-      sort(IDS, IDS_S), 
-      update_seen(SEEN_T, IDS_S, SEEN, DELS), 
-      append([INST | DELS], INSTS_T, INSTS_O)
-    )
-  ).
 
 reduce_gaocs([], []).
 
@@ -142,9 +108,9 @@ reduce_gaocs([INST | SOL], [INST | SOL_N]) :-
   
 reduce_gaocs([add([gaoc], NAME, FORM) | SOL], SOL_N) :- 
   get_adds(FORM, NAMES, ADDS), 
-  maplist(mk(del), NAMES, DELS), !,
+  % maplist(mk(del), NAMES, DELS), !,
   reduce_gaocs(SOL, SOL_T), !,
-  append([ADDS, [inf(gaoc, NAMES, NAME, FORM) | DELS], SOL_T], SOL_N). 
+  append(ADDS, [inf(gaoc, NAMES, NAME, FORM) | SOL_T], SOL_N). 
 
 get_adds(FORM, NAMES, ADDS) :- 
   strip_fas(FORM, ARI, $imp(ANTE, CONC)),
@@ -172,7 +138,7 @@ vsolve(TSTP, SOL) :-
   tstp_sclas(TSTP, UNSORTED), !,
   predsort(compare_tups, UNSORTED, SORTED), !,
   maplist_cut(tup_inst, SORTED, INSTS), !,
-  insert_dels(INSTS, _, DELETED), !,
-  reduce_gaocs(DELETED, REDUCED),
+  % insert_dels(INSTS, _, DELETED), !,
+  reduce_gaocs(INSTS, REDUCED),
   relabel(REDUCED, SOL),
   true.

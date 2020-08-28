@@ -10,7 +10,7 @@ use std::rc::Rc;
 
 type FileBytes<'a> = &'a mut io::Bytes<io::BufReader<File>>;
 type SignForm = (bool, Rc<Form>);
-type Problem = HashMap<Name, SignForm>;
+type Problem = HashMap<Name, Form>;
 
 #[derive(Debug)]
 enum Dir {Lft, Rgt}
@@ -58,8 +58,7 @@ enum FormPart {
 #[derive(PartialEq, Eq, std::hash::Hash, Clone, Debug)]
 enum Name {
   Atm(String),
-  Num(u64),
-  Par(u64)
+  Num(u64)
 } 
 
 trait Get { fn get(FileBytes) -> Result<Self, String> where Self: std::marker::Sized; }
@@ -405,10 +404,6 @@ fn get_name(bs: FileBytes) -> Result<Name, String> {
       let a = get_string(bs)?;
       Ok(Name::Atm(a))
     }
-    '@' => {
-      let k = get_u64(bs)?;
-      Ok(Name::Par(k))
-    },
     '#' => {
       let k = get_u64(bs)?;
       Ok(Name::Num(k))
@@ -617,7 +612,7 @@ fn bb(x: &SignForm) -> (SignForm, SignForm) {
     (true,  Form::Or(f,g))  => ((true, f.clone()), (true, g.clone())),
     (false, Form::And(f,g)) => ((false,f.clone()), (false,g.clone())),
     (true,  Form::Imp(f,g)) => ((false,f.clone()), (true, g.clone())),
-    (false, Form::Iff(f,g)) => ((false,Rc::new(Form::Imp(f.clone(),g.clone()))), (true,Rc::new(Form::Imp(g.clone(),f.clone())))),
+    (false, Form::Iff(f,g)) => ((false,Rc::new(Form::Imp(f.clone(),g.clone()))), (false,Rc::new(Form::Imp(g.clone(),f.clone())))),
     _ => panic!("Not a B-formula")
   }
 }
@@ -665,7 +660,7 @@ fn get_prob(bs : FileBytes) -> Result<Problem, String> {
     if c != ';' { return err_str("Ill-formed input problem.") };
     let n = get_name(bs)?;
     let f = get_form(bs)?;
-    h.insert(n, (true, Rc::new(f)));
+    h.insert(n, f);
     c = get_char(bs)?;
   };
   Ok(h)
@@ -706,98 +701,96 @@ fn substform(n: u64, t: &Term, f: &Form) -> Form {
   }
 }
 
-fn get_prem<'a>(p: &'a Problem, n: &Name) -> Result<&'a SignForm, String> {
+fn get_from_prob<'a>(p: &'a Problem, n: &Name) -> Result<&'a Form, String> {
   match p.get(n) {
     Some(f) => Ok(f),
-    None => Err(format!("No premise with name = {:?}", n))
+    None => Err(format!("Cannot find premise in problem with name = {:?}", n))
   }
 }
 
-fn check(bs: FileBytes, mut prob: Problem) -> Result<(), String> {
+fn get_from_context<'a>(ctx: &'a Vec<SignForm>, i: u64) -> Result<&'a SignForm, String> {
+  match ctx.get(i as usize) {
+    Some(x) => Ok(x),
+    _ => err_str("Cannot find premise in context")
+  }
+}
+
+fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
     
-  let mut cnm: Name;
-  let mut cnt: u64 = 0;
-  let mut probs: Vec<(Problem, u64)> = vec![];
+  let mut ctx: Vec<SignForm> = vec![];
+  let mut conts: Vec<(u64, SignForm)> = vec![];
 
   loop {
-
-    cnm = Name::Par(cnt);
-
     match get_char(bs)? {
       'A' => {
-        let pnm = get_name(bs)?; 
+        let i = get_u64(bs)?; 
         let d = get_dir(bs)?;
-        let prem = get_prem(&prob,&pnm)?;
-        let conc = ab(d,prem);
-        prob.insert(cnm,conc);
+        let p = get_from_context(&ctx, i)?;
+        let c = ab(d,p);
+        ctx.push(c);
       },
       'B' => {
-        let pnm = get_name(bs)?; 
-        let prem = get_prem(&prob,&pnm)?;
-        let (conc_l, conc_r) = bb(prem);
-        let mut prob_alt = prob.clone();
-        prob.insert(cnm.clone(), conc_l);
-        prob_alt.insert(cnm, conc_r);
-        probs.push((prob_alt, cnt));
+        let i = get_u64(bs)?; 
+        let p = get_from_context(&ctx, i)?;
+        let (cl, cr) = bb(p);
+        // let mut prob_alt = prob.clone();
+        conts.push((ctx.len() as u64, cr)); 
+        ctx.push(cl);
       },
       'C' => {
-        let pnm = get_name(bs)?; 
-        let trm = get_term(bs)?; 
-        let prem = get_prem(&prob,&pnm)?;
-        if !ground_term(0, &trm) { return err_str("Instantiation term contains free variables.") };
-        if !term_below(cnt, &trm) { return err_str("Instantiation term contains OOB parameter.") };
-        let conc = cb(trm,prem);
-        prob.insert(cnm, conc);
+        let i = get_u64(bs)?; 
+        let t = get_term(bs)?; 
+        let p = get_from_context(&ctx, i)?;
+        if !ground_term(0, &t) { return err_str("Instantiation term contains free variables.") };
+        if !term_below(ctx.len() as u64, &t) { return err_str("Instantiation term contains OOB parameter.") };
+        let c = cb(t,p);
+        ctx.push(c);
       },
       'D' => {
-        let pnm = get_name(bs)?; 
-        let prem = get_prem(&prob,&pnm)?;
-        let conc = db(cnt,prem);
-        prob.insert(cnm, conc);
+        let i = get_u64(bs)?; 
+        let p = get_from_context(&ctx, i)?;
+        let c = db(ctx.len() as u64,p);
+        ctx.push(c);
+      },
+      'N' => {
+        let n = get_name(bs)?; 
+        let f = get_from_prob(&prob, &n)?;
+        ctx.push((true, Rc::new(f.clone())));
       },
       'F' => {
-        let frm = get_form(bs)?;
-        if !ground_form(0, &frm)  { return err_str("Cut formula is not ground.") };
-        if !form_below(cnt+1, &frm) { return err_str("Cut formula contains OOB parameter.") };
-        let x = Rc::new(frm);
-        let mut prob_alt = prob.clone();
-        prob.insert(cnm.clone(), (false, x.clone()));
-        prob_alt.insert(cnm, (true, x));
-        probs.push((prob_alt, cnt));
+        let f = get_form(bs)?;
+        if !ground_form(0, &f)  { return err_str("Cut formula is not ground.") };
+        if !form_below((ctx.len()+1) as u64, &f) { return err_str("Cut formula contains OOB parameter.") };
+        let x = Rc::new(f);
+        conts.push((ctx.len() as u64, (true, x.clone()))); 
+        ctx.push((false, x));
       },
       'S' => {
-        let pnm = get_name(bs)?; 
-        let prem = get_prem(&prob,&pnm)?;
-        let conc = sb(prem);
-        prob.insert(cnm, conc);
+        let i = get_u64(bs)?; 
+        let p = get_from_context(&ctx, i)?;
+        let c = sb(p);
+        ctx.push(c);
       },
       'T' => {
-        let sgn = get_sign(bs)?;
-        let frm = get_form(bs)?;
-        if !ground_form(0,&frm) { return err_str("Axiom is not ground.") };
-        if !form_below(cnt+1,&frm) { return Err(format!("{:?} =< Parameter in axiom = {:?}", cnt, frm)) };
-        if !justified(cnt,sgn,&frm) { return err_str("Axiom unjustified.") };
-        prob.insert(cnm, (sgn, Rc::new(frm)));
-      },
-      'W' => {
-        let pnm = get_name(bs)?; 
-        match prob.remove(&pnm) {
-          Some(_) => (),
-          None => return err_str("Deletion failed.")
-        };
+        let s = get_sign(bs)?;
+        let f = get_form(bs)?;
+        if !ground_form(0,&f) { return err_str("Axiom is not ground.") };
+        if !form_below((ctx.len()+1) as u64,&f) { return Err(format!("{:?} =< Parameter in axiom = {:?}", ctx.len(), f)) };
+        if !justified(ctx.len() as u64,s,&f) { return err_str("Axiom unjustified.") };
+        ctx.push((s, Rc::new(f)));
       },
       'X' => { 
-        let pnm = get_name(bs)?; 
-        let nnm = get_name(bs)?; 
-        match get_prem(&prob,&pnm)? {
+        let pi = get_u64(bs)?; 
+        let ni = get_u64(bs)?; 
+        match get_from_context(&ctx, pi)? {
           (true,pfrm) => {
-            match get_prem(&prob,&nnm)? {
+            match get_from_context(&ctx, ni)? {
               (false,nfrm) => {
                 if **pfrm == **nfrm { 
-                  match probs.pop() {
-                    Some((next_prob, next_cnt)) => {
-                      prob = next_prob;
-                      cnt = next_cnt;
+                  match conts.pop() {
+                    Some((lth, sf)) => {
+                      ctx.truncate(lth as usize);
+                      ctx.push(sf);
                     },
                     None => return Ok(())
                   }
@@ -811,9 +804,7 @@ fn check(bs: FileBytes, mut prob: Problem) -> Result<(), String> {
         }
       },
       _ => return err_str("Invalid head character of subproof.")
-    };
-
-    cnt = cnt + 1;
+    }
   }
 }
 
@@ -837,8 +828,6 @@ fn body() -> Result<(), String> {
     _ => return err_str("Cannot open TESC file.")
   };
   let mut prbs = prf.bytes();
-
-  println!("\n\n\n-----Begin proofcheck here!!------\n\n\n");
   check(&mut prbs, pb) 
 }
  

@@ -30,12 +30,12 @@ tptp_pclas(TPTP, PCLAS) :-
   maplist(precla_pcla, PRECLAS, PCLAS), 
   true.
 
-add_hyp((ID, SF), PROB, PROB_N) :- !, 
+add_hyp((ID, FORM), PROB, PROB_N) :- !, 
   get_assoc(ID, PROB, _) -> 
   write("Found duplicate ids\n\n"),
   false 
 ;
-  put_assoc(ID, PROB, SF, PROB_N).
+  put_assoc(ID, PROB, FORM, PROB_N).
 
 nonfun($var(_)).
 nonfun($dst(_)).
@@ -125,27 +125,16 @@ atom_cmp(ORD, ATOM_A, ATOM_B) :-
     compare(ORD, ATOM_A, ATOM_B) 
   ), !.
 
-pcla_hyp((ID, FORM), (ID, $pos(FORM))).
-
 pcla_cla((ID, FORM), (ID, NORM)) :- 
   inst_with_lvs(FORM, BODY), !,
   body_lits(BODY, LITS, []), !, 
   predsort(lit_cmp, LITS, TEMP), !,
   reverse(TEMP, NORM), !.
 
-pose(MODE, TPTP, HYPS, CLAS, PROB) :- 
+pose(TPTP, PROB) :- 
   tptp_pclas(TPTP, PCLAS),
-    length(PCLAS, LTH),
-    format("Number of clauses = ~w\n", LTH),
-  maplist_cut(pcla_hyp, PCLAS, HYPS),
-  ( 
-    MODE = verbose ->
-    convlist(pcla_cla, PCLAS, CLAS) 
-  ;
-    true
-  ),
   empty_assoc(EMP), 
-  foldl_cut(add_hyp, HYPS, EMP, PROB).
+  foldl_cut(add_hyp, PCLAS, EMP, PROB).
 
 pose_path(TPTP, TTP) :- 
   open(TTP, write, WS, [encoding(octet)]), !, 
@@ -154,31 +143,31 @@ pose_path(TPTP, TTP) :-
   put_char(WS, '.'),
   close(WS).
   
-pose_path(WS, PATH, IDS_I, IDS_O) :- 
+pose_path(WS, PATH, NAMES_I, NAMES_O) :- 
   style_check(-singleton),
   declare_TPTP_operators,
-  tptp_terms(PATH, TERMS),
-  foldl(pose_term(WS), TERMS, IDS_I, IDS_O),
+  tptp_terms(PATH, TERMS), !, 
+  foldl_cut(pose_term(WS), TERMS, NAMES_I, NAMES_O),
   %  partition(is_include, TERMS, INCLS, ORIG),
   %  maplist(include_terms, INCLS, AXIOMSS),
   %  append([ORIG | AXIOMSS], PRECLAS),
   %  maplist(precla_pcla, PRECLAS, PCLAS), 
   true.
 
-pose_term(WS, include(AX), IDS_I, IDS_O) :- !, 
+pose_term(WS, include(AX), NAMES_I, NAMES_O) :- !, 
   tptp_directory(TPTP),
-  atomics_to_string([TPTP, AX], PATH),
-  pose_path(WS, PATH, IDS_I, IDS_O).
+  atomics_to_string([TPTP, AX], PATH), !, 
+  pose_path(WS, PATH, NAMES_I, NAMES_O), !.
 
-pose_term(WS, TERM, IDS_I, IDS_O) :- 
-  TERM =.. [LNG, ID, TYPE, TF], 
+pose_term(WS, TERM, NAMES_I, NAMES_O) :- 
+  TERM =.. [LNG, NAME, TYPE, TF], 
   (
-    get_assoc(ID, IDS_I, _) ->
-    format("Duplicate ID found = ~w\n", ID), false 
+    get_assoc(NAME, NAMES_I, _) ->
+    format("Duplicate ID found = ~w\n", NAME), false 
   ; 
     true
   ),
-  put_assoc(ID, IDS_I, c, IDS_O), 
+  put_assoc(NAME, NAMES_I, c, NAMES_O), 
   tf_form(LNG, TF, TEMP),
   (
     TYPE = conjecture -> 
@@ -187,6 +176,6 @@ pose_term(WS, TERM, IDS_I, IDS_O) :-
     FORM = TEMP
   ),
   put_char(WS, ';'),
-  put_id(WS, ID),
+  put_name(WS, NAME),
   put_form(WS, FORM).
 

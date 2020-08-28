@@ -576,24 +576,6 @@ invert_conjecture([TUP_I | TUPS_I], [TUP_O | TUPS_O]) :-
 ;
   TUP_O = TUP_I,
   invert_conjecture(TUPS_I, TUPS_O).
-
-/*
-explicate_scla((ID, TYPE, FORM, INFO), (ID, TYPE, NORM, INFO)) :- 
-  explicate_form(FORM, NORM).
-
-implicate_inst(add(HINT, ID, FORM), add(HINT, ID, NORM)) :- 
-  implicate_form(FORM, NORM).
-implicate_inst(skm(FUN, ARI, ID, FORM), skm(FUN, ARI, ID, NORM)) :- 
-  implicate_form(FORM, NORM).
-implicate_inst(inf(HINT, IDS, ID, FORM), inf(HINT, IDS, ID, NORM)) :- 
-  implicate_form(FORM, NORM).
-implicate_inst(del(ID), del(ID)).
-
-implicate_inst(X, _) :-
-  write("Error : cannot implicate "),
-  write(X),
-  false.
-*/
   
 esolve(TSTP, SOL) :- 
   tstp_sclas(TSTP, TEMP), !, 
