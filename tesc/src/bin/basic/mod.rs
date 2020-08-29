@@ -1,13 +1,14 @@
 use std::rc::Rc;
-use std::io::{BufReader, BufWriter};
 use std::fs::File;
 use std::io;
 use std::io::{Read, Write};
-use tptp::parsers::TPTPIterator;
 use tptp::syntax::*;
 use std::convert::TryFrom;
 
 pub const TPTPPATH: &str = "/home/sk/programs/TPTP/";
+
+trait Get { fn get(_: FileBytes) -> Rst<Self> where Self: std::marker::Sized; }
+trait Put { fn put<W: Write>(_: &mut W, _: &Self) -> Rst<()> where Self: std::marker::Sized; }
 
 #[derive(Debug)]
 pub enum Dir {Lft, Rgt}
@@ -55,16 +56,13 @@ pub enum NM {
   Num(u64)
 } 
 
-pub type WriteBytes<'a> = &'a mut BufWriter<File>;
+// pub type WriteBytes<'a> = &'a mut BufWriter<File>;
 pub type FileBytes<'a> = &'a mut io::Bytes<io::BufReader<File>>;
 pub type Rst<T> = Result<T, String>;
 
 pub fn err_str<T>(s: &str) -> Rst<T> { 
   Err(s.to_string())
 }
-
-trait Get { fn get(_: FileBytes) -> Rst<Self> where Self: std::marker::Sized; }
-trait Put { fn put<W: Write>(_: &mut W, _: &Self) -> Rst<()> where Self: std::marker::Sized; }
 
 pub fn to_boxed_slice(tptp: &str) -> Result<Box<[u8]>, String> {
   let mut buffer = vec![];
@@ -153,7 +151,7 @@ pub fn get_sign(bs: FileBytes) -> Rst<bool> {
   }
 }
 
-fn get_u64(bs : FileBytes) -> Result<u64, String> {
+pub fn get_u64(bs : FileBytes) -> Result<u64, String> {
   let s = get_string(bs)?;
   match s.parse::<u64>() {
     Ok(k) => Ok(k),

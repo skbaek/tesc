@@ -5,14 +5,10 @@
   
 main([TPTP, TESC | OPTS]) :-
   trace_if_debug(OPTS),
-  (
-    member('-pl', OPTS) -> 
-    write("Using prolog checker"),
-    set_prolog_flag(stack_limit, 4_294_967_296),
-    check_strm(TPTP, TESC)
-  ;
-    rust_check(TPTP,TESC)
-  ).
+  set_prolog_flag(stack_limit, 4_294_967_296),
+  check_strm(TPTP, TESC),
+  write("Proof verified.\n"),
+  true.
 
 % % main :-
 % %   current_prolog_flag(argv, [_, TPTP, TESC | OPTS]), 
