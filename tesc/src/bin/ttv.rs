@@ -61,9 +61,9 @@ enum Name {
   Num(u64)
 } 
 
-trait Get { fn get(FileBytes) -> Result<Self, String> where Self: std::marker::Sized; }
+trait Get { fn get(_: FileBytes) -> Result<Self, String> where Self: std::marker::Sized; }
 
-fn err_str<T>(s: &str) -> Result<T, String> { 
+fn err_str<T>(s: &str) -> Result<T, String> {
   Err(s.to_string())
 }
 
