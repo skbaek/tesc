@@ -1,62 +1,3 @@
-% % :- module(basic, 
-%   [
-%     sbsm/3,
-%     eqr/3,
-%     para/1,
-%     para_e1/1,
-%     para_e2/1,
-%     mate/1,
-%     axiomatic/1,
-%     write_list/1,
-%     unsigned_atom/1,
-%     paral/1,
-%     no_fv_form/2,
-%     num_succ/2,
-%     num_pred/2,
-%     lit_atom/2,
-%     body_lits/2,
-%     ground_all/2,
-%     para__s/2,
-%     first_char/2,
-%     erient_form/2,
-%     inst_with_lvs/2,
-%     explicate_form/2,
-%     implicate_form/2,
-%     relabel/2,
-%     fnnf/2,
-%     decom_uct/3,
-%     decom_qtf/3,
-%     mate/3,
-%     many/3,
-%     range/3,
-%     pluck/3,
-%     mk_par/3,
-%     apply_uop/3,
-%     timed_call/4,
-%     maplist_cut/3, 
-%     redirect_id/3, 
-%     resymb_form/3, 
-%     tt_term/3,
-%     add_fas/3,
-%     strip_fas/3,
-%     mk_vars/3,
-%     mk/3,
-%     pluck/4,
-%     substitute_form/4,
-%     decom_bct/4,
-%     apply_bop/4,
-%     map_form/4,
-%     maplist_cut/4,
-%     sp/4,
-%     many_nb/5,
-%     ap/5,
-%     cp/5,
-%     bp/6
-%   ]
-% ).
-
-% :- meta_predicate maplist_cut(2, ?, ?), maplist_cut(3, ?, ?, ?), timed_call(+, 0, 0).
-
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
 timed_call(TIME, GOAL, EARLY, LATE) :- 
@@ -78,22 +19,6 @@ timed_call(TIME, GOAL, EARLY, LATE) :-
       call(LATE) 
     )
   ).  
-
-% timed_call(TIME, GOAL, ALT_GOAL) :- 
-%   catch(
-%     call_with_time_limit(
-%       TIME, 
-%       (
-%         call(GOAL) -> 
-%         true 
-%       ;
-%         write("Premature failure in timed call.\n"),
-%         throw(time_limit_exceeded)
-%       )
-%     ),
-%     time_limit_exceeded, 
-%     call(ALT_GOAL)
-%   ).  
 
 ground_all(TERM, EXP) :- 
   term_variables(EXP, VARS),
@@ -328,7 +253,6 @@ xp(
 
 justified(_, $neg($false)). 
 justified(_, $pos($true)). 
-
 justified(_, $pos($fa($rel('=', [$var(0), $var(0)])))).
 justified(_, $pos($fa($fa($imp($rel('=', [$var(1), $var(0)]), $rel('=', [$var(0), $var(1)])))))).
 justified(_, $pos($fa($fa($fa(
@@ -337,7 +261,8 @@ justified(_, $pos($fa($fa($fa(
     $imp(
       $rel('=', [$var(1), $var(0)]), 
       $rel('=', [$var(2), $var(0)])
-    ))))))).
+    )
+)))))).
 
 justified(_, $pos(FORM)) :- is_mono_rel(0, FORM). 
 justified(_, $pos(FORM)) :- is_mono_fun(0, FORM). 
@@ -377,6 +302,8 @@ is_mono_fun(N, $fa($fa($imp($rel('=', [$var(1), $var(0)]), F)))) :- !,
    
 is_mono_fun(NUM, $rel('=', [$fun(FUN, TERMS_A), $fun(FUN, TERMS_B)])) :- 
   mk_mono_args(NUM, TERMS_A, TERMS_B).
+
+
 
 %%%%%%%%%%%%%%%% DERIVED RULES %%%%%%%%%%%%%%%% 
 
@@ -527,14 +454,6 @@ strings_concat_with(_, [Str], Str).
 strings_concat_with(Div, [Str | Strs], Result) :-
   strings_concat_with(Div, Strs, TempStr),
   strings_concat([Str, Div, TempStr], Result).
- 
-% Similar to nth0/2, but avoids instantion.
-where(ElemA, [ElemB | _], 0) :- 
-  ElemA == ElemB.
-
-where(Elem, [_ | List], NUM) :- 
-  where(Elem, List, Pred),
-  num_succ(Pred, NUM).
 
 write_file(FILE, TERM) :-
   open(FILE, write, STRM),
@@ -709,19 +628,6 @@ inst_with_lvs($fa(FORM), BODY) :- !,
 
 inst_with_lvs(FORM, FORM).
 
-% inst_fas(FORM, FORM) :- FORM \= $fa(_).
-% inst_fas($fa(FORM), BODY) :-
-%   substitute_form(fast, _, FORM, TEMP),
-%   inst_fas(TEMP, BODY).
-
-
-inst_with_pars(NUM, $fa(FORM), CNT, BODY) :- !,
-  substitute_form(fast, $fun($par(NUM), []), FORM, TEMP), 
-  num_succ(NUM, SUCC), 
-  inst_with_pars(SUCC, TEMP, CNT, BODY).
-
-inst_with_pars(NUM, FORM, NUM, FORM).
-
 add_fas(0, Form, Form). 
 add_fas(NUM, Form, $fa(NewForm)) :-
   num_pred(NUM, Pred), 
@@ -760,18 +666,6 @@ foldl_cut(GOAL, [ELEM | LIST], V_I, V_O) :-
 
 string_number(Str, NUM) :- 
   number_string(NUM, Str).
-
-tt_term(VARS, Var, $var(NUM)) :- 
-  var(Var),
-  where(Var, VARS, NUM), !.
-tt_term(_, STR, $dst(STR)) :- string(STR), !. 
-tt_term(VARS, TT, $fun(FUN, TERMS)) :- 
-  TT =.. [FUN | TTS], 
-  maplist_cut(tt_term(VARS), TTS, TERMS).
-
-first_char(STR, CHAR) :- 
-  string_codes(STR, [CODE | _]), 
-  char_code(CHAR, CODE).
 
 no_bv_term(_, VAR) :- var(VAR), !.
 no_bv_term(CNT, $var(NUM)) :- !, NUM \= CNT.
@@ -818,10 +712,6 @@ no_fv_form(NUM, FORM) :-
   no_fv_form(NUM, FORM_B).
 no_fv_form(NUM, $rel(_, TERMS)) :- 
   maplist_cut(no_fv_term(NUM), TERMS).
-
-no_fv_sf(CNT, SF) :- 
-  sf_form(SF, FORM),
-  no_fv_form(CNT, FORM).
 
 has_par_ge(CNT, EXP) :- 
   sub_term($par(NUM), EXP), 
@@ -903,12 +793,12 @@ put_list(STRM, _, []) :-
   put_char(STRM, '.').
 
 put_list(STRM, PTR, [ELEM | LIST]) :- 
-  put_char(STRM, ';'),
+  put_char(STRM, ','),
   call(PTR, STRM, ELEM),
   put_list(STRM, PTR, LIST), !.
 
-put_dollar(STRM) :-
-  put_char(STRM, '$').
+put_end(STRM) :-
+  put_char(STRM, '%').
 
 put_bytes(_, []).
 
@@ -918,7 +808,7 @@ put_bytes(STRM, [BYTE | BYTES]) :-
 
 put_bytes_dollar(STRM, BYTES) :- 
   put_bytes(STRM, BYTES), 
-  put_dollar(STRM). 
+  put_end(STRM). 
 
 put_string(STRM, STR) :- 
   string_codes(STR, BYTES), 
@@ -946,18 +836,6 @@ put_name(STRM, NAME) :-
   number(NAME), !,
   put_char(STRM, '#'), 
   put_num(STRM, NAME).
-  
-% put_id(STRM, $par(NUM)) :- !, 
-%   put_char(STRM, '@'), 
-%   put_num(STRM, NUM).
-% put_id(STRM, ID) :- 
-%   atom(ID), !, 
-%   put_char(STRM, '\''), 
-%   put_atom(STRM, ID).
-% put_id(STRM, ID) :- 
-%   number(ID), !,
-%   put_char(STRM, '#'), 
-%   put_num(STRM, ID).
   
 put_term(STRM, $var(NUM)) :- !, 
   put_char(STRM, '#'), 
@@ -1050,8 +928,8 @@ put_prf(STRM, x(PID, NID)) :-
   put_num(STRM, NID).
 
 
-%%%%%%%%%%%%%%%% TACTICS  %%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%% TACTICS  %%%%%%%%%%%%%%%%
 
 % eq_refl(CONC, GOAL)
 % --- 
@@ -1183,42 +1061,26 @@ mate_pn(PYP, NYP, GOAL) :-
 
 %%%%%%%% GET %%%%%%%%
 
-% get_id_form(STRM, (ID, FORM)) :- 
-%   get_id(STRM, ID),
-%   get_form(STRM, FORM).
-
 get_list(STRM, GTR, LIST) :- 
-  get_char(STRM, CH), 
-  (
-    CH = ';' -> 
-    call(GTR, STRM, ELEM), 
-    get_list(STRM, GTR, TAIL),
-    LIST = [ELEM | TAIL] 
-  ;
-    CH = '.', 
-    LIST = []
-  ).
+  get_char(STRM, CH), !,
+  get_list(STRM, GTR, CH, LIST), !.
+
+get_list(_, _, '.', []) :- !.
+get_list(STRM, GTR, ',', [ELEM | LIST]) :- 
+  call(GTR, STRM, ELEM), !,
+  get_list(STRM, GTR, LIST), !.
 
 get_until_dollar(STRM, BYTES) :- 
-  get_byte(STRM, BYTE), 
-  (
-    BYTE = 36 -> BYTES = [] ;
-    get_until_dollar(STRM, TAIL),
-    BYTES = [BYTE | TAIL] 
-  ).
+  get_byte(STRM, BYTE), !,
+  get_until_dollar(STRM, BYTE, BYTES), !.
+
+get_until_dollar(_, 37, []) :- !.
+get_until_dollar(STRM, BYTE, [BYTE | BYTES]) :- 
+  get_until_dollar(STRM, BYTES), !.
   
 get_string(STRM, STR) :- 
   get_until_dollar(STRM, BYTES), 
   string_codes(STR, BYTES).
-  
-% get_functor(STRM, FUN) :- 
-%   get_until_dollar(STRM, [BYTE | BYTES]), 
-%   (
-%     BYTE = 34 -> 
-%     string_codes(FUN, BYTES) 
-%   ;
-%     atom_codes(FUN, [BYTE | BYTES])
-%   ).
 
 get_atom(STRM, ATOM) :- 
   get_string(STRM, STR),
@@ -1230,6 +1092,34 @@ get_sign(STRM, SIGN) :-
     CH = '+', SIGN = pos ;
     CH = '-', SIGN = neg
   ).
+
+get_role(STRM, ROLE) :- 
+  get_char(STRM, CH),
+  (
+    CH = 'A', ROLE = axiom ;
+    CH = 'P', ROLE = plain
+  ).
+
+get_annot(STRM, ANNOT) :-
+  get_char(STRM, CH),
+  get_annot(STRM, CH, ANNOT).
+get_annot(STRM, '1', some(GT)) :- get_gt(STRM, GT). 
+get_annot(_, '0', none).
+
+get_af(STRM, (NAME, ROLE, FORM, ANNOT)) :- 
+  get_name(STRM, NAME), 
+  get_role(STRM, ROLE), 
+  get_form(STRM, FORM), 
+  get_annot(STRM, ANNOT). 
+
+get_gt(STRM, ANNOT) :- 
+  get_char(STRM, CH),
+  get_gt(STRM, CH, ANNOT).
+get_gt(STRM, '^', ANNOT) :-
+  get_atom(STRM, FUN),
+  get_gts(STRM, GTS), 
+  ANNOT =.. [FUN | GTS].
+get_gt(STRM, ';', ANNOT) :- get_gts(STRM, ANNOT). 
 
 get_num(STRM, NUM) :- 
   get_string(STRM, STR),
@@ -1252,8 +1142,9 @@ get_term(STRM, '^', $fun(FUN, TERMS)) :-
   get_functor(STRM, FUN), 
   get_terms(STRM, TERMS).
 
-get_terms(STRM, TERMS) :- 
-  get_list(STRM, get_term, TERMS).
+get_terms(STRM, TERMS) :- get_list(STRM, get_term, TERMS).
+
+get_gts(STRM, GTS) :- get_list(STRM, get_gt, GTS).
 
 get_form(STRM, FORM) :-
   get_char(STRM, CH), 
@@ -1270,7 +1161,6 @@ get_form_aux(_, 'T', $true).
 get_form_aux(_, 'F', $false).
 
 get_form_aux(STRM, '^', $rel(REL, TERMS)) :- 
-  % get_atom(STRM, REL), 
   get_functor(STRM, REL), 
   get_terms(STRM, TERMS).
 
@@ -1554,6 +1444,8 @@ para_lc((HYP_A, HYP_B, GOAL)) :-
 
 para_mlc(X) :- para_m(X) ; para_lc(X). 
 
+
+
 %%%%%%%%%%%%%%%% PARALLEL SWITCH DECOMPOSITION %%%%%%%%%%%%%%%%
 
 para_f_(FORM, (PREM, CONC, GOAL), (PREM, HYP_N, GOAL_N), (HYP_P, CONC, GOAL_P)) :- 
@@ -1572,12 +1464,6 @@ para_ab_swap((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GO
 
 para_ba_swap((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
   abpr(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
-
-% paraab_choose((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
-%   abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
-%   abpr(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ; 
-%   abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R) ;
-%   abpr(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
 para_switch(H2G) :- 
   para_m(H2G) -> true ;
@@ -1708,21 +1594,6 @@ vnnf(H2G) :-
   vnnf(H2G_N). 
 
 
-% vnnf(H2G) :- 
-%   para_m(H2G) -> true ;
-%   paras(H2G, H2G_N) -> vnnf(H2G_N) ;
-%   paracd(H2G, H2G_N) -> vnnf(H2G_N) ;
-%   ppr_a(H2G, H2G_N),
-%   vnnf(H2G_N) 
-% ;
-%   paraab_choose(H2G, H2G_L, H2G_R),
-%   vnnf(H2G_L),  
-%   vnnf(H2G_R)
-% ;
-%   iff_conv(H2G, H2G_N), 
-%   vnnf(H2G_N).
-
-
 
 %%%%%%%%%%%%%%%% PARALLEL CLAUSAL DECOMPOSITION %%%%%%%%%%%%%%%%
 
@@ -1762,12 +1633,6 @@ para_clausal_two((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR
     abpl(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) ;
     abpl(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R) 
   ).
-
-% para_clausal_many_aux(HYP_A, ([HYP_B], GOAL), (HYP_A, HYP_B, GOAL)).
-
-% para_clausal_many(TRP, TRPS) :- 
-  % para_clausal_many(TRP, HYPS, HGS), 
-  % maplist_cut(para_clausal_many_aux, HYPS, HGS, TRPS). 
 
 para_clausal_many((HYP_A, HYP_B, GOAL), HYPS, HGS) :- 
   \+ imp_hyp(HYP_A),
@@ -1842,9 +1707,6 @@ rec_path_filenames(Dir, Files) :-
   maplist(rec_path_files, Paths, Filess),
   append(Filess, Files).
 
-tptp_directory('/home/sk/programs/TPTP/'). % Modify this to TPTP directory on system
-tesc_directory('/home/sk/projects/tesc/'). % Modify this to TESC directory on system
-
 body_lits($or(FORM_L, FORM_R), LITS, TAIL) :- !, 
   body_lits(FORM_L, LITS, TEMP), 
   body_lits(FORM_R, TEMP, TAIL).
@@ -1858,23 +1720,11 @@ trace_if_debug(OPTS) :-
 ;
   true.
 
-try(PRED, [ELEM | LIST], RST) :- 
-  call(PRED, ELEM, RST) -> 
-  true ;
-  try(PRED, LIST, RST).
 get_context(PROB, IDS, CTX) :- 
   maplist(prob_id_hyp(PROB), IDS, CTX).
 
 redirect_id(NI, OLD, NEW) :- 
   get_assoc(OLD, NI, NEW).
-
-% redirect_id(NI, OLD, NEW) :- 
-%   get_assoc(OLD, NI, NUM) -> 
-%   NEW = $par(NUM)
-% ;
-%   NEW = OLD.
-
-axiomatic(TYPE) :- member(TYPE, [lemma, axiom, hypothesis, conjecture, negated_conjecture]).
 
 map_form(_, _, FORM, FORM) :- log_const(FORM), !.
 
@@ -1971,12 +1821,6 @@ sbsm(PREM, CONC, GOAL) :-
 relabel(SOL_I, SOL_O) :- 
   empty_assoc(EMP),  
   relabel_sol((EMP, EMP), EMP, 0, SOL_I, SOL_O).
-
-try_del_assoc(KEY, ASC_I, ASC_O) :- 
-  del_assoc(KEY, ASC_I, _, ASC_O) ->
-  true   
-;
-  ASC_O = ASC_I.
 
 relabel_inst(DICT, NI, CNT, add(NAME, FORM), DICT, NI_N, add(NORM)) :-    
   resymb_form(DICT, FORM, NORM),
@@ -2161,8 +2005,7 @@ decr_vdx(DTH, NUM, $var(PRED)) :-
 dist_qtf_bct(fa, and).
 dist_qtf_bct(ex, or).
 
-dist_qtf(_, FORM, NORM) :-
-  decr_vdx_form(FORM, NORM), !.
+dist_qtf(_, FORM, NORM) :- decr_vdx_form(FORM, NORM), !.
 
 dist_qtf(QTF, FORM, NORM) :- 
   decom_bct(FORM, BCT, FORM_A, FORM_B), 
@@ -2223,11 +2066,44 @@ trp_prem((PREM, _, _), PREM).
 atom_firstchar(ATOM, CH) :-
   atom_codes(ATOM, [CODE | _]), 
   char_code(CH, CODE).
-  
-max(X, Y, X) :- Y =< X, !.
-max(_, Y, Y). 
 
-concat_shell(LIST, RST) :- 
-  atomic_list_concat(LIST, CMD),
-  shell(CMD, RST).
-  
+get_prob(STRM, PROB_I, PROB_O) :- 
+  get_char(STRM, CH), 
+  get_prob(STRM, CH, PROB_I, PROB_O).
+get_prob(STRM, ',', PROB_I, PROB_O) :- 
+  get_af(STRM, (NAME, _, FORM, _)), !,
+  (
+    get_assoc(NAME, PROB_I, _) ->
+    throw(duplicate_hypothesis_found)
+  ;
+    put_assoc(NAME, PROB_I, FORM, PROB_T), !,
+    get_prob(STRM, PROB_T, PROB_O), !
+  ).
+get_prob(_, '.', PROB, PROB). 
+
+get_sol(STRM, SOL) :- get_list(STRM, get_af, SOL).
+
+tptp_prob(TPTP, PROB) :-
+  process_create(
+    './ttp/target/release/ttp', 
+    [TPTP], 
+    [stdout(pipe(STRM))]
+  ), !,
+  (
+    set_stream(STRM, encoding(octet)),
+    empty_assoc(EMP),
+    get_prob(STRM, EMP, PROB)
+  ),
+  close(STRM).
+
+tptp_sol(TPTP, SOL) :-
+  process_create(
+    './ttp/target/release/ttp', 
+    [TPTP], 
+    [stdout(pipe(STRM))]
+  ), !,
+  (
+    set_stream(STRM, encoding(octet)),
+    get_sol(STRM, SOL)
+  ),
+  close(STRM).

@@ -7,8 +7,6 @@ use std::io::BufReader;
 use std::rc::Rc;
 use tptp::syntax::*;
 use tptp::parsers::TPTPIterator;
-
-mod basic;
 use basic::*;
 
 type SignForm = (bool, Rc<Form>);
@@ -431,8 +429,7 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
 fn add_tptp_input(t: TPTPInput, pb: &mut Problem) -> Rst<()> {
   match t {
     TPTPInput::Annotated(a) => {
-      let (n,f) = conv_annotated_formula(a)?;
-      println!("Adding original formula = {:?} : {:?}", n, f);
+      let (n,_,f,_) = conv_annotated_formula(a)?;
       if !ground_form(0, &f) { return err_str("Added formula is not ground.") };
       match pb.insert(n,f) {
         Some(_) => err_str("Duplicate name found"),
@@ -466,20 +463,8 @@ fn main() -> Rst<()> {
   let tptp = &args[1];
   let tesc = &args[2];
   
-  println!("Checking proof = {}", tesc);
-
-  // let pbf = match File::open("temp.ttp") {
-  //   Ok(file) => BufReader::new(file),
-  //   _ => return err_str("Cannot open TTP file.")
-  // };
-  // let mut pbbs = pbf.bytes();
-  // let pb: Problem = get_prob(&mut pbbs)?;
-  
   let mut pb = HashMap::new();
   add_tptp_file(tptp, &mut pb)?;
-
-  let size = pb.keys().len();
-  println!("Problem size = {}", size);
 
   let prf = match File::open(tesc) {
     Ok(tesc_file) => BufReader::new(tesc_file), 
@@ -487,14 +472,10 @@ fn main() -> Rst<()> {
   };
   let mut prbs = prf.bytes();
   match check(&mut prbs, pb) {
-    Ok(()) => { 
-      println!("Proof verified.\n");
-      Ok(())
-    }, 
-    Err(msg) => {
-      panic!("Verification failed : {}", msg)
-    }
-  }
+    Ok(()) => { println!("Proof verified.\n") }, 
+    Err(msg) => { println!("Verification failed : {}", msg) }
+  };
+  Ok(())
 }
  
 // fn main() {

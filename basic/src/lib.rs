@@ -7,8 +7,13 @@ use std::convert::TryFrom;
 
 pub const TPTPPATH: &str = "/home/sk/programs/TPTP/";
 
+// pub type WriteBytes<'a> = &'a mut BufWriter<File>;
+pub type FileBytes<'a> = &'a mut io::Bytes<io::BufReader<File>>;
+pub type Rst<T> = Result<T, String>;
+
 trait Get { fn get(_: FileBytes) -> Rst<Self> where Self: std::marker::Sized; }
-trait Put { fn put<W: Write>(_: &mut W, _: &Self) -> Rst<()> where Self: std::marker::Sized; }
+pub trait Put { fn put<W: Write>(_: &mut W, _: &Self) -> Rst<()> where Self: std::marker::Sized; }
+trait Conv<T> { fn conv(_: Self) -> Rst<T>; }
 
 #[derive(Debug)]
 pub enum Dir {Lft, Rgt}
@@ -25,6 +30,11 @@ pub enum Term {
   Fun(Rc<FS>, Vec<Term>),
   Dst(Rc<String>),
   Num(Rc<String>)
+}
+
+pub enum GT {
+  Fun(String, Vec<GT>),
+  List(Vec<GT>)
 }
 
 #[derive(PartialEq, Clone, Debug, Copy)]
@@ -56,15 +66,17 @@ pub enum NM {
   Num(u64)
 } 
 
-// pub type WriteBytes<'a> = &'a mut BufWriter<File>;
-pub type FileBytes<'a> = &'a mut io::Bytes<io::BufReader<File>>;
-pub type Rst<T> = Result<T, String>;
+pub enum Role {
+  Axiom,
+  Plain
+} 
 
-pub fn err_str<T>(s: &str) -> Rst<T> { 
-  Err(s.to_string())
-}
+type Annot = Option<GT>;
+type Inst = (NM, Role, Form, Annot);
 
-pub fn to_boxed_slice(tptp: &str) -> Result<Box<[u8]>, String> {
+pub fn err_str<T>(s: &str) -> Rst<T> { Err(s.to_string()) }
+
+pub fn to_boxed_slice(tptp: &str) -> Rst<Box<[u8]>> {
   let mut buffer = vec![];
   let mut file = match File::open(tptp) {
     Ok(x) => x,
@@ -93,10 +105,10 @@ fn put_u64<W: Write>(w: &mut W, k: u64) -> Rst<()> {
 
 fn put_string<W: Write>(w: &mut W, s: &str) -> Rst<()> {
   for c in s.chars() { put_char(w, c)?; }
-  Ok(())
+  put_char(w,'%')
 }
 
-pub fn put_nm<W: Write>(w: &mut W, i: NM) -> Rst<()> {
+pub fn put_nm<W: Write>(w: &mut W, i: &NM) -> Rst<()> {
   match i {
     NM::Atm(s) => {
       put_char(w, '\'')?;
@@ -110,6 +122,47 @@ pub fn put_nm<W: Write>(w: &mut W, i: NM) -> Rst<()> {
   Ok(())
 }
 
+pub fn put_role<W: Write>(w: &mut W, r: &Role) -> Rst<()> {
+  match r {
+    Role::Axiom => put_char(w,'A'),
+    Role::Plain => put_char(w,'P')
+  }
+}
+
+pub fn put_gt<W: Write>(w: &mut W, t: &GT) -> Rst<()> {
+  match t {
+    GT::Fun(s,ts) => {
+      put_char(w,'^')?;
+      put_string(w,&s)?;
+      put_vec(w,&ts)
+    }
+    GT::List(ts) => {
+      put_char(w,';')?;
+      put_vec(w,&ts)
+    }
+  }
+}
+
+impl Put for GT {
+  fn put<W: Write>(w: &mut W, t: &Self) -> Rst<()> { put_gt(w,t) }
+}
+
+pub fn put_option<T: Put, W: Write>(w: &mut W, o: &Option<T>) -> Rst<()> {
+  match o {
+    Some(x) => {
+      put_char(w,'1')?;
+      T::put(w,x)
+    },
+    None => put_char(w,'0')
+  }
+}
+
+pub fn put_inst<W: Write>(w: &mut W, i: &Inst) -> Rst<()> {
+  put_nm(w,&i.0)?;
+  put_role(w,&i.1)?;
+  put_form(w,&i.2)?;
+  put_option(w,&i.3)
+}
 
 /** Get Functions **/
 
@@ -119,7 +172,7 @@ pub fn get_char(bs: FileBytes) -> Rst<char> {
   Ok(c)
 }
 
-fn get_byte(bs : FileBytes) -> Result<u8, String> {
+fn get_byte(bs : FileBytes) -> Rst<u8> {
   match bs.next() {
     Some(x) => match x {
       Ok(b) => Ok(b),
@@ -151,7 +204,7 @@ pub fn get_sign(bs: FileBytes) -> Rst<bool> {
   }
 }
 
-pub fn get_u64(bs : FileBytes) -> Result<u64, String> {
+pub fn get_u64(bs : FileBytes) -> Rst<u64> {
   let s = get_string(bs)?;
   match s.parse::<u64>() {
     Ok(k) => Ok(k),
@@ -197,25 +250,25 @@ fn bct_char(b: &Bct) -> char {
   }
 }
 
-pub fn put_form<W: Write>(w: &mut W, f: Form) -> Rst<()> {
-  let mut fs: Vec<Rc<Form>> = vec![Rc::new(f)];
+pub fn put_form<W: Write>(w: &mut W, f: &Form) -> Rst<()> {
+  let mut fs: Vec<&Form> = vec![f];
   loop {
     match fs.pop() {
       Some(g) => {
-        match &*g {
+        match g {
           Form::Cst(b) => { put_char(w,bool_char(b))?; },
           Form::Not(h) => {
             put_char(w,'~')?;
-            fs.push(h.clone());
+            fs.push(h);
           },
           Form::Bct(b,i,j) => {
             put_char(w,bct_char(b))?;
-            fs.push(j.clone());
-            fs.push(i.clone());
+            fs.push(j);
+            fs.push(i);
           }, 
           Form::Qtf(q,h) => {
             put_char(w,qtf_char(q))?;
-            fs.push(h.clone());
+            fs.push(h);
           }, 
           Form::Rel(ft,ts) => {
             put_char(w,'^')?;
@@ -231,8 +284,14 @@ pub fn put_form<W: Write>(w: &mut W, f: Form) -> Rst<()> {
 
 fn put_fs<W: Write>(w: &mut W, f: &FS) -> Rst<()> { 
   match f {
-    FS::Atm(s) => put_string(w,&s),
-    FS::Par(k) => put_u64(w,*k)
+    FS::Atm(s) => {
+      put_char(w,'\'')?;
+      put_string(w,&s)
+    },
+    FS::Par(k) => {
+      put_char(w,'@')?;
+      put_u64(w,*k)
+    }
   }
 }
 
@@ -277,6 +336,10 @@ pub fn get_term(bs : FileBytes) -> Rst<Term> {
   }
 }
 
+impl<'a> Conv<GT> for GeneralTerm<'a> {
+  fn conv(t: GeneralTerm) -> Rst<GT> { conv_general_term(t) }
+}
+
 impl Get for Term {
   fn get(bs: FileBytes) -> Rst<Term> { get_term(bs) }
 }
@@ -288,7 +351,7 @@ impl Put for Term {
 fn get_string(bs : FileBytes) -> Rst<String> {
   let mut c = get_char(bs)?;
   let mut s = String::from("");
-  while c != '$' {
+  while c != '%' {
     s.push(c);
     c = get_char(bs)?;
   }
@@ -297,18 +360,22 @@ fn get_string(bs : FileBytes) -> Rst<String> {
 
 fn put_vec<P: Put, W: Write>(w: &mut W, v: &Vec<P>) -> Rst<()> {
   for x in v.into_iter() {
-    put_char(w,';')?; 
+    put_char(w,',')?; 
     P::put(w,x)?;
   }
   put_char(w,'.')?;
   Ok(())
 }
   
-fn get_vec<F: Get>(bs : FileBytes) -> Result<Vec<F>, String> {
+fn conv_vec<T, C: Conv<T>>(v: Vec<C>) -> Rst<Vec<T>> {
+  v.into_iter().map(|x| C::conv(x)).collect()
+}
+
+fn get_vec<F: Get>(bs : FileBytes) -> Rst<Vec<F>> {
   let mut c = get_char(bs)?; 
   let mut v = vec![];
   while c != '.' {
-    if c != ';' { return err_str("Cannot get vector.") };
+    if c != ',' { return err_str("Cannot get vector.") };
     let x = F::get(bs)?;
     v.push(x);
     c = get_char(bs)?;
@@ -381,6 +448,7 @@ fn build_form(mut ps: Vec<FormPart>) -> Option<Form> {
     }
   }
 }
+
 
 // TODO : Find out whether `'foo'` and `foo` should be considered distinct 
 fn conv_atomic_word(a: AtomicWord) -> String {
@@ -465,7 +533,9 @@ fn conv_fof_atomic_formula(vs: &Vec<String>, f: FofAtomicFormula) -> Rst<Form> {
       match *g {
         FofDefinedAtomicFormula::Plain(FofDefinedPlainFormula(t)) => {
           let s = conv_fof_defined_plain_term(t);
-          Ok(string_args_form(s,vec![]))
+          if s == "$true" { Ok(Form::Cst(true)) }
+          else if s == "$false" { Ok(Form::Cst(false)) }
+          else  { Ok(string_args_form(s,vec![])) }
         },
         FofDefinedAtomicFormula::Infix(
           FofDefinedInfixFormula {left: l, op: _, right: r}
@@ -517,15 +587,83 @@ fn conv_fof_binary_assoc(vs: &mut Vec<String>, f: FofBinaryAssoc) -> Rst<Form> {
 fn conv_fof_formula(vs: &mut Vec<String>, f: FofFormula) -> Rst<Form> {
   match f { FofFormula {0: g} => conv_fof_logic_formula(vs,g) }
 }
-pub fn conv_annotated_formula(a: AnnotatedFormula) -> Result<(NM, Form), String> {
-  match a {
-    AnnotatedFormula::Fof(FofAnnotated {name: n, role: r, formula: f, annotations: _}) => {
-      Ok((conv_name(*n)?, conjecturize(r, conv_fof_formula(&mut vec![],*f)?)))
+
+fn conv_role(r: FormulaRole) -> Role {
+  match r {
+    FormulaRole::Axiom => Role::Axiom,
+    FormulaRole::Lemma => Role::Axiom,
+    FormulaRole::Hypothesis => Role::Axiom,
+    FormulaRole::Conjecture => Role::Axiom,
+    FormulaRole::NegatedConjecture => Role::Axiom,
+    _ => Role::Plain
+  }
+}
+
+// fn conv_general_list(l: GeneralList) -> Rst<GT> {
+//   match l {
+//     GeneralList(v) => {
+// 
+//     }
+//   }
+// }
+
+fn conv_general_data (d: GeneralData) -> Rst<GT> {
+  match d {
+    GeneralData::Atomic(a) => Ok(GT::Fun(conv_atomic_word(a),vec![])),
+    GeneralData::Function(f) => {
+      Ok(GT::Fun(conv_atomic_word(f.word),conv_general_terms(f.terms)?))
     },
-    AnnotatedFormula::Cnf(CnfAnnotated {name: n, role: r, formula: f, annotations: _}) => {
+    _ => unimplemented!()
+  }
+}
+
+fn conv_general_terms (ts: GeneralTerms) -> Rst<Vec<GT>> { conv_vec(ts.0) }
+
+fn conv_general_term (t: GeneralTerm) -> Rst<GT> {
+  match t {
+    GeneralTerm::Data(d) => conv_general_data(*d),
+    GeneralTerm::Colon(_,_) => unimplemented!(),
+    GeneralTerm::List(GeneralList(Some(ts))) => Ok(GT::List(conv_general_terms(ts)?)),
+    GeneralTerm::List(GeneralList(None)) => Ok(GT::List(vec![]))
+  }
+}
+
+fn conv_annotations (a: Annotations) -> Rst<Annot> {
+  match a {
+    Annotations(Some((Source(t),_))) => Ok(Some(conv_general_term(t)?)),
+    Annotations(None) => Ok(None)
+  }
+}
+
+pub fn conv_annotated_formula_to_hyp(a: AnnotatedFormula) -> Rst<(NM, Form)> {
+  let (n,_,f,_) = conv_annotated_formula(a)?;
+  Ok((n,f))
+}
+
+pub fn conv_annotated_formula(a: AnnotatedFormula) -> Rst<Inst> {
+  match a {
+    AnnotatedFormula::Fof(FofAnnotated {name: n, role: r, formula: f, annotations: a}) => {
+      Ok((
+        conv_name(*n)?, 
+        conv_role(r),
+        conjecturize(r, conv_fof_formula(&mut vec![],*f)?),
+        conv_annotations(*a)?
+      ))
+    },
+    AnnotatedFormula::Cnf(CnfAnnotated {name: n, role: r, formula: f, annotations: a}) => {
       match *f {
-        CnfFormula::Disjunction(Disjunction(g))   => Ok((conv_name(*n)?, conjecturize(r, conv_literals(g)?))),
-        CnfFormula::Parenthesised(Disjunction(g)) => Ok((conv_name(*n)?, conjecturize(r, conv_literals(g)?)))
+        CnfFormula::Disjunction(Disjunction(g)) => Ok((
+          conv_name(*n)?, 
+          conv_role(r),
+          conjecturize(r, conv_literals(g)?),
+          conv_annotations(*a)?
+        )),
+        CnfFormula::Parenthesised(Disjunction(g)) => Ok((
+          conv_name(*n)?, 
+          conv_role(r),
+          conjecturize(r, conv_literals(g)?), 
+          conv_annotations(*a)?
+        ))
       }
     }
   }
@@ -667,7 +805,7 @@ fn conv_vec_unit_formula(vs: &mut Vec<String>, b: Bct, fs: Vec<FofUnitFormula>) 
   chain_forms(b,gs?)
 }
 
-fn conv_literal(vs: &Vec<String>, l: Literal) -> Result<Form, String> {
+fn conv_literal(vs: &Vec<String>, l: Literal) -> Rst<Form> {
   match l {
     Literal::Atomic(f) => conv_fof_atomic_formula(vs,f),
     Literal::NegatedAtomic(f) => Ok(Form::Not(Rc::new(conv_fof_atomic_formula(vs,f)?))),
@@ -675,7 +813,7 @@ fn conv_literal(vs: &Vec<String>, l: Literal) -> Result<Form, String> {
   }
 }
 
-fn conv_literals(ls: Vec<Literal>) -> Result<Form, String> {
+fn conv_literals(ls: Vec<Literal>) -> Rst<Form> {
   let mut vs: Vec<String> = vec![];
   for l in ls.iter() {
     vars_in_literal(&mut vs, l);
@@ -786,11 +924,10 @@ fn vars_in_literal(vs: &mut Vec<String>, l: &Literal) -> () {
     }
   }
 }
-/*
-struct ProbStack<'a> {
-  top: TPTPIterator<'a,()>,
-  rest: Vec<TPTPIterator<'a,()>>
-}
+
+
+
+/*k
 impl<'a> Iterator for ProbStack<'a> {
   type Item = AnnotatedFormula<'a>;
   fn next(&mut self) -> Option<AnnotatedFormula<'a>> {

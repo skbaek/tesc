@@ -7,6 +7,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cff77d8686867eceff3105329d4698d96c2391c176d5d03adc90c7389162b5b8"
 
 [[package]]
+name = "basic"
+version = "0.1.0"
+dependencies = [
+ "tptp",
+]
+
+[[package]]
 name = "bitflags"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -101,13 +108,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "tesc"
-version = "0.1.0"
-dependencies = [
- "tptp",
-]
-
-[[package]]
 name = "tptp"
 version = "0.23.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -115,6 +115,14 @@ checksum = "9ea503adba71b45a938672ff390f51e30eaaca55442424aa576ebf80a3f9b634"
 dependencies = [
  "derive_more",
  "nom",
+]
+
+[[package]]
+name = "ttp"
+version = "0.1.0"
+dependencies = [
+ "basic",
+ "tptp",
 ]
 
 [[package]]

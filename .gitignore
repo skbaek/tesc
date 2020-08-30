@@ -3,12 +3,11 @@ vprf/
 esol/
 eprf/
 temp.tesc
-temp.ttp
 paths.pl
 proof_trace.pl
 sol_trace.pl
 test.pl
 log
-ttc
-ttv
-tesc/target
+basic/target/
+ttp/target/
+ttv/target/

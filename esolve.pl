@@ -1,6 +1,4 @@
-% :- module(esolve, [esolve/2, tup_insts/3, mk_tree_fwd/4]).
 :- [basic].
-:- [tstp].
 
 maxpdx(EXP, MAX) :- 
   findall(NUM, sub_term($par(NUM), EXP), NUMS), 
@@ -14,10 +12,7 @@ map_par(GOAL, $fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :-
   maplist_cut(map_par(GOAL), TERMS_I, TERMS_O).
 
 bind_par(DEP, IDX, IDX, $var(DEP)).
-bind_par(_, IDX_A, IDX_B, $fun($par(IDX_B), [])) :- 
-  IDX_A \= IDX_B,
-  % mk_par(IDX_B, [], PAR),
-  true.
+bind_par(_, IDX_A, IDX_B, $fun($par(IDX_B), [])) :- IDX_A \= IDX_B.
 
 bind_pars_term(IDX, DEP, TERM_I, TERM_O) :-
   map_par(bind_par(DEP, IDX), TERM_I, TERM_O).
@@ -32,7 +27,6 @@ bind_all_pars(FORM_I, FORM_O) :-
 entails(SF, SF, rnm).
 entails(PREM, CONC, para) :- para(((prem, PREM), (conc, CONC), (_, 0))).
 entails(PREM, CONC, para_e1) :- para_e1(((prem, $pos(PREM)), (conc, $neg(CONC)), (_, 0))).
-% entails(PREM, CONC, para_e2) :- para_e2(((prem, $pos(PREM)), (conc, $neg(CONC)), (_, 0))).
 entails(PREM, CONC, eqr) :- eqr((prem, $pos(PREM)), (conc, $neg(CONC)), (_, 0)).
 
 tree_conc(ntr(_, SF), SF).
@@ -141,12 +135,6 @@ split_equiv(EQV, IMP) :-
     BODY = $imp(RHS, LHS) 
   ),
   add_fas(NUM, BODY, IMP).
-  % inst_with_lvs(EQV, $iff(LHS, RHS)), 
-  % (
-  %   BODY = $imp(LHS, RHS) ;
-  %   BODY = $imp(RHS, LHS) 
-  % ),
-  % close_lvs(BODY, IMP).
 
 eq_resolve(FORM_I, FORM_O) :- 
   inst_with_lvs(FORM_I, BODY_I), 
@@ -341,7 +329,6 @@ fold_definition(NUM, ATOM, BODY, $not(FORM), $not(NORM)) :-
 
 fold_definition(NUM, ATOM, BODY, FORM, NORM) :- 
   decom_qtf(FORM, QTF, SUB_FORM), 
-  % mk_par(NUM, [], PAR),
   substitute_form(fast, $fun($par(NUM), []), SUB_FORM, TEMP_FORM), 
   num_succ(NUM, SUCC), 
   fold_definition(SUCC, ATOM, BODY, TEMP_FORM, TEMP_NORM), 
@@ -398,11 +385,9 @@ mk_root(_, $false, _, rnm, $false) :- !.
 mk_root(_, _, $false, rnm, $false) :- !.
 
 mk_root(apply_def, FORM_A, FORM_B, dff, FORM_C) :- !, 
-  % inst_with_pars(0, FORM_A, _, BODY_A),
   inst_with_lvs(FORM_B, $iff(ATOM, BODY_B)), 
   fold_definition(0, ATOM, BODY_B, FORM_A, FORM_C),
   ground(FORM_C),
-  % bind_all_pars(TEMP, FORM_C).
   true.
 
 mk_root(RUL, FORM_A, FORM_B, (sup, l), FORM) :- 
@@ -443,7 +428,6 @@ def_pred_ari(FORM, PRED, ARI) :-
 
 inst_fas(NUM, $fa(FORM), BODY) :- !,
   num_succ(NUM, SUCC),
-  % mk_par(NUM, [], PAR),
   substitute_form(fast, $fun($par(NUM), []), FORM, TEMP),
   inst_fas(SUCC, TEMP, BODY).
 inst_fas(_, FORM, FORM) :- FORM \= $fa(_).
@@ -502,30 +486,22 @@ unroll_tree(
 
 tup_insts(
   _,
-  (CID, TYPE, FORM, file(_, PID)),
-  [inf(orig, [PID], CID, FORM)]
+  (CID, axiom, FORM, some(ANNOT)),
+  [orig(PID, CID, FORM)]
 ) :- 
-  atom(PID), !,
-  axiomatic(TYPE).
+  (ANNOT = file(_, PID) ; ANNOT = PID), 
+  atom(PID), !.
 
 tup_insts(
   _, 
-  (CID, plain, FORM, introduced(definition)),
+  (CID, plain, FORM, some(introduced(definition))),
   [add([def, PRD, ARI], CID, FORM)]
 ) :- !,
   def_pred_ari(FORM, PRD, ARI).
-
-tup_insts(
-  _,
-  (CID, TYPE, FORM, PID),
-  [inf(orig, [PID], CID, FORM)]
-) :- 
-  axiomatic(TYPE),
-  atom(PID), !.
   
 tup_insts(
   CTX,
-  (CID, TYPE, FORM, ANT),
+  (CID, TYPE, FORM, some(ANT)),
   INSTS 
 ) :- 
   inst_fas(0, FORM, TGT), 
@@ -543,15 +519,8 @@ tup_insts(
       false
     )
   ),
-  unroll_tree(0, TREE, SIZE, PID, REV), 
-  reverse(REV, PFX),
-  mk_dels(SIZE, DELS), 
-  append(PFX, [inf(rnm, [PID], CID, FORM) | DELS], INSTS).
-
-mk_dels(NUM, DELS) :-
-  range(asc, NUM, NUMS),
-  maplist_cut(mk(t), NUMS, IDS),
-  maplist_cut(mk(del), IDS, DELS).
+  unroll_tree(0, TREE, _, PID, REV), 
+  reverse([inf(rnm, [PID], CID, FORM) | REV], INSTS).
 
 report_sol_failure(_, ANT) :- 
   format("Annotation = ~w\n", ANT), 
@@ -567,21 +536,10 @@ tup_ctx((ID, _, FORM, _), CTX_I, CTX_O) :-
 tups_ctx(TUPS, CTX) :- 
   empty_assoc(EMP), 
   foldl(tup_ctx, TUPS, EMP, CTX).
-
-invert_conjecture([], []).
-invert_conjecture([TUP_I | TUPS_I], [TUP_O | TUPS_O]) :- 
-  TUP_I = (ID, conjecture, FORM, file(X, Y)) -> 
-  TUP_O = (ID, negated_conjecture, $not(FORM), file(X, Y)),
-  TUPS_O = TUPS_I
-;
-  TUP_O = TUP_I,
-  invert_conjecture(TUPS_I, TUPS_O).
   
 esolve(TSTP, SOL) :- 
-  tstp_sclas(TSTP, TEMP), !, 
-  invert_conjecture(TEMP, TUPS),
+  tptp_sol(TSTP, TUPS), !, 
   tups_ctx(TUPS, CTX),
   maplist_cut(tup_insts(CTX), TUPS, INSTSS),
   append(INSTSS, APPENDED),
-  relabel(APPENDED, SOL),
-  true.
+  relabel(APPENDED, SOL).

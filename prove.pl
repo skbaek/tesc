@@ -1,6 +1,5 @@
 :- [basic].
 
-
 term_poseq_term(Var, _) :- var(Var), !.
 term_poseq_term(_, Var) :- var(Var), !.
 term_poseq_term($fun(FUN, TERMS_A), $fun(FUN, TERMS_B)) :- 
@@ -19,7 +18,9 @@ term_poseq_term(OPQEs, TERM_A, TERM_B) :-
     term_poseq_term(TERM_B, TERM_L) 
   ).
 
-%%%%%%% Decomposition to Equational GOALs %%%%%%%
+
+
+%%%%%%% Decomposition to Equational goals %%%%%%%
 
 intro_eqs(MONO, [], [], GOAL, MONO, [], GOAL).
 
@@ -50,7 +51,6 @@ break_eq_rel(OPEs, OPA, ONA, GOAL, HGS) :-
   length(TERMS_B, LTH),
   maplist_cut(term_poseq_term(OPEs), TERMS_A, TERMS_B),
   mk_mono_rel(LTH, REL, MONOForm),
-  % atom_number(LTH_ATOM, LTH),
   tp($pos(MONOForm), GOAL, MONO, GOAL0),
   intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, IMP, HGS, GOAL1),
   bp(IMP, GOAL1, HYP_L, HYP_R, GOAL_L, GOAL_R), 
@@ -330,29 +330,17 @@ num_lit(NAA, NUM, LIT) :-
   get_assoc(NUM, NAA, LIT).
 
 lits_cla([], $false).
-
-lits_cla(Lits, Cla) :- 
-  lits_cla_core(Lits, Cla).
+lits_cla(Lits, Cla) :- lits_cla_core(Lits, Cla).
 
 lits_cla_core([Lit], Lit).
-
-lits_cla_core([Lit | Lits], $or(Lit, Cla)) :- 
-  lits_cla_core(Lits, Cla).
+lits_cla_core([Lit | Lits], $or(Lit, Cla)) :- lits_cla_core(Lits, Cla).
 
 nums_cla(NAA, NUMS, CLA) :- 
   maplist_cut(num_lit(NAA), NUMS, LITS),
   lits_cla(LITS, CLA). 
 
-add_del_inst(ID, [del(ID) | SIS], SIS).
-
 line_sat_insts(_, LINE, SIS, SIS) :- 
   split_string(LINE, " ", "", [_, "d" | _]), !.
-
-% line_sat_insts(_, LINE, SIS_I, SIS_O) :- 
-%   split_string(LINE, " ", "", [_, "d" | NUMS]), 
-%   append(ID_STRS, ["0"], NUMS), 
-%   maplist_cut(number_string, IDS, ID_STRS), 
-%   foldl(add_del_inst, IDS, SIS_I, SIS_O).
 
 line_sat_insts(NAA, LINE, [rup(SIDS, SID, CLA) | SIS], SIS) :- 
   string_numbers(LINE, [SID | NUMS]),
@@ -388,12 +376,6 @@ form_sls(FORM, SLS) :-
   body_lits(FORM, LITS, []), 
   maplist_cut(lit_sl, LITS, SLS).
 
-% form_sls($or(LIT, FORM), [SL | SLS]) :- !,
-%   lit_sl(LIT, SL),
-%   form_sls(FORM, SLS). 
-%   
-% form_sls(LIT, [SL]) :- lit_sl(LIT, SL).
-
 find_new_unit_core([SL], _, SL) :- !.
 find_new_unit_core([SL_I | SLS_A], SLS_B, SL) :- 
   (
@@ -413,7 +395,6 @@ unit_propagate(PREM, (HYPS_I, GOAL_I), ([HYP | HYPS_I], GOAL_O)) :-
   find_new_unit(PREM, HYPS_I, SL), 
   fps(SL, GOAL_I, HYP_T, HYP, GOAL_T, GOAL_O),
   many([b, s], ([PREM], GOAL_T), HGS), 
-  % pluck(HGS, ([HYP], GOAL_O), REST),
   maplist_cut(pick_mate([HYP_T | HYPS_I]), HGS).
 
 get_sat_cla(CTX, SID, CLA) :- 
@@ -422,14 +403,7 @@ get_sat_cla(CTX, SID, CLA) :-
 put_sat_cla(CTX_I, SID, CLA, CTX_O) :- 
   put_assoc(SID, CTX_I, CLA, CTX_O).
 
-del_sat_cla(CTX_I, SID, CLA, CTX_O) :- 
-  del_assoc(SID, CTX_I, CLA, CTX_O).
-
 use_sat_inst(CTX, del(_), GOAL, CTX, GOAL).
-
-% use_sat_inst(CTX, del(SID), GOAL, CTX_N, GOAL_N) :-
-%   del_sat_cla(CTX, SID, CLA, CTX_N), 
-%   wp(CLA, GOAL, GOAL_N). 
 
 use_sat_inst(CTX, rup(SIDS, SID, CLA), GOAL, CTX_N, GOAL_N) :- 
   fp(CLA, GOAL, NYP, PYP, GOAL_T, GOAL_N), 
@@ -441,8 +415,6 @@ use_sat_inst(CTX, rup(SIDS, SID, CLA), GOAL, CTX_N, GOAL_N) :-
   mate(HYP, CMP, GOAL_O), !.
 
 use_sat_insts(CTX, [SI | SIS], GOAL) :- 
-  % write("Using SAT step : "), 
-  % write(SI), nl, nl,
   use_sat_inst(CTX, SI, GOAL, CTX_N, GOAL_N), 
   (
     SIS = [] -> 
@@ -498,7 +470,6 @@ skm(AOCS, H2G) :-
   para_m(H2G) -> true 
 ;
   para_c_(H2G, H2G_N), 
-  %paracd(H2G, H2G_N), 
   skm(AOCS, H2G_N)
 ;
   paral_cd(H2G, H2G_N), 
@@ -667,44 +638,6 @@ mscj(H2G) :-
   para_c_(H2G, H2G_N) -> mscj(H2G_N) ;
   a_para(H2G, H2G_N),
   mscj(H2G_N).
-
-lit_map_lit(LIT, LIT).
-lit_map_lit($rel('=', [TERM_A, TERM_B]), $rel('=', [TERM_B, TERM_A])).
-lit_map_lit($not($rel('=', [TERM_A, TERM_B])), $not($rel('=', [TERM_B, TERM_A]))).
-
-lit_mappable_lit(LIT_A, LIT_B) :- unifiable(LIT_A, LIT_B, _).
-lit_mappable_lit($rel('=', [TERM_A, TERM_B]), LIT) :- unifiable($rel('=', [TERM_B, TERM_A]), LIT, _).
-lit_mappable_lit($not($rel('=', [TERM_A, TERM_B])), LIT) :- unifiable($not($rel('=', [TERM_B, TERM_A])), LIT, _).
-
-lits_map_lits([], _).
-
-lits_map_lits([LIT | LITS_A], LITS_B) :- 
-  lit_map_lits(LIT, LITS_B), 
-  lits_map_lits(LITS_A, LITS_B).
-
-lit_map_lits(LIT_A, [LIT_B | _]) :- 
-  lit_map_lit(LIT_A, LIT_B).
-
-lit_map_lits(LIT_A, [LIT_B | LITS]) :- 
-  lit_mappable_lit(LIT_A, LIT_B) -> 
-  nonground(LIT_A, _), 
-  lit_map_lits(LIT_A, LITS) 
-;
-  lit_map_lits(LIT_A, LITS).
-
-% report_success(X) :- 
-%   format("FOUND : ~w\n\n", X).
-
-subsume_cla(LITS_A, (ID, LITS_B), ID) :- 
-  copy_term(LITS_B, LITS_C),
-  lits_map_lits(LITS_C, LITS_A), 
-  % report_success(LITS_C), 
-  !.
-
-find_subsumer(CNT, CLAS, (_, $neg(FORM)), ID) :- 
-  inst_with_pars(CNT, FORM, _, BODY), !, 
-  body_lits(BODY, LITS, []), !, 
-  try(subsume_cla(LITS), CLAS, ID).
 
 orig_aux(PREM, GOAL, CONC) :- 
   mate(PREM, CONC, GOAL) ;
