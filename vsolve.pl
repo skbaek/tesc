@@ -2,32 +2,37 @@
 
 :- [basic].
 
-rul_hint(superposition, (sup, l)).  
-rul_hint(forward_demodulation, (sup, l)).
-rul_hint(backward_demodulation, (sup, r)).
+rul_hint(superposition, sup).
+rul_hint(forward_demodulation, (sup,l)).
+rul_hint(backward_demodulation, (sup,l)).
 rul_hint(resolution, res).
 rul_hint(subsumption_resolution, res).
+rul_hint(extensionality_resolution, res).
 rul_hint(trivial_inequality_removal, eqr).
 rul_hint(equality_resolution, eqr).
 rul_hint(equality_factoring, eqf).
-
 rul_hint(cnf_transformation, cnf).
+rul_hint(instance_generation, ig).
 rul_hint(factoring, sbsm).
 rul_hint(avatar_component_clause, acc).
 rul_hint(avatar_contradiction_clause, sbsm).
 rul_hint(duplicate_literal_removal, sbsm).
-
+rul_hint(condensation, sbsm).
 rul_hint(negated_conjecture, para_clausal).  
 rul_hint(flattening, para_clausal).  
 rul_hint(ennf_transformation, paras).  
 rul_hint(rectify, parav).
 rul_hint(true_and_false_elimination, paratf).
+rul_hint(unit_resulting_resolution, gs).
+rul_hint(global_subsumption, gs).
 rul_hint(pure_predicate_removal, ppr).
 rul_hint(nnf_transformation, vnnf).  
-
 rul_hint(avatar_sat_refutation, sat).
+rul_hint(sat_instgen_refutation, sat).
 rul_hint(unused_predicate_definition_removal, updr).
 rul_hint(avatar_split_clause, spl).
+rul_hint(inner_rewriting, inrw).
+rul_hint(inequality_splitting_name_introduction, isni).
 rul_hint(definition_folding, dff).
 rul_hint(definition_unfolding, dfu).
 rul_hint(choice_axiom, gaoc).
@@ -36,6 +41,9 @@ rul_hint(skolemisation, skm).
 rul_hint(RUL, _) :- 
   format('Rule not found : ~w', RUL), 
   throw(no_tactic_for_rule). 
+
+lit_arity($not($rel(_, TERMS)), ARI) :- length(TERMS, ARI).
+lit_arity($rel(_, TERMS), ARI) :- length(TERMS, ARI).
 
 pred_def_norm_or($or(FORM, $not(ATOM)), FORM, ATOM) :- unsigned_atom(ATOM).
 pred_def_norm_or($or(FORM_A, FORM_B), $or(FORM_A, FORM_C), ATOM) :- 
@@ -56,6 +64,12 @@ tup_inst(
 ).
 
 tup_inst(
+  (VID, plain, FORM, some(introduced(inequality_splitting_name_introduction,[new_symbols(naming,[PRD])]))), 
+  add([isni, PRD, ARI], VID, FORM)
+) :- 
+  lit_arity(FORM, ARI).
+
+tup_inst(
   (VID, plain, $iff($rel(PRD, []), FORM), some(introduced(avatar_definition,[new_symbols(naming,[PRD])]))), 
   add([def, PRD, 0], VID, $iff($rel(PRD, []), FORM))
 ) :- 
@@ -66,6 +80,11 @@ tup_inst(
   add([def, PRD, ARI], NAME, NORM)
 ) :- 
   pred_def_norm(PRD, FORM, ARI, NORM).
+
+tup_inst(
+  (VID, _, FORM, some(introduced(theory_tautology_sat_conflict, []))),
+  inf(ttsc, [], VID, FORM)
+) :- !.
 
 tup_inst(
   (VID, _, FORM, some(introduced(RUL, _))),

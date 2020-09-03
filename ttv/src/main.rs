@@ -458,7 +458,7 @@ fn add_tptp_file(tptp: &str, p: &mut Problem) -> Rst<()> {
    Ok(())
 }
 
-fn main() -> Rst<()> {
+fn body() -> Rst<()> {
   let args: Vec<String> = env::args().collect();
   let tptp = &args[1];
   let tesc = &args[2];
@@ -471,24 +471,25 @@ fn main() -> Rst<()> {
     _ => return err_str("Cannot open TESC file.")
   };
   let mut prbs = prf.bytes();
-  match check(&mut prbs, pb) {
-    Ok(()) => { println!("Proof verified.\n") }, 
-    Err(msg) => { println!("Verification failed : {}", msg) }
-  };
-  Ok(())
+  check(&mut prbs, pb)
+  // match check(&mut prbs, pb) {
+  //   Ok(()) => { println!("Proof verified.\n") }, 
+  //   Err(msg) => { println!("Verification failed : {}", msg) }
+  // };
+  // Ok(())
 }
  
-// fn main() {
-//   std::process::exit(
-//     match body() {
-//       Ok(()) => {
-//         println!("Proof verified.");
-//         0
-//       },
-//       Err(msg) => {
-//         println!("Invalid proof : {:?}", msg);
-//         1
-//       }
-//     }
-//   );
-// }
+fn main() {
+  std::process::exit(
+    match body() {
+      Ok(()) => {
+        println!("Proof verified.");
+        0
+      },
+      Err(msg) => {
+        println!("Invalid proof : {:?}", msg);
+        1
+      }
+    }
+  );
+}

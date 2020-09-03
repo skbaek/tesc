@@ -439,6 +439,7 @@ sat(CLAS, GOAL) :-
   write("Constructing SAT context...\n\n"),
   mk_sat_ctx(CLAS, CTX), 
 
+  write("Using SAT instructions...\n\n"),
   use_sat_insts(CTX, SIS, GOAL),
   delete_file("temp.cnf"),
   delete_file("temp.drat"),
@@ -642,11 +643,74 @@ mscj(H2G) :-
 orig_aux(PREM, GOAL, CONC) :- 
   mate(PREM, CONC, GOAL) ;
   pmt_cla(PREM, CONC, GOAL) ;
-  para_clausal(v, (PREM, CONC, GOAL)).
+  para_clausal((PREM, CONC, GOAL)).
 
+sup_aux(HYPS, _, ([HYP], GOAL)) :- member_rev(CMP, HYPS), mate(HYP, CMP, GOAL).
+sup_aux(HYPS, EQN, ([HYP], GOAL)) :- 
+  member_rev(CMP, HYPS), 
+  subst_rel_add([EQN], HYP, CMP, GOAL). 
+
+/*
+gs_aux(HYP, CMP, GOAL, HYP_N, GOAL_N) :- 
+  (
+    bp(CMP, GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B) ;
+    bp(CMP, GOAL, HYP_B, HYP_A, GOAL_B, GOAL_A)
+  ),
+  many_nb([s], [HYP, HYP_A], GOAL_A, [HYP_0, HYP_1], GOAL_C), 
+  mate(HYP_0, HYP_1, GOAL_C),
+  many_nb([s], [HYP_B], GOAL_B, [HYP_N], GOAL_N). 
+
+urr_aux(SRC, AUX, TGT, GOAL) :- 
+  (
+    bp(AUX, GOAL, HYP_A, HYP_B, GOAL_A, GOAL_B) ;
+    bp(AUX, GOAL, HYP_B, HYP_A, GOAL_B, GOAL_A)
+  ),
+  many_nb([s], [SRC], GOAL_A, [SRC_BODY], GOAL_C), 
+  many_nb([s], [HYP_A], GOAL_C, [HYP_NA], GOAL_D), 
+  mate(SRC_BODY, HYP_NA, GOAL_D),
+  many_nb([s], [TGT], GOAL_B, [TGT_BODY], GOAL_E), 
+  many_nb([s], [HYP_B], GOAL_E, [HYP_NB], GOAL_F), 
+  mate(TGT_BODY, HYP_NB, GOAL_F).
+  
+urr(PREMS, CONCS, ([PREM], GOAL)) :- 
+  ground(PREM), 
+  (member(CMP, CONCS) ; member(CMP, PREMS)),
+  ground(CMP), 
+  mate(PREM, CMP, GOAL), !.
+
+urr(PREMS, CONCS, ([PREM], GOAL)) :- 
+  (member(CMP, CONCS) ; member(CMP, PREMS)),
+  mate(PREM, CMP, GOAL).
+
+urr(PREMS, CONCS, ([PREM], GOAL)) :-
+member(CONC, CONCS),
+member(AUX, PREMS),
+  urr_aux(PREM, AUX, CONC, GOAL).
+  
+gs(PREMS, CONCS, ([PREM], GOAL)) :- 
+  ground(PREM), 
+  (member(CMP, CONCS) ; member(CMP, PREMS)),
+  ground(CMP), 
+  mate(PREM, CMP, GOAL), !.
+gs(PREMS, CONCS, ([PREM], GOAL)) :- 
+  (member(CMP, CONCS) ; member(CMP, PREMS)),
+  mate(PREM, CMP, GOAL).
+gs(PREMS, CONCS, ([PREM], GOAL)) :- 
+  pluck(PREMS, AUX, REST), 
+  gs_aux(PREM, AUX, GOAL, PREM_N, GOAL_N),
+  gs(REST, CONCS, ([PREM_N], GOAL_N)).
+*/
+
+inrw(EQ, ([PREM], GOAL), CONC) :- 
+  subst_rel_add([EQ], PREM, CONC, GOAL).
 
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
+
+infer(v, ig, [PREM], CONC, GOAL) :- 
+  rp([d], [CONC], GOAL, [CONC_N], GOAL_A), 
+  rp([c], [PREM], GOAL_A, [PREM_N], GOAL_B), 
+  para_clausal((PREM_N, CONC_N, GOAL_B)).
 
 infer(e, para_dist, [PREM], CONC, GOAL) :- 
   para_dist(PREM, CONC, GOAL).
@@ -691,24 +755,52 @@ infer(_, dfu, [PREM | PREMS], CONC, GOAL) :-
 
 infer(v, sat, PREMS, _, GOAL) :-
   sat(PREMS, GOAL).
+
+infer(v, gs, PREMS, CONC, GOAL) :-
+  many_nb([a,d,s], [CONC], GOAL, HYPS_TEMP, GOAL_TEMP), 
+  append(HYPS_TEMP, PREMS, HYPS),
+  pblx(q, HYPS, GOAL_TEMP).
+
+% infer(v, gs, PREMS, CONC, GOAL) :-
+%   many_nb([a,d,s], [CONC], GOAL, CONCS_N, GOAL_A), 
+%   many_nb([c,s], PREMS, GOAL_A, PREMS_BODY, GOAL_B), 
+%   pluck(PREMS_BODY, PREM, PREMS_AUX), 
+%   many([b,c,s], ([PREM], GOAL_B), HGS), 
+%   maplist(gs(PREMS_AUX, CONCS_N), HGS).
+
+% infer(v, urr, PREMS, CONC, GOAL) :-
+%   many_nb([a, d, s], [CONC], GOAL, CONCS_N, GOAL_A), 
+%   many_nb([c, s], PREMS, GOAL_A, PREMS_BODY, GOAL_B), 
+%   pluck(PREMS_BODY, PREM, PREMS_AUX), 
+%   many([b, s], ([PREM], GOAL_B), HGS), 
+%   urr(HGS, PREMS_AUX, CONCS_N).
+
   
-infer(m, subst, [PREM], CONC, GOAL) :-
-  many_nb([d], [CONC], GOAL, [HYP_C], GOAL0), 
-  many_nb([c], [PREM], GOAL0, [HYP_P], GOAL1), 
+  /*
+infer(v, urr, PREMS, CONC, GOAL) :-
+  % list_head_last(PREMS, ORS, PREM),
+  (
+    reverse(PREMS, [PREM | ORS]) ;
+    PREMS = [PREM | ORS]
+  ),
+  many_nb([d], [CONC], GOAL, [CONC_TEMP], GOAL_A), 
+  cp_rop([PREM | ORS], GOAL_A, [PREM_TEMP | ORS_TEMP], GOAL_B), 
+
+  % ap_rop(CONC_TEMP, GOAL_B, [TGT | TGTS], GOAL_C),
+  % rp([b], PREM_TEMP, GOAL_C, [([SRC], GOAL_D)  | HGS]),
+  ap_rop(CONC_TEMP, GOAL_B, TGTS, GOAL_C),
+  rp([b], PREM_TEMP, GOAL_C, HGS),
   ( 
-    mate(HYP_P, HYP_C, GOAL1) ;
-    pblx(p, [HYP_P, HYP_C], GOAL1)
-  ).
-
-infer(m, eq, [], CONC, GOAL) :-
-  many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
-  pluck(HYPS, EQ, [HYP_A, HYP_B]),
-  EQ = (_, $pos($rel('=', [_, _]))), 
-  subst_rel_mul(HYP_A, [EQ], HYP_B, GOAL_T, []). 
-
-infer(m, refl, [], CONC, GOAL) :-
-  many_nb([d], [CONC], GOAL, [HYP], GOAL_T), 
-  eq_refl(HYP, GOAL_T).
+    TGTS = [TGT | TGTS_TAIL],
+    HGS = [([SRC], GOAL_D) | HGS_TAIL],
+    mate(TGT, SRC, GOAL_D) 
+  ;
+    TGTS_TAIL = TGTS,
+    HGS_TAIL = HGS
+  ),
+  zip(TGTS_TAIL, ORS_TEMP, HGS_TAIL, H3GS), 
+  maplist_cut(urr_aux, H3GS).
+*/
 
 infer(_, rwa, [PREM_A, PREM_B], CONC, GOAL) :-
   many_nb([d], [CONC], GOAL, [HYP_C], GOAL_C), 
@@ -726,9 +818,6 @@ infer(v, gaoc, AOCS, GAOC, GOAL) :-
 infer(PRVR, res, [PYP0, PYP1], NYP, GOAL) :- 
   member(PRVR, [v, e]),
   res(PYP0, PYP1, NYP, GOAL).
-
-infer(m, simplify, [PREM_A, PREM_B], CONC, GOAL) :- 
-  res(PREM_A, PREM_B, CONC, GOAL).
   
 infer(e, orig, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
@@ -739,6 +828,18 @@ infer(v, orig, [PREM], CONC, GOAL) :-
   pmt_cla(PREM, CONC, GOAL) ;
   infer(v, para_clausal, [PREM], CONC, GOAL). 
 
+infer(v, inrw, [PREM], CONC, GOAL) :- 
+  rp([s,a,d], [CONC], GOAL, [CONC_EQ | CONCS], GOAL_A), 
+  rp([s,c,b], [PREM], GOAL_A, [([PREM_EQ], GOAL_B) | HSGS]),
+  mate(PREM_EQ, CONC_EQ, GOAL_B),
+  maplist(inrw(CONC_EQ), HSGS, CONCS).
+
+infer(v, ttsc, [], CONC, GOAL) :- 
+  many_nb([a, d, s], [CONC], GOAL, HYPS, TEMP), 
+  pluck(HYPS, HYP_A, [HYP_B, HYP_C]), 
+  HYP_A = (_, $pos($rel('=', [_, _]))), 
+  subst_rel_add([HYP_A], HYP_B, HYP_C, TEMP).
+  
 infer(_, eqf, [PREM], CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_T), 
   pluck(HYPS, HYP, REST), 
@@ -746,8 +847,7 @@ infer(_, eqf, [PREM], CONC, GOAL) :-
   many([b, c, s], ([PREM], GOAL_T), HGS), 
   maplist(eqf(REST, HYP), HGS).
 
-infer(_, eqr, [PREM], CONC, GOAL) :- 
-  eqr(PREM, CONC, GOAL).
+infer(_, eqr, [PREM], CONC, GOAL) :- eqr(PREM, CONC, GOAL).
 
 infer(v, updr, [PREM], CONC, GOAL) :- 
   many_nb([d], [CONC], GOAL, [CONC_N], GOAL0),
@@ -775,7 +875,7 @@ infer(_, rwe, [PREM_L, PREM_R], CONC, GOAL) :-
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL8). 
   
-infer(_, (sup, DIR), [PREM_A, PREM_B], CONC, GOAL) :- 
+infer(_, (sup,DIR), [PREM_A, PREM_B], CONC, GOAL) :- 
   orient_dir(PREM_A, PREM_B, DIR, PREM_L, PREM_R),
   many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL0), 
   pick_pivot(HYPS, PREM_L, GOAL0, SRC, GOAL1), 
@@ -784,6 +884,20 @@ infer(_, (sup, DIR), [PREM_A, PREM_B], CONC, GOAL) :-
   erient_hyp(PRE_EQN, GOAL2, EQN, GOAL3),
   member_rev(TGT, HYPS),
   subst_rel_add([EQN], SRC, TGT, GOAL3). 
+
+infer(_, sup, [PREM_A, PREM_B], CONC, GOAL) :- 
+  orient_dir(PREM_A, PREM_B, _, PREM_L, PREM_R),
+  many_nb([a, d, s], [CONC], GOAL, HYPS, GOAL_A), 
+  % pick_pivot(HYPS, PREM_L, GOAL0, SRC, GOAL1), 
+  pick_pivot(HYPS, PREM_R, GOAL_A, PRE_EQN, GOAL_B), 
+  PRE_EQN = (_, $pos($rel('=', [_, _]))),
+  erient_hyp(PRE_EQN, GOAL_B, EQN, GOAL_C),
+  many([b, c, s], ([PREM_L], GOAL_C), HGS),
+  maplist(sup_aux(HYPS, EQN), HGS).
+
+
+  % member_rev(TGT, HYPS),
+  % subst_rel_add([EQN], SRC, TGT, GOAL3). 
 
 infer(v, spl, [PREM | PREMS], CONC, GOAL) :- 
   many_nb([a, d, s], [CONC], GOAL, HYPS0, GOAL0), 
@@ -836,11 +950,11 @@ infer(v, vnnf, PREMS, CONC, GOAL) :-
   member(PREM, PREMS),
   vnnf((PREM, CONC, GOAL)).
 
-infer(PRVR, para_clausal, PREMS, CONC, GOAL) :- 
+infer(_, para_clausal, PREMS, CONC, GOAL) :- 
   many_nb([d, s], [CONC], GOAL, [HYP_C], GOAL_C), 
   member(PREM, PREMS),
   many_nb([c, s], [PREM], GOAL_C, [HYP_P], GOAL_P), 
-  para_clausal(PRVR, (HYP_P, HYP_C, GOAL_P)).
+  para_clausal((HYP_P, HYP_C, GOAL_P)).
 
 infer(_, paratf, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
@@ -872,7 +986,7 @@ report_failure(MODE, PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
     write_term_punct(STRM, debug_prob(PROB)), 
     write_term_punct(STRM, debug_prf(PRF)), 
     close(STRM), 
-    throw(compilation_timeout)
+    throw(compilation_failed)
   ;
     true
   ).
