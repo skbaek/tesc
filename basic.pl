@@ -1,24 +1,16 @@
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
 
+timed_call(TIME, GOAL, ALT) :- timed_call(TIME, GOAL, ALT, ALT). 
+  
 timed_call(TIME, GOAL, EARLY, LATE) :- 
   catch(
     call_with_time_limit(
       TIME, 
-      (
-        call(GOAL) -> 
-        true 
-      ;
-        throw(premature_failure)
-      )
+      (call(GOAL) -> true ; throw(premature_failure))
     ),
     ERROR, 
-    (
-      ERROR = premature_failure ->
-      call(EARLY) 
-    ;
-      call(LATE) 
-    )
+    (ERROR = premature_failure -> call(EARLY) ; call(LATE))
   ).  
 
 ground_all(TERM, EXP) :- 
@@ -461,15 +453,19 @@ write_term_punct(STRM, TERM) :-
   write_term(STRM, TERM, [nl(true), quoted(true), fullstop(true)]).
 
 write_list(_, []).
-write_list(STRM, [ELEM]) :- format(STRM, '~w', ELEM).
-write_list(STRM, [ELEM | List]) :- 
-  format(STRM, '~w\n', ELEM),
-  write_list(STRM, List).
+write_list(STRM, [ELEM | LIST]) :- 
+  write(STRM, ELEM),
+  write_list(STRM, LIST).
 
-write_list([]).
-write_list([Elem | List]) :- 
+writeln_list(_, []).
+writeln_list(STRM, [ELEM | LIST]) :- 
+  format(STRM, '~w\n', ELEM),
+  writeln_list(STRM, LIST).
+
+writeln_list([]).
+writeln_list([Elem | List]) :- 
   format('~w\n', Elem),
-  write_list(List).
+  writeln_list(List).
 
 strings_concat([], "").
 
@@ -1214,7 +1210,6 @@ get_name(STRM, '#', NUM) :-
 get_name(STRM, '\'', ATOM) :- 
   get_atom(STRM, ATOM).
   
-
 get_prf(STRM, PRF) :- 
   get_char(STRM, CH), !, 
   get_prf(STRM, CH, PRF).
@@ -1435,12 +1430,6 @@ para__s((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :-
   sp(HYP_B, GOAL, HYP_BN, GOAL_N). 
 
 paras(X, Y) :- para_s_(X, Y) ; para__s(X, Y).
-
-%para_c_((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_B, GOAL_N)) :- 
-%  cp(HYP_A, _, GOAL, HYP_NA, GOAL_N).
-%
-%para__c((HYP_A, HYP_B, GOAL), (HYP_A, HYP_NB, GOAL_N)) :- 
-%  cp(HYP_B, _, GOAL, HYP_NB, GOAL_N).
 
 paracd(X, Y) :- para_cd(X, Y) ; para_dc(X, Y).
 
@@ -1809,20 +1798,6 @@ clause_ab_aux(PARA, DIR, HYPS, HYP_B, GOAL, REM) :-
   bp(HYP_B, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R), 
   clause_ab_aux(PARA, DIR, HYPS, HYP_L, GOAL_L, TEMP), !, 
   clause_ab_aux(PARA, DIR, TEMP, HYP_R, GOAL_R, REM).
-   
-   % (HYP_A, HYP_B, GOAL)).
-
-
-
-
-para_e2(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> para_e2(H2G_N) ;
-  parad(H2G, H2G_N) -> para_e2(H2G_N) ;
-  para_c_(H2G, H2G_N) -> para_e2(H2G_N) ;
-  paraab(H2G, H2G_L, H2G_R) ->
-  para_e2(H2G_L), !, 
-  para_e2(H2G_R).
 
 pick_mate(HYPS_A, (HYPS_B, GOAL)) :- 
   member(HYP_A, HYPS_A), 
@@ -2155,4 +2130,92 @@ any_line_path(PATH, GOAL) :-
     any_line_strm(STRM, GOAL), 
     close(STRM) 
   ).
+
+
+bct_as_tptp(or, " | ").
+bct_as_tptp(and, " & ").
+bct_as_tptp(imp, " => ").
+bct_as_tptp(iff, " <=> ").
+
+write_bct_as_tptp(STRM, BCT) :- 
+  bct_as_tptp(BCT, STR),
+  write(STRM, STR).
+
+write_qtf_as_tptp(STRM, fa) :- write(STRM, '!').
+write_qtf_as_tptp(STRM, ex) :- write(STRM, '?').
+
+write_form_as_tptp(STRM, NUM, $not(FORM)) :- 
+  write(STRM, '~'), !,
+  write_form_as_tptp(STRM, NUM, FORM).
+
+write_form_as_tptp(STRM, NUM, FORM) :- 
+  decom_bct(FORM, BCT, FORM_A, FORM_B), !, 
+  write(STRM, '('), 
+  write_form_as_tptp(STRM, NUM, FORM_A), 
+  write_bct_as_tptp(STRM, BCT), 
+  write_form_as_tptp(STRM, NUM, FORM_B), 
+  write(STRM, ')'). 
+  
+write_form_as_tptp(STRM, NUM, FORM) :- 
+  decom_qtf(FORM, QTF, SUB), !, 
+  write(STRM, '('), 
+  write_qtf_as_tptp(STRM, QTF), 
+  write(STRM, " [X"), 
+  write(STRM, NUM),
+  write(STRM, "] : "),
+  num_succ(NUM, SUCC),
+  write_form_as_tptp(STRM, SUCC, SUB), 
+  write(STRM, ')'). 
+  
+write_form_as_tptp(STRM, NUM, $rel(=, [TERM_A, TERM_B])) :- !,  
+  write(STRM, "("),
+  write_term_as_tptp(STRM, NUM, TERM_A),
+  write(STRM, " = "),
+  write_term_as_tptp(STRM, NUM, TERM_B),
+  write(STRM, ")").
+
+write_form_as_tptp(STRM, NUM, $rel(REL, TERMS)) :- 
+  write_term(STRM, REL, [quoted(true)]),
+  write_terms_as_tptp(STRM, NUM, TERMS).
+
+write_term_as_tptp(STRM, _, $dst(STR)) :- 
+  write_list(STRM, ['"', STR, '"']).
+
+write_term_as_tptp(STRM, CNT, $var(NUM)) :- 
+  IDX is (CNT - (NUM + 1)),
+  write(STRM, 'X'),
+  write(STRM, IDX).
+
+write_term_as_tptp(STRM, NUM, $fun(FUN, TERMS)) :- 
+  write_term(STRM, FUN, [quoted(true)]), !,
+  write_terms_as_tptp(STRM, NUM, TERMS).
+
+write_terms_as_tptp(_, _, []) :- !.
+write_terms_as_tptp(STRM, NUM, [TERM | TERMS]) :- !,
+  write(STRM, '('),
+  write_term_as_tptp(STRM, NUM, TERM), 
+  maplist_cut({STRM}/[X]>>(write(STRM, ","), write_term_as_tptp(STRM, NUM, X)), TERMS),
+  write(STRM, ')').
+
+concat_shell(LIST, EXST) :- 
+  atomic_list_concat(LIST, CMD),
+  shell(CMD, EXST).
+
+call_prover(e, TPTP, TSTP, RST) :- 
+  concat_shell(["eprover --cpu-limit=60 -p ", TPTP, " > temp.tstp"], _), 
+  (
+    any_line_path('temp.tstp', =("# Proof found!")) -> 
+    concat_shell(["cat temp.tstp | sed '/\\(^#\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
+    RST = false
+  ),
+  delete_file('temp.tstp').
+
+call_prover(v, TPTP, TSTP, RST) :- 
+  concat_shell(["vampire --output_axiom_names on --proof tptp --include /home/sk/projects/TPTP/ ", TPTP, " > temp.tstp"], _),  
+  (
+    any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
+    concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
+    RST = false
+  ),
+  delete_file('temp.tstp').
 

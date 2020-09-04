@@ -1,4 +1,4 @@
-:- [basic].
+:- [basic, esolve, vsolve].
 
 term_poseq_term(Var, _) :- var(Var), !.
 term_poseq_term(_, Var) :- var(Var), !.
@@ -704,8 +704,29 @@ gs(PREMS, CONCS, ([PREM], GOAL)) :-
 inrw(EQ, ([PREM], GOAL), CONC) :- 
   subst_rel_add([EQ], PREM, CONC, GOAL).
 
+write_prem_as_tptp(STRM, (ID, $pos(FORM))) :- 
+  maplist_cut(write(STRM), ["fof(", ID, ", axiom, "]),
+  write_form_as_tptp(STRM, 0, FORM),
+  write(STRM, ").\n").
+
+write_conc_as_tptp(STRM, (ID, $neg(FORM))) :- 
+  maplist_cut(write(STRM), ["fof(", ID, ", conjecture, "]),
+  write_form_as_tptp(STRM, 0, FORM),
+  write(STRM, ").\n").
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
+
+infer(_, gps, PREMS, CONC, _) :- 
+  writeln("Invoking general proof search:"),
+  open('gps.tptp', write, STRM),
+  maplist_cut(write_prem_as_tptp(STRM), PREMS),
+  write_conc_as_tptp(STRM, CONC),
+  close(STRM),
+  call_prover(e, 'gps.tptp', 'gps.tstp', true),
+  list_to_assoc([CONC | PREMS], CTX),
+  ttc_cont()
+  
+  
 
 infer(v, ig, [PREM], CONC, GOAL) :- 
   rp([d], [CONC], GOAL, [CONC_N], GOAL_A), 
@@ -721,9 +742,6 @@ infer(_, para_pull, [PREM], CONC, GOAL) :-
 
 infer(e, para_e1, [PREM], CONC, GOAL) :- 
   para_e1((PREM, CONC, GOAL)).
-
-infer(e, para_e2, [PREM], CONC, GOAL) :- 
-  para_e2((PREM, CONC, GOAL)).
 
 infer(e, para_push, [PREM], CONC, GOAL) :-
   para_push((PREM, CONC, GOAL)). 
@@ -967,7 +985,7 @@ report_failure(MODE, PRVR, HINTS, PREMS, CONC, PROB, PRF, GOAL) :-
   (
     MODE = verbose ->
     write("\nInference failed, premises :\n\n"),
-    write_list(PREMS)
+    writeln_list(PREMS)
   ;
     true
   ),
@@ -1016,6 +1034,9 @@ originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C) :-
   ground_all($fun(c,[]), PRF),
   put_prf(STRM, PRF). 
 
+% subprove(STRM, PRVR, CNT, gps, PREMS, FORM) :- !,
+
+
 subprove(STRM, PRVR, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
   % mk_par(CNT, [], CID),
@@ -1038,6 +1059,7 @@ subprove(STRM, PRVR, CNT, HINT, PREMS, FORM) :-
     )
   ), !,
   ground_all($fun(c,[]), PRF),
+  put_prf(STRM, PRF). 
   % put_assoc(CID, PROB, $neg(FORM), SUB_PROB),
   % (
   %   check_term(SUB_PROB, SCNT, PRF) ->  true ; 
@@ -1046,7 +1068,6 @@ subprove(STRM, PRVR, CNT, HINT, PREMS, FORM) :-
   %   throw(invalid_subproof)
   %   % report_failure(fast, PRVR, HINTS, CTX, (CID, $neg(FORM)), SUB_PROB, PRF, GOAL)
   % ),
-  put_prf(STRM, PRF). 
 
 set_tup_nth(0, (_, Y), X, (X, Y)) :- !.
 set_tup_nth(NUM, (X, T0), Y, (X, T1)) :- 
@@ -1058,6 +1079,7 @@ get_tup_nth(NUM, (_, TUP), ELEM) :-
   num_pred(NUM, PRED), 
   get_tup_nth(PRED, TUP, ELEM).
 
+% PS ~ (STRM, SLVR, PROB, SOL, CTX)
 % PS = (CTX, SOL, PROB, STRM, PRVR, nil)
 get_ps_ctx(PS, CTX)    :- get_tup_nth(0, PS, CTX).
 get_ps_sol(PS, SOL)    :- get_tup_nth(1, PS, SOL).
@@ -1068,49 +1090,81 @@ get_ps_prvr(PS, PRVR)  :- get_tup_nth(4, PS, PRVR).
 set_ps_ctx(PS_O, CTX, PS_N) :- set_tup_nth(0, PS_O, CTX, PS_N).
 set_ps_sol(PS_O, SOL, PS_N) :- set_tup_nth(1, PS_O, SOL, PS_N).
 
-use_inst(PS, CNT, add(FORM), PS_N) :- 
-  get_ps_ctx(PS, CTX),
-  get_ps_strm(PS, STRM),
+
+% use_inst(PS, CNT, inf(HINT, IDS, FORM), PS_N) :- 
+%   get_ps_prvr(PS, PRVR),
+%   get_ps_strm(PS, STRM),
+%   get_ps_ctx(PS, CTX),
+%   get_context(CTX, IDS, PREMS),
+%   subprove(STRM, PRVR, CNT, HINT, PREMS, FORM),
+%   put_assoc(CNT, CTX, $pos(FORM), CTX_N),
+%   set_ps_ctx(PS, CTX_N, PS_N), 
+%   true.
+  
+% use_inst(PS, CNT, add(FORM), PS_N) :- 
+%   get_ps_ctx(PS, CTX),
+%   get_ps_strm(PS, STRM),
+%   justified(CNT, $pos(FORM)),
+%   put_char(STRM, 'T'), 
+%   put_sf(STRM, $pos(FORM)), 
+%   put_assoc(CNT, CTX, $pos(FORM), CTX_N), 
+%   set_ps_ctx(PS, CTX_N, PS_N), 
+%   true.
+  
+% use_inst(PS, CNT, orig(NAME, FORM_C), PS_N) :- 
+%   get_ps_prvr(PS, PRVR),
+%   get_ps_strm(PS, STRM),
+%   get_ps_ctx(PS, CTX),
+%   get_ps_prob(PS, PROB),
+%   get_assoc(NAME, PROB, FORM_P),
+%   originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C),
+%   put_assoc(CNT, CTX, $pos(FORM_C), CTX_N),
+%   set_ps_ctx(PS, CTX_N, PS_N), 
+%   true.
+
+prove(STRM, SLVR, PROB, [orig(NAME, FORM_C) | SOL], CTX, CNT) :- 
+  get_assoc(NAME, PROB, FORM_P),
+  originate(STRM, SLVR, NAME, FORM_P, CNT, FORM_C),
+  put_assoc(CNT, CTX, $pos(FORM_C), CTX_N),
+  num_succ(CNT, SUCC),
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+
+prove(STRM, SLVR, PROB, [add(FORM) | SOL], CTX, CNT) :- 
   justified(CNT, $pos(FORM)),
   put_char(STRM, 'T'), 
   put_sf(STRM, $pos(FORM)), 
   put_assoc(CNT, CTX, $pos(FORM), CTX_N), 
-  set_ps_ctx(PS, CTX_N, PS_N), 
-  true.
-  
-use_inst(PS, CNT, orig(NAME, FORM_C), PS_N) :- 
-  get_ps_prvr(PS, PRVR),
-  get_ps_strm(PS, STRM),
-  get_ps_ctx(PS, CTX),
-  get_ps_prob(PS, PROB),
-  get_assoc(NAME, PROB, FORM_P),
-  originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C),
-  put_assoc(CNT, CTX, $pos(FORM_C), CTX_N),
-  set_ps_ctx(PS, CTX_N, PS_N), 
-  true.
+  num_succ(CNT, SUCC),
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
 
-use_inst(PS, CNT, inf(HINT, IDS, FORM), PS_N) :- 
-  get_ps_prvr(PS, PRVR),
-  get_ps_strm(PS, STRM),
-  get_ps_ctx(PS, CTX),
+prove(STRM, SLVR, PROB, [inf(HINT, IDS, FORM) | SOL], CTX, CNT) :- 
   get_context(CTX, IDS, PREMS),
-  subprove(STRM, PRVR, CNT, HINT, PREMS, FORM),
+  subprove(STRM, SLVR, CNT, HINT, PREMS, FORM),
   put_assoc(CNT, CTX, $pos(FORM), CTX_N),
-  set_ps_ctx(PS, CTX_N, PS_N), 
-  true.
-  
-prove(PS0, NUM) :- 
-  get_ps_sol(PS0, [INST | SOL]), 
-  set_ps_sol(PS0, SOL, PS1), !, 
-  use_inst(PS1, NUM, INST, PS2), !, 
-  num_succ(NUM, SUCC),
-  prove(PS2, SUCC).
+  num_succ(CNT, SUCC),
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
 
-prove(PS, NUM) :- 
-  get_ps_sol(PS, []), 
-  get_ps_strm(PS, STRM), 
-  num_pred(NUM, PRED),
-  put_prf(STRM, t($neg($false), x(PRED, NUM))).
+prove(STRM, _, _, [], _, CNT) :- 
+  num_pred(CNT, PRED),
+  put_prf(STRM, t($neg($false), x(PRED, CNT))).
+
+% prove(STRM, SLVR, PROB, [INST | SOL], CTX, NUM) :- 
+%   use_inst(STRM, SLVR, INST, CTX, NUM, CTX_N), !, 
+%   num_succ(NUM, SUCC),
+%   prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+
+% prove(PS0, NUM) :- 
+%   get_ps_sol(PS0, [INST | SOL]), 
+%   set_ps_sol(PS0, SOL, PS1), !, 
+%   use_inst(PS1, NUM, INST, PS2), !, 
+%   num_succ(NUM, SUCC),
+%   prove(PS2, SUCC).
+
+% prove(PS, NUM) :- 
+%   get_ps_sol(PS, []), 
+%   get_ps_strm(PS, STRM), 
+%   num_pred(NUM, PRED),
+%   put_prf(STRM, t($neg($false), x(PRED, NUM))).
 
 para_push(TRP) :- 
   para_m(TRP) -> true 
@@ -1322,3 +1376,13 @@ para_dist(PREM, CONC, GOAL) :-
     ap(CONC, r, GOAL_TB, HYP_NTB, GOAL_NTB), 
     mate(HYP_TB, HYP_NTB, GOAL_NTB)
   ).  
+
+ttc_cont(STRM, CTX, TSTP, CNT) :-
+  solve_cont(TSTP, SOL), !,
+  empty_assoc(EMP),
+  prove(STRM, e, EMP, SOL, CTX, CNT).
+%   prove(STRM, SLVR, PROB, SOL, EMP, 0), 
+%   writeln("Proof complete."),
+%   close(STRM).
+
+% main :- 

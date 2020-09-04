@@ -70,6 +70,13 @@ target_tree(TGT, TREE, utr(TREE, HINT, CONC)) :-
   ground_all($fun(c,[]), TGT),
   bind_all_pars(TGT, CONC), !.
 
+ant_names(inference(_, _, [ANT]), NAMES) :- ant_names(ANT, NAMES).
+ant_names(inference(_, _, [ANT_A, ANT_B]), NAMES) :- 
+  ant_names(ANT_A, NAMES_A),
+  ant_names(ANT_B, NAMES_B),
+  union(NAMES_A, NAMES_B, NAMES).
+ant_names(NAME, [NAME]) :- atom(NAME).
+
 mk_tree_fwd(CTX, inference(distribute, _, [ANT]), utr(utr(TREE, para_pull, NORM), para_dist, CONC)) :- !, 
   mk_tree_fwd(CTX, ANT, TREE), 
   tree_conc(TREE, SUB), 
@@ -499,28 +506,47 @@ tup_insts(
 ) :- !,
   def_pred_ari(FORM, PRD, ARI).
   
+% tup_insts(
+%   CTX,
+%   (CID, TYPE, FORM, some(ANT)),
+%   INSTS 
+% ) :- 
+%   inst_fas(0, FORM, TGT), 
+%   timed_call(
+%     30, 
+%     mk_tree_fwd(CTX, TGT, ANT, TREE),
+%     (
+%       write("Solution failed prematurely. "), 
+%       report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
+%       false
+%     ),
+%     (
+%       write("Solution timed out. "), 
+%       report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
+%       false
+%     )
+%   ),
+%   unroll_tree(0, TREE, _, PID, REV), 
+%   reverse([inf(rnm, [PID], CID, FORM) | REV], INSTS).
 tup_insts(
   CTX,
-  (CID, TYPE, FORM, some(ANT)),
+  (CNM, _, FORM, some(ANT)),
   INSTS 
 ) :- 
   inst_fas(0, FORM, TGT), 
   timed_call(
-    30, 
-    mk_tree_fwd(CTX, TGT, ANT, TREE),
+    1, 
     (
-      write("Solution failed prematurely. "), 
-      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
-      false
+      mk_tree_fwd(CTX, TGT, ANT, TREE),
+      unroll_tree(0, TREE, _, PNM, REV), 
+      reverse([inf(rnm, [PNM], CNM, FORM) | REV], INSTS)
     ),
     (
-      write("Solution timed out. "), 
-      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
-      false
+      format("Failed to expand instruction = ~w, relegating proof...\n", CNM),
+      ant_names(ANT, NAMES),
+      INSTS = [inf(gps, NAMES, CNM, FORM)]
     )
-  ),
-  unroll_tree(0, TREE, _, PID, REV), 
-  reverse([inf(rnm, [PID], CID, FORM) | REV], INSTS).
+  ).
 
 report_sol_failure(CTX, ANT) :- 
   format("Annotation = ~w\n", ANT), 

@@ -73,10 +73,10 @@ FILES = ['basic.pl', 'esolve.pl', 'vsolve.pl', 'prove.pl', 'ttc.pl'],
   maplist(def_pa_body, DEFS, PAS, _),
   sort(PAS, SORTED),
   nl, nl,
-  % write_list(SORTED), 
+  % writeln_list(SORTED), 
   partition(is_used(DEFS), SORTED, USED, UNUSED),
   write("USED = "), nl, nl,
-  write_list(USED), nl, nl,
+  writeln_list(USED), nl, nl,
   write("UNUSED = "), nl, nl,
-  write_list(UNUSED), nl, nl.
+  writeln_list(UNUSED), nl, nl.
   
