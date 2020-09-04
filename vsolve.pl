@@ -32,7 +32,7 @@ rul_hint(sat_instgen_refutation, sat).
 rul_hint(unused_predicate_definition_removal, updr).
 rul_hint(avatar_split_clause, spl).
 rul_hint(inner_rewriting, inrw).
-rul_hint(inequality_splitting_name_introduction, isni).
+% rul_hint(inequality_splitting_name_introduction, isni).
 rul_hint(definition_folding, dff).
 rul_hint(definition_unfolding, dfu).
 rul_hint(choice_axiom, gaoc).
@@ -101,9 +101,8 @@ tup_inst(
   rul_hint(RUL, HINT).
 
 tup_inst(X, _) :-
-  write("Cannot process : "),
-  write(X), nl, nl,
-  throw(solution_failure).
+  write("Cannot process annotated formula = ~w\n", X),
+  throw(annotated_formula_processing_failure).
 
 compare_tups(ORD, (ID_A, _, _, _), (ID_B, _, _, _)) :- 
   atom_concat('f', TEMP_A, ID_A),
@@ -111,6 +110,9 @@ compare_tups(ORD, (ID_A, _, _, _), (ID_B, _, _, _)) :-
   atom_concat('f', TEMP_B, ID_B),
   atom_number(TEMP_B, NUM_B),
   compare(ORD, NUM_A, NUM_B).
+compare_tups(_, X, Y) :- 
+  format("Cannot compare ~w with ~w\n", [X,Y]),
+  throw(name_comparison_failure).
 
 reduce_gaocs([], []).
 

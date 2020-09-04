@@ -284,8 +284,8 @@ justified(_, $pos(FORM)) :- is_mono_fun(0, FORM).
 %   atom_number(FUNB, NUMB),
 %   NUMA \= NUMB.
 
-justified(C, $pos($rel(par(C), TERMS))) :- maplist_cut(counter_safe(C), TERMS).
-justified(C, $pos($not($rel(par(C), TERMS)))) :- maplist_cut(counter_safe(C), TERMS).
+%justified(C, $pos($rel(par(C), TERMS))) :- maplist_cut(counter_safe(C), TERMS).
+%justified(C, $pos($not($rel(par(C), TERMS)))) :- maplist_cut(counter_safe(C), TERMS).
 
 justified(C, $pos(FORM)) :- 
   strip_fas(FORM, ARI, $imp($ex(ANTE), CONS)), 
@@ -1136,7 +1136,7 @@ get_af(STRM, (NAME, ROLE, FORM, ANNOT)) :-
   get_name(STRM, NAME), 
   get_role(STRM, ROLE), 
   get_form(STRM, FORM), 
-  get_annot(STRM, ANNOT). 
+  get_annot(STRM, ANNOT).
 
 get_gt(STRM, ANNOT) :- 
   get_char(STRM, CH),

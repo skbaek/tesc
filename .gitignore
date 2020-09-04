@@ -9,6 +9,7 @@ sol_trace.pl
 test.pl
 log
 basic/target/
+tptp/target/
 ttp/target/
 ttv/target/
 esol_bak/

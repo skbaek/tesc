@@ -510,24 +510,24 @@ tup_insts(
     mk_tree_fwd(CTX, TGT, ANT, TREE),
     (
       write("Solution failed prematurely. "), 
-      report_sol_failure(CTX, (CID, TYPE, FORM, ANT)),
+      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
       false
     ),
     (
       write("Solution timed out. "), 
-      report_sol_failure(CTX, (CID, TYPE, FORM, ANT)),
+      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
       false
     )
   ),
   unroll_tree(0, TREE, _, PID, REV), 
   reverse([inf(rnm, [PID], CID, FORM) | REV], INSTS).
 
-report_sol_failure(_, ANT) :- 
+report_sol_failure(CTX, ANT) :- 
   format("Annotation = ~w\n", ANT), 
-  % open("sol_trace.pl", write, Stream), 
-  % format(Stream, '~w.\n\n', debug_ctx(CTX)), 
-  % format(Stream, '~w.\n\n', debug_ant(ANT)), 
-  % close(Stream),
+  open("sol_trace.pl", write, Stream), 
+  format(Stream, '~w.\n\n', debug_ctx(CTX)), 
+  format(Stream, '~w.\n\n', debug_ant(ANT)), 
+  close(Stream),
   true.
 
 tup_ctx((ID, _, FORM, _), CTX_I, CTX_O) :- 

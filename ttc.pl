@@ -10,11 +10,15 @@ solve(v, TSTP, SOL) :- vsolve(TSTP, SOL).
 
 % current_prolog_flag(argv, [_, PROVER, TPTP, TSTP, TESC | OPTS]), 
 ttc(SLVR, TPTP, TSTP, TESC) :-
+  writeln("Fetching problem..."),
   tptp_prob(TPTP, PROB), !,
+  writeln("Generating solution..."),
   solve(SLVR, TSTP, SOL), !,
   open(TESC, write, STRM, [encoding(octet)]),
   empty_assoc(EMP),
+  writeln("Constructing proof..."),
   prove((EMP, SOL, PROB, STRM, SLVR, nil), 0),
+  writeln("Proof complete."),
   close(STRM).
 
 main([SOLVER, TPTP, TSTP, TESC | OPTS]) :-
