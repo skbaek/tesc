@@ -716,16 +716,6 @@ write_conc_as_tptp(STRM, (ID, $neg(FORM))) :-
 
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
 
-infer(_, gps, PREMS, CONC, _) :- 
-  writeln("Invoking general proof search:"),
-  open('gps.tptp', write, STRM),
-  maplist_cut(write_prem_as_tptp(STRM), PREMS),
-  write_conc_as_tptp(STRM, CONC),
-  close(STRM),
-  call_prover(e, 'gps.tptp', 'gps.tstp', true),
-  list_to_assoc([CONC | PREMS], CTX),
-  ttc_cont()
-  
   
 
 infer(v, ig, [PREM], CONC, GOAL) :- 
@@ -1021,12 +1011,12 @@ originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C) :-
     30,
     infer(PRVR, orig, [(SCNT, $pos(FORM_P))], (CNT, $neg(FORM_C)), GOAL), 
     (
-      write("Subproof failed prematurely. "),
+      write("Origination failed prematurely. "),
       report_failure(verbose, PRVR, HINT, PREMS, (CNT, $neg(FORM)), none, none, GOAL), 
       false
     ),
     (
-      write("Subproof timed out. "),
+      write("Origination timed out. "),
       report_failure(fast, PRVR, HINT, PREMS, (CNT, $neg(FORM)), none, none, GOAL), 
       false
     )
@@ -1034,8 +1024,32 @@ originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C) :-
   ground_all($fun(c,[]), PRF),
   put_prf(STRM, PRF). 
 
-% subprove(STRM, PRVR, CNT, gps, PREMS, FORM) :- !,
+prems_ctx(PREMS, CTX) :-
+  empty_assoc(EMP),
+  prems_ctx(PREMS, EMP, CTX).
+  
+prems_ctx([], CTX, CTX).
+prems_ctx([(ID, SF) | PREMS], CTX_I, CTX_O) :-
+  put_assoc(ID, CTX_I, SF, CTX_T),
+  prems_ctx(PREMS, CTX_T, CTX_O).
 
+subprove(STRM, _, CNT, gps(SLVR), PREMS, FORM) :- !,
+  put_char(STRM, 'F'), 
+  put_form(STRM, FORM), 
+  num_succ(CNT, SUCC),
+  CONC = (CNT, $neg(FORM)),
+
+  writeln("Invoking general proof search:"),
+
+  open('gps.tptp', write, GPS_STRM),
+  maplist_cut(write_prem_as_tptp(GPS_STRM), PREMS),
+  write_conc_as_tptp(GPS_STRM, CONC),
+  close(GPS_STRM),
+
+  call_prover(SLVR, 'gps.tptp', 'gps.tstp', true),
+  prems_ctx([CONC | PREMS], CTX),
+  ttc_cont(STRM, SLVR, CTX, 'gps.tstp', SUCC).
+  
 
 subprove(STRM, PRVR, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
@@ -1377,10 +1391,13 @@ para_dist(PREM, CONC, GOAL) :-
     mate(HYP_TB, HYP_NTB, GOAL_NTB)
   ).  
 
-ttc_cont(STRM, CTX, TSTP, CNT) :-
-  solve_cont(TSTP, SOL), !,
+solve_cont(e, TSTP, CNT, SOL) :- esolve_cont(TSTP, CNT, SOL).
+solve_cont(v, TSTP, CNT, SOL) :- vsolve_cont(TSTP, CNT, SOL).
+
+ttc_cont(STRM, SLVR, CTX, TSTP, CNT) :-
+  solve_cont(SLVR, TSTP, CNT, SOL), !,
   empty_assoc(EMP),
-  prove(STRM, e, EMP, SOL, CTX, CNT).
+  prove(STRM, SLVR, EMP, SOL, CTX, CNT).
 %   prove(STRM, SLVR, PROB, SOL, EMP, 0), 
 %   writeln("Proof complete."),
 %   close(STRM).

@@ -34,6 +34,7 @@ pub enum Term {
 
 pub enum GT {
   Fun(String, Vec<GT>),
+  Num(String),
   List(Vec<GT>)
 }
 
@@ -135,7 +136,11 @@ pub fn put_gt<W: Write>(w: &mut W, t: &GT) -> Rst<()> {
       put_char(w,'^')?;
       put_string(w,&s)?;
       put_vec(w,&ts)
-    }
+    },
+    GT::Num(s) => {
+      put_char(w,'#')?;
+      put_string(w,&s)
+    },
     GT::List(ts) => {
       put_char(w,';')?;
       put_vec(w,&ts)
@@ -612,6 +617,9 @@ fn conv_general_data (d: GeneralData) -> Rst<GT> {
     GeneralData::Atomic(a) => Ok(GT::Fun(conv_atomic_word(a),vec![])),
     GeneralData::Function(f) => {
       Ok(GT::Fun(conv_atomic_word(f.word),conv_general_terms(f.terms)?))
+    },
+    GeneralData::Number(x) => {
+      Ok(GT::Num(conv_number(x)))
     },
     _ => unimplemented!()
   }

@@ -58,6 +58,15 @@ pred_def_norm(PRD, $iff(ATOM, FORM), ARI, $iff(ATOM, FORM)) :-
   ATOM = $rel(PRD, TERMS),
   length(TERMS, ARI).
 
+% tup_insts_cont(_, (CID, axiom, FORM, some(file(_, PID))), [PID], [inf(orig, [PID], CID, FORM)]) :- !.
+% tup_insts_cont(CTX, AF, [], INSTS) :- tup_insts(CTX, AF, INSTS).
+tup_inst_cont(
+  (CID, axiom, FORM, some(file(_, PID))),
+  [PID],
+  inf(orig, [PID], CID, FORM) 
+) :- !.
+tup_inst_cont(AF, [], INST) :- tup_inst(AF, INST).
+
 tup_inst(
   (CNM, axiom, FORM, some(file(_, PNM))),
   orig(PNM, CNM, FORM) 
@@ -149,3 +158,22 @@ vsolve(TSTP, SOL) :-
   maplist_cut(tup_inst, SORTED, INSTS), !,
   reduce_gaocs(INSTS, REDUCED),
   relabel(REDUCED, SOL).
+
+vsolve_cont(TSTP, CNT, SOL) :- 
+  tptp_sol(TSTP, UNSORTED), !,
+  predsort(compare_tups, UNSORTED, SORTED), !,
+  maplist_cut(tup_inst_cont, SORTED, IDSS, INSTS), !,
+  append(IDSS, IDS),
+  reduce_gaocs(INSTS, REDUCED),
+  empty_assoc(EMP),
+  foldl([ID,NDICT_I,NDICT_O]>>put_assoc(ID, NDICT_I, ID, NDICT_O), IDS, EMP, NDICT),
+  relabel_sol((EMP, EMP), NDICT, CNT, REDUCED, SOL).
+
+  %  tptp_sol(TSTP, TUPS), !, 
+  %  tups_ctx(TUPS, FUT),
+  %  maplist_cut(tup_insts_cont(FUT), TUPS, IDSS, INSTSS),
+  %  append(IDSS, IDS),
+  %  empty_assoc(EMP),
+  %  foldl([ID,NDICT_I,NDICT_O]>>put_assoc(ID, NDICT_I, ID, NDICT_O), IDS, EMP, NDICT),
+  %  append(INSTSS, APPENDED),
+  %  relabel_sol((EMP, EMP), NDICT, CNT, APPENDED, SOL).

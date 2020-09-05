@@ -98,7 +98,7 @@ mk_tree_fwd(CTX, inference(RUL, _, [ANT_A, ANT_B]), btr(TREE_A, TREE_B, HINT, CO
   mk_root(RUL, CONC_A, CONC_B, HINT, CONC).
 
 mk_tree_fwd(CTX, ID, ntr(ID, FORM)) :- 
-  atom(ID), !,
+  (atom(ID) ; number(ID)), !,
   get_assoc(ID, CTX, $pos(FORM)).
 
 mk_tree_fwd(CTX, TGT, ANT, TREE) :- 
@@ -491,6 +491,9 @@ unroll_tree(
   unroll_hint(HINT, FI_2, SID, MID, SF, FI_O, CID, PFX),
   append([PFX, MFX, SFX], INSTS).
 
+tup_insts_cont(_, (CID, axiom, FORM, some(file(_, PID))), [PID], [inf(orig, [PID], CID, FORM)]) :- !.
+tup_insts_cont(CTX, AF, [], INSTS) :- tup_insts(CTX, AF, INSTS).
+  
 tup_insts(
   _,
   (CID, axiom, FORM, some(ANNOT)),
@@ -542,9 +545,9 @@ tup_insts(
       reverse([inf(rnm, [PNM], CNM, FORM) | REV], INSTS)
     ),
     (
-      format("Failed to expand instruction = ~w, relegating proof...\n", CNM),
+      format("Failed to expand instruction = ~w, relegating proof...\n", ANT),
       ant_names(ANT, NAMES),
-      INSTS = [inf(gps, NAMES, CNM, FORM)]
+      INSTS = [inf(gps(v), NAMES, CNM, FORM)]
     )
   ).
 
@@ -565,7 +568,17 @@ tups_ctx(TUPS, CTX) :-
   
 esolve(TSTP, SOL) :- 
   tptp_sol(TSTP, TUPS), !, 
-  tups_ctx(TUPS, CTX),
-  maplist_cut(tup_insts(CTX), TUPS, INSTSS),
+  tups_ctx(TUPS, FUT),
+  maplist_cut(tup_insts(FUT), TUPS, INSTSS),
   append(INSTSS, APPENDED),
   relabel(APPENDED, SOL).
+
+esolve_cont(TSTP, CNT, SOL) :- 
+  tptp_sol(TSTP, TUPS), !, 
+  tups_ctx(TUPS, FUT),
+  maplist_cut(tup_insts_cont(FUT), TUPS, IDSS, INSTSS),
+  append(IDSS, IDS),
+  empty_assoc(EMP),
+  foldl([ID,NDICT_I,NDICT_O]>>put_assoc(ID, NDICT_I, ID, NDICT_O), IDS, EMP, NDICT),
+  append(INSTSS, APPENDED),
+  relabel_sol((EMP, EMP), NDICT, CNT, APPENDED, SOL).

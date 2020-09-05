@@ -1134,9 +1134,12 @@ get_af(STRM, (NAME, ROLE, FORM, ANNOT)) :-
   get_form(STRM, FORM), 
   get_annot(STRM, ANNOT).
 
-get_gt(STRM, ANNOT) :- 
+get_gt(STRM, GT) :- 
   get_char(STRM, CH),
-  get_gt(STRM, CH, ANNOT).
+  get_gt(STRM, CH, GT).
+get_gt(STRM, '#', NUM) :-
+  get_string(STRM, STR),
+  number_string(NUM, STR).
 get_gt(STRM, '^', ANNOT) :-
   get_atom(STRM, FUN),
   get_gts(STRM, GTS), 
