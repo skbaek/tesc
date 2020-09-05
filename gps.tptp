@@ -1,8 +1,0 @@
-fof(335, axiom, (! [X0] : (! [X1] : (join(X0,complement(join(X1,X0))) = join(X0,complement(X1)))))).
-fof(338, axiom, (! [X0] : (! [X1] : (join(X0,join(X1,complement(join(X1,X0)))) = top)))).
-fof(149, axiom, (complement(top) = zero)).
-fof(217, axiom, (! [X0] : (join(zero,X0) = X0))).
-fof(28, axiom, (! [X0] : (! [X1] : (! [X2] : (join(X0,join(X1,X2)) = join(join(X0,X1),X2)))))).
-fof(31, axiom, (! [X0] : (! [X1] : (join(X0,X1) = join(X1,X0))))).
-fof(341, axiom, (! [X0] : (! [X1] : (join(complement(X0),complement(join(X1,X0))) = complement(X0))))).
-fof(358, conjecture, (! [X0] : (! [X1] : (join(X0,complement(join(X0,X1))) = join(X0,complement(X1)))))).

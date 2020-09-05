@@ -1,4 +1,4 @@
-:- [basic, esolve, vsolve].
+:- [basic].
 
 term_poseq_term(Var, _) :- var(Var), !.
 term_poseq_term(_, Var) :- var(Var), !.
@@ -704,29 +704,7 @@ gs(PREMS, CONCS, ([PREM], GOAL)) :-
 inrw(EQ, ([PREM], GOAL), CONC) :- 
   subst_rel_add([EQ], PREM, CONC, GOAL).
 
-write_prem_as_tptp(STRM, (ID, $pos(FORM))) :- 
-  maplist_cut(write(STRM), ["fof(", ID, ", axiom, "]),
-  write_form_as_tptp(STRM, 0, FORM),
-  write(STRM, ").\n").
-
-write_conc_as_tptp(STRM, (ID, $neg(FORM))) :- 
-  maplist_cut(write(STRM), ["fof(", ID, ", conjecture, "]),
-  write_form_as_tptp(STRM, 0, FORM),
-  write(STRM, ").\n").
-
 %%%%%%%%%%%%%%%% MAIN PROOF COMPILATION %%%%%%%%%%%%%%%%
-
-infer(_, gps, PREMS, CONC, _) :- 
-  writeln("Invoking general proof search:"),
-  open('gps.tptp', write, STRM),
-  maplist_cut(write_prem_as_tptp(STRM), PREMS),
-  write_conc_as_tptp(STRM, CONC),
-  close(STRM),
-  call_prover(e, 'gps.tptp', 'gps.tstp', true),
-  list_to_assoc([CONC | PREMS], CTX),
-  ttc_cont()
-  
-  
 
 infer(v, ig, [PREM], CONC, GOAL) :- 
   rp([d], [CONC], GOAL, [CONC_N], GOAL_A), 
@@ -1033,9 +1011,6 @@ originate(STRM, PRVR, NAME, FORM_P, CNT, FORM_C) :-
   ), !,
   ground_all($fun(c,[]), PRF),
   put_prf(STRM, PRF). 
-
-% subprove(STRM, PRVR, CNT, gps, PREMS, FORM) :- !,
-
 
 subprove(STRM, PRVR, CNT, HINT, PREMS, FORM) :-   
   % format("Adding lemma ~w\n\n", CID),
@@ -1376,13 +1351,3 @@ para_dist(PREM, CONC, GOAL) :-
     ap(CONC, r, GOAL_TB, HYP_NTB, GOAL_NTB), 
     mate(HYP_TB, HYP_NTB, GOAL_NTB)
   ).  
-
-ttc_cont(STRM, CTX, TSTP, CNT) :-
-  solve_cont(TSTP, SOL), !,
-  empty_assoc(EMP),
-  prove(STRM, e, EMP, SOL, CTX, CNT).
-%   prove(STRM, SLVR, PROB, SOL, EMP, 0), 
-%   writeln("Proof complete."),
-%   close(STRM).
-
-% main :- 

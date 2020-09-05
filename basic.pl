@@ -1,6 +1,5 @@
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
-
 timed_call(TIME, GOAL, ALT) :- timed_call(TIME, GOAL, ALT, ALT). 
   
 timed_call(TIME, GOAL, EARLY, LATE) :- 
@@ -17,12 +16,7 @@ ground_all(TERM, EXP) :-
   term_variables(EXP, VARS),
   maplist_cut('='(TERM), VARS).
 
-% list_head_last([ELEM], [], ELEM) :- !.
-% list_head_last([ELEM | LIST], [ELEM | REST], LAST) :- 
-%   list_head_last(LIST, REST, LAST). 
-% 
-% zip([], [], [], []).
-% zip([A | AS], [B | BS], [C | CS], [(A, B, C) | ABCS]) :- zip(AS, BS, CS, ABCS).
+
 
 %%%%%%%%%%%%%%%% SYNTACTIC %%%%%%%%%%%%%%%% 
 
@@ -2130,72 +2124,6 @@ any_line_path(PATH, GOAL) :-
     any_line_strm(STRM, GOAL), 
     close(STRM) 
   ).
-
-
-bct_as_tptp(or, " | ").
-bct_as_tptp(and, " & ").
-bct_as_tptp(imp, " => ").
-bct_as_tptp(iff, " <=> ").
-
-write_bct_as_tptp(STRM, BCT) :- 
-  bct_as_tptp(BCT, STR),
-  write(STRM, STR).
-
-write_qtf_as_tptp(STRM, fa) :- write(STRM, '!').
-write_qtf_as_tptp(STRM, ex) :- write(STRM, '?').
-
-write_form_as_tptp(STRM, NUM, $not(FORM)) :- 
-  write(STRM, '~'), !,
-  write_form_as_tptp(STRM, NUM, FORM).
-
-write_form_as_tptp(STRM, NUM, FORM) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), !, 
-  write(STRM, '('), 
-  write_form_as_tptp(STRM, NUM, FORM_A), 
-  write_bct_as_tptp(STRM, BCT), 
-  write_form_as_tptp(STRM, NUM, FORM_B), 
-  write(STRM, ')'). 
-  
-write_form_as_tptp(STRM, NUM, FORM) :- 
-  decom_qtf(FORM, QTF, SUB), !, 
-  write(STRM, '('), 
-  write_qtf_as_tptp(STRM, QTF), 
-  write(STRM, " [X"), 
-  write(STRM, NUM),
-  write(STRM, "] : "),
-  num_succ(NUM, SUCC),
-  write_form_as_tptp(STRM, SUCC, SUB), 
-  write(STRM, ')'). 
-  
-write_form_as_tptp(STRM, NUM, $rel(=, [TERM_A, TERM_B])) :- !,  
-  write(STRM, "("),
-  write_term_as_tptp(STRM, NUM, TERM_A),
-  write(STRM, " = "),
-  write_term_as_tptp(STRM, NUM, TERM_B),
-  write(STRM, ")").
-
-write_form_as_tptp(STRM, NUM, $rel(REL, TERMS)) :- 
-  write_term(STRM, REL, [quoted(true)]),
-  write_terms_as_tptp(STRM, NUM, TERMS).
-
-write_term_as_tptp(STRM, _, $dst(STR)) :- 
-  write_list(STRM, ['"', STR, '"']).
-
-write_term_as_tptp(STRM, CNT, $var(NUM)) :- 
-  IDX is (CNT - (NUM + 1)),
-  write(STRM, 'X'),
-  write(STRM, IDX).
-
-write_term_as_tptp(STRM, NUM, $fun(FUN, TERMS)) :- 
-  write_term(STRM, FUN, [quoted(true)]), !,
-  write_terms_as_tptp(STRM, NUM, TERMS).
-
-write_terms_as_tptp(_, _, []) :- !.
-write_terms_as_tptp(STRM, NUM, [TERM | TERMS]) :- !,
-  write(STRM, '('),
-  write_term_as_tptp(STRM, NUM, TERM), 
-  maplist_cut({STRM}/[X]>>(write(STRM, ","), write_term_as_tptp(STRM, NUM, X)), TERMS),
-  write(STRM, ')').
 
 concat_shell(LIST, EXST) :- 
   atomic_list_concat(LIST, CMD),
