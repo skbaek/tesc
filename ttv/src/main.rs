@@ -9,8 +9,7 @@ use tptp::syntax::*;
 use tptp::parsers::TPTPIterator;
 use basic::*;
 
-type SignForm = (bool, Rc<Form>);
-type Problem = HashMap<NM, Form>;
+type Problem = HashMap<NM, Rc<Form>>;
 
 fn mk_vars_asc(k: u64) -> Vec<Term> {
   (0..k).map(|x| Term::Var(x)).collect()
@@ -163,16 +162,23 @@ fn symm_axiom(f: &Form) -> bool {
   }
 }
 
-fn justified(k: u64, b: bool, f: &Form) -> bool {
-  (b && *f == Form::Cst(true)) ||
-  (!b && *f == Form::Cst(false)) ||
-  (b && refl_axiom(f)) ||
-  (b && symm_axiom(f)) ||
-  (b && trans_axiom(f)) ||
-  (b && mono_rel(f)) ||
-  (b && mono_fun(f)) ||
-  (b && choice_axiom(k,f)) ||
-  (b && pred_def(k,f)) 
+fn is_not_false(f: &Form) -> bool {
+  match &*f {
+    Form::Not(g) => **g == Form::Cst(false),
+    _ => false
+  }
+}
+
+fn justified(k: u64, f: &Form) -> bool {
+  (*f == Form::Cst(true)) ||
+  is_not_false(f) ||
+  refl_axiom(f) ||
+  symm_axiom(f) ||
+  trans_axiom(f) ||
+  mono_rel(f) ||
+  mono_fun(f) ||
+  choice_axiom(k,f) ||
+  pred_def(k,f) 
 }
 
 fn symb_below(k: u64, f: &FS) -> bool {
@@ -181,6 +187,10 @@ fn symb_below(k: u64, f: &FS) -> bool {
     _ => true
   }
 }
+
+// fn not_rc(f: Form) -> Form { Form::Not(Rc::new(f)) }
+fn rc_not(f: Rc<Form>) -> Rc<Form> { Rc::new(Form::Not(f)) }
+fn rc_not_rc(f: Form) -> Rc<Form> { Rc::new(Form::Not(Rc::new(f))) }
 
 fn term_below(k: u64, t: &Term) -> bool {
   match t {
@@ -225,51 +235,83 @@ fn mk_par_term(n: u64, ts: Vec<Term>) -> Term {
   Term::Fun(Rc::new(FS::Par(n)), ts)
 }
 
-fn ab(d: Dir, x: &SignForm) -> SignForm {
-  match (d, x.0, &*x.1) {
-    (Dir::Lft, false, Form::Bct(Bct::Or, f,_)) => (false, f.clone()),
-    (Dir::Rgt, false, Form::Bct(Bct::Or, _,f)) => (false, f.clone()),
-    (Dir::Lft, true, Form::Bct(Bct::And, f,_)) => (true, f.clone()),
-    (Dir::Rgt, true, Form::Bct(Bct::And, _,f)) => (true, f.clone()),
-    (Dir::Lft, false, Form::Bct(Bct::Imp, f,_)) => (true, f.clone()),
-    (Dir::Rgt, false, Form::Bct(Bct::Imp, _,f)) => (false, f.clone()),
-    (Dir::Lft, true, Form::Bct(Bct::Iff, f,g)) => (true, Rc::new(Form::Bct(Bct::Imp, f.clone(),g.clone()))),
-    (Dir::Rgt, true, Form::Bct(Bct::Iff, f,g)) => (true, Rc::new(Form::Bct(Bct::Imp, g.clone(),f.clone()))),
+fn ab(d: Dir, f: Rc<Form>) -> Rc<Form> {
+  match (d,&*f) {
+    (Dir::Lft, Form::Not(g)) => {
+      match &**g {
+        Form::Bct(Bct::Or, h,_) => rc_not(h.clone()),
+        Form::Bct(Bct::Imp,h,_) => h.clone(),
+        _ => panic!("Not an A-formula")
+      }
+    },
+    (Dir::Rgt, Form::Not(g)) => {
+      match &**g {
+        Form::Bct(Bct::Or, _,h) => rc_not(h.clone()),
+        Form::Bct(Bct::Imp,_,h) => rc_not(h.clone()),
+        _ => panic!("Not an A-formula")
+      }
+    },
+    (Dir::Lft, Form::Bct(Bct::And,g,_)) => g.clone(),
+    (Dir::Rgt, Form::Bct(Bct::And,_,g)) => g.clone(),
+    (Dir::Lft, Form::Bct(Bct::Iff,g,h)) => Rc::new(Form::Bct(Bct::Imp,g.clone(),h.clone())),
+    (Dir::Rgt, Form::Bct(Bct::Iff,g,h)) => Rc::new(Form::Bct(Bct::Imp,h.clone(),g.clone())),
     _ => panic!("Not an A-formula")
   }
 }
 
-fn bb(x: &SignForm) -> (SignForm, SignForm) {
-  match (x.0,&*x.1) {
-    (true,  Form::Bct(Bct::Or, f,g))  => ((true, f.clone()), (true, g.clone())),
-    (false, Form::Bct(Bct::And, f,g)) => ((false,f.clone()), (false,g.clone())),
-    (true,  Form::Bct(Bct::Imp, f,g)) => ((false,f.clone()), (true, g.clone())),
-    (false, Form::Bct(Bct::Iff, f,g)) => ((false,Rc::new(Form::Bct(Bct::Imp, f.clone(),g.clone()))), (false,Rc::new(Form::Bct(Bct::Imp, g.clone(),f.clone())))),
+fn bb(f: Rc<Form>) -> (Rc<Form>, Rc<Form>) {
+  match &*f {
+    Form::Not(g) => {
+      match &**g {
+        Form::Bct(Bct::And,i,j) => (rc_not(i.clone()),rc_not(j.clone())), 
+        Form::Bct(Bct::Iff,i,j) => (
+          rc_not_rc(Form::Bct(Bct::Imp,i.clone(),j.clone())),
+          rc_not_rc(Form::Bct(Bct::Imp,j.clone(),i.clone()))
+        ),
+        _ => panic!("Not a B-formula")
+      }
+    },
+    Form::Bct(Bct::Or,f,g)  => (f.clone(), g.clone()),
+    Form::Bct(Bct::Imp,f,g) => (rc_not(f.clone()), g.clone()),
     _ => panic!("Not a B-formula")
   }
 }
 
-fn cb(t: Term, x: &SignForm) -> SignForm {
-  match (x.0,&*(x.1)) {
-    (true,  Form::Qtf(Qtf::Fa, g)) =>(true, Rc::new(substform(0,&t,&*g))),
-    (false, Form::Qtf(Qtf::Ex, g)) =>(false,Rc::new(substform(0,&t,&*g))),
+fn cb(t: Term, f: Rc<Form>) -> Rc<Form> {
+  match &*f {
+    Form::Qtf(Qtf::Fa,g) => Rc::new(substform(0,&t,&*g)),
+    Form::Not(g) => {
+      match &**g {
+        Form::Qtf(Qtf::Ex,h) => rc_not_rc(substform(0,&t,&*h)),
+        _ => panic!("Not a C-formula")
+      }
+    },
     _ => panic!("Not a C-formula")
   }
 }
 
-fn db(n: u64, x: &SignForm) -> SignForm {
-  match (x.0,&*x.1) {
-    (false,Form::Qtf(Qtf::Fa, g)) => (false,Rc::new(substform(0,&mk_par_term(n,vec![]),&*g))),
-    (true, Form::Qtf(Qtf::Ex, g)) => (true, Rc::new(substform(0,&mk_par_term(n,vec![]),&*g))),
+fn db(n: u64, f: Rc<Form>) -> Rc<Form> {
+  match &*f {
+    Form::Qtf(Qtf::Ex,g) => Rc::new(substform(0,&mk_par_term(n,vec![]),&*g)),
+    Form::Not(g) => {
+      match &**g {
+        Form::Qtf(Qtf::Fa,h) => rc_not_rc(substform(0,&mk_par_term(n,vec![]),&*h)),
+        _ => panic!("Not a D-formula")
+      }
+    },
     _ => panic!("Not a D-formula")
   }
 }
 
-fn sb(x: &SignForm) -> SignForm {
-  match (x.0,&*x.1) {
-    (false,Form::Not(g)) => (true, g.clone()),
-    (true, Form::Not(g)) => (false,g.clone()),
-    _ => panic!("Not an S-formula")
+fn nb(f: Rc<Form>) -> Rc<Form> {
+  match &*f {
+    Form::Not(g) => {
+      match &**g {
+        Form::Not(h) => h.clone(),
+        _ => panic!("Not a N-formula")
+      }
+    },
+    _ => panic!("Not a N-formula")
   }
 }
 
@@ -319,24 +361,24 @@ fn substform(n: u64, t: &Term, f: &Form) -> Form {
   }
 }
 
-fn get_from_prob<'a>(p: &'a Problem, n: &NM) -> Result<&'a Form, String> {
+fn get_from_prob<'a>(p: &'a Problem, n: &NM) -> Rst<Rc<Form>> {
   match p.get(n) {
-    Some(f) => Ok(f),
+    Some(f) => Ok(f.clone()),
     None => Err(format!("Cannot find premise in problem with name = {:?}", n))
   }
 }
 
-fn get_from_context<'a>(ctx: &'a Vec<SignForm>, i: u64) -> Result<&'a SignForm, String> {
+fn get_from_context<'a>(ctx: &'a Vec<Rc<Form>>, i: u64) -> Rst<Rc<Form>> {
   match ctx.get(i as usize) {
-    Some(x) => Ok(x),
+    Some(x) => Ok(x.clone()),
     _ => err_str("Cannot find premise in context")
   }
 }
 
 fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
     
-  let mut ctx: Vec<SignForm> = vec![];
-  let mut conts: Vec<(u64, SignForm)> = vec![];
+  let mut ctx: Vec<Rc<Form>> = vec![];
+  let mut conts: Vec<(u64, Rc<Form>)> = vec![];
 
   loop {
     match get_char(bs)? {
@@ -370,58 +412,58 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         let c = db(ctx.len() as u64,p);
         ctx.push(c);
       },
-      'N' => {
+      'H' => {
         let n = get_nm(bs)?; 
-        let f = get_from_prob(&prob, &n)?;
-        ctx.push((true, Rc::new(f.clone())));
+        let f: Rc<Form> = get_from_prob(&prob, &n)?;
+        ctx.push(f.clone());
       },
-      'F' => {
+      'S' => {
         let f = get_form(bs)?;
         if !ground_form(0, &f)  { return err_str("Cut formula is not ground.") };
         if !form_below((ctx.len()+1) as u64, &f) { return err_str("Cut formula contains OOB parameter.") };
         let x = Rc::new(f);
-        conts.push((ctx.len() as u64, (true, x.clone()))); 
-        ctx.push((false, x));
+        conts.push((ctx.len() as u64, x.clone())); 
+        ctx.push(rc_not(x));
       },
-      'S' => {
+      'N' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
-        let c = sb(p);
+        let c = nb(p);
         ctx.push(c);
       },
       'T' => {
-        let s = get_sign(bs)?;
+        // let s = get_sign(bs)?;
         let f = get_form(bs)?;
         if !ground_form(0,&f) { return err_str("Axiom is not ground.") };
         if !form_below((ctx.len()+1) as u64,&f) { return Err(format!("{:?} =< Parameter in axiom = {:?}", ctx.len(), f)) };
-        if !justified(ctx.len() as u64,s,&f) { return err_str("Axiom unjustified.") };
-        ctx.push((s, Rc::new(f)));
+        if !justified(ctx.len() as u64, &f) { return err_str("Axiom unjustified.") };
+        ctx.push(Rc::new(f));
       },
       'X' => { 
         let pi = get_u64(bs)?; 
         let ni = get_u64(bs)?; 
-        match get_from_context(&ctx, pi)? {
-          (true,pfrm) => {
-            match get_from_context(&ctx, ni)? {
-              (false,nfrm) => {
-                if **pfrm == **nfrm { 
-                  match conts.pop() {
-                    Some((lth, sf)) => {
-                      ctx.truncate(lth as usize);
-                      ctx.push(sf);
-                    },
-                    None => return Ok(())
-                  }
-                }
-                else { return Err(format!("Branch closure error:\npositive = {:?}\nnegative = {:?}\n", pfrm, nfrm)) }
+        let pf = get_from_context(&ctx, pi)?;
+        match &*get_from_context(&ctx, ni)? {
+          Form::Not(nf) => {
+            if *pf == **nf { 
+              match conts.pop() {
+                Some((lth, sf)) => {
+                  ctx.truncate(lth as usize);
+                  ctx.push(sf);
+                },
+                None => return Ok(())
               }
-              _ => return err_str("Second premise of X-rule not negative.")
             }
-          },
-          _ => return err_str("First premise of X-rule not positive.")
+            else { 
+              return Err(format!("Branch closure error. Positive = {:?} : {:?}. Negative = {:?} : Not({:?})", pi, pf, ni, nf)) 
+            }
+          }
+          g => {
+            return Err(format!("Branch closure error. Positive = {:?} : {:?}. Negative = {:?} : {:?}", pi, pf, ni, g)) 
+          }
         }
       },
-      _ => return err_str("Invalid head character of subproof.")
+      c => return Err(format!("Invalid head character of subproof = {:?}", c))
     }
   }
 }
@@ -431,7 +473,7 @@ fn add_tptp_input(t: TPTPInput, pb: &mut Problem) -> Rst<()> {
     TPTPInput::Annotated(a) => {
       let (n,_,f,_) = conv_annotated_formula(a)?;
       if !ground_form(0, &f) { return err_str("Added formula is not ground.") };
-      match pb.insert(n,f) {
+      match pb.insert(n,Rc::new(f)) {
         Some(_) => err_str("Duplicate name found"),
         None => {
           Ok(())

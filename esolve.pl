@@ -26,8 +26,8 @@ bind_all_pars(FORM_I, FORM_O) :-
 
 entails(SF, SF, rnm).
 entails(PREM, CONC, para) :- para(((prem, PREM), (conc, CONC), (_, 0))).
-entails(PREM, CONC, para_e1) :- para_e1(((prem, $pos(PREM)), (conc, $neg(CONC)), (_, 0))).
-entails(PREM, CONC, eqr) :- eqr((prem, $pos(PREM)), (conc, $neg(CONC)), (_, 0)).
+entails(PREM, CONC, para_e1) :- para_e1(((prem, PREM), (conc, $not(CONC)), (_, 0))).
+entails(PREM, CONC, eqr) :- eqr((prem, PREM), (conc, $not(CONC)), (_, 0)).
 
 tree_conc(ntr(_, SF), SF).
 tree_conc(utr(_, _, SF), SF).
@@ -92,7 +92,7 @@ mk_tree_fwd(CTX, inference(RUL, _, [ANT_A, ANT_B]), btr(TREE_A, TREE_B, HINT, CO
 
 mk_tree_fwd(CTX, ID, ntr(ID, FORM)) :- 
   atom(ID), !,
-  get_assoc(ID, CTX, $pos(FORM)).
+  get_assoc(ID, CTX, FORM).
 
 mk_tree_fwd(CTX, TGT, ANT, TREE) :- 
   mk_tree_fwd(CTX, ANT, SUB), 
@@ -138,7 +138,7 @@ split_equiv(EQV, IMP) :-
 
 eq_resolve(FORM_I, FORM_O) :- 
   inst_with_lvs(FORM_I, BODY_I), 
-  cf_lits(BODY_I, LITS),
+  cla_lits(BODY_I, LITS),
   pluck(LITS, $not($rel('=', [LHS, RHS])), REST), 
   unify_with_occurs_check(LHS, RHS), 
   mk_cf(REST, BODY_O),
@@ -321,7 +321,7 @@ nst_orient(sr, HYP_L, HYP_R, HYP_R, HYP_L).
 nst_orient(sr, HYP_L, HYP_R, HYP_L, HYP_R).
 
 unify_atom(ATOM_A, ATOM_B) :- 
-  erient_form(ATOM_A, TEMP), 
+  orient_atom(ATOM_A, TEMP), 
   unify_with_occurs_check(TEMP, ATOM_B).
 
 fold_definition(NUM, ATOM, BODY, $not(FORM), $not(NORM)) :- 
@@ -354,7 +354,7 @@ mk_root(shift_quantors, FORM, para_push, NORM) :- push_qtf(FORM, NORM).
 mk_root(fof_nnf, FORM, fnnf, NORM) :- fnnf(FORM, NORM), !.
 mk_root(evalgc, FORM, rnm, FORM).
 mk_root(variable_rename, FORM, rnm, FORM).
-mk_root(fof_simplification, FORM, simp, NORM) :- esimp(FORM, NORM), !.
+mk_root(fof_simplification, FORM, simp, NORM) :- bool_norm(FORM, NORM), !.
 mk_root(split_conjunct, FORM, scj, NORM) :- conjunct(FORM, NORM).
 mk_root(split_equiv, FORM, speq, NORM) :- split_equiv(FORM, NORM).
 mk_root(cn, FORM, paratf, NORM) :- bool_norm(FORM, NORM), !.
@@ -362,17 +362,17 @@ mk_root(er, FORM, eqr, NORM) :- eq_resolve(FORM, NORM).
 
 mk_root(ef, FORM_I, eqf, FORM_O) :- 
   inst_with_lvs(FORM_I, BODY_I),
-  cf_lits(BODY_I, LITS), 
+  cla_lits(BODY_I, LITS), 
   pluck(2, LITS, [LIT_L, LIT_R], REST),
   permutation([LIT_L, LIT_R], [LIT_A, LIT_B]),
-  erient_form(LIT_A, LIT_AT),
+  orient_literal(LIT_A, LIT_AT),
   compute_eqn_form(LIT_AT, LIT_B, some((LHS, RHS))), 
   mk_cf([$not($rel('=', [LHS, RHS])), LIT_B | REST], BODY_O), 
   close_lvs(BODY_O, FORM_O).
   
 mk_root(ef, FORM_I, sbsm, FORM_O) :- 
   inst_with_lvs(FORM_I, BODY_I),
-  cf_lits(BODY_I, LITS), 
+  cla_lits(BODY_I, LITS), 
   pluck(2, LITS, [LIT_A, LIT_B], REST),
   unify_with_occurs_check(LIT_A, LIT_B), 
   mk_cf([LIT_A | REST], BODY_O), 
@@ -393,9 +393,9 @@ mk_root(apply_def, FORM_A, FORM_B, dff, FORM_C) :- !,
 mk_root(RUL, FORM_A, FORM_B, (sup, l), FORM) :- 
   member(RUL, [pm, rw, sr]),
   inst_with_lvs(FORM_A, BODY_A),
-  cf_lits(BODY_A, LITS_A), 
+  cla_lits(BODY_A, LITS_A), 
   inst_with_lvs(FORM_B, BODY_B),
-  cf_lits(BODY_B, LITS_B),  
+  cla_lits(BODY_B, LITS_B),  
   pluck(LITS_B, LIT_B, REST_B),
   orient_equation(LIT_B, $rel('=', [LHS, RHS])),
   pluck(LITS_A, LIT_A, REST_A),
@@ -409,8 +409,8 @@ mk_root(RUL, FORM_A, FORM_B, res, FORM) :-
   inst_with_lvs(FORM_A, BODY_A),
   inst_with_lvs(FORM_B, BODY_B),
   nst_orient(RUL, BODY_A, BODY_B, BODY_L, BODY_R),
-  cf_lits(BODY_L, LITS_L), 
-  cf_lits(BODY_R, LITS_R), 
+  cla_lits(BODY_L, LITS_L), 
+  cla_lits(BODY_R, LITS_R), 
   pluck(LITS_L, $not(ATOM_L), REST_L),
   pluck(LITS_R, ATOM_R, REST_R),
   unify_atom(ATOM_L, ATOM_R),
@@ -531,7 +531,7 @@ report_sol_failure(CTX, ANT) :-
   true.
 
 tup_ctx((ID, _, FORM, _), CTX_I, CTX_O) :- 
-  put_assoc(ID, CTX_I, $pos(FORM), CTX_O).
+  put_assoc(ID, CTX_I, FORM, CTX_O).
 
 tups_ctx(TUPS, CTX) :- 
   empty_assoc(EMP), 

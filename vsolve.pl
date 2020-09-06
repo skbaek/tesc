@@ -21,7 +21,7 @@ rul_hint(condensation, sbsm).
 rul_hint(negated_conjecture, para_clausal).  
 rul_hint(flattening, para_clausal).  
 rul_hint(ennf_transformation, paras).  
-rul_hint(rectify, parav).
+rul_hint(rectify, para_vac).
 rul_hint(true_and_false_elimination, paratf).
 rul_hint(unit_resulting_resolution, gs).
 rul_hint(global_subsumption, gs).
@@ -45,7 +45,7 @@ rul_hint(RUL, _) :-
 lit_arity($not($rel(_, TERMS)), ARI) :- length(TERMS, ARI).
 lit_arity($rel(_, TERMS), ARI) :- length(TERMS, ARI).
 
-pred_def_norm_or($or(FORM, $not(ATOM)), FORM, ATOM) :- unsigned_atom(ATOM).
+pred_def_norm_or($or(FORM, $not(ATOM)), FORM, ATOM) :- atomic_form(ATOM).
 pred_def_norm_or($or(FORM_A, FORM_B), $or(FORM_A, FORM_C), ATOM) :- 
   pred_def_norm_or(FORM_B, FORM_C, ATOM).
 
@@ -141,7 +141,7 @@ get_adds(ARI, VARS, NUM, $ex(ANTE), CONS, [aoc(NUM) | NAMES], [skm(FUN, ARI, aoc
 get_adds(ARI, _, _, ANTE, CONS, [], []) :- 
   add_fas(ARI, ANTE, ANTE_N), 
   add_fas(ARI, CONS, CONS_N), 
-  paral((($par(0), $pos(ANTE_N)), ($par(1), $neg(CONS_N)), (_, 2))).
+  para_lax((($par(0), ANTE_N), ($par(1), $not(CONS_N)), (_, 2))).
 
 vsolve(TSTP, SOL) :- 
   tptp_sol(TSTP, UNSORTED), !,

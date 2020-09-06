@@ -196,13 +196,13 @@ fn get_fs(bs: FileBytes) -> Rst<FS> {
   }
 }
 
-pub fn get_sign(bs: FileBytes) -> Rst<bool> {
-  match get_char(bs)? {
-    '+' => Ok(true),
-    '-' => Ok(false),
-    _ => err_str("Cannot parse sign")
-  }
-}
+// pub fn get_sign(bs: FileBytes) -> Rst<bool> {
+//   match get_char(bs)? {
+//     '+' => Ok(true),
+//     '-' => Ok(false),
+//     _ => err_str("Cannot parse sign")
+//   }
+// }
 
 pub fn get_u64(bs : FileBytes) -> Rst<u64> {
   let s = get_string(bs)?;
