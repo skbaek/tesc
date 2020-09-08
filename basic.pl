@@ -41,8 +41,8 @@ atomic_form($rel(_, _)).
 literal(AF) :- atomic_form(AF).
 literal($not(AF)) :- atomic_form(AF).
 
-complements(FORM, $not(FORM)).
-complements($not(FORM), FORM).
+complements(FORM_A, $not(FORM_B)) :- FORM_A == FORM_B.
+complements($not(FORM_A), FORM_B) :- FORM_A == FORM_B.
 
 incr_var_term(VAR, _) :- var(VAR), !, false.
 incr_var_term($var(NUM), $var(SUCC)) :- !, num_succ(NUM, SUCC).
@@ -1026,12 +1026,12 @@ use_nt(HYP, GOAL) :-
   apply_t($true, GOAL, CMP, GOAL_N),
   apply_x(CMP, HYP, GOAL_N).
 
-use_lc(HYP, GOAL) :- 
+use_falsehood(HYP, GOAL) :- 
   use_pf(HYP, GOAL) ; 
   use_nt(HYP, GOAL).
 
 use_contra(HYP, GOAL) :- 
-  use_lc(HYP, GOAL) ;
+  use_falsehood(HYP, GOAL) ;
   (
     apply_n(HYP, GOAL, HYP_N, GOAL_N) ;
     apply_a(HYP, l, GOAL, HYP_N, GOAL_N) ; 
@@ -1042,8 +1042,10 @@ use_contra(HYP, GOAL) :-
   use_contra(HYP_L, GOAL_L),
   use_contra(HYP_R, GOAL_R).
 
-falsity($false).
-falsity($not($true)).
+truth($true).
+truth($not($false)).
+falsehood($false).
+falsehood($not($true)).
 
 mate(HYP_A, HYP_B, GOAL) :- 
   mate_pn(HYP_A, HYP_B, GOAL) ;
@@ -1331,15 +1333,21 @@ show_prf(PRF) :-
 
 %%%%%%%%%%%%%%%% PROPOSITIONAL CONNECTION TABLEAUX %%%%%%%%%%%%%%%%
 
-startable_hyp((_, SF)) :- 
-  startable_form(SF).
+startable_hyp(MODE, (_, FORM)) :- 
+  startable_form(MODE, FORM).
 
-startable_form(FORM) :- falsity(FORM), !.
-startable_form(FORM) :- break_n(FORM, SUB), !, startable_form(SUB). 
-startable_form(FORM) :- break_a(_, FORM, SUB), !, startable_form(SUB). 
-startable_form(FORM) :- break_b(FORM, FORM_A, FORM_B), !, startable_form(FORM_A), startable_form(FORM_B). 
-startable_form(FORM) :- break_c(_, FORM, SUB), !, startable_form(SUB).
-startable_form(FORM) :- FORM \= $not(_).
+startable_form(_, FORM) :- falsehood(FORM), !.
+startable_form(MODE, FORM) :- break_n(FORM, SUB), !, startable_form(MODE, SUB). 
+startable_form(MODE, FORM) :- 
+  break_a(l, FORM, FORM_A), !, 
+  break_a(r, FORM, FORM_B), !, 
+  (startable_form(MODE, FORM_A) ; startable_form(MODE, FORM_B)).
+startable_form(MODE, FORM) :- 
+  break_b(FORM, FORM_A, FORM_B), !, 
+  startable_form(MODE, FORM_A), 
+  startable_form(MODE, FORM_B). 
+startable_form(q, FORM) :- break_c(_, FORM, SUB), !, startable_form(q, SUB).
+startable_form(_, FORM) :- FORM \= $not(_).
   
 exists_on_path(HYP, PATH) :- 
   hyp_form(HYP, LIT),
@@ -1368,7 +1376,7 @@ pblx(MODE, HYPS, PATH, HYP, GOAL) :-
 
 pblx((start, PQ), HYPS, PATH, HYP, GOAL) :- 
   apply_sb_lem(HYP, GOAL, HYP_L, HYP_R, HYP_LN, GOAL_L, GOAL_R), !, 
-  startable_hyp(HYP_R),
+  startable_hyp(PQ, HYP_R),
   pblx((start, PQ), HYPS, PATH, HYP_L, GOAL_L),
   pblx((block, PQ), [HYP_LN | HYPS], PATH, HYP_R, GOAL_R).
 
@@ -1413,7 +1421,7 @@ pblx((block, PQ), HYPS, PATH, HYP, GOAL) :-
 iff_conv_pos_aux(TRP) :- 
   para_ba_swap(TRP, TRP_A, TRP_B), 
   mate(TRP_B),
-  para__s(TRP_A, TRP_C), 
+  para__n(TRP_A, TRP_C), 
   mate(TRP_C). 
 
 iff_conv_neg_aux(TRP) :- 
@@ -1426,15 +1434,15 @@ iff_conv_neg_aux(TRP) :-
   mate(TRP_1B),
   para_a_(r, TRP_2, TRP_2A), 
   para__a(D2, TRP_2A, TRP_2B), 
-  para__s(TRP_2B, TRP_2C), 
+  para__n(TRP_2B, TRP_2C), 
   mate(TRP_2C).
 
 iff_conv(TRP_I, TRP_O) :- 
   trp_prem(TRP_I, PREM), 
   hyp_form(PREM, $not($iff(FORM_A, FORM_B))),
   (
-    para_f_($and($or($not(FORM_A), $not(FORM_B)), $or(FORM_A, FORM_B)), TRP_I, TRP_T, TRP_O) ;
-    para_f_($and($or($not(FORM_B), $not(FORM_A)), $or(FORM_B, FORM_A)), TRP_I, TRP_T, TRP_O)
+    para_s_($and($or($not(FORM_A), $not(FORM_B)), $or(FORM_A, FORM_B)), TRP_I, TRP_T, TRP_O) ;
+    para_s_($and($or($not(FORM_B), $not(FORM_A)), $or(FORM_B, FORM_A)), TRP_I, TRP_T, TRP_O)
   ), 
   para_b_(TRP_T, TRP_A, TRP_B),
   iff_conv_neg_aux(TRP_A),
@@ -1443,7 +1451,7 @@ iff_conv(TRP_I, TRP_O) :-
 iff_conv(TRP_I, TRP_O) :- 
   trp_prem(TRP_I, PREM), 
   hyp_form(PREM, $iff(FORM_A, FORM_B)),
-  para_f_($and($or(FORM_A, $not(FORM_B)), $or(FORM_B, $not(FORM_A))), TRP_I, TRP_T, TRP_O), 
+  para_s_($and($or(FORM_A, $not(FORM_B)), $or(FORM_B, $not(FORM_A))), TRP_I, TRP_T, TRP_O), 
   para_ab_swap(TRP_T, TRP_A, TRP_B), 
   iff_conv_pos_aux(TRP_A), 
   iff_conv_pos_aux(TRP_B). 
@@ -1489,15 +1497,15 @@ parad(TRP_I, TRP_O) :-
 
 mate((HYP_A, HYP_B, GOAL)) :- mate(HYP_A, HYP_B, GOAL).
 
-para_m((HYP_A, HYP_B, GOAL)) :- mate(HYP_A, HYP_B, GOAL).
+para_mate((HYP_A, HYP_B, GOAL)) :- mate(HYP_A, HYP_B, GOAL).
 
-para_s_((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
+para_n_((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
   apply_n(HYP_A, GOAL, HYP_AN, GOAL_N). 
   
-para__s((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
+para__n((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
   apply_n(HYP_B, GOAL, HYP_BN, GOAL_N). 
 
-paras(X, Y) :- para_s_(X, Y) ; para__s(X, Y).
+paran(X, Y) :- para_n_(X, Y) ; para__n(X, Y).
 
 paracd(X, Y) :- para_cd(X, Y) ; para_dc(X, Y).
 
@@ -1516,24 +1524,23 @@ para_ba((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)
   apply_ab(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
 para(H2G) :-
-  % para_lc(H2G) -> true ;
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> para(H2G_N) ;
+  para_mate(H2G) -> true ;
+  paran(H2G, H2G_N) -> para(H2G_N) ;
   paracd(H2G, H2G_N) -> para(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R) ->
   para(H2G_L), !, 
   para(H2G_R).
 
-para_lc((HYP_A, HYP_B, GOAL)) :- 
-  use_lc(HYP_A, GOAL) ; use_lc(HYP_B, GOAL).
+para_falsehood((HYP_A, HYP_B, GOAL)) :- 
+  use_falsehood(HYP_A, GOAL) ; use_falsehood(HYP_B, GOAL).
 
-para_mlc(X) :- para_m(X) ; para_lc(X). 
+para_mlc(X) :- para_mate(X) ; para_falsehood(X).
 
 
 
 %%%%%%%%%%%%%%%% PARALLEL CHOICE DECOMPOSITION %%%%%%%%%%%%%%%%
 
-para_f_(FORM, (PREM, CONC, GOAL), (PREM, HYP_N, GOAL_N), (HYP_P, CONC, GOAL_P)) :- 
+para_s_(FORM, (PREM, CONC, GOAL), (PREM, HYP_N, GOAL_N), (HYP_P, CONC, GOAL_P)) :- 
   apply_s(FORM, GOAL, HYP_N, HYP_P, GOAL_N, GOAL_P).
 
 paraab_choice(TRP, TRP_B, TRP_A) :- 
@@ -1551,8 +1558,8 @@ para_ba_swap((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GO
   apply_ab_rev(HYP_B, HYP_A, GOAL, HYP_BL, HYP_AL, GOAL_L, HYP_BR, HYP_AR, GOAL_R).
 
 para_choice(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> para_choice(H2G_N) ;
+  para_mate(H2G) -> true ;
+  paran(H2G, H2G_N) -> para_choice(H2G_N) ;
   paracd(H2G, H2G_N) -> para_choice(H2G_N) ;
   paraab_choice(H2G, H2G_L, H2G_R),
   para_choice(H2G_L),  
@@ -1561,33 +1568,115 @@ para_choice(H2G) :-
 
 
 
-%%%%%%%%%%%%%%%% PARALLEL TF DECOMPOSITION %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% PARALLEL SIMP DECOMPOSITION %%%%%%%%%%%%%%%%
 
-paratf_zero(TRP) :- para_lc(TRP), !.
-
-paratf_one((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
+para_simp_v((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
   (
     apply_b(HYP_A, GOAL, HYP_T, HYP_N, GOAL_T, GOAL_N) ;
     apply_b(HYP_A, GOAL, HYP_N, HYP_T, GOAL_N, GOAL_T) 
   ),
   use_contra(HYP_T, GOAL_T).
 
-paratf_one((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
+para_simp_v((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
   pluck([l, r], DIR, [FLP]), 
   hyp_form(HYP_A, FORM), 
   break_a(DIR, FORM, FORM_T), 
   tautology(FORM_T), 
   apply_a(HYP_A, FLP, GOAL, HYP_N, GOAL_N). 
 
-paratf(H2G) :- 
-  para_m(H2G) -> true ;
-  paratf_zero(H2G) -> true ;
-  paras(H2G, H2G_N) -> paratf(H2G_N) ;
-  paracd(H2G, H2G_N) -> paratf(H2G_N) ;
-  paratf_one(H2G, H2G_N) -> paratf(H2G_N) ;
+para_simp(_, H2G) :- para_mate(H2G), !.
+para_simp(_, TRP) :- para_falsehood(TRP), !.
+para_simp(SLVR, H2G) :- para_n_(H2G, H2G_N), !, para_simp(SLVR, H2G_N).
+para_simp(v, H2G) :- paracd(H2G, H2G_N), !, para_simp(v, H2G_N).
+para_simp(v, H2G) :- para_simp_v(H2G, H2G_N), !, para_simp(v, H2G_N).
+para_simp(v, H2G) :- 
   paraab_choice(H2G, H2G_L, H2G_R),
-  paratf(H2G_L),  
-  paratf(H2G_R).
+  para_simp(v, H2G_L),  
+  para_simp(v, H2G_R).
+
+para_simp(e, H2G) :- 
+  H2G = (PREM, _, GOAL),
+  hyp_form(PREM, FORM),
+  break_a(l, FORM, FORM_A), !,
+  break_a(r, FORM, FORM_B), 
+  bool_simp(FORM_A, NORM_A),
+  bool_simp(FORM_B, NORM_B),
+  (
+    (truth(NORM_A) ; NORM_A == NORM_B) -> 
+    para_a_(r, H2G, H2G_N),
+    para_simp(e, H2G_N)
+  ;
+    truth(NORM_B) -> 
+    para_a_(l, H2G, H2G_N),
+    para_simp(e, H2G_N)
+  ;
+    complements(NORM_A, NORM_B) -> 
+    apply_aa(PREM, GOAL, HYP_A, HYP_B, GOAL_AA),
+    apply_s(NORM_A, GOAL_AA, HYP_NA, HYP_PA, GOAL_NA, GOAL_PA), 
+    para_simp(e, (HYP_A, HYP_NA, GOAL_NA)), 
+    apply_s(NORM_B, GOAL_PA, HYP_NB, HYP_PB, GOAL_NB, GOAL_PB), 
+    para_simp(e, (HYP_B, HYP_NB, GOAL_NB)), 
+    mate(HYP_PA, HYP_PB, GOAL_PB), !
+  ;
+    para_ab(H2G, TRP_A, TRP_B),
+    para_simp(e, TRP_A), !, 
+    para_simp(e, TRP_B)
+  ).
+
+para_simp(e, TRP) :- 
+  TRP = ((_, FORM), _, _),
+  break_b(FORM, FORM_A, FORM_B), !,
+  bool_simp(FORM_A, NORM_A),
+  bool_simp(FORM_B, NORM_B),
+  (
+    falsehood(NORM_A) ->  
+    para_b_(TRP, (PREM, _, GOAL), TRP_N),
+    pblx(p, [PREM], GOAL),
+    para_simp(e, TRP_N)
+  ;
+    falsehood(NORM_B) ->  
+    para_b_(TRP, TRP_N, (PREM, _, GOAL)),
+    pblx(p, [PREM], GOAL),
+    para_simp(e, TRP_N)
+  ;
+    NORM_A == NORM_B -> 
+    para_s_(NORM_A, TRP, TRP_N, TRP_P), 
+    para_b_(TRP_N, TRP_A, TRP_B), 
+    para_simp(e, TRP_A), !,
+    para_simp(e, TRP_B), !,
+    para_simp(e, TRP_P)
+  ;
+    para_ba(TRP, TRP_A, TRP_B),
+    para_simp(e, TRP_A), !, 
+    para_simp(e, TRP_B)
+  ).
+
+para_simp(e, TRP) :- 
+  TRP = (PREM, _, GOAL),
+  PREM = (_, FORM),
+  break_c(_, FORM, SUB), !,
+  bool_simp(SUB, NORM),
+  (
+    falsehood(NORM) -> 
+    pblx(p, [PREM], GOAL)
+  ;
+    para_cd(TRP, TRP_N), 
+    para_simp(e, TRP_N)
+  ).
+
+para_simp(e, TRP) :- 
+  TRP = (PREM, _, GOAL),
+  PREM = (_, FORM),
+  GOAL = (_, CNT),
+  break_d(CNT, FORM, SUB), !,
+  bool_simp(SUB, NORM),
+  (
+    falsehood(NORM) -> 
+    pblx(p, [PREM], GOAL)
+  ;
+    para_dc(TRP, TRP_N), 
+    para_simp(e, TRP_N)
+  ).
 
 para_vac_cd((HYP_A, HYP_B, GOAL_I), (HYP_NA, HYP_B, GOAL_O)) :- 
   apply_c_vac(HYP_A, GOAL_I, HYP_NA, GOAL_O) ;
@@ -1598,8 +1687,8 @@ para_vac_cd((HYP_A, HYP_B, GOAL_I), (HYP_A, HYP_NB, GOAL_O)) :-
   dp_vac(HYP_B, GOAL_I, HYP_NB, GOAL_O).
 
 para_vac(H2G) :- 
-  para_m(H2G) *-> true ;
-  paras(H2G, H2G_N) -> para_vac(H2G_N) ;
+  para_mate(H2G) *-> true ;
+  paran(H2G, H2G_N) -> para_vac(H2G_N) ;
   para_vac_cd(H2G, H2G_N) -> para_vac(H2G_N) ;
   paracd(H2G, H2G_N) -> para_vac(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R), !,
@@ -1611,16 +1700,16 @@ para_cd_lax((HYP_A, HYP_B, GOAL), (HYP_NA, HYP_NB, GOAL_N)) :-
   apply_cd_lax(HYP_B, HYP_A, GOAL, HYP_NB, HYP_NA, GOAL_N).
 
 para_lax(H2G) :- 
-  para_m(H2G) *-> true ;
-  paras(H2G, H2G_N) -> para_lax(H2G_N) ;
+  para_mate(H2G) *-> true ;
+  paran(H2G, H2G_N) -> para_lax(H2G_N) ;
   para_cd_lax(H2G, H2G_N) -> para_lax(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R), !,
   para_lax(H2G_L), !, 
   para_lax(H2G_R).
 
 ppr(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> ppr(H2G_N) ;
+  para_mate(H2G) -> true ;
+  paran(H2G, H2G_N) -> ppr(H2G_N) ;
   paracd(H2G, H2G_N) -> ppr(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R), 
   ppr(H2G_L), 
@@ -1646,8 +1735,8 @@ ppr_a((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :-
   apply_a(HYP_B, r, GOAL, HYP_BN, GOAL_N).
 
 fnnf(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> fnnf(H2G_N) ;
+  para_mate(H2G) -> true ;
+  paran(H2G, H2G_N) -> fnnf(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R) -> fnnf(H2G_L), !, fnnf(H2G_R) ;
   paracd(H2G, H2G_N) -> fnnf(H2G_N) ;
   H2G = (PREM, CONC, GOAL), 
@@ -1666,8 +1755,8 @@ fnnf(H2G) :-
   ).
 
 vnnf(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> vnnf(H2G_N) 
+  para_mate(H2G) -> true ;
+  paran(H2G, H2G_N) -> vnnf(H2G_N) 
 ;
   paracd(H2G, H2G_N) -> vnnf(H2G_N) 
 ;
@@ -1755,10 +1844,10 @@ ppr([PREM | PREMS], [([CONC], GOAL) | HGS]) :-
   ppr(PREMS, [([CONC], GOAL) | HGS]).
   
 para_clausal(H2G) :- 
-  para_lc(H2G) -> true ;
-  para_m(H2G) 
+  para_falsehood(H2G) -> true ;
+  para_mate(H2G) 
 ;
-  paras(H2G, H2G_N)  -> para_clausal(H2G_N) ;
+  paran(H2G, H2G_N)  -> para_clausal(H2G_N) ;
   paracd(H2G, H2G_N) -> para_clausal(H2G_N) ;
   para_clausal_two(H2G, H2G_L, H2G_R) -> 
   para_clausal(H2G_L), 
@@ -1835,8 +1924,8 @@ map_form(GOAL, DTH, $rel(REL, TERMS_I), $rel(REL, TERMS_O)) :-
   maplist_cut(call(GOAL, DTH), TERMS_I, TERMS_O).
 
 para_e1(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> para_e1(H2G_N) ;
+  para_mate(H2G) -> true ;
+  paran(H2G, H2G_N) -> para_e1(H2G_N) ;
   parad(H2G, H2G_N) -> para_e1(H2G_N) ;
   para_clausal_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
   % para_clausal_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
@@ -1876,7 +1965,7 @@ pick_mate(HYPS_A, (HYPS_B, GOAL)) :-
 map_signed_atoms(_, []).
 
 map_signed_atoms(HYPS, [([HYP], GOAL) | HGS]) :- 
-  use_lc(HYP, GOAL) ->
+  use_falsehood(HYP, GOAL) ->
   map_signed_atoms(HYPS, HGS) ;
   ground(HYP) -> 
   (pick_mate(HYPS, ([HYP], GOAL)), !, map_signed_atoms(HYPS, HGS)) ;
@@ -1885,7 +1974,7 @@ map_signed_atoms(HYPS, [([HYP], GOAL) | HGS]) :-
 sbsm(PREM, CONC, GOAL) :-
   rp([a, d, n], [CONC], GOAL, HYPS, TEMP), 
   (
-    (member(HYP, HYPS), use_lc(HYP, TEMP)) -> 
+    (member(HYP, HYPS), use_falsehood(HYP, TEMP)) -> 
     true
   ;
     rp([b, c, n], [PREM], TEMP, HGS), 
@@ -1931,7 +2020,7 @@ relabel_sol(DICT, NI, CNT, [INST | SOL], [INST_N | SOL_N]) :-
 
 relabel_sol(_, _, _, [], []).
 
-eqr_aux(_, ([HYP], GOAL)) :- use_lc(HYP, GOAL), !.
+eqr_aux(_, ([HYP], GOAL)) :- use_falsehood(HYP, GOAL), !.
 eqr_aux(_, ([HYP], GOAL)) :- 
   HYP = (_, $not($rel('=', [_, _]))),
   eq_refl(HYP, GOAL).
@@ -1942,6 +2031,7 @@ eqr(PREM, CONC, GOAL) :-
   rp([b, c, n], [PREM], GOAL_T, HGS), !,
   maplist(eqr_aux(HYPS), HGS).
 
+/*
 bool_not($false, $true) :- !.
 bool_not($true, $false) :- !.
 bool_not($not(FORM), FORM) :- !.
@@ -1963,6 +2053,7 @@ bool_imp($false, _, $true) :- !.
 bool_imp(_, $true, $true) :- !.
 bool_imp($true, FORM, FORM) :- !.
 bool_imp(FORM, $false, $not(FORM)) :- !.
+bool_imp(FORM_L, FORM_R, $true) :- FORM_L == FORM_R, !.
 bool_imp(FORM_L, FORM_R, $imp(FORM_L, FORM_R)).
 
 bool_norm($not(FORM), NORM) :- !, 
@@ -1985,73 +2076,72 @@ bool_norm($imp(FORM_L, FORM_R), NORM) :- !,
   bool_imp(NORM_L, NORM_R, NORM).
 
 bool_norm(FORM, FORM).
+*/
 
-tautology(FORM) :- bool_norm(FORM, $true).
+tautology(FORM) :- bool_simp(FORM, $true).
+contradiction(FORM) :- bool_simp(FORM, $false).
 
-/*
-esimp_not($false, $true) :- !.
-esimp_not($true, $false) :- !.
-esimp_not($not(FORM), FORM) :- !.
-esimp_not(FORM, $not(FORM)).
+bool_simp_not($false, $true) :- !.
+bool_simp_not($true, $false) :- !.
+bool_simp_not($not(FORM), FORM) :- !.
+bool_simp_not(FORM, $not(FORM)).
 
-esimp_qtf(_, $true, $true) :- !.
-esimp_qtf(_, $false, $false) :- !.
-esimp_qtf(QTF, FORM_I, FORM_O) :-
+bool_simp_qtf(_, $true, $true) :- !.
+bool_simp_qtf(_, $false, $false) :- !.
+bool_simp_qtf(QTF, FORM_I, FORM_O) :-
   no_fv_form(0, FORM_I) -> 
   FORM_O = FORM_I 
 ;
   apply_uop(QTF, FORM_I, FORM_O).
 
-esimp_bct(iff, FORM, $true, FORM) :- !.
-esimp_bct(iff, FORM, $false, $not(FORM)) :- !.
-esimp_bct(iff, $true, FORM, FORM) :- !.
-esimp_bct(iff, $false, FORM, $not(FORM)) :- !.
-esimp_bct(iff, FORM_A, FORM_B, FORM) :- !, 
-(
-  FORM_A == FORM_B -> 
-  FORM = $true
-;
-  FORM = $iff(FORM_A, FORM_B) 
-).
+bool_simp_bct(iff, FORM, $true, FORM) :- !.
+bool_simp_bct(iff, FORM, $false, $not(FORM)) :- !.
+bool_simp_bct(iff, $true, FORM, FORM) :- !.
+bool_simp_bct(iff, $false, FORM, $not(FORM)) :- !.
+bool_simp_bct(iff, FORM_A, FORM_B, $true) :- FORM_A == FORM_B, !.
+bool_simp_bct(iff, FORM_A, FORM_B, $false) :- complements(FORM_A, FORM_B), !.
+bool_simp_bct(iff, FORM_A, FORM_B, $iff(FORM_A, FORM_B)). 
 
-esimp_bct(imp, $false, _, $true) :- !.
-esimp_bct(imp, $true, FORM, FORM) :- !.
-esimp_bct(imp, _, $true, $true) :- !.
-esimp_bct(imp, FORM, $false, $not(FORM)) :- !.
-esimp_bct(imp, FORM_A, FORM_B, $true) :- FORM_A == FORM_B, !.
-esimp_bct(imp, FORM_A, FORM_B, $imp(FORM_A, FORM_B)) :- !.
+bool_simp_bct(imp, $false, _, $true) :- !.
+bool_simp_bct(imp, $true, FORM, FORM) :- !.
+bool_simp_bct(imp, _, $true, $true) :- !.
+bool_simp_bct(imp, FORM, $false, $not(FORM)) :- !.
+bool_simp_bct(imp, FORM_A, FORM_B, $true) :- FORM_A == FORM_B, !.
+bool_simp_bct(imp, FORM_A, FORM_B, FORM_B) :- complements(FORM_A, FORM_B), !.
+bool_simp_bct(imp, FORM_A, FORM_B, $imp(FORM_A, FORM_B)) :- !.
 
-esimp_bct(and, $false, _, $false) :- !.
-esimp_bct(and, _, $false, $false) :- !.
-esimp_bct(and, $true, FORM, FORM) :- !.
-esimp_bct(and, FORM, $true, FORM) :- !.
-esimp_bct(and, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
-esimp_bct(and, FORM_L, FORM_R, $and(FORM_L, FORM_R)) :- !.
+bool_simp_bct(and, $false, _, $false) :- !.
+bool_simp_bct(and, _, $false, $false) :- !.
+bool_simp_bct(and, $true, FORM, FORM) :- !.
+bool_simp_bct(and, FORM, $true, FORM) :- !.
+bool_simp_bct(and, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
+bool_simp_bct(and, FORM_L, FORM_R, $false) :- complements(FORM_L, FORM_R), !.
+bool_simp_bct(and, FORM_L, FORM_R, $and(FORM_L, FORM_R)) :- !.
 
-esimp_bct(or, $true, _, $true) :- !.
-esimp_bct(or, _, $true, $true) :- !.
-esimp_bct(or, $false, FORM, FORM) :- !.
-esimp_bct(or, FORM, $false, FORM) :- !.
-esimp_bct(or, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
-esimp_bct(or, FORM_L, FORM_R, $or(FORM_L, FORM_R)) :- !.
+bool_simp_bct(or, $true, _, $true) :- !.
+bool_simp_bct(or, _, $true, $true) :- !.
+bool_simp_bct(or, $false, FORM, FORM) :- !.
+bool_simp_bct(or, FORM, $false, FORM) :- !.
+bool_simp_bct(or, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
+bool_simp_bct(or, FORM_L, FORM_R, $true) :- complements(FORM_L, FORM_R), !.
+bool_simp_bct(or, FORM_L, FORM_R, $or(FORM_L, FORM_R)) :- !.
  
-esimp($not(FORM), NORM) :- !, 
-  esimp(FORM, TEMP), 
-  esimp_not(TEMP, NORM). 
+bool_simp($not(FORM), NORM) :- !, 
+  bool_simp(FORM, TEMP), 
+  bool_simp_not(TEMP, NORM). 
  
-esimp(FORM, NORM) :- 
+bool_simp(FORM, NORM) :- 
   decom_bct(FORM, BCT, FORM_A, FORM_B), !,
-  esimp(FORM_A, NORM_A), 
-  esimp(FORM_B, NORM_B),
-  esimp_bct(BCT, NORM_A, NORM_B, NORM).
+  bool_simp(FORM_A, NORM_A), 
+  bool_simp(FORM_B, NORM_B),
+  bool_simp_bct(BCT, NORM_A, NORM_B, NORM).
 
-esimp(FORM, NORM) :- 
+bool_simp(FORM, NORM) :- 
   decom_qtf(FORM, QTF, BODY), !, 
-  esimp(BODY, TEMP),
-  esimp_qtf(QTF, TEMP, NORM).
+  bool_simp(BODY, TEMP),
+  bool_simp_qtf(QTF, TEMP, NORM).
 
-esimp(FORM, FORM).
-*/
+bool_simp(FORM, FORM).
 
 map_var(GOAL, $var(NUM), TERM) :- !, call(GOAL, NUM, TERM).
 map_var(_, $dst(STR), $dst(STR)) :- !.

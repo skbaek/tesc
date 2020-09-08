@@ -22,7 +22,7 @@ rul_hint(negated_conjecture, para_clausal).
 rul_hint(flattening, para_clausal).  
 rul_hint(ennf_transformation, paras).  
 rul_hint(rectify, para_vac).
-rul_hint(true_and_false_elimination, paratf).
+rul_hint(true_and_false_elimination, simp).
 rul_hint(unit_resulting_resolution, gs).
 rul_hint(global_subsumption, gs).
 rul_hint(pure_predicate_removal, ppr).

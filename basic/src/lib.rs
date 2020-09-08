@@ -687,10 +687,10 @@ fn conv_number(n: Number) -> String {
 
 fn find_variable_index(vs: &Vec<String>, v: Variable) -> Rst<u64> {
   let s = conv_variable(&v);
-  let ei = vs.len() - 1;
-  match vs.iter().position(|x| *x == s) {
+  // let ei = vs.len() - 1;
+  match vs.iter().rev().position(|x| *x == s) {
     Some(i) => {
-      match u64::try_from(ei-i) {
+      match u64::try_from(i) {
         Ok(x) => Ok(x),
         _ => err_str("Cannot convert usize to u64")
       }

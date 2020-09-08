@@ -354,10 +354,10 @@ mk_root(shift_quantors, FORM, para_push, NORM) :- push_qtf(FORM, NORM).
 mk_root(fof_nnf, FORM, fnnf, NORM) :- fnnf(FORM, NORM), !.
 mk_root(evalgc, FORM, rnm, FORM).
 mk_root(variable_rename, FORM, rnm, FORM).
-mk_root(fof_simplification, FORM, simp, NORM) :- bool_norm(FORM, NORM), !.
+mk_root(fof_simplification, FORM, simp, NORM) :- bool_simp(FORM, NORM), !.
 mk_root(split_conjunct, FORM, scj, NORM) :- conjunct(FORM, NORM).
 mk_root(split_equiv, FORM, speq, NORM) :- split_equiv(FORM, NORM).
-mk_root(cn, FORM, paratf, NORM) :- bool_norm(FORM, NORM), !.
+mk_root(cn, FORM, simp, NORM) :- bool_simp(FORM, NORM), !.
 mk_root(er, FORM, eqr, NORM) :- eq_resolve(FORM, NORM).
 
 mk_root(ef, FORM_I, eqf, FORM_O) :- 
@@ -499,6 +499,12 @@ tup_insts(
 ) :- !,
   def_pred_ari(FORM, PRD, ARI).
   
+% tup_insts(
+%   _, 
+%   (CNM, axiom, FORM, some(inference(apply_def,_,[inference(assume_negation,_,[NM_A]),NM_B]))),
+%   [inf(apd, [NM_A, NM_B], CNM, FORM)]
+% ) :- !.
+
 tup_insts(
   CTX,
   (CID, TYPE, FORM, some(ANT)),

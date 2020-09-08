@@ -177,7 +177,7 @@ vcnf(PREM, HYPS, GOAL) :-
   mate(PREM, HYP, GOAL).
 
 vacc_aux(TRP) :- 
-  para__s(TRP, TRP_N) ->
+  para__n(TRP, TRP_N) ->
   mate(TRP_N) ;
   mate(TRP).
 
@@ -233,7 +233,7 @@ dff(_, HYP0, HYP1, DFP) :-
 
 dff(Defs, HYP0, HYP1, DFP) :- 
   (
-    paras((HYP0, HYP1, DFP), (NewHYP0, NewHYP1, NewDFP)) ;
+    paran((HYP0, HYP1, DFP), (NewHYP0, NewHYP1, NewDFP)) ;
     paracd((HYP0, HYP1, DFP), (NewHYP0, NewHYP1, NewDFP))
   ), !,
   dff(Defs, NewHYP0, NewHYP1, NewDFP).
@@ -439,7 +439,7 @@ sat(CHS, GOAL) :-
 
 
 eskm(AOCS, H2G) :- 
-  para_m(H2G) -> true 
+  para_mate(H2G) -> true 
 ;
   paraab(H2G, H2G_L, H2G_R) -> 
   skm(AOCS, H2G_L), 
@@ -459,7 +459,7 @@ eskm(AOCS, H2G) :-
   eskm(REST, (HYP_R, CONC, GOAL_R)).
 
 skm(AOCS, H2G) :- 
-  para_m(H2G) -> true 
+  para_mate(H2G) -> true 
 ;
   para_c_(H2G, H2G_N), 
   skm(AOCS, H2G_N)
@@ -503,8 +503,8 @@ eqf(HYPS, EQN, ([HYP], GOAL)) :-
 rwa(AYP, TRP) :- 
   TRP = (PREM, _, GOAL), 
   (
-    para_m(TRP) -> true ; 
-    paras(TRP, TRP_N) -> rwa(AYP, TRP_N) ; 
+    para_mate(TRP) -> true ; 
+    paran(TRP, TRP_N) -> rwa(AYP, TRP_N) ; 
     paraab(TRP, TRP_L, TRP_R), 
     rwa(AYP, TRP_L), 
     rwa(AYP, TRP_R)
@@ -520,11 +520,11 @@ pmt((PREM, CONC, GOAL)) :-
 speq(TRP) :- 
   para_cd(TRP, TEMP) -> speq(TEMP) ;
   a_para(TRP, TEMP),
-  para_m(TEMP). 
+  para_mate(TEMP). 
 
 scj(H2G) :- 
   pmt(H2G) -> true ;
-  paras(H2G, H2G_N) -> scj(H2G_N) ;
+  paran(H2G, H2G_N) -> scj(H2G_N) ;
   a_para(H2G, H2G_N),
   scj(H2G_N).
 
@@ -532,35 +532,30 @@ scj(H2G) :-
 
 esimp_fork_not(TRP, TRP_A, TRP_B) :- 
   TRP = ((_, $not(FORM)), _, _),
-  esimp(FORM, NORM), 
-  para_f_($not(NORM), TRP, TRP_A, TRP_B).
-
-esimp_fork_not((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
-  hyp_sign_form(HYP_A, SIGN, $not(FORM)), 
-  esimp(FORM, NORM), 
-  apply_uop(SIGN, $not(NORM), SF),
-  fps(SF, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R).
+  bool_simp(FORM, NORM),
+  para_s_($not(NORM), TRP, TRP_A, TRP_B).
 
 esimp_not(X) :- 
-  para_lc(X) -> true ;
-  para_m(X) -> true ;
-  paras(X, Y), 
+  para_falsehood(X) -> true ;
+  para_mate(X) -> true ;
+  paran(X, Y), 
   esimp_not(Y).
   
-esimp_bct(X) :- para_lc(X).
+esimp_bct(X) :- para_falsehood(X).
 esimp_bct(X) :- 
   para_b_(X, Y, Z), 
   para_mlc(Y),
   para_mlc(Z).
 esimp_bct(X) :- 
   paraab(X, Y, Z), 
-  para_m(Y),
-  para_m(Z).
+  para_mate(Y),
+  para_mate(Z).
+
 esimp_bct((PREM, CONC, GOAL)) :- 
   apply_aa(PREM, GOAL, HYP_L, HYP_R, GOAL_T), 
   (
-    use_lc(HYP_L, GOAL_T) ; 
-    use_lc(HYP_R, GOAL_T) ; 
+    use_falsehood(HYP_L, GOAL_T) ; 
+    use_falsehood(HYP_R, GOAL_T) ; 
     mate(HYP_L, CONC, GOAL_T) ;
     mate(HYP_R, CONC, GOAL_T) ;
     mate(HYP_L, HYP_R, GOAL_T) ;
@@ -568,9 +563,9 @@ esimp_bct((PREM, CONC, GOAL)) :-
       (HYP = HYP_L ; HYP = HYP_R),
       TRP = (HYP, CONC, GOAL_T),
       (para_b_(TRP, TRP_A, TRP_B) ; para_b_(TRP, TRP_B, TRP_A)), 
-      para_lc(TRP_A),
-      (para__s(TRP_B, TRP_C) ; true),
-      para_m(TRP_C)
+      para_falsehood(TRP_A),
+      (para__n(TRP_B, TRP_C) ; true),
+      para_mate(TRP_C)
     )
   ).
 
@@ -581,61 +576,72 @@ esimp_bct((PREM, _, GOAL)) :-
   apply_aa(PREM_R, GOAL_R, PREM_RL, PREM_RR, GOAL_RT), 
   mate(PREM_RL, PREM_RR, GOAL_RT).
 
-% esimp_fork_bct((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
-%   hyp_sign_form(HYP_A, SIGN, FORM), 
-%   decom_bct(FORM, BCT, FORM_A, FORM_B), 
-%   esimp(FORM_A, NORM_A),
-%   esimp(FORM_B, NORM_B),
-%   apply_bop(BCT, NORM_A, NORM_B, NORM), 
-%   apply_uop(SIGN, NORM, SF), 
-%   fps(SF, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R).
+esimp_fork_bct((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
+  hyp_sign_form(HYP_A, SIGN, FORM), 
+  decom_bct(FORM, BCT, FORM_A, FORM_B), 
+  bool_simp(FORM_A, NORM_A),
+  bool_simp(FORM_B, NORM_B),
+  apply_bop(BCT, NORM_A, NORM_B, NORM), 
+  apply_uop(SIGN, NORM, SF), 
+  fps(SF, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R).
 
-% esimp_fork_qtf((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
-%   hyp_sign_form(HYP_A, SIGN, FORM), 
-%   decom_qtf(FORM, QTF, SUB_FORM), 
-%   esimp(SUB_FORM, SUB_NORM),
-%   apply_uop(QTF, SUB_NORM, NORM), 
-%   apply_uop(SIGN, NORM, SF), 
-%   fps(SF, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R).
-% 
-% esimp_qtf(X) :- 
-%   para_lc(X) -> true ;
-%   para_m(X) -> true ;
-%   para_c_(X, Y) ->
-%   esimp_qtf(Y) ;
-%   para_d_(X, Y) ->
-%   esimp_qtf(Y).
-% 
+esimp_fork_qtf((HYP_A, HYP_B, GOAL), (HYP_A, HYP_L, GOAL_L), (HYP_R, HYP_B, GOAL_R)) :- 
+  hyp_sign_form(HYP_A, SIGN, FORM), 
+  decom_qtf(FORM, QTF, SUB_FORM), 
+  bool_simp(SUB_FORM, SUB_NORM),
+  apply_uop(QTF, SUB_NORM, NORM), 
+  apply_uop(SIGN, NORM, SF), 
+  fps(SF, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R).
 
-esimp(X) :- 
-  para_lc(X) -> true ;
-  para_m(X) -> true ;
-  esimp_fork_not(X, Y, Z) -> 
-  para_s_(Y, Y1),
-  para__s(Y1, Y2), 
-  esimp(Y2), 
-  esimp_not(Z)
-;
-  esimp_fork_bct(X, Y, Z) -> 
-  paraab(Y, Y1, Y2), 
-  esimp(Y1), 
-  esimp(Y2), 
-  esimp_bct(Z)
-;
-  esimp_fork_qtf(X, Y, Z) -> 
-  paracd(Y, Y1), 
-  esimp(Y1), 
-  esimp_qtf(Z).
+esimp_qtf(X) :- 
+  para_falsehood(X) -> true ;
+  para_mate(X) -> true ;
+  para_c_(X, Y) ->
+  esimp_qtf(Y) ;
+  para_d_(X, Y) ->
+  esimp_qtf(Y).
+
 */
 
-mscj(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> mscj(H2G_N) ;
-  para__d(H2G, H2G_N) -> mscj(H2G_N) ;
-  para_c_(H2G, H2G_N) -> mscj(H2G_N) ;
-  a_para(H2G, H2G_N),
-  mscj(H2G_N).
+% para_simp_e(X) :- para_falsehood(X), !.
+% para_simp_e(X) :- para_mate(X), !.
+% para_simp_e(X) :- paran(X, Y), !, para_simp_e(Y).
+% para_simp_e(TRP) :- 
+%   TRP = ((_, FORM), _, _), 
+%   break_a(l, FORM, FORM_A), !, 
+%   break_a(r, FORM, FORM_B), 
+%   bool_simp(FORM_A, NORM_A), 
+%   bool_simp(FORM_B, NORM_B), 
 
+  
+% para_simp_e(X) :- 
+%   para_falsehood(X) -> true ;
+%   para_mate(X) -> true ;
+%   esimp_fork_not(X, Y, Z) -> 
+%   para_n_(Y, Y1),
+%   para__n(Y1, Y2), 
+%   para_simp_e(Y2), 
+%   esimp_not(Z)
+% ;
+%   esimp_fork_bct(X, Y, Z) -> 
+%   paraab(Y, Y1, Y2), 
+%   para_simp_e(Y1), 
+%   para_simp_e(Y2), 
+%   esimp_bct(Z)
+% ;
+%   esimp_fork_qtf(X, Y, Z) -> 
+%   paracd(Y, Y1), 
+%   para_simp_e(Y1), 
+%   esimp_qtf(Z).
+% 
+% mscj(H2G) :- 
+%   para_mate(H2G) -> true ;
+%   paran(H2G, H2G_N) -> mscj(H2G_N) ;
+%   para__d(H2G, H2G_N) -> mscj(H2G_N) ;
+%   para_c_(H2G, H2G_N) -> mscj(H2G_N) ;
+%   a_para(H2G, H2G_N),
+%   mscj(H2G_N).
+% 
 orig_aux(PREM, GOAL, CONC) :- 
   mate(PREM, CONC, GOAL) ;
   pmt_cla(PREM, CONC, GOAL) ;
@@ -724,7 +730,7 @@ infer(_, rnm, [PREM | _], CONC, GOAL) :-
   mate(PREM, CONC, GOAL).
 
 infer(e, simp, [PREM | _], CONC, GOAL) :-
-  paratf((PREM, CONC, GOAL)).
+  para_simp(e, (PREM, CONC, GOAL)).
 
 infer(PRVR, skm, [PREM | AOCS], CONC, GOAL) :- 
   PRVR = e -> 
@@ -927,8 +933,8 @@ infer(v, para_vac, PREMS, CONC, GOAL) :-
   member(PREM, PREMS),
   para_vac((PREM, CONC, GOAL)).
 
-infer(_, mscj, [PREM], CONC, GOAL) :- 
-  mscj((PREM, CONC, GOAL)).
+% infer(_, mscj, [PREM], CONC, GOAL) :- 
+%   mscj((PREM, CONC, GOAL)).
 
 infer(e, speq, [PREM], CONC, GOAL) :- 
   speq((PREM, CONC, GOAL)).
@@ -948,9 +954,9 @@ infer(_, para_clausal, PREMS, CONC, GOAL) :-
   rp([c, n], [PREM], GOAL_C, [HYP_P], GOAL_P), 
   para_clausal((HYP_P, HYP_C, GOAL_P)).
 
-infer(_, paratf, PREMS, CONC, GOAL) :- 
+infer(v, simp, PREMS, CONC, GOAL) :- 
   member(PREM, PREMS),
-  paratf((PREM, CONC, GOAL)).
+  para_simp(v, (PREM, CONC, GOAL)).
 
 report_infer_failure(MODE, PRVR, HINTS, PREMS, CONC, GOAL) :- 
   write("\nInference failed, hints : "), 
@@ -1086,7 +1092,7 @@ prove(STRM, _, _, [], _, CNT) :-
 %   put_prf(STRM, t($not($false), x(PRED, NUM))).
 
 para_push(TRP) :- 
-  para_m(TRP) -> true 
+  para_mate(TRP) -> true 
 ;
   paraab(TRP, TRP_L, TRP_R) -> 
   para_push(TRP_L), !,
@@ -1110,11 +1116,11 @@ para_push(TRP) :-
   para_push(TRP_L1), 
   para_dist_ex((HYP_B, CONC, GOAL_B)).
 
-para_dist_ex(TRP) :- para_m(TRP).
+para_dist_ex(TRP) :- para_mate(TRP).
 
 para_dist_ex(TRP) :- 
   para_d_(TRP, TRP_T), 
-  para_m(TRP_T).
+  para_mate(TRP_T).
 
 para_dist_ex((PREM, CONC, GOAL)) :- 
   PREM = (_, ($ex($or(FORM_A, FORM_B)))), !, 
@@ -1123,9 +1129,9 @@ para_dist_ex((PREM, CONC, GOAL)) :-
   para_d_(TRP, TRP_0), 
   para_ba(TRP_0, TRP_L0, TRP_R0),
   para__c(TRP_L0, TRP_L1), 
-  para_m(TRP_L1), 
+  para_mate(TRP_L1), 
   para__c(TRP_R0, TRP_R1),
-  para_m(TRP_R1), 
+  para_mate(TRP_R1), 
   para_ba((HYP_B, CONC, GOAL_B), TRP_A, TRP_B), 
   para_dist_ex(TRP_A),
   para_dist_ex(TRP_B).
@@ -1138,8 +1144,8 @@ para_dist_ex((PREM, CONC, GOAL)) :-
   para_d_(TRP, TRP0),
   para_ab(TRP0, TRP_L, TRP_R), 
   para__c(TRP_R, TRP_R0), 
-  para_m(TRP_L), 
-  para_m(TRP_R0), 
+  para_mate(TRP_L), 
+  para_mate(TRP_R0), 
   para_ab((HYP_B, CONC, GOAL_B), TRP_A, TRP_B), 
   para_dist_ex(TRP_A), 
   para_dist_ex(TRP_B).
@@ -1152,17 +1158,17 @@ para_dist_ex((PREM, CONC, GOAL)) :-
   para_d_(TRP, TRP0),
   para_ab(TRP0, TRP_L, TRP_R), 
   para__c(TRP_L, TRP_L0), 
-  para_m(TRP_L0), 
-  para_m(TRP_R), 
+  para_mate(TRP_L0), 
+  para_mate(TRP_R), 
   para_ab((HYP_B, CONC, GOAL_B), TRP_A, TRP_B), 
   para_dist_ex(TRP_A), 
   para_dist_ex(TRP_B). 
 
-para_dist_fa(TRP) :- para_m(TRP).
+para_dist_fa(TRP) :- para_mate(TRP).
 
 para_dist_fa(TRP) :- 
   para_c_(TRP, TRP_T),
-  para_m(TRP_T).
+  para_mate(TRP_T).
 
 para_dist_fa((PREM, CONC, GOAL)) :- 
   PREM = (_, ($fa($and(FORM_A, FORM_B)))), !, 
@@ -1172,11 +1178,11 @@ para_dist_fa((PREM, CONC, GOAL)) :-
   para__d(TRP_L0, TRP_L1), 
   para_c_(TRP_L1, TRP_L2), 
   para_a_(l, TRP_L2, TRP_L3),
-  para_m(TRP_L3), 
+  para_mate(TRP_L3), 
   para__d(TRP_R0, TRP_R1), 
   para_c_(TRP_R1, TRP_R2), 
   para_a_(r, TRP_R2, TRP_R3), 
-  para_m(TRP_R3), 
+  para_mate(TRP_R3), 
   para_ab((HYP_B, CONC, GOAL_B), TRP_A, TRP_B), 
   para_dist_fa(TRP_A),
   para_dist_fa(TRP_B).
@@ -1210,8 +1216,8 @@ para_dist_fa((PREM, CONC, GOAL)) :-
   para_dist_fa(TRP_B).
 
 para_pull(H2G) :- 
-  para_m(H2G) -> true ;
-  paras(H2G, H2G_N) -> para_pull(H2G_N) ;
+  para_mate(H2G) -> true ;
+  paran(H2G, H2G_N) -> para_pull(H2G_N) ;
   paraab(H2G, H2G_L, H2G_R) -> 
   para_pull(H2G_L), !, para_pull(H2G_R) ;
   para_c_(H2G, H2G_N),
@@ -1236,15 +1242,15 @@ para_dist_close(DIR, HYP_P, HYP_Q, CONC, GOAL) :-
   apply_a(HYP_R, DIR, GOAL_R, HYP_NQ, GOAL_NQ), 
   mate(HYP_Q, HYP_NQ, GOAL_NQ).
 
-para_dist(TRP) :- para_m(TRP), !.
+para_dist(TRP) :- para_mate(TRP), !.
 para_dist(TRP) :- para_cd(TRP, NEW), !, para_dist(NEW).
 para_dist(TRP) :- 
-  TRP = ($and(_, _), _, _), !,
+  TRP = ((_, $and(_, _)), _, _), !,
   para_ab(TRP, TRP_A, TRP_B),
   para_dist(TRP_A),
   para_dist(TRP_B), !.
 para_dist((PREM, CONC, GOAL)) :- 
-  PREM = $or(FORM_A, FORM_B), !,
+  PREM = (_, $or(FORM_A, FORM_B)), !,
   distribute(FORM_A, TEMP_A),  
   distribute(FORM_B, TEMP_B),
   para_dist_aux(FORM_A, TEMP_A, GOAL, HYP_A, GOAL_A), 
@@ -1292,7 +1298,9 @@ para_dist((PREM, CONC, GOAL)) :-
     apply_a(CONC, r, GOAL_TB, HYP_NTB, GOAL_NTB), 
     mate(HYP_TB, HYP_NTB, GOAL_NTB)
   ).  
+
 /*
+
 para_dist(PREM, CONC, GOAL) :- 
   mate(PREM, CONC, GOAL) -> true  
 ;
