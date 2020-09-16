@@ -15,8 +15,10 @@ trait Get { fn get(_: FileBytes) -> Rst<Self> where Self: std::marker::Sized; }
 pub trait Put { fn put<W: Write>(_: &mut W, _: &Self) -> Rst<()> where Self: std::marker::Sized; }
 trait Conv<T> { fn conv(_: Self) -> Rst<T>; }
 
-#[derive(Debug)]
-pub enum Dir {Lft, Rgt}
+struct Terms<'a>(&'a Vec<Term>);
+
+// #[derive(Debug)]
+// pub enum Dir {Lft, Rgt}
 
 #[derive(PartialEq, Clone, Debug)]
 pub enum FS {
@@ -28,8 +30,8 @@ pub enum FS {
 pub enum Term {
   Var(u64),
   Fun(Rc<FS>, Vec<Term>),
-  Dst(Rc<String>),
-  Num(Rc<String>)
+  // Dst(Rc<String>),
+  // Num(Rc<String>)
 }
 
 pub enum GT {
@@ -40,39 +42,104 @@ pub enum GT {
 #[derive(PartialEq, Clone, Debug, Copy)]
 pub enum Bct {Or, And, Imp, Iff}
 
-#[derive(PartialEq, Clone, Debug, Copy)]
-pub enum Qtf {Fa, Ex}
+// #[derive(PartialEq, Clone, Debug, Copy)]
+// pub enum Qtf {Fa, Ex}
 
 #[derive(PartialEq, Clone, Debug)]
 pub enum Form {
   Cst(bool),
   Not(Rc<Form>),
   Bct(Bct, Rc<Form>, Rc<Form>),
-  Qtf(Qtf, Rc<Form>),
+  Qtf(bool, Rc<Form>),
   Rel(Rc<FS>, Vec<Term>)
 } 
+
+
+// impl std::fmt::Display for Form {
+//   fn fmt(f: &self) -> String { fmt_form(f) }
+// }
+
+impl std::fmt::Display for Bct {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    match *self {
+      Bct::Or => write!(f,"∨"),
+      Bct::And => write!(f,"∧"),
+      Bct::Imp => write!(f,"→"),
+      Bct::Iff => write!(f,"↔")
+    }
+  }
+}
+
+ impl std::fmt::Display for Term {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    match self {
+      Term::Var(k) => write!(f, "#{}", k),
+      Term::Fun(g,ts) => write!(f, "{}{}", g, Terms(ts))
+    }
+  }
+}
+
+ impl<'a> std::fmt::Display for Terms<'a> {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    if self.0.len() == 0 { write!(f, "") } 
+    else {
+      let i = self.0.iter();
+      let mut trailing: bool = false;
+      write!(f, "(")?;
+      for x in i {
+        if trailing { write!(f, ",")?; };
+        write!(f, "{}", x)?;
+        trailing = true;
+      };
+      write!(f, ")")
+    }
+  }
+}
+
+ impl std::fmt::Display for FS {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    match self {
+      FS::Par(n) => write!(f, "@{}", n), 
+      FS::Atm(s) => write!(f, "{}", s) 
+    }
+  }
+}
+
+impl std::fmt::Display for Form {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    match self {
+      Form::Cst(true)  => write!(f, "⊤"),
+      Form::Cst(false) => write!(f, "⊥"),
+      Form::Not(g) => write!(f, "¬ {}", g),
+      Form::Bct(b,g,h) => write!(f, "({} {} {})", g, b, h),
+      Form::Qtf(true,g)  => write!(f, "∃ {}", g),
+      Form::Qtf(false,g) => write!(f, "∀ {}", g),
+      Form::Rel(r,ts) => write!(f, "{}{}", r, Terms(ts))
+    }
+  }
+}
 
 pub enum FormPart {
   Cst(bool),
   Not,
-  Qtf(Qtf),
+  Qtf(bool),
   Bct(Bct),
   Rel(Rc<FS>, Vec<Term>)
 } 
 
-#[derive(PartialEq, Eq, std::hash::Hash, Clone, Debug)]
-pub enum NM {
-  Atm(String),
-  Num(u64)
-} 
+// #[derive(PartialEq, Eq, std::hash::Hash, Clone, Debug)]
+// pub enum NM {
+//   Atm(String),
+//   Num(u64)
+// } 
 
-pub enum Role {
-  Axiom,
-  Plain
-} 
+// pub enum Role {
+//   Axiom,
+//   Plain
+// } 
 
 type Annot = Option<GT>;
-type Inst = (NM, Role, Form, Annot);
+type Inst = (String, bool, Form, Annot);
 
 pub fn err_str<T>(s: &str) -> Rst<T> { Err(s.to_string()) }
 
@@ -103,36 +170,23 @@ fn put_u64<W: Write>(w: &mut W, k: u64) -> Rst<()> {
   put_string(w, &k.to_string())
 }
 
-fn put_string<W: Write>(w: &mut W, s: &str) -> Rst<()> {
+pub fn put_string<W: Write>(w: &mut W, s: &str) -> Rst<()> {
   for c in s.chars() { put_char(w, c)?; }
   put_char(w,'%')
 }
 
-pub fn put_nm<W: Write>(w: &mut W, i: &NM) -> Rst<()> {
-  match i {
-    NM::Atm(s) => {
-      put_char(w, '\'')?;
-      put_string(w,&s)?;
-    },
-    NM::Num(k) => {
-      put_char(w, '#')?;
-      put_string(w,&k.to_string())?;
-    }
-  }
-  Ok(())
-}
-
-pub fn put_role<W: Write>(w: &mut W, r: &Role) -> Rst<()> {
-  match r {
-    Role::Axiom => put_char(w,'A'),
-    Role::Plain => put_char(w,'P')
-  }
+pub fn put_bool<W: Write>(w: &mut W, b: bool) -> Rst<()> {
+  if b { put_char(w,'T') } else { put_char(w,'F') }
+  // match r {
+  //   Role::Axiom => put_char(w,'A'),
+  //   Role::Plain => put_char(w,'P')
+  // }
 }
 
 pub fn put_gt<W: Write>(w: &mut W, t: &GT) -> Rst<()> {
   match t {
     GT::Fun(s,ts) => {
-      put_char(w,'^')?;
+      put_char(w,'$')?;
       put_string(w,&s)?;
       put_vec(w,&ts)
     }
@@ -158,8 +212,8 @@ pub fn put_option<T: Put, W: Write>(w: &mut W, o: &Option<T>) -> Rst<()> {
 }
 
 pub fn put_inst<W: Write>(w: &mut W, i: &Inst) -> Rst<()> {
-  put_nm(w,&i.0)?;
-  put_role(w,&i.1)?;
+  put_string(w,&i.0)?;
+  put_bool(w,i.1)?;
   put_form(w,&i.2)?;
   put_option(w,&i.3)
 }
@@ -184,11 +238,11 @@ fn get_byte(bs : FileBytes) -> Rst<u8> {
 
 fn get_fs(bs: FileBytes) -> Rst<FS> {
   match get_char(bs)? {
-    '\'' => {
+    '"' => {
       let a = get_string(bs)?;
       Ok(FS::Atm(a))
     },
-    '@' => {
+    '#' => {
       let k = get_u64(bs)?;
       Ok(FS::Par(k))
     },
@@ -212,35 +266,16 @@ pub fn get_u64(bs : FileBytes) -> Rst<u64> {
   }
 }
 
-pub fn get_dir(bs: FileBytes) -> Rst<Dir> { 
+pub fn get_bool(bs: FileBytes) -> Rst<bool> { 
   match get_char(bs)? {
-    '<' => Ok(Dir::Lft),
-    '>' => Ok(Dir::Rgt),
-     c  => Err(format!("Cannot parse direction from char = {}", c))
+    'T' => Ok(true),
+    'F' => Ok(false),
+     c  => Err(format!("Cannot parse bool from char = {}", c))
   }
 }
 
-pub fn get_nm(bs: FileBytes) -> Rst<NM> { 
-  match get_char(bs)? {
-    '\'' => {
-      let a = get_string(bs)?;
-      Ok(NM::Atm(a))
-    }
-    '#' => {
-      let k = get_u64(bs)?;
-      Ok(NM::Num(k))
-    },
-    _ => err_str("Cannot parse name")
-  }
-}
-
-fn qtf_char(q: &Qtf) -> char {
-  match q {
-    Qtf::Fa => '!',
-    Qtf::Ex => '?'
-  }
-}
 fn bool_char(b: &bool) -> char { if *b { 'T' } else { 'F' } }
+
 fn bct_char(b: &Bct) -> char {
   match b {
     Bct::Or => '|',
@@ -266,12 +301,16 @@ pub fn put_form<W: Write>(w: &mut W, f: &Form) -> Rst<()> {
             fs.push(j);
             fs.push(i);
           }, 
-          Form::Qtf(q,h) => {
-            put_char(w,qtf_char(q))?;
+          Form::Qtf(true,h) => {
+            put_char(w,'?')?;
+            fs.push(h);
+          }, 
+          Form::Qtf(false,h) => {
+            put_char(w,'!')?;
             fs.push(h);
           }, 
           Form::Rel(ft,ts) => {
-            put_char(w,'^')?;
+            put_char(w,'$')?;
             put_fs(w,&**ft)?;
             put_vec(w,ts)?;
           }
@@ -285,11 +324,11 @@ pub fn put_form<W: Write>(w: &mut W, f: &Form) -> Rst<()> {
 fn put_fs<W: Write>(w: &mut W, f: &FS) -> Rst<()> { 
   match f {
     FS::Atm(s) => {
-      put_char(w,'\'')?;
+      put_char(w,'"')?;
       put_string(w,&s)
     },
     FS::Par(k) => {
-      put_char(w,'@')?;
+      put_char(w,'#')?;
       put_u64(w,*k)
     }
   }
@@ -301,16 +340,16 @@ pub fn put_term<W: Write>(w: &mut W, t: &Term) -> Rst<()> {
       put_char(w,'#')?;
       put_u64(w,*k)
     },
-    Term::Dst(s) => {
-      put_char(w,'"')?;
-      put_string(w,&s)
-    },
-    Term::Num(s) => {
-      put_char(w,'#')?;
-      put_string(w,&s)
-    },
+    // Term::Dst(s) => {
+    //   put_char(w,'"')?;
+    //   put_string(w,&s)
+    // },
+    // Term::Num(s) => {
+    //   put_char(w,'#')?;
+    //   put_string(w,&s)
+    // },
     Term::Fun(f,ts) => {
-      put_char(w,'^')?;
+      put_char(w,'$')?;
       put_fs(w,&*f)?;
       put_vec(w, ts)
     }
@@ -323,15 +362,15 @@ pub fn get_term(bs : FileBytes) -> Rst<Term> {
       let n = get_u64(bs)?;
       Ok(Term::Var(n))
     },
-    '^' => {
+    '$' => {
       let f = get_fs(bs)?;
       let ts = get_vec::<Term>(bs)?; 
       Ok(Term::Fun(Rc::new(f), ts))
     },
-    '"' => {
-      let s = get_string(bs)?;
-      Ok(Term::Dst(Rc::new(s)))
-    },
+    // '"' => {
+    //   let s = get_string(bs)?;
+    //   Ok(Term::Dst(Rc::new(s)))
+    // },
     _ => err_str("Cannot parse term")
   }
 }
@@ -348,7 +387,7 @@ impl Put for Term {
   fn put<W: Write>(w: &mut W, t: &Self) -> Rst<()> { put_term(w,t) }
 }
 
-fn get_string(bs : FileBytes) -> Rst<String> {
+pub fn get_string(bs : FileBytes) -> Rst<String> {
   let mut c = get_char(bs)?;
   let mut s = String::from("");
   while c != '%' {
@@ -397,13 +436,13 @@ pub fn get_form(bs: FileBytes) -> Rst<Form> {
          rem = rem - 1; 
       }, 
       '~' => stk.push(FormPart::Not),
-      '!' => stk.push(FormPart::Qtf(Qtf::Fa)),
-      '?' => stk.push(FormPart::Qtf(Qtf::Ex)),
+      '!' => stk.push(FormPart::Qtf(false)),
+      '?' => stk.push(FormPart::Qtf(true)),
       '|' => { stk.push(FormPart::Bct(Bct::Or)); rem = rem + 1; },
       '&' => { stk.push(FormPart::Bct(Bct::And)); rem = rem + 1; },
       '>' => { stk.push(FormPart::Bct(Bct::Imp)); rem = rem + 1; },
       '=' => { stk.push(FormPart::Bct(Bct::Iff)); rem = rem + 1; },
-      '^' => {
+      '$' => {
         let f = get_fs(bs)?; 
         let ts: Vec<Term> = get_vec(bs)?; 
         stk.push(FormPart::Rel(Rc::new(f), ts));
@@ -454,19 +493,20 @@ fn build_form(mut ps: Vec<FormPart>) -> Option<Form> {
 fn conv_atomic_word(a: AtomicWord) -> String {
   match a {
     AtomicWord::Lower(LowerWord(w)) => w.to_string(),
-    AtomicWord::SingleQuoted(SingleQuoted(w)) => w.to_string()
+    AtomicWord::SingleQuoted(SingleQuoted(w)) => format!("'{}'", w.to_string())
   }
 }
 
-fn conv_name(n: Name) -> Rst<NM> {
+fn conv_name(n: Name) -> Rst<String> {
   match n {
-    Name::AtomicWord(a) => Ok(NM::Atm(conv_atomic_word(a))),
-    Name::Integer(Integer(i)) => {
-      match (*i).parse::<u64>() {
-        Ok(k) => Ok(NM::Num(k)),
-        _ => err_str("String cannot be parsed into u64")
-      }
-    }
+    Name::AtomicWord(a) => Ok(conv_atomic_word(a)),
+    Name::Integer(Integer(i)) => Ok((*i).to_string())
+    // {
+    //   match (*i).parse::<u64>() {
+    //     Ok(k) => Ok(NM::Num(k)),
+    //     _ => err_str("String cannot be parsed into u64")
+    //   }
+    // }
   }
 }
 
@@ -504,8 +544,8 @@ fn string_args_form(s: String, ts: Vec<Term>) -> Form {
   Form::Rel(Rc::new(FS::Atm(s)),ts)
 }
   
-fn apply_qtf(q: Qtf, f: Form) -> Form {
-  Form::Qtf(q, Rc::new(f))
+fn apply_qtf(b: bool, f: Form) -> Form {
+  Form::Qtf(b, Rc::new(f))
 }
 
 fn apply_non_assoc_connective(c: NonassocConnective, f: Form, g: Form) -> Form {
@@ -588,14 +628,14 @@ fn conv_fof_formula(vs: &mut Vec<String>, f: FofFormula) -> Rst<Form> {
   match f { FofFormula {0: g} => conv_fof_logic_formula(vs,g) }
 }
 
-fn conv_role(r: FormulaRole) -> Role {
+fn conv_role(r: FormulaRole) -> bool {
   match r {
-    FormulaRole::Axiom => Role::Axiom,
-    FormulaRole::Lemma => Role::Axiom,
-    FormulaRole::Hypothesis => Role::Axiom,
-    FormulaRole::Conjecture => Role::Axiom,
-    FormulaRole::NegatedConjecture => Role::Axiom,
-    _ => Role::Plain
+    FormulaRole::Axiom => true,
+    FormulaRole::Lemma => true,
+    FormulaRole::Hypothesis => true,
+    FormulaRole::Conjecture => true,
+    FormulaRole::NegatedConjecture => true,
+    _ => false
   }
 }
 
@@ -635,7 +675,7 @@ fn conv_annotations (a: Annotations) -> Rst<Annot> {
   }
 }
 
-pub fn conv_annotated_formula_to_hyp(a: AnnotatedFormula) -> Rst<(NM, Form)> {
+pub fn conv_annotated_formula_to_hyp(a: AnnotatedFormula) -> Rst<(String, Form)> {
   let (n,_,f,_) = conv_annotated_formula(a)?;
   Ok((n,f))
 }
@@ -712,8 +752,8 @@ fn conv_fof_term(vs: &Vec<String>, t: FofTerm) -> Rst<Term> {
             FofDefinedTerm::Atomic(FofDefinedAtomicTerm(t)) => Ok(string_args_term(conv_fof_defined_plain_term(t),vec![])),
             FofDefinedTerm::Defined(q)=> {
               match q {
-                DefinedTerm::Distinct(DistinctObject(p)) => Ok(Term::Dst(Rc::new((*p).to_string()))),
-                DefinedTerm::Number(p) => Ok(Term::Num(Rc::new(conv_number(p))))
+                DefinedTerm::Distinct(DistinctObject(p)) => Ok(string_args_term(format!("\"{}\"", (*p).to_string()),vec![])),
+                DefinedTerm::Number(p) => Ok(string_args_term(conv_number(p),vec![]))
               }
             }
           }
@@ -744,10 +784,10 @@ fn conv_fof_unary_formula(vs: &mut Vec<String>, f: FofUnaryFormula) -> Rst<Form>
   }
 }
 
-fn conv_fof_quantifier(q: FofQuantifier) -> Qtf {
+fn conv_fof_quantifier(q: FofQuantifier) -> bool {
   match q {
-    FofQuantifier::Forall => Qtf::Fa,
-    FofQuantifier::Exists => Qtf::Ex
+    FofQuantifier::Forall => false,
+    FofQuantifier::Exists => true
   }
 }
 
@@ -822,7 +862,7 @@ fn conv_literals(ls: Vec<Literal>) -> Rst<Form> {
   let fs: Rst<Vec<Form>> = ls.into_iter().map(|x| conv_literal(&vs,x)).collect();
   let mut f = chain_forms(Bct::Or, fs?)?;
   for _ in 0..k {
-    f = Form::Qtf(Qtf::Fa,Rc::new(f));
+    f = Form::Qtf(false,Rc::new(f));
   }
   Ok(f)
 }

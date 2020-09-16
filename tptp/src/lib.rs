@@ -33,6 +33,3 @@ pub mod syntax;
 
 /// TPTP Visitor trait
 pub mod visitor;
-
-#[cfg(test)]
-mod tests;

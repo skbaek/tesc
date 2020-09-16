@@ -1,4 +1,3 @@
-// use std::env;
 use std::env;
 use std::io::prelude::*;
 use std::fs::File;
@@ -9,7 +8,7 @@ use tptp::syntax::*;
 use tptp::parsers::TPTPIterator;
 use basic::*;
 
-type Problem = HashMap<NM, Rc<Form>>;
+type Problem = HashMap<String, Rc<Form>>;
 
 fn mk_vars_asc(k: u64) -> Vec<Term> {
   (0..k).map(|x| Term::Var(x)).collect()
@@ -27,7 +26,7 @@ fn choice_axiom(k: u64, f: &Form) -> bool {
   match remove_fas(0,f) {
     (m, Form::Bct(Bct::Imp, f,g)) => {
       match &**f {
-        Form::Qtf(Qtf::Ex, h) => {
+        Form::Qtf(true, h) => {
           form_below(k,h) && 
           (
             substform(0, &mk_par_term(k, mk_vars_asc(m)), h) == **g ||
@@ -65,7 +64,7 @@ fn pred_def(k: u64, f: &Form) -> bool {
 
 fn remove_fas(c: u64, f: &Form) -> (u64, &Form) {
   match f { 
-    Form::Qtf(Qtf::Fa, g) => remove_fas(c+1,&*g),
+    Form::Qtf(false, g) => remove_fas(c+1,&*g),
     _ => (c, f)
   }
 }
@@ -137,16 +136,16 @@ fn trans_axiom(f: &Form) -> bool {
 
 fn refl_axiom(f: &Form) -> bool {
   match f {
-    Form::Qtf(Qtf::Fa, g) => is_eq(Term::Var(0), Term::Var(0), g),
+    Form::Qtf(false, g) => is_eq(Term::Var(0), Term::Var(0), g),
     _ => false 
   }
 }
 
 fn symm_axiom(f: &Form) -> bool { 
   match f { 
-    Form::Qtf(Qtf::Fa, g) => {
+    Form::Qtf(false, g) => {
       match &**g {
-        Form::Qtf(Qtf::Fa, h) => {
+        Form::Qtf(false, h) => {
           match &**h {
             Form::Bct(Bct::Imp, i,j) => {
               is_eq(Term::Var(1), Term::Var(0), &*i) &&
@@ -194,8 +193,8 @@ fn rc_not_rc(f: Form) -> Rc<Form> { Rc::new(Form::Not(Rc::new(f))) }
 
 fn term_below(k: u64, t: &Term) -> bool {
   match t {
-    Term::Dst(_) => true,
-    Term::Num(_) => true,
+    // Term::Dst(_) => true,
+    // Term::Num(_) => true,
     Term::Var(_) => true,
     Term::Fun(f,ts) => 
       symb_below(k, &*f) && ts.iter().fold(true, |a, x| { a && term_below(k, x) })
@@ -204,8 +203,8 @@ fn term_below(k: u64, t: &Term) -> bool {
 
 fn ground_term(k: u64, t: &Term) -> bool {
   match t {
-    Term::Dst(_) => true,
-    Term::Num(_) => true,
+    // Term::Dst(_) => true,
+    // Term::Num(_) => true,
     Term::Var(m) => m < &k,
     Term::Fun(_,ts) => ts.iter().fold(true, |a, x| { a && ground_term(k, x) } )
   }
@@ -235,26 +234,26 @@ fn mk_par_term(n: u64, ts: Vec<Term>) -> Term {
   Term::Fun(Rc::new(FS::Par(n)), ts)
 }
 
-fn ab(d: Dir, f: Rc<Form>) -> Rc<Form> {
+fn ab(d: bool, f: Rc<Form>) -> Rc<Form> {
   match (d,&*f) {
-    (Dir::Lft, Form::Not(g)) => {
+    (true, Form::Not(g)) => {
       match &**g {
         Form::Bct(Bct::Or, h,_) => rc_not(h.clone()),
         Form::Bct(Bct::Imp,h,_) => h.clone(),
         _ => panic!("Not an A-formula")
       }
     },
-    (Dir::Rgt, Form::Not(g)) => {
+    (false, Form::Not(g)) => {
       match &**g {
         Form::Bct(Bct::Or, _,h) => rc_not(h.clone()),
         Form::Bct(Bct::Imp,_,h) => rc_not(h.clone()),
         _ => panic!("Not an A-formula")
       }
     },
-    (Dir::Lft, Form::Bct(Bct::And,g,_)) => g.clone(),
-    (Dir::Rgt, Form::Bct(Bct::And,_,g)) => g.clone(),
-    (Dir::Lft, Form::Bct(Bct::Iff,g,h)) => Rc::new(Form::Bct(Bct::Imp,g.clone(),h.clone())),
-    (Dir::Rgt, Form::Bct(Bct::Iff,g,h)) => Rc::new(Form::Bct(Bct::Imp,h.clone(),g.clone())),
+    (true,  Form::Bct(Bct::And,g,_)) => g.clone(),
+    (false, Form::Bct(Bct::And,_,g)) => g.clone(),
+    (true,  Form::Bct(Bct::Iff,g,h)) => Rc::new(Form::Bct(Bct::Imp,g.clone(),h.clone())),
+    (false, Form::Bct(Bct::Iff,g,h)) => Rc::new(Form::Bct(Bct::Imp,h.clone(),g.clone())),
     _ => panic!("Not an A-formula")
   }
 }
@@ -279,23 +278,23 @@ fn bb(f: Rc<Form>) -> (Rc<Form>, Rc<Form>) {
 
 fn cb(t: Term, f: Rc<Form>) -> Rc<Form> {
   match &*f {
-    Form::Qtf(Qtf::Fa,g) => Rc::new(substform(0,&t,&*g)),
+    Form::Qtf(false,g) => Rc::new(substform(0,&t,&*g)),
     Form::Not(g) => {
       match &**g {
-        Form::Qtf(Qtf::Ex,h) => rc_not_rc(substform(0,&t,&*h)),
-        _ => panic!("Not a C-formula")
+        Form::Qtf(true,h) => rc_not_rc(substform(0,&t,&*h)),
+        _ => panic!("Not a C-formula : {:?}\nCannot instantiate with term : {:?}", f, t)
       }
     },
-    _ => panic!("Not a C-formula")
+    _ => panic!("Not a C-formula : {:?}\nCannot instantiate with term : {:?}", f, t)
   }
 }
 
 fn db(n: u64, f: Rc<Form>) -> Rc<Form> {
   match &*f {
-    Form::Qtf(Qtf::Ex,g) => Rc::new(substform(0,&mk_par_term(n,vec![]),&*g)),
+    Form::Qtf(true,g) => Rc::new(substform(0,&mk_par_term(n,vec![]),&*g)),
     Form::Not(g) => {
       match &**g {
-        Form::Qtf(Qtf::Fa,h) => rc_not_rc(substform(0,&mk_par_term(n,vec![]),&*h)),
+        Form::Qtf(false,h) => rc_not_rc(substform(0,&mk_par_term(n,vec![]),&*h)),
         _ => panic!("Not a D-formula")
       }
     },
@@ -308,26 +307,12 @@ fn nb(f: Rc<Form>) -> Rc<Form> {
     Form::Not(g) => {
       match &**g {
         Form::Not(h) => h.clone(),
-        _ => panic!("Not a N-formula")
+        _ => panic!(format!("Not a N-formula : {:?}", *f))
       }
     },
-    _ => panic!("Not a N-formula")
+    _ => panic!(format!("Not a N-formula : {:?}", *f))
   }
 }
-
-
-// fn get_prob(bs : FileBytes) -> Result<Problem, String> {
-//   let mut c = get_char(bs)?; 
-//   let mut h = HashMap::new();
-//   while c != '.' {
-//     if c != ';' { return err_str("Ill-formed input problem.") };
-//     let n = get_name(bs)?;
-//     let f = get_form(bs)?;
-//     h.insert(n, f);
-//     c = get_char(bs)?;
-//   };
-//   Ok(h)
-// }
 
 fn substterm(k: u64, t: &Term, s: &Term) -> Term {
   match s {
@@ -337,8 +322,8 @@ fn substterm(k: u64, t: &Term, s: &Term) -> Term {
       else { Term::Var(*m) }
     },
     Term::Fun(f,ts) => Term::Fun(f.clone(),ts.iter().map(|x| substterm(k,t,x)).collect()),
-    Term::Dst(d) => Term::Dst(d.clone()),
-    Term::Num(s) => Term::Num(s.clone())
+    // Term::Dst(d) => Term::Dst(d.clone()),
+    // Term::Num(s) => Term::Num(s.clone())
   }
 }
 
@@ -346,8 +331,8 @@ fn incrvarterm(t: &Term) -> Term {
   match t {
     Term::Var(m) => Term::Var(m+1), 
     Term::Fun(f,ts) => Term::Fun(f.clone(),ts.iter().map(|x| incrvarterm(x)).collect()),
-    Term::Dst(d) => Term::Dst(d.clone()),
-    Term::Num(d) => Term::Num(d.clone())
+    // Term::Dst(d) => Term::Dst(d.clone()),
+    // Term::Num(d) => Term::Num(d.clone())
   }
 }
 
@@ -361,7 +346,7 @@ fn substform(n: u64, t: &Term, f: &Form) -> Form {
   }
 }
 
-fn get_from_prob<'a>(p: &'a Problem, n: &NM) -> Rst<Rc<Form>> {
+fn get_from_prob<'a>(p: &'a Problem, n: &String) -> Rst<Rc<Form>> {
   match p.get(n) {
     Some(f) => Ok(f.clone()),
     None => Err(format!("Cannot find premise in problem with name = {:?}", n))
@@ -375,6 +360,12 @@ fn get_from_context<'a>(ctx: &'a Vec<Rc<Form>>, i: u64) -> Rst<Rc<Form>> {
   }
 }
 
+fn push_debug(ctx: &mut Vec<Rc<Form>>, f: Rc<Form>) -> () {
+  println!("Branch length = {}", ctx.len());
+  println!("New premise = {}", *f);
+  ctx.push(f);
+}
+
 fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
     
   let mut ctx: Vec<Rc<Form>> = vec![];
@@ -384,18 +375,19 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
     match get_char(bs)? {
       'A' => {
         let i = get_u64(bs)?; 
-        let d = get_dir(bs)?;
+        let d = get_bool(bs)?;
         let p = get_from_context(&ctx, i)?;
         let c = ab(d,p);
-        ctx.push(c);
+        // ctx.push(c);
+        push_debug(&mut ctx,c);
       },
       'B' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
         let (cl, cr) = bb(p);
-        // let mut prob_alt = prob.clone();
         conts.push((ctx.len() as u64, cr)); 
-        ctx.push(cl);
+        // ctx.push(cl);
+        push_debug(&mut ctx,cl);
       },
       'C' => {
         let i = get_u64(bs)?; 
@@ -404,18 +396,21 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         if !ground_term(0, &t) { return err_str("Instantiation term contains free variables.") };
         if !term_below(ctx.len() as u64, &t) { return err_str("Instantiation term contains OOB parameter.") };
         let c = cb(t,p);
-        ctx.push(c);
+        // ctx.push(c);
+        push_debug(&mut ctx,c);
       },
       'D' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
         let c = db(ctx.len() as u64,p);
-        ctx.push(c);
+        // ctx.push(c);
+        push_debug(&mut ctx,c);
       },
-      'H' => {
-        let n = get_nm(bs)?; 
+      'P' => {
+        let n = get_string(bs)?; 
         let f: Rc<Form> = get_from_prob(&prob, &n)?;
-        ctx.push(f.clone());
+        // ctx.push(f.clone());
+        push_debug(&mut ctx, f.clone());
       },
       'S' => {
         let f = get_form(bs)?;
@@ -423,21 +418,23 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         if !form_below((ctx.len()+1) as u64, &f) { return err_str("Cut formula contains OOB parameter.") };
         let x = Rc::new(f);
         conts.push((ctx.len() as u64, x.clone())); 
-        ctx.push(rc_not(x));
+        // ctx.push(rc_not(x));
+        push_debug(&mut ctx, rc_not(x));
       },
       'N' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
         let c = nb(p);
-        ctx.push(c);
+        // ctx.push(c);
+        push_debug(&mut ctx, c);
       },
       'T' => {
-        // let s = get_sign(bs)?;
         let f = get_form(bs)?;
         if !ground_form(0,&f) { return err_str("Axiom is not ground.") };
         if !form_below((ctx.len()+1) as u64,&f) { return Err(format!("{:?} =< Parameter in axiom = {:?}", ctx.len(), f)) };
         if !justified(ctx.len() as u64, &f) { return err_str("Axiom unjustified.") };
-        ctx.push(Rc::new(f));
+        // ctx.push(Rc::new(f));
+        push_debug(&mut ctx, Rc::new(f));
       },
       'X' => { 
         let pi = get_u64(bs)?; 

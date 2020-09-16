@@ -131,14 +131,14 @@ resymb_form((RDICT, FDICT), $rel(REL_I, TERMS_I), $rel(REL_O, TERMS_O)) :-
     REL_O = REL_I
   ).
 
-break_a(l, $and(FORM, _), FORM).
-break_a(r, $and(_, FORM), FORM).
-break_a(l, $not($or(FORM, _)), $not(FORM)).
-break_a(r, $not($or(_, FORM)), $not(FORM)).
-break_a(l, $not($imp(FORM, _)), FORM).
-break_a(r, $not($imp(_, FORM)), $not(FORM)).
-break_a(l, $iff(FORM_A, FORM_B), $imp(FORM_A, FORM_B)).
-break_a(r, $iff(FORM_A, FORM_B), $imp(FORM_B, FORM_A)).
+break_a(true, $and(FORM, _), FORM).
+break_a(false, $and(_, FORM), FORM).
+break_a(true, $not($or(FORM, _)), $not(FORM)).
+break_a(false, $not($or(_, FORM)), $not(FORM)).
+break_a(true, $not($imp(FORM, _)), FORM).
+break_a(false, $not($imp(_, FORM)), $not(FORM)).
+break_a(true, $iff(FORM_A, FORM_B), $imp(FORM_A, FORM_B)).
+break_a(false, $iff(FORM_A, FORM_B), $imp(FORM_B, FORM_A)).
 
 break_b($not($and(FORM_A, FORM_B)), $not(FORM_A), $not(FORM_B)).
 break_b($or(FORM_A, FORM_B), FORM_A, FORM_B).
@@ -352,18 +352,18 @@ many_nb(RULS, HYPS, GOAL, HYP_NS, GOAL_N) :-
 */
 
 apply_aa(HYP, GOAL, HYP_L, HYP_R, GOAL_N) :- 
-  apply_a(HYP, l, GOAL, HYP_L, GOAL_T), 
-  apply_a(HYP, r, GOAL_T, HYP_R, GOAL_N). 
+  apply_a(HYP, true, GOAL, HYP_L, GOAL_T), 
+  apply_a(HYP, false, GOAL_T, HYP_R, GOAL_N). 
 
 apply_ab(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) :- 
   apply_b(HYP_B, GOAL, HYP_BL, HYP_BR, GOAL_TL, GOAL_TR), 
-  apply_a(HYP_A, l, GOAL_TL, HYP_AL, GOAL_L),
-  apply_a(HYP_A, r, GOAL_TR, HYP_AR, GOAL_R).
+  apply_a(HYP_A, true, GOAL_TL, HYP_AL, GOAL_L),
+  apply_a(HYP_A, false, GOAL_TR, HYP_AR, GOAL_R).
 
 apply_ab_rev(HYP_A, HYP_B, GOAL, HYP_AR, HYP_BL, GOAL_L, HYP_AL, HYP_BR, GOAL_R) :- 
   apply_b(HYP_B, GOAL, HYP_BL, HYP_BR, GOAL_TL, GOAL_TR), 
-  apply_a(HYP_A, r, GOAL_TL, HYP_AR, GOAL_L),
-  apply_a(HYP_A, l, GOAL_TR, HYP_AL, GOAL_R).
+  apply_a(HYP_A, false, GOAL_TL, HYP_AR, GOAL_L),
+  apply_a(HYP_A, true, GOAL_TR, HYP_AL, GOAL_R).
 
 apply_sb_lem(HYP, GOAL, HYP_L, HYP_R, HYP_NL, GOAL_L, GOAL_R) :- 
   hyp_form(HYP, FORM), 
@@ -603,10 +603,10 @@ mk_mono(NUM, Cons, $fa($fa($imp($rel('=', [$var(1), $var(0)]), MONO)))) :-
   num_pred(NUM, Pred), 
   mk_mono(Pred, Cons, MONO), !.
 
-orient_dir(OPF, ONF, l, OPF, ONF).
-orient_dir(ONF, OPF, r, OPF, ONF).
-orient_dir(OPF, ONF, a, OPF, ONF).
-orient_dir(ONF, OPF, a, OPF, ONF).
+orient_dir(OPF, ONF, true,  OPF, ONF).
+orient_dir(ONF, OPF, false, OPF, ONF).
+% orient_dir(OPF, ONF, a, OPF, ONF).
+% orient_dir(ONF, OPF, a, OPF, ONF).
 
 orient_literal_hyps(HYP_P, HYP_N, HYP_P, HYP_N) :- 
   HYP_P = (_, $rel(_, _)), 
@@ -818,33 +818,21 @@ put_atom(STRM, ATOM) :-
   atom_codes(ATOM, BYTES),
   put_bytes_dollar(STRM, BYTES).
 
-put_dir(STRM, l) :- 
-  put_char(STRM, "<").
-
-put_dir(STRM, r) :- 
-  put_char(STRM, ">").
+put_bool(STRM, true)  :- put_char(STRM, "T").
+put_bool(STRM, false) :- put_char(STRM, "F").
 
 put_num(STRM, NUM) :- 
   number_codes(NUM, BYTES),
   put_bytes_dollar(STRM, BYTES).
- 
-put_name(STRM, NAME) :- 
-  atom(NAME), !, 
-  put_char(STRM, '\''), 
-  put_atom(STRM, NAME).
-put_name(STRM, NAME) :- 
-  number(NAME), !,
-  put_char(STRM, '#'), 
-  put_num(STRM, NAME).
   
 put_term(STRM, $var(NUM)) :- !, 
   put_char(STRM, '#'), 
   put_num(STRM, NUM).
-put_term(STRM, $dst(STR)) :- !,
-  put_char(STRM, '"'), 
-  put_string(STRM, STR). 
+% put_term(STRM, $dst(STR)) :- !,
+%   put_char(STRM, '"'), 
+%   put_string(STRM, STR). 
 put_term(STRM, $fun(FUN, TERMS)) :- 
-  put_char(STRM, '^'), 
+  put_char(STRM, '$'), 
   put_functor(STRM, FUN), 
   put_terms(STRM, TERMS). 
 
@@ -865,21 +853,21 @@ put_form(STRM, FORM) :-
   put_form(STRM, FORM_A),
   put_form(STRM, FORM_B).
 put_form(STRM, $rel(REL, TERMS)) :- 
-  put_char(STRM, '^'), 
+  put_char(STRM, '$'), 
   put_functor(STRM, REL), 
   put_terms(STRM, TERMS).
 
 put_functor(STRM, $par(NUM)) :- !,
-  put_char(STRM, '@'), 
+  put_char(STRM, '#'), 
   put_num(STRM, NUM). 
 put_functor(STRM, FTR) :- 
-  put_char(STRM, '\''), 
+  put_char(STRM, '"'), 
   put_atom(STRM, FTR). 
 
 put_prf(STRM, a(ID, DIR, PRF)) :- 
   put_char(STRM, 'A'), 
   put_num(STRM, ID), 
-  put_dir(STRM, DIR),
+  put_bool(STRM, DIR),
   put_prf(STRM, PRF).
   
 put_prf(STRM, b(ID, PRF_L, PRF_R)) :- 
@@ -910,9 +898,9 @@ put_prf(STRM, s(FORM, PRF_L, PRF_R)) :-
   put_prf(STRM, PRF_L),
   put_prf(STRM, PRF_R).
 
-put_prf(STRM, h(ID, PRF)) :- 
-  put_char(STRM, 'H'), 
-  put_num(STRM, ID), 
+put_prf(STRM, p(STR, PRF)) :- 
+  put_char(STRM, 'P'), 
+  put_string(STRM, STR), 
   put_prf(STRM, PRF).
 
 put_prf(STRM, t(FORM, PRF)) :- 
@@ -1034,8 +1022,8 @@ use_contra(HYP, GOAL) :-
   use_falsehood(HYP, GOAL) ;
   (
     apply_n(HYP, GOAL, HYP_N, GOAL_N) ;
-    apply_a(HYP, l, GOAL, HYP_N, GOAL_N) ; 
-    apply_a(HYP, r, GOAL, HYP_N, GOAL_N) 
+    apply_a(HYP, true, GOAL, HYP_N, GOAL_N) ; 
+    apply_a(HYP, false, GOAL, HYP_N, GOAL_N) 
   ),
   use_contra(HYP_N, GOAL_N) ;
   apply_b(HYP, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R), 
@@ -1059,8 +1047,13 @@ mate_pn(PYP, NYP, GOAL) :-
 
 %%%%%%%% GET %%%%%%%%
 
+get__char(STRM, CHAR) :- 
+  get_char(STRM, CHAR),
+  % write(CHAR),
+  true.
+  
 get_list(STRM, GTR, LIST) :- 
-  get_char(STRM, CH), !,
+  get__char(STRM, CH), !,
   get_list(STRM, GTR, CH, LIST), !.
 
 get_list(_, _, '.', []) :- !.
@@ -1084,29 +1077,28 @@ get_atom(STRM, ATOM) :-
   get_string(STRM, STR),
   atom_string(ATOM, STR).
 
-get_role(STRM, ROLE) :- 
-  get_char(STRM, CH),
-  (
-    CH = 'A', ROLE = axiom ;
-    CH = 'P', ROLE = plain
-  ).
+get_bool(STRM, BOOL) :- 
+  get__char(STRM, CHAR),
+  char_bool(CHAR, BOOL).
+char_bool('T', true).
+char_bool('F', false).
 
 get_annot(STRM, ANNOT) :-
-  get_char(STRM, CH),
+  get__char(STRM, CH),
   get_annot(STRM, CH, ANNOT).
 get_annot(STRM, '1', some(GT)) :- get_gt(STRM, GT). 
 get_annot(_, '0', none).
 
 get_af(STRM, (NAME, ROLE, FORM, ANNOT)) :- 
-  get_name(STRM, NAME), 
-  get_role(STRM, ROLE), 
+  get_string(STRM, NAME), 
+  get_bool(STRM, ROLE), 
   get_form(STRM, FORM), 
   get_annot(STRM, ANNOT).
 
 get_gt(STRM, ANNOT) :- 
-  get_char(STRM, CH),
+  get__char(STRM, CH),
   get_gt(STRM, CH, ANNOT).
-get_gt(STRM, '^', ANNOT) :-
+get_gt(STRM, '$', ANNOT) :-
   get_atom(STRM, FUN),
   get_gts(STRM, GTS), 
   ANNOT =.. [FUN | GTS].
@@ -1116,21 +1108,14 @@ get_num(STRM, NUM) :-
   get_string(STRM, STR),
   number_string(NUM, STR).
 
-get_dir(STRM, DIR) :- 
-  get_char(STRM, CH),
-  (
-    CH = '<' -> DIR = l ;
-    CH = '>' -> DIR = r
-  ).
-
 get_term(STRM, TERM) :-
-  get_char(STRM, CH), 
+  get__char(STRM, CH), 
   get_term(STRM, CH, TERM).
 
 get_term(STRM, '#', $var(NUM)) :- get_num(STRM, NUM).
-get_term(STRM, '"', $dst(STR)) :- get_string(STRM, STR).
-get_term(STRM, '^', $fun(FUN, TERMS)) :- 
-  get_functor(STRM, FUN), 
+% get_term(STRM, '"', $dst(STR)) :- get_string(STRM, STR).
+get_term(STRM, '$', $fun(FUN, TERMS)) :- 
+  get_functor(STRM, FUN),
   get_terms(STRM, TERMS).
 
 get_terms(STRM, TERMS) :- get_list(STRM, get_term, TERMS).
@@ -1138,20 +1123,20 @@ get_terms(STRM, TERMS) :- get_list(STRM, get_term, TERMS).
 get_gts(STRM, GTS) :- get_list(STRM, get_gt, GTS).
 
 get_form(STRM, FORM) :-
-  get_char(STRM, CH), 
+  get__char(STRM, CH), 
   get_form_aux(STRM, CH, FORM).
 
 get_functor(STRM, FTR) :- 
-  get_char(STRM, CH), 
+  get__char(STRM, CH), 
   get_functor(STRM, CH, FTR).
 
-get_functor(STRM, '@', $par(NUM)) :- get_num(STRM, NUM).
-get_functor(STRM, '\'', ATOM) :- get_atom(STRM, ATOM).
+get_functor(STRM, '#', $par(NUM)) :- get_num(STRM, NUM).
+get_functor(STRM, '"', ATOM) :- get_atom(STRM, ATOM).
 
 get_form_aux(_, 'T', $true).
 get_form_aux(_, 'F', $false).
 
-get_form_aux(STRM, '^', $rel(REL, TERMS)) :- 
+get_form_aux(STRM, '$', $rel(REL, TERMS)) :- 
   get_functor(STRM, REL), 
   get_terms(STRM, TERMS).
 
@@ -1165,22 +1150,14 @@ get_form_aux(STRM, CH, FORM) :-
   get_form(STRM, SUB_A), 
   get_form(STRM, SUB_B), 
   apply_bop(BCT, SUB_A, SUB_B, FORM).
-
-get_name(STRM, ID) :- 
-  get_char(STRM, CH), !, 
-  get_name(STRM, CH, ID).
-get_name(STRM, '#', NUM) :- 
-  get_num(STRM, NUM).
-get_name(STRM, '\'', ATOM) :- 
-  get_atom(STRM, ATOM).
   
 get_prf(STRM, PRF) :- 
-  get_char(STRM, CH), !, 
+  get__char(STRM, CH), !, 
   get_prf(STRM, CH, PRF).
 
 get_prf(STRM, 'A', a(PID, DIR, SUB)) :- 
   get_num(STRM, PID),  
-  get_dir(STRM, DIR),
+  get_bool(STRM, DIR),
   get_prf(STRM, SUB).  
   
 get_prf(STRM, 'B', b(PID, SUB_L, SUB_R)) :- 
@@ -1197,18 +1174,18 @@ get_prf(STRM, 'D', d(PID, SUB)) :-
   get_num(STRM, PID), 
   get_prf(STRM, SUB).
 
+get_prf(STRM, 'N', n(PID, SUB)) :- 
+  get_num(STRM, PID), 
+  get_prf(STRM, SUB). 
+
+get_prf(STRM, 'P', p(NAME, PRF)) :- 
+  get_string(STRM, NAME), 
+  get_prf(STRM, PRF). 
+
 get_prf(STRM, 'S', s(FORM, SUB_L, SUB_R)) :-
   get_form(STRM, FORM), 
   get_prf(STRM, SUB_L), 
   get_prf(STRM, SUB_R). 
-
-get_prf(STRM, 'H', h(NAME, SUB)) :- 
-  get_name(STRM, NAME), 
-  get_prf(STRM, SUB). 
-
-get_prf(STRM, 'N', n(PID, SUB)) :- 
-  get_num(STRM, PID), 
-  get_prf(STRM, SUB). 
 
 get_prf(STRM, 'T', t(FORM, SUB)) :- 
   get_form(STRM, FORM), 
@@ -1226,21 +1203,6 @@ repeat(ELEM, NUM, [ELEM | LIST]) :-
 hyphens(NUM, STR) :- 
   repeat("-", NUM, STRS), 
   strings_concat(STRS, STR).
-
-offset(0, "").
-offset(NUM, STR) :- 
-  TOT_LTH is NUM * 2,
-  number_string(NUM, NUM_STR),
-  string_length(NUM_STR, NUM_LTH),
-  PAD_LTH is TOT_LTH - NUM_LTH,
-  (
-    PAD_LTH < 1 -> 
-    hyphens(TOT_LTH, STR)
-  ;
-    hyphens(PAD_LTH, PAD_STR),
-    string_concat(NUM_STR, PAD_STR, STR)
-  ).
-
 
   
 
@@ -1260,75 +1222,6 @@ offset(NUM, STR) :-
 %   offset(OFS, OFS_STR),
 %   write(STRM, TERM).
   
-show_prf(STRM, OFS, a(PID, DIR, PRF)) :- 
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  atomic_list_concat(['A', PID, DIR], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF).  
-
-show_prf(STRM, OFS, b(PID, PRF_A, PRF_B)) :- 
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  atomic_list_concat(['B', PID], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF_A),   
-  show_prf(STRM, NEW, PRF_B).
-
-show_prf(STRM, OFS, c(PID, TERM, PRF)) :- 
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  term_to_atom(TERM, TERM_ATOM),
-  atomic_list_concat(['C', PID, TERM_ATOM], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF).   
-  
-show_prf(STRM, OFS, d(PID, PRF)) :- 
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  atomic_list_concat(['D', PID], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF).   
-
-show_prf(STRM, OFS, s(FORM, PRF_A, PRF_B)) :-
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  term_to_atom(FORM, FORM_ATOM),
-  atomic_list_concat(['S', FORM_ATOM], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF_A), 
-  show_prf(STRM, NEW, PRF_B), !.   
-
-show_prf(STRM, OFS, h(NAME, PRF)) :- 
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  atomic_list_concat(['H', NAME], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF), !. 
-
-show_prf(STRM, 'N', n(PID, PRF)) :- 
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  atomic_list_concat(['N', PID], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF), !. 
-
-show_prf(STRM, OFS, t(FORM, PRF)) :- 
-  num_succ(OFS, NEW), 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  term_to_atom(FORM, FORM_ATOM),
-  atomic_list_concat(['T', FORM_ATOM], ', ', STR),
-  writeln(STRM, STR), 
-  show_prf(STRM, NEW, PRF), !. 
-  
-show_prf(STRM, OFS, x(PID, NID)) :- 
-  offset(OFS, OFS_STR), write(STRM, OFS_STR), 
-  atomic_list_concat(['X', PID, NID], ', ', STR),
-  writeln(STRM, STR). 
-
-show_prf(PRF) :- 
-  open('showprf.txt', write, STRM),
-  show_prf(STRM, 0, PRF).
   
 
 %%%%%%%%%%%%%%%% PROPOSITIONAL CONNECTION TABLEAUX %%%%%%%%%%%%%%%%
@@ -1339,8 +1232,8 @@ startable_hyp(MODE, (_, FORM)) :-
 startable_form(_, FORM) :- falsehood(FORM), !.
 startable_form(MODE, FORM) :- break_n(FORM, SUB), !, startable_form(MODE, SUB). 
 startable_form(MODE, FORM) :- 
-  break_a(l, FORM, FORM_A), !, 
-  break_a(r, FORM, FORM_B), !, 
+  break_a(true, FORM, FORM_A), !, 
+  break_a(false, FORM, FORM_B), !, 
   (startable_form(MODE, FORM_A) ; startable_form(MODE, FORM_B)).
 startable_form(MODE, FORM) :- 
   break_b(FORM, FORM_A, FORM_B), !, 
@@ -1426,13 +1319,13 @@ iff_conv_pos_aux(TRP) :-
 
 iff_conv_neg_aux(TRP) :- 
   para__b(TRP, TRP_2, TRP_1),
-  para_a_(l, TRP_1, TRP_1A), 
+  para_a_(true, TRP_1, TRP_1A), 
 
-  (D1 = l, D2 = r ; D1 = r, D2 = l),
+  (D1 = true, D2 = false ; D1 = false, D2 = true),
 
   para__a(D1, TRP_1A, TRP_1B), 
   mate(TRP_1B),
-  para_a_(r, TRP_2, TRP_2A), 
+  para_a_(false, TRP_2, TRP_2A), 
   para__a(D2, TRP_2A, TRP_2B), 
   para__n(TRP_2B, TRP_2C), 
   mate(TRP_2C).
@@ -1578,7 +1471,7 @@ para_simp_v((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :-
   use_contra(HYP_T, GOAL_T).
 
 para_simp_v((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
-  pluck([l, r], DIR, [FLP]), 
+  pluck([true, false], DIR, [FLP]), 
   hyp_form(HYP_A, FORM), 
   break_a(DIR, FORM, FORM_T), 
   tautology(FORM_T), 
@@ -1597,17 +1490,17 @@ para_simp(v, H2G) :-
 para_simp(e, H2G) :- 
   H2G = (PREM, _, GOAL),
   hyp_form(PREM, FORM),
-  break_a(l, FORM, FORM_A), !,
-  break_a(r, FORM, FORM_B), 
+  break_a(true, FORM, FORM_A), !,
+  break_a(false, FORM, FORM_B), 
   bool_simp(FORM_A, NORM_A),
   bool_simp(FORM_B, NORM_B),
   (
     (truth(NORM_A) ; NORM_A == NORM_B) -> 
-    para_a_(r, H2G, H2G_N),
+    para_a_(false, H2G, H2G_N),
     para_simp(e, H2G_N)
   ;
     truth(NORM_B) -> 
-    para_a_(l, H2G, H2G_N),
+    para_a_(true, H2G, H2G_N),
     para_simp(e, H2G_N)
   ;
     complements(NORM_A, NORM_B) -> 
@@ -1723,16 +1616,16 @@ ppr(H2G) :-
 %%%%%%%%%%%%%%%% NEGATION NORMALIZATION %%%%%%%%%%%%%%%%
 
 a_para((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
-  apply_a(HYP_A, l, GOAL, HYP_AN, GOAL_N) ;
-  apply_a(HYP_A, r, GOAL, HYP_AN, GOAL_N).
+  apply_a(HYP_A, true, GOAL, HYP_AN, GOAL_N) ;
+  apply_a(HYP_A, false, GOAL, HYP_AN, GOAL_N).
   
 ppr_a((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
-  apply_a(HYP_A, l, GOAL, HYP_AN, GOAL_N) ;
-  apply_a(HYP_A, r, GOAL, HYP_AN, GOAL_N).
+  apply_a(HYP_A, true, GOAL, HYP_AN, GOAL_N) ;
+  apply_a(HYP_A, false, GOAL, HYP_AN, GOAL_N).
 
 ppr_a((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
-  apply_a(HYP_B, l, GOAL, HYP_BN, GOAL_N) ;
-  apply_a(HYP_B, r, GOAL, HYP_BN, GOAL_N).
+  apply_a(HYP_B, true, GOAL, HYP_BN, GOAL_N) ;
+  apply_a(HYP_B, false, GOAL, HYP_BN, GOAL_N).
 
 fnnf(H2G) :- 
   para_mate(H2G) -> true ;
@@ -1779,8 +1672,8 @@ imp_hyp(HYP) :-
 
 ap_rop_aux(HYP, GOAL, HYP_L, HYP_R, NEW_GOAL) :- 
   \+ imp_hyp(HYP), 
-  apply_a(HYP, l, GOAL, HYP_L, TEMP_GOAL),
-  apply_a(HYP, r, TEMP_GOAL, HYP_R, NEW_GOAL).
+  apply_a(HYP, true, GOAL, HYP_L, TEMP_GOAL),
+  apply_a(HYP, false, TEMP_GOAL, HYP_R, NEW_GOAL).
 
 ap_rop(HYP, GOAL, HYPS, GOAL_N) :- 
   ap_rop_aux(HYP, GOAL, HYP_L, HYP_R, GOAL0) -> 
@@ -1890,7 +1783,7 @@ cla_lits($or(FORM_L, FORM_R), LITS, TAIL) :- !,
 cla_lits(LIT, [LIT | TAIL], TAIL) :- literal(LIT).
 
 trace_if_debug(OPTS) :-
-  member('-debug', OPTS) ->
+  member('--debug', OPTS) ->
   write("Begin tracing.\n\n"),
   guitracer,
   trace 
@@ -1930,12 +1823,12 @@ para_e1(H2G) :-
   para_clausal_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
   % para_clausal_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
   para_c_(H2G, H2G_N) -> para_e1(H2G_N) ;
-  member(DIR, [l, r]),
+  member(DIR, [true, false]),
   clause_ab(para_e1, DIR, H2G).
   % -> true ; 
 
-clause_ab(PARA, l, (HYP_A, HYP_B, GOAL)) :- clause_ab(PARA, l, HYP_A, HYP_B, GOAL). 
-clause_ab(PARA, r, (HYP_A, HYP_B, GOAL)) :- clause_ab(PARA, l, HYP_B, HYP_A, GOAL). 
+clause_ab(PARA, true,  (HYP_A, HYP_B, GOAL)) :- clause_ab(PARA, true, HYP_A, HYP_B, GOAL). 
+clause_ab(PARA, false, (HYP_A, HYP_B, GOAL)) :- clause_ab(PARA, true, HYP_B, HYP_A, GOAL). 
 
 clause_ab(PARA, DIR, HYP_A, HYP_B, GOAL) :- 
   type_hyp(a, HYP_A),
@@ -1946,10 +1839,10 @@ clause_ab_aux(PARA, DIR, HYPS, HYP, GOAL, REM) :-
   apply_c(HYP, _, GOAL, HYP_N, GOAL_N), !, 
   clause_ab_aux(PARA, DIR, HYPS, HYP_N, GOAL_N, REM).
 
-clause_ab_aux(PARA, l, [HYP_A | HYPS], HYP_B, GOAL, HYPS) :-
+clause_ab_aux(PARA, true, [HYP_A | HYPS], HYP_B, GOAL, HYPS) :-
   call(PARA, (HYP_A, HYP_B, GOAL)), !. 
   
-clause_ab_aux(PARA, r, [HYP_A | HYPS], HYP_B, GOAL, HYPS) :-
+clause_ab_aux(PARA, false, [HYP_A | HYPS], HYP_B, GOAL, HYPS) :-
   call(PARA, (HYP_B, HYP_A, GOAL)), !. 
 
 clause_ab_aux(PARA, DIR, HYPS, HYP_B, GOAL, REM) :-
@@ -2223,7 +2116,7 @@ atom_firstchar(ATOM, CH) :-
   char_code(CH, CODE).
 
 get_prob(STRM, PROB_I, PROB_O) :- 
-  get_char(STRM, CH), 
+  get__char(STRM, CH), 
   get_prob(STRM, CH, PROB_I, PROB_O).
 get_prob(STRM, ',', PROB_I, PROB_O) :- 
   get_af(STRM, (NAME, _, FORM, _)), !,

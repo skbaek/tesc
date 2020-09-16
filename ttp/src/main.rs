@@ -5,19 +5,19 @@ use std::io::{self};
 use std::io::{Write};
 use basic::*;
 
-fn output_ttp_input<W: Write>(h: &mut W, ti: TPTPInput) -> Rst<()> {
+fn output_ttp_input<W: Write>(w: &mut W, ti: TPTPInput) -> Rst<()> {
   match ti {
     TPTPInput::Annotated(a) => {
-      put_char(h, ',')?;
+      put_char(w, ',')?;
       let (n,r,f,a) = conv_annotated_formula(a)?;
-      put_nm(h,&n)?;
-      put_role(h,&r)?;
-      put_form(h,&f)?;
-      put_option(h,&a)
+      put_string(w,&n)?;
+      put_bool(w,r)?;
+      put_form(w,&f)?;
+      put_option(w,&a)
     },
     TPTPInput::Include(Include {file_name: FileName(SingleQuoted(s)), selection: _}) => {
       let ns: String = format!("{}{}", TPTPPATH, s);
-      output_ttp_file(h,&ns)
+      output_ttp_file(w,&ns)
     }
   }
 }

@@ -90,9 +90,9 @@ mk_tree_fwd(CTX, inference(RUL, _, [ANT_A, ANT_B]), btr(TREE_A, TREE_B, HINT, CO
   tree_conc(TREE_B, CONC_B), 
   mk_root(RUL, CONC_A, CONC_B, HINT, CONC).
 
-mk_tree_fwd(CTX, ID, ntr(ID, FORM)) :- 
-  atom(ID), !,
-  get_assoc(ID, CTX, FORM).
+mk_tree_fwd(CTX, NAME, ntr(STR, FORM)) :- 
+  (atom_string(NAME, STR) ; number_string(NAME, STR)), !,
+  get_assoc(STR, CTX, FORM).
 
 mk_tree_fwd(CTX, TGT, ANT, TREE) :- 
   mk_tree_fwd(CTX, ANT, SUB), 
@@ -390,7 +390,7 @@ mk_root(apply_def, FORM_A, FORM_B, dff, FORM_C) :- !,
   ground(FORM_C),
   true.
 
-mk_root(RUL, FORM_A, FORM_B, (sup, l), FORM) :- 
+mk_root(RUL, FORM_A, FORM_B, (sup, true), FORM) :- 
   member(RUL, [pm, rw, sr]),
   inst_with_lvs(FORM_A, BODY_A),
   cla_lits(BODY_A, LITS_A), 
@@ -486,22 +486,23 @@ unroll_tree(
 
 tup_insts(
   _,
-  (CID, axiom, FORM, some(ANNOT)),
-  [orig(PID, CID, FORM)]
+  (CNM, true, FORM, some(ANNOT)),
+  [orig(PNM, CNM, FORM)]
 ) :- 
-  (ANNOT = file(_, PID) ; ANNOT = PID), 
-  atom(PID), !.
+  (ANNOT = file(_, PNM_ATOM) ; ANNOT = PNM_ATOM), 
+  atom(PNM_ATOM), !,
+  atom_string(PNM_ATOM, PNM).
 
 tup_insts(
   _, 
-  (CID, plain, FORM, some(introduced(definition))),
-  [add([def, PRD, ARI], CID, FORM)]
+  (CNM, false, FORM, some(introduced(definition))),
+  [add([def, PRD, ARI], CNM, FORM)]
 ) :- !,
   def_pred_ari(FORM, PRD, ARI).
   
 % tup_insts(
 %   _, 
-%   (CNM, axiom, FORM, some(inference(apply_def,_,[inference(assume_negation,_,[NM_A]),NM_B]))),
+%   (CNM, true, FORM, some(inference(apply_def,_,[inference(assume_negation,_,[NM_A]),NM_B]))),
 %   [inf(apd, [NM_A, NM_B], CNM, FORM)]
 % ) :- !.
 

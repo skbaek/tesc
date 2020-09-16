@@ -3,8 +3,8 @@
 :- [basic].
 
 rul_hint(superposition, sup).
-rul_hint(forward_demodulation, (sup,l)).
-rul_hint(backward_demodulation, (sup,l)).
+rul_hint(forward_demodulation, (sup,true)).
+rul_hint(backward_demodulation, (sup,true)).
 rul_hint(resolution, res).
 rul_hint(subsumption_resolution, res).
 rul_hint(extensionality_resolution, res).
@@ -59,45 +59,47 @@ pred_def_norm(PRD, $iff(ATOM, FORM), ARI, $iff(ATOM, FORM)) :-
   length(TERMS, ARI).
 
 tup_inst(
-  (CNM, axiom, FORM, some(file(_, PNM))),
+  (CNM, true, FORM, some(file(_, PNM_ATOM))),
   orig(PNM, CNM, FORM) 
-).
+) :-
+  atom_string(PNM_ATOM, PNM), !.
 
 tup_inst(
-  (VID, plain, FORM, some(introduced(inequality_splitting_name_introduction,[new_symbols(naming,[PRD])]))), 
-  add([isni, PRD, ARI], VID, FORM)
+  (CNM, false, FORM, some(introduced(inequality_splitting_name_introduction,[new_symbols(naming,[PRD])]))), 
+  add([isni, PRD, ARI], CNM, FORM)
 ) :- 
   lit_arity(FORM, ARI).
 
 tup_inst(
-  (VID, plain, $iff($rel(PRD, []), FORM), some(introduced(avatar_definition,[new_symbols(naming,[PRD])]))), 
-  add([def, PRD, 0], VID, $iff($rel(PRD, []), FORM))
+  (CNM, false, $iff($rel(PRD, []), FORM), some(introduced(avatar_definition,[new_symbols(naming,[PRD])]))), 
+  add([def, PRD, 0], CNM, $iff($rel(PRD, []), FORM))
 ) :- 
   PRD \= $not(_).
 
 tup_inst(
-  (NAME, plain, FORM, some(introduced(predicate_definition_introduction,[new_symbols(naming, [PRD])]))),
-  add([def, PRD, ARI], NAME, NORM)
+  (CNM, false, FORM, some(introduced(predicate_definition_introduction,[new_symbols(naming, [PRD])]))),
+  add([def, PRD, ARI], CNM, NORM)
 ) :- 
   pred_def_norm(PRD, FORM, ARI, NORM).
 
 tup_inst(
-  (VID, _, FORM, some(introduced(theory_tautology_sat_conflict, []))),
-  inf(ttsc, [], VID, FORM)
+  (CNM, _, FORM, some(introduced(theory_tautology_sat_conflict, []))),
+  inf(ttsc, [], CNM, FORM)
 ) :- !.
 
 tup_inst(
-  (VID, _, FORM, some(introduced(RUL, _))),
-  add([HINT], VID, FORM)
+  (CNM, _, FORM, some(introduced(RUL, _))),
+  add([HINT], CNM, FORM)
 ) :- 
   RUL \= predicate_definition_introduction,
   RUL \= avatar_definition,
   rul_hint(RUL, HINT).
   
 tup_inst(
-  (ID, _, FORM, some(inference(RUL, _, IDS))),
-  inf(HINT, IDS, ID, FORM)
+  (CNM, _, FORM, some(inference(RUL, _, PNM_ATOMS))),
+  inf(HINT, PNMS, CNM, FORM)
 ) :-
+  maplist_cut(atom_string, PNM_ATOMS, PNMS),
   rul_hint(RUL, HINT).
 
 tup_inst(X, _) :-
