@@ -360,9 +360,9 @@ fn get_from_context<'a>(ctx: &'a Vec<Rc<Form>>, i: u64) -> Rst<Rc<Form>> {
   }
 }
 
-fn push_debug(ctx: &mut Vec<Rc<Form>>, f: Rc<Form>) -> () {
-  println!("Branch length = {}", ctx.len());
-  println!("New premise = {}", *f);
+fn push_conc(ctx: &mut Vec<Rc<Form>>, f: Rc<Form>) -> () {
+  // println!("Branch length = {}", ctx.len());
+  // println!("New premise = {}", *f);
   ctx.push(f);
 }
 
@@ -379,7 +379,7 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         let p = get_from_context(&ctx, i)?;
         let c = ab(d,p);
         // ctx.push(c);
-        push_debug(&mut ctx,c);
+        push_conc(&mut ctx,c);
       },
       'B' => {
         let i = get_u64(bs)?; 
@@ -387,7 +387,7 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         let (cl, cr) = bb(p);
         conts.push((ctx.len() as u64, cr)); 
         // ctx.push(cl);
-        push_debug(&mut ctx,cl);
+        push_conc(&mut ctx,cl);
       },
       'C' => {
         let i = get_u64(bs)?; 
@@ -397,20 +397,20 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         if !term_below(ctx.len() as u64, &t) { return err_str("Instantiation term contains OOB parameter.") };
         let c = cb(t,p);
         // ctx.push(c);
-        push_debug(&mut ctx,c);
+        push_conc(&mut ctx,c);
       },
       'D' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
         let c = db(ctx.len() as u64,p);
         // ctx.push(c);
-        push_debug(&mut ctx,c);
+        push_conc(&mut ctx,c);
       },
       'P' => {
         let n = get_string(bs)?; 
         let f: Rc<Form> = get_from_prob(&prob, &n)?;
         // ctx.push(f.clone());
-        push_debug(&mut ctx, f.clone());
+        push_conc(&mut ctx, f.clone());
       },
       'S' => {
         let f = get_form(bs)?;
@@ -419,14 +419,14 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         let x = Rc::new(f);
         conts.push((ctx.len() as u64, x.clone())); 
         // ctx.push(rc_not(x));
-        push_debug(&mut ctx, rc_not(x));
+        push_conc(&mut ctx, rc_not(x));
       },
       'N' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
         let c = nb(p);
         // ctx.push(c);
-        push_debug(&mut ctx, c);
+        push_conc(&mut ctx, c);
       },
       'T' => {
         let f = get_form(bs)?;
@@ -434,7 +434,7 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         if !form_below((ctx.len()+1) as u64,&f) { return Err(format!("{:?} =< Parameter in axiom = {:?}", ctx.len(), f)) };
         if !justified(ctx.len() as u64, &f) { return err_str("Axiom unjustified.") };
         // ctx.push(Rc::new(f));
-        push_debug(&mut ctx, Rc::new(f));
+        push_conc(&mut ctx, Rc::new(f));
       },
       'X' => { 
         let pi = get_u64(bs)?; 

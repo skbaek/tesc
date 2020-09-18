@@ -79,27 +79,24 @@ impl std::fmt::Display for Bct {
   }
 }
 
- impl<'a> std::fmt::Display for Terms<'a> {
+impl<'a> std::fmt::Display for Terms<'a> {
   fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-    if self.0.len() == 0 { write!(f, "") } 
-    else {
-      let i = self.0.iter();
-      let mut trailing: bool = false;
-      write!(f, "(")?;
-      for x in i {
-        if trailing { write!(f, ",")?; };
-        write!(f, "{}", x)?;
-        trailing = true;
-      };
-      write!(f, ")")
-    }
+    let i = self.0.iter();
+    let mut trailing: bool = false;
+    write!(f, "(")?;
+    for x in i {
+      if trailing { write!(f, ",")?; };
+      write!(f, "{}", x)?;
+      trailing = true;
+    };
+    write!(f, ")")
   }
 }
 
  impl std::fmt::Display for FS {
   fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      FS::Par(n) => write!(f, "@{}", n), 
+      FS::Par(n) => write!(f, "#{}", n), 
       FS::Atm(s) => write!(f, "{}", s) 
     }
   }
@@ -573,8 +570,8 @@ fn conv_fof_atomic_formula(vs: &Vec<String>, f: FofAtomicFormula) -> Rst<Form> {
       match *g {
         FofDefinedAtomicFormula::Plain(FofDefinedPlainFormula(t)) => {
           let s = conv_fof_defined_plain_term(t);
-          if s == "$true" { Ok(Form::Cst(true)) }
-          else if s == "$false" { Ok(Form::Cst(false)) }
+          if s == "tt" { Ok(Form::Cst(true)) }
+          else if s == "ff" { Ok(Form::Cst(false)) }
           else  { Ok(string_args_form(s,vec![])) }
         },
         FofDefinedAtomicFormula::Infix(

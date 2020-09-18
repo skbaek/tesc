@@ -69,7 +69,7 @@ annot_prf(PROB, BCH, n(PID, PRF), n(FORM, PID, ANT)) :-
 
 annot_prf(PROB, BCH, s(FORM, PRF_A, PRF_B), s(LAST, FORM, ANT_A, ANT_B)) :- 
   bch_form(BCH, LAST), 
-  annot_prf(PROB, [$not(FORM) | BCH], PRF_A, ANT_A),
+  annot_prf(PROB, [~ FORM | BCH], PRF_A, ANT_A),
   annot_prf(PROB, [FORM | BCH], PRF_B, ANT_B).
 
 annot_prf(PROB, BCH, p(NAME, PRF), p(LAST, NAME, ANT)) :- 
@@ -143,56 +143,55 @@ write_ant(STRM, OFS, x(LAST, PID, NID)) :-
   offset(OFS, OFS_STR),
   formatnl(STRM, "~w ~w [[ X ~w ~w ]]", [OFS_STR, LAST, PID, NID]).
 
-term_pp($var(NUM), PP) :- !, 
+term_pp(#NUM, PP) :- !, 
   number_string(NUM, STR),
   string_concat("#", STR, PP).
-term_pp($fun(FUN, TERMS), PP) :- 
+term_pp((FUN $ TERMS), PP) :- 
   functor_pp(FUN, FUN_PP), 
   terms_pp(TERMS, TERMS_PP),
   string_concat(FUN_PP, TERMS_PP, PP).
 
-form_pp($rel(REL, TERMS), PP) :-
+form_pp((REL $ TERMS), PP) :-
   functor_pp(REL, REL_PP), 
   terms_pp(TERMS, TERMS_PP),
   string_concat(REL_PP, TERMS_PP, PP).
-form_pp($true, "⊤").
-form_pp($false, "⊥").
-form_pp($not(FORM), PP) :-
+form_pp(tt, "⊤").
+form_pp(ff, "⊥").
+form_pp(~ FORM, PP) :-
   form_pp(FORM, SUB_PP), 
   string_concat("¬ ", SUB_PP, PP).
-form_pp($fa(FORM), PP) :-
+form_pp(! FORM, PP) :-
   form_pp(FORM, SUB_PP), 
   string_concat("∀ ", SUB_PP, PP).
-form_pp($ex(FORM), PP) :-
+form_pp(? FORM, PP) :-
   form_pp(FORM, SUB_PP), 
   string_concat("∃ ", SUB_PP, PP).
-form_pp($or(FORM_A, FORM_B), PP) :-
+form_pp((FORM_A \/ FORM_B), PP) :-
   form_pp(FORM_A, PP_A), 
   form_pp(FORM_B, PP_B), 
   atomics_to_string(["(", PP_A, " ∨ ", PP_B, ")"], PP).
-form_pp($and(FORM_A, FORM_B), PP) :-
+form_pp((FORM_A /\ FORM_B), PP) :-
   form_pp(FORM_A, PP_A), 
   form_pp(FORM_B, PP_B), 
   atomics_to_string(["(", PP_A, " ∧ ", PP_B, ")"], PP).
-form_pp($imp(FORM_A, FORM_B), PP) :-
+form_pp((FORM_A => FORM_B), PP) :-
   form_pp(FORM_A, PP_A), 
   form_pp(FORM_B, PP_B), 
   atomics_to_string(["(", PP_A, " → ", PP_B, ")"], PP).
-form_pp($iff(FORM_A, FORM_B), PP) :-
+form_pp((FORM_A <> FORM_B), PP) :-
   form_pp(FORM_A, PP_A), 
   form_pp(FORM_B, PP_B), 
   atomics_to_string(["(", PP_A, " ↔ ", PP_B, ")"], PP).
 
-terms_pp([], "") :- !.
 terms_pp(TERMS, PP) :-
   maplist_cut(term_pp, TERMS, PPS), 
   atomics_to_string(PPS, ',', BODY_PP),
   atomics_to_string(["(", BODY_PP, ")"], PP).
   
-functor_pp($par(NUM), PP) :- !, 
+functor_pp(#NUM, PP) :- !, 
   number_string(NUM, STR), 
-  atomics_to_string(["@", STR], PP).
-functor_pp(ATOM, PP) :- atom_string(ATOM, PP).
+  atomics_to_string(["#", STR], PP).
+functor_pp(STR, STR) :- string(STR).
   
 check(PROB, BCH, CNT, PRINT, PAD, STRM) :- 
   num_succ(CNT, SUCC),
@@ -294,7 +293,7 @@ check(PROB, BCH, CNT, SUC, 'S', PRINT, PAD, STRM) :-
 
   string_concat(PAD, "│  ", PAD_A),
   string_concat(PAD, "   ", PAD_B),
-  put_assoc(CNT, BCH, $not(FORM), BCH_A), 
+  put_assoc(CNT, BCH, ~ FORM, BCH_A), 
   put_assoc(CNT, BCH, FORM, BCH_B), 
 
   printnl(PRINT, "~w├─ ¬ ~w", [PAD, PP]), !,
@@ -318,7 +317,7 @@ check(_, BCH, CNT, _, 'X', PRINT, PAD, STRM) :-
   get_num(STRM, PID), 
   get_num(STRM, NID),
   get_assoc(PID, BCH, FORM_P),
-  get_assoc(NID, BCH, $not(FORM_N)),
+  get_assoc(NID, BCH, ~ FORM_N),
   FORM_P == FORM_N, !,
   printnl(PRINT, "~w~w : X / ~w / ~w", [PAD, CNT, PID, NID]), !.
 
@@ -327,11 +326,7 @@ main([TPTP_PATH, TESC_PATH | OPTS]) :-
   (member('--print', OPTS) -> PRINT = true ; PRINT = false),
   tptp_prob(TPTP_PATH, PROB), !,
   open(TESC_PATH, read, STRM, [encoding(octet)]),
-  % get_prf(READ, PRF),
-  % close(READ),
-  % annot_prf(PROB, [], PRF, ANT),
-  % open(WRITE_PATH, write, WRITE, [encoding(octet)]),
-  % write_ant(WRITE, 0, ANT),
-  % close(WRITE).
   empty_assoc(EMP),
-  check(PROB, EMP, 0, PRINT, "", STRM).
+  check(PROB, EMP, 0, PRINT, "", STRM),
+  close(STRM),
+  writeln("Proof verified.").

@@ -1,3 +1,17 @@
+%%%%%%%%%%%%%%%% OPERATORS %%%%%%%%%%%%%%%% 
+
+:- op(1, fx, '#').
+:- op(2, xfx, '$').
+:- op(480, fy, '~').
+:- op(490, fy, '!').
+:- op(490, fy, '?').
+:- op(500, xfx, '\\/').
+:- op(510, xfx, '/\\').
+:- op(520, xfx, '=>').
+:- op(530, xfx, '<>').
+
+
+
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
 timed_call(TIME, GOAL, ALT) :- timed_call(TIME, GOAL, ALT, ALT). 
@@ -16,77 +30,81 @@ ground_all(TERM, EXP) :-
   term_variables(EXP, VARS),
   maplist_cut('='(TERM), VARS).
 
-
-
 %%%%%%%%%%%%%%%% SYNTACTIC %%%%%%%%%%%%%%%% 
 
-type_form(a, $and(_, _)). 
-type_form(a, $not($or(_, _))). 
-type_form(a, $not($imp(_, _))). 
-type_form(a, $iff(_, _)). 
-type_form(b, $not($and(_, _))). 
-type_form(b, $or(_, _)). 
-type_form(b, $imp(_, _)). 
-type_form(b, $not($iff(_, _))). 
-type_form(c, $fa(_)). 
-type_form(c, $not($ex(_))). 
-type_form(d, $not($fa(_))). 
-type_form(d, $ex(_)). 
-type_form(n, $not($not(_))).
+type_form(a, (_ /\ _)). 
+type_form(a, ~ ((_ \/ _))). 
+type_form(a, ~ ((_ => _))). 
+type_form(a, (_ <> _)). 
+type_form(b, ~ ((_ /\ _))). 
+type_form(b, _ \/ _). 
+type_form(b, _ => _). 
+type_form(b, ~ (_ <> _)). 
+type_form(c, ! _). 
+type_form(c, ~ (? _)). 
+type_form(d, ~ (! _)). 
+type_form(d, ? _). 
+type_form(n, ~ (~ _)).
 type_hyp(TYPE, (_, FORM)) :- type_form(TYPE, FORM).
 
 hyp_form((_, FORM), FORM).
 
-atomic_form($rel(_, _)).
+atomic_form((_ $ _)).
 literal(AF) :- atomic_form(AF).
-literal($not(AF)) :- atomic_form(AF).
+literal(~ AF) :- atomic_form(AF).
 
-complements(FORM_A, $not(FORM_B)) :- FORM_A == FORM_B.
-complements($not(FORM_A), FORM_B) :- FORM_A == FORM_B.
+complements(FORM_A, ~ FORM_B) :- FORM_A == FORM_B.
+complements(~ FORM_A, FORM_B) :- FORM_A == FORM_B.
 
 incr_var_term(VAR, _) :- var(VAR), !, false.
-incr_var_term($var(NUM), $var(SUCC)) :- !, num_succ(NUM, SUCC).
-incr_var_term($dst(STR), $dst(STR)) :- !.
-incr_var_term($fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- 
+incr_var_term(#NUM, #SUC) :- !, num_succ(NUM, SUC).
+incr_var_term((FUN $ TERMS_I), (FUN $ TERMS_O)) :- 
   maplist_cut(incr_var_term, TERMS_I, TERMS_O).
 
 substitute_term(fast, _, _, VAR, VAR) :- var(VAR), !.
-substitute_term(_, _, _, $dst(STR), $dst(STR)) :- !.
 substitute_term(safe, _, _, VAR, _) :- var(VAR), !, false.
-substitute_term(_, CNT, TERM_S, $var(NUM), TERM_O) :- !, 
+substitute_term(_, CNT, TERM_S, #NUM, TERM_O) :- !, 
   CNT = NUM -> TERM_O = TERM_S 
 ; 
   CNT < NUM -> 
   num_pred(NUM, PRED), 
-  TERM_O = $var(PRED) 
+  TERM_O = #PRED 
 ; 
-  TERM_O = $var(NUM).
-substitute_term(MODE, NUM, TERM, $fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- !, 
+  TERM_O = #NUM.
+substitute_term(MODE, NUM, TERM, (FUN $ TERMS_I), (FUN $ TERMS_O)) :- !, 
   maplist_cut(substitute_term(MODE, NUM, TERM), TERMS_I, TERMS_O).
 
 resymb_term(_, VAR, VAR) :- var(VAR), !.
-resymb_term(_, $var(NUM), $var(NUM)) :- !.
-resymb_term(_, $dst(STR), $dst(STR)) :- !.
-resymb_term(DICT, $fun(FUN_I, TERMS_I), $fun(FUN_O, TERMS_O)) :- 
+resymb_term(_, #NUM, #NUM) :- !.
+resymb_term(DICT, (FUN_I $ TERMS_I), (FUN_O $ TERMS_O)) :- 
   length(TERMS_I, ARI),
   maplist_cut(resymb_term(DICT), TERMS_I, TERMS_O), !, 
   (
     get_assoc((FUN_I, ARI), DICT, IDX) -> 
-    FUN_O = $par(IDX)
+    FUN_O = #IDX
   ;    
     FUN_O = FUN_I
   ).
 
-log_const($true).
-log_const($false).
+log_const(tt).
+log_const(ff).
+
+apply_uct('~', FORM, ~ FORM).
+apply_uct('!', FORM, ! FORM).
+apply_uct('?', FORM, ? FORM).
+
+apply_bct('\\/', F, G, F \/ G).
+apply_bct('/\\', F, G, F /\ G).
+apply_bct('=>', F, G, F => G).
+apply_bct('<>', F, G, F <> G).
 
 substitute_form(_, _, _, FORM, FORM) :- log_const(FORM), !.
 
-substitute_form(MODE, NUM, TERM, $not(FORM), $not(FORM_N)) :- !,
+substitute_form(MODE, NUM, TERM, ~ FORM, ~ FORM_N) :- !,
   substitute_form(MODE, NUM, TERM, FORM, FORM_N).
 
 substitute_form(MODE, NUM, TERM, FORM_I, FORM_O) :-
-  decom_qtf(FORM_I, QTF, SUB_I), !, 
+  break_qtf(FORM_I, QTF, SUB_I), !, 
   num_succ(NUM, SUCC),
   ( 
     MODE = safe -> 
@@ -94,15 +112,15 @@ substitute_form(MODE, NUM, TERM, FORM_I, FORM_O) :-
     TERM_N = TERM
   ),
   substitute_form(MODE, SUCC, TERM_N, SUB_I, SUB_O), 
-  apply_uop(QTF, SUB_O, FORM_O). 
+  apply_uct(QTF, SUB_O, FORM_O). 
 
 substitute_form(MODE, NUM, TERM, FORM, FORM_N) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), !, 
+  break_bct(FORM, BCT, FORM_A, FORM_B), !, 
   substitute_form(MODE, NUM, TERM, FORM_A, FORM_AN),
   substitute_form(MODE, NUM, TERM, FORM_B, FORM_BN),
-  apply_bop(BCT, FORM_AN, FORM_BN, FORM_N). 
+  apply_bct(BCT, FORM_AN, FORM_BN, FORM_N). 
 
-substitute_form(MODE, NUM, TERM, $rel(REL, TERMS_I), $rel(REL, TERMS_O)) :- 
+substitute_form(MODE, NUM, TERM, (REL $ TERMS_I), (REL $ TERMS_O)) :- 
   maplist_cut(substitute_term(MODE, NUM, TERM), TERMS_I, TERMS_O).
 
 substitute_form(MODE, TERM, FORM, FORM_N) :- 
@@ -111,49 +129,49 @@ substitute_form(MODE, TERM, FORM, FORM_N) :-
 resymb_form(_, FORM, FORM) :- log_const(FORM), !.
 
 resymb_form(DICT, FORM, FORM_N) :-
-  decom_uct(FORM, UCT, SUB), !, 
+  break_uct(FORM, UCT, SUB), !, 
   resymb_form(DICT, SUB, SUB_N),
-  apply_uop(UCT, SUB_N, FORM_N). 
+  apply_uct(UCT, SUB_N, FORM_N). 
 
 resymb_form(DICT, FORM, FORM_N) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), !,  
+  break_bct(FORM, BCT, FORM_A, FORM_B), !,  
   resymb_form(DICT, FORM_A, FORM_AN),
   resymb_form(DICT, FORM_B, FORM_BN),
-  apply_bop(BCT, FORM_AN, FORM_BN, FORM_N). 
+  apply_bct(BCT, FORM_AN, FORM_BN, FORM_N). 
 
-resymb_form((RDICT, FDICT), $rel(REL_I, TERMS_I), $rel(REL_O, TERMS_O)) :- 
+resymb_form((RDICT, FDICT), (REL_I $ TERMS_I), (REL_O $ TERMS_O)) :- 
   maplist_cut(resymb_term(FDICT), TERMS_I, TERMS_O), !,  
   length(TERMS_O, ARI),
   (
     get_assoc((REL_I, ARI), RDICT, IDX) -> 
-    REL_O = $par(IDX)
+    REL_O = #IDX
   ;
     REL_O = REL_I
   ).
 
-break_a(true, $and(FORM, _), FORM).
-break_a(false, $and(_, FORM), FORM).
-break_a(true, $not($or(FORM, _)), $not(FORM)).
-break_a(false, $not($or(_, FORM)), $not(FORM)).
-break_a(true, $not($imp(FORM, _)), FORM).
-break_a(false, $not($imp(_, FORM)), $not(FORM)).
-break_a(true, $iff(FORM_A, FORM_B), $imp(FORM_A, FORM_B)).
-break_a(false, $iff(FORM_A, FORM_B), $imp(FORM_B, FORM_A)).
+break_a(true, (FORM /\ _), FORM).
+break_a(false, (_ /\ FORM), FORM).
+break_a(true, ~ ((FORM \/ _)), ~ FORM).
+break_a(false, ~ ((_ \/ FORM)), ~ FORM).
+break_a(true, ~ ((FORM => _)), FORM).
+break_a(false, ~ ((_ => FORM)), ~ FORM).
+break_a(true, (FORM_A <> FORM_B), (FORM_A => FORM_B)).
+break_a(false, (FORM_A <> FORM_B), (FORM_B => FORM_A)).
 
-break_b($not($and(FORM_A, FORM_B)), $not(FORM_A), $not(FORM_B)).
-break_b($or(FORM_A, FORM_B), FORM_A, FORM_B).
-break_b($imp(FORM_A, FORM_B), $not(FORM_A), FORM_B).
-break_b($not($iff(FORM_A, FORM_B)), $not($imp(FORM_A, FORM_B)), $not($imp(FORM_B, FORM_A))).
+break_b(~ ((FORM_A /\ FORM_B)), ~ FORM_A, ~ FORM_B).
+break_b((FORM_A \/ FORM_B), FORM_A, FORM_B).
+break_b((FORM_A => FORM_B), ~ FORM_A, FORM_B).
+break_b(~ ((FORM_A <> FORM_B)), ~ ((FORM_A => FORM_B)), ~ ((FORM_B => FORM_A))).
 
-break_c(TERM, $fa(FORM_I), FORM_O) :- substitute_form(fast, TERM, FORM_I, FORM_O).
-break_c(TERM, $not($ex(FORM_I)), $not(FORM_O)) :- substitute_form(fast, TERM, FORM_I, FORM_O).
+break_c(TERM, ! FORM_I, FORM_O) :- substitute_form(fast, TERM, FORM_I, FORM_O).
+break_c(TERM, ~ (? FORM_I), ~ FORM_O) :- substitute_form(fast, TERM, FORM_I, FORM_O).
 
-break_d(NUM, $not($fa(FORM_I)), $not(FORM_O)) :- 
-  substitute_form(fast, $fun($par(NUM), []), FORM_I, FORM_O).
-break_d(NUM, $ex(FORM_I), FORM_O) :-
-  substitute_form(fast, $fun($par(NUM), []), FORM_I, FORM_O).
+break_d(NUM, ~ (! FORM_I), ~ FORM_O) :- 
+  substitute_form(fast, #NUM $ [], FORM_I, FORM_O).
+break_d(NUM, ? FORM_I, FORM_O) :-
+  substitute_form(fast, #NUM $ [], FORM_I, FORM_O).
 
-break_n($not($not(FORM)), FORM).
+break_n(~ (~ FORM), FORM).
 
 
 
@@ -202,7 +220,7 @@ apply_d(
 apply_s(
   FORM,
   (s(FORM, PRF_A, PRF_B), CNT), 
-  (CNT, $not(FORM)),
+  (CNT, ~ FORM),
   (CNT, FORM),
   (PRF_A, SUCC), 
   (PRF_B, SUCC)
@@ -218,7 +236,7 @@ apply_t(
   num_succ(CNT, SUCC), !.
 
 apply_n(
-  (PID, $not($not(FORM))),
+  (PID, ~ (~ FORM)),
   (n(PID, PRF), CNT), 
   (CNT, FORM),
   (PRF, SUCC)
@@ -227,64 +245,44 @@ apply_n(
 
 apply_x(
   (PID, FORM_P), 
-  (NID, $not(FORM_N)), 
+  (NID, ~ FORM_N), 
   (x(PID, NID), _)
 ) :-
   unify_with_occurs_check(FORM_P, FORM_N), !.
 
-justified(_, $not($false)). 
-justified(_, $true). 
-justified(_, $fa($rel('=', [$var(0), $var(0)]))).
-justified(_, $fa($fa($imp($rel('=', [$var(1), $var(0)]), $rel('=', [$var(0), $var(1)]))))).
-justified(_, $fa($fa($fa(
-  $imp(
-    $rel('=', [$var(2), $var(1)]), 
-    $imp(
-      $rel('=', [$var(1), $var(0)]), 
-      $rel('=', [$var(2), $var(0)])
-    )
-))))).
+justified(_, ~ ff). 
+justified(_, tt). 
+justified(_, ! "=" $ [#0, #0]).
+justified(_, ! ! ("=" $ [#1, #0] => "=" $ [#0, #1])).
+justified(_, ! ! ! ("=" $ [#2, #1] => ("=" $ [#1, #0] => "=" $ [#2, #0]))).
 
 justified(_, FORM) :- is_mono_rel(0, FORM). 
 justified(_, FORM) :- is_mono_fun(0, FORM). 
 
-% justified(_, + ((FUNA ^ []) = (FUNB ^ [])), [ne_eval]) :- 
-%   atom_number(FUNA, NUMA),
-%   atom_number(FUNB, NUMB),
-%   NUMA \= NUMB.
-% 
-% justified(_, - ((FUNA ^ []) = (FUNB ^ [])), [ne_eval]) :- 
-%   atom_number(FUNA, NUMA),
-%   atom_number(FUNB, NUMB),
-%   NUMA \= NUMB.
-
-%justified(C, $pos($rel(par(C), TERMS))) :- maplist_cut(counter_safe(C), TERMS).
-%justified(C, $pos($not($rel(par(C), TERMS)))) :- maplist_cut(counter_safe(C), TERMS).
-
-justified(C, FORM) :- 
-  strip_fas(FORM, ARI, $imp($ex(ANTE), CONS)), 
-  counter_safe(C, ANTE),
+justified(CNT, FORM) :- 
+  strip_fas(FORM, ARI, ? ANTE => CONS), 
+  form_nfs_lt(CNT, ANTE),
   mk_vars(ARI, VARS), 
-  substitute_form(safe, $fun($par(C), VARS), ANTE, TEMP),
+  substitute_form(safe, #CNT $ VARS, ANTE, TEMP),
   TEMP == CONS.
 
-justified(C, FORM) :- 
-  strip_fas(FORM, ARI, $iff($rel($par(C), VARS), BODY)), 
-  counter_safe(C, BODY),
+justified(CNT, FORM) :- 
+  strip_fas(FORM, ARI, #CNT $ VARS <> BODY), 
+  form_nfs_lt(CNT, BODY),
   mk_vars(ARI, VARS).
 
-is_mono_rel(NUM, $fa($fa($imp($rel('=', [$var(1), $var(0)]), FORM)))) :- !,
+is_mono_rel(NUM, ! ! ("=" $ [#1, #0] => FORM)) :- !,
   num_succ(NUM, SUCC), 
   is_mono_rel(SUCC, FORM). 
    
-is_mono_rel(NUM, $imp($rel(REL, TERMS_A), $rel(REL, TERMS_B))) :- 
-  mk_mono_args(NUM, TERMS_A, TERMS_B).
+is_mono_rel(N, R $ TS_A => R $ TS_B) :- 
+  mk_mono_args(N, TS_A, TS_B).
 
-is_mono_fun(N, $fa($fa($imp($rel('=', [$var(1), $var(0)]), F)))) :- !,
-  num_succ(N, SN), 
-  is_mono_fun(SN, F). 
+is_mono_fun(NUM, ! ! ("=" $ [#1, #0] => FORM)) :- !,
+  num_succ(NUM, SUC), 
+  is_mono_fun(SUC, FORM). 
    
-is_mono_fun(NUM, $rel('=', [$fun(FUN, TERMS_A), $fun(FUN, TERMS_B)])) :- 
+is_mono_fun(NUM, ("=" $ [(FUN $ TERMS_A), (FUN $ TERMS_B)])) :- 
   mk_mono_args(NUM, TERMS_A, TERMS_B).
 
 
@@ -311,46 +309,6 @@ rp_core(_, HYPS, GOAL, [(HYPS, GOAL) | OUT], OUT).
 rp(RULS, HYPS, GOAL, HSGS) :- rp_core(RULS, HYPS, GOAL, HSGS, []).
 rp(RULS, HYPS, GOAL, HYPS_O, GOAL_O) :- rp(RULS, HYPS, GOAL, [(HYPS_O, GOAL_O)]).
 
-/*
-many(RULS, (HYPS, GOAL), HGS) :-
-  member(n, RULS), 
-  pluck(HYPS, HYP, REST), 
-  apply_n(HYP, GOAL, HYP_N, GOAL_N), !,
-  many(RULS, ([HYP_N | REST], GOAL_N), HGS).
-
-many(RULS, (HYPS, GOAL), HGS) :-
-  member(a, RULS), 
-  pluck(HYPS, HYP, REST), 
-  apply_aa(HYP, GOAL, HYP_L, HYP_R, GOAL_T), !,
-  many(RULS, ([HYP_R, HYP_L | REST], GOAL_T), HGS).
-
-many(RULS, (HYPS, GOAL), HGS) :-
-  member(d, RULS), 
-  pluck(HYPS, HYP, REST), 
-  apply_d(HYP, GOAL, HYP_N, GOAL_N), !,
-  many(RULS, ([HYP_N | REST], GOAL_N), HGS).
-
-many(RULS, (HYPS, GOAL), HGS) :-
-  member(c, RULS), 
-  pluck(HYPS, HYP, REST), 
-  apply_c(HYP, _, GOAL, HYP_N, GOAL_N), !,
-  many(RULS, ([HYP_N | REST], GOAL_N), HGS).
-
-many(RULS, (HYPS, GOAL), HGS) :-
-  member(b, RULS), 
-  pluck(HYPS, HYP, REST), 
-  apply_b(HYP, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R), !, 
-  many(RULS, ([HYP_L | REST], GOAL_L), HGSL), !,
-  many(RULS, ([HYP_R | REST], GOAL_R), HGSR),
-  append(HGSL, HGSR, HGS). 
-
-many(_, HG, [HG]).
-
-many_nb(RULS, HYPS, GOAL, HYP_NS, GOAL_N) :-
-  many(RULS, (HYPS, GOAL), [(HYP_NS, GOAL_N)]).
-
-*/
-
 apply_aa(HYP, GOAL, HYP_L, HYP_R, GOAL_N) :- 
   apply_a(HYP, true, GOAL, HYP_L, GOAL_T), 
   apply_a(HYP, false, GOAL_T, HYP_R, GOAL_N). 
@@ -375,7 +333,7 @@ apply_sb_lem(HYP, GOAL, HYP_L, HYP_R, HYP_NL, GOAL_L, GOAL_R) :-
 apply_cd(HYP_C, HYP_D, GOAL, HYP_N_C, HYP_N_D, GOAL_N) :- 
   GOAL = (_, CNT), 
   apply_d(HYP_D, GOAL, HYP_N_D, GOAL_T), 
-  apply_c(HYP_C, $fun($par(CNT), []), GOAL_T, HYP_N_C, GOAL_N). 
+  apply_c(HYP_C, #CNT $ [], GOAL_T, HYP_N_C, GOAL_N). 
 
 apply_d_lax(CNT_I, HYP_I, GOAL_I, CNT_O, HYP_O, GOAL_O) :-  
   apply_d(HYP_I, GOAL_I, HYP_T, GOAL_T) -> 
@@ -499,29 +457,31 @@ prob_id_hyp(PROB, ID, (ID, SF)) :-
 
 % molecular(Exp) :- 
 %   member(Exp, 
-%     [ $fa(_), $ex(_), $not(_), 
-%       $or(_, _), $and(_, _), $imp(_, _), $iff(_, _) ]).
+%     [ ! _, ? _, ~ _, 
+%       (_ \/ _), (_ /\ _), (_ => _), (_ <> _) ]).
 
-lit_atom($not(ATOM), ATOM) :- !. 
+lit_atom(~ ATOM, ATOM) :- !. 
 lit_atom(ATOM, ATOM).
 
-decom_uct(FORM, not, SUB) :- \+ var(FORM), FORM = $not(SUB). 
-decom_uct(FORM, QTF, SUB) :- decom_qtf(FORM, QTF, SUB).
-decom_qtf(FORM, ex, SUB) :- \+ var(FORM), FORM = $ex(SUB).
-decom_qtf(FORM, fa, SUB) :- \+ var(FORM), FORM = $fa(SUB).
+/*
+break_uct(FORM, not, SUB) :- \+ var(FORM), FORM = ~ SUB. 
+break_uct(FORM, QTF, SUB) :- break_qtf(FORM, QTF, SUB).
+break_qtf(FORM, ex, SUB) :- \+ var(FORM), FORM = ? SUB.
+break_qtf(FORM, fa, SUB) :- \+ var(FORM), FORM = ! SUB.
 
-decom_bct(FORM, BCT, FORM_A, FORM_B) :- 
+break_bct(FORM, BCT, FORM_A, FORM_B) :- 
   \+ var(FORM),
   FORM = $TEMP, 
   TEMP =.. [BCT, FORM_A, FORM_B],
   member(BCT, [and, or, imp, iff]).
 
-apply_uop(UCT, FORM, $SUB) :- 
+apply_uct(UCT, FORM, $SUB) :- 
   SUB =.. [UCT, FORM].
 
-apply_bop(BCT, FORM_A, FORM_B, $SUB) :- 
+apply_bct(BCT, FORM_A, FORM_B, $SUB) :- 
   SUB =.. [BCT, FORM_A, FORM_B].
 
+*/
 maplist_cut(_, []).
 
 maplist_cut(GOAL, [Elem | List]) :- 
@@ -566,22 +526,22 @@ mk_vars(NUM, VARS) :-
 
 mk_vars(DIR, NUM, VARS) :- 
   range(DIR, NUM, NUMS), 
-  maplist([X,$var(X)]>>true, NUMS, VARS).
+  maplist([X,#X]>>true, NUMS, VARS).
 
-/* Monotonicity */
 
+%%% Monotonicity 
 mk_mono_args(0, [], []).
 
-mk_mono_args(NUM, [$var(NUMA) | VARSA], [$var(NUMB) | VARSB]) :-
+mk_mono_args(NUM, [#NUMA | VARSA], [#NUMB | VARSB]) :-
   NUMA is (NUM * 2) - 1, 
   NUMB is (NUM * 2) - 2, 
   num_pred(NUM, PRED),
   mk_mono_args(PRED, VARSA, VARSB).
 
-mk_mono_eq(NUM, FUN, $rel('=', [$fun(FUN, VARS_A), $fun(FUN, VARS_B)])) :- 
+mk_mono_eq(NUM, FUN, ("=" $ [FUN $ VARS_A, FUN $ VARS_B])) :- 
   mk_mono_args(NUM, VARS_A, VARS_B).
 
-mk_mono_imp(NUM, REL, $imp($rel(REL, VARS_A), $rel(REL, VARS_B))) :- 
+mk_mono_imp(NUM, REL, REL $ VARS_A => REL $ VARS_B) :- 
   mk_mono_args(NUM, VARS_A, VARS_B), !.
 
 mk_mono_fun(NUM, FUN, MONO) :- 
@@ -599,37 +559,35 @@ member_rev(Elem, [Elem | _]).
 
 mk_mono(0, Cons, Cons).
 
-mk_mono(NUM, Cons, $fa($fa($imp($rel('=', [$var(1), $var(0)]), MONO)))) :-
+mk_mono(NUM, Cons, ! ! ("=" $ [#1, #0] => MONO)) :-
   num_pred(NUM, Pred), 
   mk_mono(Pred, Cons, MONO), !.
 
 orient_dir(OPF, ONF, true,  OPF, ONF).
 orient_dir(ONF, OPF, false, OPF, ONF).
-% orient_dir(OPF, ONF, a, OPF, ONF).
-% orient_dir(ONF, OPF, a, OPF, ONF).
 
 orient_literal_hyps(HYP_P, HYP_N, HYP_P, HYP_N) :- 
-  HYP_P = (_, $rel(_, _)), 
-  HYP_N = (_, $not($rel(_, _))).
+  HYP_P = (_, (_ $ _)), 
+  HYP_N = (_, ~ ((_ $ _))).
 
 orient_literal_hyps(HYP_N, HYP_P, HYP_P, HYP_N) :- 
-  HYP_P = (_, $rel(_, _)), 
-  HYP_N = (_, $not($rel(_, _))).
+  HYP_P = (_, (_ $ _)), 
+  HYP_N = (_, ~ ((_ $ _))).
 
-strip_fas($fa(FORM), NUM, BODY) :- !,
+strip_fas(! FORM, NUM, BODY) :- !,
   strip_fas(FORM, PRED, BODY), 
   num_succ(PRED, NUM).
 
 strip_fas(Form, 0, Form).
 
-inst_with_lvs($fa(FORM), BODY) :- !,
+inst_with_lvs(! FORM, BODY) :- !,
   substitute_form(fast, _, FORM, TEMP), 
   inst_with_lvs(TEMP, BODY).
 
 inst_with_lvs(FORM, FORM).
 
 add_fas(0, Form, Form). 
-add_fas(NUM, Form, $fa(NewForm)) :-
+add_fas(NUM, Form, ! NewForm) :-
   num_pred(NUM, Pred), 
   add_fas(Pred, Form, NewForm).
 
@@ -668,101 +626,131 @@ string_number(Str, NUM) :-
   number_string(NUM, Str).
 
 no_bv_term(_, VAR) :- var(VAR), !.
-no_bv_term(CNT, $var(NUM)) :- !, NUM \= CNT.
-no_bv_term(_, $dst(_)) :- !.
-no_bv_term(CNT, $fun(_, TERMS)) :- 
+no_bv_term(CNT, #NUM) :- !, NUM \= CNT.
+no_bv_term(CNT, (_ $ TERMS)) :- 
   maplist_cut(no_bv_term(CNT), TERMS).
 
-no_bv_form(_, $true).
-no_bv_form(_, $false). 
-no_bv_form(NUM, $not(FORM)) :- !, 
+no_bv_form(_, tt).
+no_bv_form(_, ff). 
+no_bv_form(NUM, ~ FORM) :- !, 
   no_bv_form(NUM, FORM). 
 no_bv_form(NUM, FORM) :- 
-  decom_qtf(FORM, _, SUB), !, 
+  break_qtf(FORM, _, SUB), !, 
   num_succ(NUM, SUCC),
   no_bv_form(SUCC, SUB).
 no_bv_form(NUM, FORM) :- 
-  decom_bct(FORM, _, FORM_A, FORM_B), !, 
+  break_bct(FORM, _, FORM_A, FORM_B), !, 
   no_bv_form(NUM, FORM_A),
   no_bv_form(NUM, FORM_B).
-no_bv_form(NUM, $rel(_, TERMS)) :- 
+no_bv_form(NUM, (_ $ TERMS)) :- 
   maplist_cut(no_bv_term(NUM), TERMS).
 
-vac_qtf((_, $fa(FORM))) :- no_bv_form(0, FORM).
-vac_qtf((_, $not($fa(FORM)))) :- no_bv_form(0, FORM).
-vac_qtf((_, $ex(FORM))) :- no_bv_form(0, FORM).
-vac_qtf((_, $not($ex(FORM)))) :- no_bv_form(0, FORM).
+vac_qtf((_, ! FORM)) :- no_bv_form(0, FORM).
+vac_qtf((_, ~ (! FORM))) :- no_bv_form(0, FORM).
+vac_qtf((_, ? FORM)) :- no_bv_form(0, FORM).
+vac_qtf((_, ~ (? FORM))) :- no_bv_form(0, FORM).
 
 no_fv_term(_, VAR) :- var(VAR), !, false.
-no_fv_term(_, $dst(_)) :- !.
-no_fv_term(CNT, $var(NUM)) :- !, NUM < CNT.
-no_fv_term(CNT, $fun(_, TERMS)) :- 
+no_fv_term(CNT, #NUM) :- !, NUM < CNT.
+no_fv_term(CNT, (_ $ TERMS)) :- 
   maplist_cut(no_fv_term(CNT), TERMS).
 
 no_fv_form(_, FORM) :- log_const(FORM), !.
-no_fv_form(NUM, $not(FORM)) :- !, 
+no_fv_form(NUM, ~ FORM) :- !, 
   no_fv_form(NUM, FORM). 
 no_fv_form(NUM, FORM) :- 
-  decom_qtf(FORM, _, SUB), !, 
+  break_qtf(FORM, _, SUB), !, 
   num_succ(NUM, SUCC),
   no_fv_form(SUCC, SUB).
 no_fv_form(NUM, FORM) :- 
-  decom_bct(FORM, _, FORM_A, FORM_B), !, 
+  break_bct(FORM, _, FORM_A, FORM_B), !, 
   no_fv_form(NUM, FORM_A),
   no_fv_form(NUM, FORM_B).
-no_fv_form(NUM, $rel(_, TERMS)) :- 
+no_fv_form(NUM, (_ $ TERMS)) :- 
   maplist_cut(no_fv_term(NUM), TERMS).
+ 
+% has_par_ge(CNT, EXP) :- 
+%   sub_term(#NUM, EXP), 
+%   CNT =< NUM.
 
-has_par_ge(CNT, EXP) :- 
-  sub_term($par(NUM), EXP), 
-  CNT =< NUM.
+% counter_safe(C, X) :- 
+%   ground(X), 
+%   \+ has_par_ge(C, X).
 
-counter_safe(C, X) :- 
-  ground(X), 
-  \+ has_par_ge(C, X).
+break_uct(~ FORM, '~', FORM).
+break_uct(FORM, QTF, SUB) :- break_qtf(FORM, QTF, SUB).
 
-fnnf($imp(FORM_A, FORM_B), $or(NORM_A, NORM_B)) :- !, 
-  fnnf($not(FORM_A), NORM_A), 
+break_qtf(! FORM, '!', FORM).
+break_qtf(? FORM, '?', FORM).
+
+break_bct(FORM_A \/ FORM_B, '\\/', FORM_A, FORM_B). 
+break_bct(FORM_A /\ FORM_B, '/\\', FORM_A, FORM_B). 
+break_bct(FORM_A => FORM_B, '=>', FORM_A, FORM_B). 
+break_bct(FORM_A <> FORM_B, '<>', FORM_A, FORM_B). 
+
+form_nfs_lt(NUM, FORM) :- 
+  break_bct(FORM, _, FORM_A, FORM_B), !, 
+  form_nfs_lt(NUM, FORM_A),
+  form_nfs_lt(NUM, FORM_B).
+
+form_nfs_lt(NUM, FORM) :- 
+  break_uct(FORM, _, SUB), !, 
+  form_nfs_lt(NUM, SUB). 
+
+form_nfs_lt(NUM, REL $ TERMS) :- 
+  functor_lt(NUM, REL), 
+  maplist_cut(term_nfs_lt(NUM), TERMS).
+
+term_nfs_lt(_, #_) :- !.
+term_nfs_lt(N, F $ TS) :- 
+  functor_lt(N, F), 
+  maplist_cut(term_nfs_lt(N), TS).
+
+functor_lt(N, #M) :- !, M < N.
+functor_lt(_, _). 
+
+fnnf(FORM_A => FORM_B, NORM_A \/ NORM_B) :- !, 
+  fnnf(~ FORM_A, NORM_A), 
   fnnf(FORM_B, NORM_B).
 
-fnnf($iff(FORM_A, FORM_B), $and(NORM_A, NORM_B)) :- !, 
-  fnnf($imp(FORM_A, FORM_B), NORM_A), 
-  fnnf($imp(FORM_B, FORM_A), NORM_B).
+fnnf((FORM_A <> FORM_B), (NORM_A /\ NORM_B)) :- !, 
+  fnnf((FORM_A => FORM_B), NORM_A), 
+  fnnf((FORM_B => FORM_A), NORM_B).
 
 fnnf(FORM, NORM) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), !, 
+  break_bct(FORM, BCT, FORM_A, FORM_B), !, 
   fnnf(FORM_A, NORM_A), 
   fnnf(FORM_B, NORM_B),
-  apply_bop(BCT, NORM_A, NORM_B, NORM).
+  apply_bct(BCT, NORM_A, NORM_B, NORM).
 
 fnnf(FORM, NORM) :- 
-  decom_qtf(FORM, QTF, BODY), !, 
+  break_qtf(FORM, QTF, BODY), !, 
   fnnf(BODY, TEMP),
-  apply_uop(QTF, TEMP, NORM).
+  apply_uct(QTF, TEMP, NORM).
 
-fnnf($not($not(FORM)), NORM) :- !, fnnf(FORM, NORM).
+fnnf(~ (~ FORM), NORM) :- !, fnnf(FORM, NORM).
 
-fnnf($not($and(FORM_A, FORM_B)), $or(NORM_A, NORM_B)) :- !, 
-  fnnf($not(FORM_A), NORM_A), 
-  fnnf($not(FORM_B), NORM_B).
+fnnf(~ ((FORM_A /\ FORM_B)), (NORM_A \/ NORM_B)) :- !, 
+  fnnf(~ FORM_A, NORM_A), 
+  fnnf(~ FORM_B, NORM_B).
 
-fnnf($not($or(FORM_A, FORM_B)), $and(NORM_A, NORM_B)) :- !, 
-  fnnf($not(FORM_A), NORM_A), 
-  fnnf($not(FORM_B), NORM_B).
+fnnf(~ ((FORM_A \/ FORM_B)), (NORM_A /\ NORM_B)) :- !, 
+  fnnf(~ FORM_A, NORM_A), 
+  fnnf(~ FORM_B, NORM_B).
 
-fnnf($not($imp(FORM_A, FORM_B)), $and(NORM_A, NORM_B)) :- !, 
+fnnf(~ ((FORM_A => FORM_B)), (NORM_A /\ NORM_B)) :- !, 
   fnnf(FORM_A, NORM_A), 
-  fnnf($not(FORM_B), NORM_B).
+  fnnf(~ FORM_B, NORM_B).
 
-fnnf($not($iff(FORM_A, FORM_B)), $and(NORM_A, NORM_B)) :- !, 
-  fnnf($or($not(FORM_A), $not(FORM_B)), NORM_A), 
-  fnnf($or(FORM_A, FORM_B), NORM_B).
+fnnf(~ ((FORM_A <> FORM_B)), (NORM_A /\ NORM_B)) :- !, 
+  fnnf((~ FORM_A \/  ~ FORM_B), NORM_A), 
+  fnnf((FORM_A \/ FORM_B), NORM_B).
 
-fnnf($not($fa(FORM)), $ex(NORM)) :- !, 
-  fnnf($not(FORM), NORM).
+fnnf(~ (! FORM), ? NORM) :- !, 
+  fnnf(~ FORM, NORM).
 
-fnnf($not($ex(FORM)), $fa(NORM)) :- !, 
-  fnnf($not(FORM), NORM).
+fnnf(~ (? FORM), ! NORM) :- !, 
+  fnnf(~ FORM, NORM).
 
 fnnf(FORM, FORM). 
 
@@ -776,14 +764,13 @@ split_at(NUM, ACC, [ELEM | LIST], FST, SND) :-
   num_pred(NUM, PRED), 
   split_at(PRED, [ELEM | ACC], LIST, FST, SND).
 
-char_uct('~', not).
-char_uct('!', fa).
-char_uct('?', ex).
-
-char_bct('|', or).
-char_bct('&', and).
-char_bct('>', imp).
-char_bct('=', iff).
+% char_uct('~', not).
+% char_uct('!', fa).
+% char_uct('?', ex).
+char_bct('|', '\\/').
+char_bct('&', '/\\').
+char_bct('>', '=>').
+char_bct('=', '<>').
 
 
 
@@ -825,13 +812,10 @@ put_num(STRM, NUM) :-
   number_codes(NUM, BYTES),
   put_bytes_dollar(STRM, BYTES).
   
-put_term(STRM, $var(NUM)) :- !, 
+put_term(STRM, #NUM) :- !, 
   put_char(STRM, '#'), 
   put_num(STRM, NUM).
-% put_term(STRM, $dst(STR)) :- !,
-%   put_char(STRM, '"'), 
-%   put_string(STRM, STR). 
-put_term(STRM, $fun(FUN, TERMS)) :- 
+put_term(STRM, (FUN $ TERMS)) :- 
   put_char(STRM, '$'), 
   put_functor(STRM, FUN), 
   put_terms(STRM, TERMS). 
@@ -839,25 +823,24 @@ put_term(STRM, $fun(FUN, TERMS)) :-
 put_terms(STRM, TERMS) :- 
   put_list(STRM, put_term, TERMS).
 
-put_form(STRM, $true) :- !, put_char(STRM, 'T').
-put_form(STRM, $false) :- !, put_char(STRM, 'F').
+put_form(STRM, tt) :- !, put_char(STRM, 'T').
+put_form(STRM, ff) :- !, put_char(STRM, 'F').
 put_form(STRM, FORM) :- 
-  decom_uct(FORM, UCT, SUB), !, 
-  char_uct(CH, UCT),
-  put_char(STRM, CH), 
+  break_uct(FORM, UCT, SUB), !, 
+  put_char(STRM, UCT), 
   put_form(STRM, SUB).
 put_form(STRM, FORM) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), !, 
+  break_bct(FORM, BCT, FORM_A, FORM_B), !, 
   char_bct(CH, BCT), !,
   put_char(STRM, CH), 
   put_form(STRM, FORM_A),
   put_form(STRM, FORM_B).
-put_form(STRM, $rel(REL, TERMS)) :- 
+put_form(STRM, (REL $ TERMS)) :- 
   put_char(STRM, '$'), 
   put_functor(STRM, REL), 
   put_terms(STRM, TERMS).
 
-put_functor(STRM, $par(NUM)) :- !,
+put_functor(STRM, #NUM) :- !,
   put_char(STRM, '#'), 
   put_num(STRM, NUM). 
 put_functor(STRM, FTR) :- 
@@ -921,7 +904,7 @@ put_prf(STRM, x(PID, NID)) :-
 % --- 
 % GOAL := ... |- CONC : TERM = TERM, ...
 eq_refl(CONC, GOAL) :- 
-  apply_t($fa($rel('=', [$var(0), $var(0)])), GOAL, HYP0, GOAL_T), 
+  apply_t(! (("=" $ [#0, #0])), GOAL, HYP0, GOAL_T), 
   apply_c(HYP0, _, GOAL_T, HYP1, GOAL_N), 
   apply_x(HYP1, CONC, GOAL_N).
 
@@ -931,9 +914,9 @@ eq_refl(CONC, GOAL) :-
 % IPF = PID + TERMA = TERMB
 % INF = NID - TERMB = TERMA
 eq_symm(OPF, ONF, GOAL) :- 
-  OPF = (_, $rel('=', [TERM_A, TERM_B])), 
-  ONF = (_, $not($rel('=', [TERM_B, TERM_A]))),
-  apply_t($fa($fa($imp($rel('=', [$var(1), $var(0)]), $rel('=', [$var(0), $var(1)])))), GOAL, HYP0, GOAL0), 
+  OPF = (_, "=" $ [TERM_A, TERM_B]), 
+  ONF = (_, ~ ("=" $ [TERM_B, TERM_A])),
+  apply_t(! ! ("=" $ [#1, #0] => "=" $ [#0, #1]), GOAL, HYP0, GOAL0), 
   apply_c(HYP0, TERM_A, GOAL0, HYP1, GOAL1), 
   apply_c(HYP1, TERM_B, GOAL1, HYP2, GOAL2), 
   apply_b(HYP2, GOAL2, HYP3, HYP4, GOAL3, GOAL4), 
@@ -941,15 +924,15 @@ eq_symm(OPF, ONF, GOAL) :-
   mate_pn(HYP4, ONF, GOAL4). 
 
 eq_symm(OPF, GOAL, NewOPF, GOAL_N) :- 
-  OPF = (_, $rel('=', [TERM_A, TERM_B])), 
+  OPF = (_, "=" $ [TERM_A, TERM_B]), 
   apply_s(TERM_B = TERM_A, GOAL, ONF, NewOPF, GOAL_T, GOAL_N), 
   eq_symm(OPF, ONF, GOAL_T).
 
 eq_trans(IPF0, IPF1, INF, GOAL) :- 
-  IPF0 = (_, $rel('=', [TERM_A, TERM_B])), !,
-  IPF1 = (_, $rel('=', [TERM_B, TERM_C])), !,
-  INF =  (_, $not($rel('=', [TERM_A, TERM_C]))), !,
-  apply_t($fa($fa($fa($imp($rel('=', [$var(2), $var(1)]), $imp($rel('=', [$var(1), $var(0)]), $rel('=', [$var(2), $var(0)])))))), GOAL, MONO0, GOAL0),  !,
+  IPF0 = (_, "=" $ [TERM_A, TERM_B]), !,
+  IPF1 = (_, "=" $ [TERM_B, TERM_C]), !,
+  INF =  (_, ~ ("=" $ [TERM_A, TERM_C])), !,
+  apply_t(! ! ! ("=" $ [#2, #1] => ("=" $ [#1, #0] => "=" $ [#2, #0])), GOAL, MONO0, GOAL0),  !,
   apply_c(MONO0, TERM_A, GOAL0, MONO1, GOAL1), !,
   apply_c(MONO1, TERM_B, GOAL1, MONO2, GOAL2), !,
   apply_c(MONO2, TERM_C, GOAL2, MONO3, GOAL3), !,
@@ -966,12 +949,12 @@ terms_size([TERM | TERMS], SIZE) :-
   SIZE is SIZE_A + SIZE_B.
 
 term_size(VAR, 1) :- var(VAR), !.
-term_size($fun(_, TERMS), SIZE) :- !,
+term_size((_ $ TERMS), SIZE) :- !,
   terms_size(TERMS, TEMP), 
   num_succ(TEMP, SIZE).
 term_size(_, 1).
 
-orient_equation($rel('=', [TERM_A, TERM_B]), $rel('=', [TERM_L, TERM_R])) :- 
+orient_equation(("=" $ [TERM_A, TERM_B]), ("=" $ [TERM_L, TERM_R])) :- 
   term_size(TERM_A, SIZE_A),
   term_size(TERM_B, SIZE_B), !,
   (
@@ -993,25 +976,25 @@ orient_equation($rel('=', [TERM_A, TERM_B]), $rel('=', [TERM_L, TERM_R])) :-
     )
   ).
 
-orient_atom($rel(REL, TERMS), $rel(REL, TERMS)).
-orient_atom($rel('=', [TERM_A, TERM_B]), $rel('=', [TERM_B, TERM_A])).
+orient_atom((REL $ TERMS), (REL $ TERMS)).
+orient_atom(("=" $ [TERM_A, TERM_B]), ("=" $ [TERM_B, TERM_A])).
 
 orient_literal(ATOM_I, ATOM_O) :- orient_atom(ATOM_I, ATOM_O).
-orient_literal($not(ATOM_I), $not(ATOM_O)) :- orient_atom(ATOM_I, ATOM_O).
+orient_literal(~ ATOM_I, ~ ATOM_O) :- orient_atom(ATOM_I, ATOM_O).
 
 orient_hyp(HYP, GOAL, HYP, GOAL).
 orient_hyp(HYP_I, GOAL_I, HYP_O, GOAL_O) :- 
-  HYP_I = (_, $rel('=', [LHS, RHS])), 
-  apply_s($rel('=', [RHS, LHS]), GOAL_I, HYP_T, HYP_O, GOAL_T, GOAL_O), 
+  HYP_I = (_, ("=" $ [LHS, RHS])), 
+  apply_s(("=" $ [RHS, LHS]), GOAL_I, HYP_T, HYP_O, GOAL_T, GOAL_O), 
   eq_symm(HYP_I, HYP_T, GOAL_T), !. 
 
-use_pf((ID, $false), GOAL) :- 
-  apply_t($not($false), GOAL, CMP, TEMP),
-  apply_x((ID, $false), CMP, TEMP).
+use_pf((ID, ff), GOAL) :- 
+  apply_t(~ ff, GOAL, CMP, TEMP),
+  apply_x((ID, ff), CMP, TEMP).
 
 use_nt(HYP, GOAL) :- 
-  HYP = (_, $not($true)),
-  apply_t($true, GOAL, CMP, GOAL_N),
+  HYP = (_, ~ tt),
+  apply_t(tt, GOAL, CMP, GOAL_N),
   apply_x(CMP, HYP, GOAL_N).
 
 use_falsehood(HYP, GOAL) :- 
@@ -1030,10 +1013,10 @@ use_contra(HYP, GOAL) :-
   use_contra(HYP_L, GOAL_L),
   use_contra(HYP_R, GOAL_R).
 
-truth($true).
-truth($not($false)).
-falsehood($false).
-falsehood($not($true)).
+truth(tt).
+truth(~ ff).
+falsehoodff.
+falsehood(~ tt).
 
 mate(HYP_A, HYP_B, GOAL) :- 
   mate_pn(HYP_A, HYP_B, GOAL) ;
@@ -1112,9 +1095,8 @@ get_term(STRM, TERM) :-
   get__char(STRM, CH), 
   get_term(STRM, CH, TERM).
 
-get_term(STRM, '#', $var(NUM)) :- get_num(STRM, NUM).
-% get_term(STRM, '"', $dst(STR)) :- get_string(STRM, STR).
-get_term(STRM, '$', $fun(FUN, TERMS)) :- 
+get_term(STRM, '#', #NUM) :- get_num(STRM, NUM).
+get_term(STRM, '$', (FUN $ TERMS)) :- 
   get_functor(STRM, FUN),
   get_terms(STRM, TERMS).
 
@@ -1130,26 +1112,26 @@ get_functor(STRM, FTR) :-
   get__char(STRM, CH), 
   get_functor(STRM, CH, FTR).
 
-get_functor(STRM, '#', $par(NUM)) :- get_num(STRM, NUM).
-get_functor(STRM, '"', ATOM) :- get_atom(STRM, ATOM).
+get_functor(STRM, '#', #NUM) :- get_num(STRM, NUM).
+get_functor(STRM, '"', STR) :- get_string(STRM, STR).
 
-get_form_aux(_, 'T', $true).
-get_form_aux(_, 'F', $false).
+get_form_aux(_, 'T', tt).
+get_form_aux(_, 'F', ff).
 
-get_form_aux(STRM, '$', $rel(REL, TERMS)) :- 
+get_form_aux(STRM, '$', (REL $ TERMS)) :- 
   get_functor(STRM, REL), 
   get_terms(STRM, TERMS).
 
 get_form_aux(STRM, CH, FORM) :- 
-  char_uct(CH, UCT), 
+  member(CH, ['~', '!', '?']),
   get_form(STRM, SUB), 
-  apply_uop(UCT, SUB, FORM).
+  apply_uct(CH, SUB, FORM).
 
 get_form_aux(STRM, CH, FORM) :- 
   char_bct(CH, BCT), 
   get_form(STRM, SUB_A), 
   get_form(STRM, SUB_B), 
-  apply_bop(BCT, SUB_A, SUB_B, FORM).
+  apply_bct(BCT, SUB_A, SUB_B, FORM).
   
 get_prf(STRM, PRF) :- 
   get__char(STRM, CH), !, 
@@ -1207,23 +1189,6 @@ hyphens(NUM, STR) :-
   
 
 
-
-
-
-% offset(_, 0) :- !.
-
-% offset(_, 0) :- !.
-% offset(OFS, OFS_STR) :- 
-%   num_pred(OFS, PRED),
-%   write(STRM, ' '),
-%   offset(STRM, PRED).
-
-% write_offset(STRM, OFS, TERM) :- 
-%   offset(OFS, OFS_STR),
-%   write(STRM, TERM).
-  
-  
-
 %%%%%%%%%%%%%%%% PROPOSITIONAL CONNECTION TABLEAUX %%%%%%%%%%%%%%%%
 
 startable_hyp(MODE, (_, FORM)) :- 
@@ -1240,7 +1205,7 @@ startable_form(MODE, FORM) :-
   startable_form(MODE, FORM_A), 
   startable_form(MODE, FORM_B). 
 startable_form(q, FORM) :- break_c(_, FORM, SUB), !, startable_form(q, SUB).
-startable_form(_, FORM) :- FORM \= $not(_).
+startable_form(_, FORM) :- FORM \= ~ _.
   
 exists_on_path(HYP, PATH) :- 
   hyp_form(HYP, LIT),
@@ -1293,7 +1258,7 @@ pblx((start, _), _, _, HYP, GOAL) :-
 
 pblx((start, PQ), HYPS, PATH, HYP, GOAL) :-
   hyp_form(HYP, FORM), 
-  FORM \= $not(_),
+  FORM \= ~ _,
   pblx((block, PQ), HYPS, PATH, HYP, GOAL).
 
 pblx((match, _), _, [CMP | _], HYP, GOAL) :- 
@@ -1332,10 +1297,10 @@ iff_conv_neg_aux(TRP) :-
 
 iff_conv(TRP_I, TRP_O) :- 
   trp_prem(TRP_I, PREM), 
-  hyp_form(PREM, $not($iff(FORM_A, FORM_B))),
+  hyp_form(PREM, ~ ((FORM_A <> FORM_B))),
   (
-    para_s_($and($or($not(FORM_A), $not(FORM_B)), $or(FORM_A, FORM_B)), TRP_I, TRP_T, TRP_O) ;
-    para_s_($and($or($not(FORM_B), $not(FORM_A)), $or(FORM_B, FORM_A)), TRP_I, TRP_T, TRP_O)
+    para_s_((~ FORM_A \/ ~ FORM_B) /\ (FORM_A \/ FORM_B), TRP_I, TRP_T, TRP_O) ;
+    para_s_((~ FORM_B \/ ~ FORM_A) /\ (FORM_B \/ FORM_A), TRP_I, TRP_T, TRP_O)
   ), 
   para_b_(TRP_T, TRP_A, TRP_B),
   iff_conv_neg_aux(TRP_A),
@@ -1343,15 +1308,15 @@ iff_conv(TRP_I, TRP_O) :-
 
 iff_conv(TRP_I, TRP_O) :- 
   trp_prem(TRP_I, PREM), 
-  hyp_form(PREM, $iff(FORM_A, FORM_B)),
-  para_s_($and($or(FORM_A, $not(FORM_B)), $or(FORM_B, $not(FORM_A))), TRP_I, TRP_T, TRP_O), 
+  hyp_form(PREM, (FORM_A <> FORM_B)),
+  para_s_(((FORM_A \/  ~ FORM_B) /\  (FORM_B \/  ~ FORM_A)), TRP_I, TRP_T, TRP_O), 
   para_ab_swap(TRP_T, TRP_A, TRP_B), 
   iff_conv_pos_aux(TRP_A), 
   iff_conv_pos_aux(TRP_B). 
 
 e_iff_conv((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
-  hyp_form(HYP_A, $not($iff(FORM_A, FORM_B))),
-  FORM = $and($or($not(FORM_A), $not(FORM_B)), $or(FORM_A, FORM_B)),
+  hyp_form(HYP_A, ~ ((FORM_A <> FORM_B))),
+  FORM = ((~ FORM_A \/  ~ FORM_B) /\  (FORM_A \/ FORM_B)),
   apply_s(FORM, GOAL, HYP_T, HYP_N, GOAL_T, GOAL_N),
   pblx(p, [HYP_A, HYP_T], GOAL_T).
 
@@ -1668,7 +1633,7 @@ vnnf(H2G) :-
 
 imp_hyp(HYP) :- 
   hyp_form(HYP, FORM),
-  member(FORM, [$imp(_, _), $iff(_, _)]).
+  member(FORM, [(_ => _), (_ <> _)]).
 
 ap_rop_aux(HYP, GOAL, HYP_L, HYP_R, NEW_GOAL) :- 
   \+ imp_hyp(HYP), 
@@ -1695,13 +1660,6 @@ bp_rop(HYP, GOAL, HGS) :-
     append(HGS_L, HGS_R, HGS)
   ) ;
   HGS = [([HYP], GOAL)].
-
-/*
-cp_rop([], GOAL, [], GOAL).
-cp_rop([HYP_I | HYPS_I], GOAL_I, [HYP_O | HYPS_O], GOAL_O) :- 
-  many_nb([c], [HYP_I], GOAL_I, [HYP_O], GOAL_T),
-  cp_rop(HYPS_I, GOAL_T, HYPS_O, GOAL_O).
-*/
 
 para_clausal_two((HYP_A, HYP_B, GOAL), (HYP_AL, HYP_BL, GOAL_L), (HYP_AR, HYP_BR, GOAL_R)) :- 
   (imp_hyp(HYP_A) ; imp_hyp(HYP_B)),
@@ -1773,10 +1731,10 @@ rec_path_filenames(Dir, Files) :-
   maplist(rec_path_files, Paths, Filess),
   append(Filess, Files).
 
-cla_lits($false, []) :- !.
+cla_lits(ff, []) :- !.
 cla_lits(CLA, LITS) :- cla_lits(CLA, LITS, []).
 
-cla_lits($or(FORM_L, FORM_R), LITS, TAIL) :- !, 
+cla_lits((FORM_L \/ FORM_R), LITS, TAIL) :- !, 
   cla_lits(FORM_L, LITS, TEMP), 
   cla_lits(FORM_R, TEMP, TAIL).
 
@@ -1798,22 +1756,22 @@ redirect_id(NI, OLD, NEW) :-
 
 map_form(_, _, FORM, FORM) :- log_const(FORM), !.
 
-map_form(GOAL, DTH, $not(FORM_I), $not(FORM_O)) :- !,
+map_form(GOAL, DTH, ~ FORM_I, ~ FORM_O) :- !,
   map_form(GOAL, DTH, FORM_I, FORM_O).
   
 map_form(GOAL, DTH, FORM_I, FORM_O) :- 
-  decom_qtf(FORM_I, QTF, SUB_I), !,
+  break_qtf(FORM_I, QTF, SUB_I), !,
   num_succ(DTH, SUCC),
   map_form(GOAL, SUCC, SUB_I, SUB_O), 
-  apply_uop(QTF, SUB_O, FORM_O). 
+  apply_uct(QTF, SUB_O, FORM_O). 
 
 map_form(GOAL, DTH, FORM_I, FORM_O) :- 
-  decom_bct(FORM_I, BCT, SUB_AI, SUB_BI), !, 
+  break_bct(FORM_I, BCT, SUB_AI, SUB_BI), !, 
   map_form(GOAL, DTH, SUB_AI, SUB_AO), 
   map_form(GOAL, DTH, SUB_BI, SUB_BO), 
-  apply_bop(BCT, SUB_AO, SUB_BO, FORM_O). 
+  apply_bct(BCT, SUB_AO, SUB_BO, FORM_O). 
 
-map_form(GOAL, DTH, $rel(REL, TERMS_I), $rel(REL, TERMS_O)) :- 
+map_form(GOAL, DTH, (REL $ TERMS_I), (REL $ TERMS_O)) :- 
   maplist_cut(call(GOAL, DTH), TERMS_I, TERMS_O).
 
 para_e1(H2G) :- 
@@ -1915,7 +1873,7 @@ relabel_sol(_, _, _, [], []).
 
 eqr_aux(_, ([HYP], GOAL)) :- use_falsehood(HYP, GOAL), !.
 eqr_aux(_, ([HYP], GOAL)) :- 
-  HYP = (_, $not($rel('=', [_, _]))),
+  HYP = (_, ~ (("=" $ [_, _]))),
   eq_refl(HYP, GOAL).
 eqr_aux(HYPS, HG) :- pick_mate(HYPS, HG).
 
@@ -1924,121 +1882,73 @@ eqr(PREM, CONC, GOAL) :-
   rp([b, c, n], [PREM], GOAL_T, HGS), !,
   maplist(eqr_aux(HYPS), HGS).
 
-/*
-bool_not($false, $true) :- !.
-bool_not($true, $false) :- !.
-bool_not($not(FORM), FORM) :- !.
-bool_not(FORM, $not(FORM)).
+tautology(FORM) :- bool_simp(FORM, tt).
+contradiction(FORM) :- bool_simp(FORM, ff).
 
-bool_or($true, _, $true) :- !.
-bool_or(_, $true, $true) :- !.
-bool_or($false, FORM, FORM) :- !.
-bool_or(FORM, $false, FORM) :- !.
-bool_or(FORM_L, FORM_R, $or(FORM_L, FORM_R)).
+bool_simp_not(ff, tt) :- !.
+bool_simp_not(tt, ff) :- !.
+bool_simp_not(~ FORM, FORM) :- !.
+bool_simp_not(FORM, ~ FORM).
 
-bool_and($false, _, $false) :- !.
-bool_and(_, $false, $false) :- !.
-bool_and($true, FORM, FORM) :- !.
-bool_and(FORM, $true, FORM) :- !.
-bool_and(FORM_L, FORM_R, $and(FORM_L, FORM_R)).
-
-bool_imp($false, _, $true) :- !.
-bool_imp(_, $true, $true) :- !.
-bool_imp($true, FORM, FORM) :- !.
-bool_imp(FORM, $false, $not(FORM)) :- !.
-bool_imp(FORM_L, FORM_R, $true) :- FORM_L == FORM_R, !.
-bool_imp(FORM_L, FORM_R, $imp(FORM_L, FORM_R)).
-
-bool_norm($not(FORM), NORM) :- !, 
-  bool_norm(FORM, TEMP), 
-  bool_not(TEMP, NORM). 
- 
-bool_norm($or(FORM_L, FORM_R), NORM) :- !, 
-  bool_norm(FORM_L, NORM_L), 
-  bool_norm(FORM_R, NORM_R),
-  bool_or(NORM_L, NORM_R, NORM).
-
-bool_norm($and(FORM_L, FORM_R), NORM) :- !, 
-  bool_norm(FORM_L, NORM_L), 
-  bool_norm(FORM_R, NORM_R),
-  bool_and(NORM_L, NORM_R, NORM).
-
-bool_norm($imp(FORM_L, FORM_R), NORM) :- !, 
-  bool_norm(FORM_L, NORM_L), 
-  bool_norm(FORM_R, NORM_R),
-  bool_imp(NORM_L, NORM_R, NORM).
-
-bool_norm(FORM, FORM).
-*/
-
-tautology(FORM) :- bool_simp(FORM, $true).
-contradiction(FORM) :- bool_simp(FORM, $false).
-
-bool_simp_not($false, $true) :- !.
-bool_simp_not($true, $false) :- !.
-bool_simp_not($not(FORM), FORM) :- !.
-bool_simp_not(FORM, $not(FORM)).
-
-bool_simp_qtf(_, $true, $true) :- !.
-bool_simp_qtf(_, $false, $false) :- !.
+bool_simp_qtf(_, tt, tt) :- !.
+bool_simp_qtf(_, ff, ff) :- !.
 bool_simp_qtf(QTF, FORM_I, FORM_O) :-
   no_fv_form(0, FORM_I) -> 
   FORM_O = FORM_I 
 ;
-  apply_uop(QTF, FORM_I, FORM_O).
+  apply_uct(QTF, FORM_I, FORM_O).
 
-bool_simp_bct(iff, FORM, $true, FORM) :- !.
-bool_simp_bct(iff, FORM, $false, $not(FORM)) :- !.
-bool_simp_bct(iff, $true, FORM, FORM) :- !.
-bool_simp_bct(iff, $false, FORM, $not(FORM)) :- !.
-bool_simp_bct(iff, FORM_A, FORM_B, $true) :- FORM_A == FORM_B, !.
-bool_simp_bct(iff, FORM_A, FORM_B, $false) :- complements(FORM_A, FORM_B), !.
-bool_simp_bct(iff, FORM_A, FORM_B, $iff(FORM_A, FORM_B)). 
+bool_simp_bct('<>', FORM, tt, FORM) :- !.
+bool_simp_bct('<>', FORM, ff, ~ FORM) :- !.
+bool_simp_bct('<>', tt, FORM, FORM) :- !.
+bool_simp_bct('<>', ff, FORM, ~ FORM) :- !.
+bool_simp_bct('<>', FORM_A, FORM_B, tt) :- FORM_A == FORM_B, !.
+bool_simp_bct('<>', FORM_A, FORM_B, ff) :- complements(FORM_A, FORM_B), !.
+bool_simp_bct('<>', FORM_A, FORM_B, (FORM_A <> FORM_B)). 
 
-bool_simp_bct(imp, $false, _, $true) :- !.
-bool_simp_bct(imp, $true, FORM, FORM) :- !.
-bool_simp_bct(imp, _, $true, $true) :- !.
-bool_simp_bct(imp, FORM, $false, $not(FORM)) :- !.
-bool_simp_bct(imp, FORM_A, FORM_B, $true) :- FORM_A == FORM_B, !.
-bool_simp_bct(imp, FORM_A, FORM_B, FORM_B) :- complements(FORM_A, FORM_B), !.
-bool_simp_bct(imp, FORM_A, FORM_B, $imp(FORM_A, FORM_B)) :- !.
+bool_simp_bct('=>', ff, _, tt) :- !.
+bool_simp_bct('=>', tt, FORM, FORM) :- !.
+bool_simp_bct('=>', _, tt, tt) :- !.
+bool_simp_bct('=>', FORM, ff, ~ FORM) :- !.
+bool_simp_bct('=>', FORM_A, FORM_B, tt) :- FORM_A == FORM_B, !.
+bool_simp_bct('=>', FORM_A, FORM_B, FORM_B) :- complements(FORM_A, FORM_B), !.
+bool_simp_bct('=>', FORM_A, FORM_B, (FORM_A => FORM_B)) :- !.
 
-bool_simp_bct(and, $false, _, $false) :- !.
-bool_simp_bct(and, _, $false, $false) :- !.
-bool_simp_bct(and, $true, FORM, FORM) :- !.
-bool_simp_bct(and, FORM, $true, FORM) :- !.
-bool_simp_bct(and, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
-bool_simp_bct(and, FORM_L, FORM_R, $false) :- complements(FORM_L, FORM_R), !.
-bool_simp_bct(and, FORM_L, FORM_R, $and(FORM_L, FORM_R)) :- !.
+bool_simp_bct('/\\', ff, _, ff) :- !.
+bool_simp_bct('/\\', _, ff, ff) :- !.
+bool_simp_bct('/\\', tt, FORM, FORM) :- !.
+bool_simp_bct('/\\', FORM, tt, FORM) :- !.
+bool_simp_bct('/\\', FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
+bool_simp_bct('/\\', FORM_L, FORM_R, ff) :- complements(FORM_L, FORM_R), !.
+bool_simp_bct('/\\', FORM_L, FORM_R, (FORM_L /\ FORM_R)) :- !.
 
-bool_simp_bct(or, $true, _, $true) :- !.
-bool_simp_bct(or, _, $true, $true) :- !.
-bool_simp_bct(or, $false, FORM, FORM) :- !.
-bool_simp_bct(or, FORM, $false, FORM) :- !.
-bool_simp_bct(or, FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
-bool_simp_bct(or, FORM_L, FORM_R, $true) :- complements(FORM_L, FORM_R), !.
-bool_simp_bct(or, FORM_L, FORM_R, $or(FORM_L, FORM_R)) :- !.
+bool_simp_bct('\\/', tt, _, tt) :- !.
+bool_simp_bct('\\/', _, tt, tt) :- !.
+bool_simp_bct('\\/', ff, FORM, FORM) :- !.
+bool_simp_bct('\\/', FORM, ff, FORM) :- !.
+bool_simp_bct('\\/', FORM_L, FORM_R, FORM_L) :- FORM_L == FORM_R, !.
+bool_simp_bct('\\/', FORM_L, FORM_R, tt) :- complements(FORM_L, FORM_R), !.
+bool_simp_bct('\\/', FORM_L, FORM_R, (FORM_L \/ FORM_R)) :- !.
  
-bool_simp($not(FORM), NORM) :- !, 
+bool_simp(~ FORM, NORM) :- !, 
   bool_simp(FORM, TEMP), 
   bool_simp_not(TEMP, NORM). 
  
 bool_simp(FORM, NORM) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), !,
+  break_bct(FORM, BCT, FORM_A, FORM_B), !,
   bool_simp(FORM_A, NORM_A), 
   bool_simp(FORM_B, NORM_B),
   bool_simp_bct(BCT, NORM_A, NORM_B, NORM).
 
 bool_simp(FORM, NORM) :- 
-  decom_qtf(FORM, QTF, BODY), !, 
+  break_qtf(FORM, QTF, BODY), !, 
   bool_simp(BODY, TEMP),
   bool_simp_qtf(QTF, TEMP, NORM).
 
 bool_simp(FORM, FORM).
 
-map_var(GOAL, $var(NUM), TERM) :- !, call(GOAL, NUM, TERM).
-map_var(_, $dst(STR), $dst(STR)) :- !.
-map_var(GOAL, $fun(FUN, TERMS_I), $fun(FUN, TERMS_O)) :- !, 
+map_var(GOAL, #NUM, TERM) :- !, call(GOAL, NUM, TERM).
+map_var(GOAL, (FUN $ TERMS_I), (FUN $ TERMS_O)) :- !, 
   maplist_cut(map_var(GOAL), TERMS_I, TERMS_O).
   
 decr_vdx_form(FORM, NORM) :- 
@@ -2046,17 +1956,17 @@ decr_vdx_form(FORM, NORM) :-
 decr_vdx_term(DEP, TERM_I, TERM_O) :- 
   map_var(decr_vdx(DEP), TERM_I, TERM_O).
 
-decr_vdx(DTH, NUM, $var(NUM)) :- NUM < DTH.
-decr_vdx(DTH, NUM, $var(PRED)) :- 
+decr_vdx(DTH, NUM, #NUM) :- NUM < DTH.
+decr_vdx(DTH, NUM, #PRED) :- 
   DTH < NUM, num_pred(NUM, PRED). 
 
-dist_qtf_bct(fa, and).
-dist_qtf_bct(ex, or).
+dist_qtf_bct('!', '/\\').
+dist_qtf_bct('?', '\\/').
 
 dist_qtf(_, FORM, NORM) :- decr_vdx_form(FORM, NORM), !.
 
 dist_qtf(QTF, FORM, NORM) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), 
+  break_bct(FORM, BCT, FORM_A, FORM_B), 
   (
     dist_qtf_bct(QTF, BCT) ; 
     decr_vdx_form(FORM_A, _) ;
@@ -2064,47 +1974,47 @@ dist_qtf(QTF, FORM, NORM) :-
   ), !, 
   dist_qtf(QTF, FORM_A, NORM_A), 
   dist_qtf(QTF, FORM_B, NORM_B), 
-  apply_bop(BCT, NORM_A, NORM_B, NORM).
+  apply_bct(BCT, NORM_A, NORM_B, NORM).
 
 dist_qtf(QTF, FORM, NORM) :- 
-  apply_uop(QTF, FORM, NORM).
+  apply_uct(QTF, FORM, NORM).
 
 push_qtf(FORM, NORM) :- 
-  decom_qtf(FORM, QTF, BODY), !,
+  break_qtf(FORM, QTF, BODY), !,
   push_qtf(BODY, TEMP),
   dist_qtf(QTF, TEMP, NORM).
 
 push_qtf(FORM, NORM) :- 
-  decom_bct(FORM, BCT, FORM_A, FORM_B), !,
+  break_bct(FORM, BCT, FORM_A, FORM_B), !,
   push_qtf(FORM_A, NORM_A),
   push_qtf(FORM_B, NORM_B),
-  apply_bop(BCT, NORM_A, NORM_B, NORM).
+  apply_bct(BCT, NORM_A, NORM_B, NORM).
 
 push_qtf(FORM, FORM).
 
 
-distribute($fa(FORM), $fa(NORM)) :- !, 
+distribute(! FORM, ! NORM) :- !, 
   distribute(FORM, NORM).
 
-distribute($and(FORM_A, FORM_B), $and(NORM_A, NORM_B)) :- !, 
+distribute((FORM_A /\ FORM_B), (NORM_A /\ NORM_B)) :- !, 
   distribute(FORM_A, NORM_A),
   distribute(FORM_B, NORM_B).
 
-distribute($or(FORM_A, FORM_B), NORM) :- !, 
+distribute((FORM_A \/ FORM_B), NORM) :- !, 
   distribute(FORM_A, TEMP_A),  
   distribute(FORM_B, TEMP_B),
   (
-    TEMP_A = $and(FORM_L, FORM_R) -> 
-    distribute($or(FORM_L, TEMP_B), CONJ_L), 
-    distribute($or(FORM_R, TEMP_B), CONJ_R), 
-    NORM = $and(CONJ_L, CONJ_R)
+    TEMP_A = (FORM_L /\ FORM_R) -> 
+    distribute((FORM_L \/ TEMP_B), CONJ_L), 
+    distribute((FORM_R \/ TEMP_B), CONJ_R), 
+    NORM = (CONJ_L /\ CONJ_R)
   ;
-    TEMP_B = $and(FORM_L, FORM_R) -> 
-    distribute($or(FORM_L, TEMP_A), CONJ_L), 
-    distribute($or(FORM_R, TEMP_A), CONJ_R), 
-    NORM = $and(CONJ_L, CONJ_R) 
+    TEMP_B = (FORM_L /\ FORM_R) -> 
+    distribute((FORM_L \/ TEMP_A), CONJ_L), 
+    distribute((FORM_R \/ TEMP_A), CONJ_R), 
+    NORM = (CONJ_L /\ CONJ_R) 
   ;
-    NORM = $or(TEMP_A, TEMP_B)
+    NORM = (TEMP_A \/ TEMP_B)
   ).  
 
 distribute(FORM, FORM).
@@ -2176,21 +2086,20 @@ concat_shell(LIST, EXST) :-
   atomic_list_concat(LIST, CMD),
   shell(CMD, EXST).
 
-call_prover(e, TPTP, TSTP, RST) :- 
-  concat_shell(["eprover --cpu-limit=60 -p ", TPTP, " > temp.tstp"], _), 
-  (
-    any_line_path('temp.tstp', =("# Proof found!")) -> 
-    concat_shell(["cat temp.tstp | sed '/\\(^#\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
-    RST = false
-  ),
-  delete_file('temp.tstp').
-
-call_prover(v, TPTP, TSTP, RST) :- 
-  concat_shell(["vampire --output_axiom_names on --proof tptp --include /home/sk/projects/TPTP/ ", TPTP, " > temp.tstp"], _),  
-  (
-    any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
-    concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
-    RST = false
-  ),
-  delete_file('temp.tstp').
-
+% call_prover(e, TPTP, TSTP, RST) :- 
+%   concat_shell(["eprover --cpu-limit=60 -p ", TPTP, " > temp.tstp"], _), 
+%   (
+%     any_line_path('temp.tstp', =("# Proof found!")) -> 
+%     concat_shell(["cat temp.tstp | sed '/\\(^#\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
+%     RST = false
+%   ),
+%   delete_file('temp.tstp').
+% 
+% call_prover(v, TPTP, TSTP, RST) :- 
+%   concat_shell(["vampire --output_axiom_names on --proof tptp --include /home/sk/projects/TPTP/ ", TPTP, " > temp.tstp"], _),  
+%   (
+%     any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
+%     concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
+%     RST = false
+%   ),
+%   delete_file('temp.tstp').
