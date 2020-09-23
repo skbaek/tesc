@@ -2043,7 +2043,7 @@ get_sol(STRM, SOL) :- get_list(STRM, get_af, SOL).
 
 tptp_prob(TPTP, PROB) :-
   process_create(
-    './ttp/target/release/ttp', 
+    './tts/target/release/tts', 
     [TPTP], 
     [stdout(pipe(STRM))]
   ), !,
@@ -2056,7 +2056,7 @@ tptp_prob(TPTP, PROB) :-
 
 tptp_sol(TPTP, SOL) :-
   process_create(
-    './ttp/target/release/ttp', 
+    './tts/target/release/tts', 
     [TPTP], 
     [stdout(pipe(STRM))]
   ), !,
@@ -2084,6 +2084,10 @@ any_line_path(PATH, GOAL) :-
 
 concat_shell(LIST, EXST) :- 
   atomic_list_concat(LIST, CMD),
+  shell(CMD, EXST).
+
+concat_shell(LIST, SEP, EXST) :- 
+  atomic_list_concat(LIST, SEP, CMD), 
   shell(CMD, EXST).
 
 % call_prover(e, TPTP, TSTP, RST) :- 

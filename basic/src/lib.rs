@@ -570,8 +570,8 @@ fn conv_fof_atomic_formula(vs: &Vec<String>, f: FofAtomicFormula) -> Rst<Form> {
       match *g {
         FofDefinedAtomicFormula::Plain(FofDefinedPlainFormula(t)) => {
           let s = conv_fof_defined_plain_term(t);
-          if s == "tt" { Ok(Form::Cst(true)) }
-          else if s == "ff" { Ok(Form::Cst(false)) }
+          if s == "$true" { Ok(Form::Cst(true)) }
+          else if s == "$false" { Ok(Form::Cst(false)) }
           else  { Ok(string_args_form(s,vec![])) }
         },
         FofDefinedAtomicFormula::Infix(
@@ -632,6 +632,7 @@ fn conv_role(r: FormulaRole) -> bool {
     FormulaRole::Hypothesis => true,
     FormulaRole::Conjecture => true,
     FormulaRole::NegatedConjecture => true,
+    FormulaRole::Definition => true,
     _ => false
   }
 }

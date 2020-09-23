@@ -1,5 +1,5 @@
-#!/usr/bin/env swipl
-:- initialization(main, main).
+% #!/usr/bin/env swipl
+% :- initialization(main, main).
 
 :- [basic].
 
@@ -321,12 +321,13 @@ check(_, BCH, CNT, _, 'X', PRINT, PAD, STRM) :-
   FORM_P == FORM_N, !,
   printnl(PRINT, "~w~w : X / ~w / ~w", [PAD, CNT, PID, NID]), !.
 
-main([TPTP_PATH, TESC_PATH | OPTS]) :-   
+main :- 
+  current_prolog_flag(argv, [PROB_PATH, PRF_PATH | OPTS]), 
   trace_if_debug(OPTS),
   (member('--print', OPTS) -> PRINT = true ; PRINT = false),
-  tptp_prob(TPTP_PATH, PROB), !,
-  open(TESC_PATH, read, STRM, [encoding(octet)]),
-  empty_assoc(EMP),
-  check(PROB, EMP, 0, PRINT, "", STRM),
-  close(STRM),
-  writeln("Proof verified.").
+  tptp_prob(PROB_PATH, PROB), !,
+  open(PRF_PATH, read, STRM, [encoding(octet)]), !,
+  empty_assoc(EMP), !,
+  check(PROB, EMP, 0, PRINT, "", STRM), !,
+  close(STRM), !,
+  writeln("PTTV : Proof verified."), !.

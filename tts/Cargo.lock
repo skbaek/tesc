@@ -116,7 +116,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ttp"
+name = "tts"
 version = "0.1.0"
 dependencies = [
  "basic",

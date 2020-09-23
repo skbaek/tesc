@@ -10,13 +10,14 @@ test.pl
 log
 basic/target/
 tptp/target/
-ttp/target/
-ttv/target/
+tts/target/
+rttv/target/
 esol_bak/
 vsol_bak/
 vsol/
 esol/
 MAlonzo/
 attv.agdai
-attv
 pttv
+attv
+rttv
