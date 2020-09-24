@@ -2090,20 +2090,24 @@ concat_shell(LIST, SEP, EXST) :-
   atomic_list_concat(LIST, SEP, CMD), 
   shell(CMD, EXST).
 
-% call_prover(e, TPTP, TSTP, RST) :- 
-%   concat_shell(["eprover --cpu-limit=60 -p ", TPTP, " > temp.tstp"], _), 
-%   (
-%     any_line_path('temp.tstp', =("# Proof found!")) -> 
-%     concat_shell(["cat temp.tstp | sed '/\\(^#\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
-%     RST = false
-%   ),
-%   delete_file('temp.tstp').
-% 
-% call_prover(v, TPTP, TSTP, RST) :- 
-%   concat_shell(["vampire --output_axiom_names on --proof tptp --include /home/sk/projects/TPTP/ ", TPTP, " > temp.tstp"], _),  
-%   (
-%     any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
-%     concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", TSTP], _), RST = true ;
-%     RST = false
-%   ),
-%   delete_file('temp.tstp').
+call_solver(e, PROB_PATH, SOL_PATH) :- 
+  concat_shell(["eprover --cpu-limit=60 -p ", PROB_PATH, " > temp.tstp"], _), 
+  (
+    any_line_path('temp.tstp', =("# Proof found!")) -> 
+    concat_shell(["cat temp.tstp | sed '/\\(^#\\|^\\$\\)/d' > ", SOL_PATH], 0),
+    delete_file('temp.tstp')
+  ;
+    delete_file('temp.tstp'),
+    false
+  ).
+
+call_solver(v, PROB_PATH, SOL_PATH) :- 
+  concat_shell(["vampire --output_axiom_names on --proof tptp --include /home/sk/projects/TPTP/ ", PROB_PATH, " > temp.tstp"], _),  
+  (
+    any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
+    concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", SOL_PATH], 0), 
+    delete_file('temp.tstp')
+  ;
+    delete_file('temp.tstp'),
+    false
+  ).
