@@ -1,5 +1,3 @@
-{-# OPTIONS --prop #-} 
-
 module basic where
 
 open import Agda.Primitive
@@ -11,6 +9,7 @@ open import Agda.Builtin.String
 open import Data.List renaming (or to disj) renaming(and to conj)
 open import Data.List.Membership.Setoid using (_∈_) 
 open import Data.Nat.Show
+open import Data.Product
 open import Codata.Musical.Costring 
 open import Codata.Musical.Colist 
   renaming (length to length*) 
@@ -18,11 +17,11 @@ open import Codata.Musical.Colist
   renaming ([_] to [_]*) 
   renaming (_∷_ to _∷*_) 
   renaming (_++_ to _++*_) 
-open import Data.Unit.Base renaming (⊤ to Unit)
+open import Data.Unit.Base  
+open import Data.Unit.Polymorphic renaming (⊤ to ⊤*)
 open import Agda.Builtin.Coinduction
 open import Data.Maybe.Base 
   renaming (map to map?)
-  renaming (_>>=_ to _?>=_)
 open import IO
   renaming (_>>=_ to _>>>=_)
   renaming (_>>_ to _>>>_)
@@ -37,29 +36,15 @@ postulate
 {-# COMPILE GHC getArgs = fmap (map Text.pack) Env.getArgs #-}
 {-# COMPILE GHC getProgName = fmap Text.pack Env.getProgName #-}
 
-IOF : Set → Set₁ 
-IOF A = IO (Maybe A)
-
-pass : {A : Set} → A → IOF A
-pass a = return (just a)
-
-fail : {A : Set} → IOF A
-fail = return nothing 
-
 _#>=_ : {A : Set} {B : Set} → IO A → (A → IO B) → IO B
 _#>=_ f g = ♯ f >>>= \ x → ♯ (g x)
 
 _#>_  : {A : Set} {B : Set} →  IO A → IO B → IO B
 _#>_ f g = ♯ f >>> ♯ g 
 
-_>>=_ : {A : Set} {B : Set} → IOF A → (A → IOF B) → IOF B 
-_>>=_ f g = f #>= ( λ { nothing → return nothing ; (just x) → g x } )
-
-_>>_ : {A : Set} {B : Set} → IOF A → IOF B → IOF B 
-_>>_ f g = f >>= \ _ → g
-
-_<|>_ : {A : Set} → IOF A → IOF A → IOF A
-_<|>_ f g = f #>= \ { nothing → g ; (just x) → return (just x) }
+_>>_  : {A : Set} {B : Set} → Maybe A → Maybe B → Maybe B
+_>>_ nothing _ = nothing 
+_>>_ (just _) g = g 
 
 Chars : Set
 Chars = List Char 
@@ -94,116 +79,38 @@ data Form : Set where
   qtf : Bool → Form → Form 
   rel : Ftr → Terms → Form
 
-rl : Set → Set  
-rl A = List A → Bool
-
-fn : Set → Set 
-fn A = List A → A
-
-Rls : Set → Set 
-Rls A = Ftr → rl A 
-
-Fns : Set → Set 
-Fns A = Ftr → fn A 
-
-Vas : Set → Set 
-Vas A = Nat → A 
-
 Prob : Set 
 Prob = Chars → Form
 
-data ⊥ : Prop where
-data ⊤ : Prop where
-  tt : ⊤ 
-
-data _×_ (A B : Set) : Set where
-  ⟨_,_⟩ : A → B → A × B
-
-data _×_×_×_ (A B C D : Set) : Set where
-  ⟨_,_,_,_⟩ : A → B → C → D → A × B × C × D
-
-data _∧_ (A B : Prop) : Prop where
-  and : A → B → A ∧ B
-
-data _∨_ (A B : Prop) : Prop where
-  left : A → A ∨ B
-  right : B → A ∨ B
-
-_↔_ : Prop → Prop → Prop 
-A ↔ B = (A → B) ∧ (B → A)
-
-data Σ (A : Set) (B : A → Prop) : Prop where
-  ⟨_,_⟩ : (x : A) → B x → Σ A B
-
-¬ : Prop → Prop
-¬ A = A → ⊥
- 
-Σ-syntax = Σ
-infix 2 Σ-syntax
-syntax Σ-syntax A (λ x → B) = Σ[ x ∈ A ] B
-
-∃ : ∀ {A : Set} (B : A → Prop) → Prop
-∃ {A} B = Σ A B
-
-∃-syntax = ∃
-syntax ∃-syntax (λ x → B) = ∃[ x ] B
-
-∀-syntax : ∀ {A : Set} (P : A → Prop) → Prop
-∀-syntax {A} P = ∀ {x : A} → P x
-syntax ∀-syntax (λ x → B) = ∀[ x ] B
-
-termoid-val : {A : Set} → Fns A → Vas A → {b : Bool} → Termoid b → ElemList A b
-termoid-val _ V (var k) = V k
-termoid-val F V (fun f ts) = F f (termoid-val F V ts)
-termoid-val F V nil = []
-termoid-val F V (cons t ts) = (termoid-val F V t) ∷ (termoid-val F V ts)
-
-term-val : {A : Set} → Fns A → Vas A → Term → A 
-term-val F V t = termoid-val F V t
-
-terms-val : {A : Set} → Fns A → Vas A → Terms → List A 
-terms-val F V ts = termoid-val F V ts
-
-_₀↦_ : {A : Set} → Vas A → A → Vas A 
-_₀↦_ V a 0 = a
-_₀↦_ V a (suc k) = V k
-
-is-true : Bool → Prop 
-is-true true = ⊤ 
-is-true false = ⊥ 
-
-holds : {A : Set} → Rls A → Fns A → Vas A → Form → Prop
-holds {A} R F V (cst b) = is-true b 
-holds {A} R F V (not f) = ¬ (holds R F V f)
-holds {A} R F V (bct or f g) = (holds R F V f) ∨ (holds R F V g)
-holds {A} R F V (bct and f g) = (holds R F V f) ∧ (holds R F V g)
-holds {A} R F V (bct imp f g) = (holds R F V f) → (holds R F V g)
-holds {A} R F V (bct iff f g) = (holds R F V f) ↔ (holds R F V g)
-holds {A} R F V (qtf false f) = ∀[ x ] holds R F (V ₀↦ x) f
-holds {A} R F V (qtf true f) = ∃[ x ] holds R F (V ₀↦ x) f
-holds {A} R F V (rel r ts) = is-true (R r (terms-val F V ts)) 
-
-unsat : Prob → Prop₁
-unsat P = ∀ A R F V → ∃[ n ] ¬ (holds {A} R F V (P n))
+-- data _×_ (A B : Set) : Set where
+--   ⟨_,_⟩ : A → B → A × B
+-- 
+-- data _×_×_×_ (A B C D : Set) : Set where
+--   ⟨_,_,_,_⟩ : A → B → C → D → A × B × C × D
 
 if_then_else_ : {l : Level} {A : Set l} → Bool → A → A → A
 if true then x else y = x
 if false then x else y = y
 
-drop-head : {A : Set} → List A → Nat → IOF A 
-drop-head [] _ = fail 
-drop-head (a ∷ _) 0 = pass a 
+drop-head : {A : Set} → List A → Nat → Maybe A 
+drop-head [] _ = nothing 
+drop-head (a ∷ _) 0 = just a 
 drop-head (_ ∷ l) (suc k) = drop-head l k 
 
-Bch : Set 
-Bch = List Form × Nat
+Bch = List Form 
 
 par : Nat → Term
 par k = fun (nf k) nil
 
-get-from-bch : Bch → Nat → IOF Form 
-get-from-bch ⟨ fs , 0 ⟩ i = fail
-get-from-bch ⟨ fs , suc k ⟩ i = if i < (suc k) then drop-head fs (k - i) else fail
+nth : {A : Set} → Nat → List A → Maybe A 
+nth 0 (x ∷ _) = just x
+nth (suc k) (_ ∷ xs) = nth k xs
+nth _ _ = nothing
+
+get-from-bch : Bch → Nat → Maybe Form 
+get-from-bch B k = nth k (reverse B)
+-- get-from-bch (fs , 0) i = nothing
+-- get-from-bch (fs , suc k) i = if i < (suc k) then drop-head fs (k - i) else nothing
 
 subst-termoid : {b : Bool} → Nat → Term → Termoid b → Termoid b
 subst-termoid k t (var m) = if k < m then var (m - 1) else if k == m then t else (var m)
@@ -250,65 +157,58 @@ skolem-term-asc k a = fun (nf k) (vars-asc a)
 skolem-term-desc : Nat → Nat → Term
 skolem-term-desc k a = fun (nf k) (vars-desc a)
 
-to-iof : {A : Set} → Maybe A → IOF A 
-to-iof nothing = fail
-to-iof (just a) = pass a
+break-a : Bool → Form → Maybe Form 
+break-a true  (bct and f _) = just f
+break-a false (bct and _ f) = just f
+break-a true  (not (bct or f _)) = just (not f)
+break-a false (not (bct or _ f)) = just (not f)
+break-a true  (not (bct imp f _)) = just f
+break-a false (not (bct imp _ f)) = just (not f)
+break-a true  (bct iff f g) = just (bct imp f g)
+break-a false (bct iff f g) = just (bct imp g f)
+break-a _ _ = nothing
 
-io-to-iof : {A : Set} → IO A → IOF A 
-io-to-iof f = f #>= \ x → return (just x)
+break-b : Form → Maybe (Form × Form)
+break-b (bct or f g) = just (f , g) 
+break-b (not (bct and f g)) = just (not f , not g) 
+break-b (bct imp f g) = just (not f , g)
+break-b (not (bct iff f g)) = just (not (bct imp f g) , not (bct imp g f))
+break-b _ = nothing
 
-break-a : Bool → Form → IOF Form 
-break-a true  (bct and f _) = pass f
-break-a false (bct and _ f) = pass f
-break-a true  (not (bct or f _)) = pass (not f)
-break-a false (not (bct or _ f)) = pass (not f)
-break-a true  (not (bct imp f _)) = pass f
-break-a false (not (bct imp _ f)) = pass (not f)
-break-a true  (bct iff f g) = pass (bct imp f g)
-break-a false (bct iff f g) = pass (bct imp g f)
-break-a _ _ = fail
+break-c : Term → Form → Maybe Form
+break-c t (qtf false f) = just (subst-form 0 t f)
+break-c t (not (qtf true f)) = just (not (subst-form 0 t f))
+break-c _ _ = nothing
 
-break-b : Form → IOF (Form × Form)
-break-b (bct or f g) = pass ⟨ f , g ⟩ 
-break-b (not (bct and f g)) = pass ⟨ not f , not g ⟩ 
-break-b (bct imp f g) = pass ⟨ not f , g ⟩ 
-break-b (not (bct iff f g)) = pass ⟨ not (bct imp f g) , not (bct imp g f) ⟩ 
-break-b _ = fail
+break-d : Nat → Form → Maybe Form
+break-d k (qtf true f) = just (subst-form 0 (par k) f)
+break-d k (not (qtf false f)) = just (not (subst-form 0 (par k) f))
+break-d _ _ = nothing
 
-break-c : Term → Form → IOF Form
-break-c t (qtf false f) = pass (subst-form 0 t f)
-break-c t (not (qtf true f)) = pass (not (subst-form 0 t f))
-break-c _ _ = fail
+break-n : Form → Maybe Form
+break-n (not (not f)) = just f
+break-n _ = nothing
 
-break-d : Nat → Form → IOF Form
-break-d k (qtf true f) = pass (subst-form 0 (par k) f)
-break-d k (not (qtf false f)) = pass (not (subst-form 0 (par k) f))
-break-d _ _ = fail
+char-to-nat : Char → Maybe Nat  
+char-to-nat '0' = just 0
+char-to-nat '1' = just 1
+char-to-nat '2' = just 2
+char-to-nat '3' = just 3
+char-to-nat '4' = just 4
+char-to-nat '5' = just 5
+char-to-nat '6' = just 6
+char-to-nat '7' = just 7
+char-to-nat '8' = just 8
+char-to-nat '9' = just 9
+char-to-nat _   = nothing
 
-break-n : Form → IOF Form
-break-n (not (not f)) = pass f
-break-n _ = fail
-
-char-to-nat : Char → IOF Nat  
-char-to-nat '0' = pass 0
-char-to-nat '1' = pass 1
-char-to-nat '2' = pass 2
-char-to-nat '3' = pass 3
-char-to-nat '4' = pass 4
-char-to-nat '5' = pass 5
-char-to-nat '6' = pass 6
-char-to-nat '7' = pass 7
-char-to-nat '8' = pass 8
-char-to-nat '9' = pass 9
-char-to-nat _   = fail
-
-chars-to-nat-acc : Nat → List Char → IOF Nat  
-chars-to-nat-acc k [] = pass k
+chars-to-nat-acc : Nat → List Char → Maybe Nat  
+chars-to-nat-acc k [] = just k
 chars-to-nat-acc k (c ∷ cs) = do 
   m ← char-to-nat c
   chars-to-nat-acc ((k * 10) + m) cs
 
-chars-to-nat : List Char → IOF Nat  
+chars-to-nat : List Char → Maybe Nat  
 chars-to-nat = chars-to-nat-acc 0
 
 _&_ : Bool → Bool → Bool 
@@ -366,8 +266,8 @@ eq-form (qtf p' f') (qtf q' g') = (p' ≃ q') & (eq-form f' g')
 eq-form (rel r1 ts1) (rel r2 ts2) = eq-ftr r1 r2 & eq-terms ts1 ts2
 eq-form _ _ = false
 
-ext-bch : Form → Bch → Bch
-ext-bch f ⟨ fs , k ⟩ = ⟨ f ∷ fs , k + 1 ⟩ 
+-- ext-bch : Form → Bch → Bch
+-- ext-bch f (fs , k) = (f ∷ fs , k + 1)
 
 data Inst : Set where
   -- Non-consuming instructions
@@ -441,21 +341,13 @@ data Arg : Set where
   term : Term → Arg
   form : Form → Arg
 
-State : Set
-State = Prob × List Bch × List Arg × List Inst 
-
-put-str : String → IOF Unit
-put-str s = io-to-iof (putStr s)
-
-put-str-ln : String → IOF Unit
-put-str-ln s = put-str s >> put-str "\n"
-
-put-pad : Nat → IOF Unit
-put-pad 0 = pass tt
-put-pad (suc k) = put-str "  " >> put-pad k
-
-put-str-pad : Nat → String → IOF Unit
-put-str-pad n s = put-pad n >> put-str-ln s 
+record State : Set where
+  constructor _^_^_^_ 
+  field
+    Pb : Prob
+    Bchs : List Bch
+    Args : List Arg
+    Insts : List Inst
 
 append-all : List String → String
 append-all [] = ""
@@ -499,22 +391,11 @@ pp-form (qtf true f) = append-all ( "∃ " ∷ pp-form f ∷ [] )
 pp-form (qtf false f) = append-all ( "∀ " ∷ pp-form f ∷ [] )
 pp-form (not f) = append-all ( "¬ " ∷ pp-form f ∷ [] )
 
-put-head-form : List Bch → IOF Unit 
-put-head-form [] = pass tt
-put-head-form ( ⟨ f ∷ fs , _ ⟩ ∷ Bs ) = 
-  put-str-pad (length fs) (pp-form f)
-put-head-form ( ⟨ [] , _ ⟩ ∷ Bs ) = 
-  put-str-ln "Invalid empty branch found." >> fail
-
 fst : {A : Set} {B : Set} → (A × B) → A 
-fst ⟨ x , _ ⟩ = x 
+fst (x , _) = x 
 
 snd : {A : Set} {B : Set} → (A × B) → B
-snd ⟨ _ , y ⟩ = y
-
-map-iof : {A : Set} → (A → IOF Unit) → List A → IOF Unit
-map-iof f [] = pass tt
-map-iof f (x ∷ xs) = f x >> map-iof f xs
+snd (_ , y) = y
 
 check-nf-ftr : Nat → Ftr → Bool
 check-nf-ftr k (nf m) = m < k
@@ -558,16 +439,6 @@ check-gnd-form k (not f) = check-gnd-form k f
 check-gnd-form k (qtf _ f) = check-gnd-form (k + 1) f 
 check-gnd-form k (bct _ f g) = check-gnd-form k f & check-gnd-form k g
 
-pass-if : Bool → IOF Unit 
-pass-if true  = pass tt
-pass-if false = fail
-
-fa : Form → Form 
-fa f = qtf false f
-
-ex : Form → Form 
-ex f = qtf true f
-
 is_eqn : Term → Term → Form → Bool
 is_eqn t s (rel (sf ('=' ∷ [])) (cons t' (cons s' nil))) = eq-term t t' & eq-term s s' 
 is_eqn _ _ _ = false
@@ -586,10 +457,10 @@ trans-axiom (qtf false (qtf false (qtf false (bct imp f (bct imp g h))))) =
 trans-axiom _ = false
 
 mono-args : Nat → (Terms × Terms)
-mono-args 0 = ⟨ nil , nil ⟩ 
+mono-args 0 = (nil , nil) 
 mono-args (suc k) = 
   let p = mono-args k 
-  in ⟨ cons (var ((k * 2) + 1)) (fst p) , cons (var (k * 2)) (snd p) ⟩ 
+  in (cons (var ((k * 2) + 1)) (fst p) , cons (var (k * 2)) (snd p))
 
 mono-fun-core : Nat → Form → Bool
 mono-fun-core k (qtf false (qtf false (bct imp (rel (sf ('=' ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = mono-fun-core (k + 1) f
@@ -611,20 +482,6 @@ mono-rel f = mono-rel-core 0 f
 mono-fun : Form → Bool
 mono-fun f = mono-fun-core 0 f
 
--- foo : Nat → Nat → Form → IOF Unit
--- foo k a (qtf false f) = foo k (a + 1) f
--- foo k a (bct imp (qtf true f) g) = do 
---   put-str "Functor number = "
---   put-str-ln (show k)
---   put-str "Arity = "
---   put-str-ln (show a)
---   put-str "Result of substitution = "
---   put-str-ln (pp-form (subst-form 0 (skolem-term-asc k a) f)) 
---   put-str "Subtitution target = "
---   put-str-ln (pp-form g)
---   fail
--- foo _ _ _ = put-str-ln "Wrong branch" >> fail
-
 is-choice-axiom : Nat → Nat → Form → Bool
 is-choice-axiom k a (qtf false f) = is-choice-axiom k (a + 1) f
 is-choice-axiom k a (bct imp (qtf true f) g) = 
@@ -637,149 +494,122 @@ is-pred-def k a (bct iff (rel (nf m) ts) f) =
   check-nf-form k f & ((k == m) & (eq-terms ts (vars-asc a) || eq-terms ts (vars-desc a)))
 is-pred-def _ _ _ = false
 
-justified : Nat → Form -> Bool
+justified : Nat → Form → Bool
 justified _ (cst true) = true 
 justified _ (not (cst false)) = true 
 justified k f = disj ( refl-axiom f ∷ symm-axiom f ∷  trans-axiom f ∷ mono-rel f ∷ mono-fun f ∷ is-choice-axiom k 0 f ∷ is-pred-def k 0 f ∷ [] )
 
+just-if : Bool → Maybe ⊤ 
+just-if true = just tt
+just-if false = nothing
 
-transit : Prob → List Bch → List Arg → List Inst → IOF State
+-- transit P \(([A-Za-s0-9_ ∷]+)\) \(([A-Za-s0-9_ ∷]+)\) 
+-- \(([A-Za-s0-9_ ∷]+)\) 
+-- \(([A-Za-s0-9_ ∷]+)\) 
+
+transit : Prob → List Bch → List Arg → List Inst → Maybe State
 transit P (B ∷ Bs) (bool b' ∷ nat n' ∷ []) (app-a ∷ []) = do
   f ← get-from-bch B n' >>= break-a b'  
-  -- put-str-pad (length (fst B)) (pp-form f)
-  pass ⟨ P , ext-bch f B ∷ Bs , [] , [] ⟩ 
+  just (P ^ (f ∷ B) ∷ Bs ^ [] ^ []) 
 transit P (B ∷ Bs) (nat n' ∷ []) (app-b ∷ []) = do
-  ⟨ f , g ⟩ ← get-from-bch B n' >>= break-b 
-  -- put-str-pad (length (fst B)) (pp-form f)
-  pass ⟨ P , ext-bch f B ∷ ext-bch g B ∷ Bs , [] , [] ⟩
+  (f , g) ← get-from-bch B n' >>= break-b 
+  just (P ^ (f ∷ B) ∷ (g ∷  B) ∷ Bs ^ [] ^ [])
 transit P (B ∷ Bs) (term t' ∷ nat n' ∷ []) (app-c ∷ []) = do
-  pass-if (check-gnd-term 0 t')
-  pass-if (check-nf-term ((snd B) + 1) t')
+  just-if (check-gnd-term 0 t')
+  just-if (check-nf-term ((length B) + 1) t')
   f ← get-from-bch B n' >>= break-c t' 
-  -- put-str-pad (length (fst B)) (pp-form f)
-  pass ⟨ P , ext-bch f B ∷ Bs , [] , [] ⟩ 
-transit P (B@(⟨ _ , k ⟩) ∷ Bs) (nat n' ∷ []) (app-d ∷ []) = do
-  f ← get-from-bch B n' >>= break-d k 
-  -- put-str-pad (length (fst B)) (pp-form f)
-  pass ⟨ P , ext-bch f B ∷ Bs , [] , [] ⟩ 
+  just (P ^ (f ∷ B) ∷ Bs ^ [] ^ []) 
+transit P (B ∷ Bs) (nat n' ∷ []) (app-d ∷ []) = do
+  f ← get-from-bch B n' >>= break-d (length B) 
+  just (P ^ (f ∷ B) ∷ Bs ^ [] ^ []) 
 transit P (B ∷ Bs) (nat n' ∷ []) (app-n ∷ []) = do
   f ← get-from-bch B n' >>= break-n 
-  -- put-str-pad (length (fst B)) (pp-form f)
-  pass ⟨ P , ext-bch f B ∷ Bs , [] , [] ⟩ 
+  just (P ^ (f ∷ B) ∷ Bs ^ [] ^ []) 
 transit P (B ∷ Bs) (chars cs ∷ []) (app-p ∷ []) = do
-  -- put-str-pad (length (fst B)) (pp-form (P cs))
-  pass-if (check-gnd-form 0 (P cs))
-  pass-if (check-nf-form ((snd B) + 1) (P cs))
-  pass ⟨ P , ext-bch (P cs) B ∷ Bs , [] , [] ⟩ 
+  just-if (check-gnd-form 0 (P cs))
+  just-if (check-nf-form ((length B) + 1) (P cs))
+  just (P ^ ((P cs) ∷ B) ∷ Bs ^ [] ^ []) 
 transit P (B ∷ Bs) (form f ∷ []) (app-s ∷ []) = do
-  -- put-str-pad (length (fst B)) (pp-form (not f))
-  pass-if (check-gnd-form 0 f)
-  pass-if (check-nf-form ((snd B) + 1) f)
-  pass ⟨ P , ext-bch (not f) B ∷ ext-bch f B ∷ Bs , [] , [] ⟩ 
+  just-if (check-gnd-form 0 f)
+  just-if (check-nf-form ((length B) + 1) f)
+  just (P ^ ((not f) ∷ B) ∷ (f ∷ B) ∷ Bs ^ [] ^ []) 
 transit P (B ∷ Bs) (form f ∷ []) (app-t ∷ []) = do
-  -- put-str-pad (length (fst B)) (pp-form f)
-  pass-if (check-gnd-form 0 f)
-  pass-if (check-nf-form ((snd B) + 1) f)
-  (pass-if (justified (snd B) f) <|> (put-str-ln "T-formula not justified" >> fail))
-  pass ⟨ P , ext-bch f B ∷ Bs , [] , [] ⟩ 
+  just-if (check-gnd-form 0 f)
+  just-if (check-nf-form ((length B) + 1) f)
+  just-if (justified (length B) f) 
+  just (P ^ (f ∷ B) ∷ Bs ^ [] ^ []) 
 transit P (B ∷ Bs) (nat n' ∷ nat p' ∷ []) (app-x ∷ []) = do
   f ← get-from-bch B p'
   g ← get-from-bch B n' 
-  if eq-form (not f) g then ( pass ⟨ P , Bs , [] , [] ⟩ ) else fail
+  if eq-form (not f) g then ( just (P ^ Bs ^ [] ^ []) ) else nothing
 transit P Bs (As) (get-nat ∷ IS) = 
-  pass ⟨ P , Bs , (chars [] ∷ As) , (acc-chars ∷ mk-nat ∷ IS) ⟩ 
+  just (P ^ Bs ^ (chars [] ∷ As) ^ (acc-chars ∷ mk-nat ∷ IS)) 
 transit P Bs (As) (get-chars ∷ IS) = 
-  pass ⟨ P , Bs , (chars [] ∷ As) , (acc-chars ∷ IS) ⟩ 
+  just (P ^ Bs ^ (chars [] ∷ As) ^ (acc-chars ∷ IS)) 
 transit P Bs (nat n' ∷ AS) (mk-var ∷ IS) = 
   transit P Bs (term (var n') ∷ AS) IS 
-transit P Bs (terms ts ∷ ftr f ∷ AS) (mk-fun ∷ IS)= 
-  transit P Bs (term (fun f ts) ∷ AS) IS 
-transit P Bs (terms ts ∷ ftr f ∷ AS) (mk-rel ∷ IS)= do
-  transit P Bs (form (rel f ts) ∷ AS) IS 
-transit P Bs (bool b' ∷ AS) (mk-cst ∷ IS)= 
-  transit P Bs (form (cst b') ∷ AS) IS 
-transit P Bs (form f ∷ AS) (mk-not ∷ IS)= do
-  transit P Bs (form (not f) ∷ AS) IS 
-transit P Bs (form g' ∷ form f' ∷ bct b' ∷ AS) (mk-bct ∷ IS)= do 
-  transit P Bs (form (bct b' f' g') ∷ AS) IS 
-transit P Bs (form f' ∷ bool b' ∷ AS) (mk-qtf ∷ IS)= 
-  transit P Bs (form (qtf b' f') ∷ AS) IS 
+transit P Bs (terms ts ∷ ftr f ∷ AS) (mk-fun ∷ IS)= transit P Bs (term (fun f ts) ∷ AS) IS 
+transit P Bs (terms ts ∷ ftr f ∷ AS) (mk-rel ∷ IS)= transit P Bs (form (rel f ts) ∷ AS) IS 
+transit P Bs (bool b' ∷ AS) (mk-cst ∷ IS)= transit P Bs (form (cst b') ∷ AS) IS 
+transit P Bs (form f ∷ AS) (mk-not ∷ IS)= transit P Bs (form (not f) ∷ AS) IS 
+transit P Bs (form g' ∷ form f' ∷ bct b' ∷ AS) (mk-bct ∷ IS)= transit P Bs (form (bct b' f' g') ∷ AS) IS 
+transit P Bs (form f' ∷ bool b' ∷ AS) (mk-qtf ∷ IS)= transit P Bs (form (qtf b' f') ∷ AS) IS 
 transit P Bs (chars cs ∷ AS) (mk-nat ∷ IS)= do
   k' ← chars-to-nat cs 
   transit P Bs (nat k' ∷ AS) IS 
-transit P Bs (terms ts' ∷ term t' ∷ AS) (mk-cons ∷ IS) = 
-  transit P Bs (terms (cons t' ts') ∷ AS) (IS)
-transit P Bs (nat n' ∷ AS) (mk-nf ∷ IS) = 
-  transit P Bs (ftr (nf n') ∷ AS) (IS)
-transit P Bs (chars cs ∷ AS) (mk-sf ∷ IS) = 
-  transit P Bs (ftr (sf cs) ∷ AS) IS
-transit P Bs AS IS = pass ⟨ P , Bs , AS , IS ⟩ 
+transit P Bs (terms ts' ∷ term t' ∷ AS) (mk-cons ∷ IS) = transit P Bs (terms (cons t' ts') ∷ AS) (IS)
+transit P Bs (nat n' ∷ AS) (mk-nf ∷ IS) = transit P Bs (ftr (nf n') ∷ AS) (IS)
+transit P Bs (chars cs ∷ AS) (mk-sf ∷ IS) = transit P Bs (ftr (sf cs) ∷ AS) IS
+transit P Bs AS IS = just (P ^ Bs ^ AS ^ IS) 
 
-check : List Char → State → IOF Unit 
+_=c_ : Char → Char → Bool
+c =c d = primCharEquality c d 
 
-check _ ⟨ _ , [] , _ , _ ⟩ = pass tt 
-
-check ('A' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule A" >> -} (transit P Bs [] (get-nat ∷ get-bool ∷ [ app-a ]) >>= check cs)
-check ('B' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule B" >> -} (transit P Bs [] (get-nat ∷ [ app-b ]) >>= check cs)
-check ('C' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule C" >> -} (transit P Bs [] (get-nat ∷ get-term ∷ [ app-c ]) >>= check cs)
-check ('D' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule D" >> -} (transit P Bs [] (get-nat ∷ [ app-d ]) >>= check cs)
-check ('N' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule N" >> -} (transit P Bs [] (get-nat ∷ [ app-n ]) >>= check cs)
-check ('P' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule P" >> -} (transit P Bs [] (get-chars ∷ [ app-p ]) >>= check cs)
-check ('S' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule S" >> -} (transit P Bs [] (get-form ∷ [ app-s ]) >>= check cs)
-check ('T' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule T" >> -} (transit P Bs [] (get-form ∷ [ app-t ]) >>= check cs)
-check ('X' ∷ cs) ⟨ P , Bs , [] , [] ⟩ = {- put-str-ln "Rule X" >> -} (transit P Bs [] (get-nat ∷ get-nat ∷ [ app-x ]) >>= check cs)
-
-check ('T' ∷ cs) ⟨ P , Bs , AS , get-bool ∷ IS ⟩ = transit P Bs (bool true  ∷ AS) IS >>= check cs 
-check ('F' ∷ cs) ⟨ P , Bs , AS , get-bool ∷ IS ⟩ = transit P Bs (bool false ∷ AS) IS >>= check cs 
-
-check ('#' ∷ cs) ⟨ P , Bs , AS , get-term ∷ IS ⟩ = transit P Bs AS (get-nat ∷ mk-var ∷ IS) >>= check cs 
-check ('$' ∷ cs) ⟨ P , Bs , AS , get-term ∷ IS ⟩ = transit P Bs AS (get-ftr ∷ get-terms ∷ mk-fun ∷ IS) >>= check cs 
-
-check (',' ∷ cs) ⟨ P , Bs , AS , get-terms ∷ IS ⟩ = transit P Bs AS (get-term ∷ get-terms ∷ mk-cons ∷ IS) >>= check cs 
-check ('.' ∷ cs) ⟨ P , Bs , AS , get-terms ∷ IS ⟩ = do 
-  -- put-str-ln (pp-list pp-inst IS)
-  -- put-str-ln "Reading in nil terms"
-  transit P Bs (terms nil ∷ AS) IS >>= check cs 
-
-check ('#' ∷ cs) ⟨ P , Bs , AS , get-ftr ∷ IS ⟩ = transit P Bs AS (get-nat ∷ mk-nf ∷ IS) >>= check cs 
-check ('"' ∷ cs) ⟨ P , Bs , AS , get-ftr ∷ IS ⟩ = do 
-  -- put-str-ln (pp-list pp-inst IS)
-  -- put-str-ln "Reading in string functor"
-  transit P Bs AS (get-chars ∷ mk-sf ∷ IS) >>= check cs 
-
-check ('T' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = transit P Bs (form (cst true) ∷ AS) IS >>= check cs 
-check ('F' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = transit P Bs (form (cst false) ∷ AS) IS >>= check cs 
-
-check ('$' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = do 
-  -- put-str-ln (pp-list pp-inst IS)
-  -- put-str-ln "Reading in application"
-  transit P Bs AS (get-ftr ∷ get-terms ∷ mk-rel ∷ IS) >>= check cs 
-check ('~' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = do 
-  -- put-str-ln (pp-list pp-inst IS)
-  -- put-str-ln "Reading in negation"
-  transit P Bs AS (get-form ∷ mk-not ∷ IS) >>= check cs 
-check ('!' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = transit P Bs (bool false ∷ AS) (get-form ∷ mk-qtf ∷ IS) >>= check cs 
-check ('?' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = transit P Bs (bool true  ∷ AS) (get-form ∷ mk-qtf ∷ IS) >>= check cs 
-check ('|' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = transit P Bs (bct or  ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
-check ('&' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = transit P Bs (bct and ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
-check ('>' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = transit P Bs (bct imp ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
-check ('=' ∷ cs) ⟨ P , Bs , AS , get-form ∷ IS ⟩ = do
-  -- put-str-ln (pp-list pp-inst IS)
-  -- put-str-ln "Reading in biconditinal"
-  transit P Bs (bct iff ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
-check ('%' ∷ cs0) ⟨ P , Bs , chars cs1 ∷ AS , acc-chars ∷ IS ⟩ = do 
-  -- put-str-ln (pp-list pp-inst IS)
-  -- put-str "Endmarker found, read in string = "
-  -- put-str-ln (primStringFromList (reverse cs1))
-  transit P Bs (chars (reverse cs1) ∷ AS) IS >>= check cs0
-check (c0 ∷ cs0) ⟨ P , Bs , chars cs1 ∷ AS , acc-chars ∷ IS ⟩  = transit P Bs (chars (c0 ∷ cs1) ∷ AS) (acc-chars ∷ IS) >>= check cs0
-
-check cs ⟨ P , BS , AS , IS ⟩ = do 
-  put-str "Unexpected toplevel character found, remaining proof = "
-  put-str-ln (primStringFromList cs)
-  put-str "Remaining instructions = "
-  put-str-ln (pp-list pp-inst IS)
-  fail
+check : List Char → State → Maybe ⊤   
+check _ (_ ^ [] ^ _ ^ _) = just tt 
+check (c ∷ cs) (P ^ Bs ^ _ ^ []) = 
+       if c =c 'A' then transit P Bs [] (get-nat ∷ get-bool ∷ [ app-a ]) >>= check cs
+  else if c =c 'B' then transit P Bs [] (get-nat ∷ [ app-b ]) >>= check cs
+  else if c =c 'C' then transit P Bs [] (get-nat ∷ get-term ∷ [ app-c ]) >>= check cs
+  else if c =c 'D' then transit P Bs [] (get-nat ∷ [ app-d ]) >>= check cs
+  else if c =c 'N' then transit P Bs [] (get-nat ∷ [ app-n ]) >>= check cs
+  else if c =c 'P' then transit P Bs [] (get-chars ∷ [ app-p ]) >>= check cs
+  else if c =c 'S' then transit P Bs [] (get-form ∷ [ app-s ]) >>= check cs
+  else if c =c 'T' then transit P Bs [] (get-form ∷ [ app-t ]) >>= check cs
+  else if c =c 'X' then transit P Bs [] (get-nat ∷ get-nat ∷ [ app-x ]) >>= check cs
+  else nothing
+check (c ∷ cs) (P ^ Bs ^ AS ^ (get-bool ∷ IS)) =  
+       if c =c 'T' then transit P Bs (bool true  ∷ AS) IS >>= check cs 
+  else if c =c 'F' then transit P Bs (bool false ∷ AS) IS >>= check cs 
+  else nothing
+check (c ∷ cs) (P ^ Bs ^ AS ^ (get-term ∷ IS)) = 
+       if c =c '#' then transit P Bs AS (get-nat ∷ mk-var ∷ IS) >>= check cs 
+  else if c =c '$' then transit P Bs AS (get-ftr ∷ get-terms ∷ mk-fun ∷ IS) >>= check cs 
+  else nothing
+check (c ∷ cs) (P ^ Bs ^ AS ^ (get-terms ∷ IS)) = 
+       if c =c ',' then transit P Bs AS (get-term ∷ get-terms ∷ mk-cons ∷ IS) >>= check cs 
+  else if c =c '.' then transit P Bs (terms nil ∷ AS) IS >>= check cs 
+  else nothing
+check (c ∷ cs) (P ^ Bs ^ AS ^ (get-ftr ∷ IS)) = 
+       if c =c '#' then transit P Bs AS (get-nat ∷ mk-nf ∷ IS) >>= check cs 
+  else if c =c '"' then transit P Bs AS (get-chars ∷ mk-sf ∷ IS) >>= check cs 
+  else nothing
+check (c ∷ cs) (P ^ Bs ^ AS ^ (get-form ∷ IS)) = 
+       if c =c 'T' then transit P Bs (form (cst true) ∷ AS) IS >>= check cs 
+  else if c =c 'F' then transit P Bs (form (cst false) ∷ AS) IS >>= check cs 
+  else if c =c '$' then transit P Bs AS (get-ftr ∷ get-terms ∷ mk-rel ∷ IS) >>= check cs 
+  else if c =c '~' then transit P Bs AS (get-form ∷ mk-not ∷ IS) >>= check cs 
+  else if c =c '!' then transit P Bs (bool false ∷ AS) (get-form ∷ mk-qtf ∷ IS) >>= check cs 
+  else if c =c '?' then transit P Bs (bool true  ∷ AS) (get-form ∷ mk-qtf ∷ IS) >>= check cs 
+  else if c =c '|' then transit P Bs (bct or  ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
+  else if c =c '&' then transit P Bs (bct and ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
+  else if c =c '>' then transit P Bs (bct imp ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
+  else if c =c '=' then transit P Bs (bct iff ∷ AS) (get-form ∷ get-form ∷ mk-bct ∷ IS) >>= check cs 
+  else nothing
+check (c ∷ cs0) (P ^ Bs ^ chars cs1 ∷ AS ^ (acc-chars ∷ IS)) = 
+  if c =c '%' then (transit P Bs (chars (reverse cs1) ∷ AS) IS >>= check cs0)
+              else (transit P Bs (chars (c ∷ cs1) ∷ AS) (acc-chars ∷ IS) >>= check cs0)
+check _ _ = nothing
 
 update-prob : Prob → Chars → Form → Prob 
 update-prob P n f m = if eq-chars n m then f else P m 
@@ -787,161 +617,114 @@ update-prob P n f m = if eq-chars n m then f else P m
 empty-prob : Prob 
 empty-prob _ = cst true
 
-read-char : Costring → IOF (Char × Costring)
-read-char (c ∷* cs) = pass ⟨ c , ♭ cs ⟩ 
-read-char _ = fail
+read-char : Costring → Maybe (Char × Costring)
+read-char (c ∷* cs) = just (c , ♭ cs)
+read-char _ = nothing
 
 {-# NON_TERMINATING #-}
-read-chars : Costring → Chars → IOF (Chars × Costring)
-read-chars ('%' ∷* cs) bf = pass ⟨ reverse bf , ♭ cs ⟩
+read-chars : Costring → Chars → Maybe (Chars × Costring)
+read-chars ('%' ∷* cs) bf = just (reverse bf , ♭ cs)
 read-chars (c ∷* cs) bf = read-chars (♭ cs) (c ∷ bf)
-read-chars _ _ = fail
+read-chars _ _ = nothing
 
-{-
-char-to-bct : Char → Maybe Bct 
-char-to-bct '|' = just or
-char-to-bct '&' = just and
-char-to-bct '>' = just imp
-char-to-bct '=' = just iff
-char-to-bct _   = nothing
-
-char-to-qtf : Char → Maybe Bool 
-char-to-qtf '!' = just false
-char-to-qtf '?' = just true
-char-to-qtf _   = nothing
-
-read-form-bct : Bct → Costring → Maybe (Form × Costring)
-read-form-bct b cs0 = do 
-  ⟨ f , cs1 ⟩ ← read-form cs0
-  ⟨ g , cs2 ⟩ ← read-form cs1
-  just ⟨ bct b f g , cs2 ⟩ 
-
-read-form-qtf : Bool → Costring → Maybe (Form × Costring)
-read-form-qtf q cs = do 
-  ⟨ f , cs' ⟩ ← read-form cs
-  just ⟨ qtf q f , cs' ⟩ 
-  -}
-
-read-nat : Costring → IOF (Nat × Costring)
+read-nat : Costring → Maybe (Nat × Costring)
 read-nat cs0 = do
-  ⟨ s , cs1 ⟩ ← read-chars cs0 []
+  (s , cs1) ← read-chars cs0 []
   k ← chars-to-nat s
-  pass ⟨ k , cs1 ⟩ 
+  just (k , cs1) 
 
-read-ftr : Costring → IOF (Ftr × Costring)
+read-ftr : Costring → Maybe (Ftr × Costring)
 read-ftr ('#' ∷* cs) = do 
-  ⟨ k , cs0 ⟩ ← read-nat (♭ cs)
-  pass ⟨ nf k , cs0 ⟩ 
+  (k , cs0) ← read-nat (♭ cs)
+  just (nf k , cs0) 
 read-ftr ('"' ∷* cs) = do 
-  ⟨ s , cs0 ⟩ ← read-chars (♭ cs) []
-  pass ⟨ sf s , cs0 ⟩ 
-read-ftr _ = fail
+  (s , cs0) ← read-chars (♭ cs) []
+  just (sf s , cs0) 
+read-ftr _ = nothing
 
 {-# NON_TERMINATING #-}
-read-termoid : (b : Bool) → Costring → IOF (Termoid b × Costring)
-read-termoid true ('.' ∷* cs) = pass ⟨ nil , ♭ cs ⟩ 
+read-termoid : (b : Bool) → Costring → Maybe (Termoid b × Costring)
+read-termoid true ('.' ∷* cs) = just (nil , ♭ cs) 
 read-termoid true (',' ∷* cs) = do 
-  ⟨ t , cs0 ⟩ ← read-termoid false (♭ cs)
-  ⟨ ts , cs1 ⟩ ← read-termoid true cs0 
-  pass ⟨ cons t ts , cs1 ⟩ 
+  (t , cs0) ← read-termoid false (♭ cs)
+  (ts , cs1) ← read-termoid true cs0 
+  just (cons t ts , cs1) 
 read-termoid false ('#' ∷* cs) = do 
-  ⟨ k , cs0 ⟩ ← read-nat (♭ cs)
-  pass ⟨ var k , cs0 ⟩ 
+  (k , cs0) ← read-nat (♭ cs)
+  just (var k , cs0) 
 read-termoid false ('$' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-ftr (♭ cs)
-  ⟨ ts , cs1 ⟩ ← read-termoid true cs0 
-  pass ⟨ fun f ts , cs1 ⟩ 
-read-termoid _ _ = fail 
+  (f , cs0) ← read-ftr (♭ cs)
+  (ts , cs1) ← read-termoid true cs0 
+  just (fun f ts , cs1) 
+read-termoid _ _ = nothing 
 
-read-term : Costring → IOF (Term × Costring)
+read-term : Costring → Maybe (Term × Costring)
 read-term = read-termoid false
 
-read-terms : Costring → IOF (Terms × Costring)
+read-terms : Costring → Maybe (Terms × Costring)
 read-terms = read-termoid true
 
--- read-list : {A : Set} → (Costring → Maybe (A × Costring)) → Costring → Maybe (List A × Costring)
--- read-list r ('.' ∷* _) = pass []
--- read-list r (',' ∷* cs) = do 
---   ⟨ x , cs0 ⟩ ← r (♭ cs)
---   ⟨ xs , cs1 ⟩ ← read-list r cs0
---   pass ⟨ x ∷ xs , cs1 ⟩ 
-
 {-# NON_TERMINATING #-}
-read-form : Costring → IOF (Form × Costring)
-read-form ('T' ∷* cs) = pass ⟨ cst true , ♭ cs ⟩  
-read-form ('F' ∷* cs) = pass ⟨ cst false , ♭ cs ⟩  
+read-form : Costring → Maybe (Form × Costring)
+read-form ('T' ∷* cs) = just (cst true , ♭ cs)  
+read-form ('F' ∷* cs) = just (cst false , ♭ cs)  
 read-form ('$' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-ftr (♭ cs)
-  ⟨ ts , cs1 ⟩ ← read-terms cs0
-  pass ⟨ rel f ts , cs1 ⟩ 
+  (f , cs0) ← read-ftr (♭ cs)
+  (ts , cs1) ← read-terms cs0
+  just (rel f ts , cs1) 
 read-form ('~' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-form (♭ cs)
-  pass ⟨ not f , cs0 ⟩ 
+  (f , cs0) ← read-form (♭ cs)
+  just (not f , cs0) 
 read-form ('!' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-form (♭ cs)
-  pass ⟨ qtf false f , cs0 ⟩ 
+  (f , cs0) ← read-form (♭ cs)
+  just (qtf false f , cs0) 
 read-form ('?' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-form (♭ cs)
-  pass ⟨ qtf true f , cs0 ⟩ 
+  (f , cs0) ← read-form (♭ cs)
+  just (qtf true f , cs0) 
 read-form ('|' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-form (♭ cs)
-  ⟨ g , cs1 ⟩ ← read-form cs0
-  pass ⟨ bct or f g , cs1 ⟩ 
+  (f , cs0) ← read-form (♭ cs)
+  (g , cs1) ← read-form cs0
+  just (bct or f g , cs1) 
 read-form ('&' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-form (♭ cs)
-  ⟨ g , cs1 ⟩ ← read-form cs0
-  pass ⟨ bct and f g , cs1 ⟩ 
+  (f , cs0) ← read-form (♭ cs)
+  (g , cs1) ← read-form cs0
+  just (bct and f g , cs1) 
 read-form ('>' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-form (♭ cs)
-  ⟨ g , cs1 ⟩ ← read-form cs0
-  pass ⟨ bct imp f g , cs1 ⟩ 
+  (f , cs0) ← read-form (♭ cs)
+  (g , cs1) ← read-form cs0
+  just (bct imp f g , cs1) 
 read-form ('=' ∷* cs) = do 
-  ⟨ f , cs0 ⟩ ← read-form (♭ cs)
-  ⟨ g , cs1 ⟩ ← read-form cs0
-  pass ⟨ bct iff f g , cs1 ⟩ 
-read-form _ = fail
+  (f , cs0) ← read-form (♭ cs)
+  (g , cs1) ← read-form cs0
+  just (bct iff f g , cs1) 
+read-form _ = nothing
 
-read-bool : Costring → IOF (Bool × Costring)
-read-bool ('T' ∷* cs) = pass ⟨ true , ♭ cs ⟩
-read-bool ('F' ∷* cs) = pass ⟨ false , ♭ cs ⟩
-read-bool _ = fail
+read-bool : Costring → Maybe (Bool × Costring)
+read-bool ('T' ∷* cs) = just (true , ♭ cs)
+read-bool ('F' ∷* cs) = just (false , ♭ cs)
+read-bool _ = nothing
 
-read-af : Costring → IOF ((Chars × Form) × Costring)
+read-af : Costring → Maybe ((Chars × Form) × Costring)
 read-af cs0 = do 
-  ⟨ n , cs1 ⟩ ← read-chars cs0 []
-  ⟨ 'T' , cs2 ⟩ ← read-char cs1
-    where _ → (put-str-ln "Error : non-axiom in problem" >> fail)
-  ⟨ f , cs3 ⟩ ← read-form cs2 
-  ⟨ '0' , cs4 ⟩ ← read-char cs3
-    where _ → (put-str-ln "Error : annotation in problem" >> fail)
-  pass ⟨ ⟨ n , f ⟩ , cs4 ⟩ 
+  (n , cs1) ← read-chars cs0 []
+  ('T' , cs2) ← read-char cs1
+    where _ → nothing
+  (f , cs3) ← read-form cs2 
+  ('0' , cs4) ← read-char cs3
+    where _ → nothing
+  just ((n , f) , cs4)
 
 {-# NON_TERMINATING #-}
-read-prob : Costring → Prob → IOF Prob
-read-prob ('.' ∷* _) P = pass P
+read-prob : Costring → Prob → Maybe Prob
+read-prob ('.' ∷* _) P = just P
 read-prob (',' ∷* cs0) P = do 
-  ⟨ ⟨ n , f ⟩ , cs1 ⟩ ← read-af (♭ cs0)
+  ((n , f) , cs1) ← read-af (♭ cs0)
   -- put-str (append-all ("Formula name = " ∷ primStringFromList n ∷ ", Formula = " ∷ pp-form f ∷ "\n" ∷ []))
   read-prob cs1 (update-prob P n f)
-read-prob (c ∷* _) _ = put-str "Invalid toplevel character for problem input." >> fail
-read-prob [] _ = put-str "Unexpected end of problem input." >> fail
+read-prob _ _ = nothing
 
-put-str-sharp : String → ∞ (IO Unit)
-put-str-sharp s = ♯ (putStr s)
+put-str-ln : String → IO ⊤
+put-str-ln s = putStr s #> putStr "\n"
 
-get-args : IOF (List String)
-get-args = io-to-iof (lift getArgs)
-
-read-check : IOF Unit 
-read-check = do 
-  (pn ∷ _) ← get-args
-    where [] → put-str-ln "No proof file name provided."
-  -- put-str "Using proof file = " 
-  -- put-str pn 
-  ps ← io-to-iof getContents
-  P ← read-prob ps empty-prob 
-  cs ← io-to-iof (readFiniteFile pn)
-  -- put-str "Using proof = "
-  -- put-str cs
-  check (primStringToList cs) ⟨ P , ⟨ [] , 0 ⟩ ∷ [] , [] , [] ⟩ 
-  put-str-ln "ATTV : Proof verified."
+get-args : IO (List String)
+get-args = lift getArgs
