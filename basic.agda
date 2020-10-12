@@ -25,6 +25,7 @@ open import Data.Unit
 open import Data.Maybe
   renaming (_>>=_ to _?>=_)
   renaming (map to map?)
+open import Agda.Builtin.Equality
 
 Chars : Set
 Chars = List Char 
@@ -88,8 +89,12 @@ rev-index (suc l) k = if l < k then nothing else just (l - k)
 get-bch : Bch → Nat → Maybe Form 
 get-bch B k = rev-index (length B) k ?>= \ m → nth m B
 
+tri : ∀ {A : Set} → Nat → A → A → A → Nat → A
+tri k a b c m = if k < m then a else if k == m then b else c
+
 subst-termoid : {b : Bool} → Nat → Term → Termoid b → Termoid b
-subst-termoid k t (var m) = if k < m then var (pred m) else if k == m then t else (var m)
+-- subst-termoid k t (var m) = subst-var 0 k t m
+subst-termoid k t (var m) = tri k (var m) t (var (pred m)) m
 subst-termoid k t (fun f ts) = fun f (subst-termoid k t ts)
 subst-termoid k t nil = nil
 subst-termoid k t (cons s ts) = cons (subst-termoid k t s) (subst-termoid k t ts)
@@ -101,7 +106,7 @@ subst-terms : Nat → Term → Terms → Terms
 subst-terms k t ts = subst-termoid k t ts
 
 incr-var-termoid : {b : Bool} → Termoid b → Termoid b
-incr-var-termoid (var k) = var (k + 1)
+incr-var-termoid (var k) = var (suc k)
 incr-var-termoid (fun f ts) = fun f (incr-var-termoid ts)
 incr-var-termoid nil = nil
 incr-var-termoid (cons t ts) = cons (incr-var-termoid t) (incr-var-termoid ts)
@@ -113,7 +118,7 @@ subst-form : Nat → Term → Form → Form
 subst-form k t (cst b) = cst b
 subst-form k t (not f) = not (subst-form k t f)
 subst-form k t (bct b f g) = bct b (subst-form k t f) (subst-form k t g)
-subst-form k t (qtf q f) = qtf q (subst-form (k + 1) (incr-var-term t) f)
+subst-form k t (qtf q f) = qtf q (subst-form (suc k) (incr-var-term t) f)
 subst-form k t (rel f ts) = rel f (subst-terms k t ts)
 
 rev-terms : Terms → Terms → Terms
@@ -323,7 +328,7 @@ check-gnd-form : Nat → Form → Bool
 check-gnd-form k (cst _) = true
 check-gnd-form k (rel _ ts) = check-gnd-terms k ts 
 check-gnd-form k (not f) = check-gnd-form k f 
-check-gnd-form k (qtf _ f) = check-gnd-form (k + 1) f 
+check-gnd-form k (qtf _ f) = check-gnd-form (suc k) f 
 check-gnd-form k (bct _ f g) = check-gnd-form k f & check-gnd-form k g
 
 is_eqn : Term → Term → Form → Bool
@@ -347,17 +352,17 @@ mono-args : Nat → (Terms × Terms)
 mono-args 0 = (nil , nil) 
 mono-args (suc k) = 
   let p = mono-args k 
-  in (cons (var ((k * 2) + 1)) (fst p) , cons (var (k * 2)) (snd p))
+  in (cons (var (suc (k * 2))) (fst p) , cons (var (k * 2)) (snd p))
 
 mono-fun-core : Nat → Form → Bool
-mono-fun-core k (qtf false (qtf false (bct imp (rel (sf ('=' ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = mono-fun-core (k + 1) f
+mono-fun-core k (qtf false (qtf false (bct imp (rel (sf ('=' ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = mono-fun-core (suc k) f
 mono-fun-core k (rel (sf ('=' ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) = 
   let p = mono-args k 
   in eq-ftr f0 f1 & (eq-terms (fst p) ts0 & eq-terms (snd p) ts1)
 mono-fun-core _ _ = false
 
 mono-rel-core : Nat → Form → Bool
-mono-rel-core k (qtf false (qtf false (bct imp (rel (sf ('=' ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = mono-rel-core (k + 1) f
+mono-rel-core k (qtf false (qtf false (bct imp (rel (sf ('=' ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = mono-rel-core (suc k) f
 mono-rel-core k (bct imp (rel r0 ts0) (rel r1 ts1)) = 
   let p = mono-args k 
   in eq-ftr r0 r1 & (eq-terms (fst p) ts0 & eq-terms (snd p) ts1)
@@ -370,13 +375,13 @@ mono-fun : Form → Bool
 mono-fun f = mono-fun-core 0 f
 
 is-choice-axiom : Nat → Nat → Form → Bool
-is-choice-axiom k a (qtf false f) = is-choice-axiom k (a + 1) f
+is-choice-axiom k a (qtf false f) = is-choice-axiom k (suc a) f
 is-choice-axiom k a (bct imp (qtf true f) g) = 
   check-nf-form k f & (eq-form (subst-form 0 (skolem-term-asc k a) f) g || eq-form (subst-form 0 (skolem-term-desc k a) f) g)
 is-choice-axiom _ _ _ = false
 
 is-pred-def : Nat → Nat → Form → Bool
-is-pred-def k a (qtf false f) = is-pred-def k (a + 1) f
+is-pred-def k a (qtf false f) = is-pred-def k (suc a) f
 is-pred-def k a (bct iff (rel (nf m) ts) f) = 
   check-nf-form k f & ((k == m) & (eq-terms ts (vars-asc a) || eq-terms ts (vars-desc a)))
 is-pred-def _ _ _ = false
@@ -389,4 +394,10 @@ justified k f = disj ( refl-axiom f ∷ symm-axiom f ∷  trans-axiom f ∷ mono
 just-if : Bool → Maybe ⊤ 
 just-if true = just tt
 just-if false = nothing
+
+suc-inj : ∀  {A : Set} {a b : Nat} → (suc a ≡ suc b) → a ≡ b
+suc-inj refl = refl
+
+just-inj : ∀  {A : Set} {a b : A} → (just a ≡ just b) → a ≡ b
+just-inj refl = refl
 
