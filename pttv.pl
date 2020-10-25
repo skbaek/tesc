@@ -184,7 +184,7 @@ form_pp((FORM_A <> FORM_B), PP) :-
   atomics_to_string(["(", PP_A, " ↔ ", PP_B, ")"], PP).
 
 terms_pp(TERMS, PP) :-
-  maplist_cut(term_pp, TERMS, PPS), 
+  cmap(term_pp, TERMS, PPS), 
   atomics_to_string(PPS, ',', BODY_PP),
   atomics_to_string(["(", BODY_PP, ")"], PP).
   

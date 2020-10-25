@@ -2,7 +2,7 @@
 
 main :- 
   current_prolog_flag(argv, [PROB_PATH, PRF_PATH | OPTS]), 
-  tesc_path(TESC_PATH),
+  tesc_folder(TESC_PATH),
   (
     member('-p', OPTS) -> 
     atomic_concat(TESC_PATH, pttv, PTTV_PATH), !,

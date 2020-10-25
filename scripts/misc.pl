@@ -11,8 +11,8 @@ maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :-
 
 names_proven(PRVR, NAMES) :- 
   atom_concat(PRVR, prf, PATH),
-  rec_path_filenames(PATH, PATHS),
-  maplist_cut(path_name, PATHS, NAMES).
+  folder_files_rec(PATH, PATHS),
+  cmap(path_name, PATHS, NAMES).
 
 drop(0, LIST, LIST). 
 drop(NUM, [_ | LIST], REM) :- 
@@ -30,8 +30,8 @@ slice(DROP, TAKE, LIST, SLICE) :-
 
 get_solution_names(PRVR, NAMES) :- 
   atom_concat(PRVR, sol, PATH),
-  rec_path_filenames(PATH, PATHS),
-  maplist_cut(path_name, PATHS, NAMES).
+  folder_files_rec(PATH, PATHS),
+  cmap(path_name, PATHS, NAMES).
 
 random_pluck(LIST, ELEM, REST) :- 
   random_member(ELEM, LIST), 
@@ -44,7 +44,7 @@ random_n(NUM, LIST, [ELEM | SEL]) :-
   random_n(PRED, REST, SEL).
   
 ids_from_ax(AX, IDS_I, IDS_O) :-
-  tptp_path(TPTP),
+  tptp_folder(TPTP),
   atomics_to_string([TPTP, AX], PATH), !,
   ids_from_path(PATH, IDS_I, IDS_O).
 
@@ -52,7 +52,6 @@ ids_from_codes([105, 110, 99, 108, 117, 100, 101, 40, 39 | CODES], IDS_I, IDS_O)
   append(AX_CODES, [39 | _], CODES), !, 
   atom_codes(AX, AX_CODES), !,
   ids_from_ax(AX, IDS_I, IDS_O).
-
 
 ids_from_codes(CODES, IDS_I, IDS_O) :- 
   (
@@ -128,7 +127,7 @@ probpath_probname(PATH, NAME) :-
 path_atoms(PATH, ATOMS) :- 
   open(PATH, read, STRM), 
   stream_strings(STRM, STRS),
-  maplist_cut(string_to_atom, STRS, ATOMS).
+  cmap(string_to_atom, STRS, ATOMS).
 
 path_cat(PATH, CAT) :- 
   atom_codes(PATH, [C0, C1, C2 | _]), 
@@ -139,11 +138,11 @@ name_cat(NAME, CAT) :-
   atomic_list_concat([A, B, C], CAT).
 
 name_solpath(SVR, NAME, SOL_PATH) :- 
-  tesc_path(TESC_PATH),
+  tesc_folder(TESC_PATH),
   atomic_list_concat([TESC_PATH, SVR, 'sol/', NAME, ".s"], SOL_PATH).
 
 name_probpath(PROB_NAME, PROB_PATH) :- 
-  tptp_path(TPTP_PATH),
+  tptp_folder(TPTP_PATH),
   atom_codes(PROB_NAME, [C0, C1, C2 | _]),
   atom_codes(CAT, [C0, C1, C2]),  
   atomic_list_concat([TPTP_PATH, 'Problems/', CAT, "/", PROB_NAME, ".p"], PROB_PATH).

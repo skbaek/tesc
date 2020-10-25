@@ -38,7 +38,7 @@ break_eq_fun(OPEs, ONE, GOAL, HGS) :-
   TERM_B = (FUN $ TERMS_B),
   length(TERMS_A, LTH),
   length(TERMS_B, LTH),
-  maplist_cut(term_poseq_term(OPEs), TERMS_A, TERMS_B),
+  cmap(term_poseq_term(OPEs), TERMS_A, TERMS_B),
   mk_mono_fun(LTH, FUN, MONOForm),
   apply_t(MONOForm, GOAL, MONO, GOAL0),
   intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, OPE, HGS, GOAL1),
@@ -49,7 +49,7 @@ break_eq_rel(OPEs, OPA, ONA, GOAL, HGS) :-
   ONA = (_, ~ ((REL $ TERMS_B))),
   length(TERMS_A, LTH),
   length(TERMS_B, LTH),
-  maplist_cut(term_poseq_term(OPEs), TERMS_A, TERMS_B),
+  cmap(term_poseq_term(OPEs), TERMS_A, TERMS_B),
   mk_mono_rel(LTH, REL, MONOForm),
   apply_t(MONOForm, GOAL, MONO, GOAL0),
   intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, IMP, HGS, GOAL1),
@@ -278,14 +278,14 @@ lit_num(ANA, ATOM, NUM) :- !,
 
 cla_hyp_nums(ANA, (_, CLA), NUMS) :- 
   cla_lits(CLA, LITS), 
-  maplist_cut(lit_num(ANA), LITS, NUMS). 
+  cmap(lit_num(ANA), LITS, NUMS). 
 
 % cla_lits((_, CF), LITS) :- 
 %   cf_lits(CF, LITS).
 
 cla_hyp_atoms((_, CLA), ATOMS) :-
   cla_lits(CLA, LITS),
-  maplist_cut(lit_atom, LITS, ATOMS). 
+  cmap(lit_atom, LITS, ATOMS). 
 
 add_to_sat_table(CH, TBL_I, TBL_O) :- 
   cla_hyp_atoms(CH, ATOMS), 
@@ -314,7 +314,7 @@ mk_sat_ctx(CHS, CTX) :-
   
 string_numbers(STR, NUMS) :- 
   split_string(STR, " ", "", STRS), 
-  maplist_cut(string_number, STRS, NUMS).
+  cmap(string_number, STRS, NUMS).
 
 nums_dimacs(NUMS, Str) :- 
   maplist(number_string, NUMS, Strs),
@@ -336,7 +336,7 @@ lits_cla_core([Lit], Lit).
 lits_cla_core([Lit | Lits], (Lit \/ Cla)) :- lits_cla_core(Lits, Cla).
 
 nums_cla(NAA, NUMS, CLA) :- 
-  maplist_cut(num_lit(NAA), NUMS, LITS),
+  cmap(num_lit(NAA), NUMS, LITS),
   lits_cla(LITS, CLA). 
 
 line_sat_insts(_, LINE, SIS, SIS) :- 
@@ -353,7 +353,7 @@ file_sat_insts(NAA, FILE, SIS) :-
   foldl(line_sat_insts(NAA), LINES, SIS, []).
 
 nums_maxvar(NUMS, MaxVar) :-
-  maplist_cut(abs, NUMS, Nats),
+  cmap(abs, NUMS, Nats),
   max_list(Nats, MaxVar).
 
 numss_maxvar(NUMSs, MaxVar) :-
@@ -378,7 +378,7 @@ find_new_unit_core([LIT | _], _, LIT).
 
 find_new_unit((_, FORM), HYPS, LIT) :- 
   cla_lits(FORM, LITS_A),
-  maplist_cut(hyp_form, HYPS, LITS_B), 
+  cmap(hyp_form, HYPS, LITS_B), 
   find_new_unit_core(LITS_A, LITS_B, LIT).
 
 unit_propagate(PREM, (HYPS_I, GOAL_I), ([HYP_O | HYPS_I], GOAL_O)) :- 
@@ -386,7 +386,7 @@ unit_propagate(PREM, (HYPS_I, GOAL_I), ([HYP_O | HYPS_I], GOAL_O)) :-
   apply_s(LIT, GOAL_I, HYP_T, HYP_O, GOAL_T, GOAL_O),
   rp([n], [HYP_T], GOAL_T, [HYP_C], GOAL_C), 
   rp([b, n], [PREM], GOAL_C, HGS), 
-  maplist_cut(pick_mate([HYP_C | HYPS_I]), HGS).
+  cmap(pick_mate([HYP_C | HYPS_I]), HGS).
 
 get_sat_cla(CTX, SID, CLA) :- 
   get_assoc(SID, CTX, CLA).
@@ -400,7 +400,7 @@ use_sat_inst(CTX, rup(SIDS, SID, CLA), GOAL, CTX_N, GOAL_N) :-
   apply_s(CLA, GOAL, NYP, PYP, GOAL_T, GOAL_N), 
   put_sat_cla(CTX, SID, PYP, CTX_N),
   rp([a, n], [NYP], GOAL_T, HYPS_I, GOAL_I), 
-  maplist_cut(get_sat_cla(CTX), SIDS, PREMS), !,
+  cmap(get_sat_cla(CTX), SIDS, PREMS), !,
   foldl_cut(unit_propagate, PREMS, (HYPS_I, GOAL_I), ([HYP | HYPS_O], GOAL_O)), !,
   member(CMP, HYPS_O),
   mate(HYP, CMP, GOAL_O), !.
@@ -418,7 +418,7 @@ use_sat_insts(CTX, [SI | SIS], GOAL) :-
 
 sat(CHS, GOAL) :-
   mk_sat_tables(CHS, ANA, NAA),
-  maplist_cut(cla_hyp_nums(ANA), CHS, NUMSS),
+  cmap(cla_hyp_nums(ANA), CHS, NUMSS),
   numss_dimacs(NUMSS, DIMACS),
   write_file("temp.cnf", DIMACS), !,
   shell("cadical -q temp.cnf temp.drat", _), !,
@@ -797,7 +797,7 @@ infer(v, urr, PREMS, CONC, GOAL) :-
     HGS_TAIL = HGS
   ),
   zip(TGTS_TAIL, ORS_TEMP, HGS_TAIL, H3GS), 
-  maplist_cut(urr_aux, H3GS).
+  cmap(urr_aux, H3GS).
 */
 
 infer(_, rwa, [PREM_A, PREM_B], CONC, GOAL) :-

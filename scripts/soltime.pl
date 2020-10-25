@@ -72,6 +72,6 @@ main([PROVER]) :-
   names_stashed(PRVR, NAMES),
   length(NAMES, NUM), 
   format("Solving ~w problems\n", NUM),
-  maplist_cut(solve_time(PRVR), NAMES), 
+  cmap(solve_time(PRVR), NAMES), 
   % format("PROVEN/TOTAL = ~w/~w\n.", [CNT, TTL]).
   true.

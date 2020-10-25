@@ -4,8 +4,8 @@
 :- [misc].
 
 check_proof(OPTS, PRF_PATH) :-
-  tptp_path(TPTP_PATH),
-  tesc_path(TESC_PATH),
+  tptp_folder(TPTP_PATH),
+  tesc_folder(TESC_PATH),
   codes_after_last_slash(PRF_PATH, CODES),
   atom_codes(TEMP1, CODES),
   atom_concat(NAME, '.tesc', TEMP1), 
@@ -17,7 +17,7 @@ check_proof(OPTS, PRF_PATH) :-
   concat_shell([TTV_PATH, PROB_PATH, PRF_PATH | OPTS], " ", 0). 
 
 main([PROVER | OPTS]) :- 
-  tesc_path(TESC_PATH),
+  tesc_folder(TESC_PATH),
   atom_firstchar(PROVER, PRVR),
   (
     member('-pl', OPTS) ->
@@ -25,6 +25,6 @@ main([PROVER | OPTS]) :-
     true
   ),
   atomic_list_concat([TESC_PATH, PRVR, prf], PATH),
-  rec_path_filenames(PATH, PATHS),
+  folder_files_rec(PATH, PATHS),
   maplist_count(check_proof(OPTS), 0, 0, PATHS, CNT, TTL), 
   format("VERFIED/TOTAL = ~w/~w\n", [CNT, TTL]).

@@ -93,16 +93,16 @@ get_problem_names(NAMES) :- path_atoms(problems, NAMES).
 create_symlink(PATH, NAME) :- 
   atomic_list_concat([PATH, "/", NAME], DIR), 
   cd(DIR),
-  tptp_path(TPTP),
+  tptp_folder(TPTP),
   atomic_list_concat(["ln -s ", TPTP, "Axioms/ Axioms"], CMD), 
   shell(CMD, _).
 
 symlink :- 
-  tptp_path(TPTP),
+  tptp_folder(TPTP),
   atomic_concat(TPTP, "Problems", PATH),
   path_filenames(PATH, X), 
   write_list(X),
-  maplist_cut(create_symlink(PATH), X).
+  cmap(create_symlink(PATH), X).
 
 
 main([DA, TA]) :- 
@@ -123,9 +123,9 @@ ends_with_p(PATH) :- atom_concat(_, '.p', PATH).
 prob_names(PROB_NAMES) :-
   % set_prolog_flag(stack_limit, 4_294_967_296),
   msg("Generating paths"),
-  tptp_path(TPTP),
+  tptp_folder(TPTP),
   atomic_list_concat([TPTP, "Problems"], PATH),
-  rec_path_filenames(PATH, PATHS), 
+  folder_files_rec(PATH, PATHS), 
   convlist(probpath_probname, PATHS, UNSORTED),
   sort(UNSORTED, PROB_NAMES),
   % partition_cut(is_fol_thm, ALL, PATHS, _), !, 
@@ -138,7 +138,7 @@ prob_names(PROB_NAMES) :-
 % record_assoc(AXIOM) :- 
 %   include_terms(include(AXIOM), TERMS),
 %   maplist(precla_pcla, TERMS, PCLAS), 
-%   maplist_cut(fst, PCLAS, IDS), !,
+%   cmap(fst, PCLAS, IDS), !,
 %   empty_assoc(EMP),
 %   foldl_cut(try_add, IDS, EMP, ASSOC),
 %   write_file(csr_large, ASSOC).

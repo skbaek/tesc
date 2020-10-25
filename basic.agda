@@ -1,7 +1,7 @@
 module basic where
 
 open import Agda.Builtin.Nat
-open import Data.Nat.Show
+open import Agda.Builtin.Equality
 open import Data.Bool
   renaming (not to bnot)
   renaming (_<_ to _<b_)
@@ -21,11 +21,12 @@ open import Data.List
   renaming (concat to concat-list)
 open import Data.List.Membership.Setoid using (_∈_) 
 open import Data.Product
+  renaming (map to map2)
 open import Data.Unit  
 open import Data.Maybe
   renaming (_>>=_ to _?>=_)
   renaming (map to map?)
-open import Agda.Builtin.Equality
+open import Data.Nat.Show
 
 Chars : Set
 Chars = List Char 
@@ -94,7 +95,7 @@ tri k a b c m = if k < m then a else if k == m then b else c
 
 subst-termoid : {b : Bool} → Nat → Term → Termoid b → Termoid b
 -- subst-termoid k t (var m) = subst-var 0 k t m
-subst-termoid k t (var m) = tri k (var m) t (var (pred m)) m
+subst-termoid k t (var m) = tri k (var (pred m)) t (var m) m
 subst-termoid k t (fun f ts) = fun f (subst-termoid k t ts)
 subst-termoid k t nil = nil
 subst-termoid k t (cons s ts) = cons (subst-termoid k t s) (subst-termoid k t ts)
@@ -244,6 +245,23 @@ eq-form (bct b1 f1 g1) (bct b2 f2 g2) = eq-bct b1 b2 & (eq-form f1 f2 & eq-form 
 eq-form (qtf p' f') (qtf q' g') = (p' ≃ q') & (eq-form f' g')
 eq-form (rel r1 ts1) (rel r2 ts2) = eq-ftr r1 r2 & eq-terms ts1 ts2
 eq-form _ _ = false
+
+-- pp-digit : Nat → Char
+-- pp-digit 0 = '0'
+-- pp-digit 1 = '1'
+-- pp-digit 2 = '2'
+-- pp-digit 3 = '3'
+-- pp-digit 4 = '4'
+-- pp-digit 5 = '5'
+-- pp-digit 6 = '6'
+-- pp-digit 7 = '7'
+-- pp-digit 8 = '8'
+-- pp-digit 9 = '9'
+-- pp-digit _ = 'E'
+-- 
+-- pp-nat : Nat → String
+-- pp-nat k = if k < 10 then [ pp-digit k ] else (pp-nat (k / 10)) ++ [ (pp-digit (k % 10)) ]
+-- 
 
 pp-list-core : {A : Set} → (A → String) → List A → String 
 pp-list-core f [] = "]"

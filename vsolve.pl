@@ -99,7 +99,7 @@ tup_inst(
   (CNM, _, FORM, some(inference(RUL, _, PNM_ATOMS))),
   inf(HINT, PNMS, CNM, FORM)
 ) :-
-  maplist_cut(atom_string, PNM_ATOMS, PNMS),
+  cmap(atom_string, PNM_ATOMS, PNMS),
   rul_hint(RUL, HINT).
 
 tup_inst(X, _) :-
@@ -148,6 +148,6 @@ get_adds(ARI, _, _, ANTE, CONS, [], []) :-
 vsolve(TSTP, SOL) :- 
   tptp_sol(TSTP, UNSORTED), !,
   predsort(compare_tups, UNSORTED, SORTED), !,
-  maplist_cut(tup_inst, SORTED, INSTS), !,
+  cmap(tup_inst, SORTED, INSTS), !,
   reduce_gaocs(INSTS, REDUCED),
   relabel(REDUCED, SOL).

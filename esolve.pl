@@ -8,7 +8,7 @@
 % map_par(GOAL, (#NUM $ []), TERM) :- !, 
 %   call(GOAL, NUM, TERM). 
 % map_par(GOAL, (FUN $ TERMS_I), (FUN $ TERMS_O)) :- 
-%   maplist_cut(map_par(GOAL), TERMS_I, TERMS_O).
+%   cmap(map_par(GOAL), TERMS_I, TERMS_O).
 % 
 % bind_par(DEP, IDX, IDX, #DEP).
 % bind_par(_, IDX_A, IDX_B, #IDX_B $ []) :- IDX_A \= IDX_B.
@@ -67,7 +67,7 @@ bind_pars_form(F, G) :-
 bind_par_term(_, _, #M, #M).
 bind_par_term(D, K, #K $ [], #D) :- !. 
 bind_par_term(D, K, F $ TS_I, F $ TS_O) :- 
-  maplist_cut(bind_par_term(D, K), TS_I, TS_O).
+  cmap(bind_par_term(D, K), TS_I, TS_O).
 
 bind_par_form(_, _, LC, LC) :- log_const(LC), !.
 bind_par_form(D, K, F, G) :-  
@@ -82,7 +82,7 @@ bind_par_form(D, K, F, G) :-
   bind_par_form(E, K, SF, SG),
   apply_uct(Q, SG, G), !.
 bind_par_form(D, K, R $ TS_I, R $ TS_O) :-
-  maplist_cut(bind_par_term(D, K), TS_I, TS_O), !.
+  cmap(bind_par_term(D, K), TS_I, TS_O), !.
 
 entails(SF, SF, rnm).
 entails(PREM, CONC, para) :- para(((prem, PREM), (conc, CONC), (_, 0))).
@@ -304,7 +304,7 @@ bind_var_term(IDX, CNT, TERM_I, TERM_O) :-
 
 e_skm_term(SKM, NUM, (SKM $ VARS)) :-
   range(desc, NUM, NUMS), 
-  maplist_cut([X, #X]>>true, NUMS, VARS), 
+  cmap([X, #X]>>true, NUMS, VARS), 
   true.
 
 has_exists(? _).
@@ -608,6 +608,6 @@ tups_ctx(TUPS, CTX) :-
 esolve(TSTP, SOL) :- 
   tptp_sol(TSTP, TUPS), !, 
   tups_ctx(TUPS, CTX),
-  maplist_cut(tup_insts(CTX), TUPS, INSTSS),
+  cmap(tup_insts(CTX), TUPS, INSTSS),
   append(INSTSS, APPENDED),
   relabel(APPENDED, SOL).

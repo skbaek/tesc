@@ -11,6 +11,11 @@
 :- op(530, xfx, '<>').
 
 
+%%%%%%%%%%%%%%%% FOLDER PATHS %%%%%%%%%%%%%%%% 
+
+tptp_folder("/home/sk/library/tptp/").
+tesc_folder("/home/sk/projects/tesc/").
+
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
@@ -28,7 +33,7 @@ timed_call(TIME, GOAL, EARLY, LATE) :-
 
 ground_all(TERM, EXP) :- 
   term_variables(EXP, VARS),
-  maplist_cut('='(TERM), VARS).
+  cmap('='(TERM), VARS).
 
 %%%%%%%%%%%%%%%% SYNTACTIC %%%%%%%%%%%%%%%% 
 
@@ -59,7 +64,7 @@ complements(~ FORM_A, FORM_B) :- FORM_A == FORM_B.
 incr_var_term(VAR, _) :- var(VAR), !, false.
 incr_var_term(#NUM, #SUC) :- !, num_succ(NUM, SUC).
 incr_var_term((FUN $ TERMS_I), (FUN $ TERMS_O)) :- 
-  maplist_cut(incr_var_term, TERMS_I, TERMS_O).
+  cmap(incr_var_term, TERMS_I, TERMS_O).
 
 substitute_term(fast, _, _, VAR, VAR) :- var(VAR), !.
 substitute_term(safe, _, _, VAR, _) :- var(VAR), !, false.
@@ -72,13 +77,13 @@ substitute_term(_, CNT, TERM_S, #NUM, TERM_O) :- !,
 ; 
   TERM_O = #NUM.
 substitute_term(MODE, NUM, TERM, (FUN $ TERMS_I), (FUN $ TERMS_O)) :- !, 
-  maplist_cut(substitute_term(MODE, NUM, TERM), TERMS_I, TERMS_O).
+  cmap(substitute_term(MODE, NUM, TERM), TERMS_I, TERMS_O).
 
 resymb_term(_, VAR, VAR) :- var(VAR), !.
 resymb_term(_, #NUM, #NUM) :- !.
 resymb_term(DICT, (FUN_I $ TERMS_I), (FUN_O $ TERMS_O)) :- 
   length(TERMS_I, ARI),
-  maplist_cut(resymb_term(DICT), TERMS_I, TERMS_O), !, 
+  cmap(resymb_term(DICT), TERMS_I, TERMS_O), !, 
   (
     get_assoc((FUN_I, ARI), DICT, IDX) -> 
     FUN_O = #IDX
@@ -121,7 +126,7 @@ substitute_form(MODE, NUM, TERM, FORM, FORM_N) :-
   apply_bct(BCT, FORM_AN, FORM_BN, FORM_N). 
 
 substitute_form(MODE, NUM, TERM, (REL $ TERMS_I), (REL $ TERMS_O)) :- 
-  maplist_cut(substitute_term(MODE, NUM, TERM), TERMS_I, TERMS_O).
+  cmap(substitute_term(MODE, NUM, TERM), TERMS_I, TERMS_O).
 
 substitute_form(MODE, TERM, FORM, FORM_N) :- 
   substitute_form(MODE, 0, TERM, FORM, FORM_N).
@@ -140,7 +145,7 @@ resymb_form(DICT, FORM, FORM_N) :-
   apply_bct(BCT, FORM_AN, FORM_BN, FORM_N). 
 
 resymb_form((RDICT, FDICT), (REL_I $ TERMS_I), (REL_O $ TERMS_O)) :- 
-  maplist_cut(resymb_term(FDICT), TERMS_I, TERMS_O), !,  
+  cmap(resymb_term(FDICT), TERMS_I, TERMS_O), !,  
   length(TERMS_O, ARI),
   (
     get_assoc((REL_I, ARI), RDICT, IDX) -> 
@@ -455,56 +460,32 @@ num_pred(NUM, PRED) :-
 prob_id_hyp(PROB, ID, (ID, SF)) :- 
   get_assoc(ID, PROB, SF).
 
-% molecular(Exp) :- 
-%   member(Exp, 
-%     [ ! _, ? _, ~ _, 
-%       (_ \/ _), (_ /\ _), (_ => _), (_ <> _) ]).
-
 lit_atom(~ ATOM, ATOM) :- !. 
 lit_atom(ATOM, ATOM).
 
-/*
-break_uct(FORM, not, SUB) :- \+ var(FORM), FORM = ~ SUB. 
-break_uct(FORM, QTF, SUB) :- break_qtf(FORM, QTF, SUB).
-break_qtf(FORM, ex, SUB) :- \+ var(FORM), FORM = ? SUB.
-break_qtf(FORM, fa, SUB) :- \+ var(FORM), FORM = ! SUB.
+cmap(_, []).
 
-break_bct(FORM, BCT, FORM_A, FORM_B) :- 
-  \+ var(FORM),
-  FORM = $TEMP, 
-  TEMP =.. [BCT, FORM_A, FORM_B],
-  member(BCT, [and, or, imp, iff]).
-
-apply_uct(UCT, FORM, $SUB) :- 
-  SUB =.. [UCT, FORM].
-
-apply_bct(BCT, FORM_A, FORM_B, $SUB) :- 
-  SUB =.. [BCT, FORM_A, FORM_B].
-
-*/
-maplist_cut(_, []).
-
-maplist_cut(GOAL, [Elem | List]) :- 
+cmap(GOAL, [Elem | List]) :- 
   call(GOAL, Elem), !, 
-  maplist_cut(GOAL, List). 
+  cmap(GOAL, List). 
 
-maplist_cut(_, [], []).
+cmap(_, [], []).
 
-maplist_cut(GOAL, [ElemA | ListA], [ElemB | ListB]) :- 
+cmap(GOAL, [ElemA | ListA], [ElemB | ListB]) :- 
   call(GOAL, ElemA, ElemB), !, 
-  maplist_cut(GOAL, ListA, ListB). 
+  cmap(GOAL, ListA, ListB). 
 
-maplist_cut(_, [], [], []).
+cmap(_, [], [], []).
 
-maplist_cut(GOAL, [ElemA | ListA], [ElemB | ListB], [ElemC | ListC]) :- 
+cmap(GOAL, [ElemA | ListA], [ElemB | ListB], [ElemC | ListC]) :- 
   call(GOAL, ElemA, ElemB, ElemC), !, 
-  maplist_cut(GOAL, ListA, ListB, ListC). 
+  cmap(GOAL, ListA, ListB, ListC). 
 
-maplist_cut(_, [], [], [], []).
+cmap(_, [], [], [], []).
 
-maplist_cut(GOAL, [ElemA | ListA], [ElemB | ListB], [ElemC | ListC], [ElemD | ListD]) :- 
+cmap(GOAL, [ElemA | ListA], [ElemB | ListB], [ElemC | ListC], [ElemD | ListD]) :- 
   call(GOAL, ElemA, ElemB, ElemC, ElemD), !, 
-  maplist_cut(GOAL, ListA, ListB, ListC, ListD). 
+  cmap(GOAL, ListA, ListB, ListC, ListD). 
 
 maplist_idx(_, _, []).
 
@@ -628,7 +609,7 @@ string_number(Str, NUM) :-
 no_bv_term(_, VAR) :- var(VAR), !.
 no_bv_term(CNT, #NUM) :- !, NUM \= CNT.
 no_bv_term(CNT, (_ $ TERMS)) :- 
-  maplist_cut(no_bv_term(CNT), TERMS).
+  cmap(no_bv_term(CNT), TERMS).
 
 no_bv_form(_, tt).
 no_bv_form(_, ff). 
@@ -643,7 +624,7 @@ no_bv_form(NUM, FORM) :-
   no_bv_form(NUM, FORM_A),
   no_bv_form(NUM, FORM_B).
 no_bv_form(NUM, (_ $ TERMS)) :- 
-  maplist_cut(no_bv_term(NUM), TERMS).
+  cmap(no_bv_term(NUM), TERMS).
 
 vac_qtf((_, ! FORM)) :- no_bv_form(0, FORM).
 vac_qtf((_, ~ (! FORM))) :- no_bv_form(0, FORM).
@@ -653,7 +634,7 @@ vac_qtf((_, ~ (? FORM))) :- no_bv_form(0, FORM).
 no_fv_term(_, VAR) :- var(VAR), !, false.
 no_fv_term(CNT, #NUM) :- !, NUM < CNT.
 no_fv_term(CNT, (_ $ TERMS)) :- 
-  maplist_cut(no_fv_term(CNT), TERMS).
+  cmap(no_fv_term(CNT), TERMS).
 
 no_fv_form(_, FORM) :- log_const(FORM), !.
 no_fv_form(NUM, ~ FORM) :- !, 
@@ -667,7 +648,7 @@ no_fv_form(NUM, FORM) :-
   no_fv_form(NUM, FORM_A),
   no_fv_form(NUM, FORM_B).
 no_fv_form(NUM, (_ $ TERMS)) :- 
-  maplist_cut(no_fv_term(NUM), TERMS).
+  cmap(no_fv_term(NUM), TERMS).
  
 % has_par_ge(CNT, EXP) :- 
 %   sub_term(#NUM, EXP), 
@@ -699,12 +680,12 @@ form_nfs_lt(NUM, FORM) :-
 
 form_nfs_lt(NUM, REL $ TERMS) :- 
   functor_lt(NUM, REL), 
-  maplist_cut(term_nfs_lt(NUM), TERMS).
+  cmap(term_nfs_lt(NUM), TERMS).
 
 term_nfs_lt(_, #_) :- !.
 term_nfs_lt(N, F $ TS) :- 
   functor_lt(N, F), 
-  maplist_cut(term_nfs_lt(N), TS).
+  cmap(term_nfs_lt(N), TS).
 
 functor_lt(N, #M) :- !, M < N.
 functor_lt(_, _). 
@@ -1713,23 +1694,38 @@ para_clausal_aux(HYPS, [([HYP], GOAL) | HGS]) :-
   para_clausal((HYP, CMP, GOAL)),
   para_clausal_aux(HYPS, HGS).
 
-path_filenames(Dir, Entries) :- 
-  directory_files(Dir, TempA), 
-  delete(TempA, '.', TempB),
-  delete(TempB, '..', Entries).
+postpend_47([47], [47]) :- !.
+postpend_47([CODE], [CODE, 47]) :- !.
+postpend_47([CODE | CODES], [CODE | CODES_47]) :- postpend_47(CODES, CODES_47). 
 
-rec_path_files(Path, [Path]) :- 
-  exists_file(Path). 
+postpend_backslash(DIR, DIRB) :- 
+  atom_codes(DIR, CODES), 
+  postpend_47(CODES, CODES_47),
+  atom_codes(DIRB, CODES_47). 
 
-rec_path_files(Path, Files) :- 
-  exists_directory(Path), 
-  rec_path_filenames(Path, Files).
+% folder_filename_file(FD, FLNM, FILE) :- 
+%   postpend_backslash(FD, FDB), 
+%   atom_concat(FDB, FLNM, FILE).
 
-rec_path_filenames(Dir, Files) :- 
-  path_filenames(Dir, Entries), 
-  maplist(directory_file_path(Dir), Entries, Paths),
-  maplist(rec_path_files, Paths, Filess),
-  append(Filess, Files).
+folder_items(FD, ITEMS) :- 
+  postpend_backslash(FD, FDB), 
+  directory_files(FDB, TEMP_A), 
+  subtract(TEMP_A, ['.', '..'], TEMP_B),
+  cmap(atom_concat(FDB), TEMP_B, ITEMS).
+
+folder_folders(FD, FDS) :- 
+  folder_items(FD, ITEMS), 
+  include(exists_directory, ITEMS, FDS).
+
+folder_files(DIR, FILES) :- 
+  folder_items(DIR, ITEMS), 
+  include(exists_file, ITEMS, FILES).
+
+folder_files_rec(FD, FLS) :- 
+  folder_files(FD, TEMP),
+  folder_folders(FD, FDS), 
+  maplist(folder_files_rec, FDS, FLSS), 
+  append([TEMP | FLSS], FLS).
 
 cla_lits(ff, []) :- !.
 cla_lits(CLA, LITS) :- cla_lits(CLA, LITS, []).
@@ -1772,14 +1768,14 @@ map_form(GOAL, DTH, FORM_I, FORM_O) :-
   apply_bct(BCT, SUB_AO, SUB_BO, FORM_O). 
 
 map_form(GOAL, DTH, (REL $ TERMS_I), (REL $ TERMS_O)) :- 
-  maplist_cut(call(GOAL, DTH), TERMS_I, TERMS_O).
+  cmap(call(GOAL, DTH), TERMS_I, TERMS_O).
 
 para_e1(H2G) :- 
   para_mate(H2G) -> true ;
   paran(H2G, H2G_N) -> para_e1(H2G_N) ;
   parad(H2G, H2G_N) -> para_e1(H2G_N) ;
   para_clausal_two(H2G, H2G_L, H2G_R) -> para_e1(H2G_L), !, para_e1(H2G_R) ;
-  % para_clausal_many(H2G, TRPS) -> maplist_cut(para_e1, TRPS) ;
+  % para_clausal_many(H2G, TRPS) -> cmap(para_e1, TRPS) ;
   para_c_(H2G, H2G_N) -> para_e1(H2G_N) ;
   member(DIR, [true, false]),
   clause_ab(para_e1, DIR, H2G).
@@ -1856,7 +1852,7 @@ relabel_inst((RDICT, FDICT), NI, CNT, skm(FUN, ARI, NAME, FORM), (RDICT, FDICT_N
   resymb_form((RDICT, FDICT_N), FORM, NORM).
 
 relabel_inst(DICT, NI, CNT, inf(HINT, NAMES, NAME, FORM), DICT, NI_N, inf(HINT, IDS, NORM)) :-    
-  maplist_cut(redirect_id(NI), NAMES, IDS),
+  cmap(redirect_id(NI), NAMES, IDS),
   put_assoc(NAME, NI, CNT, NI_N),
   resymb_form(DICT, FORM, NORM).
 
@@ -1949,7 +1945,7 @@ bool_simp(FORM, FORM).
 
 map_var(GOAL, #NUM, TERM) :- !, call(GOAL, NUM, TERM).
 map_var(GOAL, (FUN $ TERMS_I), (FUN $ TERMS_O)) :- !, 
-  maplist_cut(map_var(GOAL), TERMS_I, TERMS_O).
+  cmap(map_var(GOAL), TERMS_I, TERMS_O).
   
 decr_vdx_form(FORM, NORM) :- 
   map_form(decr_vdx_term, 0, FORM, NORM).
@@ -2102,7 +2098,8 @@ call_solver(e, PROB_PATH, SOL_PATH) :-
   ).
 
 call_solver(v, PROB_PATH, SOL_PATH) :- 
-  concat_shell(["vampire --output_axiom_names on --proof tptp --include /home/sk/projects/TPTP/ ", PROB_PATH, " > temp.tstp"], _),  
+  tptp_folder(TPTP),
+  concat_shell(["vampire --output_axiom_names on --proof tptp --include ", TPTP, PROB_PATH, " > temp.tstp"], _),  
   (
     any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
     concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", SOL_PATH], 0), 
