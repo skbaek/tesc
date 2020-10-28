@@ -159,27 +159,37 @@ unsat P B = ∀ R F V → standard R F V → ∃ (\ f → (((in-prob f P) ∨ (f
 pall : {A : Set} → (A → Set) → List A → Set
 pall {A} p l = (x : A) → (x ∈ l) → p x
 
-nf-in-termoid : ∀ b → Nat → Termoid b → Set
-nf-in-termoid false k (var _) = ⊥
-nf-in-termoid false k (fun f ts) = (f ≡ nf k) ∨ nf-in-termoid true k ts
-nf-in-termoid true k nil = ⊥
-nf-in-termoid true k (cons t ts) = nf-in-termoid false k t ∨ nf-in-termoid true k ts
+-- nf-in-termoid : ∀ b → Nat → Termoid b → Set
+-- nf-in-termoid false k (var _) = ⊥
+-- nf-in-termoid false k (fun f ts) = (f ≡ nf k) ∨ nf-in-termoid true k ts
+-- nf-in-termoid true k nil = ⊥
+-- nf-in-termoid true k (cons t ts) = nf-in-termoid false k t ∨ nf-in-termoid true k ts
+-- 
+-- nf-in-term : Nat → Term → Set
+-- nf-in-term = nf-in-termoid false
+-- 
+-- nf-in-terms : Nat → Terms → Set
+-- nf-in-terms = nf-in-termoid true
+-- 
+-- nf-in-form : Nat → Form → Set
+-- nf-in-form k (cst _) = ⊥ 
+-- nf-in-form k (rel f ts) = (f ≡ nf k) ∨ nf-in-terms k ts
+-- nf-in-form k (not f) = nf-in-form k f 
+-- nf-in-form k (bct _ f g) = nf-in-form k f ∨ nf-in-form k g
+-- nf-in-form k (qtf _ f) = nf-in-form k f 
 
-nf-in-term : Nat → Term → Set
-nf-in-term = nf-in-termoid false
+-- good-termoid : ∀ b → Nat → Termoid b → Set
+-- good-termoid b k t = ∀ m → nf-in-termoid b m t → m < k
 
-nf-in-terms : Nat → Terms → Set
-nf-in-terms = nf-in-termoid true
-
-nf-in-form : Nat → Form → Set
-nf-in-form k (cst _) = ⊥ 
-nf-in-form k (rel f ts) = (f ≡ nf k) ∨ nf-in-terms k ts
-nf-in-form k (not f) = nf-in-form k f 
-nf-in-form k (bct _ f g) = nf-in-form k f ∨ nf-in-form k g
-nf-in-form k (qtf _ f) = nf-in-form k f 
+good-ftr : Nat → Ftr → Set
+good-ftr k (nf m) = m < k 
+good-ftr _ (sf _) = ⊤ 
 
 good-termoid : ∀ b → Nat → Termoid b → Set
-good-termoid b k t = ∀ m → nf-in-termoid b m t → m < k
+good-termoid false _ (var _) = ⊤ 
+good-termoid false k (fun f ts) = good-ftr k f ∧ good-termoid true k ts
+good-termoid true _ nil = ⊤ 
+good-termoid true k (cons t ts) = good-termoid false k t ∧ good-termoid true k ts 
 
 good-term : Nat → Term → Set
 good-term = good-termoid false
@@ -188,7 +198,13 @@ good-terms : Nat → Terms → Set
 good-terms = good-termoid true
 
 good-form : Nat → Form → Set
-good-form k f = ∀ m → nf-in-form m f → m < k
+good-form _ (cst _) = ⊤
+good-form k (rel r ts) = good-ftr k r ∧ good-terms k ts
+good-form k (not f) = good-form k f
+good-form k (bct _ f g) = good-form k f ∧ good-form k g
+good-form k (qtf _ f) = good-form k f
 
 good-bch : Bch → Set
 good-bch B = pall (good-form (length B)) B
+
+

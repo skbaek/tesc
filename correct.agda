@@ -17,7 +17,7 @@ open import Agda.Builtin.Char
 open import Agda.Builtin.Equality
 open import Data.List renaming (or to disj) renaming(and to conj)
 open import Data.Maybe
-  renaming (_>>=_ to _?>=_)
+  renaming (_>>=_ to _o>=_)
   renaming (is-just to is-just-bool)
 open import Data.Product
 open import basic 
@@ -26,6 +26,9 @@ open import definitions D
 
 postulate LEM : (A : Set) → Dec A
 postulate FX : ∀ {A B : Set} (f g : A → B) (h : ∀ a → f a ≡ f a) → f ≡ g
+
+and-symm : ∀ {A B : Set} → (A ∧ B) → (B ∧ A)
+and-symm h = and-right h , and-left h
 
 or-elim : ∀ {A B C : Set} → A ∨ B → (A → C) → (B → C) → C
 or-elim (or-left x) f g = f x
@@ -176,7 +179,7 @@ maybe-absurd ()
 
 of-bind-eq-just : ∀ {A B : Set} → 
   (f : Maybe A) → (g : A → Maybe B) → (b : B) → 
-  (f ?>= g) ≡ just b → ∃ (\ a → (f ≡ just a) ∧ (g a ≡ just b))
+  (f o>= g) ≡ just b → ∃ (\ a → (f ≡ just a) ∧ (g a ≡ just b))
 
 of-bind-eq-just nothing g b = maybe-absurd
 of-bind-eq-just (just a) g b = \ h → (a , (refl , h))
@@ -295,7 +298,7 @@ ex-iff-ex h0 =
   (\ h1 → exist-elim h1 (\ a h2 → a , and-left (h0 a) h2)) , 
   (\ h2 → exist-elim h2 (\ a h2 → a , and-right (h0 a) h2))
 
-termoid-val-incr : ∀ b F V d (t : Termoid b) → termoid-val F (V / 0 ↦ d) (incr-var-termoid t) ≡ termoid-val F V t 
+termoid-val-incr : ∀ b F V d (t : Termoid b) → termoid-val F (V / 0 ↦ d) (incr-var t) ≡ termoid-val F V t 
 termoid-val-incr false F V d (var k) = refl
 termoid-val-incr false F V d (fun f ts) = 
   cong (F f) (termoid-val-incr true F V d ts)
@@ -305,7 +308,7 @@ termoid-val-incr true  F V d (cons t ts) =
     (termoid-val-incr false F V d t) 
     (termoid-val-incr true F V d ts)
 
-term-val-incr : ∀ F V d t → term-val F (V / 0 ↦ d) (incr-var-term t) ≡ term-val F V t 
+term-val-incr : ∀ F V d t → term-val F (V / 0 ↦ d) (incr-var t) ≡ term-val F V t 
 term-val-incr = termoid-val-incr false
 
 update-update : ∀ V k d e → ((V / 0 ↦ e ) / (suc k) ↦ d) ≡ ((V / k ↦ d) / 0 ↦ e) 
@@ -348,18 +351,18 @@ holds-subst R F V k t (bct iff f g) =
   iff-iff-iff (holds-subst _ _ _ k t f) (holds-subst _ _ _ k t g) 
 holds-subst R F V k t (qtf true f) = ex-iff-ex \ d →  
   eq-elim 
-    (\ x → ((R , F , x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var-term t) f))) 
+    (\ x → ((R , F , x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var t) f))) 
     (update-update V k (term-val F V t) d) 
     ( eq-elim 
-      (\ x → (R , F , (V / 0 ↦ d) / suc k ↦ x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var-term t) f)) 
-      (term-val-incr F V d t) (holds-subst R F _ (suc k) (incr-var-term t) f))
+      (\ x → (R , F , (V / 0 ↦ d) / suc k ↦ x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var t) f)) 
+      (term-val-incr F V d t) (holds-subst R F _ (suc k) (incr-var t) f))
 holds-subst R F V k t (qtf false f) = fa-iff-fa \ d → 
   eq-elim 
-    (\ x → ((R , F , x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var-term t) f))) 
+    (\ x → ((R , F , x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var t) f))) 
     (update-update V k (term-val F V t) d) 
     ( eq-elim 
-      (\ x → (R , F , (V / 0 ↦ d) / suc k ↦ x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var-term t) f)) 
-      (term-val-incr F V d t) (holds-subst R F _ (suc k) (incr-var-term t) f))
+      (\ x → (R , F , (V / 0 ↦ d) / suc k ↦ x ⊢ f) ↔ (R , F , V / 0 ↦ d ⊢ subst-form (suc k) (incr-var t) f)) 
+      (term-val-incr F V d t) (holds-subst R F _ (suc k) (incr-var t) f))
 
 implies-c : ∀ t f g → break-c t f ≡ just g → f => g
 implies-c t (qtf false f) g h0 R F V h1 = 
@@ -371,13 +374,52 @@ implies-c t (not (qtf true f)) g h0 R F V h1 =
   eq-elim (λ x → R , F , V ⊢ x) h2 
     \ h3 → h1 (term-val F V t , and-right (holds-subst R F V 0 t f) h3)
 
+band-eq-true-lft : ∀ a b → (a & b) ≡ true → a ≡ true
+band-eq-true-lft true _ _ = refl
+
+band-eq-true-rgt : ∀ a b → (a & b) ≡ true → b ≡ true
+band-eq-true-rgt _ true _ = refl
+band-eq-true-rgt false _ ()
+
+from-checks-good-ftr : ∀ k f → check-good-ftr k f ≡ true → good-ftr k f
+from-checks-good-ftr k (nf m) h = <n-to-< _ _ h
+from-checks-good-ftr _ (sf _) _ = tt
+
+checks-good : ∀ {b} k t → check-good-termoid k t ≡ true → good-termoid b k t 
+checks-good {true} _ nil _ = tt
+checks-good {true} k (cons t ts) h0 = 
+  checks-good _ _ (band-eq-true-lft _ _ h0) , checks-good _ _ (band-eq-true-rgt _ _ h0)
+checks-good {false} k (var m) h0 = tt
+checks-good {false} k (fun f ts) h0 =
+  from-checks-good-ftr _ _ (band-eq-true-lft _ _ h0) , 
+  checks-good _ _ (band-eq-true-rgt _ _ h0)
+
+good-ftr-suc : ∀ k f → good-ftr k f → good-ftr (suc k) f
+good-ftr-suc k (nf m) h = <-to-<-suc m k h
+good-ftr-suc _ (sf _) _ = tt
+
+good-termoid-suc : ∀ b k f → good-termoid b k f → good-termoid b (suc k) f
+good-termoid-suc false _ (var _) _ = tt 
+good-termoid-suc false k (fun f ts) h0 = 
+  good-ftr-suc k f (and-left h0) , good-termoid-suc _ k ts (and-right h0) 
+good-termoid-suc true _ nil _ = tt
+good-termoid-suc true k (cons t ts) h0 = 
+  good-termoid-suc _ _ t (and-left h0) , good-termoid-suc _ k ts (and-right h0)
+
 good-form-suc : ∀ k f → good-form k f → good-form (suc k) f
-good-form-suc k f h0 m h1 = <-to-<-suc _ _ (h0 _ h1)
+good-form-suc k (cst _) h0 = tt 
+good-form-suc k (rel r ts) h0 = 
+   ( good-ftr-suc _ _ (and-left h0) , 
+     good-termoid-suc true _ _ (and-right h0) ) 
+good-form-suc k (not f) h0 = good-form-suc k f h0
+good-form-suc k (bct _ f g) h0 =
+  (good-form-suc k f (and-left h0)) , 
+  (good-form-suc k g (and-right h0))
+good-form-suc k (qtf _ f) h0 = good-form-suc k f h0
 
 good-bch-cons : ∀ f B → good-form (suc (length B)) f → good-bch B → good-bch (f ∷ B)
-good-bch-cons f B h0 h1 g h2 = or-elim h2 
-  (\ h3 → eq-elim _ (eq-symm h3) h0) 
-  \ h3 k h4 → <-to-<-suc _ _ (h1 _ h3 _ h4)
+good-bch-cons f B h0 h1 g = 
+  or-elim' (\ h2 → eq-elim _ (eq-symm h2) h0) (\ h2 → good-form-suc _ g (h1 _ h2)) 
 
 prsv-implies : ∀ P B f g → f ∈ B → f => g → unsat P (g ∷ B) → unsat P B 
 prsv-implies P B f g h0 h1 h2 R F V h3 = 
@@ -419,79 +461,70 @@ prsv-b P B f g h h0 h1 h2 h3 = prsv-implies P B f (bct or g h)
 
 prsv-c : ∀ P B t f g → f ∈ B → (break-c t f ≡ just g) → unsat P (g ∷ B) → unsat P B 
 prsv-c P B t f g h1 h2 h3 = prsv-implies P B f g h1 (implies-c t f g h2) h3
-  
-good-ftr : Nat → Ftr → Set
-good-ftr k (nf m) = m < k 
-good-ftr _ (sf _) = ⊤ 
-
-good-fun : ∀ k f ts → good-ftr k f → good-terms k ts → good-term k (fun f ts) 
-good-fun k f ts h0 h1 m = or-elim' (\ h2 → eq-elim (good-ftr k) h2 h0) (\ h2 → h1 m h2) 
-
-good-cons : ∀ k t ts → good-term k t → good-terms k ts → good-terms k (cons t ts) 
-good-cons k t ts h0 h1 m = or-elim' (h0 m) (h1 m)
-
-good-head : ∀ k t ts → good-terms k (cons t ts) → good-term k t 
-good-head k t ts h0 m h1 = h0 m (or-left h1)
-
-good-tail : ∀ k t ts → good-terms k (cons t ts) → good-terms k ts
-good-tail k t ts h0 m h1 = h0 m (or-right h1)
 
 prsv-good-b : ∀ f g h k → (break-b f ≡ just (g , h)) → good-form k f → 
   (good-form k g ∧ good-form k h)
-prsv-good-b (bct or f0 f1) g h k h0 h1 = 
-  ( (eq-elim (good-form k) (prod-inj-left (just-inj h0)) \ m h2 → h1 m (or-left h2)) , 
-    (eq-elim (good-form k) (prod-inj-right (just-inj h0)) \ m h2 → h1 m (or-right h2)) )
+prsv-good-b (bct or f0 f1) g h k h0 h1 =
+  ( (eq-elim (good-form k) (prod-inj-left  (just-inj h0)) (and-left h1)) , 
+    (eq-elim (good-form k) (prod-inj-right (just-inj h0)) (and-right h1)) )
 prsv-good-b (bct imp f0 f1) g h k h0 h1 = 
-  ( (eq-elim (good-form k) (prod-inj-left (just-inj h0)) \ m h2 → h1 m (or-left h2)) , 
-    (eq-elim (good-form k) (prod-inj-right (just-inj h0)) \ m h2 → h1 m (or-right h2)) )
+  ( (eq-elim (good-form k) (prod-inj-left  (just-inj h0)) (and-left  h1)) , 
+    (eq-elim (good-form k) (prod-inj-right (just-inj h0)) (and-right h1)) )
 prsv-good-b (not (bct and f0 f1)) g h k h0 h1 = 
-  ( (eq-elim (good-form k) (prod-inj-left (just-inj h0)) \ m h2 → h1 m (or-left h2)) , 
-    (eq-elim (good-form k) (prod-inj-right (just-inj h0)) \ m h2 → h1 m (or-right h2)) )
+  (eq-elim (good-form k) (prod-inj-left  (just-inj h0)) (and-left  h1)) , 
+  (eq-elim (good-form k) (prod-inj-right (just-inj h0)) (and-right h1)) 
 prsv-good-b (not (bct iff f0 f1)) g h k h0 h1 = 
-  ( (eq-elim (good-form k) (prod-inj-left (just-inj h0)) h1) , 
-    (eq-elim (good-form k) (prod-inj-right (just-inj h0)) \ m h2 → h1 m (∨-comm h2)) )
-
-good-var : ∀ {k m} → good-term k (var m) 
-good-var h ()
+  (eq-elim (good-form k) (prod-inj-left  (just-inj h0)) h1) , 
+  (eq-elim (good-form k) (prod-inj-right (just-inj h0)) (and-symm h1)) 
 
 good-subst-termoid : ∀ b s t k m → good-term k s → 
   good-termoid b k t → good-termoid b k (subst-termoid m s t)
-good-subst-termoid true s (cons t ts) k m h0 h1  = 
-  good-cons k {!   !} {!   !} 
-    (good-subst-termoid _ s _ _ _ h0 (good-head _ _ _ h1)) 
-    (good-subst-termoid _ s _ _ _ h0 (good-tail _ _ _ h1)) 
+good-subst-termoid true _ nil _ _ _ _ = tt
+good-subst-termoid true s (cons t ts) k m h0 h1 = 
+  (good-subst-termoid _ s _ _ _ h0 (and-left h1)) ,
+  (good-subst-termoid _ s _ _ _ h0 (and-right h1)) 
 good-subst-termoid false s (var n) k m h0 h1 = 
-  tri-elim m n (good-termoid false k) (\ _ → good-var) (\ _ → h0) (\ _ → good-var)
-good-subst-termoid false s (fun f ts) k m h0 h1 = good-fun k f _ {!   !} {!   !} 
-  -- or-elim' (\ h2 → h1 n (or-left h2)) {!   !}
+  tri-elim m n (good-termoid false k) (\ _ → tt) (\ _ → h0) (\ _ → tt)
+good-subst-termoid false s (fun f ts) k m h0 h1 = 
+  (and-left h1) , (good-subst-termoid _ _ ts k m h0 (and-right h1))
 
+good-subst-terms : ∀ t ts k m → good-term k t → 
+  good-terms k ts → good-terms k (subst-terms m t ts)
+good-subst-terms = good-subst-termoid true
+
+good-incr-var : ∀ b k t → good-termoid b k t → good-termoid b k (incr-var t)
+good-incr-var true _ nil _ = tt
+good-incr-var true k (cons t ts) h = 
+  (good-incr-var _ _ t (and-left h)) , (good-incr-var _ _ ts (and-right h))
+good-incr-var false k (var _) _ = tt
+good-incr-var false k (fun f ts) h = 
+  and-left h , (good-incr-var _ _ ts (and-right h))
 
 good-subst-form : ∀ t f k m → good-term k t → good-form k f → good-form k (subst-form m t f)
-good-subst-form t f k m h0 h1 = {!   !}
+good-subst-form t (cst _) _ _ _ _ = tt
+good-subst-form t (rel r ts) k m h0 h1 = 
+  and-left h1 , good-subst-terms t ts k m h0 (and-right h1)
+good-subst-form t (not f) = good-subst-form t f
+good-subst-form t (bct _ f g) k m h0 h1 = 
+  (good-subst-form t f k m h0 (and-left h1)) , (good-subst-form t g k m h0 (and-right h1))
+good-subst-form t (qtf _ f) k m h0 h1 = 
+  good-subst-form (incr-var t) f k (suc m) (good-incr-var false _ _ h0) h1
 
 prsv-good-c : ∀ t f g k → good-term k t → good-form k f → (break-c t f ≡ just g) → good-form k g
 prsv-good-c t (qtf false f) g k h0 h1 h2 = 
-  eq-elim (good-form k) (just-inj h2) (good-subst-form t f k 0 h0 (λ m h3 → h1 m h3))
+  eq-elim (good-form k) (just-inj h2) (good-subst-form t f _ _ h0 h1)
 prsv-good-c t (not (qtf true f)) g k h0 h1 h2 = 
-  eq-elim (good-form k) (just-inj h2) (good-subst-form t f k 0 h0 (λ m h3 → h1 m h3)) 
+  eq-elim (good-form k) (just-inj h2) (good-subst-form t f k 0 h0 h1) 
 
 prsv-good-a : ∀ b f g k → (break-a b f ≡ just g) → good-form k f → good-form k g
-prsv-good-a true  (bct and f0 f1) g k h0 h1 = 
-  eq-elim (good-form k) (just-inj h0) \ m h2 → h1 m (or-left h2) 
-prsv-good-a false (bct and f0 f1) g k h0 h1 = 
-  eq-elim (good-form k) (just-inj h0) \ m h2 → h1 m (or-right h2)
-prsv-good-a true  (bct iff f0 f1) g k h0 h1 = 
-  eq-elim (good-form k) (just-inj h0) h1
-prsv-good-a false (bct iff f0 f1) g k h0 h1 =
-  eq-elim (good-form k) (just-inj h0) \ m h2 → h1 m (∨-comm h2)
-prsv-good-a true  (not (bct or f0 f1)) g k h0 h1 = 
-  eq-elim (good-form k) (just-inj h0) \ m h2 → h1 m (or-left h2)
-prsv-good-a false (not (bct or f0 f1))  g k h0 h1 =
-  eq-elim (good-form k) (just-inj h0) \ m h2 → h1 m (or-right h2)
-prsv-good-a true  (not (bct imp f0 f1)) g k h0 h1 =
-  eq-elim (good-form k) (just-inj h0) \ m h2 → h1 m (or-left h2)
-prsv-good-a false (not (bct imp f0 f1)) g k h0 h1 =
-  eq-elim (good-form k) (just-inj h0) \ m h2 → h1 m (or-right h2)
+prsv-good-a true  (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-left h1)
+prsv-good-a false (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-right h1)
+prsv-good-a true  (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) h1 --h1
+prsv-good-a false (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-symm h1)
+prsv-good-a true  (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-left h1) -- \ m h2 → h1 m (or-left h2)
+prsv-good-a false (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-right h1) -- \ m h2 → h1 m (or-right h2)
+prsv-good-a true  (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-left h1) -- \ m h2 → h1 m (or-left h2)
+prsv-good-a false (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-right h1) -- \ m h2 → h1 m (or-right h2)
 
 good-bch-a : ∀ B b f g → f ∈ B → (break-a b f ≡ just g) → good-bch B → good-bch (g ∷ B)
 good-bch-a B b f g h0 h1 h2 = good-bch-cons _ _ 
@@ -502,10 +535,11 @@ good-bch-b : ∀ B f g h → f ∈ B → (break-b f ≡ just (g , h)) →
 good-bch-b B f g h h0 h1 h2 = 
   ( good-bch-cons _ _ (good-form-suc _ g (and-left  (prsv-good-b _ _ _ _ h1 (h2 f h0)))) h2 , 
     good-bch-cons _ _ (good-form-suc _ h (and-right (prsv-good-b _ _ _ _ h1 (h2 f h0)))) h2 )
-  
-good-bch-c : ∀ B t f g → check-nf-term (length B + 1) t ≡ true →
+
+good-bch-c : ∀ B t f g → check-good-term (suc (length B)) t ≡ true →
   f ∈ B → (break-c t f ≡ just g) → good-bch B → good-bch (g ∷ B) 
-good-bch-c B t f g h0 h1 h2 h3 = good-bch-cons _ _ {!   !} h3
+good-bch-c B t f g h0 h1 h2 h3 = good-bch-cons _ _ 
+  (prsv-good-c t f g (suc (length B)) (checks-good _ _ h0) (good-form-suc _ f (h3 _ h1)) h2)  h3
 
 is-just : ∀  {A : Set} → Maybe A → Set
 is-just nothing = ⊥
@@ -528,7 +562,7 @@ use-is-just-bind f g cs h0 h1 =
     \ a h2 → exist-elim h2 \ cs' h3 → h0 a cs' (and-left h3) (and-right h3)
     
 from-obind-eq-just : ∀ {A B : Set} (f : Maybe A) (g : A → Maybe B) (b : B) → 
-  (f ?>= g) ≡ just b → ∃ \ a → ((f ≡ just a) ∧ (g a ≡ just b))
+  (f o>= g) ≡ just b → ∃ \ a → ((f ≡ just a) ∧ (g a ≡ just b))
 from-obind-eq-just nothing _ _  () 
 from-obind-eq-just (just a) g b h0 = (a , (refl , h0))
 
@@ -550,7 +584,7 @@ from-get-bch-eq-just B m f h0 =
       \ k h1 → from-nth-eq-just k _ _ (and-right h1)
 
 from-lift-read-get-bch : ∀ {A : Set} B m (d : Form → Maybe A) f cs0 cs1 →  
-  lift-read (get-bch B m ?>= d) cs0 ≡ just (f , cs1) → 
+  lift-read (get-bch B m o>= d) cs0 ≡ just (f , cs1) → 
     ∃ \ g → ((g ∈ B) ∧ (d g ≡ just f))
 from-lift-read-get-bch B m d f cs0 cs1 h0 = 
   let h1 : ∃ \ g → ((get-bch B m ≡ just g) ∧ (d g ≡ just f))
@@ -592,9 +626,9 @@ use-get-bch :
   (cs : Chars)
   (h0 : ∀ f x cs' → (f ∈ B) → (d f ≡ just x) → is-just ((r x) cs') → Y)
    → ----------------------
-  is-just (((lift-read (get-bch B k ?>= d)) >>= r) cs) → Y
+  is-just (((lift-read (get-bch B k o>= d)) >>= r) cs) → Y
 use-get-bch B k d r cs h0 = 
-  use-is-just-bind (lift-read (get-bch B k ?>= d)) r cs \ x cs' h1 → 
+  use-is-just-bind (lift-read (get-bch B k o>= d)) r cs \ x cs' h1 → 
     exist-elim (from-lift-read-get-bch B _ d x _ _ h1) \ f h2 → 
       h0 f x _ (and-left h2) (and-right h2) 
 
@@ -604,7 +638,7 @@ correct-core P B (suc k) (c ∷ cs) hg =
   correct-aux P B c 'A' cs
     ( use-is-just-bind read-nat _ cs \ m cs0 h0 → 
         use-is-just-bind read-bool _ cs0 \ b cs1 h1 → 
-          use-is-just-bind (lift-read (get-bch B m ?>= break-a b)) (\ f → verify P (f ∷ B) k) cs1 \ f cs2 h2 h3 → 
+          use-is-just-bind (lift-read (get-bch B m o>= break-a b)) (\ f → verify P (f ∷ B) k) cs1 \ f cs2 h2 h3 → 
               exist-elim (from-lift-read-get-bch B m (break-a b) f _ _ h2) 
                \ g h5 → prsv-a P B b _ _ (and-left h5) (and-right h5) 
                  ( correct-core P (f ∷ B) k _ 
@@ -623,9 +657,10 @@ correct-core P B (suc k) (c ∷ cs) hg =
         ( use-is-just-bind read-nat _ cs \ m cs0 h0 → 
           use-is-just-bind (read-term k) _ cs0 \ t cs1 h1 → 
             use-is-just-pass-if-seq (check-gnd-term 0 t) _ cs1 \ h2 → 
-              use-is-just-pass-if-seq (check-nf-term (length B + 1) t) _ cs1 \ h3 → 
+              use-is-just-pass-if-seq (check-good-term (suc (length B)) t) _ cs1 \ h3 → 
                 use-get-bch B m (break-c t) _ cs1 \ f g cs2 h4 h5 h6 → 
-                  prsv-c P B t f g h4 h5 (correct-core P (g ∷ B) k cs2 {!   !} {!   !}))
+                  prsv-c P B t f g h4 h5 (correct-core P (g ∷ B) k cs2 
+                  (good-bch-c B t f g h3 h4 h5 hg) h6))
         {!   !} ) )
 
 correct : ∀ P N cs → is-just (verify P [] N cs) → unsat-prob P

@@ -125,6 +125,13 @@ get-from-prob ((n , f) ∷ P) cs = if eq-chars n cs then f else get-from-prob P 
 _==c_ : Char → Char → Bool
 _==c_ = primCharEquality
 
+verify-a : Prob → Read Form 
+verify-a P B (suc k) ('A' ∷ cs) = do
+--   m ← read-nat 
+--   b ← read-bool
+--   f ← lift-read (get-bch B m ?>= break-a b)
+--   verify P (f ∷ B) k ) else 
+
 verify : Prob → Bch → Nat → Read ⊤ 
 verify P B (suc k) (c ∷ cs) = (
     if c ==c 'A' then ( do 
@@ -141,7 +148,7 @@ verify P B (suc k) (c ∷ cs) = (
       m ← read-nat 
       t ← read-term k
       pass-if $ check-gnd-term 0 t
-      pass-if $ check-nf-term ((length B) + 1) t
+      pass-if $ check-good-term (suc (length B)) t
       f ← lift-read (get-bch B m ?>= break-c t)
       verify P (f ∷ B) k ) else 
     if c ==c 'D' then ( do
@@ -154,17 +161,17 @@ verify P B (suc k) (c ∷ cs) = (
       verify P (f ∷ B) k ) else
     if c ==c 'P' then ( do
       cs ← read-chars 
-      pass-if (check-nf-form ((length B) + 1) (get-from-prob P cs))
+      pass-if (check-good-form (suc (length B)) (get-from-prob P cs))
       verify P (get-from-prob P cs ∷ B) k ) else
     if c ==c 'S' then ( do
       f ← read-form k
-      pass-if (check-nf-form ((length B) + 1) f)
+      pass-if (check-good-form (suc (length B)) f)
       verify P (not f ∷ B) k 
       verify P (f ∷ B) k ) else
     if c ==c 'T' then ( do
       f ← read-form k
       pass-if (justified (length B) f)
-      pass-if (check-nf-form ((length B) + 1) f)
+      pass-if (check-good-form (suc (length B)) f)
       verify P (f ∷ B) k ) else
     if c ==c 'X' then ( do
       m ← read-nat 

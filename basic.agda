@@ -94,7 +94,6 @@ tri : ∀ {A : Set} → Nat → A → A → A → Nat → A
 tri k a b c m = if k < m then a else if k == m then b else c
 
 subst-termoid : {b : Bool} → Nat → Term → Termoid b → Termoid b
--- subst-termoid k t (var m) = subst-var 0 k t m
 subst-termoid k t (var m) = tri k (var (pred m)) t (var m) m
 subst-termoid k t (fun f ts) = fun f (subst-termoid k t ts)
 subst-termoid k t nil = nil
@@ -106,20 +105,17 @@ subst-term k t s = subst-termoid k t s
 subst-terms : Nat → Term → Terms → Terms
 subst-terms k t ts = subst-termoid k t ts
 
-incr-var-termoid : {b : Bool} → Termoid b → Termoid b
-incr-var-termoid (var k) = var (suc k)
-incr-var-termoid (fun f ts) = fun f (incr-var-termoid ts)
-incr-var-termoid nil = nil
-incr-var-termoid (cons t ts) = cons (incr-var-termoid t) (incr-var-termoid ts)
-
-incr-var-term : Term → Term
-incr-var-term = incr-var-termoid
+incr-var : {b : Bool} → Termoid b → Termoid b
+incr-var (var k) = var (suc k)
+incr-var (fun f ts) = fun f (incr-var ts)
+incr-var nil = nil
+incr-var (cons t ts) = cons (incr-var t) (incr-var ts)
 
 subst-form : Nat → Term → Form → Form 
 subst-form k t (cst b) = cst b
 subst-form k t (not f) = not (subst-form k t f)
 subst-form k t (bct b f g) = bct b (subst-form k t f) (subst-form k t g)
-subst-form k t (qtf q f) = qtf q (subst-form (suc k) (incr-var-term t) f)
+subst-form k t (qtf q f) = qtf q (subst-form (suc k) (incr-var t) f)
 subst-form k t (rel f ts) = rel f (subst-terms k t ts)
 
 rev-terms : Terms → Terms → Terms
@@ -307,28 +303,28 @@ fst (x , _) = x
 snd : {A : Set} {B : Set} → (A × B) → B
 snd (_ , y) = y
 
-check-nf-ftr : Nat → Ftr → Bool
-check-nf-ftr k (nf m) = m < k
-check-nf-ftr _ (sf _) = true
+check-good-ftr : Nat → Ftr → Bool
+check-good-ftr k (nf m) = m < k
+check-good-ftr _ (sf _) = true
 
-check-nf-termoid : {b : Bool} → Nat → Termoid b → Bool
-check-nf-termoid k (var _) = true
-check-nf-termoid k (fun f ts) = check-nf-ftr k f & check-nf-termoid k ts 
-check-nf-termoid k nil = true
-check-nf-termoid k (cons t ts) = check-nf-termoid k t & check-nf-termoid k ts
+check-good-termoid : {b : Bool} → Nat → Termoid b → Bool
+check-good-termoid k (var _) = true
+check-good-termoid k (fun f ts) = check-good-ftr k f & check-good-termoid k ts 
+check-good-termoid k nil = true
+check-good-termoid k (cons t ts) = check-good-termoid k t & check-good-termoid k ts
 
-check-nf-term : Nat → Term → Bool
-check-nf-term = check-nf-termoid 
+check-good-term : Nat → Term → Bool
+check-good-term = check-good-termoid 
 
-check-nf-terms : Nat → Terms → Bool
-check-nf-terms = check-nf-termoid 
+check-good-terms : Nat → Terms → Bool
+check-good-terms = check-good-termoid 
 
-check-nf-form : Nat → Form → Bool
-check-nf-form k (cst _) = true
-check-nf-form k (rel r ts) = check-nf-ftr k r & check-nf-terms k ts 
-check-nf-form k (not f) = check-nf-form k f 
-check-nf-form k (qtf _ f) = check-nf-form k f 
-check-nf-form k (bct _ f g) = check-nf-form k f & check-nf-form k g
+check-good-form : Nat → Form → Bool
+check-good-form k (cst _) = true
+check-good-form k (rel r ts) = check-good-ftr k r & check-good-terms k ts 
+check-good-form k (not f) = check-good-form k f 
+check-good-form k (qtf _ f) = check-good-form k f 
+check-good-form k (bct _ f g) = check-good-form k f & check-good-form k g
 
 check-gnd-termoid : {b : Bool} → Nat → Termoid b → Bool
 check-gnd-termoid k (var m) = m < k 
@@ -395,13 +391,13 @@ mono-fun f = mono-fun-core 0 f
 is-choice-axiom : Nat → Nat → Form → Bool
 is-choice-axiom k a (qtf false f) = is-choice-axiom k (suc a) f
 is-choice-axiom k a (bct imp (qtf true f) g) = 
-  check-nf-form k f & (eq-form (subst-form 0 (skolem-term-asc k a) f) g || eq-form (subst-form 0 (skolem-term-desc k a) f) g)
+  check-good-form k f & (eq-form (subst-form 0 (skolem-term-asc k a) f) g || eq-form (subst-form 0 (skolem-term-desc k a) f) g)
 is-choice-axiom _ _ _ = false
 
 is-pred-def : Nat → Nat → Form → Bool
 is-pred-def k a (qtf false f) = is-pred-def k (suc a) f
 is-pred-def k a (bct iff (rel (nf m) ts) f) = 
-  check-nf-form k f & ((k == m) & (eq-terms ts (vars-asc a) || eq-terms ts (vars-desc a)))
+  check-good-form k f & ((k == m) & (eq-terms ts (vars-asc a) || eq-terms ts (vars-desc a)))
 is-pred-def _ _ _ = false
 
 justified : Nat → Form → Bool
