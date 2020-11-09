@@ -6,6 +6,7 @@ open import Data.Unit.Base
 open import Data.Unit.Polymorphic renaming (⊤ to ⊤*)
   renaming (tt to tt*)
 open import Data.Bool
+  renaming (T to tr)
   renaming (not to bnot)
   renaming (_<_ to _<b_)
   renaming (_∧_ to _&&_)
@@ -46,83 +47,73 @@ data _<_ : Nat → Nat → Set where
 _>_ : Nat → Nat → Set 
 k > m = m < k
 
-<-to-<-suc : ∀ (k : Nat) (m : Nat) → (k < m) → (k < (suc m))
-<-to-<-suc 0 m _ = 0< _
-<-to-<-suc (suc k) 0 ()
-<-to-<-suc (suc k) (suc m) (suc< k m h) = suc< k _ (<-to-<-suc k m h)
+Rl : Set  
+Rl = List D → Bool
 
-not-<-self : ∀ k → ¬ (k < k)
-not-<-self 0 ()
-not-<-self (suc k) (suc< m m h) = not-<-self k h
+Fn : Set 
+Fn = List D → D
 
-lt-to-not-eq : ∀ k m → k < m → ¬ (k ≡ m)
-lt-to-not-eq k m h0 h1 = not-<-self m (eq-elim (λ x → x < m) h1 h0)
+const-fn : D → Fn 
+const-fn d _ = d
 
-<-to-not-> : ∀ k m → k < m → ¬ (k > m)
-<-to-not-> 0 0 ()
-<-to-not-> 0 (suc k) _ ()
-<-to-not-> (suc k) 0 ()
-<-to-not-> (suc k) (suc m) (suc< _ _ h0) (suc< _ _ h1) = 
-  <-to-not-> _ _ h0 h1
+RA : Set 
+RA = Ftr → Rl 
 
-rl : Set  
-rl = List D → Bool
+FA : Set
+FA = Ftr → Fn
 
-fn : Set 
-fn = List D → D
+VA : Set 
+VA = Nat → D
 
-Rls : Set 
-Rls = Ftr → rl  
-
-Fns : Set
-Fns = Ftr → fn
-
-Vas : Set 
-Vas = Nat → D
+infixr 20 _∧_ 
+infixr 20 _∨_ 
 
 _∧_ = _×_
 
-and-left : {A : Set} → {B : Set} → (A ∧ B) → A
-and-left (h , _) = h
+and-lft : {A : Set} → {B : Set} → (A ∧ B) → A
+and-lft (h , _) = h
 
-and-right : {A : Set} → {B : Set} → (A ∧ B) → B
-and-right (_ , h) = h
+and-rgt : {A : Set} → {B : Set} → (A ∧ B) → B
+and-rgt (_ , h) = h
 
 data _∨_ : Set → Set → Set where
-  or-left  : ∀ {A B : Set} → A → A ∨ B
-  or-right : ∀ {A B : Set} → B → A ∨ B
+  or-lft  : ∀ {A B : Set} → A → A ∨ B
+  or-rgt : ∀ {A B : Set} → B → A ∨ B
 
 ∨-comm : ∀ {A B} → A ∨ B → B ∨ A
-∨-comm (or-left h) = or-right h
-∨-comm (or-right h) = or-left h
+∨-comm (or-lft h) = or-rgt h
+∨-comm (or-rgt h) = or-lft h
 
 _↔_ : Set → Set → Set
 A ↔ B = (A → B) ∧ (B → A)
 
-termoid-val : Fns → Vas → {b : Bool} → Termoid b → ElemList D b
+termoid-val : FA → VA → {b : Bool} → Termoid b → ElemList D b
 termoid-val _ V (var k) = V k
 termoid-val F V (fun f ts) = F f (termoid-val F V ts)
 termoid-val F V nil = []
 termoid-val F V (cons t ts) = (termoid-val F V t) ∷ (termoid-val F V ts)
 
-term-val : Fns → Vas → Term → D
+term-val : FA → VA → Term → D
 term-val F V t = termoid-val F V t
 
-terms-val : Fns → Vas → Terms → List D
+terms-val : FA → VA → Terms → List D
 terms-val F V ts = termoid-val F V ts
 
-↓ : Vas → Vas
+↓ : VA → VA
 ↓ V k = V (suc k)
 
-_/_↦_ : Vas → Nat → D → Vas 
+_[_↦_] : FA → Ftr → Fn → FA 
+(F [ f0 ↦ f ]) f1 = if (f0 =ft f1) then f else F f1
+
+_/_↦_ : VA → Nat → D → VA 
 (V / k ↦ d) m = tri k (V (pred m)) d (V m) m
 
 is-true : Bool → Set 
 is-true true = ⊤ 
 is-true false = ⊥ 
 
-_,_,_⊢_ : Rls → Fns → Vas → Form → Set
-R , F , V ⊢ (cst b) = b ≡ true 
+_,_,_⊢_ : RA → FA → VA → Form → Set
+R , F , V ⊢ (cst b) = tr b 
 R , F , V ⊢ (not f) = ¬ (R , F , V ⊢ f)
 R , F , V ⊢ (bct or f g) = (R , F , V ⊢ f) ∨ (R , F , V ⊢ g)
 R , F , V ⊢ (bct and f g) = (R , F , V ⊢ f) ∧ (R , F , V ⊢ g)
@@ -130,17 +121,19 @@ R , F , V ⊢ (bct imp f g) = (R , F , V ⊢ f) → (R , F , V ⊢ g)
 R , F , V ⊢ (bct iff f g) = (R , F , V ⊢ f) ↔ (R , F , V ⊢ g)
 R , F , V ⊢ (qtf false f) = ∀ (x) → (R , F , (V / 0 ↦ x) ⊢ f)
 R , F , V ⊢ (qtf true f) = ∃ (\ x → (R , F , (V / 0 ↦ x) ⊢ f))
-R , F , V ⊢ (rel r ts) = (R r (terms-val F V ts)) ≡ true
+R , F , V ⊢ (rel r ts) = tr (R r (terms-val F V ts))
 
 _=>_ : Form → Form → Set 
 f => g = ∀ R F V → (R , F , V ⊢ bct imp f g)
 
-_=*_ : Term → Term → Form
-t =* s = rel (sf ('=' ∷ [])) (cons t (cons s nil))
+standard : RA → Set 
+standard R = ∀ d0 d1 → (tr (R (sf ('=' ∷ [])) (d0 ∷ d1 ∷ [])) ↔ (d0 ≡ d1))
 
-standard : Rls → Fns → Vas → Set 
-standard R F V = ∀ t s → 
-  ((R , F , V ⊢ (t =* s)) ↔ (term-val F V t ≡ term-val F V s))
+-- standard : RA → FA → VA → Set 
+-- standard R F V = ∀ t s → 
+--   ((R , F , V ⊢ (t =* s)) ↔ (term-val F V t ≡ term-val F V s))
+-- 
+-- standard-ra
 
 _∈_ : {A : Set} → A → List A → Set 
 _∈_ _ [] = ⊥
@@ -150,11 +143,14 @@ in-prob : Form → Prob → Set
 in-prob f P = ∃ (\ n → (n , f) ∈ P)
 
 unsat-prob : Prob → Set
-unsat-prob P = ∀ R F V → standard R F V →
+unsat-prob P = ∀ R F V → standard R →
   ∃ (\ f → ((in-prob f P) ∧ (¬ R , F , V ⊢ f)))
 
+sat : Prob → Bch → Set
+sat P B = ∃ λ R → ∃ λ F → ∃ λ V → (standard R ∧ (∀ f → ((in-prob f P) ∨ (f ∈ B)) → (R , F , V ⊢ f)))
+
 unsat : Prob → Bch → Set
-unsat P B = ∀ R F V → standard R F V → ∃ (\ f → (((in-prob f P) ∨ (f ∈ B)) ∧ (¬ R , F , V ⊢ f)))
+unsat P B = ∀ R F V → standard R → ∃ (λ f → (((in-prob f P) ∨ (f ∈ B)) ∧ (¬ R , F , V ⊢ f)))
 
 pall : {A : Set} → (A → Set) → List A → Set
 pall {A} p l = (x : A) → (x ∈ l) → p x
@@ -178,24 +174,21 @@ pall {A} p l = (x : A) → (x ∈ l) → p x
 -- nf-in-form k (bct _ f g) = nf-in-form k f ∨ nf-in-form k g
 -- nf-in-form k (qtf _ f) = nf-in-form k f 
 
--- good-termoid : ∀ b → Nat → Termoid b → Set
--- good-termoid b k t = ∀ m → nf-in-termoid b m t → m < k
-
 good-ftr : Nat → Ftr → Set
 good-ftr k (nf m) = m < k 
 good-ftr _ (sf _) = ⊤ 
 
-good-termoid : ∀ b → Nat → Termoid b → Set
-good-termoid false _ (var _) = ⊤ 
-good-termoid false k (fun f ts) = good-ftr k f ∧ good-termoid true k ts
-good-termoid true _ nil = ⊤ 
-good-termoid true k (cons t ts) = good-termoid false k t ∧ good-termoid true k ts 
+good-termoid : ∀ {b} → Nat → Termoid b → Set
+good-termoid {false} _ (var _) = ⊤ 
+good-termoid {false} k (fun f ts) = good-ftr k f ∧ good-termoid k ts
+good-termoid {true} _ nil = ⊤ 
+good-termoid {true} k (cons t ts) = good-termoid k t ∧ good-termoid k ts 
 
 good-term : Nat → Term → Set
-good-term = good-termoid false
+good-term = good-termoid 
 
 good-terms : Nat → Terms → Set
-good-terms = good-termoid true
+good-terms = good-termoid 
 
 good-form : Nat → Form → Set
 good-form _ (cst _) = ⊤
@@ -207,4 +200,43 @@ good-form k (qtf _ f) = good-form k f
 good-bch : Bch → Set
 good-bch B = pall (good-form (length B)) B
 
+good-prob : Prob → Set
+good-prob P = ∀ f k → in-prob f P → good-form k f
 
+data mono-fun : Nat → Nat → Form → Set where
+  mono-fun-fa : ∀ k m f → mono-fun k (suc m) f → mono-fun k m (∀* (∀* ((var 1 =* var 0) →* f)))
+  mono-fun-eq : ∀ k m f → good-ftr k f → 
+    mono-fun k m ((fun f (mono-args-lft m)) =* (fun f (mono-args-rgt m)))
+
+data mono-rel : Nat → Nat → Form → Set where
+  mono-rel-fa : ∀ k m f → mono-rel k (suc m) f → mono-rel k m (∀* (∀* ((var 1 =* var 0) →* f)))
+  mono-rel-imp : ∀ k m r → good-ftr k r → 
+    mono-rel k m ((rel r (mono-args-lft m)) →* (rel r (mono-args-rgt m)))
+
+data choice : Nat → Nat → Form → Set where
+  choice-fa : ∀ k m f → choice k (suc m) f → choice k m (∀* f)
+  choice-ex-asc : ∀ k m f → good-form k f → 
+    choice k m ((∃* f) →* (subst-form 0 (skolem-term-asc k m) f))
+  choice-ex-desc : ∀ k m f → good-form k f → 
+    choice k m ((∃* f) →* (subst-form 0 (skolem-term-desc k m) f))
+
+data pred-def : Nat → Nat → Form → Set where
+  pred-def-fa : ∀ k m f → pred-def k (suc m) f → pred-def k m (∀* f)
+  pred-def-iff-asc : ∀ k m f → good-form k f →  
+    pred-def k m ((rel (nf k) (vars-asc m)) ↔* f)
+  pred-def-iff-desc : ∀ k m f → good-form k f →  
+    pred-def k m ((rel (nf k) (vars-desc m)) ↔* f)
+
+data jst : Nat → Form → Set where
+  jst-top : ∀ k → jst k (cst true)
+  jst-not-bot : ∀ k → jst k (not (cst false))
+  jst-refl : ∀ k → jst k refl-axiom
+  jst-symm : ∀ k → jst k symm-axiom
+  jst-trans : ∀ k → jst k trans-axiom
+  jst-fun : ∀ k f → mono-fun k 0 f → jst k f
+  jst-rel : ∀ k f → mono-rel k 0 f → jst k f
+  jst-choice : ∀ k f → choice k 0 f → jst k f
+  jst-pred-def : ∀ k f → pred-def k 0 f → jst k f
+
+--  justified _ (not (cst false)) = true 
+--  justified k f = disj ( refl-axiom f ∷ symm-axiom f ∷  trans-axiom f ∷ mono-rel f ∷ mono-fun f ∷ is-choice k 0 f ∷ is-pred-def k 0 f ∷ [] )

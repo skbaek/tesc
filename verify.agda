@@ -9,7 +9,7 @@ open import Data.List
 open import Agda.Builtin.Char
 open import Data.Product
 open import Data.Maybe.Base 
-  renaming (_>>=_ to _?>=_)
+  renaming (_>>=_ to _o>=_)
   renaming (map to map?)
 open import basic
 
@@ -118,69 +118,118 @@ read-form (suc k) ('=' ∷ cs) = ( do
   g ← read-form k 
   pass (bct iff f g) ) cs 
 read-form _ = fail
-get-from-prob : Prob → Chars → Form
-get-from-prob [] _ = cst true
-get-from-prob ((n , f) ∷ P) cs = if eq-chars n cs then f else get-from-prob P cs
+
+get-from-prob : Prob → Chars → Read Form
+get-from-prob [] _ = fail
+get-from-prob ((n , f) ∷ P) cs = 
+  if eq-chars n cs 
+  then pass f 
+  else get-from-prob P cs
 
 _==c_ : Char → Char → Bool
 _==c_ = primCharEquality
 
-verify-a : Prob → Read Form 
-verify-a P B (suc k) ('A' ∷ cs) = do
---   m ← read-nat 
---   b ← read-bool
---   f ← lift-read (get-bch B m ?>= break-a b)
---   verify P (f ∷ B) k ) else 
+verify-a : Bch → Read Form 
+verify-a B = do
+  m ← read-nat 
+  b ← read-bool
+  lift-read (get-bch B m o>= break-a b)
 
+verify-b : Bch → Read (Form × Form)
+verify-b B = do
+  m ← read-nat 
+  lift-read (get-bch B m o>= break-b)
+
+verify-c : Bch → Nat → Read Form
+verify-c B k = do
+  m ← read-nat 
+  t ← read-term k
+  -- pass-if $ check-gnd-term 0 t
+  pass-if $ chk-good-term (suc (length B)) t
+  lift-read (get-bch B m o>= break-c t)
+
+verify-d : Bch → Read Form
+verify-d B = do
+  m ← read-nat 
+  lift-read (get-bch B m o>= break-d (length B)) 
+
+verify-n : Bch → Read Form
+verify-n B = do 
+  m ← read-nat 
+  lift-read (get-bch B m o>= break-n)
+
+verify-p : Prob → Bch → Read Form
+verify-p P B = do
+  cs ← read-chars 
+  f ← get-from-prob P cs
+  pass-if (chk-good-form (suc (length B)) f)
+  pass f
+
+verify-s : Bch → Nat → Read Form
+verify-s B k = do 
+  f ← read-form k
+  pass-if (chk-good-form (suc (length B)) f)
+  pass f 
+
+verify-t : Bch → Nat → Read Form
+verify-t B k = do 
+  f ← read-form k
+  pass-if (check-jst (length B) f)
+  -- pass-if (chk-good-form (suc (length B)) f)
+  pass f
+
+verify-x : Bch → Read ⊤
+verify-x B = do
+  m ← read-nat 
+  n ← read-nat 
+  f ← lift-read (get-bch B m)
+  g ← lift-read (get-bch B n)
+  pass-if (eq-form (not f) g) 
+
+elim-ite : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+  (P a0 → B) → (P a1 → B) → P (if b then a0 else a1) → B
+elim-ite _ true _ _ h0 _ h1 = h0 h1
+elim-ite _ false _ _ _ h0 h1 = h0 h1
+
+elim-ite' : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+  P (if b then a0 else a1) → (P a0 → B) → (P a1 → B) → B
+elim-ite' P b a0 a1 h h0 h1 = elim-ite P b a0 a1 h0 h1 h
+
+intro-ite : ∀ {A : Set} {x : A} {y : A} (b : Bool) → 
+  (P : A → Set) → P x → P y → P (if b then x else y)
+intro-ite false P hx hy = hy
+intro-ite true  P hx hy = hx
+    
 verify : Prob → Bch → Nat → Read ⊤ 
 verify P B (suc k) (c ∷ cs) = (
     if c ==c 'A' then ( do 
-      m ← read-nat 
-      b ← read-bool
-      f ← lift-read (get-bch B m ?>= break-a b)
-      verify P (f ∷ B) k ) else 
-    if c ==c 'B' then ( do
-      m ← read-nat 
-      (f , g) ← lift-read (get-bch B m ?>= break-b)
+      f ← verify-a B 
+      verify P (f ∷ B) k 
+    ) else if c ==c 'B' then ( do 
+      (f , g) ← verify-b B 
       verify P (f ∷ B) k
-      verify P (g ∷ B) k ) else  
-    if c ==c 'C' then ( do
-      m ← read-nat 
-      t ← read-term k
-      pass-if $ check-gnd-term 0 t
-      pass-if $ check-good-term (suc (length B)) t
-      f ← lift-read (get-bch B m ?>= break-c t)
-      verify P (f ∷ B) k ) else 
-    if c ==c 'D' then ( do
-      m ← read-nat 
-      f ← lift-read (get-bch B m ?>= break-d (length B))
-      verify P (f ∷ B) k ) else
-    if c ==c 'N' then ( do
-      m ← read-nat 
-      f ← lift-read (get-bch B m ?>= break-n)
-      verify P (f ∷ B) k ) else
-    if c ==c 'P' then ( do
-      cs ← read-chars 
-      pass-if (check-good-form (suc (length B)) (get-from-prob P cs))
-      verify P (get-from-prob P cs ∷ B) k ) else
-    if c ==c 'S' then ( do
-      f ← read-form k
-      pass-if (check-good-form (suc (length B)) f)
+      verify P (g ∷ B) k  
+    ) else if c ==c 'C' then ( do 
+      f ← verify-c B k 
+      verify P (f ∷ B) k  
+    ) else if c ==c 'D' then ( do 
+      f ← verify-d B 
+      verify P (f ∷ B) k 
+    ) else if c ==c 'N' then ( do 
+      f ← verify-n B
+      verify P (f ∷ B) k 
+    ) else if c ==c 'P' then ( do 
+      f ← verify-p P B 
+      verify P (f ∷ B) k 
+    ) else if c ==c 'S' then ( do 
+      f ← verify-s B k 
       verify P (not f ∷ B) k 
-      verify P (f ∷ B) k ) else
-    if c ==c 'T' then ( do
-      f ← read-form k
-      pass-if (justified (length B) f)
-      pass-if (check-good-form (suc (length B)) f)
-      verify P (f ∷ B) k ) else
-    if c ==c 'X' then ( do
-      m ← read-nat 
-      n ← read-nat 
-      f ← lift-read (get-bch B m)
-      g ← lift-read (get-bch B n)
-      pass-if (eq-form (not f) g) ) else
-    fail
+      verify P (f ∷ B) k 
+    ) else if c ==c 'T' then ( do 
+      f ← verify-t B k 
+      verify P (f ∷ B) k 
+    ) else if c ==c 'X' then (
+      verify-x B 
+    ) else fail
   ) cs
 verify _ _ _ = fail
-    
-    
