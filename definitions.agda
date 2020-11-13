@@ -30,6 +30,9 @@ id x = x
 eq-elim : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p x → p y 
 eq-elim p refl = id
 
+eq-elim' : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p y → p x 
+eq-elim' p refl = id
+
 eq-elim-2 : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} (p : A → B → Set) → 
   a0 ≡ a1 → b0 ≡ b1 → p a0 b0 → p a1 b1 
 eq-elim-2 p refl refl = id
@@ -102,8 +105,11 @@ terms-val F V ts = termoid-val F V ts
 ↓ : VA → VA
 ↓ V k = V (suc k)
 
-_[_↦_] : FA → Ftr → Fn → FA 
-(F [ f0 ↦ f ]) f1 = if (f0 =ft f1) then f else F f1
+_/_↦r_ : RA → Ftr → Rl → RA 
+(R / f0 ↦r r) f1 = if (f0 =ft f1) then r else R f1
+
+_/_↦f_ : FA → Ftr → Fn → FA 
+(F / f0 ↦f f) f1 = if (f0 =ft f1) then f else F f1
 
 _/_↦_ : VA → Nat → D → VA 
 (V / k ↦ d) m = tri k (V (pred m)) d (V m) m
@@ -146,8 +152,11 @@ unsat-prob : Prob → Set
 unsat-prob P = ∀ R F V → standard R →
   ∃ (\ f → ((in-prob f P) ∧ (¬ R , F , V ⊢ f)))
 
+sats : RA → FA → VA → Prob → Bch → Set
+sats R F V P B = ∀ f → ((in-prob f P) ∨ (f ∈ B)) → (R , F , V ⊢ f)
+
 sat : Prob → Bch → Set
-sat P B = ∃ λ R → ∃ λ F → ∃ λ V → (standard R ∧ (∀ f → ((in-prob f P) ∨ (f ∈ B)) → (R , F , V ⊢ f)))
+sat P B = ∃ λ R → ∃ λ F → ∃ λ V → (standard R ∧ sats R F V P B)
 
 unsat : Prob → Bch → Set
 unsat P B = ∀ R F V → standard R → ∃ (λ f → (((in-prob f P) ∨ (f ∈ B)) ∧ (¬ R , F , V ⊢ f)))
@@ -213,11 +222,25 @@ data mono-rel : Nat → Nat → Form → Set where
   mono-rel-imp : ∀ k m r → good-ftr k r → 
     mono-rel k m ((rel r (mono-args-lft m)) →* (rel r (mono-args-rgt m)))
 
+vars-lt-termoid : ∀ {b} → Nat → Termoid b → Set
+vars-lt-termoid {true} _ nil = ⊤
+vars-lt-termoid {true} k (cons t ts) = 
+  vars-lt-termoid k t ∧ vars-lt-termoid k ts 
+vars-lt-termoid {false} k (var m) = m < k
+vars-lt-termoid {false} k (fun _ ts) = vars-lt-termoid k ts
+
+vars-lt-form : Nat → Form → Set
+vars-lt-form k (rel _ ts) = vars-lt-termoid k ts 
+vars-lt-form k (cst _) = ⊤
+vars-lt-form k (not f) = vars-lt-form k f
+vars-lt-form k (bct _ f g) = vars-lt-form k f ∧ vars-lt-form k g
+vars-lt-form k (qtf _ f) = vars-lt-form (suc k) f 
+
 data choice : Nat → Nat → Form → Set where
   choice-fa : ∀ k m f → choice k (suc m) f → choice k m (∀* f)
-  choice-ex-asc : ∀ k m f → good-form k f → 
+  choice-imp-asc : ∀ k m f → good-form k f → vars-lt-form (suc m) f → 
     choice k m ((∃* f) →* (subst-form 0 (skolem-term-asc k m) f))
-  choice-ex-desc : ∀ k m f → good-form k f → 
+  choice-imp-desc : ∀ k m f → good-form k f → vars-lt-form (suc m) f → 
     choice k m ((∃* f) →* (subst-form 0 (skolem-term-desc k m) f))
 
 data pred-def : Nat → Nat → Form → Set where
