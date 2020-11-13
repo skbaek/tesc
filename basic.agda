@@ -428,9 +428,9 @@ chk-pred-def k a (bct iff (rel (nf m) ts) f) =
 chk-pred-def _ _ _ = false
 
 check-jst : Nat → Form → Bool
-check-jst _ (cst true) = true 
-check-jst _ (not (cst false)) = true 
 check-jst k f =  
+  eq-form f (cst true) ||
+  eq-form f (not (cst false)) ||
   eq-form f refl-axiom ||
   eq-form f symm-axiom || 
   eq-form f trans-axiom || 

@@ -303,8 +303,8 @@ or-iff-or ha hb =
 iff-symm : ∀ {A B} → (A ↔ B) → (B ↔ A) 
 iff-symm h0 = (λ h1 → and-rgt h0 h1) , (λ h1 → and-lft h0 h1)
 
-iff-trans : ∀ {A B C} → (A ↔ B) → (B ↔ C) → (A ↔ C)
-iff-trans h0 h1 = 
+iff-trans : ∀ {A} B {C} → (A ↔ B) → (B ↔ C) → (A ↔ C)
+iff-trans _ h0 h1 = 
   (λ h2 → and-lft h1 (and-lft h0 h2)) , 
   (λ h2 → and-rgt h0 (and-rgt h1 h2))
 
@@ -320,8 +320,8 @@ imp-iff-imp ha hb =
 
 iff-iff-iff : ∀ {A0 A1 B0 B1} → (A0 ↔ A1) → (B0 ↔ B1) → ((A0 ↔ B0) ↔ (A1 ↔ B1))
 iff-iff-iff ha hb =  
-  (λ h0 → iff-trans (iff-symm ha) (iff-trans h0 hb)) ,
-  (λ h0 → iff-trans ha (iff-trans h0 (iff-symm hb)))
+  (λ h0 → iff-trans _ (iff-symm ha) (iff-trans _  h0 hb)) ,
+  (λ h0 → iff-trans _ ha (iff-trans _ h0 (iff-symm hb)))
 
 fa-iff-fa : ∀ {A} {P Q : A → Set} → (∀ a → (P a ↔ Q a)) → ((∀ a → P a) ↔ (∀ a → Q a))
 fa-iff-fa h0 = ((\ h1 a → and-lft (h0 a) (h1 a)) , (\h1 a → and-rgt (h0 a) (h1 a)))
@@ -363,6 +363,10 @@ not-iff-not-to-iff h0 =
 
 eq-to-iff : ∀ {A : Set} (P : A → Set) (x y : A) → x ≡ y → ((P x) ↔ (P y))
 eq-to-iff P x y refl = iff-refl  
+
+eq-to-iff-2 : ∀ {A B : Set} (P : A → B → Set) (a0 a1 : A) (b0 b1 : B) → 
+  a0 ≡ a1 → b0 ≡ b1 → ((P a0 b0) ↔ (P a1 b1))
+eq-to-iff-2 P a0 a1 b0 b1 refl refl = iff-refl  
 
 termoid-val-subst : ∀ (F : FA) (V : VA) (k : Nat) (b : Bool) (s : Term) (t : Termoid b) → 
   (termoid-val F (V / k ↦ term-val F V s) t) ≡ (termoid-val F V (subst-termoid k s t))
@@ -552,6 +556,9 @@ unsat-to-not-sat P B h0 h1 =
 tr-to-ite-eq : ∀ {A : Set} {b} {a0 a1 : A} → tr b → (if b then a0 else a1) ≡ a0
 tr-to-ite-eq {_} {true} _ = refl  
 
+fs-to-ite-ne : ∀ {A : Set} {b} {a0 a1 : A} → fs b → (if b then a0 else a1) ≡ a1
+fs-to-ite-ne {_} {false} _ = refl  
+
 cons-eq : ∀ {A : Set} (a0 a1 : A) (as0 as1 : List A) →
   a0 ≡ a1 → as0 ≡ as1 → (a0 ∷ as0) ≡ (a1 ∷ as1) 
 cons-eq a0 a1 as0 as1 refl refl = refl
@@ -598,6 +605,15 @@ good-to-ftr-neq k (nf m) h0 h1 =
   ex-falso h0 (eq-elim (λ x → ¬ (m < x)) (nf-inj h1) (not-<-self m))
 good-to-ftr-neq k (sf m) _ ()
 
+good-ftr-to-eq : ∀ k r R rl → (good-ftr k r) → (R / (nf k) ↦r rl) r ≡ R r
+good-ftr-to-eq k r R rl h0 = 
+  intro-ite-lem {Rl} (nf k =ft r) (λ x → x ≡ R r) 
+        ( λ h1 → 
+            let h2 = ftr-eq-to-eq (nf k) r h1 in 
+            let h3 = good-to-ftr-neq k r h0 in
+            ex-falso (eq-symm h2) h3 ) 
+        λ _ → refl 
+
 good-to-termoid-val-eq : ∀ {b} F V k fn (t : Termoid b) → (good-termoid k t) → 
   (termoid-val (F / nf k ↦f fn) V t) ≡ (termoid-val F V t) 
 good-to-termoid-val-eq {true} F V k fn nil h0 = refl
@@ -616,6 +632,22 @@ good-to-termoid-val-eq F V k fn (fun f ts) h0 =
             ⊥-elim (not-<-self k h3) ) 
         λ _ → refl )
     (good-to-termoid-val-eq F V k fn ts (and-rgt h0))
+
+good-to-holds-ru-iff : ∀ R F V k r f → good-form k f → 
+  ((R / nf k ↦r r), F , V ⊢ f) ↔ (R , F , V ⊢ f)
+good-to-holds-ru-iff R F V k r (cst b) _ = iff-refl
+good-to-holds-ru-iff R F V k r (not f) h0 = 
+  iff-to-not-iff-not (good-to-holds-ru-iff R F V k r f h0)
+good-to-holds-ru-iff R F V k r (bct b f g) h0 = 
+  bct-iff-bct b 
+    (good-to-holds-ru-iff R F V k r f (and-lft h0)) 
+    (good-to-holds-ru-iff R F V k r g (and-rgt h0)) 
+good-to-holds-ru-iff R F V k r (qtf b f) h0 = 
+  qtf-iff-qtf b 
+    λ d → good-to-holds-ru-iff R F _ k r f h0
+good-to-holds-ru-iff R F V k rl (rel r ts) h0 = 
+  eq-to-iff (λ (x : Rl) → tr (x (termoid-val F V ts))) ((R / (nf k) ↦r rl) r) (R r) 
+    (good-ftr-to-eq k r R rl (fst h0))
 
 good-to-holds-update-iff : ∀ R F V k fn f → good-form k f → 
   (R , (F / nf k ↦f fn), V ⊢ f) ↔ (R , F , V ⊢ f)
@@ -636,6 +668,22 @@ extend : List D → VA
 extend [] _ = wit
 extend (d ∷ _) 0 = d
 extend (_ ∷ ds) (suc k) = extend ds k
+
+rt : Set → Bool
+rt A = use-lem A (λ _ → true) (λ _ → false)
+
+def-rl-asc : RA → FA → Form → Rl
+def-rl-asc R F f ds = rt (R , F , extend ds ⊢ f)
+
+-- iff-true : ∀ {A : Set} 
+
+tr-rt-iff : ∀ {A : Set} → tr (rt A) ↔ A 
+tr-rt-iff {A} with LEM A 
+... | (yes h0) = (λ _ → h0) , (λ _ → tt)
+... | (no h0) = ⊥-elim , h0
+
+def-rl-desc : RA → FA → Form → Rl
+def-rl-desc R F f ds = def-rl-asc R F f (reverse ds)
 
 skolem-fn-asc : RA → FA → Form → Fn
 skolem-fn-asc R F f ds = 
@@ -743,14 +791,26 @@ bar R F V0 V1 k (qtf b f) h0 h1 =
 bar R F V0 V1 k (rel r ts) h0 h1 = 
   eq-to-iff (λ x → tr (R r x)) (terms-val F V0 ts) _ (bart F V0 V1 k ts h0 h1)
 
+
+
 eq-va-lt-extend-trunc : ∀ V k → eq-va-lt k (extend (trunc k V)) V
 eq-va-lt-extend-trunc V 0 m ()
 eq-va-lt-extend-trunc V (suc k ) 0 (0< _) = refl
 eq-va-lt-extend-trunc V (suc k ) (suc m) (suc< _ _ h0) = eq-va-lt-extend-trunc (↓ V) k m h0
 
+holds-extend-trunc-iff : ∀ R F V k f → vars-lt-form k f →  
+  (R , F , extend (trunc k V) ⊢ f) ↔ (R , F , V ⊢ f)
+holds-extend-trunc-iff R F V k f h0 = bar R F (extend (trunc k V)) V k f (eq-va-lt-extend-trunc V k) h0
+  
 fa-update-eq : ∀ F k fn → fn ≡ (F / nf k ↦f fn) (nf k) 
-fa-update-eq F k fn = eq-symm (tr-to-ite-eq {_} {nf k =ft nf k} (≡-to-=n k k refl)) --(tr-to-ite-eq {!  refl !})
+fa-update-eq F k fn = eq-symm (tr-to-ite-eq {_} {nf k =ft nf k} (≡-to-=n k k refl)) 
  
+ra-update-eq : ∀ R k r → (R / nf k ↦r r) (nf k) ≡ r
+ra-update-eq R k r = (tr-to-ite-eq {_} {nf k =ft nf k} (≡-to-=n k k refl)) 
+
+ru-sf-eq : ∀ R k r s → (R / nf k ↦r r) (sf s) ≡ R (sf s)
+ru-sf-eq R k r s = fs-to-ite-ne {_} {nf k =ft sf s} tt
+
 qux-core : ∀ F V m → 
   termoid-val F (↓ V) (vars-desc m) ∷ʳ V 0 ≡ termoid-val F V (cons (var m) (vars-desc m))
 qux-core F V 0 = refl 
@@ -811,6 +871,17 @@ qux' F V m =
 cong-fun-arg : ∀ {A B : Set} {x0 x1 : A → B} {y0 y1 : A} → 
   x0 ≡ x1 → y0 ≡ y1 → (x0 y0 ≡ x1 y1)
 cong-fun-arg refl refl = refl
+
+good-rev-terms : ∀ k ts0 ts1 → good-terms k ts0 → good-terms k ts1 → good-terms k (rev-terms ts0 ts1)
+good-rev-terms k nil ts1 _ h0 = h0 
+good-rev-terms k (cons t ts0) ts1 (h0 , h1) h2 = good-rev-terms k ts0 (cons t ts1) h1 (h0 , h2) 
+
+good-vars-desc : ∀ k m → good-termoid k (vars-desc m) 
+good-vars-desc k 0 = tt
+good-vars-desc k (suc m) = tt , (good-vars-desc _ _)
+
+good-vars-asc : ∀ k m → good-termoid k (vars-asc m) 
+good-vars-asc k m = good-rev-terms k (vars-desc m) nil (good-vars-desc _ _) tt
 
 data only-vars : ∀ {b} → Termoid b → Set where 
   only-vars-nil : only-vars nil
@@ -897,9 +968,24 @@ skolem-fn-desc-aux R F V k m f hf h0 h1 =
                 h0 ) h3 )
     )
 
-prsv-t-pred-def : ∀ R F V k m f → pred-def k m f → ∃ λ rl → (R / (nf k) ↦r rl) , F , V ⊢ f 
-prsv-t-pred-def R F V k m _ (pred-def-fa k m f h0) = 
-  {! (prsv-t-pred-def R F )  !}
+prsv-t-pred-def : ∀ R F k m f → pred-def k m f → ∃ λ rl → ∀ V → (R / (nf k) ↦r rl) , F , V ⊢ f 
+prsv-t-pred-def R F k m _ (pred-def-fa k m f h0) = 
+  ex-elim (prsv-t-pred-def R F k (suc m) f h0) λ r h1 → r , λ V d → h1 _
+prsv-t-pred-def R F k m _ (pred-def-iff-asc k m f h0 h1) = 
+  def-rl-asc R F f , λ V → iff-trans (tr (def-rl-asc R F f ((trunc m V)))) 
+    ( eq-to-iff-2 (λ x y → tr (x y)) ((R / (nf k) ↦r _) (nf k)) (def-rl-asc R F f) _ (trunc m V) 
+        (ra-update-eq R k _) (eq-symm (qux' F V m)) ) 
+    (iff-trans _ (tr-rt-iff) (iff-trans (R , F , V ⊢ f) 
+  (holds-extend-trunc-iff R F V m f h1) (iff-symm  (good-to-holds-ru-iff R F V k  _ f h0))))
+prsv-t-pred-def R F k m _ (pred-def-iff-desc k m f h0 h1) = 
+  def-rl-desc R F f , λ V → iff-trans (tr (def-rl-desc R F f (reverse (trunc m V)))) 
+    (eq-to-iff-2 (λ x y → tr (x y)) ((R / nf k ↦r _) (nf k))
+      (def-rl-desc R F f) _ (reverse (trunc m V)) (ra-update-eq R k _) 
+        (eq-symm (qux F V m))) (iff-trans _ tr-rt-iff 
+          (iff-trans (R , F , extend (trunc m V) ⊢ f) 
+            (eq-to-iff (λ x → R , F , extend x ⊢ f) _ (trunc m V) (reverse-reverse _)) 
+            (iff-trans (R , F , V ⊢ f) (holds-extend-trunc-iff R F V m f h1) 
+              ((iff-symm  (good-to-holds-ru-iff R F V k  _ f h0))))))
 
 prsv-t-choice : ∀ R F k m f → choice k m f → ∃ λ fn → ∀ V → R , F / (nf k) ↦f fn , V ⊢ f 
 prsv-t-choice R F k m _ (choice-fa k m f h0) = 
@@ -940,6 +1026,17 @@ sats-to-sats P B R F V fn f h0 h1 h2 h3 g (or-rgt (or-lft h4)) =
   eq-elim (λ x → R , _ , V ⊢ x) (eq-symm h4) h2
 sats-to-sats P B R F V fn f h0 h1 h2 h3 g (or-rgt (or-rgt h4)) = 
   snd (good-to-holds-update-iff R F V (length B) fn g (h1 g h4)) (h3 g (or-rgt h4))
+
+sats-to-sats-ra : ∀ P B R F V rl f → good-prob P → good-bch B → 
+  ((R / nf (length B) ↦r rl) , F , V ⊢ f) → sats R F V P B → sats (R / (nf (length B)) ↦r rl) F V P (f ∷ B)  
+sats-to-sats-ra P B R F V rl f h0 h1 h2 h3 g (or-lft h4) = 
+   snd (good-to-holds-ru-iff R F V (length B) rl g (h0 g _ h4)) (h3 g (or-lft h4))
+  -- snd (good-to-holds-update-iff R F V (length B) fn g (h0 g _ h4)) (h3 g (or-lft h4))
+sats-to-sats-ra P B R F V rl f h0 h1 h2 h3 g (or-rgt (or-lft h4)) = 
+  eq-elim (λ x → _ , F , V ⊢ x) (eq-symm h4) h2
+sats-to-sats-ra P B R F V rl f h0 h1 h2 h3 g (or-rgt (or-rgt h4)) =
+  snd (good-to-holds-ru-iff R F V (length B) rl g (h1 g h4)) (h3 g (or-rgt h4))
+  -- snd (good-to-holds-update-iff R F V (length B) fn g (h1 g h4)) (h3 g (or-rgt h4))
 
 sat-to-sat-to-unsat-to-unsat : ∀ {P0 P1 B0 B1} → 
   (sat P0 B0 → sat P1 B1) → unsat P1 B1 → unsat P0 B0
@@ -1007,6 +1104,7 @@ prsv-s P B g h0 h1 R F V hR =
                                 (eq-elim (λ x → ¬ (R , F , V ⊢ x)) h9 h5) ) 
                           (λ h8 → f1 , or-rgt h8 , h5) ) ) 
                 (λ h6 → f0 , or-rgt h6 , h3) ) 
+
 
 
 standard-to-holds : Form → Set 
@@ -1128,6 +1226,10 @@ standard-to-unsat {_} {_} {f} h0 h1 R F V hR =
             or-rgt ) , 
       h3
 
+standard-ru : ∀ R k rl → standard R → standard (R / (nf k) ↦r rl)
+standard-ru R k rl h0 d0 d1 = 
+  eq-elim (λ x → tr (x _) ↔ (d0 ≡ d1)) (eq-symm (ru-sf-eq R k rl _)) (h0 _ _)
+
 prsv-t : ∀ P B g → good-prob P → good-bch B → jst (length B) g → unsat P (g ∷ B) → unsat P B 
 prsv-t P B _ _ _ (jst-top _)           = standard-to-unsat standard-to-holds-top
 prsv-t P B _ _ _ (jst-not-bot _)       = standard-to-unsat standard-to-holds-not-bot
@@ -1144,7 +1246,9 @@ prsv-t P B _ hP hB (jst-choice k f h0)   =
             λ fn h3 → 
               R , F / nf (length B) ↦f fn , V , h1 , sats-to-sats P B R F V fn f hP hB  (h3 V) h2 ) 
 prsv-t P B _ hP hB (jst-pred-def k f h0) = 
-  sat-to-sat-to-unsat-to-unsat (ex-elim-3' λ R F V (h1 , h2 ) → {!   !})
+  sat-to-sat-to-unsat-to-unsat (ex-elim-3' λ R F V (h1 , h2 ) → 
+    ex-elim (prsv-t-pred-def R F (length B) 0 f h0) (λ rl h3 → 
+      (R / nf (length B) ↦r rl) , F , V , standard-ru R k _ h1 , (sats-to-sats-ra P B R F V rl f hP hB (h3 V) h2)))
 
 prsv-good-b : ∀ f g h k → (break-b f ≡ just (g , h)) → good-form k f → 
   (good-form k g ∧ good-form k h)
@@ -1194,8 +1298,17 @@ good-subst-form t (bct _ f g) k m h0 h1 =
 good-subst-form t (qtf _ f) k m h0 h1 = 
   good-subst-form (incr-var t) f k (suc m) (good-incr-var _ _ h0) h1
 
+good-term-par : ∀ k → good-term (suc k) (par k)
+good-term-par k = (lt-suc-self _) , tt
+
 prsv-good-d : ∀ f g k → good-form k f → (break-d k f ≡ just g) → good-form (suc k) g
-prsv-good-d f g k = {!   !}
+
+prsv-good-d (qtf true f) g k h0 h1 = 
+  eq-elim (good-form (suc k)) (just-inj h1) (good-subst-form (par k) 
+    f _ _  (good-term-par k) (good-form-suc k f h0))
+prsv-good-d (not (qtf false f)) g k h0 h1 = 
+  eq-elim (good-form (suc k)) (just-inj h1) (good-subst-form (par k) 
+    f _ _  (good-term-par k) (good-form-suc k f h0))
 
 prsv-good-c : ∀ t f g k → good-term k t → good-form k f → (break-c t f ≡ just g) → good-form k g
 prsv-good-c t (qtf false f) g k h0 h1 h2 = 
@@ -1213,8 +1326,45 @@ prsv-good-a false (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-
 prsv-good-a true  (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-lft h1) -- \ m h2 → h1 m (or-lft h2)
 prsv-good-a false (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-rgt h1) -- \ m h2 → h1 m (or-rgt h2)
 
+good-mono-args-lft : ∀ k m → good-termoid k (mono-args-lft m)
+good-mono-args-lft k 0 = tt
+good-mono-args-lft k (suc m) = tt , (good-mono-args-lft k m)
+
+good-mono-args-rgt : ∀ k m → good-termoid k (mono-args-rgt m)
+good-mono-args-rgt k 0 = tt
+good-mono-args-rgt k (suc m) = tt , good-mono-args-rgt k m
+
+good-mono-fun : ∀ k m f → mono-fun k m f → good-form k f
+good-mono-fun k m _ (mono-fun-fa k m f h0) = (tt , (tt , (tt , tt))) , (good-mono-fun k _ f h0) 
+good-mono-fun k m _ (mono-fun-eq k m f h0) = tt , ((h0 , good-mono-args-lft _ _) , (h0 , good-mono-args-rgt _ _) , tt)
+
+good-mono-rel : ∀ k m f → mono-rel k m f → good-form k f
+good-mono-rel k m _ (mono-rel-fa k m f h0) = (tt , (tt , (tt , tt))) , (good-mono-rel k _ f h0) 
+good-mono-rel k m _ (mono-rel-imp k m f h0) = (h0 , good-mono-args-lft _ _) , (h0 , good-mono-args-rgt  _ _)
+
+good-choice : ∀ k m f → choice k m f → good-form (suc k) f
+good-choice k m _ (choice-fa k m f h0) = good-choice k _ f h0
+good-choice k m _ (choice-imp-asc k m f h0 h1) = (good-form-suc _ f h0) , 
+  (good-subst-form (skolem-term-asc k m) f (suc k) 0 ((lt-suc-self _) , good-vars-asc _ m) (good-form-suc  _ f h0))
+good-choice k m _ (choice-imp-desc k m f h0 h1) = (good-form-suc _ f h0) , 
+  ((good-subst-form (skolem-term-desc k m) f (suc k) 0 ((lt-suc-self _) , good-vars-desc _ m) (good-form-suc  _ f h0)))
+
+good-pred-def : ∀ k m f → pred-def k m f → good-form (suc k) f
+good-pred-def k m _ (pred-def-fa k m f h0) = good-pred-def k _ f h0
+good-pred-def k m _ (pred-def-iff-asc k m f h0 h1) = ((lt-suc-self _) , (good-vars-asc _ m)) , (good-form-suc _ f h0)
+good-pred-def k m _ (pred-def-iff-desc k m f h0 h1) = 
+ ((lt-suc-self _) , (good-vars-desc _ m)) , (good-form-suc _ f h0)
+
 good-bch-t : ∀ B g → jst (length B) g → good-bch B → good-bch (g ∷ B)
-good-bch-t B g h0 h1 = {!   !}
+good-bch-t B _ (jst-top _) h1           = good-bch-cons _ B tt h1
+good-bch-t B _ (jst-not-bot _) h1       = good-bch-cons _ B tt h1
+good-bch-t B _ (jst-refl _) h1          = good-bch-cons _ B (tt , tt , tt , tt) h1
+good-bch-t B _ (jst-symm k) h1          = good-bch-cons _ B ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt)))) h1
+good-bch-t B _ (jst-trans k) h1         = good-bch-cons _ B ((tt , (tt , (tt , tt))) , ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt))))) h1
+good-bch-t B _ (jst-fun k f h0) h1      = good-bch-cons _ B (good-form-suc (length B) f (good-mono-fun k 0 f h0)) h1
+good-bch-t B _ (jst-rel k f h0) h1      = good-bch-cons _ B (good-form-suc _ f (good-mono-rel k 0 f h0)) h1
+good-bch-t B _ (jst-choice k f h0) h1   = good-bch-cons _ B (good-choice (length B) 0 _ h0) h1
+good-bch-t B _ (jst-pred-def k f h0) h1 = good-bch-cons _ B (good-pred-def (length B) 0 _ h0) h1
 
 good-bch-p : ∀ P B g → good-prob P →  good-bch B → in-prob g P → good-bch (g ∷ B)
 good-bch-p P B g h0 h1 h2 = good-bch-cons g B (h0 _ _ h2) h1
@@ -1604,8 +1754,33 @@ from-passes-num-verify-s B g (k , cs0 , csf , h0) =
       let h5 = checks-good-form _ f h3 in 
       eq-elim _ (prod-inj-lft (just-inj h4)) h5
 
+
+from-pass-eq-lft : ∀ {A : Set} (a0 a1 : A) cs0 cs1 → pass a0 cs0 ≡ just (a1 , cs1) → a0 ≡ a1
+from-pass-eq-lft a0 a1 cs0 cs1 h0 = prod-inj-lft (just-inj h0) 
+
+qix : ∀ {A : Set} b1 b2 → (tr b1 → A) → (tr b2 → A) → (tr (b1 || b2) → A) 
+qix true _ h0 _ h2 = h0 tt
+qix _ true _ h1 h2 = h1 tt
+
+eq-form-to-eq : ∀ f g → tr (eq-form f g) → f ≡ g
+eq-form-to-eq f g h = {!   !}
+
+from-chks-jst : ∀ k f → tr (check-jst k f) → jst k f
+from-chks-jst k f = qix (eq-form f (cst true)) _ 
+(λ h0 → eq-elim' (jst k) (eq-form-to-eq f (cst true) h0) (jst-top _)) 
+  (qix (eq-form f (not (cst false))) _ 
+  (λ h0 → eq-elim' (jst k) (eq-form-to-eq f (not (cst false)) h0) (jst-not-bot _)) 
+  (qix (eq-form f _) _ 
+    ((λ h0 → eq-elim' (jst k) (eq-form-to-eq f (refl-axiom) h0) (jst-refl _))) 
+    {!   !})) -- or-elim' {! eq-form f (cst true) !} {!   !} {!   !}
+
 from-passes-num-verify-t : ∀ B g → passes-num (verify-t B) g → jst (length B) g 
-from-passes-num-verify-t = {!   !}
+from-passes-num-verify-t B g (k , cs0 , csf , h0) = 
+  use-bind-eq-just (read-form k) _ cs0 csf g h0 (λ f cs1 h1 h2 → 
+    let (h3 , h4) = from-pass-if-seq-eq-just (check-jst (length B) f) _ cs1 csf _ h2 in 
+    let h5 = from-pass-eq-lft f g cs1 csf h4 in
+    let h6 = from-chks-jst (length B) f h3 in 
+    eq-elim (jst (length B)) h5 h6)
 
 from-ends-verify-x : ∀ B → ends (verify-x B) → ∃ λ f → (f ∈ B) ∧ ((not f) ∈ B)
 from-ends-verify-x = {!   !}
@@ -1613,8 +1788,6 @@ from-ends-verify-x = {!   !}
 in-prob-cons : ∀ f P p → in-prob f P → in-prob f (p ∷ P) 
 in-prob-cons f P p = ex-elim' λ nm h0 → (nm , or-rgt h0)
 
-from-pass-eq-lft : ∀ {A : Set} (a0 a1 : A) cs0 cs1 → pass a0 cs0 ≡ just (a1 , cs1) → a0 ≡ a1
-from-pass-eq-lft a0 a1 cs0 cs1 h0 = prod-inj-lft (just-inj h0) 
 
 from-get-from-prob-eq : ∀ P nm0 cs0 cs1 f → 
   get-from-prob P nm0 cs0 ≡ just (f , cs1) → (in-prob f P) 

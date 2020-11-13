@@ -245,9 +245,9 @@ data choice : Nat → Nat → Form → Set where
 
 data pred-def : Nat → Nat → Form → Set where
   pred-def-fa : ∀ k m f → pred-def k (suc m) f → pred-def k m (∀* f)
-  pred-def-iff-asc : ∀ k m f → good-form k f →  
-    pred-def k m ((rel (nf k) (vars-asc m)) ↔* f)
-  pred-def-iff-desc : ∀ k m f → good-form k f →  
+  pred-def-iff-asc : ∀ k m f → good-form k f → vars-lt-form m f →
+    pred-def k m ((rel (nf k) (vars-asc m)) ↔* f)  
+  pred-def-iff-desc : ∀ k m f → good-form k f → vars-lt-form m f →  
     pred-def k m ((rel (nf k) (vars-desc m)) ↔* f)
 
 data jst : Nat → Form → Set where
