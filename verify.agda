@@ -16,6 +16,8 @@ open import basic
 Read : Set → Set
 Read A = Chars → Maybe (A × Chars)
 
+infixl 20 _>>=_ 
+
 _>>=_ : ∀ {A} {B} → Read A → (A → Read B) → Read B
 _>>=_ f g cs with f cs 
 ... | nothing = nothing
@@ -26,11 +28,21 @@ _>>_ f g cs with f cs
 ... | nothing = nothing
 ... | just (_ , cs') = g cs'
 
+infixr 20 _<|>_ 
+
+_<|>_ : ∀ {A} → Read A → Read A → Read A
+_<|>_ f g cs with f cs 
+... | nothing = g cs
+... | just x = just x
+
 pass : {A : Set} → A → Read A
 pass x cs = just (x , cs) 
 
 fail : {A : Set} → Read A
 fail _ = nothing 
+
+skip : Read ⊤
+skip = pass tt
 
 lift-read : {A : Set} → Maybe A → Read A 
 lift-read nothing = fail 
@@ -122,7 +134,7 @@ read-form _ = fail
 get-from-prob : Prob → Chars → Read Form
 get-from-prob [] _ = fail
 get-from-prob ((n , f) ∷ P) cs = 
-  if eq-chars n cs 
+  if n =cs cs 
   then pass f 
   else get-from-prob P cs
 
@@ -144,7 +156,7 @@ verify-c : Bch → Nat → Read Form
 verify-c B k = do
   m ← read-nat 
   t ← read-term k
-  -- pass-if $ check-gnd-term 0 t
+  -- pass-if $ gnd-term 0 t
   pass-if $ chk-good-term (suc (length B)) t
   lift-read (get-bch B m o>= break-c t)
 
@@ -171,10 +183,51 @@ verify-s B k = do
   pass-if (chk-good-form (suc (length B)) f)
   pass f 
 
+{-
+chk-form-eq : Form → Form → Read ⊤
+chk-form-eq f g = pass-if (form-eq f g) 
+
+break-rel : Form → Read (Ftr × Terms)
+break-rel f = {!   !}
+
+break-fa : Form → Read Form
+break-fa f = {!   !}
+
+break-imp : Form → Read (Form × Form)
+break-imp f = {!   !}
+
+chk-mono-args : Terms → Terms → Read ⊤
+chk-mono-args ts0 ts1 = {!   !}
+
+chk-mono-rel : Nat → Nat → Form → Read ⊤
+chk-mono-rel k m f = 
+  ( do 
+      (g , h) ← (break-fa f >>= break-fa >>= break-imp)
+      chk-form-eq g (var 1 =* var 0)
+      chk-mono-rel k (suc m) h ) <|> 
+  ( do  
+      (g , h) ← break-imp f
+      (r0 , ts0) ← break-rel g 
+      (r1 , ts1) ← break-rel h 
+      pass-if (r0 =ft r1)
+      chk-mono-args ts0 ts1 )
+  
+
+chk-jst : Nat → Form → Read ⊤
+chk-jst k f = 
+  chk-form-eq f (cst true) <|> 
+  chk-form-eq f (not (cst false)) <|> 
+  chk-form-eq f refl-axiom <|> 
+  chk-form-eq f symm-axiom <|> 
+  chk-form-eq f trans-axiom <|> 
+  fail
+  -}
+
+
 verify-t : Bch → Nat → Read Form
 verify-t B k = do 
   f ← read-form k
-  pass-if (check-jst (length B) f)
+  pass-if (chk-jst (length B) f)
   -- pass-if (chk-good-form (suc (length B)) f)
   pass f
 
@@ -184,7 +237,7 @@ verify-x B = do
   n ← read-nat 
   f ← lift-read (get-bch B m)
   g ← lift-read (get-bch B n)
-  pass-if (eq-form (not f) g) 
+  pass-if (form-eq (not f) g) 
 
 elim-ite : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
   (P a0 → B) → (P a1 → B) → P (if b then a0 else a1) → B

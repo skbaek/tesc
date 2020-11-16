@@ -1,6 +1,7 @@
 module basic where
 
 open import Agda.Builtin.Nat
+  renaming (_<_ to _<n_)
 open import Agda.Builtin.Equality
 open import Data.Bool
   renaming (not to bnot)
@@ -41,15 +42,10 @@ data Ftr : Set where
   nf : Nat → Ftr
   sf : Chars → Ftr
 
-_=cs_ : Chars → Chars → Bool
-[] =cs [] = true
-(c0 ∷ cs0) =cs (c1 ∷ cs1) = (c0 =c c1) && (cs0 =cs cs1)
-_ =cs _ = false
-
-_=ft_ : Ftr → Ftr → Bool
-(nf k) =ft (nf m) = k == m  
-(sf s) =ft (sf t) = s =cs t
-_ =ft _ = false
+-- _=ft_ : Ftr → Ftr → Bool
+-- (nf k) =ft (nf m) = k == m  
+-- (sf s) =ft (sf t) = s =cs t
+-- _ =ft _ = false
 
 ElemList : Set → Bool → Set 
 ElemList A false = A
@@ -109,13 +105,13 @@ nth _ _ = nothing
 
 rev-index : Nat → Nat → Maybe Nat
 rev-index 0 _ = nothing
-rev-index (suc l) k = if l < k then nothing else just (l - k)
+rev-index (suc l) k = if l <n k then nothing else just (l - k)
 
 get-bch : Bch → Nat → Maybe Form 
 get-bch B k = rev-index (length B) k ?>= \ m → nth m B
 
 tri : ∀ {A : Set} → Nat → A → A → A → Nat → A
-tri k a b c m = if k < m then a else if k == m then b else c
+tri k a b c m = if k <n m then a else if k == m then b else c
 
 subst-termoid : {b : Bool} → Nat → Term → Termoid b → Termoid b
 subst-termoid k t (var m) = tri k (var (pred m)) t (var m) m
@@ -233,39 +229,44 @@ eq-bct imp imp = true
 eq-bct iff iff = true
 eq-bct _ _ = false
 
-eq-chars : Chars → Chars → Bool
-eq-chars s t = (fromList s) =s (fromList t)
+-- eq-chars : Chars → Chars → Bool
+-- eq-chars s t = (fromList s) =s (fromList t)
+
+_=cs_ : Chars → Chars → Bool
+[] =cs [] = true
+(c0 ∷ cs0) =cs (c1 ∷ cs1) = (c0 =c c1) && (cs0 =cs cs1)
+_ =cs _ = false
 
 eq-ftr : Ftr → Ftr → Bool
 eq-ftr (nf k) (nf m) = k == m
-eq-ftr (sf s') (sf t') = eq-chars s' t'
+eq-ftr (sf s') (sf t') = s' =cs t'
 eq-ftr _ _ = false
 
-eq-termoid : {b1 b2 : Bool} → Termoid b1 → Termoid b2 → Bool
-eq-termoid (var k) (var m) = k == m
-eq-termoid (fun f ts) (fun g ss) = eq-ftr f g && eq-termoid ts ss
-eq-termoid nil nil = true
-eq-termoid (cons t' ts') (cons s' ss') = (eq-termoid t' s') && (eq-termoid ts' ss')
-eq-termoid _ _ = false
+termoid-eq : {b1 b2 : Bool} → Termoid b1 → Termoid b2 → Bool
+termoid-eq (var k) (var m) = k == m
+termoid-eq (fun f ts) (fun g ss) = eq-ftr f g && termoid-eq ts ss
+termoid-eq nil nil = true
+termoid-eq (cons t' ts') (cons s' ss') = (termoid-eq t' s') && (termoid-eq ts' ss')
+termoid-eq _ _ = false
 
 eq-term : Term → Term → Bool
-eq-term = eq-termoid 
+eq-term = termoid-eq 
 
-eq-terms : Terms → Terms → Bool
-eq-terms = eq-termoid 
+terms-eq : Terms → Terms → Bool
+terms-eq = termoid-eq 
 
 eq-list : {A : Set} → (A → A → Bool) → List A → List A → Bool
 eq-list f [] [] = true
 eq-list f (x1 ∷ xs1) (x2 ∷ xs2) = f x1 x2 && (eq-list f xs1 xs2)
 eq-list f _ _ = false
 
-eq-form : Form → Form → Bool
-eq-form (cst b0) (cst b1) = b0 ⇔ b1
-eq-form (not f) (not g) = eq-form f g
-eq-form (bct b1 f1 g1) (bct b2 f2 g2) = eq-bct b1 b2 && (eq-form f1 f2 && eq-form g1 g2)
-eq-form (qtf p' f') (qtf q' g') = (p' ⇔ q') && (eq-form f' g')
-eq-form (rel r1 ts1) (rel r2 ts2) = eq-ftr r1 r2 && eq-terms ts1 ts2
-eq-form _ _ = false
+form-eq : Form → Form → Bool
+form-eq (cst b0) (cst b1) = b0 ⇔ b1
+form-eq (not f) (not g) = form-eq f g
+form-eq (bct b1 f1 g1) (bct b2 f2 g2) = eq-bct b1 b2 && (form-eq f1 f2 && form-eq g1 g2)
+form-eq (qtf p' f') (qtf q' g') = (p' ⇔ q') && (form-eq f' g')
+form-eq (rel r1 ts1) (rel r2 ts2) = eq-ftr r1 r2 && terms-eq ts1 ts2
+form-eq _ _ = false
 
 -- pp-digit : Nat → Char
 -- pp-digit 0 = '0'
@@ -329,7 +330,7 @@ snd : {A : Set} {B : Set} → (A × B) → B
 snd (_ , y) = y
 
 chk-good-ftr : Nat → Ftr → Bool
-chk-good-ftr k (nf m) = m < k
+chk-good-ftr k (nf m) = m <n k
 chk-good-ftr _ (sf _) = true
 
 chk-good-termoid : {b : Bool} → Nat → Termoid b → Bool
@@ -351,24 +352,24 @@ chk-good-form k (not f) = chk-good-form k f
 chk-good-form k (qtf _ f) = chk-good-form k f 
 chk-good-form k (bct _ f g) = chk-good-form k f && chk-good-form k g
 
-check-gnd-termoid : {b : Bool} → Nat → Termoid b → Bool
-check-gnd-termoid k (var m) = m < k 
-check-gnd-termoid k (fun _ ts) = check-gnd-termoid k ts 
-check-gnd-termoid k nil = true
-check-gnd-termoid k (cons t ts) = check-gnd-termoid k t && check-gnd-termoid k ts
+chk-gnd-termoid : {b : Bool} → Nat → Termoid b → Bool
+chk-gnd-termoid k (var m) = m <n k 
+chk-gnd-termoid k (fun _ ts) = chk-gnd-termoid k ts 
+chk-gnd-termoid k nil = true
+chk-gnd-termoid k (cons t ts) = chk-gnd-termoid k t && chk-gnd-termoid k ts
 
-check-gnd-term : Nat → Term → Bool
-check-gnd-term = check-gnd-termoid 
+chk-gnd-term : Nat → Term → Bool
+chk-gnd-term = chk-gnd-termoid 
 
-check-gnd-terms : Nat → Terms → Bool
-check-gnd-terms = check-gnd-termoid 
+chk-gnd-terms : Nat → Terms → Bool
+chk-gnd-terms = chk-gnd-termoid 
 
-check-gnd-form : Nat → Form → Bool
-check-gnd-form k (cst _) = true
-check-gnd-form k (rel _ ts) = check-gnd-terms k ts 
-check-gnd-form k (not f) = check-gnd-form k f 
-check-gnd-form k (qtf _ f) = check-gnd-form (suc k) f 
-check-gnd-form k (bct _ f g) = check-gnd-form k f && check-gnd-form k g
+chk-gnd-form : Nat → Form → Bool
+chk-gnd-form k (cst _) = true
+chk-gnd-form k (rel _ ts) = chk-gnd-terms k ts 
+chk-gnd-form k (not f) = chk-gnd-form k f 
+chk-gnd-form k (qtf _ f) = chk-gnd-form (suc k) f 
+chk-gnd-form k (bct _ f g) = chk-gnd-form k f && chk-gnd-form k g
 
 is_eqn : Term → Term → Form → Bool
 is_eqn t s (rel (sf ('=' ∷ [])) (cons t' (cons s' nil))) = eq-term t t' && eq-term s s' 
@@ -391,49 +392,56 @@ mono-args-rgt : Nat → Terms
 mono-args-rgt 0 = nil 
 mono-args-rgt (suc k) = cons (var (k * 2)) (mono-args-rgt k)
 
--- mono-args : Nat → (Terms × Terms)
--- mono-args 0 = (nil , nil) 
--- mono-args (suc k) = 
---   let p = mono-args k 
---   in (cons (var (suc (k * 2))) (fst p) , cons (var (k * 2)) (snd p))
-
 chk-mono-fun : Nat → Nat → Form → Bool
-chk-mono-fun k m (qtf false (qtf false (bct imp (rel (sf ('=' ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) =
-  chk-mono-fun k (suc m) f
-chk-mono-fun k m (rel (sf ('=' ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) =
-  -- let (ts0' , ts1') = mono-args m in
-  chk-good-ftr k f0 && (eq-ftr f0 f1 && (eq-terms ts0 (mono-args-lft m) && eq-terms ts1 (mono-args-rgt m)))
+chk-mono-fun k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) =
+  (c =c '=') && chk-mono-fun k (suc m) f
+chk-mono-fun k m (rel (sf (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) =
+  (c =c '=') && chk-good-ftr k f0 && (eq-ftr f0 f1 && (terms-eq ts0 (mono-args-lft m) && terms-eq ts1 (mono-args-rgt m)))
 chk-mono-fun _ _ _ = false
 
 chk-mono-rel : Nat → Nat → Form → Bool
-chk-mono-rel k m (qtf false (qtf false (bct imp (rel (sf ('=' ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = 
-  chk-mono-rel k (suc m) f
+chk-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = 
+  (c =c '=') && chk-mono-rel k (suc m) f
 chk-mono-rel k m (bct imp (rel r0 ts0) (rel r1 ts1)) = 
-  -- let (ts0' , ts1') = mono-args m in
-  (chk-good-ftr k r0) && (eq-ftr r0 r1) && (eq-terms ts0 (mono-args-lft m)) && (eq-terms ts1 (mono-args-rgt m))
+  (chk-good-ftr k r0) && (eq-ftr r0 r1) && (terms-eq ts0 (mono-args-lft m)) && (terms-eq ts1 (mono-args-rgt m))
 chk-mono-rel _ _ _ = false
+
+chk-vars-lt-termoid : ∀ {b} → Nat → Termoid b → Bool
+chk-vars-lt-termoid {true} _ nil = true
+chk-vars-lt-termoid {true} k (cons t ts) = 
+  chk-vars-lt-termoid k t && chk-vars-lt-termoid k ts 
+chk-vars-lt-termoid {false} k (var m) = m <n k
+chk-vars-lt-termoid {false} k (fun _ ts) = chk-vars-lt-termoid k ts
+
+chk-vars-lt-form : Nat → Form → Bool 
+chk-vars-lt-form k (cst _) = true
+chk-vars-lt-form k (not f) = chk-vars-lt-form k f
+chk-vars-lt-form k (bct _ f g) = chk-vars-lt-form k f && chk-vars-lt-form k g
+chk-vars-lt-form k (qtf _ f) = chk-vars-lt-form (suc k) f
+chk-vars-lt-form k (rel _ ts) = chk-vars-lt-termoid k ts
 
 chk-choice : Nat → Nat → Form → Bool
 chk-choice k m (qtf false f) = chk-choice k (suc m) f
 chk-choice k m (bct imp (qtf true f) g) = 
-  chk-good-form k f && 
-  ( eq-form (subst-form 0 (skolem-term-asc k m) f) g || 
-    eq-form (subst-form 0 (skolem-term-desc k m) f) g ) 
+  chk-good-form k f && chk-vars-lt-form (suc m) f && 
+  ( form-eq (subst-form 0 (skolem-term-asc k m) f) g || 
+    form-eq (subst-form 0 (skolem-term-desc k m) f) g ) 
 chk-choice _ _ _ = false
 
 chk-pred-def : Nat → Nat → Form → Bool
 chk-pred-def k a (qtf false f) = chk-pred-def k (suc a) f
 chk-pred-def k a (bct iff (rel (nf m) ts) f) = 
-  chk-good-form k f && ((k == m) && (eq-terms ts (vars-asc a) || eq-terms ts (vars-desc a)))
+  (k == m) && (chk-good-form k f) && (chk-vars-lt-form a f) && 
+    (terms-eq ts (vars-asc a) || terms-eq ts (vars-desc a))
 chk-pred-def _ _ _ = false
 
-check-jst : Nat → Form → Bool
-check-jst k f =  
-  eq-form f (cst true) ||
-  eq-form f (not (cst false)) ||
-  eq-form f refl-axiom ||
-  eq-form f symm-axiom || 
-  eq-form f trans-axiom || 
+chk-jst : Nat → Form → Bool
+chk-jst k f =  
+  form-eq f (cst true) ||
+  form-eq f (not (cst false)) ||
+  form-eq f refl-axiom ||
+  form-eq f symm-axiom || 
+  form-eq f trans-axiom || 
   chk-mono-rel k 0 f || 
   chk-mono-fun k 0 f || 
   chk-choice k 0 f ||
@@ -443,7 +451,7 @@ just-if : Bool → Maybe ⊤
 just-if true = just tt
 just-if false = nothing
 
-suc-inj : ∀  {A : Set} {a b : Nat} → (suc a ≡ suc b) → a ≡ b
+suc-inj : ∀ {a b : Nat} → (suc a ≡ suc b) → a ≡ b
 suc-inj refl = refl
 
 just-inj : ∀  {A : Set} {a b : A} → (just a ≡ just b) → a ≡ b
