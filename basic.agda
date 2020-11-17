@@ -2,8 +2,11 @@ module basic where
 
 open import Agda.Builtin.Nat
   renaming (_<_ to _<n_)
+  renaming (_==_ to _=n_)
+open import Data.Nat.DivMod
 open import Agda.Builtin.Equality
 open import Data.Bool
+  renaming (T to tr)
   renaming (not to bnot)
   renaming (_∧_ to _&&_)
   renaming (_<_ to _<b_)
@@ -22,7 +25,7 @@ open import Data.List
   renaming (or to disj) 
   renaming (and to conj)
   renaming (concat to concat-list)
-open import Data.List.Membership.Setoid using (_∈_) 
+open import Relation.Nullary 
 open import Data.Product
   renaming (map to map2)
 open import Data.Unit  
@@ -30,6 +33,10 @@ open import Data.Maybe
   renaming (_>>=_ to _?>=_)
   renaming (map to map?)
 open import Data.Nat.Show
+open import Data.Empty
+
+postulate LEM : (A : Set) → Dec A
+postulate FX : ∀ {A B : Set} (f g : A → B) (h : ∀ a → f a ≡ f a) → f ≡ g
 
 Chars : Set
 Chars = List Char 
@@ -41,11 +48,6 @@ pred (suc k) = k
 data Ftr : Set where
   nf : Nat → Ftr
   sf : Chars → Ftr
-
--- _=ft_ : Ftr → Ftr → Bool
--- (nf k) =ft (nf m) = k == m  
--- (sf s) =ft (sf t) = s =cs t
--- _ =ft _ = false
 
 ElemList : Set → Bool → Set 
 ElemList A false = A
@@ -111,7 +113,7 @@ get-bch : Bch → Nat → Maybe Form
 get-bch B k = rev-index (length B) k ?>= \ m → nth m B
 
 tri : ∀ {A : Set} → Nat → A → A → A → Nat → A
-tri k a b c m = if k <n m then a else if k == m then b else c
+tri k a b c m = if k <n m then a else if k =n m then b else c
 
 subst-termoid : {b : Bool} → Nat → Term → Termoid b → Termoid b
 subst-termoid k t (var m) = tri k (var (pred m)) t (var m) m
@@ -207,44 +209,31 @@ chars-to-nat-acc k (c ∷ cs) = char-to-nat c ?>= \ m → chars-to-nat-acc ((k *
 chars-to-nat : List Char → Maybe Nat  
 chars-to-nat = chars-to-nat-acc 0
 
-
--- _&_ : Bool → Bool → Bool 
--- _&_ true true = true 
--- _&_ _ _ = false
-
--- _||_ : Bool → Bool → Bool 
--- _||_ true _ = true 
--- _||_ _ true = true
--- _||_ _ _ = false
-
 _⇔_ : Bool → Bool → Bool 
 true ⇔ true = true
 false ⇔ false = true
 _ ⇔ _  = false
 
-eq-bct : Bct → Bct → Bool
-eq-bct or or = true
-eq-bct and and = true
-eq-bct imp imp = true
-eq-bct iff iff = true
-eq-bct _ _ = false
+bct-eq : Bct → Bct → Bool
+bct-eq or or = true
+bct-eq and and = true
+bct-eq imp imp = true
+bct-eq iff iff = true
+bct-eq _ _ = false
 
--- eq-chars : Chars → Chars → Bool
--- eq-chars s t = (fromList s) =s (fromList t)
+chars-eq : Chars → Chars → Bool
+chars-eq [] [] = true
+chars-eq (c0 ∷ cs0) (c1 ∷ cs1) = (c0 =c c1) && (chars-eq cs0 cs1)
+chars-eq _ _ = false
 
-_=cs_ : Chars → Chars → Bool
-[] =cs [] = true
-(c0 ∷ cs0) =cs (c1 ∷ cs1) = (c0 =c c1) && (cs0 =cs cs1)
-_ =cs _ = false
-
-eq-ftr : Ftr → Ftr → Bool
-eq-ftr (nf k) (nf m) = k == m
-eq-ftr (sf s') (sf t') = s' =cs t'
-eq-ftr _ _ = false
+ftr-eq : Ftr → Ftr → Bool
+ftr-eq (nf k) (nf m) = k =n m
+ftr-eq (sf s') (sf t') = chars-eq s' t'
+ftr-eq _ _ = false
 
 termoid-eq : {b1 b2 : Bool} → Termoid b1 → Termoid b2 → Bool
-termoid-eq (var k) (var m) = k == m
-termoid-eq (fun f ts) (fun g ss) = eq-ftr f g && termoid-eq ts ss
+termoid-eq (var k) (var m) = k =n m
+termoid-eq (fun f ts) (fun g ss) = ftr-eq f g && termoid-eq ts ss
 termoid-eq nil nil = true
 termoid-eq (cons t' ts') (cons s' ss') = (termoid-eq t' s') && (termoid-eq ts' ss')
 termoid-eq _ _ = false
@@ -263,27 +252,27 @@ eq-list f _ _ = false
 form-eq : Form → Form → Bool
 form-eq (cst b0) (cst b1) = b0 ⇔ b1
 form-eq (not f) (not g) = form-eq f g
-form-eq (bct b1 f1 g1) (bct b2 f2 g2) = eq-bct b1 b2 && (form-eq f1 f2 && form-eq g1 g2)
+form-eq (bct b1 f1 g1) (bct b2 f2 g2) = bct-eq b1 b2 && (form-eq f1 f2 && form-eq g1 g2)
 form-eq (qtf p' f') (qtf q' g') = (p' ⇔ q') && (form-eq f' g')
-form-eq (rel r1 ts1) (rel r2 ts2) = eq-ftr r1 r2 && terms-eq ts1 ts2
+form-eq (rel r1 ts1) (rel r2 ts2) = ftr-eq r1 r2 && terms-eq ts1 ts2
 form-eq _ _ = false
 
--- pp-digit : Nat → Char
--- pp-digit 0 = '0'
--- pp-digit 1 = '1'
--- pp-digit 2 = '2'
--- pp-digit 3 = '3'
--- pp-digit 4 = '4'
--- pp-digit 5 = '5'
--- pp-digit 6 = '6'
--- pp-digit 7 = '7'
--- pp-digit 8 = '8'
--- pp-digit 9 = '9'
--- pp-digit _ = 'E'
--- 
--- pp-nat : Nat → String
--- pp-nat k = if k < 10 then [ pp-digit k ] else (pp-nat (k / 10)) ++ [ (pp-digit (k % 10)) ]
--- _∧_
+pp-digit : Nat → Char
+pp-digit 0 = '0'
+pp-digit 1 = '1'
+pp-digit 2 = '2'
+pp-digit 3 = '3'
+pp-digit 4 = '4'
+pp-digit 5 = '5'
+pp-digit 6 = '6'
+pp-digit 7 = '7'
+pp-digit 8 = '8'
+pp-digit 9 = '9'
+pp-digit _ = 'E'
+
+{-# NON_TERMINATING #-}
+pp-nat : Nat → Chars
+pp-nat k = if k <n 10 then [ pp-digit k ] else (pp-nat (k / 10)) ++ [ (pp-digit (k % 10)) ]
 
 pp-list-core : {A : Set} → (A → String) → List A → String 
 pp-list-core f [] = "]"
@@ -396,14 +385,14 @@ chk-mono-fun : Nat → Nat → Form → Bool
 chk-mono-fun k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) =
   (c =c '=') && chk-mono-fun k (suc m) f
 chk-mono-fun k m (rel (sf (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) =
-  (c =c '=') && chk-good-ftr k f0 && (eq-ftr f0 f1 && (terms-eq ts0 (mono-args-lft m) && terms-eq ts1 (mono-args-rgt m)))
+  (c =c '=') && chk-good-ftr k f0 && (ftr-eq f0 f1 && (terms-eq ts0 (mono-args-lft m) && terms-eq ts1 (mono-args-rgt m)))
 chk-mono-fun _ _ _ = false
 
 chk-mono-rel : Nat → Nat → Form → Bool
 chk-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = 
   (c =c '=') && chk-mono-rel k (suc m) f
 chk-mono-rel k m (bct imp (rel r0 ts0) (rel r1 ts1)) = 
-  (chk-good-ftr k r0) && (eq-ftr r0 r1) && (terms-eq ts0 (mono-args-lft m)) && (terms-eq ts1 (mono-args-rgt m))
+  (chk-good-ftr k r0) && (ftr-eq r0 r1) && (terms-eq ts0 (mono-args-lft m)) && (terms-eq ts1 (mono-args-rgt m))
 chk-mono-rel _ _ _ = false
 
 chk-vars-lt-termoid : ∀ {b} → Nat → Termoid b → Bool
@@ -431,7 +420,7 @@ chk-choice _ _ _ = false
 chk-pred-def : Nat → Nat → Form → Bool
 chk-pred-def k a (qtf false f) = chk-pred-def k (suc a) f
 chk-pred-def k a (bct iff (rel (nf m) ts) f) = 
-  (k == m) && (chk-good-form k f) && (chk-vars-lt-form a f) && 
+  (k =n m) && (chk-good-form k f) && (chk-vars-lt-form a f) && 
     (terms-eq ts (vars-asc a) || terms-eq ts (vars-desc a))
 chk-pred-def _ _ _ = false
 
@@ -457,3 +446,218 @@ suc-inj refl = refl
 just-inj : ∀  {A : Set} {a b : A} → (just a ≡ just b) → a ≡ b
 just-inj refl = refl
 
+id : ∀ {l} {A : Set l} → A → A 
+id x = x
+
+eq-elim : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p x → p y 
+eq-elim p refl = id
+
+eq-elim' : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p y → p x 
+eq-elim' p refl = id
+
+eq-elim-2 : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} (p : A → B → Set) → 
+  a0 ≡ a1 → b0 ≡ b1 → p a0 b0 → p a1 b1 
+eq-elim-2 p refl refl = id
+
+eq-elim-3 : ∀ {A B C : Set} {a0 a1 : A} {b0 b1 : B} {c0 c1 : C} (p : A → B → C → Set) → 
+  a0 ≡ a1 → b0 ≡ b1 → c0 ≡ c1 → p a0 b0 c0 → p a1 b1 c1
+eq-elim-3 p refl refl refl = id
+
+eq-elim-4 : ∀ {A B C D : Set} {a0 a1 : A} {b0 b1 : B} 
+  {c0 c1 : C} {d0 d1 : D} (p : A → B → C → D → Set) → 
+  a0 ≡ a1 → b0 ≡ b1 → c0 ≡ c1 → d0 ≡ d1 → p a0 b0 c0 d0 → p a1 b1 c1 d1
+eq-elim-4 p refl refl refl refl = id
+
+eq-trans : ∀ {A : Set} {x : A} (y : A) {z : A} → x ≡ y → y ≡ z → x ≡ z
+eq-trans _ refl refl = refl
+
+eq-symm : ∀ {A : Set} {x : A} {y : A} → x ≡ y → y ≡ x
+eq-symm refl = refl
+
+data _<_ : Nat → Nat → Set where
+  0< : ∀ k → 0 < (suc k)
+  suc< : ∀ k m → k < m → suc k < suc m
+
+_>_ : Nat → Nat → Set 
+k > m = m < k
+
+infixr 20 _∧_ 
+_∧_ = _×_
+
+infixr 20 _∨_ 
+data _∨_ : Set → Set → Set where
+  or-lft  : ∀ {A B : Set} → A → A ∨ B
+  or-rgt : ∀ {A B : Set} → B → A ∨ B
+
+∨-comm : ∀ {A B} → A ∨ B → B ∨ A
+∨-comm (or-lft h) = or-rgt h
+∨-comm (or-rgt h) = or-lft h
+
+_↔_ : Set → Set → Set
+A ↔ B = (A → B) ∧ (B → A)
+
+and-symm : ∀ {A B : Set} → (A ∧ B) → (B ∧ A)
+and-symm h = snd h , fst h
+
+or-elim : ∀ {A B C : Set} → A ∨ B → (A → C) → (B → C) → C
+or-elim (or-lft x) f g = f x
+or-elim (or-rgt x) f g = g x
+
+or-elim' : ∀ {A B C : Set} → (A → C) → (B → C) → (A ∨ B) → C
+or-elim' ha hb hab = or-elim hab ha hb
+
+ex-elim : ∀ {A B : Set} {P : A → Set} → (∃ P) → (∀ (x : A) → P x → B) → B
+ex-elim (a , h0) h1 = h1 a h0
+
+ex-elim-2 : ∀ {A B C : Set} {P : A → B → Set} → 
+  (∃ λ a → ∃ (P a)) → (∀ (x : A) (y : B) → P x y → C) → C
+ex-elim-2 (a , (b , h0)) h1 = h1 a b h0
+
+ex-elim-3 : ∀ {A B C D : Set} {P : A → B → C → Set} → 
+  (∃ λ a → ∃ λ b → ∃ λ c → (P a b c)) → (∀ a b c → P a b c → D) → D
+ex-elim-3 (a , (b , (c , h0))) h1 = h1 a b c h0
+
+ex-elim' : ∀ {A B : Set} {P : A → Set} → (∀ (x : A) → P x → B) → (∃ P) → B
+ex-elim' h0 (a , h1) = h0 a h1
+
+ex-elim-3' : ∀ {A B C D : Set} {P : A → B → C → Set} → 
+  (∀ a b c → P a b c → D) → (∃ λ a → ∃ λ b → ∃ λ c → (P a b c)) → D
+ex-elim-3' h0 (a , (b , (c , h1))) = h0 a b c h1
+
+_∈_ : {A : Set} → A → List A → Set
+a0 ∈ [] = ⊥ 
+a0 ∈ (a1 ∷ as) = (a0 ≡ a1) ∨ (a0 ∈ as)
+
+pall : {A : Set} → (A → Set) → List A → Set
+pall {A} p l = ∀ (x : A) →  (x ∈ l) → p x
+
+pall-nil : {A : Set} {p : A → Set} → pall p []
+pall-nil {A} {p} x = ⊥-elim
+
+fs : Bool → Set
+fs true  = ⊥
+fs false = ⊤
+
+cong :
+  {A : Set}
+  {B : Set}
+  (f : A → B)
+  {x y : A}
+  (p : x ≡ y)
+  → -----------
+  f x ≡ f y
+cong _ refl = refl
+
+cong-2 :
+  {A B C : Set}
+  (f : A → B → C)
+  {x y : A}
+  {z w : B}
+  (p : x ≡ y)
+  (q : z ≡ w)
+  → -----------
+  f x z ≡ f y w
+cong-2 _ refl refl = refl
+
+cong-3 : ∀ {A B C D : Set} (f : A → B → C → D) 
+  {a0 a1 : A} {b0 b1 : B} {c0 c1 : C} → a0 ≡ a1 → b0 ≡ b1 → c0 ≡ c1 → f a0 b0 c0 ≡ f a1 b1 c1
+cong-3  f refl refl refl = refl 
+
+elim-bool-absurd : ∀ {b : Bool} {A : Set} → tr b → fs b → A 
+elim-bool-absurd {true} _ ()
+elim-bool-absurd {false} ()
+
+trichotomy : ∀ k m → ((k < m) ∨ ((k ≡ m) ∨ (k > m)))
+trichotomy 0 0 = or-rgt (or-lft refl)
+trichotomy 0 (suc m) = or-lft (0< _)
+trichotomy (suc k) 0 = or-rgt (or-rgt (0< _))
+trichotomy (suc k) (suc m) = 
+  or-elim (trichotomy k m) 
+    (\ h0 → or-lft (suc< _ _ h0)) 
+    \ h0 → or-elim h0 
+      (\ h1 → or-rgt (or-lft (cong suc h1))) 
+      \ h1 → or-rgt (or-rgt (suc< _ _ h1))
+
+lt-to-nat-lt : ∀ k m → k < m → tr (k <n m) 
+lt-to-nat-lt 0 (suc m) (0< m) = tt
+lt-to-nat-lt (suc k) (suc m) (suc< k m h) = lt-to-nat-lt k m h
+
+nat-lt-to-lt : ∀ k m → tr (k <n m) → k < m
+nat-lt-to-lt _ 0  ()
+nat-lt-to-lt 0 (suc m) _ = 0< m 
+nat-lt-to-lt (suc k) (suc m) h = suc< k m (nat-lt-to-lt k m h)
+
+eq-to-nat-eq : ∀ k m → k ≡ m → tr (k =n m) 
+eq-to-nat-eq 0 0 refl = tt
+eq-to-nat-eq (suc k) (suc m) h = eq-to-nat-eq k m (suc-inj h) 
+
+nat-eq-to-eq : ∀ {k m : Nat} → tr (k =n m) → k ≡ m
+nat-eq-to-eq {0} {0} _ = refl
+nat-eq-to-eq {0} {suc m} ()
+nat-eq-to-eq {suc k} {0} ()
+nat-eq-to-eq {suc k} {suc m} h = cong suc (nat-eq-to-eq h)
+  
+<-to-<-suc : ∀ (k : Nat) (m : Nat) → (k < m) → (k < (suc m))
+<-to-<-suc 0 m _ = 0< _
+<-to-<-suc (suc k) 0 ()
+<-to-<-suc (suc k) (suc m) (suc< k m h) = suc< k _ (<-to-<-suc k m h)
+
+not-<-self : ∀ k → ¬ (k < k)
+not-<-self 0 ()
+not-<-self (suc k) (suc< m m h) = not-<-self k h
+
+lt-to-not-eq : ∀ k m → k < m → ¬ (k ≡ m)
+lt-to-not-eq k m h0 h1 = not-<-self m (eq-elim (λ x → x < m) h1 h0)
+
+<-to-not-> : ∀ k m → k < m → ¬ (k > m)
+<-to-not-> 0 0 ()
+<-to-not-> 0 (suc k) _ ()
+<-to-not-> (suc k) 0 ()
+<-to-not-> (suc k) (suc m) (suc< _ _ h0) (suc< _ _ h1) = 
+  <-to-not-> _ _ h0 h1
+
+intro-ite-lem : ∀ {A : Set} {x y : A} (b : Bool) → 
+  (P : A → Set) → (tr b → P x) → (fs b → P y) → P (if b then x else y)
+intro-ite-lem false P hx hy = hy tt
+intro-ite-lem true  P hx hy = hx tt
+
+use-lem : ∀ (A : Set) {B : Set} → (A → B) → ((¬ A) → B) → B
+use-lem A h0 h1 with LEM A 
+... | (yes h2) = h0 h2
+... | (no h2)  = h1 h2
+
+not-or-lft : ∀ {A B : Set} → ¬ (A ∨ B) → ¬ A 
+not-or-lft h0 h1 = h0 (or-lft h1)  
+
+not-or-rgt : ∀ {A B : Set} → ¬ (A ∨ B) → ¬ B 
+not-or-rgt h0 h1 = h0 (or-rgt h1)  
+
+not-imp-lft : ∀ {A B : Set} → ¬ (A → B) → A 
+not-imp-lft {A} {B} h0 = use-lem  A id \ h1 → ⊥-elim (h0 \ h2 → ⊥-elim (h1 h2))
+
+not-imp-rgt : ∀ {A B : Set} → ¬ (A → B) → ¬ B 
+not-imp-rgt {A} {B} h0 h1 = ⊥-elim (h0 \ h2 → h1)
+
+imp-to-not-or :  ∀ {A B} → (A → B) → ((¬ A) ∨ B)
+imp-to-not-or {A} {B} h0 = use-lem A (\ h1 → or-rgt (h0 h1)) or-lft 
+
+not-and-to-not-or-not :  ∀ {A B} → ¬ (A ∧ B) → ((¬ A) ∨ (¬ B))
+not-and-to-not-or-not {A} {B} h0 = use-lem A 
+  (\ h1 → use-lem B (\ h2 → ⊥-elim (h0 (h1 , h2))) or-rgt) 
+  or-lft
+
+prod-inj-lft : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} → 
+  (a0 , b0) ≡ (a1 , b1) → a0 ≡ a1
+prod-inj-lft refl = refl
+
+prod-inj-rgt : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} → 
+  (a0 , b0) ≡ (a1 , b1) → b0 ≡ b1
+prod-inj-rgt refl = refl
+
+elim-bor : ∀ {A : Set} b1 b2 → (tr b1 → A) → (tr b2 → A) → tr (b1 || b2) → A
+elim-bor true _ h0 _ h2 = h0 tt
+elim-bor _ true _ h1 h2 = h1 tt
+
+biff-to-eq : ∀ {b0 b1} → tr (b0 ⇔ b1) → (b0 ≡ b1)
+biff-to-eq {true} {true} _ = refl
+biff-to-eq {false} {false} _ = refl

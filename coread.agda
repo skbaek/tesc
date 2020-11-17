@@ -5,7 +5,7 @@ open import Data.Product
 open import Data.Bool
   renaming (not to bnot)
 open import Data.Char
-  renaming (_==_ to _==c_)
+  renaming (_==_ to _=c_)
 open import Agda.Builtin.Nat
 open import Data.List
   renaming (or to disj)

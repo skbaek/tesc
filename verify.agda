@@ -134,7 +134,7 @@ read-form _ = fail
 get-from-prob : Prob → Chars → Read Form
 get-from-prob [] _ = fail
 get-from-prob ((n , f) ∷ P) cs = 
-  if n =cs cs 
+  if (chars-eq n cs) 
   then pass f 
   else get-from-prob P cs
 
@@ -156,7 +156,6 @@ verify-c : Bch → Nat → Read Form
 verify-c B k = do
   m ← read-nat 
   t ← read-term k
-  -- pass-if $ gnd-term 0 t
   pass-if $ chk-good-term (suc (length B)) t
   lift-read (get-bch B m o>= break-c t)
 
@@ -209,7 +208,7 @@ chk-mono-rel k m f =
       (g , h) ← break-imp f
       (r0 , ts0) ← break-rel g 
       (r1 , ts1) ← break-rel h 
-      pass-if (r0 =ft r1)
+      pass-if (ftr-eq r0 r1)
       chk-mono-args ts0 ts1 )
   
 
@@ -228,7 +227,6 @@ verify-t : Bch → Nat → Read Form
 verify-t B k = do 
   f ← read-form k
   pass-if (chk-jst (length B) f)
-  -- pass-if (chk-good-form (suc (length B)) f)
   pass f
 
 verify-x : Bch → Read ⊤

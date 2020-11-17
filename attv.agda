@@ -6,7 +6,7 @@ open import Agda.Builtin.Nat
 open import Data.Integer
 open import Data.Product
 open import Agda.Builtin.String
-open import Data.List -- renaming (or to disj) renaming(and to conj)
+open import Data.List 
 open import Data.Maybe.Base 
   renaming (map to map?)
   renaming (_>>=_ to _?>=_)
@@ -21,9 +21,6 @@ open import verify
 open import coread 
   renaming (_>>=_ to _c>=_)
   renaming (_>>_ to _c>_)
--- open import iof 
---   renaming (_>>=_ to _f>=_)
---   renaming (_>>_ to _f>_)
 
 postulate 
   prim-get-args : Prim.IO (List String)
@@ -44,17 +41,14 @@ _>>=_ f g = ♯ f >>>= \ x → ♯ (g x)
 _>>_  : {A : Set} {B : Set} →  IO A → IO B → IO B
 _>>_ f g = ♯ f >>> ♯ g 
 
-_#>=_ : {A : Set} {B : Set} → IO A → (A → IO B) → IO B
-_#>=_ f g = ♯ f >>>= \ x → ♯ (g x)
-
-_#>_  : {A : Set} {B : Set} →  IO A → IO B → IO B
-_#>_ f g = ♯ f >>> ♯ g 
+nop : IO ⊤ 
+nop = lift (Prim.return tt)
 
 get-args : IO (List String)
 get-args = lift prim-get-args
 
 put-str-ln : String → IO ⊤
-put-str-ln s = putStr s #> putStr "\n"
+put-str-ln s = putStr s >> (putStr "\n" >> nop) 
 
 io-verify = do 
   (pn ∷ x) ← get-args
