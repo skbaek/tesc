@@ -1,4 +1,7 @@
-:- [basic, paths].
+#!/usr/bin/env swipl
+:- initialization(main, main).
+
+:- [basic].
 
 main :- 
   current_prolog_flag(argv, [PROB_PATH, PRF_PATH | OPTS]), 

@@ -409,6 +409,9 @@ writeln_list([Elem | List]) :-
   format('~w\n', Elem),
   writeln_list(List).
 
+formatln(PTN, LIST) :- 
+  format(PTN, LIST), nl.
+
 strings_concat([], "").
 
 strings_concat([Str | Strs], NewStr) :- 
@@ -2099,12 +2102,18 @@ call_solver(e, PROB_PATH, SOL_PATH) :-
 
 call_solver(v, PROB_PATH, SOL_PATH) :- 
   tptp_folder(TPTP),
-  concat_shell(["vampire --output_axiom_names on --proof tptp --include ", TPTP, PROB_PATH, " > temp.tstp"], _),  
+  writeln("1!!"),
+  concat_shell(["vampire --output_axiom_names on --proof tptp --include ", TPTP, " ", PROB_PATH, " > temp.tstp"], _),  
+  writeln("2!!"),
   (
     any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
+    writeln("3!!"),
     concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", SOL_PATH], 0), 
-    delete_file('temp.tstp')
+    writeln("4!!"),
+    % delete_file('temp.tstp')
+    true
   ;
-    delete_file('temp.tstp'),
+    % delete_file('temp.tstp'),
+    writeln("5!!"),
     false
   ).

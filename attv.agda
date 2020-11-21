@@ -6,21 +6,28 @@ open import Agda.Builtin.Nat
 open import Data.Integer
 open import Data.Product
 open import Agda.Builtin.String
-open import Data.List 
+open import Data.List  
 open import Data.Maybe.Base 
-  renaming (map to map?)
-  renaming (_>>=_ to _?>=_)
+  using (just)
+  using (nothing)
 open import Agda.Builtin.Coinduction
 import IO.Primitive as Prim
 open import IO
   renaming (_>>=_ to _>>>=_)
   renaming (_>>_ to _>>>_)
 open import verify 
-  renaming (_>>=_ to _r>=_)
-  renaming (_>>_ to _r>_)
-open import coread 
-  renaming (_>>=_ to _c>=_)
-  renaming (_>>_ to _c>_)
+  using (verif)
+-- open import coread using (coread-prob) 
+open import Codata.Musical.Colist 
+  renaming (length to length*) 
+  renaming (map to map*) 
+  renaming ([_] to [_]*) 
+  renaming (_∷_ to _∷*_) 
+  renaming (_++_ to _++*_) 
+open import Codata.Musical.Costring 
+open import Data.Bool using (if_then_else_)
+open import basic using (Chars)
+
 
 postulate 
   prim-get-args : Prim.IO (List String)
@@ -41,25 +48,43 @@ _>>=_ f g = ♯ f >>>= \ x → ♯ (g x)
 _>>_  : {A : Set} {B : Set} →  IO A → IO B → IO B
 _>>_ f g = ♯ f >>> ♯ g 
 
-nop : IO ⊤ 
-nop = lift (Prim.return tt)
+skip : IO ⊤ 
+skip = lift (Prim.return tt)
 
 get-args : IO (List String)
 get-args = lift prim-get-args
 
 put-str-ln : String → IO ⊤
-put-str-ln s = putStr s >> (putStr "\n" >> nop) 
+put-str-ln s = putStr s >> (putStr "\n" >> skip) 
 
+-- io-verify : IO ⊤ 
+-- io-verify = do 
+--   (pn ∷ x) ← get-args
+--     where [] → (put-str-ln "No proof file name provided." >> exit-failure)
+--   ps ← getContents
+--   (just (P , _)) ← return (coread-prob ps)
+--     where nothing → (put-str-ln "Failed to load problem." >> exit-failure)
+--   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
+--   (just (tt , _)) ← return (verify P [] (length cs) cs) 
+--     where nothing → (put-str-ln "Invalid proof." >> exit-failure)
+--   put-str-ln "ATTV : Proof verified."
+
+costring-to-chars : Costring → Chars 
+costring-to-chars (c ∷* cs) = c ∷ costring-to-chars (♭ cs)
+costring-to-chars _ = []
+
+io-verify : IO ⊤ 
 io-verify = do 
   (pn ∷ x) ← get-args
     where [] → (put-str-ln "No proof file name provided." >> exit-failure)
   ps ← getContents
-  (just (P , _)) ← return (coread-prob ps)
-    where nothing → (put-str-ln "Failed to load problem." >> exit-failure)
+--   (just (P , _)) ← return (coread-prob ps)
+--     where nothing → (put-str-ln "Failed to load problem." >> exit-failure)
   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
-  (just (tt , _)) ← return (verify P [] (length cs) cs) 
-    where nothing → (put-str-ln "Invalid proof." >> exit-failure)
-  put-str-ln "ATTV : Proof verified."
+  if (verif (costring-to-chars ps) cs) 
+    then put-str-ln "ATTV : Proof verified."
+    else (put-str-ln "Invalid proof." >> exit-failure)
+  -- put-str-ln "ATTV : Proof verified."
 
 main : Prim.IO ⊤ 
 main = run io-verify

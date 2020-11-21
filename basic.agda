@@ -34,9 +34,15 @@ open import Data.Maybe
   renaming (map to map?)
 open import Data.Nat.Show
 open import Data.Empty
+open import Relation.Nullary.Decidable using (toWitness)
 
 postulate LEM : (A : Set) → Dec A
 postulate FX : ∀ {A B : Set} (f g : A → B) (h : ∀ a → f a ≡ f a) → f ≡ g
+
+elim-lem : ∀ (A : Set) {B : Set} → (A → B) → ((¬ A) → B) → B
+elim-lem A h0 h1 with LEM A 
+... | (yes h2) = h0 h2
+... | (no h2)  = h1 h2
 
 Chars : Set
 Chars = List Char 
@@ -151,11 +157,11 @@ vars-desc (suc k) = cons (var k) (vars-desc k)
 vars-asc : Nat → Terms
 vars-asc k = rev-terms (vars-desc k) nil
 
-skolem-term-asc : Nat → Nat → Term
-skolem-term-asc k a = fun (nf k) (vars-asc a)
+skm-term-asc : Nat → Nat → Term
+skm-term-asc k a = fun (nf k) (vars-asc a)
 
-skolem-term-desc : Nat → Nat → Term
-skolem-term-desc k a = fun (nf k) (vars-desc a)
+skm-term-desc : Nat → Nat → Term
+skm-term-desc k a = fun (nf k) (vars-desc a)
 
 break-a : Bool → Form → Maybe Form 
 break-a true  (bct and f _) = just f
@@ -413,8 +419,8 @@ chk-choice : Nat → Nat → Form → Bool
 chk-choice k m (qtf false f) = chk-choice k (suc m) f
 chk-choice k m (bct imp (qtf true f) g) = 
   chk-good-form k f && chk-vars-lt-form (suc m) f && 
-  ( form-eq (subst-form 0 (skolem-term-asc k m) f) g || 
-    form-eq (subst-form 0 (skolem-term-desc k m) f) g ) 
+  ( form-eq (subst-form 0 (skm-term-asc k m) f) g || 
+    form-eq (subst-form 0 (skm-term-desc k m) f) g ) 
 chk-choice _ _ _ = false
 
 chk-pred-def : Nat → Nat → Form → Bool
@@ -449,11 +455,14 @@ just-inj refl = refl
 id : ∀ {l} {A : Set l} → A → A 
 id x = x
 
+elim-eq : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → p x → x ≡ y → p y 
+elim-eq p h0 refl = h0
+
 eq-elim : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p x → p y 
 eq-elim p refl = id
 
-eq-elim' : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p y → p x 
-eq-elim' p refl = id
+eq-elim-symm : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p y → p x 
+eq-elim-symm p refl = id
 
 eq-elim-2 : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} (p : A → B → Set) → 
   a0 ≡ a1 → b0 ≡ b1 → p a0 b0 → p a1 b1 
@@ -528,11 +537,20 @@ _∈_ : {A : Set} → A → List A → Set
 a0 ∈ [] = ⊥ 
 a0 ∈ (a1 ∷ as) = (a0 ≡ a1) ∨ (a0 ∈ as)
 
+
 pall : {A : Set} → (A → Set) → List A → Set
 pall {A} p l = ∀ (x : A) →  (x ∈ l) → p x
 
 pall-nil : {A : Set} {p : A → Set} → pall p []
 pall-nil {A} {p} x = ⊥-elim
+
+rt : Set → Bool
+rt A = elim-lem A (λ _ → true) (λ _ → false)
+
+tr-rt-iff : ∀ {A : Set} → tr (rt A) ↔ A 
+tr-rt-iff {A} with LEM A 
+... | (yes h0) = (λ _ → h0) , (λ _ → tt)
+... | (no h0) = ⊥-elim , h0
 
 fs : Bool → Set
 fs true  = ⊥
@@ -597,34 +615,28 @@ nat-eq-to-eq {0} {suc m} ()
 nat-eq-to-eq {suc k} {0} ()
 nat-eq-to-eq {suc k} {suc m} h = cong suc (nat-eq-to-eq h)
   
-<-to-<-suc : ∀ (k : Nat) (m : Nat) → (k < m) → (k < (suc m))
-<-to-<-suc 0 m _ = 0< _
-<-to-<-suc (suc k) 0 ()
-<-to-<-suc (suc k) (suc m) (suc< k m h) = suc< k _ (<-to-<-suc k m h)
+lt-to-lt-suc : ∀ (k : Nat) (m : Nat) → (k < m) → (k < (suc m))
+lt-to-lt-suc 0 m _ = 0< _
+lt-to-lt-suc (suc k) 0 ()
+lt-to-lt-suc (suc k) (suc m) (suc< k m h) = suc< k _ (lt-to-lt-suc k m h)
 
-not-<-self : ∀ k → ¬ (k < k)
-not-<-self 0 ()
-not-<-self (suc k) (suc< m m h) = not-<-self k h
+not-lt-self : ∀ k → ¬ (k < k)
+not-lt-self 0 ()
+not-lt-self (suc k) (suc< m m h) = not-lt-self k h
 
 lt-to-not-eq : ∀ k m → k < m → ¬ (k ≡ m)
-lt-to-not-eq k m h0 h1 = not-<-self m (eq-elim (λ x → x < m) h1 h0)
+lt-to-not-eq k m h0 h1 = not-lt-self m (eq-elim (λ x → x < m) h1 h0)
 
-<-to-not-> : ∀ k m → k < m → ¬ (k > m)
-<-to-not-> 0 0 ()
-<-to-not-> 0 (suc k) _ ()
-<-to-not-> (suc k) 0 ()
-<-to-not-> (suc k) (suc m) (suc< _ _ h0) (suc< _ _ h1) = 
-  <-to-not-> _ _ h0 h1
+lt-to-not-gt : ∀ k m → k < m → ¬ (k > m)
+lt-to-not-gt 0 0 ()
+lt-to-not-gt 0 (suc k) _ ()
+lt-to-not-gt (suc k) 0 ()
+lt-to-not-gt (suc k) (suc m) (suc< _ _ h0) (suc< _ _ h1) = lt-to-not-gt _ _ h0 h1
 
 intro-ite-lem : ∀ {A : Set} {x y : A} (b : Bool) → 
   (P : A → Set) → (tr b → P x) → (fs b → P y) → P (if b then x else y)
 intro-ite-lem false P hx hy = hy tt
 intro-ite-lem true  P hx hy = hx tt
-
-use-lem : ∀ (A : Set) {B : Set} → (A → B) → ((¬ A) → B) → B
-use-lem A h0 h1 with LEM A 
-... | (yes h2) = h0 h2
-... | (no h2)  = h1 h2
 
 not-or-lft : ∀ {A B : Set} → ¬ (A ∨ B) → ¬ A 
 not-or-lft h0 h1 = h0 (or-lft h1)  
@@ -633,17 +645,17 @@ not-or-rgt : ∀ {A B : Set} → ¬ (A ∨ B) → ¬ B
 not-or-rgt h0 h1 = h0 (or-rgt h1)  
 
 not-imp-lft : ∀ {A B : Set} → ¬ (A → B) → A 
-not-imp-lft {A} {B} h0 = use-lem  A id \ h1 → ⊥-elim (h0 \ h2 → ⊥-elim (h1 h2))
+not-imp-lft {A} {B} h0 = elim-lem  A id \ h1 → ⊥-elim (h0 \ h2 → ⊥-elim (h1 h2))
 
 not-imp-rgt : ∀ {A B : Set} → ¬ (A → B) → ¬ B 
 not-imp-rgt {A} {B} h0 h1 = ⊥-elim (h0 \ h2 → h1)
 
 imp-to-not-or :  ∀ {A B} → (A → B) → ((¬ A) ∨ B)
-imp-to-not-or {A} {B} h0 = use-lem A (\ h1 → or-rgt (h0 h1)) or-lft 
+imp-to-not-or {A} {B} h0 = elim-lem A (\ h1 → or-rgt (h0 h1)) or-lft 
 
 not-and-to-not-or-not :  ∀ {A B} → ¬ (A ∧ B) → ((¬ A) ∨ (¬ B))
-not-and-to-not-or-not {A} {B} h0 = use-lem A 
-  (\ h1 → use-lem B (\ h2 → ⊥-elim (h0 (h1 , h2))) or-rgt) 
+not-and-to-not-or-not {A} {B} h0 = elim-lem A 
+  (\ h1 → elim-lem B (\ h2 → ⊥-elim (h0 (h1 , h2))) or-rgt) 
   or-lft
 
 prod-inj-lft : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} → 
@@ -661,3 +673,245 @@ elim-bor _ true _ h1 h2 = h1 tt
 biff-to-eq : ∀ {b0 b1} → tr (b0 ⇔ b1) → (b0 ≡ b1)
 biff-to-eq {true} {true} _ = refl
 biff-to-eq {false} {false} _ = refl
+
+elim-ite : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+  (P a0 → B) → (P a1 → B) → P (if b then a0 else a1) → B
+elim-ite _ true _ _ h0 _ h1 = h0 h1
+elim-ite _ false _ _ _ h0 h1 = h0 h1
+
+elim-ite' : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+  P (if b then a0 else a1) → (P a0 → B) → (P a1 → B) → B
+elim-ite' P b a0 a1 h h0 h1 = elim-ite P b a0 a1 h0 h1 h
+
+intro-ite : ∀ {A : Set} {x : A} {y : A} (b : Bool) → 
+  (P : A → Set) → P x → P y → P (if b then x else y)
+intro-ite false P hx hy = hy
+intro-ite true  P hx hy = hx
+    
+top-iff : ∀ {P} → P → (⊤ ↔ P)
+top-iff h0 = (λ _ → h0) , (λ _ → tt)
+
+lt-suc-to-eq-or-lt : ∀ k m → k < (suc m) → (k ≡ m) ∨ (k < m)
+lt-suc-to-eq-or-lt k 0 (0< 0) = or-lft refl
+lt-suc-to-eq-or-lt k (suc m) (0< (suc m)) = or-rgt (0< m)
+lt-suc-to-eq-or-lt (suc k) (suc m) (suc< k (suc m) h0) = 
+  or-elim (lt-suc-to-eq-or-lt k m h0) 
+    (λ h1 → or-lft (cong suc h1)) 
+    (λ h1 →  or-rgt (suc< _ _ h1))
+
+lt-suc-self : ∀ k → k < suc k
+lt-suc-self 0 = 0< 0
+lt-suc-self (suc k) = suc< k (suc k) (lt-suc-self k)
+
+modus-tollens : ∀ {A : Set} {B : Set} → (A → B) → ¬ B → ¬ A  
+modus-tollens h0 h1 h2 = ⊥-elim (h1 (h0 h2))
+
+maybe-absurd : ∀ {A B : Set} {x : A} → nothing ≡ (just x) → B 
+maybe-absurd ()
+
+iff-to-not-iff-not : ∀ {A B} → (A ↔ B) → ((¬ A) ↔ (¬ B))
+iff-to-not-iff-not h0 = 
+  ( (\ ha hb → ⊥-elim (ha (snd h0 hb))) , 
+    (\ hb ha → ⊥-elim (hb (fst h0 ha))) ) 
+
+or-iff-or : ∀ {A0 A1 B0 B1} → (A0 ↔ A1) → (B0 ↔ B1) → ((A0 ∨ B0) ↔ (A1 ∨ B1))
+or-iff-or ha hb = 
+  (\ h0 → or-elim h0 
+    (\ h1 → (or-lft (fst ha h1))) 
+    (\ h1 → (or-rgt (fst hb h1)))) , 
+  (\ h0 → or-elim h0 
+    (\ h1 → (or-lft (snd ha h1))) 
+    (\ h1 → (or-rgt (snd hb h1)))) 
+
+iff-symm : ∀ {A B} → (A ↔ B) → (B ↔ A) 
+iff-symm h0 = (λ h1 → snd h0 h1) , (λ h1 → fst h0 h1)
+
+iff-trans : ∀ {A} B {C} → (A ↔ B) → (B ↔ C) → (A ↔ C)
+iff-trans _ h0 h1 = 
+  (λ h2 → fst h1 (fst h0 h2)) , 
+  (λ h2 → snd h0 (snd h1 h2))
+
+and-iff-and : ∀ {A0 A1 B0 B1} → (A0 ↔ A1) → (B0 ↔ B1) → ((A0 ∧ B0) ↔ (A1 ∧ B1))
+and-iff-and ha hb = 
+  (\ h0 → (fst ha (fst h0) , fst hb (snd h0))) , 
+  (\ h0 → (snd ha (fst h0) , snd hb (snd h0)))
+
+imp-iff-imp : ∀ {A0 A1 B0 B1} → (A0 ↔ A1) → (B0 ↔ B1) → ((A0 → B0) ↔ (A1 → B1))
+imp-iff-imp ha hb = 
+  (\ h0 h1 → fst hb (h0 (snd ha h1))) , 
+  (\ h0 h1 → snd hb (h0 (fst ha h1)))
+
+iff-iff-iff : ∀ {A0 A1 B0 B1} → (A0 ↔ A1) → (B0 ↔ B1) → ((A0 ↔ B0) ↔ (A1 ↔ B1))
+iff-iff-iff ha hb =  
+  (λ h0 → iff-trans _ (iff-symm ha) (iff-trans _  h0 hb)) ,
+  (λ h0 → iff-trans _ ha (iff-trans _ h0 (iff-symm hb)))
+
+fa-iff-fa : ∀ {A} {P Q : A → Set} → (∀ a → (P a ↔ Q a)) → ((∀ a → P a) ↔ (∀ a → Q a))
+fa-iff-fa h0 = ((\ h1 a → fst (h0 a) (h1 a)) , (\h1 a → snd (h0 a) (h1 a)))
+
+ex-iff-ex : ∀ {A} {P Q : A → Set} → (∀ a → (P a ↔ Q a)) → ((∃ P) ↔ (∃ Q))
+ex-iff-ex h0 = 
+  (\ h1 → ex-elim h1 (\ a h2 → a , fst (h0 a) h2)) , 
+  (\ h2 → ex-elim h2 (\ a h2 → a , snd (h0 a) h2))
+
+dni : ∀ {A : Set} → A → (¬ (¬ A))
+dni h0 h1 = h1 h0
+
+dne : ∀ {A : Set} → (¬ ¬ A) → A 
+dne {A} h0 = elim-lem A id λ h1 → ⊥-elim (h0 h1)
+
+iff-refl : ∀ {A : Set} → (A ↔ A)
+iff-refl = (id , id)
+
+not-iff-not-to-iff : ∀ {A B} → ((¬ A) ↔ (¬ B)) → (A ↔ B)
+not-iff-not-to-iff h0 = 
+  (λ h1 → dne (λ h2 → snd h0 h2 h1)) ,
+  (λ h1 → dne (λ h2 → fst h0 h2 h1)) 
+
+eq-to-iff : ∀ {A : Set} (P : A → Set) (x y : A) → x ≡ y → ((P x) ↔ (P y))
+eq-to-iff P x y refl = iff-refl  
+
+eq-to-iff-2 : ∀ {A B : Set} (P : A → B → Set) (a0 a1 : A) (b0 b1 : B) → 
+  a0 ≡ a1 → b0 ≡ b1 → ((P a0 b0) ↔ (P a1 b1))
+eq-to-iff-2 P a0 a1 b0 b1 refl refl = iff-refl  
+
+from-tr-bfst : ∀ a b → tr (a && b) → tr a 
+from-tr-bfst true _ _ = tt
+
+from-tr-bsnd : ∀ a b → tr (a && b) → tr b 
+from-tr-bsnd _ true _ = tt
+from-tr-bsnd true false ()
+
+tr-band-to-and : ∀ a b → tr (a && b) → (tr a ∧ tr b)
+tr-band-to-and true true _ = tt , tt
+
+tr-band-to-and-3 : ∀ a b c → tr (a && b && c) → (tr a ∧ tr b ∧ tr c)
+tr-band-to-and-3 true true true _ = tt , tt , tt
+
+tr-band-to-and-4 : ∀ a b c d → tr (a && b && c && d) → (tr a ∧ tr b ∧ tr c ∧ tr d)
+tr-band-to-and-4 true true true true _ = tt , tt , tt , tt
+
+tr-band-to-and-5 : ∀ a b c d e → tr (a && b && c && d && e) → (tr a ∧ tr b ∧ tr c ∧ tr d ∧ tr e)
+tr-band-to-and-5 true true true true true _ = tt , tt , tt , tt , tt
+
+not-ex-to-fa-not : ∀ {A : Set} (P : A → Set) → (¬ ∃ P) → (∀ x → ¬ P x)
+not-ex-to-fa-not P h0 a h1 = h0 (a , h1)
+
+not-fa-to-ex-not : ∀ {A : Set} (P : A → Set) → ¬ (∀ x → P x) → ∃ λ x → ¬ P x
+not-fa-to-ex-not P h0 = dne (λ h1 → h0 (λ a → dne (λ h2 → h1 (a , h2))))
+
+not-fst : ∀ {A : Set} {B : Set} → ¬ (A ∧ B) → A → ¬ B  
+not-fst h0 h1 h2 = h0 (h1 , h2)
+
+tr-to-ite-eq : ∀ {A : Set} {b} {a0 a1 : A} → tr b → (if b then a0 else a1) ≡ a0
+tr-to-ite-eq {_} {true} _ = refl  
+
+fs-to-ite-ne : ∀ {A : Set} {b} {a0 a1 : A} → fs b → (if b then a0 else a1) ≡ a1
+fs-to-ite-ne {_} {false} _ = refl  
+
+char-eq-to-eq : ∀ c0 c1 → tr (c0 =c c1) → c0 ≡ c1 
+char-eq-to-eq c0 c1 = toWitness
+
+chars-eq-to-eq : ∀ cs0 cs1 → tr (chars-eq cs0 cs1) → cs0 ≡ cs1 
+chars-eq-to-eq [] [] _ = refl
+chars-eq-to-eq (c0 ∷ cs0) (c1 ∷ cs1) h0 = 
+  cong-2 _∷_ 
+    (toWitness (from-tr-bfst (c0 =c c1) _ h0)) 
+    (chars-eq-to-eq cs0 cs1 (from-tr-bsnd _ _ h0))
+
+elim-ite-lem : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+  (tr b → P a0 → B) → (fs b → P a1 → B) → P (if b then a0 else a1) → B
+elim-ite-lem _ true _ _ h0 _ h1 = h0 tt h1
+elim-ite-lem _ false _ _ _ h0 h1 = h0 tt h1 
+
+_≠_ : {A : Set} → A → A → Set 
+x ≠ y = ¬ (x ≡ y)
+
+nf-inj : ∀ {k m} → nf k ≡ nf m → k ≡ m 
+nf-inj refl = refl
+
+ex-falso : ∀ {A B : Set} → A → ¬ A → B
+ex-falso h0 h1 = ⊥-elim (h1 h0)
+
+append-assoc : ∀ {A : Set} (as0 as1 as2 : List A) → 
+  as0 ++ (as1 ++ as2) ≡ (as0 ++ as1) ++ as2 
+append-assoc [] as1 as2 = refl
+append-assoc (a ∷ as0) as1 as2 = cong (_∷_ a) (append-assoc as0 as1 as2)
+
+reverse-acc-cons : ∀ {A : Set} (as0 as1 : List A) → 
+  reverseAcc as0 as1 ≡ (reverse as1) ++ as0  
+reverse-acc-cons as0 [] = refl
+reverse-acc-cons as0 (a ∷ as1) = 
+  eq-trans _ (reverse-acc-cons (a ∷ as0) as1) 
+    ( eq-trans _ (append-assoc (reverse as1) [ a ] as0) 
+        ( let h0 : reverse as1 ++ [ a ] ≡ reverseAcc [ a ] as1 
+              h0 = eq-symm (reverse-acc-cons [ a ] as1) in 
+          cong (λ x → x ++ as0) h0 ) )
+
+reverse-cons : ∀ {A : Set} (a : A) (as : List A) → reverse (a ∷ as) ≡ (reverse as) ∷ʳ a
+reverse-cons a as = reverse-acc-cons [ a ] as 
+
+reverse-app : ∀ {A : Set} (as0 as1 as2 : List A) → 
+  reverseAcc as0 (as1 ++ as2) ≡ reverseAcc ((reverse as1) ++ as0) as2  
+reverse-app as0 [] as2 = refl
+reverse-app as0 (a ∷ as1) as2 = 
+  eq-trans _ (reverse-app (a ∷ as0) as1 as2) 
+    (cong (λ x → reverseAcc x as2) 
+      (eq-trans _ (append-assoc (reverse as1) [ a ] as0) 
+        (cong (λ x → x ++ as0) (eq-symm (reverse-cons a as1)))))
+
+app-nil : ∀ {A : Set} (as : List A) → as ++ [] ≡ as
+app-nil [] = refl
+app-nil (a ∷ as) = cong (_∷_ a) (app-nil _)
+
+reverse-snoc : ∀ {A : Set} (a : A) (as : List A) → reverse (as ∷ʳ a) ≡ a ∷ (reverse as)
+reverse-snoc a as = eq-trans _ (reverse-app [] as [ a ]) (cong (_∷_ a) (app-nil _))
+
+reverse-reverse : ∀ {A : Set} (as : List A) → reverse (reverse as) ≡ as
+reverse-reverse [] = refl
+reverse-reverse (a ∷ as) = 
+  eq-trans (reverse (reverse as ∷ʳ a)) 
+    (cong reverse (reverse-cons a as)) 
+    ( eq-trans (a ∷ (reverse (reverse as))) 
+        (reverse-snoc a (reverse as)) 
+        (cong (_∷_ a) (reverse-reverse as)) )
+
+intro-elim-lem : ∀ {A B : Set} (C : B → Set) {f : A → B} {g : (¬ A) → B} → 
+  (∀ (x : A) → C (f x)) → (∀ (x : ¬ A) → C (g x)) → C (elim-lem A f g) 
+intro-elim-lem {A} {B} C {f} {g} hf hg with LEM A  
+... | (yes h0) = hf h0 
+... | (no h0) = hg h0 
+
+intro-elim-lem-yes : ∀ {A B : Set} (C : B → Set) {f : A → B} {g : (¬ A) → B} → 
+  (∀ (x : A) → C (f x)) → A → C (elim-lem A f g) 
+intro-elim-lem-yes {A} {B} C {f} {g} hf hA = intro-elim-lem C hf λ h0 → ⊥-elim (h0 hA)
+
+not-app-eq-nil : ∀ {A : Set} (a : A) as0 as1 → (as0 ++ (a ∷ as1)) ≠ [] 
+not-app-eq-nil _ [] _ ()
+not-app-eq-nil _ (_ ∷ _) _ ()
+
+cons-inj : ∀ {A : Set} (a0 a1 : A) as0 as1 → a0 ∷ as0 ≡ a1 ∷ as1 → (a0 ≡ a1) ∧ (as0 ≡ as1) 
+cons-inj a0 a1 as0 as1 refl = refl , refl
+
+snoc-inj : ∀ {A : Set} (a0 a1 : A) as0 as1 → as0 ∷ʳ a0 ≡ as1 ∷ʳ a1 → (as0 ≡ as1) ∧ (a0 ≡ a1)
+snoc-inj a0 a1 [] [] refl = refl , refl
+snoc-inj a0 a1 (a0' ∷ as0) [] h0 = ⊥-elim (not-app-eq-nil _ _ _ (snd (cons-inj a0' a1 _ _ h0)))
+snoc-inj a0 a1 [] (a1' ∷ as1) h0 = ⊥-elim (not-app-eq-nil _ _ _ (snd (cons-inj a1' a0 _ _ (eq-symm h0))))
+snoc-inj a0 a1 (a0' ∷ as0) (a1' ∷ as1) h0 = 
+  let (h1 , h2) = cons-inj a0' a1' _ _ h0 in 
+  let (h3 , h4) = snoc-inj a0 a1 as0 as1 h2 in 
+  cong-2 _∷_ h1 h3 , h4
+
+reverse-inj : ∀ {A : Set} (as0 as1 : List A) → reverse as0 ≡ reverse as1 → as0 ≡ as1  
+reverse-inj [] [] refl = refl
+reverse-inj (a0 ∷ as0) [] h0 = ⊥-elim (not-app-eq-nil _ _ _ (eq-trans _ (eq-symm (reverse-cons a0 as0)) h0))
+reverse-inj [] (a1 ∷ as1) h0 = ⊥-elim (not-app-eq-nil _ _ _ (eq-symm (eq-trans _ h0 ( (reverse-cons a1 as1))))) 
+reverse-inj (a0 ∷ as0) (a1 ∷ as1) h0 = 
+  let h3 = eq-symm (reverse-cons a0 as0) in
+  let h4 = reverse-cons a1 as1 in
+  let (h1 , h2) = snoc-inj a0 a1 (reverse as0) (reverse as1) (eq-trans _ h3 (eq-trans _ h0 h4)) in 
+  cong-2 _∷_ h2 (reverse-inj _ _ h1)
+
+cong-fun-arg : ∀ {A B : Set} {x0 x1 : A → B} {y0 y1 : A} → 
+  x0 ≡ x1 → y0 ≡ y1 → (x0 y0 ≡ x1 y1)
+cong-fun-arg refl refl = refl

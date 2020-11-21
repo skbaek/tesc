@@ -57,6 +57,10 @@ read-bool ('T' ∷ cs) = just (true , cs)
 read-bool ('F' ∷ cs) = just (false , cs) 
 read-bool _ = nothing 
 
+read-char : Read Char
+read-char (c ∷ cs) = just (c , cs)
+read-char _ = nothing 
+
 read-chars : Read Chars 
 read-chars ('%' ∷ cs) = just ([] , cs)
 read-chars (c ∷ cs) with read-chars cs 
@@ -67,14 +71,21 @@ read-chars [] = nothing
 read-nat : Read Nat
 read-nat = read-chars >>= (lift-read ∘ chars-to-nat)
 
+_==c_ : Char → Char → Bool
+_==c_ = primCharEquality
+
+read-spec-char : Char → Read ⊤ 
+read-spec-char c0 (c1 ∷ cs) = if c0 ==c c1 then just (tt , cs) else nothing
+read-spec-char _ [] = nothing 
+
 read-ftr : Read Ftr
-read-ftr ('#' ∷ cs) = ( do 
-  k ← read-nat
-  pass (nf k) ) cs
-read-ftr ('"' ∷ cs) = ( do 
-  s ← read-chars
-  pass (sf s) ) cs
-read-ftr _ = nothing
+read-ftr = 
+  ( do read-spec-char '#' 
+       k ← read-nat 
+       pass (nf k) ) <|>
+  ( do read-spec-char '"' 
+       s ← read-chars 
+       pass (sf s) ) 
 
 read-termoid : ∀ b → Nat → Read (Termoid b)
 read-termoid true _ ('.' ∷ cs) = just (nil , cs) 
@@ -97,39 +108,104 @@ read-term = read-termoid false
 read-terms : Nat → Read Terms
 read-terms = read-termoid true
 
+read-qtf : Read Bool
+read-qtf = 
+  (read-spec-char '!' >> pass false) <|> (read-spec-char '?' >> pass true) 
+
+read-bct : Read Bct
+read-bct = 
+  (read-spec-char '|' >> pass or) <|> 
+  (read-spec-char '&' >> pass and) <|> 
+  (read-spec-char '>' >> pass imp) <|> 
+  (read-spec-char '=' >> pass iff) 
+
 read-form : Nat → Read Form
-read-form _ ('T' ∷ cs) = just (cst true , cs)  
-read-form _ ('F' ∷ cs) = just (cst false , cs)  
-read-form (suc k) ('$' ∷ cs) = ( do 
-  f ← read-ftr 
-  ts ← read-terms k
-  pass (rel f ts) ) cs 
-read-form (suc k) ('~' ∷ cs) = ( do 
-  f ← read-form k
-  pass (not f) ) cs
-read-form (suc k) ('!' ∷ cs) = ( do 
-  f ← read-form k
-  pass (qtf false f) ) cs
-read-form (suc k) ('?' ∷ cs) = ( do 
-  f ← read-form k
-  pass (qtf true f) ) cs
-read-form (suc k) ('|' ∷ cs) = ( do 
-  f ← read-form k 
-  g ← read-form k 
-  pass (bct or f g) ) cs 
-read-form (suc k) ('&' ∷ cs) = ( do 
-  f ← read-form k 
-  g ← read-form k 
-  pass (bct and f g) ) cs 
-read-form (suc k) ('>' ∷ cs) = ( do 
-  f ← read-form k 
-  g ← read-form k 
-  pass (bct imp f g) ) cs 
-read-form (suc k) ('=' ∷ cs) = ( do 
-  f ← read-form k 
-  g ← read-form k 
-  pass (bct iff f g) ) cs 
-read-form _ = fail
+read-form (suc k) = 
+  ( do read-spec-char '$'
+       f ← read-ftr 
+       ts ← read-terms k
+       pass (rel f ts) ) <|>
+  ( do read-spec-char '~'
+       f ← read-form k
+       pass (not f) ) <|>
+  ( do b ← read-qtf 
+       f ← read-form k
+       pass (qtf b f) ) <|>
+  ( do b ← read-bct 
+       f ← read-form k
+       g ← read-form k
+       pass (bct b f g) ) 
+read-form 0 = fail
+
+
+-- read-form : Nat → Read Form
+-- read-form (suc k) (c ∷ cs) = (
+--     if c ==c '$' then ( do
+--       f ← read-ftr 
+--       ts ← read-terms k
+--       pass (rel f ts) 
+--     ) else if c ==c '~' then ( do
+--       f ← read-form k
+--       pass (not f) 
+--     ) else if c ==c '!' then ( do
+--       f ← read-form k
+--       pass (qtf false f) 
+--     ) else if c ==c '?' then ( do
+--       f ← read-form k
+--       pass (qtf true f) 
+--     ) else if c ==c '|' then ( do
+--       f ← read-form k 
+--       g ← read-form k 
+--       pass (bct or f g)  
+--     ) else if c ==c '&' then ( do
+--       f ← read-form k 
+--       g ← read-form k 
+--       pass (bct and f g)  
+--     ) else if c ==c '>' then ( do
+--       f ← read-form k 
+--       g ← read-form k 
+--       pass (bct imp f g)  
+--     ) else if c ==c '=' then ( do
+--       f ← read-form k 
+--       g ← read-form k 
+--       pass (bct iff f g)  
+--     ) else fail
+--   ) cs
+-- read-form _ _ = nothing
+
+-- read-form : Nat → Read Form
+-- read-form _ ('T' ∷ cs) = just (cst true , cs)  
+-- read-form _ ('F' ∷ cs) = just (cst false , cs)  
+-- read-form (suc k) ('$' ∷ cs) = ( do 
+--   f ← read-ftr 
+--   ts ← read-terms k
+--   pass (rel f ts) ) cs 
+-- read-form (suc k) ('~' ∷ cs) = ( do 
+--   f ← read-form k
+--   pass (not f) ) cs
+-- read-form (suc k) ('!' ∷ cs) = ( do 
+--   f ← read-form k
+--   pass (qtf false f) ) cs
+-- read-form (suc k) ('?' ∷ cs) = ( do 
+--   f ← read-form k
+--   pass (qtf true f) ) cs
+-- read-form (suc k) ('|' ∷ cs) = ( do 
+--   f ← read-form k 
+--   g ← read-form k 
+--   pass (bct or f g) ) cs 
+-- read-form (suc k) ('&' ∷ cs) = ( do 
+--   f ← read-form k 
+--   g ← read-form k 
+--   pass (bct and f g) ) cs 
+-- read-form (suc k) ('>' ∷ cs) = ( do 
+--   f ← read-form k 
+--   g ← read-form k 
+--   pass (bct imp f g) ) cs 
+-- read-form (suc k) ('=' ∷ cs) = ( do 
+--   f ← read-form k 
+--   g ← read-form k 
+--   pass (bct iff f g) ) cs 
+-- read-form _ = fail
 
 get-from-prob : Prob → Chars → Read Form
 get-from-prob [] _ = fail
@@ -137,9 +213,6 @@ get-from-prob ((n , f) ∷ P) cs =
   if (chars-eq n cs) 
   then pass f 
   else get-from-prob P cs
-
-_==c_ : Char → Char → Bool
-_==c_ = primCharEquality
 
 verify-a : Bch → Read Form 
 verify-a B = do
@@ -182,47 +255,6 @@ verify-s B k = do
   pass-if (chk-good-form (suc (length B)) f)
   pass f 
 
-{-
-chk-form-eq : Form → Form → Read ⊤
-chk-form-eq f g = pass-if (form-eq f g) 
-
-break-rel : Form → Read (Ftr × Terms)
-break-rel f = {!   !}
-
-break-fa : Form → Read Form
-break-fa f = {!   !}
-
-break-imp : Form → Read (Form × Form)
-break-imp f = {!   !}
-
-chk-mono-args : Terms → Terms → Read ⊤
-chk-mono-args ts0 ts1 = {!   !}
-
-chk-mono-rel : Nat → Nat → Form → Read ⊤
-chk-mono-rel k m f = 
-  ( do 
-      (g , h) ← (break-fa f >>= break-fa >>= break-imp)
-      chk-form-eq g (var 1 =* var 0)
-      chk-mono-rel k (suc m) h ) <|> 
-  ( do  
-      (g , h) ← break-imp f
-      (r0 , ts0) ← break-rel g 
-      (r1 , ts1) ← break-rel h 
-      pass-if (ftr-eq r0 r1)
-      chk-mono-args ts0 ts1 )
-  
-
-chk-jst : Nat → Form → Read ⊤
-chk-jst k f = 
-  chk-form-eq f (cst true) <|> 
-  chk-form-eq f (not (cst false)) <|> 
-  chk-form-eq f refl-axiom <|> 
-  chk-form-eq f symm-axiom <|> 
-  chk-form-eq f trans-axiom <|> 
-  fail
-  -}
-
-
 verify-t : Bch → Nat → Read Form
 verify-t B k = do 
   f ← read-form k
@@ -237,20 +269,6 @@ verify-x B = do
   g ← lift-read (get-bch B n)
   pass-if (form-eq (not f) g) 
 
-elim-ite : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
-  (P a0 → B) → (P a1 → B) → P (if b then a0 else a1) → B
-elim-ite _ true _ _ h0 _ h1 = h0 h1
-elim-ite _ false _ _ _ h0 h1 = h0 h1
-
-elim-ite' : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
-  P (if b then a0 else a1) → (P a0 → B) → (P a1 → B) → B
-elim-ite' P b a0 a1 h h0 h1 = elim-ite P b a0 a1 h0 h1 h
-
-intro-ite : ∀ {A : Set} {x : A} {y : A} (b : Bool) → 
-  (P : A → Set) → P x → P y → P (if b then x else y)
-intro-ite false P hx hy = hy
-intro-ite true  P hx hy = hx
-    
 verify : Prob → Bch → Nat → Read ⊤ 
 verify P B (suc k) (c ∷ cs) = (
     if c ==c 'A' then ( do 
@@ -284,3 +302,60 @@ verify P B (suc k) (c ∷ cs) = (
     ) else fail
   ) cs
 verify _ _ _ = fail
+
+read-af : Nat → Read (Chars × Form) 
+read-af k = do 
+  n ← read-chars 
+  c0 ← read-char 
+  if c0 ==c 'T'
+    then ( do 
+      f ← read-form k
+      c1 ← read-char
+      if c1 ==c '0' 
+        then pass (n , f)
+        else fail )
+    else fail
+
+-- read-af : Nat → Read (Chars × Form) 
+-- read-af k = do 
+--   n ← read-chars 
+--   'T' ← read-char 
+--     where _ → fail
+--   f ← read-form k
+--   '0' ← read-char
+--     where _ → fail
+--   pass (n , f) 
+
+read-prob : Nat → Read Prob
+read-prob (suc k) = 
+  (read-spec-char '.' >> pass []) <|> 
+  ( do read-spec-char ',' 
+       (i , f) ← read-af k 
+       pass-if (chk-good-form 0 f)
+       P ← read-prob k
+       pass ((i , f) ∷ P) )
+read-prob 0 = fail
+
+-- read-prob : Nat → Read Prob
+-- read-prob (suc k) (c ∷ cs) = 
+--   (
+--     if c ==c '.' then ( 
+--       pass [] 
+--     ) else if c ==c ',' then ( do 
+--       (nm , f) ← read-af k 
+--       P ← read-prob k
+--       pass ((nm , f) ∷ P) 
+--     ) else fail 
+--   ) cs
+-- read-prob _ _ = nothing
+
+parse-prob : Chars → Maybe Prob
+parse-prob cs = (read-prob (length cs) cs) o>= (λ (P , _) → just P) 
+
+chk-just : ∀ {A : Set} → Maybe A → Bool
+chk-just (just _) = true
+chk-just nothing = false
+
+verif : Chars → Chars → Bool
+verif pb-cs pf-cs = 
+  chk-just ((parse-prob pb-cs) o>= (λ P → verify P [] (length pf-cs) pf-cs))

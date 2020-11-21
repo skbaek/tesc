@@ -5,7 +5,7 @@ use std::io::{Read, Write};
 use tptp::syntax::*;
 use std::convert::TryFrom;
 
-pub const TPTPPATH: &str = "/home/sk/projects/TPTP/";
+pub const TPTPPATH: &str = "/home/sk/library/tptp/";
 
 // pub type WriteBytes<'a> = &'a mut BufWriter<File>;
 pub type FileBytes<'a> = &'a mut io::Bytes<io::BufReader<File>>;
