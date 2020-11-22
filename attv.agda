@@ -15,12 +15,14 @@ import IO.Primitive as Prim
 open import IO
   renaming (_>>=_ to _>>>=_)
   renaming (_>>_ to _>>>_)
+open import basic 
 open import verify 
-  renaming (_>>=_ to _r>=_)
-  renaming (_>>_ to _r>_)
-open import coread 
-  renaming (_>>=_ to _c>=_)
-  renaming (_>>_ to _c>_)
+  using (read-prob) 
+  using (verify)
+open import Codata.Musical.Costring using (Costring)
+open import Codata.Musical.Colist 
+  renaming (_∷_ to _∷*_)
+  renaming (length to length*)
 
 postulate 
   prim-get-args : Prim.IO (List String)
@@ -50,11 +52,16 @@ get-args = lift prim-get-args
 put-str-ln : String → IO ⊤
 put-str-ln s = putStr s >> (putStr "\n" >> nop) 
 
+costring-to-chars : Costring → Chars
+costring-to-chars (c ∷* cs) = c ∷ (costring-to-chars (♭ cs))
+costring-to-chars _ = []
+
 io-verify = do 
   (pn ∷ x) ← get-args
     where [] → (put-str-ln "No proof file name provided." >> exit-failure)
   ps ← getContents
-  (just (P , _)) ← return (coread-prob ps)
+  cs0 ← return (costring-to-chars ps)
+  (just (P , _)) ← return (read-prob (length cs0) cs0)
     where nothing → (put-str-ln "Failed to load problem." >> exit-failure)
   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
   (just (tt , _)) ← return (verify P [] (length cs) cs) 
