@@ -379,8 +379,10 @@ chk-jst k f =
   chk-mono-fun k 0 f || 
   chk-choice k 0 f ||
   chk-pred-def k 0 f 
+
 Read : Set → Set
 Read A = Chars → Maybe (A × Chars)
+
 
 infixl 20 _>>=_ 
 
@@ -414,6 +416,8 @@ lift-read : {A : Set} → Maybe A → Read A
 lift-read nothing = fail 
 lift-read (just a) = pass a 
 
+get-bch* : Bch → Nat → Read Form 
+get-bch* B k = lift-read (get-bch B k)
 pass-if : Bool → Read ⊤
 pass-if true = pass tt
 pass-if false = fail
