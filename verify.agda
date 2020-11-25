@@ -34,6 +34,36 @@ open import Data.String
 open import Data.Nat.Show
 open import basic
 
+Read : Set → Set
+Read A = Chars → Maybe (A × Chars)
+
+infixl 20 _>>=_ 
+
+_>>=_ : ∀ {A} {B} → Read A → (A → Read B) → Read B
+_>>=_ f g cs with f cs 
+... | nothing = nothing
+... | just (a , cs') = g a cs'
+
+_>>_ : ∀ {A} {B} → Read A → Read B → Read B
+_>>_ f g cs with f cs 
+... | nothing = nothing
+... | just (_ , cs') = g cs'
+
+infixr 20 _<|>_ 
+
+_<|>_ : ∀ {A} → Read A → Read A → Read A
+_<|>_ f g cs with f cs 
+... | nothing = g cs
+... | just x = just x
+
+pass : {A : Set} → A → Read A
+pass x cs = just (x , cs) 
+
+fail : {A : Set} → Read A
+fail _ = nothing 
+
+skip : Read ⊤
+skip = pass tt
 _==c_ : Char → Char → Bool
 c0 ==c c1 = primCharEquality c0 c1
 
@@ -96,7 +126,7 @@ rev-index 0 _ = nothing
 rev-index (suc l) k = if l <n k then nothing else just (l - k)
 
 get-bch : Bch → Nat → Maybe Form 
-get-bch B k = rev-index (length B) k o>= λ  m → nth m B
+get-bch B k = rev-index (length B) k o>= λ m → nth m B
 
 tri : ∀ {A : Set} → Nat → A → A → A → Nat → A
 tri k a b c m = if k <n m then a else if k =n m then b else c
@@ -380,44 +410,18 @@ chk-jst k f =
   chk-choice k 0 f ||
   chk-pred-def k 0 f 
 
-Read : Set → Set
-Read A = Chars → Maybe (A × Chars)
 
+-- lift-0 : {A : Set} → Maybe A → Read A 
+-- lift-0 nothing = fail 
+-- lift-0 (just a) = pass a 
+-- 
+-- lift-1 : {A B : Set} → (A → Maybe B) → A → Read B
+-- lift-1 f a = lift-0 (f a)
+-- 
+lift : {A : Set} → Maybe A → Read A 
+lift nothing = fail 
+lift (just a) = pass a 
 
-infixl 20 _>>=_ 
-
-_>>=_ : ∀ {A} {B} → Read A → (A → Read B) → Read B
-_>>=_ f g cs with f cs 
-... | nothing = nothing
-... | just (a , cs') = g a cs'
-
-_>>_ : ∀ {A} {B} → Read A → Read B → Read B
-_>>_ f g cs with f cs 
-... | nothing = nothing
-... | just (_ , cs') = g cs'
-
-infixr 20 _<|>_ 
-
-_<|>_ : ∀ {A} → Read A → Read A → Read A
-_<|>_ f g cs with f cs 
-... | nothing = g cs
-... | just x = just x
-
-pass : {A : Set} → A → Read A
-pass x cs = just (x , cs) 
-
-fail : {A : Set} → Read A
-fail _ = nothing 
-
-skip : Read ⊤
-skip = pass tt
-
-lift-read : {A : Set} → Maybe A → Read A 
-lift-read nothing = fail 
-lift-read (just a) = pass a 
-
-get-bch* : Bch → Nat → Read Form 
-get-bch* B k = lift-read (get-bch B k)
 pass-if : Bool → Read ⊤
 pass-if true = pass tt
 pass-if false = fail
@@ -435,7 +439,7 @@ read-chars (c ∷ cs) with read-chars cs
 read-chars [] = nothing
 
 read-nat : Read Nat
-read-nat = read-chars >>= (lift-read ∘ chars-to-nat)
+read-nat = read-chars >>= (lift ∘ chars-to-nat)
 
 read-ftr : Read Ftr
 read-ftr ('#' ∷ cs) = ( do 
@@ -501,47 +505,55 @@ read-form (suc k) ('=' ∷ cs) = ( do
   pass (bct iff f g) ) cs 
 read-form _ = fail
 
-get-from-prob : Prob → Chars → Read Form
-get-from-prob [] _ = fail
-get-from-prob ((n , f) ∷ P) cs = 
+get-prob : Prob → Chars → Read Form
+get-prob [] _ = fail
+get-prob ((n , f) ∷ P) cs = 
   if (chars-eq n cs) 
   then pass f 
-  else get-from-prob P cs
+  else get-prob P cs
+
+fetch : Bch → Nat → Read Form
+fetch B k = lift (get-bch B k)
 
 verify-a : Bch → Read Form 
 verify-a B = do
   m ← read-nat 
   b ← read-bool
-  lift-read (get-bch B m o>= break-a b)
+  f ← fetch B m 
+  lift (break-a b f)
 
 verify-b : Bch → Read (Form × Form)
 verify-b B = do
   m ← read-nat 
-  lift-read (get-bch B m o>= break-b)
+  f ← fetch B m
+  lift (break-b f)
 
 verify-c : Bch → Nat → Read Form
 verify-c B k = do
   m ← read-nat 
   t ← read-term k
   pass-if $ chk-good-term (suc (length B)) t
-  lift-read (get-bch B m o>= break-c t)
+  f ← fetch B m 
+  lift (break-c t f)
 
 verify-d : Bch → Read Form
 verify-d B = do
   m ← read-nat 
-  lift-read (get-bch B m o>= break-d (length B)) 
+  f ← fetch B m 
+  lift (break-d (length B) f)
 
 verify-n : Bch → Read Form
 verify-n B = do 
   m ← read-nat 
-  lift-read (get-bch B m o>= break-n)
+  f ← fetch B m 
+  lift (break-n f)
 
 verify-p : Prob → Bch → Read Form
-verify-p P B = do
-  cs ← read-chars 
-  f ← get-from-prob P cs
-  pass-if (chk-good-form (suc (length B)) f)
-  pass f
+verify-p P B = read-chars >>= get-prob P
+
+  -- f ← get-prob P cs
+  -- pass-if (chk-good-form (suc (length B)) f)
+  -- pass f
 
 verify-s : Bch → Nat → Read Form
 verify-s B k = do 
@@ -559,8 +571,8 @@ verify-x : Bch → Read ⊤
 verify-x B = do
   m ← read-nat 
   n ← read-nat 
-  f ← lift-read (get-bch B m)
-  g ← lift-read (get-bch B n)
+  f ← fetch B m
+  g ← fetch B n
   pass-if (form-eq (not f) g) 
 
 read-spec-char : Char → Read ⊤ 

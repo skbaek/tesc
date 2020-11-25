@@ -76,26 +76,26 @@ or-elim (or-rgt x) f g = g x
 or-elim' : ∀ {A B C : Set} → (A → C) → (B → C) → (A ∨ B) → C
 or-elim' ha hb hab = or-elim hab ha hb
 
-ex-elim : ∀ {A B : Set} {P : A → Set} → (∃ P) → (∀ (x : A) → P x → B) → B
+ex-elim : ∀ {l0 l1 l2} {A : Set l0} {B : Set l1} {P : A → Set l2} → (∃ P) → (∀ (x : A) → P x → B) → B
 ex-elim (a , h0) h1 = h1 a h0
 
-ex-elim-2 : ∀ {A B C : Set} {P : A → B → Set} → 
+ex-el-2 : ∀ {A B C : Set} {P : A → B → Set} → 
   (∃ λ a → ∃ (P a)) → (∀ (x : A) (y : B) → P x y → C) → C
-ex-elim-2 (a , (b , h0)) h1 = h1 a b h0
+ex-el-2 (a , (b , h0)) h1 = h1 a b h0
 
-ex-elim-3 : ∀ {A B C D : Set} {P : A → B → C → Set} → 
+ex-el-3 : ∀ {A B C D : Set} {P : A → B → C → Set} → 
   (∃ λ a → ∃ λ b → ∃ λ c → (P a b c)) → (∀ a b c → P a b c → D) → D
-ex-elim-3 (a , (b , (c , h0))) h1 = h1 a b c h0
+ex-el-3 (a , (b , (c , h0))) h1 = h1 a b c h0
 
 ex-elim' : ∀ {A B : Set} {P : A → Set} → (∀ (x : A) → P x → B) → (∃ P) → B
 ex-elim' h0 (a , h1) = h0 a h1
 
-ex-elim-3' : ∀ {A B C D : Set} {P : A → B → C → Set} → 
+ex-el-3' : ∀ {A B C D : Set} {P : A → B → C → Set} → 
   (∀ a b c → P a b c → D) → (∃ λ a → ∃ λ b → ∃ λ c → (P a b c)) → D
-ex-elim-3' h0 (a , (b , (c , h1))) = h0 a b c h1
+ex-el-3' h0 (a , (b , (c , h1))) = h0 a b c h1
 
-elim-lem : ∀ (A : Set) {B : Set} → (A → B) → ((¬ A) → B) → B
-elim-lem A h0 h1 with LEM A 
+el-lem : ∀ (A : Set) {B : Set} → (A → B) → ((¬ A) → B) → B
+el-lem A h0 h1 with LEM A 
 ... | (yes h2) = h0 h2
 ... | (no h2)  = h1 h2
 
@@ -103,7 +103,7 @@ dni : ∀ {A : Set} → A → (¬ (¬ A))
 dni h0 h1 = h1 h0
 
 dne : ∀ {A : Set} → (¬ ¬ A) → A 
-dne {A} h0 = elim-lem A id λ h1 → ⊥-elim (h0 h1)
+dne {A} h0 = el-lem A id λ h1 → ⊥-elim (h0 h1)
 
 fs : Bool → Set
 fs true  = ⊥
@@ -116,22 +116,22 @@ not-or-rgt : ∀ {A B : Set} → ¬ (A ∨ B) → ¬ B
 not-or-rgt h0 h1 = h0 (or-rgt h1)  
 
 not-imp-lft : ∀ {A B : Set} → ¬ (A → B) → A 
-not-imp-lft {A} {B} h0 = elim-lem  A id λ h1 → ⊥-elim (h0 λ h2 → ⊥-elim (h1 h2))
+not-imp-lft {A} {B} h0 = el-lem  A id λ h1 → ⊥-elim (h0 λ h2 → ⊥-elim (h1 h2))
 
 not-imp-rgt : ∀ {A B : Set} → ¬ (A → B) → ¬ B 
 not-imp-rgt {A} {B} h0 h1 = ⊥-elim (h0 λ h2 → h1)
 
 imp-to-not-or :  ∀ {A B} → (A → B) → ((¬ A) ∨ B)
-imp-to-not-or {A} {B} h0 = elim-lem A (λ h1 → or-rgt (h0 h1)) or-lft 
+imp-to-not-or {A} {B} h0 = el-lem A (λ h1 → or-rgt (h0 h1)) or-lft 
 
 not-and-to-not-or-not :  ∀ {A B} → ¬ (A ∧ B) → ((¬ A) ∨ (¬ B))
-not-and-to-not-or-not {A} {B} h0 = elim-lem A 
-  (λ h1 → elim-lem B (λ h2 → ⊥-elim (h0 (h1 , h2))) or-rgt) 
+not-and-to-not-or-not {A} {B} h0 = el-lem A 
+  (λ h1 → el-lem B (λ h2 → ⊥-elim (h0 (h1 , h2))) or-rgt) 
   or-lft
 
-elim-tr-fs : ∀ {b : Bool} {A : Set} → tr b → fs b → A 
-elim-tr-fs {true} _ ()
-elim-tr-fs {false} ()
+el-tr-fs : ∀ {b : Bool} {A : Set} → tr b → fs b → A 
+el-tr-fs {true} _ ()
+el-tr-fs {false} ()
 
 _⇔_ : Bool → Bool → Bool 
 true ⇔ true = true
@@ -139,16 +139,16 @@ false ⇔ false = true
 _ ⇔ _  = false
 
 rt : Set → Bool
-rt A = elim-lem A (λ _ → true) (λ _ → false)
+rt A = el-lem A (λ _ → true) (λ _ → false)
 
 tr-rt-iff : ∀ {A : Set} → tr (rt A) ↔ A 
 tr-rt-iff {A} with LEM A 
 ... | (yes h0) = (λ _ → h0) , (λ _ → tt)
 ... | (no h0) = ⊥-elim , h0
 
-elim-bor : ∀ {A : Set} b1 b2 → (tr b1 → A) → (tr b2 → A) → tr (b1 || b2) → A
-elim-bor true _ h0 _ h2 = h0 tt
-elim-bor _ true _ h1 h2 = h1 tt
+el-bor : ∀ {A : Set} b1 b2 → (tr b1 → A) → (tr b2 → A) → tr (b1 || b2) → A
+el-bor true _ h0 _ h2 = h0 tt
+el-bor _ true _ h1 h2 = h1 tt
 
 biff-to-eq : ∀ {b0 b1} → tr (b0 ⇔ b1) → (b0 ≡ b1)
 biff-to-eq {true} {true} _ = refl
@@ -253,14 +253,14 @@ ex-falso h0 h1 = ⊥-elim (h1 h0)
 top-iff : ∀ {P} → P → (⊤ ↔ P)
 top-iff h0 = (λ _ → h0) , (λ _ → tt)
 
-elim-ite : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+el-ite : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
   (P a0 → B) → (P a1 → B) → P (if b then a0 else a1) → B
-elim-ite _ true _ _ h0 _ h1 = h0 h1
-elim-ite _ false _ _ _ h0 h1 = h0 h1
+el-ite _ true _ _ h0 _ h1 = h0 h1
+el-ite _ false _ _ _ h0 h1 = h0 h1
 
-elim-ite' : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+el-ite' : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
   P (if b then a0 else a1) → (P a0 → B) → (P a1 → B) → B
-elim-ite' P b a0 a1 h h0 h1 = elim-ite P b a0 a1 h0 h1 h
+el-ite' P b a0 a1 h h0 h1 = el-ite P b a0 a1 h0 h1 h
 
 intro-ite : ∀ {A : Set} {x : A} {y : A} (b : Bool) → 
   (P : A → Set) → P x → P y → P (if b then x else y)
@@ -295,24 +295,24 @@ cong-fun-arg refl refl = refl
 _≠_ : {A : Set} → A → A → Set 
 x ≠ y = ¬ (x ≡ y)
 
-elim-eq-symm : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p y → p x 
-elim-eq-symm p refl = id
+el-eq-symm : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p y → p x 
+el-eq-symm p refl = id
 
-elim-eq : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p x → p y 
-elim-eq p refl = id
+el-eq : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → x ≡ y → p x → p y 
+el-eq p refl = id
 
-elim-eq-2 : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} (p : A → B → Set) → 
+el-eq-2 : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} (p : A → B → Set) → 
   a0 ≡ a1 → b0 ≡ b1 → p a0 b0 → p a1 b1 
-elim-eq-2 p refl refl = id
+el-eq-2 p refl refl = id
 
-elim-eq-3 : ∀ {A B C : Set} {a0 a1 : A} {b0 b1 : B} {c0 c1 : C} (p : A → B → C → Set) → 
+el-eq-3 : ∀ {A B C : Set} {a0 a1 : A} {b0 b1 : B} {c0 c1 : C} (p : A → B → C → Set) → 
   a0 ≡ a1 → b0 ≡ b1 → c0 ≡ c1 → p a0 b0 c0 → p a1 b1 c1
-elim-eq-3 p refl refl refl = id
+el-eq-3 p refl refl refl = id
 
-elim-eq-4 : ∀ {A B C D : Set} {a0 a1 : A} {b0 b1 : B} 
+el-eq-4 : ∀ {A B C D : Set} {a0 a1 : A} {b0 b1 : B} 
   {c0 c1 : C} {d0 d1 : D} (p : A → B → C → D → Set) → 
   a0 ≡ a1 → b0 ≡ b1 → c0 ≡ c1 → d0 ≡ d1 → p a0 b0 c0 d0 → p a1 b1 c1 d1
-elim-eq-4 p refl refl refl refl = id
+el-eq-4 p refl refl refl refl = id
 
 eq-trans : ∀ {A : Set} {x : A} (y : A) {z : A} → x ≡ y → y ≡ z → x ≡ z
 eq-trans _ refl refl = refl
@@ -385,7 +385,7 @@ not-<-self 0 ()
 not-<-self (suc k) (suc< m m h) = not-<-self k h
 
 lt-to-not-eq : ∀ k m → k < m → ¬ (k ≡ m)
-lt-to-not-eq k m h0 h1 = not-<-self m (elim-eq (λ x → x < m) h1 h0)
+lt-to-not-eq k m h0 h1 = not-<-self m (el-eq (λ x → x < m) h1 h0)
 
 lt-to-not-gt : ∀ k m → k < m → ¬ (k > m)
 lt-to-not-gt 0 0 ()
@@ -470,15 +470,15 @@ reverse-reverse (a ∷ as) =
         (reverse-snoc a (reverse as)) 
         (cong (_∷_ a) (reverse-reverse as)) )
 
-intro-elim-lem : ∀ {A B : Set} (C : B → Set) {f : A → B} {g : (¬ A) → B} → 
-  (∀ (x : A) → C (f x)) → (∀ (x : ¬ A) → C (g x)) → C (elim-lem A f g) 
-intro-elim-lem {A} {B} C {f} {g} hf hg with LEM A  
+intro-el-lem : ∀ {A B : Set} (C : B → Set) {f : A → B} {g : (¬ A) → B} → 
+  (∀ (x : A) → C (f x)) → (∀ (x : ¬ A) → C (g x)) → C (el-lem A f g) 
+intro-el-lem {A} {B} C {f} {g} hf hg with LEM A  
 ... | (yes h0) = hf h0 
 ... | (no h0) = hg h0 
 
-intro-elim-lem-yes : ∀ {A B : Set} (C : B → Set) {f : A → B} {g : (¬ A) → B} → 
-  (∀ (x : A) → C (f x)) → A → C (elim-lem A f g) 
-intro-elim-lem-yes {A} {B} C {f} {g} hf hA = intro-elim-lem C hf λ h0 → ⊥-elim (h0 hA)
+intro-el-lem-yes : ∀ {A B : Set} (C : B → Set) {f : A → B} {g : (¬ A) → B} → 
+  (∀ (x : A) → C (f x)) → A → C (el-lem A f g) 
+intro-el-lem-yes {A} {B} C {f} {g} hf hA = intro-el-lem C hf λ h0 → ⊥-elim (h0 hA)
 
 not-app-eq-nil : ∀ {A : Set} (a : A) as0 as1 → (as0 ++ (a ∷ as1)) ≠ [] 
 not-app-eq-nil _ [] _ ()
@@ -565,9 +565,9 @@ maybe-elim : ∀ {A : Set} → (P : Maybe A → Set) →
 maybe-elim P hn hj nothing = hn
 maybe-elim P hn hj (just x) = hj x
 
-maybe-elim-conc : ∀ {A : Set} {m : Maybe A} → (P : Maybe A → Set) → (Q : Set) → 
+maybe-el-conc : ∀ {A : Set} {m : Maybe A} → (P : Maybe A → Set) → (Q : Set) → 
   (P nothing → Q) → ((x : A) → P (just x) → Q) → P m → Q 
-maybe-elim-conc P Q hn hj hm = maybe-elim (λ x → (P x → Q)) hn hj _ hm
+maybe-el-conc P Q hn hj hm = maybe-elim (λ x → (P x → Q)) hn hj _ hm
 
 maybe-absurd : ∀ {A B : Set} {x : A} → nothing ≡ (just x) → B 
 maybe-absurd ()
