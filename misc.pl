@@ -8,10 +8,9 @@ maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :-
   num_succ(TTL_I, TTL_T), 
   maplist_count(GOAL, CNT_T, TTL_T, LIST, CNT_O, TTL_O).
 
-names_proven(PRVR, NAMES) :- 
-  atom_concat(PRVR, prf, PATH),
-  folder_files_rec(PATH, PATHS),
-  cmap(path_name, PATHS, NAMES).
+names_proven(SVR, NAMES) :- 
+  atom_concat(SVR, prf, PATH),
+  folder_roots(PATH, NAMES).
 
 drop(0, LIST, LIST). 
 drop(NUM, [_ | LIST], REM) :- 
@@ -29,8 +28,7 @@ slice(DROP, TAKE, LIST, SLICE) :-
 
 get_solution_names(PRVR, NAMES) :- 
   atom_concat(PRVR, sol, PATH),
-  folder_files_rec(PATH, PATHS),
-  cmap(path_name, PATHS, NAMES).
+  folder_roots(PATH, NAMES).
 
 random_pluck(LIST, ELEM, REST) :- 
   random_member(ELEM, LIST), 

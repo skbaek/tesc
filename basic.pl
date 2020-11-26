@@ -1704,25 +1704,95 @@ postpend_backslash(DIR, DIRB) :-
 %   postpend_backslash(FD, FDB), 
 %   atom_concat(FDB, FLNM, FILE).
 
-folder_items(FD, ITEMS) :- 
-  postpend_backslash(FD, FDB), 
-  directory_files(FDB, TEMP_A), 
-  subtract(TEMP_A, ['.', '..'], TEMP_B),
-  cmap(atom_concat(FDB), TEMP_B, ITEMS).
+take_until_first(CODE, ATOM, PFX) :- 
+  atom_codes(ATOM, CODES), !,
+  append(PFX_CODES, [CODE | _], CODES), !, 
+  atom_codes(PFX, PFX_CODES). 
+  
+drop_until_last(CODE, ATOM, SFX) :- 
+  atom_codes(ATOM, CODES), !,
+  append(_, [CODE | SFX_CODES], CODES), 
+  \+ member(CODE, SFX_CODES), !,
+  atom_codes(SFX, SFX_CODES). 
+
+%     YOU
+% FOO/BAR/BAZ/QUUX.QUZ
+%             ---- ---
+%             ROOT EXT
+%             --------
+%               BASE
+%         ------------
+%           REL-PATH
+% --------------------
+%       ABS-PATH
+        
+
+abs_base(ABS, BASE) :- drop_until_last(47, ABS, BASE), !.
+abs_base(ABS, ABS).
+
+base_root(BASE, ROOT) :- take_until_first(46, BASE, ROOT), !.
+base_root(BASE, BASE). 
+
+abs_root(ABS, ROOT) :- abs_base(ABS, BASE), base_root(BASE, ROOT).
+
+folder_children(FD, CHDR) :-
+  directory_files(FD, TEMP), 
+  subtract(TEMP, ['.', '..'], CHDR).
+
+% folder_abses(FD, ABSS) :-
+%   postpend_backslash(FD, FDB), 
+%   directory_files(FDB, TEMP), 
+%   subtract(TEMP, ['.', '..'], CHDR),
+%   cmap(atom_concat(FDB), CHDR, ABSS).
+
+codes_concat_with_47([], Y, [47 | Y]) :- !.
+codes_concat_with_47([47], Y, [47 | Y]) :- !.
+codes_concat_with_47([C], Y, [C , 47 | Y]) :- !.
+codes_concat_with_47([C | X], Y, [C | Z]) :- codes_concat_with_47(X, Y, Z).
+
+atom_concat_with_backslash(X, Y, Z) :-
+  atom_codes(X, XAS),
+  atom_codes(Y, YAS),
+  codes_concat_with_47(XAS, YAS, ZAS),
+  atom_codes(Z, ZAS).
+
+exists_file_at(FD, BS) :-  
+  atom_concat_with_backslash(FD, BS, ABS),
+  exists_file(ABS).
+
+exists_directory_at(FD, BS) :-  
+  atom_concat_with_backslash(FD, BS, ABS),
+  exists_directory(ABS).
+
+folder_bases(FD, BSS) :- 
+  folder_children(FD, CHDR), 
+  include(exists_file_at(FD), CHDR, BSS). 
+
+folder_roots(FD, RTS) :- 
+  folder_bases(FD, BSS), 
+  cmap(base_root, BSS, RTS).
 
 folder_folders(FD, FDS) :- 
-  folder_items(FD, ITEMS), 
-  include(exists_directory, ITEMS, FDS).
+  folder_children(FD, CHDR), 
+  include(exists_directory_at(FD), CHDR, FDS).
 
-folder_files(DIR, FILES) :- 
-  folder_items(DIR, ITEMS), 
-  include(exists_file, ITEMS, FILES).
 
-folder_files_rec(FD, FLS) :- 
-  folder_files(FD, TEMP),
-  folder_folders(FD, FDS), 
-  maplist(folder_files_rec, FDS, FLSS), 
-  append([TEMP | FLSS], FLS).
+
+
+
+% folder_folders(FD, FDS) :- 
+%   folder_items(FD, ITEMS), 
+%   include(exists_directory, ITEMS, FDS).
+% 
+% folder_files(DIR, FILES) :- 
+%   folder_items(DIR, ITEMS), 
+%   include(exists_file, ITEMS, FILES).
+% 
+% folder_files_rec(FD, FLS) :- 
+%   folder_files(FD, TEMP),
+%   folder_folders(FD, FDS), 
+%   maplist(folder_files_rec, FDS, FLSS), 
+%   append([TEMP | FLSS], FLS).
 
 cla_lits(ff, []) :- !.
 cla_lits(CLA, LITS) :- cla_lits(CLA, LITS, []).
@@ -2084,24 +2154,24 @@ concat_shell(LIST, SEP, EXST) :-
   shell(CMD, EXST).
 
 call_solver(e, PROB_PATH, SOL_PATH) :- 
-  concat_shell(["eprover --auto --cpu-limit=60 -p ", PROB_PATH, " > temp.tstp"], _), 
+  concat_shell(["eprover --auto --cpu-limit=60 -p ", PROB_PATH, " > temp.s"], _), 
   (
-    any_line_path('temp.tstp', =("# Proof found!")) -> 
-    concat_shell(["cat temp.tstp | sed '/\\(^#\\|^\\$\\)/d' > ", SOL_PATH], 0),
-    delete_file('temp.tstp')
+    any_line_path('temp.s', =("# Proof found!")) -> 
+    concat_shell(["cat temp.s | sed '/\\(^#\\|^\\$\\)/d' > ", SOL_PATH], 0),
+    delete_file('temp.s')
   ;
-    delete_file('temp.tstp'),
+    delete_file('temp.s'),
     false
   ).
 
 call_solver(v, PROB_PATH, SOL_PATH) :- 
   tptp_folder(TPTP),
-  concat_shell(["./vampire --output_axiom_names on --proof tptp --include ", TPTP, " ", PROB_PATH, " > temp.tstp"], _),  
+  concat_shell(["./vampire --output_axiom_names on --proof tptp --include ", TPTP, " ", PROB_PATH, " > temp.s"], _),  
   (
-    any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
-    concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", SOL_PATH], 0), 
-    delete_file('temp.tstp')
+    any_line_path('temp.s', =("% Refutation found. Thanks to Tanya!")) -> 
+    concat_shell(["cat temp.s | sed '/\\(^%\\|^\\$\\)/d' > ", SOL_PATH], 0), 
+    delete_file('temp.s')
   ;
-    delete_file('temp.tstp'),
+    delete_file('temp.s'),
     false
   ).

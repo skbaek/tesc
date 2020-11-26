@@ -4,7 +4,6 @@
 :- [misc].
 % :- consult('/home/sk/projects/tesc/ttc').
 
-
 bench(SLVR, NAME) :- 
   write(" ────────────────────────────────────────────────────────────────── "), 
   write("Proving problem = "),
@@ -15,7 +14,7 @@ bench(SLVR, NAME) :-
   tptp_folder(TPTP_DIR),
   tesc_folder(TESC_DIR),
   atomic_list_concat([TPTP_DIR, "Problems/", CAT, "/", NAME, ".p"], TPTP), 
-  atomic_list_concat([TESC_DIR, CH, "sol/", NAME, ".tstp"], TSTP), 
+  atomic_list_concat([TESC_DIR, CH, "sol/", NAME, ".s"], TSTP), 
 
   size_file(TSTP, SIZE),
   format("FILE SIZE = ~w\n\n", SIZE),
@@ -45,11 +44,9 @@ main([SLVR | OPTS]) :-
   atom_firstchar(SLVR, S),
   tesc_folder(TESC_DIR),
   atomic_list_concat([TESC_DIR, S, "sol/"], SOL_DIR), 
-  path_filenames(SOL_DIR, FILENAMES),
-  maplist([FILENAME, NAME]>> atom_concat(NAME, '.tstp', FILENAME), FILENAMES, NAMES), 
-  write(NAMES),
-  % valid_sol_names(SLVR, ALL),
-  % random_n(NUM, ALL, NAMES),
+  folder_roots(SOL_DIR, NAMES),
+  % maplist([FILE, NAME]>> atom_concat(NAME, '.s', FILE), FILES, NAMES), 
+  writeln_list(NAMES),
   proofgen(SLVR, NAMES),
   true.
   
