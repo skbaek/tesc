@@ -2080,6 +2080,7 @@ any_line_path(PATH, GOAL) :-
 
 concat_shell(LIST, EXST) :- 
   atomic_list_concat(LIST, CMD),
+  format("Using CMD = ~w\n", [CMD]),
   shell(CMD, EXST).
 
 concat_shell(LIST, SEP, EXST) :- 
@@ -2087,7 +2088,7 @@ concat_shell(LIST, SEP, EXST) :-
   shell(CMD, EXST).
 
 call_solver(e, PROB_PATH, SOL_PATH) :- 
-  concat_shell(["eprover --cpu-limit=60 -p ", PROB_PATH, " > temp.tstp"], _), 
+  concat_shell(["eprover --auto --cpu-limit=60 -p ", PROB_PATH, " > temp.tstp"], _), 
   (
     any_line_path('temp.tstp', =("# Proof found!")) -> 
     concat_shell(["cat temp.tstp | sed '/\\(^#\\|^\\$\\)/d' > ", SOL_PATH], 0),
@@ -2099,7 +2100,7 @@ call_solver(e, PROB_PATH, SOL_PATH) :-
 
 call_solver(v, PROB_PATH, SOL_PATH) :- 
   tptp_folder(TPTP),
-  concat_shell(["vampire --output_axiom_names on --proof tptp --include ", TPTP, PROB_PATH, " > temp.tstp"], _),  
+  concat_shell(["vampire --output_axiom_names on --proof tptp --include ", TPTP, " ", PROB_PATH, " > temp.tstp"], _),  
   (
     any_line_path('temp.tstp', =("% Refutation found. Thanks to Tanya!")) -> 
     concat_shell(["cat temp.tstp | sed '/\\(^%\\|^\\$\\)/d' > ", SOL_PATH], 0), 
