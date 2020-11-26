@@ -1,3 +1,5 @@
+:- [folders].
+
 %%%%%%%%%%%%%%%% OPERATORS %%%%%%%%%%%%%%%% 
 
 :- op(1, fx, '#').
@@ -10,11 +12,6 @@
 :- op(520, xfx, '=>').
 :- op(530, xfx, '<>').
 
-
-%%%%%%%%%%%%%%%% FOLDER PATHS %%%%%%%%%%%%%%%% 
-
-tptp_folder("/home/sk/library/tptp/").
-tesc_folder("/home/sk/projects/tesc/").
 
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 

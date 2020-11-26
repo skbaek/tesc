@@ -3,7 +3,7 @@ vprf/
 esol/
 eprf/
 temp.tesc
-paths.pl
+folders.pl
 proof_trace.pl
 sol_trace.pl
 test.pl
