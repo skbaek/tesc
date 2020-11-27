@@ -2,7 +2,6 @@
 
 :- initialization(main, main).
 :- [misc].
-% :- consult('/home/sk/projects/tesc/ttc').
 
 bench(SLVR, NAME) :- 
   write(" ────────────────────────────────────────────────────────────────── "), 
