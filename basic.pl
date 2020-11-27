@@ -2154,7 +2154,7 @@ concat_shell(LIST, SEP, EXST) :-
   shell(CMD, EXST).
 
 call_solver(e, PROB_PATH, SOL_PATH) :- 
-  concat_shell(["eprover --auto --cpu-limit=60 -p ", PROB_PATH, " > temp.s"], _), 
+  concat_shell(["./eprover --auto --cpu-limit=60 -p ", PROB_PATH, " > temp.s"], _), 
   (
     any_line_path('temp.s', =("# Proof found!")) -> 
     concat_shell(["cat temp.s | sed '/\\(^#\\|^\\$\\)/d' > ", SOL_PATH], 0),

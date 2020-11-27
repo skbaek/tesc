@@ -573,20 +573,21 @@ tup_insts(
   INSTS 
 ) :- 
   inst_fas(0, FORM, TGT), 
-  timed_call(
-    30, 
-    mk_tree_fwd(CTX, TGT, ANT, TREE),
-    (
-      write("Solution failed prematurely. "), 
-      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
-      false
-    ),
-    (
-      write("Solution timed out. "), 
-      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
-      false
-    )
-  ),
+  mk_tree_fwd(CTX, TGT, ANT, TREE),
+  % timed_call(
+  %   30, 
+  %   mk_tree_fwd(CTX, TGT, ANT, TREE),
+  %   (
+  %     write("Solution failed prematurely. "), 
+  %     report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
+  %     false
+  %   ),
+  %   (
+  %     write("Solution timed out. "), 
+  %     report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
+  %     false
+  %   )
+  % ),
   unroll_tree(0, TREE, _, PID, REV), 
   reverse([inf(rnm, [PID], CID, FORM) | REV], INSTS).
 

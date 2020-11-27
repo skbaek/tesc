@@ -14,7 +14,7 @@ e_check(STRM) :-
   ).
   
 call_prover(e, TPTP, TSTP) :- 
-  atomic_list_concat(["./eprover --cpu-limit=120 -p ", TPTP, " > ", TSTP], CMD), 
+  atomic_list_concat(["./eprover --auto --cpu-limit=120 -p ", TPTP, " > ", TSTP], CMD), 
   shell(CMD, _), 
   open(TSTP, read, STRM), 
   e_check(STRM), 
