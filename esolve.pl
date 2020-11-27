@@ -151,6 +151,7 @@ mk_tree_fwd(CTX, inference(RUL, _, [ANT_A, ANT_B]), btr(TREE_A, TREE_B, HINT, CO
   mk_root(RUL, CONC_A, CONC_B, HINT, CONC).
 
 mk_tree_fwd(CTX, NAME, ntr(STR, FORM)) :- 
+  atomic(NAME),
   (atom_string(NAME, STR) ; number_string(NAME, STR)), !,
   get_assoc(STR, CTX, FORM).
 
@@ -375,10 +376,13 @@ mk_rw_term(FROM, TO, TERM_I, TERM_O) :-
     TERM_O = (FUN $ TERMS_O) 
   ).
 
-nst_orient(pm, HYP_L, HYP_R, HYP_L, HYP_R).
+nst_orient(spm, HYP_L, HYP_R, HYP_L, HYP_R).
+% nst_orient(pm, HYP_L, HYP_R, HYP_L, HYP_R).
 nst_orient(rw, HYP_L, HYP_R, HYP_L, HYP_R).
 nst_orient(sr, HYP_L, HYP_R, HYP_R, HYP_L).
 nst_orient(sr, HYP_L, HYP_R, HYP_L, HYP_R).
+nst_orient(csr, HYP_L, HYP_R, HYP_R, HYP_L).
+nst_orient(csr, HYP_L, HYP_R, HYP_L, HYP_R).
 
 unify_atom(ATOM_A, ATOM_B) :- 
   orient_atom(ATOM_A, TEMP), 
@@ -452,7 +456,7 @@ mk_root(apply_def, FORM_A, FORM_B, dff, FORM_C) :- !,
   true.
 
 mk_root(RUL, FORM_A, FORM_B, (sup, true), FORM) :- 
-  member(RUL, [pm, rw, sr]),
+  member(RUL, [spm, rw, sr, csr]),
   inst_with_lvs(FORM_A, BODY_A),
   cla_lits(BODY_A, LITS_A), 
   inst_with_lvs(FORM_B, BODY_B),
@@ -466,7 +470,7 @@ mk_root(RUL, FORM_A, FORM_B, (sup, true), FORM) :-
   close_lvs(BODY_N, FORM).
 
 mk_root(RUL, FORM_A, FORM_B, res, FORM) :- 
-  member(RUL, [rw, sr, pm]), 
+  member(RUL, [rw, sr, csr, spm]), 
   inst_with_lvs(FORM_A, BODY_A),
   inst_with_lvs(FORM_B, BODY_B),
   nst_orient(RUL, BODY_A, BODY_B, BODY_L, BODY_R),
@@ -573,21 +577,20 @@ tup_insts(
   INSTS 
 ) :- 
   inst_fas(0, FORM, TGT), 
-  mk_tree_fwd(CTX, TGT, ANT, TREE),
-  % timed_call(
-  %   30, 
-  %   mk_tree_fwd(CTX, TGT, ANT, TREE),
-  %   (
-  %     write("Solution failed prematurely. "), 
-  %     report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
-  %     false
-  %   ),
-  %   (
-  %     write("Solution timed out. "), 
-  %     report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
-  %     false
-  %   )
-  % ),
+  timed_call(
+    30, 
+    mk_tree_fwd(CTX, TGT, ANT, TREE),
+    (
+      write("Solution failed prematurely. "), 
+      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
+      false
+    ),
+    (
+      write("Solution timed out. "), 
+      report_sol_failure(CTX, (CID, TYPE, FORM, some(ANT))),
+      false
+    )
+  ),
   unroll_tree(0, TREE, _, PID, REV), 
   reverse([inf(rnm, [PID], CID, FORM) | REV], INSTS).
 
