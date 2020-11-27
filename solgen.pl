@@ -22,22 +22,3 @@ main([SOLVER, DROP_ATOM, TAKE_ATOM | OPTS]) :-
   maplist_count(gen_sol(SVR), 0, 0, PROBS, CNT, TTL), 
   format("SOLVED/TOTAL = ~w/~w\n", [CNT, TTL]),
   true.
-%   names_archived(PRVR, NAS),
-%   length(NAS, NAS_NUM),
-%   format("- Number of archived problems = ~w\n", NAS_NUM), 
-%   names_failed(PRVR, NFS),
-%   length(NFS, NFS_NUM),
-%   format("- Number of failed problems = ~w\n", NFS_NUM), 
-%   subtract(ALL, NAS, TEMP),
-%   subtract(TEMP, NFS, NEW),
-%   write("---------------------------------------\n"),
-%   length(NEW, NEW_NUM),
-%   format("Number of unattempted problems = ~w\n", NEW_NUM),
-%   (
-%     member('-count', OPTS) -> 
-%     true
-%   ;
-%     msg("Enter solution genaration loop"),
-%     gen_sols(PRVR, NUM, NEW), 
-%     msg("Exit solution generation loop")
-%   ).

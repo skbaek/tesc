@@ -31,7 +31,6 @@ bench(SLVR, NAME) :-
     false
   ).
 
-
 proofgen(SLVR, NAMES) :-
   length(NAMES, NUM), 
   format("Proving ~w problems\n", NUM),
@@ -40,37 +39,11 @@ proofgen(SLVR, NAMES) :-
 
 main([SLVR | OPTS]) :-
   trace_if_debug(OPTS),
-  set_prolog_flag(stack_limit, 4_294_967_296),
+  inc_mem, 
   atom_firstchar(SLVR, S),
   tesc_folder(TESC_DIR),
   atomic_list_concat([TESC_DIR, S, "sol/"], SOL_DIR), 
   folder_roots(SOL_DIR, NAMES),
-  % maplist([FILE, NAME]>> atom_concat(NAME, '.s', FILE), FILES, NAMES), 
   writeln_list(NAMES),
   proofgen(SLVR, NAMES),
   true.
-  
-
-% main([SLVR | ARGS]) :- 
-%   set_prolog_flag(stack_limit, 4_294_967_296),
-%   trace_if_debug(ARGS),
-%   valid_sol_names(SLVR, ALL),
-%   (
-%     (
-%       ARGS = [DROP_ATOM, TAKE_ATOM | _],
-%       atom_number(DROP_ATOM, DROP),
-%       atom_number(TAKE_ATOM, TAKE)
-%     ) ->
-%     slice(DROP, TAKE, ALL, NAMES)
-%   ;
-%     (
-%       ARGS = [DROP_ATOM | _], 
-%       atom_number(DROP_ATOM, DROP)
-%     ) ->
-%     drop(DROP, ALL, NAMES)
-%   ;
-%     NAMES = ALL
-%   ),
-%   proofgen(SLVR, NAMES),
-%   true.
-% 

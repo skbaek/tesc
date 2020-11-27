@@ -20,11 +20,7 @@ check_proof(SVR, OPTS, NAME) :-
 main([SOLVER | OPTS]) :- 
   tesc_folder(TESC_PATH),
   atom_firstchar(SOLVER, SVR),
-  (
-    member('-pl', OPTS) ->
-    set_prolog_flag(stack_limit, 4_294_967_296) ;
-    true
-  ),
+  (member('-p', OPTS) -> inc_mem ; true),
   atomic_list_concat([TESC_PATH, SVR, prf], PRFS_PATH),
   folder_roots(PRFS_PATH, NAMES), 
   maplist_count(check_proof(SVR, OPTS), 0, 0, NAMES, CNT, TTL), 

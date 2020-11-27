@@ -1,5 +1,13 @@
 :- [folders].
 
+giga(1073741824).
+
+high_mem(MEM) :- giga(GB), MEM is GB * 14.
+
+inc_mem :-
+  high_mem(MEM),
+  set_prolog_flag(stack_limit, MEM).
+
 %%%%%%%%%%%%%%%% OPERATORS %%%%%%%%%%%%%%%% 
 
 :- op(1, fx, '#').
@@ -1709,6 +1717,12 @@ take_until_first(CODE, ATOM, PFX) :-
   append(PFX_CODES, [CODE | _], CODES), !, 
   atom_codes(PFX, PFX_CODES). 
   
+take_until_last(CODE, ATOM, PFX) :- 
+  atom_codes(ATOM, CODES), !,
+  append(PFX_CODES, [CODE | SFX_CODES], CODES), 
+  \+ member(CODE, SFX_CODES), !,
+  atom_codes(PFX, PFX_CODES). 
+
 drop_until_last(CODE, ATOM, SFX) :- 
   atom_codes(ATOM, CODES), !,
   append(_, [CODE | SFX_CODES], CODES), 
@@ -1730,7 +1744,7 @@ drop_until_last(CODE, ATOM, SFX) :-
 abs_base(ABS, BASE) :- drop_until_last(47, ABS, BASE), !.
 abs_base(ABS, ABS).
 
-base_root(BASE, ROOT) :- take_until_first(46, BASE, ROOT), !.
+base_root(BASE, ROOT) :- take_until_last(46, BASE, ROOT), !.
 base_root(BASE, BASE). 
 
 abs_root(ABS, ROOT) :- abs_base(ABS, BASE), base_root(BASE, ROOT).
