@@ -2188,3 +2188,9 @@ call_solver(v, PROB_PATH, SOL_PATH) :-
     delete_file('temp.s'),
     false
   ).
+
+findall(GOAL, ALL) :- findall(X, call(GOAL, X), ALL).
+countall(GOAL, COUNT) :- 
+  findall(GOAL, ALL),
+  length(ALL, COUNT).
+  
