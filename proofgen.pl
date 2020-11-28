@@ -36,13 +36,16 @@ proofgen(SLVR, NAMES) :-
   maplist_count(bench(SLVR), 0, 0, NAMES, CNT, TTL),
   format("PROVEN/TOTAL = ~w/~w.\n", [CNT, TTL]).
 
-main([SLVR | OPTS]) :-
+main([SLVR, DA, TA | OPTS]) :-
   trace_if_debug(OPTS),
   inc_mem, 
   atom_firstchar(SLVR, S),
   tesc_folder(TESC_DIR),
   atomic_list_concat([TESC_DIR, S, "sol/"], SOL_DIR), 
   folder_roots(SOL_DIR, NAMES),
-  writeln_list(NAMES),
-  proofgen(SLVR, NAMES),
+  atom_number(DA, DROP),
+  atom_number(TA, TAKE),
+  slice(DROP, TAKE, NAMES, LIST),
+  writeln_list(LIST),
+  proofgen(SLVR, LIST),
   true.
