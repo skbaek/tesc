@@ -1018,7 +1018,6 @@ mate_pn(PYP, NYP, GOAL) :-
 
 get__char(STRM, CHAR) :- 
   get_char(STRM, CHAR),
-  % write(CHAR),
   true.
   
 get_list(STRM, GTR, LIST) :- 
@@ -1030,16 +1029,16 @@ get_list(STRM, GTR, ',', [ELEM | LIST]) :-
   call(GTR, STRM, ELEM), !,
   get_list(STRM, GTR, LIST), !.
 
-get_until_dollar(STRM, BYTES) :- 
+get_until_endmark(STRM, BYTES) :- 
   get_byte(STRM, BYTE), !,
-  get_until_dollar(STRM, BYTE, BYTES), !.
+  get_until_endmark(STRM, BYTE, BYTES), !.
 
-get_until_dollar(_, 37, []) :- !.
-get_until_dollar(STRM, BYTE, [BYTE | BYTES]) :- 
-  get_until_dollar(STRM, BYTES), !.
+get_until_endmark(_, 37, []) :- !.
+get_until_endmark(STRM, BYTE, [BYTE | BYTES]) :- 
+  get_until_endmark(STRM, BYTES), !.
   
 get_string(STRM, STR) :- 
-  get_until_dollar(STRM, BYTES), 
+  get_until_endmark(STRM, BYTES), 
   string_codes(STR, BYTES).
 
 get_atom(STRM, ATOM) :- 

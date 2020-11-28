@@ -8,21 +8,6 @@
 solve(e, TSTP, SOL) :- esolve(TSTP, SOL).
 solve(v, TSTP, SOL) :- vsolve(TSTP, SOL).
 
-% ttc(SLVR, TPTP, TSTP, TESC) :-
-%   writeln("Fetching problem..."),
-%   tptp_prob(TPTP, PROB), !,
-%   writeln("Generating solution..."),
-%   solve(SLVR, TSTP, SOL), !,
-%   open(TESC, write, STRM, [encoding(octet)]),
-%   empty_assoc(EMP),
-%   writeln("Constructing proof..."),
-%   % prove((EMP, SOL, PROB, STRM, SLVR, nil), 0),
-%   prove(STRM, SLVR, PROB, SOL, EMP, 0), 
-%   writeln("Proof complete."),
-%   close(STRM).
-
-% main :- 
-%   current_prolog_flag(argv, [_, PROVER, TPTP, TSTP, TESC | OPTS]), 
 main([SOLVER, TPTP, TSTP, TESC | OPTS]) :-
   trace_if_debug(OPTS),
   inc_mem, 

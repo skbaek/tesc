@@ -5,7 +5,7 @@ use std::io::{Read, Write};
 use tptp::syntax::*;
 use std::convert::TryFrom;
 
-pub const TPTPPATH: &str = "/home/sk/projects/TPTP/";
+pub const TPTPPATH: &str = "/home/sk/library/tptp/";
 
 // pub type WriteBytes<'a> = &'a mut BufWriter<File>;
 pub type FileBytes<'a> = &'a mut io::Bytes<io::BufReader<File>>;
@@ -159,7 +159,7 @@ pub fn to_boxed_slice(tptp: &str) -> Rst<Box<[u8]>> {
 pub fn put_char<W: Write>(w: &mut W, c: char) -> Rst<()> {
   match w.write(&[c as u8]) {
     Ok(_) => Ok(()),
-    _ => err_str("Failed to write char")
+    _ => Err(format!("Failed to write char : {}", c))
   }
 }
 
@@ -168,7 +168,10 @@ fn put_u64<W: Write>(w: &mut W, k: u64) -> Rst<()> {
 }
 
 pub fn put_string<W: Write>(w: &mut W, s: &str) -> Rst<()> {
-  for c in s.chars() { put_char(w, c)?; }
+  for c in s.chars() { 
+    assert!(c != '%', "Invalid mid-string endmarker(%) detected");
+    put_char(w, c)?; 
+  }
   put_char(w,'%')
 }
 
