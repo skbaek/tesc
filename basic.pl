@@ -30,10 +30,20 @@ timed_call(TIME, GOAL, EARLY, LATE) :-
   catch(
     call_with_time_limit(
       TIME, 
-      (call(GOAL) -> true ; throw(premature_failure))
+      (
+        call(GOAL) -> 
+        true 
+      ; 
+        throw(premature_failure)
+      )
     ),
     ERROR, 
-    (ERROR = premature_failure -> call(EARLY) ; call(LATE))
+    ( 
+      ERROR = premature_failure -> 
+      call(EARLY) 
+    ; 
+      call(LATE)
+    )
   ).  
 
 ground_all(TERM, EXP) :- 

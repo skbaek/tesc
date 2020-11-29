@@ -12,7 +12,7 @@ gen_sol(SVR, NAME) :-
 main([SOLVER, DROP_ATOM, TAKE_ATOM | OPTS]) :- 
   trace_if_debug(OPTS),
   atom_firstchar(SOLVER, SVR),
-  findall(PROB, applicable(PROB), ALL),
+  findall(PROB, target(PROB), ALL),
   length(ALL, LTH),
   format("Total number of applicable problems = ~w\n", LTH), 
   atom_number(DROP_ATOM, DROP),

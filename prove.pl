@@ -737,7 +737,6 @@ infer(PRVR, skm, [PREM | AOCS], CONC, GOAL) :-
   eskm(AOCS, (PREM, CONC, GOAL)) 
 ;
   rp([d], [CONC], GOAL, [CONC_N], GOAL1), 
-  % rp([c], [PREM], GOAL1, [PREM_N], GOAL2), 
   skm(AOCS, (PREM, CONC_N, GOAL1)).
 
 infer(_, ngt, [PREM], CONC, GOAL) :- 
@@ -758,47 +757,6 @@ infer(v, gs, PREMS, CONC, GOAL) :-
   rp([a,d,n], [CONC], GOAL, HYPS_TEMP, GOAL_TEMP), 
   append(HYPS_TEMP, PREMS, HYPS),
   pblx(q, HYPS, GOAL_TEMP).
-
-% infer(v, gs, PREMS, CONC, GOAL) :-
-%   rp([a,d,n], [CONC], GOAL, CONCS_N, GOAL_A), 
-%   rp([c,n], PREMS, GOAL_A, PREMS_BODY, GOAL_B), 
-%   pluck(PREMS_BODY, PREM, PREMS_AUX), 
-%   rp([b,c,n], [PREM], GOAL_B, HGS), 
-%   maplist(gs(PREMS_AUX, CONCS_N), HGS).
-
-% infer(v, urr, PREMS, CONC, GOAL) :-
-%   rp([a, d, n], [CONC], GOAL, CONCS_N, GOAL_A), 
-%   rp([c, n], PREMS, GOAL_A, PREMS_BODY, GOAL_B), 
-%   pluck(PREMS_BODY, PREM, PREMS_AUX), 
-%   rp([b, n], [PREM], GOAL_B, HGS), 
-%   urr(HGS, PREMS_AUX, CONCS_N).
-
-  
-  /*
-infer(v, urr, PREMS, CONC, GOAL) :-
-  % list_head_last(PREMS, ORS, PREM),
-  (
-    reverse(PREMS, [PREM | ORS]) ;
-    PREMS = [PREM | ORS]
-  ),
-  rp([d], [CONC], GOAL, [CONC_TEMP], GOAL_A), 
-  cp_rop([PREM | ORS], GOAL_A, [PREM_TEMP | ORS_TEMP], GOAL_B), 
-
-  % ap_rop(CONC_TEMP, GOAL_B, [TGT | TGTS], GOAL_C),
-  % rp([b], PREM_TEMP, GOAL_C, [([SRC], GOAL_D)  | HGS]),
-  ap_rop(CONC_TEMP, GOAL_B, TGTS, GOAL_C),
-  rp([b], PREM_TEMP, GOAL_C, HGS),
-  ( 
-    TGTS = [TGT | TGTS_TAIL],
-    HGS = [([SRC], GOAL_D) | HGS_TAIL],
-    mate(TGT, SRC, GOAL_D) 
-  ;
-    TGTS_TAIL = TGTS,
-    HGS_TAIL = HGS
-  ),
-  zip(TGTS_TAIL, ORS_TEMP, HGS_TAIL, H3GS), 
-  cmap(urr_aux, H3GS).
-*/
 
 infer(_, rwa, [PREM_A, PREM_B], CONC, GOAL) :-
   rp([d], [CONC], GOAL, [HYP_C], GOAL_C), 
@@ -886,16 +844,11 @@ infer(_, (sup,DIR), [PREM_A, PREM_B], CONC, GOAL) :-
 infer(_, sup, [PREM_A, PREM_B], CONC, GOAL) :- 
   orient_dir(PREM_A, PREM_B, _, PREM_L, PREM_R),
   rp([a, d, n], [CONC], GOAL, HYPS, GOAL_A), 
-  % pick_pivot(HYPS, PREM_L, GOAL0, SRC, GOAL1), 
   pick_pivot(HYPS, PREM_R, GOAL_A, PRE_EQN, GOAL_B), 
   PRE_EQN = (_, (("=" $ [_, _]))),
   orient_hyp(PRE_EQN, GOAL_B, EQN, GOAL_C),
   rp([b, c, n], [PREM_L], GOAL_C, HGS),
   maplist(sup_aux(HYPS, EQN), HGS).
-
-
-  % member_rev(TGT, HYPS),
-  % subst_rel_add([EQN], SRC, TGT, GOAL3). 
 
 infer(v, spl, [PREM | PREMS], CONC, GOAL) :- 
   rp([a, d, n], [CONC], GOAL, HYPS0, GOAL0), 
@@ -1016,12 +969,10 @@ originate(STRM, SLVR, NAME, FORM_P, CNT, FORM_C) :-
   put_prf(STRM, PRF). 
 
 subprove(STRM, SLVR, CNT, HINT, PREMS, FORM) :-   
-  % format("Adding lemma ~w\n\n", CID),
-  % mk_par(CNT, [], CID),
   put_char(STRM, 'S'), 
   put_form(STRM, FORM), 
   num_succ(CNT, SCNT),
-  GOAL = (PRF, SCNT), 
+  GOAL = (PRF, SCNT), !,
   timed_infer(30, SLVR, HINT, PREMS, (CNT, ~ FORM), GOAL), !, 
   ground_all("" $ [], PRF),
   put_prf(STRM, PRF). 
@@ -1036,8 +987,6 @@ get_tup_nth(NUM, (_, TUP), ELEM) :-
   num_pred(NUM, PRED), 
   get_tup_nth(PRED, TUP, ELEM).
 
-% PS ~ (STRM, SLVR, PROB, SOL, CTX)
-% PS = (CTX, SOL, PROB, STRM, PRVR, nil)
 get_ps_ctx(PS, CTX)    :- get_tup_nth(0, PS, CTX).
 get_ps_sol(PS, SOL)    :- get_tup_nth(1, PS, SOL).
 get_ps_prob(PS, PROB)  :- get_tup_nth(2, PS, PROB).
@@ -1051,45 +1000,27 @@ prove(STRM, SLVR, PROB, [orig(NAME, FORM_C) | SOL], CTX, CNT) :-
   get_assoc(NAME, PROB, FORM_P),
   originate(STRM, SLVR, NAME, FORM_P, CNT, FORM_C),
   put_assoc(CNT, CTX, FORM_C, CTX_N),
-  num_succ(CNT, SUCC),
-  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+  num_succ(CNT, SUCC), !,
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC), !.
 
 prove(STRM, SLVR, PROB, [add(FORM) | SOL], CTX, CNT) :- 
   justified(CNT, FORM),
   put_char(STRM, 'T'), 
   put_form(STRM, FORM), 
   put_assoc(CNT, CTX, FORM, CTX_N), 
-  num_succ(CNT, SUCC),
-  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+  num_succ(CNT, SUCC), !,
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC), !.
 
 prove(STRM, SLVR, PROB, [inf(HINT, IDS, FORM) | SOL], CTX, CNT) :- 
-  get_context(CTX, IDS, PREMS),
+  get_context(CTX, IDS, PREMS), !,
   subprove(STRM, SLVR, CNT, HINT, PREMS, FORM),
   put_assoc(CNT, CTX, FORM, CTX_N),
-  num_succ(CNT, SUCC),
-  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+  num_succ(CNT, SUCC), !, 
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC), !.
 
 prove(STRM, _, _, [], _, CNT) :- 
   num_pred(CNT, PRED),
-  put_prf(STRM, t(~ ff, x(PRED, CNT))).
-
-% prove(STRM, SLVR, PROB, [INST | SOL], CTX, NUM) :- 
-%   use_inst(STRM, SLVR, INST, CTX, NUM, CTX_N), !, 
-%   num_succ(NUM, SUCC),
-%   prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
-
-% prove(PS0, NUM) :- 
-%   get_ps_sol(PS0, [INST | SOL]), 
-%   set_ps_sol(PS0, SOL, PS1), !, 
-%   use_inst(PS1, NUM, INST, PS2), !, 
-%   num_succ(NUM, SUCC),
-%   prove(PS2, SUCC).
-
-% prove(PS, NUM) :- 
-%   get_ps_sol(PS, []), 
-%   get_ps_strm(PS, STRM), 
-%   num_pred(NUM, PRED),
-%   put_prf(STRM, t(~ ff, x(PRED, NUM))).
+  put_prf(STRM, t(~ ff, x(PRED, CNT))), !.
 
 para_push(TRP) :- 
   para_mate(TRP) -> true 
