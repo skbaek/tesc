@@ -4,6 +4,8 @@ use tptp::syntax::*;
 use std::io::{self};
 use std::io::{Write};
 use basic::*;
+mod paths;
+use crate::folders::TPTPPATH;
 
 fn output_ttp_input<W: Write>(w: &mut W, ti: TPTPInput) -> Rst<()> {
   match ti {
