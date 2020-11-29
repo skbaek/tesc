@@ -11,6 +11,7 @@ log
 basic/target/
 tptp/target/
 tts/target/
+tts/src/folders.rs
 rttv/target/
 esol_bak/
 vsol_bak/
