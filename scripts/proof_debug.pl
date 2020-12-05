@@ -1,8 +1,8 @@
 #!/usr/bin/env swipl
 :- initialization(main, main).
 
-:- consult('../tesc/prove').
-:- consult('../tesc/proof_trace').
+:- ['../prove'].
+:- ['../proof_trace'].
 
 main :- 
   debug_prvr(PRVR), 
@@ -10,7 +10,6 @@ main :-
   debug_ctx(CTX), 
   debug_hyp(HYP), 
   debug_goal(GOAL), 
-  guitracer,
   trace, 
   infer(PRVR, HINTS, CTX, HYP, GOAL),
   % debug_prob(PROB), 

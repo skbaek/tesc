@@ -1717,10 +1717,6 @@ postpend_backslash(DIR, DIRB) :-
   postpend_47(CODES, CODES_47),
   atom_codes(DIRB, CODES_47). 
 
-% folder_filename_file(FD, FLNM, FILE) :- 
-%   postpend_backslash(FD, FDB), 
-%   atom_concat(FDB, FLNM, FILE).
-
 take_until_first(CODE, ATOM, PFX) :- 
   atom_codes(ATOM, CODES), !,
   append(PFX_CODES, [CODE | _], CODES), !, 
@@ -1761,12 +1757,6 @@ abs_root(ABS, ROOT) :- abs_base(ABS, BASE), base_root(BASE, ROOT).
 folder_children(FD, CHDR) :-
   directory_files(FD, TEMP), 
   subtract(TEMP, ['.', '..'], CHDR).
-
-% folder_abses(FD, ABSS) :-
-%   postpend_backslash(FD, FDB), 
-%   directory_files(FDB, TEMP), 
-%   subtract(TEMP, ['.', '..'], CHDR),
-%   cmap(atom_concat(FDB), CHDR, ABSS).
 
 codes_concat_with_47([], Y, [47 | Y]) :- !.
 codes_concat_with_47([47], Y, [47 | Y]) :- !.
@@ -2177,7 +2167,7 @@ concat_shell(LIST, SEP, EXST) :-
   shell(CMD, EXST).
 
 call_solver(e, PROB_PATH, SOL_PATH) :- 
-  concat_shell(["./eprover --auto --cpu-limit=60 -p ", PROB_PATH, " > temp.s"], _), 
+  concat_shell(["./eprover --cpu-limit=60 -p ", PROB_PATH, " > temp.s"], _), 
   (
     any_line_path('temp.s', =("# Proof found!")) -> 
     concat_shell(["cat temp.s | sed '/\\(^#\\|^\\$\\)/d' > ", SOL_PATH], 0),

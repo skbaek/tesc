@@ -343,6 +343,9 @@ syunion_lits([LIT | LITS_A], LITS_B, LITS) :-
   syunion_lits(LITS_A, LITS_B, TEMP), 
   syinsert_lit(LIT, TEMP, LITS).
 
+try_mk_rw_form(LHS, RHS, IN, OUT) :- mk_rw_form(LHS, RHS, IN, OUT), !.
+try_mk_rw_form(_, _, IN, IN). 
+
 mk_rw_form(LHS, RHS, ~ FORM, ~ RW) :- !,
   mk_rw_form(LHS, RHS, FORM, RW).
 
@@ -376,13 +379,12 @@ mk_rw_term(FROM, TO, TERM_I, TERM_O) :-
     TERM_O = (FUN $ TERMS_O) 
   ).
 
-nst_orient(spm, HYP_L, HYP_R, HYP_L, HYP_R).
-% nst_orient(pm, HYP_L, HYP_R, HYP_L, HYP_R).
+nst_orient(pm, HYP_L, HYP_R, HYP_L, HYP_R).
 nst_orient(rw, HYP_L, HYP_R, HYP_L, HYP_R).
 nst_orient(sr, HYP_L, HYP_R, HYP_R, HYP_L).
 nst_orient(sr, HYP_L, HYP_R, HYP_L, HYP_R).
-nst_orient(csr, HYP_L, HYP_R, HYP_R, HYP_L).
-nst_orient(csr, HYP_L, HYP_R, HYP_L, HYP_R).
+% nst_orient(csr, HYP_L, HYP_R, HYP_R, HYP_L).
+% nst_orient(csr, HYP_L, HYP_R, HYP_L, HYP_R).
 
 unify_atom(ATOM_A, ATOM_B) :- 
   orient_atom(ATOM_A, TEMP), 
@@ -396,7 +398,6 @@ fold_definition(NUM, ATOM, BODY, FORM, NORM) :-
   substitute_form(fast, #NUM $ [], SUB_FORM, TEMP_FORM), 
   num_succ(NUM, SUCC), 
   fold_definition(SUCC, ATOM, BODY, TEMP_FORM, TEMP_NORM), 
-  % map_form(bind_pars_term(NUM), 0, TEMP_NORM, SUB_NORM), 
   bind_par_form(0, NUM, TEMP_NORM, SUB_NORM), 
   apply_uct(QTF, SUB_NORM, NORM).
 
@@ -456,7 +457,7 @@ mk_root(apply_def, FORM_A, FORM_B, dff, FORM_C) :- !,
   true.
 
 mk_root(RUL, FORM_A, FORM_B, (sup, true), FORM) :- 
-  member(RUL, [spm, rw, sr, csr]),
+  member(RUL, [rw, sr, pm]),
   inst_with_lvs(FORM_A, BODY_A),
   cla_lits(BODY_A, LITS_A), 
   inst_with_lvs(FORM_B, BODY_B),
@@ -469,8 +470,20 @@ mk_root(RUL, FORM_A, FORM_B, (sup, true), FORM) :-
   mk_cf(LITS, BODY_N),
   close_lvs(BODY_N, FORM).
 
+% mk_root(spm, FORM_A, FORM_B, (sup, true), FORM) :- 
+%   inst_with_lvs(FORM_A, BODY_A),
+%   cla_lits(BODY_A, LITS_A), 
+%   inst_with_lvs(FORM_B, BODY_B),
+%   cla_lits(BODY_B, LITS_B),  
+%   pluck(LITS_B, LIT_B, REST_B),
+%   orient_equation(LIT_B, ("=" $ [LHS, RHS])),
+%   cmap(try_mk_rw_form(LHS, RHS), LITS_A, NEW_LITS_A), 
+%   syunion_lits(NEW_LITS_A, REST_B, LITS),
+%   mk_cf(LITS, BODY_N),
+%   close_lvs(BODY_N, FORM).
+
 mk_root(RUL, FORM_A, FORM_B, res, FORM) :- 
-  member(RUL, [rw, sr, csr, spm]), 
+  member(RUL, [rw, sr, pm]), 
   inst_with_lvs(FORM_A, BODY_A),
   inst_with_lvs(FORM_B, BODY_B),
   nst_orient(RUL, BODY_A, BODY_B, BODY_L, BODY_R),
@@ -597,8 +610,8 @@ tup_insts(
 report_sol_failure(CTX, ANT) :- 
   format("Annotation = ~w\n", ANT), 
   open("sol_trace.pl", write, Stream), 
-  format(Stream, '~w.\n\n', debug_ctx(CTX)), 
-  format(Stream, '~w.\n\n', debug_ant(ANT)), 
+  write_term_punct(Stream, debug_ctx(CTX)), 
+  write_term_punct(Stream, debug_ant(ANT)), 
   close(Stream),
   true.
 
