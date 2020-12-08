@@ -1,17 +1,22 @@
 open import Agda.Builtin.Nat
 open import Function.Base
+open import Data.String using (String)
 open import Data.Bool
   renaming (not to bnot)
 open import Data.Unit
 open import Data.List
   renaming (or to disj) 
-  renaming(and to conj)
+  renaming (and to conj)
 open import Agda.Builtin.Char
 open import Data.Product
 open import Data.Maybe.Base 
   renaming (_>>=_ to _o>=_)
   renaming (map to map?)
 open import basic
+
+data Res (A : Set) : Set where
+  cont : A → Chars → Res A 
+  stop : String → Res A 
 
 Read : Set → Set
 Read A = Chars → Maybe (A × Chars)

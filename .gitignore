@@ -19,4 +19,5 @@ MAlonzo/
 *.agdai
 pttv
 attv
-rttv
+folders.pl
+folders.rs
