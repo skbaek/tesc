@@ -17,6 +17,9 @@ open import IO
   renaming (_>>_ to _>>>_)
 open import verify 
   using (verif)
+  using (Res)
+  using (cont)
+  using (stop)
 -- open import coread using (coread-prob) 
 open import Codata.Musical.Colist 
   renaming (length to length*) 
@@ -57,34 +60,24 @@ get-args = lift prim-get-args
 put-str-ln : String → IO ⊤
 put-str-ln s = putStr s >> (putStr "\n" >> skip) 
 
--- io-verify : IO ⊤ 
--- io-verify = do 
---   (pn ∷ x) ← get-args
---     where [] → (put-str-ln "No proof file name provided." >> exit-failure)
---   ps ← getContents
---   (just (P , _)) ← return (coread-prob ps)
---     where nothing → (put-str-ln "Failed to load problem." >> exit-failure)
---   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
---   (just (tt , _)) ← return (verify P [] (length cs) cs) 
---     where nothing → (put-str-ln "Invalid proof." >> exit-failure)
---   put-str-ln "ATTV : Proof verified."
-
 costring-to-chars : Costring → Chars 
 costring-to-chars (c ∷* cs) = c ∷ costring-to-chars (♭ cs)
 costring-to-chars _ = []
+
+print-result : Res ⊤ → IO ⊤ 
+print-result (cont tt x) = put-str-ln "ATTV : Proof verified."
+print-result (stop s) = do 
+  putStr "Invalid proof : " 
+  put-str-ln s 
+  exit-failure
 
 io-verify : IO ⊤ 
 io-verify = do 
   (pn ∷ x) ← get-args
     where [] → (put-str-ln "No proof file name provided." >> exit-failure)
   ps ← getContents
---   (just (P , _)) ← return (coread-prob ps)
---     where nothing → (put-str-ln "Failed to load problem." >> exit-failure)
   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
-  if (verif (costring-to-chars ps) cs) 
-    then put-str-ln "ATTV : Proof verified."
-    else (put-str-ln "Invalid proof." >> exit-failure)
-  -- put-str-ln "ATTV : Proof verified."
+  print-result (check (costring-to-chars ps) cs) 
 
 main : Prim.IO ⊤ 
 main = run io-verify

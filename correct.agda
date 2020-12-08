@@ -21,7 +21,7 @@ open import Agda.Builtin.Equality
 open import Data.List renaming (or to disj) renaming(and to conj)
 open import Data.Maybe
   renaming (_>>=_ to _o>=_)
-  renaming (is-just to is-just-bool)
+  -- renaming (is-cont to is-cont-bool)
 open import Data.Product
 open import basic 
 open import verify 
@@ -1079,64 +1079,86 @@ good-bch-c B t f g h0 h1 h2 h3 = good-bch-cons _ _
 good-bch-d : ∀ B f g → f ∈ B → (break-d (length B) f ≡ just g) → good-bch B → good-bch (g ∷ B) 
 good-bch-d B f g h0 h1 h2 = good-bch-cons g B (prsv-good-d f g (length B) (h2 f h0) h1) h2
 
-is-just : ∀ {A : Set} → Maybe A → Set
-is-just nothing = ⊥
-is-just (just _) = ⊤
+-- is-cont : ∀ {A : Set} → Maybe A → Set
+-- is-cont nothing = ⊥
+-- is-cont (just _) = ⊤
 
-from-is-just-bind : ∀ {A : Set} {B} (f : Read A) (g : A → Read B) cs → 
-    is-just ((f >>= g) cs) → 
-    ∃ (\ x → ∃ (\ cs' → (f cs ≡ just (x , cs')) ∧ (is-just (g x cs'))))
-from-is-just-bind f g cs with f cs 
-... | nothing = ⊥-elim
-... | (just (x , cs')) = \ h0 → (x , (cs' , (refl , h0)))
+cont-inj-val : ∀ {A : Set} {a0 a1 : A} {st0 st1} → 
+  cont a0 st0 ≡ cont a1 st1 → a0 ≡ a1 
+cont-inj-val refl = refl
 
-elim-is-just-bind' : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 → 
-  is-just ((f >>= g) cs0) → (∀ a cs1 → (f cs0 ≡ just (a , cs1)) → (is-just (g a cs1)) → C) → C
-elim-is-just-bind' f g cs h0 h1 = 
-  ex-elim-2 (from-is-just-bind f g cs h0) λ a cs' (h2 , h3) → h1 a cs' h2 h3
+is-cont : ∀ {A : Set} → Res A → Set
+is-cont (stop _) = ⊥
+is-cont (cont _ _) = ⊤
 
-elim-is-just-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 → 
-  (∀ a cs1 → (f cs0 ≡ just (a , cs1)) → (is-just (g a cs1)) → C) → is-just ((f >>= g) cs0) → C 
-elim-is-just-bind f g cs h0 h1 = elim-is-just-bind' f g cs h1 h0 
+from-is-cont-bind : ∀ {A : Set} {B} (f : Read A) (g : A → Read B) cs → 
+    is-cont ((f >>= g) cs) → 
+    ∃ λ x → ∃ λ cs' → (f cs ≡ cont x cs') ∧ (is-cont (g x cs'))
+from-is-cont-bind f g cs with f cs 
+... | stop _ = ⊥-elim
+... | cont x cs' = λ h0 → (x , cs' , refl , h0)
+
+from-is-cont-trunc-bind : ∀ {A : Set} {B} (f : Read A) (g : A → Read B) cs0 cs1 → 
+    is-cont ((trunc-bind f g) cs0 cs1) → 
+    ∃ λ x → ∃ λ cs → (f cs0 ≡ cont x cs) ∧ (is-cont (g x cs1))
+from-is-cont-trunc-bind f g cs0 cs1 with f cs0
+... | stop _ = ⊥-elim
+... | cont x cs = λ h0 → (x , cs , refl , h0)
+
+elim-is-cont-bind' : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 → 
+  is-cont ((f >>= g) cs0) → (∀ a cs1 → (f cs0 ≡ cont a cs1) → (is-cont (g a cs1)) → C) → C
+elim-is-cont-bind' f g cs h0 h1 = 
+  ex-elim-2 (from-is-cont-bind f g cs h0) λ a cs' (h2 , h3) → h1 a cs' h2 h3
+
+elim-is-cont-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 → 
+  (∀ a cs1 → (f cs0 ≡ cont a cs1) → (is-cont (g a cs1)) → C) → is-cont ((f >>= g) cs0) → C 
+elim-is-cont-bind f g cs h0 h1 = elim-is-cont-bind' f g cs h1 h0 
+    
+elim-is-cont-trunc-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 → 
+  (∀ a cs → (f cs0 ≡ cont a cs) → (is-cont (g a cs1)) → C) → 
+  is-cont ((trunc-bind f g) cs0 cs1) → C 
+elim-is-cont-trunc-bind f g cs0 cs1 h0 h1 = 
+  ex-elim-2 (from-is-cont-trunc-bind f g cs0 cs1 h1) 
+    λ a cs (h2 , h3) → h0 a cs h2 h3 
     
 ends : ∀ {A : Set} → Read A → Set
-ends r = ∃ λ cs → is-just (r cs)
+ends r = ∃ λ cs → is-cont (r cs)
 
 ends-num : ∀ {A : Set} → (Nat → Read A) → Set
 ends-num r = ∃ λ k → ends (r k)
 
 passes : ∀ {A : Set} → Read A → A → Set
-passes r a = ∃ λ cs0 → ∃ λ cs1 → (r cs0) ≡ just (a , cs1)
+passes r a = ∃ λ cs0 → ∃ λ cs1 → (r cs0) ≡ cont a cs1
 
 passes-num : ∀ {A : Set} → (Nat → Read A) → A → Set
 passes-num r a = ∃ λ k → passes (r k) a
 
 use-seq-eq-just : ∀ {A B C : Set} (r : Read A) (s : Read B) cs0 csf b → 
-  ((r >> s) cs0) ≡ just (b , csf) → 
-  (∀ a cs1 → r cs0 ≡ just (a , cs1) → (s cs1 ≡ just (b , csf)) → C) → C
+  ((r >> s) cs0) ≡ cont b csf → 
+  (∀ a cs1 → r cs0 ≡ cont a cs1 → (s cs1 ≡ cont b csf) → C) → C
 use-seq-eq-just r s cs0 csf b h0 h1 with (r cs0)
-... | just (a , cs1) = h1 a cs1 refl h0
+... | cont a cs1 = h1 a cs1 refl h0
 
-use-is-just-seq : ∀ {A B C : Set} (r : Read A) (s : Read B) (cs) → 
-  is-just ((r >> s) cs) → (∀ a cs' → r cs ≡ just (a , cs') → (is-just (s cs')) → C) → C
-use-is-just-seq r s cs h0 h1 with (r cs) 
-... | just (a , cs') = h1 a cs' refl h0 
+use-is-cont-seq : ∀ {A B C : Set} (r : Read A) (s : Read B) (cs) → 
+  is-cont ((r >> s) cs) → (∀ a cs' → r cs ≡ cont a cs' → (is-cont (s cs')) → C) → C
+use-is-cont-seq r s cs h0 h1 with (r cs) 
+... | cont a cs' = h1 a cs' refl h0 
 
-use-is-just-seq' : ∀ {A B C : Set} (r : Read A) (s : Read B) (cs) → 
-  (∀ a cs' → r cs ≡ just (a , cs') → (is-just (s cs')) → C) → 
-  is-just ((r >> s) cs) → C
-use-is-just-seq' r s cs h0 h1 = use-is-just-seq r s cs h1 h0 
+use-is-cont-seq' : ∀ {A B C : Set} (r : Read A) (s : Read B) (cs) → 
+  (∀ a cs' → r cs ≡ cont a cs' → (is-cont (s cs')) → C) → 
+  is-cont ((r >> s) cs) → C
+use-is-cont-seq' r s cs h0 h1 = use-is-cont-seq r s cs h1 h0 
 
-eq-just-to-is-just : ∀ {A : Set} {m} {a : A} → m ≡ just a → is-just m 
-eq-just-to-is-just {_} {just _}  _ = tt
+-- eq-just-to-is-cont : ∀ {A : Set} {m} {a : A} → m ≡ just a → is-cont m 
+-- eq-just-to-is-cont {_} {just _}  _ = tt
 
 elim-ends-seq : ∀ {A B C : Set} (r : Read A) (s : Read B) → 
   (ends r → ends s → C) → ends (r >> s) → C
 elim-ends-seq r s h0 = ex-elim' λ cs0 → 
-  use-is-just-seq' r s cs0 λ a cs1 h1 h2 → 
-    h0 (cs0 , eq-just-to-is-just  h1) (cs1 , h2) 
+  use-is-cont-seq' r s cs0 λ a cs1 h1 h2 → 
+    h0 (cs0 , eq-elim-symm is-cont h1 tt) (cs1 , h2) 
 
-intro-verify : ∀ (Q : Maybe (⊤ × Chars) → Set) P B k c cs → 
+intro-verify : ∀ (Q : Res ⊤ → Set) P B k c cs → 
   ( Q ( ( do
     f ← verify-a B 
     verify P (f ∷ B) k ) cs ) ) → 
@@ -1164,7 +1186,7 @@ intro-verify : ∀ (Q : Maybe (⊤ × Chars) → Set) P B k c cs →
     f ← verify-t B k 
     verify P (f ∷ B) k ) cs ) ) → 
   Q ( verify-x B cs ) → 
-  Q nothing → 
+  (∀ msg → Q (stop msg)) → 
   Q (verify P B (suc k) (c ∷ cs))
 intro-verify Q P B k c cs ha hb hc hd hn hp hs ht hx h0 =  
   intro-ite {(Read ⊤)} {_} {_} (c ==c 'A') (λ x → (Q (x cs))) ha (
@@ -1175,7 +1197,7 @@ intro-verify Q P B k c cs ha hb hc hd hn hp hs ht hx h0 =
             intro-ite {(Read ⊤)} {_} {_} (c ==c 'P') (λ x → (Q (x cs))) hp (
               intro-ite {(Read ⊤)} {_} {_} (c ==c 'S') (λ x → (Q (x cs))) hs (
                 intro-ite {(Read ⊤)} {_} {_} (c ==c 'T') (λ x → (Q (x cs))) ht (
-                  intro-ite {(Read ⊤)} {_} {_} (c ==c 'X') (λ x → (Q (x cs))) hx h0
+                  intro-ite {(Read ⊤)} {_} {_} (c ==c 'X') (λ x → (Q (x cs))) hx (h0 _) 
                 )
               )
             )
@@ -1198,52 +1220,52 @@ elim-ends-verify : ∀ P B k C →
   (ends (verify-x B) → C) → 
   ends (verify P B (suc k)) → C
 elim-ends-verify P B k C ha hb hc hd hn hp hs ht hx (c ∷ cs0 , hv) =
-  intro-verify (λ x → is-just x → C) P B k c cs0 
-    (elim-is-just-bind (verify-a B) _ cs0 λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (cs1 , h1)) --(... λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (k , cs1 , h1)) 
-    ( elim-is-just-bind (verify-b B) _ cs0 
+  intro-verify (λ x → is-cont x → C) P B k c cs0 
+    (elim-is-cont-bind (verify-a B) _ cs0 λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (cs1 , h1)) --(... λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (k , cs1 , h1)) 
+    ( elim-is-cont-bind (verify-b B) _ cs0 
         λ (f , g) cs1 h0 h1 → 
           elim-ends-seq (verify P (f ∷ B) k) (verify P (g ∷ B) k) 
             (λ h2 h3 → hb f g (cs0 , cs1 , h0) h2 h3) (cs1 , h1) ) 
-    ( elim-is-just-bind (verify-c B k) _ cs0 
+    ( elim-is-cont-bind (verify-c B k) _ cs0 
         λ f cs1 h0 h1 → hc f (k , cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-just-bind (verify-d B) _ cs0 
+    ( elim-is-cont-bind (verify-d B) _ cs0 
         λ f cs1 h0 h1 → hd f (cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-just-bind (verify-n B) _ cs0 
+    ( elim-is-cont-bind (verify-n B) _ cs0 
         λ f cs1 h0 h1 → hn f (cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-just-bind (verify-p P B) _ cs0 
+    ( elim-is-cont-bind (verify-p P B) _ cs0 
         λ f cs1 h0 h1 → hp f (cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-just-bind (verify-s B k) _ cs0 
+    ( elim-is-cont-bind (verify-s B k) _ cs0 
         λ f cs1 h0 h1 → 
           elim-ends-seq (verify P (not f ∷ B) k) (verify P (f ∷ B) k) 
             (λ h2 h3 → hs f (k , cs0 , cs1 , h0) h2 h3) 
             (cs1 , h1) )
-    ( elim-is-just-bind (verify-t B k) _ cs0 
+    ( elim-is-cont-bind (verify-t B k) _ cs0 
         λ f cs1 h0 h1 → ht f (k , cs0 , cs1 , h0) (cs1 , h1) ) 
     (λ h0 → hx (cs0 , h0)) 
-    ⊥-elim 
+    (λ _ → ⊥-elim) 
     hv
 
 from-eq-just : ∀ {A : Set} {B} (f : Read A) (g : A → Read B) {cs0} {cs1} {b} → 
-   ((f >>= g) cs0) ≡ just (b , cs1) → 
-   ∃ \ a → ∃ \ cs → (f cs0 ≡ just (a , cs)) ∧ (g a cs ≡ just (b , cs1))
+   ((f >>= g) cs0) ≡ cont b cs1 → 
+   ∃ \ a → ∃ \ cs → (f cs0 ≡ cont a cs) ∧ (g a cs ≡ cont b cs1)
 from-eq-just f g {cs0} h with f cs0
-... | (just (a , cs)) = a , cs , refl , h
+... | (cont a cs) = a , cs , refl , h
 
 elim-bind-eq-just : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 b → 
-  (∀ a cs → (f cs0 ≡ just (a , cs)) → (g a cs ≡ just (b , cs1)) → C) → 
-  ((f >>= g) cs0) ≡ just (b , cs1) → C
+  (∀ a cs → (f cs0 ≡ cont a cs) → (g a cs ≡ cont b cs1) → C) → 
+  ((f >>= g) cs0) ≡ cont b cs1 → C
 elim-bind-eq-just f g cs0 csf b h0 h1 with (f cs0)
-... | just (a , cs1) = h0 a cs1 refl h1
+... | cont a cs1 = h0 a cs1 refl h1
 
 use-bind-eq-just : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 b → 
-  ((f >>= g) cs0) ≡ just (b , cs1) → 
-  (∀ a cs → (f cs0 ≡ just (a , cs)) → (g a cs ≡ just (b , cs1)) → C) → C
+  ((f >>= g) cs0) ≡ cont b cs1 → 
+  (∀ a cs → (f cs0 ≡ cont a cs) → (g a cs ≡ cont b cs1) → C) → C
 use-bind-eq-just f g cs0 cs1 b h0 h1 = ex-elim (from-eq-just f g h0) 
   \ a h2 → ex-elim h2 (λ cs h3 → h1 a cs (fst h3) (snd h3))
 
-elim-is-just-obind : ∀ {A B C : Set} (f : Maybe A) (g : A → Maybe B) → 
-  (∀ a → f ≡ just a → is-just (g a) → C) → is-just (f o>= g) → C
-elim-is-just-obind (just a) g h0 h1 = h0 a refl h1
+-- elim-is-cont-obind : ∀ {A B C : Set} (f : Maybe A) (g : A → Maybe B) → 
+--   (∀ a → f ≡ just a → is-cont (g a) → C) → is-cont (f o>= g) → C
+-- elim-is-cont-obind (just a) g h0 h1 = h0 a refl h1
 
 elim-obind-eq-just : ∀ {A B C : Set} (f : Maybe A) (g : A → Maybe B) (b : B) → 
   (∀ a → f ≡ just a → (g a) ≡ just b → C) → (f o>= g) ≡ just b → C
@@ -1259,8 +1281,9 @@ from-obind-eq-just nothing _ _  ()
 from-obind-eq-just (just a) g b h0 = (a , (refl , h0))
 
 from-lift-read-eq-just : ∀ {A : Set} {f : Maybe A} {a cs0 cs1} → 
-  ((lift-read f) cs0 ≡ just (a , cs1)) → f ≡ just a
-from-lift-read-eq-just {_} {just a0} {_} {_} {_} h0 = cong just (prod-inj-lft (just-inj h0))
+  ((lift-read f) cs0 ≡ cont a cs1) → f ≡ just a
+from-lift-read-eq-just {_} {just a0} {_} {_} {_} h0 = 
+  cong just (cont-inj-val h0) -- cong just (prod-inj-lft (just-inj h0))
 
 from-nth-eq-just : ∀ {A : Set} k l (x : A) → nth k l ≡ just x → x ∈ l
 from-nth-eq-just 0 (y ∷ _) x = \ h0 → or-lft (eq-symm (just-inj h0))
@@ -1275,22 +1298,22 @@ from-get-bch-eq-just {B} {m} {f} h0 =
       \ k h1 → from-nth-eq-just k _ _ (snd h1)
 
 correct-aux : ∀ {f g : Read ⊤} P B c0 c1 cs
-  (h0 : is-just (f cs) → unsat P B)  
-  (h1 : is-just (g cs) → unsat P B)  
+  (h0 : is-cont (f cs) → unsat P B)  
+  (h1 : is-cont (g cs) → unsat P B)  
   → -------------------------------
-  is-just ((if c0 =c c1 then f else g) cs) → unsat P B 
+  is-cont ((if c0 =c c1 then f else g) cs) → unsat P B 
 correct-aux P B c0 c1 cs = 
-  intro-ite (c0 =c c1) (λ (x : Read ⊤) → is-just (x cs) → unsat P B) 
+  intro-ite (c0 =c c1) (λ (x : Read ⊤) → is-cont (x cs) → unsat P B) 
 
 from-lift-read-bind-eq : ∀ {A : Set} B k (m : Form → Maybe A) cs0 csf (a : A) → 
-  lift-read (get-bch B k o>= m) cs0 ≡ just (a , csf) → 
+  lift-read (get-bch B k o>= m) cs0 ≡ cont a csf → 
   ∃ λ f → ((f ∈ B) ∧ (m f ≡ just a))
 from-lift-read-bind-eq B k m cs0 csf a h0 =
   ex-elim (from-obind-eq-just (get-bch B k) m a (from-lift-read-eq-just h0)) 
     λ f h1 → (f , from-get-bch-eq-just (fst h1) , snd h1)
 
 from-pass-if-seq-eq-just : ∀ {A : Set} b (r : Read A) cs0 csf a → 
-  (pass-if b >> r) cs0 ≡ just (a , csf) → (tr b ∧ (r cs0 ≡ just (a , csf)))
+  (pass-if b >> r) cs0 ≡ cont a csf → (tr b ∧ (r cs0 ≡ cont a csf))
 from-pass-if-seq-eq-just true r cs0 csf a h0 = tt , h0 
 
 from-passes-verify-a : ∀ B f → passes (verify-a B) f → 
@@ -1300,7 +1323,7 @@ from-passes-verify-a B f (cs0 , (cs1 , h0)) =
     use-bind-eq-just read-bool _ cs cs1 f h2 λ b cs' h3 h4 → 
       b , from-lift-read-bind-eq B k _ _ _ f h4
 
-from-verify-a-eq-just : ∀ B cs0 cs1 g → verify-a B cs0 ≡ just (g , cs1) → 
+from-verify-a-eq-just : ∀ B cs0 cs1 g → verify-a B cs0 ≡ cont g cs1 → 
   ∃ \ b → ∃ \ f → ((f ∈ B) ∧ (break-a b f ≡ just g))
 from-verify-a-eq-just B cs0 cs1 g h0 = 
   use-bind-eq-just read-nat _ cs0 cs1 g h0 λ k cs h1 h2 → 
@@ -1313,7 +1336,7 @@ from-passes-verify-b B f g (cs0 , cs1 , h0) =
   use-bind-eq-just read-nat _ cs0 cs1 (f , g) h0 λ k cs1 h1 h2 → 
     from-lift-read-bind-eq B k _ _ _ (f , g) h2
 
-from-verify-b-eq-just : ∀ B cs0 cs1 gh → verify-b B cs0 ≡ just (gh , cs1) → 
+from-verify-b-eq-just : ∀ B cs0 cs1 gh → verify-b B cs0 ≡ cont gh cs1 → 
   ∃ λ f → ((f ∈ B) ∧ (break-b f ≡ just gh))
 from-verify-b-eq-just B cs0 csf gh h0 = 
   use-bind-eq-just read-nat _ cs0 csf gh h0 λ k cs1 h1 h2 → 
@@ -1328,7 +1351,7 @@ from-passes-num-verify-c B g (k , cs0 , csf , h0) =
       in ex-elim (from-lift-read-bind-eq B _ _ cs2 csf g h5) λ f (h6 , h7) → 
       t , f , chks-good (suc (length B)) t h4 , h6 , h7 
 
-from-verify-c-eq-just : ∀ B k cs0 csf g → (verify-c B k cs0 ≡ just (g , csf)) →
+from-verify-c-eq-just : ∀ B k cs0 csf g → (verify-c B k cs0 ≡ cont g csf) →
   ∃ λ t → ∃ λ f → ((good-term (suc (length B)) t) ∧ ((f ∈ B) ∧ (break-c t f ≡ just g)))
 from-verify-c-eq-just B k cs0 csf g h0  = 
   use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
@@ -1343,7 +1366,7 @@ from-passes-verify-d B g (cs0 , csf , h0) =
   use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
     ex-elim (from-lift-read-bind-eq B _ _ cs1 csf g h1) λ f (h2 , h3) → f , h2 , h3
 
-from-verify-d-eq-just : ∀ B cs0 csf g → (verify-d B cs0 ≡ just (g , csf)) → 
+from-verify-d-eq-just : ∀ B cs0 csf g → (verify-d B cs0 ≡ cont g csf) → 
   ∃ λ f → ((f ∈ B) ∧ (break-d (length B) f ≡ just g))
 from-verify-d-eq-just B cs0 csf g h0 = 
   use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
@@ -1355,10 +1378,10 @@ from-passes-num-verify-s B g (k , cs0 , csf , h0) =
     λ f cs1 h1 h2 → 
       let (h3 , h4) = from-pass-if-seq-eq-just (chk-good-form _ f) _ cs1 csf _ h2 in 
       let h5 = from-chks-good-form _ f h3 in 
-      eq-elim _ (prod-inj-lft (just-inj h4)) h5
+      eq-elim _ (cont-inj-val h4) h5 
 
-from-pass-eq-lft : ∀ {A : Set} (a0 a1 : A) cs0 cs1 → pass a0 cs0 ≡ just (a1 , cs1) → a0 ≡ a1
-from-pass-eq-lft a0 a1 cs0 cs1 h0 = prod-inj-lft (just-inj h0) 
+from-pass-eq-lft : ∀ {A : Set} (a0 a1 : A) cs0 cs1 → pass a0 cs0 ≡ cont a1 cs1 → a0 ≡ a1
+from-pass-eq-lft a0 a1 cs0 cs1 h0 = cont-inj-val h0 
 
 termoid-eq-to-eq : ∀ {b} (t s : Termoid b) → tr (termoid-eq t s) → t ≡ s
 termoid-eq-to-eq nil nil _ = refl
@@ -1507,7 +1530,7 @@ from-passes-num-verify-t B g (k , cs0 , csf , h0) =
 elim-ends-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) → 
   (∀ a → passes f a → ends (g a) → C) → ends (f >>= g) → C
 elim-ends-bind f g h0 (cs0 , h1) = 
-  elim-is-just-bind f g cs0 
+  elim-is-cont-bind f g cs0 
     (λ a cs1 h2 h3 → h0 a (cs0 , cs1 , h2) (cs1 , h3)) 
     h1
 
@@ -1538,12 +1561,13 @@ in-prob-cons : ∀ f P p → in-prob f P → in-prob f (p ∷ P)
 in-prob-cons f P p = ex-elim' λ nm h0 → (nm , or-rgt h0)
 
 from-get-from-prob-eq : ∀ P nm0 cs0 cs1 f → 
-  get-from-prob P nm0 cs0 ≡ just (f , cs1) → (in-prob f P) 
+  get-from-prob P nm0 cs0 ≡ cont f cs1 → (in-prob f P) 
 from-get-from-prob-eq ((nm1 , g) ∷ P) nm0 cs0 cs1 f = 
   intro-ite {_} {pass g} (chars-eq nm1 nm0)
-    (λ x → x cs0 ≡ just (f , cs1) → in-prob f ((nm1 , g) ∷ P)) 
+    (λ x → x cs0 ≡ cont f cs1 → in-prob f ((nm1 , g) ∷ P)) 
     ( λ h0 → eq-elim (λ x → in-prob x ((nm1 , g) ∷ P)) 
-      (prod-inj-lft (just-inj h0)) ((nm1 , or-lft refl)) ) 
+      (cont-inj-val h0) 
+      (nm1 , or-lft refl) ) 
     λ h0 → in-prob-cons _ _ _ (from-get-from-prob-eq P nm0 cs0 cs1 f h0)
 
 from-passes-verify-p : ∀ P B g → passes (verify-p P B) g → 
@@ -1556,7 +1580,7 @@ from-passes-verify-p P B g (cs0 , csf , h0) =
     let h8 = from-pass-eq-lft _ _ _ _ h7 in 
     eq-elim (λ x → in-prob x P ∧ good-form (suc (length B)) x) h8 (h5 , from-chks-good-form _ f h6)
 
-from-verify-p-eq-just : ∀ P B cs0 csf g → (verify-p P B cs0 ≡ just (g , csf)) → 
+from-verify-p-eq-just : ∀ P B cs0 csf g → (verify-p P B cs0 ≡ cont g csf) → 
   (in-prob g P ∧ good-form (suc (length B)) g)
 from-verify-p-eq-just P B cs0 csf g h0 = 
   use-bind-eq-just read-chars _ cs0 csf g h0 λ nm cs1 h1 h2 → 
@@ -1572,7 +1596,7 @@ from-passes-verify-n B g (cs0 , csf , h0) =
     ex-elim (from-lift-read-bind-eq B _ _ cs1 csf g h1) λ f (h2 , h3) → 
      eq-elim (λ x → x ∈ B) (from-break-n-eq-just f g h3) h2
 
-from-verify-n-eq-just : ∀ B cs0 csf g → (verify-n B cs0 ≡ just (g , csf)) → (not (not g)) ∈ B
+from-verify-n-eq-just : ∀ B cs0 csf g → (verify-n B cs0 ≡ cont g csf) → (not (not g)) ∈ B
 from-verify-n-eq-just B cs0 csf g h0 = 
   use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
     ex-elim (from-lift-read-bind-eq B _ _ cs1 csf g h1) λ f (h2 , h3) → 
@@ -1621,18 +1645,17 @@ nothing-ne-just : ∀ {A} (a : A) → nothing ≠ just a
 nothing-ne-just _ ()
 
 elim-seq-eq-just : ∀ {A B C : Set} (f : Read A) (g : Read B) cs0 csf b → 
-  (∀ a cs1 → f cs0 ≡ just (a , cs1) → g cs1 ≡ just (b , csf) → C) → 
-  ((f >> g) cs0 ≡ just (b , csf)) → C
+  (∀ a cs1 → f cs0 ≡ cont a cs1 → g cs1 ≡ cont b csf → C) → 
+  ((f >> g) cs0 ≡ cont b csf) → C
 elim-seq-eq-just f g cs0 csf b h0 h1 with (f cs0)
-... | just (a' , cs1') = h0 a' cs1' refl h1 
-... | nothing = ex-falso h1 (nothing-ne-just _) 
+... | cont a' cs1' = h0 a' cs1' refl h1 
 
 elim-alt-eq-just : ∀ {A C : Set} (f : Read A) (g : Read A) cs0 cs1 a → 
-  (f cs0 ≡ just (a , cs1) → C) → (g cs0 ≡ just (a , cs1) → C) → 
-  ((f <|> g) cs0 ≡ just (a , cs1)) → C
+  (f cs0 ≡ cont a cs1 → C) → (g cs0 ≡ cont a cs1 → C) → 
+  ((f <|> g) cs0 ≡ cont a cs1) → C
 elim-alt-eq-just f g cs0 cs1 a h0 h1 with (f cs0)
-... | just (a' , cs1') = h0 
-... | nothing = h1 
+... | cont a' cs1' = h0 
+... | stop _ = h1 
 
 elim-passes-alt : ∀ {A C : Set} (f : Read A) (g : Read A) (a : A) → 
   (passes f a → C) → (passes g a → C) → passes (f <|> g) a → C
@@ -1649,7 +1672,7 @@ elim-passes-seq : ∀ {A B C : Set} (f : Read A) (g : Read B) (b : B) →
   (ends f → passes g b → C) → passes (f >> g) b → C
 elim-passes-seq f g b h0 (cs0 , csf , h1) = 
   elim-seq-eq-just f g cs0 csf b 
-    ( λ a cs1 h2 h3 → h0 (cs0 , eq-elim-symm is-just h2 tt) (cs1 , csf , h3) ) 
+    ( λ a cs1 h2 h3 → h0 (cs0 , eq-elim-symm is-cont h2 tt) (cs1 , csf , h3) ) 
     h1
 
 elim-passes-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) (b : B) → 
@@ -1658,13 +1681,13 @@ elim-passes-bind f g b h0 (cs0 , csf , h1) =
   elim-bind-eq-just f g cs0 csf b 
     ( λ a cs1 h2 h3 → h0 a (cs0 , cs1 , h2) (cs1 , csf , h3)) h1
 
-elim-tr-chk-just : ∀ {A C : Set} (m : Maybe A) → 
-  (is-just m → C) → tr (chk-just m) → C 
-elim-tr-chk-just (just a) = id
+-- elim-tr-chk-just : ∀ {A C : Set} (m : Maybe A) → 
+--   (is-cont m → C) → tr (chk-just m) → C 
+-- elim-tr-chk-just (just a) = id
 
 elim-pass-eq-just : ∀ {A B : Set} (a0 a1 : A) cs0 cs1 → 
   (a0 ≡ a1 → cs0 ≡ cs1 → B) → 
-  pass a0 cs0 ≡ just (a1 , cs1) → B
+  pass a0 cs0 ≡ cont a1 cs1 → B
 elim-pass-eq-just a0 a1 cs0 cs1 h0 refl = h0 refl refl
 
 elim-in-prob-cons : ∀ {C} f i g P → (f ≡ g → C) → (in-prob f P → C) → in-prob f ((i , g) ∷ P) → C
@@ -1676,20 +1699,20 @@ good-prob-cons n f P h0 h1 g m =
   elim-in-prob-cons _ _ _ _ 
     (λ h2 → elim-eq (good-form m) (h0 _) (eq-symm h2)) (h1 _ _)
 
-elim-passes-fail : ∀ {A B : Set} (a : A) → passes fail a → B
-elim-passes-fail _ (_ , _ , ()) 
+elim-passes-fail : ∀ {A B : Set} (a : A) st → passes (fail st) a → B
+elim-passes-fail _ _ (_ , _ , ()) 
 
 elim-passes-pass : ∀ {A B : Set} (a0 a1 : A) → 
   (a0 ≡ a1 → B) → passes (pass a0) a1 → B
-elim-passes-pass a0 a1 h0 (cs0 , csf , h1) = h0 (prod-inj-lft (just-inj h1))
+elim-passes-pass a0 a1 h0 (cs0 , csf , h1) = h0 (cont-inj-val h1) 
 
 from-good-form-zero : ∀ k f → good-form 0 f → good-form k f
 from-good-form-zero 0 f = id
 from-good-form-zero (suc k) f h0 = 
   good-form-suc k f (from-good-form-zero k f h0)
 
-read-prob-good-prob : ∀ (P : Prob) k → passes (read-prob k) P → good-prob P
-read-prob-good-prob P (suc k) = 
+read-prob-core-good-prob : ∀ (P : Prob) k → passes (read-prob-core k) P → good-prob P
+read-prob-core-good-prob P (suc k) = 
   elim-passes-alt (read-spec-char _ >> pass []) _ P 
     ( elim-passes-seq (read-spec-char _) (pass []) P 
         λ _ → elim-passes-pass [] P (elim-eq good-prob good-prob-nil) ) 
@@ -1698,27 +1721,29 @@ read-prob-good-prob P (suc k) =
           elim-passes-bind (read-af k) _ P 
             λ (i , f) h0 → 
               elim-passes-seq (pass-if (chk-good-form 0 f)) _ P 
-                λ h1 → elim-passes-bind (read-prob k) _ P 
+                λ h1 → elim-passes-bind (read-prob-core k) _ P 
                   λ Q h2 → elim-passes-pass _ _ 
                     ( elim-eq good-prob 
                         ( good-prob-cons i f Q 
                             ( λ m → from-good-form-zero m f 
                                 (from-chks-good-form 0 f (from-ends-pass-if _ h1)) ) 
-                            (read-prob-good-prob Q k h2) ) ) ) 
+                            (read-prob-core-good-prob Q k h2) ) ) ) 
 
-parse-good-prob : ∀ P cs → parse-prob cs ≡ just P → good-prob P
-parse-good-prob P cs = 
-  elim-obind-eq-just (read-prob (length cs) cs) (λ (x , _) → just x) P 
-    λ (P' , cs') h0 h1 → 
-      read-prob-good-prob P (length cs) 
-        (cs , cs' , eq-trans _ h0 (cong (λ x → just (x , cs')) (just-inj h1)))
+-- parse-good-prob : ∀ P cs → parse-prob cs ≡ just P → good-prob P
+-- parse-good-prob P cs = 
+--   elim-obind-eq-just (read-prob-core (length cs) cs) (λ (x , _) → just x) P 
+--     λ (P' , cs') h0 h1 → 
+--       read-prob-core-good-prob P (length cs) 
+--         (cs , cs' , eq-trans _ h0 (cong (λ x → cont x cs') (just-inj h1)))
 
 -- If `verif` returns `true` to input strings `cs0` and `cs1`, then
 -- 1. there exists a first-order problem `P` that `cs0` is successfully parsed into, and 
 -- 2. `P` is unsatisfiable.
-corr : ∀ cs0 cs1 → tr (verif cs0 cs1) →
-  ∃ λ P → (parse-prob cs0 ≡ just P) ∧ (unsat-prob P) 
-corr cs0 cs1 = elim-tr-chk-just _ 
-  ( elim-is-just-obind (parse-prob cs0) _ 
-      λ P h0 h1 → 
-        P , h0 , correct P (length cs1) (parse-good-prob P cs0 h0) (cs1 , h1) )
+
+corr : ∀ cs0 cs1 → is-cont (check cs0 cs1) →
+  ∃ λ P → ∃ λ cs → (read-prob cs0 ≡ cont P cs) ∧ (unsat-prob P) 
+corr cs0 cs1 = 
+  elim-is-cont-trunc-bind read-prob _ cs0 cs1 
+    λ P cs h0 h1 → P , cs , h0 , 
+      correct P (length cs1) (read-prob-core-good-prob P (length cs0) (cs0 , cs , h0)) 
+        (cs1 , h1) 

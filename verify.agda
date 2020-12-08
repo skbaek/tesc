@@ -1,10 +1,14 @@
 open import Agda.Builtin.Nat
 open import Function.Base
-open import Data.String using (String)
+open import Data.String 
+  using (String)
+  using (fromChar)
+  using (_++_)
 open import Data.Bool
   renaming (not to bnot)
 open import Data.Unit
 open import Data.List
+  renaming (_++_ to list-concat) 
   renaming (or to disj) 
   renaming (and to conj)
 open import Agda.Builtin.Char
@@ -19,59 +23,59 @@ data Res (A : Set) : Set where
   stop : String → Res A 
 
 Read : Set → Set
-Read A = Chars → Maybe (A × Chars)
+Read A = Chars → Res A 
 
 infixl 20 _>>=_ 
 
 _>>=_ : ∀ {A} {B} → Read A → (A → Read B) → Read B
 _>>=_ f g cs with f cs 
-... | nothing = nothing
-... | just (a , cs') = g a cs'
+... | stop msg = stop msg
+... | cont a cs' = g a cs'
 
 _>>_ : ∀ {A} {B} → Read A → Read B → Read B
 _>>_ f g cs with f cs 
-... | nothing = nothing
-... | just (_ , cs') = g cs'
+... | stop msg = stop msg
+... | cont _ cs' = g cs'
 
 infixr 20 _<|>_ 
 
 _<|>_ : ∀ {A} → Read A → Read A → Read A
 _<|>_ f g cs with f cs 
-... | nothing = g cs
-... | just x = just x
+... | stop _ = g cs
+... | c = c
 
 pass : {A : Set} → A → Read A
-pass x cs = just (x , cs) 
+pass x cs = cont x cs 
 
-fail : {A : Set} → Read A
-fail _ = nothing 
+fail : {A : Set} → String → Read A
+fail s _ = stop s 
 
 skip : Read ⊤
 skip = pass tt
 
 lift-read : {A : Set} → Maybe A → Read A 
-lift-read nothing = fail 
+lift-read nothing = fail "Cannot lift nothing" 
 lift-read (just a) = pass a 
 
 pass-if : Bool → Read ⊤
 pass-if true = pass tt
-pass-if false = fail
+pass-if false = fail "Pass-if test failed"
 
 read-bool : Read Bool
-read-bool ('T' ∷ cs) = just (true , cs) 
-read-bool ('F' ∷ cs) = just (false , cs) 
-read-bool _ = nothing 
+read-bool ('T' ∷ cs) = cont true cs 
+read-bool ('F' ∷ cs) = cont false cs 
+read-bool _ = stop "Cannot read bool (head char neither 'T' nor 'F')" 
 
 read-char : Read Char
-read-char (c ∷ cs) = just (c , cs)
-read-char _ = nothing 
+read-char (c ∷ cs) = cont c cs
+read-char = fail "Cannot read char from empty string" 
 
 read-chars : Read Chars 
-read-chars ('%' ∷ cs) = just ([] , cs)
+read-chars ('%' ∷ cs) = cont [] cs
 read-chars (c ∷ cs) with read-chars cs 
-... | just (cs0 , cs1) = just (c ∷ cs0 , cs1)
-... | nothing = nothing 
-read-chars [] = nothing
+... | cont cs0 cs1 = cont (c ∷ cs0) cs1
+... | st = st 
+read-chars = fail "read-char fail : reached end of input string before endmarker"
 
 read-nat : Read Nat
 read-nat = read-chars >>= (lift-read ∘ chars-to-nat)
@@ -80,8 +84,11 @@ _==c_ : Char → Char → Bool
 _==c_ = primCharEquality
 
 read-spec-char : Char → Read ⊤ 
-read-spec-char c0 (c1 ∷ cs) = if c0 ==c c1 then just (tt , cs) else nothing
-read-spec-char _ [] = nothing 
+read-spec-char c0 (c1 ∷ cs) = 
+  if c0 ==c c1 
+    then cont tt cs 
+    else stop ("char expected = " ++ fromChar c0 ++ ", char read = " ++ fromChar c1)
+read-spec-char _ = fail "read-spec-char fail : reached end of input string before endmarker"
 
 read-ftr : Read Ftr
 read-ftr = 
@@ -92,8 +99,9 @@ read-ftr =
        s ← read-chars 
        pass (sf s) ) 
 
+-- just \(([A-Za-z0-9]+) , ([A-Za-z0-9]+)\)
 read-termoid : ∀ b → Nat → Read (Termoid b)
-read-termoid true _ ('.' ∷ cs) = just (nil , cs) 
+read-termoid true _ ('.' ∷ cs) = cont nil cs 
 read-termoid true (suc k) (',' ∷ cs) = ( do 
   t ← read-termoid false k 
   ts ← read-termoid true k
@@ -105,7 +113,7 @@ read-termoid false (suc k) ('$' ∷ cs) = ( do
   f ← read-ftr 
   ts ← read-termoid true k
   pass (fun f ts) ) cs 
-read-termoid _ _ _ = nothing 
+read-termoid _ _ = fail "read-termoid fail" 
 
 read-term : Nat → Read Term
 read-term = read-termoid false
@@ -126,6 +134,8 @@ read-bct =
 
 read-form : Nat → Read Form
 read-form (suc k) = 
+  ( do b ← read-bool
+       pass (cst b) ) <|>
   ( do read-spec-char '$'
        f ← read-ftr 
        ts ← read-terms k
@@ -140,7 +150,7 @@ read-form (suc k) =
        f ← read-form k
        g ← read-form k
        pass (bct b f g) ) 
-read-form 0 = fail
+read-form 0 = fail "read-form fail"
 
 
 -- read-form : Nat → Read Form
@@ -213,7 +223,7 @@ read-form 0 = fail
 -- read-form _ = fail
 
 get-from-prob : Prob → Chars → Read Form
-get-from-prob [] _ = fail
+get-from-prob [] _ = fail "get-from-prob fail"
 get-from-prob ((n , f) ∷ P) cs = 
   if (chars-eq n cs) 
   then pass f 
@@ -304,9 +314,9 @@ verify P B (suc k) (c ∷ cs) = (
       verify P (f ∷ B) k 
     ) else if c ==c 'X' then (
       verify-x B 
-    ) else fail
+    ) else fail "verify fail : invalid toplevel char"
   ) cs
-verify _ _ _ = fail
+verify _ _ _ = fail "verify fail : invalid case"
 
 read-af : Nat → Read (Chars × Form) 
 read-af k = do 
@@ -318,8 +328,8 @@ read-af k = do
       c1 ← read-char
       if c1 ==c '0' 
         then pass (n , f)
-        else fail )
-    else fail
+        else fail "read-af fail : non-0 endmarker" )
+    else fail "read-af fail : non-axiom annotated formula"
 
 -- read-af : Nat → Read (Chars × Form) 
 -- read-af k = do 
@@ -331,36 +341,46 @@ read-af k = do
 --     where _ → fail
 --   pass (n , f) 
 
-read-prob : Nat → Read Prob
-read-prob (suc k) = 
+read-prob-core : Nat → Read Prob
+read-prob-core (suc k) = 
   (read-spec-char '.' >> pass []) <|> 
   ( do read-spec-char ',' 
        (i , f) ← read-af k 
        pass-if (chk-good-form 0 f)
-       P ← read-prob k
+       P ← read-prob-core k
        pass ((i , f) ∷ P) )
-read-prob 0 = fail
+read-prob-core 0 = fail "read-prob-core fail"
 
--- read-prob : Nat → Read Prob
--- read-prob (suc k) (c ∷ cs) = 
+read-prob : Read Prob
+read-prob cs = read-prob-core (length cs) cs
+
+-- read-prob-core : Nat → Read Prob
+-- read-prob-core (suc k) (c ∷ cs) = 
 --   (
 --     if c ==c '.' then ( 
 --       pass [] 
 --     ) else if c ==c ',' then ( do 
 --       (nm , f) ← read-af k 
---       P ← read-prob k
+--       P ← read-prob-core k
 --       pass ((nm , f) ∷ P) 
 --     ) else fail 
 --   ) cs
--- read-prob _ _ = nothing
+-- read-prob-core _ _ = nothing
 
-parse-prob : Chars → Maybe Prob
-parse-prob cs = (read-prob (length cs) cs) o>= (λ (P , _) → just P) 
+-- parse-prob : Chars → Maybe Prob
+-- parse-prob cs = (read-prob-core (length cs) cs) o>= (λ (P , _) → just P) 
 
-chk-just : ∀ {A : Set} → Maybe A → Bool
-chk-just (just _) = true
-chk-just nothing = false
+-- chk-just : ∀ {A : Set} → Maybe A → Bool
+-- chk-just (just _) = true
+-- chk-just nothing = false
 
-verif : Chars → Chars → Bool
-verif pb-cs pf-cs = 
-  chk-just ((parse-prob pb-cs) o>= (λ P → verify P [] (length pf-cs) pf-cs))
+trunc-bind : ∀ {A B : Set} → (Read A) → (A → Read B) → Chars → Read B
+trunc-bind f g cs with f cs
+... | cont a _ = g a
+... | stop s = fail s
+
+check : Chars → Read ⊤ 
+check = trunc-bind read-prob (λ P cs → verify P [] (length cs) cs)
+-- ... | cont P _ = verify P [] (length pf-cs) pf-cs
+-- ... | stop msg = stop msg
+--  -- chk-just ((parse-prob pb-cs) o>= (λ P → verify P [] (length pf-cs) pf-cs))
