@@ -232,21 +232,21 @@ implies-b (not (bct iff f0 f1)) g h h0 =
     (prod-inj-lft h1) (prod-inj-rgt h1) \ R F V → not-and-to-not-or-not
 
 implies-a : ∀ b f g → break-a b f ≡ just g → f => g
-implies-a true  (bct and f0 f1) g h0 R F V h1 = 
+implies-a false  (bct and f0 f1) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (fst h1) 
-implies-a false (bct and f0 f1) g h0 R F V h1 = 
+implies-a true (bct and f0 f1) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (snd h1) 
-implies-a true  (bct iff f0 f1) g h0 R F V h1 = 
+implies-a false  (bct iff f0 f1) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (fst h1) 
-implies-a false (bct iff f0 f1) g h0 R F V h1 = 
+implies-a true (bct iff f0 f1) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (snd h1) 
-implies-a true  (not (bct or f0 f1)) g h0 R F V h1 = 
+implies-a false  (not (bct or f0 f1)) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (not-or-lft h1) 
-implies-a false (not (bct or f0 f1)) g h0 R F V h1 = 
+implies-a true (not (bct or f0 f1)) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (not-or-rgt h1) 
-implies-a true  (not (bct imp f0 f1)) g h0 R F V h1 = 
+implies-a false  (not (bct imp f0 f1)) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (not-imp-lft h1) 
-implies-a false (not (bct imp f0 f1)) g h0 R F V h1 = 
+implies-a true (not (bct imp f0 f1)) g h0 R F V h1 = 
   eq-elim (\ x → R , F , V ⊢ x) (just-inj h0) (not-imp-rgt h1) 
 
 termoid-val-incr : ∀ b F V d (t : Termoid b) → termoid-val F (V / 0 ↦ d) (incr-var t) ≡ termoid-val F V t 
@@ -1006,14 +1006,14 @@ prsv-good-c t (not (qtf true f)) g k h0 h1 h2 =
   eq-elim (good-form k) (just-inj h2) (good-subst-form t f k 0 h0 h1) 
 
 prsv-good-a : ∀ b f g k → (break-a b f ≡ just g) → good-form k f → good-form k g
-prsv-good-a true  (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1)
-prsv-good-a false (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1)
-prsv-good-a true  (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) h1 --h1
-prsv-good-a false (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-symm h1)
-prsv-good-a true  (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1) 
-prsv-good-a false (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1) 
-prsv-good-a true  (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1) 
-prsv-good-a false (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1) 
+prsv-good-a false  (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1)
+prsv-good-a true (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1)
+prsv-good-a false  (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) h1 --h1
+prsv-good-a true (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-symm h1)
+prsv-good-a false  (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1) 
+prsv-good-a true (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1) 
+prsv-good-a false  (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1) 
+prsv-good-a true (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1) 
 
 good-mono-args-lft : ∀ k m → good-termoid k (mono-args-lft m)
 good-mono-args-lft k 0 = tt
@@ -1554,8 +1554,8 @@ from-ends-verify-x B =
             λ f h2 → 
               elim-ends-lift-read-get-bch B m _ 
                 λ g h3 h4 → 
-                  let h5 = form-eq-to-eq (not f) g (from-ends-pass-if (form-eq (not f) g) h4) in 
-                  f , h2 , eq-elim (λ x → x ∈ B) (eq-symm h5) h3 
+                  let h5 = form-eq-to-eq f (not g) (from-ends-pass-if (form-eq f (not g)) h4) in 
+                  g , h3 , eq-elim (λ x → x ∈ B) h5 h2 
 
 in-prob-cons : ∀ f P p → in-prob f P → in-prob f (p ∷ P) 
 in-prob-cons f P p = ex-elim' λ nm h0 → (nm , or-rgt h0)

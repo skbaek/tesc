@@ -282,7 +282,7 @@ verify-x B = do
   n ← read-nat 
   f ← lift-read (get-bch B m)
   g ← lift-read (get-bch B n)
-  pass-if (form-eq (not f) g) 
+  pass-if (form-eq f (not g)) 
 
 verify : Prob → Bch → Nat → Read ⊤ 
 verify P B (suc k) (c ∷ cs) = (

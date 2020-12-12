@@ -164,14 +164,14 @@ skm-term-desc : Nat → Nat → Term
 skm-term-desc k a = fun (nf k) (vars-desc a)
 
 break-a : Bool → Form → Maybe Form 
-break-a true  (bct and f _) = just f
-break-a false (bct and _ f) = just f
-break-a true  (not (bct or f _)) = just (not f)
-break-a false (not (bct or _ f)) = just (not f)
-break-a true  (not (bct imp f _)) = just f
-break-a false (not (bct imp _ f)) = just (not f)
-break-a true  (bct iff f g) = just (bct imp f g)
-break-a false (bct iff f g) = just (bct imp g f)
+break-a false  (bct and f _) = just f
+break-a true (bct and _ f) = just f
+break-a false  (not (bct or f _)) = just (not f)
+break-a true (not (bct or _ f)) = just (not f)
+break-a false  (not (bct imp f _)) = just f
+break-a true (not (bct imp _ f)) = just (not f)
+break-a false  (bct iff f g) = just (bct imp f g)
+break-a true (bct iff f g) = just (bct imp g f)
 break-a _ _ = nothing
 
 break-b : Form → Maybe (Form × Form)
