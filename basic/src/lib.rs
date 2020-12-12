@@ -247,14 +247,6 @@ fn get_fs(bs: FileBytes) -> Rst<FS> {
   }
 }
 
-// pub fn get_sign(bs: FileBytes) -> Rst<bool> {
-//   match get_char(bs)? {
-//     '+' => Ok(true),
-//     '-' => Ok(false),
-//     _ => err_str("Cannot parse sign")
-//   }
-// }
-
 pub fn get_u64(bs : FileBytes) -> Rst<u64> {
   let s = get_string(bs)?;
   match s.parse::<u64>() {
@@ -424,11 +416,11 @@ pub fn get_form(bs: FileBytes) -> Rst<Form> {
   let mut stk: Vec<FormPart> = vec![];
   while 0 < rem {
     match get_char(bs)? {
-      'T' => {
+      '1' => {
          stk.push(FormPart::Cst(true));
          rem = rem - 1; 
       }, 
-      'F' => {
+      '0' => {
          stk.push(FormPart::Cst(false));
          rem = rem - 1; 
       }, 
