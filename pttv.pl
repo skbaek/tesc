@@ -332,7 +332,6 @@ main :-
   trace_if_debug(OPTS),
   (member('--print', OPTS) -> PRINT = true ; PRINT = false),
   tptp_prob(PROB_PATH, PROB), !,
-  write("Problem parsed.\n"),
   open(PRF_PATH, read, STRM, [encoding(octet)]), !,
   empty_assoc(EMP), !,
   check(PROB, EMP, 0, PRINT, "", STRM), !,
