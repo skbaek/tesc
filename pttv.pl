@@ -1,5 +1,5 @@
-% #!/usr/bin/env swipl
-% :- initialization(main, main).
+#!/usr/bin/env swipl
+:- initialization(main, main).
 
 :- [basic].
 
@@ -198,12 +198,12 @@ check(PROB, BCH, CNT, PRINT, PAD, STRM) :-
   get_char(STRM, CH), !,
   check(PROB, BCH, CNT, SUCC, CH, PRINT, PAD, STRM), !.
 
-dir_pp(true, "<").
-dir_pp(false, ">").
+dir_pp(lft, "<").
+dir_pp(rgt, ">").
 
 check(PROB, BCH, CNT, SUC, 'A', PRINT, PAD, STRM) :- 
   get_num(STRM, ID),  
-  get_bool(STRM, DIR),
+  get_dir(STRM, DIR),
   dir_pp(DIR, DIR_PP),
   printnl(PRINT, "~w~w : A / ~w / ~w", [PAD, CNT, ID, DIR_PP]), 
   get_assoc(ID, BCH, PREM),
@@ -314,11 +314,17 @@ check(PROB, BCH, CNT, SUC, 'T', PRINT, PAD, STRM) :-
   check(PROB, BCH_N, SUC, PRINT, PAD_N, STRM), !.
   
 check(_, BCH, CNT, _, 'X', PRINT, PAD, STRM) :- 
-  get_num(STRM, PID), 
-  get_num(STRM, NID),
-  get_assoc(PID, BCH, FORM_P),
+  get_num(STRM, NID), 
+  get_num(STRM, PID),
   get_assoc(NID, BCH, ~ FORM_N),
-  FORM_P == FORM_N, !,
+  get_assoc(PID, BCH, FORM_P),
+  (
+    FORM_P == FORM_N ->
+    true 
+  ;  
+    format("~w != ~w", [FORM_N, FORM_P]),
+    false
+  ), !,
   printnl(PRINT, "~w~w : X / ~w / ~w", [PAD, CNT, PID, NID]), !.
 
 main :- 
@@ -326,6 +332,7 @@ main :-
   trace_if_debug(OPTS),
   (member('--print', OPTS) -> PRINT = true ; PRINT = false),
   tptp_prob(PROB_PATH, PROB), !,
+  write("Problem parsed.\n"),
   open(PRF_PATH, read, STRM, [encoding(octet)]), !,
   empty_assoc(EMP), !,
   check(PROB, EMP, 0, PRINT, "", STRM), !,

@@ -8,7 +8,7 @@ main :-
   tesc_folder(TESC_PATH),
   (
     member('-p', OPTS) -> 
-    atomic_concat(TESC_PATH, pttv, PTTV_PATH), !,
+    atomic_concat(TESC_PATH, 'pttv.pl', PTTV_PATH), !,
     concat_shell([PTTV_PATH, PROB_PATH, PRF_PATH | OPTS], " ", 0)
   ;
     member('-a', OPTS) -> 

@@ -173,7 +173,7 @@ pub fn put_string<W: Write>(w: &mut W, s: &str) -> Rst<()> {
 }
 
 pub fn put_bool<W: Write>(w: &mut W, b: bool) -> Rst<()> {
-  if b { put_char(w,'T') } else { put_char(w,'F') }
+  if b { put_char(w,'1') } else { put_char(w,'0') }
   // match r {
   //   Role::Axiom => put_char(w,'A'),
   //   Role::Plain => put_char(w,'P')
@@ -265,13 +265,13 @@ pub fn get_u64(bs : FileBytes) -> Rst<u64> {
 
 pub fn get_bool(bs: FileBytes) -> Rst<bool> { 
   match get_char(bs)? {
-    'T' => Ok(true),
-    'F' => Ok(false),
+    '1' => Ok(true),
+    '0' => Ok(false),
      c  => Err(format!("Cannot parse bool from char = {}", c))
   }
 }
 
-fn bool_char(b: &bool) -> char { if *b { 'T' } else { 'F' } }
+fn bool_char(b: &bool) -> char { if *b { '1' } else { '0' } }
 
 fn bct_char(b: &Bct) -> char {
   match b {

@@ -21,7 +21,6 @@ open import Agda.Builtin.Equality
 open import Data.List renaming (or to disj) renaming(and to conj)
 open import Data.Maybe
   renaming (_>>=_ to _o>=_)
-  -- renaming (is-cont to is-cont-bool)
 open import Data.Product
 open import basic 
 open import verify 
@@ -1050,12 +1049,8 @@ good-bch-t B _ (jst-not-bot _) h1       = good-bch-cons _ B tt h1
 good-bch-t B _ (jst-refl _) h1          = good-bch-cons _ B (tt , tt , tt , tt) h1
 good-bch-t B _ (jst-symm k) h1          = good-bch-cons _ B ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt)))) h1
 good-bch-t B _ (jst-trans k) h1         = good-bch-cons _ B ((tt , (tt , (tt , tt))) , ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt))))) h1
-good-bch-t B _ (jst-fun k f h0) h1      = 
-  -- good-bch-cons _ B (good-form-suc (length B) f (good-mono-fun k 0 f h0)) h1
-  good-bch-cons _ B (good-mono-fun k 0 f h0) h1
-good-bch-t B _ (jst-rel k f h0) h1      = 
--- good-bch-cons _ B (good-form-suc _ f (good-mono-rel k 0 f h0)) h1
-  good-bch-cons _ B (good-mono-rel k 0 f h0) h1
+good-bch-t B _ (jst-fun k f h0) h1      = good-bch-cons _ B (good-mono-fun k 0 f h0) h1
+good-bch-t B _ (jst-rel k f h0) h1      = good-bch-cons _ B (good-mono-rel k 0 f h0) h1
 good-bch-t B _ (jst-choice k f h0) h1   = good-bch-cons _ B (good-choice (length B) 0 _ h0) h1
 good-bch-t B _ (jst-pred-def k f h0) h1 = good-bch-cons _ B (good-pred-def (length B) 0 _ h0) h1
 
@@ -1082,10 +1077,6 @@ good-bch-c B t f g h0 h1 h2 h3 = good-bch-cons _ _
 
 good-bch-d : ∀ B f g → f ∈ B → (break-d (length B) f ≡ just g) → good-bch B → good-bch (g ∷ B) 
 good-bch-d B f g h0 h1 h2 = good-bch-cons g B (prsv-good-d f g (length B) (h2 f h0) h1) h2
-
--- is-cont : ∀ {A : Set} → Maybe A → Set
--- is-cont nothing = ⊥
--- is-cont (just _) = ⊤
 
 cont-inj-val : ∀ {A : Set} {a0 a1 : A} {st0 st1} → 
   cont a0 st0 ≡ cont a1 st1 → a0 ≡ a1 
@@ -1152,9 +1143,6 @@ use-is-cont-seq' : ∀ {A B C : Set} (r : Read A) (s : Read B) (cs) →
   (∀ a cs' → r cs ≡ cont a cs' → (is-cont (s cs')) → C) → 
   is-cont ((r >> s) cs) → C
 use-is-cont-seq' r s cs h0 h1 = use-is-cont-seq r s cs h1 h0 
-
--- eq-just-to-is-cont : ∀ {A : Set} {m} {a : A} → m ≡ just a → is-cont m 
--- eq-just-to-is-cont {_} {just _}  _ = tt
 
 elim-ends-seq : ∀ {A B C : Set} (r : Read A) (s : Read B) → 
   (ends r → ends s → C) → ends (r >> s) → C
@@ -1225,7 +1213,7 @@ elim-ends-verify : ∀ P B k C →
   ends (verify P B (suc k)) → C
 elim-ends-verify P B k C ha hb hc hd hn hp hs ht hx (c ∷ cs0 , hv) =
   intro-verify (λ x → is-cont x → C) P B k c cs0 
-    (elim-is-cont-bind (verify-a B) _ cs0 λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (cs1 , h1)) --(... λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (k , cs1 , h1)) 
+    (elim-is-cont-bind (verify-a B) _ cs0 λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (cs1 , h1)) 
     ( elim-is-cont-bind (verify-b B) _ cs0 
         λ (f , g) cs1 h0 h1 → 
           elim-ends-seq (verify P (f ∷ B) k) (verify P (g ∷ B) k) 
@@ -1267,10 +1255,6 @@ use-bind-eq-just : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 b �
 use-bind-eq-just f g cs0 cs1 b h0 h1 = ex-elim (from-eq-just f g h0) 
   \ a h2 → ex-elim h2 (λ cs h3 → h1 a cs (fst h3) (snd h3))
 
--- elim-is-cont-obind : ∀ {A B C : Set} (f : Maybe A) (g : A → Maybe B) → 
---   (∀ a → f ≡ just a → is-cont (g a) → C) → is-cont (f o>= g) → C
--- elim-is-cont-obind (just a) g h0 h1 = h0 a refl h1
-
 elim-obind-eq-just : ∀ {A B C : Set} (f : Maybe A) (g : A → Maybe B) (b : B) → 
   (∀ a → f ≡ just a → (g a) ≡ just b → C) → (f o>= g) ≡ just b → C
 elim-obind-eq-just (just a) g b h0 h1 = h0 a refl h1 -- h0 a b refl h1 
@@ -1287,7 +1271,7 @@ from-obind-eq-just (just a) g b h0 = (a , (refl , h0))
 from-lift-read-eq-just : ∀ {A : Set} {f : Maybe A} {a cs0 cs1} → 
   ((lift-read f) cs0 ≡ cont a cs1) → f ≡ just a
 from-lift-read-eq-just {_} {just a0} {_} {_} {_} h0 = 
-  cong just (cont-inj-val h0) -- cong just (prod-inj-lft (just-inj h0))
+  cong just (cont-inj-val h0) 
 
 from-nth-eq-just : ∀ {A : Set} k l (x : A) → nth k l ≡ just x → x ∈ l
 from-nth-eq-just 0 (y ∷ _) x = \ h0 → or-lft (eq-symm (just-inj h0))

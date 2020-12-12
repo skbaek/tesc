@@ -154,14 +154,14 @@ resymb_form((RDICT, FDICT), (REL_I $ TERMS_I), (REL_O $ TERMS_O)) :-
     REL_O = REL_I
   ).
 
-break_a(true, (FORM /\ _), FORM).
-break_a(false, (_ /\ FORM), FORM).
-break_a(true, ~ ((FORM \/ _)), ~ FORM).
-break_a(false, ~ ((_ \/ FORM)), ~ FORM).
-break_a(true, ~ ((FORM => _)), FORM).
-break_a(false, ~ ((_ => FORM)), ~ FORM).
-break_a(true, (FORM_A <> FORM_B), (FORM_A => FORM_B)).
-break_a(false, (FORM_A <> FORM_B), (FORM_B => FORM_A)).
+break_a(lft, (FORM /\ _), FORM).
+break_a(rgt, (_ /\ FORM), FORM).
+break_a(lft, ~ ((FORM \/ _)), ~ FORM).
+break_a(rgt, ~ ((_ \/ FORM)), ~ FORM).
+break_a(lft, ~ ((FORM => _)), FORM).
+break_a(rgt, ~ ((_ => FORM)), ~ FORM).
+break_a(lft, (FORM_A <> FORM_B), (FORM_A => FORM_B)).
+break_a(rgt, (FORM_A <> FORM_B), (FORM_B => FORM_A)).
 
 break_b(~ ((FORM_A /\ FORM_B)), ~ FORM_A, ~ FORM_B).
 break_b((FORM_A \/ FORM_B), FORM_A, FORM_B).
@@ -249,9 +249,9 @@ apply_n(
   num_succ(CNT, SUCC), !.
 
 apply_x(
-  (PID, FORM_P), 
   (NID, ~ FORM_N), 
-  (x(PID, NID), _)
+  (PID, FORM_P), 
+  (x(NID, PID), _)
 ) :-
   unify_with_occurs_check(FORM_P, FORM_N), !.
 
@@ -315,18 +315,18 @@ rp(RULS, HYPS, GOAL, HSGS) :- rp_core(RULS, HYPS, GOAL, HSGS, []).
 rp(RULS, HYPS, GOAL, HYPS_O, GOAL_O) :- rp(RULS, HYPS, GOAL, [(HYPS_O, GOAL_O)]).
 
 apply_aa(HYP, GOAL, HYP_L, HYP_R, GOAL_N) :- 
-  apply_a(HYP, true, GOAL, HYP_L, GOAL_T), 
-  apply_a(HYP, false, GOAL_T, HYP_R, GOAL_N). 
+  apply_a(HYP, lft, GOAL, HYP_L, GOAL_T), 
+  apply_a(HYP, rgt, GOAL_T, HYP_R, GOAL_N). 
 
 apply_ab(HYP_A, HYP_B, GOAL, HYP_AL, HYP_BL, GOAL_L, HYP_AR, HYP_BR, GOAL_R) :- 
   apply_b(HYP_B, GOAL, HYP_BL, HYP_BR, GOAL_TL, GOAL_TR), 
-  apply_a(HYP_A, true, GOAL_TL, HYP_AL, GOAL_L),
-  apply_a(HYP_A, false, GOAL_TR, HYP_AR, GOAL_R).
+  apply_a(HYP_A, lft, GOAL_TL, HYP_AL, GOAL_L),
+  apply_a(HYP_A, rgt, GOAL_TR, HYP_AR, GOAL_R).
 
 apply_ab_rev(HYP_A, HYP_B, GOAL, HYP_AR, HYP_BL, GOAL_L, HYP_AL, HYP_BR, GOAL_R) :- 
   apply_b(HYP_B, GOAL, HYP_BL, HYP_BR, GOAL_TL, GOAL_TR), 
-  apply_a(HYP_A, false, GOAL_TL, HYP_AR, GOAL_L),
-  apply_a(HYP_A, true, GOAL_TR, HYP_AL, GOAL_R).
+  apply_a(HYP_A, rgt, GOAL_TL, HYP_AR, GOAL_L),
+  apply_a(HYP_A, lft, GOAL_TR, HYP_AL, GOAL_R).
 
 apply_sb_lem(HYP, GOAL, HYP_L, HYP_R, HYP_NL, GOAL_L, GOAL_R) :- 
   hyp_form(HYP, FORM), 
@@ -789,8 +789,11 @@ put_atom(STRM, ATOM) :-
   atom_codes(ATOM, BYTES),
   put_bytes_dollar(STRM, BYTES).
 
-put_bool(STRM, true)  :- put_char(STRM, "T").
-put_bool(STRM, false) :- put_char(STRM, "F").
+put_dir(STRM, lft) :- put_char(STRM, '0').
+put_dir(STRM, rgt) :- put_char(STRM, '1').
+
+put_bool(STRM, false) :- put_char(STRM, '0').
+put_bool(STRM, true)  :- put_char(STRM, '1').
 
 put_num(STRM, NUM) :- 
   number_codes(NUM, BYTES),
@@ -807,8 +810,8 @@ put_term(STRM, (FUN $ TERMS)) :-
 put_terms(STRM, TERMS) :- 
   put_list(STRM, put_term, TERMS).
 
-put_form(STRM, tt) :- !, put_char(STRM, 'T').
-put_form(STRM, ff) :- !, put_char(STRM, 'F').
+put_form(STRM, tt) :- !, put_char(STRM, '1').
+put_form(STRM, ff) :- !, put_char(STRM, '0').
 put_form(STRM, FORM) :- 
   break_uct(FORM, UCT, SUB), !, 
   put_char(STRM, UCT), 
@@ -834,7 +837,7 @@ put_functor(STRM, FTR) :-
 put_prf(STRM, a(ID, DIR, PRF)) :- 
   put_char(STRM, 'A'), 
   put_num(STRM, ID), 
-  put_bool(STRM, DIR),
+  put_dir(STRM, DIR),
   put_prf(STRM, PRF).
   
 put_prf(STRM, b(ID, PRF_L, PRF_R)) :- 
@@ -890,7 +893,7 @@ put_prf(STRM, x(PID, NID)) :-
 eq_refl(CONC, GOAL) :- 
   apply_t(! (("=" $ [#0, #0])), GOAL, HYP0, GOAL_T), 
   apply_c(HYP0, _, GOAL_T, HYP1, GOAL_N), 
-  apply_x(HYP1, CONC, GOAL_N).
+  apply_x(CONC, HYP1, GOAL_N).
 
 % eq_symm(TERMA, TERMB, GOAL)
 % --- 
@@ -974,12 +977,12 @@ orient_hyp(HYP_I, GOAL_I, HYP_O, GOAL_O) :-
 
 use_pf((ID, ff), GOAL) :- 
   apply_t(~ ff, GOAL, CMP, TEMP),
-  apply_x((ID, ff), CMP, TEMP).
+  apply_x(CMP, (ID, ff), TEMP).
 
 use_nt(HYP, GOAL) :- 
   HYP = (_, ~ tt),
   apply_t(tt, GOAL, CMP, GOAL_N),
-  apply_x(CMP, HYP, GOAL_N).
+  apply_x(HYP, CMP, GOAL_N).
 
 use_falsehood(HYP, GOAL) :- 
   use_pf(HYP, GOAL) ; 
@@ -989,8 +992,8 @@ use_contra(HYP, GOAL) :-
   use_falsehood(HYP, GOAL) ;
   (
     apply_n(HYP, GOAL, HYP_N, GOAL_N) ;
-    apply_a(HYP, true, GOAL, HYP_N, GOAL_N) ; 
-    apply_a(HYP, false, GOAL, HYP_N, GOAL_N) 
+    apply_a(HYP, lft, GOAL, HYP_N, GOAL_N) ; 
+    apply_a(HYP, rgt, GOAL, HYP_N, GOAL_N) 
   ),
   use_contra(HYP_N, GOAL_N) ;
   apply_b(HYP, GOAL, HYP_L, HYP_R, GOAL_L, GOAL_R), 
@@ -1008,7 +1011,7 @@ mate(HYP_A, HYP_B, GOAL) :-
  
 mate_pn(PYP, NYP, GOAL) :- 
   orient_hyp(PYP, GOAL, PYP_N, GOAL_N), 
-  apply_x(PYP_N, NYP, GOAL_N).
+  apply_x(NYP, PYP_N, GOAL_N).
 
 
 
@@ -1047,8 +1050,14 @@ get_atom(STRM, ATOM) :-
 get_bool(STRM, BOOL) :- 
   get__char(STRM, CHAR),
   char_bool(CHAR, BOOL).
-char_bool('T', true).
-char_bool('F', false).
+char_bool('1', true).
+char_bool('0', false).
+
+get_dir(STRM, DIR) :- 
+  get__char(STRM, CHAR),
+  char_dir(CHAR, DIR).
+char_dir('0', lft).
+char_dir('1', rgt).
 
 get_annot(STRM, ANNOT) :-
   get__char(STRM, CH),
@@ -1099,8 +1108,8 @@ get_functor(STRM, FTR) :-
 get_functor(STRM, '#', #NUM) :- get_num(STRM, NUM).
 get_functor(STRM, '"', STR) :- get_string(STRM, STR).
 
-get_form_aux(_, 'T', tt).
-get_form_aux(_, 'F', ff).
+get_form_aux(_, '1', tt).
+get_form_aux(_, '0', ff).
 
 get_form_aux(STRM, '$', (REL $ TERMS)) :- 
   get_functor(STRM, REL), 
@@ -1123,7 +1132,7 @@ get_prf(STRM, PRF) :-
 
 get_prf(STRM, 'A', a(PID, DIR, SUB)) :- 
   get_num(STRM, PID),  
-  get_bool(STRM, DIR),
+  get_dir(STRM, DIR),
   get_prf(STRM, SUB).  
   
 get_prf(STRM, 'B', b(PID, SUB_L, SUB_R)) :- 
@@ -1181,8 +1190,8 @@ startable_hyp(MODE, (_, FORM)) :-
 startable_form(_, FORM) :- falsehood(FORM), !.
 startable_form(MODE, FORM) :- break_n(FORM, SUB), !, startable_form(MODE, SUB). 
 startable_form(MODE, FORM) :- 
-  break_a(true, FORM, FORM_A), !, 
-  break_a(false, FORM, FORM_B), !, 
+  break_a(lft, FORM, FORM_A), !, 
+  break_a(rgt, FORM, FORM_B), !, 
   (startable_form(MODE, FORM_A) ; startable_form(MODE, FORM_B)).
 startable_form(MODE, FORM) :- 
   break_b(FORM, FORM_A, FORM_B), !, 
@@ -1268,13 +1277,13 @@ iff_conv_pos_aux(TRP) :-
 
 iff_conv_neg_aux(TRP) :- 
   para__b(TRP, TRP_2, TRP_1),
-  para_a_(true, TRP_1, TRP_1A), 
+  para_a_(lft, TRP_1, TRP_1A), 
 
-  (D1 = true, D2 = false ; D1 = false, D2 = true),
+  (D1 = lft, D2 = rgt ; D1 = rgt, D2 = lft),
 
   para__a(D1, TRP_1A, TRP_1B), 
   mate(TRP_1B),
-  para_a_(false, TRP_2, TRP_2A), 
+  para_a_(rgt, TRP_2, TRP_2A), 
   para__a(D2, TRP_2A, TRP_2B), 
   para__n(TRP_2B, TRP_2C), 
   mate(TRP_2C).
@@ -1420,7 +1429,7 @@ para_simp_v((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :-
   use_contra(HYP_T, GOAL_T).
 
 para_simp_v((HYP_A, HYP_B, GOAL), (HYP_N, HYP_B, GOAL_N)) :- 
-  pluck([true, false], DIR, [FLP]), 
+  pluck([lft, rgt], DIR, [FLP]), 
   hyp_form(HYP_A, FORM), 
   break_a(DIR, FORM, FORM_T), 
   tautology(FORM_T), 
@@ -1439,17 +1448,17 @@ para_simp(v, H2G) :-
 para_simp(e, H2G) :- 
   H2G = (PREM, _, GOAL),
   hyp_form(PREM, FORM),
-  break_a(true, FORM, FORM_A), !,
-  break_a(false, FORM, FORM_B), 
+  break_a(lft, FORM, FORM_A), !,
+  break_a(rgt, FORM, FORM_B), 
   bool_simp(FORM_A, NORM_A),
   bool_simp(FORM_B, NORM_B),
   (
     (truth(NORM_A) ; NORM_A == NORM_B) -> 
-    para_a_(false, H2G, H2G_N),
+    para_a_(rgt, H2G, H2G_N),
     para_simp(e, H2G_N)
   ;
     truth(NORM_B) -> 
-    para_a_(true, H2G, H2G_N),
+    para_a_(lft, H2G, H2G_N),
     para_simp(e, H2G_N)
   ;
     complements(NORM_A, NORM_B) -> 
@@ -1565,16 +1574,16 @@ ppr(H2G) :-
 %%%%%%%%%%%%%%%% NEGATION NORMALIZATION %%%%%%%%%%%%%%%%
 
 a_para((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
-  apply_a(HYP_A, true, GOAL, HYP_AN, GOAL_N) ;
-  apply_a(HYP_A, false, GOAL, HYP_AN, GOAL_N).
+  apply_a(HYP_A, lft, GOAL, HYP_AN, GOAL_N) ;
+  apply_a(HYP_A, rgt, GOAL, HYP_AN, GOAL_N).
   
 ppr_a((HYP_A, HYP_B, GOAL), (HYP_AN, HYP_B, GOAL_N)) :- 
-  apply_a(HYP_A, true, GOAL, HYP_AN, GOAL_N) ;
-  apply_a(HYP_A, false, GOAL, HYP_AN, GOAL_N).
+  apply_a(HYP_A, lft, GOAL, HYP_AN, GOAL_N) ;
+  apply_a(HYP_A, rgt, GOAL, HYP_AN, GOAL_N).
 
 ppr_a((HYP_A, HYP_B, GOAL), (HYP_A, HYP_BN, GOAL_N)) :- 
-  apply_a(HYP_B, true, GOAL, HYP_BN, GOAL_N) ;
-  apply_a(HYP_B, false, GOAL, HYP_BN, GOAL_N).
+  apply_a(HYP_B, lft, GOAL, HYP_BN, GOAL_N) ;
+  apply_a(HYP_B, rgt, GOAL, HYP_BN, GOAL_N).
 
 fnnf(H2G) :- 
   para_mate(H2G) -> true ;
@@ -1621,8 +1630,8 @@ imp_hyp(HYP) :-
 
 ap_rop_aux(HYP, GOAL, HYP_L, HYP_R, NEW_GOAL) :- 
   \+ imp_hyp(HYP), 
-  apply_a(HYP, true, GOAL, HYP_L, TEMP_GOAL),
-  apply_a(HYP, false, TEMP_GOAL, HYP_R, NEW_GOAL).
+  apply_a(HYP, lft, GOAL, HYP_L, TEMP_GOAL),
+  apply_a(HYP, rgt, TEMP_GOAL, HYP_R, NEW_GOAL).
 
 ap_rop(HYP, GOAL, HYPS, GOAL_N) :- 
   ap_rop_aux(HYP, GOAL, HYP_L, HYP_R, GOAL0) -> 

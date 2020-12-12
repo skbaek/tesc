@@ -16,7 +16,7 @@ open import IO
   renaming (_>>=_ to _>>>=_)
   renaming (_>>_ to _>>>_)
 open import verify 
-  using (verif)
+  using (check)
   using (Res)
   using (cont)
   using (stop)

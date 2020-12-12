@@ -62,9 +62,9 @@ pass-if true = pass tt
 pass-if false = fail "Pass-if test failed"
 
 read-bool : Read Bool
-read-bool ('T' ∷ cs) = cont true cs 
-read-bool ('F' ∷ cs) = cont false cs 
-read-bool _ = stop "Cannot read bool (head char neither 'T' nor 'F')" 
+read-bool ('0' ∷ cs) = cont false cs 
+read-bool ('1' ∷ cs) = cont true cs 
+read-bool _ = stop "Cannot read bool (head char neither '0' nor '1')" 
 
 read-char : Read Char
 read-char (c ∷ cs) = cont c cs
@@ -151,76 +151,6 @@ read-form (suc k) =
        g ← read-form k
        pass (bct b f g) ) 
 read-form 0 = fail "read-form fail"
-
-
--- read-form : Nat → Read Form
--- read-form (suc k) (c ∷ cs) = (
---     if c ==c '$' then ( do
---       f ← read-ftr 
---       ts ← read-terms k
---       pass (rel f ts) 
---     ) else if c ==c '~' then ( do
---       f ← read-form k
---       pass (not f) 
---     ) else if c ==c '!' then ( do
---       f ← read-form k
---       pass (qtf false f) 
---     ) else if c ==c '?' then ( do
---       f ← read-form k
---       pass (qtf true f) 
---     ) else if c ==c '|' then ( do
---       f ← read-form k 
---       g ← read-form k 
---       pass (bct or f g)  
---     ) else if c ==c '&' then ( do
---       f ← read-form k 
---       g ← read-form k 
---       pass (bct and f g)  
---     ) else if c ==c '>' then ( do
---       f ← read-form k 
---       g ← read-form k 
---       pass (bct imp f g)  
---     ) else if c ==c '=' then ( do
---       f ← read-form k 
---       g ← read-form k 
---       pass (bct iff f g)  
---     ) else fail
---   ) cs
--- read-form _ _ = nothing
-
--- read-form : Nat → Read Form
--- read-form _ ('T' ∷ cs) = just (cst true , cs)  
--- read-form _ ('F' ∷ cs) = just (cst false , cs)  
--- read-form (suc k) ('$' ∷ cs) = ( do 
---   f ← read-ftr 
---   ts ← read-terms k
---   pass (rel f ts) ) cs 
--- read-form (suc k) ('~' ∷ cs) = ( do 
---   f ← read-form k
---   pass (not f) ) cs
--- read-form (suc k) ('!' ∷ cs) = ( do 
---   f ← read-form k
---   pass (qtf false f) ) cs
--- read-form (suc k) ('?' ∷ cs) = ( do 
---   f ← read-form k
---   pass (qtf true f) ) cs
--- read-form (suc k) ('|' ∷ cs) = ( do 
---   f ← read-form k 
---   g ← read-form k 
---   pass (bct or f g) ) cs 
--- read-form (suc k) ('&' ∷ cs) = ( do 
---   f ← read-form k 
---   g ← read-form k 
---   pass (bct and f g) ) cs 
--- read-form (suc k) ('>' ∷ cs) = ( do 
---   f ← read-form k 
---   g ← read-form k 
---   pass (bct imp f g) ) cs 
--- read-form (suc k) ('=' ∷ cs) = ( do 
---   f ← read-form k 
---   g ← read-form k 
---   pass (bct iff f g) ) cs 
--- read-form _ = fail
 
 get-from-prob : Prob → Chars → Read Form
 get-from-prob [] _ = fail "get-from-prob fail"
@@ -321,8 +251,8 @@ verify _ _ _ = fail "verify fail : invalid case"
 read-af : Nat → Read (Chars × Form) 
 read-af k = do 
   n ← read-chars 
-  c0 ← read-char 
-  if c0 ==c 'T'
+  b ← read-bool 
+  if b
     then ( do 
       f ← read-form k
       c1 ← read-char
@@ -330,16 +260,6 @@ read-af k = do
         then pass (n , f)
         else fail "read-af fail : non-0 endmarker" )
     else fail "read-af fail : non-axiom annotated formula"
-
--- read-af : Nat → Read (Chars × Form) 
--- read-af k = do 
---   n ← read-chars 
---   'T' ← read-char 
---     where _ → fail
---   f ← read-form k
---   '0' ← read-char
---     where _ → fail
---   pass (n , f) 
 
 read-prob-core : Nat → Read Prob
 read-prob-core (suc k) = 
@@ -354,26 +274,6 @@ read-prob-core 0 = fail "read-prob-core fail"
 read-prob : Read Prob
 read-prob cs = read-prob-core (length cs) cs
 
--- read-prob-core : Nat → Read Prob
--- read-prob-core (suc k) (c ∷ cs) = 
---   (
---     if c ==c '.' then ( 
---       pass [] 
---     ) else if c ==c ',' then ( do 
---       (nm , f) ← read-af k 
---       P ← read-prob-core k
---       pass ((nm , f) ∷ P) 
---     ) else fail 
---   ) cs
--- read-prob-core _ _ = nothing
-
--- parse-prob : Chars → Maybe Prob
--- parse-prob cs = (read-prob-core (length cs) cs) o>= (λ (P , _) → just P) 
-
--- chk-just : ∀ {A : Set} → Maybe A → Bool
--- chk-just (just _) = true
--- chk-just nothing = false
-
 trunc-bind : ∀ {A B : Set} → (Read A) → (A → Read B) → Chars → Read B
 trunc-bind f g cs with f cs
 ... | cont a _ = g a
@@ -381,6 +281,3 @@ trunc-bind f g cs with f cs
 
 check : Chars → Read ⊤ 
 check = trunc-bind read-prob (λ P cs → verify P [] (length cs) cs)
--- ... | cont P _ = verify P [] (length pf-cs) pf-cs
--- ... | stop msg = stop msg
---  -- chk-just ((parse-prob pb-cs) o>= (λ P → verify P [] (length pf-cs) pf-cs))

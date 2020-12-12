@@ -42,7 +42,7 @@ break_eq_fun(OPEs, ONE, GOAL, HGS) :-
   mk_mono_fun(LTH, FUN, MONOForm),
   apply_t(MONOForm, GOAL, MONO, GOAL0),
   intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, OPE, HGS, GOAL1),
-  apply_x(OPE, ONE, GOAL1).
+  apply_x(ONE, OPE, GOAL1).
 
 break_eq_rel(OPEs, OPA, ONA, GOAL, HGS) :- 
   OPA = (_, (REL $ TERMS_A)),
@@ -54,8 +54,8 @@ break_eq_rel(OPEs, OPA, ONA, GOAL, HGS) :-
   apply_t(MONOForm, GOAL, MONO, GOAL0),
   intro_eqs(MONO, TERMS_A, TERMS_B, GOAL0, IMP, HGS, GOAL1),
   apply_b(IMP, GOAL1, HYP_L, HYP_R, GOAL_L, GOAL_R), 
-  apply_x(OPA, HYP_L, GOAL_L), 
-  apply_x(HYP_R, ONA, GOAL_R). 
+  apply_x(HYP_L, OPA, GOAL_L), 
+  apply_x(ONA, HYP_R, GOAL_R). 
 
 subst_fun_mul(OPEs, ONE, GOAL, NewOPEs) :-
   ONE = (_, ~ (("=" $ [TERM_A, TERM_B]))), 
@@ -168,7 +168,7 @@ vcnf(PREM, HYPS, GOAL) :-
   vcnf(PREM_N, HYPS, GOAL_N).
 
 vcnf(PREM, HYPS, GOAL) :- 
-  member(DIR, [true, false]),
+  member(DIR, [lft, rgt]),
   apply_a(PREM, DIR, GOAL, PREM_N, GOAL_N),
   vcnf(PREM_N, HYPS, GOAL_N).
 
@@ -187,7 +187,7 @@ vacc_aux((PREM, CONC, GOAL)) :-
 vacc(PREM, CONC, GOAL) :- 
   rp([d], [CONC], GOAL, [CONC_N], GOAL1), 
   rp([c], [PREM], GOAL1, [PREM_T], GOAL2), 
-  member(DIR, [true, false]),
+  member(DIR, [lft, rgt]),
   apply_a(PREM_T, DIR, GOAL2, PREM_N, GOAL3), 
   paraab_choice((PREM_N, CONC_N, GOAL3), TRP_A, TRP_B),
   vacc_aux(TRP_A),
@@ -249,7 +249,7 @@ dff(Defs, HYP0, HYP1, DFP) :-
   member(Def, Defs), 
   rp([c], [Def], DFP, [IFF], DFP0),
   IFF = (_, ((Atom <> _))), !,
-  apply_a(IFF, true, DFP0, IMP, DFP1), 
+  apply_a(IFF, lft, DFP0, IMP, DFP1), 
   apply_b(IMP, DFP1, Ante, Cons, DFP2, DFP3), 
   mate(HYP1, Ante, DFP2), 
   dff(Defs, HYP0, Cons, DFP3).
@@ -260,7 +260,7 @@ dff(Defs, HYP0, HYP1, DFP) :-
   member(Def, Defs), 
   rp([c], [Def], DFP, [IFF], DFP0), 
   IFF = (_, (Atom <> _)), !,
-  apply_a(IFF, false, DFP0, IMP, DFP1), 
+  apply_a(IFF, rgt, DFP0, IMP, DFP1), 
   apply_b(IMP, DFP1, Ante, Cons, DFP2, DFP3), 
   mate(HYP1, Cons, DFP3), 
   dff(Defs, HYP0, Ante, DFP2).
@@ -455,7 +455,7 @@ eskm(AOCS, H2G) :-
   pluck(AOCS, AOC, REST),
   rp([c], [AOC], GOAL, [HYP], GOAL_T), 
   apply_b(HYP, GOAL_T, HYP_L, HYP_R, GOAL_L, GOAL_R), 
-  apply_x(PREM, HYP_L, GOAL_L),
+  apply_x(HYP_L, PREM, GOAL_L),
   eskm(REST, (HYP_R, CONC, GOAL_R)).
 
 skm(AOCS, H2G) :- 
@@ -475,7 +475,7 @@ skm(AOCS, H2G) :-
   pluck(AOCS, AOC, REST),
   rp([c], [AOC], GOAL, [HYP], GOAL_T), 
   apply_b(HYP, GOAL_T, HYP_L, HYP_R, GOAL_L, GOAL_R), 
-  apply_x(PREM, HYP_L, GOAL_L),
+  apply_x(HYP_L, PREM, GOAL_L),
   skm(REST, (HYP_R, CONC, GOAL_R)).
 
 
@@ -485,8 +485,8 @@ spl_exp([], [], GOAL, [], GOAL).
 spl_exp([PREM | PREMS], HYPS_I, GOAL_I, [HYP | HYPS_O], GOAL_O) :- 
   pluck(HYPS_I, HYP_I, REST), 
   (
-    apply_a(PREM, true, GOAL_I, HYP_T, GOAL_T) ;
-    apply_a(PREM, false, GOAL_I, HYP_T, GOAL_T) 
+    apply_a(PREM, lft, GOAL_I, HYP_T, GOAL_T) ;
+    apply_a(PREM, rgt, GOAL_I, HYP_T, GOAL_T) 
   ), 
   (
     apply_b(HYP_T, GOAL_T, HYP_A, HYP_B, GOAL_A, GOAL_B) ;
@@ -608,8 +608,8 @@ esimp_qtf(X) :-
 % para_simp_e(X) :- paran(X, Y), !, para_simp_e(Y).
 % para_simp_e(TRP) :- 
 %   TRP = ((_, FORM), _, _), 
-%   break_a(true, FORM, FORM_A), !, 
-%   break_a(false, FORM, FORM_B), 
+%   break_a(lft, FORM, FORM_A), !, 
+%   break_a(rgt, FORM, FORM_B), 
 %   bool_simp(FORM_A, NORM_A), 
 %   bool_simp(FORM_B, NORM_B), 
 
@@ -851,8 +851,8 @@ infer(v, updr, [PREM], CONC, GOAL) :-
   rp([d], [CONC], GOAL, [CONC_N], GOAL0),
   rp([c], [PREM], GOAL0, [PREM_N], GOAL1),
   (
-    apply_a(PREM_N, true, GOAL1, PREM_D, GOAL2) ;
-    apply_a(PREM_N, false, GOAL1, PREM_D, GOAL2)
+    apply_a(PREM_N, lft, GOAL1, PREM_D, GOAL2) ;
+    apply_a(PREM_N, rgt, GOAL1, PREM_D, GOAL2)
   ),
   mate(PREM_D, CONC_N, GOAL2).
 
@@ -1071,25 +1071,7 @@ prove(STRM, SLVR, PROB, [inf(HINT, IDS, FORM) | SOL], CTX, CNT) :-
 
 prove(STRM, _, _, [], _, CNT) :- 
   num_pred(CNT, PRED),
-  put_prf(STRM, t(~ ff, x(PRED, CNT))).
-
-% prove(STRM, SLVR, PROB, [INST | SOL], CTX, NUM) :- 
-%   use_inst(STRM, SLVR, INST, CTX, NUM, CTX_N), !, 
-%   num_succ(NUM, SUCC),
-%   prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
-
-% prove(PS0, NUM) :- 
-%   get_ps_sol(PS0, [INST | SOL]), 
-%   set_ps_sol(PS0, SOL, PS1), !, 
-%   use_inst(PS1, NUM, INST, PS2), !, 
-%   num_succ(NUM, SUCC),
-%   prove(PS2, SUCC).
-
-% prove(PS, NUM) :- 
-%   get_ps_sol(PS, []), 
-%   get_ps_strm(PS, STRM), 
-%   num_pred(NUM, PRED),
-%   put_prf(STRM, t(~ ff, x(PRED, NUM))).
+  put_prf(STRM, t(~ ff, x(CNT, PRED))).
 
 para_push(TRP) :- 
   para_mate(TRP) -> true 
@@ -1177,11 +1159,11 @@ para_dist_fa((PREM, CONC, GOAL)) :-
   para__b(TRP, TRP_L0, TRP_R0),
   para__d(TRP_L0, TRP_L1), 
   para_c_(TRP_L1, TRP_L2), 
-  para_a_(true, TRP_L2, TRP_L3),
+  para_a_(lft, TRP_L2, TRP_L3),
   para_mate(TRP_L3), 
   para__d(TRP_R0, TRP_R1), 
   para_c_(TRP_R1, TRP_R2), 
-  para_a_(false, TRP_R2, TRP_R3), 
+  para_a_(rgt, TRP_R2, TRP_R3), 
   para_mate(TRP_R3), 
   para_ab((HYP_B, CONC, GOAL_B), TRP_A, TRP_B), 
   para_dist_fa(TRP_A),
@@ -1264,8 +1246,8 @@ para_dist((PREM, CONC, GOAL)) :-
 
     para_dist_help(PREM, HYP_A, HYP_B, GOAL_T, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
     apply_aa(HYP_TA, GOAL_TA, HYP_FL, HYP_FR, GOAL_FLR), 
-    para_dist_close(true, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
-    para_dist_close(false, HYP_TB, HYP_TB, HYP_T, GOAL_TB), 
+    para_dist_close(lft, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
+    para_dist_close(rgt, HYP_TB, HYP_TB, HYP_T, GOAL_TB), 
     para_dist((HYP_C, CONC, GOAL_C)), !
 
     % PREM : FA | FB, 
@@ -1282,8 +1264,8 @@ para_dist((PREM, CONC, GOAL)) :-
 
     para_dist_help(PREM, HYP_A, HYP_B, GOAL_T, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
     apply_aa(HYP_TB, GOAL_TB, HYP_FL, HYP_FR, GOAL_FLR), 
-    para_dist_close(true, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
-    para_dist_close(false, HYP_TA, HYP_TA, HYP_T, GOAL_TA), 
+    para_dist_close(lft, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
+    para_dist_close(rgt, HYP_TA, HYP_TA, HYP_T, GOAL_TA), 
     para_dist((HYP_C, CONC, GOAL_C)), !
 
     % PREM : FA | FB, 
@@ -1293,9 +1275,9 @@ para_dist((PREM, CONC, GOAL)) :-
     
   ;
     para_dist_help(PREM, HYP_A, HYP_B, GOAL_B, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
-    apply_a(CONC, true, GOAL_TA, HYP_NTA, GOAL_NTA), 
+    apply_a(CONC, lft, GOAL_TA, HYP_NTA, GOAL_NTA), 
     mate(HYP_TA, HYP_NTA, GOAL_NTA), 
-    apply_a(CONC, false, GOAL_TB, HYP_NTB, GOAL_NTB), 
+    apply_a(CONC, rgt, GOAL_TB, HYP_NTB, GOAL_NTB), 
     mate(HYP_TB, HYP_NTB, GOAL_NTB)
   ).  
 
@@ -1326,8 +1308,8 @@ para_dist(PREM, CONC, GOAL) :-
 
     para_dist_help(PREM, HYP_A, HYP_B, GOAL_T, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
     apply_aa(HYP_TA, GOAL_TA, HYP_FL, HYP_FR, GOAL_FLR), 
-    para_dist_close(true, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
-    para_dist_close(false, HYP_TB, HYP_TB, HYP_T, GOAL_TB), 
+    para_dist_close(lft, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
+    para_dist_close(rgt, HYP_TB, HYP_TB, HYP_T, GOAL_TB), 
     para_dist(HYP_C, CONC, GOAL_C), !
 
     % PREM : FA | FB, 
@@ -1344,8 +1326,8 @@ para_dist(PREM, CONC, GOAL) :-
 
     para_dist_help(PREM, HYP_A, HYP_B, GOAL_T, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
     apply_aa(HYP_TB, GOAL_TB, HYP_FL, HYP_FR, GOAL_FLR), 
-    para_dist_close(true, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
-    para_dist_close(false, HYP_TA, HYP_TA, HYP_T, GOAL_TA), 
+    para_dist_close(lft, HYP_FL, HYP_FR, HYP_T, GOAL_FLR), 
+    para_dist_close(rgt, HYP_TA, HYP_TA, HYP_T, GOAL_TA), 
     para_dist(HYP_C, CONC, GOAL_C), !
 
     % PREM : FA | FB, 
@@ -1355,9 +1337,9 @@ para_dist(PREM, CONC, GOAL) :-
     
   ;
     para_dist_help(PREM, HYP_A, HYP_B, GOAL_B, HYP_TA, HYP_TB, GOAL_TA, GOAL_TB),
-    apply_a(CONC, true, GOAL_TA, HYP_NTA, GOAL_NTA), 
+    apply_a(CONC, lft, GOAL_TA, HYP_NTA, GOAL_NTA), 
     mate(HYP_TA, HYP_NTA, GOAL_NTA), 
-    apply_a(CONC, false, GOAL_TB, HYP_NTB, GOAL_NTB), 
+    apply_a(CONC, rgt, GOAL_TB, HYP_NTB, GOAL_NTB), 
     mate(HYP_TB, HYP_NTB, GOAL_NTB)
   ).  
 */ 
