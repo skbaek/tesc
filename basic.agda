@@ -391,14 +391,14 @@ chk-mono-fun : Nat → Nat → Form → Bool
 chk-mono-fun k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) =
   (c =c '=') && chk-mono-fun k (suc m) f
 chk-mono-fun k m (rel (sf (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) =
-  (c =c '=') && chk-good-ftr k f0 && (ftr-eq f0 f1 && (terms-eq ts0 (mono-args-lft m) && terms-eq ts1 (mono-args-rgt m)))
+  (c =c '=') && chk-good-ftr (suc k) f0 && (ftr-eq f0 f1 && (terms-eq ts0 (mono-args-lft m) && terms-eq ts1 (mono-args-rgt m)))
 chk-mono-fun _ _ _ = false
 
 chk-mono-rel : Nat → Nat → Form → Bool
 chk-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = 
   (c =c '=') && chk-mono-rel k (suc m) f
 chk-mono-rel k m (bct imp (rel r0 ts0) (rel r1 ts1)) = 
-  (chk-good-ftr k r0) && (ftr-eq r0 r1) && (terms-eq ts0 (mono-args-lft m)) && (terms-eq ts1 (mono-args-rgt m))
+  (chk-good-ftr (suc k) r0) && (ftr-eq r0 r1) && (terms-eq ts0 (mono-args-lft m)) && (terms-eq ts1 (mono-args-rgt m))
 chk-mono-rel _ _ _ = false
 
 chk-vars-lt-termoid : ∀ {b} → Nat → Termoid b → Bool

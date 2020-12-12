@@ -135,12 +135,12 @@ good-prob-nil k f (n , ())
 
 data mono-fun : Nat → Nat → Form → Set where
   mono-fun-fa : ∀ k m f → mono-fun k (suc m) f → mono-fun k m (∀* (∀* ((var 1 =* var 0) →* f)))
-  mono-fun-eq : ∀ k m f → good-ftr k f → 
+  mono-fun-eq : ∀ k m f → good-ftr (suc k) f → 
     mono-fun k m ((fun f (mono-args-lft m)) =* (fun f (mono-args-rgt m)))
 
 data mono-rel : Nat → Nat → Form → Set where
   mono-rel-fa : ∀ k m f → mono-rel k (suc m) f → mono-rel k m (∀* (∀* ((var 1 =* var 0) →* f)))
-  mono-rel-imp : ∀ k m r → good-ftr k r → 
+  mono-rel-imp : ∀ k m r → good-ftr (suc k) r → 
     mono-rel k m ((rel r (mono-args-lft m)) →* (rel r (mono-args-rgt m)))
 
 vars-lt-termoid : ∀ {b} → Nat → Termoid b → Set
@@ -1023,11 +1023,11 @@ good-mono-args-rgt : ∀ k m → good-termoid k (mono-args-rgt m)
 good-mono-args-rgt k 0 = tt
 good-mono-args-rgt k (suc m) = tt , good-mono-args-rgt k m
 
-good-mono-fun : ∀ k m f → mono-fun k m f → good-form k f
+good-mono-fun : ∀ k m f → mono-fun k m f → good-form (suc k) f
 good-mono-fun k m _ (mono-fun-fa k m f h0) = (tt , (tt , (tt , tt))) , (good-mono-fun k _ f h0) 
 good-mono-fun k m _ (mono-fun-eq k m f h0) = tt , ((h0 , good-mono-args-lft _ _) , (h0 , good-mono-args-rgt _ _) , tt)
 
-good-mono-rel : ∀ k m f → mono-rel k m f → good-form k f
+good-mono-rel : ∀ k m f → mono-rel k m f → good-form (suc k) f
 good-mono-rel k m _ (mono-rel-fa k m f h0) = (tt , (tt , (tt , tt))) , (good-mono-rel k _ f h0) 
 good-mono-rel k m _ (mono-rel-imp k m f h0) = (h0 , good-mono-args-lft _ _) , (h0 , good-mono-args-rgt  _ _)
 
@@ -1050,8 +1050,12 @@ good-bch-t B _ (jst-not-bot _) h1       = good-bch-cons _ B tt h1
 good-bch-t B _ (jst-refl _) h1          = good-bch-cons _ B (tt , tt , tt , tt) h1
 good-bch-t B _ (jst-symm k) h1          = good-bch-cons _ B ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt)))) h1
 good-bch-t B _ (jst-trans k) h1         = good-bch-cons _ B ((tt , (tt , (tt , tt))) , ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt))))) h1
-good-bch-t B _ (jst-fun k f h0) h1      = good-bch-cons _ B (good-form-suc (length B) f (good-mono-fun k 0 f h0)) h1
-good-bch-t B _ (jst-rel k f h0) h1      = good-bch-cons _ B (good-form-suc _ f (good-mono-rel k 0 f h0)) h1
+good-bch-t B _ (jst-fun k f h0) h1      = 
+  -- good-bch-cons _ B (good-form-suc (length B) f (good-mono-fun k 0 f h0)) h1
+  good-bch-cons _ B (good-mono-fun k 0 f h0) h1
+good-bch-t B _ (jst-rel k f h0) h1      = 
+-- good-bch-cons _ B (good-form-suc _ f (good-mono-rel k 0 f h0)) h1
+  good-bch-cons _ B (good-mono-rel k 0 f h0) h1
 good-bch-t B _ (jst-choice k f h0) h1   = good-bch-cons _ B (good-choice (length B) 0 _ h0) h1
 good-bch-t B _ (jst-pred-def k f h0) h1 = good-bch-cons _ B (good-pred-def (length B) 0 _ h0) h1
 
@@ -1431,7 +1435,7 @@ from-chks-mono-fun k m (rel (sf (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1
     (eq-symm (termoid-eq-to-eq _ _ h4)) 
     (ftr-eq-to-eq f0 f1 h3) 
     (eq-symm (termoid-eq-to-eq _ _ h5)) 
-    (mono-fun-eq k m f0 (from-chks-good-ftr k f0 h2))
+    (mono-fun-eq k m f0 (from-chks-good-ftr (suc k) f0 h2))
 
 from-chks-mono-rel : ∀ k m f → tr (chk-mono-rel k m f) → mono-rel k m f
 from-chks-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) h0 = 
@@ -1443,12 +1447,12 @@ from-chks-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons
           (∀* (∀* (rel (sf (x ∷ [])) (cons (var 1) (cons (var zero) nil)) →* f))) )
     (eq-symm h2) (mono-rel-fa k m f h1) 
 from-chks-mono-rel k m (bct imp (rel r0 ts0) (rel r1 ts1)) ht0 =  
-  let (h1 , h2 , h3 , h4) = tr-band-to-and-4 (chk-good-ftr k r0) _ _ _ ht0 in 
+  let (h1 , h2 , h3 , h4) = tr-band-to-and-4 (chk-good-ftr (suc k) r0) _ _ _ ht0 in 
   eq-elim-3 (λ x y z → mono-rel k m (rel r0 y →* rel x z)) 
     (ftr-eq-to-eq r0 _ h2) 
     (eq-symm (termoid-eq-to-eq _ _ h3)) 
     (eq-symm (termoid-eq-to-eq _ _ h4)) 
-    (mono-rel-imp k m r0 (from-chks-good-ftr k r0 h1))
+    (mono-rel-imp k m r0 (from-chks-good-ftr (suc k) r0 h1))
 
 from-chks-vars-lt-termoid : ∀ {b} k (t : Termoid b) → tr (chk-vars-lt-termoid k t) → vars-lt-termoid k t
 from-chks-vars-lt-termoid k nil h0 = tt
@@ -1681,10 +1685,6 @@ elim-passes-bind f g b h0 (cs0 , csf , h1) =
   elim-bind-eq-just f g cs0 csf b 
     ( λ a cs1 h2 h3 → h0 a (cs0 , cs1 , h2) (cs1 , csf , h3)) h1
 
--- elim-tr-chk-just : ∀ {A C : Set} (m : Maybe A) → 
---   (is-cont m → C) → tr (chk-just m) → C 
--- elim-tr-chk-just (just a) = id
-
 elim-pass-eq-just : ∀ {A B : Set} (a0 a1 : A) cs0 cs1 → 
   (a0 ≡ a1 → cs0 ≡ cs1 → B) → 
   pass a0 cs0 ≡ cont a1 cs1 → B
@@ -1728,17 +1728,6 @@ read-prob-core-good-prob P (suc k) =
                             ( λ m → from-good-form-zero m f 
                                 (from-chks-good-form 0 f (from-ends-pass-if _ h1)) ) 
                             (read-prob-core-good-prob Q k h2) ) ) ) 
-
--- parse-good-prob : ∀ P cs → parse-prob cs ≡ just P → good-prob P
--- parse-good-prob P cs = 
---   elim-obind-eq-just (read-prob-core (length cs) cs) (λ (x , _) → just x) P 
---     λ (P' , cs') h0 h1 → 
---       read-prob-core-good-prob P (length cs) 
---         (cs , cs' , eq-trans _ h0 (cong (λ x → cont x cs') (just-inj h1)))
-
--- If `verif` returns `true` to input strings `cs0` and `cs1`, then
--- 1. there exists a first-order problem `P` that `cs0` is successfully parsed into, and 
--- 2. `P` is unsatisfiable.
 
 corr : ∀ cs0 cs1 → is-cont (check cs0 cs1) →
   ∃ λ P → ∃ λ cs → (read-prob cs0 ≡ cont P cs) ∧ (unsat-prob P) 
