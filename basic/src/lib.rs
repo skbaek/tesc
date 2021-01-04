@@ -17,9 +17,6 @@ trait Conv<T> { fn conv(_: Self) -> Rst<T>; }
 
 struct Terms<'a>(&'a Vec<Term>);
 
-// #[derive(Debug)]
-// pub enum Dir {Lft, Rgt}
-
 #[derive(PartialEq, Clone, Debug)]
 pub enum FS {
   Par(u64),
@@ -30,8 +27,6 @@ pub enum FS {
 pub enum Term {
   Var(u64),
   Fun(Rc<FS>, Vec<Term>),
-  // Dst(Rc<String>),
-  // Num(Rc<String>)
 }
 
 pub enum GT {
@@ -42,9 +37,6 @@ pub enum GT {
 #[derive(PartialEq, Clone, Debug, Copy)]
 pub enum Bct {Or, And, Imp, Iff}
 
-// #[derive(PartialEq, Clone, Debug, Copy)]
-// pub enum Qtf {Fa, Ex}
-
 #[derive(PartialEq, Clone, Debug)]
 pub enum Form {
   Cst(bool),
@@ -54,10 +46,6 @@ pub enum Form {
   Rel(Rc<FS>, Vec<Term>)
 } 
 
-
-// impl std::fmt::Display for Form {
-//   fn fmt(f: &self) -> String { fmt_form(f) }
-// }
 
 impl std::fmt::Display for Bct {
   fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
@@ -356,10 +344,6 @@ pub fn get_term(bs : FileBytes) -> Rst<Term> {
       let ts = get_vec::<Term>(bs)?; 
       Ok(Term::Fun(Rc::new(f), ts))
     },
-    // '"' => {
-    //   let s = get_string(bs)?;
-    //   Ok(Term::Dst(Rc::new(s)))
-    // },
     _ => err_str("Cannot parse term")
   }
 }
@@ -954,36 +938,3 @@ fn vars_in_literal(vs: &mut Vec<String>, l: &Literal) -> () {
     }
   }
 }
-
-
-
-/*k
-impl<'a> Iterator for ProbStack<'a> {
-  type Item = AnnotatedFormula<'a>;
-  fn next(&mut self) -> Option<AnnotatedFormula<'a>> {
-    match self.top.next() {
-      Some(r) => {
-        match r.expect("Error reading TPTP") {
-          TPTPInput::Annotated(a) => Some(a),
-          TPTPInput::Include(Include {file_name: FileName(SingleQuoted(i)), selection: _}) => {
-            let bytes = to_boxed_slice(&i).expect("Cannot open file");
-            let mut p = TPTPIterator::<()>::new(&bytes);
-            swap(&mut self.top, &mut p);
-            self.rest.push(p);
-            self.next()
-          }
-        }
-      },
-      None => {
-        match self.rest.pop() {
-          Some(p) => {
-            self.top = p;
-            self.next()
-          },
-          None => None
-        }
-      }
-    }
-  }
-}
-*/

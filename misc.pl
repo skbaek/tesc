@@ -18,6 +18,12 @@ drop(NUM, [_ | LIST], REM) :-
   num_pred(NUM, PRED),
   drop(PRED, LIST, REM).
 
+take_upto(0, _, []) :- !. 
+take_upto(_, [], []):- !. 
+take_upto(NUM, [ELEM | LIST], [ELEM | REM]) :- 
+  num_pred(NUM, PRED),
+  take_upto(PRED, LIST, REM).
+
 take(0, _, []). 
 take(NUM, [ELEM | LIST], [ELEM | REM]) :- 
   num_pred(NUM, PRED),
