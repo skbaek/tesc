@@ -11,11 +11,6 @@
 :- op(530, xfx, '<>').
 
 
-%%%%%%%%%%%%%%%% FOLDER PATHS %%%%%%%%%%%%%%%% 
-
-tptp_folder("/home/sk/library/tptp/").
-tesc_folder("/home/sk/projects/tesc/").
-
 
 %%%%%%%%%%%%%%%% GENERIC %%%%%%%%%%%%%%%% 
 
@@ -2097,3 +2092,18 @@ concat_shell(LIST, EXST) :-
 concat_shell(LIST, SEP, EXST) :- 
   atomic_list_concat(LIST, SEP, CMD), 
   shell(CMD, EXST).
+
+select_arg(IDENT, ARGS, ARG) :- append(_, [IDENT, ARG | _], ARGS), !.
+
+select_arg(IDENT, ARGS, _, ARG) :- select_arg(IDENT, ARGS, ARG), !.
+select_arg(_, _, DEFAULT, DEFAULT).
+
+is_prefix(PFX, ATOM) :- 
+  sub_atom(ATOM, 0, _, _, PFX).
+
+select_by_prefix(PFX, ATOMS, ATOM) :- 
+  include(is_prefix(PFX), ATOMS, [ATOM]).
+  
+format_shell(PATTERN, ARGS, STATUS) :- 
+  format(string(CMD), PATTERN, ARGS),
+  shell(CMD, STATUS), !.

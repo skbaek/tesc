@@ -12,10 +12,6 @@ format_shell_time(PATTERN, ARGS, TIME, STATUS) :-
   format(string(CMD), PATTERN, ARGS),
   goal_time(shell(CMD, STATUS), TIME), !.
 
-format_shell(PATTERN, ARGS, STATUS) :- 
-  format(string(CMD), PATTERN, ARGS),
-  shell(CMD, STATUS), !.
-
 solver_success_marker(eprover, "# Proof found!").
 solver_success_marker(vampire, "% Refutation found. Thanks to Tanya!").
 
@@ -23,7 +19,7 @@ solver_prob_cmd(eprover, PROB, CMD) :-
   name_probpath(PROB, PROB_PATH),
   format(
     string(CMD),
-    "eprover --cpu-limit=60 -p ~w > temp.s", 
+    "./eprover --cpu-limit=60 -p ~w > temp.s", 
     [PROB_PATH]
   ).
 
@@ -32,7 +28,7 @@ solver_prob_cmd(vampire, PROB, CMD) :-
   name_probpath(PROB, PROB_PATH),
   format(
     string(CMD),
-    "vampire --output_axiom_names on --proof tptp --include ~w ~w > temp.s", 
+    "./vampire --output_axiom_names on --proof tptp --include ~w ~w > temp.s", 
     [TPTP, PROB_PATH]
   ).
 
@@ -42,7 +38,7 @@ call_solver(SOLVER, PROB) :-
   solver_success_marker(SOLVER, MARKER),
   (
     any_line_path('temp.s', =(MARKER)) -> 
-    format_shell("cat temp.s | sed '/\\(^%\\|^\\$\\)/d' > solutions/~w/~w.s", [SOLVER, PROB], 0), 
+    format_shell("cat temp.s | sed '/\\(^%\\|^\\$\\)/d' > solutions/~w/~w.s", [SOLVER, PROB], 0),
     size_file('temp.s', SIZE), 
     add_entry('results.pl', solution(SOLVER, PROB, passed(TIME, SIZE))),
     delete_file('temp.s')
@@ -54,22 +50,14 @@ call_solver(SOLVER, PROB) :-
 
 solvers([vampire, eprover]).
 
-is_prefix(PFX, ATOM) :- 
-  sub_atom(ATOM, 0, _, _, PFX).
-
-select_by_prefix(PFX, ATOMS, ATOM) :- 
-  include(is_prefix(PFX), ATOMS, [ATOM]).
-  
-select_arg(IDENT, ARGS, ARG) :- append(_, [IDENT, ARG | _], ARGS).
-
 args_size(ARGS, SIZE) :- 
   select_arg('--size', ARGS, ARG), 
   atom_number(ARG, SIZE).
 
 args_solver(ARGS, SOLVER) :- 
-  append(_, ['--solver', SOLVER_ARG | _], ARGS), 
+  select_arg('--solver', ARGS, ARG), 
   solvers(SOLVERS), 
-  select_by_prefix(SOLVER_ARG, SOLVERS, SOLVER), !.
+  select_by_prefix(ARG, SOLVERS, SOLVER), !.
 
 args_drop_take(ARGS, DROP, TAKE) :- 
   append(_, ['--slice', DROP_ATOM, TAKE_ATOM | _], ARGS), 

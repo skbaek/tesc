@@ -1,4 +1,4 @@
-:- [basic].
+:- [basic, folders].
 
 maplist_count(_, CNT, TTL, [], CNT, TTL).
 maplist_count(GOAL, CNT_I, TTL_I, [ELEM | LIST], CNT_O, TTL_O) :- 

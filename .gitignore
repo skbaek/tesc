@@ -2,9 +2,11 @@ basic/target/
 tptp/target/
 tts/target/
 rttv/target/
+ttc
+ttv
+pttv
 MAlonzo/
 *.agdai
-pttv
 folders.pl
 folders.rs
 solutions/

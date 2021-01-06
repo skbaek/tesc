@@ -20,7 +20,6 @@ open import verify
   using (Res)
   using (cont)
   using (stop)
--- open import coread using (coread-prob) 
 open import Codata.Musical.Colist 
   renaming (length to length*) 
   renaming (map to map*) 
@@ -30,7 +29,6 @@ open import Codata.Musical.Colist
 open import Codata.Musical.Costring 
 open import Data.Bool using (if_then_else_)
 open import basic using (Chars)
-
 
 postulate 
   prim-get-args : Prim.IO (List String)
@@ -65,7 +63,7 @@ costring-to-chars (c ∷* cs) = c ∷ costring-to-chars (♭ cs)
 costring-to-chars _ = []
 
 print-result : Res ⊤ → IO ⊤ 
-print-result (cont tt x) = put-str-ln "ATTV : Proof verified."
+print-result (cont tt x) = put-str-ln "Proof verified (kernel = ATTV)."
 print-result (stop s) = do 
   putStr "Invalid proof : " 
   put-str-ln s 

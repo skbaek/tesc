@@ -522,7 +522,7 @@ fn main() {
   std::process::exit(
     match body() {
       Ok(()) => {
-        println!("Proof verified.");
+        println!("Proof verified (kernel = RTTV).");
         0
       },
       Err(msg) => {

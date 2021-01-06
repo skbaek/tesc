@@ -1,20 +1,20 @@
-#!/usr/bin/env swipl
-:- initialization(main, main).
+:- [basic, folders].
 
-:- [basic].
+kernels([attv, rttv, pttv]).
 
-main :- 
-  current_prolog_flag(argv, [PROB_PATH, PRF_PATH | OPTS]), 
-  tesc_folder(TESC_PATH),
-  (
-    member('-p', OPTS) -> 
-    atomic_concat(TESC_PATH, 'pttv.pl', PTTV_PATH), !,
-    concat_shell([PTTV_PATH, PROB_PATH, PRF_PATH | OPTS], " ", 0)
-  ;
-    member('-a', OPTS) -> 
-    atomic_concat(TESC_PATH, attv, ATTV_PATH), !,
-    concat_shell(['./tts/target/release/tts', PROB_PATH, "|", ATTV_PATH, PRF_PATH | OPTS], " ", 0)
-  ;
-    atomic_concat(TESC_PATH, 'rttv/target/release/rttv', RTTV_PATH), !,
-    concat_shell([RTTV_PATH, PROB_PATH, PRF_PATH | OPTS], " ", 0)
-  ).
+use_kernel(pttv, TESC, PROB, PRF) :- 
+  format_shell("~wpttv ~w ~w", [TESC, PROB, PRF], 0).
+
+use_kernel(attv, TESC, PROB, PRF) :- 
+  format_shell("./tts/target/release/tts ~w | ~wattv/attv ~w", [PROB, TESC, PRF], 0).
+
+use_kernel(rttv, TESC, PROB, PRF) :- 
+  format_shell("~wrttv/target/release/rttv ~w ~w", [TESC, PROB, PRF], 0).
+
+main(ARGS) :- 
+  select_arg('--kernel', ARGS, rttv, ARG), 
+  kernels(KERNELS), 
+  select_by_prefix(ARG, KERNELS, KERNEL), !,
+  append(_, [PROB, PRF], ARGS),
+  tesc_folder(TESC),
+  use_kernel(KERNEL, TESC, PROB, PRF).

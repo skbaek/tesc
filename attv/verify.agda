@@ -99,7 +99,6 @@ read-ftr =
        s ← read-chars 
        pass (sf s) ) 
 
--- just \(([A-Za-z0-9]+) , ([A-Za-z0-9]+)\)
 read-termoid : ∀ b → Nat → Read (Termoid b)
 read-termoid true _ ('.' ∷ cs) = cont nil cs 
 read-termoid true (suc k) (',' ∷ cs) = ( do 

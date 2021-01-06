@@ -1,6 +1,3 @@
-#!/usr/bin/env swipl
-:- initialization(main, main).
-
 :- [basic].
 
 offset(0, "").
@@ -336,4 +333,4 @@ main :-
   empty_assoc(EMP), !,
   check(PROB, EMP, 0, PRINT, "", STRM), !,
   close(STRM), !,
-  writeln("PTTV : Proof verified."), !.
+  writeln("Proof verified (kernel = PTTV)."), !.
