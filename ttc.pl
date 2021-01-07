@@ -7,7 +7,7 @@ solve(v, TSTP, SOL) :- vsolve(TSTP, SOL).
 
 main([SOLVER, TPTP, TSTP, TESC | OPTS]) :-
   trace_if_debug(OPTS),
-  set_prolog_flag(stack_limit, 4_294_967_296),
+  set_mem_gb(14),
   style_check(-singleton),
   atom_firstchar(SOLVER, SLVR),
   writeln("Fetching problem..."),

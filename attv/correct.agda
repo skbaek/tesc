@@ -88,8 +88,7 @@ in-prob : Form → Prob → Set
 in-prob f P = ∃ (\ n → (n , f) ∈ P)
 
 unsat-prob : Prob → Set
-unsat-prob P = ∀ R F V → standard R →
-  ∃ (\ f → ((in-prob f P) ∧ (¬ R , F , V ⊨ f)))
+unsat-prob P = ∀ R F V → standard R → ∃ (λ f → ((in-prob f P) ∧ (¬ R , F , V ⊨ f)))
 
 sats : RA → FA → VA → Prob → Bch → Set
 sats R F V P B = ∀ f → ((in-prob f P) ∨ (f ∈ B)) → (R , F , V ⊨ f)

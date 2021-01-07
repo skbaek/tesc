@@ -93,6 +93,9 @@ f ↔* g = bct iff f g
 ∀* = qtf false
 ∃* = qtf true
 
+⊤* = cst true
+⊥* = cst false
+
 Prob : Set 
 Prob = List (Chars × Form)
 
@@ -915,3 +918,10 @@ reverse-inj (a0 ∷ as0) (a1 ∷ as1) h0 =
 cong-fun-arg : ∀ {A B : Set} {x0 x1 : A → B} {y0 y1 : A} → 
   x0 ≡ x1 → y0 ≡ y1 → (x0 y0 ≡ x1 y1)
 cong-fun-arg refl refl = refl
+
+-- data Tree (A : Set) : Set where
+--   leaf : A → Tree A
+--   fork : Nat → Tree A → Tree A → Tree A 
+-- 
+-- nth : {A : Set} → Nat → Tree A → A → A
+-- nth 0 (node a) _ = a 

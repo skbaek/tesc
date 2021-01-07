@@ -7,6 +7,7 @@ open import Data.Integer
 open import Data.Product
 open import Agda.Builtin.String
 open import Data.List  
+open import Data.Bool
 open import Data.Maybe.Base 
   using (just)
   using (nothing)
@@ -15,6 +16,8 @@ import IO.Primitive as Prim
 open import IO
   renaming (_>>=_ to _>>>=_)
   renaming (_>>_ to _>>>_)
+-- open import lazy 
+--   using (check)
 open import verify 
   using (check)
   using (Res)
@@ -66,16 +69,22 @@ print-result : Res ⊤ → IO ⊤
 print-result (cont tt x) = put-str-ln "Proof verified (kernel = ATTV)."
 print-result (stop s) = do 
   putStr "Invalid proof : " 
-  put-str-ln s 
+  put-str-ln s
   exit-failure
+
+-- print-result : Bool → IO ⊤ 
+-- print-result true = put-str-ln "Proof verified (kernel = ATTV)."
+-- print-result false = do 
+--   putStr "Invalid proof" 
+--   exit-failure
 
 io-verify : IO ⊤ 
 io-verify = do 
-  (pn ∷ x) ← get-args
-    where [] → (put-str-ln "No proof file name provided." >> exit-failure)
+  (pn ∷ (md ∷ x)) ← get-args
+    where _ → (put-str-ln "Missing proof file name or mode." >> exit-failure)
   ps ← getContents
   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
-  print-result (check (costring-to-chars ps) cs) 
+  print-result (check (primStringEquality md "lazy") (costring-to-chars ps) cs) 
 
 main : Prim.IO ⊤ 
 main = run io-verify

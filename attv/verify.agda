@@ -1,13 +1,16 @@
 open import Agda.Builtin.Nat
+  renaming (_<_ to _<n_)
 open import Function.Base
 open import Data.String 
   using (String)
   using (fromChar)
   using (_++_)
+  using (concat)
 open import Data.Bool
   renaming (not to bnot)
 open import Data.Unit
 open import Data.List
+  renaming (concat to concat-list)
   renaming (_++_ to list-concat) 
   renaming (or to disj) 
   renaming (and to conj)
@@ -278,5 +281,144 @@ trunc-bind f g cs with f cs
 ... | cont a _ = g a
 ... | stop s = fail s
 
-check : Chars → Read ⊤ 
-check = trunc-bind read-prob (λ P cs → verify P [] (length cs) cs)
+
+check1 : Chars → Read ⊤ 
+check1 = trunc-bind read-prob (λ P cs → verify P [] (length cs) cs)
+
+data Prf : Set where
+  rule-a : Bool → Nat → Prf → Prf
+  rule-b : Nat → Prf → Prf → Prf
+  rule-c : Term → Nat → Prf → Prf
+  rule-d : Nat → Prf → Prf
+  rule-n : Nat → Prf → Prf
+  rule-p : Chars → Prf → Prf
+  rule-s : Form → Prf → Prf → Prf
+  rule-t : Form → Prf → Prf
+  rule-x : Nat → Nat → Prf 
+
+read-prf : Nat → Read Prf
+read-prf (suc k) = 
+  ( do read-spec-char 'A' 
+       i ← read-nat 
+       b ← read-bool 
+       p ← read-prf k
+       pass (rule-a b i p) ) <|> 
+  ( do read-spec-char 'B' 
+       i ← read-nat 
+       p ← read-prf k
+       q ← read-prf k
+       pass (rule-b i p q) ) <|>
+  ( do read-spec-char 'C' 
+       i ← read-nat 
+       t ← read-term k
+       p ← read-prf k
+       pass (rule-c t i p) ) <|>
+  ( do read-spec-char 'D' 
+       i ← read-nat 
+       p ← read-prf k
+       pass (rule-d i p) ) <|>
+  ( do read-spec-char 'N' 
+       i ← read-nat 
+       p ← read-prf k
+       pass (rule-n i p) ) <|>
+  ( do read-spec-char 'P' 
+       cs ← read-chars 
+       p ← read-prf k
+       pass (rule-p cs p) ) <|>
+  ( do read-spec-char 'S' 
+       f ← read-form k 
+       p ← read-prf k
+       q ← read-prf k
+       pass (rule-s f p q) ) <|>
+  ( do read-spec-char 'T' 
+       f ← read-form k 
+       p ← read-prf k
+       pass (rule-t f p) ) <|>
+  ( do read-spec-char 'X' 
+       i ← read-nat 
+       j ← read-nat 
+       pass (rule-x i j) ) 
+read-prf 0 = fail "read-prf fail"
+
+htn-core : Nat → Nat → Bch → Form 
+htn-core i (suc j) (f ∷ B) = if (i == j) then f else htn-core i j B
+htn-core _ _ _ = cst true
+
+htn : Nat → Bch → Form 
+htn i B = 
+  let j = length B in 
+  if (i <n length B) then htn-core i j B else cst true
+
+apply-a : Bool → Form → Form 
+apply-a false  (bct and f _) =  f
+apply-a true (bct and _ f) =  f
+apply-a false  (not (bct or f _)) =  (not f)
+apply-a true (not (bct or _ f)) =  (not f)
+apply-a false  (not (bct imp f _)) =  f
+apply-a true (not (bct imp _ f)) =  (not f)
+apply-a false  (bct iff f g) =  (bct imp f g)
+apply-a true (bct iff f g) =  (bct imp g f)
+apply-a _ _ = cst true
+
+apply-b : Form → (Form × Form)
+apply-b (bct or f g) =  (f , g) 
+apply-b (not (bct and f g)) =  (not f , not g) 
+apply-b (bct imp f g) =  (not f , g)
+apply-b (not (bct iff f g)) =  (not (bct imp f g) , not (bct imp g f))
+apply-b _ = (⊤* , ⊤*)
+
+apply-c : Term → Form → Form
+apply-c t (qtf false f) =  (subst-form 0 t f)
+apply-c t (not (qtf true f)) =  (not (subst-form 0 t f))
+apply-c _ _ = ⊤*
+
+apply-d : Nat → Form → Form
+apply-d k (qtf true f) =  (subst-form 0 (par k) f)
+apply-d k (not (qtf false f)) =  (not (subst-form 0 (par k) f))
+apply-d _ _ = ⊤*
+
+res-and : Res ⊤ → Res ⊤ → Res ⊤
+res-and (cont _ cs) (cont _ _) = cont tt cs
+res-and (stop s) _ = stop s
+res-and (cont _ _) (stop s) = stop s
+
+lookup-prob : Chars → Prob → Form
+lookup-prob cs [] = ⊤*
+lookup-prob cs ((nm , f) ∷ P) = 
+  if (chars-eq nm cs) then f else lookup-prob cs P 
+
+apply-n : Form → Form
+apply-n (not (not f)) =  f
+apply-n _ = ⊤*
+
+lazy : Prob → Bch → Prf → Res ⊤  
+lazy P B (rule-a b i p) = lazy P ((apply-a b (htn i B)) ∷ B) p
+lazy P B (rule-b i p q) = 
+  let (g , h) = apply-b (htn i B) in
+  res-and (lazy P (g ∷ B) p) (lazy P (h ∷ B) q)
+lazy P B (rule-c t i p) = lazy P ((apply-c t (htn i B)) ∷ B) p
+lazy P B (rule-d i p) = lazy P ((apply-d (length B) (htn i B)) ∷ B) p
+lazy P B (rule-n i p) = lazy P ((apply-n (htn i B)) ∷ B) p
+lazy P B (rule-p cs p) = lazy P ((lookup-prob cs P) ∷ B) p
+lazy P B (rule-s f p q) = 
+  res-and (lazy P ((not f) ∷ B) p) (lazy P (f ∷ B) q)
+lazy P B (rule-t f p) = lazy P (f ∷ B) p
+lazy P B (rule-x i j) = 
+  if (form-eq (htn i B) (not (htn j B)))
+    then (cont tt [])
+    else (stop (concat (pp-form (htn i B) ∷ " != " ∷  (pp-form (not (htn j B))) ∷ [])))
+
+check2 : Chars → Read ⊤ 
+check2 cs-prob cs-prf with (read-prob cs-prob) , (read-prf (length cs-prf) cs-prf)
+... | (stop s) , _ = stop s 
+... | (cont _ _) , (stop s) = stop s 
+... | (cont P _) , (cont p _) = lazy P [] p
+
+-- ... | cont P _ with read-prf cs-prf 
+--   ... | (cont p _) = lazy P [] p
+--   ... | (stop s) = fail s 
+-- 
+
+check : Bool → Chars → Read ⊤ 
+check false = check1
+check true = check2

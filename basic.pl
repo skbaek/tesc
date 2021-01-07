@@ -2101,9 +2101,15 @@ select_arg(_, _, DEFAULT, DEFAULT).
 is_prefix(PFX, ATOM) :- 
   sub_atom(ATOM, 0, _, _, PFX).
 
+select_by_prefix(PFX, ATOMS, PFX) :- member(PFX, ATOMS), !.
 select_by_prefix(PFX, ATOMS, ATOM) :- 
   include(is_prefix(PFX), ATOMS, [ATOM]).
   
 format_shell(PATTERN, ARGS, STATUS) :- 
   format(string(CMD), PATTERN, ARGS),
   shell(CMD, STATUS), !.
+
+
+set_mem_gb(NUM) :- 
+  NEW_MEM is 1073741824 * NUM, 
+  set_prolog_flag(stack_limit, NEW_MEM).
