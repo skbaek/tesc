@@ -2057,6 +2057,35 @@ tptp_prob(TPTP, PROB) :-
   ),
   close(STRM).
 
+get_bch(STRM, BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O) :- 
+  get_char(STRM, CH), 
+  get_bch(STRM, CH, BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O).
+get_bch(STRM, ',', BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O) :-
+  get_af(STRM, (NAME, _, FORM, _)), !,
+  (
+    get_assoc(NAME, TAB_I, _) ->
+    throw(duplicate_hypothesis_found)
+  ;
+    put_assoc(NAME, TAB_I, SIZE_I, TAB_T), 
+    put_assoc(SIZE_I, BCH_I, FORM, BCH_T), 
+    num_succ(SIZE_I, SIZE_T),
+    get_bch(STRM, BCH_T, TAB_T, SIZE_T, BCH_O, TAB_O, SIZE_O), !
+  ).
+get_bch(_, '.', BCH, TAB, SIZE, BCH, TAB, SIZE). 
+
+tptp_bch(TPTP, BCH, TAB, SIZE) :-
+  process_create(
+    './tts/target/release/tts', 
+    [TPTP], 
+    [stdout(pipe(STRM))]
+  ), !,
+  (
+    set_stream(STRM, encoding(octet)),
+    empty_assoc(EMP),
+    get_bch(STRM, EMP, EMP, 0, BCH, TAB, SIZE)
+  ),
+  close(STRM).
+
 tptp_sol(TPTP, SOL) :-
   process_create(
     './tts/target/release/tts', 

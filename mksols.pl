@@ -8,10 +8,6 @@ add_entry(FILE, ENTRY) :-
   write_term_punct(STM, ENTRY),
   close(STM).
 
-format_shell_time(PATTERN, ARGS, TIME, STATUS) :- 
-  format(string(CMD), PATTERN, ARGS),
-  goal_time(shell(CMD, STATUS), TIME), !.
-
 solver_success_marker(eprover, "# Proof found!").
 solver_success_marker(vampire, "% Refutation found. Thanks to Tanya!").
 

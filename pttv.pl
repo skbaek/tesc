@@ -190,15 +190,10 @@ functor_pp(#NUM, PP) :- !,
   atomics_to_string(["#", STR], PP).
 functor_pp(STR, STR) :- string(STR).
   
-check(PROB, BCH, CNT, PRINT, PAD, STRM) :- 
-  num_succ(CNT, SUCC),
-  get_char(STRM, CH), !,
-  check(PROB, BCH, CNT, SUCC, CH, PRINT, PAD, STRM), !.
-
 dir_pp(lft, "<").
 dir_pp(rgt, ">").
 
-check(PROB, BCH, CNT, SUC, 'A', PRINT, PAD, STRM) :- 
+check(BCH, CNT, SUC, 'A', PRINT, PAD, STRM) :- 
   get_num(STRM, ID),  
   get_dir(STRM, DIR),
   dir_pp(DIR, DIR_PP),
@@ -209,9 +204,9 @@ check(PROB, BCH, CNT, SUC, 'A', PRINT, PAD, STRM) :-
   printnl(PRINT, "~w└─ ~w ", [PAD, PP]), 
   string_concat(PAD, "   ", PAD_N),
   put_assoc(CNT, BCH, CONC, BCH_N), !,
-  check(PROB, BCH_N, SUC, PRINT, PAD_N, STRM), !.
+  check(BCH_N, SUC, PRINT, PAD_N, STRM), !.
 
-check(PROB, BCH, CNT, SUC, 'B', PRINT, PAD, STRM) :- 
+check(BCH, CNT, SUC, 'B', PRINT, PAD, STRM) :- 
   get_num(STRM, ID), 
   printnl(PRINT, "~w~w : B / ~w", [PAD, CNT, ID]), 
   get_assoc(ID, BCH, PREM),
@@ -224,13 +219,13 @@ check(PROB, BCH, CNT, SUC, 'B', PRINT, PAD, STRM) :-
 
   form_pp(CONC_A, PP_A),
   printnl(PRINT, "~w├─ ~w ", [PAD, PP_A]), !,
-  check(PROB, BCH_A, SUC, PRINT, PAD_A, STRM), !,
+  check(BCH_A, SUC, PRINT, PAD_A, STRM), !,
 
   form_pp(CONC_B, PP_B),
   printnl(PRINT, "~w└─ ~w ", [PAD, PP_B]), !,
-  check(PROB, BCH_B, SUC, PRINT, PAD_B, STRM), !.
+  check(BCH_B, SUC, PRINT, PAD_B, STRM), !.
   
-check(PROB, BCH, CNT, SUC, 'C', PRINT, PAD, STRM) :- 
+check(BCH, CNT, SUC, 'C', PRINT, PAD, STRM) :- 
   get_num(STRM, ID), 
   get_term(STRM, TERM), 
   term_pp(TERM, TERM_PP),
@@ -243,9 +238,9 @@ check(PROB, BCH, CNT, SUC, 'C', PRINT, PAD, STRM) :-
 
   form_pp(CONC, CONC_PP),
   printnl(PRINT, "~w└─ ~w ", [PAD, CONC_PP]), !,
-  check(PROB, BCH_N, SUC, PRINT, PAD_N, STRM), !.
+  check(BCH_N, SUC, PRINT, PAD_N, STRM), !.
 
-check(PROB, BCH, CNT, SUC, 'D', PRINT, PAD, STRM) :- 
+check(BCH, CNT, SUC, 'D', PRINT, PAD, STRM) :- 
   get_num(STRM, ID), 
   printnl(PRINT, "~w~w : D / ~w", [PAD, CNT, ID]), 
 
@@ -256,9 +251,9 @@ check(PROB, BCH, CNT, SUC, 'D', PRINT, PAD, STRM) :-
 
   form_pp(CONC, CONC_PP),
   printnl(PRINT, "~w└─ ~w", [PAD, CONC_PP]), !,
-  check(PROB, BCH_N, SUC, PRINT, PAD_N, STRM), !.
+  check(BCH_N, SUC, PRINT, PAD_N, STRM), !.
 
-check(PROB, BCH, CNT, SUC, 'N', PRINT, PAD, STRM) :- 
+check(BCH, CNT, SUC, 'N', PRINT, PAD, STRM) :- 
   get_num(STRM, ID), 
   printnl(PRINT, "~w~w : N / ~w", [PAD, CNT, ID]), 
 
@@ -269,21 +264,9 @@ check(PROB, BCH, CNT, SUC, 'N', PRINT, PAD, STRM) :-
 
   form_pp(CONC, CONC_PP),
   printnl(PRINT, "~w└─ ~w ", [PAD, CONC_PP]), !,
-  check(PROB, BCH_N, SUC, PRINT, PAD_N, STRM), !.
+  check(BCH_N, SUC, PRINT, PAD_N, STRM), !.
   
-check(PROB, BCH, CNT, SUC, 'P', PRINT, PAD, STRM) :- 
-  get_string(STRM, NAME), 
-  printnl(PRINT, "~w~w : P / ~w", [PAD, CNT, NAME]), 
-  
-  get_assoc(NAME, PROB, CONC),
-  string_concat(PAD, "   ", PAD_N),
-  put_assoc(CNT, BCH, CONC, BCH_N), 
-  
-  form_pp(CONC, CONC_PP),
-  printnl(PRINT, "~w└─ ~w ", [PAD, CONC_PP]), !,
-  check(PROB, BCH_N, SUC, PRINT, PAD_N, STRM), !.
-
-check(PROB, BCH, CNT, SUC, 'S', PRINT, PAD, STRM) :- 
+check(BCH, CNT, SUC, 'S', PRINT, PAD, STRM) :- 
   get_form(STRM, FORM), 
   form_pp(FORM, PP),
   printnl(PRINT, "~w~w : S / ~w", [PAD, CNT, PP]), 
@@ -294,12 +277,12 @@ check(PROB, BCH, CNT, SUC, 'S', PRINT, PAD, STRM) :-
   put_assoc(CNT, BCH, FORM, BCH_B), 
 
   printnl(PRINT, "~w├─ ¬ ~w", [PAD, PP]), !,
-  check(PROB, BCH_A, SUC, PRINT, PAD_A, STRM), !,
+  check(BCH_A, SUC, PRINT, PAD_A, STRM), !,
 
   printnl(PRINT, "~w└─ ~w", [PAD, PP]), !,
-  check(PROB, BCH_B, SUC, PRINT, PAD_B, STRM), !.
+  check(BCH_B, SUC, PRINT, PAD_B, STRM), !.
   
-check(PROB, BCH, CNT, SUC, 'T', PRINT, PAD, STRM) :- 
+check(BCH, CNT, SUC, 'T', PRINT, PAD, STRM) :- 
   get_form(STRM, FORM), 
   form_pp(FORM, PP),
   printnl(PRINT, "~w~w : T / ~w", [PAD, CNT, PP]), 
@@ -308,9 +291,9 @@ check(PROB, BCH, CNT, SUC, 'T', PRINT, PAD, STRM) :-
   put_assoc(CNT, BCH, FORM, BCH_N), 
 
   printnl(PRINT, "~w└ ~w", [PAD, PP]), !,
-  check(PROB, BCH_N, SUC, PRINT, PAD_N, STRM), !.
+  check(BCH_N, SUC, PRINT, PAD_N, STRM), !.
   
-check(_, BCH, CNT, _, 'X', PRINT, PAD, STRM) :- 
+check(BCH, CNT, _, 'X', PRINT, PAD, STRM) :- 
   get_num(STRM, NID), 
   get_num(STRM, PID),
   get_assoc(NID, BCH, ~ FORM_N),
@@ -322,15 +305,17 @@ check(_, BCH, CNT, _, 'X', PRINT, PAD, STRM) :-
     format("~w != ~w", [FORM_N, FORM_P]),
     false
   ), !,
-  printnl(PRINT, "~w~w : X / ~w / ~w", [PAD, CNT, PID, NID]), !.
+  printnl(PRINT, "~w~w : X / ~w / ~w", [PAD, CNT, NID, PID]), !.
 
-main :- 
-  current_prolog_flag(argv, [PROB_PATH, PRF_PATH | OPTS]), 
-  trace_if_debug(OPTS),
-  (member('--print', OPTS) -> PRINT = true ; PRINT = false),
-  tptp_prob(PROB_PATH, PROB), !,
-  open(PRF_PATH, read, STRM, [encoding(octet)]), !,
-  empty_assoc(EMP), !,
-  check(PROB, EMP, 0, PRINT, "", STRM), !,
-  close(STRM), !,
-  writeln("Proof verified (kernel = PTTV)."), !.
+check(BCH, CNT, PRINT, PAD, STM) :- 
+  num_succ(CNT, SUC),
+  get_char(STM, CH), !,
+  check(BCH, CNT, SUC, CH, PRINT, PAD, STM), !.
+
+main([PROB, PRF]) :- 
+  tptp_bch(PROB, BCH, _, SIZE), !,
+  open(PRF, read, STM, [encoding(octet)]), !,
+  check(BCH, SIZE, false, "", STM), !,
+  close(STM), !,
+  writeln("Proof verified (kernel = PTTV)."), !,
+  true.

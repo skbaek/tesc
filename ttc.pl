@@ -1,6 +1,6 @@
 :- [basic].
 :- [vsolve, esolve].
-:- [prove].
+:- [prove, merge].
 
 solve(e, TSTP, SOL) :- esolve(TSTP, SOL).
 solve(v, TSTP, SOL) :- vsolve(TSTP, SOL).
@@ -14,9 +14,11 @@ main([SOLVER, TPTP, TSTP, TESC | OPTS]) :-
   tptp_prob(TPTP, PROB), !,
   writeln("Generating solution..."),
   solve(SLVR, TSTP, SOL), !,
-  open(TESC, write, STRM, [encoding(octet)]),
+  open(temp, write, STRM, [encoding(octet)]),
   empty_assoc(EMP),
-  writeln("Constructing proof..."),
+  writeln("Generating temp file..."),
   prove(STRM, SLVR, PROB, SOL, EMP, 0), 
-  writeln("Proof complete."),
-  close(STRM).
+  close(STRM),
+  writeln("Merging problem and temp file..."),
+  merge(TPTP, temp, TESC),
+  writeln("Proof complete.").

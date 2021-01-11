@@ -65,26 +65,34 @@ costring-to-chars : Costring → Chars
 costring-to-chars (c ∷* cs) = c ∷ costring-to-chars (♭ cs)
 costring-to-chars _ = []
 
-print-result : Res ⊤ → IO ⊤ 
-print-result (cont tt x) = put-str-ln "Proof verified (kernel = ATTV)."
-print-result (stop s) = do 
-  putStr "Invalid proof : " 
-  put-str-ln s
-  exit-failure
-
--- print-result : Bool → IO ⊤ 
--- print-result true = put-str-ln "Proof verified (kernel = ATTV)."
--- print-result false = do 
---   putStr "Invalid proof" 
+-- print-result : Res ⊤ → IO ⊤ 
+-- print-result (cont tt x) = put-str-ln "Proof verified (kernel = ATTV)."
+-- print-result (stop s) = do 
+--   putStr "Invalid proof : " 
+--   put-str-ln s
 --   exit-failure
+
+print-result : Bool → IO ⊤ 
+print-result true = put-str-ln "Proof verified (kernel = ATTV)."
+print-result false = do 
+  putStr "Invalid proof" 
+  exit-failure
 
 io-verify : IO ⊤ 
 io-verify = do 
-  (pn ∷ (md ∷ x)) ← get-args
-    where _ → (put-str-ln "Missing proof file name or mode." >> exit-failure)
+  (pn ∷ _) ← get-args
+    where _ → (put-str-ln "Missing proof file name." >> exit-failure)
   ps ← getContents
   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
-  print-result (check (primStringEquality md "lazy") (costring-to-chars ps) cs) 
+  print-result (check (costring-to-chars ps) cs) 
+
+-- io-verify : IO ⊤ 
+-- io-verify = do 
+--   (pn ∷ (md ∷ x)) ← get-args
+--     where _ → (put-str-ln "Missing proof file name or mode." >> exit-failure)
+--   ps ← getContents
+--   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
+--   print-result (check (primStringEquality md "lazy") (costring-to-chars ps) cs) 
 
 main : Prim.IO ⊤ 
 main = run io-verify
