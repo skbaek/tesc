@@ -14,6 +14,8 @@ open import Agda.Builtin.Nat
   renaming (_==_ to _=n_)
 open import Data.Nat.Base 
   using (_<_)
+  using (z≤n)
+  using (s≤s)
 open import Data.Nat.Properties 
   using (<-trans)
   using (<-cmp)
@@ -25,7 +27,9 @@ open import Data.Char
   renaming (_==_ to _=c_)
   renaming (_<_ to _<c_)
 open import Agda.Builtin.Equality
-open import Data.List renaming (or to disj) renaming(and to conj)
+open import Data.List 
+  renaming (or to disj) 
+  renaming(and to conj)
 open import Data.Maybe
   renaming (_>>=_ to _o>=_)
 open import Relation.Binary.Definitions 
@@ -94,7 +98,7 @@ R , F , V ⊨ (qtf true f) = ∃ (λ x → (R , F , (V / 0 ↦ x) ⊨ f))
 R , F , V ⊨ (rel r ts) = tr (R r (terms-val F V ts))
 
 standard : RA → Set 
-standard R = ∀ d0 d1 → (tr (R (sf ('=' ∷ [])) (d0 ∷ d1 ∷ [])) ↔ (d0 ≡ d1))
+standard R = ∀ d0 d1 → (tr (R (sf [ '=' ]) (d0 ∷ d1 ∷ [])) ↔ (d0 ≡ d1))
 
 sats : RA → FA → VA → Bch → Set
 sats R F V B = ∀ f → mem f B → R , F , V ⊨ f
@@ -153,7 +157,7 @@ best-bch : Bch → Set
 best-bch B = ∀ f k → mem f B → good-form k f
 
 good-ftr-suc : ∀ k f → good-ftr k f → good-ftr (suc k) f
-good-ftr-suc k (nf m) h = <-trans h (n<sn _) -- lt-to-lt-suc m k h
+good-ftr-suc k (nf m) h = <-trans h (n<sn _) 
 good-ftr-suc _ (sf _) _ = tt
 
 good-termoid-suc : ∀ {b} k (f : Termoid b) → good-termoid k f → good-termoid (suc k) f
@@ -184,16 +188,6 @@ good-bch-add B f hL hB hf =
     (λ g hg → elim-eq-symm (λ x → good-form x g) (good-form-suc (len B) g (hB g hg)) heq) 
     (elim-eq-symm (λ x → good-form x f) hf heq)
     
-  --   (λ g hg → good-form-suc (len B) g (hB g hg)) 
-  --   hf 
-  --   -- {! all-add !} {!   !}
-
--- good-bch-add (fork _ t s) f hB hf = {!   !}
-  -- or-elim' (\ h2 → eq-elim _ (eq-symm h2) h0) (\ h2 → good-form-suc _ g (h1 _ h2)) 
-
--- good-prob-nil : good-bch (leaf ⊤*)
--- good-bch-nil k f = ? -- (n , ()) 
-
 good-form-nth : ∀ B k → good-bch B → good-form (len B) (nth k B)
 good-form-nth B k h = or-elim (mem-nth B k) (h _) 
   λ h1 → eq-elim-symm (good-form (len B)) h1 tt
@@ -260,7 +254,7 @@ prsv-good-b : ∀ k f → good-form k f →
   (good-form k (fst (apply-b f)) ∧ good-form k (snd (apply-b f)))
 prsv-good-b _ (cst _) _ = tt , tt 
 prsv-good-b k (bct or f g) = id
-prsv-good-b k (bct imp f g) = id -- (hf , hg) , (hg , hf) 
+prsv-good-b k (bct imp f g) = id 
 prsv-good-b _ (bct and _ _) _ = tt , tt 
 prsv-good-b _ (bct iff _ _) _ = tt , tt 
 prsv-good-b _ (qtf _ _) _ = tt , tt 
@@ -268,7 +262,7 @@ prsv-good-b _ (rel _ _) _ = tt , tt
 prsv-good-b k (not (cst _)) _ =  tt , tt
 prsv-good-b k (not (bct and f g)) = id 
 prsv-good-b _ (not (bct or _ _)) _ = tt , tt 
-prsv-good-b k (not (bct iff f g)) (hf , hg) = (hf , hg) , (hg , hf) --lid
+prsv-good-b k (not (bct iff f g)) (hf , hg) = (hf , hg) , (hg , hf) 
 prsv-good-b _ (not (bct imp _ _)) _ = tt , tt 
 prsv-good-b _ (not (qtf _ _)) _ = tt , tt 
 prsv-good-b _ (not (not _)) _ = tt , tt 
@@ -397,7 +391,6 @@ implies-a f@(not (qtf _ _)) = implies-top f , implies-top f
 implies-a f@(not (not _)) = implies-top f , implies-top f
 implies-a f@(not (rel _ _)) = implies-top f , implies-top f
 
-
 implies-b : ∀ f → f => (fst (apply-b f) ∨* snd (apply-b f)) 
 implies-b (cst _) _ _ _ _ = or-lft tt
 implies-b (bct or f g) R F V = id
@@ -511,7 +504,7 @@ prsv-a B true  k h0 = prsv-implies B k (apply-a true ) (λ f → snd (implies-a 
 term-val-update-par : ∀ F k d V → 
   term-val (F / nf k ↦f const-fun d) V (par k) ≡ d
 term-val-update-par F k d V = 
-  let h0 = tr-to-ite-eq {List D → D} {k =n k} {λ _ → d} {F (nf k)} (≡⇒≡ᵇ k _ refl) in --(eq-to-nat-eq k k refl) in 
+  let h0 = tr-to-ite-eq {List D → D} {k =n k} {λ _ → d} {F (nf k)} (≡⇒≡ᵇ k _ refl) in
   eq-elim (λ x → x [] ≡ d) (eq-symm h0) refl 
 
 ftr-eq-to-eq : ∀ f g → tr (ftr-eq f g) → f ≡ g
@@ -591,7 +584,7 @@ prsv-d-aux R F V k (qtf true f) h0 h1 =
       fst (holds-subst R F' V 0 (par k) f) 
       ( elim-eq-symm (λ x → R , F' , V / 0 ↦ x ⊨ f) 
           (snd (good-to-holds-update-iff _ _ _ _ _ f h0) h2) 
-          (term-val-update-par F k d V) ) -- (elim-eq-symm (λ x → R , F' , V / 0 ↦ x ⊨ f) (term-val-update-par F k d V) ?)
+          (term-val-update-par F k d V) ) 
 prsv-d-aux R F V k (not (qtf false f)) h0 h1 = 
   let h2 = not-fa-to-ex-not _ h1 in 
   ex-elim h2 λ d h3 → 
@@ -720,13 +713,13 @@ data mono-rel : Nat → Nat → Form → Set where
 
 from-mono-args-equal-suc : ∀ V k → 
   mono-args-equal' (suc k) V → mono-args-equal' k V 
-from-mono-args-equal-suc V k h0 m h1 = h0 m (<-trans h1 (n<sn _)) --(lt-to-lt-suc m k h1) 
+from-mono-args-equal-suc V k h0 m h1 = h0 m (<-trans h1 (n<sn _)) 
 
 from-mono-args-equal-0 : ∀ F V k → mono-args-equal' k V → 
   (terms-val F V (mono-args-lft k) ≡ terms-val F V (mono-args-rgt k)) 
 from-mono-args-equal-0 F V 0 _ = refl
 from-mono-args-equal-0 F V (suc k) h0 = 
-  cong-2 _∷_ (h0 k (n<sn _)) -- (lt-suc-self k)) 
+  cong-2 _∷_ (h0 k (n<sn _)) 
     (from-mono-args-equal-0 F V k (from-mono-args-equal-suc V k h0)) 
 
 from-mono-args-equal-1 : ∀ V k d → mono-args-equal' k V → 
@@ -770,7 +763,7 @@ standard-to-holds-top R F V hR = tt
 standard-to-holds-not-bot : standard-to-holds (not (cst false))
 standard-to-holds-not-bot R F V hR = id
 
-standard-to-sat : ∀ {B f} → standard-to-holds f → sat B → sat (add B f) -- → unsat P B
+standard-to-sat : ∀ {B f} → standard-to-holds f → sat B → sat (add B f) 
 standard-to-sat {B} {f} h0 = 
   ex-elim-3' 
     λ R F V (hR , hs) → R , F , V , hR , sats-add R F V B f hs (h0 R F V hR) 
@@ -820,7 +813,6 @@ data jst : Nat → Form → Set where
   jst-rel : ∀ k f → mono-rel k 0 f → jst k f
   jst-choice : ∀ k f → choice k 0 f → jst k f
   jst-pred-def : ∀ k f → pred-def k 0 f → jst k f
-
 
 extend : List D → VA 
 extend [] _ = wit
@@ -915,7 +907,7 @@ fa-update-eq F k fn =
   eq-symm (tr-to-ite-eq {_} {ftr-eq (nf k) (nf k)} (≡⇒≡ᵇ k _ refl)) 
  
 ra-update-eq : ∀ R k r → (R / nf k ↦r r) (nf k) ≡ r
-ra-update-eq R k r = (tr-to-ite-eq {_} {ftr-eq (nf k) (nf k)} (≡⇒≡ᵇ k _ refl)) --(≡ᵇ⇒≡ _ _ refl)) 
+ra-update-eq R k r = (tr-to-ite-eq {_} {ftr-eq (nf k) (nf k)} (≡⇒≡ᵇ k _ refl)) 
 
 data only-vars : ∀ {b} → Termoid b → Set where 
   only-vars-nil : only-vars nil
@@ -1155,7 +1147,7 @@ from-chks-vars-lt-termoid k nil h0 = tt
 from-chks-vars-lt-termoid k (cons t ts) h0 = 
   let (h1 , h2) = tr-band-to-and _ _ h0 in 
   from-chks-vars-lt-termoid k t h1 , from-chks-vars-lt-termoid k ts h2
-from-chks-vars-lt-termoid k (var m) h0 = <ᵇ⇒< _ _ h0 --nat-lt-to-lt _ _ h0
+from-chks-vars-lt-termoid k (var m) h0 = <ᵇ⇒< _ _ h0 
 from-chks-vars-lt-termoid k (fun _ ts) h0 = from-chks-vars-lt-termoid k ts h0
 
 from-chks-vars-lt-form : ∀ k f → tr (chk-vars-lt-form k f) → vars-lt-form k f
@@ -1203,55 +1195,58 @@ from-chks-pred-def k m (bct iff (rel (nf n) ts) f) h0 =
     h4
 
 chks-jst : ∀ k f → tr (chk-jst k f) → jst k f
-chks-jst k f = elim-bor (form-eq f (cst true)) _ 
-  ( λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (cst true) h0) (jst-top _)) 
-    (elim-bor (form-eq f (not (cst false))) _ 
-    (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (not (cst false)) h0) (jst-not-bot _)) 
-    (elim-bor (form-eq f _) _ 
-      ((λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (refl-axiom) h0) (jst-refl _))) 
-      (elim-bor (form-eq f symm-axiom) _ (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (symm-axiom) h0) (jst-symm _)) 
-        (elim-bor (form-eq f trans-axiom) _
- (λ h0 →
-    eq-elim-symm (jst k) (form-eq-to-eq f trans-axiom h0) (jst-trans _))
-   (elim-bor (chk-mono-rel k 0 f) _ (λ h0 → jst-rel k f (from-chks-mono-rel k 0 f h0)) 
-     (elim-bor (chk-mono-fun k 0 f) _ (λ h0 → jst-fun k f (from-chks-mono-fun k 0 f h0)) 
-       (elim-bor (chk-choice k 0 f) _ 
-         ((λ h0 → jst-choice k f (from-chks-choice k 0 f h0))) 
-         (λ h0 → jst-pred-def k f (from-chks-pred-def k 0 f h0))))))))) 
+chks-jst k f = 
+  elim-bor (form-eq f (cst true)) _ 
+    (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (cst true) h0) (jst-top _)) 
+    ( elim-bor (form-eq f (not (cst false))) _ 
+      (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (not (cst false)) h0) (jst-not-bot _)) 
+      ( elim-bor (form-eq f _) _ 
+        (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (refl-axiom) h0) (jst-refl _))
+        ( elim-bor (form-eq f symm-axiom) _ 
+          (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (symm-axiom) h0) (jst-symm _)) 
+          ( elim-bor (form-eq f trans-axiom) _
+            (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f trans-axiom h0) (jst-trans _))
+            ( elim-bor (chk-mono-rel k 0 f) _ 
+              (λ h0 → jst-rel k f (from-chks-mono-rel k 0 f h0)) 
+              ( elim-bor (chk-mono-fun k 0 f) _ 
+                (λ h0 → jst-fun k f (from-chks-mono-fun k 0 f h0)) 
+                ( elim-bor (chk-choice k 0 f) _ 
+                  (λ h0 → jst-choice k f (from-chks-choice k 0 f h0))
+                  (λ h0 → jst-pred-def k f (from-chks-pred-def k 0 f h0)) ) ) ) ) ) ) ) 
 
-correct-core : ∀ B p → (0 < size B) → good-bch B → tr (verify B p) → unsat B
-correct-core B (rule-a b k p) hL hB hp hs = 
-   correct-core (add B _) p (pos-size-add B _) 
+verify-correct : ∀ B p → (0 < size B) → good-bch B → tr (verify B p) → unsat B
+verify-correct B (rule-a k b p) hL hB hp hs = 
+   verify-correct (add B _) p (pos-size-add B _) 
      (good-bch-a B k b hL hB) hp (prsv-a B b k hs) 
-correct-core B (rule-b k p q) hL hB hpq hs = 
+verify-correct B (rule-b k p q) hL hB hpq hs = 
   let (hp , hq) = tr-band-to-and (verify _ p) _ hpq in 
   let (h0 , h1) = good-bch-b B k hL hB in
   or-elim (prsv-b B k hs) 
-    (correct-core _ p (pos-size-add B _) h0 hp) 
-    (correct-core _ q (pos-size-add B _) h1 hq)
-correct-core B (rule-c t k p) hL hB hp hs = 
+    (verify-correct _ p (pos-size-add B _) h0 hp) 
+    (verify-correct _ q (pos-size-add B _) h1 hq)
+verify-correct B (rule-c k t p) hL hB hp hs = 
   let (hp0 , hp1) = tr-band-to-and (chk-good-term _ t) _ hp in 
-  correct-core (add B _) p (pos-size-add B _) 
+  verify-correct (add B _) p (pos-size-add B _) 
     (good-bch-c B k t hL hB (chks-good-termoid _ t hp0)) 
     hp1 (prsv-c B t k hs)
-correct-core B (rule-d k p) hL hB hp hs = 
-  correct-core (add B _) p (pos-size-add B _) 
+verify-correct B (rule-d k p) hL hB hp hs = 
+  verify-correct (add B _) p (pos-size-add B _) 
     (good-bch-d B k hL hB) hp (prsv-d B k hB hs)
-correct-core B (rule-n k p) hL hB hp hs = 
-  correct-core (add B _) p (pos-size-add B _) (good-bch-n B k hL hB) hp (prsv-n B k hs)
-correct-core B (rule-s f p q) hL hB h0 hs = 
+verify-correct B (rule-n k p) hL hB hp hs = 
+  verify-correct (add B _) p (pos-size-add B _) (good-bch-n B k hL hB) hp (prsv-n B k hs)
+verify-correct B (rule-s f p q) hL hB h0 hs = 
   let (h1 , hpq) = tr-band-to-and (chk-good-form _ f) _ h0 in 
   let (hp , hq) = tr-band-to-and (verify _ p) _ hpq in 
   let hg = chks-good-form _ f h1 in
   or-elim (prsv-s B f hs) 
-    (correct-core _ p (pos-size-add B _) (good-bch-add B (not f) hL hB hg) hp) 
-    ((correct-core _ q (pos-size-add B _) (good-bch-add B f hL hB hg) hq))
-correct-core B (rule-t f p) hL hB h0 hs = 
+    (verify-correct _ p (pos-size-add B _) (good-bch-add B (not f) hL hB hg) hp) 
+    ((verify-correct _ q (pos-size-add B _) (good-bch-add B f hL hB hg) hq))
+verify-correct B (rule-t f p) hL hB h0 hs = 
   let (h1 , hp) = tr-band-to-and (chk-jst _ f) _ h0 in 
   let hj = chks-jst (len B) f h1 in 
-  correct-core (add B f) p (pos-size-add B _) 
+  verify-correct (add B f) p (pos-size-add B _) 
     (good-bch-t B f hj hL hB) hp (prsv-t B f hB hj hs)
-correct-core B (rule-x i j) hL hB hp hs = 
+verify-correct B (rule-x i j) hL hB hp hs = 
   ex-elim-3 hs 
     λ R F V (hR , hs) → 
     let h0 = form-eq-to-eq (nth i B) (not (nth j B)) hp in 
@@ -1259,892 +1254,18 @@ correct-core B (rule-x i j) hL hB hp hs =
     let h2 = sats-nth R F V B j hs in 
     elim-eq (λ x → R , F , V ⊨ x) h1 h0 h2
 
-returns : ∀ {A : Set} → Read A → A → Set
-returns r a = ∃ λ cs0 → ∃ λ cs1 → (r cs0) ≡ cont a cs1
-
-correct : ∀ B p → returns read-bch B → tr (verify B p) → unsat B  
-correct B p h0 h1 = {!   !}  
-
-{-
-correct : ∀ (cs-prob cs-prf : Chars) → is-cont (check cs-prob cs-prf) →
-  ∃ λ (P : Prob) → ∃ λ (cs : Chars) → (read-prob cs-prob ≡ cont P cs) ∧ (unsat-prob P) 
-correct cs0 cs1 = 
-  elim-is-cont-trunc-bind read-prob _ cs0 cs1 
-    λ P cs h0 h1 → P , cs , h0 , 
-      correct-init P (length cs1) (read-prob-core-good-prob P (length cs0) (cs0 , cs , h0)) 
-        (cs1 , h1) 
-
-
-
-    prsv-n P B g h3 (correct-core P _ k hP (good-bch-n B g h3 hB) h1)) 
-  ( λ g h0 h1 → let (h2 , h3) = from-passes-verify-p P B g h0 in 
-    prsv-p P B g h2 (correct-core P _ k hP (good-bch-p P B g hP hB h2) h1) ) 
-  ( λ g h0 h1 h2 → 
-      let h3 = from-passes-num-verify-s B g h0 in 
-      prsv-s P B g 
-        -
-        (correct-core P _ k hP (good-bch-cons g B h3 hB) h2) ) 
-  ( λ g h0 h1 → 
-      let h2 = from-passes-num-verify-t B g h0 in
-      prsv-t P B g hP hB h2 (correct-core P _ k hP (good-bch-t B g h2 hB) h1) ) 
-  ( λ h0 R F V hR → 
-      ex-elim (from-ends-verify-x B h0) 
-        λ g (h1 , h2) → 
-          elim-lem (R , F , V ⊨ g) 
-            (λ h3 → not g , or-rgt h2 , dni h3) 
-            λ h3 → g , or-rgt h1 , h3 )
-correct-init : ∀ B p → good-bch B → tr (verify B p) → unsat B
-correct-init B (rule-a b i p) hB hp R F V hR =
-  {!  correct-init (add B _) p !} -- ex-elim (correct-core P [] k hP pall-nil hp R F V hR) 
-    -- (λ f (h0 , h1) → f , or-elim h0 (λ h2 → h2 , h1) ⊥-elim)
-
-
-good-bch : Bch → Set
-good-bch B = pall (good-form (length B)) B
-
-good-prob : Prob → Set
-good-prob P = ∀ f k → in-prob f P → good-form k f
-
-good-prob-nil : good-prob []
-good-prob-nil k f (n , ()) 
-
-
-
-
-
-
-
-
-term-val-incr : ∀ F V d t → term-val F (V / 0 ↦ d) (incr-var t) ≡ term-val F V t 
-term-val-incr = termoid-val-incr false
-
-
-
-
-implies-c : ∀ t f g → break-c t f ≡ just g → f => g
-implies-c t (qtf false f) g h0 R F V h1 = 
-  let h2 = just-inj h0 in 
-  let h3 = h1 (term-val F V t) in
-  eq-elim (λ x → R , F , V ⊨ x) h2 (fst (holds-subst R F V 0 t f) h3)
-implies-c t (not (qtf true f)) g h0 R F V h1 = 
-  let h2 = just-inj h0 in 
-  eq-elim (λ x → R , F , V ⊨ x) h2 
-    λ h3 → h1 (term-val F V t , snd (holds-subst R F V 0 t f) h3)
-
-
-
-good-bch-cons : ∀ f B → good-form (suc (length B)) f → good-bch B → good-bch (f ∷ B)
-good-bch-cons f B h0 h1 g = 
-  or-elim' (\ h2 → eq-elim _ (eq-symm h2) h0) (\ h2 → good-form-suc _ g (h1 _ h2)) 
-
-prsv-implies : ∀ P B f g → f ∈ B → f => g → unsat P (g ∷ B) → unsat P B 
-prsv-implies P B f g h0 h1 h2 R F V h3 = 
-  ex-elim (h2 R F V h3) ( \ h h4 → let h5 = snd h4 
-    in or-elim (fst h4) 
-      (\ h6 → (h , (or-lft h6 , h5))) 
-      \ h6 → or-elim h6 
-        (\ h7 → (f , (or-rgt h0 , modus-tollens 
-           (\ h8 → eq-elim (\ x → R , F , V ⊨ x) (eq-symm h7) 
-             (h1 R F V h8))
-          h5) ) ) 
-        \ h7 → (h , (or-rgt h7 , h5)) )
-
-prsv-a : ∀ P B b f g → f ∈ B → (break-a b f ≡ just g) → unsat P (g ∷ B) → unsat P B 
-prsv-a P B b f g h0 h1 = prsv-implies P B f g h0 (implies-a _ _ _ h1) 
-
-unsat-or-cons : ∀ P B f g → unsat P (f ∷ B) → unsat P (g ∷ B) → unsat P (bct or f g ∷ B)
-unsat-or-cons P B f g hf hg R F V hs = ex-elim (hf R F V hs) \ f' h0 → 
-  or-elim (fst h0) 
-    (\ h1 → (f' , (or-lft h1 , snd h0))) 
-    ( or-elim' 
-      ( \ h2 → ex-elim (hg R F V hs) \ g' h3 → 
-        or-elim (fst h3) 
-          (\ h4 → (g' , (or-lft h4 , snd h3))) 
-          ( or-elim' 
-            ( \ h4 → ( bct or f g , 
-              ( or-rgt (or-lft refl), 
-                or-elim' 
-                  (eq-elim (λ x → ¬ (R , F , V ⊨ x)) h2 (snd h0)) 
-                  (eq-elim (λ x → ¬ (R , F , V ⊨ x)) h4 (snd h3)) ) ) ) 
-            (\ h4 → (g' , (or-rgt (or-rgt h4) , snd h3))) )
-      ) 
-      (\ h1 → (f' , (or-rgt (or-rgt h1) , snd h0))) )
-
-prsv-b : ∀ P B f g h → f ∈ B → (break-b f ≡ just (g , h)) → 
-  unsat P (g ∷ B) → unsat P (h ∷ B) → unsat P B 
-prsv-b P B f g h h0 h1 h2 h3 = prsv-implies P B f (bct or g h) 
-  h0 (implies-b _ _ _ h1) (unsat-or-cons _ _ _ _ h2 h3)
-
-prsv-c : ∀ P B t f g → f ∈ B → (break-c t f ≡ just g) → unsat P (g ∷ B) → unsat P B 
-prsv-c P B t f g h1 h2 h3 = prsv-implies P B f g h1 (implies-c t f g h2) h3
-
-sat-or-unsat : ∀ P B → (sat P B ∨ unsat P B)
-sat-or-unsat P B = elim-lem (unsat P B) or-rgt λ h0 →  
-  ex-elim (not-fa-to-ex-not _ h0) λ R h1 → 
-    ex-elim (not-fa-to-ex-not _ h1) λ F h2 → 
-      ex-elim (not-fa-to-ex-not _ h2) λ V h3 → 
-        ex-elim (not-fa-to-ex-not _ h3) λ h4 h5 → 
-          or-lft ( R , F , V , h4 , 
-            (λ f h6 → dne (λ h7 → ⊥-elim (h5 (f , h6 , h7)))) )
-
-unsat-to-not-sat : ∀ P B → unsat P B → ¬ sat P B 
-unsat-to-not-sat P B h0 h1 =
-  ex-elim-3 h1 
-    λ R F V (hR , h2) → 
-      ex-elim (h0 R F V hR) 
-        λ f (h3 , h4) → h4 (h2 f h3)
-
-term-val-update-par : ∀ F k d V → 
-  term-val (F / nf k ↦f const-fun d) V (par k) ≡ d
-term-val-update-par F k d V = 
-  let h0 = tr-to-ite-eq {List D → D} {k =n k} {λ _ → d} {F (nf k)} (eq-to-nat-eq k k refl) in 
-  eq-elim (λ x → x [] ≡ d) (eq-symm h0) refl 
-
-from-break-n-eq-just : ∀ f g → break-n f ≡ just g → f ≡ (not (not g)) 
-from-break-n-eq-just (not (not f)) g h0 = cong not (cong not (just-inj h0))
-
-
-
-prsv-d-aux : ∀ R F V k f g → good-form k f → break-d k f ≡ just g → 
-  R , F , V ⊨ f → ∃ λ d → R , F / (nf k) ↦f (const-fun d) , V ⊨ g 
-prsv-d-aux R F V k (qtf true f) g h0 h1 h2 = 
-  ex-elim h2 λ d h3 → let F' = (F / (nf k) ↦f (const-fun d)) in 
-    d , eq-elim (λ x → R , F' , V ⊨ x) (just-inj h1)
-      ( fst (holds-subst R F' V 0 (par k) f) 
-        ( eq-elim (λ x → R , F' , V / 0 ↦ x ⊨ f) 
-          ( eq-symm (term-val-update-par F k d V)) 
-            (snd (good-to-holds-update-iff _ _ _ _ _ f h0) h3) ) )
-prsv-d-aux R F V k (not (qtf false f)) g h0 h1 h2 = 
-  let h2' = not-fa-to-ex-not _ h2 in 
-  ex-elim h2' λ d h3 → let F' = (F / (nf k) ↦f (const-fun d)) in 
-    d , eq-elim (λ x → R , F' , V ⊨ x) (just-inj h1) λ hc → h3 
-     let h4 = snd (holds-subst R F' V 0 (par k) f) hc in 
-     let h5 = fst (good-to-holds-update-iff R F _ k (const-fun d) f h0) h4 in 
-     eq-elim (λ x → R , F , V / 0 ↦ x ⊨ f) (term-val-update-par F k d V) h5
-
-sats-to-sats : ∀ P B R F V fn f → good-prob P → good-bch B → 
-  (R , F / (nf (length B)) ↦f fn , V ⊨ f) → sats R F V P B → sats R (F / (nf (length B)) ↦f fn) V P (f ∷ B)  
-sats-to-sats P B R F V fn f h0 h1 h2 h3 g (or-lft h4) = 
-  snd (good-to-holds-update-iff R F V (length B) fn g (h0 g _ h4)) (h3 g (or-lft h4))
-sats-to-sats P B R F V fn f h0 h1 h2 h3 g (or-rgt (or-lft h4)) = 
-  eq-elim (λ x → R , _ , V ⊨ x) (eq-symm h4) h2
-sats-to-sats P B R F V fn f h0 h1 h2 h3 g (or-rgt (or-rgt h4)) = 
-  snd (good-to-holds-update-iff R F V (length B) fn g (h1 g h4)) (h3 g (or-rgt h4))
-
-
-sat-to-sat-to-unsat-to-unsat : ∀ {P0 P1 B0 B1} → 
-  (sat P0 B0 → sat P1 B1) → unsat P1 B1 → unsat P0 B0
-sat-to-sat-to-unsat-to-unsat {P0} {P1} {B0} {B1} h0 h1 = 
-  or-elim (sat-or-unsat P0 B0) 
-    (λ h2 → ⊥-elim (unsat-to-not-sat P1 B1 h1 (h0 h2))) 
-    id
-
-
-prsv-p : ∀ P B g → in-prob g P → unsat P (g ∷ B) → unsat P B 
-prsv-p P B g h0 h1 R F V hR = 
-  ex-elim (h1 R F V hR) 
-    λ f (h2 , h3) → 
-      f , 
-      or-elim h2 or-lft 
-        (or-elim' (λ h4 → or-lft (eq-elim (λ x → in-prob x P) (eq-symm h4) h0)) or-rgt) , 
-      h3
-
-prsv-s : ∀ P B g → unsat P (not g ∷ B) → unsat P (g ∷ B) → unsat P B 
-prsv-s P B g h0 h1 R F V hR = 
-  ex-elim (h0 R F V hR) 
-    λ f0 (h2 , h3) → 
-      ex-elim (h1 R F V hR) 
-        λ f1 (h4 , h5) → 
-          or-elim h2 
-            (λ h6 → f0 , or-lft h6 , h3) 
-            ( or-elim'
-                ( λ h6 → 
-                    or-elim h4 
-                      (λ h7 → f1 , or-lft h7 , h5) 
-                      ( or-elim' 
-                          ( λ h9 → 
-                              ex-falso { R , F , V ⊨ g } 
-                                (dne (eq-elim (λ x → ¬ (R , F , V ⊨ x)) h6 h3)) 
-                                (eq-elim (λ x → ¬ (R , F , V ⊨ x)) h9 h5) ) 
-                          (λ h8 → f1 , or-rgt h8 , h5) ) ) 
-                (λ h6 → f0 , or-rgt h6 , h3) ) 
-
-standard-to-holds : Form → Set 
-standard-to-holds f = ∀ R F V → standard R → R , F , V ⊨ f
-
-standard-to-holds-refl : standard-to-holds refl-axiom
-standard-to-holds-refl R F V hR d = snd (hR d d) refl
-
-standard-to-holds-symm : standard-to-holds symm-axiom
-standard-to-holds-symm R F V hR d0 d1 h0 = 
-  snd (hR d1 d0) (eq-symm (fst (hR d0 d1) h0))
-
-standard-to-holds-trans : standard-to-holds trans-axiom
-standard-to-holds-trans R F V hR d0 d1 d2 h0 h1 = 
-  snd (hR d0 d2) (eq-trans d1 (fst (hR d0 d1) h0) (fst (hR d1 d2) h1))
-
-mono-args-equal' : Nat → VA → Set
-mono-args-equal' k V = ∀ m → m < k → V (suc (m * 2)) ≡ V (m * 2)
-
-from-mono-args-equal-suc : ∀ V k → 
-  mono-args-equal' (suc k) V → mono-args-equal' k V 
-from-mono-args-equal-suc V k h0 m h1 = h0 m (lt-to-lt-suc m k h1) 
-
-from-mono-args-equal-0 : ∀ F V k → mono-args-equal' k V → 
-  (terms-val F V (mono-args-lft k) ≡ terms-val F V (mono-args-rgt k)) 
-from-mono-args-equal-0 F V 0 _ = refl
-from-mono-args-equal-0 F V (suc k) h0 = 
-  cong-2 _∷_ (h0 k (lt-suc-self k)) 
-    (from-mono-args-equal-0 F V k (from-mono-args-equal-suc V k h0)) 
-
-from-mono-args-equal-1 : ∀ V k d → mono-args-equal' k V → 
-  mono-args-equal' (suc k) ((V / 0 ↦ d) / 0 ↦ d) 
-from-mono-args-equal-1 V k d h0 0 h1 = refl
-from-mono-args-equal-1 V k d h0 (suc m) (suc< _ _ h1) = h0 m h1
-
-holds-mono-fun : ∀ R F V k m f → standard R → 
-  mono-args-equal' m V → mono-fun k m f → R , F , V ⊨ f 
-holds-mono-fun R F V k m _ hR hE (mono-fun-fa k m f h0) d0 d1 h1 = 
-  holds-mono-fun R F _ k (suc m) f hR 
-    ( let h2 : d0 ≡ d1 
-          h2 = (fst (hR d0 d1) h1) in 
-      eq-elim (λ x → mono-args-equal' (suc m) ((V / 0 ↦ d0) / 0 ↦ x)) 
-        h2 ((from-mono-args-equal-1 V m d0 hE)))
-    h0
-holds-mono-fun R F V k m _ hR hE (mono-fun-eq k m f _) = 
-  snd (hR _ _) (cong (F f) (from-mono-args-equal-0 F V m hE))
-
-holds-mono-rel : ∀ R F V k m f → standard R → 
-  mono-args-equal' m V → mono-rel k m f → R , F , V ⊨ f 
-holds-mono-rel R F V k m _ hR hE (mono-rel-fa k m f h0) d0 d1 h1 = 
-  holds-mono-rel R F _ k (suc m) f hR 
-    ( let h2 : d0 ≡ d1 
-          h2 = (fst (hR d0 d1) h1) in 
-      eq-elim (λ x → mono-args-equal' (suc m) ((V / 0 ↦ d0) / 0 ↦ x)) 
-        h2 (from-mono-args-equal-1 V m d0 hE) )
-    h0
-holds-mono-rel R F V k m _ hR hE (mono-rel-imp k m r _) h0 = 
-  eq-elim (λ x → tr (R r x)) (from-mono-args-equal-0 _ _ _ hE) h0
-
-standard-to-holds-mono-rel : ∀ k f → mono-rel k 0 f → standard-to-holds f
-standard-to-holds-mono-rel k f h0 R F V hR = holds-mono-rel R F V k 0 f hR (λ _ ()) h0
-
-standard-to-holds-mono-fun : ∀ k f → mono-fun k 0 f → standard-to-holds f
-standard-to-holds-mono-fun k f h0 R F V hR = holds-mono-fun R F V k 0 f hR (λ _ ()) h0
-
-standard-to-holds-top : standard-to-holds (cst true)
-standard-to-holds-top R F V hR = tt
-
-standard-to-holds-not-bot : standard-to-holds (not (cst false))
-standard-to-holds-not-bot R F V hR = id
-
-standard-to-unsat : ∀ {P B f} → standard-to-holds f → unsat P (f ∷ B) → unsat P B
-standard-to-unsat {_} {_} {f} h0 h1 R F V hR = 
-  ex-elim (h1 R F V hR) 
-    λ g (h2 , h3) → 
-      g , 
-      or-elim h2 or-lft 
-        ( or-elim' 
-            ( λ h4 → 
-                ex-falso (eq-elim (λ x → R , F , V ⊨ x) (eq-symm h4) (h0 R F V hR)) 
-                  h3 ) 
-            or-rgt ) , 
-      h3
-
-standard-ru : ∀ R k rl → standard R → standard (R / (nf k) ↦r rl)
-standard-ru R k rl h0 d0 d1 = 
-  eq-elim (λ x → tr (x _) ↔ (d0 ≡ d1)) (eq-symm (ru-sf-eq R k rl _)) (h0 _ _)
-
-prsv-t : ∀ P B g → good-prob P → good-bch B → jst (length B) g → unsat P (g ∷ B) → unsat P B 
-prsv-t P B _ _ _ (jst-top _)           = standard-to-unsat standard-to-holds-top
-prsv-t P B _ _ _ (jst-not-bot _)       = standard-to-unsat standard-to-holds-not-bot
-prsv-t P B _ _ _ (jst-refl _)          = standard-to-unsat standard-to-holds-refl
-prsv-t P B _ _ _ (jst-symm k)          = standard-to-unsat standard-to-holds-symm
-prsv-t P B _ _ _ (jst-trans k)         = standard-to-unsat standard-to-holds-trans
-prsv-t P B _ _ _ (jst-fun k f h0)      = standard-to-unsat (standard-to-holds-mono-fun k f h0)
-prsv-t P B _ _ _ (jst-rel k f h0)      = standard-to-unsat (standard-to-holds-mono-rel k f h0)
-prsv-t P B _ hP hB (jst-choice k f h0)   = 
-  sat-to-sat-to-unsat-to-unsat 
-    ( ex-elim-3' 
-        λ R F V (h1 , h2) → 
-          ex-elim (prsv-t-choice R F (length B) 0 f h0) 
-            λ fn h3 → 
-              R , F / nf (length B) ↦f fn , V , h1 , sats-to-sats P B R F V fn f hP hB  (h3 V) h2 ) 
-prsv-t P B _ hP hB (jst-pred-def k f h0) = 
-  sat-to-sat-to-unsat-to-unsat (ex-elim-3' λ R F V (h1 , h2 ) → 
-    ex-elim (prsv-t-pred-def R F (length B) 0 f h0) (λ rl h3 → 
-      (R / nf (length B) ↦r rl) , F , V , standard-ru R k rl h1 , (sats-to-sats-ra P B R F V rl f hP hB (h3 V) h2)))
-
-prsv-good-b : ∀ f g h k → (break-b f ≡ just (g , h)) → good-form k f → 
-  (good-form k g ∧ good-form k h)
-prsv-good-b (bct or f0 f1) g h k h0 h1 =
-  ( (eq-elim (good-form k) (prod-inj-lft  (just-inj h0)) (fst h1)) , 
-    (eq-elim (good-form k) (prod-inj-rgt (just-inj h0)) (snd h1)) )
-prsv-good-b (bct imp f0 f1) g h k h0 h1 = 
-  ( (eq-elim (good-form k) (prod-inj-lft  (just-inj h0)) (fst  h1)) , 
-    (eq-elim (good-form k) (prod-inj-rgt (just-inj h0)) (snd h1)) )
-prsv-good-b (not (bct and f0 f1)) g h k h0 h1 = 
-  (eq-elim (good-form k) (prod-inj-lft  (just-inj h0)) (fst  h1)) , 
-  (eq-elim (good-form k) (prod-inj-rgt (just-inj h0)) (snd h1)) 
-prsv-good-b (not (bct iff f0 f1)) g h k h0 h1 = 
-  (eq-elim (good-form k) (prod-inj-lft  (just-inj h0)) h1) , 
-  (eq-elim (good-form k) (prod-inj-rgt (just-inj h0)) (and-symm h1)) 
-
-
-prsv-good-d : ∀ f g k → good-form k f → (break-d k f ≡ just g) → good-form (suc k) g
-
-prsv-good-d (qtf true f) g k h0 h1 = 
-  eq-elim (good-form (suc k)) (just-inj h1) (good-subst-form (par k) 
-    f _ _  (good-term-par k) (good-form-suc k f h0))
-prsv-good-d (not (qtf false f)) g k h0 h1 = 
-  eq-elim (good-form (suc k)) (just-inj h1) (good-subst-form (par k) 
-    f _ _  (good-term-par k) (good-form-suc k f h0))
-
-
-prsv-good-a : ∀ b f g k → (break-a b f ≡ just g) → good-form k f → good-form k g
-prsv-good-a false  (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1)
-prsv-good-a true (bct and f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1)
-prsv-good-a false  (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) h1 --h1
-prsv-good-a true (bct iff f0 f1) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (and-symm h1)
-prsv-good-a false  (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1) 
-prsv-good-a true (not (bct or f0 f1))  g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1) 
-prsv-good-a false  (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (fst h1) 
-prsv-good-a true (not (bct imp f0 f1)) g k h0 h1 = eq-elim (good-form k) (just-inj h0) (snd h1) 
-
-good-mono-args-lft : ∀ k m → good-termoid k (mono-args-lft m)
-good-mono-args-lft k 0 = tt
-good-mono-args-lft k (suc m) = tt , (good-mono-args-lft k m)
-
-good-mono-args-rgt : ∀ k m → good-termoid k (mono-args-rgt m)
-good-mono-args-rgt k 0 = tt
-good-mono-args-rgt k (suc m) = tt , good-mono-args-rgt k m
-
-good-mono-fun : ∀ k m f → mono-fun k m f → good-form (suc k) f
-good-mono-fun k m _ (mono-fun-fa k m f h0) = (tt , (tt , (tt , tt))) , (good-mono-fun k _ f h0) 
-good-mono-fun k m _ (mono-fun-eq k m f h0) = tt , ((h0 , good-mono-args-lft _ _) , (h0 , good-mono-args-rgt _ _) , tt)
-
-good-mono-rel : ∀ k m f → mono-rel k m f → good-form (suc k) f
-good-mono-rel k m _ (mono-rel-fa k m f h0) = (tt , (tt , (tt , tt))) , (good-mono-rel k _ f h0) 
-good-mono-rel k m _ (mono-rel-imp k m f h0) = (h0 , good-mono-args-lft _ _) , (h0 , good-mono-args-rgt  _ _)
-
-good-choice : ∀ k m f → choice k m f → good-form (suc k) f
-good-choice k m _ (choice-fa k m f h0) = good-choice k _ f h0
-good-choice k m _ (choice-imp-asc k m f h0 h1) = (good-form-suc _ f h0) , 
-  (good-subst-form (skm-term-asc k m) f (suc k) 0 ((lt-suc-self _) , good-vars-asc _ m) (good-form-suc  _ f h0))
-good-choice k m _ (choice-imp-desc k m f h0 h1) = (good-form-suc _ f h0) , 
-  ((good-subst-form (skm-term-desc k m) f (suc k) 0 ((lt-suc-self _) , good-vars-desc _ m) (good-form-suc  _ f h0)))
-
-good-pred-def : ∀ k m f → pred-def k m f → good-form (suc k) f
-good-pred-def k m _ (pred-def-fa k m f h0) = good-pred-def k _ f h0
-good-pred-def k m _ (pred-def-iff-asc k m f h0 h1) = ((lt-suc-self _) , (good-vars-asc _ m)) , (good-form-suc _ f h0)
-good-pred-def k m _ (pred-def-iff-desc k m f h0 h1) = 
- ((lt-suc-self _) , (good-vars-desc _ m)) , (good-form-suc _ f h0)
-
-good-bch-t : ∀ B g → jst (length B) g → good-bch B → good-bch (g ∷ B)
-good-bch-t B _ (jst-top _) h1           = good-bch-cons _ B tt h1
-good-bch-t B _ (jst-not-bot _) h1       = good-bch-cons _ B tt h1
-good-bch-t B _ (jst-refl _) h1          = good-bch-cons _ B (tt , tt , tt , tt) h1
-good-bch-t B _ (jst-symm k) h1          = good-bch-cons _ B ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt)))) h1
-good-bch-t B _ (jst-trans k) h1         = good-bch-cons _ B ((tt , (tt , (tt , tt))) , ((tt , (tt , (tt , tt))) , (tt , (tt , (tt , tt))))) h1
-good-bch-t B _ (jst-fun k f h0) h1      = good-bch-cons _ B (good-mono-fun k 0 f h0) h1
-good-bch-t B _ (jst-rel k f h0) h1      = good-bch-cons _ B (good-mono-rel k 0 f h0) h1
-good-bch-t B _ (jst-choice k f h0) h1   = good-bch-cons _ B (good-choice (length B) 0 _ h0) h1
-good-bch-t B _ (jst-pred-def k f h0) h1 = good-bch-cons _ B (good-pred-def (length B) 0 _ h0) h1
-
-good-bch-p : ∀ P B g → good-prob P →  good-bch B → in-prob g P → good-bch (g ∷ B)
-good-bch-p P B g h0 h1 h2 = good-bch-cons g B (h0 _ _ h2) h1
-
-
-cont-inj-val : ∀ {A : Set} {a0 a1 : A} {st0 st1} → 
-  cont a0 st0 ≡ cont a1 st1 → a0 ≡ a1 
-cont-inj-val refl = refl
+passes : ∀ {A : Set} → Read A → A → Set
+passes r a = ∃ λ cs0 → ∃ λ cs1 → (r cs0) ≡ cont a cs1
+
+returns : ∀ {A : Set} → Read A → Chars → A → Set
+returns r cs a = ∃ λ cs' → (r cs) ≡ cont a cs'
 
 is-cont : ∀ {A : Set} → Res A → Set
 is-cont (stop _) = ⊥
 is-cont (cont _ _) = ⊤
 
-from-is-cont-bind : ∀ {A : Set} {B} (f : Read A) (g : A → Read B) cs → 
-    is-cont ((f >>= g) cs) → 
-    ∃ λ x → ∃ λ cs' → (f cs ≡ cont x cs') ∧ (is-cont (g x cs'))
-from-is-cont-bind f g cs with f cs 
-... | stop _ = ⊥-elim
-... | cont x cs' = λ h0 → (x , cs' , refl , h0)
-
-from-is-cont-trunc-bind : ∀ {A : Set} {B} (f : Read A) (g : A → Read B) cs0 cs1 → 
-    is-cont ((trunc-bind f g) cs0 cs1) → 
-    ∃ λ x → ∃ λ cs → (f cs0 ≡ cont x cs) ∧ (is-cont (g x cs1))
-from-is-cont-trunc-bind f g cs0 cs1 with f cs0
-... | stop _ = ⊥-elim
-... | cont x cs = λ h0 → (x , cs , refl , h0)
-
-elim-is-cont-bind' : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 → 
-  is-cont ((f >>= g) cs0) → (∀ a cs1 → (f cs0 ≡ cont a cs1) → (is-cont (g a cs1)) → C) → C
-elim-is-cont-bind' f g cs h0 h1 = 
-  ex-elim-2 (from-is-cont-bind f g cs h0) λ a cs' (h2 , h3) → h1 a cs' h2 h3
-
-elim-is-cont-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 → 
-  (∀ a cs1 → (f cs0 ≡ cont a cs1) → (is-cont (g a cs1)) → C) → is-cont ((f >>= g) cs0) → C 
-elim-is-cont-bind f g cs h0 h1 = elim-is-cont-bind' f g cs h1 h0 
-    
-elim-is-cont-trunc-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 → 
-  (∀ a cs → (f cs0 ≡ cont a cs) → (is-cont (g a cs1)) → C) → 
-  is-cont ((trunc-bind f g) cs0 cs1) → C 
-elim-is-cont-trunc-bind f g cs0 cs1 h0 h1 = 
-  ex-elim-2 (from-is-cont-trunc-bind f g cs0 cs1 h1) 
-    λ a cs (h2 , h3) → h0 a cs h2 h3 
-    
 ends : ∀ {A : Set} → Read A → Set
 ends r = ∃ λ cs → is-cont (r cs)
-
-ends-num : ∀ {A : Set} → (Nat → Read A) → Set
-ends-num r = ∃ λ k → ends (r k)
-
-passes : ∀ {A : Set} → Read A → A → Set
-passes r a = ∃ λ cs0 → ∃ λ cs1 → (r cs0) ≡ cont a cs1
-
-passes-num : ∀ {A : Set} → (Nat → Read A) → A → Set
-passes-num r a = ∃ λ k → passes (r k) a
-
-use-seq-eq-just : ∀ {A B C : Set} (r : Read A) (s : Read B) cs0 csf b → 
-  ((r >> s) cs0) ≡ cont b csf → 
-  (∀ a cs1 → r cs0 ≡ cont a cs1 → (s cs1 ≡ cont b csf) → C) → C
-use-seq-eq-just r s cs0 csf b h0 h1 with (r cs0)
-... | cont a cs1 = h1 a cs1 refl h0
-
-use-is-cont-seq : ∀ {A B C : Set} (r : Read A) (s : Read B) (cs) → 
-  is-cont ((r >> s) cs) → (∀ a cs' → r cs ≡ cont a cs' → (is-cont (s cs')) → C) → C
-use-is-cont-seq r s cs h0 h1 with (r cs) 
-... | cont a cs' = h1 a cs' refl h0 
-
-use-is-cont-seq' : ∀ {A B C : Set} (r : Read A) (s : Read B) (cs) → 
-  (∀ a cs' → r cs ≡ cont a cs' → (is-cont (s cs')) → C) → 
-  is-cont ((r >> s) cs) → C
-use-is-cont-seq' r s cs h0 h1 = use-is-cont-seq r s cs h1 h0 
-
-elim-ends-seq : ∀ {A B C : Set} (r : Read A) (s : Read B) → 
-  (ends r → ends s → C) → ends (r >> s) → C
-elim-ends-seq r s h0 = ex-elim' λ cs0 → 
-  use-is-cont-seq' r s cs0 λ a cs1 h1 h2 → 
-    h0 (cs0 , eq-elim-symm is-cont h1 tt) (cs1 , h2) 
-
-intro-verify : ∀ (Q : Res ⊤ → Set) P B k c cs → 
-  ( Q ( ( do
-    f ← verify-a B 
-    verify P (f ∷ B) k ) cs ) ) → 
-  ( Q ( ( do
-     (f , g) ← verify-b B 
-     verify P (f ∷ B) k
-     verify P (g ∷ B) k ) cs ) ) →  
-  ( Q ( ( do
-    f ← verify-c B k 
-    verify P (f ∷ B) k ) cs ) ) → 
-  ( Q ( ( do
-    f ← verify-d B 
-    verify P (f ∷ B) k ) cs ) ) →  
-  ( Q ( ( do
-    f ← verify-n B 
-    verify P (f ∷ B) k ) cs ) ) → 
-  ( Q ( ( do
-    f ← verify-p P B 
-    verify P (f ∷ B) k ) cs ) ) →  
-  ( Q ( ( do
-    f ← verify-s B k 
-    verify P (not f ∷ B) k 
-    verify P (f ∷ B) k ) cs ) ) →  
-  ( Q ( ( do
-    f ← verify-t B k 
-    verify P (f ∷ B) k ) cs ) ) → 
-  Q ( verify-x B cs ) → 
-  (∀ msg → Q (stop msg)) → 
-  Q (verify P B (suc k) (c ∷ cs))
-intro-verify Q P B k c cs ha hb hc hd hn hp hs ht hx h0 =  
-  intro-ite {(Read ⊤)} {_} {_} (c ==c 'A') (λ x → (Q (x cs))) ha (
-    intro-ite {(Read ⊤)} {_} {_} (c ==c 'B') (λ x → (Q (x cs))) hb (
-      intro-ite {(Read ⊤)} {_} {_} (c ==c 'C') (λ x → (Q (x cs))) hc (
-        intro-ite {(Read ⊤)} {_} {_} (c ==c 'D') (λ x → (Q (x cs))) hd (
-          intro-ite {(Read ⊤)} {_} {_} (c ==c 'N') (λ x → (Q (x cs))) hn (
-            intro-ite {(Read ⊤)} {_} {_} (c ==c 'P') (λ x → (Q (x cs))) hp (
-              intro-ite {(Read ⊤)} {_} {_} (c ==c 'S') (λ x → (Q (x cs))) hs (
-                intro-ite {(Read ⊤)} {_} {_} (c ==c 'T') (λ x → (Q (x cs))) ht (
-                  intro-ite {(Read ⊤)} {_} {_} (c ==c 'X') (λ x → (Q (x cs))) hx (h0 _) 
-                )
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-
-elim-ends-verify : ∀ P B k C → 
-  (∀ f → passes (verify-a B) f → ends (verify P (f ∷ B) k) → C) →   
-  ( ∀ f g → passes (verify-b B) (f , g) → 
-    ends (verify P (f ∷ B) k) → ends (verify P (g ∷ B) k) → C) → 
-  (∀ f → passes-num (verify-c B) f → ends (verify P (f ∷ B) k) → C) →  
-  (∀ f → passes (verify-d B) f → ends (verify P (f ∷ B) k) → C) → 
-  (∀ f → passes (verify-n B) f → ends (verify P (f ∷ B) k) → C) → 
-  (∀ f → passes (verify-p P B) f → ends (verify P (f ∷ B) k) → C) →  
-  ( ∀ f → passes-num (verify-s B) f → ends (verify P (not f ∷ B) k) → ends (verify P (f ∷ B) k) → C) → 
-  (∀ f → passes-num (verify-t B) f → ends (verify P (f ∷ B) k) → C) →  
-  (ends (verify-x B) → C) → 
-  ends (verify P B (suc k)) → C
-elim-ends-verify P B k C ha hb hc hd hn hp hs ht hx (c ∷ cs0 , hv) =
-  intro-verify (λ x → is-cont x → C) P B k c cs0 
-    (elim-is-cont-bind (verify-a B) _ cs0 λ f cs1 h0 h1 → ha f (cs0 , cs1 , h0) (cs1 , h1)) 
-    ( elim-is-cont-bind (verify-b B) _ cs0 
-        λ (f , g) cs1 h0 h1 → 
-          elim-ends-seq (verify P (f ∷ B) k) (verify P (g ∷ B) k) 
-            (λ h2 h3 → hb f g (cs0 , cs1 , h0) h2 h3) (cs1 , h1) ) 
-    ( elim-is-cont-bind (verify-c B k) _ cs0 
-        λ f cs1 h0 h1 → hc f (k , cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-cont-bind (verify-d B) _ cs0 
-        λ f cs1 h0 h1 → hd f (cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-cont-bind (verify-n B) _ cs0 
-        λ f cs1 h0 h1 → hn f (cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-cont-bind (verify-p P B) _ cs0 
-        λ f cs1 h0 h1 → hp f (cs0 , cs1 , h0) (cs1 , h1) ) 
-    ( elim-is-cont-bind (verify-s B k) _ cs0 
-        λ f cs1 h0 h1 → 
-          elim-ends-seq (verify P (not f ∷ B) k) (verify P (f ∷ B) k) 
-            (λ h2 h3 → hs f (k , cs0 , cs1 , h0) h2 h3) 
-            (cs1 , h1) )
-    ( elim-is-cont-bind (verify-t B k) _ cs0 
-        λ f cs1 h0 h1 → ht f (k , cs0 , cs1 , h0) (cs1 , h1) ) 
-    (λ h0 → hx (cs0 , h0)) 
-    (λ _ → ⊥-elim) 
-    hv
-
-from-eq-just : ∀ {A : Set} {B} (f : Read A) (g : A → Read B) {cs0} {cs1} {b} → 
-   ((f >>= g) cs0) ≡ cont b cs1 → 
-   ∃ \ a → ∃ \ cs → (f cs0 ≡ cont a cs) ∧ (g a cs ≡ cont b cs1)
-from-eq-just f g {cs0} h with f cs0
-... | (cont a cs) = a , cs , refl , h
-
-elim-bind-eq-just : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 b → 
-  (∀ a cs → (f cs0 ≡ cont a cs) → (g a cs ≡ cont b cs1) → C) → 
-  ((f >>= g) cs0) ≡ cont b cs1 → C
-elim-bind-eq-just f g cs0 csf b h0 h1 with (f cs0)
-... | cont a cs1 = h0 a cs1 refl h1
-
-use-bind-eq-just : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 b → 
-  ((f >>= g) cs0) ≡ cont b cs1 → 
-  (∀ a cs → (f cs0 ≡ cont a cs) → (g a cs ≡ cont b cs1) → C) → C
-use-bind-eq-just f g cs0 cs1 b h0 h1 = ex-elim (from-eq-just f g h0) 
-  \ a h2 → ex-elim h2 (λ cs h3 → h1 a cs (fst h3) (snd h3))
-
-elim-obind-eq-just : ∀ {A B C : Set} (f : Maybe A) (g : A → Maybe B) (b : B) → 
-  (∀ a → f ≡ just a → (g a) ≡ just b → C) → (f o>= g) ≡ just b → C
-elim-obind-eq-just (just a) g b h0 h1 = h0 a refl h1 -- h0 a b refl h1 
-
-use-obind-eq-just : ∀ {A B C : Set} (f : Maybe A) (g : A → Maybe B) (b : B) → 
-  (f o>= g) ≡ just b → (∀ a → f ≡ just a → g a ≡ just b → C) → C 
-use-obind-eq-just (just a) g b h0 h1 = h1 a refl h0
-
-from-obind-eq-just : ∀ {A B : Set} (f : Maybe A) (g : A → Maybe B) (b : B) → 
-  (f o>= g) ≡ just b → ∃ \ a → ((f ≡ just a) ∧ (g a ≡ just b))
-from-obind-eq-just nothing _ _  () 
-from-obind-eq-just (just a) g b h0 = (a , (refl , h0))
-
-from-lift-read-eq-just : ∀ {A : Set} {f : Maybe A} {a cs0 cs1} → 
-  ((lift-read f) cs0 ≡ cont a cs1) → f ≡ just a
-from-lift-read-eq-just {_} {just a0} {_} {_} {_} h0 = 
-  cong just (cont-inj-val h0) 
-
-from-nth-eq-just : ∀ {A : Set} k l (x : A) → nth k l ≡ just x → x ∈ l
-from-nth-eq-just 0 (y ∷ _) x = \ h0 → or-lft (eq-symm (just-inj h0))
-from-nth-eq-just (suc m) (_ ∷ ys) x = \ h0 → or-rgt (from-nth-eq-just m ys x h0)
-
-from-get-bch-eq-just : ∀ {B} {m} {f} → get-bch B m ≡ just f → f ∈ B
-from-get-bch-eq-just {B} {m} {f} h0 =  
-  ex-elim 
-    (from-obind-eq-just 
-      (rev-index (length B) m) 
-      (\ n → nth n B) f h0) 
-      \ k h1 → from-nth-eq-just k _ _ (snd h1)
-
-correct-aux : ∀ {f g : Read ⊤} P B c0 c1 cs
-  (h0 : is-cont (f cs) → unsat P B)  
-  (h1 : is-cont (g cs) → unsat P B)  
-  → -------------------------------
-  is-cont ((if c0 =c c1 then f else g) cs) → unsat P B 
-correct-aux P B c0 c1 cs = 
-  intro-ite (c0 =c c1) (λ (x : Read ⊤) → is-cont (x cs) → unsat P B) 
-
-from-lift-read-bind-eq : ∀ {A : Set} B k (m : Form → Maybe A) cs0 csf (a : A) → 
-  lift-read (get-bch B k o>= m) cs0 ≡ cont a csf → 
-  ∃ λ f → ((f ∈ B) ∧ (m f ≡ just a))
-from-lift-read-bind-eq B k m cs0 csf a h0 =
-  ex-elim (from-obind-eq-just (get-bch B k) m a (from-lift-read-eq-just h0)) 
-    λ f h1 → (f , from-get-bch-eq-just (fst h1) , snd h1)
-
-from-pass-if-seq-eq-just : ∀ {A : Set} b (r : Read A) cs0 csf a → 
-  (pass-if b >> r) cs0 ≡ cont a csf → (tr b ∧ (r cs0 ≡ cont a csf))
-from-pass-if-seq-eq-just true r cs0 csf a h0 = tt , h0 
-
-from-passes-verify-a : ∀ B f → passes (verify-a B) f → 
-  ∃ λ b → ∃ λ g → ((g ∈ B) ∧ (break-a b g ≡ just f))
-from-passes-verify-a B f (cs0 , (cs1 , h0)) =
-  use-bind-eq-just read-nat _ cs0 cs1 f h0 λ k cs h1 h2 → 
-    use-bind-eq-just read-bool _ cs cs1 f h2 λ b cs' h3 h4 → 
-      b , from-lift-read-bind-eq B k _ _ _ f h4
-
-from-verify-a-eq-just : ∀ B cs0 cs1 g → verify-a B cs0 ≡ cont g cs1 → 
-  ∃ \ b → ∃ \ f → ((f ∈ B) ∧ (break-a b f ≡ just g))
-from-verify-a-eq-just B cs0 cs1 g h0 = 
-  use-bind-eq-just read-nat _ cs0 cs1 g h0 λ k cs h1 h2 → 
-    use-bind-eq-just read-bool _ cs cs1 g h2 λ b cs' h3 h4 → 
-      b , from-lift-read-bind-eq B k _ _ _ g h4
-
-from-passes-verify-b : ∀ B f g → passes (verify-b B) (f , g) → 
-  ∃ λ h → (h ∈ B) ∧ (break-b h ≡ just (f , g))
-from-passes-verify-b B f g (cs0 , cs1 , h0) = 
-  use-bind-eq-just read-nat _ cs0 cs1 (f , g) h0 λ k cs1 h1 h2 → 
-    from-lift-read-bind-eq B k _ _ _ (f , g) h2
-
-from-verify-b-eq-just : ∀ B cs0 cs1 gh → verify-b B cs0 ≡ cont gh cs1 → 
-  ∃ λ f → ((f ∈ B) ∧ (break-b f ≡ just gh))
-from-verify-b-eq-just B cs0 csf gh h0 = 
-  use-bind-eq-just read-nat _ cs0 csf gh h0 λ k cs1 h1 h2 → 
-    from-lift-read-bind-eq B k _ _ _ gh h2
-
-from-passes-num-verify-c : ∀ B g → passes-num (verify-c B) g →
-  ∃ λ t → ∃ λ f → (good-term (suc (length B)) t) ∧ (f ∈ B) ∧ (break-c t f ≡ just g)
-from-passes-num-verify-c B g (k , cs0 , csf , h0) =
-  use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
-    use-bind-eq-just (read-term k) _ cs1 csf g h1  λ t cs2 h2 h3 → 
-      let (h4 , h5) = from-pass-if-seq-eq-just (chk-good-term (suc (length B)) t) _ cs2 csf g h3 
-      in ex-elim (from-lift-read-bind-eq B _ _ cs2 csf g h5) λ f (h6 , h7) → 
-      t , f , chks-good (suc (length B)) t h4 , h6 , h7 
-
-from-verify-c-eq-just : ∀ B k cs0 csf g → (verify-c B k cs0 ≡ cont g csf) →
-  ∃ λ t → ∃ λ f → ((good-term (suc (length B)) t) ∧ ((f ∈ B) ∧ (break-c t f ≡ just g)))
-from-verify-c-eq-just B k cs0 csf g h0  = 
-  use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
-    use-bind-eq-just (read-term k) _ cs1 csf g h1  λ t cs2 h2 h3 → 
-      let (h4 , h5) = from-pass-if-seq-eq-just (chk-good-term (suc (length B)) t) _ cs2 csf g h3 
-      in ex-elim (from-lift-read-bind-eq B _ _ cs2 csf g h5) λ f (h6 , h7) → 
-      t , f , chks-good (suc (length B)) t h4 , h6 , h7 
-
-from-passes-verify-d : ∀ B g → passes (verify-d B) g → 
-  ∃ λ f → (f ∈ B) ∧ (break-d (length B) f ≡ just g)
-from-passes-verify-d B g (cs0 , csf , h0) =
-  use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
-    ex-elim (from-lift-read-bind-eq B _ _ cs1 csf g h1) λ f (h2 , h3) → f , h2 , h3
-
-from-verify-d-eq-just : ∀ B cs0 csf g → (verify-d B cs0 ≡ cont g csf) → 
-  ∃ λ f → ((f ∈ B) ∧ (break-d (length B) f ≡ just g))
-from-verify-d-eq-just B cs0 csf g h0 = 
-  use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
-    ex-elim (from-lift-read-bind-eq B _ _ cs1 csf g h1) λ f (h2 , h3) → f , h2 , h3
-
-from-passes-num-verify-s : ∀ B g → passes-num (verify-s B) g → good-form (suc (length B)) g 
-from-passes-num-verify-s B g (k , cs0 , csf , h0) = 
-  use-bind-eq-just (read-form k) _ cs0 csf g h0 
-    λ f cs1 h1 h2 → 
-      let (h3 , h4) = from-pass-if-seq-eq-just (chk-good-form _ f) _ cs1 csf _ h2 in 
-      let h5 = chks-good-form _ f h3 in 
-      eq-elim _ (cont-inj-val h4) h5 
-
-from-pass-eq-lft : ∀ {A : Set} (a0 a1 : A) cs0 cs1 → pass a0 cs0 ≡ cont a1 cs1 → a0 ≡ a1
-from-pass-eq-lft a0 a1 cs0 cs1 h0 = cont-inj-val h0 
-
-from-chks-mono-fun : ∀ k m f → tr (chk-mono-fun k m f) → mono-fun k m f
-from-chks-mono-fun k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) h0 = 
-  let h1 = from-chks-mono-fun k (suc m) f (bsnd (c =c '=') _ h0) in 
-  let h2 = char-eq-to-eq _ _ (bfst (c =c '=') _ h0) in 
-  eq-elim 
-    ( λ x →
-        mono-fun k m
-          (∀* (∀* (rel (sf (x ∷ [])) (cons (var 1) (cons (var zero) nil)) →* f))) )
-    (eq-symm h2) (mono-fun-fa k m f h1) 
-from-chks-mono-fun k m (rel (sf (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) ht0 = 
-  let (h1 , h2 , h3 , h4 , h5) = tr-band-to-and-5 (c =c '=') _ _ _ _ ht0 in 
-  eq-elim-4 (λ x y z w → mono-fun k m (rel (sf (x ∷ [])) (cons (fun f0 y) (cons (fun z w) nil))))
-    (eq-symm (char-eq-to-eq _ _ h1)) 
-    (eq-symm (termoid-eq-to-eq _ _ h4)) 
-    (ftr-eq-to-eq f0 f1 h3) 
-    (eq-symm (termoid-eq-to-eq _ _ h5)) 
-    (mono-fun-eq k m f0 (chks-good-ftr (suc k) f0 h2))
-
-from-chks-mono-rel : ∀ k m f → tr (chk-mono-rel k m f) → mono-rel k m f
-from-chks-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) h0 = 
-  let h1 = from-chks-mono-rel k (suc m) f (bsnd (c =c '=') _ h0) in 
-  let h2 = char-eq-to-eq _ _ (bfst (c =c '=') _ h0) in 
-  eq-elim 
-    ( λ x →
-        mono-rel k m
-          (∀* (∀* (rel (sf (x ∷ [])) (cons (var 1) (cons (var zero) nil)) →* f))) )
-    (eq-symm h2) (mono-rel-fa k m f h1) 
-from-chks-mono-rel k m (bct imp (rel r0 ts0) (rel r1 ts1)) ht0 =  
-  let (h1 , h2 , h3 , h4) = tr-band-to-and-4 (chk-good-ftr (suc k) r0) _ _ _ ht0 in 
-  eq-elim-3 (λ x y z → mono-rel k m (rel r0 y →* rel x z)) 
-    (ftr-eq-to-eq r0 _ h2) 
-    (eq-symm (termoid-eq-to-eq _ _ h3)) 
-    (eq-symm (termoid-eq-to-eq _ _ h4)) 
-    (mono-rel-imp k m r0 (chks-good-ftr (suc k) r0 h1))
-
-from-chks-vars-lt-termoid : ∀ {b} k (t : Termoid b) → tr (chk-vars-lt-termoid k t) → vars-lt-termoid k t
-from-chks-vars-lt-termoid k nil h0 = tt
-from-chks-vars-lt-termoid k (cons t ts) h0 = 
-  let (h1 , h2) = tr-band-to-and _ _ h0 in 
-  from-chks-vars-lt-termoid k t h1 , from-chks-vars-lt-termoid k ts h2
-from-chks-vars-lt-termoid k (var m) h0 = nat-lt-to-lt _ _ h0
-from-chks-vars-lt-termoid k (fun _ ts) h0 = from-chks-vars-lt-termoid k ts h0
-
-from-chks-vars-lt-form : ∀ k f → tr (chk-vars-lt-form k f) → vars-lt-form k f
-from-chks-vars-lt-form k (cst b) _ = tt
-from-chks-vars-lt-form k (not f) h0 = from-chks-vars-lt-form k f h0
-from-chks-vars-lt-form k (bct b f g) h0 = 
-  let (h1 , h2) = tr-band-to-and _ _ h0 in 
-  from-chks-vars-lt-form k f h1 , from-chks-vars-lt-form k g h2 
-from-chks-vars-lt-form k (qtf _ f) h0 = from-chks-vars-lt-form (suc k) f h0
-from-chks-vars-lt-form k (rel _ ts) h0 = from-chks-vars-lt-termoid k ts h0
-
-from-chks-choice : ∀ k m f → tr (chk-choice k m f) → choice k m f
-from-chks-choice k m (qtf false f) h0 = choice-fa k m _ (from-chks-choice k (suc m) f h0)
-from-chks-choice k m (bct imp (qtf true f) g) ht0 = 
-  let (h1 , h2 , h3) = tr-band-to-and-3 (chk-good-form k f) _ _ ht0 in 
-  let h4 = chks-good-form k f h1 in 
-  let hlt = from-chks-vars-lt-form (suc m) f h2 in 
-  elim-bor (form-eq (subst-form 0 _ f) g) _ 
-    ( λ h5 → 
-        let h6 = form-eq-to-eq (subst-form _ _ f) _ h5 in 
-        eq-elim (λ x → choice k m ((∃* f) →* x)) h6 
-          (choice-imp-asc k m f h4 hlt) ) 
-    ( λ h5 → 
-        let h6 = form-eq-to-eq (subst-form _ _ f) _ h5 in 
-        eq-elim (λ x → choice k m ((∃* f) →* x)) h6 
-          (choice-imp-desc k m f h4 hlt) ) 
-   h3
-
-from-chks-pred-def : ∀ k m f → tr (chk-pred-def k m f) → pred-def k m f
-from-chks-pred-def k m (qtf false f) h0 = pred-def-fa k m _ (from-chks-pred-def k (suc m) f h0)
-from-chks-pred-def k m (bct iff (rel (nf n) ts) f) h0 = 
-  let (h1 , h2 , h3 , h4) = tr-band-to-and-4 (k =n n) (chk-good-form k f) (chk-vars-lt-form m f) _ h0 in 
-  let h5 = nat-eq-to-eq {k} h1 in 
-  let h6 = chks-good-form k f h2 in 
-  let h7 = from-chks-vars-lt-form m f h3 in 
-  elim-bor (terms-eq ts _) _ 
-    ( λ h8 → 
-        let h9 = eq-symm (terms-eq-to-eq ts _ h8) in 
-        eq-elim-2 (λ x y → pred-def k m (rel (nf x) y ↔* f)) h5 h9 
-          (pred-def-iff-asc k m f h6 h7) ) 
-    ( λ h8 → 
-        let h9 = eq-symm (terms-eq-to-eq ts _ h8) in 
-        eq-elim-2 (λ x y → pred-def k m (rel (nf x) y ↔* f)) h5 h9 
-          (pred-def-iff-desc k m f h6 h7) ) 
-    h4
-
-chks-jst : ∀ k f → tr (chk-jst k f) → jst k f
-chks-jst k f = elim-bor (form-eq f (cst true)) _ 
-  ( λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (cst true) h0) (jst-top _)) 
-    (elim-bor (form-eq f (not (cst false))) _ 
-    (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (not (cst false)) h0) (jst-not-bot _)) 
-    (elim-bor (form-eq f _) _ 
-      ((λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (refl-axiom) h0) (jst-refl _))) 
-      (elim-bor (form-eq f symm-axiom) _ (λ h0 → eq-elim-symm (jst k) (form-eq-to-eq f (symm-axiom) h0) (jst-symm _)) 
-        (elim-bor (form-eq f trans-axiom) _
- (λ h0 →
-    eq-elim-symm (jst k) (form-eq-to-eq f trans-axiom h0) (jst-trans _))
-   (elim-bor (chk-mono-rel k 0 f) _ (λ h0 → jst-rel k f (from-chks-mono-rel k 0 f h0)) 
-     (elim-bor (chk-mono-fun k 0 f) _ (λ h0 → jst-fun k f (from-chks-mono-fun k 0 f h0)) 
-       (elim-bor (chk-choice k 0 f) _ 
-         ((λ h0 → jst-choice k f (from-chks-choice k 0 f h0))) 
-         (λ h0 → jst-pred-def k f (from-chks-pred-def k 0 f h0))))))))) 
-
-from-passes-num-verify-t : ∀ B g → passes-num (verify-t B) g → jst (length B) g 
-from-passes-num-verify-t B g (k , cs0 , csf , h0) = 
-  use-bind-eq-just (read-form k) _ cs0 csf g h0 (λ f cs1 h1 h2 → 
-    let (h3 , h4) = from-pass-if-seq-eq-just (chk-jst (length B) f) _ cs1 csf _ h2 in 
-    let h5 = from-pass-eq-lft f g cs1 csf h4 in
-    let h6 = chks-jst (length B) f h3 in 
-    eq-elim (jst (length B)) h5 h6)
-
-elim-ends-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) → 
-  (∀ a → passes f a → ends (g a) → C) → ends (f >>= g) → C
-elim-ends-bind f g h0 (cs0 , h1) = 
-  elim-is-cont-bind f g cs0 
-    (λ a cs1 h2 h3 → h0 a (cs0 , cs1 , h2) (cs1 , h3)) 
-    h1
-
-elim-ends-lift-read-get-bch : ∀ {A C : Set} B k (r : Form → Read A) → 
-  (∀ f → (f ∈ B) → ends (r f) → C) → ends (lift-read (get-bch B k) >>= r) → C
-elim-ends-lift-read-get-bch B k r h0 = 
-  elim-ends-bind (lift-read (get-bch B k)) r 
-    λ f (cs0 , cs1 , h1) → 
-    h0 f (from-get-bch-eq-just (from-lift-read-eq-just {_} {get-bch B k} h1))
-
-from-ends-pass-if : ∀ b → ends (pass-if b) → tr b
-from-ends-pass-if true _ = tt
-
-from-ends-verify-x : ∀ B → ends (verify-x B) → ∃ λ f → (f ∈ B) ∧ ((not f) ∈ B)
-from-ends-verify-x B = 
-  elim-ends-bind read-nat _ 
-    λ k h0 → 
-      elim-ends-bind read-nat _ 
-        λ m h1 → 
-          elim-ends-lift-read-get-bch B k _ 
-            λ f h2 → 
-              elim-ends-lift-read-get-bch B m _ 
-                λ g h3 h4 → 
-                  let h5 = form-eq-to-eq f (not g) (from-ends-pass-if (form-eq f (not g)) h4) in 
-                  g , h3 , eq-elim (λ x → x ∈ B) h5 h2 
-
-in-prob-cons : ∀ f P p → in-prob f P → in-prob f (p ∷ P) 
-in-prob-cons f P p = ex-elim' λ nm h0 → (nm , or-rgt h0)
-
-from-get-from-prob-eq : ∀ P nm0 cs0 cs1 f → 
-  get-from-prob P nm0 cs0 ≡ cont f cs1 → (in-prob f P) 
-from-get-from-prob-eq ((nm1 , g) ∷ P) nm0 cs0 cs1 f = 
-  intro-ite {_} {pass g} (chars-eq nm1 nm0)
-    (λ x → x cs0 ≡ cont f cs1 → in-prob f ((nm1 , g) ∷ P)) 
-    ( λ h0 → eq-elim (λ x → in-prob x ((nm1 , g) ∷ P)) 
-      (cont-inj-val h0) 
-      (nm1 , or-lft refl) ) 
-    λ h0 → in-prob-cons _ _ _ (from-get-from-prob-eq P nm0 cs0 cs1 f h0)
-
-from-passes-verify-p : ∀ P B g → passes (verify-p P B) g → 
-  in-prob g P ∧ good-form (suc (length B)) g
-from-passes-verify-p P B g (cs0 , csf , h0) =
-  use-bind-eq-just read-chars _ cs0 csf g h0 λ nm cs1 h1 h2 → 
-    use-bind-eq-just (get-from-prob P nm) _ cs1 csf g h2 λ f cs2 h3 h4 → 
-    let h5 = from-get-from-prob-eq P _ _ _ _ h3 in 
-    let (h6 , h7) = from-pass-if-seq-eq-just (chk-good-form (suc (length B)) f) _ cs2 csf g h4 in 
-    let h8 = from-pass-eq-lft _ _ _ _ h7 in 
-    eq-elim (λ x → in-prob x P ∧ good-form (suc (length B)) x) h8 (h5 , chks-good-form _ f h6)
-
-from-verify-p-eq-just : ∀ P B cs0 csf g → (verify-p P B cs0 ≡ cont g csf) → 
-  (in-prob g P ∧ good-form (suc (length B)) g)
-from-verify-p-eq-just P B cs0 csf g h0 = 
-  use-bind-eq-just read-chars _ cs0 csf g h0 λ nm cs1 h1 h2 → 
-    use-bind-eq-just (get-from-prob P nm) _ cs1 csf g h2 λ f cs2 h3 h4 → 
-    let h5 = from-get-from-prob-eq P _ _ _ _ h3 in 
-    let (h6 , h7) = from-pass-if-seq-eq-just (chk-good-form (suc (length B)) f) _ cs2 csf g h4 in 
-    let h8 = from-pass-eq-lft _ _ _ _ h7 in 
-    eq-elim (λ x → in-prob x P ∧ good-form (suc (length B)) x) h8 (h5 , chks-good-form _ f h6)
-
-from-passes-verify-n : ∀ B g → passes (verify-n B) g → (not (not g)) ∈ B
-from-passes-verify-n B g (cs0 , csf , h0) = 
-  use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
-    ex-elim (from-lift-read-bind-eq B _ _ cs1 csf g h1) λ f (h2 , h3) → 
-     eq-elim (λ x → x ∈ B) (from-break-n-eq-just f g h3) h2
-
-from-verify-n-eq-just : ∀ B cs0 csf g → (verify-n B cs0 ≡ cont g csf) → (not (not g)) ∈ B
-from-verify-n-eq-just B cs0 csf g h0 = 
-  use-bind-eq-just read-nat _ cs0 csf g h0 λ m cs1 _ h1 → 
-    ex-elim (from-lift-read-bind-eq B _ _ cs1 csf g h1) λ f (h2 , h3) → 
-      eq-elim (λ x → x ∈ B) (from-break-n-eq-just f g h3) h2
-    
-
-
-nothing-ne-just : ∀ {A} (a : A) → nothing ≠ just a
-nothing-ne-just _ ()
-
-elim-seq-eq-just : ∀ {A B C : Set} (f : Read A) (g : Read B) cs0 csf b → 
-  (∀ a cs1 → f cs0 ≡ cont a cs1 → g cs1 ≡ cont b csf → C) → 
-  ((f >> g) cs0 ≡ cont b csf) → C
-elim-seq-eq-just f g cs0 csf b h0 h1 with (f cs0)
-... | cont a' cs1' = h0 a' cs1' refl h1 
 
 elim-alt-eq-just : ∀ {A C : Set} (f : Read A) (g : Read A) cs0 cs1 a → 
   (f cs0 ≡ cont a cs1 → C) → (g cs0 ≡ cont a cs1 → C) → 
@@ -2161,6 +1282,12 @@ elim-passes-alt f g a h0 h1 (cs0 , csf , h2) =
     (λ h2 → h1 (cs0 , csf , h2)) 
     h2 
 
+elim-seq-eq-just : ∀ {A B C : Set} (f : Read A) (g : Read B) cs0 csf b → 
+  (∀ a cs1 → f cs0 ≡ cont a cs1 → g cs1 ≡ cont b csf → C) → 
+  ((f >> g) cs0 ≡ cont b csf) → C
+elim-seq-eq-just f g cs0 csf b h0 h1 with (f cs0)
+... | cont a' cs1' = h0 a' cs1' refl h1 
+
 elim-passes-seq : ∀ {A B C : Set} (f : Read A) (g : Read B) (b : B) → 
   (ends f → passes g b → C) → passes (f >> g) b → C
 elim-passes-seq f g b h0 (cs0 , csf , h1) = 
@@ -2168,54 +1295,91 @@ elim-passes-seq f g b h0 (cs0 , csf , h1) =
     ( λ a cs1 h2 h3 → h0 (cs0 , eq-elim-symm is-cont h2 tt) (cs1 , csf , h3) ) 
     h1
 
+elim-bind-eq-just : ∀ {A B C : Set} (f : Read A) (g : A → Read B) cs0 cs1 b → 
+  (∀ a cs → (f cs0 ≡ cont a cs) → (g a cs ≡ cont b cs1) → C) → 
+  ((f >>= g) cs0) ≡ cont b cs1 → C
+elim-bind-eq-just f g cs0 csf b h0 h1 with (f cs0)
+... | cont a cs1 = h0 a cs1 refl h1
+
 elim-passes-bind : ∀ {A B C : Set} (f : Read A) (g : A → Read B) (b : B) → 
   (∀ a → passes f a → passes (g a) b → C) → passes (f >>= g) b → C
 elim-passes-bind f g b h0 (cs0 , csf , h1) = 
   elim-bind-eq-just f g cs0 csf b 
     ( λ a cs1 h2 h3 → h0 a (cs0 , cs1 , h2) (cs1 , csf , h3)) h1
 
-elim-pass-eq-just : ∀ {A B : Set} (a0 a1 : A) cs0 cs1 → 
-  (a0 ≡ a1 → cs0 ≡ cs1 → B) → 
-  pass a0 cs0 ≡ cont a1 cs1 → B
-elim-pass-eq-just a0 a1 cs0 cs1 h0 refl = h0 refl refl
-
-elim-in-prob-cons : ∀ {C} f i g P → (f ≡ g → C) → (in-prob f P → C) → in-prob f ((i , g) ∷ P) → C
-elim-in-prob-cons f i g P h0 h2 (j , h3) = 
-  or-elim' (λ h4 → h0 (prod-inj-rgt h4)) (λ h4 → h2 (j , h4)) h3
-
-good-prob-cons : ∀ n f P → (∀ k → good-form k f) → good-prob P → good-prob ((n , f) ∷ P)
-good-prob-cons n f P h0 h1 g m = 
-  elim-in-prob-cons _ _ _ _ 
-    (λ h2 → elim-eq (good-form m) (h0 _) (eq-symm h2)) (h1 _ _)
-
-elim-passes-fail : ∀ {A B : Set} (a : A) st → passes (fail st) a → B
-elim-passes-fail _ _ (_ , _ , ()) 
+cont-inj-val : ∀ {A : Set} {a0 a1 : A} {st0 st1} → 
+  cont a0 st0 ≡ cont a1 st1 → a0 ≡ a1 
+cont-inj-val refl = refl
 
 elim-passes-pass : ∀ {A B : Set} (a0 a1 : A) → 
   (a0 ≡ a1 → B) → passes (pass a0) a1 → B
 elim-passes-pass a0 a1 h0 (cs0 , csf , h1) = h0 (cont-inj-val h1) 
 
-from-good-form-zero : ∀ k f → good-form 0 f → good-form k f
-from-good-form-zero 0 f = id
-from-good-form-zero (suc k) f h0 = 
-  good-form-suc k f (from-good-form-zero k f h0)
+elim-passes-fail : ∀ {A B : Set} (a : A) st → passes (fail st) a → B
+elim-passes-fail _ _ (_ , _ , ()) 
 
-read-prob-core-good-prob : ∀ (P : Prob) k → passes (read-prob-core k) P → good-prob P
-read-prob-core-good-prob P (suc k) = 
-  elim-passes-alt (read-spec-char _ >> pass []) _ P 
-    ( elim-passes-seq (read-spec-char _) (pass []) P 
-        λ _ → elim-passes-pass [] P (elim-eq good-prob good-prob-nil) ) 
-    ( elim-passes-seq (read-spec-char _) _ P 
-        λ _ → 
-          elim-passes-bind (read-af k) _ P 
-            λ (i , f) h0 → 
-              elim-passes-seq (pass-if (chk-good-form 0 f)) _ P 
-                λ h1 → elim-passes-bind (read-prob-core k) _ P 
-                  λ Q h2 → elim-passes-pass _ _ 
-                    ( elim-eq good-prob 
-                        ( good-prob-cons i f Q 
-                            ( λ m → from-good-form-zero m f 
-                                (chks-good-form 0 f (from-ends-pass-if _ h1)) ) 
-                            (read-prob-core-good-prob Q k h2) ) ) ) 
+from-ends-pass-if : ∀ b → ends (pass-if b) → tr b
+from-ends-pass-if true _ = tt
 
-        -}
+best-form : Form → Set
+best-form = good-form 0 
+
+read-af-best : ∀ k f → passes (read-af k) f → best-form f
+read-af-best k f = 
+  elim-passes-seq (read-chars >> _) _ f 
+    λ _ → 
+      elim-passes-bind (read-form k) _ f
+        λ g hg → 
+          elim-passes-seq (pass-if (chk-good-form 0 g)) _ f 
+            λ hg → 
+              elim-passes-seq (read-spec-char _) _ f 
+                λ _ → 
+                  elim-passes-pass g f 
+                    ( elim-eq (good-form 0) 
+                      ( let h0 = from-ends-pass-if (chk-good-form 0 g) hg in 
+                        chks-good-form 0 g h0 ) ) 
+
+from-best-form : ∀ k f → best-form f → good-form k f
+from-best-form 0 f = id
+from-best-form (suc k) f h0 = 
+  good-form-suc k f (from-best-form k f h0)
+
+from-passes-read-bch-core : ∀ (B C : Bch) (k : Nat) → 
+  0 < size B → good-bch B → passes (read-bch-core k B) C → ((0 < size C) ∧ (good-bch C))
+from-passes-read-bch-core B C (suc k) hs hg = 
+  elim-passes-alt (read-spec-char '.' >> pass B) _ C 
+    ( elim-passes-seq (read-spec-char _) (pass B) C 
+      λ _ → elim-passes-pass B C (elim-eq (λ x → ((0 < size x) ∧ good-bch x)) (hs , hg)) ) 
+    ( elim-passes-seq (read-spec-char _) _ C 
+      λ _ → elim-passes-bind (read-af k) _ C 
+        λ f hf hC → 
+          let h0 = read-af-best k f hf in 
+          from-passes-read-bch-core (add B f) C k (pos-size-add B f) 
+            (good-bch-add B f hs hg (from-best-form _ f h0)) hC ) 
+
+from-passes-read-bch : ∀ (B : Bch) → 
+  passes read-bch B → ((0 < size B) ∧ (good-bch B))
+from-passes-read-bch B h0 = 
+  ex-elim-2 h0
+    λ cs0 cs1 h1 → 
+      from-passes-read-bch-core (leaf ⊤*) B (length cs0) (s≤s z≤n) 
+        (λ f → elim-eq-symm (good-form 0) tt) 
+        (cs0 , cs1 , h1)
+
+parse-verify-correct : ∀ cs-bch cs-prf → 
+  tr (parse-verify cs-bch cs-prf) → 
+  ∃ λ B → returns read-bch cs-bch B ∧ unsat B
+parse-verify-correct cs-bch cs-prf = 
+  intro-elim-res 
+    (λ x → (tr x → ∃ λ B → returns read-bch cs-bch B ∧ unsat B)) 
+    (λ B _ → _) (λ _ → false) (read-bch cs-bch) 
+    ( λ B cs0 hB → 
+      intro-elim-res 
+        (λ x → (tr x → ∃ λ C → returns read-bch cs-bch C ∧ unsat C)) _ 
+        (λ _ → false) (read-prf cs-prf) 
+        ( λ p _ _ h0 → 
+          B , (cs0 , hB) , 
+            let (h1 , h2) = from-passes-read-bch B (cs-bch , cs0 , hB) in 
+            verify-correct B p h1 h2 h0 ) 
+        λ _ _ → ⊥-elim ) 
+    λ _ _ → ⊥-elim

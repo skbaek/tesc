@@ -172,12 +172,6 @@ f ↔* g = bct iff f g
 ⊤* = cst true
 ⊥* = cst false
 
-
-
--------- Boolean Functions --------
-
-
-
 par : Nat → Term
 par k = fun (nf k) nil
 
@@ -428,12 +422,6 @@ _∈_ : {A : Set} → A → List A → Set
 a0 ∈ [] = ⊥ 
 a0 ∈ (a1 ∷ as) = (a0 ≡ a1) ∨ (a0 ∈ as)
 
-pall : {A : Set} → (A → Set) → List A → Set
-pall {A} p l = ∀ (x : A) → (x ∈ l) → p x
-
-pall-nil : {A : Set} {p : A → Set} → pall p []
-pall-nil {A} {p} x = ⊥-elim
-
 rt : Set → Bool
 rt A = elim-lem A (λ _ → true) (λ _ → false)
 
@@ -446,91 +434,21 @@ fs : Bool → Set
 fs true  = ⊥
 fs false = ⊤
 
-cong :
-  {A : Set}
-  {B : Set}
-  (f : A → B)
-  {x y : A}
-  (p : x ≡ y)
-  → -----------
-  f x ≡ f y
+cong : {A B : Set} (f : A → B) {x y : A} (p : x ≡ y) → f x ≡ f y
 cong _ refl = refl
 
-cong-2 :
-  {A B C : Set}
-  (f : A → B → C)
-  {x y : A}
-  {z w : B}
-  (p : x ≡ y)
-  (q : z ≡ w)
-  → -----------
-  f x z ≡ f y w
+cong-2 : {A B C : Set} (f : A → B → C) {x y : A} {z w : B} (p : x ≡ y) (q : z ≡ w) → f x z ≡ f y w
 cong-2 _ refl refl = refl
 
 cong-3 : ∀ {A B C D : Set} (f : A → B → C → D) 
   {a0 a1 : A} {b0 b1 : B} {c0 c1 : C} → a0 ≡ a1 → b0 ≡ b1 → c0 ≡ c1 → f a0 b0 c0 ≡ f a1 b1 c1
 cong-3  f refl refl refl = refl 
 
-elim-bool-absurd : ∀ {b : Bool} {A : Set} → tr b → fs b → A 
-elim-bool-absurd {true} _ ()
-elim-bool-absurd {false} ()
-
 0<s : ∀ k → 0 < suc k
 0<s k = s≤s z≤n
 
 s<s⇒< : ∀ k m → (suc k < suc m) → k < m
 s<s⇒< k m (s≤s h) = h
-
--- suc< : ∀ k m → k < m → suc k < suc m
--- suc< = {!   !}
-
--- trichotomy : ∀ k m → ((k < m) ∨ ((k ≡ m) ∨ (k > m)))
--- trichotomy 0 0 = or-rgt (or-lft refl)
--- trichotomy 0 (suc m) = or-lft (0< _)
--- trichotomy (suc k) 0 = or-rgt (or-rgt (0< _))
--- trichotomy (suc k) (suc m) = 
---   or-elim (trichotomy k m) 
---     (\ h0 → or-lft (suc< _ _ h0)) 
---     \ h0 → or-elim h0 
---       (\ h1 → or-rgt (or-lft (cong suc h1))) 
---       \ h1 → or-rgt (or-rgt (suc< _ _ h1))
--- 
--- lt-to-nat-lt : ∀ k m → k < m → tr (k <n m) 
--- lt-to-nat-lt 0 (suc m) (0< m) = tt
--- lt-to-nat-lt (suc k) (suc m) (suc< k m h) = lt-to-nat-lt k m h
--- 
--- nat-lt-to-lt : ∀ k m → tr (k <n m) → k < m
--- nat-lt-to-lt _ 0  ()
--- nat-lt-to-lt 0 (suc m) _ = 0< m 
--- nat-lt-to-lt (suc k) (suc m) h = suc< k m (nat-lt-to-lt k m h)
--- 
--- eq-to-nat-eq : ∀ k m → k ≡ m → tr (k =n m) 
--- eq-to-nat-eq 0 0 refl = tt
--- eq-to-nat-eq (suc k) (suc m) h = eq-to-nat-eq k m (suc-inj h) 
--- 
--- nat-eq-to-eq : ∀ {k m : Nat} → tr (k =n m) → k ≡ m
--- nat-eq-to-eq {0} {0} _ = refl
--- nat-eq-to-eq {0} {suc m} ()
--- nat-eq-to-eq {suc k} {0} ()
--- nat-eq-to-eq {suc k} {suc m} h = cong suc (nat-eq-to-eq h)
-  
--- lt-to-lt-suc : ∀ (k : Nat) (m : Nat) → (k < m) → (k < (suc m))
--- lt-to-lt-suc 0 m _ = 0< _
--- lt-to-lt-suc (suc k) 0 ()
--- lt-to-lt-suc (suc k) (suc m) (suc< k m h) = suc< k _ (lt-to-lt-suc k m h)
--- 
--- not-lt-self : ∀ k → ¬ (k < k)
--- not-lt-self 0 ()
--- not-lt-self (suc k) (suc< m m h) = not-lt-self k h
--- 
--- lt-to-not-eq : ∀ k m → k < m → ¬ (k ≡ m)
--- lt-to-not-eq k m h0 h1 = not-lt-self m (eq-elim (λ x → x < m) h1 h0)
--- 
--- lt-to-not-gt : ∀ k m → k < m → ¬ (k > m)
--- lt-to-not-gt 0 0 ()
--- lt-to-not-gt 0 (suc k) _ ()
--- lt-to-not-gt (suc k) 0 ()
--- lt-to-not-gt (suc k) (suc m) (suc< _ _ h0) (suc< _ _ h1) = lt-to-not-gt _ _ h0 h1
 
 intro-ite-lem : ∀ {A : Set} {x y : A} (b : Bool) → 
   (P : A → Set) → (tr b → P x) → (fs b → P y) → P (if b then x else y)
@@ -592,27 +510,6 @@ intro-ite : ∀ {A : Set} {x : A} {y : A} (b : Bool) →
 intro-ite false P hx hy = hy
 intro-ite true  P hx hy = hx
     
-top-iff : ∀ {P} → P → (⊤ ↔ P)
-top-iff h0 = (λ _ → h0) , (λ _ → tt)
-
--- lt-suc-to-eq-or-lt : ∀ k m → k < (suc m) → (k ≡ m) ∨ (k < m)
--- lt-suc-to-eq-or-lt k 0 (0< 0) = or-lft refl
--- lt-suc-to-eq-or-lt k (suc m) (0< (suc m)) = or-rgt (0< m)
--- lt-suc-to-eq-or-lt (suc k) (suc m) (suc< k (suc m) h0) = 
---   or-elim (lt-suc-to-eq-or-lt k m h0) 
---     (λ h1 → or-lft (cong suc h1)) 
---     (λ h1 →  or-rgt (suc< _ _ h1))
--- 
--- lt-suc-self : ∀ k → k < suc k
--- lt-suc-self 0 = 0< 0
--- lt-suc-self (suc k) = suc< k (suc k) (lt-suc-self k)
-
-modus-tollens : ∀ {A : Set} {B : Set} → (A → B) → ¬ B → ¬ A  
-modus-tollens h0 h1 h2 = ⊥-elim (h1 (h0 h2))
-
-maybe-absurd : ∀ {A B : Set} {x : A} → nothing ≡ (just x) → B 
-maybe-absurd ()
-
 iff-to-not-iff-not : ∀ {A B} → (A ↔ B) → ((¬ A) ↔ (¬ B))
 iff-to-not-iff-not h0 = 
   ( (\ ha hb → ⊥-elim (ha (snd h0 hb))) , 
@@ -837,25 +734,12 @@ lookup (suc _) (leaf _) a = a
 lookup k (fork _ t s) a = 
   if (k <n size t) then (lookup k t a) else (lookup (k - size t) s a)
 
--- foo : {A : Set} (k m : Nat) (s t : Tree A) (a : A) →
---   ( (lookup k (fork m t s) a) ≡ 
---     (if (k <n (size t)) then (lookup k t a) else (lookup (k - (size t)) s a)) )
--- foo 0 m s t a = refl
--- foo (suc k) m s t a = refl
-
 add : {A : Set} → Tree A → A → Tree A
 add (leaf a) b = fork 2 (leaf a) (leaf b)
 add ts@(fork k t s) a =  
   if ((size s) <n (size t))
   then (fork (k + 1) t (add s a))
   else (fork (k + 1) ts (leaf a))
-
--- intro-add-fork : {A : Set} (r : Tree A → Set) (k : Nat) (t s : Tree A) (a : A) → 
---   r (fork (k + 1) t (add s a)) → 
---   r (fork (k + 1) (fork k t s) (leaf a)) → 
---   r (add (fork k t s) a)
--- intro-add-fork r k t s a h0 h1 = intro-ite (size s <n size t) r h0 h1
-
 
 from-add-fork : {A : Set} (r : Tree A → Set) (k : Nat) (t s : Tree A) (a : A) → 
   r (add (fork k t s) a) → 
@@ -891,7 +775,7 @@ all-add p (leaf b) a h0 h1 c h2 =
   or-elim h2 (elim-eq-symm p (h0 b refl)) (elim-eq-symm p h1)
 all-add p (fork k t s) a h0 h1 c = 
   intro-ite (size s <n size t) (λ x → mem c x → p c) 
-    (or-elim' (all-sub-lft p k t s h0 c) (all-add p s a (all-sub-rgt p k t s h0) h1 c)) -- (λ h2 → h0 _ (or-lft h2)) (all-add p s a {!   !} h1 c)) 
+    (or-elim' (all-sub-lft p k t s h0 c) (all-add p s a (all-sub-rgt p k t s h0) h1 c)) 
     (or-elim' (h0 c) (elim-eq-symm p h1)) 
 
 size-add : {A : Set} (t : Tree A) (a : A) → size (add t a) ≡ suc (size t)

@@ -16,13 +16,10 @@ import IO.Primitive as Prim
 open import IO
   renaming (_>>=_ to _>>>=_)
   renaming (_>>_ to _>>>_)
--- open import lazy 
---   using (check)
 open import verify 
-  using (check)
-  using (Res)
-  using (cont)
-  using (stop)
+  using (parse-verify)
+  -- using (cont)
+  -- using (stop)
 open import Codata.Musical.Colist 
   renaming (length to length*) 
   renaming (map to map*) 
@@ -84,7 +81,7 @@ io-verify = do
     where _ → (put-str-ln "Missing proof file name." >> exit-failure)
   ps ← getContents
   cs ← readFiniteFile pn >>= (return ∘ primStringToList)
-  print-result (check (costring-to-chars ps) cs) 
+  print-result (parse-verify (costring-to-chars ps) cs) 
 
 -- io-verify : IO ⊤ 
 -- io-verify = do 
