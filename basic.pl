@@ -1,3 +1,5 @@
+:- [folders].
+
 %%%%%%%%%%%%%%%% OPERATORS %%%%%%%%%%%%%%%% 
 
 :- op(1, fx, '#').
@@ -2029,7 +2031,7 @@ atom_firstchar(ATOM, CH) :-
   char_code(CH, CODE).
 
 get_prob(STRM, PROB_I, PROB_O) :- 
-  get__char(STRM, CH), 
+  get_char(STRM, CH), 
   get_prob(STRM, CH, PROB_I, PROB_O).
 get_prob(STRM, ',', PROB_I, PROB_O) :- 
   get_af(STRM, (NAME, _, FORM, _)), !,
@@ -2044,17 +2046,20 @@ get_prob(_, '.', PROB, PROB).
 
 get_sol(STRM, SOL) :- get_list(STRM, get_af, SOL).
 
-tptp_prob(TPTP, PROB) :-
+open_tts(TPTP, STM) :- 
+  tesc_folder(TESC),
+  format(string(TTS), "~wtts/target/release/tts", [TESC]),
   process_create(
-    './tts/target/release/tts', 
+    TTS, 
     [TPTP], 
-    [stdout(pipe(STRM))]
+    [stdout(pipe(STM))]
   ), !,
-  (
-    set_stream(STRM, encoding(octet)),
-    empty_assoc(EMP),
-    get_prob(STRM, EMP, PROB)
-  ),
+  set_stream(STM, encoding(octet)), !.
+
+tptp_prob(TPTP, PROB) :-
+  open_tts(TPTP, STRM), !,
+  empty_assoc(EMP),
+  get_prob(STRM, EMP, PROB),
   close(STRM).
 
 get_bch(STRM, BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O) :- 
@@ -2074,28 +2079,14 @@ get_bch(STRM, ',', BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O) :-
 get_bch(_, '.', BCH, TAB, SIZE, BCH, TAB, SIZE). 
 
 tptp_bch(TPTP, BCH, TAB, SIZE) :-
-  process_create(
-    './tts/target/release/tts', 
-    [TPTP], 
-    [stdout(pipe(STRM))]
-  ), !,
-  (
-    set_stream(STRM, encoding(octet)),
-    empty_assoc(EMP),
-    get_bch(STRM, EMP, EMP, 0, BCH, TAB, SIZE)
-  ),
+  open_tts(TPTP, STRM), !, 
+  empty_assoc(EMP),
+  get_bch(STRM, EMP, EMP, 0, BCH, TAB, SIZE),
   close(STRM).
 
 tptp_sol(TPTP, SOL) :-
-  process_create(
-    './tts/target/release/tts', 
-    [TPTP], 
-    [stdout(pipe(STRM))]
-  ), !,
-  (
-    set_stream(STRM, encoding(octet)),
-    get_sol(STRM, SOL)
-  ),
+  open_tts(TPTP, STRM), !, 
+  get_sol(STRM, SOL),
   close(STRM).
 
 any_line_strm(STRM, GOAL) :- 
