@@ -16,7 +16,7 @@ fn output_ttp_input<W: Write>(w: &mut W, ti: TPTPInput) -> Rst<()> {
       put_option(w,&a)
     },
     TPTPInput::Include(Include {file_name: FileName(SingleQuoted(s)), selection: _}) => {
-      let ns: String = format!("{}{}", TPTPPATH, s);
+      let ns: String = format!("{}{}", folders::TPTP, s);
       output_ttp_file(w,&ns)
     }
   }

@@ -435,7 +435,7 @@ fn add_tptp_input(t: TPTPInput, bch: &mut Bch) -> Rst<()> {
       }
     },
     TPTPInput::Include(Include {file_name: FileName(SingleQuoted(s)), selection: _}) => {
-      let pt: String = format!("{}{}", TPTPPATH, s);
+      let pt: String = format!("{}{}", folders::TPTP, s);
       add_tptp_file(&pt, bch)
     }
   }

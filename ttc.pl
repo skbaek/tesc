@@ -17,8 +17,9 @@ main([SOLVER, TPTP, TSTP, TESC | OPTS]) :-
   open(temp, write, STRM, [encoding(octet)]),
   empty_assoc(EMP),
   writeln("Generating temp file..."),
-  prove(STRM, SLVR, PROB, SOL, EMP, 0), 
-  close(STRM),
+  prove(STRM, SLVR, PROB, SOL, EMP, 0), !,
+  close(STRM), 
   writeln("Merging problem and temp file..."),
-  merge(TPTP, temp, TESC),
+  merge(TPTP, temp, TESC), !,
+  delete_file(temp),
   writeln("Proof complete.").

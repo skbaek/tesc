@@ -1,3 +1,4 @@
+pub mod folders;
 use std::rc::Rc;
 use std::fs::File;
 use std::io;
