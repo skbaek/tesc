@@ -1,14 +1,13 @@
 use std::env;
 use std::io::prelude::*;
 use std::fs::File;
-use std::collections::HashMap;
 use std::io::BufReader;
 use std::rc::Rc;
 use tptp::syntax::*;
 use tptp::parsers::TPTPIterator;
 use basic::*;
 
-type Problem = HashMap<String, Rc<Form>>;
+type Bch = Vec<Rc<Form>>;
 
 fn mk_vars_asc(k: u64) -> Vec<Term> {
   (0..k).map(|x| Term::Var(x)).collect()
@@ -201,25 +200,6 @@ fn term_below(k: u64, t: &Term) -> bool {
   }
 }
 
-fn ground_term(k: u64, t: &Term) -> bool {
-  match t {
-    // Term::Dst(_) => true,
-    // Term::Num(_) => true,
-    Term::Var(m) => m < &k,
-    Term::Fun(_,ts) => ts.iter().fold(true, |a, x| { a && ground_term(k, x) } )
-  }
-}
-
-fn ground_form(k: u64, f: &Form) -> bool {
-  match f {
-    Form::Cst(_) => true,
-    Form::Not(g) => ground_form(k,g),
-    Form::Bct(_,g,h) => ground_form(k,g) && ground_form(k,h),
-    Form::Qtf(_,g) => ground_form(k+1,g), 
-    Form::Rel(_,ts) => ts.iter().fold(true, |a,x| { a && ground_term(k,x) })
-  }
-}
-
 fn form_below(k: u64, f: &Form) -> bool {
   match f {
     Form::Cst(_) => true,
@@ -346,29 +326,21 @@ fn substform(n: u64, t: &Term, f: &Form) -> Form {
   }
 }
 
-fn get_from_prob<'a>(p: &'a Problem, n: &String) -> Rst<Rc<Form>> {
-  match p.get(n) {
-    Some(f) => Ok(f.clone()),
-    None => Err(format!("Cannot find premise in problem with name = {:?}", n))
-  }
-}
-
-fn get_from_context<'a>(ctx: &'a Vec<Rc<Form>>, i: u64) -> Rst<Rc<Form>> {
+fn get_from_context<'a>(ctx: &'a Bch, i: u64) -> Rst<Rc<Form>> {
   match ctx.get(i as usize) {
     Some(x) => Ok(x.clone()),
     _ => err_str("Cannot find premise in context")
   }
 }
 
-fn push_conc(ctx: &mut Vec<Rc<Form>>, f: Rc<Form>) -> () {
+fn push_conc(ctx: &mut Bch, f: Rc<Form>) -> () {
   // println!("Branch length = {}", ctx.len());
   // println!("New premise = {}", *f);
   ctx.push(f);
 }
 
-fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
+fn check(mut ctx: Bch, bs: FileBytes) -> Result<(), String> {
     
-  let mut ctx: Vec<Rc<Form>> = vec![];
   let mut conts: Vec<(u64, Rc<Form>)> = vec![];
 
   loop {
@@ -378,7 +350,6 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         let d = get_bool(bs)?;
         let p = get_from_context(&ctx, i)?;
         let c = ab(d,p);
-        // ctx.push(c);
         push_conc(&mut ctx,c);
       },
       'B' => {
@@ -386,54 +357,41 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
         let p = get_from_context(&ctx, i)?;
         let (cl, cr) = bb(p);
         conts.push((ctx.len() as u64, cr)); 
-        // ctx.push(cl);
         push_conc(&mut ctx,cl);
       },
       'C' => {
         let i = get_u64(bs)?; 
         let t = get_term(bs)?; 
         let p = get_from_context(&ctx, i)?;
-        if !ground_term(0, &t) { return err_str("Instantiation term contains free variables.") };
         if !term_below((ctx.len()+1) as u64, &t) { return err_str("Instantiation term contains OOB parameter.") };
         let c = cb(t,p);
-        // ctx.push(c);
         push_conc(&mut ctx,c);
       },
       'D' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
         let c = db(ctx.len() as u64,p);
-        // ctx.push(c);
         push_conc(&mut ctx,c);
-      },
-      'P' => {
-        let n = get_string(bs)?; 
-        let f: Rc<Form> = get_from_prob(&prob, &n)?;
-        // ctx.push(f.clone());
-        push_conc(&mut ctx, f.clone());
       },
       'S' => {
         let f = get_form(bs)?;
-        if !ground_form(0, &f)  { return err_str("Cut formula is not ground.") };
+        // if !ground_form(0, &f)  { return err_str("Cut formula is not ground.") };
         if !form_below((ctx.len()+1) as u64, &f) { return err_str("Cut formula contains OOB parameter.") };
         let x = Rc::new(f);
         conts.push((ctx.len() as u64, x.clone())); 
-        // ctx.push(rc_not(x));
         push_conc(&mut ctx, rc_not(x));
       },
       'N' => {
         let i = get_u64(bs)?; 
         let p = get_from_context(&ctx, i)?;
         let c = nb(p);
-        // ctx.push(c);
         push_conc(&mut ctx, c);
       },
       'T' => {
         let f = get_form(bs)?;
-        if !ground_form(0,&f) { return err_str("Axiom is not ground.") };
+        // if !ground_form(0,&f) { return err_str("Axiom is not ground.") };
         if !form_below((ctx.len()+1) as u64,&f) { return Err(format!("{:?} =< Parameter in axiom = {:?}", ctx.len(), f)) };
         if !justified(ctx.len() as u64, &f) { return err_str("Axiom unjustified.") };
-        // ctx.push(Rc::new(f));
         push_conc(&mut ctx, Rc::new(f));
       },
       'X' => { 
@@ -465,31 +423,30 @@ fn check(bs: FileBytes, prob: Problem) -> Result<(), String> {
   }
 }
 
-fn add_tptp_input(t: TPTPInput, pb: &mut Problem) -> Rst<()> {
+fn add_tptp_input(t: TPTPInput, bch: &mut Bch) -> Rst<()> {
   match t {
-    TPTPInput::Annotated(a) => {
-      let (n,_,f,_) = conv_annotated_formula(a)?;
-      if !ground_form(0, &f) { return err_str("Added formula is not ground.") };
-      match pb.insert(n,Rc::new(f)) {
-        Some(_) => err_str("Duplicate name found"),
-        None => {
-          Ok(())
-        }
+    TPTPInput::Annotated(a) => { 
+      if let (_,true,f,None) = conv_annotated_formula(a)? {
+        if !form_below(0, &f) { return err_str("Bad formula in TPTP problem.") };
+        push_conc(bch, Rc::new(f));
+        Ok(())
+      } else {
+        err_str("Non-axiom in TPTP problem.")
       }
     },
     TPTPInput::Include(Include {file_name: FileName(SingleQuoted(s)), selection: _}) => {
       let pt: String = format!("{}{}", TPTPPATH, s);
-      add_tptp_file(&pt, pb)
+      add_tptp_file(&pt, bch)
     }
   }
 }
 
-fn add_tptp_file(tptp: &str, p: &mut Problem) -> Rst<()> {
+fn add_tptp_file(tptp: &str, bch: &mut Bch) -> Rst<()> {
    let bytes = to_boxed_slice(tptp)?;
    let mut is = TPTPIterator::<()>::new(&bytes);
    for x in &mut is {
      match x {
-       Ok(i) => add_tptp_input(i,p)?,
+       Ok(i) => add_tptp_input(i,bch)?,
        _ => return err_str("Invalid item from TPTP problem file")
      }
    }
@@ -502,15 +459,16 @@ fn body() -> Rst<()> {
   let tptp = &args[1];
   let tesc = &args[2];
   
-  let mut pb = HashMap::new();
-  add_tptp_file(tptp, &mut pb)?;
+  let mut bch = vec![];
+  add_tptp_file(tptp, &mut bch)?;
 
   let prf = match File::open(tesc) {
     Ok(tesc_file) => BufReader::new(tesc_file), 
     _ => return err_str("Cannot open TESC file.")
   };
-  let mut prbs = prf.bytes();
-  check(&mut prbs, pb)
+
+  let mut bs = prf.bytes();
+  check(bch, &mut bs)
   // match check(&mut prbs, pb) {
   //   Ok(()) => { println!("Proof verified.\n") }, 
   //   Err(msg) => { println!("Verification failed : {}", msg) }
