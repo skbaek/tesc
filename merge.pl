@@ -6,7 +6,7 @@ print_on(NUM, INP, STR) :-
 format_on(NUM, INP, PAT, ARGS) :- 
   NUM = INP -> format(PAT, ARGS) ; true.
 
-update_fi_ftr(OFF, TAB, #NUM_I, #NUM_O) :- !, update(fi, OFF, TAB, NUM_I, NUM_O). 
+update_fi_ftr(OFF, TAB, #NUM_I, #NUM_O) :- !, update(fi, OFF, 0, TAB, NUM_I, NUM_O). 
 update_fi_ftr(_, _, FTR, FTR).
 
 update_fi_form(_, _, FORM, FORM) :- log_const(FORM), !.
@@ -44,20 +44,20 @@ size_assoc(t(_, _, _, LFT, RGT), SIZE) :-
   size_assoc(RGT, RGT_SIZE),
   SIZE is LFT_SIZE + RGT_SIZE + 1.
 
-update(_, _, t, _, _) :- !, throw(cannot_loopup_empty_tree).
-update(MODE, OFF, TREE, IN, OUT) :-
+update(_, OFF, RMV, t, IN, OUT) :- !, OUT is (OFF + IN) - RMV.
+update(MODE, OFF, RMV, TREE, IN, OUT) :-
   TREE = t(POS, _, _, _, _), !,
   compare(CMP, IN, POS), !, 
-  update(MODE, OFF, TREE, CMP, IN, OUT).
+  update(MODE, OFF, RMV, TREE, CMP, IN, OUT).
 
-update(_, OFF, t(_, _, _, t, _), '<', IN, OUT) :- !, OUT is OFF + IN. 
-update(MODE, OFF, t(_, _, _, LFT, _), '<', IN, OUT) :- update(MODE, OFF, LFT, IN, OUT). 
-update(fi, _, t(_, _, _, _, _), '=', _, _) :- throw(p_and_d_rule_superposed).
-update(id, _, t(_, MID, _, _, _), '=', _, MID). 
-update(_, OFF, t(_, _, _, LFT, nil), '>', IN, OUT) :-  !,
+update(MODE, OFF, RMV, t(_, _, _, LFT, _), '<', IN, OUT) :- 
+  update(MODE, OFF, RMV, LFT, IN, OUT). 
+update(fi, _, _, t(_, _, _, _, _), '=', _, _) :- throw(p_and_d_rule_superposed).
+update(id, _, _, t(_, MID, _, _, _), '=', _, MID). 
+update(MODE, OFF, RMV, t(_, _, _, LFT, RGT), '>', IN, OUT) :-  !,
   size_assoc(LFT, SIZE),
-  OUT is (OFF + IN) - (SIZE + 2).
-update(MODE, OFF, tree(_, _, _, _, RGT), '>', IN, OUT) :- update(MODE, OFF, RGT, IN, OUT).
+  NEW_RMV is RMV + SIZE + 1,
+  update(MODE, OFF, NEW_RMV, RGT, IN, OUT). 
 
 % update_fi(OFF, [], OLD_FI, NEW_FI) :- NEW_FI is OFF + OLD_FI. 
 % update_fi(_, [(OLD, _) | _], OLD, _) :- !, throw(p_and_d_rule_superposed).
@@ -105,7 +105,7 @@ update(MODE, OFF, tree(_, _, _, _, RGT), '>', IN, OUT) :- update(MODE, OFF, RGT,
 
 pass_id(OFF, LOG, IN, OUT) :- 
   get_num(IN, OLD),  
-  update(id, OFF, LOG, OLD, NEW),
+  update(id, OFF, 0, LOG, OLD, NEW),
   put_num(OUT, NEW).
 
 bch_ch('A', TAB, OFF, LOG, _, SUC, IN, OUT) :- 
