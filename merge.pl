@@ -54,10 +54,10 @@ update(_, OFF, t(_, _, _, t, _), '<', IN, OUT) :- !, OUT is OFF + IN.
 update(MODE, OFF, t(_, _, _, LFT, _), '<', IN, OUT) :- update(MODE, OFF, LFT, IN, OUT). 
 update(fi, _, t(_, _, _, _, _), '=', _, _) :- throw(p_and_d_rule_superposed).
 update(id, _, t(_, MID, _, _, _), '=', _, MID). 
-update(_, OFF, t(_, _, _, LFT, nil), '<', IN, OUT) :-  !,
+update(_, OFF, t(_, _, _, LFT, nil), '>', IN, OUT) :-  !,
   size_assoc(LFT, SIZE),
   OUT is (OFF + IN) - (SIZE + 2).
-update(MODE, OFF, tree(_, _, _, _, RGT), '<', IN, OUT) :- update(MODE, OFF, RGT, IN, OUT).
+update(MODE, OFF, tree(_, _, _, _, RGT), '>', IN, OUT) :- update(MODE, OFF, RGT, IN, OUT).
 
 % update_fi(OFF, [], OLD_FI, NEW_FI) :- NEW_FI is OFF + OLD_FI. 
 % update_fi(_, [(OLD, _) | _], OLD, _) :- !, throw(p_and_d_rule_superposed).
