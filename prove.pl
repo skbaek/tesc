@@ -1010,7 +1010,7 @@ originate(STRM, SLVR, NAME, FORM_P, CNT, FORM_C) :-
   put_string(STRM, NAME),
   num_succ(CNT, SCNT),
   num_succ(SCNT, SSCNT),
-  GOAL = (PRF, SSCNT), 
+  GOAL = (PRF, SSCNT), !,
   timed_infer(30, SLVR, orig, [(SCNT, FORM_P)], (CNT, ~ FORM_C), GOAL), !,
   ground_all("" $ [], PRF),
   put_prf(STRM, PRF). 
@@ -1021,7 +1021,7 @@ subprove(STRM, SLVR, CNT, HINT, PREMS, FORM) :-
   put_char(STRM, 'S'), 
   put_form(STRM, FORM), 
   num_succ(CNT, SCNT),
-  GOAL = (PRF, SCNT), 
+  GOAL = (PRF, SCNT), !,
   timed_infer(30, SLVR, HINT, PREMS, (CNT, ~ FORM), GOAL), !, 
   ground_all("" $ [], PRF),
   put_prf(STRM, PRF). 
@@ -1048,30 +1048,30 @@ set_ps_ctx(PS_O, CTX, PS_N) :- set_tup_nth(0, PS_O, CTX, PS_N).
 set_ps_sol(PS_O, SOL, PS_N) :- set_tup_nth(1, PS_O, SOL, PS_N).
 
 prove(STRM, SLVR, PROB, [orig(NAME, FORM_C) | SOL], CTX, CNT) :- 
-  get_assoc(NAME, PROB, FORM_P),
-  originate(STRM, SLVR, NAME, FORM_P, CNT, FORM_C),
-  put_assoc(CNT, CTX, FORM_C, CTX_N),
-  num_succ(CNT, SUCC),
-  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+  get_assoc(NAME, PROB, FORM_P), !,
+  originate(STRM, SLVR, NAME, FORM_P, CNT, FORM_C), !,
+  put_assoc(CNT, CTX, FORM_C, CTX_N), !,
+  num_succ(CNT, SUCC), !,
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC), !.
 
 prove(STRM, SLVR, PROB, [add(FORM) | SOL], CTX, CNT) :- 
-  justified(CNT, FORM),
+  justified(CNT, FORM), !,
   put_char(STRM, 'T'), 
   put_form(STRM, FORM), 
   put_assoc(CNT, CTX, FORM, CTX_N), 
-  num_succ(CNT, SUCC),
-  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+  num_succ(CNT, SUCC), !,
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC), !.
 
 prove(STRM, SLVR, PROB, [inf(HINT, IDS, FORM) | SOL], CTX, CNT) :- 
-  get_context(CTX, IDS, PREMS),
-  subprove(STRM, SLVR, CNT, HINT, PREMS, FORM),
-  put_assoc(CNT, CTX, FORM, CTX_N),
-  num_succ(CNT, SUCC),
-  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC).
+  get_context(CTX, IDS, PREMS), !,
+  subprove(STRM, SLVR, CNT, HINT, PREMS, FORM), !,
+  put_assoc(CNT, CTX, FORM, CTX_N), !,
+  num_succ(CNT, SUCC), !,
+  prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC), !.
 
 prove(STRM, _, _, [], _, CNT) :- 
-  num_pred(CNT, PRED),
-  put_prf(STRM, t(~ ff, x(CNT, PRED))).
+  num_pred(CNT, PRED), !,
+  put_prf(STRM, t(~ ff, x(CNT, PRED))), !.
 
 para_push(TRP) :- 
   para_mate(TRP) -> true 
