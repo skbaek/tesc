@@ -1056,9 +1056,9 @@ prove(STRM, SLVR, PROB, [orig(NAME, FORM_C) | SOL], CTX, CNT) :-
 
 prove(STRM, SLVR, PROB, [add(FORM) | SOL], CTX, CNT) :- 
   justified(CNT, FORM), !,
-  put_char(STRM, 'T'), 
-  put_form(STRM, FORM), 
-  put_assoc(CNT, CTX, FORM, CTX_N), 
+  put_char(STRM, 'T'), !,
+  put_form(STRM, FORM), !,
+  put_assoc(CNT, CTX, FORM, CTX_N), !,
   num_succ(CNT, SUCC), !,
   prove(STRM, SLVR, PROB, SOL, CTX_N, SUCC), !.
 
