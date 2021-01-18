@@ -1,17 +1,10 @@
 [package]
-name = "rttv"
+name = "t3p"
 version = "0.1.0"
 authors = ["skbaek <seulkeebaek@gmail.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies.tptp]
-path = "../tptp"
-
-[dependencies.basic]
-path = "../basic"
-
-[dependencies.nom]
-version = "6.0.0-alpha1"
-features = ["lexical"]
+[dependencies]
+tptp = "0.28.0"

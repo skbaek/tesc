@@ -1,5 +1,5 @@
 [package]
-name = "rttv"
+name = "ttr"
 version = "0.1.0"
 authors = ["skbaek <seulkeebaek@gmail.com>"]
 edition = "2018"
@@ -11,7 +11,3 @@ path = "../tptp"
 
 [dependencies.basic]
 path = "../basic"
-
-[dependencies.nom]
-version = "6.0.0-alpha1"
-features = ["lexical"]

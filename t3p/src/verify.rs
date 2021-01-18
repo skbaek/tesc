@@ -1,6 +1,5 @@
-use std::env;
+use super::basic::*;
 use std::rc::Rc;
-use basic::*;
 
 type Bch = Vec<Rc<Form>>;
 
@@ -428,28 +427,28 @@ fn process_inst(i: Inst) -> Rc<Form> {
   } 
 }
 
-fn body() -> Rst<()> {
-  let args: Vec<String> = env::args().collect();
-  let tptp = &args[1];
-  let tesc = &args[2];
-  
-  let bch: Bch = conv_tptp_file(tptp).into_iter().map(|x| process_inst(x)).collect();
-  let mut prf: ReadBytes = get_read_bytes(tesc, "Cannot open TESC file");
+ 
+// fn main() {
+//   std::process::exit(
+//     match body() {
+//       Ok(()) => {
+//         println!("Proof verified (kernel = RTTV).");
+//         0
+//       },
+//       Err(msg) => {
+//         println!("Invalid proof : {:?}", msg);
+//         1
+//       }
+//     }
+//   );
+// }
+
+pub fn main<I: Iterator<Item=String>>(mut args: I) -> Rst<()> {
+  let tptp = args.next().expect("missing TPTP file");
+  let tesc = args.next().expect("missing TESC file");
+
+  let bch: Bch = conv_tptp_file(&tptp).into_iter().map(|x| process_inst(x)).collect();
+  let mut prf: ReadBytes = get_read_bytes(&tesc, "Cannot open TESC file");
 
   check(bch, &mut prf)
-}
- 
-fn main() {
-  std::process::exit(
-    match body() {
-      Ok(()) => {
-        println!("Proof verified (kernel = RTTV).");
-        0
-      },
-      Err(msg) => {
-        println!("Invalid proof : {:?}", msg);
-        1
-      }
-    }
-  );
 }

@@ -62,13 +62,6 @@ tup_inst(
 ) :-
   atom_string(PNM_ATOM, PNM), !.
 
-% tup_inst(
-%   (CNM, false, FORM, some(introduced(inequality_splitting_name_introduction,[new_symbols(naming,[PRD_ATOM])]))), 
-%   add([isni, PRD, ARI], CNM, FORM)
-% ) :- 
-%   atom_string(PRD_ATOM, PRD),
-%   lit_arity(FORM, ARI).
-
 tup_inst(
   (CNM, false, (PRD $ []) <> FORM, some(introduced(avatar_definition,[new_symbols(naming,[PRD_ATOM])]))), 
   add([def, PRD, 0], CNM, (PRD $ []) <> FORM)
@@ -81,11 +74,6 @@ tup_inst(
 ) :- 
   atom_string(PRD_ATOM, PRD),
   pred_def_norm(PRD, FORM, ARI, NORM).
-
-% tup_inst(
-%   (CNM, _, FORM, some(introduced(theory_tautology_sat_conflict, []))),
-%   inf(ttsc, [], CNM, FORM)
-% ) :- !.
 
 tup_inst(
   (CNM, _, FORM, some(introduced(RUL, _))),

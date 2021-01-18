@@ -1,19 +1,30 @@
-pub mod folders;
 use std::rc::Rc;
+use std::env;
+use std::io::{BufReader, BufWriter};
 use std::fs::File;
 use std::io;
 use std::io::{Read, Write};
-use tptp::syntax::*;
-use tptp::parsers::TPTPIterator;
+use tptp::*;
+use tptp::top::*;
+use tptp::common::*;
 use std::convert::TryFrom;
-use std::io::BufReader;
 
-// pub type WriteBytes<'a> = &'a mut BufWriter<File>;
-pub type FileBytes = io::Bytes<io::BufReader<File>>;
-pub type FileBytesRef<'a> = &'a mut FileBytes;
-pub type Rst<T> = Result<T, String>;
+pub type Rst<T> = std::result::Result<T, String>;
+pub type ReadBytes = io::Bytes<io::BufReader<File>>;
+pub type WriteBytes = io::BufWriter<File>;
+pub type ReadBytesRef<'a> = &'a mut ReadBytes;
+pub type WriteBytesRef<'a> = &'a mut WriteBytes;
 
-trait Get { fn get(_: FileBytesRef) -> Rst<Self> where Self: std::marker::Sized; }
+pub fn get_read_bytes(file_name: &str, err_msg: &str) -> ReadBytes {
+  BufReader::new(File::open(file_name).expect(err_msg)).bytes()
+}
+
+
+pub fn get_write_bytes(file_name: &str, err_msg: &str) -> WriteBytes {
+  BufWriter::new(File::create(file_name).expect("Cannot create TESC file"))
+}
+
+trait Get { fn get(_: ReadBytesRef) -> Rst<Self> where Self: std::marker::Sized; }
 pub trait Put { fn put<W: Write>(_: &mut W, _: &Self) -> Rst<()> where Self: std::marker::Sized; }
 trait Conv<T> { fn conv(_: Self) -> Rst<T>; }
 
@@ -114,17 +125,6 @@ pub enum FormPart {
   Rel(Rc<FS>, Vec<Term>)
 } 
 
-// #[derive(PartialEq, Eq, std::hash::Hash, Clone, Debug)]
-// pub enum NM {
-//   Atm(String),
-//   Num(u64)
-// } 
-
-// pub enum Role {
-//   Axiom,
-//   Plain
-// } 
-
 type Annot = Option<GT>;
 pub type Inst = (String, bool, Form, Annot);
 
@@ -153,7 +153,7 @@ pub fn put_char<W: Write>(w: &mut W, c: char) -> Rst<()> {
   }
 }
 
-fn put_u64<W: Write>(w: &mut W, k: u64) -> Rst<()> {
+pub fn put_u64<W: Write>(w: &mut W, k: u64) -> Rst<()> {
   put_string(w, &k.to_string())
 }
 
@@ -207,13 +207,13 @@ pub fn put_inst<W: Write>(w: &mut W, i: &Inst) -> Rst<()> {
 
 /** Get Functions **/
 
-pub fn get_char(bs: FileBytesRef) -> Rst<char> { 
+pub fn get_char(bs: ReadBytesRef) -> Rst<char> { 
   let c = char::from(get_byte(bs)?);
   // print!("{}", c);
   Ok(c)
 }
 
-fn get_byte(bs : FileBytesRef) -> Rst<u8> {
+fn get_byte(bs : ReadBytesRef) -> Rst<u8> {
   match bs.next() {
     Some(x) => match x {
       Ok(b) => Ok(b),
@@ -223,7 +223,7 @@ fn get_byte(bs : FileBytesRef) -> Rst<u8> {
   }
 }
 
-fn get_fs(bs: FileBytesRef) -> Rst<FS> {
+fn get_fs(bs: ReadBytesRef) -> Rst<FS> {
   match get_char(bs)? {
     '"' => {
       let a = get_string(bs)?;
@@ -237,7 +237,7 @@ fn get_fs(bs: FileBytesRef) -> Rst<FS> {
   }
 }
 
-pub fn get_u64(bs : FileBytesRef) -> Rst<u64> {
+pub fn get_u64(bs : ReadBytesRef) -> Rst<u64> {
   let s = get_string(bs)?;
   match s.parse::<u64>() {
     Ok(k) => Ok(k),
@@ -245,7 +245,7 @@ pub fn get_u64(bs : FileBytesRef) -> Rst<u64> {
   }
 }
 
-pub fn get_bool(bs: FileBytesRef) -> Rst<bool> { 
+pub fn get_bool(bs: ReadBytesRef) -> Rst<bool> { 
   match get_char(bs)? {
     '1' => Ok(true),
     '0' => Ok(false),
@@ -335,7 +335,7 @@ pub fn put_term<W: Write>(w: &mut W, t: &Term) -> Rst<()> {
   }
 }
   
-pub fn get_term(bs : FileBytesRef) -> Rst<Term> {
+pub fn get_term(bs : ReadBytesRef) -> Rst<Term> {
   match get_char(bs)? {
     '#' => {
       let n = get_u64(bs)?;
@@ -355,14 +355,14 @@ impl<'a> Conv<GT> for GeneralTerm<'a> {
 }
 
 impl Get for Term {
-  fn get(bs: FileBytesRef) -> Rst<Term> { get_term(bs) }
+  fn get(bs: ReadBytesRef) -> Rst<Term> { get_term(bs) }
 }
 
 impl Put for Term {
   fn put<W: Write>(w: &mut W, t: &Self) -> Rst<()> { put_term(w,t) }
 }
 
-pub fn get_string(bs : FileBytesRef) -> Rst<String> {
+pub fn get_string(bs : ReadBytesRef) -> Rst<String> {
   let mut c = get_char(bs)?;
   let mut s = String::from("");
   while c != '%' {
@@ -385,7 +385,7 @@ fn conv_vec<T, C: Conv<T>>(v: Vec<C>) -> Rst<Vec<T>> {
   v.into_iter().map(|x| C::conv(x)).collect()
 }
 
-fn get_vec<F: Get>(bs : FileBytesRef) -> Rst<Vec<F>> {
+fn get_vec<F: Get>(bs : ReadBytesRef) -> Rst<Vec<F>> {
   let mut c = get_char(bs)?; 
   let mut v = vec![];
   while c != '.' {
@@ -397,7 +397,7 @@ fn get_vec<F: Get>(bs : FileBytesRef) -> Rst<Vec<F>> {
   Ok(v)
 }
 
-pub fn get_form(bs: FileBytesRef) -> Rst<Form> {
+pub fn get_form(bs: ReadBytesRef) -> Rst<Form> {
   let mut rem: u64 = 1;
   let mut stk: Vec<FormPart> = vec![];
   while 0 < rem {
@@ -487,17 +487,17 @@ fn conv_name(n: Name) -> Rst<String> {
 
 fn conjecturize(r: FormulaRole, f: Form) -> Form {
   match r {
-    FormulaRole::Conjecture => Form::Not(Rc::new(f)),  
+    FormulaRole(LowerWord("conjecture")) => Form::Not(Rc::new(f)),  
     _ => f
   }
 }
 
-fn conv_fof_logic_formula(vs: &mut Vec<String>, f: FofLogicFormula) -> Rst<Form> {
+fn conv_fof_logic_formula(vs: &mut Vec<String>, f: fof::LogicFormula) -> Rst<Form> {
   match f {
-    FofLogicFormula::Binary(FofBinaryFormula::Assoc(g)) => conv_fof_binary_assoc(vs,g),
-    FofLogicFormula::Binary(FofBinaryFormula::Nonassoc(g)) => {
-      match *g {
-        FofBinaryNonassoc {left:lf,op:o,right:rf} => {
+    fof::LogicFormula::Binary(fof::BinaryFormula::Assoc(g)) => conv_fof_binary_assoc(vs,g),
+    fof::LogicFormula::Binary(fof::BinaryFormula::Nonassoc(g)) => {
+      match g {
+        fof::BinaryNonassoc {left:lf,op:o,right:rf} => {
           let sz = vs.len();
           let nlf = conv_fof_unit_formula(vs,*lf)?;
           vs.truncate(sz);
@@ -506,8 +506,8 @@ fn conv_fof_logic_formula(vs: &mut Vec<String>, f: FofLogicFormula) -> Rst<Form>
         }
       }
     },
-    FofLogicFormula::Unary(g) => conv_fof_unary_formula(vs,g),
-    FofLogicFormula::Unitary(g) => conv_fof_unitary_formula(vs,g)
+    fof::LogicFormula::Unary(g) => conv_fof_unary_formula(vs,g),
+    fof::LogicFormula::Unitary(g) => conv_fof_unitary_formula(vs,g)
   }
 }
 
@@ -534,26 +534,26 @@ fn apply_non_assoc_connective(c: NonassocConnective, f: Form, g: Form) -> Form {
   }
 }
 
-fn conv_fof_atomic_formula(vs: &Vec<String>, f: FofAtomicFormula) -> Rst<Form> {
+fn conv_fof_atomic_formula(vs: &Vec<String>, f: fof::AtomicFormula) -> Rst<Form> {
   match f {
-    FofAtomicFormula::Plain(g) => {
-      match *g {
-        FofPlainAtomicFormula {0: h} => {
+    fof::AtomicFormula::Plain(g) => {
+      match g {
+        fof::PlainAtomicFormula {0: h} => {
           let (fs,ts) = conv_fof_plain_term(vs,h)?;
           Ok(Form::Rel(Rc::new(fs),ts))
         }
       }
     },
-    FofAtomicFormula::Defined(g) => {
-      match *g {
-        FofDefinedAtomicFormula::Plain(FofDefinedPlainFormula(t)) => {
+    fof::AtomicFormula::Defined(g) => {
+      match g {
+        fof::DefinedAtomicFormula::Plain(fof::DefinedPlainFormula(t)) => {
           let s = conv_fof_defined_plain_term(t);
           if s == "$true" { Ok(Form::Cst(true)) }
           else if s == "$false" { Ok(Form::Cst(false)) }
           else  { Ok(string_args_form(s,vec![])) }
         },
-        FofDefinedAtomicFormula::Infix(
-          FofDefinedInfixFormula {left: l, op: _, right: r}
+        fof::DefinedAtomicFormula::Infix(
+          fof::DefinedInfixFormula {left: l, op: _, right: r}
         ) => {
           let t = conv_fof_term(vs,*l)?;
           let s = conv_fof_term(vs,*r)?;
@@ -561,15 +561,15 @@ fn conv_fof_atomic_formula(vs: &Vec<String>, f: FofAtomicFormula) -> Rst<Form> {
         }
       }
     },
-    FofAtomicFormula::System(g) => {
-      match *g {
-        FofSystemAtomicFormula(h) => {
+    fof::AtomicFormula::System(g) => {
+      match g {
+        fof::SystemAtomicFormula(h) => {
           match h {
-            FofSystemTerm::Constant(SystemConstant(ft)) => {
-              Ok(string_args_form(conv_system_functor(ft),vec![]))
+            fof::SystemTerm::Constant(SystemConstant(ft)) => {
+              Ok(Form::Rel(Rc::new(conv_system_functor(ft)),vec![]))
             },
-            FofSystemTerm::Function(i,j) => {
-              Ok(string_args_form(conv_system_functor(i), conv_fof_arguments(vs,j)?))
+            fof::SystemTerm::Function(i,j) => {
+              Ok(Form::Rel(Rc::new(conv_system_functor(i)), conv_fof_arguments(vs,*j)?))
             }
           }
         }
@@ -577,9 +577,10 @@ fn conv_fof_atomic_formula(vs: &Vec<String>, f: FofAtomicFormula) -> Rst<Form> {
     }
   }
 }
-fn conv_fof_unitary_formula(vs: &mut Vec<String>, f: FofUnitaryFormula) -> Rst<Form> {
+
+fn conv_fof_unitary_formula(vs: &mut Vec<String>, f: fof::UnitaryFormula) -> Rst<Form> {
   match f {
-    FofUnitaryFormula::Quantified(FofQuantifiedFormula {quantifier: q, bound: FofVariableList(l), formula: g}) => {
+    fof::UnitaryFormula::Quantified(fof::QuantifiedFormula {quantifier: q, bound: fof::VariableList(l), formula: g}) => {
       let ss: Vec<String> = l.iter().map(|x| conv_variable(x)).collect();
       let lth = ss.len();
       vs.extend(ss);
@@ -587,30 +588,31 @@ fn conv_fof_unitary_formula(vs: &mut Vec<String>, f: FofUnitaryFormula) -> Rst<F
       for _ in 0..lth { h = apply_qtf(conv_fof_quantifier(q),h); }
       Ok(h)
     },
-    FofUnitaryFormula::Atomic(g) => conv_fof_atomic_formula(vs,g),
-    FofUnitaryFormula::Parenthesised(g) => conv_fof_logic_formula(vs,*g)
+    fof::UnitaryFormula::Atomic(g) => conv_fof_atomic_formula(vs,*g),
+    fof::UnitaryFormula::Parenthesised(g) => conv_fof_logic_formula(vs,*g)
   }
 }
 
-fn conv_fof_binary_assoc(vs: &mut Vec<String>, f: FofBinaryAssoc) -> Rst<Form> {
+fn conv_fof_binary_assoc(vs: &mut Vec<String>, f: fof::BinaryAssoc) -> Rst<Form> {
   match f {
-    FofBinaryAssoc::Or(FofOrFormula {0: fs}) => conv_vec_unit_formula(vs,Bct::Or,fs),
-    FofBinaryAssoc::And(FofAndFormula {0: fs}) => conv_vec_unit_formula(vs,Bct::And,fs)
+    fof::BinaryAssoc::Or(fof::OrFormula {0: fs}) => conv_vec_unit_formula(vs,Bct::Or,fs),
+    fof::BinaryAssoc::And(fof::AndFormula {0: fs}) => conv_vec_unit_formula(vs,Bct::And,fs)
   }
 }
   
-fn conv_fof_formula(vs: &mut Vec<String>, f: FofFormula) -> Rst<Form> {
-  match f { FofFormula {0: g} => conv_fof_logic_formula(vs,g) }
+fn conv_fof_formula(vs: &mut Vec<String>, f: fof::Formula) -> Rst<Form> {
+  match f { fof::Formula {0: g} => conv_fof_logic_formula(vs,g) }
 }
 
-fn conv_role(r: FormulaRole) -> bool {
-  match r {
-    FormulaRole::Axiom => true,
-    FormulaRole::Lemma => true,
-    FormulaRole::Hypothesis => true,
-    FormulaRole::Conjecture => true,
-    FormulaRole::NegatedConjecture => true,
-    FormulaRole::Definition => true,
+fn conv_role(r: &FormulaRole) -> bool {
+  let FormulaRole(LowerWord(s)) = r;
+  match s {
+    &"axiom" => true,
+    &"lemma" => true,
+    &"hypothesis" => true,
+    &"conjecture" => true,
+    &"negated_conjecture" => true,
+    &"definition" => true,
     _ => false
   }
 }
@@ -637,7 +639,7 @@ fn conv_general_terms (ts: GeneralTerms) -> Rst<Vec<GT>> { conv_vec(ts.0) }
 
 fn conv_general_term (t: GeneralTerm) -> Rst<GT> {
   match t {
-    GeneralTerm::Data(d) => conv_general_data(*d),
+    GeneralTerm::Data(d) => conv_general_data(d),
     GeneralTerm::Colon(_,_) => unimplemented!(),
     GeneralTerm::List(GeneralList(Some(ts))) => Ok(GT::List(conv_general_terms(ts)?)),
     GeneralTerm::List(GeneralList(None)) => Ok(GT::List(vec![]))
@@ -646,49 +648,57 @@ fn conv_general_term (t: GeneralTerm) -> Rst<GT> {
 
 fn conv_annotations (a: Annotations) -> Rst<Annot> {
   match a {
-    Annotations(Some((Source(t),_))) => Ok(Some(conv_general_term(t)?)),
+    Annotations(Some(b)) => {
+      match *b {
+        (Source(t), _) => Ok(Some(conv_general_term(t)?))
+      }
+    },
     Annotations(None) => Ok(None)
   }
 }
 
-pub fn conv_annotated_formula_to_hyp(a: AnnotatedFormula) -> Rst<(String, Form)> {
-  let (n,_,f,_) = conv_annotated_formula(a)?;
-  Ok((n,f))
-}
+// pub fn conv_annotated_formula_to_hyp(a: AnnotatedFormula) -> Rst<(String, Form)> {
+//   let (n,_,f,_) = conv_annotated_formula(a)?;
+//   Ok((n,f))
+// }
 
 pub fn conv_annotated_formula(a: AnnotatedFormula) -> Rst<Inst> {
   match a {
-    AnnotatedFormula::Fof(FofAnnotated {name: n, role: r, formula: f, annotations: a}) => {
-      Ok((
-        conv_name(*n)?, 
-        conv_role(r),
-        conjecturize(r, conv_fof_formula(&mut vec![],*f)?),
-        conv_annotations(*a)?
-      ))
+    AnnotatedFormula::Fof(b) => {
+      match *b {
+        FofAnnotated(Annotated {name: n, role: r, formula: f, annotations: a}) => {
+          Ok((
+            conv_name(n)?, 
+            conv_role(&r),
+            conjecturize(r, conv_fof_formula(&mut vec![], *f)?),
+            conv_annotations(a)?
+          ))
+        }
+      }
     },
-    AnnotatedFormula::Cnf(CnfAnnotated {name: n, role: r, formula: f, annotations: a}) => {
-      match *f {
-        CnfFormula::Disjunction(Disjunction(g)) => Ok((
-          conv_name(*n)?, 
-          conv_role(r),
-          conjecturize(r, conv_literals(g)?),
-          conv_annotations(*a)?
-        )),
-        CnfFormula::Parenthesised(Disjunction(g)) => Ok((
-          conv_name(*n)?, 
-          conv_role(r),
-          conjecturize(r, conv_literals(g)?), 
-          conv_annotations(*a)?
-        ))
+    AnnotatedFormula::Cnf(b) => {
+      match *b {
+        CnfAnnotated(Annotated {name: n, role: r, formula: f, annotations: a}) => {
+          let g = match *f {
+            cnf::Formula::Disjunction(cnf::Disjunction(g)) => g,
+            cnf::Formula::Parenthesised(cnf::Disjunction(g)) => g
+          };
+          Ok((
+            conv_name(n)?, 
+            conv_role(&r),
+            conjecturize(r, conv_literals(g)?),
+            conv_annotations(a)?
+          ))
+        }
       }
     }
   }
 }
 
-fn conv_fof_unit_formula(vs: &mut Vec<String>, f: FofUnitFormula) -> Rst<Form> { 
+fn conv_fof_unit_formula(vs: &mut Vec<String>, f: fof::UnitFormula) -> Rst<Form> { 
   match f {
-    FofUnitFormula::Unary(g) => conv_fof_unary_formula(vs,g),
-    FofUnitFormula::Unitary(g) => conv_fof_unitary_formula(vs,g),
+    fof::UnitFormula::Unary(g) => conv_fof_unary_formula(vs,g),
+    fof::UnitFormula::Unitary(g) => conv_fof_unitary_formula(vs,g),
   }
 }
 
@@ -715,18 +725,18 @@ fn find_variable_index(vs: &Vec<String>, v: Variable) -> Rst<u64> {
   }
 }
 
-fn conv_fof_term(vs: &Vec<String>, t: FofTerm) -> Rst<Term> {
+fn conv_fof_term(vs: &Vec<String>, t: fof::Term) -> Rst<Term> {
   match t {
-    FofTerm::Variable(v) => {
+    fof::Term::Variable(v) => {
       let u = find_variable_index(vs, v)?;
       Ok(Term::Var(u))
     },
-    FofTerm::Function(s) => {
+    fof::Term::Function(s) => {
       match *s {
-        FofFunctionTerm::Defined(r) => {
+        fof::FunctionTerm::Defined(r) => {
           match r {
-            FofDefinedTerm::Atomic(FofDefinedAtomicTerm(t)) => Ok(string_args_term(conv_fof_defined_plain_term(t),vec![])),
-            FofDefinedTerm::Defined(q)=> {
+            fof::DefinedTerm::Atomic(fof::DefinedAtomicTerm(t)) => Ok(string_args_term(conv_fof_defined_plain_term(t),vec![])),
+            fof::DefinedTerm::Defined(q)=> {
               match q {
                 DefinedTerm::Distinct(DistinctObject(p)) => Ok(string_args_term(format!("\"{}\"", (*p).to_string()),vec![])),
                 DefinedTerm::Number(p) => Ok(string_args_term(conv_number(p),vec![]))
@@ -734,18 +744,19 @@ fn conv_fof_term(vs: &Vec<String>, t: FofTerm) -> Rst<Term> {
             }
           }
         },
-        FofFunctionTerm::Plain(r) => {
+        fof::FunctionTerm::Plain(r) => {
           let (fs,ts) = conv_fof_plain_term(vs, r)?;
           Ok(Term::Fun(Rc::new(fs),ts))
-        } 
+        },
+        fof::FunctionTerm::System(r) => conv_fof_system_term(vs, r)
       }
     }
   }
 }
 
-fn conv_fof_infix_unary(vs: &Vec<String>, f: FofInfixUnary) -> Rst<Form> {
+fn conv_fof_infix_unary(vs: &Vec<String>, f: fof::InfixUnary) -> Rst<Form> {
   match f {
-    FofInfixUnary {left: l, op: _, right: r} => {
+    fof::InfixUnary {left: l, op: _, right: r} => {
       let t = conv_fof_term(vs,*l)?;
       let s = conv_fof_term(vs,*r)?;
       Ok(Form::Not(Rc::new(mk_eq(t,s))))
@@ -753,17 +764,17 @@ fn conv_fof_infix_unary(vs: &Vec<String>, f: FofInfixUnary) -> Rst<Form> {
   }
 }
 
-fn conv_fof_unary_formula(vs: &mut Vec<String>, f: FofUnaryFormula) -> Rst<Form> {
+fn conv_fof_unary_formula(vs: &mut Vec<String>, f: fof::UnaryFormula) -> Rst<Form> {
   match f {
-    FofUnaryFormula::Unary(_,g) => Ok(Form::Not(Rc::new(conv_fof_unit_formula(vs,*g)?))),
-    FofUnaryFormula::InfixUnary(g) => conv_fof_infix_unary(vs,g)
+    fof::UnaryFormula::Unary(_,g) => Ok(Form::Not(Rc::new(conv_fof_unit_formula(vs,*g)?))),
+    fof::UnaryFormula::InfixUnary(g) => conv_fof_infix_unary(vs,g)
   }
 }
 
-fn conv_fof_quantifier(q: FofQuantifier) -> bool {
+fn conv_fof_quantifier(q: fof::Quantifier) -> bool {
   match q {
-    FofQuantifier::Forall => false,
-    FofQuantifier::Exists => true
+    fof::Quantifier::Forall => false,
+    fof::Quantifier::Exists => true
   }
 }
 
@@ -775,24 +786,36 @@ fn conv_functor(f: Functor) -> FS {
   match f { Functor(a) => FS::Atm(conv_atomic_word(a)) }
 }
   
-fn conv_fof_arguments(vs: &Vec<String>, f: FofArguments) -> Rst<Vec<Term>> {
-  match f { FofArguments(g) => g.into_iter().map(|x| conv_fof_term(vs,x)).collect() }
+fn conv_fof_arguments(vs: &Vec<String>, f: fof::Arguments) -> Rst<Vec<Term>> {
+  match f { fof::Arguments(g) => g.into_iter().map(|x| conv_fof_term(vs,x)).collect() }
 }
 
-fn conv_fof_plain_term(vs: &Vec<String>, f: FofPlainTerm) -> Rst<(FS,Vec<Term>)> {
+fn conv_fof_system_term(vs: &Vec<String>, t: fof::SystemTerm) -> Rst<Term> {
+  match t {
+    fof::SystemTerm::Constant(common::SystemConstant(f)) => {
+      Ok(Term::Fun(Rc::new(conv_system_functor(f)), vec![]))
+    }
+    fof::SystemTerm::Function(f, a) => {
+      let ts = conv_fof_arguments(vs, *a)?;
+      Ok(Term::Fun(Rc::new(conv_system_functor(f)), ts))
+    }
+  }
+}
+
+fn conv_fof_plain_term(vs: &Vec<String>, f: fof::PlainTerm) -> Rst<(FS,Vec<Term>)> {
   match f {
-    FofPlainTerm::Constant(Constant(g)) => {
+    fof::PlainTerm::Constant(Constant(g)) => {
       Ok((conv_functor(g),vec![]))
     },
-    FofPlainTerm::Function(g,h) => {
+    fof::PlainTerm::Function(g,h) => {
       Ok((conv_functor(g),conv_fof_arguments(vs,*h)?))
     }
   }
 }
 
-fn conv_fof_defined_plain_term(t: FofDefinedPlainTerm) -> String {
+fn conv_fof_defined_plain_term(t: fof::DefinedPlainTerm) -> String {
   match t {
-    FofDefinedPlainTerm(
+    fof::DefinedPlainTerm::Constant(
       DefinedConstant(
         DefinedFunctor(
           AtomicDefinedWord(
@@ -802,34 +825,33 @@ fn conv_fof_defined_plain_term(t: FofDefinedPlainTerm) -> String {
           )
         )
       )
-    ) => format!("${}",s)
+    ) => format!("${}", s),
+    fof::DefinedPlainTerm::Function(_, _) => panic!("Conversion for defined complex terms not implemented")
   } 
 }
   
-fn conv_system_functor(f: SystemFunctor) -> String {
+fn conv_system_functor(f: SystemFunctor) -> FS {
   match f {
     SystemFunctor(AtomicSystemWord(DollarDollarWord(LowerWord(s)))) =>
-    format!("$${}",s)
+    FS::Atm(format!("$${}",s))
   }
 }
 
-
-
-fn conv_vec_unit_formula(vs: &mut Vec<String>, b: Bct, fs: Vec<FofUnitFormula>) -> Rst<Form> {
+fn conv_vec_unit_formula(vs: &mut Vec<String>, b: Bct, fs: Vec<fof::UnitFormula>) -> Rst<Form> {
   let sz = vs.len();
   let gs: Rst<Vec<Form>> = fs.into_iter().map(|x| {vs.truncate(sz); conv_fof_unit_formula(vs,x)}).collect();
   chain_forms(b,gs?)
 }
 
-fn conv_literal(vs: &Vec<String>, l: Literal) -> Rst<Form> {
+fn conv_literal(vs: &Vec<String>, l: cnf::Literal) -> Rst<Form> {
   match l {
-    Literal::Atomic(f) => conv_fof_atomic_formula(vs,f),
-    Literal::NegatedAtomic(f) => Ok(Form::Not(Rc::new(conv_fof_atomic_formula(vs,f)?))),
-    Literal::Infix(f) => conv_fof_infix_unary(vs,f) 
+    cnf::Literal::Atomic(f) => conv_fof_atomic_formula(vs,f),
+    cnf::Literal::NegatedAtomic(f) => Ok(Form::Not(Rc::new(conv_fof_atomic_formula(vs,f)?))),
+    cnf::Literal::Infix(f) => conv_fof_infix_unary(vs,f) 
   }
 }
 
-fn conv_literals(ls: Vec<Literal>) -> Rst<Form> {
+fn conv_literals(ls: Vec<cnf::Literal>) -> Rst<Form> {
   let mut vs: Vec<String> = vec![];
   for l in ls.iter() {
     vars_in_literal(&mut vs, l);
@@ -873,68 +895,76 @@ pub fn is_eq(t: Term, s: Term, f: &Form) -> bool {
   }
 }
 
-fn vars_in_fof_arguments(vs: &mut Vec<String>, f: &FofArguments) -> () {
-  match f { FofArguments(ts) => { for t in ts.iter() { vars_in_term(vs,t); } } }
+fn vars_in_fof_arguments(vs: &mut Vec<String>, f: &fof::Arguments) -> () {
+  match f { fof::Arguments(ts) => { for t in ts.iter() { vars_in_term(vs,t); } } }
 }
 
-fn vars_in_term(vs: &mut Vec<String>, t: &FofTerm) -> () {
+fn vars_in_term(vs: &mut Vec<String>, t: &fof::Term) -> () {
   match t {
-    FofTerm::Variable(v) => {
+    fof::Term::Variable(v) => {
       let s = conv_variable(v);
       if !vs.contains(&s) { vs.push(s) }
     },
-    FofTerm::Function(s) => {
+    fof::Term::Function(s) => {
       match &**s {
-        FofFunctionTerm::Defined(_) => (),
-        FofFunctionTerm::Plain(r) => vars_in_fof_plain_term(vs,r)
+        fof::FunctionTerm::Defined(_) => (),
+        fof::FunctionTerm::Plain(r) => vars_in_fof_plain_term(vs,r),
+        fof::FunctionTerm::System(r) => vars_in_fof_system_term(vs,r)
       }
     }
   }
 }
 
-fn vars_in_fof_atomic_formula(vs: &mut Vec<String>, f: &FofAtomicFormula) -> () {
+fn vars_in_fof_atomic_formula(vs: &mut Vec<String>, f: &fof::AtomicFormula) -> () {
   match f {
-    FofAtomicFormula::System(g) => {
-      match &**g {
-        FofSystemAtomicFormula(h) => {
+    fof::AtomicFormula::System(g) => {
+      match &*g {
+        fof::SystemAtomicFormula(h) => {
           match h {
-            FofSystemTerm::Constant(_) => (),
-            FofSystemTerm::Function(_,i) => vars_in_fof_arguments(vs,i)
+            fof::SystemTerm::Constant(_) => (),
+            fof::SystemTerm::Function(_,i) => vars_in_fof_arguments(vs,i)
           }
         }
       }
     }
-    FofAtomicFormula::Defined(g) => {
-      match &**g {
-        FofDefinedAtomicFormula::Infix(h) => {
+    fof::AtomicFormula::Defined(g) => {
+      match &*g {
+        fof::DefinedAtomicFormula::Infix(h) => {
           match h {
-            FofDefinedInfixFormula {left:lt, op: _, right: rt} => {
+            fof::DefinedInfixFormula {left:lt, op: _, right: rt} => {
               vars_in_term(vs,&lt);
               vars_in_term(vs,&rt);
             }
           }
         },
-        FofDefinedAtomicFormula::Plain(_) => ()
+        fof::DefinedAtomicFormula::Plain(_) => ()
       }
     },
-    FofAtomicFormula::Plain(g) => {
-      match &**g { FofPlainAtomicFormula(h) => vars_in_fof_plain_term(vs,h) }
+    fof::AtomicFormula::Plain(g) => {
+      match &*g { fof::PlainAtomicFormula(h) => vars_in_fof_plain_term(vs,h) }
     }
   }
 }
 
-fn vars_in_fof_plain_term(vs: &mut Vec<String>, t: &FofPlainTerm) -> () {
+fn vars_in_fof_plain_term(vs: &mut Vec<String>, t: &fof::PlainTerm) -> () {
   match t {
-    FofPlainTerm::Constant(_) => (),
-    FofPlainTerm::Function(_,i)=> vars_in_fof_arguments(vs,i)
+    fof::PlainTerm::Constant(_) => (),
+    fof::PlainTerm::Function(_,i)=> vars_in_fof_arguments(vs,i)
   }
 }
 
-fn vars_in_literal(vs: &mut Vec<String>, l: &Literal) -> () {
+fn vars_in_fof_system_term(vs: &mut Vec<String>, t: &fof::SystemTerm) -> () {
+  match t {
+    fof::SystemTerm::Constant(_) => (),
+    fof::SystemTerm::Function(_, a) => vars_in_fof_arguments(vs, a)
+  }
+}
+
+fn vars_in_literal(vs: &mut Vec<String>, l: &cnf::Literal) -> () {
   match l {
-    Literal::Atomic(f) => vars_in_fof_atomic_formula(vs,f),
-    Literal::NegatedAtomic(f) => vars_in_fof_atomic_formula(vs,f),
-    Literal::Infix(FofInfixUnary {left: lt, op: _, right: rt}) => {
+    cnf::Literal::Atomic(f) => vars_in_fof_atomic_formula(vs,f),
+    cnf::Literal::NegatedAtomic(f) => vars_in_fof_atomic_formula(vs,f),
+    cnf::Literal::Infix(fof::InfixUnary {left: lt, op: _, right: rt}) => {
       vars_in_term(vs,&lt);
       vars_in_term(vs,&rt);
     }
@@ -943,32 +973,35 @@ fn vars_in_literal(vs: &mut Vec<String>, l: &Literal) -> () {
 
 fn conv_tptp_input(t: TPTPInput, fs: &mut Vec<Inst>) {
   match t {
-    TPTPInput::Annotated(a) => fs.push(conv_annotated_formula(a).expect("Cannot convert annotated formula")),
-    TPTPInput::Include(Include {file_name: FileName(SingleQuoted(s)), selection: _}) => {
-      let pt: String = format!("{}{}", folders::TPTP, s);
-      conv_tptp_file_core(&pt, fs);
+    TPTPInput::Annotated(a) => fs.push(conv_annotated_formula(*a).expect("Cannot convert annotated formula")),
+    TPTPInput::Include(b) => {
+      match *b {
+        Include {file_name: FileName(SingleQuoted(s)), selection: _} => {
+          let tptp = env::var("TPTP").expect("Env var $TPTP not set");
+          let pt: String = format!("{}/{}", tptp, s);
+          conv_tptp_file_core(&pt, fs);
+        }
+      }
     }
   }
 }
 
 pub fn conv_tptp_file_core(tptp: &str, fs: &mut Vec<Inst>) {
-   let bytes = to_boxed_slice(tptp).expect("Cannot open TPTP file");
-   let mut is = TPTPIterator::<()>::new(&bytes);
-   for x in &mut is {
-     match x {
-       Ok(i) => conv_tptp_input(i,fs),
-       _ => panic!("Invalid item from TPTP problem file")
-     }
-   }
-   assert!(is.remaining.is_empty());
+  println!("Opening TPTP file = {}", tptp);
+  
+  let bytes = to_boxed_slice(tptp).expect("Cannot open TPTP file");
+  let mut is = TPTPIterator::<()>::new(&bytes);
+  for x in &mut is {
+    match x {
+      Ok(i) => conv_tptp_input(i,fs),
+      _ => panic!("Invalid item from TPTP problem file")
+    }
+  }
+  assert!(is.remaining.is_empty());
 }
 
 pub fn conv_tptp_file(tptp: &str) -> Vec<Inst> {
   let mut fs: Vec<Inst> = vec![];
   conv_tptp_file_core(tptp, &mut fs);
   fs
-}
-
-pub fn open_file_bytes(file_name: &str, err_msg: &str) -> FileBytes {
-  BufReader::new(File::open(file_name).expect(err_msg)).bytes()
 }

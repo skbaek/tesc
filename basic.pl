@@ -1,5 +1,3 @@
-:- [folders].
-
 %%%%%%%%%%%%%%%% OPERATORS %%%%%%%%%%%%%%%% 
 
 :- op(1, fx, '#').
@@ -2047,10 +2045,9 @@ get_prob(_, '.', PROB, PROB).
 get_sol(STRM, SOL) :- get_list(STRM, get_af, SOL).
 
 open_tts(TPTP, STM) :- 
-  tesc_folder(TESC),
-  format(string(TTS), "~wtts/target/release/tts", [TESC]),
+  expand_file_name("$TESC/tts/target/release/tts", [PATH]), !,
   process_create(
-    TTS, 
+    PATH,
     [TPTP], 
     [stdout(pipe(STM))]
   ), !,
