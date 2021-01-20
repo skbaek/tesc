@@ -1621,7 +1621,7 @@ vnnf(H2G) :-
 
 imp_hyp(HYP) :- 
   hyp_form(HYP, FORM),
-  member(FORM, [(_ => _), (_ <> _)]).
+  member(FORM, [(_ => _), (_ <> _), ~ (_ => _), ~ (_ <> _)]).
 
 ap_rop_aux(HYP, GOAL, HYP_L, HYP_R, NEW_GOAL) :- 
   \+ imp_hyp(HYP), 
@@ -2029,7 +2029,7 @@ atom_firstchar(ATOM, CH) :-
   char_code(CH, CODE).
 
 get_prob(STRM, PROB_I, PROB_O) :- 
-  get_char(STRM, CH), 
+  get__char(STRM, CH), 
   get_prob(STRM, CH, PROB_I, PROB_O).
 get_prob(STRM, ',', PROB_I, PROB_O) :- 
   get_af(STRM, (NAME, _, FORM, _)), !,
@@ -2045,10 +2045,11 @@ get_prob(_, '.', PROB, PROB).
 get_sol(STRM, SOL) :- get_list(STRM, get_af, SOL).
 
 open_tts(TPTP, STM) :- 
-  expand_file_name("$TESC/tts/target/release/tts", [PATH]), !,
+  expand_file_name("$TESC/t3p-rs/target/release/t3p", [T3P_PATH]), !,
+  expand_file_name(TPTP, [TPTP_PATH]), !,
   process_create(
-    PATH,
-    [TPTP], 
+    T3P_PATH,
+    [serialize, TPTP_PATH], 
     [stdout(pipe(STM))]
   ), !,
   set_stream(STM, encoding(octet)), !.
@@ -2060,7 +2061,7 @@ tptp_prob(TPTP, PROB) :-
   close(STRM).
 
 get_bch(STRM, BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O) :- 
-  get_char(STRM, CH), 
+  get__char(STRM, CH), 
   get_bch(STRM, CH, BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O).
 get_bch(STRM, ',', BCH_I, TAB_I, SIZE_I, BCH_O, TAB_O, SIZE_O) :-
   get_af(STRM, (NAME, _, FORM, _)), !,
