@@ -27,6 +27,7 @@ open import Data.Maybe.Base
   renaming (map to map?)
 open import Agda.Builtin.Equality
 open import basic
+  hiding (F)
 
 data Res (A : Set) : Set where
   cont : A → Chars → Res A 
@@ -230,10 +231,7 @@ read-af k =  do
 Bch = Tree Form 
 
 nth : Nat → Bch → Form 
-nth k B = lookup (suc k) B ⊤*
-
-len : Bch → Nat 
-len B = pred (size B) 
+nth k B = lookup k B ⊤*
 
 read-bch-core : Nat → Bch → Read Bch
 read-bch-core (suc k) B = 
@@ -244,7 +242,7 @@ read-bch-core (suc k) B =
 read-bch-core 0 _ = fail "read-bch-core fail"
 
 read-bch : Read Bch
-read-bch cs = read-bch-core (length cs) (leaf ⊤*) cs
+read-bch cs = read-bch-core (length cs) nil cs
 
 data Prf : Set where
   rule-a : Nat → Bool → Prf → Prf
@@ -414,13 +412,13 @@ verify B (rule-b i p q) =
   let (g , h) = apply-b (nth i B) in
   (verify (add B g) p) && (verify (add B h) q) 
 verify B (rule-c i t p) = 
-  chk-good-term (suc (len B)) t && verify (add B (apply-c t (nth i B))) p
-verify B (rule-d i p) = verify (add B (apply-d (len B) (nth i B))) p
+  chk-good-term (suc (size B)) t && verify (add B (apply-c t (nth i B))) p
+verify B (rule-d i p) = verify (add B (apply-d (size B) (nth i B))) p
 verify B (rule-n i p) = verify (add B (apply-n (nth i B))) p
 verify B (rule-s f p q) = 
-  chk-good-form (suc (len B)) f && verify (add B (not f)) p && verify (add B f) q
+  chk-good-form (suc (size B)) f && verify (add B (not f)) p && verify (add B f) q
 verify B (rule-t f p) =
-  chk-jst (len B) f && verify (add B f) p
+  chk-jst (size B) f && verify (add B f) p
 verify B (rule-x i j) = form-eq (nth i B) (not (nth j B))
 
 parse-verify : Chars → Chars → Bool 

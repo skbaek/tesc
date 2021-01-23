@@ -1,7 +1,7 @@
 module basic where
 
 open import Agda.Builtin.Nat
-  renaming (_<_ to _<n_)
+  renaming (_<_ to _<ᵇ_)
   renaming (_==_ to _=n_)
 open import Data.Nat.DivMod
 open import Data.Nat.Base 
@@ -9,6 +9,7 @@ open import Data.Nat.Base
   using (_>_)
   using (z≤n)
   using (s≤s)
+  using (_≤_)
 open import Data.Nat.Properties
   using (+-comm)
   using (<-trans)
@@ -16,11 +17,11 @@ open import Data.Nat.Properties
   using (≤-refl)
 open import Agda.Builtin.Equality
 open import Data.Bool
-  renaming (T to tr)
-  renaming (not to bnot)
+  hiding (not)
   renaming (_∧_ to _&&_)
-  renaming (_<_ to _<b_)
   renaming (_∨_ to _||_)
+  hiding (_≤_)
+  hiding (_<_)
 open import Data.Char
   renaming (_==_ to _=c_)
   renaming (_<_ to _<c_)
@@ -41,6 +42,8 @@ open import Relation.Nullary
 open import Data.Product
   renaming (map to map2)
 open import Data.Unit  
+  using (⊤)
+  using (tt)
 open import Data.Maybe
   renaming (_>>=_ to _?>=_)
   renaming (map to map?)
@@ -181,9 +184,9 @@ tri k a b c m with <-cmp k m
 ... | (tri≈ _ _ _) = b
 ... | (tri> _ _ _) = c
 
-tri-elim : ∀ {A : Set} {a b c : A} (k m : Nat) → (P : A → Set) →
+tri-intro-lem : ∀ {A : Set} {a b c : A} (k m : Nat) → (P : A → Set) →
   (k < m → P a) → (k ≡ m → P b) → (k > m → P c) → P (tri k a b c m)
-tri-elim k m P h0 h1 h2 with (<-cmp k m) 
+tri-intro-lem k m P h0 h1 h2 with (<-cmp k m) 
 ... | (tri< hl he hg) = h0 hl
 ... | (tri≈ hl he hg) = h1 he
 ... | (tri> hl he hg) = h2 hg
@@ -331,7 +334,7 @@ pp-digit _ = 'E'
 
 {-# NON_TERMINATING #-}
 pp-nat : Nat → Chars
-pp-nat k = if k <n 10 then [ pp-digit k ] else (pp-nat (k / 10)) ++ [ (pp-digit (k % 10)) ]
+pp-nat k = if k <ᵇ 10 then [ pp-digit k ] else (pp-nat (k / 10)) ++ [ (pp-digit (k % 10)) ]
 
 pp-list-core : {A : Set} → (A → String) → List A → String 
 pp-list-core f [] = "]"
@@ -425,14 +428,14 @@ a0 ∈ (a1 ∷ as) = (a0 ≡ a1) ∨ (a0 ∈ as)
 rt : Set → Bool
 rt A = elim-lem A (λ _ → true) (λ _ → false)
 
-tr-rt-iff : ∀ {A : Set} → tr (rt A) ↔ A 
+tr-rt-iff : ∀ {A : Set} → T (rt A) ↔ A 
 tr-rt-iff {A} with LEM A 
 ... | (yes h0) = (λ _ → h0) , (λ _ → tt)
 ... | (no h0) = ⊥-elim , h0
 
-fs : Bool → Set
-fs true  = ⊥
-fs false = ⊤
+F : Bool → Set
+F true  = ⊥
+F false = ⊤
 
 cong : {A B : Set} (f : A → B) {x y : A} (p : x ≡ y) → f x ≡ f y
 cong _ refl = refl
@@ -450,10 +453,10 @@ cong-3  f refl refl refl = refl
 s<s⇒< : ∀ k m → (suc k < suc m) → k < m
 s<s⇒< k m (s≤s h) = h
 
-intro-ite-lem : ∀ {A : Set} {x y : A} (b : Bool) → 
-  (P : A → Set) → (tr b → P x) → (fs b → P y) → P (if b then x else y)
-intro-ite-lem false P hx hy = hy tt
-intro-ite-lem true  P hx hy = hx tt
+ite-intro-lem : ∀ {A : Set} {x y : A} (b : Bool) → 
+  (P : A → Set) → (T b → P x) → (F b → P y) → P (if b then x else y)
+ite-intro-lem false P hx hy = hy tt
+ite-intro-lem true  P hx hy = hx tt
 
 not-or-lft : ∀ {A B : Set} → ¬ (A ∨ B) → ¬ A 
 not-or-lft h0 h1 = h0 (or-lft h1)  
@@ -483,11 +486,11 @@ prod-inj-rgt : ∀ {A B : Set} {a0 a1 : A} {b0 b1 : B} →
   (a0 , b0) ≡ (a1 , b1) → b0 ≡ b1
 prod-inj-rgt refl = refl
 
-elim-bor : ∀ {A : Set} b1 b2 → (tr b1 → A) → (tr b2 → A) → tr (b1 || b2) → A
+elim-bor : ∀ {A : Set} b1 b2 → (T b1 → A) → (T b2 → A) → T (b1 || b2) → A
 elim-bor true _ h0 _ h2 = h0 tt
 elim-bor _ true _ h1 h2 = h1 tt
 
-biff-to-eq : ∀ {b0 b1} → tr (b0 ⇔ b1) → (b0 ≡ b1)
+biff-to-eq : ∀ {b0 b1} → T (b0 ⇔ b1) → (b0 ≡ b1)
 biff-to-eq {true} {true} _ = refl
 biff-to-eq {false} {false} _ = refl
 
@@ -505,10 +508,10 @@ elim-ite' : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) →
   P (if b then a0 else a1) → (P a0 → B) → (P a1 → B) → B
 elim-ite' P b a0 a1 h h0 h1 = elim-ite P b a0 a1 h0 h1 h
 
-intro-ite : ∀ {A : Set} {x : A} {y : A} (b : Bool) → 
+ite-intro : ∀ {A : Set} {x : A} {y : A} (b : Bool) → 
   (P : A → Set) → P x → P y → P (if b then x else y)
-intro-ite false P hx hy = hy
-intro-ite true  P hx hy = hx
+ite-intro false P hx hy = hy
+ite-intro true  P hx hy = hx
     
 iff-to-not-iff-not : ∀ {A B} → (A ↔ B) → ((¬ A) ↔ (¬ B))
 iff-to-not-iff-not h0 = 
@@ -576,23 +579,23 @@ eq-to-iff-2 : ∀ {A B : Set} (P : A → B → Set) (a0 a1 : A) (b0 b1 : B) →
   a0 ≡ a1 → b0 ≡ b1 → ((P a0 b0) ↔ (P a1 b1))
 eq-to-iff-2 P a0 a1 b0 b1 refl refl = iff-refl  
 
-bfst : ∀ a b → tr (a && b) → tr a 
+bfst : ∀ (a b : Bool) → T (a && b) → T a 
 bfst true _ _ = tt
 
-bsnd : ∀ a b → tr (a && b) → tr b 
+bsnd : ∀ a b → T (a && b) → T b 
 bsnd _ true _ = tt
 bsnd true false ()
 
-tr-band-to-and : ∀ a b → tr (a && b) → (tr a ∧ tr b)
+tr-band-to-and : ∀ a b → T (a && b) → (T a ∧ T b)
 tr-band-to-and true true _ = tt , tt
 
-tr-band-to-and-3 : ∀ a b c → tr (a && b && c) → (tr a ∧ tr b ∧ tr c)
+tr-band-to-and-3 : ∀ a b c → T (a && b && c) → (T a ∧ T b ∧ T c)
 tr-band-to-and-3 true true true _ = tt , tt , tt
 
-tr-band-to-and-4 : ∀ a b c d → tr (a && b && c && d) → (tr a ∧ tr b ∧ tr c ∧ tr d)
+tr-band-to-and-4 : ∀ a b c d → T (a && b && c && d) → (T a ∧ T b ∧ T c ∧ T d)
 tr-band-to-and-4 true true true true _ = tt , tt , tt , tt
 
-tr-band-to-and-5 : ∀ a b c d e → tr (a && b && c && d && e) → (tr a ∧ tr b ∧ tr c ∧ tr d ∧ tr e)
+tr-band-to-and-5 : ∀ a b c d e → T (a && b && c && d && e) → (T a ∧ T b ∧ T c ∧ T d ∧ T e)
 tr-band-to-and-5 true true true true true _ = tt , tt , tt , tt , tt
 
 not-ex-to-fa-not : ∀ {A : Set} (P : A → Set) → (¬ ∃ P) → (∀ x → ¬ P x)
@@ -604,26 +607,26 @@ not-fa-to-ex-not P h0 = dne (λ h1 → h0 (λ a → dne (λ h2 → h1 (a , h2)))
 not-fst : ∀ {A : Set} {B : Set} → ¬ (A ∧ B) → A → ¬ B  
 not-fst h0 h1 h2 = h0 (h1 , h2)
 
-tr-to-ite-eq : ∀ {A : Set} {b} {a0 a1 : A} → tr b → (if b then a0 else a1) ≡ a0
+tr-to-ite-eq : ∀ {A : Set} {b} {a0 a1 : A} → T b → (if b then a0 else a1) ≡ a0
 tr-to-ite-eq {_} {true} _ = refl  
 
-fs-to-ite-ne : ∀ {A : Set} {b} {a0 a1 : A} → fs b → (if b then a0 else a1) ≡ a1
+fs-to-ite-ne : ∀ {A : Set} {b} {a0 a1 : A} → F b → (if b then a0 else a1) ≡ a1
 fs-to-ite-ne {_} {false} _ = refl  
 
-char-eq-to-eq : ∀ c0 c1 → tr (c0 =c c1) → c0 ≡ c1 
+char-eq-to-eq : ∀ c0 c1 → T (c0 =c c1) → c0 ≡ c1 
 char-eq-to-eq c0 c1 = toWitness
 
-chars-eq-to-eq : ∀ cs0 cs1 → tr (chars-eq cs0 cs1) → cs0 ≡ cs1 
+chars-eq-to-eq : ∀ cs0 cs1 → T (chars-eq cs0 cs1) → cs0 ≡ cs1 
 chars-eq-to-eq [] [] _ = refl
 chars-eq-to-eq (c0 ∷ cs0) (c1 ∷ cs1) h0 = 
   cong-2 _∷_ 
     (toWitness (bfst (c0 =c c1) _ h0)) 
     (chars-eq-to-eq cs0 cs1 (bsnd _ _ h0))
 
-elim-ite-lem : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
-  (tr b → P a0 → B) → (fs b → P a1 → B) → P (if b then a0 else a1) → B
-elim-ite-lem _ true _ _ h0 _ h1 = h0 tt h1
-elim-ite-lem _ false _ _ _ h0 h1 = h0 tt h1 
+ite-elim-lem : ∀ {A B : Set} (P : A → Set) (b : Bool) (a0 a1 : A) → 
+  (T b → P a0 → B) → (F b → P a1 → B) → P (if b then a0 else a1) → B
+ite-elim-lem _ true _ _ h0 _ h1 = h0 tt h1
+ite-elim-lem _ false _ _ _ h0 h1 = h0 tt h1 
 
 _≠_ : {A : Set} → A → A → Set 
 x ≠ y = ¬ (x ≡ y)
@@ -721,84 +724,84 @@ elim-eq-symm : ∀ {A : Set} {x : A} {y : A} (p : A → Set) → p y → x ≡ y
 elim-eq-symm p h0 refl = h0
 
 data Tree (A : Set) : Set where
-  leaf : A → Tree A
-  fork : Nat → Tree A → Tree A → Tree A 
+  nil : Tree A
+  fork : Nat → A → Tree A → Tree A → Tree A 
 
 size : {A : Set} → Tree A → Nat
-size (leaf _) = 1
-size (fork k _ _) = k
-
-lookup : {A : Set} → Nat → Tree A → A → A
-lookup 0 (leaf a) _ = a 
-lookup (suc _) (leaf _) a = a 
-lookup k (fork _ t s) a = 
-  if (k <n size t) then (lookup k t a) else (lookup (k - size t) s a)
+size nil = 0
+size (fork k _ _ _) = k
 
 add : {A : Set} → Tree A → A → Tree A
-add (leaf a) b = fork 2 (leaf a) (leaf b)
-add ts@(fork k t s) a =  
-  if ((size s) <n (size t))
-  then (fork (k + 1) t (add s a))
-  else (fork (k + 1) ts (leaf a))
+add nil a = fork 1 a nil nil 
+add ts@(fork k b t s) a =  
+  if ((size s) <ᵇ (size t))
+  then (fork (k + 1) b t (add s a))
+  else (fork (k + 1) a ts nil)
 
-from-add-fork : {A : Set} (r : Tree A → Set) (k : Nat) (t s : Tree A) (a : A) → 
-  r (add (fork k t s) a) → 
-  (r (fork (k + 1) t (add s a)) ∨ r (fork (k + 1) (fork k t s) (leaf a))) 
-from-add-fork r k t s a = from-ite r (size s <n size t) _ _
+add-fork-intro : {A : Set} (r : Tree A → Set) (k : Nat) (a b : A) (t s : Tree A) → 
+  (r (fork (k + 1) a t (add s b))) →  
+  (r (fork (k + 1) b (fork k a t s) nil)) → 
+  r (add (fork k a t s) b)  
+add-fork-intro r k a b t s h0 h1 = ite-intro (size s <ᵇ size t) r h0 h1
+
+from-add-fork : {A : Set} (r : Tree A → Set) (k : Nat) (t s : Tree A) (a b : A) → 
+  r (add (fork k b t s) a) → 
+  (r (fork (k + 1) b t (add s a)) ∨ r (fork (k + 1) a (fork k b t s) nil)) 
+from-add-fork r k t s a b = from-ite r (size s <ᵇ size t) _ _ 
 
 mem : {A : Set} → A → Tree A → Set
-mem a (leaf b) = a ≡ b
-mem a (fork _ t s) = mem a t ∨ mem a s
+mem _ nil = ⊥
+mem a (fork _ b t s) = mem a t ∨ (a ≡ b) ∨ mem a s
 
 from-mem-add : {A : Set} (t : Tree A) (a b : A) → mem a (add t b) → (mem a t ∨ (a ≡ b))
-from-mem-add (leaf c) a b = id
-from-mem-add (fork k t s) a b h0 = 
-  or-elim (from-add-fork (λ x → mem a x) k t s b h0)
-    ( or-elim' (intro-or-lft or-lft) λ h1 → 
-      or-elim (from-mem-add s a b h1) (intro-or-lft or-rgt) or-rgt )
-    id
-
+from-mem-add nil a b = or-elim' ⊥-elim (or-elim' or-rgt ⊥-elim)
+from-mem-add (fork k c t s) a b h0 = 
+  or-elim (from-add-fork (λ x → mem a x) k t s b c h0) 
+    ( or-elim' (intro-or-lft or-lft) 
+      ( or-elim' (intro-or-lft (intro-or-rgt or-lft)) 
+        λ h1 → 
+          or-elim (from-mem-add s a b h1) 
+            (intro-or-lft (intro-or-rgt or-rgt)) or-rgt ) ) 
+    (or-elim' or-lft (or-elim' or-rgt ⊥-elim))
+    
 all : {A : Set} (p : A → Set) (t : Tree A) → Set
 all p t = ∀ a → mem a t → p a
 
-all-sub-lft : {A : Set} (p : A → Set) (k : Nat) (t s : Tree A) → 
-  all p (fork k t s) → all p t 
-all-sub-lft p k t s h0 a h1 = h0 a (or-lft h1) 
+all-sub-lft : {A : Set} (p : A → Set) (k : Nat) (t s : Tree A) (a : A) → 
+  all p (fork k a t s) → all p t 
+all-sub-lft p k t s b h0 a h1 = h0 a (or-lft h1) 
 
-all-sub-rgt : {A : Set} (p : A → Set) (k : Nat) (t s : Tree A) → 
-  all p (fork k t s) → all p s
-all-sub-rgt p k t s h0 a h1 = h0 a (or-rgt h1) 
+all-sub-rgt : {A : Set} (p : A → Set) (k : Nat) (t s : Tree A) (a : A) → 
+  all p (fork k a t s) → all p s
+all-sub-rgt p k t s b h0 a h1 = h0 a (or-rgt (or-rgt h1)) 
 
 all-add : {A : Set} (p : A → Set) (t : Tree A) (a : A) → 
   all p t → p a → all p (add t a)
-all-add p (leaf b) a h0 h1 c h2 = 
-  or-elim h2 (elim-eq-symm p (h0 b refl)) (elim-eq-symm p h1)
-all-add p (fork k t s) a h0 h1 c = 
-  intro-ite (size s <n size t) (λ x → mem c x → p c) 
-    (or-elim' (all-sub-lft p k t s h0 c) (all-add p s a (all-sub-rgt p k t s h0) h1 c)) 
-    (or-elim' (h0 c) (elim-eq-symm p h1)) 
+all-add p t a h0 h1 c h2 = or-elim (from-mem-add t c a h2) (h0 c) (elim-eq-symm p h1)
 
 size-add : {A : Set} (t : Tree A) (a : A) → size (add t a) ≡ suc (size t)
-size-add (leaf b) a = refl
-size-add (fork k t s) a = 
-  intro-ite (size s <n size t) (λ x → size x ≡ suc k)
-    (+-comm k 1) (+-comm k 1)
+size-add nil a = refl
+size-add (fork k b t0 t1) a = 
+  add-fork-intro (λ x → size x ≡ suc k) k b a t0 t1 (+-comm k 1) (+-comm k 1)
   
-pos-size-add : {A : Set} (t : Tree A) (a : A) → 0 < size (add t a)
-pos-size-add t a = elim-eq-symm (λ x → 0 < x) (0<s _) (size-add t a)
+-- pos-size-add : {A : Set} (t : Tree A) (a : A) → 0 < size (add t a)
+-- pos-size-add t a = elim-eq-symm (λ x → 0 < x) (0<s _) (size-add t a)
+
+lookup : {A : Set} → Nat → Tree A → A → A
+lookup _ nil a = a 
+lookup k (fork _ b t s) a = 
+  tri k (lookup k t a) b (lookup (k - (size t + 1)) s a) (size t)
 
 mem-lookup : {A : Set} (t : Tree A) (k : Nat) (a : A) → 
   mem (lookup k t a) t ∨ (lookup k t a ≡ a)
-mem-lookup (leaf b) 0 _ = or-lft refl
-mem-lookup (leaf b) (suc k) a = or-rgt refl
-mem-lookup ts@(fork m t s) 0 a = 
-  intro-ite (0 <n size t) (λ x → mem x ts ∨ (x ≡ a)) 
-    (or-elim (mem-lookup t 0 a) (λ h0 → or-lft (or-lft h0)) or-rgt) 
-    (or-elim (mem-lookup s (0 - size t) a)  (λ h0 → or-lft (or-rgt h0)) or-rgt)
-mem-lookup ts@(fork m t s) (suc k) a =
-  intro-ite ((suc k) <n size t) (λ x → mem x ts ∨ (x ≡ a)) 
-    (or-elim (mem-lookup t (suc k) a) (λ h0 → or-lft (or-lft h0)) or-rgt) 
-    (or-elim (mem-lookup s ((suc k) - size t) a)  (λ h0 → or-lft (or-rgt h0)) or-rgt)
+mem-lookup nil _ _ = or-rgt refl
+mem-lookup t@(fork m b t0 t1) k a = 
+  tri-intro-lem k (size t0) (λ x → (mem x t ∨ (x ≡ a))) 
+    (λ _ → or-elim (mem-lookup t0 k a) (intro-or-lft or-lft) or-rgt) 
+    (λ _ → or-lft (or-rgt (or-lft refl))) 
+    ( λ _ → or-elim (mem-lookup t1 (k - (size t0 + 1)) a) 
+      (intro-or-lft (intro-or-rgt or-rgt))
+      or-rgt )
 
 pred-suc-eq-suc-pred : ∀ k → 0 < k → pred (suc k) ≡ suc (pred k)
 pred-suc-eq-suc-pred (suc k) h0 = refl
