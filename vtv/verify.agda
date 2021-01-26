@@ -8,9 +8,7 @@ open import Data.String
   using (_++_)
   using (concat)
 open import Data.Bool
-  renaming (not to bnot)
-  renaming (_∧_ to _&&_)
-  renaming (_∨_ to _||_)
+  hiding (not)
 open import Data.Unit
 open import Data.List
   renaming (lookup to lookup-list)
@@ -77,47 +75,47 @@ skip = pass tt
 
 -------- Admissability Check --------
 
-chk-good-ftr : Nat → Ftr → Bool
-chk-good-ftr k (nf m) = m <n k
-chk-good-ftr _ (sf _) = true
+check-good-ftr : Nat → Functor → Bool
+check-good-ftr k (nf m) = m <n k
+check-good-ftr _ (sf _) = true
 
-chk-good-termoid : {b : Bool} → Nat → Termoid b → Bool
-chk-good-termoid k (var _) = true
-chk-good-termoid k (fun f ts) = chk-good-ftr k f && chk-good-termoid k ts 
-chk-good-termoid k nil = true
-chk-good-termoid k (cons t ts) = chk-good-termoid k t && chk-good-termoid k ts
+check-good-termoid : {b : Bool} → Nat → Termoid b → Bool
+check-good-termoid k (var _) = true
+check-good-termoid k (fun f ts) = check-good-ftr k f ∧ check-good-termoid k ts 
+check-good-termoid k nil = true
+check-good-termoid k (cons t ts) = check-good-termoid k t ∧ check-good-termoid k ts
 
-chk-good-term : Nat → Term → Bool
-chk-good-term = chk-good-termoid 
+check-good-term : Nat → Term → Bool
+check-good-term = check-good-termoid 
 
-chk-good-terms : Nat → Terms → Bool
-chk-good-terms = chk-good-termoid 
+check-good-terms : Nat → Terms → Bool
+check-good-terms = check-good-termoid 
 
-chk-good-form : Nat → Form → Bool
-chk-good-form k (cst _) = true
-chk-good-form k (rel r ts) = chk-good-ftr k r && chk-good-terms k ts 
-chk-good-form k (not f) = chk-good-form k f 
-chk-good-form k (qtf _ f) = chk-good-form k f 
-chk-good-form k (bct _ f g) = chk-good-form k f && chk-good-form k g
+check-good-form : Nat → Formula → Bool
+check-good-form k (cst _) = true
+check-good-form k (rel r ts) = check-good-ftr k r ∧ check-good-terms k ts 
+check-good-form k (not f) = check-good-form k f 
+check-good-form k (qtf _ f) = check-good-form k f 
+check-good-form k (bct _ f g) = check-good-form k f ∧ check-good-form k g
 
-chk-gnd-termoid : {b : Bool} → Nat → Termoid b → Bool
-chk-gnd-termoid k (var m) = m <n k 
-chk-gnd-termoid k (fun _ ts) = chk-gnd-termoid k ts 
-chk-gnd-termoid k nil = true
-chk-gnd-termoid k (cons t ts) = chk-gnd-termoid k t && chk-gnd-termoid k ts
+check-gnd-termoid : {b : Bool} → Nat → Termoid b → Bool
+check-gnd-termoid k (var m) = m <n k 
+check-gnd-termoid k (fun _ ts) = check-gnd-termoid k ts 
+check-gnd-termoid k nil = true
+check-gnd-termoid k (cons t ts) = check-gnd-termoid k t ∧ check-gnd-termoid k ts
 
-chk-gnd-term : Nat → Term → Bool
-chk-gnd-term = chk-gnd-termoid 
+check-gnd-term : Nat → Term → Bool
+check-gnd-term = check-gnd-termoid 
 
-chk-gnd-terms : Nat → Terms → Bool
-chk-gnd-terms = chk-gnd-termoid 
+check-gnd-terms : Nat → Terms → Bool
+check-gnd-terms = check-gnd-termoid 
 
-chk-gnd-form : Nat → Form → Bool
-chk-gnd-form k (cst _) = true
-chk-gnd-form k (rel _ ts) = chk-gnd-terms k ts 
-chk-gnd-form k (not f) = chk-gnd-form k f 
-chk-gnd-form k (qtf _ f) = chk-gnd-form (suc k) f 
-chk-gnd-form k (bct _ f g) = chk-gnd-form k f && chk-gnd-form k g
+check-gnd-form : Nat → Formula → Bool
+check-gnd-form k (cst _) = true
+check-gnd-form k (rel _ ts) = check-gnd-terms k ts 
+check-gnd-form k (not f) = check-gnd-form k f 
+check-gnd-form k (qtf _ f) = check-gnd-form (suc k) f 
+check-gnd-form k (bct _ f g) = check-gnd-form k f ∧ check-gnd-form k g
 
 
 
@@ -160,7 +158,7 @@ read-spec-char c0 (c1 ∷ cs) =
     else stop ("char expected = " ++ fromChar c0 ++ ", char read = " ++ fromChar c1)
 read-spec-char _ = fail "read-spec-char fail : reached end of input string before endmarker"
 
-read-ftr : Read Ftr
+read-ftr : Read Functor
 read-ftr = 
   ( do read-spec-char '#' 
        k ← read-nat 
@@ -201,7 +199,7 @@ read-bct =
   (read-spec-char '>' >> pass imp) <|> 
   (read-spec-char '=' >> pass iff) 
 
-read-form : Nat → Read Form
+read-form : Nat → Read Formula
 read-form (suc k) = 
   (read-bool >>= λ b → pass (cst b)) <|>
   ( do read-spec-char '$'
@@ -220,20 +218,20 @@ read-form (suc k) =
        pass (bct b f g) ) 
 read-form 0 = fail "read-form fail"
 
-read-af : Nat → Read Form
+read-af : Nat → Read Formula
 read-af k =  do
   (read-chars >> (read-bool >>= pass-if)) 
   f ← read-form k 
-  pass-if (chk-good-form 0 f)
+  pass-if (check-good-form 0 f)
   read-spec-char '0' 
   pass f
 
-Bch = Tree Form 
+Sequent = Tree Formula 
 
-nth : Nat → Bch → Form 
+nth : Nat → Sequent → Formula 
 nth k B = lookup k B ⊤*
 
-read-bch-core : Nat → Bch → Read Bch
+read-bch-core : Nat → Sequent → Read Sequent
 read-bch-core (suc k) B = 
   (read-spec-char '.' >> pass B) <|> 
   ( do read-spec-char ',' 
@@ -241,20 +239,20 @@ read-bch-core (suc k) B =
        read-bch-core k (add B f) )
 read-bch-core 0 _ = fail "read-bch-core fail"
 
-read-bch : Read Bch
+read-bch : Read Sequent
 read-bch cs = read-bch-core (length cs) nil cs
 
-data Prf : Set where
-  rule-a : Nat → Bool → Prf → Prf
-  rule-b : Nat → Prf → Prf → Prf
-  rule-c : Nat → Term → Prf → Prf
-  rule-d : Nat → Prf → Prf
-  rule-n : Nat → Prf → Prf
-  rule-s : Form → Prf → Prf → Prf
-  rule-t : Form → Prf → Prf
-  rule-x : Nat → Nat → Prf 
+data Proof : Set where
+  rule-a : Nat → Bool → Proof → Proof
+  rule-b : Nat → Proof → Proof → Proof
+  rule-c : Nat → Term → Proof → Proof
+  rule-d : Nat → Proof → Proof
+  rule-n : Nat → Proof → Proof
+  rule-s : Formula → Proof → Proof → Proof
+  rule-t : Formula → Proof → Proof
+  rule-x : Nat → Nat → Proof 
 
-read-prf-core : Nat → Read Prf
+read-prf-core : Nat → Read Proof
 read-prf-core (suc k) = 
   ( do read-spec-char 'A' 
        i ← read-nat 
@@ -294,16 +292,16 @@ read-prf-core (suc k) =
        pass (rule-x i j) ) 
 read-prf-core 0 = fail "read-prf fail"
 
-read-prf : Read Prf
+read-prf : Read Proof
 read-prf cs = read-prf-core (length cs) cs
 
-refl-axiom : Form 
+refl-axiom : Formula 
 refl-axiom = ∀* (var 0 =* var 0)
 
-symm-axiom : Form 
+symm-axiom : Formula 
 symm-axiom = ∀* (∀* ((var 1 =* var 0) →* (var 0 =* var 1)))
 
-trans-axiom : Form 
+trans-axiom : Formula 
 trans-axiom = ∀* (∀* (∀* ((var 2 =* var 1) →* ((var 1 =* var 0) →* (var 2 =* var 0)))))
 
 mono-args-lft : Nat → Terms 
@@ -314,62 +312,62 @@ mono-args-rgt : Nat → Terms
 mono-args-rgt 0 = nil 
 mono-args-rgt (suc k) = cons (var (k * 2)) (mono-args-rgt k)
 
-chk-mono-fun : Nat → Nat → Form → Bool
-chk-mono-fun k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) =
-  (c =c '=') && chk-mono-fun k (suc m) f
-chk-mono-fun k m (rel (sf (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) =
-  (c =c '=') && chk-good-ftr (suc k) f0 && (ftr-eq f0 f1 && (terms-eq ts0 (mono-args-lft m) && terms-eq ts1 (mono-args-rgt m)))
-chk-mono-fun _ _ _ = false
+check-mono-fun : Nat → Nat → Formula → Bool
+check-mono-fun k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) =
+  (c =c '=') ∧ check-mono-fun k (suc m) f
+check-mono-fun k m (rel (sf (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) =
+  (c =c '=') ∧ check-good-ftr (suc k) f0 ∧ (ftr-eq f0 f1 ∧ (terms-eq ts0 (mono-args-lft m) ∧ terms-eq ts1 (mono-args-rgt m)))
+check-mono-fun _ _ _ = false
 
-chk-mono-rel : Nat → Nat → Form → Bool
-chk-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = 
-  (c =c '=') && chk-mono-rel k (suc m) f
-chk-mono-rel k m (bct imp (rel r0 ts0) (rel r1 ts1)) = 
-  (chk-good-ftr (suc k) r0) && (ftr-eq r0 r1) && (terms-eq ts0 (mono-args-lft m)) && (terms-eq ts1 (mono-args-rgt m))
-chk-mono-rel _ _ _ = false
+check-mono-rel : Nat → Nat → Formula → Bool
+check-mono-rel k m (qtf false (qtf false (bct imp (rel (sf (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = 
+  (c =c '=') ∧ check-mono-rel k (suc m) f
+check-mono-rel k m (bct imp (rel r0 ts0) (rel r1 ts1)) = 
+  (check-good-ftr (suc k) r0) ∧ (ftr-eq r0 r1) ∧ (terms-eq ts0 (mono-args-lft m)) ∧ (terms-eq ts1 (mono-args-rgt m))
+check-mono-rel _ _ _ = false
 
-chk-vars-lt-termoid : ∀ {b} → Nat → Termoid b → Bool
-chk-vars-lt-termoid {true} _ nil = true
-chk-vars-lt-termoid {true} k (cons t ts) = 
-  chk-vars-lt-termoid k t && chk-vars-lt-termoid k ts 
-chk-vars-lt-termoid {false} k (var m) = m <n k
-chk-vars-lt-termoid {false} k (fun _ ts) = chk-vars-lt-termoid k ts
+check-vars-lt-termoid : ∀ {b} → Nat → Termoid b → Bool
+check-vars-lt-termoid {true} _ nil = true
+check-vars-lt-termoid {true} k (cons t ts) = 
+ check-vars-lt-termoid k t ∧ check-vars-lt-termoid k ts 
+check-vars-lt-termoid {false} k (var m) = m <n k
+check-vars-lt-termoid {false} k (fun _ ts) = check-vars-lt-termoid k ts
 
-chk-vars-lt-form : Nat → Form → Bool 
-chk-vars-lt-form k (cst _) = true
-chk-vars-lt-form k (not f) = chk-vars-lt-form k f
-chk-vars-lt-form k (bct _ f g) = chk-vars-lt-form k f && chk-vars-lt-form k g
-chk-vars-lt-form k (qtf _ f) = chk-vars-lt-form (suc k) f
-chk-vars-lt-form k (rel _ ts) = chk-vars-lt-termoid k ts
+check-vars-lt-form : Nat → Formula → Bool 
+check-vars-lt-form k (cst _) = true
+check-vars-lt-form k (not f) = check-vars-lt-form k f
+check-vars-lt-form k (bct _ f g) = check-vars-lt-form k f ∧ check-vars-lt-form k g
+check-vars-lt-form k (qtf _ f) = check-vars-lt-form (suc k) f
+check-vars-lt-form k (rel _ ts) = check-vars-lt-termoid k ts
 
-chk-choice : Nat → Nat → Form → Bool
-chk-choice k m (qtf false f) = chk-choice k (suc m) f
-chk-choice k m (bct imp (qtf true f) g) = 
-  chk-good-form k f && chk-vars-lt-form (suc m) f && 
-  ( form-eq (subst-form 0 (skm-term-asc k m) f) g || 
-    form-eq (subst-form 0 (skm-term-desc k m) f) g ) 
-chk-choice _ _ _ = false
+check-choice : Nat → Nat → Formula → Bool
+check-choice k m (qtf false f) = check-choice k (suc m) f
+check-choice k m (bct imp (qtf true f) g) = 
+ check-good-form k f ∧ check-vars-lt-form (suc m) f ∧ 
+  ( formula-eq (subst-form 0 (skm-term-asc k m) f) g ∨  
+    formula-eq (subst-form 0 (skm-term-desc k m) f) g ) 
+check-choice _ _ _ = false
 
-chk-pred-def : Nat → Nat → Form → Bool
-chk-pred-def k a (qtf false f) = chk-pred-def k (suc a) f
-chk-pred-def k a (bct iff (rel (nf m) ts) f) = 
-  (k =n m) && (chk-good-form k f) && (chk-vars-lt-form a f) && 
-    (terms-eq ts (vars-asc a) || terms-eq ts (vars-desc a))
-chk-pred-def _ _ _ = false
+check-pred-def : Nat → Nat → Formula → Bool
+check-pred-def k a (qtf false f) = check-pred-def k (suc a) f
+check-pred-def k a (bct iff (rel (nf m) ts) f) = 
+  (k =n m) ∧ (check-good-form k f) ∧ (check-vars-lt-form a f) ∧ 
+    (terms-eq ts (vars-asc a) ∨ terms-eq ts (vars-desc a))
+check-pred-def _ _ _ = false
 
-chk-jst : Nat → Form → Bool
-chk-jst k f =  
-  form-eq f (cst true) ||
-  form-eq f (not (cst false)) ||
-  form-eq f refl-axiom ||
-  form-eq f symm-axiom || 
-  form-eq f trans-axiom || 
-  chk-mono-rel k 0 f || 
-  chk-mono-fun k 0 f || 
-  chk-choice k 0 f ||
-  chk-pred-def k 0 f 
+check-adm : Nat → Formula → Bool
+check-adm k f =  
+  formula-eq f (cst true) ∨
+  formula-eq f (not (cst false)) ∨ 
+  formula-eq f refl-axiom ∨
+  formula-eq f symm-axiom ∨ 
+  formula-eq f trans-axiom ∨ 
+ check-mono-rel k 0 f ∨ 
+ check-mono-fun k 0 f ∨ 
+ check-choice k 0 f ∨ 
+ check-pred-def k 0 f 
 
-apply-a : Bool → Form → Form 
+apply-a : Bool → Formula → Formula 
 apply-a false  (bct and f _) =  f
 apply-a true (bct and _ f) =  f
 apply-a false  (not (bct or f _)) =  (not f)
@@ -380,19 +378,23 @@ apply-a false  (bct iff f g) =  (bct imp f g)
 apply-a true (bct iff f g) =  (bct imp g f)
 apply-a _ _ = cst true
 
-apply-b : Form → (Form × Form)
-apply-b (bct or f g) = (f , g) 
-apply-b (not (bct and f g)) =  (not f , not g) 
-apply-b (bct imp f g) =  (not f , g)
-apply-b (not (bct iff f g)) =  (not (bct imp f g) , not (bct imp g f))
-apply-b _ = (⊤* , ⊤*)
+apply-b : Bool → Formula → Formula 
+apply-b false (bct or f g) = f
+apply-b false (not (bct and f g)) = not f 
+apply-b false (bct imp f g) = not f 
+apply-b false (not (bct iff f g)) = not (bct imp f g) 
+apply-b true  (bct or f g) = g
+apply-b true  (not (bct and f g)) = not g
+apply-b true  (bct imp f g) = g
+apply-b true  (not (bct iff f g)) = not (bct imp g f)
+apply-b _ _ = ⊤* 
 
-apply-c : Term → Form → Form
+apply-c : Term → Formula → Formula
 apply-c t (qtf false f) =  (subst-form 0 t f)
 apply-c t (not (qtf true f)) =  (not (subst-form 0 t f))
 apply-c _ _ = ⊤*
 
-apply-d : Nat → Form → Form
+apply-d : Nat → Formula → Formula
 apply-d k (qtf true f) =  (subst-form 0 (par k) f)
 apply-d k (not (qtf false f)) =  (not (subst-form 0 (par k) f))
 apply-d _ _ = ⊤*
@@ -402,25 +404,26 @@ res-and (cont _ cs) (cont _ _) = cont tt cs
 res-and (stop s) _ = stop s
 res-and (cont _ _) (stop s) = stop s
 
-apply-n : Form → Form
+apply-n : Formula → Formula
 apply-n (not (not f)) =  f
 apply-n _ = ⊤*
 
-verify : Bch → Prf → Bool
-verify B (rule-a i b p) = verify (add B (apply-a b (nth i B))) p
-verify B (rule-b i p q) = 
-  let (g , h) = apply-b (nth i B) in
-  (verify (add B g) p) && (verify (add B h) q) 
-verify B (rule-c i t p) = 
-  chk-good-term (suc (size B)) t && verify (add B (apply-c t (nth i B))) p
-verify B (rule-d i p) = verify (add B (apply-d (size B) (nth i B))) p
-verify B (rule-n i p) = verify (add B (apply-n (nth i B))) p
-verify B (rule-s f p q) = 
-  chk-good-form (suc (size B)) f && verify (add B (not f)) p && verify (add B f) q
-verify B (rule-t f p) =
-  chk-jst (size B) f && verify (add B f) p
-verify B (rule-x i j) = form-eq (nth i B) (not (nth j B))
-
+verify : Sequent → Proof → Bool
+verify Γ (rule-a i b p) = verify (add Γ (apply-a b (nth i Γ))) p
+verify Γ (rule-b i p q) = 
+  (verify (add Γ (apply-b false (nth i Γ))) p) ∧ 
+  (verify (add Γ (apply-b true (nth i Γ))) q) 
+verify Γ (rule-c i t p) = 
+  check-good-term (suc (size Γ)) t ∧ 
+  verify (add Γ (apply-c t (nth i Γ))) p
+verify Γ (rule-d i p) = verify (add Γ (apply-d (size Γ) (nth i Γ))) p
+verify Γ (rule-n i p) = verify (add Γ (apply-n (nth i Γ))) p
+verify Γ (rule-s ϕ p q) = 
+  check-good-form (suc (size Γ)) ϕ ∧ 
+  verify (add Γ (not ϕ)) p ∧ verify (add Γ ϕ) q
+verify Γ (rule-t ϕ p) =
+  check-adm (size Γ) ϕ ∧ verify (add Γ ϕ) p
+verify Γ (rule-x i j) = formula-eq (nth i Γ) (not (nth j Γ))
 parse-verify : Chars → Chars → Bool 
 parse-verify cs-bch cs-prf =
   elim-res 
