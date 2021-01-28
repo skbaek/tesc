@@ -12,4 +12,7 @@ vtv/latex/*.log
 vtv/latex/*.blg
 vtv/latex/*.out
 vtv/latex/*.fdb_latexmk
+bench/*.tar.gz
+bench/proofs/
+bench/solutions/
 temp
