@@ -54,5 +54,3 @@ main([]) :-
   main([vampire,verified]),
   main([eprover,fast]),
   main([eprover,verified]).
-
-main([foo]) :- check_name(vampire, verified, 'SYO525+1.018').
