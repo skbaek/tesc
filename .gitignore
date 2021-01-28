@@ -3,4 +3,13 @@ t3p
 *.agdai
 vtv/MAlonzo
 vtv/vtv
+vtv/latex/*.ptb
+vtv/latex/*.bbl
+vtv/latex/*.aux
+vtv/latex/*.gz
+vtv/latex/*.fls
+vtv/latex/*.log
+vtv/latex/*.blg
+vtv/latex/*.out
+vtv/latex/*.fdb_latexmk
 temp

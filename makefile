@@ -6,7 +6,7 @@ t3p_rs: FORCE
 t3p_pl: FORCE
 	swipl --goal=main --stand_alone=true -o t3p -c t3p.pl 
 
-vtv: vtv/vtv.agda vtv/verify.agda vtv/basic.agda 
+vtv: vtv/vtv.agda vtv/verify.lagda vtv/basic.lagda 
 	cd ./vtv/ && agda --compile vtv.agda 
 
 FORCE: ;

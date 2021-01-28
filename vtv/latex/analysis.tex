@@ -1,0 +1,18 @@
+\begin{table}
+  \centering
+  \begin{tabular}{|c|cc|}
+    \hline
+    \multirow{2}{*}{A} & \input{a0} & \input{a1} \\ \cline{2-3} 
+                       & \multicolumn{2}{c|}{For any other $b$ and $\phi$, $A(b,\phi) = \top$} \\ \hline
+    \multirow{2}{*}{B} & \input{b0} & \input{b1} \\ \cline{2-3} 
+                       & \multicolumn{2}{c|}{For any other $b$ and $\phi$, $B(b,\phi) = \top$} \\ \hline
+    \multirow{2}{*}{C} & $C(t, \forall \phi) = \phi [0 \mapsto t]$ & $C(t, \lnot \exists \phi) = \lnot \phi [0 \mapsto t]$ \\ \cline{2-3} 
+                       & \multicolumn{2}{c|}{For any other $t$ and $\phi$, $C(t,\phi) = \top$} \\ \hline
+    \multirow{2}{*}{D} & $D(k, \exists \phi) = \phi [0 \mapsto \idf{k}(\cdot)]$) & $D(k, \lnot \forall \phi) = \lnot \phi [0 \mapsto \idf{k}(\cdot)]$ \\ \cline{2-3} 
+                       & \multicolumn{2}{c|}{For any other $k$ and $\phi$, $D(k,\phi) = \top$} \\ \hline
+    \multirow{2}{*}{N} & \multicolumn{2}{c|}{$N(\lnot \lnot \phi) = \phi$} \\ \cline{2-3} 
+                       & \multicolumn{2}{c|}{For any other $\phi$, $N(\phi) = \top$} \\ \hline
+  \end{tabular}
+  \caption{Formula analysis functions.}
+  \label{tab:analysis}
+\end{table}

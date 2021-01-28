@@ -1,0 +1,32 @@
+\begin{table}
+  \begin{tabular}{|c|c|} \hline
+  Rule & Conditions \\ \hline
+  \multirow{2}{*}{\axm{\Gamma, A(b,\Gamma[i])} \rlb{$A$} \unr{\Gamma} \DisplayProof} & 
+    \multirow{2}{*}{} 
+  \\ & \\ 
+  \hline
+  \multirow{2}{*}{\axm{ \Gamma, B(0, \Gamma [i])} \axm{ \Gamma, B(1, \Gamma [i])} \rlb{$B$} \bnr{ \Gamma} \DisplayProof} &
+    \multirow{2}{*}{} 
+  \\ & \\ \hline
+  \multirow{2}{*}{\axm{ \Gamma, C(t, \Gamma [i])} \rlb{$C$} \unr{ \Gamma} \DisplayProof} & 
+    \multirow{2}{*}{$\lfi(t) \le \size(\Gamma)$} 
+  \\ & \\ \hline
+  \multirow{2}{*}{\axm{\Gamma,\ D(\size(\Gamma), \Gamma [i])} \rlb{$D$} \unr{ \Gamma} \DisplayProof} & 
+    \multirow{2}{*}{} 
+  \\ & \\ \hline
+  \multirow{2}{*}{\axm{ \Gamma, N(\Gamma [i])} \rlb{$N$} \unr{ \Gamma} \DisplayProof} & 
+   \multirow{2}{*}{} 
+  \\ & \\ \hline
+  \multirow{2}{*}{\axm{ \Gamma, \lnot \phi} \axm{ \Gamma, \phi}  \rlb{$S$} \bnr{ \Gamma} \DisplayProof} &
+  \multirow{2}{*}{$\lfi(\phi) \le \size(\Gamma)$}
+  \\ & \\ \hline
+  \multirow{2}{*}{\axm{ \Gamma, \phi} \rlb{$T$} \unr{ \Gamma} \DisplayProof} &
+    \multirow{2}{*}{$\lfi(\phi) \le \size(\Gamma),\ \adm(\size(\Gamma), \phi)$} \\ & \\ 
+  \hline
+  \multirow{2}{*}{\axm{} \rlb{$X$} \unr{ \Gamma} \DisplayProof} & 
+    \multirow{2}{*}{$\exists i . \exists j . (\Gamma [i] = \lnot \Gamma [j])$} \\ & \\ 
+  \hline
+  \end{tabular}
+  \caption{TESC inference rules.}
+  \label{tab:inf-rules}
+\end{table} 
