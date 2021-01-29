@@ -25,8 +25,8 @@
 \input{unicode}
 
 \pgfplotsset{compat=1.14}
-\definecolor{verif}{HTML}{019529}
-\definecolor{fast}{HTML}{0C06F7}
+\definecolor{VTV}{HTML}{019529}
+\definecolor{OTV}{HTML}{0C06F7}
 
 \algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\rhd$ #1}
 \algdef{SE}[SUBALG]{Indent}{EndIndent}{}{\algorithmicend\ }%
@@ -138,7 +138,7 @@ including interactive theorem provers, SAT solvers, and SMT solvers.
 
 One area in which similar developments have been conspicuously absent is 
 first-order automated theorem provers (ATPs), where the lack of a machine-checkable
-proof format precluded any simple independent verifiers, much less a
+proof format precluded any simple independent verifiers, let alone a
 formally verified one. The Theory-Extensible Sequent Calculus (TESC) is a new 
 proof format for first-order ATPs designed to address this gap. In particular,
 the format's small set of fined-grained inference rules makes it 
@@ -200,40 +200,12 @@ unverified checker.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The self-verification of HOL Light showed that 
-
-
-
-
-
- Verified LRAT checkers, self-verification of HOL Light and Metamath-0
-
-
 \section{Conventions}
-
-
 
 `Its largest functor index is smaller than its size'' is a mouthful, we 
 simply say that a sequent $\Gamma$ is \textit{good} iff $\lfi(\Gamma) < \size(\Gamma)$.
 
 Define 'functor'
-Define 'DTV'
 
 \section{Proof Calculus} \label{sec:format} 
 
@@ -427,47 +399,85 @@ taken in faith.
 
 \section{Test Results} \label{sec:test-results}
 
-\input{chart}
 
-The performance of VTV was compared against the default TESC verifier 
-included in T3P  by running them on all elligible TPTP problems and 
-measuring their verification times. A TPTP problem is elligible if it 
-satisfies all of the following:
+The performance of VTV was tested by running it on all elligible problems 
+in the TPTP \cite{} problem library. A TPTP problem is elligible if it 
+satisfies all of the following conditions (parenthesized numbers indicate 
+the total number of problems that satisfy all of the preceding conditions).
 \begin{itemize}
-  \item It is in the CNF or FOF language. 
-  \item Its status is `theorem' or `unsatisfiable'.
-  \item It can be solved by either Vampire or E in one minute using default settings.
-  \item The TSTP solution produced by Vampire or E can be compiled to a TESC proof by T3P.
+  \item It is in the CNF or FOF language (23291). 
+  \item Its status is `theorem' or `unsatisfiable' (13636).
+  \item It conforms to the official TPTP syntax. More precisely, 
+    it does not have any occurrences of the charater `\%' in the 
+    \verb|sq_char| syntactic class, as required by the TPTP syntax.
+    This is important because T3P assumes that the input TPTP problem 
+    is syntactically correct and uses `\%' as an endmarker (13389).
+  \item All of its formulas have unique names. T3P requires this condition 
+    in order to unambiguously identify formulas by their names during 
+    proof compilation (13119).
+  \item It can be solved by Vampire or E in one minute using 
+    default settings (Vampire = 7885, E = 4853).
+  \item The TSTP solution produced by Vampire or E can be compiled to 
+    a TESC proof by T3P (Vampire = 7792, E = 4504).
 \end{itemize}
-If a problem was solved by both Vampire and E and successfully compiled 
-by T3P, both of the resulting TESC proof files were used for the test.
-There were a total of 12296 elligible problems. Finally, there were 3 
-problems that were excluded due to memory constraints, which we will
-discuss shortly. The remaining 12293 problems were used for the test.
+The resulting 7792 + 4504 = 12296 proofs were used for testing VTV.
+All tests were performed on Amazon EC2 \texttt{r5a.large} instances, 
+running Ubuntu Server 20.04 LTS on 2.5 GHz AMD EPYC 7000 processors with 
+16 GB RAM. For more information on the exact testing setup, refer to...
 
-All tests were performed on Amazon EC2 \texttt{r5a.xlarge} instances, running Ubuntu Server 20.04 LTS on 2.5 GHz AMD EPYC 7000 processors with 32 GB RAM and 512 GB SSD.
+Out of the 12296 proofs, there were 5 proofs that VTV failed to verify 
+due to exhausting the 16 GB available memory. A cactus plot of verification 
+times for the remaining 12291 proofs are shown in Fig. \ref{fig:time}. 
+As a reference point, we also show the plot for the default TESC verifier 
+included in the T3P tool running on the same proofs. The default TESC verifier 
+is written in Rust, and is optimized for performance with no regard to 
+verification. For convenince, we refer to it as the Optimized TESC Verifier (OTV).
 
-The test results are shown in Fig. \ref{fig:chart}. Verification by VTV is
-slower than the default verifier, which is expected as the latter is implemented 
-with no regard to verification and optimized solely for performance.
-In relative terms, the median and mean verification times for VTV were 
-1.146 and 3.537 times longer than that of the default verifier, respectively. 
-However, the difference in \textit{absolute} terms is small enough that it is 
-probably insignificant for most cases: the difference in median times is a
-mere 6 milliseconds, and VTV can verify 99.3\% of all proofs under 5 seconds.
-So the performance difference should not be an impediment as long as users 
-aren't verifying a large batch of proofs or one of the few, hard outliers.
+\input{timechart}
 
-The main downside of VTV is its high memory consumption; VTV failed to check
-the aforementioned 5 proofs due to exhausting the 16 GB available RAM.
+VTV is slower than OTV as expected, but the difference is unlikely
+to be noticed in actual use since the total times are dominated by a few 
+outliers and the absolute times for most proofs are very short: the median 
+time for VTV is 40 ms, which is only 10 ms behind the OTV's 30 ms. Also,
+VTV verified >97.4\% of proofs under 1 second, and >99.3\% under 5 seconds. 
+But OTV's mean time (54.54 ms) is still much shorter than that of VTV (218.93 ms),
+so users may prefer OTV for verifying one of the hard outliers or processing
+a batch large of proofs at once.
 
+The main drawback of VTV is its high memory consumption. Fig. \ref{fig:mem} shows
+the peak memory usages of the two verifiers. For a large majority of proofs, 
+memory usage for both verifiers are stable and stays within the 14-20 MB range,
+but VTV spikes earlier and higher than OTV. Due the limit of the system used,
+memory usage could only be measured up to 16 GB, but the actual peak for VTV 
+would be higher if we included the 5 failed verifications. A separate test running 
+VTV on an EC2 instance with 64 GB ram (\texttt{r5a.2xlarge}) still failed for 3 of 
+the 5 problematic proofs, so we may assume that the memory requirement 
+for verifying all 12296 proofs with VTV is >64 GB. In contrast, OTV could verify all 
+12296 proofs with less than 3.2 GB of peak memory usage.
 
-
+\input{memchart}
 
 \section{Conclusion}  \label{sec:conclusion}
 
-what is not verified (parser \& code generation)
+VTV increases our confidence in the correctness of TESC proofs by providing an 
+alternative that users can fall back on whenever extra rigour is required.
+It also helps the design of other TESC verifiers by serving as 
+a reference implementation that is guaranteed to be correct. It should be 
+particularly helpful for implementing other verified TESC verifiers in, say,  
+Lean or Coq, since many of the issues we've discussed (termination checking, 
+data structures, etc.) are shared between these languages. 
 
+There are two main ways in which VTV could be further improved. Curbing its 
+memory usage would be the most important prerequisite for making it the 
+default verifier in T3P. This may require porting VTV to a verified programming
+language with finer low-level control over memory usage, e.g. ATS.
+
+VTV could also benefit from a more reliable TPTP parser. A formally verified 
+parser would be ideal, but the complexity of TPTP's syntax makes it difficult  
+to even \textit{specify} the correctness of a parser, let alone prove it. 
+A more realistic approach would be imitating the technique used by verified LRAT checkers, 
+making VTV return the parsed problem in a temporary file and textually comparing it 
+with the original problem file.
 
 \bibliographystyle{plain}
 
