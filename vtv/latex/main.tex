@@ -188,10 +188,6 @@ subset of inferences used by ATPs and an unverified checker.
 
 \section{Proof Calculus} \label{set:proof-calc} 
 
-% As its name suggests, the TESC proof format is based on a first-order 
-% sequent calculus. Compared to typical first-order sequent calculi, the
-% TESC calculus includes some oddities which facilitates mechanical proof 
-% construction and verification. 
 The syntax of the TESC calculus is as follows:
 \begin{align*}
 f ::= &\ \sigma\ |\ \idf{k}\\
@@ -200,8 +196,8 @@ t ::= &\ x_k\ |\ f(\vec{t})\\
 \phi ::= &\ \top\ |\ \bot\ |\ f(\vec{t})\ |\ \lnot \phi\ |\ \phi \lor \chi\ |\ \phi \land \chi\ |\ \phi \to \chi\ |\ \phi \leftrightarrow \chi\ |\ \forall \phi\ |\ \exists \phi\\
 \Gamma ::= &\ \cdot\ |\ \Gamma, \phi
 \end{align*}
-$f$ ranges over \textit{functors}, which are usually called `non-logical symbols.'
-The TESC calculus makes no distinction
+$f$ ranges over \textit{functors}, which usually called `non-logical symbols' in
+other presentations of first-order logic. The TESC calculus makes no distinction
 between function and relation symbols, and relies on the context to determine whether 
 a symbol applied to arguments is a term or an atomic formula. For brevity, we borrow
 the umbrella term `functor' from the TPTP syntax and use it to refer to any non-logical symbol.
@@ -218,14 +214,14 @@ without costly searches over a large number of terms and formulas.
 $t$ ranges over terms, $\vec{t}$ over lists of terms, $\phi$ over formulas, and
 $\Gamma$ over sequents.
 Quantified formulas are written without variables thanks to the use of De Bruijn 
-indices \cite{de1972lambda}; the number $k$ in variable $x$ is its De Bruijn index. 
+indices \cite{de1972lambda}; the number $k$ in variable $x_k$ is its De Bruijn index. 
 
 Formalization of TESC syntax in Agda is mostly straightforward, but with one 
 caveat: the first-instinct definition of terms as 
 \ExecuteMetaData[wrongterm.tex]{wrongterm}
 works poorly in practice, since any structural recursion on terms immediately 
-runs into non-termination issues. We could try to manually prove termination,
-but it is much simpler to sidestep this issue with a pseudo-mutual recursion:
+runs into non-termination issues. Although it is possible to manually prove 
+termination, it is much simpler to sidestep this issue with a pseudo-mutual recursion:
 \ExecuteMetaData[basic.tex]{termstar}
 which lets us define terms and lists of terms as
 \ExecuteMetaData[basic.tex]{termterms}
@@ -237,7 +233,7 @@ The inference rules of the TESC calculus are shown in Table \ref{tab:inf-rules}.
 The $A$,$B$,$C$,$D$, and $N$ rules are the \textit{analytic} rules which analyze  
 existing formulas on the sequent and adds resulting subformulas to the new 
 sequent (we are reading the proof tree in the bottom-up direction).
-The formula analysis functions used in analytic rules are given in Table 
+The formula analysis functions used by rules are given in Table 
 \ref{tab:faf}. Notice that the analytic rules are very similar to 
 Smullyan's \textit{uniform notation} for analytic tableaux, which is where 
 they get their names from. Note that: 
@@ -287,7 +283,7 @@ to the constructors of \AgdaFunction{Proof}.
 Since \AgdaFunction{Proof} only includes basic information regarding inference 
 rule applications, the verifier function for \AgdaFunction{Proof} must construct 
 intermediate sequents as it recurses down a proof, and also check that inference 
-rule arguments (e.g., the term $t$ of a $C$-rule application) satisfy their side 
+rule arguments (e.g., the term $t$ of a $C$ rule application) satisfy their side 
 conditions. This is exactly what \AgdaFunction{verify} does:
 \ExecuteMetaData[verify.tex]{verify}
 Analytic rules introduce new formulas obtained by formula analysis using 
@@ -307,7 +303,7 @@ For VTV, we cut corners by taking advantage of the fact that (1) formulas
 are never deleted from sequents, and (2) new formulas are always added to the 
 end of sequents. This allows us to use a simple tree structure:
 \ExecuteMetaData[basic.tex]{tree}
-For any tree \AgdaInductiveConstructor{fork} \AgdaBound{k} \AgdaBound{b} \AgdaBound{t} \AgdaBound{s},
+For any tree \AgdaInductiveConstructor{fork} \AgdaBound{k} \AgdaBound{a} \AgdaBound{t} \AgdaBound{s},
 the number \AgdaBound{k} is the size of the left subtree \AgdaBound{t}. 
 This property is not guaranteed to hold by construction,
 but it is easy to ensure that it always holds in practice. With this definition,
@@ -373,7 +369,7 @@ Now we can define (un)satisfiability of sequents in terms of formula valuations:
 \ExecuteMetaData[sound.tex]{sat}
 The \AgdaFunction{respects-eq}\AgdaSpace{}\AgdaBound{R} clause asserts that the
 relation assignment \AgdaBound{R} respects equality. This condition is necessary
-because we are targeting first-order logic with equality; we are only 
+because we are targeting first-order logic with equality, and we are only 
 interested in interpretations that satisfy all equality axioms.
 
 VTV's formalization of first-order semantics is atypical in that (1) every functor
@@ -383,7 +379,7 @@ open as well as closed formulas. But this is completely harmless for our purpose
 whenever a traditional interpretation (with unique arities for each functor and no 
 variable assignment) $M$ satisfies a set of sentences $\Gamma$, $M$ can be easily extended 
 to an interpretation in the above sense that still satisfies $\Gamma$, since the 
-truths of sentences in $\Gamma$ are not affected by functors or variables that do not 
+truths of sentences in $\Gamma$ are unaffected by functors or variables that do not 
 occur in them. Therefore, if a set of sentences is unsatisfiable in the sense we've
 defined above, it is also unsatisfiable in the usual sense. 
 
@@ -413,7 +409,6 @@ taken on faith.
 
 
 \section{Test Results} \label{sec:test-results}
-
 
 The performance of VTV was tested by running it on all eligible problems 
 in the TPTP \cite{sutcliffe2009tptp} problem library. A TPTP problem is eligible if it 
