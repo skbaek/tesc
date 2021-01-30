@@ -180,17 +180,11 @@ There has been several different approaches to verifying the output of ATPs, but
 For instance, GDV \cite{sutcliffe2006semantic} works by breaking down an ATP-generated 
 solution into small subproblems and re-solving them with multiple unverified ATPs. 
 Foundational Proof Certificates \cite{chihani2013foundational} is a system that could 
-be used to specify proof formats and implement proof checkers for first-order ATPs,
-but its actual implementation \cite{chihani2015proof} has been limited to a small 
+be used to specify proof formats and implement proof checkers for first-order ATPs.
+Its actual implementation, however, \cite{chihani2015proof} has been limited to a small 
 subset of inferences used by ATPs and an unverified checker.
 
 
-\section{Conventions}
-
-`Its largest functor index is smaller than its size'' is a mouthful, we 
-simply say that a sequent $\Gamma$ is \textit{good} iff $\lfi(\Gamma) < \size(\Gamma)$.
-
-Define 'functor'
 
 \section{Proof Calculus} \label{set:proof-calc} 
 
