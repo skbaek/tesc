@@ -51,7 +51,7 @@
 \newcommand{\Prob}[0]{\mathit{prob}}
 \newcommand{\idf}[1]{\#_{#1}} 
 \newcommand{\fresh}[1]{\mathit{fresh}_{\#}({#1})} 
-\newcommand{\mfi}[0]{\mathrm{mfi}} 
+\newcommand{\lfi}[0]{\mathrm{lfi}} 
 \newcommand{\Dec}[1]{\xRightarrow{#1}} 
 \newcommand{\bprf}[0]{\begin{prooftree}}
 \newcommand{\eprf}[0]{\end{prooftree}}
@@ -65,7 +65,6 @@
 \newcommand{\sq}[1]{\text{`#1'}} 
 
 \newcommand{\size}[0]{\mathrm{size}}
-\newcommand{\lfi}[0]{\mathrm{lfi}} 
 \newcommand{\adm}[0]{\mathrm{adm}}
 
  
@@ -104,100 +103,87 @@
 
 \begin{abstract}
 
-This paper introduces the Verified TESC Verifier (VTV), a formally verified 
-checker for the new Theory-Extensible Sequent Calculus (TESC) proof format for first-order ATPs. VTV accepts a
-TPTP problem and a TESC proof as input, and uses the latter to verify the 
-unsatisfiability of the former. VTV is written in Agda, and the soundness 
-of its proof-checking kernel is verified in respect to a first-order
+The Verified TESC Verifier (VTV) is a formally verified checker for the new 
+Theory-Extensible Sequent Calculus (TESC) proof format for first-order ATPs. 
+VTV accepts a TPTP problem and a TESC proof as input, and uses the latter to 
+verify the unsatisfiability of the former. VTV is written in Agda, and the 
+soundness of its proof-checking kernel is verified in respect to a first-order
 semantics formalized in Agda. VTV shows robust performance in a comprehensive 
-test using all elligible problems from the TPTP problem library, 
-successfully verifying all but the 3 largest proofs out of 12296 proofs,
-with >97\% of the proofs verified under 1 second. 
-
-
-
+test using all elligible problems from the TPTP problem library, successfully 
+verifying all but the largest 5 of 12296 proofs, with >97\% of the 
+proofs verified under 1 second. 
 
 \end{abstract}
-
 
 \section{Introduction}
 
 Modern automated reasoning tools are highly complex software whose correctness 
-cannot be easily established. Numerous bugs have been discovered in them
-in the past, and more are presumably hidden in sytems used today. One popular 
-strategy for coping with the possibility of errors in automated reasoning is the 
-\textit{De Brujin} criterion \cite{barendregt2005challenge}, which states that 
-automated reasoning software should produce `proof objects' which can be 
+is no simple matter to establish. Bugs have been discovered in them in the past 
+\cite{reger2017testing,harrison2006towards}, and more are presumably hidden in 
+sytems used today. One popular strategy for coping with the possibility of errors 
+in automated reasoning is the \textit{De Brujin} criterion \cite{barendregt2005challenge}, 
+which states that automated reasoning software should produce `proof objects' which can be 
 independently verified by simple checkers that users can easily understand 
 and trust. In addition to reducing the trust base of theorem provers, 
-adherence to the De Bruijn criterion comes with the additional benefit that the 
+the De Bruijn criterion comes with the additional benefit that the 
 small trusted core is often simple enough to be formally verified themselves. 
 Such thoroughgoing verification is far from universal, but there has been notable 
-progress toward this goal in various subfields of automated reasonning, 
-including interactive theorem provers, SAT solvers, and SMT solvers.
+progress toward this goal in various subfields of automated reasoning, including 
+interactive theorem provers, SAT solvers, and SMT solvers.
 
 One area in which similar developments have been conspicuously absent is 
 first-order automated theorem provers (ATPs), where the lack of a machine-checkable
-proof format precluded any simple independent verifiers, let alone a
-formally verified one. The Theory-Extensible Sequent Calculus (TESC) is a new 
-proof format for first-order ATPs designed to address this gap. In particular,
-the format's small set of fined-grained inference rules makes it 
-straightforward to implement and verify its proof checker.
+proof format \cite{reger2017checkable} precluded any simple independent verifiers, 
+let alone a formally verified one. The Theory-Extensible Sequent Calculus (TESC) is a new 
+proof format for first-order ATPs designed to fill this gap. In particular,
+the format's small set of fined-grained inference rules makes it relatively 
+easy to implement and verify its proof checker.
 
 This paper presents the Verified TESC Verifier (VTV), a proof checker for  
-the TESC format written and verified in Agda \cite{}. 
-The aim of the paper is twofold:
-primary aim = provide confidence in the TESC proof format. The statement and 
-proof of VTV's soundness shows exactly what is entailed by a successful
-verification of a TESC proof. Hopes of increased developer interest in the new format 
-Secondary aim = a guide for understanding the VTV codebase and possibly implementing 
-your own TESC verifier, especially in dependently typed languages such as Lean or Coq.
+the TESC format written and verified in Agda \cite{bove2009brief}. 
+The aim of the paper is twofold. Its primary purpose is to demonstrate the 
+reliability of TESC proofs by showing precisely what is established by their successful 
+verification using VTV. Its secondary aim is to serve as a guide for understanding 
+VTV's codebase and its design choices, which can be especially useful for readers 
+who want to implement their own TESC verifiers.
 
 The rest of the paper is organized as follows:
-Section \ref{sec:format} describes the syntax and inference rules 
-of the TESC proof calculus.
-Section \ref{sec:verifier} presents the main TESC verifier, and
-Section \ref{sec:correctness} deals with the statement and proof of verifier
-correctness. 
-Sections \ref{sec:format}, \ref{sec:verifier}, and \ref{sec:correctness} 
-are also accompanied by code excerpts and discussions of the Agda 
-formalization of their respective contents. 
-Section \ref{sec:test-results} shows results of empirical tests that compare 
-the performance of VTV against the default TESC verifier written in Rust. 
-Section \ref{sec:rel-works} briefly surveys related works. Section 
-\ref{sec:conclusion} gives a summary and discusses potential future work.
+Section \ref{sec:rel-works} gives a brief survey of simlar works and how VTV relates to them.
+Section \ref{set:proof-calc} describes the syntax and inference rules of the TESC proof calculus.
+Section \ref{sec:verifier} presents the main TESC verifier kernel, and
+Section \ref{sec:soundness} gives a detailed specification of the verifier's soundness property.
+Sections \ref{set:proof-calc}, \ref{sec:verifier}, and \ref{sec:soundness} also include code 
+excerpts and discuss how their respective contents are formalized in Agda.
+Section \ref{sec:test-results} shows the  results of empirical tests measuring VTV's performance.
+Section \ref{sec:conclusion} gives a summary and touches on potential future work.
 
 \section{Related Works} \label{sec:rel-works}
 
-SAT solving is arguably the most developed subfield of automated reasoning
-in terms of proof checker certification. A non-exhaustive list of verified 
-verifiers for SAT proof formats include... 
+SAT solving is arguably the most developed subfield of automated reasoning in terms of 
+verified proof checkers. A non-exhaustive list of SAT proof formats with verified checkers
+include RAT \cite{heule2013verifying}, RUP and IORUP \cite{heule2014bridging},
+LRAT \cite{cruz2017lrat}, and GRIT \cite{cruz2017grit}. In the related field of SMT solving,
+the SMTCoq project \cite{armand2011modular} also uses a proof checker implemented and
+verified in the Coq proof assistant.
 
-Despite the hard limits imposed by Goedel's second incompleteness theorem \cite{},
+Despite the limitations imposed by G\"odel's second incompleteness theorem \cite{godel1931formal},
 there has been interesting work toward self-verification of interactive 
 theorem prover kernels. All of HOL Light except the axiom of infinity has been 
-proven consistent in HOL Light itself \cite{}, which allows us to consider HOL Light
-consistent for most practical proofs (i.e., any proof that is not artificially 
-contrived to exploit the missing axiom). More recent work on Metamath Zero \cite{}
-aims to verify not only a large part of Metamath Zero's logic, but also its 
-implementation down to the level of x84-64 instruction set architecture. 
-
-The SMTCoq project \cite{} also includes a checker for SMT proofs that has been 
-formally verified in and extracted from Coq.
+proven consistent in HOL Light itself \cite{harrison2006towards}, which allows us to consider HOL Light
+consistent for most proofs in practice. More recent work on the Metamath Zero \cite{carneiro2019metamath}
+theorem prover aims to not only verify a large part of Metamath Zero's logic in itself, 
+but also its implementation down to the level of x84-64 instruction set architecture. 
 
 VTV is designed to serve a role similar to these verified checkers for first-order ATPs
 and the TESC format.
-There has been several different approaches to verifying the output of ATPs, but (to the
-extent of my knowledge) none has featured a proof format with a verified checker. 
-For instance, GDV \cite{} works by breaking down an ATP-generated solution into small 
-subproblems and re-solving them with multiple ATPs. The redundancy of multiple ATPs 
-provides more reliability than any single solver, but there isn't much that can be 
-verified about the operation of GDV short of verifying the highly complex ATPs used.  
-Foundational Proof Certificates \cite{} is a system that could potentially be used to 
-specify proof formats and implement proof checkers for first-order ATPs, but its actual 
-implementation has been limited to specification of the paramodulation rule and an 
-unverified checker.
-
+There has been several different approaches to verifying the output of ATPs, but 
+(to the extent of my knowledge) none has used a proof format with a verified checker. 
+For instance, GDV \cite{sutcliffe2006semantic} works by breaking down an ATP-generated 
+solution into small subproblems and re-solving them with multiple unverified ATPs. 
+Foundational Proof Certificates \cite{chihani2013foundational} is a system that could 
+be used to specify proof formats and implement proof checkers for first-order ATPs,
+but its actual implementation \cite{chihani2015proof} has been limited to a small 
+subset of inferences used by ATPs and an unverified checker.
 
 
 \section{Conventions}
@@ -207,30 +193,39 @@ simply say that a sequent $\Gamma$ is \textit{good} iff $\lfi(\Gamma) < \size(\G
 
 Define 'functor'
 
-\section{Proof Calculus} \label{sec:format} 
+\section{Proof Calculus} \label{set:proof-calc} 
 
-As its name suggests, the TESC proof format is based on a first-order 
-sequent calculus. Compared to typical first-order sequent calculi, the
-TESC calculus includes some oddities which facilitates mechanical proof 
-construction and verification. The syntax of TESC terms and formulas are 
-as follows:
+% As its name suggests, the TESC proof format is based on a first-order 
+% sequent calculus. Compared to typical first-order sequent calculi, the
+% TESC calculus includes some oddities which facilitates mechanical proof 
+% construction and verification. 
+The syntax of the TESC calculus is as follows:
 \begin{align*}
 f ::= &\ \sigma\ |\ \idf{k}\\
 t ::= &\ x_k\ |\ f(\vec{t})\\
-\vec{t} ::= &\ \cdot\ |\ t, \vec{t}\\
-\phi ::= &\ \top\ |\ \bot\ |\ f(\vec{t})\ |\ \lnot \phi\ |\ \phi \lor \chi\ |\ \phi \land \chi\ |\ \phi \to \chi\ |\ \phi \leftrightarrow \chi\ |\ \forall \phi\ |\ \exists \phi
+\vec{t} ::= &\ \cdot\ |\ \vec{t}, t\\
+\phi ::= &\ \top\ |\ \bot\ |\ f(\vec{t})\ |\ \lnot \phi\ |\ \phi \lor \chi\ |\ \phi \land \chi\ |\ \phi \to \chi\ |\ \phi \leftrightarrow \chi\ |\ \forall \phi\ |\ \exists \phi\\
+\Gamma ::= &\ \cdot\ |\ \Gamma, \phi
 \end{align*}
-$t$ ranges over terms, $\vec{t}$ over lists of terms, and $\phi$ over formulas.
-Quantified formulas are written without variables due to the use of De Bruijn 
-indices \cite{}; the number $k$ in variable $x$ is its De Bruijn index. 
-$f$ and $r$ are regular function and relation symbols. Symbols of the 
-form $\idf{k}$ are \textit{indexed functors}, a special syntactic class
-which may be used as either function or relation symbols. The number $k$ of 
-a indexed functor $\idf{k}$ is its \textit{functor index}. Indexed 
-functors are used to ensure that a newly introduced function or relation 
-symbol is fresh: if you know that $k$ is the largest functor index that 
-occurs in the current environment, you may safely use $\idf{k+1}$ as a 
-fresh symbol without having to search through the enviroment.
+$f$ ranges over \textit{functors}, which are usually called `non-logical symbols.'
+The TESC calculus makes no distinction
+between function and relation symbols, and relies on the context to determine whether 
+a symbol applied to arguments is a term or an atomic formula. For brevity, we borrow
+the umbrella term `functor' from the TPTP syntax and use it to refer to any non-logical symbol.
+There are two types of functors: $\sigma$ ranges over \textit{plain functors}, 
+which you can think of as the usual relation or function symbols. We assume that there 
+is a suitable set of symbols $\Sigma$, and let $\sigma \in \Sigma$.
+
+Symbols of the form $\idf{k}$ are \textit{indexed functors}, and the number $k$ is 
+called the \textit{functor index} of $\idf{k}$. Indexed functors are used to reduce 
+the cost of introducing fresh functors: if you keep track of the largest functor index
+$k$ that occurs in the environment, you may safely use $\idf{k+1}$ as a fresh functor
+without costly searches over a large number of terms and formulas.
+
+$t$ ranges over terms, $\vec{t}$ over lists of terms, $\phi$ over formulas, and
+$\Gamma$ over sequents.
+Quantified formulas are written without variables thanks to the use of De Bruijn 
+indices \cite{de1972lambda}; the number $k$ in variable $x$ is its De Bruijn index. 
 
 Formalization of TESC syntax in Agda is mostly straightforward, but with one 
 caveat: the first-instinct definition of terms as 
@@ -243,33 +238,46 @@ which lets us define terms and lists of terms as
 \ExecuteMetaData[basic.tex]{termterms}
 
 \input{inf-rules.tex}
-\input{analysis.tex}
+\input{faf.tex}
 
 The inference rules of the TESC calculus are shown in Table \ref{tab:inf-rules}.
-The $A$,$B$,$C$,$D$, and $N$ rules are \textit{analytic} rules which analyze  
+The $A$,$B$,$C$,$D$, and $N$ rules are the \textit{analytic} rules which analyze  
 existing formulas on the sequent and adds resulting subformulas to the new 
 sequent (we are reading the proof tree in the bottom-up direction).
 The formula analysis functions used in analytic rules are given in Table 
-\ref{tab:analysis}. Notice that the analytic rules are very similar to 
+\ref{tab:faf}. Notice that the analytic rules are very similar to 
 Smullyan's \textit{uniform notation} for analytic tableaux, which is where 
-they get their names from. $\Gamma[i]$ denotes the $i$th formula of sequent 
-$\Gamma$, where $\Gamma[i] = \top$ if the index $i$ is out-of-bounds. 
-$S$ is the usual cut rule, and $X$ is the axiom or init rule. $T$ is an 
-extensible rule which may be used to add any formula that is admissible 
-(hence the side condition $\adm(k,\phi)$)
-in respect to the target theory. The current version of TESC only targets
-equality, so the $T$ rule may be used to introduce equality axioms,
-fresh relation symbol definitions, and choice axioms. $\mfi(x)$ denotes 
-the largest functor index occuring in $x$. The mfi conditions for $C$, 
-$S$, and $T$ rules are necessary to ensure that the invariant 
-$\mfi(\Gamma) < \len(\Gamma)$ is preserved for any sequent $\Gamma$, 
-where $\len(\Gamma)$ is the length of $\Gamma$.
+they get their names from. Note that: 
+\begin{itemize}
+  \item $\Gamma[i]$ denotes the (0-based) $i$th formula of sequent $\Gamma$, 
+    where $\Gamma[i] = \top$ if the index $i$ is out-of-bounds. 
+  \item $\lfi(x)$ denotes the largest functor index (lfi) occuring in $x$. 
+    If $x$ incudes no functor indices, $\lfi(x) = -1$.
+  \item $\size(\Gamma)$ is the number of formulas in $\Gamma$.
+  \item All inference rules are designed to preserve the invariant
+    $\lfi(\Gamma) < \size(\Gamma)$ for every sequent $\Gamma$. We say that 
+    a sequent $\Gamma$ is \textit{good} if it satisfies this invariant.
+  \item $S$ is the usual cut rule, and $X$ is the axiom or init rule. 
+  \item $\adm(k,\phi)$ asserts that $\phi$ is an \textit{admissable} formula in 
+    respect to the target theory and sequent size $k$. More precisely, if $T$ 
+    is the target theory, $\Gamma$ is a sequent satisfiable modulo $T$, and 
+    $\size(\Gamma) = k$, then $\adm(k,\phi)$ implies that adding $\phi$ to 
+    $\Gamma$ preserves satisfiability modulo $T$. The sequent size argument $k$ 
+    is required becuase some admissable formulas use this number as the functor 
+    index of newly introduced indexed functors. The $T$ rule may be used to add 
+    any admissable formula.
+\end{itemize}
+The last part implies that the definition of the admissability predicate, and by 
+extension the definition of well-formed TESC proofs, changes according to the implicit 
+target theory. This is the `theory-extensible' part of TESC. The current version of 
+VTV verifies basic TESC proofs that target the theory of equality, so it allows $T$ 
+rules to introduce equality axioms, fresh relation symbol definitions, and choice axioms.
+But VTV can be easily modified in a modular way to target other theories as well.
 
 TESC proofs are formalized in Agda as follows:
 \ExecuteMetaData[verify.tex]{proof}
-
-Note that there are parts of TESC proofs omitted in the definition of 
-\verb|Proof|, e.g. sequents. This is a design choice made in favor of
+There are parts of TESC proofs omitted in the definition of 
+\AgdaFunction{Proof}, e.g. sequents. This is a design choice made in favor of
 efficient space usage. Since proofs are uniquely determined by their
 root sequents + complete information of the inference rules used,
 TESC proof files save space by omitting any components that can be 
@@ -277,52 +285,51 @@ constructed on the fly during verification, which includes all intermediate
 sequents and formulas introduced by analytic rules. Terms of the type 
 \AgdaFunction{Proof} are constructed by parsing input TESC files, 
 so it only includes information stored in TESC files, which are the arguments 
-to the constructors of \verb|Proof|.
+to the constructors of \AgdaFunction{Proof}.
 
 
 
-\section{Verifier} \label{sec:verifier} 
+\section{The Verifier} \label{sec:verifier} 
 
-Since \verb|Proof| only includes basic information regarding inference rule 
-applications, the verifier function for \verb|Proof| must construct 
-intermediate sequents as it recurses down 
-a proof, and also check that inference rule arguments (e.g., the term $t$ 
-of a $C$-rule application) satisfy their side conditions. There are no 
-surprises in the definition of \verb|verify|: 
+Since \AgdaFunction{Proof} only includes basic information regarding inference 
+rule applications, the verifier function for \AgdaFunction{Proof} must construct 
+intermediate sequents as it recurses down a proof, and also check that inference 
+rule arguments (e.g., the term $t$ of a $C$-rule application) satisfy their side 
+conditions. This is exactly what \AgdaFunction{verify} does:
 \ExecuteMetaData[verify.tex]{verify}
 Analytic rules introduce new formulas obtained by formula analysis using 
-\verb|apply| functions, and side conditions are checked using appropriate 
-\verb|check| functions. The argument type \verb|Sequent|, however, offers 
-some interesting design choices. What kind of data structures should be 
-used to encode sequents? The first version of VTV used lists, which
-is an intuitive choice based on the linear structure of sequents. But with 
-practically-sized problems, lists immediately become a bottleneck due to 
-their poor random access speeds. The default TESC verifier uses arrays, 
-but arrays are hard to come by and even more difficult to reason about in 
-dependently typed languages like Agda. Self-balancing trees like AVL or 
-red-black trees come somewhere between lists and arrays in terms of 
-convenience and performance, but it can be tedious to prove basic properties 
-of such trees if those proofs are not available in your language of 
-choice, which is also the case for Agda and its standard library.
+\AgdaFunction{analyze} functions, and side conditions are checked using appropriate 
+\AgdaFunction{?} functions. The argument type \AgdaFunction{Sequent}, however, 
+offers some interesting design choices. What kind of data structures should be used 
+to encode sequents? The first version of VTV used lists, but lists immediately become 
+a bottleneck with practically-sized problems due to their poor random access speeds. 
+The default TESC verifier included in the TPTP-TSTP-TESC Processor (T3P) tool uses arrays, 
+but arrays are hard to come by and even more difficult to reason about in dependently 
+typed languages like Agda. Self-balancing trees like AVL or red-black trees come 
+somewhere between lists and arrays in terms of convenience and performance, but it 
+can still be tedious to prove basic facts about them if those proofs are not 
+available in your language of choice, as is the case for Agda's standard library.
 
 For VTV, we cut corners by taking advantage of the fact that (1) formulas 
 are never deleted from sequents, and (2) new formulas are always added to the 
 end of sequents. This allows us to use a simple tree structure:
 \ExecuteMetaData[basic.tex]{tree}
-For any tree \verb|fork k a t s|, the number \verb|k| is the size of the  
-left subtree \verb|t|. This property is not guaranteed to hold by construction,
+For any tree \AgdaInductiveConstructor{fork} \AgdaBound{k} \AgdaBound{b} \AgdaBound{t} \AgdaBound{s},
+%k\verb|fork k a t s|, 
+the number \AgdaBound{k} is the size of the left subtree \AgdaBound{t}. 
+This property is not guaranteed to hold by construction,
 but it is easy to ensure that it always holds in practice. With this definition,
 balanced addition of elements to trees becomes trivial:
 \ExecuteMetaData[basic.tex]{add}
-Then the type \verb|Sequent| can be defined as \verb|Tree Formula|.
+Then the type \AgdaFunction{Sequent} can be defined as \AgdaFunction{Tree Formula}.
 
 
 
-\section{Correctness} \label{sec:correctness}
+\section{Soundness} \label{sec:soundness}
 
-In order to verify the correctness of \verb|verify|, we first need to formalize a 
-a first-order semantics against which it can be correct. Although most of it is 
-is routine, there are somem features particular to the formalization for VTV.
+In order to verify the soundness of \AgdaFunction{verify}, we first need to formalize 
+a first-order semantics that it can be sound in respect to. Most of the formalization 
+is routine, but it also includes some oddities particular to VTV.
 
 One awkward issue that recurs in formalization of first-order semantics is the 
 handling of arities. Given that each functor has a unique arity,
@@ -337,20 +344,21 @@ of other functors that share the name $f$ and has arities $0, 1, ..., k-1, k+1, 
 ad infinitum. With this assumption, the denotation of functors can be 
 simply defined as 
 \ExecuteMetaData[sound.tex]{relfun}
-A \verb|Rel| (resp. \verb|Fun|) is a collection of an infinite number of 
-relations (resp. functions), one for each arity. Interpretations are  
-assignments of functors to \verb|Rel| and \verb|Fun|, plus assignments of
-variables to the domain of discourse. Note that \verb|VA| may simply assign 
-denotations to \verb|Nat| due to the use of Bruijn indices. 
-\ExecuteMetaData[sound.tex]{rafava}
-Now that we have first-order interpretations, we can define the value 
-of terms and forms under an interpretation. Term valuation requires a bit of
-ingenuity due to the unusual definition of \verb|Term*|:
+A \AgdaFunction{Rels} (resp. \AgdaFunction{Funs}) can be thought of as a 
+collection of an infinite number of relations (resp. functions), one for 
+each arity. A interpretation is an assignments of \AgdaFunction{Rels} and 
+\AgdaFunction{Funs} to functors.
+\ExecuteMetaData[sound.tex]{rafa}
+variable assignments simply assign denotations to \AgdaFunction{Nat}, since variables are 
+identified by their Bruijn indices.
+\ExecuteMetaData[sound.tex]{va}
 
+We can now define the valuation of terms and forms under interpretations and 
+variable assignments. Term valuation requires a bit of ingenuity due to the 
+unusual definition of \verb|Term*|:
 \ExecuteMetaData[sound.tex]{termval}
-
-Formula valuation recurses down the structure of \verb|Formula|, and maps 
-each logical connective to its equivalent in Agda's \verb|Set|.
+Formula valuation recurses down the structure of \AgdaFunction{Formula}, and maps 
+each logical connective to its equivalent in Agda's \AgdaFunction{Set}.
 \ExecuteMetaData[sound.tex]{formval}
 \verb|V/0↦x| is an variable assignment update which assigns a new denotation 
 to the zeroth variable, and pushes all other assignments up by one. I.e.,
@@ -388,7 +396,7 @@ into a \AgdaFunction{Sequent} and a \AgdaFunction{Proof}, and calls \AgdaFunctio
 The soundness statement for \AgdaFunction{parse-verify} is as follows:
 \ExecuteMetaData[sound.tex]{parse-verify-sound}
 \AgdaFunction{parse-verify-sound} is an improvement over \AgdaFunction{verify-sound},
-but it also shows the limitation of the current setup. We know that there is 
+but it also shows the limitation of the current setup. It asserts that there is 
 \textit{some} unsatisfiable \AgdaFunction{Sequent} parsed from the input characters, 
 but we have no guarantees that this sequent is actually equivalent to the original
 TPTP file. This means that the formal verification of VTV is limited to the soundness 
@@ -438,46 +446,46 @@ verification. For convenince, we refer to it as the Optimized TESC Verifier (OTV
 VTV is slower than OTV as expected, but the difference is unlikely
 to be noticed in actual use since the total times are dominated by a few 
 outliers and the absolute times for most proofs are very short: the median 
-time for VTV is 40 ms, which is only 10 ms behind the OTV's 30 ms. Also,
+time for VTV is 40 ms, a mere 10 ms behind the OTV's 30 ms. Also,
 VTV verified >97.4\% of proofs under 1 second, and >99.3\% under 5 seconds. 
 But OTV's mean time (54.54 ms) is still much shorter than that of VTV (218.93 ms),
 so users may prefer OTV for verifying one of the hard outliers or processing
-a batch large of proofs at once.
+a large batch of proofs at once.
 
 The main drawback of VTV is its high memory consumption. Fig. \ref{fig:mem} shows
 the peak memory usages of the two verifiers. For a large majority of proofs, 
 memory usage for both verifiers are stable and stays within the 14-20 MB range,
-but VTV spikes earlier and higher than OTV. Due the limit of the system used,
-memory usage could only be measured up to 16 GB, but the actual peak for VTV 
+but VTV's memory usage spikes both earlier and higher than OTV. Due the limit of 
+the system used, memory usage could only be measured up to 16 GB, but the actual peak for VTV 
 would be higher if we included the 5 failed verifications. A separate test running 
 VTV on an EC2 instance with 64 GB ram (\texttt{r5a.2xlarge}) still failed for 3 of 
-the 5 problematic proofs, so we may assume that the memory requirement 
-for verifying all 12296 proofs with VTV is >64 GB. In contrast, OTV could verify all 
-12296 proofs with less than 3.2 GB of peak memory usage.
+the 5 problematic proofs, so the memory requirement for verifying all 12296 proofs 
+with VTV is at least >64 GB. In contrast, OTV could verify all 
+12296 proofs with less than 3.2 GB of memory.
 
 \input{memchart}
 
 \section{Conclusion}  \label{sec:conclusion}
 
-VTV increases our confidence in the correctness of TESC proofs by providing an 
-alternative that users can fall back on whenever extra rigour is required.
-It also helps the design of other TESC verifiers by serving as 
-a reference implementation that is guaranteed to be correct. It should be 
-particularly helpful for implementing other verified TESC verifiers in, say,  
-Lean or Coq, since many of the issues we've discussed (termination checking, 
-data structures, etc.) are shared between these languages. 
+VTV can serve as a fallback option whenever extra rigour is required in verification, 
+thereby increasing our confidence in the correctness of TESC proofs. 
+It also helps the design of other TESC verifiers by providing a reference 
+implementation that is guaranteed to be correct. It should be particularly helpful 
+for implementing other verified TESC verifiers in, say, Lean or Coq, since many 
+of the issues we've discussed (termination checking, data structures, etc.) 
+are common to these languages. 
 
 There are two main ways in which VTV could be further improved. Curbing its 
 memory usage would be the most important prerequisite for making it the 
 default verifier in T3P. This may require porting VTV to a verified programming
-language with finer low-level control over memory usage, e.g. ATS.
+language with finer low-level control over memory usage. 
 
 VTV could also benefit from a more reliable TPTP parser. A formally verified 
 parser would be ideal, but the complexity of TPTP's syntax makes it difficult  
 to even \textit{specify} the correctness of a parser, let alone prove it. 
-A more realistic approach would be imitating the technique used by verified LRAT checkers, 
-making VTV return the parsed problem in a temporary file and textually comparing it 
-with the original problem file.
+A more realistic approach would be imitating the technique used by verified 
+LRAT checkers \cite{heule2017efficient}, making VTV print the parsed problem 
+and textually comparing its with the original problem.
 
 \bibliographystyle{plain}
 

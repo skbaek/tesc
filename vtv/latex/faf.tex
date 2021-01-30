@@ -1,0 +1,56 @@
+\begin{table}
+    \centering
+    \begin{tabular}{|c|cc|}
+    \hline
+    A & 
+    {
+      $\begin{aligned}
+        A(0, \lnot (\phi \lor \psi)) =&\ \lnot \phi\\ 
+        A(0, \phi \land \psi) =&\ \phi\\ 
+        A(0, \lnot (\phi \to \psi)) =&\ \phi\\ 
+        A(0, \phi \liff \psi) =&\ \phi \limp \psi
+      \end{aligned}$
+    } &  
+    {
+      $\begin{aligned}
+        A(1, \lnot (\phi \lor \psi)) =&\ \lnot \psi\\
+        A(1, \phi \land \psi) =&\  \psi\\
+        A(1, \lnot (\phi \to \psi)) =&\  \lnot \psi\\
+        A(1, \phi \liff \psi) =&\  \psi \limp \phi
+      \end{aligned}$
+    } 
+    \\ \hline
+    B &
+    {
+      $\begin{aligned}
+        B(0, \phi \lor \psi) =&\  \phi\\ 
+        B(0, \lnot (\phi \land \psi)) =&\  \lnot \phi\\ 
+        B(0, \phi \to \psi) =&\  \lnot \phi\\ 
+        B(0, \lnot (\phi \liff \psi)) =&\  \lnot \phi \limp \psi
+      \end{aligned}$
+    } &  
+    {
+      $\begin{aligned}
+        B(1, \phi \lor \psi) =&\  \psi\\
+        B(1, \lnot (\phi \land \psi)) =&\  \lnot \psi\\
+        B(1, \phi \to \psi) =&\  \psi\\
+        B(1, \lnot (\phi \liff \psi)) =&\  \lnot \psi \limp \phi
+      \end{aligned}$
+    } 
+    \\ \hline
+    C & 
+    $C(t, \forall \phi) = \phi [0 \mapsto t]$ &
+    $C(t, \lnot \exists \phi) = \lnot \phi [0 \mapsto t]$
+     \\ \hline
+    D & 
+    $D(k, \exists \phi) = \phi [0 \mapsto \idf{k}(\cdot)]$) &
+    $D(k, \lnot \forall \phi) = \lnot \phi [0 \mapsto \idf{k}(\cdot)]$ 
+    \\ \hline
+    \end{tabular}
+      \caption{
+        Formula analysis functions. For any arguments not explicitly defined above, 
+        the functions all return $\top$. E.g., $A(0, \phi \lor \psi) = \top$.
+      }
+      \label{tab:faf}
+    \end{table}
+    

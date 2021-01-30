@@ -67,18 +67,22 @@ Funs = List D → D
 \end{code}
 %</relfun>
 
-%<*rafava>
+%<*rafa>
 \begin{code}
 RA : Set 
 RA = Functor → Rels 
 
 FA : Set
 FA = Functor → Funs
+\end{code}
+%</rafa>
 
+%<*va>
+\begin{code}
 VA : Set 
 VA = Nat → D
 \end{code}
-%</rafava>
+%</va>
 
 \begin{code}
 const-fun : D → Funs 
