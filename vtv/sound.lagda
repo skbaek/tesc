@@ -115,10 +115,6 @@ _/_↦f_ : FA → Functor → Funs → FA
 
 _/_↦_ : VA → Nat → D → VA 
 (V / k ↦ d) m = tri k (V (pred m)) d (V m) m
-\end{code}
-
-%<*formval>
-\begin{code}
 _,_,_⊨_ : RA → FA → VA → Formula → Set
 R , F , V ⊨ (cst b) = T b 
 R , F , V ⊨ (not ϕ) = ¬ (R , F , V ⊨ ϕ)
@@ -126,11 +122,18 @@ R , F , V ⊨ (bct or ϕ ψ) = (R , F , V ⊨ ϕ) ⊎ (R , F , V ⊨ ψ)
 R , F , V ⊨ (bct and ϕ ψ) = (R , F , V ⊨ ϕ) × (R , F , V ⊨ ψ)
 R , F , V ⊨ (bct imp ϕ ψ) = (R , F , V ⊨ ϕ) → (R , F , V ⊨ ψ)
 R , F , V ⊨ (bct iff ϕ ψ) = (R , F , V ⊨ ϕ) ↔ (R , F , V ⊨ ψ)
+\end{code}
+
+%<*univ-val>
+\begin{code}
 R , F , V ⊨ (qtf false ϕ) = ∀ x → (R , F , (V / 0 ↦ x) ⊨ ϕ)
+\end{code}
+%</univ-val>
+
+\begin{code}
 R , F , V ⊨ (qtf true ϕ) = ∃ λ x → (R , F , (V / 0 ↦ x) ⊨ ϕ)
 R , F , V ⊨ (rel r ts) = T (R r (term*-val F V ts))
 \end{code}
-%</formval>
 
 %<*respects-eq>
 \begin{code}
@@ -142,13 +145,13 @@ respects-eq R = ∀ x y → (T (R (plain [ '=' ]) (x ∷ y ∷ [])) ↔ (x ≡ y
 %<*sat>
 \begin{code}
 satisfies : RA → FA → VA → Sequent → Set
-satisfies R F V B = ∀ f → mem f B → R , F , V ⊨ f
+satisfies R F V Γ = ∀ ϕ → ϕ ∈ Γ → R , F , V ⊨ ϕ
 
 sat : Sequent → Set
-sat B = ∃ λ R → ∃ λ F → ∃ λ V → (respects-eq R × satisfies R F V B)
+sat Γ = ∃ λ R → ∃ λ F → ∃ λ V → (respects-eq R × satisfies R F V Γ)
 
 unsat : Sequent → Set
-unsat B = ¬ (sat B)
+unsat Γ = ¬ (sat Γ)
 \end{code}
 %</sat>
 
@@ -160,7 +163,7 @@ f => g = ∀ R F V → (R , F , V ⊨ bct imp f g)
 
 -------- nth --------
 
-mem-nth : ∀ B k → mem (nth k B) B ⊎ (nth k B ≡ ⊤*)
+mem-nth : ∀ B k → (nth k B) ∈ B ⊎ (nth k B ≡ ⊤*)
 mem-nth B k = or-elim (mem-lookup B k ⊤*) inj₁ inj₂
 
 satisfies-nth : ∀ R F V B k → satisfies R F V B → R , F , V ⊨ nth k B
@@ -189,7 +192,7 @@ formula-lfi< k (bct _ f g) = formula-lfi< k f × formula-lfi< k g
 formula-lfi< k (qtf _ f) = formula-lfi< k f
 
 good : Sequent → Set
-good B = ∀ f → mem f B → formula-lfi< (size B) f
+good B = ∀ f → f ∈ B → formula-lfi< (size B) f
 
 fi<s : ∀ k f → fi< k f → fi< (suc k) f
 fi<s k (indexed m) h = <-trans h (n<sn _) 

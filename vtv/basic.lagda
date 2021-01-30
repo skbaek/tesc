@@ -412,9 +412,9 @@ eq-trans _ refl refl = refl
 eq-symm : ∀ {A : Set} {x : A} {y : A} → x ≡ y → y ≡ x
 eq-symm refl = refl
 
-_∈_ : {A : Set} → A → List A → Set
-a0 ∈ [] = ⊥ 
-a0 ∈ (a1 ∷ as) = (a0 ≡ a1) ⊎ (a0 ∈ as)
+-- _∈_ : {A : Set} → A → List A → Set
+-- a0 ∈ [] = ⊥ 
+-- a0 ∈ (a1 ∷ as) = (a0 ≡ a1) ⊎ (a0 ∈ as)
 
 rt : Set → Bool
 rt A = lem-elim A (λ _ → true) (λ _ → false)
@@ -738,14 +738,14 @@ from-add-fork : {A : Set} (r : Tree A → Set) (k : Nat) (t s : Tree A) (a b : A
 from-add-fork r k t s a b = 
   ite-elim r (size s <ᵇ size t) _ _ inj₁ inj₂ 
 
-mem : {A : Set} → A → Tree A → Set
-mem _ empty = ⊥
-mem a (fork _ b t s) = mem a t ⊎ (a ≡ b) ⊎ mem a s
+_∈_ : {A : Set} → A → Tree A → Set
+_ ∈ empty = ⊥
+a ∈ (fork _ b t s) = a ∈ t ⊎ (a ≡ b) ⊎ a ∈ s
 
-from-mem-add : {A : Set} (t : Tree A) (a b : A) → mem a (add t b) → (mem a t ⊎ (a ≡ b))
+from-mem-add : {A : Set} (t : Tree A) (a b : A) → a ∈ (add t b) → (a ∈ t ⊎ (a ≡ b))
 from-mem-add empty a b = or-elim' ⊥-elim (or-elim' inj₂ ⊥-elim)
 from-mem-add (fork k c t s) a b h0 = 
-  or-elim (from-add-fork (λ x → mem a x) k t s b c h0) 
+  or-elim (from-add-fork (λ x → a ∈ x) k t s b c h0) 
     ( or-elim' (to-or-lft inj₁) 
       ( or-elim' (to-or-lft (to-or-rgt inj₁)) 
         λ h1 → 
@@ -754,7 +754,7 @@ from-mem-add (fork k c t s) a b h0 =
     (or-elim' inj₁ (or-elim' inj₂ ⊥-elim))
     
 all : {A : Set} (p : A → Set) (t : Tree A) → Set
-all p t = ∀ a → mem a t → p a
+all p t = ∀ a → a ∈ t → p a
 
 all-sub-lft : {A : Set} (p : A → Set) (k : Nat) (t s : Tree A) (a : A) → 
   all p (fork k a t s) → all p t 
@@ -779,10 +779,10 @@ lookup k (fork _ b t s) a =
   tri k (lookup k t a) b (lookup (k - (size t + 1)) s a) (size t)
 
 mem-lookup : {A : Set} (t : Tree A) (k : Nat) (a : A) → 
-  mem (lookup k t a) t ⊎ (lookup k t a ≡ a)
+  (lookup k t a) ∈ t ⊎ (lookup k t a ≡ a)
 mem-lookup empty _ _ = inj₂ refl
 mem-lookup t@(fork m b t0 t1) k a = 
-  tri-intro-lem k (size t0) (λ x → (mem x t ⊎ (x ≡ a))) 
+  tri-intro-lem k (size t0) (λ x → (x ∈ t ⊎ (x ≡ a))) 
     (λ _ → or-elim (mem-lookup t0 k a) (to-or-lft inj₁) inj₂) 
     (λ _ → inj₁ (inj₂ (inj₁ refl))) 
     ( λ _ → or-elim (mem-lookup t1 (k - (size t0 + 1)) a) 

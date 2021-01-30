@@ -484,10 +484,7 @@
 \AgdaSymbol{(}\AgdaBound{V}\AgdaSpace{}%
 \AgdaBound{m}\AgdaSymbol{)}\AgdaSpace{}%
 \AgdaBound{m}\<%
-\end{code}
-
-%<*formval>
-\begin{code}%
+\\
 \>[0]\AgdaOperator{\AgdaFunction{\AgdaUnderscore{},\AgdaUnderscore{},\AgdaUnderscore{}⊨\AgdaUnderscore{}}}\AgdaSpace{}%
 \AgdaSymbol{:}\AgdaSpace{}%
 \AgdaFunction{RA}\AgdaSpace{}%
@@ -637,7 +634,10 @@
 \AgdaBound{V}\AgdaSpace{}%
 \AgdaOperator{\AgdaFunction{⊨}}\AgdaSpace{}%
 \AgdaBound{ψ}\AgdaSymbol{)}\<%
-\\
+\end{code}
+
+%<*univ-val>
+\begin{code}%
 \>[0]\AgdaBound{R}\AgdaSpace{}%
 \AgdaOperator{\AgdaFunction{,}}\AgdaSpace{}%
 \AgdaBound{F}\AgdaSpace{}%
@@ -662,7 +662,10 @@
 \AgdaBound{x}\AgdaSymbol{)}\AgdaSpace{}%
 \AgdaOperator{\AgdaFunction{⊨}}\AgdaSpace{}%
 \AgdaBound{ϕ}\AgdaSymbol{)}\<%
-\\
+\end{code}
+%</univ-val>
+
+\begin{code}%
 \>[0]\AgdaBound{R}\AgdaSpace{}%
 \AgdaOperator{\AgdaFunction{,}}\AgdaSpace{}%
 \AgdaBound{F}\AgdaSpace{}%
@@ -707,7 +710,6 @@
 \AgdaBound{V}\AgdaSpace{}%
 \AgdaBound{ts}\AgdaSymbol{))}\<%
 \end{code}
-%</formval>
 
 %<*respects-eq>
 \begin{code}%
@@ -765,8 +767,8 @@
 \AgdaSymbol{∀}\AgdaSpace{}%
 \AgdaBound{f}\AgdaSpace{}%
 \AgdaSymbol{→}\AgdaSpace{}%
-\AgdaFunction{mem}\AgdaSpace{}%
 \AgdaBound{f}\AgdaSpace{}%
+\AgdaOperator{\AgdaFunction{∈}}\AgdaSpace{}%
 \AgdaBound{B}\AgdaSpace{}%
 \AgdaSymbol{→}\AgdaSpace{}%
 \AgdaBound{R}\AgdaSpace{}%
@@ -871,10 +873,10 @@
 \AgdaBound{B}\AgdaSpace{}%
 \AgdaBound{k}\AgdaSpace{}%
 \AgdaSymbol{→}\AgdaSpace{}%
-\AgdaFunction{mem}\AgdaSpace{}%
 \AgdaSymbol{(}\AgdaFunction{nth}\AgdaSpace{}%
 \AgdaBound{k}\AgdaSpace{}%
 \AgdaBound{B}\AgdaSymbol{)}\AgdaSpace{}%
+\AgdaOperator{\AgdaFunction{∈}}\AgdaSpace{}%
 \AgdaBound{B}\AgdaSpace{}%
 \AgdaOperator{\AgdaDatatype{⊎}}\AgdaSpace{}%
 \AgdaSymbol{(}\AgdaFunction{nth}\AgdaSpace{}%
@@ -1123,8 +1125,8 @@
 \AgdaSymbol{∀}\AgdaSpace{}%
 \AgdaBound{f}\AgdaSpace{}%
 \AgdaSymbol{→}\AgdaSpace{}%
-\AgdaFunction{mem}\AgdaSpace{}%
 \AgdaBound{f}\AgdaSpace{}%
+\AgdaOperator{\AgdaFunction{∈}}\AgdaSpace{}%
 \AgdaBound{B}\AgdaSpace{}%
 \AgdaSymbol{→}\AgdaSpace{}%
 \AgdaFunction{formula-lfi<}\AgdaSpace{}%

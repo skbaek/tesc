@@ -8,7 +8,6 @@
 \usepackage{array,multirow}
 \usepackage[section]{placeins}
 \usepackage[bottom]{footmisc}
-% \usepackage[charter]{mathdesign}
 \usepackage{tablefootnote}
 \usepackage[nodayofweek,level]{datetime}
 \usepackage[affil-it]{authblk}
@@ -109,7 +108,7 @@ VTV accepts a TPTP problem and a TESC proof as input, and uses the latter to
 verify the unsatisfiability of the former. VTV is written in Agda, and the 
 soundness of its proof-checking kernel is verified in respect to a first-order
 semantics formalized in Agda. VTV shows robust performance in a comprehensive 
-test using all elligible problems from the TPTP problem library, successfully 
+test using all eligible problems from the TPTP problem library, successfully 
 verifying all but the largest 5 of 12296 proofs, with >97\% of the 
 proofs verified under 1 second. 
 
@@ -120,8 +119,8 @@ proofs verified under 1 second.
 Modern automated reasoning tools are highly complex software whose correctness 
 is no simple matter to establish. Bugs have been discovered in them in the past 
 \cite{reger2017testing,harrison2006towards}, and more are presumably hidden in 
-sytems used today. One popular strategy for coping with the possibility of errors 
-in automated reasoning is the \textit{De Brujin} criterion \cite{barendregt2005challenge}, 
+systems used today. One popular strategy for coping with the possibility of errors 
+in automated reasoning is the \textit{De Bruijn} criterion \cite{barendregt2005challenge}, 
 which states that automated reasoning software should produce `proof objects' which can be 
 independently verified by simple checkers that users can easily understand 
 and trust. In addition to reducing the trust base of theorem provers, 
@@ -148,7 +147,7 @@ VTV's codebase and its design choices, which can be especially useful for reader
 who want to implement their own TESC verifiers.
 
 The rest of the paper is organized as follows:
-Section \ref{sec:rel-works} gives a brief survey of simlar works and how VTV relates to them.
+Section \ref{sec:rel-works} gives a brief survey of similar works and how VTV relates to them.
 Section \ref{set:proof-calc} describes the syntax and inference rules of the TESC proof calculus.
 Section \ref{sec:verifier} presents the main TESC verifier kernel, and
 Section \ref{sec:soundness} gives a detailed specification of the verifier's soundness property.
@@ -251,7 +250,7 @@ they get their names from. Note that:
 \begin{itemize}
   \item $\Gamma[i]$ denotes the (0-based) $i$th formula of sequent $\Gamma$, 
     where $\Gamma[i] = \top$ if the index $i$ is out-of-bounds. 
-  \item $\lfi(x)$ denotes the largest functor index (lfi) occuring in $x$. 
+  \item $\lfi(x)$ denotes the largest functor index (lfi) occurring in $x$. 
     If $x$ incudes no functor indices, $\lfi(x) = -1$.
   \item $\size(\Gamma)$ is the number of formulas in $\Gamma$.
   \item All inference rules are designed to preserve the invariant
@@ -263,7 +262,7 @@ they get their names from. Note that:
     is the target theory, $\Gamma$ is a sequent satisfiable modulo $T$, and 
     $\size(\Gamma) = k$, then $\adm(k,\phi)$ implies that adding $\phi$ to 
     $\Gamma$ preserves satisfiability modulo $T$. The sequent size argument $k$ 
-    is required becuase some admissable formulas use this number as the functor 
+    is required because some admissable formulas use this number as the functor 
     index of newly introduced indexed functors. The $T$ rule may be used to add 
     any admissable formula.
 \end{itemize}
@@ -315,7 +314,6 @@ are never deleted from sequents, and (2) new formulas are always added to the
 end of sequents. This allows us to use a simple tree structure:
 \ExecuteMetaData[basic.tex]{tree}
 For any tree \AgdaInductiveConstructor{fork} \AgdaBound{k} \AgdaBound{b} \AgdaBound{t} \AgdaBound{s},
-%k\verb|fork k a t s|, 
 the number \AgdaBound{k} is the size of the left subtree \AgdaBound{t}. 
 This property is not guaranteed to hold by construction,
 but it is easy to ensure that it always holds in practice. With this definition,
@@ -346,77 +344,92 @@ simply defined as
 \ExecuteMetaData[sound.tex]{relfun}
 A \AgdaFunction{Rels} (resp. \AgdaFunction{Funs}) can be thought of as a 
 collection of an infinite number of relations (resp. functions), one for 
-each arity. A interpretation is an assignments of \AgdaFunction{Rels} and 
-\AgdaFunction{Funs} to functors.
+each arity. An interpretation is a pair of a relation assignment and a 
+function assignment, which assign \AgdaFunction{Rels} and \AgdaFunction{Funs} 
+to functors.
 \ExecuteMetaData[sound.tex]{rafa}
 variable assignments simply assign denotations to \AgdaFunction{Nat}, since variables are 
 identified by their Bruijn indices.
 \ExecuteMetaData[sound.tex]{va}
 
-We can now define the valuation of terms and forms under interpretations and 
-variable assignments. Term valuation requires a bit of ingenuity due to the 
-unusual definition of \verb|Term*|:
+Term valuation requires a bit of tweaking due to the unusual definition of \AgdaFunction{Term*}:
 \ExecuteMetaData[sound.tex]{termval}
-Formula valuation recurses down the structure of \AgdaFunction{Formula}, and maps 
-each logical connective to its equivalent in Agda's \AgdaFunction{Set}.
-\ExecuteMetaData[sound.tex]{formval}
-\verb|V/0↦x| is an variable assignment update which assigns a new denotation 
-to the zeroth variable, and pushes all other assignments up by one. I.e.,
-\verb|(V/0↦x) 0 = x| and \verb|(V/0↦x) (k+1) = V k| for all \verb|k|. 
-\AgdaFunction{T} is a function that maps \AgdaInductiveConstructor{true}
-to \AgdaFunction{⊤} and \AgdaInductiveConstructor{false} to \AgdaFunction{⊥}.
+Formula valuation is mostly straightforward, but some care needs to be taken 
+in the handling of variable assignments. The truth value of universally quantified 
+formulas are defined as:
+\ExecuteMetaData[sound.tex]{univ-val}
+\AgdaInductiveConstructor{qtf} \AgdaSymbol{:} \AgdaFunction{Bool} \AgdaSymbol{→} \AgdaFunction{Formula} \AgdaSymbol{→} \AgdaFunction{Formula} 
+is a constructor of \AgdaFunction{Formula} for quantified formulas, and \AgdaInductiveConstructor{qtf} \AgdaInductiveConstructor{false}
+encodes the universal quantifier.
+For any \AgdaBound{V}, \AgdaNumber{k}, and \AgdaBound{d}, 
+\AgdaSymbol{(}\AgdaBound{V} \AgdaFunction{/} \AgdaNumber{k} \AgdaFunction{↦} \AgdaBound{d}\AgdaSymbol{)} 
+is an updated variable assignment obtained from \AgdaBound{V} by assigning 
+\AgdaBound{d} to the variable $x_k$, and pushing the assignments of all variables 
+larger than $x_k$ by one.
+E.g., \AgdaSymbol{(}\AgdaBound{V} 
+\AgdaFunction{/} \AgdaNumber{0} \AgdaFunction{↦} \AgdaBound{x}\AgdaSymbol{)}
+\AgdaNumber{0} \AgdaSymbol{=} \AgdaBound{x} 
+and 
+\AgdaSymbol{(}\AgdaBound{V} 
+\AgdaFunction{/} \AgdaNumber{0} \AgdaFunction{↦} \AgdaBound{x}\AgdaSymbol{)} 
+\AgdaSymbol{(}\AgdaInductiveConstructor{suc} \AgdaNumber{m}\AgdaSymbol{)} \AgdaSymbol{=} \AgdaBound{V} \AgdaNumber{m}.
 
-Now we can define (un)satisfiabilty of sequents in terms of formula valuations: 
+
+Now we can define (un)satisfiability of sequents in terms of formula valuations: 
 \ExecuteMetaData[sound.tex]{sat}
 The \AgdaFunction{respects-eq}\AgdaSpace{}\AgdaBound{R} clause asserts that the
 relation assignment \AgdaBound{R} respects equality. This condition is necessary
-because we are targetting first-order logic with equality; we are only 
+because we are targeting first-order logic with equality; we are only 
 interested in interpretations that satisfy all equality axioms.
 
-Our formalization of first-order semantics is atypical in that (1) every non-logical 
-symbol doubles as both relation and function symbols with infinite arities, and 
+VTV's formalization of first-order semantics is atypical in that (1) every functor
+doubles as both relation and function symbols with infinite arities, and 
 (2) the definition of satisfiability involves variable assignments, thereby applying to
 open as well as closed formulas. But this is completely harmless for our purposes:
 whenever a traditional interpretation (with unique arities for each functor and no 
 variable assignment) $M$ satisfies a set of sentences $\Gamma$, $M$ can be easily extended 
 to an interpretation in the above sense that still satisfies $\Gamma$, since the 
 truths of sentences in $\Gamma$ are not affected by functors or variables that do not 
-occur in them. Therefore, if a set of sentences is unsatisfiable in the sense defined 
-above, it is also unsatisfiable in the usual sense. 
+occur in them. Therefore, if a set of sentences is unsatisfiable in the sense we've
+defined above, it is also unsatisfiable in the usual sense. 
 
 Now we finally come to the soundness statement for \AgdaFunction{verify}:
 \ExecuteMetaData[sound.tex]{verify-sound}
+\AgdaFunction{T} \AgdaSymbol{:} \AgdaFunction{Bool} \AgdaSymbol{→} \AgdaFunction{Set} 
+maps \AgdaInductiveConstructor{true} to \AgdaFunction{⊤} and \AgdaInductiveConstructor{false} to \AgdaFunction{⊥}.
 The condition \AgdaFunction{good}\AgdaSpace{}\AgdaBound{S} is necessary, because 
 the soundness of TESC proofs is dependent on the invariant that all sequents are good. 
 But we can do better than merely assuming that the input sequent is good,
 because the parser which converts the input character list into the initial (i.e., root) 
 sequent is designed to fail if the parsed sequent is not good. \AgdaFunction{parse-verify}
 is the outer function which accepts two character lists as argument, parses them 
-into a \AgdaFunction{Sequent} and a \AgdaFunction{Proof}, and calls \AgdaFunction{verify}.
-The soundness statement for \AgdaFunction{parse-verify} is as follows:
+into a \AgdaFunction{Sequent} and a \AgdaFunction{Proof}, and calls \AgdaFunction{verify}
+on them. The soundness statement for \AgdaFunction{parse-verify} is as follows:
 \ExecuteMetaData[sound.tex]{parse-verify-sound}
-\AgdaFunction{parse-verify-sound} is an improvement over \AgdaFunction{verify-sound},
-but it also shows the limitation of the current setup. It asserts that there is 
-\textit{some} unsatisfiable \AgdaFunction{Sequent} parsed from the input characters, 
-but we have no guarantees that this sequent is actually equivalent to the original
-TPTP file. This means that the formal verification of VTV is limited to the soundness 
-of its proof-checking kernel, and the correctness its TPTP parsing stage has to be 
-taken in faith.
+In other words, if \AgdaFunction{parse-verify} succeeds on two input character lists, 
+then the sequent parser successfully parses the first character list into some unsatisfiable 
+sequent $S$. \AgdaFunction{parse-verify-sound} is an improvement over \AgdaFunction{verify-sound},
+but it also shows the limitation of the current setup. It only asserts that there is 
+\textit{some} unsatisfiable sequent parsed from the input characters, 
+but provides no guarantees that the parsed sequent is actually equivalent to the original
+TPTP problem. This means that the formal verification of VTV is limited to the soundness 
+of its proof-checking kernel, and the correctness its TPTP parsing phase has to be 
+taken on faith.
 
 
 
 \section{Test Results} \label{sec:test-results}
 
 
-The performance of VTV was tested by running it on all elligible problems 
-in the TPTP \cite{} problem library. A TPTP problem is elligible if it 
+The performance of VTV was tested by running it on all eligible problems 
+in the TPTP \cite{sutcliffe2009tptp} problem library. A TPTP problem is eligible if it 
 satisfies all of the following conditions (parenthesized numbers indicate 
 the total number of problems that satisfy all of the preceding conditions).
 \begin{itemize}
   \item It is in the CNF or FOF language (23291). 
   \item Its status is `theorem' or `unsatisfiable' (13636).
   \item It conforms to the official TPTP syntax. More precisely, 
-    it does not have any occurrences of the charater `\%' in the 
+    it does not have any occurrences of the character `\%' in the 
     \verb|sq_char| syntactic class, as required by the TPTP syntax.
     This is important because T3P assumes that the input TPTP problem 
     is syntactically correct and uses `\%' as an endmarker (13389).
@@ -431,32 +444,36 @@ the total number of problems that satisfy all of the preceding conditions).
 The resulting 7792 + 4504 = 12296 proofs were used for testing VTV.
 All tests were performed on Amazon EC2 \texttt{r5a.large} instances, 
 running Ubuntu Server 20.04 LTS on 2.5 GHz AMD EPYC 7000 processors with 
-16 GB RAM. For more information on the exact testing setup, refer to...
+16 GB RAM. 
+\footnote{
+  More information on the testing setup used, including the versions of 
+  software used, can be found at \url{https://github.com/skbaek/tesc/tree/itp}.
+}
 
 Out of the 12296 proofs, there were 5 proofs that VTV failed to verify 
 due to exhausting the 16 GB available memory. A cactus plot of verification 
 times for the remaining 12291 proofs are shown in Fig. \ref{fig:time}. 
 As a reference point, we also show the plot for the default TESC verifier 
-included in the T3P tool running on the same proofs. The default TESC verifier 
+included T3P running on the same proofs. The default TESC verifier 
 is written in Rust, and is optimized for performance with no regard to 
-verification. For convenince, we refer to it as the Optimized TESC Verifier (OTV).
+verification. For convenience, we refer to it as the Optimized TESC Verifier (OTV).
 
 \input{timechart}
 
-VTV is slower than OTV as expected, but the difference is unlikely
-to be noticed in actual use since the total times are dominated by a few 
-outliers and the absolute times for most proofs are very short: the median 
-time for VTV is 40 ms, a mere 10 ms behind the OTV's 30 ms. Also,
+VTV is slower than OTV as expected, but the difference is unlikely to be noticed 
+in actual use since the absolute times for most proofs are very short, and the 
+total times are dominated by a few outliers. 
 VTV verified >97.4\% of proofs under 1 second, and >99.3\% under 5 seconds. 
+Also, the median time for VTV is 40 ms, a mere 10 ms behind the OTV's 30 ms. 
 But OTV's mean time (54.54 ms) is still much shorter than that of VTV (218.93 ms),
-so users may prefer OTV for verifying one of the hard outliers or processing
+so users may prefer to use it for verifying one of the hard outliers or processing
 a large batch of proofs at once.
 
 The main drawback of VTV is its high memory consumption. Fig. \ref{fig:mem} shows
 the peak memory usages of the two verifiers. For a large majority of proofs, 
-memory usage for both verifiers are stable and stays within the 14-20 MB range,
-but VTV's memory usage spikes both earlier and higher than OTV. Due the limit of 
-the system used, memory usage could only be measured up to 16 GB, but the actual peak for VTV 
+memory usages of both verifiers are stable and stay within the 14-20 MB range,
+but VTV's memory usage spikes earlier and higher than OTV. Due the limit of the system 
+used, memory usage could only be measured up to 16 GB, but the actual peak for VTV 
 would be higher if we included the 5 failed verifications. A separate test running 
 VTV on an EC2 instance with 64 GB ram (\texttt{r5a.2xlarge}) still failed for 3 of 
 the 5 problematic proofs, so the memory requirement for verifying all 12296 proofs 
@@ -472,7 +489,7 @@ thereby increasing our confidence in the correctness of TESC proofs.
 It also helps the design of other TESC verifiers by providing a reference 
 implementation that is guaranteed to be correct. It should be particularly helpful 
 for implementing other verified TESC verifiers in, say, Lean or Coq, since many 
-of the issues we've discussed (termination checking, data structures, etc.) 
+of the issues we've discussed (termination checking, proving properties of trees, etc.) 
 are common to these languages. 
 
 There are two main ways in which VTV could be further improved. Curbing its 
