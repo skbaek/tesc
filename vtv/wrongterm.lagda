@@ -19,6 +19,6 @@ open import Data.List
 \begin{code}
 data Term : Set where 
   var : Nat → Term 
-  fun : List Term → Term 
+  fun : Functor → List Term → Term 
 \end{code}
 %</wrongterm>

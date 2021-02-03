@@ -209,30 +209,40 @@ other presentations of first-order logic. The TESC calculus makes no distinction
 between function and relation symbols, and relies on the context to determine whether 
 a symbol applied to arguments is a term or an atomic formula. For brevity, we borrow
 the umbrella term `functor' from the TPTP syntax and use it to refer to any non-logical symbol.
+
 There are two types of functors: $\sigma$ ranges over \textit{plain functors}, 
 which you can think of as the usual relation or function symbols. We assume that there 
 is a suitable set of symbols $\Sigma$, and let $\sigma \in \Sigma$.
-
 Symbols of the form $\idf{k}$ are \textit{indexed functors}, and the number $k$ is 
 called the \textit{functor index} of $\idf{k}$. Indexed functors are used to reduce 
 the cost of introducing fresh functors: if you keep track of the largest functor index
 $k$ that occurs in the environment, you may safely use $\idf{k+1}$ as a fresh functor
-without costly searches over a large number of terms and formulas.
+without costly searches over a large number of terms and formulas. \footnote{Thanks to Marijn Heule for suggesting this idea.}
 
-$t$ ranges over terms, $\vec{t}$ over lists of terms, $\phi$ over formulas, and
-$\Gamma$ over sequents.
-Quantified formulas are written without variables thanks to the use of De Bruijn 
-indices \cite{de1972lambda}; the number $k$ in variable $x_k$ is its De Bruijn index. 
+We use $t$ to range over terms, $\vec{t}$ over lists of terms, $\phi$ over formulas, 
+and $\Gamma$ over sequents. Quantified formulas are written without variables thanks 
+to the use of De Bruijn indices \cite{de1972lambda}; the number $k$ in variable $x_k$ is its De Bruijn index. 
 As usual, parentheses may be inserted for scope disambiguation, and the empty list operator 
 `$\cdot$' may be omitted when it appears as part of a complex expression. E.g., the sequent 
 $\cdot, \phi, \psi$ and term $f(\cdot)$ may be abbreviated to $\phi, \psi$ and $f$.
 
 Formalization of TESC syntax in Agda is mostly straightforward, but with one 
-caveat: the first-instinct definition of terms as 
+caveat. A first instinct definition of terms might be something like the following:
 \ExecuteMetaData[wrongterm.tex]{wrongterm}
-works poorly in practice, since any structural recursion on terms immediately 
-runs into non-termination issues. Although it is possible to manually prove 
-termination, it is much simpler to sidestep this issue with a pseudo-mutual recursion:
+But this definition works poorly in practice, since any function defined by
+structural recursion on terms runs into non-termination issues. For instance, 
+substitution on terms must make recursive calls with arguments of functors (the members of the 
+list argument to \AgdaInductiveConstructor{fun}), but Agda can't automatically ascertain 
+the termination of these calls because those terms are behind a \AgdaFunction{List} 
+and hence not immediate subterms. Although it is possible to manually prove termination, 
+it is much simpler to sidestep 
+this issue with a pseudo-mutual recursion. The basic idea is to use a special type 
+\AgdaFunction{Term*} \AgdaSymbol{:} \AgdaFunction{Bool} \AgdaSymbol{→} \AgdaFunction{Set}
+that can double as both terms and lists of terms depending on its boolean argument. 
+I.e., we use \AgdaFunction{Term*} \AgdaInductiveConstructor{false} as the type of terms, 
+and \AgdaFunction{Term*} \AgdaInductiveConstructor{true} as the type of lists of terms.
+
+
 \ExecuteMetaData[basic.tex]{termstar}
 which lets us define terms and lists of terms as
 \ExecuteMetaData[basic.tex]{termterms}
@@ -516,6 +526,8 @@ and textually comparing its with the original problem.
 \section*{Acknowledgements}  \label{sec:ack}
 
 This work has been partially supported by AFOSR grant FA9550-18-1-0120.
+
+Thanks to Jeremy Avigad for a careful proofreading of drafts and advice for improvements.
 
 \bibliographystyle{plain}
 
