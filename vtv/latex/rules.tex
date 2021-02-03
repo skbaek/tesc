@@ -1,0 +1,62 @@
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\begin{table}
+    \begin{tabular}{ | c | c | c |}
+      \hline
+
+      \thead{Rule} & \thead{Conditions} & \thead{Example} \\
+
+      \hline
+
+      \makecell{\axm{\Gamma, A(b,\Gamma[i])} \rlb{$A$} \unr{\Gamma} \DisplayProof} &  &  
+      \makecell{\axm{\phi \liff \psi, \phi \to \psi} \rlb{$A$} \unr{\phi \liff \psi} \DisplayProof} \\
+
+      \hline
+
+      \makecell{\axm{\Gamma, B(0, \Gamma [i])} \axm{\Gamma, B(1, \Gamma [i])} \rlb{$B$} \bnr{\Gamma} \DisplayProof} & & 
+      \makecell{\axm{\phi \lor \psi, \phi} \axm{\phi \lor \psi, \psi} \rlb{$B$} \bnr{\phi \lor \psi} \DisplayProof} \\
+
+      \hline
+
+      \makecell{\axm{\Gamma, C(t, \Gamma [i])} \rlb{$C$} \unr{ \Gamma} \DisplayProof} & 
+      \makecell{$\lfi(t) \le \size(\Gamma)$} & 
+      \makecell{\axm{\lnot \exists f(x_0), \lnot f(g)} \rlb{$C$} \unr{\lnot \exists f(x_0)} \DisplayProof} \\
+
+      \hline
+      
+      \makecell{\axm{\Gamma,\ D(\size(\Gamma), \Gamma [i])} \rlb{$D$} \unr{ \Gamma} \DisplayProof} & &
+      \makecell{\axm{\exists f(x_0),\ f(\idf{1})} \rlb{$D$} \unr{\exists f(x_0)} \DisplayProof} \\
+
+      \hline
+      
+      \makecell{\axm{ \Gamma, N(\Gamma [i])} \rlb{$N$} \unr{ \Gamma} \DisplayProof} & &
+      \makecell{\axm{\lnot \lnot \phi, \phi} \rlb{$N$} \unr{\lnot \lnot \phi} \DisplayProof} \\
+
+      \hline
+      
+      \makecell{\axm{ \Gamma, \lnot \phi} \axm{ \Gamma, \phi}  \rlb{$S$} \bnr{ \Gamma} \DisplayProof} &
+      $\lfi(\phi) \le \size(\Gamma)$ &
+      \makecell{\axm{\lnot f(\idf{0})} \axm{f(\idf{0})}  \rlb{$S$} \bnr{\cdot} \DisplayProof} \\
+
+      \hline
+
+      \makecell{\axm{ \Gamma, \phi} \rlb{$T$} \unr{ \Gamma} \DisplayProof} &
+      \makecell{$\lfi(\phi) \le \size(\Gamma)$,\\ $\adm(\size(\Gamma), \phi)$} & 
+      \makecell{\axm{=(f,f)} \rlb{$T$} \unr{\cdot} \DisplayProof} \\
+
+      \hline
+
+      \makecell{\axm{} \rlb{$X$} \unr{ \Gamma} \DisplayProof} & 
+      \makecell{For some $i$ and $j$,\\ $\Gamma[i] = \lnot \Gamma[j]$} & 
+      \makecell{\axm{} \rlb{$X$} \unr{\lnot \phi, \phi} \DisplayProof} \\
+    
+      \hline
+
+    \end{tabular}
+
+    \caption{TESC inference rules.}
+    \label{tab:inf-rules}
+\end{table}

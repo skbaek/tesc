@@ -20,6 +20,8 @@
 \usepackage{catchfilebetweentags}
 \usepackage{agda}
 \usepackage[verbose]{newunicodechar}
+\usepackage{bigfoot}
+\usepackage{makecell}
 
 \input{unicode}
 
@@ -54,6 +56,7 @@
 \newcommand{\Dec}[1]{\xRightarrow{#1}} 
 \newcommand{\bprf}[0]{\begin{prooftree}}
 \newcommand{\eprf}[0]{\end{prooftree}}
+
 \newcommand{\axm}[1]{\AxiomC{$#1$}}
 \newcommand{\unr}[1]{\UnaryInfC{$#1$}}
 \newcommand{\bnr}[1]{\BinaryInfC{$#1$}}
@@ -92,7 +95,7 @@
   \vskip 1.5em}
 \makeatother
 
-\title{A Formally Verified TESC Verifier}
+\title{A Formally Verified Checker for First-Order Proofs}
 
 \author{Seulkee Baek}
 
@@ -110,41 +113,42 @@ soundness of its proof-checking kernel is verified in respect to a first-order
 semantics formalized in Agda. VTV shows robust performance in a comprehensive 
 test using all eligible problems from the TPTP problem library, successfully 
 verifying all but the largest 5 of 12296 proofs, with >97\% of the 
-proofs verified under 1 second. 
+proofs verified in less than 1 second. 
 
 \end{abstract}
 
 \section{Introduction}
 
-Modern automated reasoning tools are highly complex software whose correctness 
-is no simple matter to establish. Bugs have been discovered in them in the past 
-\cite{reger2017testing,harrison2006towards}, and more are presumably hidden in 
-systems used today. One popular strategy for coping with the possibility of errors 
+Modern automated reasoning tools are highly complex pieces of software, 
+and it is generally no simple matter to establish their correctness.
+Bugs have been discovered in them in the past \cite{reger2017testing,harrison2006towards}, 
+and more are presumably hidden in systems used today. 
+One popular strategy for coping with the possibility of errors 
 in automated reasoning is the \textit{De Bruijn} criterion \cite{barendregt2005challenge}, 
 which states that automated reasoning software should produce `proof objects' which can be 
 independently verified by simple checkers that users can easily understand 
 and trust. In addition to reducing the trust base of theorem provers, 
 the De Bruijn criterion comes with the additional benefit that the 
-small trusted core is often simple enough to be formally verified themselves. 
+small trusted core is often simple enough to be formally verified itself. 
 Such thoroughgoing verification is far from universal, but there has been notable 
 progress toward this goal in various subfields of automated reasoning, including 
 interactive theorem provers, SAT solvers, and SMT solvers.
 
 One area in which similar developments have been conspicuously absent is 
 first-order automated theorem provers (ATPs), where the lack of a machine-checkable
-proof format \cite{reger2017checkable} precluded any simple independent verifiers, 
-let alone a formally verified one. The Theory-Extensible Sequent Calculus (TESC) is a new 
+proof format \cite{reger2017checkable} precluded the use of simple independent verifiers. 
+The Theory-Extensible Sequent Calculus (TESC) is a new 
 proof format for first-order ATPs designed to fill this gap. In particular,
 the format's small set of fined-grained inference rules makes it relatively 
 easy to implement and verify its proof checker.
 
 This paper presents the Verified TESC Verifier (VTV), a proof checker for  
-the TESC format written and verified in Agda \cite{bove2009brief}. 
-The aim of the paper is twofold. Its primary purpose is to demonstrate the 
-reliability of TESC proofs by showing precisely what is established by their successful 
-verification using VTV. Its secondary aim is to serve as a guide for understanding 
-VTV's codebase and its design choices, which can be especially useful for readers 
-who want to implement their own TESC verifiers.
+the TESC format \footnote{\url{https://github.com/skbaek/tesc}} written and verified 
+in Agda \cite{bove2009brief}. The aim of the paper is twofold. Its primary purpose is 
+to demonstrate the reliability of TESC proofs by showing precisely what is established 
+by their successful verification using VTV. Its secondary aim is to serve as a guide 
+for understanding VTV's codebase and its design choices, which can be especially useful 
+for readers who want to implement their own TESC verifiers.
 
 The rest of the paper is organized as follows:
 Section \ref{sec:rel-works} gives a brief survey of similar works and how VTV relates to them.
@@ -166,23 +170,27 @@ the SMTCoq project \cite{armand2011modular} also uses a proof checker implemente
 verified in the Coq proof assistant.
 
 Despite the limitations imposed by G\"odel's second incompleteness theorem \cite{godel1931formal},
-there has been interesting work toward self-verification of interactive 
-theorem prover kernels. All of HOL Light except the axiom of infinity has been 
-proven consistent in HOL Light itself \cite{harrison2006towards}, which allows us to consider HOL Light
-consistent for most proofs in practice. More recent work on the Metamath Zero \cite{carneiro2019metamath}
-theorem prover aims to not only verify a large part of Metamath Zero's logic in itself, 
-but also its implementation down to the level of x84-64 instruction set architecture. 
+there has been interesting work toward verification of interactive theorem provers. 
+All of HOL Light except the axiom of infinity has been proven consistent in HOL Light itself \cite{harrison2006towards}, 
+which was further extended later to include definitional principles for new types 
+and constants \cite{kumar2014hol}. More recent projects go 
+beyond the operational semantics of programming languages and verifies theorem provers 
+closer to the hardware, such as the Milawa theorem prover which runs on a Lisp runtime
+verified against x86 machine code \cite{davis2015reflective}, and the Metamath Zero 
+\cite{carneiro2019metamath} theorem prover verified down to x84-64 instruction set architecture. 
 
-VTV is designed to serve a role similar to these verified checkers for first-order ATPs
-and the TESC format.
-There has been several different approaches to verifying the output of ATPs, but 
-(to the extent of my knowledge) none has used a proof format with a verified checker. 
-For instance, GDV \cite{sutcliffe2006semantic} works by breaking down an ATP-generated 
-solution into small subproblems and re-solving them with multiple unverified ATPs. 
-Foundational Proof Certificates \cite{chihani2013foundational} is a system that could 
-be used to specify proof formats and implement proof checkers for first-order ATPs.
-Its actual implementation, however, \cite{chihani2015proof} has been limited to a small 
-subset of inferences used by ATPs and an unverified checker.
+VTV is designed to serve a role similar to these verified checkers for 
+first-order ATPs and the TESC format. There has been several different 
+approaches \cite{sutcliffe2006semantic, chihani2015proof} to verifying 
+the output of first-order ATPs, but the only example I am aware of
+which uses independent proof objects with a verified checker is the 
+Ivy system \cite{mccune2000ivy}. The largest difference between Ivy and 
+VTV is that Ivy's proof objects only record resolution and paramodulation 
+steps, so all input problems have to be normalized by a separate 
+preprocessor written in ACL2. In contrast, the TESC format supports 
+preprocessing steps like Skolemization and CNF normalization, so 
+it allows ATPs to work directly on input problems with their optimized 
+preprocessing strategies.
 
 
 
@@ -215,6 +223,9 @@ $t$ ranges over terms, $\vec{t}$ over lists of terms, $\phi$ over formulas, and
 $\Gamma$ over sequents.
 Quantified formulas are written without variables thanks to the use of De Bruijn 
 indices \cite{de1972lambda}; the number $k$ in variable $x_k$ is its De Bruijn index. 
+As usual, parentheses may be inserted for scope disambiguation, and the empty list operator 
+`$\cdot$' may be omitted when it appears as part of a complex expression. E.g., the sequent 
+$\cdot, \phi, \psi$ and term $f(\cdot)$ may be abbreviated to $\phi, \psi$ and $f$.
 
 Formalization of TESC syntax in Agda is mostly straightforward, but with one 
 caveat: the first-instinct definition of terms as 
@@ -226,7 +237,8 @@ termination, it is much simpler to sidestep this issue with a pseudo-mutual recu
 which lets us define terms and lists of terms as
 \ExecuteMetaData[basic.tex]{termterms}
 
-\input{inf-rules.tex}
+% \input{inf-rules.tex}
+\input{rules.tex}
 \input{faf.tex}
 
 The inference rules of the TESC calculus are shown in Table \ref{tab:inf-rules}.
@@ -292,7 +304,8 @@ Analytic rules introduce new formulas obtained by formula analysis using
 offers some interesting design choices. What kind of data structures should be used 
 to encode sequents? The first version of VTV used lists, but lists immediately become 
 a bottleneck with practically-sized problems due to their poor random access speeds. 
-The default TESC verifier included in the TPTP-TSTP-TESC Processor (T3P) tool uses arrays, 
+The default TESC verifier included in the TPTP-TSTP-TESC Processor (T3P, the main 
+tool for generating and verifying TESC files) uses arrays, 
 but arrays are hard to come by and even more difficult to reason about in dependently 
 typed languages like Agda. Self-balancing trees like AVL or red-black trees come 
 somewhere between lists and arrays in terms of convenience and performance, but it 
@@ -425,8 +438,15 @@ the total number of problems that satisfy all of the preceding conditions).
   \item All of its formulas have unique names. T3P requires this condition 
     in order to unambiguously identify formulas by their names during 
     proof compilation (13119).
-  \item It can be solved by Vampire or E in one minute using 
-    default settings (Vampire = 7885, E = 4853).
+  \item It can be solved by Vampire \cite{riazanov2002design} or E \cite{schulz2002brainiac} 
+      in one minute using default settings (Vampire = 7885, E = 4853 \footnote{
+      It should be noted that the default setting is actually not 
+      optimal for E; when used with the \verb|--auto| or \verb|--auto-schedule|
+      options, E's success rates are comparable to that of Vampire. 
+      But the TSTP solutions produced by E under these higher-performance modes 
+      are much more difficult to compile down to a TESC proof, so they 
+      could not be used for these tests.
+    }).
   \item The TSTP solution produced by Vampire or E can be compiled to 
     a TESC proof by T3P (Vampire = 7792, E = 4504).
 \end{itemize}
@@ -492,6 +512,10 @@ to even \textit{specify} the correctness of a parser, let alone prove it.
 A more realistic approach would be imitating the technique used by verified 
 LRAT checkers \cite{heule2017efficient}, making VTV print the parsed problem 
 and textually comparing its with the original problem.
+
+\section*{Acknowledgements}  \label{sec:ack}
+
+This work has been partially supported by AFOSR grant FA9550-18-1-0120.
 
 \bibliographystyle{plain}
 
