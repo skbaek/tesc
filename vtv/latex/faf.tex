@@ -1,5 +1,4 @@
-\begin{table}
-    \centering
+\begin{centering}
     \begin{tabular}{|c|cc|}
     \hline
     A & 
@@ -43,14 +42,18 @@
     $C(t, \lnot \exists \phi) = \lnot \phi [0 \mapsto t]$
      \\ \hline
     D & 
-    $D(k, \exists \phi) = \phi [0 \mapsto \idf{k}(\cdot)]$) &
-    $D(k, \lnot \forall \phi) = \lnot \phi [0 \mapsto \idf{k}(\cdot)]$ 
+    $D(k, \exists \phi) = \phi [0 \mapsto \idf{k}]$) &
+    $D(k, \lnot \forall \phi) = \lnot \phi [0 \mapsto \idf{k}]$ 
     \\ \hline
-    \end{tabular}
-      \caption{
-        Formula analysis functions. For any arguments not explicitly defined above, 
-        the functions all return $\top$. E.g., $A(0, \phi \lor \psi) = \top$.
-      }
-      \label{tab:faf}
-    \end{table}
-    
+    N & \multicolumn{2}{c|}{$N(\lnot \lnot \phi) = \phi$} 
+    \\ \hline
+  \end{tabular}
+  
+\end{centering}
+
+\vspace{5mm}
+
+    The Formula analysis functions used by analytic rules. For any argument not explicitly 
+    defined above, the functions all return $\top$. E.g., $A(0, \phi \lor \psi) = \top$.
+    $\phi[k \mapsto t]$ denotes the result of replacing all variables in $\phi$ bound 
+    to the $k$th quantifier with term $t$. 

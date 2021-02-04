@@ -8,7 +8,7 @@
 
 \begin{code}
 open import Agda.Builtin.Nat
-  renaming (_<_ to _<n_)
+  renaming (_<_ to _<ᵇ_)
   renaming (_==_ to _=n_)
 open import Function.Base
 open import Data.String 
@@ -20,11 +20,7 @@ open import Data.Bool
   hiding (not)
 open import Data.Unit
 open import Data.List
-  renaming (lookup to lookup-list)
-  renaming (concat to concat-list)
-  renaming (_++_ to list-concat) 
-  renaming (or to disj) 
-  renaming (and to conj)
+  hiding (_++_ ; or ; and ; lookup ; concat) 
 open import Agda.Builtin.Char
 open import Data.Char
   renaming (_==_ to _=c_)
@@ -34,7 +30,7 @@ open import Data.Maybe.Base
   renaming (map to map?)
 open import Agda.Builtin.Equality
 open import basic
-  hiding (F)
+  hiding (F ; all)
 
 data Res (A : Set) : Set where
   cont : A → Chars → Res A 
@@ -76,18 +72,19 @@ skip = pass tt
 -------- Admissability Check --------
 
 fi<? : Nat → Functor → Bool
-fi<? k (indexed m) = m <n k
+fi<? k (indexed m) = m <ᵇ k
 fi<? _ (plain _) = true
 
-term*-lfi<? : {b : Bool} → Nat → Term* b → Bool
-term*-lfi<? k (var _) = true
-term*-lfi<? k (fun f ts) = fi<? k f ∧ term*-lfi<? k ts 
-term*-lfi<? k nil = true
-term*-lfi<? k (cons t ts) = term*-lfi<? k t ∧ term*-lfi<? k ts
+term-lfi<? : Nat → Term → Bool
+terms-lfi<? : Nat → Terms → Bool
+term-lfi<? k (var _) = true
+term-lfi<? k (fun f ts) = fi<? k f ∧ terms-lfi<? k ts 
+terms-lfi<? k [] = true
+terms-lfi<? k (t ∷ ts) = term-lfi<? k t ∧ terms-lfi<? k ts
 
 formula-lfi<? : Nat → Formula → Bool
 formula-lfi<? k (cst _) = true
-formula-lfi<? k (rel r ts) = fi<? k r ∧ term*-lfi<? k ts 
+formula-lfi<? k (rel r ts) = fi<? k r ∧ terms-lfi<? k ts 
 formula-lfi<? k (not f) = formula-lfi<? k f 
 formula-lfi<? k (qtf _ f) = formula-lfi<? k f 
 formula-lfi<? k (bct _ f g) = formula-lfi<? k f ∧ formula-lfi<? k g
@@ -142,26 +139,23 @@ parse-functor =
        s ← parse-chars 
        pass (plain s) ) 
 
-parse-term* : ∀ b → Nat → Parse (Term* b)
-parse-term* true _ ('.' ∷ cs) = cont nil cs 
-parse-term* true (suc k) (',' ∷ cs) = ( do 
-  t ← parse-term* false k 
-  ts ← parse-term* true k
-  pass (cons t ts) ) cs
-parse-term* false _ ('#' ∷ cs) = ( do 
+parse-term : Nat → Parse Term
+parse-terms : Nat → Parse Terms
+
+parse-term _ ('#' ∷ cs) = ( do 
   k ← parse-nat 
   pass (var k) ) cs 
-parse-term* false (suc k) ('$' ∷ cs) = ( do 
+parse-term (suc k) ('$' ∷ cs) = ( do 
   f ← parse-functor 
-  ts ← parse-term* true k
+  ts ← parse-terms k
   pass (fun f ts) ) cs 
-parse-term* _ _ = fail "parse-term* fail" 
-
-parse-term : Nat → Parse Term
-parse-term = parse-term* false
-
-parse-terms : Nat → Parse Terms
-parse-terms = parse-term* true
+parse-term _ = fail "parse-term fail" 
+parse-terms _ ('.' ∷ cs) = cont [] cs 
+parse-terms (suc k) (',' ∷ cs) = ( do 
+  t ← parse-term k 
+  ts ← parse-terms k
+  pass (t ∷ ts) ) cs
+parse-terms _ = fail "parse-terms fail" 
 
 parse-qtf : Parse Bool
 parse-qtf = 
@@ -286,40 +280,47 @@ trans-axiom : Formula
 trans-axiom = ∀* (∀* (∀* ((var 2 =* var 1) →* ((var 1 =* var 0) →* (var 2 =* var 0)))))
 
 mono-args-lft : Nat → Terms 
-mono-args-lft 0 = nil 
-mono-args-lft (suc k) = cons (var (suc (k * 2))) (mono-args-lft k)
+mono-args-lft 0 = [] 
+mono-args-lft (suc k) = (var (suc (k * 2))) ∷ (mono-args-lft k)
 
 mono-args-rgt : Nat → Terms 
-mono-args-rgt 0 = nil 
-mono-args-rgt (suc k) = cons (var (k * 2)) (mono-args-rgt k)
+mono-args-rgt 0 = [] 
+mono-args-rgt (suc k) = (var (k * 2)) ∷ (mono-args-rgt k)
 
 mono-fun? : Nat → Nat → Formula → Bool
-mono-fun? k m (qtf false (qtf false (bct imp (rel (plain (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) =
+mono-fun? k m (qtf false (qtf false (bct imp (rel (plain (c ∷ [])) ((var 1) ∷ (var 0) ∷ [])) f))) =
   (c =c '=') ∧ mono-fun? k (suc m) f
-mono-fun? k m (rel (plain (c ∷ [])) (cons (fun f0 ts0) (cons (fun f1 ts1) nil))) =
-  (c =c '=') ∧ fi<? (suc k) f0 ∧ (functor=? f0 f1 ∧ (term*=? ts0 (mono-args-lft m) ∧ term*=? ts1 (mono-args-rgt m)))
+mono-fun? k m (rel (plain (c ∷ [])) ((fun f0 ts0) ∷ (fun f1 ts1) ∷ [])) =
+  (c =c '=') ∧ fi<? (suc k) f0 ∧ (functor=? f0 f1 ∧ (terms=? ts0 (mono-args-lft m) ∧ terms=? ts1 (mono-args-rgt m)))
 mono-fun? _ _ _ = false
 
 mono-rel? : Nat → Nat → Formula → Bool
-mono-rel? k m (qtf false (qtf false (bct imp (rel (plain (c ∷ [])) (cons (var 1) (cons (var 0) nil))) f))) = 
+mono-rel? k m (qtf false (qtf false (bct imp (rel (plain (c ∷ [])) ((var 1) ∷ (var 0) ∷ [])) f))) = 
   (c =c '=') ∧ mono-rel? k (suc m) f
 mono-rel? k m (bct imp (rel r0 ts0) (rel r1 ts1)) = 
-  (fi<? (suc k) r0) ∧ (functor=? r0 r1) ∧ (term*=? ts0 (mono-args-lft m)) ∧ (term*=? ts1 (mono-args-rgt m))
+  (fi<? (suc k) r0) ∧ (functor=? r0 r1) ∧ (terms=? ts0 (mono-args-lft m)) ∧ (terms=? ts1 (mono-args-rgt m))
 mono-rel? _ _ _ = false
+\end{code}
 
-term*-vars<? : ∀ {b} → Nat → Term* b → Bool
-term*-vars<? {true} _ nil = true
-term*-vars<? {true} k (cons t ts) = 
- term*-vars<? k t ∧ term*-vars<? k ts 
-term*-vars<? {false} k (var m) = m <n k
-term*-vars<? {false} k (fun _ ts) = term*-vars<? k ts
 
+%<*tvlright>
+\begin{code}
+term-vars<? : Nat → Term → Bool
+terms-vars<? : Nat → List Term → Bool
+term-vars<? k (var m) = m <ᵇ k
+term-vars<? k (fun _ ts) = terms-vars<? k ts
+terms-vars<? _ [] = true
+terms-vars<? k (t ∷ ts) = term-vars<? k t ∧ terms-vars<? k ts 
+\end{code}
+%</tvlright>
+
+\begin{code}
 formula-vars<? : Nat → Formula → Bool 
 formula-vars<? k (cst _) = true
 formula-vars<? k (not f) = formula-vars<? k f
 formula-vars<? k (bct _ f g) = formula-vars<? k f ∧ formula-vars<? k g
 formula-vars<? k (qtf _ f) = formula-vars<? (suc k) f
-formula-vars<? k (rel _ ts) = term*-vars<? k ts
+formula-vars<? k (rel _ ts) = terms-vars<? k ts
 
 choice? : Nat → Nat → Formula → Bool
 choice? k m (qtf false f) = choice? k (suc m) f
@@ -333,7 +334,7 @@ pred-def? : Nat → Nat → Formula → Bool
 pred-def? k a (qtf false f) = pred-def? k (suc a) f
 pred-def? k a (bct iff (rel (indexed m) ts) f) = 
   (k =n m) ∧ (formula-lfi<? k f) ∧ (formula-vars<? a f) ∧ 
-    (term*=? ts (vars-asc a) ∨ term*=? ts (vars-desc a))
+    (terms=? ts (vars-asc a) ∨ terms=? ts (vars-desc a))
 pred-def? _ _ _ = false
 
 adm? : Nat → Formula → Bool
@@ -351,12 +352,12 @@ adm? k f =
 analyze-a : Bool → Formula → Formula 
 analyze-a false  (bct and f _) =  f
 analyze-a true (bct and _ f) =  f
-analyze-a false  (not (bct or f _)) =  (not f)
-analyze-a true (not (bct or _ f)) =  (not f)
-analyze-a false  (not (bct imp f _)) =  f
-analyze-a true (not (bct imp _ f)) =  (not f)
-analyze-a false  (bct iff f g) =  (bct imp f g)
-analyze-a true (bct iff f g) =  (bct imp g f)
+analyze-a false  (not (bct or f _)) = (not f)
+analyze-a true (not (bct or _ f)) = (not f)
+analyze-a false  (not (bct imp f _)) = f
+analyze-a true (not (bct imp _ f)) = (not f)
+analyze-a false  (bct iff f g) = (bct imp f g)
+analyze-a true (bct iff f g) = (bct imp g f)
 analyze-a _ _ = cst true
 
 analyze-b : Bool → Formula → Formula 
@@ -385,16 +386,20 @@ analyze-n (not (not f)) =  f
 analyze-n _ = ⊤*
 \end{code}
 
-%<*verify>
+%<*verify-c>
 \begin{code}
 verify : Sequent → Proof → Bool
+verify Γ (rule-c i t p) = 
+  term-lfi<? (suc (size Γ)) t ∧ 
+  verify (add Γ (analyze-c t (nth i Γ))) p
+\end{code}
+%</verify-c>
+
+\begin{code}
 verify Γ (rule-a i b p) = verify (add Γ (analyze-a b (nth i Γ))) p
 verify Γ (rule-b i p q) = 
   (verify (add Γ (analyze-b false (nth i Γ))) p) ∧ 
   (verify (add Γ (analyze-b true (nth i Γ))) q) 
-verify Γ (rule-c i t p) = 
-  term*-lfi<? (suc (size Γ)) t ∧ 
-  verify (add Γ (analyze-c t (nth i Γ))) p
 verify Γ (rule-d i p) = verify (add Γ (analyze-d (size Γ) (nth i Γ))) p
 verify Γ (rule-n i p) = verify (add Γ (analyze-n (nth i Γ))) p
 verify Γ (rule-s ϕ p q) = 
@@ -403,10 +408,7 @@ verify Γ (rule-s ϕ p q) =
 verify Γ (rule-t ϕ p) =
   adm? (size Γ) ϕ ∧ verify (add Γ ϕ) p
 verify Γ (rule-x i j) = formula=? (nth i Γ) (not (nth j Γ))
-\end{code}
-%</verify>
 
-\begin{code}
 elim-res : {A B : Set} → (A → Chars → B) → (String → B) → (Res A) → B
 elim-res f g (cont a cs) = f a cs
 elim-res f g (stop s) = g s

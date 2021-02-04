@@ -9,7 +9,7 @@
 \usepackage[section]{placeins}
 \usepackage[bottom]{footmisc}
 \usepackage{tablefootnote}
-\usepackage[nodayofweek,level]{datetime}
+% \usepackage[nodayofweek,level]{datetime}
 \usepackage[affil-it]{authblk}
 \usepackage{hyperref}
 \usepackage{algorithm,algpseudocode}
@@ -70,34 +70,14 @@
 \newcommand{\adm}[0]{\mathrm{adm}}
 
  
-\newcommand{\concat}{%
-  \mathbin{{+}\mspace{-8mu}{+}}%
-}
 
-\makeatletter
-\def\@maketitle{%
-  \newpage
-  \null
-  \vskip 2em%
-  \begin{center}%
-  \let \footnote \thanks
-    {\Large\bfseries \@title \par}%
-    \vskip 1.5em%
-    {\normalsize
-      \lineskip .5em%
-      \begin{tabular}[t]{c}%
-        \@author
-      \end{tabular}\par}%
-    \vskip 1em%
-    {\normalsize \@date}%
-  \end{center}%
-  \par
-  \vskip 1.5em}
-\makeatother
-
-\title{A Formally Verified Checker for First-Order Proofs}
+\title{A Formally Verified Checker for\\ First-Order Proofs}
 
 \author{Seulkee Baek}
+\date{}
+
+\affil{Department of Philosophy, Carnegie Mellon University}
+\affil{\textit{seulkeeb@andrew.cmu.edu}}
 
 \begin{document}
 
@@ -144,18 +124,20 @@ easy to implement and verify its proof checker.
 
 This paper presents the Verified TESC Verifier (VTV), a proof checker for  
 the TESC format \footnote{\url{https://github.com/skbaek/tesc}} written and verified 
-in Agda \cite{bove2009brief}. The aim of the paper is twofold. Its primary purpose is 
+in Agda \cite{bove2009brief}. The aim of the paper is twofold. Its immediate purpose is 
 to demonstrate the reliability of TESC proofs by showing precisely what is established 
-by their successful verification using VTV. Its secondary aim is to serve as a guide 
-for understanding VTV's codebase and its design choices, which can be especially useful 
-for readers who want to implement their own TESC verifiers.
+by their successful verification using VTV. Many of the implementation issues we shall 
+discuss, however, are relevant to any formalization of first-order logic and not 
+limited to either VTV or Agda. Therefore, the techniques VTV uses to solve them may be 
+useful for other projects that reason about and perform computations with first-order 
+logic data structures.
 
 The rest of the paper is organized as follows:
 Section \ref{sec:rel-works} gives a brief survey of similar works and how VTV relates to them.
-Section \ref{set:proof-calc} describes the syntax and inference rules of the TESC proof calculus.
+Section \ref{sec:proof-calc} describes the syntax and inference rules of the TESC proof calculus.
 Section \ref{sec:verifier} presents the main TESC verifier kernel, and
 Section \ref{sec:soundness} gives a detailed specification of the verifier's soundness property.
-Sections \ref{set:proof-calc}, \ref{sec:verifier}, and \ref{sec:soundness} also include code 
+Sections \ref{sec:proof-calc}, \ref{sec:verifier}, and \ref{sec:soundness} also include code 
 excerpts and discuss how their respective contents are formalized in Agda.
 Section \ref{sec:test-results} shows the  results of empirical tests measuring VTV's performance.
 Section \ref{sec:conclusion} gives a summary and touches on potential future work.
@@ -173,28 +155,28 @@ Despite the limitations imposed by G\"odel's second incompleteness theorem \cite
 there has been interesting work toward verification of interactive theorem provers. 
 All of HOL Light except the axiom of infinity has been proven consistent in HOL Light itself \cite{harrison2006towards}, 
 which was further extended later to include definitional principles for new types 
-and constants \cite{kumar2014hol}. More recent projects go 
-beyond the operational semantics of programming languages and verifies theorem provers 
+and constants \cite{kumar2014hol}. There are also recent projects that go 
+beyond the operational semantics of programming languages and verifies interactive theorem provers 
 closer to the hardware, such as the Milawa theorem prover which runs on a Lisp runtime
 verified against x86 machine code \cite{davis2015reflective}, and the Metamath Zero 
-\cite{carneiro2019metamath} theorem prover verified down to x84-64 instruction set architecture. 
+\cite{carneiro2019metamath} theorem prover which targets x84-64 instruction set architecture. 
 
 VTV is designed to serve a role similar to these verified checkers for 
 first-order ATPs and the TESC format. There has been several different 
 approaches \cite{sutcliffe2006semantic, chihani2015proof} to verifying 
 the output of first-order ATPs, but the only example I am aware of
 which uses independent proof objects with a verified checker is the 
-Ivy system \cite{mccune2000ivy}. The largest difference between Ivy and 
+Ivy system \cite{mccune2000ivy}. The main difference between Ivy and 
 VTV is that Ivy's proof objects only record resolution and paramodulation 
 steps, so all input problems have to be normalized by a separate 
 preprocessor written in ACL2. In contrast, the TESC format supports 
-preprocessing steps like Skolemization and CNF normalization, so 
-it allows ATPs to work directly on input problems with their optimized 
+preprocessing steps like Skolemization and CNF normalization, and 
+allows ATPs to work directly on input problems with their optimized 
 preprocessing strategies.
 
 
 
-\section{Proof Calculus} \label{set:proof-calc} 
+\section{Proof Calculus} \label{sec:proof-calc} 
 
 The syntax of the TESC calculus is as follows:
 \begin{align*}
@@ -204,7 +186,7 @@ t ::= &\ x_k\ |\ f(\vec{t})\\
 \phi ::= &\ \top\ |\ \bot\ |\ f(\vec{t})\ |\ \lnot \phi\ |\ \phi \lor \chi\ |\ \phi \land \chi\ |\ \phi \to \chi\ |\ \phi \leftrightarrow \chi\ |\ \forall \phi\ |\ \exists \phi\\
 \Gamma ::= &\ \cdot\ |\ \Gamma, \phi
 \end{align*}
-$f$ ranges over \textit{functors}, which usually called `non-logical symbols' in
+We let $f$ range over \textit{functors}, which are usually called `non-logical symbols' in
 other presentations of first-order logic. The TESC calculus makes no distinction
 between function and relation symbols, and relies on the context to determine whether 
 a symbol applied to arguments is a term or an atomic formula. For brevity, we borrow
@@ -226,92 +208,108 @@ As usual, parentheses may be inserted for scope disambiguation, and the empty li
 `$\cdot$' may be omitted when it appears as part of a complex expression. E.g., the sequent 
 $\cdot, \phi, \psi$ and term $f(\cdot)$ may be abbreviated to $\phi, \psi$ and $f$.
 
-Formalization of TESC syntax in Agda is mostly straightforward, but with one 
-caveat. A first instinct definition of terms might be something like the following:
-\ExecuteMetaData[wrongterm.tex]{wrongterm}
-But this definition works poorly in practice, since any function defined by
-structural recursion on terms runs into non-termination issues. For instance, 
-substitution on terms must make recursive calls with arguments of functors (the members of the 
-list argument to \AgdaInductiveConstructor{fun}), but Agda can't automatically ascertain 
-the termination of these calls because those terms are behind a \AgdaFunction{List} 
-and hence not immediate subterms. Although it is possible to manually prove termination, 
-it is much simpler to sidestep 
-this issue with a pseudo-mutual recursion. The basic idea is to use a special type 
-\AgdaFunction{Term*} \AgdaSymbol{:} \AgdaFunction{Bool} \AgdaSymbol{→} \AgdaFunction{Set}
-that can double as both terms and lists of terms depending on its boolean argument. 
-I.e., we use \AgdaFunction{Term*} \AgdaInductiveConstructor{false} as the type of terms, 
-and \AgdaFunction{Term*} \AgdaInductiveConstructor{true} as the type of lists of terms.
+Formalization of TESC syntax in Agda is mostly straightforward, but with one
+small caveat. Consider the following definition of the type of terms:
+\ExecuteMetaData[basic.tex]{term}
+The constructor \AgdaInductiveConstructor{fun} builds a complex term out of a 
+functor and a list of arguments. Since these arguments are behind a \AgdaFunction{List},
+they are not immediate subterms of the complex term, and Agda cannot automatically 
+prove termination for recursive calls that use them. For instance, 
+\AgdaFunction{term-vars<?} \AgdaSymbol{:} \AgdaDatatype{Nat}
+\AgdaSymbol{→} \AgdaDatatype{Term} \AgdaSymbol{→} \AgdaDatatype{Bool} is 
+a function such that \AgdaFunction{term-vars<?} \AgdaBound{k} \AgdaBound{t} 
+evaluates to \AgdaInductiveConstructor{true} iff all variables in \AgdaBound{t} 
+have indices smaller than \AgdaBound{k}. It would be natural to define this
+function as 
+\ExecuteMetaData[other.tex]{tvlwrong}
+where \AgdaBound{m} \AgdaPrimitive{<ᵇ} \AgdaBound{k} evaluates to 
+\AgdaInductiveConstructor{true} iff \AgdaBound{m} is less than \AgdaBound{k}.
+But Agda rejects this definition because it cannot prove that the recursive 
+calls terminate. We can get around this problem by a mutual recursion 
+between a pair of functions, one for terms and one for lists of terms: 
+\ExecuteMetaData[verify.tex]{tvlright}
+All other functions that recurse on terms are also defined using similar
+mutual recursion.
 
-
-\ExecuteMetaData[basic.tex]{termstar}
-which lets us define terms and lists of terms as
-\ExecuteMetaData[basic.tex]{termterms}
-
-% \input{inf-rules.tex}
 \input{rules.tex}
-\input{faf.tex}
 
 The inference rules of the TESC calculus are shown in Table \ref{tab:inf-rules}.
-The $A$,$B$,$C$,$D$, and $N$ rules are the \textit{analytic} rules which analyze  
-existing formulas on the sequent and adds resulting subformulas to the new 
-sequent (we are reading the proof tree in the bottom-up direction).
-The formula analysis functions used by rules are given in Table 
-\ref{tab:faf}. Notice that the analytic rules are very similar to 
-Smullyan's \textit{uniform notation} for analytic tableaux, which is where 
-they get their names from. Note that: 
+The TESC calculus is a one-sided first-order sequent calculus, so having 
+a valid TESC proof of a sequent $\Gamma$ shows that $\Gamma$ is collectively unsatisfiable.
+The $A$,$B$,$C$,$D$, and $N$ rules are the \textit{analytic} rules. 
+Analytic rules are similar to the usual one-sided sequent calculus rules, 
+except that each analytic rule is overloaded to handle several connectives at once. 
+For example, consider the formulas $\phi \land \psi$, $\lnot (\phi \lor \psi)$, 
+$\lnot (\phi \limp \psi)$, and $\phi \liff \psi$. In usual sequent calculi, you would 
+need a different rule for each of the connectives $\land$, $\lor$, $\limp$, and $\liff$ to 
+break down these formulas. But all four formulas are ``essentially conjunctive'' 
+in the sense that the latter three are equivalent to $\lnot \phi \land \lnot \psi$, 
+$\phi \land \lnot \psi$, and $(\phi \limp \psi) \land (\psi \limp \phi)$.
+So it is more convenient to handle all four of them with a single rule that analyzes 
+a formula into its left and right conjuncts, which is the analytic $A$ rule.
+Similarly, the $B$, $C$, $D$ rules are used to analyze essentially disjunctive, 
+universal, existential formulas, and the $N$ rule performs double-negation elimination. 
+For a complete list of formula analysis functions that show how each analytic 
+rule breaks down formulas, see Appendix \ref{apdx:faf}. The analytic rules are 
+a slightly modified adaptation of Smullyan's \textit{uniform notation} for analytic 
+tableaux \cite{smullyan1995first}, which is where they get their names from. 
+
+All rules are designed to preserve the invariant $\lfi(\Gamma) < \size(\Gamma)$ 
+for every sequent $\Gamma$. We say that a sequent $\Gamma$ is \textit{good} if it satisfies 
+this invariant. It is important that all sequents are good, because this is what ensures 
+that the indexed functor $\idf{\size(\Gamma)}$ is fresh in respect to a sequent $\Gamma$.
+
+Of the three remaining rules, $S$ is the usual cut rule, and $X$ is the axiom or init rule. 
+The $T$ rule may be used to add \textit{admissable} formulas. A formula $\phi$ is admissable 
+in respect to a target theory $T$ and sequent size $k$ if it satisfies the following condition:  
 \begin{itemize}
-  \item $\Gamma[i]$ denotes the (0-based) $i$th formula of sequent $\Gamma$, 
-    where $\Gamma[i] = \top$ if the index $i$ is out-of-bounds. 
-  \item $\lfi(x)$ denotes the largest functor index (lfi) occurring in $x$. 
-    If $x$ incudes no functor indices, $\lfi(x) = -1$.
-  \item $\size(\Gamma)$ is the number of formulas in $\Gamma$.
-  \item All inference rules are designed to preserve the invariant
-    $\lfi(\Gamma) < \size(\Gamma)$ for every sequent $\Gamma$. We say that 
-    a sequent $\Gamma$ is \textit{good} if it satisfies this invariant.
-  \item $S$ is the usual cut rule, and $X$ is the axiom or init rule. 
-  \item $\adm(k,\phi)$ asserts that $\phi$ is an \textit{admissable} formula in 
-    respect to the target theory and sequent size $k$. More precisely, if $T$ 
-    is the target theory, $\Gamma$ is a sequent satisfiable modulo $T$, and 
-    $\size(\Gamma) = k$, then $\adm(k,\phi)$ implies that adding $\phi$ to 
-    $\Gamma$ preserves satisfiability modulo $T$. The sequent size argument $k$ 
-    is required because some admissable formulas use this number as the functor 
-    index of newly introduced indexed functors. The $T$ rule may be used to add 
-    any admissable formula.
+  \item For any good sequent $\Gamma$ that is satisfiable modulo $T$ and $\size(\Gamma) = k$, the 
+sequent $\Gamma, \phi$ is also satisfiable modulo $T$. 
 \end{itemize}
-The last part implies that the definition of the admissability predicate, and by 
-extension the definition of well-formed TESC proofs, changes according to the implicit 
-target theory. This is the `theory-extensible' part of TESC. The current version of 
-VTV verifies basic TESC proofs that target the theory of equality, so it allows $T$ 
+More intuitively, the $T$ rule allows you add formulas that preserve satisfiability. 
+Notice that the definition of admissability, and hence the definition of well-formed 
+TESC proofs, depends on the implicit target theory. This is the `theory-extensible' part of TESC. 
+The current version of VTV verifies basic TESC proofs that target the theory of equality, so it allows $T$ 
 rules to introduce equality axioms, fresh relation symbol definitions, and choice axioms.
 But VTV can be easily modified in a modular way to target other theories as well.
 
-TESC proofs are formalized in Agda as follows:
+TESC proofs are formalized in Agda as an inductive type \AgdaFunction{Proof},
+which has a separate constructor for each TESC inference rule: 
 \ExecuteMetaData[verify.tex]{proof}
-There are parts of TESC proofs omitted in the definition of 
-\AgdaFunction{Proof}, e.g. sequents. This is a design choice made in favor of
-efficient space usage. Since proofs are uniquely determined by their
-root sequents + complete information of the inference rules used,
-TESC proof files save space by omitting any components that can be 
-constructed on the fly during verification, which includes all intermediate 
-sequents and formulas introduced by analytic rules. Terms of the type 
-\AgdaFunction{Proof} are constructed by parsing input TESC files, 
-so it only includes information stored in TESC files, which are the arguments 
-to the constructors of \AgdaFunction{Proof}.
+For example, the constructor \AgdaInductiveConstructor{rule-a} takes  
+\AgdaFunction{Nat} and \AgdaFunction{Bool} arguments because this is the 
+information necessary to specify an application of the $A$ rule. I.e.,  
+\AgdaInductiveConstructor{rule-a} \AgdaBound{i} \AgdaBound{b} \AgdaBound{p} 
+is a proof whose last inference rule adds the formula $A(b, \Gamma[i])$. 
+Notice that sequents are completely absent from the definition of \AgdaFunction{Proof}.
+This is a design choice made in favor of efficient space usage. Since TESC proofs are uniquely 
+determined by their root sequents together with complete information of the inference rules used,
+TESC files conserve space by omitting any components that can be constructed on the fly during 
+verification, which includes all intermediate sequents and formulas introduced by analytic rules. 
+\AgdaFunction{Proof} is designed to only record information included in TESC files, 
+since terms of the type \AgdaFunction{Proof} are constructed by parsing input TESC files.
 
 
 
 \section{The Verifier} \label{sec:verifier} 
 
-Since \AgdaFunction{Proof} only includes basic information regarding inference 
-rule applications, the verifier function for \AgdaFunction{Proof} must construct 
-intermediate sequents as it recurses down a proof, and also check that inference 
-rule arguments (e.g., the term $t$ of a $C$ rule application) satisfy their side 
-conditions. This is exactly what \AgdaFunction{verify} does:
-\ExecuteMetaData[verify.tex]{verify}
-Analytic rules introduce new formulas obtained by formula analysis using 
-\AgdaFunction{analyze} functions, and side conditions are checked using appropriate 
-\AgdaFunction{?} functions. The argument type \AgdaFunction{Sequent}, however, 
-offers some interesting design choices. What kind of data structures should be used 
+The checker function \AgdaFunction{verify} for \AgdaFunction{Proof} performs two tasks: 
+(1) it constructs the omitted intermediate sequents as it recurses down a \AgdaFunction{Proof}, and 
+(2) it checks that the conditions are satisfied for each inference rule used. For instance, 
+consider the definition of \AgdaFunction{verify} for the $C$ rule case, together with  
+its type signature:
+\ExecuteMetaData[verify.tex]{verify-c}
+The terms (\AgdaFunction{nth} \AgdaBound{i} \AgdaBound{Γ}),  
+(\AgdaFunction{analyze-c} \AgdaBound{t} (\AgdaFunction{nth} \AgdaBound{i} \AgdaBound{Γ})),  
+and (\AgdaFunction{add} \AgdaBound{Γ} (\AgdaFunction{analyze-c} \AgdaBound{t} (\AgdaFunction{nth} \AgdaBound{i} \AgdaBound{Γ})))
+each corresponds to $\Gamma[i]$, $C(t, \Gamma[i])$, and $\Gamma, C(t, \Gamma[i])$.
+The conjunct \AgdaFunction{term-lfi<? (\AgdaInductiveConstructor{suc} (\AgdaFunction{size} \AgdaBound{Γ})) \AgdaBound{t}}
+ensures the side condition $\lfi(t) \le \size(\Gamma)$ is satisfied, and the recursive call to 
+\AgdaFunction{verify} checks that the subproof \AgdaBound{p} is a valid proof of
+the sequent $\Gamma, C(t, \Gamma[i])$. The cases for other rules are also defined similarly.
+
+The argument type \AgdaFunction{Sequent} for \AgdaFunction{verify} presents some 
+interesting design choices. What kind of data structures should be used 
 to encode sequents? The first version of VTV used lists, but lists immediately become 
 a bottleneck with practically-sized problems due to their poor random access speeds. 
 The default TESC verifier included in the TPTP-TSTP-TESC Processor (T3P, the main 
@@ -324,21 +322,32 @@ available in your language of choice, as is the case for Agda's standard library
 
 For VTV, we cut corners by taking advantage of the fact that (1) formulas 
 are never deleted from sequents, and (2) new formulas are always added to the 
-end of sequents. This allows us to use a simple tree structure:
+right end of sequents. (1) and (2) allow us to use a simple balancing algorithm.
+In order to use the algorithm, we first define the type of trees in a way that 
+allows each tree to efficiently keep track of its own size:
 \ExecuteMetaData[basic.tex]{tree}
-For any tree \AgdaInductiveConstructor{fork} \AgdaBound{k} \AgdaBound{a} \AgdaBound{t} \AgdaBound{s},
-the number \AgdaBound{k} is the size of the left subtree \AgdaBound{t}. 
-This property is not guaranteed to hold by construction,
-but it is easy to ensure that it always holds in practice. With this definition,
-balanced addition of elements to trees becomes trivial:
+For any non-leaf tree \AgdaInductiveConstructor{fork} \AgdaBound{k} \AgdaBound{a} \AgdaBound{t} \AgdaBound{s},
+the number \AgdaBound{k} is the size of \AgdaInductiveConstructor{fork} \AgdaBound{k} \AgdaBound{a} \AgdaBound{t} \AgdaBound{s}.
+This property is not guaranteed to hold by construction, but it is easy to ensure that it always holds in practice. 
+Since sizes of trees are stored as \AgdaFunction{Nat}, the function 
+\AgdaFunction{size} \AgdaSymbol{:} \AgdaFunction{Tree} \AgdaSymbol{→} \AgdaFunction{Nat}
+can always report the size of trees in constant time. New elements can be added to trees 
+in a balanced way as follows: when adding an element to a non-leaf tree, 
+compare its subtree sizes. If the right subtree is smaller, make a recursive call and add to the 
+right subtree. If the sizes are equal, make a new tree that contains the current tree as its left subtree, 
+an empty tree as its right subtree, and stores the new element in the root node.
+The definition of the \AgdaFunction{add} function for trees implements this algorithm precisely:
 \ExecuteMetaData[basic.tex]{add}
-Then the type \AgdaFunction{Sequent} can be defined as \AgdaFunction{Tree Formula}.
+This addition algorithm does not keep the tree maximally balanced, but it provides 
+reasonable performance and does away with complex ordering and balancing mechanisms, 
+which makes reasoning about trees considerably easier. Given the type \AgdaFunction{Tree}, 
+the type \AgdaFunction{Sequent} can be simply defined as \AgdaFunction{Tree Formula}.
 
 
 
 \section{Soundness} \label{sec:soundness}
 
-In order to verify the soundness of \AgdaFunction{verify}, we first need to formalize 
+In order to prove the soundness of \AgdaFunction{verify}, we first need to formalize 
 a first-order semantics that it can be sound in respect to. Most of the formalization 
 is routine, but it also includes some oddities particular to VTV.
 
@@ -347,35 +356,49 @@ handling of arities. Given that each functor has a unique arity,
 what do you do with ill-formed terms and atomic formulas with the wrong 
 number of arguments? You must either tweak the syntax definition to 
 preclude such possibilities, or deal with ill-formed terms and formulas as 
-edge cases, both of which can lead to unpleasant bloat. 
+edge cases, both of which can lead to bloated definitions and proofs. 
 
 For VTV, we avoid this issue by assuming that every functor has infinite arities.
 Or rather, for each functor $f$ with arity $k$, there are an infinite number 
 of other functors that share the name $f$ and has arities $0, 1, ..., k-1, k+1, k+2, ...$ 
-ad infinitum. With this assumption, the denotation of functors can be 
-simply defined as 
+ad infinitum. With this assumption, the denotation of functors can be defined as 
 \ExecuteMetaData[sound.tex]{relfun}
+where \AgdaBound{D} is the type of the domain of discourse that the 
+soundness proof is parametrized over.
 A \AgdaFunction{Rels} (resp. \AgdaFunction{Funs}) can be thought of as a 
 collection of an infinite number of relations (resp. functions), one for 
 each arity. An interpretation is a pair of a relation assignment and a 
 function assignment, which assign \AgdaFunction{Rels} and \AgdaFunction{Funs} 
 to functors.
 \ExecuteMetaData[sound.tex]{rafa}
-variable assignments simply assign denotations to \AgdaFunction{Nat}, since variables are 
+Variable assignments assign denotations to \AgdaFunction{Nat}, since variables are 
 identified by their Bruijn indices.
 \ExecuteMetaData[sound.tex]{va}
-
-Term valuation requires a bit of tweaking due to the unusual definition of \AgdaFunction{Term*}:
+For reasons we've discussed in Section \ref{sec:proof-calc}, term valuation 
+requires a pair of mutually recursive functions in order to recurse on terms:
 \ExecuteMetaData[sound.tex]{termval}
 Formula valuation is mostly straightforward, but some care needs to be taken 
-in the handling of variable assignments. The truth value of universally quantified 
-formulas are defined as:
-\ExecuteMetaData[sound.tex]{univ-val}
-\AgdaInductiveConstructor{qtf} \AgdaSymbol{:} \AgdaFunction{Bool} \AgdaSymbol{→} \AgdaFunction{Formula} \AgdaSymbol{→} \AgdaFunction{Formula} 
-is a constructor of \AgdaFunction{Formula} for quantified formulas, and \AgdaInductiveConstructor{qtf} \AgdaInductiveConstructor{false}
-encodes the universal quantifier.
-For any \AgdaBound{V}, \AgdaNumber{k}, and \AgdaBound{d}, 
-\AgdaSymbol{(}\AgdaBound{V} \AgdaFunction{/} \AgdaNumber{k} \AgdaFunction{↦} \AgdaBound{d}\AgdaSymbol{)} 
+in the handling of variable assignments and quantified formulas. 
+The function \AgdaInductiveConstructor{qtf} \AgdaSymbol{:} \AgdaFunction{Bool} \AgdaSymbol{→} \AgdaFunction{Formula} \AgdaSymbol{→} \AgdaFunction{Formula} 
+is a constructor of \AgdaFunction{Formula} for quantified formulas, where 
+\AgdaInductiveConstructor{qtf} \AgdaInductiveConstructor{false} and
+\AgdaInductiveConstructor{qtf} \AgdaInductiveConstructor{true} encode the universal and existential quantifiers, respectively.
+Given a relation assignment \AgdaBound{R},
+function assignment   \AgdaBound{F}, and
+variable assignment   \AgdaBound{V},
+the values of formulas 
+\AgdaInductiveConstructor{qtf} \AgdaInductiveConstructor{false} \AgdaBound{ϕ} and
+\AgdaInductiveConstructor{qtf} \AgdaInductiveConstructor{true} \AgdaBound{ϕ} under
+\AgdaBound{R}, \AgdaBound{F}, and \AgdaBound{V} are defined as
+\ExecuteMetaData[sound.tex]{qtf-val}
+The notations 
+\AgdaSymbol{∀} \AgdaBound{x} \AgdaSymbol{→} \AgdaBound{A} and
+\AgdaSymbol{∃} \AgdaSymbol{λ} \AgdaBound{x} \AgdaSymbol{→} \AgdaBound{A}
+may seem strange, but they are just Agda's way of writing 
+\AgdaSymbol{∀} \AgdaBound{x} \AgdaBound{A} and 
+\AgdaSymbol{∃} \AgdaBound{x} \AgdaBound{A}.
+For any \AgdaBound{V}, \AgdaBound{k}, and \AgdaBound{d}, 
+\AgdaSymbol{(}\AgdaBound{V} \AgdaFunction{/} \AgdaBound{k} \AgdaFunction{↦} \AgdaBound{d}\AgdaSymbol{)} 
 is an updated variable assignment obtained from \AgdaBound{V} by assigning 
 \AgdaBound{d} to the variable $x_k$, and pushing the assignments of all variables 
 larger than $x_k$ by one.
@@ -385,7 +408,7 @@ E.g., \AgdaSymbol{(}\AgdaBound{V}
 and 
 \AgdaSymbol{(}\AgdaBound{V} 
 \AgdaFunction{/} \AgdaNumber{0} \AgdaFunction{↦} \AgdaBound{x}\AgdaSymbol{)} 
-\AgdaSymbol{(}\AgdaInductiveConstructor{suc} \AgdaNumber{m}\AgdaSymbol{)} \AgdaSymbol{=} \AgdaBound{V} \AgdaNumber{m}.
+\AgdaSymbol{(}\AgdaInductiveConstructor{suc} \AgdaBound{m}\AgdaSymbol{)} \AgdaSymbol{=} \AgdaBound{V} \AgdaBound{m}.
 
 
 Now we can define (un)satisfiability of sequents in terms of formula valuations: 
@@ -409,9 +432,11 @@ defined above, it is also unsatisfiable in the usual sense.
 Now we finally come to the soundness statement for \AgdaFunction{verify}:
 \ExecuteMetaData[sound.tex]{verify-sound}
 \AgdaFunction{T} \AgdaSymbol{:} \AgdaFunction{Bool} \AgdaSymbol{→} \AgdaFunction{Set} 
-maps \AgdaInductiveConstructor{true} to \AgdaFunction{⊤} and \AgdaInductiveConstructor{false} to \AgdaFunction{⊥}.
+maps Boolean values \AgdaInductiveConstructor{true} and \AgdaInductiveConstructor{false} to
+the trivial and empty sets \AgdaFunction{⊤} and \AgdaFunction{⊥}, respectively.
 The condition \AgdaFunction{good}\AgdaSpace{}\AgdaBound{S} is necessary, because 
-the soundness of TESC proofs is dependent on the invariant that all sequents are good. 
+the soundness of TESC proofs is dependent on the invariant that all sequents are good
+(in the sense we defined in Section \ref{sec:proof-calc}).
 But we can do better than merely assuming that the input sequent is good,
 because the parser which converts the input character list into the initial (i.e., root) 
 sequent is designed to fail if the parsed sequent is not good. \AgdaFunction{parse-verify}
@@ -424,7 +449,7 @@ then the sequent parser successfully parses the first character list into some u
 sequent $S$. \AgdaFunction{parse-verify-sound} is an improvement over \AgdaFunction{verify-sound},
 but it also shows the limitation of the current setup. It only asserts that there is 
 \textit{some} unsatisfiable sequent parsed from the input characters, 
-but provides no guarantees that the parsed sequent is actually equivalent to the original
+but provides no guarantees that this sequent is actually equivalent to the original
 TPTP problem. This means that the formal verification of VTV is limited to the soundness 
 of its proof-checking kernel, and the correctness its TPTP parsing phase has to be 
 taken on faith.
@@ -451,7 +476,7 @@ the total number of problems that satisfy all of the preceding conditions).
   \item It can be solved by Vampire \cite{riazanov2002design} or E \cite{schulz2002brainiac} 
       in one minute using default settings (Vampire = 7885, E = 4853 \footnote{
       It should be noted that the default setting is actually not 
-      optimal for E; when used with the \verb|--auto| or \verb|--auto-schedule|
+      optimal for E. When used with the \verb|--auto| or \verb|--auto-schedule|
       options, E's success rates are comparable to that of Vampire. 
       But the TSTP solutions produced by E under these higher-performance modes 
       are much more difficult to compile down to a TESC proof, so they 
@@ -473,7 +498,7 @@ Out of the 12296 proofs, there were 5 proofs that VTV failed to verify
 due to exhausting the 16 GB available memory. A cactus plot of verification 
 times for the remaining 12291 proofs are shown in Fig. \ref{fig:time}. 
 As a reference point, we also show the plot for the default TESC verifier 
-included T3P running on the same proofs. The default TESC verifier 
+included in T3P running on the same proofs. The default TESC verifier 
 is written in Rust, and is optimized for performance with no regard to 
 verification. For convenience, we refer to it as the Optimized TESC Verifier (OTV).
 
@@ -503,13 +528,14 @@ with VTV is at least >64 GB. In contrast, OTV could verify all
 
 \section{Conclusion}  \label{sec:conclusion}
 
-VTV can serve as a fallback option whenever extra rigour is required in verification, 
-thereby increasing our confidence in the correctness of TESC proofs. 
-It also helps the design of other TESC verifiers by providing a reference 
-implementation that is guaranteed to be correct. It should be particularly helpful 
-for implementing other verified TESC verifiers in, say, Lean or Coq, since many 
-of the issues we've discussed (termination checking, proving properties of trees, etc.) 
-are common to these languages. 
+The robust test results show that VTV can serve as a fallback option when extra rigour 
+is required in verification, thereby increasing our confidence in the correctness of TESC proofs. 
+It can also help the design of other TESC verifiers by providing a reference implementation 
+that is guaranteed to be correct. On a more general note, VTV is an example of a first-order logic 
+formalization that strikes a practical balance between ease of proofs and efficient computation 
+while avoiding some common pitfalls like non-termination and complex arity checking. 
+Therefore, it can provide a useful starting point for other verified programming projects 
+that use first-order logic.
 
 There are two main ways in which VTV could be further improved. Curbing its 
 memory usage would be the most important prerequisite for making it the 
@@ -521,7 +547,9 @@ parser would be ideal, but the complexity of TPTP's syntax makes it difficult
 to even \textit{specify} the correctness of a parser, let alone prove it. 
 A more realistic approach would be imitating the technique used by verified 
 LRAT checkers \cite{heule2017efficient}, making VTV print the parsed problem 
-and textually comparing its with the original problem.
+and textually comparing its output with the original problem.
+
+
 
 \section*{Acknowledgements}  \label{sec:ack}
 
@@ -529,9 +557,19 @@ This work has been partially supported by AFOSR grant FA9550-18-1-0120.
 
 Thanks to Jeremy Avigad for a careful proofreading of drafts and advice for improvements.
 
+
+
 \bibliographystyle{plain}
 
 \bibliography{references}
+
+
+
+\appendix  
+
+\section{Formula analysis functions} \label{apdx:faf}
+
+\input{faf.tex}
 
 \end{document}
 

@@ -4,6 +4,7 @@
 \renewcommand\cellgape{\Gape[4pt]}
 
 \begin{table}
+  \centering
     \begin{tabular}{ | c | c | c |}
       \hline
 
@@ -57,6 +58,13 @@
 
     \end{tabular}
 
-    \caption{TESC inference rules.}
+    \caption{
+      TESC inference rules. $\size(\Gamma)$ is the number of formulas in $\Gamma$, and
+      $\Gamma[i]$ denotes the (0-based) $i$th formula of sequent $\Gamma$, where 
+      $\Gamma[i] = \top$ if the index $i$ is out-of-bounds. $\lfi(x)$ is the largest 
+      functor index (lfi) occurring in $x$. If $x$ incudes no functor indices, $\lfi(x) = -1$.
+      $\adm(k,\phi)$ asserts that $\phi$ is an admissable formula in respect to the 
+      target theory and sequent size $k$. 
+    }
     \label{tab:inf-rules}
 \end{table}

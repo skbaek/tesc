@@ -122,24 +122,17 @@ data Functor : Set where
   plain : Chars → Functor
 \end{code}
 
-%<*termstar>
+%<*term>
 \begin{code}
-data Term* : Bool → Set where
-  var : Nat → Term* false
-  fun : Functor → Term* true → Term* false
-  nil : Term* true 
-  cons : Term* false → Term* true → Term* true
+data Term : Set where
+  var : Nat → Term
+  fun : Functor → List Term → Term
 \end{code}
-%</termstar>
-
-%<*termterms>
-\begin{code}
-Term = Term* false 
-Terms = Term* true
-\end{code}
-%</termterms>
+%</term>
 
 \begin{code}
+Terms = List Term
+
 data Bct : Set where
   or  : Bct
   and : Bct
@@ -154,7 +147,7 @@ data Formula : Set where
   rel : Functor → Terms → Formula
 
 _=*_ : Term → Term → Formula
-t =* s = rel (plain ('=' ∷ [])) (cons t (cons s nil))
+t =* s = rel (plain ('=' ∷ [])) ( t ∷ s ∷ [] )
 
 _∨*_ : Formula → Formula → Formula
 _∨*_ = bct or
@@ -175,7 +168,7 @@ f ↔* g = bct iff f g
 ⊥* = cst false
 
 par : Nat → Term
-par k = fun (indexed k) nil
+par k = fun (indexed k) []
 
 tri : ∀ {A : Set} → Nat → A → A → A → Nat → A
 tri k a b c m with <-cmp k m 
@@ -208,41 +201,39 @@ tri-eq-gt k m h with (<-cmp k m)
 ... | (tri≈ hl he hg) = ⊥-elim (hg h)
 ... | (tri> hl he hg) = refl
 
-subst-term* : {b : Bool} → Nat → Term → Term* b → Term* b
-subst-term* k t (var m) = tri k (var (pred m)) t (var m) m
-subst-term* k t (fun f ts) = fun f (subst-term* k t ts)
-subst-term* k t nil = nil
-subst-term* k t (cons s ts) = cons (subst-term* k t s) (subst-term* k t ts)
-
 subst-term : Nat → Term → Term → Term
-subst-term k t s = subst-term* k t s 
- 
 subst-terms : Nat → Term → Terms → Terms
-subst-terms k t ts = subst-term* k t ts
 
-incr-var : {b : Bool} → Term* b → Term* b
-incr-var (var k) = var (suc k)
-incr-var (fun f ts) = fun f (incr-var ts)
-incr-var nil = nil
-incr-var (cons t ts) = cons (incr-var t) (incr-var ts)
+subst-term k t (var m) = tri k (var (pred m)) t (var m) m
+subst-term k t (fun f ts) = fun f (subst-terms k t ts)
+subst-terms k t [] = []
+subst-terms k t ((s ∷ ts)) = (subst-term k t s) ∷ (subst-terms k t ts)
+
+incr-var-term : Term → Term
+incr-var-terms : Terms → Terms 
+
+incr-var-term (var k) = var (suc k)
+incr-var-term (fun f ts) = fun f (incr-var-terms ts)
+incr-var-terms [] = []
+incr-var-terms (t ∷ ts) = incr-var-term t ∷ incr-var-terms ts
 
 subst-form : Nat → Term → Formula → Formula 
 subst-form k t (cst b) = cst b
 subst-form k t (not f) = not (subst-form k t f)
 subst-form k t (bct b f g) = bct b (subst-form k t f) (subst-form k t g)
-subst-form k t (qtf q f) = qtf q (subst-form (suc k) (incr-var t) f)
+subst-form k t (qtf q f) = qtf q (subst-form (suc k) (incr-var-term t) f)
 subst-form k t (rel f ts) = rel f (subst-terms k t ts)
 
 rev-terms : Terms → Terms → Terms
-rev-terms nil acc = acc
-rev-terms (cons t ts) acc = rev-terms ts (cons t acc)
+rev-terms [] acc = acc
+rev-terms (t ∷ ts) acc = rev-terms ts (t ∷ acc)
 
 vars-desc : Nat → Terms
-vars-desc 0 = nil
-vars-desc (suc k) = cons (var k) (vars-desc k)
+vars-desc 0 = []
+vars-desc (suc k) = var k ∷ vars-desc k
 
 vars-asc : Nat → Terms
-vars-asc k = rev-terms (vars-desc k) nil
+vars-asc k = rev-terms (vars-desc k) []
 
 skm-term-asc : Nat → Nat → Term
 skm-term-asc k a = fun (indexed k) (vars-asc a)
@@ -292,19 +283,21 @@ functor=? (indexed k) (indexed m) = nat=? k m
 functor=? (plain s') (plain t') = chars=? s' t'
 functor=? _ _ = false
 
-term*=? : {b1 b2 : Bool} → Term* b1 → Term* b2 → Bool
-term*=? (var k) (var m) = nat=? k m
-term*=? (fun f ts) (fun g ss) = functor=? f g ∧ term*=? ts ss
-term*=? nil nil = true
-term*=? (cons t' ts') (cons s' ss') = (term*=? t' s') ∧ (term*=? ts' ss')
-term*=? _ _ = false
+term=? : Term → Term → Bool
+terms=? : Terms → Terms → Bool
+term=? (var k) (var m) = nat=? k m
+term=? (fun f ts) (fun g ss) = functor=? f g ∧ terms=? ts ss
+term=? _ _ = false
+terms=? [] [] = true
+terms=? (t' ∷ ts') (s' ∷ ss') = (term=? t' s') ∧ (terms=? ts' ss')
+terms=? _ _ = false
 
 formula=? : Formula → Formula → Bool
 formula=? (cst b0) (cst b1) = b0 ⇔ b1
 formula=? (not f) (not g) = formula=? f g
 formula=? (bct b1 f1 g1) (bct b2 f2 g2) = bct=? b1 b2 ∧ (formula=? f1 f2 ∧ formula=? g1 g2)
 formula=? (qtf p' f') (qtf q' g') = (p' ⇔ q') ∧ (formula=? f' g')
-formula=? (rel r1 ts1) (rel r2 ts2) = functor=? r1 r2 ∧ term*=? ts1 ts2
+formula=? (rel r1 ts1) (rel r2 ts2) = functor=? r1 r2 ∧ terms=? ts1 ts2
 formula=? _ _ = false
 
 pp-digit : Nat → Char
@@ -336,19 +329,17 @@ pp-ftr : Functor → String
 pp-ftr (indexed k) = concat ( "#" ∷ show k ∷ [] )
 pp-ftr (plain s) = fromList s
 
-pp-Term* : (b : Bool) → Term* b → String 
-pp-Term* false (var k) = concat ( "#" ∷ show k ∷ [] )
-pp-Term* false (fun f ts) = concat ( pp-ftr f ∷ "(" ∷ pp-Term* true ts ∷ ")" ∷ [] )
-pp-Term* true nil = ""
-pp-Term* true (cons t nil) = pp-Term* false t 
-pp-Term* true (cons t ts) = concat ( pp-Term* false t ∷ "," ∷ pp-Term* true ts ∷ [] )
+pp-term : Term → String 
+pp-terms : Terms → String 
+pp-term (var k) = concat ( "#" ∷ show k ∷ [] )
+pp-term (fun f ts) = concat ( pp-ftr f ∷ "(" ∷ pp-terms ts ∷ ")" ∷ [] )
+pp-terms [] = ""
+pp-terms (t ∷ []) = pp-term t 
+pp-terms (t ∷ ts) = concat ( pp-term t ∷ "," ∷ pp-terms ts ∷ [] )
 
 pp-bool : Bool → String
 pp-bool true = "true"
 pp-bool false = "false"
-
-pp-term = pp-Term* false
-pp-terms = pp-Term* true
 
 pp-form : Formula → String 
 pp-form (cst true) = "⊤"
@@ -411,10 +402,6 @@ eq-trans _ refl refl = refl
 
 eq-symm : ∀ {A : Set} {x : A} {y : A} → x ≡ y → y ≡ x
 eq-symm refl = refl
-
--- _∈_ : {A : Set} → A → List A → Set
--- a0 ∈ [] = ⊥ 
--- a0 ∈ (a1 ∷ as) = (a0 ≡ a1) ⊎ (a0 ∈ as)
 
 rt : Set → Bool
 rt A = lem-elim A (λ _ → true) (λ _ → false)
@@ -718,10 +705,10 @@ size (fork k _ _ _) = k
 \begin{code}
 add : {A : Set} → Tree A → A → Tree A
 add empty a = fork 1 a empty empty 
-add ts@(fork k b t s) a =  
+add (fork k b t s) a =  
   if (size s <ᵇ size t)
   then (fork (k + 1) b t (add s a))
-  else (fork (k + 1) a ts empty)
+  else (fork (k + 1) a (fork k b t s) empty)
 \end{code}
 %</add>
 
