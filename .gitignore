@@ -16,3 +16,4 @@ bench/*.tar.gz
 bench/proofs/
 bench/solutions/
 temp
+mergever.pl

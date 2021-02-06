@@ -41,7 +41,7 @@ check_name(SOLVER, KERNEL, NAME) :-
     read_item(read_time, "measure", TIME_SEC),
     s_to_ms(TIME_SEC, TIME),
     read_item(read_mem, "measure", MEM),
-    add_entry('verifications.pl', verification(SOLVER, KERNEL, NAME, passed(TIME,MEM)))
+    add_entry('verifications.pl', verification(SOLVER, KERNEL, NAME, (TIME,MEM)))
   ;
     add_entry('verifications.pl', verification(SOLVER, KERNEL, NAME, failed))
   ),
