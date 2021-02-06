@@ -317,5 +317,5 @@ verify(PROB, PRF) :-
   open(PRF, read, STM, [encoding(octet)]), !,
   check(BCH, SIZE, false, "", STM), !,
   close(STM), !,
-  writeln("Proof verified (kernel = DEBUG)."), !,
+  writeln("Proof verified by DTV."), !,
   true.

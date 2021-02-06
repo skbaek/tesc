@@ -16,10 +16,10 @@ import IO.Primitive as Prim
 open import IO
   renaming (_>>=_ to _>>>=_)
   renaming (_>>_ to _>>>_)
-open import verify 
+open import verify
   using (parse-verify)
 open import Codata.Musical.Colist 
-  renaming (length to length*) 
+  renaming (length to length*)
   renaming (map to map*) 
   renaming ([_] to [_]*) 
   renaming (_∷_ to _∷*_) 
@@ -45,7 +45,7 @@ _>>=_ : {A : Set} {B : Set} → IO A → (A → IO B) → IO B
 _>>=_ f g = ♯ f >>>= \ x → ♯ (g x)
 
 _>>_  : {A : Set} {B : Set} →  IO A → IO B → IO B
-_>>_ f g = ♯ f >>> ♯ g 
+_>>_ f g = ♯ f >>> ♯ g
 
 skip : IO ⊤ 
 skip = lift (Prim.return tt)
@@ -68,7 +68,7 @@ costring-to-chars _ = []
 --   exit-failure
 
 print-result : Bool → IO ⊤ 
-print-result true = put-str-ln "Proof verified (kernel = VERIFIED)."
+print-result true = put-str-ln "Proof verified by VTV."
 print-result false = do 
   putStr "Invalid proof" 
   exit-failure

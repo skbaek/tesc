@@ -1,24 +1,24 @@
 :- [basic, vsolve, esolve, prove, verify].
 
-kernels([fast, verified, debug]).
-
-use_kernel(debug, PROB, PRF) :- verify(PROB, PRF).
-
-use_kernel(verified, PROB, PRF) :- 
-  format_shell("$TESC/t3p-rs/target/release/t3p serialize ~w | $TESC/vtv/vtv ~w", [PROB, PRF], 0).
-
-use_kernel(fast, PROB, PRF) :- 
-  format_shell("$TESC/t3p-rs/target/release/t3p verify ~w ~w", [PROB, PRF], 0).
+% kernels([otv, vtv, dtv]).
+% 
+% use_kernel(debug, PROB, PRF) :- verify(PROB, PRF).
+% 
+% use_kernel(verified, PROB, PRF) :- 
+%   format_shell("$TESC/t3p-rs/target/release/t3p serialize ~w | $TESC/vtv/vtv ~w", [PROB, PRF], 0).
+% 
+% use_kernel(fast, PROB, PRF) :- 
+%   format_shell("$TESC/t3p-rs/target/release/t3p verify ~w ~w", [PROB, PRF], 0).
 
 solve(eprover, TSTP, SOL) :- esolve(TSTP, SOL).
 solve(vampire, TSTP, SOL) :- vsolve(TSTP, SOL).
 
-main(['verify' | ARGS]) :-
-  select_arg('--kernel', ARGS, fast, ARG), 
-  kernels(KERNELS), 
-  select_by_prefix(ARG, KERNELS, KERNEL), !,
-  append(_, [PROB, PRF], ARGS),
-  use_kernel(KERNEL, PROB, PRF). 
+%main(['verify', VERIFIER, PROB, PRF]) :-
+%  select_arg('--kernel', ARGS, fast, ARG), 
+%  kernels(KERNELS), 
+%  select_by_prefix(ARG, KERNELS, KERNEL), !,
+%  append(_, [PROB, PRF], ARGS),
+%  use_kernel(KERNEL, PROB, PRF). 
 
 main(['compile', SOLVER, TPTP, TSTP, TESC]) :-
   set_mem_gb(14), !,
@@ -37,3 +37,11 @@ main(['compile', SOLVER, TPTP, TSTP, TESC]) :-
   format_shell("$TESC/t3p-rs/target/release/t3p relabel ~w temp ~w", [TPTP, TESC], 0),
   delete_file(temp), !,
   writeln("Proof complete."), !.
+
+main(['verify', PROB, PRF]) :-
+  format_shell("$TESC/t3p-rs/target/release/t3p verify ~w ~w", [PROB, PRF], 0).
+main(['verify', vtv, PROB, PRF]) :-
+  format_shell("$TESC/t3p-rs/target/release/t3p serialize ~w | $TESC/vtv/vtv ~w", [PROB, PRF], 0).
+main(['verify', otv, PROB, PRF]) :-
+  format_shell("$TESC/t3p-rs/target/release/t3p verify ~w ~w", [PROB, PRF], 0).
+main(['verify', dtv, PROB, PRF]) :- verify(PROB, PRF).

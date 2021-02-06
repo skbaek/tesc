@@ -2,6 +2,8 @@
 :- initialization(main, main).
 :- [prelude, common, proofs].
 
+delete_file_if_exists(FILE) :- exists_file(FILE) -> delete_file(FILE) ; true.
+
 read_item_core(Goal, Stream, Item) :- 
   read_line_to_string(Stream, String), 
   (
@@ -35,22 +37,24 @@ check_name(SOLVER, KERNEL, NAME) :-
   format("Checking problem = ~w\n", [NAME]), !,
   name_probpath(NAME, PROB_PATH),
   (
-    format_shell("/usr/bin/time -v $TESC/t3p verify --kernel ~w ~w proofs/~w/~w.tesc 1>> errmsg 2> measure", [KERNEL, PROB_PATH, SOLVER, NAME], 0) ->
+    format_shell("/usr/bin/time -v $TESC/t3p verify ~w ~w proofs/~w/~w.tesc 1>> errmsg 2> measure", [KERNEL, PROB_PATH, SOLVER, NAME], 0) ->
     read_item(read_time, "measure", TIME_SEC),
     s_to_ms(TIME_SEC, TIME),
     read_item(read_mem, "measure", MEM),
     add_entry('verifications.pl', verification(SOLVER, KERNEL, NAME, passed(TIME,MEM)))
   ;
     add_entry('verifications.pl', verification(SOLVER, KERNEL, NAME, failed))
-  ).
+  ),
+  delete_file_if_exists("errmsg"), !,
+  delete_file_if_exists("measure").
 
-main([SOLVER, KERNEL]) :- 
+main([SOLVER, VERIFIER]) :- 
   findall(NAME, proof(SOLVER, NAME, passed(_, _)), NAMES), !,
-  cmap(check_name(SOLVER, KERNEL), NAMES), !.
+  cmap(check_name(SOLVER, VERIFIER), NAMES), !.
 
 main([]) :- 
   shell("echo \"\" > verifications.pl", 0),
-  main([vampire,fast]),
-  main([vampire,verified]),
-  main([eprover,fast]),
-  main([eprover,verified]).
+  main([vampire,otv]),
+  main([vampire,vtv]),
+  main([eprover,otv]),
+  main([eprover,vtv]).

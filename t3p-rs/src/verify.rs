@@ -451,6 +451,6 @@ pub fn main<I: Iterator<Item=String>>(mut args: I) -> Rst<()> {
   let mut prf: ReadBytes = get_read_bytes(&tesc, "Cannot open TESC file");
 
   check(bch, &mut prf)?;
-  println!("Proof verified (kernel = FAST).");
+  println!("Proof verified by OTV.");
   Ok(())
 }
