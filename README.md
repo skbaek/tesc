@@ -8,10 +8,8 @@ latter to verify that the former is unsatisfiable.
 You can generate TESC proof files by compiling them from TSTP solution files
 using the TPTP-TSTP-TESC Processor (T3P) tool. T3P can also verify TESC proofs
 using one of three backend checkers: a formally verified checker written and
-verified in Agda, a performance-optimized checker written in Rust, or a backup
-checker written in Prolog.
-
-
+verified in Agda, a performance-optimized checker written in Rust, and a 
+debugging/backup checker written in Prolog.
 
 ## Installation & Usage 
 
@@ -35,19 +33,13 @@ should be available on the path for successful compilation and usage:
 
 Installation and usage was only tested on Linux.
 
+`t3p compile [SOLVER] [PROBLEM] [SOLUTION] [PROOF]` compiles a TPTP problem 
+`[PROBLEM]` and its TSTP solution `[SOLUTION]` to a new TESC proof `[PROOF]`, 
+where `[SOLVER]` is the ATP used to generate `[SOLUTION]`. Currently supported 
+options for `[SOLVER]` are `vampire` and `eprover`.
+
 `t3p verify [VERIFIER] [PROBLEM] [PROOF]` uses the TESC proof `[PROOF]` 
-to show that the TPTP problem `[PROBLEM]` is unsatisfiable. Currently
-supported options for `[VERIFIER]` are `vtv` and  `otv`. `[VERIFIER]`
-may be omitted, in which case T3P default OTV.
-
-`t3p compile [SOLVER] [PROBLEM] [SOLUTION] [PROOF]` uses a TPTP problem 
-`[PROBLEM]` and TSTP solution `[SOLUTION]` to generate a new TESC proof 
-`[PROOF]`, where `[PROVER]` is the ATP which generated `[SOLUTION]`.  Currently supported options for `[PROVER]` are `vampire` and `eprover`.
-
-
-## Test Results
-
-The tests using solutions produced by E and Vampire, referred to in the 
-extended abstract submitted to PAAR, has been superceded with a more
-comprehensive test using all eligible problems in the TPTP library.
-You can read the [summary](https://github.com/skbaek/tesc/blob/master/Test%20Results/Summary.md) for more details.
+to check that the TPTP problem `[PROBLEM]` is unsatisfiable. Currently
+supported options for `[VERIFIER]` are `vtv`,  `otv`, and `dtv` for the 
+Agda, Rust, and Prolog verifiers, respectively. `[VERIFIER]` may be 
+omitted, in which case T3P default `otv`.
