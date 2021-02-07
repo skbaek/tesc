@@ -42,4 +42,4 @@ options for `[SOLVER]` are `vampire` and `eprover`.
 to check that the TPTP problem `[PROBLEM]` is unsatisfiable. Currently
 supported options for `[VERIFIER]` are `vtv`,  `otv`, and `dtv` for the 
 Agda, Rust, and Prolog verifiers, respectively. `[VERIFIER]` may be 
-omitted, in which case T3P default `otv`.
+omitted, in which case T3P defaults to `otv`.

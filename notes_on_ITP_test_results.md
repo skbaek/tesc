@@ -11,8 +11,8 @@ you use the same versions for the following programs and libraries.
 - Agda standard library : commmit [9c56155ffdc1930b6c33caa38ef384ab8cc2dba1](https://github.com/agda/agda-stdlib/commit/9c56155ffdc1930b6c33caa38ef384ab8cc2dba1) 
 
 Language compiler versions were not as strictly controlled and changed from time to time.
-Since no compiler-related issues were encountered, it is unlikely to be critical, but we 
-list one of the versions used for each compiler for reference. 
+Since no compiler-related issues were encountered, it is unlikely to be critical, but one 
+of the versions used for each compiler is listed for reference. 
 
 - swipl : version 8.2.1 for x86_64-linux
 - agda : version 2.6.2-08191e6
