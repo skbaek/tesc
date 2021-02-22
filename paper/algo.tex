@@ -1,0 +1,43 @@
+
+\begin{algorithm}[tb]
+  \caption{TESC verification} \label{alg:tesc-check}
+  \begin{algorithmic}[1]
+  \Function{Verify}{$\mathit{prob},\Prf$}
+    \State{$\Sqts \gets [\mathit{prob}]$} 
+    \While{$\Sqts \neq []$}
+      \State{$\Sqt \gets \mathrm{Pop}(\Sqts)$}
+      \State{$c \gets \mathrm{Pop}(\Prf)$}
+      \Case{$c$}
+        \State{$\sq{A} \Rightarrow$}\Indent 
+          \State{$i \gets \mathrm{ReadNumber}(\Prf)$}
+          \State{$b \gets \mathrm{ReadBool}(\Prf)$}
+          \State{$f \gets \mathrm{ApplyA}(b,sqt[i])$}
+          \State{$\mathrm{Push}(\Sqt \concat [f],\Sqts)$}
+        \EndIndent
+        \State{$...$} \Comment{Other analytic rules are similar to A}
+        \State{$\sq{S} \Rightarrow$}\Indent
+          \State{$f \gets \mathrm{ReadFormula}(\Prf)$}
+          \State{$\mathrm{Assert}(\mathrm{LargestFunctorIndex}(f) \le \mathrm{Length}(sqt))$}
+          \State{$\mathrm{Push}(\Sqt \concat [f],\Sqts)$}
+          \State{$\mathrm{Push}(\Sqt \concat [\lnot f],\Sqts)$}
+        \EndIndent
+        \State{$\sq{T} \Rightarrow$}\Indent
+          \State{$f \gets \mathrm{ReadFormula}(\Prf)$}
+          \State{$\mathrm{Assert}(\mathrm{LargestFunctorIndex}(f) \le \mathrm{Length}(sqt))$}
+          \State{$\mathrm{Assert}(\mathrm{Admissible}(f))$}
+          \State{$\mathrm{Push}(\Sqt \concat [f],\Sqts)$}
+        \EndIndent
+        \State{$\sq{X} \Rightarrow$}\Indent
+          \State{$i \gets \mathrm{ReadNumber}(\Prf)$}
+          \State{$j \gets \mathrm{ReadNumber}(\Prf)$}
+          \State{$\mathrm{Assert}(sqt[i] =\lnot sqt[j])$}
+        \EndIndent
+        \State{$\_ \Rightarrow$ \Return $0$}
+      \EndCase
+    \EndWhile
+    \State{$\_ \Rightarrow$ \Return $1$}
+  \EndFunction
+  \end{algorithmic}
+  \end{algorithm}
+  
+

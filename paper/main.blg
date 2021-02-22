@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+Database file #1: references.bib
+Warning--empty year in queue2019cadical
+Warning--can't use both volume and number fields in de1972lambda
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            529 strings with 4838 characters,
+and the built_in function-call counts, 1984 in all, are:
+= -- 204
+> -- 67
+< -- 5
++ -- 27
+- -- 22
+* -- 118
+:= -- 300
+add.period$ -- 18
+call.type$ -- 5
+change.case$ -- 25
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 95
+empty$ -- 167
+format.name$ -- 22
+if$ -- 449
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 6
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 40
+preamble$ -- 1
+purify$ -- 21
+quote$ -- 0
+skip$ -- 69
+stack$ -- 0
+substring$ -- 123
+swap$ -- 40
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 18
+warning$ -- 2
+while$ -- 20
+width$ -- 6
+write$ -- 59
+(There were 2 warnings)

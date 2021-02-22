@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{queue2019cadical}
+Armin Biere.
+\newblock Cadical at the sat race 2019.
+\newblock {\em SAT RACE 2019}, page~8.
+
+\bibitem{cruz2017efficient}
+Lu{\'\i}s Cruz-Filipe, Marijn~JH Heule, Warren~A Hunt, Matt Kaufmann, and Peter
+  Schneider-Kamp.
+\newblock Efficient certified rat verification.
+\newblock In {\em International Conference on Automated Deduction}, pages
+  220--236. Springer, 2017.
+
+\bibitem{de1972lambda}
+Nicolaas~Govert De~Bruijn.
+\newblock Lambda calculus notation with nameless dummies, a tool for automatic
+  formula manipulation, with application to the church-rosser theorem.
+\newblock In {\em Indagationes Mathematicae (Proceedings)}, volume~75, pages
+  381--392. North-Holland, 1972.
+
+\bibitem{smullyan1995first}
+Raymond~M Smullyan.
+\newblock {\em First-order logic}.
+\newblock Courier Corporation, 1995.
+
+\bibitem{wetzler2014drat}
+Nathan Wetzler, Marijn~JH Heule, and Warren~A Hunt.
+\newblock Drat-trim: Efficient checking and trimming using expressive clausal
+  proofs.
+\newblock In {\em International Conference on Theory and Applications of
+  Satisfiability Testing}, pages 422--429. Springer, 2014.
+
+\end{thebibliography}

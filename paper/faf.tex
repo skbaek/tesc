@@ -1,0 +1,60 @@
+\begin{centering}
+    \begin{tabular}{|c|cc|}
+    \hline
+    A & 
+    {
+      $\begin{aligned}
+        A(0, \lnot (\phi \lor \psi)) =&\ \lnot \phi\\ 
+        A(0, \phi \land \psi) =&\ \phi\\ 
+        A(0, \lnot (\phi \to \psi)) =&\ \phi\\ 
+        A(0, \phi \liff \psi) =&\ \phi \limp \psi
+      \end{aligned}$
+    } &  
+    {
+      $\begin{aligned}
+        A(1, \lnot (\phi \lor \psi)) =&\ \lnot \psi\\
+        A(1, \phi \land \psi) =&\  \psi\\
+        A(1, \lnot (\phi \to \psi)) =&\  \lnot \psi\\
+        A(1, \phi \liff \psi) =&\  \psi \limp \phi
+      \end{aligned}$
+    } 
+    \\ \hline
+    B &
+    {
+      $\begin{aligned}
+        B(0, \phi \lor \psi) =&\  \phi\\ 
+        B(0, \lnot (\phi \land \psi)) =&\  \lnot \phi\\ 
+        B(0, \phi \to \psi) =&\  \lnot \phi\\ 
+        B(0, \lnot (\phi \liff \psi)) =&\  \lnot \phi \limp \psi
+      \end{aligned}$
+    } &  
+    {
+      $\begin{aligned}
+        B(1, \phi \lor \psi) =&\  \psi\\
+        B(1, \lnot (\phi \land \psi)) =&\  \lnot \psi\\
+        B(1, \phi \to \psi) =&\  \psi\\
+        B(1, \lnot (\phi \liff \psi)) =&\  \lnot \psi \limp \phi
+      \end{aligned}$
+    } 
+    \\ \hline
+    C & 
+    $C(t, \forall \phi) = \phi [0 \mapsto t]$ &
+    $C(t, \lnot \exists \phi) = \lnot \phi [0 \mapsto t]$
+     \\ \hline
+    D & 
+    $D(k, \exists \phi) = \phi [0 \mapsto \idf{k}]$) &
+    $D(k, \lnot \forall \phi) = \lnot \phi [0 \mapsto \idf{k}]$ 
+    \\ \hline
+    N & \multicolumn{2}{c|}{$N(\lnot \lnot \phi) = \phi$} 
+    \\ \hline
+  \end{tabular}
+  
+\end{centering}
+
+\vspace{5mm}
+
+    The Formula analysis functions used by analytic rules. For any argument not explicitly 
+    defined above, the functions all return $\top$. E.g., $A(0, \phi \lor \psi) = \top$.
+    $\phi[k \mapsto t]$ denotes the result of replacing all variables in $\phi$ bound 
+    to the $k$th quantifier with term $t$. For the exact definition of substitutions 
+    using De Bruijn indices, see Appendix \ref{apdx:subst}.

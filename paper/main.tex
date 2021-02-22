@@ -1,0 +1,653 @@
+\documentclass[12pt]{article}
+\usepackage{bussproofs, array, amstext, amssymb} 
+\usepackage{mathtools, extarrows}
+\usepackage{latexsym}
+\usepackage{syntax}
+\usepackage{tabularx}
+\usepackage{flowchart}
+\usetikzlibrary{arrows}
+\usepackage{array,multirow}
+\usepackage[section]{placeins}
+\usepackage[bottom]{footmisc}
+\usepackage[charter]{mathdesign}
+\usepackage{tablefootnote}
+\usepackage[nodayofweek,level]{datetime}
+\usepackage[affil-it]{authblk}
+\usepackage{hyperref}
+\usepackage{algorithm,algpseudocode}
+\usepackage{textcomp}
+\usepackage{makecell}
+
+
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\rhd$ #1}
+\algdef{SE}[SUBALG]{Indent}{EndIndent}{}{\algorithmicend\ }%
+\algdef{SE}[SWITCH]{Case}{EndCase}[1]{\textbf{case}\ #1\ \textbf{of}}{\algorithmicend\ \algorithmicswitch}%
+\algtext*{Indent}
+\algtext*{EndIndent}
+\algtext*{EndCase}
+\algtext*{EndFor}% Remove "end for" text
+\algtext*{EndWhile}% Remove "end while" text
+\algtext*{EndIf}% Remove "end if" text
+\algtext*{EndFunction}% Remove "end if" text
+
+
+\renewcommand{\labelitemii}{$\star$}
+\newcommand{\midtilde}{\raisebox{0.5ex}{\texttildelow}}
+\newcommand{\at}[0]{\ @\ }
+\newcommand{\Adm}[0]{\mathrm{adm}}
+\newcommand{\An}[0]{\mathrm{An}}
+\newcommand{\Len}[0]{\mathrm{len}}
+\newcommand{\Gnd}[0]{\mathit{gnd}}
+\newcommand{\Prf}[0]{\mathit{prf}}
+\newcommand{\Bch}[0]{\mathit{bch}}
+\newcommand{\Sqts}[0]{\mathit{sqts}}
+\newcommand{\Sqt}[0]{\mathit{sqt}}
+\newcommand{\idf}[1]{\#_{#1}} 
+% \newcommand{\fresh}[1]{\#_{\mathit{fresh}}({#1})} 
+\newcommand{\fresh}[1]{\mathit{fresh}_{\#}({#1})} 
+\newcommand{\mfi}[1]{\mathrm{mfi}({#1})} 
+\newcommand{\Dec}[1]{\xRightarrow{#1}} 
+\newcommand{\bprf}[0]{\begin{prooftree}}
+\newcommand{\eprf}[0]{\end{prooftree}}
+\newcommand{\axm}[1]{\AxiomC{$#1$}}
+\newcommand{\unr}[1]{\UnaryInfC{$#1$}}
+\newcommand{\bnr}[1]{\BinaryInfC{$#1$}}
+\newcommand{\tnr}[1]{\TrinaryInfC{$#1$}}
+\newcommand{\rlb}[1]{\RightLabel{#1}}
+\newcommand{\limp}[0]{\to}
+\newcommand{\liff}[0]{\leftrightarrow}
+\newcommand{\sq}[1]{\text{`#1'}} 
+\newcommand{\lfi}[0]{\mathrm{lfi}} 
+\newcommand{\size}[0]{\mathrm{size}}
+\newcommand{\adm}[0]{\mathrm{adm}}
+\newcommand{\concat}{%
+  \mathbin{{+}\mspace{-8mu}{+}}%
+}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\Large\bfseries \@title \par}%
+    \vskip 1.5em%
+    {\normalsize
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\normalsize \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
+\title{The TESC Proof Format for First-Order ATPs}
+
+\author{Seulkee Baek}
+\date{}
+
+\affil{Department of Philosophy, Carnegie Mellon University}
+\affil{\textit{seulkeeb@andrew.cmu.edu}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+TESC is a machine-checkable, low-level proof format for first-order ATPs. 
+Every step in a TESC proof is verifiable, including preprocessing steps like 
+Skolemization and CNF normalization. TESC proofs are processed using the T3P 
+tool, which generates TESC proofs from input TSTP solutions and checks them
+with multiple backend verifiers for redundancy. TESC and T3P demonstrated
+robust performance in a test using all eligible problems in the TPTP library,
+successfully compiling 98.2\% (resp. 92.8\%) of TSTP solutions produced by 
+Vampire (resp. E) and verifying all proofs in 3.27\% (resp. 2.51\%) of the 
+time it takes to produce their corresponding TSTP solutions.
+\end{abstract}
+
+\section{Introduction}
+
+The lack of a standard, machine-checkable proof format is a long-standing 
+issue for first-order automated theorem provers (ATPs). 
+Keeping a modern ATP bug-free while introducing new features is notoriously  
+difficult \cite{}, and the increasing complexity of ATPs only makes it 
+more risky to trust them without checkable proofs.
+In addition, the lack of proofs also makes it difficult to \textit{use}
+the output of ATPs; e.g., there are many proof assistants which 
+solve first-order goals by calling external ATPs, but they are forced to 
+either blindly trust the ATPs' answers \cite{} or perform redundant proof 
+searches \cite{} because the ATP output cannot be directly translated into 
+valid proofs for the proof assistants. 
+
+These limitations make it clearly desirable to introduce an ATP proof format  
+which lifts the burden of paintaking correctness checks from ATP development 
+and improves the interface between ATPs and their client software. The five main
+desiderata for for a prospective ATP proof format, as listed by Martin and Suda \cite{}, 
+are as follows:
+\begin{enumerate}
+  \item Compatibility with all inference techniques used by major ATPs
+  \item Coverage of ``unsound'' steps whose conclusions are not logically implied by their premises
+  \item Efficiency of verification
+  \item Ease of implementation in ATPs with small performance overhead
+  \item Wide adoption by the ATP commmunity
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+% The TSTP format \cite{zhang2004tstp} is supported by most ATP systems and standardizes their output syntax, but its lack of a semantic specification precludes any guarantees of mechanical verification. 
+
+
+The \href{https://github.com/skbaek/tesc}{\color{blue}{Theory Extensible Sequent Calculus (TESC)}} 
+is a new proof format for first-order ATPs that aims to fill this gap, with a particular emphasis on 2, 3, and 4. 
+It supports 2 by including rules for introducing an extensible set of theory axioms, 
+and ensures 3 by compiling high-level proofs down to a fully elaborated low-level format. 
+4 is achieved by using TSTP files which most ATPs are already capable of generating, 
+so it requires no implementation effort and acceptably small performance penalties.
+It is hoped that these strengths will encourage adoption by ATP users and developers, leading to 5. 
+1 is also important in the long run, but it is not the focus of this work as it has lower immediate priority.
+
+% Every step in a TESC proof can be mechanically verified, all the way from 
+% the input problem to the derivation of a contradiction; proof checking is fast and does not involve any search; for supported ATPs, it requires 
+% no modification and imposes no performance overhead other than enabling TSTP output and using default proof search settings. 
+% 
+The following sections are organized as follows: 
+section \ref{sec:rel-works} discusses how this project relates to existing work. 
+Section \ref{sec:conventions} describes the conventions used throughout the paper.
+Section \ref{sec:proof-calc} presents the underlying proof calculus of the format.
+Section \ref{sec:format} gives the concerete TESC syntax. 
+Section \ref{sec:t3p} discusses the T3P tool for generating and verifying TESC files. 
+Section \ref{sec:example} shows a simple example of a TPTP problem and its TESC proof.
+Section \ref{sec:results} presents the results of tests using problems from the TPTP library. 
+Section \ref{sec:conclusion} summarizes what was accomplished and discusses future work.
+
+
+
+\section{Related Works} \label{sec:rel-works} 
+
+The aforementioned survey by Martin and Suda \cite{} provides a concise summary of the status quo regarding 
+ATP proof formats. The testing and verification efforts of the Vampire development team \cite{} gives a good 
+sense of the difficulty and importance of ensuring correctness for cutting-edge ATP systems.
+
+The standardization of ATP input and output offered by the TPTP \cite{} and TSTP \cite{} formats is 
+a critical prerequisite which makes the TESC format possible. 
+
+The largest difference between TESC and existing approaches to ATP result verification is that TESC has 
+direct support for preprocessing steps (e.g. Skolemization) whose conclusions are not logically implied 
+by existing premises. TESC is most closely related to Ivy \cite{} and GDV \cite{}, and is especially 
+similar to the former in that it uses ATPs to generate independently verifiable proof objects.
+But both Ivy and GDV have limited support for preprocessing steps: GDV omits their verification entirely,
+and Ivy prevents ATPs from using optimized preprocessing strategies because it relies on a formally verified 
+preprocessor. 
+
+Outside first-order logic, SAT solvers also used to suffer from a similar lack of standard checkable proof formats.
+This problem was solved by the introduction of DRAT \cite{wetzler2014drat} and LRAT \cite{cruz2017efficient} formats,
+whose convincing success was a direct inspiration for the development of the TESC format.
+
+% \section{Conventions} \label{sec:conventions}
+% 
+% Unless explicitly indicated otherwise, we assume symbols to range over domains as follows: 
+% 
+% \begin{minipage}[t]{\dimexpr.5\textwidth-1em}
+% \begin{align*}
+%   b & \in {0,1}\\
+%   i,j,k & \in \mathbb{N}\\ 
+%   \nu & \in \text{formula names}\\
+%   t & \in \text{terms}\\
+%   \vec{t} & \in \text{lists of terms}\\
+% \end{align*}
+% \end{minipage}
+% \begin{minipage}[t]{\dimexpr.5\textwidth-1em}
+% \begin{align*}
+%   f, g \in\ & \text{functions}\\
+%   r \in\ & \text{relations}\\
+%   \phi, \psi \in\ & \text{formulas}\\
+%   \Gamma \in\ & \text{lists of formulas}\\
+%   \Pi \in\ & \text{input problems}\\
+% \end{align*}
+% \end{minipage}
+% 
+% \textit{Formula names} are identifiers used to uniquely identify formulas in a given input problem. 
+% For the purposes of this paper, it suffices to assume there is an countably infinite number of them and
+% details of their syntax are omitted.
+% 
+% \textit{Lists} are comma-separated sequences. For any list $L$, $L[k]$ denotes the $k$th element (in zero-based numbering) of $L$, 
+% and $\Len(L)$ is the number of elements in $L$. E.g., $(x,y,z)[1] = y$ and $\Len{(x,y,z)} = 3$. 
+% 
+% \textit{Input problems} are functions from formula names to formulas. They are abstract encodings of TPTP problem files. 
+% For any input problem $\Pi$ that encodes a TPTP problem file $P$ and an arbitrary formula name $\nu$, we may assume that
+% \begin{itemize}
+%   \item If there is an annotated formula $f$ in $P$ with the name $\nu$, then $\Pi(\nu) = f$.
+%   \item If no such annotated formula exists, then $\Pi(\nu) = \top$.
+% \end{itemize}
+% 
+% For any inference rule $R$ that infers a sequent from another sequent, we say that $R$ is satisfiability-preserving only (SPO) if 
+% \begin{itemize}
+%   \item For any sequents $X$ and $Y$ such that $R$ infers $Y$ from $X$ and $X$ is satisfiable, $Y$ is also satisfiable
+%   \item It is NOT generally the case that, for any sequents $X$ and $Y$ such that $R$ infers $Y$ from $X$, every model of $X$ is also a model of $Y$.
+% \end{itemize}
+% In other words, SPO inferences are satisfiability-preserving inferences that are not logically sound. A typical example of an SPO inference 
+% is Skolemization.
+% 
+\section{Proof Calculus} \label{sec:proof-calc}
+
+\begin{figure}
+  \centering
+  \begin{align*}
+  f ::= &\ \sigma\ |\ \idf{k}\\
+  t ::= &\ x_k\ |\ f(\vec{t})\\
+  \vec{t} ::= &\ \cdot\ |\ \vec{t}, t\\
+  \phi ::= &\ \top\ |\ \bot\ |\ f(\vec{t})\ |\ \lnot \phi\ |\ \phi \lor \chi\ |\ \phi \land \chi\ |\ \phi \to \chi\ |\ \phi \leftrightarrow \chi\ |\ \forall \phi\ |\ \exists \phi\\
+  \Gamma ::= &\ \cdot\ |\ \Gamma, \phi
+  \end{align*}
+  \caption{Abstract syntax of TESC terms and formulas.}
+  \label{fig:abst-syn}
+\end{figure}
+The syntax of terms and formulas for the TESC proof calculus is shown in Figure \ref{fig:abst-syn}. 
+We let $f$ range over \textit{functors}, which are used as both function and relation symbols.
+TESC makes no distinction bewteen the two types of symbols because it simplifies implementation 
+and is otherwise harmless, as the type of a symbol can always be determined from its context.
+The name `functor' is borrowed from the TPTP syntax terminology.
+
+The symbol $\sigma$ ranges over \textit{plain functors}, which are the usual relation or function 
+symbols of first-order logic. We assume that there is a suitable set of symbols $\Sigma$, and let 
+$\sigma \in \Sigma$. Symbols of the form $\idf{k}$ are \textit{indexed functors}, where the number 
+$k$ is called the \textit{functor index} of $\idf{k}$. Indexed functors are useful for reducing
+the cost of introducing fresh functors: if you know the largest functor index $k$ that occurs in the 
+environment, you may safely use $\idf{k+1}$ as a fresh functor without costly searches over a large 
+number of terms and formulas. \footnote{Thanks to Marijn Heule for suggesting this idea.}
+%This is especially useful since in TESC proofs, there is an easy method for determining the highest functor index of a sequent, as we will see shortly. 
+
+We let $t$ to range over terms, $\vec{t}$ over lists of terms, $\phi$ over formulas, 
+and $\Gamma$ over sequents. The number $k$ in variable $x_k$ is the variable's 
+\textit{De Bruijn index} \cite{de1972lambda}; the use of De Bruijn indices allows 
+quantifiers to be written without accompnying variables. E.g., the variable $x_1$ 
+in formula $\forall \exists P(x_0,x_1)$ is bound by $\forall$. As usual, parentheses may be 
+inserted for scope disambiguation, and the empty list operator `$\cdot$' may be omitted when 
+it appears as part of a complex expression. E.g., the sequent $\cdot, \phi, \psi$ and term 
+$f(\cdot)$ may be abbreviated to $\phi, \psi$ and $f$. For common binary predicates we take 
+the liberty of using infix notations, e.g. writing $x = y$ instead of $=(x,y)$. 
+
+\input{rules.tex}
+
+The inference rules of the TESC calculus are shown in Table \ref{tab:inf-rules}.
+The TESC calculus is a one-sided first-order sequent calculus, so having 
+a valid TESC proof of a sequent $\Gamma$ shows that $\Gamma$ is collectively unsatisfiable.
+The $A$,$B$,$C$,$D$, and $N$ rules are the \textit{analytic} rules. 
+Analytic rules are similar to the usual one-sided sequent calculus rules, 
+except that each analytic rule is overloaded to handle several connectives at once. 
+For example, consider the formulas $\phi \land \psi$, $\lnot (\phi \lor \psi)$, 
+$\lnot (\phi \limp \psi)$, and $\phi \liff \psi$. In usual sequent calculi, you would 
+need a different rule for each of the connectives $\land$, $\lor$, $\limp$, and $\liff$ to 
+break down these formulas. But all four formulas are ``essentially conjunctive'' 
+in the sense that the latter three are equivalent to $\lnot \phi \land \lnot \psi$, 
+$\phi \land \lnot \psi$, and $(\phi \limp \psi) \land (\psi \limp \phi)$.
+So it is more convenient to handle all four of them with a single rule that analyzes 
+a formula into its left and right conjuncts, which is the analytic $A$ rule.
+Similarly, the $B$, $C$, $D$ rules are used to analyze essentially disjunctive, 
+universal, existential formulas, and the $N$ rule performs double-negation elimination. 
+For a complete list of formula analysis functions that show how each analytic 
+rule breaks down formulas, see Appendix \ref{apdx:faf}. The analytic rules are 
+a slightly modified adaptation of Smullyan's \textit{uniform notation} for analytic 
+tableaux \cite{smullyan1995first}, which is where they get their names from. 
+
+Of the three remaining rules, $S$ is the usual cut rule, and $X$ is the axiom or init rule. 
+The $T$ rule may be used to add \textit{admissable} formulas. A formula $\phi$ is admissable 
+in respect to a target theory $\mathbf{T}$ and sequent size $k$ if it satisfies the following condition:  
+\begin{itemize}
+  \item For any good sequent $\Gamma$ that is satisfiable modulo $\mathbf{T}$ and 
+  $\size(\Gamma) = k$, the sequent $\Gamma, \phi$ is also satisfiable modulo $\mathbf{T}$. 
+\end{itemize}
+More intuitively, the $T$ rule allows you add formulas that preserve satisfiability. 
+Notice that the definition of admissability, and hence the definition of well-formed 
+TESC proofs, depends on the implicit target theory. This is the `theory-extensible' part of TESC. 
+In other words, TESC is closer to a \textit{scheme} for proof formats than to a single, fixed proof format: 
+users can obtain specific \textit{implementations} of TESC by defining the $\mathrm{adm}$ predicate, thereby 
+fixing the set of admissable formulas that may be introduced via the $T$ rule. The implementation must also 
+include a decision procedure that determines the truth of $\mathrm{adm}(k, \phi)$
+for any input value of $k$ and $\phi$ in order to make the resulting format mechanically verifiable.  
+
+When there is a need to distinguish the general scheme from the concrete instance, we refer to
+the current implementation of TESC as TESC-0. In TESC-0, $\mathrm{adm}(k, \phi)$ holds if and only if 
+$\phi$ is either a trivial logical constant ($\top$ or $\lnot bot$), one of the three equality axioms 
+(reflexivity, symmetry, or transitivity), or has one of the following forms:
+\begin{itemize}
+    \item $\forall \forall (x_1 = x_0 \to \ldots \forall \forall (x_1 = x_0 \to f(x_{2k+1},\ldots,x_1) = f(x_{2k},\ldots,x_0))\ldots)$, 
+      where $f$ is any functor and $2k$ is the total number of $\forall$s
+    \item $\forall \forall (x_1 = x_0 \to \ldots \forall \forall (x_1 = x_0 \to (r(x_{2k+1},\ldots,x_1) \to r(x_{2k},\ldots,x_0)))\ldots)$,  
+      where $r$ is any functor and $2k$ is the total number of $\forall$s
+    \item $\forall \ldots \forall (\idf{k}(x_0, \ldots, x_m) \liff \phi)$, 
+      where $\phi$ is any formula and $m$ is the number of outer universal quantifiers $\forall \ldots \forall$.
+    \item $\forall \ldots \forall (\exists \phi \limp \phi[0 \mapsto \idf{k}(x_0, \ldots, x_m)])$, 
+      where $\phi$ is any formula and $m$ is the number of outer universal quantifiers $\forall \ldots \forall$.
+\end{itemize}
+The first two takes care of congruence, the third handles new predicate definitions, and the last is
+used for adding choice axiom. Note that TESC-0 has no special support for Skolemization other 
+than the choice axioms. Therefore, any Skolemization step that is not an instance of the choice axiom 
+given above (e.g., simultaneous elimination of multiple existential quantifiers) must be `spelled out' 
+as the introduction and usage of multiple choice axioms.
+
+Let us say that a sequent $\Gamma$ is \textit{good} if it satisfies $\lfi(\Gamma) < \size(\Gamma)$,
+where $\lfi(x)$ denotes the largest functor index occurring in an expression $x$ (if $x$ incudes no 
+functor indices, $\lfi(x) = -1$). All TESC inference rules are designed to preserve goodness; i.e.,
+if the conclusion sequent of a rule is good, then so are all of its premise sequents. (we are concerned 
+with preservation in the bottom-up direction, since this is the direction in which proofs are constructed 
+and verified). Most rules ($A, B, N$, and $X$) trivially preserve goodness since they do not introduce 
+any new terms or formulas. Others preserve goodness either by carefull choosing the newly introduced term
+($D$) or enforcing it as a side condition ($C, S$, and $T$). The invariant that all sequents are good 
+allows you to use the indexed functor $\idf{\Len(\Gamma)}$ whenever a fresh functor is needed for an 
+inference (e.g., new predicate definitions).
+
+\section{The Format} \label{sec:format}
+
+The complete concrete syntax of the TESC proof format is given in Figure \ref{fig:tesc-syntax}. The syntax presentation is similar to 
+that of the \href{http://www.tptp.org/TPTP/SyntaxBNF.html}{\color{blue}{TPTP syntax}}. 
+
+The mapping between TESC syntax and the abstract syntax used in Section \ref{sec:proof-calc} is self-explanatory except for \texttt{<proof>}. 
+In a \texttt{<proof>}, the first character always indicates the inference rule to be applied, followed immediately by arguments that determine 
+how that inference rule should be applied, which in turn are followed by any remaining subproofs. E.g., in order to apply the $A$ rule, we need a 
+boolean argument $b$ and a number $i$ in order to determine the new formula $A(b, \Gamma[i])$ to be added, so the leading character `A' is followed
+by \texttt{<number>} and \texttt{<bool>}. For more details on how arguments for inference rule applications are read and used, see Section 
+\ref{sec:format}.
+
+One useful feature of the TESC syntax is that it is completely backtracking-free, because at any given point during parsing, each new 
+character read unambiguously determines the syntactic class being parsed. This not only simplifies parser design, but also allows 
+streaming verification where the verifier immediately parses and checks the prefix of proof already read without waiting for the 
+remaining suffix.
+
+\begin{figure}
+    \centering
+\begin{verbatim}
+
+<hash> ::: [#]                <percent> ::: [%]
+<dot> ::: [.]                 <dollar> ::: [$]
+<comma> ::: [,]               <not_percent> ::: [^%]
+<tilde> ::: [~]               <zero_numeric> ::: [0]
+<vline> ::: [|]               <non_zero_numeric> ::: [1-9]
+<ampersand> ::: [&]           <numeric> ::: [0-9]
+<arrow> ::: [>]               <boolean> ::: [01] 
+<equal> ::: [=]               <exclamation_mark> ::: [!]
+<double_quote> ::: ["]        <question_mark> ::: [?]
+
+<positive_decimal> ::= <non_zero_numeric><numeric>*
+<decimal> ::= <zero_numeric> | <positive_decimal>
+<number> ::= <decimal><percent>
+<string> ::= <not_percent>*<percent>
+<plain_functor> ::= <double_quote><string>
+<indexed_functor> ::= <hash><number>
+<functor> ::= <plain_functor> | <indexed_functor>
+<variable> ::= <hash><number>
+<term> ::= <variable> | <dollar><functor><term_list>
+<term_list> ::= <dot> | <comma><term><term_list>
+<connective> ::= <vline> | <ampersand> | <arrow> | <equal>
+<quantifier> ::= <exclamation_mark> | <question_mark>
+<formula> ::= <boolean>
+            | <dollar><functor><term_list>
+            | <tilde><formula>
+            | <connective><formula><formula>
+            | <quantifier><formula> 
+<proof> ::= A<number><boolean><proof> 
+          | B<number><proof><proof>
+          | C<number><term><proof> 
+          | D<number><proof>
+          | N<number><proof>
+          | S<formula><proof><proof> 
+          | T<formula><proof>
+          | X<number><number>
+\end{verbatim}
+    \caption{TESC syntax}
+    \label{fig:tesc-syntax}
+\end{figure}
+
+\section{A Simple Example} \label{sec:example}
+
+For a simple example of a TESC proof, consider the following problem (problem COL086-1 from the TPTP library): 
+
+\begin{verbatim}
+  cnf(fond_bird_exists,hypothesis,
+      ( response(a,b) = b )).
+  
+  cnf(prove_happiness_2,negated_conjecture,
+      (  response(a,B) != A )).
+\end{verbatim}
+A valid TESC proof for the problem, with line breaks and indentation added for legibility, is as follows:
+\begin{verbatim}
+C1%$"a%.
+  C2%$"response%,$"a%.,$"a%..
+    T!$"=%,#0%,#0%.
+      C4%$"response%,$"a%.,$"a%..
+        X3%5%
+\end{verbatim}
+Here's the same proof presented in a more human-readable form, where irrelevant formulas are abbreviated
+and $\Gamma$ is the initial sequent that contains formulas in the input problem:
+\bprf
+\axm{}
+\rlb{$X(3,5)$}
+\unr{\Gamma,..., =(\text{response}(\text{a}, \text{a}), \text{response}(\text{a}, \text{a}))}
+\rlb{$C(4,\text{response}(a,a))$}
+\unr{\Gamma,..., \forall =(x_0, x_0)}
+\rlb{$T(\forall =(x_0, x_0))$}
+\unr{\Gamma, ..., \lnot =(\text{response}(\text{a}, \text{a}), \text{response}(\text{a}, \text{a}))}
+\rlb{$C(2,\text{response}(a,a))$}
+\unr{\Gamma, \forall \lnot =(\text{response}(\text{a}, \text{a}), x_0)}
+\rlb{$C(1,a)$}
+\unr{\Gamma}
+\eprf
+
+
+
+\section{The T3P Tool} \label{sec:t3p}
+
+The TPTP-TSTP-TESC Processor (T3P) is the main tool for generating and verifying TESC proofs.
+T3P accepts a TPTP problem and its TSTP solution as input, and compiles them to a TESC proof. 
+Due to the wide variation of TSTP outputs between ATPs, there cannot be a universal 
+TSTP-to-TESC compiler, and proof compilation must be implemented separately for each ATP. 
+T3P currently supports compilation of solutions produced by Vampire and E in monomorphic 
+first-order logic with equality. 
+
+Since TESC requires explicit detail for all of its inferences, T3P must perform 
+searches to fill in the information missing from TSTP solutions, such as positions 
+of rewritten terms or pivot literals in resolution steps. These searches may 
+occasionally blow up and cause compilation failures. For some types of inferences, 
+search space explosion can be mitigated with custom-tailored solutions. E.g., 
+T3P handles Vampire's AVATAR steps by exporting the problem to CaDiCaL \cite{queue2019cadical} 
+and translating its proof output back to TESC. But many more complex inferences 
+cannot be handled this way, so the best way to ensure fast and reliable compilation 
+to TESC is generating fine-grained TSTP solutions with detailed information.
+
+T3P also accepts a TPTP problem and its TESC proof as input, and verifies that the 
+latter is a valid proof of the former's unsatisfiability. T3P includes three different
+backend verifiers written in Rust, Agda, and Prolog that users can choose from.
+T3P uses the Rust verifier by default, since it is optimized for performance and 
+is most suitable for practical proof checking. The Agda verifier comes with a 
+formal specification and proof of its soundness (whose details will be discussed in a 
+separate upcoming paper) and is reasonably performant for most proofs,  
+so it can serve as a fallback option when extra reliability is needed. 
+The Prolog verifier is used mainly for debugging purposes.
+
+Algorithm \ref{alg:tesc-check} shows a high-level description of a TESC verifier. 
+Note that:
+\begin{itemize}
+  % \item The argument $\Prob$ is a dictionary which maps strings to formulas, and corresponds to the input problems (the component $\Pi$ 
+  %   in a sequent $\Pi ; \Gamma$) we saw in Section \ref{sec:proof-calc}. The assumption is that $\Prob$ encodes the TPTP problem that 
+  %   the input TESC proof is being verified against. 
+  % \item The $\mathrm{LookUp}$ function retrieves formulas from $\Prob$ by the names they had in the input TPTP problem.
+  \item The argument $\mathit{prob}$ is a list that holds the formulas of the input TPTP problem, 
+    \textit{in the order} they originally appear in that problem. If a problem has \texttt{include} 
+    clauses, the contents of included files are treated as inlined in the position of their \texttt{include} 
+    clauses. The ordering is important because TESC inference rules identify formulas by their 
+    positions in sequents.
+  \item The use of $\mathit{prob}$ implies that TPTP formulas must be parsed into TESC formulas 
+    before calling the main $\mathrm{Verify}$ function. This parsing is mostly straightforward, but there 
+    are a couple caveats: 
+    \begin{itemize}
+      \item TPTP formulas in the CNF language are implicitly universally quantified, so the parser must 
+        choose some ordering for the variables in a CNF formula before performing universal closure. 
+        This ordering may be arbitrary but must be consistent, since a TESC proof generated assuming 
+        one ordering and verified using another will fail to check. T3P sorts variables in a CNF formula by 
+        their order of appearance in a left-to-write sweep: the earlier its appearance in the sweep, 
+        the lower its De Bruijn index.
+      \item The TPTP syntax includes logical connectives whose direct equivalents do not exist in TESC (e.g., \texttt{<\midtilde>}). During parsing, 
+        they are replaced by suitable (combinations of) TESC connectives that preserve logical equivalence.
+    \end{itemize}
+  \item The argument $\Prf$ is the list of characters in the input TESC proof.
+  \item The Verify function returns 1 if the proof is valid, and 0 otherwise.
+  \item For each datatype $\mathrm{X}$, the fuction call ReadX($\Prf$) consumes as many characters as necessary from $\Prf$ 
+    to parse and return a term of type $\mathrm{X}$. This also implicitly modifies $\Prf$ as the consumed characters are removed.
+  \item Some functions used in Verify may fail. E.g., ReadBool($\Prf$) will fail if the first character of $\Prf$ is neither `0' nor `1'. We assume that the caller of Verify implements explicit failure handling such that, if Verify fails at any point, it is handled in the same way as when Verify returns 0.
+  % \item The functions Adm, MaxFunctorIndex, and ApplyA correspond to adm, mfi, and (formula analysis function) A from Section \ref{sec:proof-calc}.
+  \item Pop and Push adds an element to or removes an element from the beginning of a list.
+\end{itemize} 
+
+\input{algo.tex}
+
+\section{Test Results} \label{sec:results}
+
+The performance of TESC and T3P was tested using all eligible problems from the TPTP problem library.
+A given TPTP problem is eligible if it is (1) in the CNF or FOF languauge, (2) has 'theorem' or  
+'unsatisfiable' status, (3) conforms to the official TPTP syntax, (4) assigns unique names to all of 
+its formulas, and (5) is solved by Vampire or E under one minute. (3) is necessary because  
+TESC and T3P assumes (per the official TPTP syntax) that the character `\%' does not appear in the
+\verb|sq_char| syntactic class, and uses it as an endmarker when parsing \verb|sq_char|. 
+(4) needs to be enforced in order to let T3P to unambiguously refer to premises during compilation.
+There were a total of 7885 eligible problems for Vampire, and 4853 for E.
+
+Add system information
+
+Using the eligible problems, T3P successfully compiled 7792 and 4504 TSTP solutions 
+generated by Vampire and E, respectively. All proofs produced were verified by T3P.
+The difference between compilation success rates for Vampire (98.8\%) and E (92.8\%) 
+can be largely attributed to solution granularity: TSTP solutions produced by E often 
+chain together multiple inferences into a single step and omit the intermediate formulas, 
+so T3P has to perform more search to fill in the missing information. 
+
+\begin{table}[]
+  \centering
+  \begin{tabular}{l|cc}
+                                    & Vampire   & E        \\ \hline
+  Solution time (s)                 & 30220.478 & 8473.055 \\ 
+  TSTP solutions size (MB)          & 735.981   & 53.841   \\
+  Compilation time (s)              & 11796.303 & 5701.754 \\
+  Compilation time / solution time  & 0.390     & 0.673    \\
+  TESC proofs size (MB)             & 6203.458  & 479.737  \\
+  Proofs size / solutions size      & 8.429     & 8.910    \\
+  Verification time (s)             & 989.180   & 212.990  \\
+  Verification time / solution time & 0.0327    & 0.0251  
+  \end{tabular}
+  \caption{Test results for TESC and T3P. Only the data for problems with successfully compiled TESC proofs are shown.}
+  \label{tab:results}
+\end{table}
+
+Table \ref{tab:results} shows the test results for the problems whose solutions
+were successfully compiled by T3P. The execution time results are 
+encouraging, as it only takes a 39-67\% overhead to produce a checkable proof compared to the base
+ATP solution time. Verification times are practically negligible compared to solution times, which
+shows that TESC is efficient for re-use of ATP search results. The main downside of TESC is the 
+>8 times increase in file size compared to TSTP, but this is unlikely to be a serious problem 
+since ATP proofs are typically small (note that the set of \textit{all} TESC proofs that could be 
+generated for the TPTP library still fits under 7 GBs) and ATPs usually exhaust
+time/memory limits well before producing excessively large proofs.
+
+
+\section{Conclusion}  \label{sec:conclusion}
+
+In this paper, we have introduced the TESC proof format and the T3P tool for generating and verifying TESC proofs. 
+TESC imposes minimal overhead on ATPs by offloading difficult elaboration work to T3P. 
+TESC also allows mechanical verification of SPO steps by reducing them to applications of a small number of well-defined $T$ rules.
+In a comprehensive test using Vampire and E on all eligible TPTP problems, we have  
+demonstrated that this approach scales to practical problems and state-of-the-art ATPs.
+
+The main limitation of TESC at the moment is the compilation bottleneck: implementation of 
+a TSTP-to-TESC compiler is highly time-consuming, must be duplicated for each ATP, and the resulting compiler is 
+likely to require frequent updates because it is sensitive to small changes in the ATP output.
+The best solution to this problem is introducing a second intermediate format, most likely a subset of TSTP, 
+that ATPs can generate directly and includes all the information
+required for efficient compilation. Using a single source format makes it easier to 
+optimize and maintain a proof compiler, and its similarity to TSTP will also make it 
+easier for developers to support its output in ATPs.
+Work on this intermediate format is already underway, and will be the next 
+step in the development of TESC.
+
+
+% its narrow coverage, both in terms of the number of ATPs it can support and the 
+% logical fragments it can handle. Regarding the former, there seems to be two main ways forward: ideally, we may identify a subset 
+% of TSTP that is expressive enough to be targeted by a diverse range of ATPs, but restrictive enough to allow compilation to TESC. 
+% In this case, the universal TTC can be easily implemented and maintained, while ATP developers can ensure compatibility by targeting 
+% the TSTP subset. It is an open research question, however, whether such a subset exists.
+% 
+% A slightly less ideal alternative is to recruit contributions from ATP developers for TSTP-to-TESC compilation. The current version
+% of TTC was developed without any knowledge of Vampire and E's codebase, relying solely on studying their TSTP output. This is why 
+% TTC so often resorts to brute-force search during compilation. If it is possible to achieve >90\% success rates by such indirect 
+% methods, it is not unrealistic to expect near-perfect success rates with significantly improved speeds when the compilation strategy 
+% for each ATP is designed by developers with deep understandings of their internal workings.
+% 
+% As for extensions to other fragments, the most realistic target would be support for many-sorted first-order logic, 
+% which would also be practically useful considering its increasing popularity in ATPs. This is likely the next immediate goal 
+% in TESC format development. Other potential targets, such as support for arithmetic, are more difficult and tentative.
+
+
+\section*{Acknowledgements}  \label{sec:ack}
+
+This work has been partially supported by AFOSR grant FA9550-18-1-0120.
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+
+
+\appendix
+
+\section{Formula analysis functions} \label{apdx:faf}
+
+\input{faf.tex}
+
+\section{Subtitution for TESC terms and proofs} \label{apdx:subst}
+
+  \begin{itemize}
+    \item $
+      x_m [k \mapsto t] = 
+      \begin{cases}
+        x_m, & \text{if } m < k \\
+        t, & \text{if } m = k \\
+        x_{m-1}, & \text{if } m > k 
+      \end{cases}
+    $
+    \item $(f(t_0, \ldots, t_m)) [k \mapsto t] = f(t_0[k \mapsto t], \ldots, t_m [k \mapsto t])$
+    \item If $C \in \{\top, \bot\}$, then $C [k \mapsto t] = C$
+    \item $(\lnot \phi) [k \mapsto t] = \lnot (\phi [k \mapsto t])$
+    \item If $\bullet \in \{\lor, \land, \limp, \liff\}$, then $(\phi \bullet \psi) [k \mapsto t] = (\phi [k \mapsto t]) \bullet (\psi [k \mapsto t])$, 
+    \item If $Q \in \{\forall, \exists\}$, then $(Q \phi) [k \mapsto t] = Q (\phi [k + 1 \mapsto incr(t)])$, 
+      where $incr(t)$ is the result of incrementing all De Bruijn indices in $t$ by 1
+    \item $(r(t_0, \ldots, t_m)) [k \mapsto t] = r(t_0[k \mapsto t], \ldots, t_m [k \mapsto t])$
+  \end{itemize} 
+  Note that the incrementation/decrementation of De Bruijn indices are necessary to ensure that variables are bound to the same quantifiers before and after substitution.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
