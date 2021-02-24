@@ -1,9 +1,15 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{queue2019cadical}
 Armin Biere.
 \newblock Cadical at the sat race 2019.
-\newblock {\em SAT RACE 2019}, page~8.
+\newblock {\em SAT RACE 2019}, page~8, 2019.
+
+\bibitem{bohme2010sledgehammer}
+Sascha B{\"o}hme and Tobias Nipkow.
+\newblock Sledgehammer: judgement day.
+\newblock In {\em International Joint Conference on Automated Reasoning}, pages
+  107--121. Springer, 2010.
 
 \bibitem{cruz2017efficient}
 Lu{\'\i}s Cruz-Filipe, Marijn~JH Heule, Warren~A Hunt, Matt Kaufmann, and Peter
@@ -19,10 +25,49 @@ Nicolaas~Govert De~Bruijn.
 \newblock In {\em Indagationes Mathematicae (Proceedings)}, volume~75, pages
   381--392. North-Holland, 1972.
 
+\bibitem{grewe2015using}
+Sylvia Grewe, Sebastian Erdweg, and Mira Mezini.
+\newblock Using vampire in soundness proofs of type systems.
+\newblock In {\em Vampire Workshop}, pages 33--51, 2015.
+
+\bibitem{mccune2000ivy}
+William McCune and Olga Shumsky.
+\newblock Ivy: A preprocessor and proof checker for first-order logic.
+\newblock In {\em Computer-Aided reasoning}, pages 265--281. Springer, 2000.
+
+\bibitem{reger2017checkable}
+Giles Reger and Martin Suda.
+\newblock Checkable proofs for first-order theorem proving.
+\newblock In {\em ARCADE@ CADE}, pages 55--63, 2017.
+
+\bibitem{reger2017testing}
+Giles Reger, Martin Suda, and Andrei Voronkov.
+\newblock Testing a saturation-based theorem prover: Experiences and
+  challenges.
+\newblock In {\em International Conference on Tests and Proofs}, pages
+  152--161. Springer, 2017.
+
 \bibitem{smullyan1995first}
 Raymond~M Smullyan.
 \newblock {\em First-order logic}.
 \newblock Courier Corporation, 1995.
+
+\bibitem{sutcliffe2006semantic}
+Geoff Sutcliffe.
+\newblock Semantic derivation verification: Techniques and implementation.
+\newblock {\em International Journal on Artificial Intelligence Tools},
+  15(06):1053--1070, 2006.
+
+\bibitem{sutcliffe2009tptp}
+Geoff Sutcliffe.
+\newblock The {TPTP} problem library and associated infrastructure.
+\newblock {\em Journal of Automated Reasoning}, 43(4):337, 2009.
+
+\bibitem{sutcliffe2004tstp}
+Geoff Sutcliffe, Jürgen Zimmer, and Stephan Schulz.
+\newblock {TSTP} data-exchange formats for automated theorem proving tools.
+\newblock {\em Distributed Constraint Problem Solving and Reasoning in
+  Multi-Agent Systems}, 112:201, 2004.
 
 \bibitem{wetzler2014drat}
 Nathan Wetzler, Marijn~JH Heule, and Warren~A Hunt.
