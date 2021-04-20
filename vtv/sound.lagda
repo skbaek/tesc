@@ -59,10 +59,9 @@ open import verify
 
 %<*relfun>
 \begin{code}
-Rels : Set  
+Rels : Set
 Rels = List D → Bool
-
-Funs : Set 
+Funs : Set
 Funs = List D → D
 \end{code}
 %</relfun>
@@ -71,7 +70,6 @@ Funs = List D → D
 \begin{code}
 RA : Set 
 RA = Functor → Rels 
-
 FA : Set
 FA = Functor → Funs
 \end{code}
@@ -143,10 +141,8 @@ respects-eq R = ∀ x y → (T (R (plain [ '=' ]) (x ∷ y ∷ [])) ↔ (x ≡ y
 \begin{code}
 satisfies : RA → FA → VA → Sequent → Set
 satisfies R F V Γ = ∀ ϕ → ϕ ∈ Γ → R , F , V ⊨ ϕ
-
 sat : Sequent → Set
 sat Γ = ∃ λ R → ∃ λ F → ∃ λ V → (respects-eq R × satisfies R F V Γ)
-
 unsat : Sequent → Set
 unsat Γ = ¬ (sat Γ)
 \end{code}
@@ -1260,8 +1256,7 @@ adm! k f =
 
 %<*verify-sound>
 \begin{code}
-verify-sound : ∀ (S : Sequent) (p : Proof) → 
-  good S → T (verify S p) → unsat S
+verify-sound : ∀ (S : Sequent) (p : Proof) → good S → T (verify S p) → unsat S
 \end{code}
 %</verify-sound>
 

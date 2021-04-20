@@ -10,7 +10,6 @@
 \usepackage[bottom]{footmisc}
 \usepackage{tablefootnote}
 \usepackage{hyperref}
-\usepackage{algorithm,algpseudocode}
 \usepackage{textcomp}
 \usepackage{pgfplots}
 \usepackage[utf8]{inputenc}
@@ -26,17 +25,6 @@
 \pgfplotsset{compat=1.14}
 \definecolor{VTV}{HTML}{019529}
 \definecolor{OTV}{HTML}{0C06F7}
-
-\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\rhd$ #1}
-\algdef{SE}[SUBALG]{Indent}{EndIndent}{}{\algorithmicend\ }%
-\algdef{SE}[SWITCH]{Case}{EndCase}[1]{\textbf{case}\ #1\ \textbf{of}}{\algorithmicend\ \algorithmicswitch}%
-\algtext*{Indent}
-\algtext*{EndIndent}
-\algtext*{EndCase}
-\algtext*{EndFor}% Remove "end for" text
-\algtext*{EndWhile}% Remove "end while" text
-\algtext*{EndIf}% Remove "end if" text
-\algtext*{EndFunction}% Remove "end if" text
 
 \renewcommand{\labelitemii}{$\star$}
 \newcommand{\midtilde}{\raisebox{0.5ex}{\texttildelow}}
@@ -205,6 +193,9 @@ called the \textit{functor index} of $\idf{k}$. Indexed functors are used to red
 the cost of introducing fresh functors: if you keep track of the largest functor index
 $k$ that occurs in the environment, you may safely use $\idf{k+1}$ as a fresh functor
 without costly searches over a large number of terms and formulas. \footnote{Thanks to Marijn Heule for suggesting this idea.}
+This is similar to the indexing tricks used in other systems (e.g. HOL theorem provers)
+which use the maximum variable indices of theorems to make sure that two theorems 
+have disjoint sets of variables.
 
 We use $t$ to range over terms, $\vec{t}$ over lists of terms, $\phi$ over formulas, 
 and $\Gamma$ over sequents. Quantified formulas are written without variables thanks 
@@ -271,7 +262,7 @@ in respect to a target theory $T$ and sequent size $k$ if it satisfies the follo
   \item For any good sequent $\Gamma$ that is satisfiable modulo $T$ and $\size(\Gamma) = k$, the 
 sequent $\Gamma, \phi$ is also satisfiable modulo $T$. 
 \end{itemize}
-More intuitively, the $T$ rule allows you add formulas that preserve satisfiability. 
+More intuitively, the $T$ rule allows you to add formulas that preserve satisfiability. 
 Notice that the definition of admissability, and hence the definition of well-formed 
 TESC proofs, depends on the implicit target theory. This is the `theory-extensible' part of TESC. 
 The current version of VTV verifies basic TESC proofs that target the theory of equality, so it allows $T$ 
@@ -349,7 +340,6 @@ which makes reasoning about trees considerably easier. Given the type \AgdaFunct
 the type \AgdaFunction{Sequent} can be simply defined as \AgdaFunction{Tree Formula}.
 
 
-
 \section{Soundness} \label{sec:soundness}
 
 In order to prove the soundness of \AgdaFunction{verify}, we first need to formalize 
@@ -365,16 +355,14 @@ edge cases, both of which can lead to bloated definitions and proofs.
 
 For VTV, we avoid this issue by assuming that every functor has infinite arities.
 Or rather, for each functor $f$ with arity $k$, there are an infinite number 
-of other functors that share the name $f$ and has arities $0, 1, ..., k-1, k+1, k+2, ...$ 
+of other functors that share the name $f$ and have arities $0, 1, ..., k-1, k+1, k+2, ...$ 
 ad infinitum. With this assumption, the denotation of functors can be defined as 
-% \ExecuteMetaData[sound.tex]{relfun}
-\AgdaFunction{Rels}\AgdaSpace{}\AgdaSymbol{:}\AgdaSpace{}\AgdaPrimitive{Set}
-\\
-\AgdaFunction{Rels}\AgdaSpace{}AgdaSymbol{=}\AgdaSpace{}\AgdaDatatype{List}\AgdaSpace{}\AgdaBound{D}\AgdaSpace{}\AgdaSymbol{→}\AgdaSpace{}\AgdaDatatype{Bool}
-\\
-\\[\AgdaEmptyExtraSkip]%
-\AgdaFunction{Funs}\AgdaSpace{}\AgdaSymbol{:}\AgdaSpace{}\AgdaPrimitive{Set}
-\AgdaFunction{Funs}\AgdaSpace{}\AgdaSymbol{=}\AgdaSpace{}\AgdaDatatype{List}\AgdaSpace{}\AgdaBound{D}\AgdaSpace{}\AgdaSymbol{→}\AgdaSpace{}\AgdaBound{D}
+\ExecuteMetaData[sound.tex]{relfun}
+% \AgdaFunction{Rels}\AgdaSpace{}\AgdaSymbol{=}\AgdaSpace{}\AgdaDatatype{List}\AgdaSpace{}\AgdaBound{D}\AgdaSpace{}\AgdaSymbol{→}\AgdaSpace{}\AgdaDatatype{Bool}
+% when interpreted as relations, and
+% \AgdaFunction{Funs}\AgdaSpace{}\AgdaSymbol{=}\AgdaSpace{}\AgdaDatatype{List}\AgdaSpace{}\AgdaBound{D}\AgdaSpace{}\AgdaSymbol{→}\AgdaSpace{}\AgdaBound{D}
+% when interpreted as functions, 
+% \\[\AgdaEmptyExtraSkip]%
 where \AgdaBound{D} is the type of the domain of discourse that the 
 soundness proof is parametrized over.
 A \AgdaFunction{Rels} (resp. \AgdaFunction{Funs}) can be thought of as a 
@@ -422,24 +410,29 @@ and
 \AgdaFunction{/} \AgdaNumber{0} \AgdaFunction{↦} \AgdaBound{x}\AgdaSymbol{)} 
 \AgdaSymbol{(}\AgdaInductiveConstructor{suc} \AgdaBound{m}\AgdaSymbol{)} \AgdaSymbol{=} \AgdaBound{V} \AgdaBound{m}.
 
-
 Now we can define (un)satisfiability of sequents in terms of formula valuations: 
 \ExecuteMetaData[sound.tex]{sat}
-The \AgdaFunction{respects-eq}\AgdaSpace{}\AgdaBound{R} clause asserts that the
-relation assignment \AgdaBound{R} respects equality. This condition is necessary
-because we are targeting first-order logic with equality, and we are only 
-interested in interpretations that satisfy all equality axioms.
+Note that \AgdaFunction{×} is the constructor for product types, which serves 
+the same role as a logical conjunction here. The \AgdaFunction{respects-eq}\AgdaSpace{}\AgdaBound{R} 
+clause asserts that the relation assignment \AgdaBound{R} respects equality. 
+This condition is necessary because we are targeting first-order logic with equality, 
+and we are only interested in interpretations that satisfy all equality axioms.
 
 VTV's formalization of first-order semantics is atypical in that (1) every functor
 doubles as both relation and function symbols with infinite arities, and 
 (2) the definition of satisfiability involves variable assignments, thereby applying to
-open as well as closed formulas. But this is completely harmless for our purposes:
+open as well as closed formulas. These idiosyncracies, however, are harmless for our purposes:
 whenever a traditional interpretation (with unique arities for each functor and no 
 variable assignment) $M$ satisfies a set of sentences $\Gamma$, $M$ can be easily extended 
 to an interpretation in the above sense that still satisfies $\Gamma$, since the 
 truths of sentences in $\Gamma$ are unaffected by functors or variables that do not 
-occur in them. Therefore, if a set of sentences is unsatisfiable in the sense we've
-defined above, it is also unsatisfiable in the usual sense. 
+occur in them. Conversely, any satisfying interpretation in the above sense can be pruned
+into a traditinal one without changing truth values of sentences. Therefore, both 
+definitions of satisfiability agree completely on sentences. Furthermore, we may assume 
+that all formulas in an input sequent are sentences, because the TPTP parser will reject 
+any open formula as it cannot assign a De Brujin index to an unbound variable. The 
+impossibility of parsing an open formula, however, is property of a preprocessor stage
+written in Rust, and has not been verified. 
 
 Now we finally come to the soundness statement for \AgdaFunction{verify}:
 \ExecuteMetaData[sound.tex]{verify-sound}
@@ -451,9 +444,10 @@ the soundness of TESC proofs is dependent on the invariant that all sequents are
 (in the sense we defined in Section \ref{sec:proof-calc}).
 But we can do better than merely assuming that the input sequent is good,
 because the parser which converts the input character list into the initial (i.e., root) 
-sequent is designed to fail if the parsed sequent is not good. \AgdaFunction{parse-verify}
-is the outer function which accepts two character lists as argument, parses them 
-into a \AgdaFunction{Sequent} and a \AgdaFunction{Proof}, and calls \AgdaFunction{verify}
+sequent is designed to fail if the parsed sequent is not good. Therefore, we can prove 
+this fact and use the success of the parser as confirmation that the parsed sequent is good.
+\AgdaFunction{parse-verify} is the outer function which accepts two character lists as argument, 
+parses them into a \AgdaFunction{Sequent} and a \AgdaFunction{Proof}, and calls \AgdaFunction{verify}
 on them. The soundness statement for \AgdaFunction{parse-verify} is as follows:
 \ExecuteMetaData[sound.tex]{parse-verify-sound}
 In other words, if \AgdaFunction{parse-verify} succeeds on two input character lists, 
@@ -528,7 +522,7 @@ a large batch of proofs at once.
 The main drawback of VTV is its high memory consumption. Fig. \ref{fig:mem} shows
 the peak memory usages of the two verifiers. For a large majority of proofs, 
 memory usages of both verifiers are stable and stay within the 14-20 MB range,
-but VTV's memory usage spikes earlier and higher than OTV. Due the limit of the system 
+but VTV's memory usage spikes earlier and higher than OTV. Due to the limit of the system 
 used, memory usage could only be measured up to 16 GB, but the actual peak for VTV 
 would be higher if we included the 5 failed verifications. A separate test running 
 VTV on an EC2 instance with 64 GB ram (\texttt{r5a.2xlarge}) still failed for 3 of 
