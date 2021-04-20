@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass{lipics-v2021}
 \usepackage{bussproofs, array, amstext, amssymb} 
 \usepackage{mathtools, extarrows}
 \usepackage{latexsym}
@@ -9,8 +9,6 @@
 \usepackage[section]{placeins}
 \usepackage[bottom]{footmisc}
 \usepackage{tablefootnote}
-% \usepackage[nodayofweek,level]{datetime}
-\usepackage[affil-it]{authblk}
 \usepackage{hyperref}
 \usepackage{algorithm,algpseudocode}
 \usepackage{textcomp}
@@ -56,7 +54,6 @@
 \newcommand{\Dec}[1]{\xRightarrow{#1}} 
 \newcommand{\bprf}[0]{\begin{prooftree}}
 \newcommand{\eprf}[0]{\end{prooftree}}
-
 \newcommand{\axm}[1]{\AxiomC{$#1$}}
 \newcommand{\unr}[1]{\UnaryInfC{$#1$}}
 \newcommand{\bnr}[1]{\BinaryInfC{$#1$}}
@@ -65,19 +62,27 @@
 \newcommand{\limp}[0]{\to}
 \newcommand{\liff}[0]{\leftrightarrow}
 \newcommand{\sq}[1]{\text{`#1'}} 
-
 \newcommand{\size}[0]{\mathrm{size}}
 \newcommand{\adm}[0]{\mathrm{adm}}
 
- 
+\bibliographystyle{plainurl}% the mandatory bibstyle
 
-\title{A Formally Verified Checker for\\ First-Order Proofs}
+\title{A Formally Verified Checker for First-Order Proofs}
 
-\author{Seulkee Baek}
-\date{}
+\author{Seulkee Baek}{Department of Philosophy, Carnegie Mellon University, United States}{seulkeeb@andrew.cmu.edu}{}{}
 
-\affil{Department of Philosophy, Carnegie Mellon University}
-\affil{\textit{seulkeeb@andrew.cmu.edu}}
+\authorrunning{S. Baek} %TODO mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'
+
+\Copyright{S. Baek} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+
+
+\ccsdesc[300]{Computing methodologies~Theorem proving algorithms} 
+
+\keywords{TESC, TPTP, TSTP, ATP} %TODO mandatory; please add comma-separated list of keywords
+
+\category{} %optional, e.g. invited paper
+
+\acknowledgements{This work has been partially supported by AFOSR grant FA9550-18-1-0120.\\Thanks to Jeremy Avigad for a careful proofreading of drafts and advice for improvements.}
 
 \begin{document}
 
@@ -362,7 +367,14 @@ For VTV, we avoid this issue by assuming that every functor has infinite arities
 Or rather, for each functor $f$ with arity $k$, there are an infinite number 
 of other functors that share the name $f$ and has arities $0, 1, ..., k-1, k+1, k+2, ...$ 
 ad infinitum. With this assumption, the denotation of functors can be defined as 
-\ExecuteMetaData[sound.tex]{relfun}
+% \ExecuteMetaData[sound.tex]{relfun}
+\AgdaFunction{Rels}\AgdaSpace{}\AgdaSymbol{:}\AgdaSpace{}\AgdaPrimitive{Set}
+\\
+\AgdaFunction{Rels}\AgdaSpace{}AgdaSymbol{=}\AgdaSpace{}\AgdaDatatype{List}\AgdaSpace{}\AgdaBound{D}\AgdaSpace{}\AgdaSymbol{→}\AgdaSpace{}\AgdaDatatype{Bool}
+\\
+\\[\AgdaEmptyExtraSkip]%
+\AgdaFunction{Funs}\AgdaSpace{}\AgdaSymbol{:}\AgdaSpace{}\AgdaPrimitive{Set}
+\AgdaFunction{Funs}\AgdaSpace{}\AgdaSymbol{=}\AgdaSpace{}\AgdaDatatype{List}\AgdaSpace{}\AgdaBound{D}\AgdaSpace{}\AgdaSymbol{→}\AgdaSpace{}\AgdaBound{D}
 where \AgdaBound{D} is the type of the domain of discourse that the 
 soundness proof is parametrized over.
 A \AgdaFunction{Rels} (resp. \AgdaFunction{Funs}) can be thought of as a 
@@ -551,15 +563,6 @@ and textually comparing its output with the original problem.
 
 
 
-\section*{Acknowledgements}  \label{sec:ack}
-
-This work has been partially supported by AFOSR grant FA9550-18-1-0120.
-
-Thanks to Jeremy Avigad for a careful proofreading of drafts and advice for improvements.
-
-
-
-\bibliographystyle{plain}
 
 \bibliography{references}
 
