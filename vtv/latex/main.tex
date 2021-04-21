@@ -1,15 +1,14 @@
 \documentclass{lipics-v2021}
 \usepackage{bussproofs, array, amstext, amssymb} 
-\usepackage{mathtools, extarrows}
+\usepackage{mathtools}
 \usepackage{latexsym}
 \usepackage{syntax}
 \usepackage{tabularx}
-\usepackage{flowchart}
 \usepackage{array,multirow}
 \usepackage[section]{placeins}
 \usepackage[bottom]{footmisc}
 \usepackage{tablefootnote}
-\usepackage{hyperref}
+% \usepackage{hyperref}
 \usepackage{textcomp}
 \usepackage{pgfplots}
 \usepackage[utf8]{inputenc}
@@ -26,30 +25,14 @@
 \definecolor{VTV}{HTML}{019529}
 \definecolor{OTV}{HTML}{0C06F7}
 
-\renewcommand{\labelitemii}{$\star$}
-\newcommand{\midtilde}{\raisebox{0.5ex}{\texttildelow}}
-\newcommand{\at}[0]{\ @\ }
-\newcommand{\An}[0]{\mathrm{An}}
-\newcommand{\len}[0]{\mathrm{len}}
-\newcommand{\Gnd}[0]{\mathit{gnd}}
-\newcommand{\Prf}[0]{\mathit{prf}}
-\newcommand{\Bch}[0]{\mathit{bch}}
-\newcommand{\Bchs}[0]{\mathit{bchs}}
-\newcommand{\Prob}[0]{\mathit{prob}}
 \newcommand{\idf}[1]{\#_{#1}} 
-\newcommand{\fresh}[1]{\mathit{fresh}_{\#}({#1})} 
 \newcommand{\lfi}[0]{\mathrm{lfi}} 
-\newcommand{\Dec}[1]{\xRightarrow{#1}} 
-\newcommand{\bprf}[0]{\begin{prooftree}}
-\newcommand{\eprf}[0]{\end{prooftree}}
 \newcommand{\axm}[1]{\AxiomC{$#1$}}
 \newcommand{\unr}[1]{\UnaryInfC{$#1$}}
 \newcommand{\bnr}[1]{\BinaryInfC{$#1$}}
-\newcommand{\tnr}[1]{\TrinaryInfC{$#1$}}
 \newcommand{\rlb}[1]{\RightLabel{#1}}
 \newcommand{\limp}[0]{\to}
 \newcommand{\liff}[0]{\leftrightarrow}
-\newcommand{\sq}[1]{\text{`#1'}} 
 \newcommand{\size}[0]{\mathrm{size}}
 \newcommand{\adm}[0]{\mathrm{adm}}
 
@@ -62,7 +45,6 @@
 \authorrunning{S. Baek} %TODO mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et al.'
 
 \Copyright{S. Baek} %TODO mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
-
 
 \ccsdesc[300]{Computing methodologies~Theorem proving algorithms} 
 
@@ -110,20 +92,31 @@ interactive theorem provers, SAT solvers, and SMT solvers.
 One area in which similar developments have been conspicuously absent is 
 first-order automated theorem provers (ATPs), where the lack of a machine-checkable
 proof format \cite{reger2017checkable} precluded the use of simple independent verifiers. 
-The Theory-Extensible Sequent Calculus (TESC) is a new 
+The Theory-Extensible Sequent Calculus (TESC) \footnote{TESC is a new proof format developed 
+by the author, and there is a separate paper awaiting submission to other venues that provides
+details of its specification and comprehensive test results using the TPTP problem library.
+For more details, please refer to \url{https://github.com/skbaek/tesc/tree/itp} for a draft 
+of the format paper, as well as the source code of the TESC toolchain.} is a new 
 proof format for first-order ATPs designed to fill this gap. In particular,
 the format's small set of fined-grained inference rules makes it relatively 
 easy to implement and verify its proof checker.
 
 This paper presents the Verified TESC Verifier (VTV), a proof checker for  
-the TESC format \footnote{\url{https://github.com/skbaek/tesc}} written and verified 
-in Agda \cite{bove2009brief}. The aim of the paper is twofold. Its immediate purpose is 
+the TESC format written and verified in Agda \cite{bove2009brief}. 
+The aim of the paper is twofold. Its immediate purpose is 
 to demonstrate the reliability of TESC proofs by showing precisely what is established 
 by their successful verification using VTV. Many of the implementation issues we shall 
 discuss, however, are relevant to any formalization of first-order logic and not 
 limited to either VTV or Agda. Therefore, the techniques VTV uses to solve them may be 
 useful for other projects that reason about and perform computations with first-order 
 logic data structures.
+
+Speaking of applicability to other systems, one may also ask: why Agda? 
+This choice was motivated more by subjective preference and convenience 
+(especially the ease of code extraction) than any meticulous comparison of 
+the strengths of its alternatives. No serious effort was made to replace it 
+with other systems (e.g. Coq or Isabelle/HOL), but it is entirely possible 
+that they would have been just as suitable. 
 
 The rest of the paper is organized as follows:
 Section \ref{sec:rel-works} gives a brief survey of similar works and how VTV relates to them.
@@ -157,7 +150,7 @@ verified against x86 machine code \cite{davis2015reflective}, and the Metamath Z
 VTV is designed to serve a role similar to these verified checkers for 
 first-order ATPs and the TESC format. There has been several different 
 approaches \cite{sutcliffe2006semantic, chihani2015proof} to verifying 
-the output of first-order ATPs, but the only example I am aware of
+the output of first-order ATPs, but the only example the author is aware of
 which uses independent proof objects with a verified checker is the 
 Ivy system \cite{mccune2000ivy}. The main difference between Ivy and 
 VTV is that Ivy's proof objects only record resolution and paramodulation 
@@ -339,7 +332,6 @@ reasonable performance and does away with complex ordering and balancing mechani
 which makes reasoning about trees considerably easier. Given the type \AgdaFunction{Tree}, 
 the type \AgdaFunction{Sequent} can be simply defined as \AgdaFunction{Tree Formula}.
 
-
 \section{Soundness} \label{sec:soundness}
 
 In order to prove the soundness of \AgdaFunction{verify}, we first need to formalize 
@@ -460,8 +452,6 @@ TPTP problem. This means that the formal verification of VTV is limited to the s
 of its proof-checking kernel, and the correctness its TPTP parsing phase has to be 
 taken on faith.
 
-
-
 \section{Test Results} \label{sec:test-results}
 
 The performance of VTV was tested by running it on all eligible problems 
@@ -496,8 +486,8 @@ All tests were performed on Amazon EC2 \texttt{r5a.large} instances,
 running Ubuntu Server 20.04 LTS on 2.5 GHz AMD EPYC 7000 processors with 
 16 GB RAM. 
 \footnote{
-  More information on the testing setup and a complete CSV of test results,
-  see \url{https://github.com/skbaek/tesc/tree/itp}.
+  The aforementioned TESC repository (\url{https://github.com/skbaek/tesc/tree/itp})
+  also includes detailed information on the testing setup and a complete CSV of test results.
 }
 
 Out of the 12296 proofs, there were 5 proofs that VTV failed to verify 
@@ -532,6 +522,32 @@ with VTV is at least >64 GB. In contrast, OTV could verify all
 
 \input{memchart}
 
+It's not completely clear where the memory usage difference comes from, but it is 
+most likely caused by the different ways in which VTV and OTV keep track of 
+subgoal sequents. OTV uses a single main array to store the current goal sequent,
+and destructively updates this array whenever the goal sequent is changed. 
+Consider, for instance, the application of the $S$ rule to a sequent $\Gamma$,
+which creates subgoal sequents of the form $\Gamma, \lnot \phi$ and $\Gamma, \phi$. 
+Before the rule application, OTV's main array holds $\Gamma$. Then it proceeds by:
+
+\begin{enumerate}
+  \item Storing $\phi$ on a secondary array for later use
+  \item Pushing $\lnot \phi$ onto the main array to change the goal sequent to $\Gamma, \lnot \phi$
+  \item Verifying that the left subproof is a valid proof of the sequent $\Gamma, \lnot \phi$
+  \item Truncating the main array back to $\Gamma$ 
+  \item Pushing $\phi$ onto the main array to change the goal sequent to $\Gamma, \phi$
+  \item Verifying that the right subproof is a valid proof of the sequent $\Gamma, \phi$
+\end{enumerate}
+
+This means that OTV never allocates any memory to subgoal sequents that are 
+already closed. On the other hand, VTV is an Agda program that gets compiled 
+to Haskell, so it is almost certain that new memory will be allocated to both
+$\Gamma, \lnot \phi$ and $\Gamma, \phi$ for this step. Furthermore, 
+$\Gamma, \lnot \phi$ will stay in memory even after it has been closed until 
+the garbage collector deallocates it. So it is expected that VTV will use 
+more memory than OTV, especially when verifying proofs that branch a lot and 
+create large numbers of subgoals.
+
 \section{Conclusion}  \label{sec:conclusion}
 
 The robust test results show that VTV can serve as a fallback option when extra rigour 
@@ -546,21 +562,23 @@ that use first-order logic.
 There are two main ways in which VTV could be further improved. Curbing its 
 memory usage would be the most important prerequisite for making it the 
 default verifier in T3P. This may require porting VTV to a verified programming
-language with finer low-level control over memory usage. 
+language with more efficient data structures (especially arrays) and finer-grained 
+control over memory usage. The upcoming Lean 4 seems a promising candidate for this,
+considering its heavy emphasis on practical programming.
 
 VTV could also benefit from a more reliable TPTP parser. A formally verified 
 parser would be ideal, but the complexity of TPTP's syntax makes it difficult  
 to even \textit{specify} the correctness of a parser, let alone prove it. 
 A more realistic approach would be imitating the technique used by verified 
 LRAT checkers \cite{heule2017efficient}, making VTV print the parsed problem 
-and textually comparing its output with the original problem.
-
-
-
+and textually comparing its output with the original problem. Due to TPTP's 
+flexible syntax, however, the mapping from input files to printed outputs 
+will necessarily be non-injective (e.g., there is no way to infer the positions 
+of line breaks from a parsed formula). This means that the original problem will 
+have to be normalized before comparison, and we must either verify or trust an 
+additional TPTP normalizer.
 
 \bibliography{references}
-
-
 
 \appendix  
 
